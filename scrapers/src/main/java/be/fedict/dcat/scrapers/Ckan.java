@@ -186,10 +186,14 @@ public class Ckan extends Scraper {
         
         logger.info("Found {} CKAN packages", String.valueOf(urls.size()));
         
+        int i = 0;
         for (URL u : urls) {
             Map<String, String> page = cache.retrievePage(u);
             if (page.isEmpty()) {
                 sleep();
+                if (++i % 100 == 0) {
+                    logger.info("Package {}...", Integer.toString(i));
+                }
                 JsonObject obj = getPackage(u);
                 cache.storePage(u, obj.toString(), lang);
             }
