@@ -20,9 +20,7 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <minimizeJar>true</minimizeJar>
-        </configuration>
+        <configuration />
       </plugin>
     </plugins>
   </build>
