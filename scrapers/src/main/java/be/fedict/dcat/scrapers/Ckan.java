@@ -73,6 +73,10 @@ public class Ckan extends Scraper {
     public final static String TAGS = "tags";
     public final static String TITLE = "title";
     public final static String URL = "url";
+    public final static String EXTRA = "extras";
+    
+    public final static String KEY = "key";
+    public final static String VALUE = "value";
     
     
     public final static String RESULT = "result";

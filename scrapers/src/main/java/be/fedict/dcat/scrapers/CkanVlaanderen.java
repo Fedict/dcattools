@@ -45,6 +45,9 @@ import org.slf4j.LoggerFactory;
 public class CkanVlaanderen extends Ckan {
     private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen.class);
  
+    public final static String DOMAIN = "beleidsdomein";
+    public final static String GEOCOVERAGE = "geografische dekking";
+    
     /**
      * Parse CKAN "extra" section.
      * 
@@ -56,18 +59,18 @@ public class CkanVlaanderen extends Ckan {
      */
     @Override
     protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
-        JsonArray arr = json.getJsonArray("extras");
+        JsonArray arr = json.getJsonArray(Ckan.EXTRA);
         if (arr == null) {
             return;
         }
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
-            String key = obj.getString("key", "");
+            String key = obj.getString(Ckan.KEY, "");
             switch(key) {
-                case "beleidsdomein":
-                    parseString(store, uri, obj, "value", DCAT.THEME, lang);
+                case CkanVlaanderen.DOMAIN:
+                    parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
                     break;
-                case "geografische dekking":
-                    parseString(store, uri, obj, "value", DCTERMS.COVERAGE, lang);
+                case CkanVlaanderen.GEOCOVERAGE:
+                    parseString(store, uri, obj, Ckan.VALUE, DCTERMS.COVERAGE, lang);
                     break;
                 default:
                     break;
