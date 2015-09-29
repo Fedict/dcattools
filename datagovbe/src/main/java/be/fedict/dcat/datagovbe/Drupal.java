@@ -476,7 +476,7 @@ public class Drupal {
             /* Allow redirect on POST */
             CloseableHttpClient client = HttpClients.custom()
                     .setRedirectStrategy(new LaxRedirectStrategy())
-                    .setSslcontext(ctx)
+                    .setSSLContext(ctx)
                     .build();
             e = Executor.newInstance(client);
         } catch (NoSuchAlgorithmException ex) {
