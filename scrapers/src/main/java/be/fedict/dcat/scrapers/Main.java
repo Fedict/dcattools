@@ -148,13 +148,5 @@ public class Main {
         writeDcat(scraper);
         
         exit(0);
-
-        //Ckan cg = new CkanVlaanderen(
-         //       new File("b:\\cache"), new File("b:\\vlaanderen.sail"),
-           //     new URL("http://data.opendataforum.info"));
-        //cg.setProxy("http://proxy2.yourict.net:8080");
-        
-        //cg.scrape();
-        
     }
 }
