@@ -233,7 +233,6 @@ public class Ckan extends Scraper {
      * @param obj JsonObject
      * @param field CKAN field name 
      * @param property RDF property
-     * @return
      * @throws RepositoryException 
      */
     protected void parseURI(Storage store, URI uri, JsonObject obj, 
