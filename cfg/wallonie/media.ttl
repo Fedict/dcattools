@@ -1,0 +1,21 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://d7.rovin.be/en/taxonomy/term/1>
+	skos:prefLabel "CSV" ;
+	skos:altLabel "CSV" .
+
+<http://d7.rovin.be/en/taxonomy/term/2>
+	skos:prefLabel "XML" ;
+	skos:altLabel "XML" .
+	
+<http://d7.rovin.be/en/taxonomy/term/3>
+	skos:prefLabel "KML" ;
+	skos:altLabel "KML" .
+	
+<http://d7.rovin.be/en/taxonomy/term/8>
+	skos:prefLabel "XLS" ;
+	skos:altLabel "XLS" .
+
+<http://d7.rovin.be/en/taxonomy/term/9>
+	skos:prefLabel "JSON" ;
+	skos:altLabel "JSON" .	
