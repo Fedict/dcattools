@@ -45,8 +45,11 @@ import org.slf4j.LoggerFactory;
 public class CkanVlaanderen extends Ckan {
     private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen.class);
  
+    public final static String CONFORM = "conformity-specification-title";
     public final static String DOMAIN = "beleidsdomein";
+    public final static String GEMET = "gemet-theme";
     public final static String GEOCOVERAGE = "geografische dekking";
+    public final static String METADATA_REQ = "metadata_request";
     
     /**
      * Parse CKAN "extra" section.
@@ -69,9 +72,14 @@ public class CkanVlaanderen extends Ckan {
                 case CkanVlaanderen.DOMAIN:
                     parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
                     break;
+                case CkanVlaanderen.GEMET:
+                    parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
+                    break;
                 case CkanVlaanderen.GEOCOVERAGE:
                     parseString(store, uri, obj, Ckan.VALUE, DCTERMS.COVERAGE, lang);
                     break;
+                case CkanVlaanderen.METADATA_REQ:
+                    parseURI(store, uri, obj, Ckan.VALUE, DCAT.LANDING_PAGE);
                 default:
                     break;
             }
