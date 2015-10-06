@@ -28,6 +28,7 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.VCARD;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
@@ -63,9 +64,19 @@ public class Ckan extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Ckan.class);
    
     // CKAN JSON fields
+    public final static String RESULT = "result";
+    public final static String SUCCESS = "success";
+    
     public final static String ID = "id";
+    public final static String AUTHOR = "author";
+    public final static String AUTHOR_EML = "author_email";
     public final static String CREATED = "created";
     public final static String FORMAT = "format";
+    public final static String LICENSE_URL = "license_url";
+    public final static String MAINT = "maintainer";
+    public final static String MAINT_EML = "maintainer_email";
+    public final static String META_CREATED = "metadata_created";
+    public final static String META_MODIFIED = "metadata_modified";
     public final static String MODIFIED = "last_modified";
     public final static String NAME = "name";
     public final static String NOTES = "notes";
@@ -73,14 +84,12 @@ public class Ckan extends Scraper {
     public final static String TAGS = "tags";
     public final static String TITLE = "title";
     public final static String URL = "url";
+    
     public final static String EXTRA = "extras";
     
     public final static String KEY = "key";
     public final static String VALUE = "value";
-    
-    
-    public final static String RESULT = "result";
-    public final static String SUCCESS = "success";
+
     
     // CKAN API
     public final static String API_LIST = "/api/3/action/package_list";
@@ -106,10 +115,21 @@ public class Ckan extends Scraper {
      * 
      * @param id
      * @return URL
-     * @throws java.net.MalformedURLException 
+     * @throws MalformedURLException 
      */
     protected URL getResourceURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_RES + id);
+    }
+    
+     /**
+     * Generate URL from a string.
+     * 
+     * @param str
+     * @return URL
+     * @throws MalformedURLException 
+     */
+    protected URL getHashUrl(String str) throws MalformedURLException {
+        return new URL(getBase(), String.valueOf(str.hashCode()));
     }
     
     /**
@@ -185,7 +205,7 @@ public class Ckan extends Scraper {
         urls = cache.retrieveURLList();
         
         logger.info("Found {} CKAN packages", String.valueOf(urls.size()));
-        
+        logger.info("Start scraping (waiting between requests)");
         int i = 0;
         for (URL u : urls) {
             Map<String, String> page = cache.retrievePage(u);
@@ -251,23 +271,58 @@ public class Ckan extends Scraper {
      * @param obj JsonObject
      * @param field CKAN field name 
      * @param property RDF property
-     * @return
      * @throws RepositoryException 
      */
-    protected Date parseDate(Storage store, URI uri, JsonObject obj, 
+    protected void parseDate(Storage store, URI uri, JsonObject obj, 
                         String field, URI property) throws RepositoryException {
-        Date res = null;
-        
         String s = obj.getString(field, "");
         if (! s.isEmpty()) {
             try {
-                res = df.parse(s);
+                Date res = df.parse(s);
                 store.add(uri, property, res);
             } catch (ParseException ex) {
                 logger.warn("Could not parse date {}", s, ex);
             }
         }
-        return res;
+    }
+    
+    /**
+     * Parse a CKAN contact and store it in the RDF store
+     * 
+     * @param store RDF store
+     * @param uri RDF subject URI
+     * @param obj JsonObject
+     * @param field CKAN field name
+     * @param field2 CKAN field email
+     * @param property RDF property
+     * @throws RepositoryException 
+     */
+    
+    protected void parseContact(Storage store, URI uri, JsonObject obj,
+            String field, String field2, URI property) throws RepositoryException{
+        String name = obj.getString(field, "");
+        String email = obj.getString(field2, "");
+       
+        String v = "";
+        try {
+            v = getHashUrl(name + email).toString();
+        } catch (MalformedURLException e) {
+            logger.error("Could not generate hash url", e);
+        }
+       
+        if (!name.isEmpty() || !email.isEmpty()) {
+            URI vcard = store.getURI(v);
+            store.add(uri, DCAT.CONTACT_POINT, vcard);
+            store.add(vcard, RDF.TYPE, VCARD.A_ORGANIZATION);
+            if (! name.isEmpty()) {
+                store.add(vcard, VCARD.HAS_FN, name);
+            } else {
+                store.add(vcard, VCARD.HAS_FN, email);
+            }
+            if(! email.isEmpty()) {
+                store.add(vcard, VCARD.HAS_EMAIL, store.getURI(email));
+            }
+        }
     }
     
     /**
@@ -285,9 +340,13 @@ public class Ckan extends Scraper {
         parseString(store, uri, json, Ckan.TITLE, DCTERMS.TITLE, lang); 
         parseString(store, uri, json, Ckan.NOTES, DCTERMS.DESCRIPTION, lang);
         
-        parseDate(store, uri, json, "metadata_created", DCTERMS.CREATED);
-        parseDate(store, uri, json, "metadata_modified", DCTERMS.MODIFIED);
-        parseURI(store, uri, json, "license_url", DCTERMS.LICENSE);
+        parseDate(store, uri, json, Ckan.META_CREATED, DCTERMS.CREATED);
+        parseDate(store, uri, json, Ckan.META_MODIFIED, DCTERMS.MODIFIED);
+        
+        parseURI(store, uri, json, Ckan.LICENSE_URL , DCTERMS.LICENSE);
+        
+        parseContact(store, uri, json, Ckan.AUTHOR, Ckan.AUTHOR_EML, DCAT.CONTACT_POINT);
+        parseContact(store, uri, json, Ckan.MAINT, Ckan.MAINT_EML, DCAT.CONTACT_POINT);
     }
     
     /**
