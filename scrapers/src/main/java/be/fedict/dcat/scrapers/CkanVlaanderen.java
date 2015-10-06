@@ -80,6 +80,7 @@ public class CkanVlaanderen extends Ckan {
                     break;
                 case CkanVlaanderen.METADATA_REQ:
                     parseURI(store, uri, obj, Ckan.VALUE, DCAT.LANDING_PAGE);
+                    break;
                 default:
                     break;
             }

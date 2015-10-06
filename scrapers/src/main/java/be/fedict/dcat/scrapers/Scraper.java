@@ -52,7 +52,7 @@ public abstract class Scraper {
     private String prefix = "";
     
     private HttpHost proxy = null;
-    private int delay = 2000;
+    private int delay = 1000;
     private String lang = "";
     private Cache cache = null;
     private Storage store = null;
