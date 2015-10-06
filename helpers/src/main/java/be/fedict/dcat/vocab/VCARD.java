@@ -34,42 +34,22 @@ import org.openrdf.model.impl.ValueFactoryImpl;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class DCAT {
-    public static final String NAMESPACE = "http://www.w3.org/ns/dcat#";
+public class VCARD {
+    public static final String NAMESPACE = "http://www.w3.org/2006/vcard/ns#";
     
-    public final static String PREFIX = "dcat";
+    public final static String PREFIX = "vcard";
     
-    public final static URI A_CATALOG;
-    public final static URI A_DATASET;
-    public final static URI A_DISTRIBUTION;
+    public final static URI A_ORGANIZATION;
 
-    public final static URI ACCESS_URL;
-    public final static URI BYTE_SIZE;
-    public final static URI CONTACT_POINT;
-    public final static URI DATASET;
-    public final static URI DISTRIBUTION;
-    public final static URI DOWNLOAD_URL;
-    public final static URI KEYWORD;
-    public final static URI LANDING_PAGE;
-    public final static URI MEDIA_TYPE;
-    public final static URI THEME;
-    
+
+    public final static URI HAS_EMAIL;
+    public final static URI HAS_FN;
     
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
-        A_CATALOG = factory.createURI(DCAT.NAMESPACE, "Catalog");
-        A_DATASET = factory.createURI(DCAT.NAMESPACE, "Dataset");
-        A_DISTRIBUTION = factory.createURI(DCAT.NAMESPACE, "Distribution");
-        
-        ACCESS_URL = factory.createURI(DCAT.NAMESPACE, "accessURL");
-        BYTE_SIZE = factory.createURI(DCAT.NAMESPACE, "byteSize");
-        CONTACT_POINT = factory.createURI(DCAT.NAMESPACE, "contactPoint");
-        DATASET = factory.createURI(DCAT.NAMESPACE, "dataset");
-        DISTRIBUTION = factory.createURI(DCAT.NAMESPACE, "distribution");
-        DOWNLOAD_URL = factory.createURI(DCAT.NAMESPACE, "downloadURL");
-        KEYWORD = factory.createURI(DCAT.NAMESPACE, "keyword");
-        LANDING_PAGE = factory.createURI(DCAT.NAMESPACE, "landingPage");
-        MEDIA_TYPE = factory.createURI(DCAT.NAMESPACE, "mediaType");
-        THEME = factory.createURI(DCAT.NAMESPACE, "theme");
+        A_ORGANIZATION = factory.createURI(VCARD.NAMESPACE, "Organization");
+
+        HAS_EMAIL = factory.createURI(VCARD.NAMESPACE, "hasEmail");
+        HAS_FN = factory.createURI(VCARD.NAMESPACE, "fn");
     }
 }
