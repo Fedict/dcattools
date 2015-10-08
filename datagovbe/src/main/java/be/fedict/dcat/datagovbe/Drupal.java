@@ -29,6 +29,7 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import com.google.common.collect.ListMultimap;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
@@ -86,8 +87,11 @@ public class Drupal {
     public final static String URL = "url";
     public final static String AUTHOR = "author";
     public final static String FLD_CAT = "field_category";
+    public final static String FLD_DETAILS = "field_details_";
     public final static String FLD_FORMAT = "field_file_type";
     public final static String FLD_GEO = "field_geo_coverage";
+    public final static String FLD_LICENSE = "field_license";
+    public final static String FLD_LINKS = "field_links_";
     public final static String FLD_ID = "field_id";
     public final static String FLD_UPSTAMP = "field_upstamp";
    
@@ -361,9 +365,10 @@ public class Drupal {
                     downloads.add(Json.createObjectBuilder().add(Drupal.URL, download));
                 }
                 builder.add(Drupal.FLD_FORMAT, getCategories(dist, DCAT.MEDIA_TYPE));
+                builder.add(Drupal.FLD_LICENSE, getCategories(dist, DCTERMS.LICENSE));
             }
-            builder.add("field_details_" + lang, accesses);
-            builder.add("field_links_" + lang, downloads);
+            builder.add(Drupal.FLD_DETAILS + lang, accesses);
+            builder.add(Drupal.FLD_LINKS + lang, downloads);
             
             // Build the JSON array
             JsonObject obj = builder.build();
