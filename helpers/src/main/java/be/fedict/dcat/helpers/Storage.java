@@ -97,7 +97,7 @@ public class Storage {
      * @return 
      */
     public URI getURI(String str) {
-        return fac.createURI(str);
+        return fac.createURI(str.trim());
     }
     
     /**
