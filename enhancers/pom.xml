@@ -36,7 +36,12 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.4.1</version>
                 <configuration>
-                    <minimizeJar>true</minimizeJar>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>be.fedict.dcat.enhancers.Main</mainClass>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                    </transformers>
                 </configuration>
                 <executions>
                     <execution>

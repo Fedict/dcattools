@@ -21,7 +21,12 @@
           </execution>
         </executions>
         <configuration>
-          <minimizeJar>true</minimizeJar>
+          <transformers>
+            <transformer>
+              <mainClass>be.fedict.dcat.enhancers.Main</mainClass>
+            </transformer>
+            <transformer />
+          </transformers>
         </configuration>
       </plugin>
     </plugins>
