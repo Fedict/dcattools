@@ -320,7 +320,7 @@ public class Ckan extends Scraper {
                 store.add(vcard, VCARD.HAS_FN, email);
             }
             if(! email.isEmpty()) {
-                store.add(vcard, VCARD.HAS_EMAIL, store.getURI(email));
+                store.add(vcard, VCARD.HAS_EMAIL, store.getURI("mailto:" + email));
             }
         }
     }
