@@ -277,8 +277,6 @@ public class Drupal {
             }
         }
         
-        Date now = new Date();
-        
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
                 .add(Drupal.LANGUAGE, lang)
                 .add(Drupal.AUTHOR, Json.createObjectBuilder().add(Drupal.ID, userid)) 
@@ -287,12 +285,11 @@ public class Drupal {
                         .add("value", desc)
                         .add("summary", "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
-                .add(Drupal.MODIFIED, modif.getTime()/1000L)
+                .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
                 .add(Drupal.FLD_LICENSE, getCategories(dataset, DATAGOVBE.LICENSE))
                 .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
-                .add(Drupal.FLD_ID, id)
-                .add(Drupal.FLD_UPSTAMP, now.getTime()/1000L) ;
+                .add(Drupal.FLD_ID, id);
     }
 
     /**
