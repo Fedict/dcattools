@@ -99,7 +99,7 @@ public class Drupal {
     public final static String TYPE = "type";
     public final static String TYPE_DATA = "dataset";
     
-    public final static String TAXO_PREFIX = "http://d7.rovin.be/en/taxonomy";
+    public final static String TAXO_PREFIX = "http://data.gov.be/en/taxonomy";
    
     public final static Pattern SHORTLINK = 
                             Pattern.compile("/([0-9]+)>; rel=\"shortlink\"");
