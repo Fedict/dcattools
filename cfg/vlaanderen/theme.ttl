@@ -4,13 +4,17 @@
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
 	skos:altLabel "landbouw - produktie"@nl , "landbouw - bedrijven"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "landbouw - tewerkstelling"@nl, "landbouw - inkomen"@nl, "landbouw - visserij"@nl, "landbouw - areaal"@nl, "landbouw - algemeen"@nl .
 
+<http://d7.rovin.be/en/taxonomy/term/59>
+	skos:prefLabel "CULTURE AND SPORT"@en ;
+	skos:altLabel "cultuur - jeugdwerk"@nl , "media - geschreven_pers"@nl , "cultuur - musea"@nl, "cultuur - bibliotheken"@nl, "cultuur - letteren"@nl, "cultuur - theater"@nl, "media - algemeen"@nl, "toerisme - overnachtingen"@nl, "cultuur - film"@nl, "sport - aanbod_en_kwaliteit"@nl, "media - vrt"@nl, "cultuur - volksontwikkeling"@nl, "cultuur - internationale_culturele_uitwisseling"@nl, "cultuur - muziek"@nl, "sport - vorming"@nl, "cultuur - centra"@nl, "monument - algemeen"@nl, "media - televisie"@nl, "cultuur - algemeen"@nl, "sport - deelname"@nl, "media - radio"@nl .
+
 <http://d7.rovin.be/en/taxonomy/term/38>
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "landbouw - bedrijven"@nl, "arbeidsmarkt - arbeidsvraag"@nl, "arbeidsmarkt - algemeen"@nl, "toerisme - overnachtingen"@nl, "mobiliteit - zeehavens_economisch"@nl, "landbouw - tewerkstelling"@nl, "economie - 3regionaal"@nl, "buitenlandse_handel - algemeen"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, "economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "toerisme - tewerkstelling"@nl .
-	
+
 <http://d7.rovin.be/en/taxonomy/term/33>
-	skos:prefLabel "EDUCATION, CULTURE AND SPORT"@en ;
-	skos:altLabel "cultuur - jeugdwerk"@nl , "media - geschreven_pers"@nl , "cultuur - musea"@nl , "onderwijs - leerlingen"@nl, "onderwijs - internationaal"@nl, "cultuur - bibliotheken"@nl, "cultuur - letteren"@nl, "cultuur - theater"@nl, "media - algemeen"@nl, "onderwijs - subsidiering"@nl, "toerisme - overnachtingen"@nl, "cultuur - film"@nl, "sport - aanbod_en_kwaliteit"@nl, "media - vrt"@nl, "cultuur - volksontwikkeling"@nl, "onderwijs - vorming"@nl, "cultuur - internationale_culturele_uitwisseling"@nl, "cultuur - muziek"@nl, "sport - vorming"@nl, "cultuur - centra"@nl, "onderwijs - kwaliteitszorg"@nl, "onderwijs - orientatie"@nl, "monument - algemeen"@nl, "media - televisie"@nl, "cultuur - algemeen"@nl, "onderwijs - leerkrachten"@nl, "sport - deelname"@nl, "media - radio"@nl .
+	skos:prefLabel "EDUCATION"@en ;
+	skos:altLabel "onderwijs - leerlingen"@nl, "onderwijs - internationaal"@nl, "onderwijs - subsidiering"@nl,  "onderwijs - vorming"@nl, "onderwijs - kwaliteitszorg"@nl, "onderwijs - orientatie"@nl, "onderwijs - leerkrachten"@nl .
 
 <http://d7.rovin.be/en/taxonomy/term/34>
 	skos:prefLabel "ENVIRONMENT"@en ;
