@@ -21,7 +21,11 @@
           </execution>
         </executions>
         <configuration>
-          <minimizeJar>true</minimizeJar>
+          <transformers>
+            <transformer>
+              <mainClass>be.fedict.dcat.datagovbe.Main</mainClass>
+            </transformer>
+          </transformers>
         </configuration>
       </plugin>
     </plugins>
