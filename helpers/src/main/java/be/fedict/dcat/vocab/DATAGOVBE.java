@@ -47,7 +47,7 @@ public class DATAGOVBE {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
 
         LICENSE = factory.createURI(DATAGOVBE.NAMESPACE, "license");
-        MEDIA_TYPE = factory.createURI(DATAGOVBE.NAMESPACE, "media_type");
+        MEDIA_TYPE = factory.createURI(DATAGOVBE.NAMESPACE, "mediaType");
         SPATIAL = factory.createURI(DATAGOVBE.NAMESPACE, "spatial");
         THEME = factory.createURI(DATAGOVBE.NAMESPACE, "theme");
     }    
