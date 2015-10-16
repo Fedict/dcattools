@@ -35,10 +35,13 @@ import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.json.Json;
@@ -86,6 +89,7 @@ public class Drupal {
     public final static String FORMAT_HTML = "filtered_html";
     public final static String URL = "url";
     public final static String AUTHOR = "author";
+    public final static String MODIFIED = "changed_date";
     public final static String FLD_CAT = "field_category";
     public final static String FLD_DETAILS = "field_details_";
     public final static String FLD_FORMAT = "field_file_type";
@@ -113,6 +117,7 @@ public class Drupal {
     private HttpHost host = null;
     private String token = null;
     
+    private SimpleDateFormat iso = new SimpleDateFormat("yyyy-MM-dd");
    
     /**
      * Prepare a POST or PUT action.
@@ -261,8 +266,19 @@ public class Drupal {
         if (desc.isEmpty()) {
             desc = title;
         }
-
+        
+        Date modif = new Date();
+        String m = getOne(dataset, DCTERMS.MODIFIED, "");
+        if (! m.isEmpty() && (m.length() >= 10)) {
+            try {
+                modif = iso.parse(m.substring(0, 10));
+            } catch (ParseException ex) {
+                logger.error("Exception parsing {} as date", m);
+            }
+        }
+        
         Date now = new Date();
+        
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
                 .add(Drupal.LANGUAGE, lang)
                 .add(Drupal.AUTHOR, Json.createObjectBuilder().add(Drupal.ID, userid)) 
@@ -271,6 +287,8 @@ public class Drupal {
                         .add("value", desc)
                         .add("summary", "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
+                .add(Drupal.MODIFIED, modif.getTime()/1000L)
+                .add(Drupal.FLD_LICENSE, getCategories(dataset, DATAGOVBE.LICENSE))
                 .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
                 .add(Drupal.FLD_ID, id)
@@ -365,7 +383,6 @@ public class Drupal {
                     downloads.add(Json.createObjectBuilder().add(Drupal.URL, download));
                 }
                 builder.add(Drupal.FLD_FORMAT, getCategories(dist, DATAGOVBE.MEDIA_TYPE));
-                builder.add(Drupal.FLD_LICENSE, getCategories(dist, DATAGOVBE.LICENSE));
             }
             builder.add(Drupal.FLD_DETAILS + lang, accesses);
             builder.add(Drupal.FLD_LINKS + lang, downloads);
