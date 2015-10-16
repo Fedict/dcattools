@@ -61,6 +61,7 @@ public class Main {
         if (store != null) {
             try {
                 store.shutdown();
+                store.deleteRepository();
             } catch (RepositoryException ex) {
                 logger.error("Error shutting down repository", ex);
             }

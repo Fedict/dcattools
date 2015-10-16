@@ -82,6 +82,18 @@ public class Storage {
     }
 
     /**
+     * Delete the triple store file.
+     */
+    public void deleteRepository() {
+        if (repo != null) {
+            logger.info("Removing RDF backend file");
+    
+            repo.getDataDir().delete();
+            repo = null;
+        }
+    }
+    
+    /**
      * Get value factory.
      * 
      * @return 

@@ -1,57 +1,57 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://d7.rovin.be/en/taxonomy/term/32>
+<http://data.gov.be/en/taxonomy/term/32>
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
-	skos:altLabel "landbouw - produktie"@nl , "landbouw - bedrijven"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "landbouw - tewerkstelling"@nl, "landbouw - inkomen"@nl, "landbouw - visserij"@nl, "landbouw - areaal"@nl, "landbouw - algemeen"@nl .
+	skos:altLabel "landbouw - produktie"@nl , "landbouw - bedrijven"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "landbouw - tewerkstelling"@nl, "landbouw - inkomen"@nl, "landbouw - visserij"@nl, "landbouw - areaal"@nl, "landbouw - algemeen"@nl, "Gebieden met natuurrisico's"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, "Landgebruik"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/59>
+<http://data.gov.be/en/taxonomy/term/59>
 	skos:prefLabel "CULTURE AND SPORT"@en ;
 	skos:altLabel "cultuur - jeugdwerk"@nl , "media - geschreven_pers"@nl , "cultuur - musea"@nl, "cultuur - bibliotheken"@nl, "cultuur - letteren"@nl, "cultuur - theater"@nl, "media - algemeen"@nl, "toerisme - overnachtingen"@nl, "cultuur - film"@nl, "sport - aanbod_en_kwaliteit"@nl, "media - vrt"@nl, "cultuur - volksontwikkeling"@nl, "cultuur - internationale_culturele_uitwisseling"@nl, "cultuur - muziek"@nl, "sport - vorming"@nl, "cultuur - centra"@nl, "monument - algemeen"@nl, "media - televisie"@nl, "cultuur - algemeen"@nl, "sport - deelname"@nl, "media - radio"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/38>
+<http://data.gov.be/en/taxonomy/term/38>
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "landbouw - bedrijven"@nl, "arbeidsmarkt - arbeidsvraag"@nl, "arbeidsmarkt - algemeen"@nl, "toerisme - overnachtingen"@nl, "mobiliteit - zeehavens_economisch"@nl, "landbouw - tewerkstelling"@nl, "economie - 3regionaal"@nl, "buitenlandse_handel - algemeen"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, "economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "toerisme - tewerkstelling"@nl .
+	skos:altLabel "landbouw - bedrijven"@nl, "arbeidsmarkt - arbeidsvraag"@nl, "arbeidsmarkt - algemeen"@nl, "toerisme - overnachtingen"@nl, "mobiliteit - zeehavens_economisch"@nl, "landbouw - tewerkstelling"@nl, "economie - 3regionaal"@nl, "buitenlandse_handel - algemeen"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, "economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "toerisme - tewerkstelling"@nl, "Kadastrale percelen"@nl, "Faciliteiten voor productie en industrie"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/33>
+<http://data.gov.be/en/taxonomy/term/33>
 	skos:prefLabel "EDUCATION"@en ;
 	skos:altLabel "onderwijs - leerlingen"@nl, "onderwijs - internationaal"@nl, "onderwijs - subsidiering"@nl,  "onderwijs - vorming"@nl, "onderwijs - kwaliteitszorg"@nl, "onderwijs - orientatie"@nl, "onderwijs - leerkrachten"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/34>
+<http://data.gov.be/en/taxonomy/term/34>
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "milieu - algemeen"@nl , "ruimte - handhaving"@nl , "ruimte - ordeningsbeleid"@nl, "milieu - besef-gedrag"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "milieu - bosvitaliteit"@nl, "milieu - burger"@nl, "milieu - natuur"@nl, "milieu - afval"@nl, "mobiliteit - milieu"@nl, "milieu - bodem"@nl, "milieu - lucht"@nl, "milieu - water"@nl, "ruimte - bodemgebruik"@nl, "milieu - gezondheid"@nl .
+	skos:altLabel "milieu - algemeen"@nl , "ruimte - handhaving"@nl , "ruimte - ordeningsbeleid"@nl, "milieu - besef-gedrag"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "milieu - bosvitaliteit"@nl, "milieu - burger"@nl, "milieu - natuur"@nl, "milieu - afval"@nl, "mobiliteit - milieu"@nl, "milieu - bodem"@nl, "milieu - lucht"@nl, "milieu - water"@nl, "ruimte - bodemgebruik"@nl, "milieu - gezondheid"@nl, "Geologie"@nl, "Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, "Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, "Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl .
 	
-<http://d7.rovin.be/en/taxonomy/term/35>
+<http://data.gov.be/en/taxonomy/term/35>
 	skos:prefLabel "ENERGY"@en ;
-	skos:altLabel "energie - algemeen"@nl .
+	skos:altLabel "energie - algemeen"@nl, "Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/41>
+<http://data.gov.be/en/taxonomy/term/41>
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "begroting - uitgaven"@nl, "bestuur - relatie"@nl, "onderwijs - subsidiering"@nl, "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "begroting - inkomsten"@nl, "bestuur - ambtenaren"@nl, "bestuur - algemeen"@nl, "bestuur - lokaal_bestuur"@nl, "begroting - schuld"@nl .
+	skos:altLabel "begroting - uitgaven"@nl, "bestuur - relatie"@nl, "onderwijs - subsidiering"@nl, "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "begroting - inkomsten"@nl, "bestuur - ambtenaren"@nl, "bestuur - algemeen"@nl, "bestuur - lokaal_bestuur"@nl, "begroting - schuld"@nl, "Kadastrale percelen"@nl, "Administratieve eenheden"@nl, "Bodemgebruik"@nl, "Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden"@nl, "Adressen"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/40>	
+<http://data.gov.be/en/taxonomy/term/40>	
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel "gezondheid - morbiditeit"@nl, "welzijn - handicap"@nl, "gezondheid - ziektepreventie"@nl, "gezondheid - medische_en_paramedische_beroepen"@nl, "gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, "milieu - gezondheid"@nl .
+	skos:altLabel "gezondheid - morbiditeit"@nl, "welzijn - handicap"@nl, "gezondheid - ziektepreventie"@nl, "gezondheid - medische_en_paramedische_beroepen"@nl, "gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, "milieu - gezondheid"@nl, "Menselijke gezondheid en veiligheid"@nl .
 	
-<http://d7.rovin.be/en/taxonomy/term/44>
+<http://data.gov.be/en/taxonomy/term/44>
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
 	skos:altLabel "onderwijs - internationaal"@nl, "ontwikkelingssamenwerking - algemeen"@nl, "buitenlandse_handel - algemeen"@nl, "buitenlands_beleid - algemeen"@nl, "cultuur - internationale_culturele_uitwisseling"@nl .
 	
-<http://d7.rovin.be/en/taxonomy/term/43>	
+<http://data.gov.be/en/taxonomy/term/43>	
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
 	skos:altLabel "welzijn - veiligheid_en_criminaliteit"@nl .
 	
-<http://d7.rovin.be/en/taxonomy/term/39>		
+<http://data.gov.be/en/taxonomy/term/39>		
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:altLabel "cultuur - jeugdwerk"@nl , "gezondheid - nataliteit_en_mortaliteit"@nl , "demografie - 7_vruchtbaarheid"@nl , "welzijn - algemeen_welzijnswerk"@nl , "demografie - 3_loop_van_de_bevolking"@nl , "gezondheid - morbiditeit"@nl, "welzijn - handicap"@nl, "demografie - 6_samenlevingsvormen"@nl, "woonbeleid - steun_particulieren"@nl, "demografie - 4_bevolkingsvooruitzichten"@nl, "welzijn - minderheden"@nl, "woonbeleid - woningmarkt"@nl, "demografie - 8_levensverwachting"@nl, "demografie - 5_huishoudens"@nl, "gelijke - algemeen"@nl, "woonbeleid - bewoners"@nl, "woonbeleid - sociale_huisvesting"@nl, "welzijn - vrijwilligers"@nl, "mobiliteit - toegankelijkheid"@nl, "welzijn - algemeen"@nl, "demografie - 1_bevolking"@nl, "woonbeleid - woningkwaliteit"@nl, "ict - huishoudens"@nl, "woonbeleid - algemeen"@nl, "welzijn - ouderen"@nl, "welzijn - kinderen"@nl, "demografie - 2_bevolkingsindicatoren"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/42>
+<http://data.gov.be/en/taxonomy/term/42>
 	skos:prefLabel "REGIONS, CITIES"@en ;
 	skos:altLabel "toerisme - overnachtingen"@nl, "economie - 3regionaal"@nl, "toerisme - vakantieparticipatie"@nl, "bestuur - lokaal_bestuur"@nl, "toerisme - tewerkstelling"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/36>
+<http://data.gov.be/en/taxonomy/term/36>
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "mobiliteit - vervoermiddelen"@nl, "mobiliteit - zeehavens_economisch"@nl, "mobiliteit - leefbaarheid"@nl, "mobiliteit - toegankelijkheid"@nl, "mobiliteit - milieu"@nl, "mobiliteit - vervoersprestaties"@nl, "mobiliteit - bereikbaarheid"@nl, "mobiliteit - verkeersveiligheid"@nl, "mobiliteit - infrastructuur"@nl .
+	skos:altLabel "mobiliteit - vervoermiddelen"@nl, "mobiliteit - zeehavens_economisch"@nl, "mobiliteit - leefbaarheid"@nl, "mobiliteit - toegankelijkheid"@nl, "mobiliteit - milieu"@nl, "mobiliteit - vervoersprestaties"@nl, "mobiliteit - bereikbaarheid"@nl, "mobiliteit - verkeersveiligheid"@nl, "mobiliteit - infrastructuur"@nl, "Vervoersnetwerken"@nl .
 
-<http://d7.rovin.be/en/taxonomy/term/37>	
+<http://data.gov.be/en/taxonomy/term/37>	
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl .
+	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, "Hydrografie"@nl, "Orthobeeldvorming"@nl .
