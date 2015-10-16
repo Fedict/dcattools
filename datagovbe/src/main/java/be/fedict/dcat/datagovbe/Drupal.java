@@ -27,9 +27,9 @@ package be.fedict.dcat.datagovbe;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.DATAGOVBE;
 import com.google.common.collect.ListMultimap;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
@@ -271,8 +271,8 @@ public class Drupal {
                         .add("value", desc)
                         .add("summary", "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
-                .add(Drupal.FLD_CAT, getCategories(dataset, DCAT.THEME))
-                .add(Drupal.FLD_GEO, getCategories(dataset, DCTERMS.SPATIAL))
+                .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
+                .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
                 .add(Drupal.FLD_ID, id)
                 .add(Drupal.FLD_UPSTAMP, now.getTime()/1000L) ;
     }
@@ -364,8 +364,8 @@ public class Drupal {
                 if (! download.isEmpty()) {
                     downloads.add(Json.createObjectBuilder().add(Drupal.URL, download));
                 }
-                builder.add(Drupal.FLD_FORMAT, getCategories(dist, DCAT.MEDIA_TYPE));
-                builder.add(Drupal.FLD_LICENSE, getCategories(dist, DCTERMS.LICENSE));
+                builder.add(Drupal.FLD_FORMAT, getCategories(dist, DATAGOVBE.MEDIA_TYPE));
+                builder.add(Drupal.FLD_LICENSE, getCategories(dist, DATAGOVBE.LICENSE));
             }
             builder.add(Drupal.FLD_DETAILS + lang, accesses);
             builder.add(Drupal.FLD_LINKS + lang, downloads);
