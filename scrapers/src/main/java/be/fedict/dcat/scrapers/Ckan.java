@@ -50,6 +50,7 @@ import javax.json.JsonString;
 import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -80,6 +81,8 @@ public class Ckan extends Scraper {
     public final static String MODIFIED = "last_modified";
     public final static String NAME = "name";
     public final static String NOTES = "notes";
+    public final static String ORGANIZATION = "organization";
+    public final static String IS_ORG = "is_organization";
     public final static String RESOURCES = "resources";
     public final static String TAGS = "tags";
     public final static String TITLE = "title";
@@ -94,6 +97,7 @@ public class Ckan extends Scraper {
     // CKAN API
     public final static String API_LIST = "/api/3/action/package_list";
     public final static String API_PKG = "/api/3/action/package_show?id=";
+    public final static String API_ORG = "/api/3/action/organization_show?id=";
     public final static String API_RES = "/api/3/action/resource_show?id=";
     
 
@@ -119,6 +123,17 @@ public class Ckan extends Scraper {
      */
     protected URL getResourceURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_RES + id);
+    }
+    
+    /**
+     * Get URL of a CKAN organization (DCAT Publisher).
+     * 
+     * @param id
+     * @return URL
+     * @throws MalformedURLException 
+     */
+    protected URL getOrganizationURL(String id) throws MalformedURLException {
+        return new URL(getBase(), Ckan.API_ORG + id);
     }
     
      /**
@@ -395,6 +410,30 @@ public class Ckan extends Scraper {
             parseString(store, distr, obj, Ckan.URL, DCAT.DOWNLOAD_URL, null);
         }
     }
+   
+    /**
+     * Parse CKAN organization
+     * 
+     * @param store
+     * @param uri
+     * @param json
+     * @param lang
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
+    protected void ckanOrganization(Storage store, URI uri, JsonObject json, String lang)
+                               throws RepositoryException, MalformedURLException {
+        JsonObject obj = json.getJsonObject(Ckan.ORGANIZATION);
+        
+        if (obj.getBoolean(Ckan.IS_ORG)) {
+            String s = obj.getString(Ckan.ID, "");
+            URI org = store.getURI(getOrganizationURL(s).toString());
+            store.add(uri, DCTERMS.PUBLISHER, org);
+            store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
+        
+            parseString(store, org, obj, Ckan.NAME, FOAF.NAME, lang);
+        }
+    }
     
     /**
      * Parse CKAN extra
@@ -433,6 +472,7 @@ public class Ckan extends Scraper {
         ckanGeneral(store, dataset, obj, lang);
         ckanTags(store, dataset, obj, lang);
         ckanResources(store, dataset, obj, lang);
+        ckanOrganization(store, dataset, obj, lang);
         ckanExtras(store, dataset,obj, lang);
     }
     
