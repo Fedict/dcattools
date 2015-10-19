@@ -423,15 +423,17 @@ public class Ckan extends Scraper {
      */
     protected void ckanOrganization(Storage store, URI uri, JsonObject json, String lang)
                                throws RepositoryException, MalformedURLException {
-        JsonObject obj = json.getJsonObject(Ckan.ORGANIZATION);
+        if(! json.isNull(Ckan.ORGANIZATION)) {
+            JsonObject obj = json.getJsonObject(Ckan.ORGANIZATION);
         
-        if (obj.getBoolean(Ckan.IS_ORG)) {
-            String s = obj.getString(Ckan.ID, "");
-            URI org = store.getURI(getOrganizationURL(s).toString());
-            store.add(uri, DCTERMS.PUBLISHER, org);
-            store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
+            if (obj.getBoolean(Ckan.IS_ORG)) {
+                String s = obj.getString(Ckan.ID, "");
+                URI org = store.getURI(getOrganizationURL(s).toString());
+                store.add(uri, DCTERMS.PUBLISHER, org);
+                store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
         
-            parseString(store, org, obj, Ckan.NAME, FOAF.NAME, lang);
+                parseString(store, org, obj, Ckan.NAME, FOAF.NAME, lang);
+            }
         }
     }
     
@@ -513,6 +515,7 @@ public class Ckan extends Scraper {
         
         /* Get and parse all the datasets */
         for (URL u : urls) {
+            logger.debug("Parsing {}", u);
             Map<String, String> page = cache.retrievePage(u);
             String s = page.getOrDefault(lang, "");
             parseDatasets(s, store, lang);

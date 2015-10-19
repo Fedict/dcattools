@@ -352,7 +352,7 @@ public class Drupal {
         }
                 
         //List<String> langs = getMany(dataset, DCTERMS.LANGUAGE, "");
-        String[] langs = new String[]{ "nl" };
+        //String[] langs = new String[]{ "nl" };
         
         for(String lang : langs) {
             JsonObjectBuilder builder = Json.createObjectBuilder();
