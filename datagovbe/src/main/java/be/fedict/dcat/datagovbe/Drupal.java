@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.json.Json;
@@ -310,31 +309,6 @@ public class Drupal {
         }
         return link;
     }
-    
-    /**
-     * Add a distribution to the form
-     * 
-     * @param builder
-     * @param dist
-     * @param lang
-     * @param nr
-     */
-/*    private void addDistribution(JsonObjectBuilder builder, 
-                Map<URI, ListMultimap<String, String>> dist, String lang, int nr) {
-        String access = getLink(dist, DCAT.ACCESS_URL);
-        
-        String download = getLink(dist, DCAT.DOWNLOAD_URL);
-        
-        String i = Integer.toString(nr);
- 
-        builder.
-        builder.add("field_links_" + lang, 
-                Json.createArrayBuilder().add(
-                        Json.createObjectBuilder().add(Drupal.URL, download)));
-        
-        builder.add(Drupal.FLD_FORMAT, getCategories(dist, DCAT.MEDIA_TYPE));
-    }
-*/
 
     /**
      * Add a dataset to the Drupal website.
