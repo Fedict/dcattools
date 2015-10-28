@@ -6,7 +6,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
-	skos:altLabel "JSON" .
+	skos:altLabel "JSON", "jsonp" .
 
 <http://data.gov.be/en/taxonomy/term/69>
 	skos:prefLabel "HTML" ;
@@ -15,14 +15,22 @@
 <http://data.gov.be/en/taxonomy/term/3>
 	skos:prefLabel "KML" ;
 	skos:altLabel "KML" .
+
+<http://data.gov.be/en/taxonomy/term/65>
+	skos:prefLabel "PDF" ;
+	skos:altLabel "PDF" .
 	
 <http://data.gov.be/en/taxonomy/term/10>
 	skos:prefLabel "RDF" ;
 	skos:altLabel "TTL" .
 	
+<http://data.gov.be/en/taxonomy/term/11>
+	skos:prefLabel "RSS" ;
+	skos:altLabel "rss" .	
+	
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:prefLabel "SHP" ;
-	skos:altLabel "SHP" .
+	skos:altLabel "SHP", "shp" .
 
 <http://data.gov.be/en/taxonomy/term/5>
 	skos:prefLabel "TXT" ;
@@ -38,7 +46,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/67>
 	skos:prefLabel "WMS" ;
-	skos:altLabel "WMS" .
+	skos:altLabel "WMS", "wms" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:prefLabel "XLS" ;
@@ -46,7 +54,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/62>
 	skos:prefLabel "XLSX" ;
-	skos:altLabel "XLSX" .
+	skos:altLabel "XLSX", "xlsx" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
