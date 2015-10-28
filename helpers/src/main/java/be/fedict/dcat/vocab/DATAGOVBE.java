@@ -40,6 +40,7 @@ public class DATAGOVBE {
   
     public final static URI LICENSE;
     public final static URI MEDIA_TYPE;
+    public final static URI ORGANIZATION;
     public final static URI SPATIAL;   
     public final static URI THEME;
     
@@ -48,6 +49,7 @@ public class DATAGOVBE {
 
         LICENSE = factory.createURI(DATAGOVBE.NAMESPACE, "license");
         MEDIA_TYPE = factory.createURI(DATAGOVBE.NAMESPACE, "mediaType");
+        ORGANIZATION = factory.createURI(DATAGOVBE.NAMESPACE, "organization");
         SPATIAL = factory.createURI(DATAGOVBE.NAMESPACE, "spatial");
         THEME = factory.createURI(DATAGOVBE.NAMESPACE, "theme");
     }    
