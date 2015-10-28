@@ -64,7 +64,7 @@ public class AddPropertyIfMissing extends Enhancer {
             url = new URL(value);
         } catch (MalformedURLException ex) {
             Matcher m = LITERAL.matcher(value);
-            if (m.groupCount() == 2) {
+            if (m.find()) {
                 str = m.group(1);
                 lang = m.group(2);
             }
