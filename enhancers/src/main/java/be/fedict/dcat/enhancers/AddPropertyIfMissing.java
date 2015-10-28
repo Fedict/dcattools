@@ -29,6 +29,8 @@ import be.fedict.dcat.helpers.Storage;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.openrdf.model.URI;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -41,16 +43,43 @@ import org.slf4j.LoggerFactory;
  */
 public class AddPropertyIfMissing extends Enhancer {
     private final Logger logger = LoggerFactory.getLogger(AddPropertyIfMissing.class);
-        
-    private void addIfMissing(URI rdfClass, URI prop, URL url) throws RepositoryException {
+
+    public final static Pattern LITERAL = Pattern.compile("\"(.*)\"@(\\w*)");
+    /**
+     * Add property if it is missing
+     * 
+     * @param rdfClass
+     * @param prop
+     * @param value url or string value
+     * @throws RepositoryException 
+     */
+    private void addIfMissing(URI rdfClass, URI prop, String value) throws RepositoryException {
         logger.info("Add missing {} to {}", prop.toString(), rdfClass.toString());
+        
+        URL url = null;
+        String str = "";
+        String lang = "";
+        // Check if the value is an url or a literal
+        try {
+            url = new URL(value);
+        } catch (MalformedURLException ex) {
+            Matcher m = LITERAL.matcher(value);
+            if (m.groupCount() == 2) {
+                str = m.group(1);
+                lang = m.group(2);
+            }
+        }
         
         Storage store = getStore();
         List<URI> subjs = store.query(rdfClass);
         int added = 0;
         for (URI subj : subjs) {
             if (! store.has(subj, prop)) {
-                store.add(subj, prop, url);
+                if (url != null) {
+                    store.add(subj, prop, url);
+                } else {
+                    store.add(subj, prop, str, lang);
+                }
                 added++;
             }
         }
@@ -62,11 +91,9 @@ public class AddPropertyIfMissing extends Enhancer {
         try {
             URI rdfClass = getStore().getURI(getProperty("rdfclass"));
             URI property = getStore().getURI(getProperty("property"));
-            URL value = new URL(getProperty("value"));
+            String value = getProperty("value");
             
             addIfMissing(rdfClass, property, value);
-        } catch (MalformedURLException ex) {
-            logger.error("Error in reading properties", ex);
         } catch (RepositoryException ex) {
             logger.error("Repository error", ex);
         }
