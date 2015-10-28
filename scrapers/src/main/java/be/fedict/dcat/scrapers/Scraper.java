@@ -29,11 +29,16 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import org.apache.http.HttpHost;
+import org.apache.http.client.fluent.Request;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -170,6 +175,39 @@ public abstract class Scraper {
         } catch (InterruptedException ex) {
         }
     }
+ 
+    /**
+     * Make HTTP GET request.
+     * 
+     * @param url
+     * @return JsonObject containing CKAN info
+     * @throws IOException 
+     */
+    public JsonObject makeJsonRequest(URL url) throws IOException {
+        Request request = Request.Get(url.toString());
+        if (getProxy() != null) {
+            request = request.viaProxy(getProxy());
+        }
+        String json = request.execute().returnContent().asString();
+        JsonReader reader = Json.createReader(new StringReader(json));
+        return reader.readObject();
+    }
+    
+    /**
+     * Make HTTP GET request.
+     * 
+     * @param url
+     * @return String containing raw page
+     * @throws IOException 
+     */
+    public String makeRequest(URL url) throws IOException {
+        Request request = Request.Get(url.toString());
+        if (getProxy() != null) {
+            request = request.viaProxy(getProxy());
+        }
+        return request.execute().returnContent().asString();
+    }
+    
     
     /**
      * Fetch all metadata from repository / site

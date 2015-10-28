@@ -47,7 +47,6 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonString;
-import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
@@ -61,7 +60,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class Ckan extends Scraper {
+public abstract class Ckan extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Ckan.class);
    
     // CKAN JSON fields
@@ -147,22 +146,7 @@ public class Ckan extends Scraper {
         return new URL(getBase(), String.valueOf(str.hashCode()));
     }
     
-    /**
-     * Make HTTP GET request.
-     * 
-     * @param url
-     * @return JsonObject containing CKAN info
-     * @throws IOException 
-     */
-    protected JsonObject makeRequest(URL url) throws IOException {
-        Request request = Request.Get(url.toString());
-        if (getProxy() != null) {
-            request = request.viaProxy(getProxy());
-        }
-        String json = request.execute().returnContent().asString();
-        JsonReader reader = Json.createReader(new StringReader(json));
-        return reader.readObject();
-    }
+  
     
     /**
      * Get a CKAN package (DCAT Dataset).
@@ -172,7 +156,7 @@ public class Ckan extends Scraper {
      * @throws IOException 
      */
     protected JsonObject getPackage(URL url) throws IOException {
-        JsonObject obj = makeRequest(url);
+        JsonObject obj = makeJsonRequest(url);
         if (obj.getBoolean(Ckan.SUCCESS)) {
             return obj.getJsonObject(Ckan.RESULT);
         }
@@ -190,7 +174,7 @@ public class Ckan extends Scraper {
         List<URL> urls = new ArrayList<>();
         URL getPackages = new URL(getBase(), Ckan.API_LIST);
         
-        JsonObject obj = makeRequest(getPackages);
+        JsonObject obj = makeJsonRequest(getPackages);
         if (! obj.getBoolean(Ckan.SUCCESS)) {
             return urls;
         }
@@ -447,10 +431,8 @@ public class Ckan extends Scraper {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang)
-                               throws RepositoryException, MalformedURLException {
-   //     JsonArray arr = json.getJsonArray("extras");
-    }
+    protected abstract void ckanExtras(Storage store, URI uri, JsonObject json, String lang)
+                               throws RepositoryException, MalformedURLException;
     
     /**
      * Parse DCAT Datasets
@@ -535,6 +517,5 @@ public class Ckan extends Scraper {
      */
     public Ckan(File caching, File storage, URL base) {
         super(caching, storage, base);
-
    } 
 }
