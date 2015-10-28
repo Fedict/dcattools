@@ -23,15 +23,16 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.io.IOException;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.json.JsonObject;
-import org.openrdf.model.URI;
+import java.util.Map;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,23 +41,56 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanWallonie extends Ckan {
-    private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
- 
-    @Override
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) {
-        // do nothing
+public abstract class Html extends Scraper {
+    private final Logger logger = LoggerFactory.getLogger(Html.class);
+
+    public Html(File caching, File storage, URL base) {
+        super(caching, storage, base);
     }
     
-   /**
-     * CKAN parser for Opendata.DigitalWallonia.be / AWT.
+    /**
+     * Parse HTML page for datasets.
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param page 
      */
-    public CkanWallonie(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        this.setDefaultLang("fr");
+    public abstract void parseDatasets(String page);
+    
+    /**
+     * Store front page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    public void storeFront(Cache cache) throws IOException {
+        URL front = getBase();
+        cache.storePage(front, makeRequest(front) , getDefaultLang());
+    }
+    
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, String> page = cache.retrievePage(getBase());
+        if (page.isEmpty()) {
+            storeFront(cache);
+        }
+        
+        logger.info("Done scraping");
+    }
+
+    @Override
+    public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
+        Storage store = getTripleStore();
+        store.startup();
+        
+        Cache cache = getCache();
+        
+        Map<String, String> page = cache.retrievePage(null);
+        
+        cache.shutdown();
+        
+        store.write(out);
+        store.shutdown();
     }  
 }

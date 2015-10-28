@@ -23,16 +23,10 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Storage;
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
-import javax.json.JsonObject;
-import org.openrdf.model.URI;
-import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,23 +34,17 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanWallonie extends Ckan {
-    private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
- 
+public class HtmlBxlMobilit extends Html {
+    private final Logger logger = LoggerFactory.getLogger(HtmlBxlMobilit.class);
+
+    public HtmlBxlMobilit(File caching, File storage, URL base) {
+        super(caching, storage, base);
+    }
+
+  
     @Override
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) {
-        // do nothing
+    public void parseDatasets(String page) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-   /**
-     * CKAN parser for Opendata.DigitalWallonia.be / AWT.
-     * 
-     * @param caching
-     * @param storage
-     * @param base 
-     */
-    public CkanWallonie(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        this.setDefaultLang("fr");
-    }  
 }
