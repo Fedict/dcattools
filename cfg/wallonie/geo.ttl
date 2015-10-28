@@ -2,32 +2,8 @@
 
 <http://data.gov.be/en/taxonomy/term/45>
 	skos:prefLabel "Belgium"@en ;
-	skos:altLabel "Gewesten"@nl, "België en gewesten"@nl, "Belgische gewesten en landen EU"@nl, "België"@nl, "België en zijn gewesten"@nl, "3 gewesten van de federale staat België"@nl, "België en Europese Unie"@nl, "België en zijn regio's"@nl, "Provincies van België"@nl, "Belgische Gewesten en totaal voor België"@nl, "gewesten en België"@nl, "Gewesten en Gemeenschappen"@nl, "Belgische gewesten"@nl, "gewesten"@nl, "Gewesten van de federale staat Belgiê"@nl, "308 gemeenten Vlaams Gewest (VG)   19 gemeenten Brussels Hoofdstedelijk Gewest (BHG)   262 gemeenten Waals Gewest (WG)"@nl, "308 gemeenten Vlaamse Gewest (VG)   19 gemeenten Brussels Hoofdstedelijk Gewest (BHG)   262 gemeenten Waals Gewest (WG)"@nl  .
+	skos:altLabel "Belgique"@fr .
 
-<http://data.gov.be/en/taxonomy/term/48>
-	skos:prefLabel "Brussels"@en ;
-	skos:altLabel "Vlaamse Gemeenschap in het Brussels Hoofdstedelijk Gewest"@nl, "Brussel"@nl, "Brussels Gewest"@nl, "308 gemeenten Vlaams Gewest (VG)   19 gemeenten Brussels Hoofdstedelijk Gewest (BHG)"@nl, "Vlaamse Gewest   Brussel"@nl, "Vlaamse Gemenschap"@nl, "Vlaamse Gemeenschap"@nl, "Vlaamse gemeenschap"@nl, "308 gemeenten Vlaamse Gewest (VG)   19 gemeenten Brussels Hoofdstedelijk Gewest (BHG)"@nl, "het Brussels Hoofdstedelijke Gewest (BHG) en provincies van het Waalse Gewest (WG) = NUTS2"@nl, "regio Antwerpen en regio Brussel"@nl, "Brussels Hoofdstedelijk Gewest"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/46>
-	skos:prefLabel "Flanders"@en ;
-	skos:altLabel "vlaanderen"@nl, "Vlaamse zeehavens"@nl, "Vlaamse Gewest   Brussel"@nl, "Vlaanderen"@nl, "Vlaams gewest"@nl, "Vlaams Gewest"@nl, "308 gemeenten Vlaams Gewest (VG)   19 gemeenten Brussels Hoofdstedelijk Gewest (BHG)"@nl, "Bestuurlijke arrondissementen (A) van het Vlaamse Gewest (VG)"@nl, "Vlaamse Gewest"@nl, "Vlaamse Gemenschap"@nl, "Kust"@nl, "Vlaamse Gemeenschap"@nl, "Vlaamse gemeenschap"@nl, "308 gemeenten Vlaamse Gewest (VG)   19 gemeenten Brussels Hoofdstedelijk Gewest (BHG)"@nl, "Vlaams Gewest en Europese Unie"@nl, "Vlaamse provincies en Vlaams Gewest"@nl, "5 Vlaamse provincies"@nl, "Vlaams Gewest   Brussel"@nl, "Provincies van het Vlaamse Gewest"@nl, "Provincies van het Vlaamse Gewest (VG)"@nl, "gewesten en Vlaamse gemeenten"@nl, "Vlaams Gewest en provincies"@nl, "Vlaamse provincies"@nl, "Vlaamse Provincies"@nl, "22 Bestuurlijke Arrondissementen van het Vlaamse Gewest"@nl, "Vlaams Gewest (VG)"@nl, "Bestuurlijke arrondissementen van het Vlaams Gewest"@nl, "Bestuurlijke arrondissementen van het Vlaamse Gewest"@nl, "Vlaamse Rand"@nl, "Vlaanderen en Wallonië"@nl, "Vlaamse gemeenten"@nl, "Gewesten en Vlaamse provincies"@nl, "Bestuurlijke arrondissementen (A) van het Vlaamse Gewest (VG) = NUTS3 regio"@nl, "Vlaamse regio's"@nl, "308 gemeenten Vlaams Gewest (VG)"@nl .
-
-<http://data.gov.be/en/taxonomy/term/49>
-	skos:prefLabel "Antwerp"@en ;
-	skos:altLabel "Antwerpen"@nl, "stad Antwerpen"@nl, "regio Antwerpen en regio Brussel"@nl, "Antwerpen (Borgerhout)"@nl, "Deurne"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/50>
-	skos:prefLabel "Ghent"@en ;
-	skos:altLabel "Gent"@nl, "stad Gent"@nl .
-
-<http://data.gov.be/en/taxonomy/term/61>
-	skos:prefLabel "Kortrijk"@en ;
-	skos:altLabel "Kortrijk"@nl, "stad Kortrijk"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/60>
-	skos:prefLabel "Oostende"@en ;
-	skos:altLabel "Oostende"@nl .
-	
 <http://data.gov.be/en/taxonomy/term/47>
 	skos:prefLabel "Wallonia"@en ;
-	skos:altLabel "Wallonië"@nl, "Waals Gewest"@nl, "het Brussels Hoofdstedelijke Gewest (BHG) en provincies van het Waalse Gewest (WG) = NUTS2"@nl, "Vlaanderen en Wallonië"@nl .
+	skos:altLabel "Wallonie"@fr .
