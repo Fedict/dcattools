@@ -80,12 +80,13 @@ public class Drupal {
     public final static String TOKEN = "/restws/session/token";
     public final static String X_TOKEN = "X-CSRF-Token";
     
+    public final static String POST = "Post";
+    public final static String PUT = "Put";
+    
     // Drupal fields
     public final static String TITLE = "title";
     public final static String BODY = "body";
     public final static String LANGUAGE = "language";
-    public final static String FORMAT = "format";
-    public final static String FORMAT_HTML = "filtered_html";
     public final static String URL = "url";
     public final static String AUTHOR = "author";
     public final static String MODIFIED = "changed_date";
@@ -93,6 +94,7 @@ public class Drupal {
     public final static String FLD_DETAILS = "field_details_";
     public final static String FLD_FORMAT = "field_file_type";
     public final static String FLD_GEO = "field_geo_coverage";
+    public final static String FLD_KEYWORDS = "field_keywords";
     public final static String FLD_LICENSE = "field_license";
     public final static String FLD_LINKS = "field_links_";
     public final static String FLD_ID = "field_id";
@@ -101,6 +103,11 @@ public class Drupal {
     public final static String ID = "id";
     public final static String TYPE = "type";
     public final static String TYPE_DATA = "dataset";
+    
+    public final static String FORMAT = "format";
+    public final static String FORMAT_HTML = "filtered_html";
+    public final static String SUMMARY = "summary";
+    public final static String VALUE = "value";
     
     public final static String TAXO_PREFIX = "http://data.gov.be/en/taxonomy";
    
@@ -128,7 +135,7 @@ public class Drupal {
     private Request prepare(String method, String relpath) {
         String u = this.url.toString() + relpath;
         
-        Request r = method.equals("Post") ? Request.Post(u) : Request.Put(u);
+        Request r = method.equals(Drupal.POST) ? Request.Post(u) : Request.Put(u);
 
         r.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType())
          .setHeader(Drupal.X_TOKEN, token);
@@ -276,18 +283,25 @@ public class Drupal {
             }
         }
         
+        JsonArrayBuilder keywords = Json.createArrayBuilder();
+        List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
+        for(String word : words) {
+            keywords.add(word);
+        }
+        
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
                 .add(Drupal.LANGUAGE, lang)
                 .add(Drupal.AUTHOR, Json.createObjectBuilder().add(Drupal.ID, userid)) 
                 .add(Drupal.TITLE, title)
                 .add(Drupal.BODY, Json.createObjectBuilder()
-                        .add("value", desc)
-                        .add("summary", "")
+                        .add(Drupal.VALUE, desc)
+                        .add(Drupal.SUMMARY, "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
                 .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
                 .add(Drupal.FLD_LICENSE, getCategories(dataset, DATAGOVBE.LICENSE))
                 .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
+                .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
     }
 
@@ -367,8 +381,8 @@ public class Drupal {
             String node = checkExists(id, lang);
 
             Request r = node.isEmpty() 
-                            ? prepare("Post", Drupal.NODE)
-                            : prepare("Put", Drupal.NODE + "/" + node);              
+                            ? prepare(Drupal.POST, Drupal.NODE)
+                            : prepare(Drupal.PUT, Drupal.NODE + "/" + node);              
             r.bodyString(obj.toString(), ContentType.APPLICATION_JSON);
             
             try {            
