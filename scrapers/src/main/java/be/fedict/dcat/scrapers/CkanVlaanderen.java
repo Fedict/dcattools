@@ -39,7 +39,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * CKAN Corve / Vlaanderen BZ.
+ * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class CkanVlaanderen extends Ckan {

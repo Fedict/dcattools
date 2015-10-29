@@ -45,6 +45,13 @@ public abstract class Html extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Html.class);
     
     /**
+     * Switch to another language, if available.
+     * 
+     * @param lang 
+     */
+    public abstract void switchLanguage(String lang);
+    
+    /**
      * Parse HTML page for datasets.
      * 
      * @param page 

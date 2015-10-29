@@ -27,29 +27,51 @@ package be.fedict.dcat.scrapers;
 
 import java.io.File;
 import java.net.URL;
+import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTML.Attribute;
+import javax.swing.text.html.HTML.Tag;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Scraper FPS Mobility
+ * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class HtmlBxlMobilit extends Html {
-    private final Logger logger = LoggerFactory.getLogger(HtmlBxlMobilit.class);
-
-    public HtmlBxlMobilit(File caching, File storage, URL base) {
-        super(caching, storage, base);
-    }
-
-  
-    @Override
-    public void parseDatasets(String page) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class HtmlFodMobilit extends Html {
+    private final Logger logger = LoggerFactory.getLogger(HtmlFodMobilit.class);
 
     @Override
     public void switchLanguage(String lang) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void parseDatasets(String page) {
+        Document doc = Jsoup.parse(page);
+        Elements rows = doc.body().getElementsByTag(Tag.TR.toString());
+        for (Element row : rows) {
+            Elements cells = row.getElementsByTag(Tag.TD.toString());
+            String desc = cells.get(0).text();
+            
+            Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
+            //a.first().attr(Attribute.HREF.toString()).
+            
+        }
+    }
     
+    /**
+     * HTML scraper FPS Mobility.
+     * 
+     * @param caching
+     * @param storage
+     * @param base 
+     */
+    public HtmlFodMobilit(File caching, File storage, URL base) {
+        super(caching, storage, base);
+    }
 }
