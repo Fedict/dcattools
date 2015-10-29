@@ -475,20 +475,10 @@ public abstract class Ckan extends Scraper {
             store.add(catalog, DCAT.DATASET, store.getURI(u.toString()));
         }
     }
-    
-    /**
-     * Write DCAT file to output.
-     * 
-     * @param out
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
+   
     @Override
-    public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
-        Storage store = getTripleStore();
-        store.startup();
-        
-        Cache cache = getCache();
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
         String lang = getDefaultLang();
         
         /* Get the list of all datasets */
@@ -502,10 +492,6 @@ public abstract class Ckan extends Scraper {
             String s = page.getOrDefault(lang, "");
             parseDatasets(s, store, lang);
         }
-        cache.shutdown();
-        
-        store.write(out);
-        store.shutdown();
     }
   
     /**
