@@ -43,10 +43,6 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class Html extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Html.class);
-
-    public Html(File caching, File storage, URL base) {
-        super(caching, storage, base);
-    }
     
     /**
      * Parse HTML page for datasets.
@@ -80,17 +76,19 @@ public abstract class Html extends Scraper {
     }
 
     @Override
-    public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
-        Storage store = getTripleStore();
-        store.startup();
-        
-        Cache cache = getCache();
-        
+    public void generateDcat(Cache cache, Storage store) 
+                                throws RepositoryException, MalformedURLException {
         Map<String, String> page = cache.retrievePage(null);
-        
-        cache.shutdown();
-        
-        store.write(out);
-        store.shutdown();
-    }  
+    }
+    
+    /**
+     * HTML page scraper.
+     * 
+     * @param caching local cache file
+     * @param storage local triple store file
+     * @param base URL of the CKAN site
+     */
+    public Html(File caching, File storage, URL base) {
+        super(caching, storage, base);
+    }
 }

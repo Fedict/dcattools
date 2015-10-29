@@ -215,7 +215,18 @@ public abstract class Scraper {
      * @throws IOException 
      */
     public abstract void scrape() throws IOException;
-    
+
+    /**
+     * Generate DCAT from cache and write it to the RDF store
+     * 
+     * @param cache cache
+     * @param store RDF store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
+    public abstract void generateDcat(Cache cache, Storage store) 
+            throws RepositoryException, MalformedURLException;
+        
     /**
      * Write DCAT file to output stream
      * 
@@ -223,7 +234,16 @@ public abstract class Scraper {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-    public abstract void writeDcat(Writer out) throws RepositoryException, MalformedURLException;
+    public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
+        store.startup();
+
+        generateDcat(cache, store);
+        
+        cache.shutdown();
+    
+        store.write(out);
+        store.shutdown();
+    }
     
     /**
      * Constructor

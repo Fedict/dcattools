@@ -32,7 +32,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import javax.json.JsonObject;
 import org.openrdf.model.URI;
-import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
