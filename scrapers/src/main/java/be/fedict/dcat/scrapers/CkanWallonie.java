@@ -48,12 +48,12 @@ public class CkanWallonie extends Ckan {
     }
     
    /**
-     * CKAN parser for Opendata.DigitalWallonia.be / AWT.
-     * 
-     * @param caching
-     * @param storage
-     * @param base 
-     */
+    * CKAN parser for Opendata.DigitalWallonia.be / AWT.
+    * 
+    * @param caching
+    * @param storage
+    * @param base 
+    */
     public CkanWallonie(File caching, File storage, URL base) {
         super(caching, storage, base);
         this.setDefaultLang("fr");

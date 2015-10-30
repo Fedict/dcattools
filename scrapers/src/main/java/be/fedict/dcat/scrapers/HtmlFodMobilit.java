@@ -58,7 +58,13 @@ public class HtmlFodMobilit extends Html {
 
     public final static String LANG_LINK = "language-link";
     
-    
+    /**
+     * Switch to another language
+     * 
+     * @param lang
+     * @return
+     * @throws IOException 
+     */
     @Override
     public URL switchLanguage(String lang) throws IOException {
         URL base = getBase();
@@ -69,53 +75,94 @@ public class HtmlFodMobilit extends Html {
         for(Element li : lis) {
             if (li.text().equals(lang)) {
                 String href = li.attr(Attribute.HREF.toString());
+                logger.debug("base {}", href);
                 return new URL(base, href);
             }
         }
+        logger.debug("base {}", base);
         return base;
     }
 
+    /**
+     * Generate one dataset
+     * 
+     * @param row
+     * @param i number
+     * @param lang language
+     * @param store  RDF store
+     * @throws MalformedURLException
+     * @throws RepositoryException
+     */
+    private void generateDataset(Element row, int i, String lang, Storage store) 
+                            throws MalformedURLException, RepositoryException {
+        URL u = makeDatasetURL(i);
+        logger.debug("Parsing {}", u.toString());
+                
+        Elements cells = row.getElementsByTag(Tag.TD.toString());
+        String desc = cells.get(0).text();
+        String title = desc;
+                
+        Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
+        String href = a.first().attr(Attribute.HREF.toString());
+                
+        URI dataset = store.getURI(makeDatasetURL(i).toString());
+        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, DCTERMS.TITLE, title, lang);
+        store.add(dataset, DCTERMS.TITLE, desc, lang);
+        
+        URI dist = store.getURI(makeDistributionURL(i).toString());
+        store.add(dataset, DCAT.DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dist, DCAT.DOWNLOAD_URL, href);        
+    }
+    
+    /**
+     * Generate DCAT datasets.
+     * 
+     * @param page
+     * @param store
+     * @throws MalformedURLException
+     * @throws RepositoryException 
+     */
     @Override
     public void generateDatasets(Map<String,String> page, Storage store)
                             throws MalformedURLException, RepositoryException {
+        logger.info("Generate datasets");
+        
         String[] langs = { "nl", "fr" };
         
         for (String lang : langs) {
+            logger.debug("Language {}", lang);
+            
             String p = page.get(lang);
             Document doc = Jsoup.parse(p);
             Elements rows = doc.body().getElementsByTag(Tag.TR.toString());
             int i = 0;
+            
             for (Element row : rows) {
-                URL u = makeDatasetURL(i);
-                
-                Elements cells = row.getElementsByTag(Tag.TD.toString());
-                String desc = cells.get(0).text();
-                String title = desc;
-                
-                Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
-                String href = a.first().attr(Attribute.HREF.toString());
-                
-                URI dataset = store.getURI(makeDatasetURL(i).toString());
-                store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
-                store.add(dataset, DCTERMS.TITLE, title, lang);
-                store.add(dataset, DCTERMS.TITLE, desc, lang);
-                
-                URI dist = store.getURI(makeDistributionURL(i).toString());
-                store.add(dataset, DCAT.DISTRIBUTION, dist);
-                store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
-                store.add(dist, DCAT.DOWNLOAD_URL, href);
+                generateDataset(row, i, lang, store);         
+                i++;
             }
         }
     }
     
-    
+    /**
+     * Generate DCAT.
+     * 
+     * @param cache
+     * @param store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
     @Override
     public void generateDcat(Cache cache, Storage store) 
                             throws RepositoryException, MalformedURLException {
+        logger.info("Generate DCAT");
         
         /* Get the list of all datasets */
         Map<String, String> front = cache.retrievePage(getBase());
         List<URL> urls = new ArrayList<>();
+        
         Elements rows = Jsoup.parse(front.get("nl")).getElementsByTag(Tag.TR.toString());
         for (int i = 0; i < rows.size(); i++) {
             urls.add(makeDatasetURL(i));
@@ -123,12 +170,8 @@ public class HtmlFodMobilit extends Html {
         
         generateCatalog(urls, store);
         
-        /* Get and parse all the datasets */
-        for (URL u : urls) {
-            logger.debug("Parsing {}", u);
-            Map<String, String> page = cache.retrievePage(u);
-            generateDatasets(page, store);
-        }
+        Map<String, String> page = cache.retrievePage(getBase());
+        generateDatasets(page, store);
     }
     
     /**
@@ -142,17 +185,23 @@ public class HtmlFodMobilit extends Html {
         
         for (String lang : langs) {
             URL url = switchLanguage(lang);
+            
             cache.storePage(url, makeRequest(url), lang);
         }
     }
     
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
     @Override
     public void scrape() throws IOException {
         logger.info("Start scraping");
         Cache cache = getCache();
         
         Map<String, String> front = cache.retrievePage(getBase());
-        if (front.isEmpty()) {
+        if (front.keySet().isEmpty()) {
             scrapeFront(cache);
             front = cache.retrievePage(getBase());   
         }

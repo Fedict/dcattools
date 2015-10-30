@@ -295,7 +295,6 @@ public abstract class Ckan extends Scraper {
      * @param property RDF property
      * @throws RepositoryException 
      */
-    
     protected void parseContact(Storage store, URI uri, JsonObject obj,
             String field, String field2, URI property) throws RepositoryException{
         String name = obj.getString(field, "");
@@ -444,6 +443,8 @@ public abstract class Ckan extends Scraper {
     @Override
     public void generateDatasets(Map<String, String> page, Storage store) 
                             throws MalformedURLException, RepositoryException {
+        logger.info("Generate datasets");
+        
         String lang = getDefaultLang();
         
         String p = page.getOrDefault(lang, "");
@@ -462,9 +463,19 @@ public abstract class Ckan extends Scraper {
         ckanExtras(store, dataset,obj, lang);
     }
    
+    /**
+     * Generate DCAT.
+     * 
+     * @param cache
+     * @param store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
     @Override
     public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException { 
+                            throws RepositoryException, MalformedURLException {
+        logger.info("Generate DCAT");
+        
         /* Get the list of all datasets */
         List<URL> urls = cache.retrieveURLList();
         generateCatalog(urls, store);
