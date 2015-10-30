@@ -98,7 +98,6 @@ public abstract class Ckan extends Scraper {
     public final static String API_ORG = "/api/3/action/organization_show?id=";
     public final static String API_RES = "/api/3/action/resource_show?id=";
     
-
     private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
     
     /**
@@ -453,8 +452,9 @@ public abstract class Ckan extends Scraper {
         
         String s = obj.getString(Ckan.NAME, "");
         URI dataset = store.getURI(makeDatasetURL(s).toString());
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
-
+        logger.debug("Generating dataset {} ", dataset.toString());
+        
+        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);        
         /* Parse different sections of CKAN JSON */
         ckanGeneral(store, dataset, obj, lang);
         ckanTags(store, dataset, obj, lang);

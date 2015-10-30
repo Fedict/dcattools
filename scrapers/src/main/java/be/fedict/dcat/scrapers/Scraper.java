@@ -28,6 +28,8 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.vocab.DCAT;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
@@ -55,7 +57,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class Scraper {
     private final Logger logger = LoggerFactory.getLogger(Scraper.class);
-
+    
     public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
     
     private Properties prop = null;
@@ -67,6 +69,8 @@ public abstract class Scraper {
     private Cache cache = null;
     private Storage store = null;
     private URL base = null;
+    private final static HashFunction hasher = Hashing.sha1();
+    
     
     /**
      * Get cache
@@ -142,6 +146,17 @@ public abstract class Scraper {
      */
     public int getDelay() {
         return delay;
+    }
+    
+    
+    /**
+     * Make a hashed ID based upon a string.
+     * 
+     * @param s
+     * @return 
+     */
+    public String makeHashId(String s) {
+        return hasher.hashBytes(s.getBytes()).toString();
     }
     
     /**
@@ -281,8 +296,9 @@ public abstract class Scraper {
     /**
      * Constructor
      * 
-     * @param caching
-     * @param storage 
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triplestore backend
+     * @param base base URL
      */
     public Scraper(File caching, File storage, URL base) {
         cache = new Cache(caching);
