@@ -56,6 +56,7 @@ import org.slf4j.LoggerFactory;
 public class HtmlFodMobilit extends Html {
     private final Logger logger = LoggerFactory.getLogger(HtmlFodMobilit.class);
 
+    public final static String[] langs = { "nl", "fr" };
     public final static String LANG_LINK = "language-link";
     
     /**
@@ -96,7 +97,8 @@ public class HtmlFodMobilit extends Html {
     private void generateDataset(Element row, int i, String lang, Storage store) 
                             throws MalformedURLException, RepositoryException {
         URL u = makeDatasetURL(i);
-        logger.debug("Parsing {}", u.toString());
+        URI dataset = store.getURI(u.toString());  
+        logger.debug("Generating dataset {}", dataset.toString());
                 
         Elements cells = row.getElementsByTag(Tag.TD.toString());
         String desc = cells.get(0).text();
@@ -104,11 +106,11 @@ public class HtmlFodMobilit extends Html {
                 
         Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
         String href = a.first().attr(Attribute.HREF.toString());
-                
-        URI dataset = store.getURI(makeDatasetURL(i).toString());
+        
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.TITLE, title, lang);
-        store.add(dataset, DCTERMS.TITLE, desc, lang);
+        store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         
         URI dist = store.getURI(makeDistributionURL(i).toString());
         store.add(dataset, DCAT.DISTRIBUTION, dist);
@@ -128,8 +130,6 @@ public class HtmlFodMobilit extends Html {
     public void generateDatasets(Map<String,String> page, Storage store)
                             throws MalformedURLException, RepositoryException {
         logger.info("Generate datasets");
-        
-        String[] langs = { "nl", "fr" };
         
         for (String lang : langs) {
             logger.debug("Language {}", lang);
@@ -181,12 +181,11 @@ public class HtmlFodMobilit extends Html {
      * @throws java.io.IOException 
      */
     public void scrapeFront(Cache cache) throws IOException {
-        String[] langs = { "nl", "fr" };
+        URL front = getBase();
         
         for (String lang : langs) {
             URL url = switchLanguage(lang);
-            
-            cache.storePage(url, makeRequest(url), lang);
+            cache.storePage(front, makeRequest(url), lang);
         }
     }
     
