@@ -43,6 +43,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -210,7 +211,15 @@ public class HtmlFodMobilit extends Html {
         
         logger.info("Done scraping");
     }
-    
+
+    @Override
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        store.add(catalog, DCTERMS.TITLE, "FPS Mobility", "en");
+        store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
+        store.add(catalog, FOAF.HOMEPAGE, getBase());
+    };
+            
     /**
      * HTML scraper FPS Mobility.
      * 

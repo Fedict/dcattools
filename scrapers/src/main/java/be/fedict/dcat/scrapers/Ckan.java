@@ -98,7 +98,6 @@ public abstract class Ckan extends Scraper {
     public final static String API_ORG = "/api/3/action/organization_show?id=";
     public final static String API_RES = "/api/3/action/resource_show?id=";
     
-    private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
     
     /**
      * Make an URL for a CKAN Package (DCAT Dataset) 
@@ -275,8 +274,7 @@ public abstract class Ckan extends Scraper {
         String s = obj.getString(field, "");
         if (! s.isEmpty()) {
             try {
-                Date res = df.parse(s);
-                store.add(uri, property, res);
+                store.add(uri, property, DATEFMT.parse(s));
             } catch (ParseException ex) {
                 logger.warn("Could not parse date {}", s, ex);
             }
