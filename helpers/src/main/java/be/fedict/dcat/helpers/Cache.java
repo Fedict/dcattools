@@ -46,9 +46,9 @@ public class Cache {
     private final Logger logger = LoggerFactory.getLogger(Cache.class);
         
     private DB db = null;
-    private static final String CACHE="cache";
-    private static final String URLS="urls";
-    private static final String PAGES="pages";
+    private static final String CACHE = "cache";
+    private static final String URLS = "urls";
+    private static final String PAGES = "pages";
 
     
     /**
@@ -62,6 +62,7 @@ public class Cache {
     }
     
     /**
+     * Get the list of URLs in the cache.
      * 
      * @return 
      */
@@ -86,6 +87,7 @@ public class Cache {
     }
     
     /**
+     * Retrieve a page from the cache
      * 
      * @param url
      * @return 
