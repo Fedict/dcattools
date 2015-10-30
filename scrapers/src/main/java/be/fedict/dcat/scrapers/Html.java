@@ -29,7 +29,6 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
-import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -45,43 +44,35 @@ public abstract class Html extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Html.class);
     
     /**
+     * Make a URL for a DCAT Dataset 
+     * 
+     * @param i
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    public URL makeDatasetURL(int i) throws MalformedURLException {
+        return new URL(getBase().toString() + "#" + String.valueOf(i));
+    }
+    
+    /**
+     * Make a URL for a DCAT Distribution 
+     * 
+     * @param i
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    public URL makeDistributionURL(int i) throws MalformedURLException {
+        return new URL(getBase().toString() + "#" + String.valueOf(i) + "/download");
+    }
+    
+    /**
      * Switch to another language, if available.
      * 
      * @param lang 
+     * @return URL
      */
-    public abstract void switchLanguage(String lang);
+    public abstract URL switchLanguage(String lang) throws IOException;
     
-    /**
-     * Parse HTML page for datasets.
-     * 
-     * @param page 
-     */
-    public abstract void parseDatasets(String page);
-    
-    /**
-     * Store front page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    public void storeFront(Cache cache) throws IOException {
-        URL front = getBase();
-        cache.storePage(front, makeRequest(front) , getDefaultLang());
-    }
-    
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, String> page = cache.retrievePage(getBase());
-        if (page.isEmpty()) {
-            storeFront(cache);
-        }
-        
-        logger.info("Done scraping");
-    }
-
     @Override
     public void generateDcat(Cache cache, Storage store) 
                                 throws RepositoryException, MalformedURLException {
