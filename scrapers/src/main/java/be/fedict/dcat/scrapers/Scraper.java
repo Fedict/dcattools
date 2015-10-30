@@ -27,18 +27,23 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.vocab.DCAT;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
+import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -217,6 +222,33 @@ public abstract class Scraper {
     public abstract void scrape() throws IOException;
 
     /**
+     * Generate DCAT Catalog.
+     * 
+     * @param urls
+     * @param store
+     * @throws RepositoryException 
+     */
+    public void generateCatalog(List<URL> urls, Storage store) throws RepositoryException {
+        URI catalog = store.getURI(getBase().toString());
+        store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
+        
+        for (URL u : urls ){
+            store.add(catalog, DCAT.DATASET, store.getURI(u.toString()));
+        }
+    }
+    
+     /**
+     * Generate DCAT Datasets
+     * 
+     * @param page
+     * @param store
+     * @throws MalformedURLException
+     * @throws RepositoryException 
+     */
+    public abstract void generateDatasets(Map<String, String> page, Storage store) 
+                            throws MalformedURLException, RepositoryException;
+    
+    /**
      * Generate DCAT from cache and write it to the RDF store
      * 
      * @param cache cache
@@ -224,6 +256,7 @@ public abstract class Scraper {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
+        
     public abstract void generateDcat(Cache cache, Storage store) 
             throws RepositoryException, MalformedURLException;
         

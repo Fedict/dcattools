@@ -32,7 +32,6 @@ import be.fedict.dcat.vocab.VCARD;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
-import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -103,13 +102,13 @@ public abstract class Ckan extends Scraper {
     private final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
     
     /**
-     * Get URL of a CKAN Package (DCAT Dataset) 
+     * Make an URL for a CKAN Package (DCAT Dataset) 
      * 
      * @param id
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    protected URL getPackageURL(String id) throws MalformedURLException {
+    protected URL makeDatasetURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_PKG + id);
     }
     
@@ -155,7 +154,7 @@ public abstract class Ckan extends Scraper {
      * @return JsonObject containing CKAN Package or NULL
      * @throws IOException 
      */
-    protected JsonObject getPackage(URL url) throws IOException {
+    protected JsonObject scrapePackage(URL url) throws IOException {
         JsonObject obj = makeJsonRequest(url);
         if (obj.getBoolean(Ckan.SUCCESS)) {
             return obj.getJsonObject(Ckan.RESULT);
@@ -170,7 +169,7 @@ public abstract class Ckan extends Scraper {
      * @throws MalformedURLException
      * @throws IOException 
      */
-    protected List<URL> getPackageList() throws MalformedURLException, IOException {
+    protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
         List<URL> urls = new ArrayList<>();
         URL getPackages = new URL(getBase(), Ckan.API_LIST);
         
@@ -180,7 +179,7 @@ public abstract class Ckan extends Scraper {
         }
         JsonArray arr = obj.getJsonArray(Ckan.RESULT);
         for (JsonString str : arr.getValuesAs(JsonString.class)) {
-            urls.add(getPackageURL(str.getString()));
+            urls.add(makeDatasetURL(str.getString()));
         }
         return urls;
     }
@@ -198,7 +197,7 @@ public abstract class Ckan extends Scraper {
         
         List<URL> urls = cache.retrieveURLList();
         if (urls.isEmpty()) {
-            urls = getPackageList();
+            urls = scrapePackageList();
             cache.storeURLList(urls);
         }
         urls = cache.retrieveURLList();
@@ -213,7 +212,7 @@ public abstract class Ckan extends Scraper {
                 if (++i % 100 == 0) {
                     logger.info("Package {}...", Integer.toString(i));
                 }
-                JsonObject obj = getPackage(u);
+                JsonObject obj = scrapePackage(u);
                 cache.storePage(u, obj.toString(), lang);
             }
         }
@@ -439,17 +438,20 @@ public abstract class Ckan extends Scraper {
      * 
      * @param page
      * @param store
-     * @param lang language
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    public void parseDatasets(String page, Storage store, String lang) 
+    @Override
+    public void generateDatasets(Map<String, String> page, Storage store) 
                             throws MalformedURLException, RepositoryException {
-        JsonReader reader = Json.createReader(new StringReader(page));
+        String lang = getDefaultLang();
+        
+        String p = page.getOrDefault(lang, "");
+        JsonReader reader = Json.createReader(new StringReader(p));
         JsonObject obj = reader.readObject();
         
         String s = obj.getString(Ckan.NAME, "");
-        URI dataset = store.getURI(getPackageURL(s).toString());
+        URI dataset = store.getURI(makeDatasetURL(s).toString());
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
 
         /* Parse different sections of CKAN JSON */
@@ -459,38 +461,19 @@ public abstract class Ckan extends Scraper {
         ckanOrganization(store, dataset, obj, lang);
         ckanExtras(store, dataset,obj, lang);
     }
-    
-    /**
-     * Parse DCAT Catalog.
-     * 
-     * @param urls
-     * @param store
-     * @throws RepositoryException 
-     */
-    public void parseCatalog(List<URL> urls, Storage store) throws RepositoryException {
-        URI catalog = store.getURI(getBase().toString());
-        store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
-        
-        for (URL u : urls ){
-            store.add(catalog, DCAT.DATASET, store.getURI(u.toString()));
-        }
-    }
    
     @Override
     public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException {
-        String lang = getDefaultLang();
-        
+                            throws RepositoryException, MalformedURLException { 
         /* Get the list of all datasets */
         List<URL> urls = cache.retrieveURLList();
-        parseCatalog(urls, store);
+        generateCatalog(urls, store);
         
         /* Get and parse all the datasets */
         for (URL u : urls) {
             logger.debug("Parsing {}", u);
             Map<String, String> page = cache.retrievePage(u);
-            String s = page.getOrDefault(lang, "");
-            parseDatasets(s, store, lang);
+            generateDatasets(page, store);
         }
     }
   

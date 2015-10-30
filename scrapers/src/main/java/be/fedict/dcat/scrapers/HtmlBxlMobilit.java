@@ -25,8 +25,13 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
+import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,14 +46,18 @@ public class HtmlBxlMobilit extends Html {
         super(caching, storage, base);
     }
 
-  
     @Override
-    public void parseDatasets(String page) {
+    public URL switchLanguage(String lang) throws IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void switchLanguage(String lang) {
+    public void scrape() throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void generateDatasets(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -25,15 +25,26 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.DCAT;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import javax.swing.text.html.HTML;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.RDF;
+import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,23 +56,111 @@ import org.slf4j.LoggerFactory;
 public class HtmlFodMobilit extends Html {
     private final Logger logger = LoggerFactory.getLogger(HtmlFodMobilit.class);
 
+    public final static String LANG_LINK = "language-link";
+    
+    
     @Override
-    public void switchLanguage(String lang) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public URL switchLanguage(String lang) throws IOException {
+        URL base = getBase();
+        
+        String front= makeRequest(base);
+
+        Elements lis = Jsoup.parse(front).getElementsByClass(HtmlFodMobilit.LANG_LINK);
+        for(Element li : lis) {
+            if (li.text().equals(lang)) {
+                String href = li.attr(Attribute.HREF.toString());
+                return new URL(base, href);
+            }
+        }
+        return base;
     }
 
     @Override
-    public void parseDatasets(String page) {
-        Document doc = Jsoup.parse(page);
-        Elements rows = doc.body().getElementsByTag(Tag.TR.toString());
-        for (Element row : rows) {
-            Elements cells = row.getElementsByTag(Tag.TD.toString());
-            String desc = cells.get(0).text();
-            
-            Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
-            //a.first().attr(Attribute.HREF.toString()).
-            
+    public void generateDatasets(Map<String,String> page, Storage store)
+                            throws MalformedURLException, RepositoryException {
+        String[] langs = { "nl", "fr" };
+        
+        for (String lang : langs) {
+            String p = page.get(lang);
+            Document doc = Jsoup.parse(p);
+            Elements rows = doc.body().getElementsByTag(Tag.TR.toString());
+            int i = 0;
+            for (Element row : rows) {
+                URL u = makeDatasetURL(i);
+                
+                Elements cells = row.getElementsByTag(Tag.TD.toString());
+                String desc = cells.get(0).text();
+                String title = desc;
+                
+                Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
+                String href = a.first().attr(Attribute.HREF.toString());
+                
+                URI dataset = store.getURI(makeDatasetURL(i).toString());
+                store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+                store.add(dataset, DCTERMS.TITLE, title, lang);
+                store.add(dataset, DCTERMS.TITLE, desc, lang);
+                
+                URI dist = store.getURI(makeDistributionURL(i).toString());
+                store.add(dataset, DCAT.DISTRIBUTION, dist);
+                store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+                store.add(dist, DCAT.DOWNLOAD_URL, href);
+            }
         }
+    }
+    
+    
+    @Override
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        
+        /* Get the list of all datasets */
+        Map<String, String> front = cache.retrievePage(getBase());
+        List<URL> urls = new ArrayList<>();
+        Elements rows = Jsoup.parse(front.get("nl")).getElementsByTag(Tag.TR.toString());
+        for (int i = 0; i < rows.size(); i++) {
+            urls.add(makeDatasetURL(i));
+        }
+        
+        generateCatalog(urls, store);
+        
+        /* Get and parse all the datasets */
+        for (URL u : urls) {
+            logger.debug("Parsing {}", u);
+            Map<String, String> page = cache.retrievePage(u);
+            generateDatasets(page, store);
+        }
+    }
+    
+    /**
+     * Store front page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    public void scrapeFront(Cache cache) throws IOException {
+        String[] langs = { "nl", "fr" };
+        
+        for (String lang : langs) {
+            URL url = switchLanguage(lang);
+            cache.storePage(url, makeRequest(url), lang);
+        }
+    }
+    
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, String> front = cache.retrievePage(getBase());
+        if (front.isEmpty()) {
+            scrapeFront(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        String datasets = front.get("nl");
+        Elements rows = Jsoup.parse(datasets).getElementsByTag(Tag.TR.toString());
+        logger.info("Found {} datasets on page", String.valueOf(rows.size()));
+        
+        logger.info("Done scraping");
     }
     
     /**
