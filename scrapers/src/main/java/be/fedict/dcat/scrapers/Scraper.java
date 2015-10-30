@@ -36,6 +36,9 @@ import java.io.StringReader;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -45,6 +48,7 @@ import javax.json.JsonReader;
 import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -69,7 +73,10 @@ public abstract class Scraper {
     private Cache cache = null;
     private Storage store = null;
     private URL base = null;
-    private final static HashFunction hasher = Hashing.sha1();
+    
+    private final static HashFunction HASHER = Hashing.sha1();
+    public final static DateFormat DATEFMT = 
+                            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
     
     
     /**
@@ -156,7 +163,7 @@ public abstract class Scraper {
      * @return 
      */
     public String makeHashId(String s) {
-        return hasher.hashBytes(s.getBytes()).toString();
+        return HASHER.hashBytes(s.getBytes()).toString();
     }
     
     /**
@@ -237,6 +244,16 @@ public abstract class Scraper {
     public abstract void scrape() throws IOException;
 
     /**
+     * Extra DCAT catalog info
+     * 
+     * @param store
+     * @param catalog 
+     * @throws org.openrdf.repository.RepositoryException 
+     */
+    public abstract void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException;
+    
+    /**
      * Generate DCAT Catalog.
      * 
      * @param urls
@@ -245,11 +262,14 @@ public abstract class Scraper {
      */
     public void generateCatalog(List<URL> urls, Storage store) throws RepositoryException {
         URI catalog = store.getURI(getBase().toString());
+        
         store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
+        store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
         
         for (URL u : urls ){
             store.add(catalog, DCAT.DATASET, store.getURI(u.toString()));
         }
+        generateCatalogInfo(store, catalog);
     }
     
      /**

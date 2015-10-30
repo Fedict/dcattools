@@ -30,10 +30,12 @@ import be.fedict.dcat.vocab.DCAT;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,6 +88,14 @@ public class CkanVlaanderen extends Ckan {
                     break;
             }
         }
+    }
+    
+    @Override
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        store.add(catalog, DCTERMS.TITLE, "CKAN Vlaanderen", "en");
+        store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
+        store.add(catalog, FOAF.HOMEPAGE, getBase());
     }
     
     /**
