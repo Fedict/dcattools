@@ -52,6 +52,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScope;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
@@ -403,7 +404,8 @@ public class Drupal {
      * @param userid drupal user ID
      */
     public void setUserPassID(String user, String password, String userid) {
-        exec = exec.auth(host, user, password);
+        exec = exec.clearAuth().clearCookies()
+                    .auth(host, user, password);
         this.userid = userid; 
     }
     
@@ -427,7 +429,8 @@ public class Drupal {
      * @throws IOException
      */
     private void getCSRFToken() throws IOException {
-        Request r = Request.Get(this.url.toString() + Drupal.TOKEN);
+        Request r = Request.Get(this.url.toString() + Drupal.TOKEN)
+                           .setHeader(HttpHeaders.CACHE_CONTROL, "no-cache");
         
         if (proxy != null) {
             r.viaProxy(proxy);
