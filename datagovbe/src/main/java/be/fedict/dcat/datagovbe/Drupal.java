@@ -52,7 +52,6 @@ import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
@@ -380,6 +379,13 @@ public class Drupal {
             // Add new or update existing dataset ?
             String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
             String node = checkExists(id, lang);
+            // Exists in another language ?
+            for (String otherlang : langs) {
+                if (!otherlang.equals(lang)) {
+                    node = checkExists(id, otherlang);
+                }
+            }
+            
 
             Request r = node.isEmpty() 
                             ? prepare(Drupal.POST, Drupal.NODE)
