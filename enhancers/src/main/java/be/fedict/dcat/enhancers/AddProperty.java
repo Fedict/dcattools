@@ -41,22 +41,77 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class AddPropertyIfMissing extends AddProperty {
-    private final Logger logger = LoggerFactory.getLogger(AddPropertyIfMissing.class);
+public class AddProperty extends Enhancer {
+    private final Logger logger = LoggerFactory.getLogger(AddProperty.class);
 
+    public final static Pattern LITERAL = Pattern.compile("\"(.*)\"@(\\w*)");
     
     /**
-     * Only add the property if the property is missing.
+     * Checks if adding property is really needed.
+     * Override this method in derived classes.
      * 
      * @param store
      * @param subj
      * @param prop
-     * @return true if the property is not present
+     * @return always true
      * @throws RepositoryException 
      */
-    @Override
     public boolean isNeeded(Storage store, URI subj, URI prop) throws RepositoryException {
-        return !store.has(subj, prop);
+        return true;
+    }
+    
+    /**
+     * Add property if it is missing
+     * 
+     * @param rdfClass
+     * @param prop
+     * @param value url or string value
+     * @throws RepositoryException 
+     */
+    private void addIfMissing(URI rdfClass, URI prop, String value) throws RepositoryException {
+        logger.info("Add missing {} to {}", prop.toString(), rdfClass.toString());
+        
+        URL url = null;
+        String str = "";
+        String lang = "";
+        // Check if the value is an url or a literal
+        try {
+            url = new URL(value);
+        } catch (MalformedURLException ex) {
+            Matcher m = LITERAL.matcher(value);
+            if (m.find()) {
+                str = m.group(1);
+                lang = m.group(2);
+            }
+        }
+        
+        Storage store = getStore();
+        List<URI> subjs = store.query(rdfClass);
+        int added = 0;
+        for (URI subj : subjs) {
+            if (isNeeded(store, subj, prop)) {
+                if (url != null) {
+                    store.add(subj, prop, url);
+                } else {
+                    store.add(subj, prop, str, lang);
+                }
+                added++;
+            }
+        }
+        logger.info("Property added {} times", Integer.toString(added));
+    } 
+    
+    @Override
+    public void enhance() {
+        try {
+            URI rdfClass = getStore().getURI(getProperty("rdfclass"));
+            URI property = getStore().getURI(getProperty("property"));
+            String value = getProperty("value");
+            
+            addIfMissing(rdfClass, property, value);
+        } catch (RepositoryException ex) {
+            logger.error("Repository error", ex);
+        }
     }
     
     /**
@@ -64,7 +119,7 @@ public class AddPropertyIfMissing extends AddProperty {
      * 
      * @param store 
      */
-    public AddPropertyIfMissing(Storage store) {
+    public AddProperty(Storage store) {
         super(store);
     }
 }
