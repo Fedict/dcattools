@@ -106,6 +106,7 @@ public class Drupal {
     
     public final static String FORMAT = "format";
     public final static String FORMAT_HTML = "filtered_html";
+    public final static String SOURCE = "source";
     public final static String SUMMARY = "summary";
     public final static String VALUE = "value";
     
@@ -258,6 +259,33 @@ public class Drupal {
     }
     
     /**
+     * Check if node or translations exist.
+     * 
+     * @param builder
+     * @param id
+     * @param lang
+     * @return 
+     */
+    private String checkExistsTrans(JsonObjectBuilder builder, String id, String lang) {
+        String node = checkExists(id, lang);
+            
+        // Exists in another language ?
+        if (node.isEmpty()) {
+            for (String otherlang : langs) {
+                if (!otherlang.equals(lang)) {
+                    node = checkExists(id, otherlang);
+                    if (! node.isEmpty()) {
+                        builder.add(Drupal.SOURCE, Json.createObjectBuilder()
+                                .add(otherlang, Integer.parseInt(node)));
+                        node = "";
+                    }
+                }
+            }
+        }
+        return node;
+    }
+    
+    /**
      * Add a dataset to Drupal form
      * 
      * @param builder
@@ -372,20 +400,13 @@ public class Drupal {
             builder.add(Drupal.FLD_DETAILS + lang, accesses);
             builder.add(Drupal.FLD_LINKS + lang, downloads);
             
+            // Add new or update existing dataset ?
+            String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
+            String node = checkExistsTrans(builder, id, lang);
+    
             // Build the JSON array
             JsonObject obj = builder.build();
             logger.debug(obj.toString());
-
-            // Add new or update existing dataset ?
-            String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
-            String node = checkExists(id, lang);
-            // Exists in another language ?
-            for (String otherlang : langs) {
-                if (!otherlang.equals(lang)) {
-                    node = checkExists(id, otherlang);
-                }
-            }
-            
 
             Request r = node.isEmpty() 
                             ? prepare(Drupal.POST, Drupal.NODE)
