@@ -105,19 +105,24 @@ public class HtmlFodMobilit extends Html {
         String desc = cells.get(0).text();
         String title = desc;
                 
-        Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
-        String href = a.first().attr(Attribute.HREF.toString());
-        
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.TITLE, title, lang);
         store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-        
+    
+        Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
+        String href = a.first().attr(Attribute.HREF.toString());
+    
         URI dist = store.getURI(makeDistributionURL(i).toString());
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
-        store.add(dist, DCAT.DOWNLOAD_URL, href);        
-    }
+        store.add(dist, DCAT.DOWNLOAD_URL, new URL(getBase(), href));
+            
+        int dot = href.lastIndexOf(".");
+        if (dot > 0) {
+            String ext = href.substring(i+1);
+            store.add(dist, DCAT.MEDIA_TYPE, ext);
+        }}
     
     /**
      * Generate DCAT datasets.
