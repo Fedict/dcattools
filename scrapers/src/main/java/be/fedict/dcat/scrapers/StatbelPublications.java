@@ -28,43 +28,52 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import javax.json.JsonObject;
+import java.util.Map;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.repository.RepositoryException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * CKAN Wallonie / AWT.
+ * Statbel "publications" scraper.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanWallonie extends Ckan {
-    private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
- 
+public class StatbelPublications extends Html {
+
     @Override
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) {
-        // do nothing
+    public URL switchLanguage(String lang) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void scrape() throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
         super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "CKAN Wallonië", "en");
+        store.add(catalog, DCTERMS.TITLE, "Statbel downloads", "en");
     }
-    
-   /**
-    * CKAN parser for Opendata.DigitalWallonia.be / AWT.
-    * 
-    * @param caching
-    * @param storage
-    * @param base 
-    */
-    public CkanWallonie(File caching, File storage, URL base) {
+
+    @Override
+    public void generateDatasets(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * HTML parser for Statbel publications
+     * 
+     * @param caching
+     * @param storage
+     * @param base 
+     */
+    public StatbelPublications(File caching, File storage, URL base) {
         super(caching, storage, base);
-        this.setDefaultLang("fr");
-    }  
+    }    
 }
