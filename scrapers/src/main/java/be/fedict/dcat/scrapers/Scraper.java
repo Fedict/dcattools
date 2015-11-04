@@ -49,6 +49,7 @@ import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -250,8 +251,11 @@ public abstract class Scraper {
      * @param catalog 
      * @throws org.openrdf.repository.RepositoryException 
      */
-    public abstract void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException;
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
+        store.add(catalog, FOAF.HOMEPAGE, getBase());
+    }
     
     /**
      * Generate DCAT Catalog.
