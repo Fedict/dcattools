@@ -41,7 +41,6 @@ public class VCARD {
     
     public final static URI A_ORGANIZATION;
 
-
     public final static URI HAS_EMAIL;
     public final static URI HAS_FN;
     
