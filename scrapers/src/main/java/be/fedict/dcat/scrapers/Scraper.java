@@ -65,6 +65,9 @@ public abstract class Scraper {
     
     public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
     
+    public final static String LICENSE_CC0 = 
+                        "http://creativecommons.org/publicdomain/zero/1.0/";
+    
     private Properties prop = null;
     private String prefix = "";
     
@@ -254,6 +257,8 @@ public abstract class Scraper {
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
         store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
+        store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
+        store.add(catalog, DCTERMS.LICENSE, store.getURI(LICENSE_CC0));
         store.add(catalog, FOAF.HOMEPAGE, getBase());
     }
     
