@@ -185,6 +185,7 @@ public class HtmlFodMobilit extends Html {
      * @param cache 
      * @throws java.io.IOException 
      */
+    @Override
     public void scrapeFront(Cache cache) throws IOException {
         URL front = getBase();
         
@@ -194,28 +195,6 @@ public class HtmlFodMobilit extends Html {
         }
     }
     
-    /**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, String> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapeFront(cache);
-            front = cache.retrievePage(getBase());   
-        }
-        String datasets = front.get("nl");
-        Elements rows = Jsoup.parse(datasets).getElementsByTag(Tag.TR.toString());
-        logger.info("Found {} datasets on page", String.valueOf(rows.size()));
-        
-        logger.info("Done scraping");
-    }
-
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
@@ -232,5 +211,6 @@ public class HtmlFodMobilit extends Html {
      */
     public HtmlFodMobilit(File caching, File storage, URL base) {
         super(caching, storage, base);
+        setDefaultLang("nl");
     }
 }

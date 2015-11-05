@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
@@ -64,6 +65,11 @@ public class HtmlBxlMobilit extends Html {
 
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) throws RepositoryException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void scrapeFront(Cache cache) throws IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

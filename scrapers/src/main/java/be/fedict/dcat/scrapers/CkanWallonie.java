@@ -65,6 +65,6 @@ public class CkanWallonie extends Ckan {
     */
     public CkanWallonie(File caching, File storage, URL base) {
         super(caching, storage, base);
-        this.setDefaultLang("fr");
+        setDefaultLang("fr");
     }  
 }

@@ -73,7 +73,10 @@ public abstract class Scraper {
     
     private HttpHost proxy = null;
     private int delay = 1000;
-    private String lang = "";
+    
+    private String defLang = "";
+    private String[] allLangs = {};
+    
     private Cache cache = null;
     private Storage store = null;
     private URL base = null;
@@ -113,18 +116,36 @@ public abstract class Scraper {
     /**
      * Set default language
      * 
-     * @param lang 
+     * @param lang language code
      */
     public void setDefaultLang(String lang) {
-        this.lang = lang;
+        this.defLang = lang;
     }
     /**
      * Get default language
      * 
-     * @return language
+     * @return language language code
      */
     public String getDefaultLang() {
-        return lang;
+        return defLang;
+    }
+    
+    /**
+     * Set all languages
+     * 
+     * @param langs array of language codes
+     */
+    public void setAllLangs(String langs[]) {
+        this.allLangs = langs;
+    }
+    
+    /**
+     * Get all languages
+     * 
+     * @return array of language codes
+     */
+    public String[] getAllLangs() {
+        return allLangs;
     }
     
     /**
