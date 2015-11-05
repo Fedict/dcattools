@@ -26,6 +26,7 @@
 
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
@@ -36,6 +37,8 @@ import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.repository.RepositoryException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Statbel "publications" scraper.
@@ -43,14 +46,10 @@ import org.openrdf.repository.RepositoryException;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class StatbelPublications extends Html {
-
+    private final Logger logger = LoggerFactory.getLogger(StatbelPublications.class);
+    
     @Override
     public URL switchLanguage(String lang) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void scrape() throws IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -65,6 +64,23 @@ public class StatbelPublications extends Html {
     public void generateDatasets(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+
+   /**
+     * Store front page containing list of datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    @Override
+    public void scrapeFront(Cache cache) throws IOException {
+        URL front = getBase();
+        
+        for (String lang : getAllLangs()) {
+            URL url = switchLanguage(lang);
+            cache.storePage(front, makeRequest(url), lang);
+        }
+    }
 
     /**
      * HTML parser for Statbel publications
@@ -75,5 +91,6 @@ public class StatbelPublications extends Html {
      */
     public StatbelPublications(File caching, File storage, URL base) {
         super(caching, storage, base);
-    }    
+        setDefaultLang("nl");
+    }
 }

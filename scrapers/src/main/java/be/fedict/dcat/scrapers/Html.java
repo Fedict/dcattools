@@ -32,6 +32,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
+import javax.swing.text.html.HTML.Tag;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,6 +80,37 @@ public abstract class Html extends Scraper {
     public void generateDcat(Cache cache, Storage store) 
                                 throws RepositoryException, MalformedURLException {
         Map<String, String> page = cache.retrievePage(null);
+    }
+    
+    /**
+     * Scrape front page
+     * 
+     * @param cache
+     * @throws IOException 
+     */
+    public abstract void scrapeFront(Cache cache) throws IOException;
+    
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, String> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapeFront(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        // Calculate the number of datasets
+        String datasets = front.get(getDefaultLang());
+        Elements rows = Jsoup.parse(datasets).getElementsByTag(Tag.TR.toString());
+        logger.info("Found {} datasets on page", String.valueOf(rows.size()));
+        
+        logger.info("Done scraping");
     }
     
     /**
