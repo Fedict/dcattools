@@ -70,33 +70,56 @@ public class Main {
             s.setProxy(proxy, Integer.parseInt(port));
         }
     }
-        
+    
+    /**
+     * Get required property
+     * 
+     * @param name unprefixed property
+     * @return value of the property
+     * @throws IOException if property is empty
+     */
+    private static String getRequired(String name) throws IOException {
+        String p = prop.getProperty(Scraper.PROP_PREFIX + "." + name, "");
+        if (p.isEmpty()) {
+            throw new IOException("Property missing: " + p);
+        }
+        return p;
+    }
+    
      /**
      * Load a scraper and scrape the site.
      * 
      * @param prefix properties prefix for additional configuration
      */
     private static Scraper getScraper() {
-        String name = prop.getProperty(Scraper.PROP_PREFIX + ".classname");
-        
-        String cache = prop.getProperty(Scraper.PROP_PREFIX + ".cache", "");
-        String store = prop.getProperty(Scraper.PROP_PREFIX + ".store", "");
-        String url = prop.getProperty(Scraper.PROP_PREFIX + ".url", "");
-         
         Scraper s = null;
+        
         try {
+            String name = getRequired("classname");
             Class<? extends Scraper> c = Class.forName(name).asSubclass(Scraper.class);
+                    
+            String cache = getRequired("cache");
+            String store = getRequired("store");
+            String url = getRequired("url");
+
             s = c.getConstructor(File.class, File.class, URL.class).
                 newInstance(new File(cache), new File(store), new URL(url));
-            s.setProperties(prop, Scraper.PROP_PREFIX);
+            
+            s.setDefaultLang(getRequired("deflanguage"));
+            s.setAllLangs(getRequired("languages").split(","));
+            
             setProxy(s);
+            
+            s.setProperties(prop, Scraper.PROP_PREFIX);
         } catch (ClassNotFoundException|InstantiationException|NoSuchMethodException|
                             IllegalAccessException|InvocationTargetException ex) {
-            logger.error("Scraper class {} could not be loaded", name, ex);
+            logger.error("Scraper class could not be loaded", ex);
             exit(-3);
         } catch (MalformedURLException ex) {
-            logger.error("Base URL invalid {}", url, ex);
+            logger.error("Base URL invalid", ex);
             exit(-3);
+        } catch (IOException ex) {
+            logger.error("Property not found", ex);
         }
         return s;
     }
