@@ -63,7 +63,6 @@ public class StatbelPublications extends Html {
         URL base = getBase();
         
         String front= makeRequest(base);
-
         Elements lis = Jsoup.parse(front)
                             .getElementsByClass(StatbelPublications.LANG_LINK);
         for(Element li : lis) {
@@ -74,7 +73,6 @@ public class StatbelPublications extends Html {
                 }
             }
         }
-        logger.debug("base {}", base);
         return base;
     }
 
@@ -91,21 +89,6 @@ public class StatbelPublications extends Html {
     }
     
 
-   /**
-     * Store front page containing list of datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    public void scrapeFront(Cache cache) throws IOException {
-        URL front = getBase();
-        
-        for (String lang : getAllLangs()) {
-            URL url = switchLanguage(lang);
-            cache.storePage(front, makeRequest(url), lang);
-        }
-    }
-
     /**
      * Get the list of all the downloads (DCAT Dataset).
      * 
@@ -118,12 +101,16 @@ public class StatbelPublications extends Html {
         
         URL base = getBase();
         String front = makeRequest(base);
+        
+        // Select the correct page from dropdown-list, displaying all items
         Element select = Jsoup.parse(front).getElementById(StatbelPublications.CAT_SELECT);
         Elements opt = select.getElementsMatchingText(StatbelPublications.CAT_SELECT);
         if (opt != null) {
-            urls.add(new URL(base, opt.val()));
+            URL downloads = new URL(base, opt.val() + "&size=999");
+            String page = makeRequest(downloads);
         }
-        // TODO
+        
+   
         return urls;
     }
     
@@ -154,7 +141,5 @@ public class StatbelPublications extends Html {
      */
     public StatbelPublications(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setDefaultLang("nl");
-        setAllLangs(new String[]{"nl", "fr"});
     }
 }

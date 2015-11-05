@@ -347,7 +347,7 @@ public abstract class Scraper {
      * Constructor
      * 
      * @param caching DB cache file
-     * @param storage SDB file to be used as triplestore backend
+     * @param storage SDB file to be used as triple store backend
      * @param base base URL
      */
     public Scraper(File caching, File storage, URL base) {

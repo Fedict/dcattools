@@ -233,7 +233,5 @@ public class HtmlFodMobilit extends Html {
      */
     public HtmlFodMobilit(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setDefaultLang("nl");
-        setAllLangs(new String[]{"nl", "fr"});
     }
 }
