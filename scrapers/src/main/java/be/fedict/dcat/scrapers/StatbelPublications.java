@@ -32,7 +32,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import javax.swing.text.html.HTML;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
@@ -48,9 +54,28 @@ import org.slf4j.LoggerFactory;
 public class StatbelPublications extends Html {
     private final Logger logger = LoggerFactory.getLogger(StatbelPublications.class);
     
+    public final static String CAT_SELECT = "category_select";
+    public final static String CAT_CAT = "Statistieken - Download-tabellen";
+    public final static String LANG_LINK = "blgm_lSwitch";
+    
     @Override
     public URL switchLanguage(String lang) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        URL base = getBase();
+        
+        String front= makeRequest(base);
+
+        Elements lis = Jsoup.parse(front)
+                            .getElementsByClass(StatbelPublications.LANG_LINK);
+        for(Element li : lis) {
+            if (li.text().equals(lang)) {
+                String href = li.attr(HTML.Attribute.HREF.toString());
+                if (href != null && !href.isEmpty()) {
+                    return new URL(base, href);
+                }
+            }
+        }
+        logger.debug("base {}", base);
+        return base;
     }
 
     @Override
@@ -72,7 +97,6 @@ public class StatbelPublications extends Html {
      * @param cache 
      * @throws java.io.IOException 
      */
-    @Override
     public void scrapeFront(Cache cache) throws IOException {
         URL front = getBase();
         
@@ -83,6 +107,45 @@ public class StatbelPublications extends Html {
     }
 
     /**
+     * Get the list of all the downloads (DCAT Dataset).
+     * 
+     * @return List of URLs
+     * @throws MalformedURLException
+     * @throws IOException 
+     */
+    protected List<URL> scrapeDatasetList() throws MalformedURLException, IOException {
+        List<URL> urls = new ArrayList<>();
+        
+        URL base = getBase();
+        String front = makeRequest(base);
+        Element select = Jsoup.parse(front).getElementById(StatbelPublications.CAT_SELECT);
+        Elements opt = select.getElementsMatchingText(StatbelPublications.CAT_SELECT);
+        if (opt != null) {
+            urls.add(new URL(base, opt.val()));
+        }
+        // TODO
+        return urls;
+    }
+    
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override  
+    public void scrape() throws IOException{
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        List<URL> urls = cache.retrieveURLList();
+        if (urls.isEmpty()) {
+            urls = scrapeDatasetList();
+            cache.storeURLList(urls);
+        }
+        urls = cache.retrieveURLList();
+    }
+ 
+    /**
      * HTML parser for Statbel publications
      * 
      * @param caching
@@ -92,5 +155,6 @@ public class StatbelPublications extends Html {
     public StatbelPublications(File caching, File storage, URL base) {
         super(caching, storage, base);
         setDefaultLang("nl");
+        setAllLangs(new String[]{"nl", "fr"});
     }
 }

@@ -140,79 +140,6 @@ public abstract class Ckan extends Scraper {
         return new URL(getBase(), String.valueOf(str.hashCode()));
     }
     
-  
-    
-    /**
-     * Get a CKAN package (DCAT Dataset).
-     * 
-     * @param url
-     * @return JsonObject containing CKAN Package or NULL
-     * @throws IOException 
-     */
-    protected JsonObject scrapePackage(URL url) throws IOException {
-        JsonObject obj = makeJsonRequest(url);
-        if (obj.getBoolean(Ckan.SUCCESS)) {
-            return obj.getJsonObject(Ckan.RESULT);
-        }
-        return null;
-    }
-    
-    /**
-     * Get the list of all the CKAN packages (DCAT Dataset).
-     * 
-     * @return List of URLs
-     * @throws MalformedURLException
-     * @throws IOException 
-     */
-    protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
-        List<URL> urls = new ArrayList<>();
-        URL getPackages = new URL(getBase(), Ckan.API_LIST);
-        
-        JsonObject obj = makeJsonRequest(getPackages);
-        if (! obj.getBoolean(Ckan.SUCCESS)) {
-            return urls;
-        }
-        JsonArray arr = obj.getJsonArray(Ckan.RESULT);
-        for (JsonString str : arr.getValuesAs(JsonString.class)) {
-            urls.add(makeDatasetURL(str.getString()));
-        }
-        return urls;
-    }
-    
-    /**
-     * Fetch all metadata from the CKAN repository.
-     * 
-     * @throws IOException 
-     */
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        String lang = getDefaultLang();
-        
-        List<URL> urls = cache.retrieveURLList();
-        if (urls.isEmpty()) {
-            urls = scrapePackageList();
-            cache.storeURLList(urls);
-        }
-        urls = cache.retrieveURLList();
-        
-        logger.info("Found {} CKAN packages", String.valueOf(urls.size()));
-        logger.info("Start scraping (waiting between requests)");
-        int i = 0;
-        for (URL u : urls) {
-            Map<String, String> page = cache.retrievePage(u);
-            if (page.isEmpty()) {
-                sleep();
-                if (++i % 100 == 0) {
-                    logger.info("Package {}...", Integer.toString(i));
-                }
-                JsonObject obj = scrapePackage(u);
-                cache.storePage(u, obj.toString(), lang);
-            }
-        }
-        logger.info("Done scraping");
-    }
 
     
     /**
@@ -483,6 +410,79 @@ public abstract class Ckan extends Scraper {
         }
     }
   
+    /**
+     * Get a CKAN package (DCAT Dataset).
+     * 
+     * @param url
+     * @return JsonObject containing CKAN Package or NULL
+     * @throws IOException 
+     */
+    protected JsonObject scrapePackage(URL url) throws IOException {
+        JsonObject obj = makeJsonRequest(url);
+        if (obj.getBoolean(Ckan.SUCCESS)) {
+            return obj.getJsonObject(Ckan.RESULT);
+        }
+        return null;
+    }
+    
+    /**
+     * Get the list of all the CKAN packages (DCAT Dataset).
+     * 
+     * @return List of URLs
+     * @throws MalformedURLException
+     * @throws IOException 
+     */
+    protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
+        List<URL> urls = new ArrayList<>();
+        URL getPackages = new URL(getBase(), Ckan.API_LIST);
+        
+        JsonObject obj = makeJsonRequest(getPackages);
+        if (! obj.getBoolean(Ckan.SUCCESS)) {
+            return urls;
+        }
+        JsonArray arr = obj.getJsonArray(Ckan.RESULT);
+        for (JsonString str : arr.getValuesAs(JsonString.class)) {
+            urls.add(makeDatasetURL(str.getString()));
+        }
+        return urls;
+    }
+    
+    /**
+     * Fetch all metadata from the CKAN repository.
+     * 
+     * @throws IOException 
+     */
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        String lang = getDefaultLang();
+        
+        List<URL> urls = cache.retrieveURLList();
+        if (urls.isEmpty()) {
+            urls = scrapePackageList();
+            cache.storeURLList(urls);
+        }
+        urls = cache.retrieveURLList();
+        
+        logger.info("Found {} CKAN packages", String.valueOf(urls.size()));
+        logger.info("Start scraping (waiting between requests)");
+        int i = 0;
+        for (URL u : urls) {
+            Map<String, String> page = cache.retrievePage(u);
+            if (page.isEmpty()) {
+                sleep();
+                if (++i % 100 == 0) {
+                    logger.info("Package {}...", Integer.toString(i));
+                }
+                JsonObject obj = scrapePackage(u);
+                cache.storePage(u, obj.toString(), lang);
+            }
+        }
+        logger.info("Done scraping");
+    }
+    
+    
     /**
      * CKAN scraper.
      * 

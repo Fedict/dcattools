@@ -35,6 +35,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 import org.jsoup.Jsoup;
@@ -56,7 +57,6 @@ import org.slf4j.LoggerFactory;
 public class HtmlFodMobilit extends Html {
     private final Logger logger = LoggerFactory.getLogger(HtmlFodMobilit.class);
 
-    public final static String[] langs = { "nl", "fr" };
     public final static String LANG_LINK = "language-link";
     
     /**
@@ -76,7 +76,6 @@ public class HtmlFodMobilit extends Html {
         for(Element li : lis) {
             if (li.text().equals(lang)) {
                 String href = li.attr(Attribute.HREF.toString());
-                logger.debug("base {}", href);
                 return new URL(base, href);
             }
         }
@@ -136,7 +135,7 @@ public class HtmlFodMobilit extends Html {
                             throws MalformedURLException, RepositoryException {
         logger.info("Generate datasets");
         
-        for (String lang : langs) {
+        for (String lang : getAllLangs()) {
             logger.debug("Language {}", lang);
             
             String p = page.get(lang);
@@ -185,15 +184,38 @@ public class HtmlFodMobilit extends Html {
      * @param cache 
      * @throws java.io.IOException 
      */
-    @Override
     public void scrapeFront(Cache cache) throws IOException {
         URL front = getBase();
         
-        for (String lang : langs) {
+        for (String lang : getAllLangs()) {
             URL url = switchLanguage(lang);
             cache.storePage(front, makeRequest(url), lang);
         }
     }
+    
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override  
+    public void scrape() throws IOException{
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, String> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapeFront(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        // Calculate the number of datasets
+        String datasets = front.get(getDefaultLang());
+        Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
+        logger.info("Found {} datasets on page", String.valueOf(rows.size()));
+        
+        logger.info("Done scraping");
+    }
+    
     
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) 
@@ -212,5 +234,6 @@ public class HtmlFodMobilit extends Html {
     public HtmlFodMobilit(File caching, File storage, URL base) {
         super(caching, storage, base);
         setDefaultLang("nl");
+        setAllLangs(new String[]{"nl", "fr"});
     }
 }
