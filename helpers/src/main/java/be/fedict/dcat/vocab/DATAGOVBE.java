@@ -43,6 +43,11 @@ public class DATAGOVBE {
     public final static URI ORGANIZATION;
     public final static URI SPATIAL;   
     public final static URI THEME;
+    public final static URI LICENSE_CC0;
+    
+    public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
+    public final static String PREFIX_URI_DATASET = "http://data.gov.be/dataset";
+    public final static String PREFIX_URI_DIST = "http://data.gov.be/distribution";
     
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
@@ -52,5 +57,7 @@ public class DATAGOVBE {
         ORGANIZATION = factory.createURI(DATAGOVBE.NAMESPACE, "organization");
         SPATIAL = factory.createURI(DATAGOVBE.NAMESPACE, "spatial");
         THEME = factory.createURI(DATAGOVBE.NAMESPACE, "theme");
+        
+        LICENSE_CC0 = factory.createURI("http://creativecommons.org/publicdomain/zero/1.0/");
     }    
 }
