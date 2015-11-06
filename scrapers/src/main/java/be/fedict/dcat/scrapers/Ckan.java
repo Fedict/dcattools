@@ -320,8 +320,8 @@ public abstract class Ckan extends Scraper {
         JsonArray arr = json.getJsonArray(Ckan.RESOURCES);
         
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
-            String s = obj.getString(Ckan.ID, "");
-            URI distr = store.getURI(ckanResourceURL(s).toString());
+            String id = obj.getString(Ckan.ID, "");
+            URI distr = store.getURI(makeDistURL(id).toString());
             store.add(uri, DCAT.DISTRIBUTION, distr);
             store.add(distr, RDF.TYPE, DCAT.A_DISTRIBUTION);
         
@@ -390,8 +390,8 @@ public abstract class Ckan extends Scraper {
         JsonReader reader = Json.createReader(new StringReader(p));
         JsonObject obj = reader.readObject();
         
-        String s = obj.getString(Ckan.NAME, "");
-        URI dataset = store.getURI(makeDatasetURL(s).toString());
+        String id = obj.getString(Ckan.ID, "");
+        URI dataset = store.getURI(makeDatasetURL(id).toString());
         logger.info("Generating dataset {} ", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);        
