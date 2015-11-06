@@ -79,6 +79,7 @@ public abstract class Scraper {
     private Cache cache = null;
     private Storage store = null;
     private URL base = null;
+    private String name = "";
     
     private final static HashFunction HASHER = Hashing.sha1();
     public final static DateFormat DATEFMT = 
@@ -148,6 +149,24 @@ public abstract class Scraper {
     }
     
     /**
+     * Set name
+     * 
+     * @param name name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    /**
+     * Get name
+     * 
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+    
+    /**
      * Set HTTP proxy.
      * 
      * @param proxy proxy server
@@ -192,12 +211,10 @@ public abstract class Scraper {
     /**
      * Make an URL for a DCAT Catalog 
      * 
-     * @param id
      * @return URL
-     * @throws java.net.MalformedURLException 
      */
-    public URL makeCatalogURL(String id) throws MalformedURLException {
-        return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + id);
+    public String makeCatalogStr() {
+        return DATAGOVBE.PREFIX_URI_CAT + "/" + getName();
     }
     
     /**
@@ -337,7 +354,7 @@ public abstract class Scraper {
      * @throws RepositoryException 
      */
     public void generateCatalog(Storage store) throws RepositoryException {
-        URI catalog = store.getURI(getBase().toString());
+        URI catalog = store.getURI(makeCatalogStr());
         store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
         
         List<URI> uris = store.query(DCAT.A_DATASET);        
