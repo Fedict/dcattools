@@ -418,13 +418,11 @@ public abstract class Ckan extends Scraper {
         
         /* Get the list of all datasets */
         List<URL> urls = cache.retrieveURLList();
-        generateCatalog(store);
-        
-        /* Get and parse all the datasets */
         for (URL u : urls) {
             Map<String, String> page = cache.retrievePage(u);
             generateDataset(page, store);
         }
+        generateCatalog(store);
     }
   
     /**
