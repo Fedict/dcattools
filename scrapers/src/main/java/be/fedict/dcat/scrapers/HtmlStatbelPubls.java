@@ -126,7 +126,7 @@ public class HtmlStatbelPubls extends Html {
         
         // Select the correct page from dropdown-list, displaying all items
         Element select = Jsoup.parse(front).getElementById(HtmlStatbelPubls.CAT_SELECT);
-        Elements opt = select.getElementsMatchingText(HtmlStatbelPubls.CAT_CAT);
+        Element opt = select.getElementsMatchingText(HtmlStatbelPubls.CAT_CAT).first();
         if (opt != null) {
             URL downloads = new URL(base, opt.val() + "&size=999");
             String page = makeRequest(downloads);
@@ -138,6 +138,8 @@ public class HtmlStatbelPubls extends Html {
                 String href = link.attr(Attribute.HREF.toString());
                 urls.add(new URL(getBase(), href));
             }
+        } else {
+            logger.error("Category {} not found", HtmlStatbelPubls.CAT_CAT);
         }
         return urls;
     }
