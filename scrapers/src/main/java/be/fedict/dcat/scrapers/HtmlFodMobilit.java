@@ -66,8 +66,7 @@ public class HtmlFodMobilit extends Html {
      * @return
      * @throws IOException 
      */
-    @Override
-    public URL switchLanguage(String lang) throws IOException {
+    private URL switchLanguage(String lang) throws IOException {
         URL base = getBase();
         
         String front= makeRequest(base);
@@ -120,7 +119,8 @@ public class HtmlFodMobilit extends Html {
         if (dot > 0) {
             String ext = href.substring(i+1);
             store.add(dist, DCAT.MEDIA_TYPE, ext);
-        }}
+        }
+    }
     
     /**
      * Generate DCAT datasets.
@@ -184,7 +184,7 @@ public class HtmlFodMobilit extends Html {
      * @param cache 
      * @throws java.io.IOException 
      */
-    public void scrapeFront(Cache cache) throws IOException {
+    private void scrapeFront(Cache cache) throws IOException {
         URL front = getBase();
         
         for (String lang : getAllLangs()) {

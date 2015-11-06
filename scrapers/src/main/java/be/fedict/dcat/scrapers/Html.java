@@ -25,14 +25,9 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
-import be.fedict.dcat.helpers.Storage;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
-import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,21 +59,6 @@ public abstract class Html extends Scraper {
     public URL makeDistributionURL(int i) throws MalformedURLException {
         return new URL(getBase().toString() + "#" + String.valueOf(i) + "/download");
     }
-    
-    /**
-     * Switch to another language, if available.
-     * 
-     * @param lang 
-     * @return URL
-     */
-    public abstract URL switchLanguage(String lang) throws IOException;
-    
-    @Override
-    public void generateDcat(Cache cache, Storage store) 
-                                throws RepositoryException, MalformedURLException {
-        Map<String, String> page = cache.retrievePage(null);
-    }
-    
        
     /**
      * HTML page scraper.

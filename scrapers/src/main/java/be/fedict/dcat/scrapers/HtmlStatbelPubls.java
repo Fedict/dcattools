@@ -35,7 +35,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
@@ -61,18 +60,26 @@ public class HtmlStatbelPubls extends Html {
     public final static String CAT_CAT = "Statistieken - Download-tabellen";
     public final static String LANG_LINK = "blgm_lSwitch";
     
-    @Override
-    public URL switchLanguage(String lang) throws IOException {
+    
+    /**
+     * Get the URL of the  page in another language
+     * 
+     * @param page
+     * @param lang
+     * @return URL of the page in another language
+     * @throws IOException 
+     */
+    private URL switchLanguage(String page, String lang) throws IOException {
         URL base = getBase();
         
-        String front= makeRequest(base);
-        Elements lis = Jsoup.parse(front)
+        Elements lis = Jsoup.parse(page)
                             .getElementsByClass(HtmlStatbelPubls.LANG_LINK);
+        
         for(Element li : lis) {
             if (li.text().equals(lang)) {
                 String href = li.attr(HTML.Attribute.HREF.toString());
                 if (href != null && !href.isEmpty()) {
-                    return new URL(base, href);
+                    return new URL(base.getProtocol(), base.getHost(), href);
                 }
             }
         }
@@ -98,15 +105,16 @@ public class HtmlStatbelPubls extends Html {
      * @param u
      * @throws IOException
      */
-    protected void scrapeDataset(URL u) throws IOException {
+    private void scrapeDataset(URL u) throws IOException {
         Cache cache = getCache();
         String lang = getDefaultLang();
+        String page = makeRequest(u);
         
-        cache.storePage(u, makeRequest(u), lang);
+        cache.storePage(u, page, lang);
         
         for (String l : getAllLangs()) {
             if (l.equals(lang)) {
-                URL url = switchLanguage(lang);
+                URL url = switchLanguage(page, lang);
                 cache.storePage(u, makeRequest(url), lang);
             }
         } 
@@ -118,7 +126,7 @@ public class HtmlStatbelPubls extends Html {
      * @return List of URLs
      * @throws IOException 
      */
-    protected List<URL> scrapeDatasetList() throws IOException {
+    private List<URL> scrapeDatasetList() throws IOException {
         List<URL> urls = new ArrayList<>();
         
         URL base = getBase();
@@ -186,5 +194,10 @@ public class HtmlStatbelPubls extends Html {
      */
     public HtmlStatbelPubls(File caching, File storage, URL base) {
         super(caching, storage, base);
+    }
+
+    @Override
+    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
