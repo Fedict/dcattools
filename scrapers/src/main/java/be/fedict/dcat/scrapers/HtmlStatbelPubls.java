@@ -126,9 +126,9 @@ public class HtmlStatbelPubls extends Html {
         
         // Select the correct page from dropdown-list, displaying all items
         Element select = Jsoup.parse(front).getElementById(HtmlStatbelPubls.CAT_SELECT);
-        Element opt = select.getElementsMatchingText(HtmlStatbelPubls.CAT_CAT).first();
+        Element opt = select.getElementsMatchingOwnText(HtmlStatbelPubls.CAT_CAT).first();
         if (opt != null) {
-            URL downloads = new URL(base, opt.val() + "&size=999");
+            URL downloads = new URL(base, opt.val() + "&size=250");
             String page = makeRequest(downloads);
             
             // Extract links from list
