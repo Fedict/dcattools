@@ -215,7 +215,7 @@ public class HtmlStatbelPubls extends Html {
         Map<String, String> front = cache.retrievePage(getBase());
         List<URL> urls = new ArrayList<>();
         
-        generateCatalog(urls, store);
+        generateCatalog(store);
         
         for(URL u : urls) {
             Map<String, String> page = cache.retrievePage(u);
