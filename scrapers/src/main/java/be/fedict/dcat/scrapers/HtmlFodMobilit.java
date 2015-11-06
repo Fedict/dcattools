@@ -216,7 +216,7 @@ public class HtmlFodMobilit extends Html {
             urls.add(makeDatasetURL(i));
         }
         
-        generateCatalog(urls, store);
+        generateCatalog(store);
         
         logger.info("Generate datasets");
             

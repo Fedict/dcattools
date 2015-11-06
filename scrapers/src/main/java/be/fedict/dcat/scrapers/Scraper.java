@@ -333,18 +333,16 @@ public abstract class Scraper {
     /**
      * Generate DCAT Catalog.
      * 
-     * @param urls
      * @param store
      * @throws RepositoryException 
      */
-    public void generateCatalog(List<URL> urls, Storage store) throws RepositoryException {
+    public void generateCatalog(Storage store) throws RepositoryException {
         URI catalog = store.getURI(getBase().toString());
-        
         store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
         
-        
-        for (URL u : urls ){
-            store.add(catalog, DCAT.DATASET, store.getURI(u.toString()));
+        List<URI> uris = store.query(DCAT.A_DATASET);        
+        for (URI u : uris){
+            store.add(catalog, DCAT.DATASET, u);
         }
         generateCatalogInfo(store, catalog);
     }

@@ -38,7 +38,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -419,7 +418,7 @@ public abstract class Ckan extends Scraper {
         
         /* Get the list of all datasets */
         List<URL> urls = cache.retrieveURLList();
-        generateCatalog(urls, store);
+        generateCatalog(store);
         
         /* Get and parse all the datasets */
         for (URL u : urls) {
