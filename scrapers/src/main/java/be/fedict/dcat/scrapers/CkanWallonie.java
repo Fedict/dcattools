@@ -27,6 +27,7 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.URL;
 import javax.json.JsonObject;
@@ -53,7 +54,8 @@ public class CkanWallonie extends Ckan {
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
         super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "CKAN Wallonië", "en");
+        store.add(catalog, DCTERMS.TITLE, "DCAT export CKAN Wallonia", "en");
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
     }
     
    /**
@@ -65,6 +67,5 @@ public class CkanWallonie extends Ckan {
     */
     public CkanWallonie(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setDefaultLang("fr");
     }  
 }

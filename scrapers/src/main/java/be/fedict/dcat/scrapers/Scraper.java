@@ -49,6 +49,7 @@ import javax.json.JsonReader;
 import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
@@ -312,8 +313,23 @@ public abstract class Scraper {
         store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
         store.add(catalog, DCTERMS.LICENSE, DATAGOVBE.LICENSE_CC0);
         store.add(catalog, FOAF.HOMEPAGE, getBase());
+        
+        for (String lang : getAllLangs()) {
+            store.add(catalog, DC.LANGUAGE, lang);
+        }
     }
     
+    /**
+     * Generate DCAT Dataset
+     * 
+     * @param page
+     * @param store
+     * @throws MalformedURLException
+     * @throws RepositoryException 
+     */
+    public abstract void generateDataset(Map<String, String> page, Storage store) 
+                            throws MalformedURLException, RepositoryException;
+        
     /**
      * Generate DCAT Catalog.
      * 
@@ -325,24 +341,13 @@ public abstract class Scraper {
         URI catalog = store.getURI(getBase().toString());
         
         store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
-        store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
+        
         
         for (URL u : urls ){
             store.add(catalog, DCAT.DATASET, store.getURI(u.toString()));
         }
         generateCatalogInfo(store, catalog);
     }
-    
-     /**
-     * Generate DCAT Datasets
-     * 
-     * @param page
-     * @param store
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    public abstract void generateDatasets(Map<String, String> page, Storage store) 
-                            throws MalformedURLException, RepositoryException;
     
     /**
      * Generate DCAT from cache and write it to the RDF store

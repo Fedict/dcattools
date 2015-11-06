@@ -28,6 +28,8 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -44,6 +46,7 @@ import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
+import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,18 +87,6 @@ public class HtmlStatbelPubls extends Html {
             }
         }
         return null;
-    }
-
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "Statbel downloads", "en");
-    }
-
-    @Override
-    public void generateDatasets(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
@@ -189,7 +180,50 @@ public class HtmlStatbelPubls extends Html {
         }
         logger.info("Done scraping");
     }
- 
+
+    @Override
+    public void generateDataset(Map<String, String> page, Storage store) 
+                            throws MalformedURLException, RepositoryException {
+        for (String lang : getAllLangs()) {
+          //
+        }
+    }
+    
+    @Override
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        super.generateCatalogInfo(store, catalog);
+        store.add(catalog, DCTERMS.TITLE, "DCAT export Statbel downloads", "en");
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
+    }
+
+    /**
+     * Generate DCAT.
+     * 
+     * @param cache
+     * @param store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
+    @Override
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        logger.info("Generate DCAT");
+        
+        /* Get the list of all datasets */
+        Map<String, String> front = cache.retrievePage(getBase());
+        List<URL> urls = new ArrayList<>();
+        
+        generateCatalog(urls, store);
+        
+        for(URL u : urls) {
+            Map<String, String> page = cache.retrievePage(u);
+            generateDataset(page, store);
+        }
+    }
+    
+    
     /**
      * HTML parser for Statbel publications
      * 
@@ -199,10 +233,5 @@ public class HtmlStatbelPubls extends Html {
      */
     public HtmlStatbelPubls(File caching, File storage, URL base) {
         super(caching, storage, base);
-    }
-
-    @Override
-    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -28,6 +28,7 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -39,7 +40,6 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
@@ -81,6 +81,45 @@ public class HtmlFodMobilit extends Html {
         logger.debug("base {}", base);
         return base;
     }
+
+    /**
+     * Store front page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    private void scrapeFront(Cache cache) throws IOException {
+        URL front = getBase();
+        
+        for (String lang : getAllLangs()) {
+            URL url = switchLanguage(lang);
+            cache.storePage(front, makeRequest(url), lang);
+        }
+    }
+    
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override  
+    public void scrape() throws IOException{
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, String> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapeFront(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        // Calculate the number of datasets
+        String datasets = front.get(getDefaultLang());
+        Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
+        logger.info("Found {} datasets on page", String.valueOf(rows.size()));
+        
+        logger.info("Done scraping");
+    }
+    
 
     /**
      * Generate one dataset
@@ -131,16 +170,11 @@ public class HtmlFodMobilit extends Html {
      * @throws RepositoryException 
      */
     @Override
-    public void generateDatasets(Map<String,String> page, Storage store)
+    public void generateDataset(Map<String,String> page, Storage store)
                             throws MalformedURLException, RepositoryException {
-        logger.info("Generate datasets");
-        
         for (String lang : getAllLangs()) {
-            logger.debug("Language {}", lang);
-            
             String p = page.get(lang);
-            Document doc = Jsoup.parse(p);
-            Elements rows = doc.body().getElementsByTag(Tag.TR.toString());
+            Elements rows = Jsoup.parse(p).body().getElementsByTag(Tag.TR.toString());
             int i = 0;
             
             for (Element row : rows) {
@@ -150,6 +184,15 @@ public class HtmlFodMobilit extends Html {
         }
     }
     
+    @Override
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        super.generateCatalogInfo(store, catalog);
+        store.add(catalog, DCTERMS.TITLE, "DCAT export FPS Mobility", "en");
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
+    }
+           
     /**
      * Generate DCAT.
      * 
@@ -167,63 +210,20 @@ public class HtmlFodMobilit extends Html {
         Map<String, String> front = cache.retrievePage(getBase());
         List<URL> urls = new ArrayList<>();
         
-        Elements rows = Jsoup.parse(front.get("nl")).getElementsByTag(Tag.TR.toString());
+        String lang = getDefaultLang();
+        Elements rows = Jsoup.parse(front.get(lang)).getElementsByTag(Tag.TR.toString());
         for (int i = 0; i < rows.size(); i++) {
             urls.add(makeDatasetURL(i));
         }
         
         generateCatalog(urls, store);
         
-        Map<String, String> page = cache.retrievePage(getBase());
-        generateDatasets(page, store);
-    }
-    
-    /**
-     * Store front page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    private void scrapeFront(Cache cache) throws IOException {
-        URL front = getBase();
-        
-        for (String lang : getAllLangs()) {
-            URL url = switchLanguage(lang);
-            cache.storePage(front, makeRequest(url), lang);
-        }
-    }
-    
-    /**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
-    @Override  
-    public void scrape() throws IOException{
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, String> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapeFront(cache);
-            front = cache.retrievePage(getBase());   
-        }
-        // Calculate the number of datasets
-        String datasets = front.get(getDefaultLang());
-        Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
-        logger.info("Found {} datasets on page", String.valueOf(rows.size()));
-        
-        logger.info("Done scraping");
-    }
-    
-    
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "FPS Mobility", "en");
-    }
+        logger.info("Generate datasets");
             
+        Map<String, String> page = cache.retrievePage(getBase());
+        generateDataset(page, store);
+    }
+     
     /**
      * HTML scraper FPS Mobility.
      * 
