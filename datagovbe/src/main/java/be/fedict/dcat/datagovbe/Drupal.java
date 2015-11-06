@@ -366,10 +366,7 @@ public class Drupal {
             logger.warn("Empty dataset for {}", uri.stringValue());
             return;
         }
-                
-        //List<String> langs = getMany(dataset, DCTERMS.LANGUAGE, "");
-        //String[] langs = new String[]{ "nl" };
-        
+       
         for(String lang : langs) {
             JsonObjectBuilder builder = Json.createObjectBuilder();
             
@@ -382,7 +379,7 @@ public class Drupal {
             
             for (String d : dists) {
                 Map<URI, ListMultimap<String, String>> dist = 
-                        store.queryProperties(store.getURI(d));
+                                        store.queryProperties(store.getURI(d));
                 
                 // Landing page / page(s) with more info on dataset
                 String access = getLink(dist, DCAT.ACCESS_URL);
