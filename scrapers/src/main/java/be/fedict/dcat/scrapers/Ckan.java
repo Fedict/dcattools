@@ -103,7 +103,7 @@ public abstract class Ckan extends Scraper {
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    protected URL makeDatasetURL(String id) throws MalformedURLException {
+    protected URL ckanDatasetURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_PKG + id);
     }
     
@@ -114,7 +114,7 @@ public abstract class Ckan extends Scraper {
      * @return URL
      * @throws MalformedURLException 
      */
-    protected URL getResourceURL(String id) throws MalformedURLException {
+    protected URL ckanResourceURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_RES + id);
     }
     
@@ -301,7 +301,7 @@ public abstract class Ckan extends Scraper {
         
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
             String s = obj.getString(Ckan.ID, "");
-            URI distr = store.getURI(getResourceURL(s).toString());
+            URI distr = store.getURI(ckanResourceURL(s).toString());
             store.add(uri, DCAT.DISTRIBUTION, distr);
             store.add(distr, RDF.TYPE, DCAT.A_DISTRIBUTION);
         
@@ -442,7 +442,7 @@ public abstract class Ckan extends Scraper {
         }
         JsonArray arr = obj.getJsonArray(Ckan.RESULT);
         for (JsonString str : arr.getValuesAs(JsonString.class)) {
-            urls.add(makeDatasetURL(str.getString()));
+            urls.add(ckanDatasetURL(str.getString()));
         }
         return urls;
     }
