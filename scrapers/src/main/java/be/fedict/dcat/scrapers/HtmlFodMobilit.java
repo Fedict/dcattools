@@ -76,7 +76,6 @@ public class HtmlFodMobilit extends Html {
                 return new URL(base, href);
             }
         }
-        logger.debug("base {}", base);
         return base;
     }
 
@@ -89,9 +88,12 @@ public class HtmlFodMobilit extends Html {
     private void scrapeFront(Cache cache) throws IOException {
         URL front = getBase();
         
+        String deflang = getDefaultLang();
         for (String lang : getAllLangs()) {
-            URL url = switchLanguage(lang);
-            cache.storePage(front, makeRequest(url), lang);
+            if (!lang.equals(deflang)) {
+                URL url = switchLanguage(lang);
+                cache.storePage(front, makeRequest(url), lang);
+            }
         }
     }
     
