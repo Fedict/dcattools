@@ -233,5 +233,6 @@ public class HtmlStatbelPubls extends Html {
      */
     public HtmlStatbelPubls(File caching, File storage, URL base) {
         super(caching, storage, base);
+        setName("statbelpub");
     }
 }

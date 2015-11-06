@@ -106,5 +106,6 @@ public class CkanVlaanderen extends Ckan {
      */
     public CkanVlaanderen(File caching, File storage, URL base) {
         super(caching, storage, base);
+        setName("ckanvl");
     }
 }
