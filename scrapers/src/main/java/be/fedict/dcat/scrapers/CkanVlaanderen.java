@@ -27,12 +27,14 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -92,7 +94,8 @@ public class CkanVlaanderen extends Ckan {
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
         super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "CKAN Vlaanderen", "en");
+        store.add(catalog, DCTERMS.TITLE, "DCAT export CKAN Vlaanderen", "en");
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
     }
     
     /**
@@ -104,6 +107,5 @@ public class CkanVlaanderen extends Ckan {
      */
     public CkanVlaanderen(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setDefaultLang("nl");
     }
 }

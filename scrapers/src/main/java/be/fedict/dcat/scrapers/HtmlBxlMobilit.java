@@ -48,9 +48,6 @@ public class HtmlBxlMobilit extends Html {
         super(caching, storage, base);
     }
 
-    public URL switchLanguage(String lang) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void scrape() throws IOException {
@@ -58,7 +55,7 @@ public class HtmlBxlMobilit extends Html {
     }
 
     @Override
-    public void generateDatasets(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
+    public void generateDataset(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
