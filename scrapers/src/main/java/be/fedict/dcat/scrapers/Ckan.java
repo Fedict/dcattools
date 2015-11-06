@@ -38,6 +38,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -94,7 +95,7 @@ public abstract class Ckan extends Scraper {
     public final static String API_PKG = "/api/3/action/package_show?id=";
     public final static String API_ORG = "/api/3/action/organization_show?id=";
     public final static String API_RES = "/api/3/action/resource_show?id=";
-    
+    public final static String DATASET = "/dataset";
     
     /**
      * Make an URL for a CKAN Package (DCAT Dataset) 
@@ -125,11 +126,23 @@ public abstract class Ckan extends Scraper {
      * @return URL
      * @throws MalformedURLException 
      */
-    protected URL getOrganizationURL(String id) throws MalformedURLException {
+    protected URL ckanOrganizationURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_ORG + id);
     }
     
-     /**
+    /**
+     * Get URL of a CKAN page.
+     * 
+     * @param id
+     * @return URL
+     * @throws MalformedURLException 
+     */
+    protected URL ckanPageURL(String id) throws MalformedURLException {        
+        return new URL(getBase(), Ckan.DATASET + "/" + id);
+    }
+    
+    
+    /**
      * Generate URL from a string.
      * 
      * @param str
@@ -139,8 +152,6 @@ public abstract class Ckan extends Scraper {
     protected URL getHashUrl(String str) throws MalformedURLException {
         return new URL(getBase(), String.valueOf(str.hashCode()));
     }
-    
-
     
     /**
      * Parse a CKAN string and store it in the RDF store.
@@ -265,6 +276,16 @@ public abstract class Ckan extends Scraper {
         
         parseContact(store, uri, json, Ckan.AUTHOR, Ckan.AUTHOR_EML, DCAT.CONTACT_POINT);
         parseContact(store, uri, json, Ckan.MAINT, Ckan.MAINT_EML, DCAT.CONTACT_POINT);
+        
+        // original CKAN page with more info
+        String id = json.getString(Ckan.ID);
+        if (id != null) {
+            try {
+                store.add(uri, DCAT.LANDING_PAGE, ckanPageURL(id));
+            } catch (MalformedURLException ex) {
+                logger.error("Could not generate URL for page");
+            }
+        }
     }
     
     /**
@@ -310,7 +331,7 @@ public abstract class Ckan extends Scraper {
             parseDate(store, distr, obj, Ckan.CREATED, DCTERMS.CREATED);
             parseDate(store, distr, obj, Ckan.MODIFIED, DCTERMS.MODIFIED);
             parseString(store, distr, obj, Ckan.FORMAT, DCAT.MEDIA_TYPE, null);
-            parseString(store, distr, obj, Ckan.URL, DCAT.DOWNLOAD_URL, null);
+            parseURI(store, distr, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
         }
     }
    
@@ -331,7 +352,7 @@ public abstract class Ckan extends Scraper {
         
             if (obj.getBoolean(Ckan.IS_ORG)) {
                 String s = obj.getString(Ckan.ID, "");
-                URI org = store.getURI(getOrganizationURL(s).toString());
+                URI org = store.getURI(ckanOrganizationURL(s).toString());
                 store.add(uri, DCTERMS.PUBLISHER, org);
                 store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
         
@@ -354,7 +375,7 @@ public abstract class Ckan extends Scraper {
                                throws RepositoryException, MalformedURLException;
     
     /**
-     * Parse DCAT Datasets
+     * Generate DCAT Dataset
      * 
      * @param page
      * @param store
@@ -362,7 +383,7 @@ public abstract class Ckan extends Scraper {
      * @throws RepositoryException 
      */
     @Override
-    public void generateDatasets(Map<String, String> page, Storage store) 
+    public void generateDataset(Map<String, String> page, Storage store) 
                             throws MalformedURLException, RepositoryException {
         logger.info("Generate datasets");
         
@@ -406,7 +427,7 @@ public abstract class Ckan extends Scraper {
         for (URL u : urls) {
             logger.debug("Parsing {}", u);
             Map<String, String> page = cache.retrievePage(u);
-            generateDatasets(page, store);
+            generateDataset(page, store);
         }
     }
   
