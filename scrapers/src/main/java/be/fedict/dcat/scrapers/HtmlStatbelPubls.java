@@ -113,7 +113,7 @@ public class HtmlStatbelPubls extends Html {
         cache.storePage(u, page, lang);
         
         for (String l : getAllLangs()) {
-            if (l.equals(lang)) {
+            if (! l.equals(lang)) {
                 URL url = switchLanguage(page, lang);
                 cache.storePage(u, makeRequest(url), lang);
             }
