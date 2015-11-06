@@ -40,7 +40,7 @@ import org.openrdf.model.impl.ValueFactoryImpl;
  */
 public class MDR_LANG {
     public static final String NAMESPACE = 
-                "http://publications.europa.eu/resource/authority/language";
+                "http://publications.europa.eu/resource/authority/language/";
     
     public final static String PREFIX = "mdrlang";
     
