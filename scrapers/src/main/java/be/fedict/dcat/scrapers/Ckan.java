@@ -475,8 +475,12 @@ public abstract class Ckan extends Scraper {
                 if (++i % 100 == 0) {
                     logger.info("Package {}...", Integer.toString(i));
                 }
-                JsonObject obj = scrapePackage(u);
-                cache.storePage(u, obj.toString(), lang);
+                try {
+                    JsonObject obj = scrapePackage(u);
+                    cache.storePage(u, obj.toString(), lang);
+                } catch (IOException e) {
+                    logger.warn("Failed to scrape {}", u);
+                }
             }
         }
         logger.info("Done scraping");

@@ -83,7 +83,7 @@ public class HtmlStatbelPubls extends Html {
                 }
             }
         }
-        return base;
+        return null;
     }
 
     @Override
@@ -107,15 +107,16 @@ public class HtmlStatbelPubls extends Html {
      */
     private void scrapeDataset(URL u) throws IOException {
         Cache cache = getCache();
-        String lang = getDefaultLang();
+        String deflang = getDefaultLang();
         String page = makeRequest(u);
         
-        cache.storePage(u, page, lang);
+        cache.storePage(u, page, deflang);
         
-        for (String l : getAllLangs()) {
-            if (! l.equals(lang)) {
+        for (String lang : getAllLangs()) {
+            if (! lang.equals(deflang)) {
                 URL url = switchLanguage(page, lang);
                 cache.storePage(u, makeRequest(url), lang);
+                sleep();
             }
         } 
     }
@@ -158,7 +159,7 @@ public class HtmlStatbelPubls extends Html {
      * @throws IOException 
      */
     @Override  
-    public void scrape() throws IOException{
+    public void scrape() throws IOException {
         logger.info("Start scraping");
         Cache cache = getCache();
         
@@ -179,7 +180,11 @@ public class HtmlStatbelPubls extends Html {
                 if (++i % 100 == 0) {
                     logger.info("Download {}...", Integer.toString(i));
                 }
-                scrapeDataset(u);
+                try {
+                    scrapeDataset(u);
+                } catch (IOException ex) {
+                    logger.error("Failed to scrape {}", u);
+                }
             }
         }
         logger.info("Done scraping");
