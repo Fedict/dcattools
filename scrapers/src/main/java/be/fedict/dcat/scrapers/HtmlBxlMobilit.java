@@ -48,7 +48,6 @@ public class HtmlBxlMobilit extends Html {
         super(caching, storage, base);
     }
 
-    @Override
     public URL switchLanguage(String lang) throws IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -65,6 +64,11 @@ public class HtmlBxlMobilit extends Html {
 
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) throws RepositoryException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

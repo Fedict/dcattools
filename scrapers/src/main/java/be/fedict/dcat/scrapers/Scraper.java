@@ -178,7 +178,6 @@ public abstract class Scraper {
         return delay;
     }
     
-    
     /**
      * Make a hashed ID based upon a string.
      * 
@@ -284,6 +283,7 @@ public abstract class Scraper {
      * @throws IOException 
      */
     public String makeRequest(URL url) throws IOException {
+        logger.info("Requesting page {}", url);
         Request request = Request.Get(url.toString());
         if (getProxy() != null) {
             request = request.viaProxy(getProxy());
@@ -352,7 +352,6 @@ public abstract class Scraper {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-        
     public abstract void generateDcat(Cache cache, Storage store) 
             throws RepositoryException, MalformedURLException;
         
