@@ -27,6 +27,7 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.DCAT;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
@@ -64,9 +65,6 @@ public abstract class Scraper {
     private final Logger logger = LoggerFactory.getLogger(Scraper.class);
     
     public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
-    
-    public final static String LICENSE_CC0 = 
-                        "http://creativecommons.org/publicdomain/zero/1.0/";
     
     private Properties prop = null;
     private String prefix = "";
@@ -192,6 +190,39 @@ public abstract class Scraper {
     }
     
     /**
+     * Make an URL for a DCAT Catalog 
+     * 
+     * @param id
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    public URL makeCatalogURL(String id) throws MalformedURLException {
+        return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + id);
+    }
+    
+    /**
+     * Make an URL for a DCAT Dataset
+     * 
+     * @param id
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    public URL makeDatasetURL(String id) throws MalformedURLException {
+        return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + id);
+    }
+    
+    /**
+     * Make an URL for a DCAT Distribution 
+     * 
+     * @param id
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    public URL makeDistURL(String id) throws MalformedURLException {
+        return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + id);
+    }
+    
+    /**
      * Set property from config file and property prefix.
      * 
      * @param prop
@@ -279,7 +310,7 @@ public abstract class Scraper {
                                                     throws RepositoryException {
         store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
         store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
-        store.add(catalog, DCTERMS.LICENSE, store.getURI(LICENSE_CC0));
+        store.add(catalog, DCTERMS.LICENSE, DATAGOVBE.LICENSE_CC0);
         store.add(catalog, FOAF.HOMEPAGE, getBase());
     }
     
