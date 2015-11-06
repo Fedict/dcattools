@@ -33,8 +33,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
@@ -206,22 +204,10 @@ public class HtmlFodMobilit extends Html {
                             throws RepositoryException, MalformedURLException {
         logger.info("Generate DCAT");
         
-        /* Get the list of all datasets */
-        Map<String, String> front = cache.retrievePage(getBase());
-        List<URL> urls = new ArrayList<>();
-        
-        String lang = getDefaultLang();
-        Elements rows = Jsoup.parse(front.get(lang)).getElementsByTag(Tag.TR.toString());
-        for (int i = 0; i < rows.size(); i++) {
-            urls.add(makeDatasetURL(i));
-        }
-        
-        generateCatalog(store);
-        
-        logger.info("Generate datasets");
-            
+        /* Get the list of all datasets */            
         Map<String, String> page = cache.retrievePage(getBase());
         generateDataset(page, store);
+        generateCatalog(store);
     }
      
     /**

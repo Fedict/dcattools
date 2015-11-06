@@ -34,7 +34,6 @@ import java.net.URL;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
