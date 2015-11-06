@@ -385,8 +385,6 @@ public abstract class Ckan extends Scraper {
     @Override
     public void generateDataset(Map<String, String> page, Storage store) 
                             throws MalformedURLException, RepositoryException {
-        logger.info("Generate datasets");
-        
         String lang = getDefaultLang();
         
         String p = page.getOrDefault(lang, "");
@@ -395,7 +393,7 @@ public abstract class Ckan extends Scraper {
         
         String s = obj.getString(Ckan.NAME, "");
         URI dataset = store.getURI(makeDatasetURL(s).toString());
-        logger.debug("Generating dataset {} ", dataset.toString());
+        logger.info("Generating dataset {} ", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);        
         /* Parse different sections of CKAN JSON */
@@ -425,7 +423,6 @@ public abstract class Ckan extends Scraper {
         
         /* Get and parse all the datasets */
         for (URL u : urls) {
-            logger.debug("Parsing {}", u);
             Map<String, String> page = cache.retrievePage(u);
             generateDataset(page, store);
         }
