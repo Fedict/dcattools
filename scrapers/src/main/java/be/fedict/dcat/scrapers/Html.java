@@ -56,8 +56,9 @@ public abstract class Html extends Scraper {
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    public URL makeDistributionURL(int i) throws MalformedURLException {
-        return new URL(getBase().toString() + "#" + String.valueOf(i) + "/download");
+    public URL makeDistributionURL(int i, String lang) throws MalformedURLException {
+        return new URL(getBase().toString() + "#" 
+                + String.valueOf(i) + "/download" + "/" + lang);
     }
        
     /**
