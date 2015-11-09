@@ -29,6 +29,7 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.MDR_LANG;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import java.io.File;
@@ -49,7 +50,6 @@ import javax.json.JsonReader;
 import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
@@ -330,9 +330,10 @@ public abstract class Scraper {
         store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
         store.add(catalog, DCTERMS.LICENSE, DATAGOVBE.LICENSE_CC0);
         store.add(catalog, FOAF.HOMEPAGE, getBase());
-        
-        for (String lang : getAllLangs()) {
-            store.add(catalog, DC.LANGUAGE, lang);
+                
+        String[] langs = getAllLangs();
+        for (String lang : langs) {
+            store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         }
     }
     

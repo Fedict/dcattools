@@ -28,6 +28,7 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.vocab.DCAT;
+import be.fedict.dcat.vocab.MDR_LANG;
 import be.fedict.dcat.vocab.VCARD;
 import java.io.File;
 import java.io.IOException;
@@ -276,15 +277,6 @@ public abstract class Ckan extends Scraper {
         parseContact(store, uri, json, Ckan.AUTHOR, Ckan.AUTHOR_EML, DCAT.CONTACT_POINT);
         parseContact(store, uri, json, Ckan.MAINT, Ckan.MAINT_EML, DCAT.CONTACT_POINT);
         
-        // original CKAN page with more info
-        String id = json.getString(Ckan.ID);
-        if (id != null) {
-            try {
-                store.add(uri, DCAT.LANDING_PAGE, ckanPageURL(id));
-            } catch (MalformedURLException ex) {
-                logger.error("Could not generate URL for page");
-            }
-        }
     }
     
     /**
@@ -394,7 +386,17 @@ public abstract class Ckan extends Scraper {
         URI dataset = store.getURI(makeDatasetURL(id).toString());
         logger.info("Generating dataset {} ", dataset.toString());
         
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);        
+        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+        
+        /* CKAN web page */
+        if (!id.isEmpty()) {
+            try {
+                store.add(dataset, DCAT.LANDING_PAGE, ckanPageURL(id));
+            } catch (MalformedURLException ex) {
+                logger.error("Could not generate URL for page");
+            }
+        }
         /* Parse different sections of CKAN JSON */
         ckanGeneral(store, dataset, obj, lang);
         ckanTags(store, dataset, obj, lang);

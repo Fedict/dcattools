@@ -41,6 +41,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
@@ -88,12 +89,9 @@ public class HtmlFodMobilit extends Html {
     private void scrapeFront(Cache cache) throws IOException {
         URL front = getBase();
         
-        String deflang = getDefaultLang();
         for (String lang : getAllLangs()) {
-            if (!lang.equals(deflang)) {
-                URL url = switchLanguage(lang);
-                cache.storePage(front, makeRequest(url), lang);
-            }
+            URL url = switchLanguage(lang);
+            cache.storePage(front, makeRequest(url), lang);
         }
     }
     
@@ -142,6 +140,7 @@ public class HtmlFodMobilit extends Html {
         String title = desc;
                 
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         store.add(dataset, DCTERMS.TITLE, title, lang);
         store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
@@ -152,6 +151,7 @@ public class HtmlFodMobilit extends Html {
         URI dist = store.getURI(makeDistributionURL(i).toString());
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         store.add(dist, DCAT.DOWNLOAD_URL, new URL(getBase(), href));
             
         int dot = href.lastIndexOf(".");
