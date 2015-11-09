@@ -309,6 +309,10 @@ public abstract class Ckan extends Scraper {
      */
     protected void ckanResources(Storage store, URI uri, JsonObject json, String lang) 
                                 throws RepositoryException, MalformedURLException {
+        
+        /* CKAN page / access page */
+        URL access = ckanPageURL(json.getString(Ckan.ID, ""));
+        
         JsonArray arr = json.getJsonArray(Ckan.RESOURCES);
         
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
@@ -323,6 +327,8 @@ public abstract class Ckan extends Scraper {
             parseDate(store, distr, obj, Ckan.MODIFIED, DCTERMS.MODIFIED);
             parseString(store, distr, obj, Ckan.FORMAT, DCAT.MEDIA_TYPE, null);
             parseURI(store, distr, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
+            
+            store.add(distr, DCAT.ACCESS_URL, access);
         }
     }
    
@@ -389,14 +395,6 @@ public abstract class Ckan extends Scraper {
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         
-        /* CKAN web page */
-        if (!id.isEmpty()) {
-            try {
-                store.add(dataset, DCAT.LANDING_PAGE, ckanPageURL(id));
-            } catch (MalformedURLException ex) {
-                logger.error("Could not generate URL for page");
-            }
-        }
         /* Parse different sections of CKAN JSON */
         ckanGeneral(store, dataset, obj, lang);
         ckanTags(store, dataset, obj, lang);
