@@ -28,6 +28,7 @@ package be.fedict.dcat.datagovbe;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.DATAGOVBE;
+import be.fedict.dcat.vocab.MDR_LANG;
 import com.google.common.collect.ListMultimap;
 import java.io.IOException;
 import java.net.URL;
@@ -353,6 +354,38 @@ public class Drupal {
     }
 
     /**
+     * Add DCAT distribution
+     * 
+     * @param store RDF store
+     * @param uri distribution URI
+     * @param lang language
+     * @param builder JSON builder
+     * @param accesses landing pages array
+     * @param downloads download pages array
+     * @throws RepositoryException
+     */
+    private void addDist(Storage store, String uri, String lang, JsonObjectBuilder builder,
+                JsonArrayBuilder accesses, JsonArrayBuilder downloads) 
+                                                    throws RepositoryException {     
+        Map<URI, ListMultimap<String, String>> dist = 
+                                        store.queryProperties(store.getURI(uri));
+        String distlang = getOne(dist, DCTERMS.LANGUAGE, "");
+        if (MDR_LANG.MAP.get(lang).toString().equals(distlang)) {
+            // Landing page / page(s) with more info on dataset
+            String access = getLink(dist, DCAT.ACCESS_URL);
+            if (! access.isEmpty()) {
+                accesses.add(Json.createObjectBuilder().add(Drupal.URL, access));
+            }
+            // Download URL
+            String download = getLink(dist, DCAT.DOWNLOAD_URL);
+            if (! download.isEmpty()) {
+                downloads.add(Json.createObjectBuilder().add(Drupal.URL, download));
+            }
+            builder.add(Drupal.FLD_FORMAT, getCategories(dist, DATAGOVBE.MEDIA_TYPE));
+        }
+    }
+    
+    /**
      * Add a dataset to the Drupal website.
      * 
      * @param store RDF store
@@ -377,22 +410,8 @@ public class Drupal {
             JsonArrayBuilder accesses = Json.createArrayBuilder();
             JsonArrayBuilder downloads = Json.createArrayBuilder();
             
-            for (String d : dists) {
-                Map<URI, ListMultimap<String, String>> dist = 
-                                        store.queryProperties(store.getURI(d));
-                
-                // Landing page / page(s) with more info on dataset
-                String access = getLink(dist, DCAT.ACCESS_URL);
-                if (! access.isEmpty()) {
-                    accesses.add(Json.createObjectBuilder().add(Drupal.URL, access));
-                }
-        
-                // Download URL
-                String download = getLink(dist, DCAT.DOWNLOAD_URL);
-                if (! download.isEmpty()) {
-                    downloads.add(Json.createObjectBuilder().add(Drupal.URL, download));
-                }
-                builder.add(Drupal.FLD_FORMAT, getCategories(dist, DATAGOVBE.MEDIA_TYPE));
+            for (String dist : dists) {
+                addDist(store, dist, lang, builder, accesses, downloads);                
             }
             builder.add(Drupal.FLD_DETAILS + lang, accesses);
             builder.add(Drupal.FLD_LINKS + lang, downloads);
