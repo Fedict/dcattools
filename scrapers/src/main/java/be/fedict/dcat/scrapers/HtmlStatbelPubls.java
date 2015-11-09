@@ -207,6 +207,10 @@ public class HtmlStatbelPubls extends Html {
             
         for (String lang : getAllLangs()) {
             String p = page.get(lang);
+            if (p == null) {
+                logger.warn("Page {} not available in {}", url, lang);
+                continue;
+            }
             
             Element doc = Jsoup.parse(p).body();
             String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
@@ -217,6 +221,7 @@ public class HtmlStatbelPubls extends Html {
             for (Element para : paras) {
                 desc += para.text() + "\n";
             }
+            
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
