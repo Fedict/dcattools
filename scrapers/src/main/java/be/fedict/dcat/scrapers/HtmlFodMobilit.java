@@ -56,7 +56,7 @@ public class HtmlFodMobilit extends Html {
     private final Logger logger = LoggerFactory.getLogger(HtmlFodMobilit.class);
 
     public final static String LANG_LINK = "language-link";
-    
+        
     /**
      * Switch to another language
      * 
@@ -117,6 +117,36 @@ public class HtmlFodMobilit extends Html {
         logger.info("Done scraping");
     }
 
+    
+    /**
+     * Generate DCAT distribution.
+     * 
+     * @param store RDF store
+     * @param dataset
+     * @param a href
+     * @param i sequence
+     * @param lang
+     * @throws MalformedURLException
+     * @throws RepositoryException 
+     */
+    private void generateDist(Storage store, URI dataset, Elements a, int i, String lang) 
+                            throws MalformedURLException, RepositoryException {
+        String href = a.first().attr(Attribute.HREF.toString());
+    
+        URI dist = store.getURI(makeDistributionURL(i, lang).toString());
+        store.add(dataset, DCAT.DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+   //     store.add(dist, DCAT.ACCESS_URL, fronts.get(lang));
+        store.add(dist, DCAT.DOWNLOAD_URL, new URL(getBase(), href));
+            
+        int dot = href.lastIndexOf(".");
+        if (dot > 0) {
+            String ext = href.substring(dot+1);
+            store.add(dist, DCAT.MEDIA_TYPE, ext);
+        }
+    }
+    
     /**
      * Generate one dataset
      * 
@@ -144,20 +174,9 @@ public class HtmlFodMobilit extends Html {
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
     
         Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
-        String href = a.first().attr(Attribute.HREF.toString());
-    
-        URI dist = store.getURI(makeDistributionURL(i, lang).toString());
-        store.add(dataset, DCAT.DISTRIBUTION, dist);
-        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
-        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCAT.DOWNLOAD_URL, new URL(getBase(), href));
-            
-        int dot = href.lastIndexOf(".");
-        if (dot > 0) {
-            String ext = href.substring(i+1);
-            store.add(dist, DCAT.MEDIA_TYPE, ext);
-        }
+        generateDist(store, dataset, a, i, lang);
     }
+    
     
     /**
      * Generate DCAT datasets.
