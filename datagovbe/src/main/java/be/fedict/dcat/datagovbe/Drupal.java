@@ -315,7 +315,7 @@ public class Drupal {
         JsonArrayBuilder keywords = Json.createArrayBuilder();
         List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
         for(String word : words) {
-            keywords.add(word);
+         //   keywords.add(word);
         }
         
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
@@ -369,7 +369,10 @@ public class Drupal {
                                                     throws RepositoryException {     
         Map<URI, ListMultimap<String, String>> dist = 
                                         store.queryProperties(store.getURI(uri));
-        String distlang = getOne(dist, DCTERMS.LANGUAGE, "");
+        String distlang = getLink(dist, DCTERMS.LANGUAGE);
+        logger.info(distlang);
+        logger.info(lang);
+        logger.info(MDR_LANG.MAP.get(lang).toString());
         if (MDR_LANG.MAP.get(lang).toString().equals(distlang)) {
             // Landing page / page(s) with more info on dataset
             String access = getLink(dist, DCAT.ACCESS_URL);
