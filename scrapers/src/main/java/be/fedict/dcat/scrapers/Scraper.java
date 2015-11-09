@@ -320,7 +320,7 @@ public abstract class Scraper {
     /**
      * Extra DCAT catalog info
      * 
-     * @param store
+     * @param store RDF store
      * @param catalog 
      * @throws org.openrdf.repository.RepositoryException 
      */
@@ -340,18 +340,19 @@ public abstract class Scraper {
     /**
      * Generate DCAT Dataset
      * 
+     * @param store RDF store
+     * @param url
      * @param page
-     * @param store
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    public abstract void generateDataset(Map<String, String> page, Storage store) 
-                            throws MalformedURLException, RepositoryException;
+    public abstract void generateDataset(Storage store, URL url, Map<String, String> page) 
+            throws MalformedURLException, RepositoryException;
         
     /**
      * Generate DCAT Catalog.
      * 
-     * @param store
+     * @param store RDF store
      * @throws RepositoryException 
      */
     public void generateCatalog(Storage store) throws RepositoryException {
