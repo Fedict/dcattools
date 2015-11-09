@@ -116,19 +116,18 @@ public class HtmlFodMobilit extends Html {
         
         logger.info("Done scraping");
     }
-    
 
     /**
      * Generate one dataset
      * 
+     * @param store  RDF store
      * @param row
      * @param i number
      * @param lang language
-     * @param store  RDF store
      * @throws MalformedURLException
      * @throws RepositoryException
      */
-    private void generateDataset(Element row, int i, String lang, Storage store) 
+    private void generateDataset(Storage store, Element row, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         URL u = makeDatasetURL(i);
         URI dataset = store.getURI(u.toString());  
@@ -163,13 +162,14 @@ public class HtmlFodMobilit extends Html {
     /**
      * Generate DCAT datasets.
      * 
+     * @param store RDF store
+     * @param url
      * @param page
-     * @param store
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     @Override
-    public void generateDataset(Map<String,String> page, Storage store)
+    public void generateDataset(Storage store, URL url, Map<String,String> page)
                             throws MalformedURLException, RepositoryException {
         for (String lang : getAllLangs()) {
             String p = page.get(lang);
@@ -177,12 +177,18 @@ public class HtmlFodMobilit extends Html {
             int i = 0;
             
             for (Element row : rows) {
-                generateDataset(row, i, lang, store);         
+                generateDataset(store, row, i, lang);
                 i++;
             }
         }
     }
     
+    /**
+     * 
+     * @param store
+     * @param catalog
+     * @throws RepositoryException 
+     */
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
@@ -207,7 +213,7 @@ public class HtmlFodMobilit extends Html {
         
         /* Get the list of all datasets */            
         Map<String, String> page = cache.retrievePage(getBase());
-        generateDataset(page, store);
+        generateDataset(store, null, page);
         generateCatalog(store);
     }
      

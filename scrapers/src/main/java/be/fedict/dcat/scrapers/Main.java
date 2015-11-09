@@ -144,6 +144,11 @@ public class Main {
         }
     }
     
+    /**
+     * Main
+     * 
+     * @param args 
+     */
     public static void main(String[] args) { 
         logger.info("-- START --");
         if (args.length == 0) {

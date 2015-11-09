@@ -55,7 +55,7 @@ public class HtmlBxlMobilit extends Html {
     }
 
     @Override
-    public void generateDataset(Map<String, String> page, Storage store) throws MalformedURLException, RepositoryException {
+    public void generateDataset(Storage store, URL u, Map<String, String> page) throws MalformedURLException, RepositoryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

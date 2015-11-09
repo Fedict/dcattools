@@ -46,18 +46,19 @@ public abstract class Html extends Scraper {
      * @throws java.net.MalformedURLException 
      */
     public URL makeDatasetURL(int i) throws MalformedURLException {
-        return new URL(getBase().toString() + "#" + String.valueOf(i));
+        return new URL(getBase().toString() + "/" + String.valueOf(i));
     }
     
     /**
      * Make a URL for a DCAT Distribution 
      * 
      * @param i
+     * @param lang
      * @return URL
      * @throws java.net.MalformedURLException 
      */
     public URL makeDistributionURL(int i, String lang) throws MalformedURLException {
-        return new URL(getBase().toString() + "#" 
+        return new URL(getBase().toString() + "/" 
                 + String.valueOf(i) + "/download" + "/" + lang);
     }
        

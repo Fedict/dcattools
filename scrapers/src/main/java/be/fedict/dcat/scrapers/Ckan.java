@@ -375,13 +375,14 @@ public abstract class Ckan extends Scraper {
     /**
      * Generate DCAT Dataset
      * 
-     * @param page
      * @param store
+     * @param page
+     * @param url
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     @Override
-    public void generateDataset(Map<String, String> page, Storage store) 
+    public void generateDataset(Storage store, URL url, Map<String, String> page) 
                             throws MalformedURLException, RepositoryException {
         String lang = getDefaultLang();
         
@@ -391,7 +392,7 @@ public abstract class Ckan extends Scraper {
         
         String id = obj.getString(Ckan.ID, "");
         URI dataset = store.getURI(makeDatasetURL(id).toString());
-        logger.info("Generating dataset {} ", dataset.toString());
+        logger.info("Generating dataset {}", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
@@ -421,7 +422,7 @@ public abstract class Ckan extends Scraper {
         List<URL> urls = cache.retrieveURLList();
         for (URL u : urls) {
             Map<String, String> page = cache.retrievePage(u);
-            generateDataset(page, store);
+            generateDataset(store, u, page);
         }
         generateCatalog(store);
     }

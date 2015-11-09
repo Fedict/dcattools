@@ -28,6 +28,7 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.io.IOException;
@@ -60,8 +61,12 @@ public class HtmlStatbelPubls extends Html {
     
     public final static String CAT_SELECT = "category_select";
     public final static String CAT_CAT = "Statistieken - Download-tabellen";
-    public final static String LANG_LINK = "blgm_lSwitch";
     
+    public final static String LANG_LINK = "blgm_lSwitch";
+    public final static String MAIN_DIV = "mainContent";
+    public final static String DET_DATE = "detailFirstPart";
+    public final static String DET_CAT = "facets";
+    public final static String SCND_DIV = "detailScdPart";
     
     /**
      * Get the URL of the  page in another language
@@ -180,14 +185,51 @@ public class HtmlStatbelPubls extends Html {
         logger.info("Done scraping");
     }
 
+    /**
+     * Generate DCAT Dataset.
+     * 
+     * @param store RDF store
+     * @param url
+     * @param page
+     * @throws MalformedURLException
+     * @throws RepositoryException 
+     */
     @Override
-    public void generateDataset(Map<String, String> page, Storage store) 
+    public void generateDataset(Storage store, URL url, Map<String, String> page) 
                             throws MalformedURLException, RepositoryException {
+        String id = makeHashId(url.toString());
+        URL u = makeDatasetURL(id);
+        URI dataset = store.getURI(u.toString());
+        logger.info("Generating dataset {}", dataset.toString());
+        
+        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, DCTERMS.IDENTIFIER, id);
+            
         for (String lang : getAllLangs()) {
-          //
+            String p = page.get(lang);
+            
+            Element doc = Jsoup.parse(p).body();
+            String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
+            
+            Element div = doc.getElementsByClass(MAIN_DIV).first();
+            Elements paras  = div.getElementsByTag(Tag.P.toString());
+            String desc = "";
+            for (Element para : paras) {
+                desc += para.text() + "\n";
+            }
+            store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+            store.add(dataset, DCTERMS.TITLE, title, lang);
+            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         }
     }
     
+    /**
+     * Generate DCAT Catalog info.
+     * 
+     * @param store RDF store
+     * @param catalog
+     * @throws RepositoryException 
+     */
     @Override
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
@@ -201,7 +243,7 @@ public class HtmlStatbelPubls extends Html {
      * Generate DCAT.
      * 
      * @param cache
-     * @param store
+     * @param store RDF store
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
@@ -211,15 +253,13 @@ public class HtmlStatbelPubls extends Html {
         logger.info("Generate DCAT");
         
         /* Get the list of all datasets */
-        Map<String, String> front = cache.retrievePage(getBase());
-        List<URL> urls = new ArrayList<>();
-        
-        generateCatalog(store);
-        
+        List<URL> urls = cache.retrieveURLList();
         for(URL u : urls) {
             Map<String, String> page = cache.retrievePage(u);
-            generateDataset(page, store);
+            generateDataset(store, u, page);
         }
+        generateCatalog(store);
+        
     }
     
     
