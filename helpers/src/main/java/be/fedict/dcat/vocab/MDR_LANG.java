@@ -48,6 +48,8 @@ public class MDR_LANG {
     public final static URI EN;
     public final static URI FR;
     public final static URI NL;
+  
+    public final static Map<String,URI> MAP = new HashMap<>();
     
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
@@ -56,5 +58,10 @@ public class MDR_LANG {
         EN = factory.createURI(MDR_LANG.NAMESPACE, "ENG");
         FR = factory.createURI(MDR_LANG.NAMESPACE, "FRA");
         NL = factory.createURI(MDR_LANG.NAMESPACE, "NLD");
+        
+        MAP.put("de", DE);
+        MAP.put("en", EN);
+        MAP.put("fr", FR);
+        MAP.put("nl", NL);
     }
 }
