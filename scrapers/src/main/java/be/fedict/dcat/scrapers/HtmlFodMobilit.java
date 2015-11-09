@@ -41,7 +41,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
@@ -148,7 +147,7 @@ public class HtmlFodMobilit extends Html {
         Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
         String href = a.first().attr(Attribute.HREF.toString());
     
-        URI dist = store.getURI(makeDistributionURL(i).toString());
+        URI dist = store.getURI(makeDistributionURL(i, lang).toString());
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));

@@ -329,6 +329,7 @@ public abstract class Ckan extends Scraper {
             parseURI(store, distr, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
             
             store.add(distr, DCAT.ACCESS_URL, access);
+            store.add(distr, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         }
     }
    
