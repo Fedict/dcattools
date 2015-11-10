@@ -74,27 +74,27 @@ public class Cache {
     /**
      * Store a webpage
      * 
-     * @param url
+     * @param id
      * @param page
      * @param lang 
      */
-    public void storePage(URL url, String page, String lang) {
-        ConcurrentMap<URL, Map<String, String>> map = db.hashMap(PAGES);
-        Map<String, String> p = map.getOrDefault(url, new HashMap<String, String>());
+    public void storePage(URL id, String lang, Page page) {
+        ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(PAGES);
+        Map<String, Page> p = map.getOrDefault(id, new HashMap<String, Page>());
         p.put(lang, page);
-        map.put(url, p);
+        map.put(id, p);
         db.commit();
     }
     
     /**
      * Retrieve a page from the cache
      * 
-     * @param url
-     * @return 
+     * @param id
+     * @return page object
      */
-    public Map<String, String> retrievePage(URL url) {
-        ConcurrentMap<URL, Map<String, String>> map = db.hashMap(PAGES);
-        return map.getOrDefault(url, new HashMap<String, String>());
+    public Map<String, Page> retrievePage(URL id) {
+        ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(PAGES);
+        return map.getOrDefault(id, new HashMap<String, Page>());
     }
     
     /**
