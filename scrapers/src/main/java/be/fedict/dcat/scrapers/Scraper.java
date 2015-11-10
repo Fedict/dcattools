@@ -27,6 +27,7 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -321,7 +322,7 @@ public abstract class Scraper {
      * Extra DCAT catalog info
      * 
      * @param store RDF store
-     * @param catalog 
+     * @param uri catalog URI
      * @throws org.openrdf.repository.RepositoryException 
      */
     public void generateCatalogInfo(Storage store, URI catalog) 
@@ -341,12 +342,12 @@ public abstract class Scraper {
      * Generate DCAT Dataset
      * 
      * @param store RDF store
-     * @param url
+     * @param id dataset id
      * @param page
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    public abstract void generateDataset(Storage store, URL url, Map<String, String> page) 
+    public abstract void generateDataset(Storage store, String id, Map<String,Page> page) 
             throws MalformedURLException, RepositoryException;
         
     /**
