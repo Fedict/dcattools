@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.helpers;
 
+import java.io.Serializable;
 import java.net.URL;
 
 /**
@@ -32,7 +33,9 @@ import java.net.URL;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class Page {
+public class Page implements Serializable {
+    private static final long serialVersionUID = 1L;
+            
     private URL url;
     private String content;
 
@@ -60,7 +63,7 @@ public class Page {
     /**
      * @param content the content to set
      */
-    public void setContent(String cotent) {
+    public void setContent(String content) {
         this.content = content;
     }
     
@@ -68,7 +71,7 @@ public class Page {
      * Constructor
      * 
      * @param url
-     * @param body 
+     * @param content 
      */
     public Page(URL url, String content) {
         this.url = url;
