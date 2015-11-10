@@ -37,37 +37,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Map a literal from one property to an URI of another property.
+ * Load/import an RDF file.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class SkosMap extends Enhancer {
-    private final Logger logger = LoggerFactory.getLogger(SkosMap.class);
-    
-    /**
-     * Map literal using SKOS file.
-     * 
-     * @param prop
-     * @param newprop
-     * @param skosprop SKOS property used for mapping
-     * @throws RepositoryException 
-     */
-    private void skosMap(URI prop, URI newprop, URI skosprop) 
-                                                throws RepositoryException {
-        logger.info("Mapping {} to {}", prop.toString(), newprop.toString());
-        
-        getStore().skosMap(prop, newprop, skosprop);
-    }
+public class LoadRDF extends Enhancer {
+    private final Logger logger = LoggerFactory.getLogger(LoadRDF.class);
     
     @Override
     public void enhance() {
         try {
-            URI property = getStore().getURI(getProperty("property"));
-            URI newproperty = getStore().getURI(getProperty("newproperty"));
-            String skos = getProperty("skosfile");
-            URI skosProp = getStore().getURI(getProperty("skosproperty"));
-            getStore().read(new BufferedReader(new FileReader(skos)), RDFFormat.TURTLE);
-            skosMap(property, newproperty, skosProp);
+            String file = getProperty("rdffile");
+            getStore().read(new BufferedReader(new FileReader(file)), RDFFormat.TURTLE);
         } catch (RepositoryException|IOException|RDFParseException ex) {
             logger.error("Error loading file", ex);
         }
@@ -78,7 +59,7 @@ public class SkosMap extends Enhancer {
      * 
      * @param store 
      */
-    public SkosMap(Storage store) {
+    public LoadRDF(Storage store) {
         super(store);
     }
 }
