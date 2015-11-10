@@ -261,7 +261,7 @@ public abstract class Ckan extends Scraper {
      * @param store RDF store
      * @param uri RDF subject
      * @param lang language
-     * @param json
+     * @param json JSON object with CKAN data
      * @throws RepositoryException 
      */
     protected void ckanGeneral(Storage store, URI uri, JsonObject json, String lang) 
@@ -285,7 +285,7 @@ public abstract class Ckan extends Scraper {
      * 
      * @param store RDF store
      * @param uri RDF subject
-     * @param json
+     * @param json JSON object with Ckan data
      * @param lang language
      * @throws RepositoryException 
      */
@@ -302,13 +302,13 @@ public abstract class Ckan extends Scraper {
      * Parse CKAN resources.
      * 
      * @param store RDF store
-     * @param uri 
+     * @param dataset dataset
      * @param json JSON
      * @param lang language
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-    protected void ckanResources(Storage store, URI uri, JsonObject json, String lang) 
+    protected void ckanResources(Storage store, URI dataset, JsonObject json, String lang) 
                                 throws RepositoryException, MalformedURLException {
         
         /* CKAN page / access page */
@@ -319,7 +319,7 @@ public abstract class Ckan extends Scraper {
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
             String id = obj.getString(Ckan.ID, "");
             URI distr = store.getURI(makeDistURL(id).toString());
-            store.add(uri, DCAT.DISTRIBUTION, distr);
+            store.add(dataset, DCAT.DISTRIBUTION, distr);
             store.add(distr, RDF.TYPE, DCAT.A_DISTRIBUTION);
         
             parseString(store, distr, obj, Ckan.ID, DCTERMS.IDENTIFIER, null);
@@ -361,9 +361,9 @@ public abstract class Ckan extends Scraper {
     }
     
     /**
-     * Parse CKAN extra
+     * Parse CKAN extra fields.
      * 
-     * @param store
+     * @param store RDF store
      * @param uri
      * @param json
      * @param lang language
@@ -376,14 +376,14 @@ public abstract class Ckan extends Scraper {
     /**
      * Generate DCAT Dataset
      * 
-     * @param store
+     * @param store RDF store
+     * @param id
      * @param page
-     * @param url
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     @Override
-    public void generateDataset(Storage store, String id, Map<String, Page> page) 
+    public void generateDataset(Storage store, String id, Map<String,Page> page) 
                             throws MalformedURLException, RepositoryException {
         String lang = getDefaultLang();
         
@@ -410,7 +410,7 @@ public abstract class Ckan extends Scraper {
      * Generate DCAT.
      * 
      * @param cache
-     * @param store
+     * @param store RDF store
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
