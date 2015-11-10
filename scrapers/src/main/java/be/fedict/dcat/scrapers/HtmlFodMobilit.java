@@ -26,6 +26,7 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -90,7 +91,8 @@ public class HtmlFodMobilit extends Html {
         
         for (String lang : getAllLangs()) {
             URL url = switchLanguage(lang);
-            cache.storePage(front, makeRequest(url), lang);
+            String content = makeRequest(url);
+            cache.storePage(front, lang, new Page(url, content));
         }
     }
     
@@ -104,13 +106,14 @@ public class HtmlFodMobilit extends Html {
         logger.info("Start scraping");
         Cache cache = getCache();
         
-        Map<String, String> front = cache.retrievePage(getBase());
+        Map<String, Page> front = cache.retrievePage(getBase());
         if (front.keySet().isEmpty()) {
             scrapeFront(cache);
             front = cache.retrievePage(getBase());   
         }
         // Calculate the number of datasets
-        String datasets = front.get(getDefaultLang());
+        Page p = front.get(getDefaultLang());
+        String datasets = p.getContent();
         Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
         logger.info("Found {} datasets on page", String.valueOf(rows.size()));
         
@@ -182,19 +185,21 @@ public class HtmlFodMobilit extends Html {
      * Generate DCAT datasets.
      * 
      * @param store RDF store
-     * @param url
+     * @param id
      * @param page
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     @Override
-    public void generateDataset(Storage store, URL url, Map<String,String> page)
+    public void generateDataset(Storage store, String id, Map<String,Page> page)
                             throws MalformedURLException, RepositoryException {
-        for (String lang : getAllLangs()) {
-            String p = page.get(lang);
-            Elements rows = Jsoup.parse(p).body().getElementsByTag(Tag.TR.toString());
-            int i = 0;
+        String[] langs = getAllLangs();
+        for (String lang : langs) {
+            Page p = page.getOrDefault(lang, new Page());
+            String html = p.getContent();
+            Elements rows = Jsoup.parse(html).body().getElementsByTag(Tag.TR.toString());
             
+            int i = 0;
             for (Element row : rows) {
                 generateDataset(store, row, i, lang);
                 i++;
@@ -231,7 +236,7 @@ public class HtmlFodMobilit extends Html {
         logger.info("Generate DCAT");
         
         /* Get the list of all datasets */            
-        Map<String, String> page = cache.retrievePage(getBase());
+        Map<String, Page> page = cache.retrievePage(getBase());
         generateDataset(store, null, page);
         generateCatalog(store);
     }

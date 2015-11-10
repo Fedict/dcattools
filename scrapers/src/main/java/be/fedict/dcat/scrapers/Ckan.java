@@ -27,6 +27,7 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 import be.fedict.dcat.vocab.VCARD;
@@ -382,16 +383,16 @@ public abstract class Ckan extends Scraper {
      * @throws RepositoryException 
      */
     @Override
-    public void generateDataset(Storage store, URL url, Map<String, String> page) 
+    public void generateDataset(Storage store, String id, Map<String, Page> page) 
                             throws MalformedURLException, RepositoryException {
         String lang = getDefaultLang();
         
-        String p = page.getOrDefault(lang, "");
-        JsonReader reader = Json.createReader(new StringReader(p));
+        Page p = page.getOrDefault(lang, new Page());
+        JsonReader reader = Json.createReader(new StringReader(p.getContent()));
         JsonObject obj = reader.readObject();
         
-        String id = obj.getString(Ckan.ID, "");
-        URI dataset = store.getURI(makeDatasetURL(id).toString());
+        String ckanid = obj.getString(Ckan.ID, "");
+        URI dataset = store.getURI(makeDatasetURL(ckanid).toString());
         logger.info("Generating dataset {}", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
@@ -421,8 +422,8 @@ public abstract class Ckan extends Scraper {
         /* Get the list of all datasets */
         List<URL> urls = cache.retrieveURLList();
         for (URL u : urls) {
-            Map<String, String> page = cache.retrievePage(u);
-            generateDataset(store, u, page);
+            Map<String, Page> page = cache.retrievePage(u);
+            generateDataset(store, null, page);
         }
         generateCatalog(store);
     }
@@ -486,7 +487,7 @@ public abstract class Ckan extends Scraper {
         logger.info("Start scraping (waiting between requests)");
         int i = 0;
         for (URL u : urls) {
-            Map<String, String> page = cache.retrievePage(u);
+            Map<String, Page> page = cache.retrievePage(u);
             if (page.isEmpty()) {
                 sleep();
                 if (++i % 100 == 0) {
@@ -494,7 +495,7 @@ public abstract class Ckan extends Scraper {
                 }
                 try {
                     JsonObject obj = scrapePackage(u);
-                    cache.storePage(u, obj.toString(), lang);
+                    cache.storePage(u, lang, new Page(u, obj.toString()));
                 } catch (IOException e) {
                     logger.warn("Failed to scrape {}", u);
                 }

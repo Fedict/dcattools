@@ -27,6 +27,7 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -103,14 +104,16 @@ public class HtmlStatbelPubls extends Html {
     private void scrapeDataset(URL u) throws IOException {
         Cache cache = getCache();
         String deflang = getDefaultLang();
-        String page = makeRequest(u);
+        String html = makeRequest(u);
         
-        cache.storePage(u, page, deflang);
+        cache.storePage(u, deflang, new Page(u, html));
         
-        for (String lang : getAllLangs()) {
+        String[] langs = getAllLangs();
+        for (String lang : langs) {
             if (! lang.equals(deflang)) {
-                URL url = switchLanguage(page, lang);
-                cache.storePage(u, makeRequest(url), lang);
+                URL url = switchLanguage(html, lang);
+                String body = makeRequest(url);
+                cache.storePage(u, lang, new Page(url, body));
                 sleep();
             }
         } 
@@ -169,7 +172,7 @@ public class HtmlStatbelPubls extends Html {
         logger.info("Start scraping (waiting between requests)");
         int i = 0;
         for (URL u : urls) {
-            Map<String, String> page = cache.retrievePage(u);
+            Map<String, Page> page = cache.retrievePage(u);
             if (page.isEmpty()) {
                 sleep();
                 if (++i % 100 == 0) {
@@ -189,30 +192,29 @@ public class HtmlStatbelPubls extends Html {
      * Generate DCAT Dataset.
      * 
      * @param store RDF store
-     * @param url
+     * @param id
      * @param page
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     @Override
-    public void generateDataset(Storage store, URL url, Map<String, String> page) 
+    public void generateDataset(Storage store, String id, Map<String,Page> page) 
                             throws MalformedURLException, RepositoryException {
-        String id = makeHashId(url.toString());
-        URL u = makeDatasetURL(id);
-        URI dataset = store.getURI(u.toString());
+  
+        URI dataset = store.getURI(makeDatasetURL(id).toString());
         logger.info("Generating dataset {}", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.IDENTIFIER, id);
             
         for (String lang : getAllLangs()) {
-            String p = page.get(lang);
+            Page p = page.get(lang);
             if (p == null) {
-                logger.warn("Page {} not available in {}", url, lang);
+                logger.warn("Page {} not available in {}", dataset.toString(), lang);
                 continue;
             }
-            
-            Element doc = Jsoup.parse(p).body();
+            String html = p.getContent();
+            Element doc = Jsoup.parse(html).body();
             String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
             
             Element div = doc.getElementsByClass(MAIN_DIV).first();
@@ -260,8 +262,9 @@ public class HtmlStatbelPubls extends Html {
         /* Get the list of all datasets */
         List<URL> urls = cache.retrieveURLList();
         for(URL u : urls) {
-            Map<String, String> page = cache.retrievePage(u);
-            generateDataset(store, u, page);
+            Map<String,Page> page = cache.retrievePage(u);
+            String id = makeHashId(u.toString());
+            generateDataset(store, id, page);
         }
         generateCatalog(store);
         
