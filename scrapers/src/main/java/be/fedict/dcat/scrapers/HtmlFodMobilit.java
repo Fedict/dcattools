@@ -125,22 +125,24 @@ public class HtmlFodMobilit extends Html {
      * Generate DCAT distribution.
      * 
      * @param store RDF store
-     * @param dataset
-     * @param a href
-     * @param i sequence
-     * @param lang
+     * @param dataset URI
+     * @param front URL of the front page
+     * @param link link element
+     * @param i row sequence
+     * @param lang language code
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, Elements a, int i, String lang) 
+    private void generateDist(Storage store, URI dataset, URL front, 
+                                            Elements link, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
-        String href = a.first().attr(Attribute.HREF.toString());
+        String href = link.first().attr(Attribute.HREF.toString());
     
         URI dist = store.getURI(makeDistributionURL(i, lang).toString());
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-   //     store.add(dist, DCAT.ACCESS_URL, fronts.get(lang));
+        store.add(dist, DCAT.ACCESS_URL, front);
         store.add(dist, DCAT.DOWNLOAD_URL, new URL(getBase(), href));
             
         int dot = href.lastIndexOf(".");
@@ -154,13 +156,14 @@ public class HtmlFodMobilit extends Html {
      * Generate one dataset
      * 
      * @param store  RDF store
+     * @param URL front
      * @param row
      * @param i number
      * @param lang language
      * @throws MalformedURLException
      * @throws RepositoryException
      */
-    private void generateDataset(Storage store, Element row, int i, String lang) 
+    private void generateDataset(Storage store, URL front, Element row, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         URL u = makeDatasetURL(i);
         URI dataset = store.getURI(u.toString());  
@@ -176,8 +179,8 @@ public class HtmlFodMobilit extends Html {
         store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
     
-        Elements a = cells.get(1).getElementsByTag(Tag.A.toString());
-        generateDist(store, dataset, a, i, lang);
+        Elements link = cells.get(1).getElementsByTag(Tag.A.toString());
+        generateDist(store, dataset, front, link, i, lang);
     }
     
     
@@ -197,11 +200,12 @@ public class HtmlFodMobilit extends Html {
         for (String lang : langs) {
             Page p = page.getOrDefault(lang, new Page());
             String html = p.getContent();
+            URL front = p.getUrl();
             Elements rows = Jsoup.parse(html).body().getElementsByTag(Tag.TR.toString());
             
             int i = 0;
             for (Element row : rows) {
-                generateDataset(store, row, i, lang);
+                generateDataset(store, front, row, i, lang);
                 i++;
             }
         }
@@ -236,7 +240,7 @@ public class HtmlFodMobilit extends Html {
         logger.info("Generate DCAT");
         
         /* Get the list of all datasets */            
-        Map<String, Page> page = cache.retrievePage(getBase());
+        Map<String,Page> page = cache.retrievePage(getBase());
         generateDataset(store, null, page);
         generateCatalog(store);
     }
