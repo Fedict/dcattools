@@ -15,7 +15,7 @@ Internet connection is obviously required, a proxy can be used.
 ### Main parts
 
 * Helper classes: for storing scraped pages locally, conversion tools etc.
-* Various [scrapers](#Scraper): getting metadata from various repositories en websites, 
+* Various [scrapers](#scraper): getting metadata from various repositories en websites, 
 and turning into DCAT files
 * DCAT enhancers: for improving the DCAT files, e.g. map site-specific themes to EUROVOC, 
 add missing properties and prepare the files for updating data.gov.be
@@ -26,7 +26,6 @@ add missing properties and prepare the files for updating data.gov.be
 * Based on rdf4j (formerly known as Sesame), MapDB, Guava and other open source libraries.
 * Logging uses SLF4J.
 
-(#Scraper)
 ## Scraper
 
 This command-line Java tool scrapes various websites and CKAN portals.
