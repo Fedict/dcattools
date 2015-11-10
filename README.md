@@ -26,6 +26,7 @@ add missing properties and prepare the files for updating data.gov.be
 * Based on rdf4j (formerly known as Sesame), MapDB, Guava and other open source libraries.
 * Logging uses SLF4J.
 
+(#Scraper)
 ## Scraper
 
 This command-line Java tool scrapes various websites and CKAN portals.
