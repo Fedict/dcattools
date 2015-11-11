@@ -53,7 +53,7 @@ public class Main {
      * 
      * @param code return code 
      */
-    protected static void exit(int code) {
+    private static void exit(int code) {
         logger.info("-- STOP --");
         System.exit(code);
     }

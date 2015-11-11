@@ -27,6 +27,7 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.DCAT;
@@ -35,7 +36,6 @@ import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import java.io.File;
 import java.io.IOException;
-import java.io.StringReader;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -45,11 +45,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import org.apache.http.HttpHost;
-import org.apache.http.client.fluent.Request;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
@@ -63,16 +58,13 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Scraper {
+public abstract class Scraper extends Fetcher {
     private final Logger logger = LoggerFactory.getLogger(Scraper.class);
     
     public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
     
     private Properties prop = null;
     private String prefix = "";
-    
-    private HttpHost proxy = null;
-    private int delay = 1000;
     
     private String defLang = "";
     private String[] allLangs = {};
@@ -168,38 +160,6 @@ public abstract class Scraper {
     }
     
     /**
-     * Set HTTP proxy.
-     * 
-     * @param proxy proxy server
-     * @param port proxy port
-     */
-    public void setProxy(String proxy, int port) {
-        if (proxy == null || proxy.isEmpty()) {
-            this.proxy = null;
-        } else {
-            this.proxy = new HttpHost(proxy, port);
-        }
-    }
-    
-    /**
-     * Get HTTP proxy
-     * 
-     * @return proxy or null
-     */
-    public HttpHost getProxy() {
-        return proxy;
-    }
-    
-    /**
-     * Get delay between HTTP requests
-     * 
-     * @return 
-     */
-    public int getDelay() {
-        return delay;
-    }
-    
-    /**
      * Make a hashed ID based upon a string.
      * 
      * @param s
@@ -268,50 +228,6 @@ public abstract class Scraper {
     }
     
     /**
-     * Sleep (between HTTP requests)
-     */
-    public void sleep() {
-        try {
-            Thread.sleep(getDelay());
-        } catch (InterruptedException ex) {
-        }
-    }
- 
-    /**
-     * Make HTTP GET request.
-     * 
-     * @param url
-     * @return JsonObject containing CKAN info
-     * @throws IOException 
-     */
-    public JsonObject makeJsonRequest(URL url) throws IOException {
-        Request request = Request.Get(url.toString());
-        if (getProxy() != null) {
-            request = request.viaProxy(getProxy());
-        }
-        String json = request.execute().returnContent().asString();
-        JsonReader reader = Json.createReader(new StringReader(json));
-        return reader.readObject();
-    }
-    
-    /**
-     * Make HTTP GET request.
-     * 
-     * @param url
-     * @return String containing raw page
-     * @throws IOException 
-     */
-    public String makeRequest(URL url) throws IOException {
-        logger.info("Requesting page {}", url);
-        Request request = Request.Get(url.toString());
-        if (getProxy() != null) {
-            request = request.viaProxy(getProxy());
-        }
-        return request.execute().returnContent().asString();
-    }
-    
-    
-    /**
      * Fetch all metadata from repository / site
      * 
      * @throws IOException 
@@ -322,7 +238,7 @@ public abstract class Scraper {
      * Extra DCAT catalog info
      * 
      * @param store RDF store
-     * @param uri catalog URI
+     * @param catalog catalog URI
      * @throws org.openrdf.repository.RepositoryException 
      */
     public void generateCatalogInfo(Storage store, URI catalog) 
