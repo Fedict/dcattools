@@ -43,6 +43,7 @@ import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
@@ -64,10 +65,11 @@ public class HtmlStatbelPubls extends Html {
     public final static String CAT_CAT = "Statistieken - Download-tabellen";
     
     public final static String LANG_LINK = "blgm_lSwitch";
-    public final static String MAIN_DIV = "mainContent";
-    public final static String DET_DATE = "detailFirstPart";
-    public final static String DET_CAT = "facets";
-    public final static String SCND_DIV = "detailScdPart";
+    public final static String DIV_MAIN = "mainContent";
+    public final static String DIV_FRST = "detailFirstPart";
+    public final static String DIV_DATE = "date"; 
+    public final static String DIV_CAT = "facets";
+    public final static String DIV_SCND = "detailScdPart";
     
     /**
      * Get the URL of the  page in another language
@@ -217,8 +219,8 @@ public class HtmlStatbelPubls extends Html {
             Element doc = Jsoup.parse(html).body();
             String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
             
-            Element div = doc.getElementsByClass(MAIN_DIV).first();
-            Elements paras  = div.getElementsByTag(Tag.P.toString());
+            Element divmain = doc.getElementsByClass(DIV_MAIN).first();
+            Elements paras  = divmain.getElementsByTag(Tag.P.toString());
             String desc = "";
             for (Element para : paras) {
                 desc += para.text() + "\n";
@@ -227,6 +229,21 @@ public class HtmlStatbelPubls extends Html {
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+            
+            Element divdate = doc.getElementsByClass(DIV_DATE).first();
+            if (divdate != null) {
+                Node n = divdate.childNodes().get(1);
+                store.add(dataset, DCTERMS.MODIFIED, n.toString().trim());
+            }
+            
+            Element divcat = doc.getElementsByClass(DIV_CAT).first();
+            if (divcat != null) {
+                Node n = divcat.childNodes().get(1);
+                String[] cats = n.toString().split(",");
+                for (String cat : cats) {
+                    store.add(dataset, DCAT.KEYWORD, cat.trim(), lang);
+                }
+            }
         }
     }
     
