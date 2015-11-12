@@ -33,34 +33,47 @@ import org.openrdf.model.impl.ValueFactoryImpl;
 
 
 /**
- * EU Publication Office Metadata Registry, Languages
+ * EU Publication Office Metadata Registry, Data themes
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class MDR_LANG {
+public class MDR_THEME {
     public static final String NAMESPACE = 
-                "http://publications.europa.eu/resource/authority/language/";
+                "http://publications.europa.eu/resource/authority/data-theme/";
     
-    public final static String PREFIX = "mdrlang";
+    public final static String PREFIX = "mdrtheme";
     
-    public final static URI DE;
-    public final static URI EN;
-    public final static URI FR;
-    public final static URI NL;
+    public final static URI AGRI;
+    public final static URI ECON;
+    public final static URI EDUC;
+    public final static URI ENER;
+    public final static URI ENVI;
+    public final static URI GOVE;
+    public final static URI HEAL;
+    public final static URI INTR;
+    public final static URI JUST;
+    public final static URI REGI;
+    public final static URI SOCI;
+    public final static URI TECH;
+    public final static URI TRANS;
   
     public final static Map<String,URI> MAP = new HashMap<>();
     
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
         
-        DE = factory.createURI(MDR_LANG.NAMESPACE, "DEU");
-        EN = factory.createURI(MDR_LANG.NAMESPACE, "ENG");
-        FR = factory.createURI(MDR_LANG.NAMESPACE, "FRA");
-        NL = factory.createURI(MDR_LANG.NAMESPACE, "NLD");
-        
-        MAP.put("de", DE);
-        MAP.put("en", EN);
-        MAP.put("fr", FR);
-        MAP.put("nl", NL);
+        AGRI = factory.createURI(MDR_THEME.NAMESPACE, "AGRI");
+        ECON = factory.createURI(MDR_THEME.NAMESPACE, "ECON");
+        EDUC = factory.createURI(MDR_THEME.NAMESPACE, "EDUC");
+        ENER = factory.createURI(MDR_THEME.NAMESPACE, "ENER");
+        ENVI = factory.createURI(MDR_THEME.NAMESPACE, "ENVI");
+        GOVE = factory.createURI(MDR_THEME.NAMESPACE, "GOVE");
+        HEAL = factory.createURI(MDR_THEME.NAMESPACE, "HEAL");
+        INTR = factory.createURI(MDR_THEME.NAMESPACE, "INTR");
+        JUST = factory.createURI(MDR_THEME.NAMESPACE, "JUST");
+        REGI = factory.createURI(MDR_THEME.NAMESPACE, "REGI");
+        SOCI = factory.createURI(MDR_THEME.NAMESPACE, "SOCI");
+        TECH = factory.createURI(MDR_THEME.NAMESPACE, "TECH");
+        TRANS = factory.createURI(MDR_THEME.NAMESPACE, "TRANS");
     }
 }

@@ -33,34 +33,63 @@ import org.openrdf.model.impl.ValueFactoryImpl;
 
 
 /**
- * EU Publication Office Metadata Registry, Languages
+ * EU Publication Office Metadata Registry, File types
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class MDR_LANG {
+public class MDR_FILE {
     public static final String NAMESPACE = 
-                "http://publications.europa.eu/resource/authority/language/";
+                "http://publications.europa.eu/resource/authority/file-type/";
     
-    public final static String PREFIX = "mdrlang";
+    public final static String PREFIX = "mdrfile";
     
-    public final static URI DE;
-    public final static URI EN;
-    public final static URI FR;
-    public final static URI NL;
+    public final static URI CSV;
+    public final static URI HTML;
+    public final static URI JSON;
+    public final static URI KML;
+    public final static URI KMZ;
+    public final static URI ODS;
+    public final static URI PDF;
+    public final static URI RSS;
+    public final static URI SHP;
+    public final static URI TXT;
+    public final static URI XLS;
+    public final static URI XLSX;
+    public final static URI XML;
+    
   
     public final static Map<String,URI> MAP = new HashMap<>();
     
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
         
-        DE = factory.createURI(MDR_LANG.NAMESPACE, "DEU");
-        EN = factory.createURI(MDR_LANG.NAMESPACE, "ENG");
-        FR = factory.createURI(MDR_LANG.NAMESPACE, "FRA");
-        NL = factory.createURI(MDR_LANG.NAMESPACE, "NLD");
+        CSV = factory.createURI(MDR_FILE.NAMESPACE, "CSV");
+        HTML = factory.createURI(MDR_FILE.NAMESPACE, "HTML");
+        JSON = factory.createURI(MDR_FILE.NAMESPACE, "JSON");
+        KML = factory.createURI(MDR_FILE.NAMESPACE, "KML");
+        KMZ = factory.createURI(MDR_FILE.NAMESPACE, "KMZ");
+        ODS = factory.createURI(MDR_FILE.NAMESPACE, "ODS");
+        PDF = factory.createURI(MDR_FILE.NAMESPACE, "PDF");
+        RSS = factory.createURI(MDR_FILE.NAMESPACE, "RSS");
+        SHP = factory.createURI(MDR_FILE.NAMESPACE, "SHP");
+        TXT = factory.createURI(MDR_FILE.NAMESPACE, "TXT");
+        XLS = factory.createURI(MDR_FILE.NAMESPACE, "XLS");
+        XLSX = factory.createURI(MDR_FILE.NAMESPACE, "XLSX");
+        XML = factory.createURI(MDR_FILE.NAMESPACE, "XML");
         
-        MAP.put("de", DE);
-        MAP.put("en", EN);
-        MAP.put("fr", FR);
-        MAP.put("nl", NL);
+        MAP.put("csv", CSV);
+        MAP.put("htm", HTML);
+        MAP.put("html", HTML);
+        MAP.put("json", JSON);
+        MAP.put("kml", KML);
+        MAP.put("kmz", KMZ);
+        MAP.put("ods", ODS);
+        MAP.put("pdf", PDF);
+        MAP.put("rss", RSS);
+        MAP.put("shp", SHP);
+        MAP.put("txt", TXT);
+        MAP.put("xls", XLS);
+        MAP.put("xlsx", XLSX);
+        MAP.put("xml", XML);
     }
 }
