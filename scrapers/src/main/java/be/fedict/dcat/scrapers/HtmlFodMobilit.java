@@ -30,6 +30,7 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
+import be.fedict.dcat.vocab.MDR_THEME;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -202,6 +203,7 @@ public class HtmlFodMobilit extends Html {
         store.add(dataset, DCTERMS.TITLE, title, lang);
         store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+        store.add(dataset, DCAT.THEME, MDR_THEME.TRANS);
     
         Elements link = cells.get(1).getElementsByTag(Tag.A.toString());
         generateDist(store, dataset, front, link, i, lang);

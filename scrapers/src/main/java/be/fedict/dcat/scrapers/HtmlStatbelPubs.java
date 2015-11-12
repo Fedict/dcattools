@@ -58,8 +58,8 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class HtmlStatbelPubls extends Html {
-    private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubls.class);
+public class HtmlStatbelPubs extends Html {
+    private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
     
     public final static String CAT_SELECT = "category_select";
     public final static String CAT_CAT = "Statistieken - Download-tabellen";
@@ -83,7 +83,7 @@ public class HtmlStatbelPubls extends Html {
         URL base = getBase();
         
         Elements lis = Jsoup.parse(page)
-                            .getElementsByClass(HtmlStatbelPubls.LANG_LINK);
+                            .getElementsByClass(HtmlStatbelPubs.LANG_LINK);
         
         for(Element li : lis) {
             if (li.text().equals(lang)) {
@@ -134,8 +134,8 @@ public class HtmlStatbelPubls extends Html {
         String front = makeRequest(base);
         
         // Select the correct page from dropdown-list, displaying all items
-        Element select = Jsoup.parse(front).getElementById(HtmlStatbelPubls.CAT_SELECT);
-        Element opt = select.getElementsMatchingOwnText(HtmlStatbelPubls.CAT_CAT).first();
+        Element select = Jsoup.parse(front).getElementById(HtmlStatbelPubs.CAT_SELECT);
+        Element opt = select.getElementsMatchingOwnText(HtmlStatbelPubs.CAT_CAT).first();
         if (opt != null) {
             URL downloads = new URL(base, opt.val() + "&size=250");
             String page = makeRequest(downloads);
@@ -148,7 +148,7 @@ public class HtmlStatbelPubls extends Html {
                 urls.add(new URL(getBase(), href));
             }
         } else {
-            logger.error("Category {} not found", HtmlStatbelPubls.CAT_CAT);
+            logger.error("Category {} not found", HtmlStatbelPubs.CAT_CAT);
         }
         return urls;
     }
@@ -201,8 +201,8 @@ public class HtmlStatbelPubls extends Html {
      * @throws MalformedUrlException
      * @throws RepositoryException
      */
-    private void generateDist(Storage store, URI dataset, URL access, 
-                        Element link, String lang) throws MalformedURLException, RepositoryException {
+    private void generateDist(Storage store, URI dataset, URL access, Element link, 
+                String lang) throws MalformedURLException, RepositoryException {
         String href = link.attr(Attribute.HREF.toString());
         URL download = makeAbsURL(href);
         
@@ -250,7 +250,7 @@ public class HtmlStatbelPubls extends Html {
             Element doc = Jsoup.parse(html).body();
             String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
             
-            Element divmain = doc.getElementsByClass(DIV_MAIN).first();
+            Element divmain = doc.getElementsByClass(HtmlStatbelPubs.DIV_MAIN).first();
             Elements paras  = divmain.getElementsByTag(Tag.P.toString());
             String desc = "";
             for (Element para : paras) {
@@ -264,22 +264,22 @@ public class HtmlStatbelPubls extends Html {
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
             
-            Element divdate = doc.getElementsByClass(DIV_DATE).first();
+            Element divdate = doc.getElementsByClass(HtmlStatbelPubs.DIV_DATE).first();
             if (divdate != null) {
                 Node n = divdate.childNodes().get(1);
                 store.add(dataset, DCTERMS.MODIFIED, n.toString().trim());
             }
             
-            Element divcat = doc.getElementsByClass(DIV_CAT).first();
+            Element divcat = doc.getElementsByClass(HtmlStatbelPubs.DIV_CAT).first();
             if (divcat != null) {
                 Node n = divcat.childNodes().get(1);
                 String[] cats = n.toString().split(",");
                 for (String cat : cats) {
-                    store.add(dataset, DCAT.KEYWORD, cat.trim(), lang);
+                    store.add(dataset, DCAT.THEME, cat.trim(), lang);
                 }
             }
             
-            Element divlinks = doc.getElementsByClass(DIV_SCND).first();
+            Element divlinks = doc.getElementsByClass(HtmlStatbelPubs.DIV_SCND).first();
             if (divlinks != null) {
                 Elements links = divlinks.getElementsByTag(Tag.A.toString());
                 for(Element link : links) {
@@ -337,7 +337,7 @@ public class HtmlStatbelPubls extends Html {
      * @param storage
      * @param base 
      */
-    public HtmlStatbelPubls(File caching, File storage, URL base) {
+    public HtmlStatbelPubs(File caching, File storage, URL base) {
         super(caching, storage, base);
         setName("statbelpub");
     }
