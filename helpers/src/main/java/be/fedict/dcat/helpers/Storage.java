@@ -455,7 +455,7 @@ public class Storage {
         logger.info("Opening RDF store " + f.getAbsolutePath());
         
         MemoryStore mem = new MemoryStore(f);
-        mem.setPersist(true);
+        mem.setPersist(false);
         repo = new SailRepository(mem);
     }
 }
