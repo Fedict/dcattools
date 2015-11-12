@@ -58,6 +58,31 @@ public class HtmlFodMobilit extends Html {
 
     public final static String LANG_LINK = "language-link";
         
+   /**
+     * Make a URL for a DCAT Distribution 
+     * 
+     * @param i
+     * @param lang
+     * @return URL
+     * @throws MalformedURLException 
+     */
+    private URL makeSeqDistURL(int i, String lang) throws MalformedURLException {
+        return new URL(getBase().toString() + "/" 
+                + String.valueOf(i) + "/download" + "/" + lang);
+    }
+    
+   /**
+     * Make a URL for a DCAT Dataset 
+     * 
+     * @param i
+     * @return URL
+     * @throws MalformedURLException 
+     */
+    private URL makeDatasetURL(int i) throws MalformedURLException {
+        return new URL(getBase().toString() + "/" + String.valueOf(i));
+    }
+    
+        
     /**
      * Switch to another language
      * 
@@ -133,28 +158,22 @@ public class HtmlFodMobilit extends Html {
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, URL front, 
+    private void generateDist(Storage store, URI dataset, URL access, 
                                             Elements link, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.first().attr(Attribute.HREF.toString());
-    
-        URI dist = store.getURI(makeDistributionURL(i, lang).toString());
+        URL download = makeAbsURL(href);        
+        
+        URI dist = store.getURI(makeSeqDistURL(i, lang).toString());
+        logger.debug("Generating distribution {}", dist.toString());
+        
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCAT.ACCESS_URL, front);
-        store.add(dist, DCAT.DOWNLOAD_URL, new URL(getBase(), href));
-        
-        /* Check file extension */
-        int dot = href.lastIndexOf(".");
-        if (dot > 0) {
-            String ext = href.substring(dot+1);
-            int q = ext.lastIndexOf("?");
-            if (q > 0) {
-                ext = ext.substring(0, q);
-            }
-            store.add(dist, DCAT.MEDIA_TYPE, ext);
-        }
+        store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
+        store.add(dist, DCAT.ACCESS_URL, access);
+        store.add(dist, DCAT.DOWNLOAD_URL, download);
+        store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
     }
     
     /**

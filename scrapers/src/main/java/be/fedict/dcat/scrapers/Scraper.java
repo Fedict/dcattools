@@ -160,6 +160,25 @@ public abstract class Scraper extends Fetcher {
     }
     
     /**
+     * Get lowercase file extension
+     * 
+     * @param href
+     * @return file extension or empty string
+     */
+    public String getFileExt(String href) {
+        String ext = "";
+        int dot = href.lastIndexOf(".");
+        if (dot > 0) {
+            ext = href.substring(dot+1);
+            int q = ext.lastIndexOf("?");
+            if (q > 0) {
+                ext = ext.substring(0, q);
+            }   
+        }
+        return ext.toLowerCase();
+    }
+    
+    /**
      * Make a hashed ID based upon a string.
      * 
      * @param s
@@ -170,12 +189,24 @@ public abstract class Scraper extends Fetcher {
     }
     
     /**
+     * Return an absolute URL
+     * 
+     * @param rel relative URL
+     * @return 
+     * @throws MalformedURLException 
+     */
+    public URL makeAbsURL(String rel) throws MalformedURLException {
+        return new URL(getBase().getProtocol(), getBase().getHost(), rel);
+    }
+    
+    /**
      * Make an URL for a DCAT Catalog 
      * 
      * @return URL
+     * @throws MalformedURLException
      */
-    public String makeCatalogStr() {
-        return DATAGOVBE.PREFIX_URI_CAT + "/" + getName();
+    public URL makeCatalogURL() throws MalformedURLException {
+        return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + getName());
     }
     
     /**
@@ -183,7 +214,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @param id
      * @return URL
-     * @throws java.net.MalformedURLException 
+     * @throws MalformedURLException 
      */
     public URL makeDatasetURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + id);
@@ -271,9 +302,11 @@ public abstract class Scraper extends Fetcher {
      * 
      * @param store RDF store
      * @throws RepositoryException 
+     * @throws java.net.MalformedURLException 
      */
-    public void generateCatalog(Storage store) throws RepositoryException {
-        URI catalog = store.getURI(makeCatalogStr());
+    public void generateCatalog(Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        URI catalog = store.getURI(makeCatalogURL().toString());
         store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
         
         List<URI> uris = store.query(DCAT.A_DATASET);        

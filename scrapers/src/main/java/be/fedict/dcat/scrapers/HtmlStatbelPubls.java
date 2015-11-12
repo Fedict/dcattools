@@ -191,6 +191,37 @@ public class HtmlStatbelPubls extends Html {
     }
 
     /**
+     * Generate DCAT Distribution.
+     * 
+     * @param store RDF store
+     * @param dataset dataset URI
+     * @param access access URL
+     * @param link link element
+     * @param lang language code
+     * @throws MalformedUrlException
+     * @throws RepositoryException
+     */
+    private void generateDist(Storage store, URI dataset, URL access, 
+                        Element link, String lang) throws MalformedURLException, RepositoryException {
+        String href = link.attr(Attribute.HREF.toString());
+        URL download = makeAbsURL(href);
+        
+        String id = makeHashId(download.toString());
+        URI dist = store.getURI(makeDistURL(id).toString());
+        logger.debug("Generating distribution {}", dist.toString());
+        
+        String ext = link.attr(Attribute.CLASS.toString());
+        
+        store.add(dataset, DCAT.DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+        store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
+        store.add(dist, DCAT.ACCESS_URL, access);
+        store.add(dist, DCAT.DOWNLOAD_URL, download);
+        store.add(dist, DCAT.MEDIA_TYPE, ext);
+    }
+    
+    /**
      * Generate DCAT Dataset.
      * 
      * @param store RDF store
@@ -225,6 +256,9 @@ public class HtmlStatbelPubls extends Html {
             for (Element para : paras) {
                 desc += para.text() + "\n";
             }
+            if (desc.isEmpty()) {
+                desc = title;
+            }
             
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
@@ -242,6 +276,14 @@ public class HtmlStatbelPubls extends Html {
                 String[] cats = n.toString().split(",");
                 for (String cat : cats) {
                     store.add(dataset, DCAT.KEYWORD, cat.trim(), lang);
+                }
+            }
+            
+            Element divlinks = doc.getElementsByClass(DIV_SCND).first();
+            if (divlinks != null) {
+                Elements links = divlinks.getElementsByTag(Tag.A.toString());
+                for(Element link : links) {
+                    generateDist(store, dataset, p.getUrl(), link, lang);
                 }
             }
         }
