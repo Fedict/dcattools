@@ -186,12 +186,14 @@ public abstract class Ckan extends Scraper {
      * @param field CKAN field name 
      * @param property RDF property
      * @throws RepositoryException 
+     * @throws MalformedURLException 
      */
-    protected void parseURI(Storage store, URI uri, JsonObject obj, 
-                        String field, URI property) throws RepositoryException {
+    protected void parseURI(Storage store, URI uri, JsonObject obj, String field, 
+                URI property) throws RepositoryException, MalformedURLException {
         String s = obj.getString(field, "");
         if (! s.isEmpty()) {
-            store.add(uri, property, store.getURI(s));
+            URL url = new URL(s);
+            store.add(uri, property, url);
         }
     }
     
@@ -263,9 +265,10 @@ public abstract class Ckan extends Scraper {
      * @param lang language
      * @param json JSON object with CKAN data
      * @throws RepositoryException 
+     * @throws MalformedURLException 
      */
     protected void ckanGeneral(Storage store, URI uri, JsonObject json, String lang) 
-                                                throws RepositoryException {
+                            throws RepositoryException, MalformedURLException {
         parseString(store, uri, json, Ckan.ID, DCTERMS.IDENTIFIER, null);
         parseString(store, uri, json, Ckan.TITLE, DCTERMS.TITLE, lang); 
         parseString(store, uri, json, Ckan.NOTES, DCTERMS.DESCRIPTION, lang);
@@ -318,19 +321,21 @@ public abstract class Ckan extends Scraper {
         
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
             String id = obj.getString(Ckan.ID, "");
-            URI distr = store.getURI(makeDistURL(id).toString());
-            store.add(dataset, DCAT.DISTRIBUTION, distr);
-            store.add(distr, RDF.TYPE, DCAT.A_DISTRIBUTION);
+            URI dist = store.getURI(makeDistURL(id).toString());
+            logger.debug("Generating distribution {}", dist.toString());
+                    
+            store.add(dataset, DCAT.DISTRIBUTION, dist);
+            store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         
-            parseString(store, distr, obj, Ckan.ID, DCTERMS.IDENTIFIER, null);
-            parseString(store, distr, obj, Ckan.NAME, DCTERMS.TITLE, lang);
-            parseDate(store, distr, obj, Ckan.CREATED, DCTERMS.CREATED);
-            parseDate(store, distr, obj, Ckan.MODIFIED, DCTERMS.MODIFIED);
-            parseString(store, distr, obj, Ckan.FORMAT, DCAT.MEDIA_TYPE, null);
-            parseURI(store, distr, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
+            parseString(store, dist, obj, Ckan.ID, DCTERMS.IDENTIFIER, null);
+            parseString(store, dist, obj, Ckan.NAME, DCTERMS.TITLE, lang);
+            parseDate(store, dist, obj, Ckan.CREATED, DCTERMS.CREATED);
+            parseDate(store, dist, obj, Ckan.MODIFIED, DCTERMS.MODIFIED);
+            parseString(store, dist, obj, Ckan.FORMAT, DCAT.MEDIA_TYPE, null);
+            parseURI(store, dist, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
             
-            store.add(distr, DCAT.ACCESS_URL, access);
-            store.add(distr, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+            store.add(dist, DCAT.ACCESS_URL, access);
+            store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         }
     }
    

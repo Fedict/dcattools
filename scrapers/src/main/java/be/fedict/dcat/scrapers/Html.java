@@ -26,7 +26,6 @@
 package be.fedict.dcat.scrapers;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,30 +37,8 @@ import org.slf4j.LoggerFactory;
 public abstract class Html extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Html.class);
     
-    /**
-     * Make a URL for a DCAT Dataset 
-     * 
-     * @param i
-     * @return URL
-     * @throws java.net.MalformedURLException 
-     */
-    public URL makeDatasetURL(int i) throws MalformedURLException {
-        return new URL(getBase().toString() + "/" + String.valueOf(i));
-    }
-    
-    /**
-     * Make a URL for a DCAT Distribution 
-     * 
-     * @param i
-     * @param lang
-     * @return URL
-     * @throws java.net.MalformedURLException 
-     */
-    public URL makeDistributionURL(int i, String lang) throws MalformedURLException {
-        return new URL(getBase().toString() + "/" 
-                + String.valueOf(i) + "/download" + "/" + lang);
-    }
-       
+   
+         
     /**
      * HTML page scraper.
      * 
