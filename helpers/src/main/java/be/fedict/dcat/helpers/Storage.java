@@ -145,7 +145,8 @@ public class Storage {
      * @throws RepositoryException 
      */
     public void add(URI subj, URI pred, URL url) throws RepositoryException {
-        conn.add(subj, pred, fac.createURI(url.toString()));
+        String s = url.toString().replaceAll(" ", "%20");
+        conn.add(subj, pred, fac.createURI(s));
     }
     
     /**
