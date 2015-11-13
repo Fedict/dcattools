@@ -35,9 +35,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
@@ -70,6 +75,8 @@ public class HtmlStatbelPubs extends Html {
     public final static String DIV_DATE = "date"; 
     public final static String DIV_CAT = "facets";
     public final static String DIV_SCND = "detailScdPart";
+    
+    public final static DateFormat DATEFMT = new SimpleDateFormat("dd/MM/yyyy");
     
     /**
      * Get the URL of the  page in another language
@@ -265,7 +272,13 @@ public class HtmlStatbelPubs extends Html {
             Element divdate = doc.getElementsByClass(HtmlStatbelPubs.DIV_DATE).first();
             if (divdate != null) {
                 Node n = divdate.childNodes().get(1);
-                store.add(dataset, DCTERMS.MODIFIED, n.toString().trim());
+                String s = n.toString().trim();
+                try {
+                    Date modif = HtmlStatbelPubs.DATEFMT.parse(s);
+                    store.add(dataset, DCTERMS.MODIFIED, modif);
+                } catch(ParseException ex) {
+                    logger.warn("Could not convert {} to date", s);
+                }
             }
             
             Element divcat = doc.getElementsByClass(HtmlStatbelPubs.DIV_CAT).first();
