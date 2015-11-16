@@ -25,44 +25,39 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Page;
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 import org.openrdf.repository.RepositoryException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Html extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Html.class);
-    
-       
+public class Xls extends Scraper {
+    @Override
+    public void scrape() throws IOException {
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    @Override
+    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
-     * Generate DCAT Dataset
+     * Constructor
      * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
+     * @param caching
+     * @param storage
+     * @param base 
      */
-    public abstract void generateDataset(Storage store, String id, Map<String,Page> page) 
-            throws MalformedURLException, RepositoryException;
-         
-    /**
-     * HTML page scraper.
-     * 
-     * @param caching local cache file
-     * @param storage local triple store file
-     * @param base URL of the CKAN site
-     */
-    public Html(File caching, File storage, URL base) {
+    public Xls(File caching, File storage, URL base) {
         super(caching, storage, base);
     }
 }
