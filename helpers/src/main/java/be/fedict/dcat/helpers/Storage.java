@@ -299,21 +299,21 @@ public class Storage {
     
     
     /**
-     * Map value of a property to a SKOS property.
+     * Find URI having a property
      * 
-     * @param property
-     * @param mapped
-     * @param skosprop SKOS property used for mapping
+     * @param property property with values to be mapped
+     * @param newprop property to be added
+     * @param pred property (in SKOS file) used for mapping
      * @throws RepositoryException 
      */
-    public void skosMap(URI property, URI mapped, URI skosprop) 
+    public void skosMap(URI property, URI newprop, URI pred) 
                                                     throws RepositoryException {
         RepositoryResult<Statement> stmts = 
                 conn.getStatements(null, property, null, false);
         
         if (! stmts.hasNext()) {
             logger.warn("No mapping for {} to {} using {}", 
-                property.stringValue(), mapped.stringValue(), skosprop.stringValue());
+                property.stringValue(), newprop.stringValue(), pred.stringValue());
         }
         
         int i = 0;
@@ -322,13 +322,13 @@ public class Storage {
             Value value = stmt.getObject();
             
             RepositoryResult<Statement> skos =
-                conn.getStatements(null, skosprop, value , false);
+                conn.getStatements(null, pred, value , false);
             if (! skos.hasNext()) {
                 logger.warn("No SKOS mapping for {}", value.stringValue());
             }
             while(skos.hasNext()) {
                 Statement s = skos.next(); 
-                conn.add(stmt.getSubject(), mapped, s.getSubject());
+                conn.add(stmt.getSubject(), newprop, s.getSubject());
             }
             skos.close();
             i++;
