@@ -99,6 +99,7 @@ public class Drupal {
     public final static String FLD_LICENSE = "field_license";
     public final static String FLD_LINKS = "field_links_";
     public final static String FLD_ID = "field_id";
+    public final static String FLD_PUBLISHER = "field_publisher";
     public final static String FLD_UPSTAMP = "field_upstamp";
    
     public final static String ID = "id";
@@ -330,6 +331,7 @@ public class Drupal {
                 .add(Drupal.FLD_LICENSE, getCategories(dataset, DATAGOVBE.LICENSE))
                 .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
+                .add(Drupal.FLD_PUBLISHER, getCategories(dataset, DATAGOVBE.ORG))
                 .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
     }
