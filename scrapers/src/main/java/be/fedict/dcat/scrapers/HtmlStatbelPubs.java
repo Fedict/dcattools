@@ -286,7 +286,7 @@ public class HtmlStatbelPubs extends Html {
                 Node n = divcat.childNodes().get(1);
                 String[] cats = n.toString().split(",");
                 for (String cat : cats) {
-                    store.add(dataset, DCAT.THEME, cat.trim(), lang);
+                    store.add(dataset, DCAT.KEYWORD, cat.trim(), lang);
                 }
             }
             

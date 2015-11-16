@@ -387,7 +387,6 @@ public abstract class Ckan extends Scraper {
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    @Override
     public void generateDataset(Storage store, String id, Map<String,Page> page) 
                             throws MalformedURLException, RepositoryException {
         String lang = getDefaultLang();

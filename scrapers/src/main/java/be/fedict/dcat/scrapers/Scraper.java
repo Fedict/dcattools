@@ -28,7 +28,6 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Fetcher;
-import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -43,7 +42,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
@@ -284,18 +282,7 @@ public abstract class Scraper extends Fetcher {
             store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         }
     }
-    
-    /**
-     * Generate DCAT Dataset
-     * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    public abstract void generateDataset(Storage store, String id, Map<String,Page> page) 
-            throws MalformedURLException, RepositoryException;
+
         
     /**
      * Generate DCAT Catalog.
