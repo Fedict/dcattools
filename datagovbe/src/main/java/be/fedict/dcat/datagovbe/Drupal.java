@@ -95,10 +95,11 @@ public class Drupal {
     public final static String FLD_DETAILS = "field_details_";
     public final static String FLD_FORMAT = "field_file_type";
     public final static String FLD_GEO = "field_geo_coverage";
+    public final static String FLD_ID = "field_id";
     public final static String FLD_KEYWORDS = "field_keywords";
     public final static String FLD_LICENSE = "field_license";
     public final static String FLD_LINKS = "field_links_";
-    public final static String FLD_ID = "field_id";
+    public final static String FLD_MAIL = "field_contact";
     public final static String FLD_PUBLISHER = "field_publisher";
     public final static String FLD_UPSTAMP = "field_upstamp";
    
@@ -117,6 +118,8 @@ public class Drupal {
     public final static Pattern SHORTLINK = 
                             Pattern.compile("/([0-9]+)>; rel=\"shortlink\"");
     
+    public final static SimpleDateFormat ISODATE = new SimpleDateFormat("yyyy-MM-dd");
+    
     public final static int LEN_TITLE = 128;
     public final static int LEN_LINK = 255;
             
@@ -128,8 +131,6 @@ public class Drupal {
     private HttpHost proxy = null;
     private HttpHost host = null;
     private String token = null;
-    
-    private SimpleDateFormat iso = new SimpleDateFormat("yyyy-MM-dd");
    
     
     /**
@@ -165,6 +166,20 @@ public class Drupal {
             r.viaProxy(proxy);
         }
         return r;
+    }
+    
+    /**
+     * Create a JsonArrayBuilder with a list of Drupal URL fields
+     * 
+     * @param l list of URLs (as string)
+     * @return JsonArrayBuilder containing URL field JSON objects
+     */
+    private static JsonArrayBuilder urlArray(List<String> l) {
+        JsonArrayBuilder builder = Json.createArrayBuilder();
+        for(String s: l) {
+            builder.add(Json.createObjectBuilder().add(Drupal.URL, s));
+        }
+        return builder;
     }
     
     
@@ -333,7 +348,7 @@ public class Drupal {
         String m = getOne(dataset, DCTERMS.MODIFIED, "");
         if (! m.isEmpty() && (m.length() >= 10)) {
             try {
-                modif = iso.parse(m.substring(0, 10));
+                modif = Drupal.ISODATE.parse(m.substring(0, 10));
             } catch (ParseException ex) {
                 logger.error("Exception parsing {} as date", m);
             }
@@ -393,24 +408,22 @@ public class Drupal {
      * @throws RepositoryException
      */
     private void addDist(Storage store, String uri, String lang, JsonObjectBuilder builder,
-                JsonArrayBuilder accesses, JsonArrayBuilder downloads) 
+                            List<String> accesses, List<String> downloads) 
                                                     throws RepositoryException {     
         Map<URI, ListMultimap<String, String>> dist = 
                                         store.queryProperties(store.getURI(uri));
         String distlang = getLink(dist, DCTERMS.LANGUAGE);
-        logger.info(distlang);
-        logger.info(lang);
-        logger.info(MDR_LANG.MAP.get(lang).toString());
+
         if (MDR_LANG.MAP.get(lang).toString().equals(distlang)) {
             // Landing page / page(s) with more info on dataset
             String access = getLink(dist, DCAT.ACCESS_URL);
-            if (! access.isEmpty()) {
-                accesses.add(Json.createObjectBuilder().add(Drupal.URL, access));
+            if (! access.isEmpty() && !accesses.contains(access)) {
+                accesses.add(access);
             }
             // Download URL
             String download = getLink(dist, DCAT.DOWNLOAD_URL);
-            if (! download.isEmpty()) {
-                downloads.add(Json.createObjectBuilder().add(Drupal.URL, download));
+            if (! download.isEmpty() && !downloads.contains(download)) {
+                downloads.add(download);
             }
             builder.add(Drupal.FLD_FORMAT, getCategories(dist, DATAGOVBE.MEDIA_TYPE));
         }
@@ -438,14 +451,15 @@ public class Drupal {
 
             // Get DCAT distributions
             List<String> dists = getMany(dataset, DCAT.DISTRIBUTION, "");
-            JsonArrayBuilder accesses = Json.createArrayBuilder();
-            JsonArrayBuilder downloads = Json.createArrayBuilder();
-            
+
+            ArrayList<String> accesses = new ArrayList<>();
+            ArrayList<String> downloads = new ArrayList<>();
             for (String dist : dists) {
-                addDist(store, dist, lang, builder, accesses, downloads);                
+                addDist(store, dist, lang, builder, accesses, downloads);
             }
-            builder.add(Drupal.FLD_DETAILS + lang, accesses);
-            builder.add(Drupal.FLD_LINKS + lang, downloads);
+            builder.add(Drupal.FLD_DETAILS + lang, urlArray(accesses));
+            builder.add(Drupal.FLD_LINKS + lang, urlArray(downloads));
+                    
             
             // Add new or update existing dataset ?
             String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
