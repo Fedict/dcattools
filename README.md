@@ -31,6 +31,16 @@ add missing properties and prepare the files for updating data.gov.be
 This command-line Java tool scrapes various websites and CKAN portals.
 Each site / portal requires a specialized scraper Java class and a configuration file.
 
+Invoke with
+
+    # java -jar scraper.jar location/of/config.properties
+
+Use -D to set logging level and save the log to a file
+
+    # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
+           -Dorg.slf4j.simpleLogger.logFile=update.log
+           -jar scrapper.jar location/of/config.properties
+
 The configuration file is a Java properties file.
 
     # full class name of the scraper implementation
@@ -65,3 +75,37 @@ The enhancers can be chained.
 This tool updates the data.gov.be (Drupal 7) site using a REST interface,
 provided the Drupal modules RestWS and RestWS_i18n are installed.
 
+Invoke with
+
+    # java -jar datagovbe.jar location/of/config.properties
+
+Use -D to set logging level and save the log to a file
+
+    # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
+           -Dorg.slf4j.simpleLogger.logFile=update.log
+           -jar datagovbe.jar location/of/config.properties
+
+
+The configuration file is a Java properties file.
+
+    # URL of the Drupal 7 website
+    be.fedict.datagovbe7.drupal=http://data.gov.be
+    # Comma separated list of language codes
+    be.fedict.datagovbe7.languages=nl,fr
+
+    # Drupal user ID number
+    be.fedict.datagovbe7.userid=1234
+    # Drupal user login
+    be.fedict.datagovbe7.user=mylogin
+    # Drupal user password
+    be.fedict.datagovbe7.pass=secret_password
+
+    # Proxy settings, comment out if no proxy is required
+    #be.fedict.datagovbe7.proxy.host=your.proxy
+    #be.fedict.datagovbe7.proxy.port=8080
+
+    # Local N-Triples DCAT file to be used for updating the site
+    be.fedict.datagovbe7.rdfin=B:/datagov/data/statbelpubs/enhanced.nt
+    # Temporarily local RDF store that will be used to load the DCAT file 
+    be.fedict.datagovbe7.store=B:/datagov/data/statbelpubs/drupal.sail
+    
