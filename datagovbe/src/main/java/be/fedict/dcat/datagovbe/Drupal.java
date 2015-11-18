@@ -116,7 +116,10 @@ public class Drupal {
    
     public final static Pattern SHORTLINK = 
                             Pattern.compile("/([0-9]+)>; rel=\"shortlink\"");
-                    
+    
+    public final static int LEN_TITLE = 128;
+    public final static int LEN_LINK = 255;
+            
     private final String[] langs;
     private final URL url;
     private String userid;
@@ -128,6 +131,21 @@ public class Drupal {
     
     private SimpleDateFormat iso = new SimpleDateFormat("yyyy-MM-dd");
    
+    
+    /**
+     * Return shorter version of string, with trailing ellipsis (...)
+     * 
+     * @param s string
+     * @param len maximum length
+     */
+    private static String ellipsis(String s, int len) {
+        int cut = s.lastIndexOf(" ", len - 3);
+        if (cut < 0) {
+            cut = 125;
+        }
+        return s.substring(0, cut) + "...";
+    }
+    
     /**
      * Prepare a POST or PUT action.
      * 
@@ -298,11 +316,19 @@ public class Drupal {
                             ListMultimap<String, String>> dataset, String lang) {
         String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
         String title = getOne(dataset, DCTERMS.TITLE, lang);
+
+        // Just copy the title if description is empty
         String desc = getOne(dataset, DCTERMS.DESCRIPTION, lang);
         if (desc.isEmpty()) {
             desc = title;
         }
+        // Max size for Drupal title
+        if (title.length() > Drupal.LEN_TITLE) {
+            logger.warn("Title {} too long", title);
+            title = ellipsis(title, Drupal.LEN_TITLE);
+        }
         
+        // Modified date of the metadata
         Date modif = new Date();
         String m = getOne(dataset, DCTERMS.MODIFIED, "");
         if (! m.isEmpty() && (m.length() >= 10)) {
@@ -349,7 +375,7 @@ public class Drupal {
         if (! l.isEmpty()) {
             link = l.replaceAll(" ", "%20");
         }
-        if (link.length() > 255) {
+        if (link.length() > Drupal.LEN_LINK) {
             logger.warn("Download URL too long ({}): {} ", l.length(), l);
         }
         return link;
