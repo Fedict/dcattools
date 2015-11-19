@@ -2,7 +2,7 @@
 
 <http://data.gov.be/en/taxonomy/term/54>
 	skos:prefLabel "CC0" ;
-	skos:exactMatch <http://opendataforum.info/Docs/licenties/CC0.htm> .
+	skos:exactMatch <http://opendataforum.info/Docs/licenties/CC0.htm>, <http://creativecommons.org/publicdomain/zero/1.0/> .
 
 <http://data.gov.be/en/taxonomy/term/56>
 	skos:prefLabel "Vlaamse Open Data" ;
