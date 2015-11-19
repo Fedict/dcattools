@@ -277,8 +277,7 @@ public abstract class Ckan extends Scraper {
         parseURI(store, uri, json, Ckan.LICENSE_URL , DCTERMS.LICENSE);
         
         parseContact(store, uri, json, Ckan.AUTHOR, Ckan.AUTHOR_EML, DCAT.CONTACT_POINT);
-        parseContact(store, uri, json, Ckan.MAINT, Ckan.MAINT_EML, DCAT.CONTACT_POINT);
-        
+        parseContact(store, uri, json, Ckan.MAINT, Ckan.MAINT_EML, DCAT.CONTACT_POINT);       
     }
     
     /**
