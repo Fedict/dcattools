@@ -151,7 +151,7 @@ public abstract class Ckan extends Scraper {
      * @throws MalformedURLException 
      */
     protected URL getHashUrl(String str) throws MalformedURLException {
-        return new URL(getBase(), String.valueOf(str.hashCode()));
+        return new URL(getBase(), makeHashId(str));
     }
     
     /**
@@ -248,8 +248,6 @@ public abstract class Ckan extends Scraper {
             store.add(vcard, RDF.TYPE, VCARD.A_ORGANIZATION);
             if (! name.isEmpty()) {
                 store.add(vcard, VCARD.HAS_FN, name);
-            } else {
-                store.add(vcard, VCARD.HAS_FN, email);
             }
             if(! email.isEmpty()) {
                 store.add(vcard, VCARD.HAS_EMAIL, store.getURI("mailto:" + email));
