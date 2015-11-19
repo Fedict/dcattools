@@ -354,6 +354,11 @@ public class Drupal {
             }
         }
         
+        String email = getOne(dataset, DCAT.CONTACT_POINT, "");
+        if (!email.isEmpty() && email.startsWith("mailto:")) {
+            email = email.substring(7);
+        }
+        
         JsonArrayBuilder keywords = Json.createArrayBuilder();
         List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
         for(String word : words) {
@@ -373,6 +378,7 @@ public class Drupal {
                 .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
                 .add(Drupal.FLD_PUBLISHER, getCategories(dataset, DATAGOVBE.ORG))
+                .add(Drupal.FLD_MAIL, email)
                 .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
     }
