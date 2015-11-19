@@ -54,4 +54,4 @@
 
 <http://data.gov.be/en/taxonomy/term/37>	
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, "Hydrografie"@nl, "Orthobeeldvorming"@nl .
+	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, "Hydrografie"@nl, "Orthobeeldvorming"@nl, "Geology"@nl .

@@ -40,6 +40,10 @@
 	skos:prefLabel "WMS" ;
 	skos:altLabel "WMS" .
 	
+<http://data.gov.be/en/taxonomy/term/65>
+	skos:prefLabel "PDF" ;
+	skos:altLabel "PDF" .
+	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:prefLabel "XLS" ;
 	skos:altLabel "XLS" .
