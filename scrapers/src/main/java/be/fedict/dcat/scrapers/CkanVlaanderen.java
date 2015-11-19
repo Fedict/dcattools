@@ -48,6 +48,7 @@ public class CkanVlaanderen extends Ckan {
     private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen.class);
  
     public final static String CONFORM = "conformity-specification-title";
+    public final static String CONTACT = "contact-email";
     public final static String DOMAIN = "beleidsdomein";
     public final static String GEMET = "gemet-theme";
     public final static String GEOCOVERAGE = "geografische dekking";
@@ -82,6 +83,9 @@ public class CkanVlaanderen extends Ckan {
                     break;
                 case CkanVlaanderen.METADATA_REQ:
                     parseURI(store, uri, obj, Ckan.VALUE, DCAT.LANDING_PAGE);
+                    break;
+                case CkanVlaanderen.CONTACT:
+                    parseContact(store, uri, obj, Ckan.VALUE, "", DCAT.CONTACT_POINT);
                     break;
                 default:
                     break;
