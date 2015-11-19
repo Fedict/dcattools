@@ -122,7 +122,7 @@ public class Main {
         
         String l = prop.getProperty(Drupal.PROP_PREFIX + ".languages");
         String[] langs = l.split(",");
-        Drupal d = new Drupal(url, langs);
+        Drupal d = new Drupal(url, langs, store);
         
         setProxy(d);
         
@@ -133,7 +133,7 @@ public class Main {
         d.setUserPassID(user, pass, userid);
         
         try {
-            d.update(store);
+            d.update();
         } catch (IOException ex) {
             logger.error("IO exception while updating", ex);
             exit(-5);

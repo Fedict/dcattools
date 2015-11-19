@@ -29,6 +29,7 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
+import be.fedict.dcat.vocab.VCARD;
 import com.google.common.collect.ListMultimap;
 import java.io.IOException;
 import java.net.URL;
@@ -131,7 +132,8 @@ public class Drupal {
     private HttpHost proxy = null;
     private HttpHost host = null;
     private String token = null;
-   
+    private Storage store;
+    
     
     /**
      * Return shorter version of string, with trailing ellipsis (...)
@@ -181,7 +183,6 @@ public class Drupal {
         }
         return builder;
     }
-    
     
     /**
      * Decode "\\u..." to a character.
@@ -237,7 +238,6 @@ public class Drupal {
         return res;
     }
     
-
     /**
      * Add a DCAT Theme / category
      * 
@@ -258,7 +258,6 @@ public class Drupal {
         return arr;
     }
  
-    
     /**
      * Check if dataset with ID already exists on drupal site.
      * 
@@ -320,15 +319,59 @@ public class Drupal {
         return node;
     }
     
+    
+    /**
+     * Get contact email address
+     * 
+     * @param orgs organizations
+     * @return email address or empty string
+     * @throw RepositoryException
+     */
+    private String getEmail(List<String> orgs) throws RepositoryException {
+        // Get DCAT contactpoints
+        String email = "";
+       
+        for (String org : orgs) {
+            Map<URI, ListMultimap<String, String>> map = 
+                                        store.queryProperties(store.getURI(org));
+            String contact = getOne(map, VCARD.HAS_EMAIL, "");
+            if (!contact.isEmpty()) {
+                email = contact;
+            }
+        }
+        return email;
+    }
+    
+    /**
+     * Get modification date
+     * 
+     * @param dataset
+     * @return 
+     */
+    private Date getModif(Map<URI, ListMultimap<String, String>> dataset) {
+        Date modif = new Date();
+        String m = getOne(dataset, DCTERMS.MODIFIED, "");
+        if (! m.isEmpty() && (m.length() >= 10)) {
+            try {
+                modif = Drupal.ISODATE.parse(m.substring(0, 10));
+            } catch (ParseException ex) {
+                logger.error("Exception parsing {} as date", m);
+            }
+        }
+        return modif;
+    }
+    
     /**
      * Add a dataset to Drupal form
      * 
      * @param builder
      * @param dataset
-     * @param lang 
+     * @param lang
+     * @throws RepositoryException
      */
-    private void addDataset(JsonObjectBuilder builder, Map<URI, 
-                            ListMultimap<String, String>> dataset, String lang) {
+    private void addDataset(JsonObjectBuilder builder, 
+            Map<URI, ListMultimap<String, String>> dataset, String lang) 
+                                                    throws RepositoryException {
         String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
         String title = getOne(dataset, DCTERMS.TITLE, lang);
 
@@ -343,28 +386,17 @@ public class Drupal {
             title = ellipsis(title, Drupal.LEN_TITLE);
         }
         
-        // Modified date of the metadata
-        Date modif = new Date();
-        String m = getOne(dataset, DCTERMS.MODIFIED, "");
-        if (! m.isEmpty() && (m.length() >= 10)) {
-            try {
-                modif = Drupal.ISODATE.parse(m.substring(0, 10));
-            } catch (ParseException ex) {
-                logger.error("Exception parsing {} as date", m);
-            }
-        }
-        
-        String email = getOne(dataset, DCAT.CONTACT_POINT, "");
-        if (!email.isEmpty() && email.startsWith("mailto:")) {
-            email = email.substring(7);
-        }
-        
-        JsonArrayBuilder keywords = Json.createArrayBuilder();
+        Date modif = getModif(dataset);
+
+        List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
+        String email = getEmail(orgs);
+                
+  /*      JsonArrayBuilder keywords = Json.createArrayBuilder();
         List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
         for(String word : words) {
-         //   keywords.add(word);
+            keywords.add(word);
         }
-        
+    */    
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
                 .add(Drupal.LANGUAGE, lang)
                 .add(Drupal.AUTHOR, Json.createObjectBuilder().add(Drupal.ID, userid)) 
@@ -379,7 +411,7 @@ public class Drupal {
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
                 .add(Drupal.FLD_PUBLISHER, getCategories(dataset, DATAGOVBE.ORG))
                 .add(Drupal.FLD_MAIL, email)
-                .add(Drupal.FLD_KEYWORDS, keywords)
+//                .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
     }
 
@@ -405,7 +437,6 @@ public class Drupal {
     /**
      * Add DCAT distribution
      * 
-     * @param store RDF store
      * @param uri distribution URI
      * @param lang language
      * @param builder JSON builder
@@ -413,7 +444,7 @@ public class Drupal {
      * @param downloads download pages array
      * @throws RepositoryException
      */
-    private void addDist(Storage store, String uri, String lang, JsonObjectBuilder builder,
+    private void addDist(String uri, String lang, JsonObjectBuilder builder,
                             List<String> accesses, List<String> downloads) 
                                                     throws RepositoryException {     
         Map<URI, ListMultimap<String, String>> dist = 
@@ -438,11 +469,10 @@ public class Drupal {
     /**
      * Add a dataset to the Drupal website.
      * 
-     * @param store RDF store
      * @param uri identifier of the dataset
      * @throws RepositoryException
      */
-    private void add(Storage store, URI uri) throws RepositoryException {
+    private void add(URI uri) throws RepositoryException {
         Map<URI, ListMultimap<String, String>> dataset = store.queryProperties(uri);
         
         if (dataset.isEmpty()) {
@@ -461,7 +491,7 @@ public class Drupal {
             ArrayList<String> accesses = new ArrayList<>();
             ArrayList<String> downloads = new ArrayList<>();
             for (String dist : dists) {
-                addDist(store, dist, lang, builder, accesses, downloads);
+                addDist(dist, lang, builder, accesses, downloads);
             }
             builder.add(Drupal.FLD_DETAILS + lang, urlArray(accesses));
             builder.add(Drupal.FLD_LINKS + lang, urlArray(downloads));
@@ -481,9 +511,7 @@ public class Drupal {
             r.bodyString(obj.toString(), ContentType.APPLICATION_JSON);
             
             try {            
-                String resp = exec.authPreemptive(host)
-                                    .execute(r)
-                                    .returnContent().asString();
+                exec.authPreemptive(host).execute(r).returnContent().asString();
             } catch (IOException ex) {
                 logger.error("Could not update {}", uri.toString(), ex);
             }
@@ -538,11 +566,10 @@ public class Drupal {
     /**
      * Update site
      * 
-     * @param store triple store containing the info
      * @throws IOException 
      * @throws org.openrdf.repository.RepositoryException 
      */
-    public void update(Storage store) throws IOException, RepositoryException {
+    public void update() throws IOException, RepositoryException {
         List<URI> datasets = store.query(DCAT.A_DATASET);
         
         logger.info("Updating {} datasets...", Integer.toString(datasets.size()));
@@ -551,7 +578,7 @@ public class Drupal {
         
         int i = 0;
         for (URI d : datasets) {
-            add(store, d);
+            add(d);
             if (++i % 100 == 0) {
                 logger.info("Updated {}", Integer.toString(i));
             }
@@ -559,16 +586,17 @@ public class Drupal {
         logger.info("Done updating datasets");
     }
     
-    
     /**
      * Drupal REST Service.
      * 
      * @param url service endpoint
      * @param langs languages
+     * @param store
      */
-    public Drupal(URL url, String[] langs) {
+    public Drupal(URL url, String[] langs, Storage store) {
         this.url = url;
         this.langs = langs;
+        this.store = store;        
         this.host = new HttpHost(url.getHost());
         
         Executor e = null;
