@@ -45,7 +45,7 @@ public class AddProperty extends Enhancer {
     private final Logger logger = LoggerFactory.getLogger(AddProperty.class);
 
     public final static Pattern LITERAL = Pattern.compile("\"(.*)\"@(\\w*)");
-    
+        
     /**
      * Checks if adding property is really needed.
      * Override this method in derived classes.
@@ -71,27 +71,31 @@ public class AddProperty extends Enhancer {
     private void addIfMissing(URI rdfClass, URI prop, String value) throws RepositoryException {
         logger.info("Add missing {} to {}", prop.toString(), rdfClass.toString());
         
-        URL url = null;
+        Storage store = getStore();
+        
+        URI uri = null;
         String str = "";
         String lang = "";
-        // Check if the value is an url or a literal
-        try {
-            url = new URL(value);
-        } catch (MalformedURLException ex) {
+        
+        // Check if the value is an url/mail address or a literal
+        if (value.startsWith("http://") || value.startsWith("https://") 
+                                        || value.startsWith("mailto:")) {
+            uri = store.getURI(value);
+        } else {
             Matcher m = LITERAL.matcher(value);
             if (m.find()) {
                 str = m.group(1);
                 lang = m.group(2);
             }
+            logger.error("No Resource nor Literal: {}", value);
         }
-        
-        Storage store = getStore();
+    
         List<URI> subjs = store.query(rdfClass);
         int added = 0;
         for (URI subj : subjs) {
             if (isNeeded(store, subj, prop)) {
-                if (url != null) {
-                    store.add(subj, prop, url);
+                if (uri != null) {
+                    store.add(subj, prop, uri);
                 } else {
                     store.add(subj, prop, str, lang);
                 }
