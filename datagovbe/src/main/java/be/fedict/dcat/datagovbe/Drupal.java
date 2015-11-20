@@ -335,6 +335,9 @@ public class Drupal {
             Map<URI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
             String contact = getOne(map, VCARD.HAS_EMAIL, "");
+            if (contact.startsWith("mailto:")) {
+                contact = contact.substring(7);
+            }
             if (!contact.isEmpty()) {
                 email = contact;
             }
