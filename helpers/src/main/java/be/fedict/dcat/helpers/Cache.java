@@ -98,26 +98,26 @@ public class Cache {
     }
     
     /**
-     * Store a list to the cache.
+     * Store a map to the cache.
      * 
      * @param id
      * @param list 
      */
-    public void storeList(URL id, List<String> list) {
-        ConcurrentMap<URL, List<String>> map = db.hashMap(Cache.PAGES);
+    public void storeMap(URL id, Map<String,String> list) {
+        ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
         map.put(id, list);
         db.commit();
     }
     
     /**
-     * Retrieve a list from the cache.
+     * Retrieve a map from the cache.
      * 
      * @param id
      * @return 
      */
-    public List<String> retrieveList(URL id) {
-        ConcurrentMap<URL, List<String>> map = db.hashMap(Cache.PAGES);
-        return map.getOrDefault(id, new ArrayList<String>());
+    public Map<String,String> retrieveList(URL id) {
+        ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
+        return map.getOrDefault(id, new HashMap<String,String>());
     }
     
     /**
