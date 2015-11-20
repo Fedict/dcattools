@@ -51,6 +51,9 @@ public class XlsPsiBelgium extends Xls {
     @Override
     protected URL getId(Row row) throws MalformedURLException {
         String s = row.getCell(0).toString();
+        if (!s.isEmpty() && s.endsWith(".0")) {
+            s = s.substring(0, s.length() - 2);
+        }
         return makeDatasetURL(getName() + "/" + s);
     }
 

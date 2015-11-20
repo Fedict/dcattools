@@ -26,20 +26,25 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openrdf.model.URI;
+import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,10 +69,34 @@ public abstract class Xls extends Scraper {
         Iterator<Cell> cells = header.cellIterator();
         while (cells.hasNext()) {
             Cell cell = cells.next();
-            headers.add(cell.getStringCellValue());
+            headers.add(cell.getStringCellValue().toLowerCase());
         }
         return headers;
     }
+    
+        /**
+     * Parse a cell string and store it in the RDF store.
+     * 
+     * @param store RDF store
+     * @param uri RDF subject URI
+     * @param list list of strings
+     * @param field CKAN field name 
+     * @param property RDF property
+     * @param lang language
+     * @throws RepositoryException 
+     */
+    protected void parseString(Storage store, URI uri, Map<String,String> list, 
+            String field, URI property, String lang) throws RepositoryException {
+        String s = list.
+        if (! s.isEmpty()) {
+            if (lang != null) {
+                store.add(uri, property, s, lang);
+            } else {
+                store.add(uri, property, s);
+            }
+        }
+    }
+    
     
     /**
      * Return the number of rows, minus the header
@@ -98,7 +127,7 @@ public abstract class Xls extends Scraper {
     public int scrapeRows(Sheet sheet) throws MalformedURLException {
         Cache cache = getCache();
         
-        getColumnNames(sheet);
+        List<String> names = getColumnNames(sheet);
         
         Iterator<Row> rows = sheet.rowIterator();
         // Skip header
@@ -107,15 +136,16 @@ public abstract class Xls extends Scraper {
         }
         while(rows.hasNext()) {
             Row row = rows.next();
-            List<String> list = new ArrayList<>();
+            Map<String,String> map = new HashMap<>();
             URL id = getId(row);
             
             Iterator<Cell> cells = row.cellIterator();
             while(cells.hasNext()) {
                 Cell cell = cells.next();
-                list.add(cell.toString());
+                String key = names.get(cell.getColumnIndex());
+                map.put(key, cell.toString());
             }
-            cache.storeList(id, list);
+            cache.storeMap(id, map);
         }   
         return getRowCount(sheet);
     }
