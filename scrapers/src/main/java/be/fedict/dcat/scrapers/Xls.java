@@ -25,37 +25,89 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
-import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
-import org.openrdf.repository.RepositoryException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Abstract scraper for Excel files.
+ * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class Xls extends Scraper {
+public abstract class Xls extends Scraper {
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(Xls.class);
+    
+    /**
+     * Get the column names as a list
+     * 
+     * @param sheet
+     * @return list of column names
+     */
+    public List<String> getColumnNames(Sheet sheet) {
+        ArrayList<String> headers = new ArrayList<>();
+        
+        Row header = sheet.getRow(sheet.getFirstRowNum());
+        Iterator<Cell> cells = header.cellIterator();
+        while (cells.hasNext()) {
+            Cell cell = cells.next();
+            headers.add(cell.getStringCellValue());
+        }
+        return headers;
+    }
+    
+    /**
+     * Return the number of rows, minus the header
+     * 
+     * @param sheet
+     * @return number of rows - 1 
+     */
+    public int getRows(Sheet sheet) {
+        return sheet.getLastRowNum() - sheet.getFirstRowNum() - 1;
+    }
+    
+    /**
+     * Scrape rows in sheet
+     * 
+     * @return number of datasets
+     */
+    public abstract int scrapeRows(Workbook wb);
+    
     @Override
     public void scrape() throws IOException {
+        logger.info("Start scraping");
+
+        Workbook wb = null;
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        try {
+            File f = new File(getBase().toURI());
+            wb = WorkbookFactory.create(f);
+        } catch (URISyntaxException|InvalidFormatException ex) {
+            logger.error("Could not load file {}", getBase());
+            throw new IOException(ex);
+        }
+        int rows = scrapeRows(wb);
+        logger.info("Found {} rows", rows);
 
-
-    @Override
-    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        logger.info("Done scraping");
     }
 
     /**
      * Constructor
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching 
+     * @param storage SDB file to be used as triple store backend
+     * @param base path to file
      */
     public Xls(File caching, File storage, URL base) {
         super(caching, storage, base);

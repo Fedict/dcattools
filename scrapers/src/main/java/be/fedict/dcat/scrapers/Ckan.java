@@ -54,7 +54,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Scraper CKAN
+ * Abstract scraper for CKAN portals.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
@@ -304,7 +304,7 @@ public abstract class Ckan extends Scraper {
      * @param store RDF store
      * @param dataset dataset
      * @param json JSON
-     * @param lang language
+     * @param lang language code
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
@@ -342,7 +342,7 @@ public abstract class Ckan extends Scraper {
      * @param store
      * @param uri
      * @param json
-     * @param lang
+     * @param lang language code
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
@@ -368,7 +368,7 @@ public abstract class Ckan extends Scraper {
      * @param store RDF store
      * @param uri
      * @param json
-     * @param lang language
+     * @param lang language code
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
@@ -380,7 +380,7 @@ public abstract class Ckan extends Scraper {
      * 
      * @param store RDF store
      * @param id
-     * @param page
+     * @param page full JSON object
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
@@ -504,8 +504,7 @@ public abstract class Ckan extends Scraper {
         }
         logger.info("Done scraping");
     }
-    
-    
+      
     /**
      * CKAN scraper.
      * 
