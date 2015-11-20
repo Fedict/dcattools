@@ -228,6 +228,19 @@ public abstract class Scraper extends Fetcher {
     public URL makeDistURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + id);
     }
+  
+    /**
+     * Make an URL for an organization 
+     * 
+     * @param id
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    public URL makeOrgURL(String id) throws MalformedURLException {
+        return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + id);
+    }
+    
+  
     
     /**
      * Set property from config file and property prefix.
