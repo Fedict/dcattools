@@ -82,7 +82,6 @@ public class HtmlFodMobilit extends Html {
     private URL makeDatasetURL(int i) throws MalformedURLException {
         return new URL(getBase().toString() + "/" + String.valueOf(i));
     }
-    
         
     /**
      * Switch to another language
@@ -145,7 +144,6 @@ public class HtmlFodMobilit extends Html {
         
         logger.info("Done scraping");
     }
-
     
     /**
      * Generate DCAT distribution.
@@ -164,8 +162,9 @@ public class HtmlFodMobilit extends Html {
                             throws MalformedURLException, RepositoryException {
         String href = link.first().attr(Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
-        
-        URI dist = store.getURI(makeSeqDistURL(i, lang).toString());
+     
+        URL u = makeDistURL(getName() + "/" + i + "/" + lang);
+        URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
@@ -209,7 +208,6 @@ public class HtmlFodMobilit extends Html {
         generateDist(store, dataset, front, link, i, lang);
     }
     
-    
     /**
      * Generate DCAT datasets.
      * 
@@ -238,6 +236,7 @@ public class HtmlFodMobilit extends Html {
     }
     
     /**
+     * Generate DCAT catalog information.
      * 
      * @param store
      * @param catalog

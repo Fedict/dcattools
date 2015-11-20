@@ -89,7 +89,6 @@ public abstract class Ckan extends Scraper {
     
     public final static String KEY = "key";
     public final static String VALUE = "value";
-
     
     // CKAN API
     public final static String API_LIST = "/api/3/action/package_list";
@@ -116,10 +115,10 @@ public abstract class Ckan extends Scraper {
      * @return URL
      * @throws MalformedURLException 
      */
-    protected URL ckanResourceURL(String id) throws MalformedURLException {
+    /*protected URL ckanResourceURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_RES + id);
     }
-    
+    */
     /**
      * Get URL of a CKAN organization (DCAT Publisher).
      * 
@@ -127,9 +126,9 @@ public abstract class Ckan extends Scraper {
      * @return URL
      * @throws MalformedURLException 
      */
-    protected URL ckanOrganizationURL(String id) throws MalformedURLException {
+   /* protected URL ckanOrganizationURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_ORG + id);
-    }
+    }*/
     
     /**
      * Get URL of a CKAN page.
@@ -353,7 +352,7 @@ public abstract class Ckan extends Scraper {
         
             if (obj.getBoolean(Ckan.IS_ORG)) {
                 String s = obj.getString(Ckan.ID, "");
-                URI org = store.getURI(ckanOrganizationURL(s).toString());
+                URI org = store.getURI(makeOrgURL(s).toString());
                 store.add(uri, DCTERMS.PUBLISHER, org);
                 store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
         

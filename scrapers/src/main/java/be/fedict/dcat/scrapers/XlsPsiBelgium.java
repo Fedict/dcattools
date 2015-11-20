@@ -27,12 +27,13 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.openrdf.model.URI;
+import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,18 +44,39 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class XlsPsiBelgium extends Xls {
+    public final static String ID = "Id";
+    
     private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
 
     @Override
-    public int scrapeRows(Workbook wb) {
-        Sheet sheet = wb.getSheetAt(0);
-        getColumnNames(sheet);
-        return getRows(sheet);
+    protected URL getId(Row row) throws MalformedURLException {
+        String s = row.getCell(0).toString();
+        return makeDatasetURL(getName() + "/" + s);
     }
 
+    
+    /**
+     * Generate DCAT catalog information.
+     * 
+     * @param store
+     * @param catalog
+     * @throws RepositoryException 
+     */
     @Override
-    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        super.generateCatalogInfo(store, catalog);
+        store.add(catalog, DCTERMS.TITLE, "DCAT export PSI Belgium", "en");
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
+    }
+    
+    @Override
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        logger.info("Generate DCAT");
+        
+        generateCatalog(store);
     }
     
     /**

@@ -37,7 +37,6 @@ import org.mapdb.DBMaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
@@ -52,12 +51,13 @@ public class Cache {
 
     
     /**
+     * Store list of URLs.
      * 
      * @param urls 
      */
     public void storeURLList(List<URL> urls)  {
-        ConcurrentMap<String, List<URL>> map = db.hashMap(CACHE);
-        map.put(URLS, urls);
+        ConcurrentMap<String, List<URL>> map = db.hashMap(Cache.CACHE);
+        map.put(Cache.URLS, urls);
         db.commit();
     }
     
@@ -67,19 +67,19 @@ public class Cache {
      * @return 
      */
     public List<URL> retrieveURLList() {
-        ConcurrentMap<String, List<URL>> map = db.hashMap(CACHE);
-        return map.getOrDefault(URLS, new ArrayList<URL>());
+        ConcurrentMap<String, List<URL>> map = db.hashMap(Cache.CACHE);
+        return map.getOrDefault(Cache.URLS, new ArrayList<URL>());
     }
     
     /**
-     * Store a webpage
+     * Store a web page
      * 
      * @param id
      * @param page
      * @param lang 
      */
     public void storePage(URL id, String lang, Page page) {
-        ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(PAGES);
+        ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
         Map<String, Page> p = map.getOrDefault(id, new HashMap<String, Page>());
         p.put(lang, page);
         map.put(id, p);
@@ -87,14 +87,37 @@ public class Cache {
     }
     
     /**
-     * Retrieve a page from the cache
+     * Retrieve a page from the cache.
      * 
      * @param id
      * @return page object
      */
     public Map<String, Page> retrievePage(URL id) {
-        ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(PAGES);
+        ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
         return map.getOrDefault(id, new HashMap<String, Page>());
+    }
+    
+    /**
+     * Store a list to the cache.
+     * 
+     * @param id
+     * @param list 
+     */
+    public void storeList(URL id, List<String> list) {
+        ConcurrentMap<URL, List<String>> map = db.hashMap(Cache.PAGES);
+        map.put(id, list);
+        db.commit();
+    }
+    
+    /**
+     * Retrieve a list from the cache.
+     * 
+     * @param id
+     * @return 
+     */
+    public List<String> retrieveList(URL id) {
+        ConcurrentMap<URL, List<String>> map = db.hashMap(Cache.PAGES);
+        return map.getOrDefault(id, new ArrayList<String>());
     }
     
     /**
@@ -110,5 +133,4 @@ public class Cache {
         
         db = DBMaker.fileDB(f).make();
     }
-    
 }
