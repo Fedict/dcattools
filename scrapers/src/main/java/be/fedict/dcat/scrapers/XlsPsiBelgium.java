@@ -34,6 +34,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.openrdf.repository.RepositoryException;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -42,11 +43,12 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class XlsPsiBelgium extends Xls {
-    private final org.slf4j.Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
+    private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
 
     @Override
     public int scrapeRows(Workbook wb) {
         Sheet sheet = wb.getSheetAt(0);
+        getColumnNames(sheet);
         return getRows(sheet);
     }
 
@@ -64,5 +66,6 @@ public class XlsPsiBelgium extends Xls {
      */
     public XlsPsiBelgium(File caching, File storage, URL base) {
         super(caching, storage, base);
+        setName("psibelgium");
     }
 }

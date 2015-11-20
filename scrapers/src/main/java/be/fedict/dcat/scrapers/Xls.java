@@ -38,6 +38,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -46,7 +47,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Xls extends Scraper {
-    private final org.slf4j.Logger logger = LoggerFactory.getLogger(Xls.class);
+    private final Logger logger = LoggerFactory.getLogger(Xls.class);
     
     /**
      * Get the column names as a list
@@ -61,6 +62,7 @@ public abstract class Xls extends Scraper {
         Iterator<Cell> cells = header.cellIterator();
         while (cells.hasNext()) {
             Cell cell = cells.next();
+            logger.info(cell.getStringCellValue());
             headers.add(cell.getStringCellValue());
         }
         return headers;
@@ -73,7 +75,7 @@ public abstract class Xls extends Scraper {
      * @return number of rows - 1 
      */
     public int getRows(Sheet sheet) {
-        return sheet.getLastRowNum() - sheet.getFirstRowNum() - 1;
+        return sheet.getLastRowNum() - sheet.getFirstRowNum();
     }
     
     /**

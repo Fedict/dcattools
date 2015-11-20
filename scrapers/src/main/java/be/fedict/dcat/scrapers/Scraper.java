@@ -82,7 +82,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @return local cache file
      */
-    public Cache getCache() {
+    public final Cache getCache() {
         return cache;
     }
     
@@ -91,7 +91,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @return RDF triple store
      */
-    public Storage getTripleStore() {
+    public final Storage getTripleStore() {
         return store;
     }
     
@@ -109,7 +109,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @param lang language code
      */
-    public void setDefaultLang(String lang) {
+    public final void setDefaultLang(String lang) {
         this.defLang = lang;
     }
     /**
@@ -117,7 +117,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @return language language code
      */
-    public String getDefaultLang() {
+    public final String getDefaultLang() {
         return defLang;
     }
     
@@ -126,7 +126,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @param langs array of language codes
      */
-    public void setAllLangs(String langs[]) {
+    public final void setAllLangs(String langs[]) {
         this.allLangs = langs;
     }
     
@@ -135,7 +135,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @return array of language codes
      */
-    public String[] getAllLangs() {
+    public final String[] getAllLangs() {
         return allLangs;
     }
     
@@ -144,7 +144,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @param name name
      */
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
     
@@ -153,7 +153,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @return name
      */
-    public String getName() {
+    public final String getName() {
         return name;
     }
     
@@ -182,7 +182,7 @@ public abstract class Scraper extends Fetcher {
      * @param s
      * @return 
      */
-    public String makeHashId(String s) {
+    public final String makeHashId(String s) {
         return HASHER.hashBytes(s.getBytes()).toString();
     }
     
@@ -193,7 +193,7 @@ public abstract class Scraper extends Fetcher {
      * @return 
      * @throws MalformedURLException 
      */
-    public URL makeAbsURL(String rel) throws MalformedURLException {
+    public final URL makeAbsURL(String rel) throws MalformedURLException {
         return new URL(getBase().getProtocol(), getBase().getHost(), rel);
     }
     
@@ -203,7 +203,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws MalformedURLException
      */
-    public URL makeCatalogURL() throws MalformedURLException {
+    public final URL makeCatalogURL() throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + getName());
     }
     
@@ -214,7 +214,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws MalformedURLException 
      */
-    public URL makeDatasetURL(String id) throws MalformedURLException {
+    public final URL makeDatasetURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + id);
     }
     
@@ -225,7 +225,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    public URL makeDistURL(String id) throws MalformedURLException {
+    public final URL makeDistURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + id);
     }
   
@@ -236,11 +236,9 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    public URL makeOrgURL(String id) throws MalformedURLException {
+    public final URL makeOrgURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + id);
     }
-    
-  
     
     /**
      * Set property from config file and property prefix.
@@ -248,7 +246,7 @@ public abstract class Scraper extends Fetcher {
      * @param prop
      * @param prefix 
      */
-    public void setProperties(Properties prop, String prefix) {
+    public final void setProperties(Properties prop, String prefix) {
         this.prop = prop;
         this.prefix = prefix;
     }
@@ -259,7 +257,7 @@ public abstract class Scraper extends Fetcher {
      * @param name
      * @return property value
      */
-    public String getProperty(String name) {
+    public final String getProperty(String name) {
         String p = prefix + "." + name;
 
         String value = prop.getProperty(p);
