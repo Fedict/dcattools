@@ -237,7 +237,7 @@ public abstract class Ckan extends Scraper {
        
         String v = "";
         try {
-            v = getHashUrl(name + email).toString();
+            v = makeOrgURL(makeHashId(name + email)).toString();
         } catch (MalformedURLException e) {
             logger.error("Could not generate hash url", e);
         }

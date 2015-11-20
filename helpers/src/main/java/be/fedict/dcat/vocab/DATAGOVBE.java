@@ -47,8 +47,9 @@ public class DATAGOVBE {
     
     public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
     public final static String PREFIX_URI_DATASET = "http://data.gov.be/dataset";
-    public final static String PREFIX_URI_DIST = "http://data.gov.be/distribution";
-    
+    public final static String PREFIX_URI_DIST = "http://data.gov.be/dist";
+    public final static String PREFIX_URI_ORG = "http://data.gov.be/org";
+      
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
 
