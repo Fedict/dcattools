@@ -25,45 +25,44 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Page;
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.openrdf.repository.RepositoryException;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Abstract scraper for HTML sites.
+ * Scraper for PSI Belgium Excel export.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Html extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Html.class);
+public class XlsPsiBelgium extends Xls {
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
+
+    @Override
+    public int scrapeRows(Workbook wb) {
+        Sheet sheet = wb.getSheetAt(0);
+        return getRows(sheet);
+    }
+
+    @Override
+    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-       
     /**
-     * Generate DCAT Dataset
+     * Constructor.
      * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
+     * @param caching
+     * @param storage
+     * @param base 
      */
-    public abstract void generateDataset(Storage store, String id, Map<String,Page> page) 
-            throws MalformedURLException, RepositoryException;
-         
-    /**
-     * HTML page scraper.
-     * 
-     * @param caching local cache file
-     * @param storage local triple store file
-     * @param base URL of the CKAN site
-     */
-    public Html(File caching, File storage, URL base) {
+    public XlsPsiBelgium(File caching, File storage, URL base) {
         super(caching, storage, base);
     }
 }
