@@ -25,8 +25,10 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -62,7 +64,6 @@ public abstract class Xls extends Scraper {
         Iterator<Cell> cells = header.cellIterator();
         while (cells.hasNext()) {
             Cell cell = cells.next();
-            logger.info(cell.getStringCellValue());
             headers.add(cell.getStringCellValue());
         }
         return headers;
@@ -71,19 +72,53 @@ public abstract class Xls extends Scraper {
     /**
      * Return the number of rows, minus the header
      * 
-     * @param sheet
+     * @param sheet spreadsheet tab
      * @return number of rows - 1 
      */
-    public int getRows(Sheet sheet) {
+    public int getRowCount(Sheet sheet) {
         return sheet.getLastRowNum() - sheet.getFirstRowNum();
     }
     
     /**
-     * Scrape rows in sheet
+     * Get unique ID
      * 
-     * @return number of datasets
+     * @param row
+     * @return URL 
+     * @throws java.net.MalformedURLException 
      */
-    public abstract int scrapeRows(Workbook wb);
+    protected abstract URL getId(Row row) throws MalformedURLException;
+    
+    /**
+     * Scrape rows in first sheet
+     * 
+     * @param sheet spreadsheet tab
+     * @return number of datasets
+     * @throws java.net.MalformedURLException
+     */
+    public int scrapeRows(Sheet sheet) throws MalformedURLException {
+        Cache cache = getCache();
+        
+        getColumnNames(sheet);
+        
+        Iterator<Row> rows = sheet.rowIterator();
+        // Skip header
+        if (rows.hasNext()) {
+            rows.next();
+        }
+        while(rows.hasNext()) {
+            Row row = rows.next();
+            List<String> list = new ArrayList<>();
+            URL id = getId(row);
+            
+            Iterator<Cell> cells = row.cellIterator();
+            while(cells.hasNext()) {
+                Cell cell = cells.next();
+                list.add(cell.toString());
+            }
+            cache.storeList(id, list);
+        }   
+        return getRowCount(sheet);
+    }
     
     @Override
     public void scrape() throws IOException {
@@ -98,9 +133,12 @@ public abstract class Xls extends Scraper {
             logger.error("Could not load file {}", getBase());
             throw new IOException(ex);
         }
-        int rows = scrapeRows(wb);
+        Sheet sheet = wb.getSheetAt(0);
+        int rows = getRowCount(sheet);
         logger.info("Found {} rows", rows);
 
+        scrapeRows(sheet);
+        
         logger.info("Done scraping");
     }
 

@@ -203,7 +203,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws MalformedURLException
      */
-    public final URL makeCatalogURL() throws MalformedURLException {
+    public URL makeCatalogURL() throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + getName());
     }
     
@@ -214,7 +214,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws MalformedURLException 
      */
-    public final URL makeDatasetURL(String id) throws MalformedURLException {
+    public URL makeDatasetURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + id);
     }
     
@@ -225,7 +225,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    public final URL makeDistURL(String id) throws MalformedURLException {
+    public URL makeDistURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + id);
     }
   
