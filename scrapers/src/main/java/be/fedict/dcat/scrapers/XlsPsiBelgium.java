@@ -51,6 +51,8 @@ public class XlsPsiBelgium extends Xls {
     public final static String ID = "id";
     public final static String TITLE = "formtitle";
     public final static String DESC = "formshortdsc_dsc";
+    public final static String ACCESS = "questionformnameurl_url";
+    public final static String DOWNLOAD = "forminformationurl_url";
     
     private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
 
@@ -63,13 +65,47 @@ public class XlsPsiBelgium extends Xls {
         return makeDatasetURL(getName() + "/" + s);
     }
 
+    
     /**
      * 
      * @param store
-     * @param map 
+     * @param dataset
+     * @param map
+     * @param lang
+     * @throws RepositoryException 
      */
+    private void generateDist(Storage store, URI dataset, Map<String,String> map,
+            String id, String lang) throws RepositoryException, MalformedURLException {
+        URL u  = makeDistURL(getName() + "/" + id + "/" + lang);
+        URI dist = store.getURI(u.toString());
+        logger.debug("Generating distribution {}", dist.toString());
+
+        String access = map.getOrDefault(XlsPsiBelgium.ACCESS, "http://");
+        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD, "http://");
+        
+        store.add(dataset, DCAT.DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+        store.add(dist, DCAT.ACCESS_URL, access);
+        
+        if (!download.equals("http://")) {
+            store.add(dist, DCAT.DOWNLOAD_URL, download);
+            store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
+        }
+    }
+    
+    /**
+     * Generate DCAT dataset
+     * 
+     * @param store
+     * @param map 
+     * @param u
+     * @throws RepositoryException
+     * @throws MalformedURLException
+     */
+    @Override
     public void generateDataset(Storage store, Map<String,String> map, URL u) 
-                                                    throws RepositoryException {
+                            throws RepositoryException, MalformedURLException {
         URI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
@@ -78,12 +114,15 @@ public class XlsPsiBelgium extends Xls {
         
         String[] langs = getAllLangs();
         for (String lang : langs) {
+            String id = map.get(ID);
             String title = map.getOrDefault(XlsPsiBelgium.TITLE + lang, "");
             String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
             
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
-            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);        
+            
+            generateDist(store, dataset, map, id, lang);
         }
     }
     
