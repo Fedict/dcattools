@@ -151,6 +151,17 @@ public abstract class Xls extends Scraper {
     }
     
     /**
+     * Generate DCAT dataset
+     * 
+     * @param store
+     * @param map
+     * @throws RepositoryException
+     * @throws MalformedURLException
+     */
+    public abstract void generateDataset(Storage store, Map<String,String> map, URL u)
+                            throws RepositoryException, MalformedURLException; 
+    
+    /**
      * Scrape workbook
      * 
      * @return
