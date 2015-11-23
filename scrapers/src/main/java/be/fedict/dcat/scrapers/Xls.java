@@ -79,15 +79,15 @@ public abstract class Xls extends Scraper {
      * 
      * @param store RDF store
      * @param uri RDF subject URI
-     * @param list list of strings
+     * @param map key/value object
      * @param field CKAN field name 
      * @param property RDF property
      * @param lang language
      * @throws RepositoryException 
      */
-    protected void parseString(Storage store, URI uri, Map<String,String> list, 
+    protected void parseString(Storage store, URI uri, Map<String,String> map, 
             String field, URI property, String lang) throws RepositoryException {
-        String s = list.
+        String s = map.get(field);
         if (! s.isEmpty()) {
             if (lang != null) {
                 store.add(uri, property, s, lang);
@@ -96,7 +96,6 @@ public abstract class Xls extends Scraper {
             }
         }
     }
-    
     
     /**
      * Return the number of rows, minus the header
@@ -113,22 +112,22 @@ public abstract class Xls extends Scraper {
      * 
      * @param row
      * @return URL 
-     * @throws java.net.MalformedURLException 
+     * @throws MalformedURLException 
      */
     protected abstract URL getId(Row row) throws MalformedURLException;
     
     /**
-     * Scrape rows in first sheet
+     * Scrape rows in first sheet and store them as key/value in the cache.
      * 
      * @param sheet spreadsheet tab
-     * @return number of datasets
-     * @throws java.net.MalformedURLException
+     * @return list of URLs
+     * @throws MalformedURLException
      */
-    public int scrapeRows(Sheet sheet) throws MalformedURLException {
+    protected List<URL> scrapeRows(Sheet sheet) throws MalformedURLException {
+        List<URL> urls = new ArrayList<>();
         Cache cache = getCache();
         
-        List<String> names = getColumnNames(sheet);
-        
+        List<String> names = getColumnNames(sheet);    
         Iterator<Row> rows = sheet.rowIterator();
         // Skip header
         if (rows.hasNext()) {
@@ -138,7 +137,7 @@ public abstract class Xls extends Scraper {
             Row row = rows.next();
             Map<String,String> map = new HashMap<>();
             URL id = getId(row);
-            
+            // Store the cells in a key/value way
             Iterator<Cell> cells = row.cellIterator();
             while(cells.hasNext()) {
                 Cell cell = cells.next();
@@ -146,14 +145,18 @@ public abstract class Xls extends Scraper {
                 map.put(key, cell.toString());
             }
             cache.storeMap(id, map);
-        }   
-        return getRowCount(sheet);
+            urls.add(id);
+        }
+        return urls;
     }
     
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-
+    /**
+     * Scrape workbook
+     * 
+     * @return
+     * @throws IOException 
+     */
+    protected List<URL> scrapeWorkbook() throws IOException {
         Workbook wb = null;
         
         try {
@@ -164,10 +167,21 @@ public abstract class Xls extends Scraper {
             throw new IOException(ex);
         }
         Sheet sheet = wb.getSheetAt(0);
-        int rows = getRowCount(sheet);
-        logger.info("Found {} rows", rows);
-
-        scrapeRows(sheet);
+        return scrapeRows(sheet);
+    }
+    
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        List<URL> urls = cache.retrieveURLList();
+        if (urls.isEmpty()) {
+            urls = scrapeWorkbook();
+            cache.storeURLList(urls);
+        }
+        
+        logger.info("Found {} rows", urls.size());
         
         logger.info("Done scraping");
     }

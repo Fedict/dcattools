@@ -27,13 +27,17 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import org.apache.poi.ss.usermodel.Row;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +48,9 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class XlsPsiBelgium extends Xls {
-    public final static String ID = "Id";
+    public final static String ID = "id";
+    public final static String TITLE = "formtitle";
+    public final static String DESC = "formshortdsc_dsc";
     
     private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
 
@@ -57,6 +63,30 @@ public class XlsPsiBelgium extends Xls {
         return makeDatasetURL(getName() + "/" + s);
     }
 
+    /**
+     * 
+     * @param store
+     * @param map 
+     */
+    public void generateDataset(Storage store, Map<String,String> map, URL u) 
+                                                    throws RepositoryException {
+        URI dataset = store.getURI(u.toString());  
+        logger.debug("Generating dataset {}", dataset.toString());
+        
+        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+        
+        String[] langs = getAllLangs();
+        for (String lang : langs) {
+            String title = map.getOrDefault(XlsPsiBelgium.TITLE + lang, "");
+            String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
+            
+            store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+            store.add(dataset, DCTERMS.TITLE, title, lang);
+            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+        }
+    }
+    
     
     /**
      * Generate DCAT catalog information.
@@ -79,6 +109,12 @@ public class XlsPsiBelgium extends Xls {
                             throws RepositoryException, MalformedURLException {
         logger.info("Generate DCAT");
         
+        /* Get the list of all datasets */
+        List<URL> urls = cache.retrieveURLList();
+        for (URL u : urls) {
+            Map<String,String> map = cache.retrieveMap(u);
+            generateDataset(store, map, u);
+        }
         generateCatalog(store);
     }
     
