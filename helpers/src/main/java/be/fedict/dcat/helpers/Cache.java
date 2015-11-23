@@ -101,11 +101,11 @@ public class Cache {
      * Store a map to the cache.
      * 
      * @param id
-     * @param list 
+     * @param map 
      */
-    public void storeMap(URL id, Map<String,String> list) {
-        ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
-        map.put(id, list);
+    public void storeMap(URL id, Map<String,String> map) {
+        ConcurrentMap<URL, Map<String,String>> m = db.hashMap(Cache.PAGES);
+        m.put(id, map);
         db.commit();
     }
     
@@ -115,7 +115,7 @@ public class Cache {
      * @param id
      * @return 
      */
-    public Map<String,String> retrieveList(URL id) {
+    public Map<String,String> retrieveMap(URL id) {
         ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
         return map.getOrDefault(id, new HashMap<String,String>());
     }
