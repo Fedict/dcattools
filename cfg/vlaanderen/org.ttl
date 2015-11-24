@@ -1,9 +1,12 @@
-F@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/76>
 	skos:prefLabel "FPS Economy" ;
 	skos:exactMatch "(verplichte vermelding): FOD Economie - Algemene Directie Statistiek en Economische Informatie (ADSEI), op basis van het Rijksregister van de natuurlijke personen (RRNP)", "FOD Economie - Algemene Directie Statistiek, Huishoudbudgetenquête 1997, Socio-economische enquête 2001;", "Mobiliteitsplan Vlaanderen, Algemene Directie Statistiek, MOW (bewerking Studiedienst van de Vlaamse Regering)" .
 
+<http://data.gov.be/en/taxonomy/term/77>
+	skos:prefLabel "FPS Mobility" ;
+	
 <http://data.gov.be/en/taxonomy/term/78>
 	skos:prefLabel "Agentschap Wonen" ;
 	skos:exactMatch "Agentschap Wonen-Vlaanderen", "Agentschap Wonen Vlaanderen" .
