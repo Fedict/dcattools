@@ -53,6 +53,7 @@ public class CkanVlaanderen extends Ckan {
     public final static String GEMET = "gemet-theme";
     public final static String GEOCOVERAGE = "geografische dekking";
     public final static String METADATA_REQ = "metadata_request";
+    public final static String RESPONSABLE = "responsible-party";
     
     /**
      * Parse CKAN "extra" section.
@@ -85,6 +86,9 @@ public class CkanVlaanderen extends Ckan {
                     parseURI(store, uri, obj, Ckan.VALUE, DCAT.LANDING_PAGE);
                     break;
                 case CkanVlaanderen.CONTACT:
+                    parseContact(store, uri, obj, Ckan.VALUE, "", DCAT.CONTACT_POINT);
+                    break;
+                case CkanVlaanderen.RESPONSABLE:
                     parseContact(store, uri, obj, Ckan.VALUE, "", DCAT.CONTACT_POINT);
                     break;
                 default:

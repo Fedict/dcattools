@@ -234,6 +234,18 @@ public abstract class Ckan extends Scraper {
         String name = obj.getString(field, "");
         String email = obj.getString(field2, "");
        
+        // Check if this is actually an escaped JSON array
+        if (name.startsWith("[{")) {
+            name = name.replace("\\", "");
+            
+            JsonReader json  = Json.createReader(new StringReader(name));
+            JsonArray arr = json.readArray();
+            for (JsonObject o : arr.getValuesAs(JsonObject.class)) {
+                parseContact(store, uri, o, Ckan.NAME, field2, property);
+            }
+            return;
+        }
+        
         String v = "";
         try {
             v = makeOrgURL(makeHashId(name + email)).toString();
