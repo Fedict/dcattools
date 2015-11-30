@@ -2,11 +2,11 @@
 
 <http://data.gov.be/en/taxonomy/term/76>
 	skos:prefLabel "FPS Economy" ;
-	skos:exactMatch "(verplichte vermelding): FOD Economie - Algemene Directie Statistiek en Economische Informatie (ADSEI), op basis van het Rijksregister van de natuurlijke personen (RRNP)", "FOD Economie - Algemene Directie Statistiek, Huishoudbudgetenquête 1997, Socio-economische enquête 2001;", "Algemene Directie Statistiek (Volkstelling 1981, 1991, SEE2001, Census 2011), Woonsurvey 2005,  Groot Woononderzoek 2013", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (AD SEI, voormalig NIS)", "FOD Economie - Algemene Directie Statistiek, huishoudbudgetenquête 1997/1998; Woonsurvey 2005", "FOD Economie - Algemene Directie Statistiek en Economisch Informatie  (ADSEI)", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (AD SEI; voormalig NIS) -> ", "FOD Economie - Afdeling Statistiek, bewerking Toerisme Vlaanderen - Planning & Onderzoek", "ADSEI, Kadaster" .
+	skos:exactMatch "(verplichte vermelding): FOD Economie - Algemene Directie Statistiek en Economische Informatie (ADSEI), op basis van het Rijksregister van de natuurlijke personen (RRNP)", "FOD Economie - Algemene Directie Statistiek, Huishoudbudgetenquête 1997, Socio-economische enquête 2001;", "Algemene Directie Statistiek (Volkstelling 1981, 1991, SEE2001, Census 2011), Woonsurvey 2005,  Groot Woononderzoek 2013", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (AD SEI, voormalig NIS)", "FOD Economie - Algemene Directie Statistiek, huishoudbudgetenquête 1997/1998; Woonsurvey 2005", "FOD Economie - Algemene Directie Statistiek en Economisch Informatie  (ADSEI)", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (AD SEI; voormalig NIS) -> ", "FOD Economie - Afdeling Statistiek, bewerking Toerisme Vlaanderen - Planning & Onderzoek", "ADSEI, Kadaster", "FOD Economie - ADS EAK, Eurostat LFS* (bewerking Steunpunt WSE/Departement WSE)", "Algemene Directie Statistiek en Economische Informatie (ADSEI) van de FOD Economie - Bevolking op basis van het rijksregister van de natuurlijke personen", "administratie van het Kadaster, FOD Economie - Algemene Directie Statistiek", "administratie van het Kadaster, FOD Economie - Algemene Directie Statistiek", "Eurostat (epp.eurostat.cec.eu.int), Belgische data: Algemene directie Statistiek en Economische informatie, FOD Economie, K.M.O., Middenstand en Energie (e_esell)", "FOD Economie - Algemene Directie Statistiek en Economische informatie (ADSEI.)   -> zie:", "FOD Economie - Algemene Directie Statistiek", "FOD Economie, Algemene Directie Statistiek en Economische Informatie (huishoudbudgetenquête)", "Eurostat (epp.eurostat.cec.eu.int), Belgische data: Algemene directie Statistiek en Economische informatie, FOD Economie, K.M.O., Middenstand en Energie", "FOD Economie, KMO, Middenstand en Energie, Dienst voor het Indexcijfer der prijzen", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (AD SEI)", "Huishoudbudgetenquête Algemene Directie Statistiek", "FOD Economie - Afdeling Statistiek, Bevolkingsstatistieken  (voormalig: N.I.S.)", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (ADSEI, voormalig NIS)", "administratie van het Kadaster, FOD Economie - Algemene Directie Statistiek", "FOD Economie - Algemene Directie Statistiek en Economische Informatie (AD SEI; voorheen NIS)" .
 
 <http://data.gov.be/en/taxonomy/term/77>
 	skos:prefLabel "FPS Mobility" ;
-	skos:exactMatch "FOD MV" .
+	skos:exactMatch "FOD MV", "FOD MV; Vlaams Verkeerscentrum", "ADSEI, PBV, NMBS, FOD MV" .
 	
 <http://data.gov.be/en/taxonomy/term/78>
 	skos:prefLabel "Agentschap Wonen" ;
@@ -14,35 +14,35 @@
 	
 <http://data.gov.be/en/taxonomy/term/80>
 	skos:prefLabel "INBO" ;
-	skos:exactMatch "ANB/Instituut voor Natuur- en bosonderzoek", "INBO" .
+	skos:exactMatch "ANB/Instituut voor Natuur- en bosonderzoek", "INBO", "INBO, RWO, Afdeling Ruimtelijke Planning", "info@inbo.be", "Instituut voor Natuur- en Bosonderzoek", "Instituut voor natuur- en bosonderzoek", "INBO-NARA, ANB" .
 	
 <http://data.gov.be/en/taxonomy/term/81>
 	skos:prefLabel "VRT" ;
-	skos:exactMatch "Vlaamse Radio- en Televisieomroep (VRT)-studiedienst, rapport Kleur bekennen, september 2004; Monitor Diversiteit 2007, December 2007; Monotor Diversiteit 2009, februari 2010, Monitor diversiteit 2011, september 2011" .
+	skos:exactMatch "Vlaamse Radio- en Televisieomroep (VRT)-studiedienst, rapport Kleur bekennen, september 2004; Monitor Diversiteit 2007, December 2007; Monotor Diversiteit 2009, februari 2010, Monitor diversiteit 2011, september 2011", "Metriweb via VRT-studiedienst, themasites samen Nedstat via VRT-studiedienst", "Jaarverslag VRT, 2007 & studiedienst van de vrt", "Metriweb via VRT-studiedienst" .
 
 <http://data.gov.be/en/taxonomy/term/82>
 	skos:prefLabel "Departement EWI" ;
-	skos:exactMatch "EWI-Speurgids 2011, p.53", "Departement Wetenschap, Innovatie en Media, afdeling Media-innovatie en Mediavergunningen (tot 2006), VRM (vanaf 2006), voor 2003: besluiten van de Vlaamse Executieve en beslissingen van het Vlaams Commissariaat voor de media" .
+	skos:exactMatch "EWI-Speurgids 2011, p.53", "Departement Wetenschap, Innovatie en Media, afdeling Media-innovatie en Mediavergunningen (tot 2006), VRM (vanaf 2006), voor 2003: besluiten van de Vlaamse Executieve en beslissingen van het Vlaams Commissariaat voor de media", "Tem 2005: Departement Wetenschap, Innovatie en Media (WIM), afdeling Media-innovatie en Mediavergunningen, 2006: Onderzoekscel Vlaamse Regulator voor de media" .
 
 <http://data.gov.be/en/taxonomy/term/83>
 	skos:prefLabel "Departement Internationaal" ;
-	skos:exactMatch "Departement internationaal Vlaanderen;", "Departement internationaal Vlaanderen, DGD, CRS OESO" .
+	skos:exactMatch "Departement internationaal Vlaanderen;", "Departement internationaal Vlaanderen, DGD, CRS OESO", "Departement internationaal Vlaanderen, Afdeling Buitenlandse Zaken" .
 
 <http://data.gov.be/en/taxonomy/term/84>
 	skos:prefLabel "SVR" ;
-	skos:exactMatch "SCV-survey 2010-2012", "SCV-survey 2001, 2003, 2007-2012", "EC DG TREN, Studiedienst van de Vlaamse Regering (raming Belgische gewesten)", "SCV-survey 2001, 2003, 2005, 2007, 2009-2012", "Studiedienst van de Vlaamse Regering, LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "Studiedienst van de Vlaamse Regering, LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "SCV-survey 2003, 2005, 2007, 2009, 2010, 2011", "SCV-survey 2005-2012", "Eurobarometer (bewerking Studiedienst van de Vlaamse Regering)", "administratie Cultuur, MIS-team (1995-2005), BAM (2006-2011), SVR (2012-2015)", "Survey van de Studiedienst van de Vlaamse Regering", "Studiedienst van de Vlaamse Regering, SCV-survey 2003-2014, weging crossectioneel", "Mobiliteitsplan Vlaanderen, Algemene Directie Statistiek, MOW (bewerking Studiedienst van de Vlaamse Regering)", "AMECO, HERMREG, Studiedienst van de Vlaamse Regering", "Eurostat, bewerking Studiedienst van de Vlaamse Regering", "Studiedienst van de Vlaamse Regering, SCV-survey 2003, 2005-2013, weging crossectioneel", "Studiedienst van de Vlaamse Regering, Energiebalans VITO", "HERMREG-databank ontwikkeld via een samenwerking tussen de Studiedienst van de Vlaamse Regering (SVR), het Brussels Instituut voor Statistiek en Analyse (BISA), " .
+	skos:exactMatch "SCV-survey 2010-2012", "SCV-survey 2001, 2003, 2007-2012", "EC DG TREN, Studiedienst van de Vlaamse Regering (raming Belgische gewesten)", "SCV-survey 2001, 2003, 2005, 2007, 2009-2012", "Studiedienst van de Vlaamse Regering, LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "Studiedienst van de Vlaamse Regering, LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "SCV-survey 2003, 2005, 2007, 2009, 2010, 2011", "SCV-survey 2005-2012", "Eurobarometer (bewerking Studiedienst van de Vlaamse Regering)", "administratie Cultuur, MIS-team (1995-2005), BAM (2006-2011), SVR (2012-2015)", "Survey van de Studiedienst van de Vlaamse Regering", "Studiedienst van de Vlaamse Regering, SCV-survey 2003-2014, weging crossectioneel", "Mobiliteitsplan Vlaanderen, Algemene Directie Statistiek, MOW (bewerking Studiedienst van de Vlaamse Regering)", "AMECO, HERMREG, Studiedienst van de Vlaamse Regering", "Eurostat, bewerking Studiedienst van de Vlaamse Regering", "Studiedienst van de Vlaamse Regering, SCV-survey 2003, 2005-2013, weging crossectioneel", "Studiedienst van de Vlaamse Regering, Energiebalans VITO", "HERMREG-databank ontwikkeld via een samenwerking tussen de Studiedienst van de Vlaamse Regering (SVR), het Brussels Instituut voor Statistiek en Analyse (BISA), ", "INR, bewerking Studiedienst van de Vlaamse Regering", "Survey van de Studiedienst van de Vlaamse Regering", "SCV- survey", "Dienst Investeren in Vlaanderen (DIV), INR, bewerking Studiedienst van de Vlaamse Regering", "herwogen SCV-survey", "EC DG Mobility and Transport, ADSEI (België en gewesten), bewerking Studiedienst van de Vlaamse Regering", "Eurostat, HERMREG, Studiedienst van de Vlaamse Regering", "SCV-survey 2003, 2005, 2007, 2009-2011", "SCV-survey 2003, 2005, 2007, 2009-2012", "SCV-survey 2007 t.e.m. 2012", "Eurostat, HERMREG, bewerking Studiedienst van de Vlaamse Regering", "Studiedienst van de Vlaamse Regering, SCV-survey 2003, 2005-2014, weging crossectioneel", "SCV-survey 2001, 2003, 2005, 2006, 2007, 2009, 2010, 2011", "SCV-survey", "SCV-survey " .
 
 <http://data.gov.be/en/taxonomy/term/85>
 	skos:prefLabel "VDAB" ;
-	skos:exactMatch "VDAB, bewerking Departement WSE" .
+	skos:exactMatch "Vlaamse Dienst voor Arbeidsbemiddeling en Beroepsopleiding (VDAB)" .
 	
 <http://data.gov.be/en/taxonomy/term/86>
 	skos:prefLabel "Departement LNE" ;
-	skos:exactMatch "Studiedienst van de Vlaamse Regering, LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "Departement Leefmilieu, Natuur en Energie, dienst Veiligheidsrapportering", "Afdeling Land en Bodembescherming, Ondergrond, Natuurlijke Rijkdommen (ALBON) - Dienst Natuurlijke Rijkdommen" .
+	skos:exactMatch "Studiedienst van de Vlaamse Regering, LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "Departement Leefmilieu, Natuur en Energie, dienst Veiligheidsrapportering", "Afdeling Land en Bodembescherming, Ondergrond, Natuurlijke Rijkdommen (ALBON) - Dienst Natuurlijke Rijkdommen", "LNE, afdeling Lucht, Hinder, Risicobeheer, Milieu & Gezondheid", "liesbeth.vandekerckhove@lne.vlaanderen.be", "Schriftelijk Leefomgevingsonderzoek, LNE", "ALBON - Dienst Land en Bodembescherming" .
 	
 <http://data.gov.be/en/taxonomy/term/87>
 	skos:prefLabel "VITO" ;	
-	skos:exactMatch "VITO, Vlaams Energieagentschap, VREG", "VITO" .
+	skos:exactMatch "VITO, Vlaams Energieagentschap, VREG", "VITO", "VITO, VUB", "Energiebalans VITO, Eurostat" .
 	
 <http://data.gov.be/en/taxonomy/term/88>
 	skos:prefLabel "VREG" ;	
@@ -58,15 +58,15 @@
 
 <http://data.gov.be/en/taxonomy/term/91>
 	skos:prefLabel "ABB" ;	
-	skos:exactMatch "Agentschap Binnenlands Bestuur" .
+	skos:exactMatch "Agentschap Binnenlands Bestuur", "BZ, Agentschap Binnenlands Bestuur" .
 
 <http://data.gov.be/en/taxonomy/term/92>
 	skos:prefLabel "VMM" ;	
-	skos:exactMatch "Vlaamse Milieumaatschappij (VMM) - Afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij - Hoofdbestuur", "Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", "VMM, leidingwaterdatabank" .
+	skos:exactMatch "Vlaamse Milieumaatschappij (VMM) - Afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij - Hoofdbestuur", "Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", "VMM, leidingwaterdatabank", "OESO (voor Vlaanderen: VMM-MIRA), Eurostat", "VMM-MIRA: berekeningen INTEC-RUG", "VMM - Afdeling Operationeel Waterbeheer", "Jaarrapport Water VMM, Voortgangsrapport mestbank VLM", "VMM, Emissie Inventaris Lucht", "secretariaat_ciw@vmm.be" .
 
 <http://data.gov.be/en/taxonomy/term/93>
 	skos:prefLabel "Departement CSJM" ;	
-	skos:exactMatch "MVG, Departement CJSM (1)" .
+	skos:exactMatch "MVG, Departement CJSM (1)", "Kroniek, afdeling Jeugd en Sport; jaarverslag sociaal cultureel werk" .
 
 <http://data.gov.be/en/taxonomy/term/94>
 	skos:prefLabel "SPE" ;	
@@ -78,15 +78,15 @@
 
 <http://data.gov.be/en/taxonomy/term/96>
 	skos:prefLabel "Departement Ruimte Vlaanderen" ;	
-	skos:exactMatch "Vlaamse Overheid - departement Ruimte Vlaanderen", "Vlaamse Overheid - Ruimte Vlaanderen", "Vlaamse Overheid - Ruimte Vlaanderen" .
+	skos:exactMatch "Vlaamse Overheid - departement Ruimte Vlaanderen", "Vlaamse Overheid - Ruimte Vlaanderen", "Vlaamse Overheid - Ruimte Vlaanderen", "Departement Ruimte Vlaanderen" .
 
 <http://data.gov.be/en/taxonomy/term/97>
 	skos:prefLabel "Vlaamse Ombudsdienst" ;	
-	skos:exactMatch "Vlaams Parlement, jaarverslag Vlaamse ombudsdienst", "Vlaamse Ombudsdienst" .
+	skos:exactMatch "Vlaams Parlement, jaarverslag Vlaamse ombudsdienst", "Vlaamse Ombudsdienst", "Vlaamse Parlement, jaarverslag Vlaamse Ombudsdienst" .
 	
 <http://data.gov.be/en/taxonomy/term/98>
 	skos:prefLabel "Departement MOW" ;	
-	skos:exactMatch "Mobiliteitsplan Vlaanderen, Algemene Directie Statistiek, MOW (bewerking Studiedienst van de Vlaamse Regering)", "MOW - Afdeling Geotechniek" .
+	skos:exactMatch "Mobiliteitsplan Vlaanderen, Algemene Directie Statistiek, MOW (bewerking Studiedienst van de Vlaamse Regering)", "MOW - Afdeling Geotechniek", "MOW, Vlaams Verkeerscentrum", "natasha.blommaert@mow.vlaanderen.be" .
 
 <http://data.gov.be/en/taxonomy/term/99>
 	skos:prefLabel "RVJ" ;
@@ -94,11 +94,11 @@
 
 <http://data.gov.be/en/taxonomy/term/100>
 	skos:prefLabel "VLM" ;	
-	skos:exactMatch "VLM", "Vlaamse Landmaatschappij - afdeling Landelijke Inrichting", "VLM, voortgangsrapport mestbank" .
+	skos:exactMatch "VLM", "Vlaamse Landmaatschappij - afdeling Landelijke Inrichting", "VLM, voortgangsrapport mestbank", "info@vlm.be" .
 
 <http://data.gov.be/en/taxonomy/term/101>
-	skos:prefLabel "Agentschap insprectie RWO" ;	
-	skos:exactMatch "Inspectie RWO" .
+	skos:prefLabel "Agentschap inspectie RWO" ;	
+	skos:exactMatch "Inspectie RWO", "Agentschap Inspectie RWO - Wooninspectie" .
 	
 <http://data.gov.be/en/taxonomy/term/102>
 	skos:prefLabel "VMSW" ;	
@@ -106,8 +106,12 @@
 	
 <http://data.gov.be/en/taxonomy/term/103>
 	skos:prefLabel "CIM" ;
-	skos:exactMatch "CIM/GfK-Audimetrie/VRT Studiedienst 4+, Noord, total screen usage 02u00-26u00, 15' consec., tem 2009 Live, sedert 2010 Live+6, tem 2012 excl. Gasten, sedert 2013 incl. gasten", "CIM/GfK-Audimetrie/VRT Studiedienst 4+ Noord exclusief gastkijkers, total screen usage (dus inclusief randappartatuur); 02u00-26u00, Live; vanaf 2013 live+6 inclusief gasten", "CIM / GfK-Audimetrie, Noord universum 4+, Total screen, Live+6, 15 minuten consecutief", "CIM/Studiedienst VRT, CIM TV - Noord, total tv, 1/1 - 31/12/xxxx, 24u, 4+, tem 2009 live, vanaf 2010 live+6, tem 2012 excl. gasten, vanaf 2013 incl. gasten - GfK Audimetrie NV" .
+	skos:exactMatch "CIM/GfK-Audimetrie/VRT Studiedienst 4+, Noord, total screen usage 02u00-26u00, 15' consec., tem 2009 Live, sedert 2010 Live+6, tem 2012 excl. Gasten, sedert 2013 incl. gasten", "CIM/GfK-Audimetrie/VRT Studiedienst 4+ Noord exclusief gastkijkers, total screen usage (dus inclusief randappartatuur); 02u00-26u00, Live; vanaf 2013 live+6 inclusief gasten", "CIM / GfK-Audimetrie, Noord universum 4+, Total screen, Live+6, 15 minuten consecutief", "CIM/Studiedienst VRT, CIM TV - Noord, total tv, 1/1 - 31/12/xxxx, 24u, 4+, tem 2009 live, vanaf 2010 live+6, tem 2012 excl. gasten, vanaf 2013 incl. gasten - GfK Audimetrie NV", "CIM/GfK/VRT Studiedienst 12+, ma-zo, 05u00-05u00", "Cijfers op basis van de CIM-radiostudie, VAR, 12+, Ma-zo, 6-22 uur" .
 
+<http://data.gov.be/en/taxonomy/term/104>
+	skos:prefLabel "NMBS" ;	
+	skos:exactMatch "EC DG TREN, NMBS (België en gewesten)" .
+	
 <http://data.gov.be/en/taxonomy/term/106>
 	skos:prefLabel "De Scheepvaart" ;	
 	skos:exactMatch "De Scheepvaart (NV)" .
@@ -122,14 +126,38 @@
 
 <http://data.gov.be/en/taxonomy/term/111>
 	skos:prefLabel "Cultuurnet" ;	
-	skos:exactMatch "UiT-databank, Cultuurnet" .
+	skos:exactMatch "UiT-databank, Cultuurnet", "Cultuurnet, UiT-databank" .
 	
 <http://data.gov.be/en/taxonomy/term/112>
 	skos:prefLabel "Steunpunt WSE" ;	
-	skos:exactMatch "RSZ (Bewerking Steunpunt WAV)" .
+	skos:exactMatch "RSZ (Bewerking Steunpunt WAV)", "Datawarehouse Arbeidsmarkt & Sociale Bescherming bij de KSZ (bewerking Steunpunt WSE)", "FOD Economie - ADS EAK, Eurostat LFS° (bewerking Steunpunt WSE/Departement WSE)" .
+
+<http://data.gov.be/en/taxonomy/term/115>
+	skos:prefLabel "Departement LV" ;	
+	skos:exactMatch "Departement Landbouw en Visserij, afdeling landbouw- en visserijbeleid", "tim.baeten@lv.vlaanderen.be" .
+
+<http://data.gov.be/en/taxonomy/term/116>
+	skos:prefLabel "Agentschap Onroerend Erfgoed" ;	
+	skos:exactMatch "Ict@onroerenderfgoed.be", "RWO, Onroerend Erfgoed" .
 	
-<http://data.gov.be/en/taxonomy/term/114>
-	skos:prefLabel "NMBS" ;	
-	skos:exactMatch "EC DG TREN, NMBS (België en gewesten)" .
+<http://data.gov.be/en/taxonomy/term/117>
+	skos:prefLabel "Waterwegen en Zeekanaal" ;	
+	skos:exactMatch "Waterwegen en Zeekanaal nv", "Waterwegen en Zeekanaal NV" .
+	
+<http://data.gov.be/en/taxonomy/term/118>
+	skos:prefLabel "Departement WSE" ;
+	skos:exactMatch "VDAB, bewerking Departement WSE", "Departement Werk en Sociale Economie", "FOD Economie - Algemene Directie Statistiek EAK, Eurostat LFS** (bewerking Steunpunt WSE/Departement WSE)", "FOD Economie - ADS EAK (bewerking Steunpunt WSE/Departement WSE)", "FOD Economie - Algemene Directie Statistiek EAK, Eurostat LFS (bewerking Steunpunt WSE/Departement WSE)" .
+
+<http://data.gov.be/en/taxonomy/term/119>
+	skos:prefLabel "Agentschap Jongerenwelzijn" ;
+	skos:exactMatch "Agentschap Jongerenwelzijn" .
+	
+<http://data.gov.be/en/taxonomy/term/121>
+	skos:prefLabel "FPS Health" ;
+	skos:exactMatch "FOD Volksgezondheid, Veiligheid van de voedselketen en Leefmilieu" .
+
+<http://data.gov.be/en/taxonomy/term/122>
+	skos:prefLabel "AGIV" ;	
+	skos:exactMatch "Agentschap voor Geografische Informatie Vlaanderen" .
 
 	
