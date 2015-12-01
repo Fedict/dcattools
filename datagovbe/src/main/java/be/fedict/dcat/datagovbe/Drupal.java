@@ -41,6 +41,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -458,8 +459,13 @@ public class Drupal {
     private Map<URI, ListMultimap<String, String>> 
         getPublisher(Map<URI, ListMultimap<String, String>> dataset) 
                                                 throws RepositoryException {
+        Map<URI, ListMultimap<String, String>> m = new HashMap<>();
+                
         String publ = getOne(dataset, DCTERMS.PUBLISHER, "");
-        return store.queryProperties(store.getURI(publ));
+        if (! publ.isEmpty()) {
+            m = store.queryProperties(store.getURI(publ));
+        }
+        return m;
     } 
     
     /**
