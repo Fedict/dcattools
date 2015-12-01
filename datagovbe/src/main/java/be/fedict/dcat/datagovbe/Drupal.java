@@ -101,6 +101,7 @@ public class Drupal {
     public final static String FLD_LICENSE = "field_license";
     public final static String FLD_LINKS = "field_links_";
     public final static String FLD_MAIL = "field_contact";
+    public final static String FLD_ORG = "field_organization";
     public final static String FLD_PUBLISHER = "field_publisher";
     public final static String FLD_UPSTAMP = "field_upstamp";
    
@@ -176,10 +177,24 @@ public class Drupal {
      * @param l list of URLs (as string)
      * @return JsonArrayBuilder containing URL field JSON objects
      */
-    private static JsonArrayBuilder urlArray(List<String> l) {
+    private static JsonArrayBuilder urlArrayJson(List<String> l) {
         JsonArrayBuilder builder = Json.createArrayBuilder();
-        for(String s: l) {
+        for(String s : l) {
             builder.add(Json.createObjectBuilder().add(Drupal.URL, s));
+        }
+        return builder;
+    }
+    
+    /**
+     * Create a JsonArrayBuilder with a list of Drupal text fields
+     * 
+     * @param l list of URLs (as string)
+     * @return JsonArrayBuilder containing text fields JSON objects
+     */
+    private static JsonArrayBuilder fieldArrayJson(List<String> l) {
+        JsonArrayBuilder builder = Json.createArrayBuilder();
+        for(String s : l) {
+            builder.add(s);
         }
         return builder;
     }
@@ -323,26 +338,34 @@ public class Drupal {
     /**
      * Get contact email address
      * 
-     * @param orgs organizations
+     * @param org organization
      * @return email address or empty string
      * @throw RepositoryException
      */
-    private String getEmail(List<String> orgs) throws RepositoryException {
+    private String getOrgEmail(String org) throws RepositoryException {
         // Get DCAT contactpoints
         String email = "";
-       
-        for (String org : orgs) {
-            Map<URI, ListMultimap<String, String>> map = 
+        Map<URI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-            String contact = getOne(map, VCARD.HAS_EMAIL, "");
-            if (contact.startsWith("mailto:")) {
-                contact = contact.substring(7);
-            }
-            if (!contact.isEmpty()) {
-                email = contact;
-            }
+        String contact = getOne(map, VCARD.HAS_EMAIL, "");
+        if (contact.startsWith("mailto:")) {
+            email = contact.substring(7);
         }
         return email;
+    }
+    
+      /**
+     * Get contact email address
+     * 
+     * @param org organization
+     * @return email address or empty string
+     * @throw RepositoryException
+     */
+    private String getOrgName(String org) throws RepositoryException {
+        // Get DCAT contactpoints
+        Map<URI, ListMultimap<String, String>> map = 
+                                        store.queryProperties(store.getURI(org));
+        return getOne(map, VCARD.HAS_FN, "");
     }
     
     /**
@@ -364,6 +387,67 @@ public class Drupal {
         return modif;
     }
     
+    /**
+     * Get list of contact email addresses
+     * 
+     * @param dataset
+     * @return list of email addresses
+     * @throws RepositoryException 
+     */
+    private List<String> getDatasetMails(Map<URI, ListMultimap<String, String>> dataset) 
+                                                    throws RepositoryException {
+        ArrayList<String> arr = new ArrayList<>();
+        List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
+        for(String org : orgs) {
+            String email = getOrgEmail(org);
+            if (!email.isEmpty() && !arr.contains(email)) {
+                arr.add(email);
+            }
+        }
+        return arr;
+    }
+    
+    /**
+     * Get list of organization names
+     * 
+     * @param dataset
+     * @return list of email addresses
+     * @throws RepositoryException 
+     */
+    private List<String> getDatasetOrgs(Map<URI, ListMultimap<String, String>> dataset) 
+                                                    throws RepositoryException {
+        ArrayList<String> arr = new ArrayList<>();
+        List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
+        for(String org : orgs) {
+            String name = getOrgName(org);
+            if (!name.isEmpty() && !arr.contains(name)) {
+                arr.add(name);
+            }
+        }
+        return arr;
+    }
+    
+    /**
+     * Get a list of keywords
+     * 
+     * @param dataset
+     * @param lang language
+     * @return list of keywords
+     * @throws RepositoryException 
+     */
+    private List<String> getKeywords(Map<URI, ListMultimap<String, String>> dataset, 
+                                        String lang) throws RepositoryException {
+        ArrayList<String> arr = new ArrayList<>();
+        List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
+        for(String word : words) {
+            if (!word.isEmpty() && !arr.contains(word)) {
+                arr.add(word);
+            }
+        }
+        return arr;
+    }
+        
+        
     /**
      * Add a dataset to Drupal form
      * 
@@ -391,15 +475,10 @@ public class Drupal {
         
         Date modif = getModif(dataset);
 
-        List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
-        String email = getEmail(orgs);
-                
-  /*      JsonArrayBuilder keywords = Json.createArrayBuilder();
-        List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
-        for(String word : words) {
-            keywords.add(word);
-        }
-    */    
+        JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
+        JsonArrayBuilder keywords = fieldArrayJson(getKeywords(dataset, lang));
+        JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset));
+
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
                 .add(Drupal.LANGUAGE, lang)
                 .add(Drupal.AUTHOR, Json.createObjectBuilder().add(Drupal.ID, userid)) 
@@ -413,12 +492,14 @@ public class Drupal {
                 .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
                 .add(Drupal.FLD_PUBLISHER, getCategories(dataset, DATAGOVBE.ORG))
-                .add(Drupal.FLD_MAIL, email)
-//                .add(Drupal.FLD_KEYWORDS, keywords)
+                .add(Drupal.FLD_ORG, orgs)
+                .add(Drupal.FLD_MAIL, emails)
+          //      .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
     }
 
     /**
+     * Get download link
      * 
      * @param dist
      * @param property
@@ -496,8 +577,8 @@ public class Drupal {
             for (String dist : dists) {
                 addDist(dist, lang, builder, accesses, downloads);
             }
-            builder.add(Drupal.FLD_DETAILS + lang, urlArray(accesses));
-            builder.add(Drupal.FLD_LINKS + lang, urlArray(downloads));
+            builder.add(Drupal.FLD_DETAILS + lang, urlArrayJson(accesses));
+            builder.add(Drupal.FLD_LINKS + lang, urlArrayJson(downloads));
                     
             
             // Add new or update existing dataset ?
