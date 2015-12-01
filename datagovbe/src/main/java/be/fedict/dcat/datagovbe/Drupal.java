@@ -194,7 +194,7 @@ public class Drupal {
     private static JsonArrayBuilder fieldArrayJson(List<String> l) {
         JsonArrayBuilder builder = Json.createArrayBuilder();
         for(String s : l) {
-            builder.add(s);
+            builder.add(Json.createObjectBuilder().add(Drupal.VALUE, s));
         }
         return builder;
     }
@@ -476,7 +476,7 @@ public class Drupal {
         Date modif = getModif(dataset);
 
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
-        JsonArrayBuilder keywords = fieldArrayJson(getKeywords(dataset, lang));
+        //JsonArrayBuilder keywords = fieldArrayJson(getKeywords(dataset, lang));
         JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset));
 
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
