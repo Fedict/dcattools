@@ -254,19 +254,19 @@ public class Drupal {
     }
     
     /**
-     * Add a DCAT Theme / category
+     * Get an array of Drupal taxonomy terms 
      * 
-     * @param dataset
+     * @param map
      * @param property
      */
-    private JsonArrayBuilder getCategories(
-            Map<URI, ListMultimap<String, String>> dataset, URI property) {
+    private JsonArrayBuilder getTerms(
+            Map<URI, ListMultimap<String, String>> map, URI property) {
         JsonArrayBuilder arr = Json.createArrayBuilder();
         
-        List<String> themes = getMany(dataset, property, ""); 
-        for(String theme : themes) {
-            if (theme.startsWith(Drupal.TAXO_PREFIX)) {
-                String id = theme.substring(theme.lastIndexOf("/") + 1);
+        List<String> terms = getMany(map, property, ""); 
+        for(String term : terms) {
+            if (term.startsWith(Drupal.TAXO_PREFIX)) {
+                String id = term.substring(term.lastIndexOf("/") + 1);
                 arr.add(Json.createObjectBuilder().add(Drupal.ID, id).build());
             }
         }
@@ -447,7 +447,21 @@ public class Drupal {
         return arr;
     }
         
-        
+   
+    /**
+     * Get publisher
+     * 
+     * @param dataset
+     * @return
+     * @throws RepositoryException 
+     */
+    private Map<URI, ListMultimap<String, String>> 
+        getPublisher(Map<URI, ListMultimap<String, String>> dataset) 
+                                                throws RepositoryException {
+        String publ = getOne(dataset, DCTERMS.PUBLISHER, "");
+        return store.queryProperties(store.getURI(publ));
+    } 
+    
     /**
      * Add a dataset to Drupal form
      * 
@@ -475,6 +489,7 @@ public class Drupal {
         
         Date modif = getModif(dataset);
 
+        Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
         //JsonArrayBuilder keywords = fieldArrayJson(getKeywords(dataset, lang));
         JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset));
@@ -488,10 +503,10 @@ public class Drupal {
                         .add(Drupal.SUMMARY, "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
                 .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
-                .add(Drupal.FLD_LICENSE, getCategories(dataset, DATAGOVBE.LICENSE))
-                .add(Drupal.FLD_CAT, getCategories(dataset, DATAGOVBE.THEME))
-                .add(Drupal.FLD_GEO, getCategories(dataset, DATAGOVBE.SPATIAL))
-                .add(Drupal.FLD_PUBLISHER, getCategories(dataset, DATAGOVBE.ORG))
+                .add(Drupal.FLD_LICENSE, getTerms(dataset, DATAGOVBE.LICENSE))
+                .add(Drupal.FLD_CAT, getTerms(dataset, DATAGOVBE.THEME))
+                .add(Drupal.FLD_GEO, getTerms(dataset, DATAGOVBE.SPATIAL))
+                .add(Drupal.FLD_PUBLISHER, getTerms(publ, DATAGOVBE.ORG))
                 .add(Drupal.FLD_ORG, orgs)
                 .add(Drupal.FLD_MAIL, emails)
           //      .add(Drupal.FLD_KEYWORDS, keywords)
@@ -546,7 +561,7 @@ public class Drupal {
             if (! download.isEmpty() && !downloads.contains(download)) {
                 downloads.add(download);
             }
-            builder.add(Drupal.FLD_FORMAT, getCategories(dist, DATAGOVBE.MEDIA_TYPE));
+            builder.add(Drupal.FLD_FORMAT, getTerms(dist, DATAGOVBE.MEDIA_TYPE));
         }
     }
     
