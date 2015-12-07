@@ -191,7 +191,7 @@ public class Storage {
      * Get the list of all URIs of a certain class.
      * 
      * @param rdfClass
-     * @return
+     * @return list of subjects
      * @throws RepositoryException 
      */
     public List<URI> query(URI rdfClass) throws RepositoryException {
@@ -215,7 +215,34 @@ public class Storage {
         return lst;
     }
     
-   
+   /**
+     * Remove all statements with a certain class with a given property.
+     * 
+     * @param rdfClass
+     * @param prop property
+     * @return number of removed statements
+     * @throws RepositoryException 
+     */
+    public int remove(URI rdfClass, URI prop) throws RepositoryException {
+        RepositoryResult<Statement> stmts = 
+                conn.getStatements(null, RDF.TYPE, rdfClass, false);
+     
+        if (! stmts.hasNext()) {
+            logger.warn("No results for class {}", rdfClass.stringValue());
+        }
+        
+        int i = 0;
+        while(stmts.hasNext()) {
+            Statement stmt = stmts.next();
+            conn.remove(stmt.getSubject(), prop, null, (Resource) null);
+            i++;
+        }
+        stmts.close();
+        logger.debug("Removed {} statements for {}", i, rdfClass.stringValue());
+        
+        return i;
+    }
+    
     /**
      * Get a set of unique values for a given property from the repository.
      * 
