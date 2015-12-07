@@ -2,7 +2,7 @@
 
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
-	skos:altLabel "landbouw - produktie"@nl , "landbouw - bedrijven"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "landbouw - tewerkstelling"@nl, "landbouw - inkomen"@nl, "landbouw - visserij"@nl, "landbouw - areaal"@nl, "landbouw - algemeen"@nl, "Gebieden met natuurrisico's"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, "Landgebruik"@nl .
+	skos:altLabel "landbouw - produktie"@nl , "landbouw - bedrijven"@nl, "milieu - mest"@nl, "landbouw - tewerkstelling"@nl, "landbouw - inkomen"@nl, "landbouw - visserij"@nl, "landbouw - areaal"@nl, "landbouw - algemeen"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, "Landgebruik"@nl .
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:prefLabel "CULTURE AND SPORT"@en ;
@@ -18,7 +18,7 @@
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "milieu - algemeen"@nl , "ruimte - handhaving"@nl , "ruimte - ordeningsbeleid"@nl, "milieu - besef-gedrag"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "milieu - bosvitaliteit"@nl, "milieu - burger"@nl, "milieu - natuur"@nl, "milieu - afval"@nl, "mobiliteit - milieu"@nl, "milieu - bodem"@nl, "milieu - lucht"@nl, "milieu - water"@nl, "ruimte - bodemgebruik"@nl, "milieu - gezondheid"@nl, "Geologie"@nl, "Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, "Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, "Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl .
+	skos:altLabel "milieu - algemeen"@nl , "ruimte - handhaving"@nl , "ruimte - ordeningsbeleid"@nl, "milieu - besef-gedrag"@nl, "ruimte - bodembestemming"@nl, "milieu - mest"@nl, "milieu - bosvitaliteit"@nl, "milieu - burger"@nl, "milieu - natuur"@nl, "milieu - afval"@nl, "mobiliteit - milieu"@nl, "milieu - bodem"@nl, "milieu - lucht"@nl, "milieu - water"@nl, "ruimte - bodemgebruik"@nl, "milieu - gezondheid"@nl, "Geologie"@nl, "Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, "Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, "Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl, "Gebieden met natuurrisico's"@nl, "ruimte - bodembestemming"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:prefLabel "ENERGY"@en ;
