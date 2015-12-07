@@ -59,6 +59,9 @@
 <http://data.gov.be/en/taxonomy/term/132>
 	skos:prefLabel "Departement BZ" ;
 	skos:altLabel "dbz"@nl .
-
+	
+<http://data.gov.be/en/taxonomy/term/151>
+	skos:prefLabel "WestToer" ;
+	skos:altLabel "westtoer"@nl .
 	
 	

@@ -3,6 +3,14 @@
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:prefLabel "CSV" ;
 	skos:altLabel "CSV" .
+
+<http://data.gov.be/en/taxonomy/term/148>
+	skos:prefLabel "DOC" ;
+	skos:altLabel "doc" .
+
+<http://data.gov.be/en/taxonomy/term/149>
+	skos:prefLabel "DOCX" ;
+	skos:altLabel "docx" .
 	
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
@@ -54,8 +62,12 @@
 	
 <http://data.gov.be/en/taxonomy/term/62>
 	skos:prefLabel "XLSX" ;
-	skos:altLabel "XLSX", "xlsx" .
+	skos:altLabel "XLSX", "xlsx", "xslx" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
 	skos:altLabel "XML" .
+	
+<http://data.gov.be/en/taxonomy/term/150>
+	skos:prefLabel "ZIP" ;
+	skos:altLabel "ZIP" .
