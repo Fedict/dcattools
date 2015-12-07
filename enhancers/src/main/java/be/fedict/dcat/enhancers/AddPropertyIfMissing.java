@@ -26,11 +26,6 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.openrdf.model.URI;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;

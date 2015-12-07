@@ -26,8 +26,6 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -86,8 +84,9 @@ public class AddProperty extends Enhancer {
             if (m.find()) {
                 str = m.group(1);
                 lang = m.group(2);
+            } else {
+                logger.error("No Resource nor Literal: {}", value);
             }
-            logger.error("No Resource nor Literal: {}", value);
         }
     
         List<URI> subjs = store.query(rdfClass);
