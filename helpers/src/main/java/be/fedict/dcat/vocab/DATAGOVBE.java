@@ -44,6 +44,8 @@ public class DATAGOVBE {
     public final static URI SPATIAL;   
     public final static URI THEME;
     public final static URI LICENSE_CC0;
+    public final static URI LICENSE_CCBY;
+    
     
     public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
     public final static String PREFIX_URI_DATASET = "http://data.gov.be/dataset";
@@ -60,5 +62,6 @@ public class DATAGOVBE {
         THEME = factory.createURI(DATAGOVBE.NAMESPACE, "theme");
         
         LICENSE_CC0 = factory.createURI("http://creativecommons.org/publicdomain/zero/1.0/");
+        LICENSE_CCBY = factory.createURI("http://creativecommons.org/licenses/by/4.0/");
     }    
 }

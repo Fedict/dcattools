@@ -1,0 +1,49 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/32>
+	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
+	skos:altLabel  "arbre"@fr, "paysage"@fr .
+
+<http://data.gov.be/en/taxonomy/term/59>
+	skos:prefLabel "CULTURE AND SPORT"@en ;
+	skos:altLabel "arts de la scène"@fr, "musique"@fr, "tourisme"@fr, "culture"@fr, "arts plastiques"@fr .
+
+<http://data.gov.be/en/taxonomy/term/38>
+	skos:prefLabel "ECONOMY AND FINANCE"@en ;
+	skos:altLabel "e-business"@fr, "UDP"@fr, "entreprises"@fr, "e-commerce"@fr, "emploi"@fr, "tourisme"@fr, "TPE"@fr, "PME"@fr, "TIC"@fr, "rentic"@fr, "Bspace"@fr .
+
+<http://data.gov.be/en/taxonomy/term/33>
+	skos:prefLabel "EDUCATION"@en ;
+	skos:altLabel "enseignement"@fr, "école"@fr, "éducation"@fr, "ecoles"@fr .
+
+<http://data.gov.be/en/taxonomy/term/34>
+	skos:prefLabel "ENVIRONMENT"@en ;
+	skos:altLabel "vert"@fr, "météo"@fr, "meteo"@fr, "PICC"@fr, "natura 2000"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/35>
+	skos:prefLabel "ENERGY"@en ;
+	skos:altLabel  "energie"@fr, "photovoltaïque"@fr, "électricité"@fr, "énergie"@fr .
+
+<http://data.gov.be/en/taxonomy/term/41>
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
+	skos:altLabel "communes"@fr, "PICC"@fr, "Commune"@fr, "commune"@fr, "carte"@fr, "infrastructure"@fr, "FWB"@fr .
+
+<http://data.gov.be/en/taxonomy/term/40>	
+	skos:prefLabel "HEALTH"@en ;
+	skos:altLabel  "soins"@fr, "santé"@fr, "PMR"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/39>		
+	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
+	skos:altLabel  "habitant"@fr, "nationalité"@fr, "population"@fr, "citoyens"@fr, "PMR"@fr, "emploi"@fr .
+
+<http://data.gov.be/en/taxonomy/term/42>
+	skos:prefLabel "REGIONS, CITIES"@en ;
+	skos:altLabel  "communes"@fr, "Commune"@fr, "commune"@fr, "RAvel"@fr, "ravel"@fr, "tourisme"@fr .
+
+<http://data.gov.be/en/taxonomy/term/36>
+	skos:prefLabel "TRANSPORT"@en ;
+	skos:altLabel  "parking"@fr, "rue"@fr, "cycliste"@fr, "routes"@fr, "tec"@fr, "transport en commun"@fr, "trafic"@fr, "Routes"@fr, "stationnement"@fr, "RAvel"@fr, "sentiers"@fr, "vélo"@fr, "SNCB"@fr, "circulation"@fr, "ravel"@fr, "mobilité"@fr .
+
+<http://data.gov.be/en/taxonomy/term/37>	
+	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
+	skos:altLabel  "TIC"@fr, "ordinateurs"@fr, "internet"@fr .

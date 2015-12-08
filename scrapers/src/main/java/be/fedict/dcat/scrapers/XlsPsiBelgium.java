@@ -48,13 +48,16 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class XlsPsiBelgium extends Xls {
-    public final static String ID = "id";
+    private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
+        
+    public final static String ID = "contentid";
+    public final static String VER = "version";
     public final static String TITLE = "formtitle";
     public final static String DESC = "formshortdsc_dsc";
     public final static String ACCESS = "questionformnameurl_url";
     public final static String DOWNLOAD = "forminformationurl_url";
     
-    private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
+
 
     @Override
     protected URL getId(Row row) throws MalformedURLException {
