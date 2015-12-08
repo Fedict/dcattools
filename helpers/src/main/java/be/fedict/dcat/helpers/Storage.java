@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.helpers;
 
+import be.fedict.dcat.vocab.DATAGOVBE;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import java.io.File;
@@ -141,7 +142,7 @@ public class Storage {
      */
     public void add(InputStream in, RDFFormat format) 
             throws RepositoryException, RDFParseException, IOException {
-        conn.add(in, null, format, (Resource) null);
+        conn.add(in, DATAGOVBE.NAMESPACE, format, (Resource) null);
     }
     
     /**
