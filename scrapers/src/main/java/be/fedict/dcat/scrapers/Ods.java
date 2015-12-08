@@ -23,11 +23,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -36,34 +39,56 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Abstract scraper for HTML sites.
+ * OpenDataSoft scraper.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Html extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Html.class);
+public abstract class Ods extends Scraper {
+    private final Logger logger = LoggerFactory.getLogger(Ods.class);
+
+    public final static String API_DCAT = "/api/datasets/1.0/search?format=rdf&rows=-1";
+    public final static String API_PAGE = "/explore/dataset/";
+    public final static String API_EXP = "/export/";
+
+    /**
+     * Scrape DCAT catalog.
+     * @param cache
+     * @throws IOException
+     */
+    protected abstract void scrapeCat(Cache cache) throws IOException;
     
-       
-    /**
-     * Generate DCAT Dataset
-     * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    protected abstract void generateDataset(Storage store, String id, Map<String,Page> page) 
-            throws MalformedURLException, RepositoryException;
-         
-    /**
-     * HTML page scraper.
-     * 
-     * @param caching local cache file
-     * @param storage local triple store file
-     * @param base URL of the CKAN site
-     */
-    public Html(File caching, File storage, URL base) {
-        super(caching, storage, base);
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, Page> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapeCat(cache);
+        }
+        logger.info("Done scraping");
     }
+
+    /**
+     * Generate DCAT file
+     * 
+     * @param cache
+     * @param store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
+    @Override
+    public abstract void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException;
+    
+    /**
+     * Constructor
+     * 
+     * @param caching
+     * @param storage
+     * @param base 
+     */
+    public Ods(File caching, File storage, URL base) {
+        super(caching, storage, base);
+    }    
 }

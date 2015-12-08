@@ -29,6 +29,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
@@ -123,6 +124,20 @@ public class Storage {
     public boolean has(URI subj, URI pred) throws RepositoryException {
         return conn.hasStatement(subj, pred, null, false);
     }
+
+    /**
+     * Add to the repository
+     * 
+     * @param in
+     * @param format
+     * @throws RepositoryException 
+     * @throws RDFParseException 
+     * @throws IOException 
+     */
+    public void add(InputStream in, RDFFormat format) 
+            throws RepositoryException, RDFParseException, IOException {
+        conn.add(in, null, format, (Resource) null);
+    }
     
     /**
      * Add an URI property to the repository.
@@ -187,6 +202,32 @@ public class Storage {
         conn.add(subj, pred, fac.createLiteral(value, lang));
     }
 
+    /**
+     * Replace subject with another subject.
+     * 
+     * @param oldsubj
+     * @param newsubj
+     * @throws RepositoryException 
+     */
+    public void replaceSubj(URI oldsubj, URI newsubj) throws RepositoryException {
+        RepositoryResult<Statement> stmts = 
+                conn.getStatements(oldsubj, null, null, false);
+        
+        if (! stmts.hasNext()) {
+            logger.warn("No results for subject {}", oldsubj.stringValue());
+        }
+        
+        int i = 0;
+        while(stmts.hasNext()) {
+            Statement stmt = stmts.next();
+            conn.add(newsubj, stmt.getPredicate(), stmt.getObject());
+            conn.remove(stmt);
+            i++;
+        }
+        stmts.close();
+        logger.debug("Replaced {} subjects for {}", i, oldsubj.stringValue());
+    }
+    
     /**
      * Get the list of all URIs of a certain class.
      * 
