@@ -40,6 +40,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -48,6 +49,10 @@ import org.openrdf.model.Value;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.SKOS;
+import org.openrdf.query.MalformedQueryException;
+import org.openrdf.query.QueryLanguage;
+import org.openrdf.query.Update;
+import org.openrdf.query.UpdateExecutionException;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
@@ -226,6 +231,21 @@ public class Storage {
         }
         stmts.close();
         logger.debug("Replaced {} subjects for {}", i, oldsubj.stringValue());
+    }
+    
+    /**
+     * Execute SPARQL Update query
+     * 
+     * @param sparql
+     * @throws RepositoryException
+     */
+    public void queryUpdate(String sparql) throws RepositoryException {
+        try {
+            Update upd = conn.prepareUpdate(QueryLanguage.SPARQL, sparql);
+            upd.execute();
+        } catch (MalformedQueryException | UpdateExecutionException  ex) {
+            throw new RepositoryException(ex);
+        }
     }
     
     /**
