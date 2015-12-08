@@ -25,6 +25,7 @@
             <transformer>
               <mainClass>be.fedict.dcat.scrapers.Main</mainClass>
             </transformer>
+            <transformer />
           </transformers>
         </configuration>
       </plugin>
