@@ -29,63 +29,43 @@ import be.fedict.dcat.helpers.Storage;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Set;
-import org.openrdf.model.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Extract the unique values of a property.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class UniqueValueExtractor extends Enhancer {
-    private final Logger logger = LoggerFactory.getLogger(UniqueValueExtractor.class);
-    
-    /**
-     * Extract unique values and write them to outputstream.
-     * 
-     * @param uri property
-     * @param out output stream
-     * @throws RepositoryException
-     * @throws IOException 
-     */
-    private void extract(URI uri, OutputStream out) 
-                                        throws RepositoryException, IOException {
-        logger.info("Extracting unique {} to {}", uri.toString(), out.toString());
-        
-        Storage store = getStore();
-        Set<String> subjs = store.queryUniqueValues(uri, null);
-        for(String s : subjs) {
-            out.write(s.getBytes());
-            out.write("\n".getBytes());
-        }
-        logger.info("{} unique values", Integer.toString(subjs.size()));
-    }
+public class SparqlSelect extends Enhancer {
+    private final static Logger logger = LoggerFactory.getLogger(SparqlSelect.class);
     
     @Override
     public void enhance() {
         try {
-            URI property = getStore().getURI(getProperty("property"));
-            try (OutputStream out = new BufferedOutputStream(
-                    new FileOutputStream(getProperty("outfile")))) {
-                extract(property, out);
-            }
-        } catch (RepositoryException ex) {
-            logger.error("Repository error", ex);
-        } catch (IOException ex) {
-            logger.error("I/O error", ex);
+            String file = getProperty("sparqlfile");
+            String outfile = getProperty("resfile");
+            
+            BufferedOutputStream buf = new BufferedOutputStream(
+                                        new FileOutputStream(outfile));
+            
+            logger.info("Loading Sparql Select from {}", file);
+            String q = new String(Files.readAllBytes(Paths.get(file)));
+            getStore().querySelect(q, buf);
+            
+        } catch (RepositoryException|IOException ex) {
+            logger.error("Error executing select", ex);
         }
     }
     
     /**
-     * Extracts unique values.
+     * Constructor
      * 
      * @param store 
      */
-    public UniqueValueExtractor(Storage store) {
+    public SparqlSelect(Storage store) {
         super(store);
-    }
+    }    
 }

@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
@@ -80,21 +81,6 @@ public class OdsBxlCity extends Ods {
     }
    
     /**
-     * Generate DCAT catalog
-     * 
-     * @param store
-     * @throws MalformedURLException 
-     * @throws RepositoryException
-     */
-    @Override
-    public void generateCatalog(Storage store) throws MalformedURLException, RepositoryException {        
-        // Replace BXL DCAT catalog URI with data.gov.be's
-        URI page = store.getURI(new URL(getBase(), Ods.API_DCAT).toString());
-        URI cat = store.getURI(makeCatalogURL().toString());
-        store.replaceSubj(page, cat);
-    
-    }
-    /**
      * Generate DCAT file
      * 
      * @param cache
@@ -109,7 +95,7 @@ public class OdsBxlCity extends Ods {
         String ttl = map.get("all").getContent();
         
         // Load turtle file into store
-        try(InputStream in = new ByteArrayInputStream(ttl.getBytes())) {
+        try(InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
             store.add(in, RDFFormat.TURTLE);
         } catch (RDFParseException | IOException ex) {
             throw new RepositoryException(ex);
@@ -126,5 +112,6 @@ public class OdsBxlCity extends Ods {
      */
     public OdsBxlCity(File caching, File storage, URL base) {
         super(caching, storage, base);
+        setName("bxlcity");
     }
 }
