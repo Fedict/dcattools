@@ -26,10 +26,7 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.openrdf.repository.RepositoryException;
@@ -47,10 +44,11 @@ public class SparqlUpdate extends Enhancer {
     public void enhance() {
         try {
             String file = getProperty("sparqlfile");
+            logger.info("Loading Sparql Update from {}", file);
             String q = new String(Files.readAllBytes(Paths.get(file)));
             getStore().queryUpdate(q);
         } catch (RepositoryException|IOException ex) {
-            logger.error("Error loading file", ex);
+            logger.error("Error executing update", ex);
         }
     }
     

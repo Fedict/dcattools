@@ -31,17 +31,15 @@ import com.google.common.collect.ListMultimap;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -51,9 +49,13 @@ import org.openrdf.model.ValueFactory;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.SKOS;
 import org.openrdf.query.MalformedQueryException;
+import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
+import org.openrdf.query.TupleQuery;
+import org.openrdf.query.TupleQueryResultHandlerException;
 import org.openrdf.query.Update;
 import org.openrdf.query.UpdateExecutionException;
+import org.openrdf.query.resultio.text.csv.SPARQLResultsCSVWriter;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
@@ -209,31 +211,28 @@ public class Storage {
     }
 
     /**
-     * Replace subject with another subject.
+     * Execute SPARQL Select query
      * 
-     * @param oldsubj
-     * @param newsubj
-     * @throws RepositoryException 
+     * @param sparql
+     * @param out outputstream
+     * @throws RepositoryException
+     * @throws IOException
      */
-    public void replaceSubj(URI oldsubj, URI newsubj) throws RepositoryException {
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(oldsubj, null, null, false);
-        
-        if (! stmts.hasNext()) {
-            logger.warn("No results for subject {}", oldsubj.stringValue());
-        }
-        
-        int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            conn.add(newsubj, stmt.getPredicate(), stmt.getObject());
-            conn.remove(stmt);
-            i++;
-        }
-        stmts.close();
-        logger.debug("Replaced {} subjects for {}", i, oldsubj.stringValue());
-    }
     
+    public void querySelect(String sparql, OutputStream out) throws RepositoryException, IOException
+             {
+        try {
+            TupleQuery select = conn.prepareTupleQuery(QueryLanguage.SPARQL, sparql);
+            
+            SPARQLResultsCSVWriter w = new SPARQLResultsCSVWriter(out);
+            select.evaluate(w);
+            
+        } catch (MalformedQueryException | QueryEvaluationException ex) {
+            throw new RepositoryException(ex);
+        } catch (TupleQueryResultHandlerException ex) {
+            throw new IOException(ex);
+        }
+    }
     /**
      * Execute SPARQL Update query
      * 
@@ -276,73 +275,6 @@ public class Storage {
         logger.debug("Retrieved {} statements for {}", i, rdfClass.stringValue());
         return lst;
     }
-    
-   /**
-     * Remove all statements with a certain class with a given property.
-     * 
-     * @param rdfClass
-     * @param prop property
-     * @return number of removed statements
-     * @throws RepositoryException 
-     */
-    public int remove(URI rdfClass, URI prop) throws RepositoryException {
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(null, RDF.TYPE, rdfClass, false);
-     
-        if (! stmts.hasNext()) {
-            logger.warn("No results for class {}", rdfClass.stringValue());
-        }
-        
-        int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            conn.remove(stmt.getSubject(), prop, null, (Resource) null);
-            i++;
-        }
-        stmts.close();
-        logger.debug("Removed {} statements for {}", i, rdfClass.stringValue());
-        
-        return i;
-    }
-    
-    /**
-     * Get a set of unique values for a given property from the repository.
-     * 
-     * @param property
-     * @param lang
-     * @return
-     * @throws RepositoryException 
-     */
-    public Set<String> queryUniqueValues(URI property, String lang) 
-                                                throws RepositoryException {
-        Set<String> lst = new HashSet<>();
-        
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(null, property, null, false);
-        if (! stmts.hasNext()) {
-            logger.warn("No unique values for {}", property.stringValue() );
-        }
-        
-        int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            Value val = stmt.getObject();
-            
-            if (val instanceof Literal) {
-                String l = ((Literal) val).getLanguage();
-                if ((l == null) || (lang == null) || l.equals(lang)) {
-                    lst.add(val.stringValue());
-                }
-            } else {
-                lst.add(val.stringValue());
-            }
-            i++;
-        }
-        stmts.close();
-        logger.debug("Retrieved {} statements for {}", i, property.stringValue());
-        return lst;
-    }
-    
     
     /**
      * Get a DCAT Dataset or a Distribution.
