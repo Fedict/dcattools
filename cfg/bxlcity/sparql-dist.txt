@@ -1,0 +1,16 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:distribution ?dist .
+		?dist a dcat:Distribution .
+		?dist dcat:mediaType "csv", "json", "xls" .
+		?dist dcat:accessURL ?page .
+		?dist dcterms:language ?lang  }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcterms:identifier ?id .
+		?dataset dcterms:language ?lang 
+		BIND ( IRI(CONCAT('http://data.gov.be/dist/bxlcity/', ?id)) as ?dist)
+		BIND ( IRI(CONCAT('http://opendata.brussels.be/explore/dataset/', ?id)) as ?page) }
