@@ -46,7 +46,7 @@ public class SparqlSelect extends Enhancer {
     public void enhance() {
         try {
             String file = getProperty("sparqlfile");
-            String outfile = getProperty("resfile");
+            String outfile = getProperty("outfile");
             
             BufferedOutputStream buf = new BufferedOutputStream(
                                         new FileOutputStream(outfile));
