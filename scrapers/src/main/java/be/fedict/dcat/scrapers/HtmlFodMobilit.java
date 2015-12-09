@@ -59,18 +59,6 @@ public class HtmlFodMobilit extends Html {
 
     public final static String LANG_LINK = "language-link";
         
-   /**
-     * Make a URL for a DCAT Distribution 
-     * 
-     * @param i
-     * @param lang
-     * @return URL
-     * @throws MalformedURLException 
-     */
-    private URL makeSeqDistURL(int i, String lang) throws MalformedURLException {
-        return new URL(getBase().toString() + "/" 
-                + String.valueOf(i) + "/download" + "/" + lang);
-    }
     
    /**
      * Make a URL for a DCAT Dataset 
@@ -163,7 +151,7 @@ public class HtmlFodMobilit extends Html {
         String href = link.first().attr(Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
-        URL u = makeDistURL(getName() + "/" + i + "/" + lang);
+        URL u = makeDistURL(i + "/" + lang);
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
