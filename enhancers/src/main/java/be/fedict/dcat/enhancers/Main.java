@@ -30,10 +30,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.rio.RDFParseException;
@@ -82,7 +84,9 @@ public class Main {
         
         String rdfout = prop.getProperty(Enhancer.PROP_PREFIX + ".rdfout");
         try {
-            store.write(new BufferedWriter(new FileWriter(rdfout)));
+            store.write(new BufferedWriter(
+                        new OutputStreamWriter(
+                        new FileOutputStream(rdfout), StandardCharsets.UTF_8)));
         } catch (IOException|RepositoryException ex ) {
             logger.error("Could not write to rdf file {}", rdfout, ex);
             exit(-5);
@@ -93,7 +97,7 @@ public class Main {
      * Read RDF file.
      */
     private static void readRDF() {
-            String file = prop.getProperty(Enhancer.PROP_PREFIX + ".store");
+        String file = prop.getProperty(Enhancer.PROP_PREFIX + ".store");
         store = new Storage(new File(file));       
         try {
             store.startup();
@@ -104,7 +108,9 @@ public class Main {
         
         String rdfin = prop.getProperty(Enhancer.PROP_PREFIX + ".rdfin");
         try {
-            store.read(new BufferedReader(new FileReader(rdfin)));
+            store.read(new BufferedReader(
+                            new InputStreamReader(
+                            new FileInputStream(rdfin), StandardCharsets.UTF_8)));
         } catch (IOException|RepositoryException|RDFParseException ex ) {
             logger.error("Could not read from rdf file {}", rdfin, ex);
             exit(-4);
