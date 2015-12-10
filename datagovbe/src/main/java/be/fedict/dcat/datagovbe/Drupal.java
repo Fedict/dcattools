@@ -589,7 +589,7 @@ public class Drupal {
             String datalang = getLink(dataset, DCTERMS.LANGUAGE);
 
             // Check if the dataset is (also) available in language
-            if (! MDR_LANG.MAP.get(datalang).toString().equals(lang)) {
+            if (! MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
                 return;
             }
             
