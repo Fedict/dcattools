@@ -27,9 +27,10 @@ package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import org.openrdf.model.URI;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFParseException;
@@ -48,7 +49,10 @@ public class LoadRDF extends Enhancer {
     public void enhance() {
         try {
             String file = getProperty("rdffile");
-            getStore().read(new BufferedReader(new FileReader(file)), RDFFormat.TURTLE);
+            getStore().read(new BufferedReader(
+                            new InputStreamReader(
+                            new FileInputStream(file),  StandardCharsets.UTF_8)),
+                            RDFFormat.TURTLE);
         } catch (RepositoryException|IOException|RDFParseException ex) {
             logger.error("Error loading file", ex);
         }

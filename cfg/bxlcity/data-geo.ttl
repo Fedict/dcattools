@@ -3,9 +3,9 @@
 <http://data.gov.be/en/taxonomy/term/48>
 	skos:exactMatch <http://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Brussels"@en ;
-	skos:altLabel " Brussels Hoofdstedelijk Gewest"@nl, " Brussels-Capital Region"@en, "Brussels Capital Region"@en, "Brussels Gewest"@nl, "Brussels Hoofdstedelijk Gewest"@nl, "Brussels Hoofdstedelijk Gewest "@nl, "Brussels-Capital Region"@en, "Région de Bruxelles-Capitale"@fr .
+	skos:altLabel " Brussels Hoofdstedelijk Gewest"@nl, " Brussels-Capital Region"@en, "Brussels Capital Region"@en, "Brussels Gewest"@nl, "Brussels Hoofdstedelijk Gewest"@nl, "Brussels Hoofdstedelijk Gewest "@nl, "Brussels-Capital Region"@en, "RÃ©gion de Bruxelles-Capitale"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/155>
 	skos:exactMatch <http://sws.geonames.org/2800866/> ;
 	skos:prefLabel "Brussels-City"@en ;
-	skos:altLabel "City of Brussels"@en, "Manneken-Pis (rue de l'Etuve)"@nl, "Stad Brussel"@nl, "Manneken-Pis (rue de l'Etuve)"@fr, "Manneken-Pis (rue de l'Etuve)"@en, "Ville de Bruxelles"@fr, "Manneken-Pis (Stoofstraat)"@nl, "Stad Brussek"@nl, "Stad Brussel"@nl, "Stad Brussel/Financiën"@nl, "Stad Brussels"@nl, "Stad Brussel"@en .
+	skos:altLabel "City of Brussels"@en, "Manneken-Pis (rue de l'Etuve)"@nl, "Stad Brussel"@nl, "Manneken-Pis (rue de l'Etuve)"@fr, "Manneken-Pis (rue de l'Etuve)"@en, "Ville de Bruxelles"@fr, "Manneken-Pis (Stoofstraat)"@nl, "Stad Brussek"@nl, "Stad Brussel"@nl, "Stad Brussel/FinanciÃ«n"@nl, "Stad Brussels"@nl, "Stad Brussel"@en .

@@ -586,6 +586,13 @@ public class Drupal {
         }
        
         for(String lang : langs) {
+            String datalang = getLink(dataset, DCTERMS.LANGUAGE);
+
+            // Check if the dataset is (also) available in language
+            if (! MDR_LANG.MAP.get(datalang).toString().equals(lang)) {
+                return;
+            }
+            
             JsonObjectBuilder builder = Json.createObjectBuilder();
             
             addDataset(builder, dataset, lang);

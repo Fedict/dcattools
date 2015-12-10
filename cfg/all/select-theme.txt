@@ -1,5 +1,7 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
 
 SELECT DISTINCT ?theme
-WHERE { ?s dcat:theme ?theme }
+WHERE { ?s dcat:theme ?theme .
+		FILTER NOT EXISTS { ?s dgov:theme ?o } }
 ORDER BY ?theme
