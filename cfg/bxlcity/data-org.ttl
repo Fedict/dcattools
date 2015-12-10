@@ -1,0 +1,67 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/84>
+	skos:prefLabel "SVR" ;
+	skos:altLabel "svr"@nl .
+
+<http://data.gov.be/en/taxonomy/term/86>
+	skos:prefLabel "Departement LNE" ;
+	skos:altLabel "lne"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/88>
+	skos:prefLabel "VREG" ;	
+	skos:altLabel "vreg"@nl  .
+
+<http://data.gov.be/en/taxonomy/term/93>
+	skos:prefLabel "Departement CSJM" ;	
+	skos:altLabel "dcjsm"@nl .
+
+<http://data.gov.be/en/taxonomy/term/95>
+	skos:prefLabel "Toerisme Vlaanderen" ;	
+	skos:altLabel "toerisme-vlaanderen"@nl .
+
+<http://data.gov.be/en/taxonomy/term/98>
+	skos:prefLabel "Departement MOW" ;	
+	skos:altLabel "dmow"@nl .
+
+<http://data.gov.be/en/taxonomy/term/108>
+	skos:prefLabel "Departement OV" ;	
+	skos:altLabel "dov"@nl .
+
+<http://data.gov.be/en/taxonomy/term/115>
+	skos:prefLabel "Departement LV" ;	
+	skos:altLabel "dlv"@nl .
+
+<http://data.gov.be/en/taxonomy/term/116>
+	skos:prefLabel "Agentschap Onroerend Erfgoed" ;	
+	skos:altLabel "onroerend-erfgoed"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/118>
+	skos:prefLabel "Departement WSE" ;
+	skos:altLabel "dwse"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/123>
+	skos:prefLabel "Geopunt" ;
+	skos:altLabel "geopunt"@nl .
+
+<http://data.gov.be/en/taxonomy/term/125>
+	skos:prefLabel "Gent" ;
+	skos:altLabel "stad-gent"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/128>
+	skos:prefLabel "Antwerpen" ;
+	skos:altLabel "stad-antwerpen"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/130>
+	skos:prefLabel "Kortrijk" ;
+	skos:altLabel "stad-kortrijk"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/132>
+	skos:prefLabel "Departement BZ" ;
+	skos:altLabel "dbz"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/151>
+	skos:prefLabel "WestToer" ;
+	skos:altLabel "westtoer"@nl .
+	
+	

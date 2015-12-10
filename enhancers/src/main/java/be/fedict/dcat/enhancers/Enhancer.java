@@ -73,8 +73,8 @@ public abstract class Enhancer {
     public String getProperty(String name) {
         String p = prefix + "." + name;
 
-        String value = prop.getProperty(p);
-        if (value == null) {
+        String value = prop.getProperty(p, "");
+        if (value.isEmpty()) {
             logger.error("No property {}", p);
         }
         return value;

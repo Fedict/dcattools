@@ -318,48 +318,6 @@ public class Storage {
         return map;
     }
     
-    
-    /**
-     * Find URI having a property
-     * 
-     * @param property property with values to be mapped
-     * @param newprop property to be added
-     * @param pred property (in SKOS file) used for mapping
-     * @throws RepositoryException 
-     */
-    public void skosMap(URI property, URI newprop, URI pred) 
-                                                    throws RepositoryException {
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(null, property, null, false);
-        
-        if (! stmts.hasNext()) {
-            logger.warn("No mapping for {} to {} using {}", 
-                property.stringValue(), newprop.stringValue(), pred.stringValue());
-        }
-        
-        int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            Value value = stmt.getObject();
-            
-            RepositoryResult<Statement> skos =
-                conn.getStatements(null, pred, value , false);
-            if (! skos.hasNext()) {
-                logger.warn("No SKOS mapping for {}", value.stringValue());
-            }
-            while(skos.hasNext()) {
-                Statement s = skos.next(); 
-                conn.add(stmt.getSubject(), newprop, s.getSubject());
-            }
-            skos.close();
-            i++;
-        }
-        stmts.close();
-        
-        logger.debug("Retrieved {} statements for {}", i, property.stringValue());
-    }
-    
-    
     /**
      * Split property value into multiple values using a separator.
      * 
