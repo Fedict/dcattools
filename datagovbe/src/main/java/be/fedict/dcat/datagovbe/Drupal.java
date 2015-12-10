@@ -590,7 +590,7 @@ public class Drupal {
 
             // Check if the dataset is (also) available in language
             if (! MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
-                return;
+                continue;
             }
             
             JsonObjectBuilder builder = Json.createObjectBuilder();
