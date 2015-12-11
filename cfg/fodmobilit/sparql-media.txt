@@ -1,0 +1,9 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/62> }
+WHERE
+	{	?dist a dcat:Distribution .
+		?dist dcat:mediaType "xlsx" }

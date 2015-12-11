@@ -1,6 +1,6 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-<http://data.gov.be/org/bxlcity/gial>
+<http://data.gov.be/org/bxlcity/gial/contact>
 	a vcard:Organization ;
 	vcard:fn "GIAL" ;
 	vcard:hasEmail <mailto:cellule.web@brucity.be> .
