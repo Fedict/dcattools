@@ -1,11 +1,13 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
 
 <http://data.gov.be/org/fodmobilit/fod>
 	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/77> ;
 	foaf:homepage <http://mobilit.belgium.be/nl/publicaties/open_data> .
 	
 <http://data.gov.be/org/fodmobilit/fod/contact>
 	a vcard:Organization ;
-	vcard:fn "FPS Mobility"@en ;
-	vcard:hasMail <mailto:info@mobilit.fgov.be> .
+	vcard:fn "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr ;
+	vcard:hasEmail <mailto:info@mobilit.fgov.be> .
