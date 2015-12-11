@@ -359,14 +359,15 @@ public class Drupal {
      * Get contact email address
      * 
      * @param org organization
+     * @param language code
      * @return email address or empty string
      * @throw RepositoryException
      */
-    private String getOrgName(String org) throws RepositoryException {
+    private String getOrgName(String org, String lang) throws RepositoryException {
         // Get DCAT contactpoints
         Map<URI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-        return getOne(map, VCARD.HAS_FN, "");
+        return getOne(map, VCARD.HAS_FN, lang);
     }
     
     /**
@@ -412,15 +413,16 @@ public class Drupal {
      * Get list of organization names
      * 
      * @param dataset
+     * @param lang language code
      * @return list of email addresses
      * @throws RepositoryException 
      */
-    private List<String> getDatasetOrgs(Map<URI, ListMultimap<String, String>> dataset) 
-                                                    throws RepositoryException {
+    private List<String> getDatasetOrgs(Map<URI, ListMultimap<String, String>> dataset,
+                                    String lang) throws RepositoryException {
         ArrayList<String> arr = new ArrayList<>();
         List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
         for(String org : orgs) {
-            String name = getOrgName(org);
+            String name = getOrgName(org, lang);
             if (!name.isEmpty() && !arr.contains(name)) {
                 arr.add(name);
             }
@@ -498,7 +500,7 @@ public class Drupal {
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
         //JsonArrayBuilder keywords = fieldArrayJson(getKeywords(dataset, lang));
-        JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset));
+        JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset, lang));
 
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
                 .add(Drupal.LANGUAGE, lang)
