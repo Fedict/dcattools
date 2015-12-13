@@ -1,0 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/statbel/fod/contact> .
+		?dataset dcterms:publisher <http://data.gov.be/org/statbel/fod> }
+WHERE
+	{ 	?dataset a dcat:Dataset  }
