@@ -37,6 +37,7 @@ import java.util.Map;
 import org.apache.poi.ss.usermodel.Row;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
+import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -53,10 +54,15 @@ public class XlsPsiBelgium extends Xls {
     public final static String ID = "contentid";
     public final static String VER = "version";
     public final static String TITLE = "formtitle";
+    public final static String CREATED = "publishstartdate";
     public final static String DESC = "formshortdsc_dsc";
     public final static String ACCESS = "questionformnameurl_url";
+    public final static String ACCESS2 = "publicinfo_siteurl";
     public final static String DOWNLOAD = "forminformationurl_url";
+    public final static String LICENSE = "reusablebylicence";
+    public final static String ORGID = "idinstitudiont_fk";
     
+    public final static String EMPTY = "http://";
 
 
     @Override
@@ -68,6 +74,23 @@ public class XlsPsiBelgium extends Xls {
         return makeDatasetURL(getName() + "/" + s);
     }
 
+    
+    /**
+     * Add organization / publisher
+     * 
+     * @param store
+     * @param dataset
+     * @param s
+     * @throws MalformedURLException
+     * @throws RepositoryException 
+     */
+    private void generateOrg(Storage store, URI dataset, Map<String,String> map) 
+                            throws MalformedURLException, RepositoryException {
+        String s = map.getOrDefault(XlsPsiBelgium.ORGID, "");
+        URI org = store.getURI(makeOrgURL(s).toString());
+        store.add(dataset, DCTERMS.PUBLISHER, org);
+        store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
+    }
     
     /**
      * 
@@ -83,15 +106,20 @@ public class XlsPsiBelgium extends Xls {
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
 
-        String access = map.getOrDefault(XlsPsiBelgium.ACCESS, "http://");
-        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD, "http://");
+        String access = map.getOrDefault(XlsPsiBelgium.ACCESS, EMPTY);
+        String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2, EMPTY);
+        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD, EMPTY);
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCAT.ACCESS_URL, access);
-        
-        if (!download.equals("http://")) {
+        if(!access.equals(EMPTY)) {
+            store.add(dist, DCAT.ACCESS_URL, access);
+        }
+        if (!access2.equals(EMPTY)) {
+            store.add(dist, DCAT.ACCESS_URL, access2);
+        }
+        if (!download.equals(EMPTY)) {
             store.add(dist, DCAT.DOWNLOAD_URL, download);
             store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
         }
@@ -127,6 +155,7 @@ public class XlsPsiBelgium extends Xls {
             
             generateDist(store, dataset, map, id, lang);
         }
+        generateOrg(store, dataset, map);
     }
     
     
