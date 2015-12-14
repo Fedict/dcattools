@@ -1,0 +1,9 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT 
+	{ 	?dataset dcterms:coverage "Wallonie"@fr }
+WHERE
+	{	?dataset a dcat:Dataset 
+		FILTER NOT EXISTS { ?s dcterms:coverage ?o } 
+	}

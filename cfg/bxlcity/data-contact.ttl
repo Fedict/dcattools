@@ -2,5 +2,5 @@
 
 <http://data.gov.be/org/bxlcity/gial/contact>
 	a vcard:Organization ;
-	vcard:fn "GIAL" ;
+	vcard:fn "GIAL"@en, "GIAL"@fr, "GIAL"@nl ;
 	vcard:hasEmail <mailto:cellule.web@brucity.be> .

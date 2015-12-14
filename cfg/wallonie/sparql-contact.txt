@@ -3,6 +3,6 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/wallonie/adn/contact> .
-		?dataset dgov:org <http://data.gov.be/en/taxonomy/term/71> }
+		?dataset dgov:org <http://data.gov.be/en/taxonomy/term/71 }
 WHERE
 	{ 	?dataset a dcat:Dataset }

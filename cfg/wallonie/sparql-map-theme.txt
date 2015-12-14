@@ -4,7 +4,9 @@ PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
-	{ 	?dist dgov:mediaType ?drupal }
+	{ 	?dataset dgov:theme ?drupal .
+		?dataset dcat:theme ?theme }
 WHERE
-	{	?dist dcat:mediaType ?label .
-		?drupal skos:altLabel ?label  }
+	{	?dataset dcat:keyword ?label .
+		?drupal skos:altLabel ?label .
+		?drupal skos:exactMatch ?theme }
