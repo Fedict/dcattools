@@ -32,6 +32,10 @@ import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.apache.poi.ss.usermodel.Row;
@@ -59,11 +63,14 @@ public class XlsPsiBelgium extends Xls {
     public final static String ACCESS = "questionformnameurl_url";
     public final static String ACCESS2 = "publicinfo_siteurl";
     public final static String DOWNLOAD = "forminformationurl_url";
+    public final static String KEYWORD = "searchoninfo_";
     public final static String LICENSE = "reusablebylicence";
     public final static String ORGID = "idinstitudiont_fk";
     
     public final static String EMPTY = "http://";
 
+    public final static DateFormat DATEFMT = 
+                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
     @Override
     protected URL getId(Row row) throws MalformedURLException {
@@ -74,6 +81,43 @@ public class XlsPsiBelgium extends Xls {
         return makeDatasetURL(getName() + "/" + s);
     }
 
+    /**
+     * Get date from field
+     * 
+     * @param map
+     * @param field 
+     * @return date or null
+     */
+    protected Date getDate(Map<String,String> map, String field) {
+        Date date = null;
+        String s = map.getOrDefault(field, "");
+        if (!s.isEmpty()) {
+            try {
+                date = XlsPsiBelgium.DATEFMT.parse(s);
+            } catch (ParseException ex) {
+                logger.warn("Could not parse {} to date", s);
+            }
+        }
+        return date;
+    }
+    
+    /**
+     * Get array of keywords, based on last part of search field.
+     * 
+     * @param map
+     * @param lang language code
+     * @return 
+     */
+    protected String[] getKeywords(Map<String,String> map, String lang) {
+        String s = map.getOrDefault(XlsPsiBelgium.KEYWORD + lang, "");
+        // Keywords are added after the last sentence of the description
+        int pos = s.lastIndexOf(".");
+        if (pos > 0) {
+            s = s.substring(pos);
+            return s.split(",");
+        }
+        return (new String[0]);
+    }
     
     /**
      * Add organization / publisher
@@ -151,7 +195,12 @@ public class XlsPsiBelgium extends Xls {
             
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
-            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);        
+            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+            store.add(dataset, DCTERMS.CREATED, getDate(map, XlsPsiBelgium.CREATED));
+            String[] words = getKeywords(map, lang);
+            for (String word : words) {
+                store.add(dataset, DCAT.KEYWORD, word, lang);
+            }
             
             generateDist(store, dataset, map, id, lang);
         }

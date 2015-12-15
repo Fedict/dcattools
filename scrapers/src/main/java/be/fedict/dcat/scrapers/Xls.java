@@ -133,7 +133,10 @@ public abstract class Xls extends Scraper {
         if (rows.hasNext()) {
             rows.next();
         }
+
+        int i = 0;
         while(rows.hasNext()) {
+            logger.debug("Scraping row {}", ++i);
             Row row = rows.next();
             Map<String,String> map = new HashMap<>();
             URL id = getId(row);
