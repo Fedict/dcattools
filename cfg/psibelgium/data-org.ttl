@@ -1,0 +1,84 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dgov: <http://data.gov.be#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<http://data.gov.be/org/psibelgium/7857>
+	skos:prefLabel "SPF Foreign Affairs"@en ;
+	foaf:fn "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/156> .
+
+<http://data.gov.be/org/psibelgium/7859>
+	skos:prefLabel "RMI"@en ;
+	foaf:fn "KMI"@nl, "IRM"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/147> .
+
+<http://data.gov.be/org/psibelgium/7860>
+	skos:prefLabel "NGI"@en ;
+	foaf:fn "NGI"@nl, "IGN"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/157> .
+	
+<http://data.gov.be/org/psibelgium/7861>
+	skos:prefLabel "FBZ-FMP"@en ;
+	foaf:fn "Fonds voor de beroepsziekten"@nl, "Fonds des maladies professionnelles"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/158> .
+	
+<http://data.gov.be/org/psibelgium/7862>
+	skos:prefLabel "POD Social Integration"@en ;
+	foaf:fn "POD Maatschappelijke Integratie"@nl, "SPP Intégration Sociale"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/159> .
+	
+<http://data.gov.be/org/psibelgium/7863>
+	skos:prefLabel "FPS P&O"@en ;
+	foaf:fn "FOD P&O"@nl, "SPF P&O"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/160> .
+
+<http://data.gov.be/org/psibelgium/7864>
+	skos:prefLabel "CBSS"@en ;
+	foaf:fn "KSZ"@nl, "BCSS"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/161> .
+	
+<http://data.gov.be/org/psibelgium/7866>
+	skos:prefLabel "FPS Finances"@en ;
+	foaf:fn "FOD Financiën"@nl, "SPF Finances"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/162> .
+
+<http://data.gov.be/org/psibelgium/7868>
+	skos:prefLabel "FPS Economie"@en ;
+	foaf:fn "FOD Economie"@nl, "SPF Economie"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/76> .
+
+<http://data.gov.be/org/psibelgium/7869>
+	skos:prefLabel "FPS Employment"@en ;
+	foaf:fn "FOD Werkgelegenheid"@nl, "SPF Emploi"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/163> .
+
+<http://data.gov.be/org/psibelgium/7872>
+	skos:prefLabel "FPS Justice"@en ;
+	foaf:fn "FOD Justitie"@nl, "SPF Justice"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/164> .
+	
+<http://data.gov.be/org/psibelgium/7873>
+	skos:prefLabel "FPS Mobility"@en ;
+	foaf:fn "FOD Mobiliteit"@nl, "SPF Mobilité"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/77> .
+
+<http://data.gov.be/org/psibelgium/7875>
+	skos:prefLabel "NSSO"@en ;
+	foaf:fn "RSZ"@nl, "ONSS"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/165> .
+
+<http://data.gov.be/org/psibelgium/7879>
+	skos:prefLabel "RMI"@en ;
+	foaf:fn "KMI"@nl, "IRM"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/147> .
+
+<http://data.gov.be/org/psibelgium/7880>
+	skos:prefLabel "FPS B&C"@en ;
+	foaf:fn "FOD B&B"@nl, "SPF B&CG"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/167> .
+	
+<http://data.gov.be/org/psibelgium/7884>
+	skos:prefLabel "Selor"@en ;
+	foaf:fn "Selor"@nl, "Selor"@fr ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/166> .
