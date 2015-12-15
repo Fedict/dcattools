@@ -171,7 +171,11 @@ public abstract class Scraper extends Fetcher {
             int q = ext.lastIndexOf("?");
             if (q > 0) {
                 ext = ext.substring(0, q);
-            }   
+            }
+            // Wasn't a file in the first place
+            if (ext.contains("/")) {
+                ext = "";
+            }
         }
         return ext.toLowerCase();
     }
