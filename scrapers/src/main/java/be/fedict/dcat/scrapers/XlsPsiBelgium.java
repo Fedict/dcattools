@@ -113,7 +113,7 @@ public class XlsPsiBelgium extends Xls {
         // Keywords are added after the last sentence of the description
         int pos = s.lastIndexOf(".");
         if (pos > 0) {
-            s = s.substring(pos);
+            s = s.substring(pos + 1);
             return s.split(",");
         }
         return (new String[0]);
@@ -196,10 +196,14 @@ public class XlsPsiBelgium extends Xls {
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-            store.add(dataset, DCTERMS.CREATED, getDate(map, XlsPsiBelgium.CREATED));
+            
+            Date created = getDate(map, XlsPsiBelgium.CREATED);
+            if (created != null) {
+                store.add(dataset, DCTERMS.CREATED, created);
+            }
             String[] words = getKeywords(map, lang);
             for (String word : words) {
-                store.add(dataset, DCAT.KEYWORD, word, lang);
+                store.add(dataset, DCAT.KEYWORD, word.trim(), lang);
             }
             
             generateDist(store, dataset, map, id, lang);
