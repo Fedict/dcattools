@@ -33,7 +33,6 @@ import be.fedict.dcat.vocab.VCARD;
 import com.google.common.collect.ListMultimap;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -75,7 +74,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class Drupal {
-    private final Logger logger = LoggerFactory.getLogger(Drupal.class);
+    private final static Logger logger = LoggerFactory.getLogger(Drupal.class);
     
     public final static String PROP_PREFIX = "be.fedict.datagovbe7";
      
@@ -201,13 +200,42 @@ public class Drupal {
     }
     
     /**
-     * Decode "\\u..." to a character.
+     * Get an array of Drupal taxonomy terms 
      * 
-     * @param s
-     * @return 
+     * @param map
+     * @param property
      */
-    private String decode(String s) {
-        return new String(s.getBytes(StandardCharsets.UTF_8), StandardCharsets.ISO_8859_1);     
+    private static JsonArrayBuilder getTerms(
+            Map<URI, ListMultimap<String, String>> map, URI property) {
+        JsonArrayBuilder arr = Json.createArrayBuilder();
+        
+        List<String> terms = getMany(map, property, ""); 
+        for(String term : terms) {
+            if (term.startsWith(Drupal.TAXO_PREFIX)) {
+                String id = term.substring(term.lastIndexOf("/") + 1);
+                arr.add(Json.createObjectBuilder().add(Drupal.ID, id).build());
+            }
+        }
+        return arr;
+    }
+ 
+    /**
+     * Check if a dataset / distribution is available in a certain language
+     * 
+     * @param map
+     * @param lang
+     * @return boolean 
+     */
+    private static boolean hasLang(Map<URI, ListMultimap<String, String>> map, 
+                                                                String lang) {
+        List<String> datalangs = getMany(map, DCTERMS.LANGUAGE, "");
+
+        for(String datalang : datalangs) {
+            if (! MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
@@ -218,7 +246,7 @@ public class Drupal {
      * @param lang
      * @return 
      */
-    private List<String> getMany(Map<URI, ListMultimap<String, String>> map, 
+    private static List<String> getMany(Map<URI, ListMultimap<String, String>> map, 
                                                         URI prop, String lang) {
         List<String> res = new ArrayList<>();
         
@@ -240,8 +268,8 @@ public class Drupal {
      * @param lang
      * @return 
      */
-    private String getOne(Map<URI, ListMultimap<String, String>> map, URI prop, 
-                                                                String lang) {
+    private static String getOne(Map<URI, ListMultimap<String, String>> map, 
+                                                    URI prop, String lang) {
         String res = "";
         
         ListMultimap<String, String> multi = map.get(prop);
@@ -254,26 +282,7 @@ public class Drupal {
         return res;
     }
     
-    /**
-     * Get an array of Drupal taxonomy terms 
-     * 
-     * @param map
-     * @param property
-     */
-    private JsonArrayBuilder getTerms(
-            Map<URI, ListMultimap<String, String>> map, URI property) {
-        JsonArrayBuilder arr = Json.createArrayBuilder();
-        
-        List<String> terms = getMany(map, property, ""); 
-        for(String term : terms) {
-            if (term.startsWith(Drupal.TAXO_PREFIX)) {
-                String id = term.substring(term.lastIndexOf("/") + 1);
-                arr.add(Json.createObjectBuilder().add(Drupal.ID, id).build());
-            }
-        }
-        return arr;
-    }
- 
+    
     /**
      * Check if dataset with ID already exists on drupal site.
      * 
@@ -309,7 +318,7 @@ public class Drupal {
     }
     
     /**
-     * Check if node or translations exist.
+     * Check if node or translations exist on Drupal site.
      * 
      * @param builder
      * @param id
@@ -528,7 +537,7 @@ public class Drupal {
      * @param property
      * @return 
      */
-    private String getLink(Map<URI, ListMultimap<String, String>> dist, URI property) {
+    private static String getLink(Map<URI, ListMultimap<String, String>> dist, URI property) {
         String link = "";
         
         String l = getOne(dist, property, "");
@@ -556,9 +565,7 @@ public class Drupal {
                                                     throws RepositoryException {     
         Map<URI, ListMultimap<String, String>> dist = 
                                         store.queryProperties(store.getURI(uri));
-        String distlang = getLink(dist, DCTERMS.LANGUAGE);
-
-        if (MDR_LANG.MAP.get(lang).toString().equals(distlang)) {
+        if (hasLang(dist, lang)) {
             // Landing page / page(s) with more info on dataset
             String access = getLink(dist, DCAT.ACCESS_URL);
             if (! access.isEmpty() && !accesses.contains(access)) {
@@ -588,10 +595,7 @@ public class Drupal {
         }
        
         for(String lang : langs) {
-            String datalang = getLink(dataset, DCTERMS.LANGUAGE);
-
-            // Check if the dataset is (also) available in language
-            if (! MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
+            if (! hasLang(dataset, lang)) {
                 continue;
             }
             
