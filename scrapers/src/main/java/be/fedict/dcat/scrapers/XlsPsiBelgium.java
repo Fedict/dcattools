@@ -66,6 +66,7 @@ public class XlsPsiBelgium extends Xls {
     public final static String KEYWORD = "searchoninfo_";
     public final static String LICENSE = "reusablebylicence";
     public final static String ORGID = "idinstitudiont_fk";
+    public final static String FEE = "feerequired";
     
     public final static String EMPTY = "http://";
 
@@ -131,6 +132,9 @@ public class XlsPsiBelgium extends Xls {
     private void generateOrg(Storage store, URI dataset, Map<String,String> map) 
                             throws MalformedURLException, RepositoryException {
         String s = map.getOrDefault(XlsPsiBelgium.ORGID, "");
+        if (!s.isEmpty() && s.endsWith(".0")) {
+            s = s.substring(0, s.length() - 2);
+        }
         URI org = store.getURI(makeOrgURL(s).toString());
         store.add(dataset, DCTERMS.PUBLISHER, org);
         store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
@@ -146,13 +150,13 @@ public class XlsPsiBelgium extends Xls {
      */
     private void generateDist(Storage store, URI dataset, Map<String,String> map,
             String id, String lang) throws RepositoryException, MalformedURLException {
-        URL u  = makeDistURL(getName() + "/" + id + "/" + lang);
+        URL u  = makeDistURL(id + "/" + lang);
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
 
-        String access = map.getOrDefault(XlsPsiBelgium.ACCESS, EMPTY);
-        String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2, EMPTY);
-        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD, EMPTY);
+        String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, EMPTY);
+        String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2 + lang, EMPTY);
+        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, EMPTY);
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
