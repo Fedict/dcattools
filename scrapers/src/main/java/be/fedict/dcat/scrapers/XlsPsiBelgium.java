@@ -79,7 +79,7 @@ public class XlsPsiBelgium extends Xls {
         if (!s.isEmpty() && s.endsWith(".0")) {
             s = s.substring(0, s.length() - 2);
         }
-        return makeDatasetURL(getName() + "/" + s);
+        return makeDatasetURL(s);
     }
 
     /**
