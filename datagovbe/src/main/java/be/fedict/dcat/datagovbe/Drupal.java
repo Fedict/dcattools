@@ -231,7 +231,7 @@ public class Drupal {
         List<String> datalangs = getMany(map, DCTERMS.LANGUAGE, "");
 
         for(String datalang : datalangs) {
-            if (! MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
+            if (MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
                 return true;
             }
         }
