@@ -8,7 +8,7 @@
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "CULTURE AND SPORT"@en ;
-	skos:altLabel "arts de la scène"@fr, "musique"@fr, "tourisme"@fr, "culture"@fr, "arts plastiques"@fr .
+	skos:altLabel "arts de la scÃ¨ne"@fr, "musique"@fr, "tourisme"@fr, "culture"@fr, "arts plastiques"@fr .
 
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
@@ -18,27 +18,27 @@
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "EDUCATION"@en ;
-	skos:altLabel "enseignement"@fr, "école"@fr, "éducation"@fr, "ecoles"@fr .
+	skos:altLabel "enseignement"@fr, "Ã©cole"@fr, "Ã©ducation"@fr, "ecoles"@fr .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "vert"@fr, "météo"@fr, "meteo"@fr, "PICC"@fr, "natura 2000"@fr .
+	skos:altLabel "vert"@fr, "mÃ©tÃ©o"@fr, "meteo"@fr, "PICC"@fr, "natura 2000"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
 	skos:prefLabel "ENERGY"@en ;
-	skos:altLabel  "energie"@fr, "photovoltaïque"@fr, "électricité"@fr, "énergie"@fr .
+	skos:altLabel  "energie"@fr, "photovoltaÃ¯que"@fr, "Ã©lectricitÃ©"@fr, "Ã©nergie"@fr .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "communes"@fr, "PICC"@fr, "Commune"@fr, "commune"@fr, "carte"@fr, "infrastructure"@fr, "FWB"@fr .
+	skos:altLabel "communes"@fr, "PICC"@fr, "Commune"@fr, "commune"@fr, "carte"@fr, "infrastructure"@fr, "FWB"@fr, "organisme"@fr .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel  "soins"@fr, "santé"@fr, "PMR"@fr .
+	skos:altLabel  "soins"@fr, "santÃ©"@fr, "PMR"@fr .
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
@@ -51,7 +51,7 @@
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel  "habitant"@fr, "nationalité"@fr, "population"@fr, "citoyens"@fr, "PMR"@fr, "emploi"@fr .
+	skos:altLabel  "habitant"@fr, "nationalitÃ©"@fr, "population"@fr, "citoyens"@fr, "PMR"@fr, "emploi"@fr .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
@@ -61,7 +61,7 @@
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel  "parking"@fr, "rue"@fr, "cycliste"@fr, "routes"@fr, "tec"@fr, "transport en commun"@fr, "trafic"@fr, "Routes"@fr, "stationnement"@fr, "RAvel"@fr, "sentiers"@fr, "vélo"@fr, "SNCB"@fr, "circulation"@fr, "ravel"@fr, "mobilité"@fr .
+	skos:altLabel  "parking"@fr, "rue"@fr, "cycliste"@fr, "routes"@fr, "tec"@fr, "transport en commun"@fr, "trafic"@fr, "Routes"@fr, "stationnement"@fr, "RAvel"@fr, "sentiers"@fr, "vÃ©lo"@fr, "SNCB"@fr, "circulation"@fr, "ravel"@fr, "mobilitÃ©"@fr .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
