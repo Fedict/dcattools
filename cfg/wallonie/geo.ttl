@@ -1,9 +1,0 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/en/taxonomy/term/45>
-	skos:prefLabel "Belgium"@en ;
-	skos:altLabel "Belgique"@fr .
-
-<http://data.gov.be/en/taxonomy/term/47>
-	skos:prefLabel "Wallonia"@en ;
-	skos:altLabel "Wallonie"@fr .
