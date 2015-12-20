@@ -1,5 +1,0 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/en/taxonomy/term/54>
-	skos:prefLabel "CC0" ;
-	skos:exactMatch <http://opendataforum.info/Docs/licenties/CC0.htm> .

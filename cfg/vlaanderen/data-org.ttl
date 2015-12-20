@@ -64,4 +64,3 @@
 	skos:prefLabel "WestToer" ;
 	skos:altLabel "westtoer"@nl .
 	
-	
