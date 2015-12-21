@@ -4,11 +4,9 @@ PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
-	{ 	?dataset dgov:theme ?drupal }
+	{ 	?dataset dgov:license ?drupal }
 WHERE
-	{	{ 	?dataset dcat:theme ?label .
-			?drupal skos:altLabel ?label }
-	UNION 
-		{	?dataset dcat:keyword ?label .
-			?drupal skos:altLabel ?label }
+	{	?dataset a dcat:Dataset .
+		?dataset dcterms:license ?label .
+		?drupal skos:exactMatch ?label 
 	}
