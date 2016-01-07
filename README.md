@@ -78,7 +78,7 @@ the scrapers sleep about 1 second between HTTP requests.
 
 * LoadRDF: load a RDF file containing triples (e.g. for "static metadata"
 like contact info) into the local triple store
-* SparqlUpdate: perform a Sparql SELECT on the local triple store (e.g. for
+* SparqlSelect: perform a Sparql SELECT on the local triple store (e.g. for
 listing missing properties)
 * SparqlUpdate: perform a SparqlUpdate (INSERT and/or DELETE) on the local
 triple store
