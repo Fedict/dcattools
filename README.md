@@ -7,7 +7,7 @@ converting them to DCAT-AP files and updating the Belgian
 ## Data
 
 Only interested in the result ? The N-Triples file (DCAT-AP-ish) can be found
-in [data/datagovbe.nt](tree/master/data/datagovbe.nt)
+in [data/datagovbe.nt](data/datagovbe.nt)
 
 ## Overview of the tools
 
