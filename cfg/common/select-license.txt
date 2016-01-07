@@ -1,0 +1,7 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+SELECT DISTINCT ?license
+WHERE { ?s dcterms:license ?license .
+		FILTER NOT EXISTS { ?s dgov:license ?o } }
+ORDER BY ?license

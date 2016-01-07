@@ -1,0 +1,13 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+
+SELECT DISTINCT ?theme
+WHERE { 
+		?s a dcat:Dataset .
+		?s ?p ?theme .
+		VALUES (?p) {
+			( dcat:keyword )
+			( dcat:theme )
+		}
+		FILTER NOT EXISTS { ?s dgov:theme ?o } }
+ORDER BY ?theme
