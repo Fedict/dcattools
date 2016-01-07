@@ -1,0 +1,5 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?coverage
+WHERE { ?s dcterms:coverage ?coverage }
+ORDER BY ?coverage

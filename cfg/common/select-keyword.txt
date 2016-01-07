@@ -1,0 +1,5 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT DISTINCT ?keyword
+WHERE { ?s dcat:keyword ?keyword }
+ORDER BY ?keyword
