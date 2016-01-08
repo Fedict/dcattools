@@ -232,19 +232,6 @@ public class XlsPsiBelgium extends Xls {
         store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
     }
     
-    @Override
-    public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException {
-        logger.info("Generate DCAT");
-        
-        /* Get the list of all datasets */
-        List<URL> urls = cache.retrieveURLList();
-        for (URL u : urls) {
-            Map<String,String> map = cache.retrieveMap(u);
-            generateDataset(store, map, u);
-        }
-        generateCatalog(store);
-    }
     
     /**
      * Constructor.

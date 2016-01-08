@@ -74,7 +74,7 @@ public abstract class Xls extends Scraper {
         return headers;
     }
     
-        /**
+    /**
      * Parse a cell string and store it in the RDF store.
      * 
      * @param store RDF store
@@ -163,6 +163,20 @@ public abstract class Xls extends Scraper {
      */
     public abstract void generateDataset(Storage store, Map<String,String> map, URL u)
                             throws RepositoryException, MalformedURLException; 
+    
+    @Override
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        logger.info("Generate DCAT");
+        
+        /* Get the list of all datasets */
+        List<URL> urls = cache.retrieveURLList();
+        for (URL u : urls) {
+            Map<String,String> map = cache.retrieveMap(u);
+            generateDataset(store, map, u);
+        }
+        generateCatalog(store);
+    }
     
     /**
      * Scrape workbook
