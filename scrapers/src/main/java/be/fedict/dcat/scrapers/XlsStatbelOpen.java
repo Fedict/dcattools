@@ -59,7 +59,7 @@ public class XlsStatbelOpen extends Xls {
     public final static String CREATED = "dcat:issued";
     public final static String DESC = "dct:description";
     
-    public final static String DOWNLOAD = "dcat:downloadURL,dct:format";
+    public final static String DOWNLOAD = "dcat:downloadurl,dct:format";
             
     public final static String[] FMTS = { "xlsx", "txt" };
     
