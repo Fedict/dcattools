@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -36,7 +35,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import org.apache.poi.ss.usermodel.Row;
 import org.openrdf.model.URI;
@@ -56,7 +54,6 @@ public class XlsPsiBelgium extends Xls {
     private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
         
     public final static String ID = "contentid";
-    public final static String VER = "version";
     public final static String TITLE = "formtitle";
     public final static String CREATED = "publishstartdate";
     public final static String DESC = "formshortdsc_dsc";
@@ -141,6 +138,7 @@ public class XlsPsiBelgium extends Xls {
     }
     
     /**
+     * Generate DCAT Distribution.
      * 
      * @param store
      * @param dataset
@@ -174,7 +172,7 @@ public class XlsPsiBelgium extends Xls {
     }
     
     /**
-     * Generate DCAT dataset
+     * Generate DCAT Dataset.
      * 
      * @param store
      * @param map 
@@ -193,7 +191,7 @@ public class XlsPsiBelgium extends Xls {
         
         String[] langs = getAllLangs();
         for (String lang : langs) {
-            String id = map.get(ID);
+            String id = map.get(XlsPsiBelgium.ID);
             String title = map.getOrDefault(XlsPsiBelgium.TITLE + lang, "");
             String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
             
