@@ -52,7 +52,7 @@ public class XlsStatbelOpen extends Xls {
     private final Logger logger = LoggerFactory.getLogger(XlsStatbelOpen.class);
   
     public final static DateFormat DATEFMT = 
-                            new SimpleDateFormat("yyyy-MM-ddTHH:mm:ss.SSS");
+                            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 
     public final static String ID = "dcat:dataset";
     public final static String TITLE = "dct:title";
