@@ -60,8 +60,8 @@ public class XlsStatbelOpen extends Xls {
     public final static String DESC = "dct:description";
     
     public final static String DOWNLOAD = "dcat:downloadURL,dct:format";
-    
-    public final static String[] FMTS = { "XLSX", "TXT" };
+            
+    public final static String[] FMTS = { "xlsx", "txt" };
     
     @Override
     protected URL getId(Row row) throws MalformedURLException {
@@ -114,7 +114,7 @@ public class XlsStatbelOpen extends Xls {
                 store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
                 store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
                 store.add(dist, DCAT.DOWNLOAD_URL, download);
-                store.add(dist, DCAT.MEDIA_TYPE, fmt.toLowerCase());
+                store.add(dist, DCAT.MEDIA_TYPE, fmt);
             }
         }
     }

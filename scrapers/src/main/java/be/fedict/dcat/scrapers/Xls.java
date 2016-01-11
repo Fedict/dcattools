@@ -65,11 +65,13 @@ public abstract class Xls extends Scraper {
     public List<String> getColumnNames(Sheet sheet) {
         ArrayList<String> headers = new ArrayList<>();
         
-        Row header = sheet.getRow(sheet.getFirstRowNum());
-        Iterator<Cell> cells = header.cellIterator();
+        Row row = sheet.getRow(sheet.getFirstRowNum());
+        Iterator<Cell> cells = row.cellIterator();
         while (cells.hasNext()) {
             Cell cell = cells.next();
-            headers.add(cell.getStringCellValue().toLowerCase());
+            String header = cell.getStringCellValue().toLowerCase();
+            logger.debug("Header " + header);
+            headers.add(header);
         }
         return headers;
     }
