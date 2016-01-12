@@ -5,12 +5,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
-	{ 	?dataset dgov:theme ?drupal .
-		?dataset dcat:theme ?theme }
+	{ 	?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/38> .
+		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/ECON> }
 WHERE
-	{	?dataset a dcat:Dataset .
-		?dataset dcterms:publisher ?org .
-		?org a foaf:Organization .
-		?org skos:prefLabel ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?theme }
+	{	?dataset a dcat:Dataset }

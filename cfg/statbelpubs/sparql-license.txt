@@ -3,7 +3,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dataset dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> .
-		?dataset dgov:license <http://data.gov.be/en/taxonomy/term/54> }
+	{ 	?dataset dgov:license <http://data.gov.be/en/taxonomy/term/168> }
 WHERE
 	{	?dataset a dcat:Dataset }

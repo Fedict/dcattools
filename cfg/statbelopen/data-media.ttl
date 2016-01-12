@@ -4,6 +4,6 @@
 	skos:prefLabel "CSV" ;
 	skos:altLabel "txt" .
 	
-<http://data.gov.be/en/taxonomy/term/62>
-	skos:prefLabel "XLSX" ;
+<http://data.gov.be/en/taxonomy/term/8>
+	skos:prefLabel "XLS" ;
 	skos:altLabel "xlsx" .

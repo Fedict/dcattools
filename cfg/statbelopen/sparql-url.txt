@@ -1,0 +1,14 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dist dcat:accessURL ?url }
+WHERE
+	{	?dist a dcat:Distribution .
+		?dist dcterms:language ?lang
+		VALUES (?lang ?url) {
+			( <http://publications.europa.eu/resource/authority/language/NLD> <http://statbel.fgov.be/nl/statistieken/opendata/home/> )
+			( <http://publications.europa.eu/resource/authority/language/FRA> <http://statbel.fgov.be/fr/statistiques/opendata/home/> )
+		}
+	}
