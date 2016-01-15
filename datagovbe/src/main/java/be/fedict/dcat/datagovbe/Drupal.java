@@ -715,7 +715,7 @@ public class Drupal {
         this.url = url;
         this.langs = langs;
         this.store = store;        
-        this.host = new HttpHost(url.getHost());
+        this.host = new HttpHost(url.getHost(), -1, url.getProtocol());
         
         Executor e = null;
         try {
