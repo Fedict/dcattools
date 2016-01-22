@@ -113,11 +113,28 @@ public class Fetcher {
      * @throws IOException 
      */
     public String makeRequest(URL url) throws IOException {
-        logger.info("Requesting page {}", url);
+        logger.info("Get request for page {}", url);
         Request request = Request.Get(url.toString());
         if (getProxy() != null) {
             request = request.viaProxy(getProxy());
         }
         return request.execute().returnContent().asString();
+    }
+    
+    /**
+     * Make HTTP HEAD request
+     * 
+     * @param url
+     * @return
+     * @throws IOException 
+     */
+    public int makeHeadRequest(URL url) throws IOException {
+        logger.info("Head request for {}", url);
+        Request request = Request.Head(url.toString());
+        if (getProxy() != null) {
+            request = request.viaProxy(getProxy());
+        }
+        return request.execute().returnResponse()
+                                .getStatusLine().getStatusCode();
     }
 }

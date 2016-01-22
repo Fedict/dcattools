@@ -26,18 +26,14 @@
 
 package be.fedict.dcat.enhancers;
 
+import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.helpers.Storage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import org.apache.http.HttpHost;
-import org.apache.http.client.fluent.Executor;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,50 +45,7 @@ import org.slf4j.LoggerFactory;
 public class LinkChecker extends Enhancer {
     private final static Logger logger = LoggerFactory.getLogger(LinkChecker.class);
    
-    private Executor exec;
-    private HttpHost proxy = null;
-    
-    /**
-     * Set HTTP proxy.
-     * 
-     * @param proxy proxy server
-     * @param port proxy port
-     */
-    public void setProxy(String proxy, int port) {
-        if (proxy == null || proxy.isEmpty()) {
-            this.proxy = null;
-        } else {
-            this.proxy = new HttpHost(proxy, port);
-        }
-    }
-     
-    /**
-     * Check URL
-     * 
-     * @param url url string 
-     * @return HTTP code or -1
-     */
-    private int checkURL(String url) {
-        int code = -1;
-        
-        if(url == null || url.isEmpty()) {
-            return code;
-        }   
-        try {
-            logger.debug("Checking {}", url);
-            Request r = Request.Head(url.trim());
-            if (proxy != null) {
-                r.viaProxy(proxy);
-            }
-            code = r.connectTimeout(3000).socketTimeout(3000)
-                    .execute().returnResponse()
-                    .getStatusLine().getStatusCode();
-        } catch(IOException e) {
-            logger.warn("IO Exception for {}", url);
-        }
-        return code;
-    }
-    
+    private final Fetcher fetcher = new Fetcher();
     
     @Override
     public void enhance() {
@@ -103,7 +56,7 @@ public class LinkChecker extends Enhancer {
         String port = getProperty("proxy.port");
         
         if (!host.isEmpty()) {
-            setProxy(host, Integer.parseInt(port));
+            fetcher.setProxy(host, Integer.parseInt(port));
         }
         
         try (   BufferedReader r = Files.newBufferedReader(Paths.get(file));
@@ -114,7 +67,8 @@ public class LinkChecker extends Enhancer {
             String line = r.readLine();
             while(line != null) {
                 String s[] = line.split(";", 2);
-                w.write(checkURL(s[0]) + ";" + line);
+                int code = fetcher.makeHeadRequest(new URL(s[0]));
+                w.write(code + ";" + line);
                 w.newLine();
                 line = r.readLine();
             }
@@ -123,7 +77,6 @@ public class LinkChecker extends Enhancer {
         }
     }
     
-    
     /**
      * Constructor
      * 
@@ -131,10 +84,5 @@ public class LinkChecker extends Enhancer {
      */
     public LinkChecker(Storage store) {
         super(store);
-        
-        CloseableHttpClient client = HttpClients.custom()
-                    .setRedirectStrategy(new LaxRedirectStrategy())
-                    .build();
-        exec = Executor.newInstance(client);    
     }
 }
