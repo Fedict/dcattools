@@ -79,6 +79,7 @@ public class LinkChecker extends Enhancer {
             return code;
         }   
         try {
+            logger.debug("Checking {}", url);
             Request r = Request.Head(url.trim());
             if (proxy != null) {
                 r.viaProxy(proxy);
@@ -110,11 +111,12 @@ public class LinkChecker extends Enhancer {
            
             logger.info("Loading urls from {}", file);
             
-            String url = r.readLine();
-            while(url != null) {
-                w.write(checkURL(url) + ";" + url);
+            String line = r.readLine();
+            while(line != null) {
+                String s[] = line.split(";", 2);
+                w.write(checkURL(s[0]) + ";" + line);
                 w.newLine();
-                url = r.readLine();
+                line = r.readLine();
             }
         } catch (IOException ex) {
             logger.error("Error loading file", ex);
