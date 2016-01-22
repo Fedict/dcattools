@@ -47,6 +47,22 @@ public class LinkChecker extends Enhancer {
    
     private final Fetcher fetcher = new Fetcher();
     
+    /**
+     * Check URL
+     * 
+     * @param url string
+     * @return HTTP Status code or -1
+     */
+    private int checkURL(String url) {
+        int code = -1;
+        try {
+            code = fetcher.makeHeadRequest(new URL(url));
+        } catch (IOException e) {
+            logger.warn("Exception for HEAD {}", url);
+        }
+        return code;
+    }
+    
     @Override
     public void enhance() {
         String file = getProperty("urlfile");
@@ -67,8 +83,7 @@ public class LinkChecker extends Enhancer {
             String line = r.readLine();
             while(line != null) {
                 String s[] = line.split(";", 2);
-                int code = fetcher.makeHeadRequest(new URL(s[0]));
-                w.write(code + ";" + line);
+                w.write(checkURL(s[0]) + ";" + line);
                 w.newLine();
                 line = r.readLine();
             }
