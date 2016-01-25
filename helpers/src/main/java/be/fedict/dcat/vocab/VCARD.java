@@ -41,14 +41,18 @@ public class VCARD {
     
     public final static URI A_ORGANIZATION;
 
+    public final static URI HAS_ADDRESS;
     public final static URI HAS_EMAIL;
     public final static URI HAS_FN;
+    public final static URI HAS_TEL;
     
     static {
 	ValueFactory factory = ValueFactoryImpl.getInstance();
         A_ORGANIZATION = factory.createURI(VCARD.NAMESPACE, "Organization");
 
+        HAS_ADDRESS = factory.createURI(VCARD.NAMESPACE, "hasAddress");
         HAS_EMAIL = factory.createURI(VCARD.NAMESPACE, "hasEmail");
         HAS_FN = factory.createURI(VCARD.NAMESPACE, "fn");
+        HAS_TEL = factory.createURI(VCARD.NAMESPACE, "hasTelephone");
     }
 }
