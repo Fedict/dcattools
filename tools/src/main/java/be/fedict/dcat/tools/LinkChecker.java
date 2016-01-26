@@ -24,8 +24,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package be.fedict.dcat.helpers;
+package be.fedict.dcat.tools;
 
+import be.fedict.dcat.helpers.Fetcher;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,6 +35,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,9 +49,9 @@ import org.slf4j.LoggerFactory;
 public class LinkChecker {
     private final static Logger logger = LoggerFactory.getLogger(LinkChecker.class);
     
-    private final static String PROP_PREFIX = "be.fedict.dcat.helpers.linkchecker";
+    private final static String PROP_PREFIX = "be.fedict.dcat.tools.linkchecker";
+    
     private final static Properties prop = new Properties();
-        
     private final static Fetcher fetcher = new Fetcher();
     
     /**
@@ -85,6 +88,7 @@ public class LinkChecker {
      */
     private static int checkURL(String url) {
         int code = -1;
+        logger.debug("Checking {}", url);
         try {
             code = fetcher.makeHeadRequest(new URL(url));
         } catch (IOException e) {
@@ -94,31 +98,59 @@ public class LinkChecker {
     }
     
     /**
-     * Parse file with URLS
+     * Set proxy 
      */
-    private static void parse() {
-        String file = getProperty("urlfile");
-        String outfile = getProperty("outfile");
-        
+    private static void setProxy() {
         String host = getProperty("proxy.host");
         String port = getProperty("proxy.port");
-        
+       
         if (!host.isEmpty()) {
             fetcher.setProxy(host, Integer.parseInt(port));
         }
+    }
+    
+    /**
+     * Parse file with URLS
+     */
+    private static void parse() {
+        setProxy();
         
+        String file = getProperty("urlfile");
+        String outfile = getProperty("outfile");
+        
+        int skiplines = Integer.parseInt(getProperty("skiplines"));
+        List<String> okcodes = Arrays.asList(getProperty("httpok").split(","));
+       
         try (   BufferedReader r = Files.newBufferedReader(Paths.get(file));
                 BufferedWriter w = Files.newBufferedWriter(Paths.get(outfile));) {
            
             logger.info("Loading urls from {}", file);
             
             String line = r.readLine();
-            while(line != null) {
-                String s[] = line.split(";", 2);
-                w.write(checkURL(s[0]) + ";" + line);
-                w.newLine();
+            
+            // skip header line(s)
+            for(int i = 0; (i < skiplines) && (line != null); i++) {
                 line = r.readLine();
             }
+         
+            int urlOK = 0;
+            int urlBad = 0;
+            int code = -1;
+         
+            while(line != null) {
+                String s[] = line.split(";", 2);
+                code = checkURL(s[0]);
+                if (okcodes.contains(Integer.toString(code))) {
+                    urlOK++;
+                } else {
+                    urlBad++;
+                    w.write(code + ";" + line);
+                    w.newLine();
+                }
+                line = r.readLine();
+            }
+            logger.info("Checked {} urls: {} ok, {} not ok", 
+                                urlOK + urlBad, urlOK, urlBad);
         } catch (IOException ex) {
             logger.error("Error loading file", ex);
         }

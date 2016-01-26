@@ -6,7 +6,7 @@
         <artifactId>dcattools</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>enhancers</artifactId>
+    <artifactId>tools</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -54,4 +54,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>tools</name>
 </project>

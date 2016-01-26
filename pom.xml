@@ -8,9 +8,9 @@
     <modules>
         <module>helpers</module>
         <module>datagovbe</module>
-        <module>enhancers</module>
         <module>scrapers</module>
         <module>previewer</module>
+        <module>tools</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
