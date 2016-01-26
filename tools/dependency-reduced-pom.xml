@@ -6,7 +6,8 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>enhancers</artifactId>
+  <artifactId>tools</artifactId>
+  <name>tools</name>
   <build>
     <plugins>
       <plugin>
