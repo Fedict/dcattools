@@ -1,0 +1,13 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT DISTINCT ?id ?url
+WHERE { 
+		?s ?p ?url
+		VALUES (?p) {
+			( dcat:accessURL )
+			( dcat:downloadURL )
+		}
+		BIND (REPLACE(STR(?s), "http://data.gov.be/dist/psibelgium/", "") as ?id)
+	}
+ORDER BY ?url
