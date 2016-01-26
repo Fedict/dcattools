@@ -115,7 +115,8 @@ public class LinkChecker {
     }
     
     /**
-     * Parse file with URLS
+     * Parse CSV file with URLs.
+     * Last column of the row should be the URL.
      */
     private static void parse() {
         setProxy();
@@ -143,8 +144,9 @@ public class LinkChecker {
             int code = -1;
          
             while(line != null) {
-                String s[] = line.split(";", 2);
-                code = checkURL(s[0]);
+                // SPARQL CSV writer always uses "," as separator
+                String s[] = line.split(",");
+                code = checkURL(s[s.length-1]);
                 if (okcodes.contains(Integer.toString(code))) {
                     urlOK++;
                 } else {
