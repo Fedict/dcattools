@@ -56,6 +56,20 @@ import org.slf4j.LoggerFactory;
 public abstract class Xls extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Xls.class);
     
+    
+    /**
+     * Convert an Excel numeric ID to a string
+     * 
+     * @param s value
+     * @return string value
+     */
+    protected static String stringInt(String s) {
+        if (!s.isEmpty() && s.endsWith(".0")) {
+            return(s.substring(0, s.length() - 2));
+        }
+        return s;
+    }
+    
     /**
      * Get the column names as a list
      * 

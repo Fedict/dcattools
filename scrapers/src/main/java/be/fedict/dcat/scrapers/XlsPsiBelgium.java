@@ -73,10 +73,7 @@ public class XlsPsiBelgium extends Xls {
     @Override
     protected URL getId(Row row) throws MalformedURLException {
         String s = row.getCell(0).toString();
-        if (!s.isEmpty() && s.endsWith(".0")) {
-            s = s.substring(0, s.length() - 2);
-        }
-        return makeDatasetURL(s);
+        return makeDatasetURL(stringInt(s));
     }
 
     /**
@@ -129,10 +126,7 @@ public class XlsPsiBelgium extends Xls {
     private void generateOrg(Storage store, URI dataset, Map<String,String> map) 
                             throws MalformedURLException, RepositoryException {
         String s = map.getOrDefault(XlsPsiBelgium.ORGID, "");
-        if (!s.isEmpty() && s.endsWith(".0")) {
-            s = s.substring(0, s.length() - 2);
-        }
-        URI org = store.getURI(makeOrgURL(s).toString());
+        URI org = store.getURI(makeOrgURL(stringInt(s)).toString());
         store.add(dataset, DCTERMS.PUBLISHER, org);
         store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
     }
@@ -191,7 +185,7 @@ public class XlsPsiBelgium extends Xls {
         
         String[] langs = getAllLangs();
         for (String lang : langs) {
-            String id = map.get(XlsPsiBelgium.ID);
+            String id = stringInt(map.get(XlsPsiBelgium.ID));
             String title = map.getOrDefault(XlsPsiBelgium.TITLE + lang, "");
             String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
             
