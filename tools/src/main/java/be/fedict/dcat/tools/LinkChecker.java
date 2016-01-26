@@ -129,7 +129,7 @@ public class LinkChecker {
         try (   BufferedReader r = Files.newBufferedReader(Paths.get(file));
                 BufferedWriter w = Files.newBufferedWriter(Paths.get(outfile));) {
            
-            logger.info("Loading urls from {}", file);
+            logger.info("Loading urls from {}, skipping {} lines", file, skiplines);
             
             String line = r.readLine();
             
