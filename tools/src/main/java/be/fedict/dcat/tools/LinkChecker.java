@@ -32,7 +32,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -81,17 +82,21 @@ public class LinkChecker {
     }
     
     /**
-     * Check URL
+     * Check URL after waiting a short period of time.
      * 
      * @param url string
      * @return HTTP Status code or -1
      */
     private static int checkURL(String url) {
         int code = -1;
+        fetcher.sleep();
+        
         logger.debug("Checking {}", url);
         try {
-            code = fetcher.makeHeadRequest(new URL(url));
-        } catch (IOException e) {
+            // Catch URI exception early, otherwise Fluent will crash
+            URI u = new URI(url);
+            code = fetcher.makeHeadRequest(u.toURL());
+        } catch (IOException|URISyntaxException e) {
             logger.warn("Exception for HEAD {}", url);
         }
         return code;
