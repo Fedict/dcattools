@@ -23,9 +23,9 @@ Internet connection is obviously required, a proxy can be used.
 * Helper classes: for storing scraped pages locally, conversion tools etc.
 * Various [scrapers](#scraper): getting metadata from various repositories
 and websites, and turning the metadata into DCAT files
-* DCAT enhancers: for improving the DCAT files, e.g. map site-specific themes
+* DCAT [enhancers](#enhancer): for improving the DCAT files, e.g. map site-specific themes
 add missing properties and prepare the files for updating data.gov.be
-* Data.gov.be updater: update the data.gov.be (Drupal 7) website using the enhanced DCAT files
+* Data.gov.be [updater](#updater): update the data.gov.be (Drupal 7) website using the enhanced DCAT files
 
 ### Notes
 
@@ -93,13 +93,13 @@ SparqlUpdate and removing the SKOS triples.
 
 Invoke with
 
-    # java -jar enhancers.jar location/of/config.properties
+    # java -jar tools.jar location/of/config.properties
 
 Use -D to set logging level and save the log to a file
 
     # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
            -Dorg.slf4j.simpleLogger.logFile=enhance.log
-           -jar enhancers.jar location/of/config.properties
+           -jar tools.jar location/of/config.properties
 
 The configuration file is a Java properties file.
 
