@@ -66,7 +66,7 @@ public class XlsPsiBelgium extends Xls {
     public final static String KEYWORD = "searchoninfo_";
     public final static String LICENSE = "reusablebylicence";
     public final static String ORGID = "idinstitudiont_fk";
-    public final static String FREQID = "idfrequencyType_fk";
+    public final static String FREQID = "idfrequencytype_fk";
     public final static String FEE = "feerequired";
     
     public final static String RIGHTS = "obtentionurl_url";
