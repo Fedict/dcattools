@@ -95,6 +95,7 @@ public class Drupal {
     public final static String FLD_CAT = "field_category";
     public final static String FLD_DETAILS = "field_details_";
     public final static String FLD_FORMAT = "field_file_type";
+    public final static String FLD_FREQ = "field_frequency";
     public final static String FLD_GEO = "field_geo_coverage";
     public final static String FLD_ID = "field_id";
     public final static String FLD_KEYWORDS = "field_keywords";
@@ -521,6 +522,7 @@ public class Drupal {
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
                 .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
                 .add(Drupal.FLD_LICENSE, getTerms(dataset, DATAGOVBE.LICENSE))
+                .add(Drupal.FLD_FREQ, getTerms(dataset, DATAGOVBE.FREQ))
                 .add(Drupal.FLD_CAT, getTerms(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, getTerms(dataset, DATAGOVBE.SPATIAL))
                 .add(Drupal.FLD_PUBLISHER, getTerms(publ, DATAGOVBE.ORG))

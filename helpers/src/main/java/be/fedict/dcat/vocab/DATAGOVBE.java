@@ -38,6 +38,7 @@ public class DATAGOVBE {
     
     public final static String PREFIX = "datagovbe";
   
+    public final static URI FREQ;
     public final static URI LICENSE;
     public final static URI MEDIA_TYPE;
     public final static URI ORG;
@@ -57,6 +58,7 @@ public class DATAGOVBE {
 
         LICENSE = factory.createURI(DATAGOVBE.NAMESPACE, "license");
         MEDIA_TYPE = factory.createURI(DATAGOVBE.NAMESPACE, "mediaType");
+        FREQ = factory.createURI(DATAGOVBE.NAMESPACE, "freq");
         ORG = factory.createURI(DATAGOVBE.NAMESPACE, "org");
         SPATIAL = factory.createURI(DATAGOVBE.NAMESPACE, "spatial");
         THEME = factory.createURI(DATAGOVBE.NAMESPACE, "theme");

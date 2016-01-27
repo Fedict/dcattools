@@ -57,13 +57,19 @@ public class XlsPsiBelgium extends Xls {
     public final static String TITLE = "formtitle";
     public final static String CREATED = "publishstartdate";
     public final static String DESC = "formshortdsc_dsc";
+    public final static String DESC2 = "datescomment_comment";
+    public final static String DESC3 = "formcomment_comment";
+        
     public final static String ACCESS = "questionformnameurl_url";
     public final static String ACCESS2 = "publicinfo_siteurl";
     public final static String DOWNLOAD = "forminformationurl_url";
     public final static String KEYWORD = "searchoninfo_";
     public final static String LICENSE = "reusablebylicence";
     public final static String ORGID = "idinstitudiont_fk";
+    public final static String FREQID = "idfrequencyType_fk";
     public final static String FEE = "feerequired";
+    
+    public final static String RIGHTS = "obtentionurl_url";
     
     public final static String EMPTY = "http://";
 
@@ -148,6 +154,7 @@ public class XlsPsiBelgium extends Xls {
 
         String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, EMPTY);
         String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2 + lang, EMPTY);
+        String rights = map.getOrDefault(XlsPsiBelgium.RIGHTS + lang, EMPTY);
         String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, EMPTY);
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
@@ -162,6 +169,9 @@ public class XlsPsiBelgium extends Xls {
         if (!download.equals(EMPTY)) {
             store.add(dist, DCAT.DOWNLOAD_URL, download);
             store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
+        }
+        if (!rights.equals(EMPTY)) {
+            store.add(dist, DCTERMS.RIGHTS, rights);
         }
     }
     
@@ -187,8 +197,18 @@ public class XlsPsiBelgium extends Xls {
         for (String lang : langs) {
             String id = stringInt(map.get(XlsPsiBelgium.ID));
             String title = map.getOrDefault(XlsPsiBelgium.TITLE + lang, "");
-            String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
             
+            String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
+            String desc2 = map.getOrDefault(XlsPsiBelgium.DESC2 + lang, "");
+            if (!desc2.isEmpty()) {
+                desc = desc + "\n\n" + desc2;
+            }
+            String desc3 = map.getOrDefault(XlsPsiBelgium.DESC3 + lang, "");
+            if (!desc3.isEmpty()) {
+                desc = desc + "\n\n" + desc3;
+            }
+            String freq = map.getOrDefault(XlsPsiBelgium.FREQID, "0");
+            store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
