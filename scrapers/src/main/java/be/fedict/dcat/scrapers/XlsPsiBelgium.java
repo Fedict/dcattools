@@ -207,7 +207,7 @@ public class XlsPsiBelgium extends Xls {
             if (!desc3.isEmpty()) {
                 desc = desc + "\n\n" + desc3;
             }
-            String freq = map.getOrDefault(XlsPsiBelgium.FREQID, "0");
+            String freq = stringInt(map.getOrDefault(XlsPsiBelgium.FREQID, "0"));
             store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
