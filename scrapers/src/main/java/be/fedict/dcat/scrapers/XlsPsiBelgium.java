@@ -161,17 +161,17 @@ public class XlsPsiBelgium extends Xls {
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         if(!access.equals(EMPTY)) {
-            store.add(dist, DCAT.ACCESS_URL, access);
+            store.add(dist, DCAT.ACCESS_URL, new URL(access));
         }
         if (!access2.equals(EMPTY)) {
-            store.add(dist, DCAT.ACCESS_URL, access2);
+            store.add(dist, DCAT.ACCESS_URL, new URL(access2));
         }
         if (!download.equals(EMPTY)) {
-            store.add(dist, DCAT.DOWNLOAD_URL, download);
+            store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
             store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
         }
         if (!rights.equals(EMPTY)) {
-            store.add(dist, DCTERMS.RIGHTS, rights);
+            store.add(dist, DCTERMS.RIGHTS, new URL(rights));
         }
     }
     

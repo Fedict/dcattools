@@ -113,7 +113,7 @@ public class XlsStatbelOpen extends Xls {
                 store.add(dataset, DCAT.DISTRIBUTION, dist);
                 store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
                 store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-                store.add(dist, DCAT.DOWNLOAD_URL, download);
+                store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
                 store.add(dist, DCAT.MEDIA_TYPE, fmt);
             }
         }
