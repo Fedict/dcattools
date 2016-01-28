@@ -342,7 +342,7 @@ public abstract class Ckan extends Scraper {
             parseURI(store, dist, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
             
             // License from dataset must be on the distribution
-            parseURI(store, dist, json, Ckan.LICENSE_ID , DCTERMS.LICENSE);
+            parseString(store, dist, json, Ckan.LICENSE_ID , DCTERMS.LICENSE, null);
             parseURI(store, dist, json, Ckan.LICENSE_URL, DCTERMS.RIGHTS);
         
             store.add(dist, DCAT.ACCESS_URL, access);
