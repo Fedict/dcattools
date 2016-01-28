@@ -4,9 +4,9 @@ PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
-	{ 	?dataset dgov:license ?drupal }
+	{ 	?dist dgov:license ?drupal }
 WHERE
-	{	?dataset a dcat:Dataset .
-		?dataset dcterms:license ?label .
+	{	?dist a dcat:Distribution .
+		?dist dcterms:license ?label .
 		?drupal skos:exactMatch ?label 
 	}

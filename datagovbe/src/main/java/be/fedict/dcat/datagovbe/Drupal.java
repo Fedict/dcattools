@@ -93,6 +93,7 @@ public class Drupal {
     public final static String AUTHOR = "author";
     public final static String MODIFIED = "changed_date";
     public final static String FLD_CAT = "field_category";
+    public final static String FLD_CONDITIONS = "field_conditions";
     public final static String FLD_DETAILS = "field_details_";
     public final static String FLD_FORMAT = "field_file_type";
     public final static String FLD_FREQ = "field_frequency";
@@ -205,8 +206,9 @@ public class Drupal {
      * 
      * @param map
      * @param property
+     * @return JsonArrayBuilder
      */
-    private static JsonArrayBuilder getTerms(
+    private static JsonArrayBuilder arrayTermsJson(
             Map<URI, ListMultimap<String, String>> map, URI property) {
         JsonArrayBuilder arr = Json.createArrayBuilder();
         
@@ -219,7 +221,7 @@ public class Drupal {
         }
         return arr;
     }
- 
+     
     /**
      * Check if a dataset / distribution is available in a certain language
      * 
@@ -389,7 +391,10 @@ public class Drupal {
     private Date getModif(Map<URI, ListMultimap<String, String>> dataset) {
         Date modif = new Date();
         String m = getOne(dataset, DCTERMS.MODIFIED, "");
-        if (! m.isEmpty() && (m.length() >= 10)) {
+        if (m.isEmpty()) {
+           m = getOne(dataset, DCTERMS.CREATED, ""); 
+        }
+        if (!m.isEmpty() && (m.length() >= 10)) {
             try {
                 modif = Drupal.ISODATE.parse(m.substring(0, 10));
             } catch (ParseException ex) {
@@ -521,11 +526,10 @@ public class Drupal {
                         .add(Drupal.SUMMARY, "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
                 .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
-                .add(Drupal.FLD_LICENSE, getTerms(dataset, DATAGOVBE.LICENSE))
-                .add(Drupal.FLD_FREQ, getTerms(dataset, DATAGOVBE.FREQ))
-                .add(Drupal.FLD_CAT, getTerms(dataset, DATAGOVBE.THEME))
-                .add(Drupal.FLD_GEO, getTerms(dataset, DATAGOVBE.SPATIAL))
-                .add(Drupal.FLD_PUBLISHER, getTerms(publ, DATAGOVBE.ORG))
+                .add(Drupal.FLD_FREQ, arrayTermsJson(dataset, DATAGOVBE.FREQ))
+                .add(Drupal.FLD_CAT, arrayTermsJson(dataset, DATAGOVBE.THEME))
+                .add(Drupal.FLD_GEO, arrayTermsJson(dataset, DATAGOVBE.SPATIAL))
+                .add(Drupal.FLD_PUBLISHER, arrayTermsJson(publ, DATAGOVBE.ORG))
                 .add(Drupal.FLD_ORG, orgs)
                 .add(Drupal.FLD_MAIL, emails)
           //      .add(Drupal.FLD_KEYWORDS, keywords)
@@ -551,36 +555,51 @@ public class Drupal {
         }
         return link;
     }
-
+    
     /**
-     * Add DCAT distribution
+     * Add DCAT datasets
      * 
-     * @param uri distribution URI
-     * @param lang language
-     * @param builder JSON builder
-     * @param accesses landing pages array
-     * @param downloads download pages array
+     * @param builder 
+     * @param uris
+     * @param lang
      * @throws RepositoryException
      */
-    private void addDist(String uri, String lang, JsonObjectBuilder builder,
-                            List<String> accesses, List<String> downloads) 
-                                                    throws RepositoryException {     
-        Map<URI, ListMultimap<String, String>> dist = 
-                                        store.queryProperties(store.getURI(uri));
-        if (hasLang(dist, lang)) {
-            // Landing page / page(s) with more info on dataset
-            String access = getLink(dist, DCAT.ACCESS_URL);
-            if (! access.isEmpty() && !accesses.contains(access)) {
-                accesses.add(access);
+    private void addDists(JsonObjectBuilder builder, List<String> uris, String lang) 
+                                                    throws RepositoryException {
+        ArrayList<String> accesses = new ArrayList<>();
+        ArrayList<String> downloads = new ArrayList<>();
+        ArrayList<String> rights = new ArrayList<>();
+
+        for (String uri : uris) {
+            Map<URI, ListMultimap<String, String>> dist
+                    = store.queryProperties(store.getURI(uri));
+            if (hasLang(dist, lang)) {
+                // Landing page / page(s) with more info on dataset
+                String access = getLink(dist, DCAT.ACCESS_URL);
+                if (!access.isEmpty() && !accesses.contains(access)) {
+                    accesses.add(access);
+                }
+                // Download URL
+                String download = getLink(dist, DCAT.DOWNLOAD_URL);
+                if (!download.isEmpty() && !downloads.contains(download)) {
+                    downloads.add(download);
+                }
+                // Rights
+                String right = getLink(dist, DCTERMS.RIGHTS);
+                if (!right.isEmpty() && !rights.contains(right)) {
+                    rights.add(download);
+                }
+                
+                builder.add(Drupal.FLD_FORMAT, arrayTermsJson(dist, DATAGOVBE.MEDIA_TYPE))
+                       .add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
             }
-            // Download URL
-            String download = getLink(dist, DCAT.DOWNLOAD_URL);
-            if (! download.isEmpty() && !downloads.contains(download)) {
-                downloads.add(download);
-            }
-            builder.add(Drupal.FLD_FORMAT, getTerms(dist, DATAGOVBE.MEDIA_TYPE));
         }
+
+        builder.add(Drupal.FLD_DETAILS + lang, urlArrayJson(accesses))
+                .add(Drupal.FLD_LINKS + lang, urlArrayJson(downloads))
+                .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights));
     }
+
     
     /**
      * Add a dataset to the Drupal website.
@@ -597,7 +616,7 @@ public class Drupal {
         }
        
         for(String lang : langs) {
-            if (! hasLang(dataset, lang)) {
+            if (!hasLang(dataset, lang)) {
                 continue;
             }
             
@@ -607,16 +626,8 @@ public class Drupal {
 
             // Get DCAT distributions
             List<String> dists = getMany(dataset, DCAT.DISTRIBUTION, "");
-
-            ArrayList<String> accesses = new ArrayList<>();
-            ArrayList<String> downloads = new ArrayList<>();
-            for (String dist : dists) {
-                addDist(dist, lang, builder, accesses, downloads);
-            }
-            builder.add(Drupal.FLD_DETAILS + lang, urlArrayJson(accesses));
-            builder.add(Drupal.FLD_LINKS + lang, urlArrayJson(downloads));
-                    
-            
+            addDists(builder, dists, lang);
+   
             // Add new or update existing dataset ?
             String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
             String node = checkExistsTrans(builder, id, lang);

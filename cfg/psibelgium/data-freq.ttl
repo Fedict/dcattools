@@ -1,0 +1,6 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/20>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
+	skos:prefLabel "Continuously"@en ;
+	skos:altLabel "1" .

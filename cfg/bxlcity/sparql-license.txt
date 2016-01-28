@@ -1,13 +1,16 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
 
 DELETE 
-	{ ?dataset dcterms:licence ?lic }
+	{ 	?dataset dcterms:licence ?label }
 INSERT 
-	{ 	?dataset dcterms:license <https://www.etalab.gouv.fr/licence-ouverte-open-licence> .
-		?dataset dgov:license  <http://data.gov.be/en/taxonomy/term/154> }
+	{ 	?dist dcterms:license <https://www.etalab.gouv.fr/licence-ouverte-open-licence> .
+		?dist dgov:license  <http://data.gov.be/en/taxonomy/term/154> }
 WHERE
-	{	?dataset dcterms:licence ?label
+	{	
+		?dataset dcterms:licence ?label .
+		?dataset dcat:distribution ?dist .
 		VALUES (?label) {
 			( "Licence Ouverte (Etalab)" )
 			( <https://developer.jcdecaux.com/#/opendata/license> )
