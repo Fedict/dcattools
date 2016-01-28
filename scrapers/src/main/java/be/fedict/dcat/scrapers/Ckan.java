@@ -70,6 +70,7 @@ public abstract class Ckan extends Scraper {
     public final static String AUTHOR_EML = "author_email";
     public final static String CREATED = "created";
     public final static String FORMAT = "format";
+    public final static String LICENSE_ID = "license_id";
     public final static String LICENSE_URL = "license_url";
     public final static String MAINT = "maintainer";
     public final static String MAINT_EML = "maintainer_email";
@@ -285,8 +286,6 @@ public abstract class Ckan extends Scraper {
         parseDate(store, uri, json, Ckan.META_CREATED, DCTERMS.CREATED);
         parseDate(store, uri, json, Ckan.META_MODIFIED, DCTERMS.MODIFIED);
         
-        parseURI(store, uri, json, Ckan.LICENSE_URL , DCTERMS.LICENSE);
-        
         parseContact(store, uri, json, Ckan.AUTHOR, Ckan.AUTHOR_EML, DCAT.CONTACT_POINT);
         parseContact(store, uri, json, Ckan.MAINT, Ckan.MAINT_EML, DCAT.CONTACT_POINT);       
     }
@@ -326,7 +325,7 @@ public abstract class Ckan extends Scraper {
         URL access = ckanPageURL(json.getString(Ckan.ID, ""));
         
         JsonArray arr = json.getJsonArray(Ckan.RESOURCES);
-        
+                
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
             String id = obj.getString(Ckan.ID, "");
             URI dist = store.getURI(makeDistURL(id).toString());
@@ -342,6 +341,10 @@ public abstract class Ckan extends Scraper {
             parseString(store, dist, obj, Ckan.FORMAT, DCAT.MEDIA_TYPE, null);
             parseURI(store, dist, obj, Ckan.URL, DCAT.DOWNLOAD_URL);
             
+            // License from dataset must be on the distribution
+            parseURI(store, dist, json, Ckan.LICENSE_ID , DCTERMS.LICENSE);
+            parseURI(store, dist, json, Ckan.LICENSE_URL, DCTERMS.RIGHTS);
+        
             store.add(dist, DCAT.ACCESS_URL, access);
             store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         }
