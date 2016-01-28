@@ -50,6 +50,7 @@ public class CkanVlaanderen extends Ckan {
     public final static String CONFORM = "conformity-specification-title";
     public final static String CONTACT = "contact-email";
     public final static String DOMAIN = "beleidsdomein";
+    public final static String FREQ = "frequency-of-update";
     public final static String GEMET = "gemet-theme";
     public final static String GEOCOVERAGE = "geografische dekking";
     public final static String METADATA_REQ = "metadata_request";
@@ -75,6 +76,9 @@ public class CkanVlaanderen extends Ckan {
             switch(key) {
                 case CkanVlaanderen.DOMAIN:
                     parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
+                    break;
+                case CkanVlaanderen.FREQ:
+                    parseString(store, uri, obj, Ckan.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
                     break;
                 case CkanVlaanderen.GEMET:
                     parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
