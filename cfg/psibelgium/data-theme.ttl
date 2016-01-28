@@ -49,7 +49,7 @@
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "POD Social Integration"@en, "CBSS"@en, "SPF Employment"@en, "NSSO"@en  .
+	skos:altLabel "PPS Social Integration"@en, "CBSS"@en, "FPS Employment"@en, "NSSO"@en  .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;

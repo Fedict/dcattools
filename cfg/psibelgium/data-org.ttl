@@ -4,7 +4,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://data.gov.be/org/psibelgium/7857>
-	skos:prefLabel "SPF Foreign Affairs"@en ;
+	skos:prefLabel "FPS Foreign Affairs"@en ;
 	foaf:fn "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/156> .
 
@@ -24,7 +24,7 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/158> .
 	
 <http://data.gov.be/org/psibelgium/7862>
-	skos:prefLabel "POD Social Integration"@en ;
+	skos:prefLabel "PPS Social Integration"@en ;
 	foaf:fn "POD Maatschappelijke Integratie"@nl, "SPP Intégration Sociale"@fr ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/159> .
 	
@@ -44,7 +44,7 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/162> .
 
 <http://data.gov.be/org/psibelgium/7868>
-	skos:prefLabel "FPS Economie"@en ;
+	skos:prefLabel "FPS Economy"@en ;
 	foaf:fn "FOD Economie"@nl, "SPF Economie"@fr ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/76> .
 
