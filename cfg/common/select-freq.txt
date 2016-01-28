@@ -1,0 +1,7 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+SELECT DISTINCT ?freq
+WHERE { ?s dcterms:accrualPeriodicity ?freq .
+		FILTER NOT EXISTS { ?s dgov:freq ?o } }
+ORDER BY ?freq

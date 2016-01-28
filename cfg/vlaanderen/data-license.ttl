@@ -1,10 +1,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/54>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
 	skos:prefLabel "CC0" ;
-	skos:exactMatch <http://opendataforum.info/Docs/licenties/CC0.htm>, <http://creativecommons.org/publicdomain/zero/1.0/> .
+	skos:altLabel "CC0", "http://creativecommons.org/publicdomain/zero/1.0/", "cc-zero" .
 
 <http://data.gov.be/en/taxonomy/term/56>
-	skos:prefLabel "Vlaamse Open Data" ;
-	skos:exactMatch <http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%202%20-%20Gratis%20Open%20Data%20Licentie%20-%20v1.1.htm>, <http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%202%20-%20Gratis%20Open%20Data%20Licentie%20-%20v1.0.htm>, <http://opendataforum.info/Docs/licenties/GOD.htm> .
+	skos:exactMatch <http://opendataforum.info/Docs/licenties/GOD.htm> ;
+	skos:prefLabel "Vlaamse Open Data licentie" ;
+	skos:altLabel "gratis-open-data-licentie-1.2", "gratis-open-data-licentie", "gratis-open-data-licentie-1.1" .
 		
