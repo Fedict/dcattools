@@ -54,22 +54,24 @@ public class XlsPsiBelgium extends Xls {
     private final Logger logger = LoggerFactory.getLogger(XlsPsiBelgium.class);
         
     public final static String ID = "contentid";
-    public final static String TITLE = "formtitle";
+
+    public final static String ACCESS = "questionformnameurl_url";
+    public final static String ACCESS2 = "publicinfo_siteurl";
     public final static String CREATED = "publishstartdate";
     public final static String DESC = "formshortdsc_dsc";
     public final static String DESC2 = "datescomment_comment";
     public final static String DESC3 = "formcomment_comment";
-        
-    public final static String ACCESS = "questionformnameurl_url";
-    public final static String ACCESS2 = "publicinfo_siteurl";
     public final static String DOWNLOAD = "forminformationurl_url";
-    public final static String KEYWORD = "searchoninfo_";
-    public final static String LICENSE = "reusablebylicence";
-    public final static String ORGID = "idinstitudiont_fk";
-    public final static String FREQID = "idfrequencytype_fk";
     public final static String FEE = "feerequired";
-    
+    public final static String FMT1 = "efomrat_imageformatlabel";
+    public final static String FMT2 = "eformat_vectorelformatlabel";
+    public final static String FMT3 = "eformat_pageformatlabel";
+    public final static String FREQID = "idfrequencytype_fk";        
+    public final static String KEYWORD = "searchoninfo_";
+    public final static String ORGID = "idinstitudiont_fk";
+    public final static String REUSE = "reusablebylicence";
     public final static String RIGHTS = "obtentionurl_url";
+    public final static String TITLE = "formtitle";
     
     public final static String EMPTY = "http://";
 
@@ -121,6 +123,21 @@ public class XlsPsiBelgium extends Xls {
     }
     
     /**
+     * Get array of formats
+     * 
+     * @param map
+     * @return string array of formats
+     */
+    private String[] getFormats(Map<String,String> map) {
+        String fmt1 = map.getOrDefault(XlsPsiBelgium.FMT1, "");
+        String fmt2 = map.getOrDefault(XlsPsiBelgium.FMT2, "");
+        String fmt3 = map.getOrDefault(XlsPsiBelgium.FMT3, "");
+        
+        String fmt = fmt1 + "," + fmt2 + "," + fmt3;
+        return fmt.toLowerCase().replace(";", ",").replace(".", "").split(",");
+    }
+    
+    /**
      * Add organization / publisher
      * 
      * @param store
@@ -154,8 +171,20 @@ public class XlsPsiBelgium extends Xls {
 
         String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, EMPTY);
         String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2 + lang, EMPTY);
+        
         String rights = map.getOrDefault(XlsPsiBelgium.RIGHTS + lang, EMPTY);
         String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, EMPTY);
+
+        String[] fmts = getFormats(map);
+        for(String fmt: fmts) {
+            if (!fmt.trim().equals("")) {
+                store.add(dist, DCAT.MEDIA_TYPE, fmt);
+            }
+        }
+        
+        String fee = stringInt(map.get(XlsPsiBelgium.FEE));
+        String reuse = stringInt(map.get(XlsPsiBelgium.REUSE));
+        boolean open = reuse.equals("1") && fee.equals("0");
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
@@ -170,6 +199,7 @@ public class XlsPsiBelgium extends Xls {
             store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
             store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
         }
+        store.add(dist, DCTERMS.LICENSE, open ? "open" : "closed");
         if (!rights.equals(EMPTY)) {
             store.add(dist, DCTERMS.RIGHTS, new URL(rights));
         }
@@ -190,12 +220,21 @@ public class XlsPsiBelgium extends Xls {
         URI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
+        String id = stringInt(map.get(XlsPsiBelgium.ID));
+        String freq = stringInt(map.getOrDefault(XlsPsiBelgium.FREQID, "0"));
+        
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         
+        Date created = getDate(map, XlsPsiBelgium.CREATED);
+        if (created != null) {
+            store.add(dataset, DCTERMS.CREATED, created);
+        }
+        
+        store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
+        
         String[] langs = getAllLangs();
         for (String lang : langs) {
-            String id = stringInt(map.get(XlsPsiBelgium.ID));
             String title = map.getOrDefault(XlsPsiBelgium.TITLE + lang, "");
             
             String desc = map.getOrDefault(XlsPsiBelgium.DESC + lang, title);
@@ -207,16 +246,11 @@ public class XlsPsiBelgium extends Xls {
             if (!desc3.isEmpty()) {
                 desc = desc + "\n\n" + desc3;
             }
-            String freq = stringInt(map.getOrDefault(XlsPsiBelgium.FREQID, "0"));
-            store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
+            
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
             
-            Date created = getDate(map, XlsPsiBelgium.CREATED);
-            if (created != null) {
-                store.add(dataset, DCTERMS.CREATED, created);
-            }
             String[] words = getKeywords(map, lang);
             for (String word : words) {
                 store.add(dataset, DCAT.KEYWORD, word.trim(), lang);
@@ -226,7 +260,6 @@ public class XlsPsiBelgium extends Xls {
         }
         generateOrg(store, dataset, map);
     }
-    
     
     /**
      * Generate DCAT catalog information.
