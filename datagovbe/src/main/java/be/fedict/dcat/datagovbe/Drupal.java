@@ -153,6 +153,17 @@ public class Drupal {
     }
     
     /**
+     * Strip HTML tags from string
+     * 
+     * @param s
+     * @return 
+     */
+    private static String stripTags(String s) {
+        return s.replaceAll("<[bB][rR] ?/?>|</[pP]>", "\n")
+                .replaceAll("<[hH].?>|<[pP]", "").trim();
+    }
+    
+    /**
      * Prepare a POST or PUT action.
      * 
      * @param method POST or PUT
@@ -450,19 +461,20 @@ public class Drupal {
      * 
      * @param dataset
      * @param lang language
-     * @return list of keywords
+     * @return comma-separatedlist of keywords
      * @throws RepositoryException 
      */
-    private List<String> getKeywords(Map<URI, ListMultimap<String, String>> dataset, 
+    private String getKeywords(Map<URI, ListMultimap<String, String>> dataset, 
                                         String lang) throws RepositoryException {
-        ArrayList<String> arr = new ArrayList<>();
+        StringBuilder b = new StringBuilder();
+        
         List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
         for(String word : words) {
-            if (!word.isEmpty() && !arr.contains(word)) {
-                arr.add(word);
+            if (!word.isEmpty()) {
+                b.append(word.trim()).append(" ,");
             }
         }
-        return arr;
+        return (b.length() > 2) ? b.substring(0, b.length()-2) : "";
     }
         
    
@@ -497,13 +509,12 @@ public class Drupal {
             Map<URI, ListMultimap<String, String>> dataset, String lang) 
                                                     throws RepositoryException {
         String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
-        String title = getOne(dataset, DCTERMS.TITLE, lang);
+        String title = stripTags(getOne(dataset, DCTERMS.TITLE, lang));
 
         // Just copy the title if description is empty
         String desc = getOne(dataset, DCTERMS.DESCRIPTION, lang);
-        if (desc.isEmpty()) {
-            desc = title;
-        }
+        desc = (desc.isEmpty()) ? title : stripTags(desc);
+        
         // Max size for Drupal title
         if (title.length() > Drupal.LEN_TITLE) {
             logger.warn("Title {} too long", title);
@@ -511,10 +522,10 @@ public class Drupal {
         }
         
         Date modif = getModif(dataset);
-
+        String keywords = getKeywords(dataset, lang);
+        
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
-        //JsonArrayBuilder keywords = fieldArrayJson(getKeywords(dataset, lang));
         JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset, lang));
 
         builder.add(Drupal.TYPE, Drupal.TYPE_DATA)
@@ -532,7 +543,7 @@ public class Drupal {
                 .add(Drupal.FLD_PUBLISHER, arrayTermsJson(publ, DATAGOVBE.ORG))
                 .add(Drupal.FLD_ORG, orgs)
                 .add(Drupal.FLD_MAIL, emails)
-          //      .add(Drupal.FLD_KEYWORDS, keywords)
+                .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
     }
 
