@@ -178,7 +178,7 @@ public class XlsPsiBelgium extends Xls {
         String[] fmts = getFormats(map);
         for(String fmt: fmts) {
             if (!fmt.trim().equals("")) {
-                store.add(dist, DCAT.MEDIA_TYPE, fmt);
+                store.add(dist, DCAT.MEDIA_TYPE, fmt.trim());
             }
         }
         
