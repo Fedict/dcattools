@@ -8,6 +8,5 @@ INSERT
 WHERE
 	{	?dist a dcat:Distribution .
 		?dist dcterms:license ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?license
+		?drupal skos:altLabel ?label
 	}

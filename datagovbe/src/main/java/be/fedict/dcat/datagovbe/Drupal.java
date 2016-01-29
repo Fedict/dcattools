@@ -125,6 +125,7 @@ public class Drupal {
     public final static SimpleDateFormat ISODATE = new SimpleDateFormat("yyyy-MM-dd");
     
     public final static int LEN_TITLE = 128;
+    public final static int LEN_KEYWORDS = 255;
     public final static int LEN_LINK = 255;
             
     private final String[] langs;
