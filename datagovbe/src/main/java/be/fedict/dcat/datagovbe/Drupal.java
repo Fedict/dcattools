@@ -161,7 +161,7 @@ public class Drupal {
      */
     private static String stripTags(String s) {
         return s.replaceAll("<[bB][rR] ?/?>|</[pP]>", "\n")
-                .replaceAll("<[hH].?>|<[pP]", "").trim();
+                .replaceAll("<[hH].?>|<[pP]>", "").trim();
     }
     
     /**
