@@ -59,8 +59,8 @@ public class XlsPsiBelgium extends Xls {
     public final static String ACCESS2 = "publicinfo_siteurl";
     public final static String CREATED = "publishstartdate";
     public final static String DESC = "formshortdsc_dsc";
-    public final static String DESC2 = "datescomment_comment";
-    public final static String DESC3 = "formcomment_comment";
+    public final static String DESC2 = "formcomment_comment";
+    public final static String DESC3 = "datescomment_comment";
     public final static String DOWNLOAD = "forminformationurl_url";
     public final static String FEE = "feerequired";
     public final static String FMT1 = "efomrat_imageformatlabel";
@@ -69,6 +69,8 @@ public class XlsPsiBelgium extends Xls {
     public final static String FREQID = "idfrequencytype_fk";        
     public final static String KEYWORD = "searchoninfo_";
     public final static String ORGID = "idinstitudiont_fk";
+    public final static String PFROM = "dispdate";
+    public final static String PTILL = "lastrevdate";
     public final static String REUSE = "reusablebylicence";
     public final static String RIGHTS = "obtentionurl_url";
     public final static String TITLE = "formtitle";
@@ -250,6 +252,13 @@ public class XlsPsiBelgium extends Xls {
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+            
+            String from = map.getOrDefault(XlsPsiBelgium.PFROM, "");
+            String till = map.getOrDefault(XlsPsiBelgium.PTILL, "");
+            String period = from + " / " + till;
+            if (! period.equals(" / ")) {
+                store.add(dataset, DCTERMS.TEMPORAL, period);
+            }
             
             String[] words = getKeywords(map, lang);
             for (String word : words) {
