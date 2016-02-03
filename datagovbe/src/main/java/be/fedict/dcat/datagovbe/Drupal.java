@@ -472,7 +472,7 @@ public class Drupal {
         List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
         for(String word : words) {
             if (!word.isEmpty()) {
-                b.append(word.trim()).append(" ,");
+                b.append(word.trim()).append(", ");
             }
         }
         return (b.length() > 2) ? b.substring(0, b.length()-2) : "";
