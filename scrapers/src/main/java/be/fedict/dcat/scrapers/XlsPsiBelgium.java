@@ -253,8 +253,8 @@ public class XlsPsiBelgium extends Xls {
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
             
-            String from = map.getOrDefault(XlsPsiBelgium.PFROM, "");
-            String till = map.getOrDefault(XlsPsiBelgium.PTILL, "");
+            String from = stringInt(map.getOrDefault(XlsPsiBelgium.PFROM, ""));
+            String till = stringInt(map.getOrDefault(XlsPsiBelgium.PTILL, ""));
             String period = from + " / " + till;
             if (! period.equals(" / ")) {
                 store.add(dataset, DCTERMS.TEMPORAL, period);
