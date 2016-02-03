@@ -526,9 +526,9 @@ public class Drupal {
         
         String keywords = getKeywords(dataset, lang);
         // Max size for Drupal keywords
-        if (title.length() > Drupal.LEN_KEYWORDS) {
+        if (keywords.length() > Drupal.LEN_KEYWORDS) {
             logger.warn("Keywords {} too long", keywords);
-            title = ellipsis(keywords, Drupal.LEN_KEYWORDS);
+            keywords = ellipsis(keywords, Drupal.LEN_KEYWORDS);
         }
         
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
