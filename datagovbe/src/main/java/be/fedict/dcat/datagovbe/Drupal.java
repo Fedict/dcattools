@@ -523,7 +523,13 @@ public class Drupal {
         }
         
         Date modif = getModif(dataset);
+        
         String keywords = getKeywords(dataset, lang);
+        // Max size for Drupal keywords
+        if (title.length() > Drupal.LEN_KEYWORDS) {
+            logger.warn("Keywords {} too long", keywords);
+            title = ellipsis(keywords, Drupal.LEN_KEYWORDS);
+        }
         
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
