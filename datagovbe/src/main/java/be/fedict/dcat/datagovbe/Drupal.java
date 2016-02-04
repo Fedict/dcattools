@@ -664,7 +664,7 @@ public class Drupal {
             r.bodyString(obj.toString(), ContentType.APPLICATION_JSON);
             
             try {            
-                exec.authPreemptive(host).execute(r).returnContent().asString();
+                exec.authPreemptive(host).execute(r);
             } catch (IOException ex) {
                 logger.error("Could not update {}", uri.toString(), ex);
             }
