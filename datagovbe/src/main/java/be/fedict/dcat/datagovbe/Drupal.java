@@ -106,7 +106,8 @@ public class Drupal {
     public final static String FLD_ORG = "field_organization";
     public final static String FLD_PUBLISHER = "field_publisher";
     public final static String FLD_UPSTAMP = "field_upstamp";
-   
+    public final static String FLD_TIME = "field_time";
+    
     public final static String ID = "id";
     public final static String TYPE = "type";
     public final static String TYPE_DATA = "dataset";
@@ -531,6 +532,8 @@ public class Drupal {
             keywords = ellipsis(keywords, Drupal.LEN_KEYWORDS);
         }
         
+        String fromtill = getOne(dataset, DCTERMS.TEMPORAL, "");
+        
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
         JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset, lang));
@@ -544,6 +547,7 @@ public class Drupal {
                         .add(Drupal.SUMMARY, "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
                 .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
+                .add(Drupal.FLD_TIME, fromtill)
                 .add(Drupal.FLD_FREQ, arrayTermsJson(dataset, DATAGOVBE.FREQ))
                 .add(Drupal.FLD_CAT, arrayTermsJson(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, arrayTermsJson(dataset, DATAGOVBE.SPATIAL))
