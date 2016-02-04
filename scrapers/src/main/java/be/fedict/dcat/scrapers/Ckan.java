@@ -96,41 +96,58 @@ public abstract class Ckan extends Scraper {
     public final static String API_PKG = "/api/3/action/package_show?id=";
     public final static String API_ORG = "/api/3/action/organization_show?id=";
     public final static String API_RES = "/api/3/action/resource_show?id=";
-    public final static String DATASET = "/dataset";
+    
+    public final static String DATASET = "/dataset/";
+    public final static String ORG = "/organization";
+    public final static String RESOURCE = "/resource/";
     
     /**
-     * Make an URL for a CKAN Package (DCAT Dataset) 
+     * Make a URL for a DCAT Dataset
+     * 
+     * @param id
+     * @return URL
+     * @throws MalformedURLException 
+     */
+    @Override
+    public URL makeDatasetURL(String id) throws MalformedURLException {
+        return new URL(getBase() + Ckan.DATASET + id);
+    }
+    
+    /**
+     * Make a URL for a DCAT Distribution 
      * 
      * @param id
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    protected URL ckanDatasetURL(String id) throws MalformedURLException {
+    @Override
+    public URL makeDistURL(String id) throws MalformedURLException {
+        return new URL(getBase() + Ckan.RESOURCE + id);
+    }
+  
+    /**
+     * Make an URL for an organization 
+     * 
+     * @param id
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    @Override
+    public URL makeOrgURL(String id) throws MalformedURLException {
+        return new URL(getBase() + Ckan.ORG + id);
+    }
+    
+    /**
+     * Make an URL for retrieving JSON of CKAN Package (DCAT Dataset) 
+     * 
+     * @param id
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+    protected URL ckanDatasetJsonURL(String id) throws MalformedURLException {
         return new URL(getBase(), Ckan.API_PKG + id);
-    }
     
-    /**
-     * Get URL of a CKAN resource (DCAT Distribution).
-     * 
-     * @param id
-     * @return URL
-     * @throws MalformedURLException 
-     */
-    /*protected URL ckanResourceURL(String id) throws MalformedURLException {
-        return new URL(getBase(), Ckan.API_RES + id);
     }
-    */
-    /**
-     * Get URL of a CKAN organization (DCAT Publisher).
-     * 
-     * @param id
-     * @return URL
-     * @throws MalformedURLException 
-     */
-   /* protected URL ckanOrganizationURL(String id) throws MalformedURLException {
-        return new URL(getBase(), Ckan.API_ORG + id);
-    }*/
-    
     /**
      * Get URL of a CKAN page.
      * 
@@ -475,7 +492,7 @@ public abstract class Ckan extends Scraper {
         }
         JsonArray arr = obj.getJsonArray(Ckan.RESULT);
         for (JsonString str : arr.getValuesAs(JsonString.class)) {
-            urls.add(ckanDatasetURL(str.getString()));
+            urls.add(ckanDatasetJsonURL(str.getString()));
         }
         return urls;
     }

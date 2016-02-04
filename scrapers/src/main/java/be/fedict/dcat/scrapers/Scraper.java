@@ -240,7 +240,7 @@ public abstract class Scraper extends Fetcher {
      * @return URL
      * @throws java.net.MalformedURLException 
      */
-    public final URL makeOrgURL(String id) throws MalformedURLException {
+    public URL makeOrgURL(String id) throws MalformedURLException {
         return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
     }
     
