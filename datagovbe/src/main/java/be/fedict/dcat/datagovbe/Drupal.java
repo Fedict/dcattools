@@ -54,6 +54,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
@@ -94,14 +95,14 @@ public class Drupal {
     public final static String MODIFIED = "changed_date";
     public final static String FLD_CAT = "field_category";
     public final static String FLD_CONDITIONS = "field_conditions";
-    public final static String FLD_DETAILS = "field_details_";
+    public final static String FLD_DETAILS = "field_details";
     public final static String FLD_FORMAT = "field_file_type";
     public final static String FLD_FREQ = "field_frequency";
     public final static String FLD_GEO = "field_geo_coverage";
     public final static String FLD_ID = "field_id";
     public final static String FLD_KEYWORDS = "field_keywords";
     public final static String FLD_LICENSE = "field_license";
-    public final static String FLD_LINKS = "field_links_";
+    public final static String FLD_LINKS = "field_links";
     public final static String FLD_MAIL = "field_contact";
     public final static String FLD_ORG = "field_organization";
     public final static String FLD_PUBLISHER = "field_publisher";
@@ -617,8 +618,10 @@ public class Drupal {
             }
         }
 
-        builder.add(Drupal.FLD_DETAILS + lang, urlArrayJson(accesses))
-                .add(Drupal.FLD_LINKS + lang, urlArrayJson(downloads))
+        builder.add(Drupal.FLD_DETAILS + "_" + lang, urlArrayJson(accesses))
+                .add(Drupal.FLD_LINKS + "_" + lang, urlArrayJson(downloads))
+                .add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
+                .add(Drupal.FLD_LINKS, urlArrayJson(downloads))
                 .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights));
     }
 
@@ -664,7 +667,9 @@ public class Drupal {
             r.bodyString(obj.toString(), ContentType.APPLICATION_JSON);
             
             try {            
-                exec.authPreemptive(host).execute(r);
+                StatusLine status = exec.authPreemptive(host).execute(r)
+                                    .returnResponse().getStatusLine();
+                logger.debug(status.toString());
             } catch (IOException ex) {
                 logger.error("Could not update {}", uri.toString(), ex);
             }
