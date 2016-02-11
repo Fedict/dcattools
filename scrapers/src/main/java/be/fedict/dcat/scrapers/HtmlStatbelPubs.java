@@ -42,6 +42,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
@@ -75,6 +77,9 @@ public class HtmlStatbelPubs extends Html {
     public final static String DIV_SCND = "detailScdPart";
     
     public final static DateFormat DATEFMT = new SimpleDateFormat("dd/MM/yyyy");
+    
+    public final static Pattern YEAR_PAT = 
+                            Pattern.compile("([12][0-9]{3}-20[0-9]{2})");
     
     /**
      * Get the URL of the  page in another language
@@ -252,7 +257,7 @@ public class HtmlStatbelPubs extends Html {
             String html = p.getContent();
             Element doc = Jsoup.parse(html).body();
             String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
-            
+  
             Element divmain = doc.getElementsByClass(HtmlStatbelPubs.DIV_MAIN).first();
             Elements paras  = divmain.getElementsByTag(Tag.P.toString());
             String desc = "";
@@ -262,7 +267,11 @@ public class HtmlStatbelPubs extends Html {
             if (desc.isEmpty()) {
                 desc = title;
             }
-            
+  
+            Matcher m = YEAR_PAT.matcher(title);
+            if (m.matches()) {
+                store.add(dataset, DCTERMS.TEMPORAL, m.group(1));
+            }
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
