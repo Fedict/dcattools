@@ -618,9 +618,7 @@ public class Drupal {
             }
         }
 
-        builder.add(Drupal.FLD_DETAILS + "_" + lang, urlArrayJson(accesses))
-                .add(Drupal.FLD_LINKS + "_" + lang, urlArrayJson(downloads))
-                .add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
+        builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
                 .add(Drupal.FLD_LINKS, urlArrayJson(downloads))
                 .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights));
     }
