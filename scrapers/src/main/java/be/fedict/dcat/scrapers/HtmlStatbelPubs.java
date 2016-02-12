@@ -79,7 +79,7 @@ public class HtmlStatbelPubs extends Html {
     public final static DateFormat DATEFMT = new SimpleDateFormat("dd/MM/yyyy");
     
     public final static Pattern YEAR_PAT = 
-                            Pattern.compile("([12][0-9]{3}-20[0-9]{2})");
+                    Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
     
     /**
      * Get the URL of the  page in another language
