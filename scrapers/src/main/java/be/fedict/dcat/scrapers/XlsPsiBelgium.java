@@ -74,11 +74,8 @@ public class XlsPsiBelgium extends Xls {
     public final static String REUSE = "reusablebylicence";
     public final static String RIGHTS = "obtentionurl_url";
     public final static String TITLE = "formtitle";
-    
-    public final static String EMPTY = "http://";
 
-    public final static DateFormat DATEFMT = 
-                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     protected URL getId(Row row) throws MalformedURLException {
@@ -171,11 +168,11 @@ public class XlsPsiBelgium extends Xls {
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
 
-        String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, EMPTY);
-        String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2 + lang, EMPTY);
+        String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, "");
+        String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2 + lang, "");
         
-        String rights = map.getOrDefault(XlsPsiBelgium.RIGHTS + lang, EMPTY);
-        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, EMPTY);
+        String rights = map.getOrDefault(XlsPsiBelgium.RIGHTS + lang, "");
+        String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, "");
 
         String[] fmts = getFormats(map);
         for(String fmt: fmts) {
@@ -191,18 +188,18 @@ public class XlsPsiBelgium extends Xls {
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        if(!access.equals(EMPTY)) {
+        if(!access.isEmpty()) {
             store.add(dist, DCAT.ACCESS_URL, new URL(access));
         }
-        if (!access2.equals(EMPTY)) {
+        if (!access2.isEmpty()) {
             store.add(dist, DCAT.ACCESS_URL, new URL(access2));
         }
-        if (!download.equals(EMPTY)) {
+        if (!download.isEmpty()) {
             store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
             store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
         }
         store.add(dist, DCTERMS.LICENSE, open ? "open" : "closed");
-        if (!rights.equals(EMPTY)) {
+        if (!rights.isEmpty()) {
             store.add(dist, DCTERMS.RIGHTS, new URL(rights));
         }
     }
