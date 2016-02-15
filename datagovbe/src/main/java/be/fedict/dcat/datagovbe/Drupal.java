@@ -533,8 +533,6 @@ public class Drupal {
             keywords = ellipsis(keywords, Drupal.LEN_KEYWORDS);
         }
         
-        String fromtill = getOne(dataset, DCTERMS.TEMPORAL, null);
-        
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
         JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset, lang));
@@ -548,7 +546,6 @@ public class Drupal {
                         .add(Drupal.SUMMARY, "")
                         .add(Drupal.FORMAT, Drupal.FORMAT_HTML))
                 .add(Drupal.FLD_UPSTAMP, modif.getTime()/1000L)
-                .add(Drupal.FLD_TIME, fromtill)
                 .add(Drupal.FLD_FREQ, arrayTermsJson(dataset, DATAGOVBE.FREQ))
                 .add(Drupal.FLD_CAT, arrayTermsJson(dataset, DATAGOVBE.THEME))
                 .add(Drupal.FLD_GEO, arrayTermsJson(dataset, DATAGOVBE.SPATIAL))
@@ -557,6 +554,13 @@ public class Drupal {
                 .add(Drupal.FLD_MAIL, emails)
                 .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
+        
+        String fromtill = getOne(dataset, DCTERMS.TEMPORAL, "");
+        if (fromtill.isEmpty()) {
+            builder.addNull(Drupal.FLD_TIME);
+        } else {
+            builder.add(Drupal.FLD_TIME, fromtill);
+        }
     }
 
     /**
