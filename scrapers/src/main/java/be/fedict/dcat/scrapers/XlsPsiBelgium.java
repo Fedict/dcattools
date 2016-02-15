@@ -61,6 +61,8 @@ public class XlsPsiBelgium extends Xls {
     public final static String DESC = "formshortdsc_dsc";
     public final static String DESC2 = "formcomment_comment";
     public final static String DESC3 = "datescomment_comment";
+    public final static String DESC4 = "licensecomment_comment";
+    public final static String DESC5 = "reusablebylicence_reglobasisname";
     public final static String DOWNLOAD = "forminformationurl_url";
     public final static String FEE = "feerequired";
     public final static String FMT1 = "efomrat_imageformatlabel";
@@ -244,6 +246,14 @@ public class XlsPsiBelgium extends Xls {
             String desc3 = map.getOrDefault(XlsPsiBelgium.DESC3 + lang, "");
             if (!desc3.isEmpty()) {
                 desc = desc + "\n\n" + desc3;
+            }
+            String desc4 = map.getOrDefault(XlsPsiBelgium.DESC4 + lang, "");
+            if (!desc4.isEmpty()) {
+                desc = desc + "\n\n" + desc4;
+            }
+            String desc5 = map.getOrDefault(XlsPsiBelgium.DESC5 + lang, "");
+            if (!desc5.isEmpty()) {
+                desc = desc + "\n\n" + desc5;
             }
             
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
