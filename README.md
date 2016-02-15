@@ -11,6 +11,8 @@ in [data/datagovbe.nt](data/datagovbe.nt)
 
 ## Overview of the tools
 
+![Components](components.png)
+
 ### Requirements
 
 These tools can be used with Oracle Java 1.8 (1.7 will probably work, 
