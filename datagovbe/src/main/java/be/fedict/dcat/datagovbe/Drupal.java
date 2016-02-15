@@ -533,7 +533,7 @@ public class Drupal {
             keywords = ellipsis(keywords, Drupal.LEN_KEYWORDS);
         }
         
-        String fromtill = getOne(dataset, DCTERMS.TEMPORAL, "");
+        String fromtill = getOne(dataset, DCTERMS.TEMPORAL, null);
         
         Map<URI, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
@@ -612,6 +612,10 @@ public class Drupal {
                 if (!right.isEmpty() && !rights.contains(right)) {
                     rights.add(download);
                 }
+                
+                // remove duplicate links
+                downloads.removeAll(accesses);
+                rights.removeAll(accesses);
                 
                 builder.add(Drupal.FLD_FORMAT, arrayTermsJson(dist, DATAGOVBE.MEDIA_TYPE))
                        .add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
