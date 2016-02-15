@@ -613,15 +613,15 @@ public class Drupal {
                     rights.add(download);
                 }
                 
-                // remove duplicate links
-                downloads.removeAll(accesses);
-                rights.removeAll(accesses);
-                
                 builder.add(Drupal.FLD_FORMAT, arrayTermsJson(dist, DATAGOVBE.MEDIA_TYPE))
                        .add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
             }
         }
-
+        
+        // remove duplicate links
+        downloads.removeAll(accesses);
+        rights.removeAll(accesses);
+                
         builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
                 .add(Drupal.FLD_LINKS, urlArrayJson(downloads))
                 .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights));
