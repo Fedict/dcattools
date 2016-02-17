@@ -63,18 +63,19 @@ public class HtmlEandis extends Html {
      * @param dataset URI
      * @param front URL of the front page
      * @param link link element
-     * @param i row sequence
+     * @param i dataset sequence
+     * @param j dist sequence
      * @param lang language code
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     private void generateDist(Storage store, URI dataset, URL access, 
-                                            Element link, int i, String lang) 
+                                        Element link, int i, int j, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.attr(HTML.Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
-        URL u = makeDistURL(i + "/" + lang);
+        URL u = makeDistURL(i + "/" + j + "/" + lang);
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
@@ -119,9 +120,10 @@ public class HtmlEandis extends Html {
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         store.add(dataset, DCAT.LANDING_PAGE, front);
     
+        int j = 0;
         Elements links = table.getElementsByTag(HTML.Tag.A.toString());
         for(Element link : links) {
-            generateDist(store, dataset, front, link, i, lang);
+            generateDist(store, dataset, front, link, i, j++, lang);
         }
     }
     
