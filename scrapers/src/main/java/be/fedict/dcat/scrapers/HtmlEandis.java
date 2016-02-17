@@ -69,9 +69,9 @@ public class HtmlEandis extends Html {
      * @throws RepositoryException 
      */
     private void generateDist(Storage store, URI dataset, URL access, 
-                                            Elements link, int i, String lang) 
+                                            Element link, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
-        String href = link.first().attr(HTML.Attribute.HREF.toString());
+        String href = link.attr(HTML.Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
         URL u = makeDistURL(i + "/" + lang);
@@ -81,7 +81,7 @@ public class HtmlEandis extends Html {
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
+        store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
         store.add(dist, DCAT.ACCESS_URL, access);
         store.add(dist, DCAT.DOWNLOAD_URL, download);
         store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
@@ -120,7 +120,9 @@ public class HtmlEandis extends Html {
         store.add(dataset, DCAT.LANDING_PAGE, front);
     
         Elements links = table.getElementsByTag(HTML.Tag.A.toString());
-        generateDist(store, dataset, front, links, i, lang);
+        for(Element link : links) {
+            generateDist(store, dataset, front, link, i, lang);
+        }
     }
     
     @Override
@@ -190,7 +192,6 @@ public class HtmlEandis extends Html {
         super.generateCatalogInfo(store, catalog);
         store.add(catalog, DCTERMS.TITLE, "DCAT export Eandis", "en");
         store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
     }
  
     /**
