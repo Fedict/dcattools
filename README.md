@@ -15,10 +15,12 @@ in [data/datagovbe.nt](data/datagovbe.nt)
 
 ### Requirements
 
-These tools can be used with Oracle Java 1.8 (1.7 will probably work, 
+These tools can be used with Oracle Java runtime 1.8 (1.7 will probably work, 
 but not tested), on a headless machine, i.e. there is no fancy GUI.
 
-Internet connection is obviously required, a proxy can be used.
+Internet connection is obviously required, although a proxy can be used.
+
+Binaries can be found in [dist/bin](dist/bin), compiling from source requires the Oracle JDK and Maven.
 
 ### Main parts
 
@@ -28,11 +30,16 @@ and websites, and turning the metadata into DCAT files
 * DCAT [enhancers](#enhancer): for improving the DCAT files, e.g. map site-specific themes
 add missing properties and prepare the files for updating data.gov.be
 * Data.gov.be [updater](#updater): update the data.gov.be (Drupal 7) website using the enhanced DCAT files
+* Some [tools](#tools): link checker
+
+### Configuration
+
+All configuration is done using Java (plain text) properties files.
+Some examples can be found in [dist/cfg](dist/cfg)
 
 ### Notes
 
-* Based on rdf4j (formerly known as Sesame), MapDB, Guava and other open
-source libraries.
+* Based on rdf4j (formerly known as Sesame), MapDB, Guava and other Java open source libraries.
 * Logging uses SLF4J.
 
 ## Scraper
@@ -176,3 +183,20 @@ The configuration file is a Java properties file.
     # Temporarily local RDF store that will be used to load the DCAT file 
     be.fedict.datagovbe7.store=B:/datagov/data/statbelpubs/drupal.sail
     
+
+## Tools
+
+A collection of various tools, currently only a simple command line link checker is implemented.
+It uses HEAD HTTP requests and pauses between requests (to avoid overloading the server)
+
+Invoke with
+
+    # java -jar tools.jar be.fedict.dcat.tools.LinkChecker location/of/config.properties
+
+
+Use -D to set logging level and save the log to a file
+
+    # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
+           -Dorg.slf4j.simpleLogger.logFile=linkchekcer.log
+           -jar tools.jar be.fedict.dcat.tools.LinkChecker 
+            location/of/config.properties
