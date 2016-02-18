@@ -1,7 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#> 
-PREFIX dgov: <http://data.gov.be#>
-
-SELECT DISTINCT ?type
-WHERE { ?s dcat:mediaType ?type .
-		FILTER NOT EXISTS { ?s dgov:mediaType ?o } }
-ORDER BY ?type

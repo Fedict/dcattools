@@ -1,1 +1,0 @@
-java   -Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=scrape.log -jar scrapers-1.0-SNAPSHOT.jar  B:/datagov/cfg/%1/scraper.properties

@@ -1,7 +1,0 @@
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-
-<http://data.gov.be/en/taxonomy/term/76>
-	a vcard:Organization ;
-	vcard:fn "FPS Economy"@en ;
-	vcard:hasMail <mailto:statbel@economie.fgov.be> .

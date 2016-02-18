@@ -1,8 +1,0 @@
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
-
-SELECT DISTINCT ?spatial
-WHERE 
-	{ ?s dcterms:spatial ?spatial .
-		FILTER NOT EXISTS { ?s dgov:spatial ?o } }
-ORDER BY ?spatial
