@@ -39,8 +39,10 @@ import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -193,7 +195,7 @@ public class Drupal {
      * @param l list of URLs (as string)
      * @return JsonArrayBuilder containing URL field JSON objects
      */
-    private static JsonArrayBuilder urlArrayJson(List<String> l) {
+    private static JsonArrayBuilder urlArrayJson(Collection<String> l) {
         JsonArrayBuilder builder = Json.createArrayBuilder();
         for(String s : l) {
             builder.add(Json.createObjectBuilder().add(Drupal.URL, s));
@@ -215,18 +217,16 @@ public class Drupal {
         return builder;
     }
     
+    
     /**
-     * Get an array of Drupal taxonomy terms 
-     * 
-     * @param map
-     * @param property
+     * Get Drupal taxonomy terms as JSON Array
+     *
+     * @param terms
      * @return JsonArrayBuilder
      */
-    private static JsonArrayBuilder arrayTermsJson(
-            Map<URI, ListMultimap<String, String>> map, URI property) {
+    private static JsonArrayBuilder arrayTermsJson(Collection<String> terms) {
         JsonArrayBuilder arr = Json.createArrayBuilder();
         
-        List<String> terms = getMany(map, property, ""); 
         for(String term : terms) {
             if (term.startsWith(Drupal.TAXO_PREFIX)) {
                 String id = term.substring(term.lastIndexOf("/") + 1);
@@ -234,6 +234,18 @@ public class Drupal {
             }
         }
         return arr;
+    }
+    
+    /**
+     * Get Drupal taxonomy terms from RDF as JSON Array
+     * 
+     * @param map
+     * @param property
+     * @return JsonArrayBuilder
+     */
+    private static JsonArrayBuilder arrayTermsJson(
+            Map<URI, ListMultimap<String, String>> map, URI property) {
+        return arrayTermsJson(getMany(map, property, ""));
     }
      
     /**
@@ -593,32 +605,23 @@ public class Drupal {
      */
     private void addDists(JsonObjectBuilder builder, List<String> uris, String lang) 
                                                     throws RepositoryException {
-        ArrayList<String> accesses = new ArrayList<>();
-        ArrayList<String> downloads = new ArrayList<>();
-        ArrayList<String> rights = new ArrayList<>();
-
+        HashSet<String> accesses = new HashSet<>();
+        HashSet<String> downloads = new HashSet<>();
+        HashSet<String> rights = new HashSet<>();
+        HashSet<String> types = new HashSet<>();
+        
         for (String uri : uris) {
             Map<URI, ListMultimap<String, String>> dist
                     = store.queryProperties(store.getURI(uri));
             if (hasLang(dist, lang)) {
-                // Landing page / page(s) with more info on dataset
-                String access = getLink(dist, DCAT.ACCESS_URL);
-                if (!access.isEmpty() && !accesses.contains(access)) {
-                    accesses.add(access);
-                }
-                // Download URL
-                String download = getLink(dist, DCAT.DOWNLOAD_URL);
-                if (!download.isEmpty() && !downloads.contains(download)) {
-                    downloads.add(download);
-                }
-                // Rights
-                String right = getLink(dist, DCTERMS.RIGHTS);
-                if (!right.isEmpty() && !rights.contains(right)) {
-                    rights.add(right);
-                }
-                
-                builder.add(Drupal.FLD_FORMAT, arrayTermsJson(dist, DATAGOVBE.MEDIA_TYPE))
-                       .add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
+                // Data.gov.be displays this information as fields on dataset
+                // not on distribution.
+                accesses.add(getLink(dist, DCAT.ACCESS_URL));
+                downloads.add(getLink(dist, DCAT.DOWNLOAD_URL));
+                rights.add(getLink(dist, DCTERMS.RIGHTS));
+                types.add(getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
+
+                builder.add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
             }
         }
         
@@ -628,7 +631,8 @@ public class Drupal {
                 
         builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
                 .add(Drupal.FLD_LINKS, urlArrayJson(downloads))
-                .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights));
+                .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights))
+                .add(Drupal.FLD_FORMAT, arrayTermsJson(types));
     }
 
     
