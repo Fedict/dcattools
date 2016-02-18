@@ -1,0 +1,17 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/1>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+	skos:altLabel "CSV", "csv" .
+	
+<http://data.gov.be/en/taxonomy/term/9>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
+	skos:altLabel "JSON", "json", "jsonp" .
+
+<http://data.gov.be/en/taxonomy/term/8>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLS> ;
+	skos:altLabel "XLS", "xls" .
+	
+<http://data.gov.be/en/taxonomy/term/62>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
+	skos:altLabel "XLSX", "xlsx", "xslx" .
