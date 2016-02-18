@@ -1,0 +1,13 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://data.gov.be/org/eandis>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/180> ;
+	foaf:homepage <http://www.eandis.be> .
+	
+<http://data.gov.be/org/eandis/contact>
+	a vcard:Organization ;
+	vcard:fn "Eandis"@en, "Eandis"@nl, "Eandis"@fr ;
+	vcard:hasEmail <mailto:martktwerking@eandis.be> .
