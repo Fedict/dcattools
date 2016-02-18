@@ -3,7 +3,8 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/62> }
+	{ 	?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/62> .
+		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLSX> }
 WHERE
 	{	?dist a dcat:Distribution .
 		?dist dcat:mediaType "xlsx" }
