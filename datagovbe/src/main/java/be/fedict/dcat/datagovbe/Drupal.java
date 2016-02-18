@@ -614,7 +614,7 @@ public class Drupal {
                 // Rights
                 String right = getLink(dist, DCTERMS.RIGHTS);
                 if (!right.isEmpty() && !rights.contains(right)) {
-                    rights.add(download);
+                    rights.add(right);
                 }
                 
                 builder.add(Drupal.FLD_FORMAT, arrayTermsJson(dist, DATAGOVBE.MEDIA_TYPE))
