@@ -6,16 +6,21 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 INSERT
 	{ 	?dataset dcat:distribution ?dist .
 		?dist a dcat:Distribution .
-		?dist dcat:mediaType "csv", "json", "xls" .
-		?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/1>, <http://data.gov.be/en/taxonomy/term/8>, <http://data.gov.be/en/taxonomy/term/9> .
+		?dist dcat:mediaType ?media .
+		?dist dcterms:format ?format .
+		?dist dgov:mediaType ?ftype .
 		?dist dcat:accessURL ?page .
-		?dist dcterms:language ?lang  }
+		?dist dcterms:language ?lang }
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcterms:identifier ?id .
-		?dataset dcterms:language ?lang 
-		BIND ( IRI(CONCAT('http://data.gov.be/dist/bxlcity/', ?id)) as ?dist)
-		BIND ( IRI(CONCAT(?prefix, '/explore/dataset/', ?id)) as ?page)
+		?dataset dcterms:language ?lang .
+		BIND(IRI(CONCAT('http://data.gov.be/dist/bxlcity/', ?id, '/', ?media)) as ?dist)
+		VALUES (?media ?ftype ?format) {
+			( "csv" <http://data.gov.be/en/taxonomy/term/1> <http://publications.europa.eu/resource/authority/file-type/CSV> )
+			( "json" <http://data.gov.be/en/taxonomy/term/9> <http://publications.europa.eu/resource/authority/file-type/JSON> )
+			( "xls" <http://data.gov.be/en/taxonomy/term/8> <http://publications.europa.eu/resource/authority/file-type/XLS> )
+		}
 		VALUES (?lang ?prefix) {
 			( <http://id.loc.gov/vocabulary/iso639-1/nl> "http://opendata.brussel.be" )
 			( <http://id.loc.gov/vocabulary/iso639-1/fr> "http://opendata.bruxelles.be" )
