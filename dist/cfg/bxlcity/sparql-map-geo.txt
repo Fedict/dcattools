@@ -1,0 +1,14 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?dataset dcterms:spatial ?label }
+INSERT 
+	{ 	?dataset dgov:spatial ?drupal .
+		?dataset dcterms:spatial ?spatial }
+WHERE
+	{	?dataset dcterms:spatial ?label .
+		?drupal skos:altLabel ?label .
+		?drupal skos:exactMatch ?spatial }

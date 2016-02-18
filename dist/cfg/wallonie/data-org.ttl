@@ -1,0 +1,65 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/74>
+	skos:prefLabel "French community" ;
+	skos:altLabel "fwb"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/104>
+	skos:prefLabel "SNCB" ;
+	skos:altLabel "sncb"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/126>
+	skos:prefLabel "Ville de Namur" ;
+	skos:altLabel "ville-de-namur"@fr .
+
+<http://data.gov.be/en/taxonomy/term/133>
+	skos:prefLabel "DGO1 Routes" ;
+	skos:altLabel "wallonie-dgo1"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/134>
+	skos:prefLabel "DGO2 Mobilité" ;
+	skos:altLabel "wallonie-dgo2"@fr .
+
+<http://data.gov.be/en/taxonomy/term/135>
+	skos:prefLabel "DGO5 Action sociale" ;
+	skos:altLabel "wallonie-dgo5"@fr .
+
+<http://data.gov.be/en/taxonomy/term/136>
+	skos:prefLabel "DG06 Recherche" ;
+	skos:altLabel "wallonie-dgo6"@fr .
+
+<http://data.gov.be/en/taxonomy/term/137>
+	skos:prefLabel "CWAPE" ;
+	skos:altLabel "cwape"@fr .
+
+<http://data.gov.be/en/taxonomy/term/138>
+	skos:prefLabel "ADN" ;
+	skos:altLabel "adn"@fr .
+
+<http://data.gov.be/en/taxonomy/term/139>
+	skos:prefLabel "Bureau Economique Namur" ;
+	skos:altLabel "bep"@fr .
+
+<http://data.gov.be/en/taxonomy/term/140>
+	skos:prefLabel "Tourisme Wallonie" ;
+	skos:altLabel "tourisme-asbl"@fr .	
+
+<http://data.gov.be/en/taxonomy/term/141>
+	skos:prefLabel "Sentiers" ;
+	skos:altLabel "sentiers"@fr .	
+	
+<http://data.gov.be/en/taxonomy/term/142>
+	skos:prefLabel "TEC" ;
+	skos:altLabel "tec"@fr .	
+	
+<http://data.gov.be/en/taxonomy/term/143>
+	skos:prefLabel "Secretariat general" ;
+	skos:altLabel "secretariat-general-geo-donnees"@fr .
+
+<http://data.gov.be/en/taxonomy/term/144>
+	skos:prefLabel "FOREM" ;
+	skos:altLabel "le-forem"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/147>
+	skos:prefLabel "IRM" ;
+	skos:altLabel "meteo-nasa"@fr .	

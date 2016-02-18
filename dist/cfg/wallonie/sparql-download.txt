@@ -1,0 +1,11 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+DELETE { ?dist dcat:downloadURL ?ckan }
+INSERT { ?dist dcat:downloadURL ?wal }
+WHERE
+	{	?dist dcat:downloadURL ?ckan .
+		FILTER (STRSTARTS(STR(?ckan),  "http://ckan-22.nam.awt.be"))
+		BIND ( URI(REPLACE(STR(?ckan), "http://ckan-22.nam.awt.be", "http://opendata.digitalwallonia.be")) AS ?wal )
+	}

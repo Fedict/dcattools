@@ -1,0 +1,13 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+	
+<http://data.gov.be/en/taxonomy/term/8>
+	skos:prefLabel "XLS" ;
+	skos:altLabel "xls" .
+	
+<http://data.gov.be/en/taxonomy/term/62>
+	skos:prefLabel "XLSX" ;
+	skos:altLabel "xlsx" .
+
+<http://data.gov.be/en/taxonomy/term/65>
+	skos:prefLabel "PDF" ;
+	skos:altLabel "pdf" .
