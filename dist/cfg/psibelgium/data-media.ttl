@@ -1,41 +1,45 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/1>
-	skos:prefLabel "CSV" ;
-	skos:altLabel "CSV" .
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+	skos:altLabel "CSV", "csv" .
 
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:prefLabel "DXF" ;
 	skos:altLabel "dxf" .
 	
 <http://data.gov.be/en/taxonomy/term/69>
-	skos:prefLabel "HTML" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
 	skos:altLabel "htm", "html", "jsp", "php", "aspx", "asp", "xhtml" .
 
 <http://data.gov.be/en/taxonomy/term/170>
-	skos:prefLabel "JPEG" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JPEG> ;
 	skos:altLabel "jpg", "jpeg" .
 	
 <http://data.gov.be/en/taxonomy/term/65>
-	skos:prefLabel "PDF" ;
-	skos:altLabel "pdf" .
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;
+	skos:altLabel "PDF", "pdf" .
 	
 <http://data.gov.be/en/taxonomy/term/66>
-	skos:prefLabel "SHP" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	skos:altLabel "shape file", "shape files", "shape fies", "shape" .
 
 <http://data.gov.be/en/taxonomy/term/169>
-	skos:prefLabel "TIFF" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TIFF> ;
 	skos:altLabel "tiff" .
 	
 <http://data.gov.be/en/taxonomy/term/5>
-	skos:prefLabel "TXT" ;
-	skos:altLabel "asci" .
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
+	skos:altLabel "asci", "txt", "ascii" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
-	skos:prefLabel "XLS" ;
-	skos:altLabel "excel" .
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLS> ;
+	skos:altLabel "excel", "xls" .
+
+<http://data.gov.be/en/taxonomy/term/62>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
+	skos:altLabel "XLSX", "xlsx", "xslx" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
-	skos:prefLabel "XML" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
 	skos:altLabel "xml" .
