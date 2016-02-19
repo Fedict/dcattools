@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanWallonie extends Ckan {
+public class CkanWallonie extends CkanJson {
     private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
  
     @Override

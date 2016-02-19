@@ -44,7 +44,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanVlaanderen extends Ckan {
+public class CkanVlaanderen extends CkanJson {
     private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen.class);
  
     public final static String CONFORM = "conformity-specification-title";
@@ -67,33 +67,33 @@ public class CkanVlaanderen extends Ckan {
      */
     @Override
     protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
-        JsonArray arr = json.getJsonArray(Ckan.EXTRA);
+        JsonArray arr = json.getJsonArray(CkanJson.EXTRA);
         if (arr == null) {
             return;
         }
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
-            String key = obj.getString(Ckan.KEY, "");
+            String key = obj.getString(CkanJson.KEY, "");
             switch(key) {
                 case CkanVlaanderen.DOMAIN:
-                    parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
+                    parseString(store, uri, obj, CkanJson.VALUE, DCAT.THEME, lang);
                     break;
                 case CkanVlaanderen.FREQ:
-                    parseString(store, uri, obj, Ckan.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
+                    parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
                     break;
                 case CkanVlaanderen.GEMET:
-                    parseString(store, uri, obj, Ckan.VALUE, DCAT.THEME, lang);
+                    parseString(store, uri, obj, CkanJson.VALUE, DCAT.THEME, lang);
                     break;
                 case CkanVlaanderen.GEOCOVERAGE:
-                    parseString(store, uri, obj, Ckan.VALUE, DCTERMS.COVERAGE, lang);
+                    parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.COVERAGE, lang);
                     break;
                 case CkanVlaanderen.METADATA_REQ:
-                    parseURI(store, uri, obj, Ckan.VALUE, DCAT.LANDING_PAGE);
+                    parseURI(store, uri, obj, CkanJson.VALUE, DCAT.LANDING_PAGE);
                     break;
                 case CkanVlaanderen.CONTACT:
-                    parseContact(store, uri, obj, Ckan.VALUE, "", DCAT.CONTACT_POINT);
+                    parseContact(store, uri, obj, CkanJson.VALUE, "", DCAT.CONTACT_POINT);
                     break;
                 case CkanVlaanderen.RESPONSABLE:
-                    parseContact(store, uri, obj, Ckan.VALUE, "", DCAT.CONTACT_POINT);
+                    parseContact(store, uri, obj, CkanJson.VALUE, "", DCAT.CONTACT_POINT);
                     break;
                 default:
                     break;
