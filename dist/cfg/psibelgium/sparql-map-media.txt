@@ -9,4 +9,4 @@ INSERT
 WHERE
 	{	?dist dcat:mediaType ?label .
 		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?auth }
+		OPTIONAL { ?drupal skos:exactMatch ?auth } }

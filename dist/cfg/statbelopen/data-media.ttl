@@ -1,9 +1,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/1>
-	skos:prefLabel "CSV" ;
-	skos:altLabel "txt" .
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+	skos:altLabel "txt", "csv" .
 	
-<http://data.gov.be/en/taxonomy/term/8>
-	skos:prefLabel "XLS" ;
+<http://data.gov.be/en/taxonomy/term/62>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
 	skos:altLabel "xlsx" .
