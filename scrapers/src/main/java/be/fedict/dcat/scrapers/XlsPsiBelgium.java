@@ -115,7 +115,7 @@ public class XlsPsiBelgium extends Xls {
     protected String[] getKeywords(Map<String,String> map, String lang) {
         String s = map.getOrDefault(XlsPsiBelgium.KEYWORD + lang, "");
         // Keywords are added after the last sentence of the description
-        int pos = s.lastIndexOf(".");
+        int pos = s.lastIndexOf('.');
         if (pos > 0) {
             s = s.substring(pos + 1);
             return s.replaceAll("\n", "").split(",");

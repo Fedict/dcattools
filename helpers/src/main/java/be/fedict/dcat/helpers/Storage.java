@@ -97,7 +97,9 @@ public class Storage {
         if (repo != null) {
             logger.info("Removing RDF backend file");
     
-            repo.getDataDir().delete();
+            if(!repo.getDataDir().delete()) {
+                logger.warn("Could not remove RDF backend file");
+            }
             repo = null;
         }
     }

@@ -260,14 +260,16 @@ public class HtmlStatbelPubs extends Html {
   
             Element divmain = doc.getElementsByClass(HtmlStatbelPubs.DIV_MAIN).first();
             Elements paras  = divmain.getElementsByTag(Tag.P.toString());
-            String desc = "";
+            
+            StringBuilder buf = new StringBuilder();
             for (Element para : paras) {
-                desc += para.text() + "\n";
+                buf.append(para.text()).append('\n');
             }
-            if (desc.isEmpty()) {
-                desc = title;
+            if (buf.length() == 0) {
+                buf.append(title);
             }
-  
+            String desc = buf.toString();
+            
             Matcher m = YEAR_PAT.matcher(title);
             if (m.matches()) {
                 store.add(dataset, DCTERMS.TEMPORAL, m.group(1));

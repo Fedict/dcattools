@@ -165,10 +165,10 @@ public abstract class Scraper extends Fetcher {
      */
     public String getFileExt(String href) {
         String ext = "";
-        int dot = href.lastIndexOf(".");
+        int dot = href.lastIndexOf('.');
         if (dot > 0) {
             ext = href.substring(dot+1);
-            int q = ext.lastIndexOf("?");
+            int q = ext.lastIndexOf('?');
             if (q > 0) {
                 ext = ext.substring(0, q);
             }

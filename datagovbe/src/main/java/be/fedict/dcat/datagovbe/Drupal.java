@@ -150,7 +150,7 @@ public class Drupal {
      * @param len maximum length
      */
     private static String ellipsis(String s, int len) {
-        int cut = s.lastIndexOf(" ", len - 3);
+        int cut = s.lastIndexOf(' ', len - 3);
         if (cut < 0) {
             cut = 125;
         }
@@ -229,7 +229,7 @@ public class Drupal {
         
         for(String term : terms) {
             if (term.startsWith(Drupal.TAXO_PREFIX)) {
-                String id = term.substring(term.lastIndexOf("/") + 1);
+                String id = term.substring(term.lastIndexOf('/') + 1);
                 arr.add(Json.createObjectBuilder().add(Drupal.ID, id).build());
             }
         }

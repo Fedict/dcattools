@@ -30,7 +30,6 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
-import be.fedict.dcat.vocab.MDR_THEME;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
