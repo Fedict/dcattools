@@ -47,7 +47,6 @@ import org.openrdf.model.URI;
 import org.openrdf.model.Value;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.SKOS;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
@@ -420,10 +419,9 @@ public class Storage {
     public void write(Writer out) throws RepositoryException {
         RDFWriter writer = Rio.createWriter(RDFFormat.NTRIPLES, out);
         try {
-            conn.remove(null, SKOS.ALT_LABEL, null, new Resource[0]);
-            conn.remove(null, SKOS.PREF_LABEL, null, new Resource[0]);
             conn.export(writer);
         } catch (RDFHandlerException ex) {
+            logger.warn("Error writing RDF");
         }
     }
        
