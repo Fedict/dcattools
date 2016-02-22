@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML;
@@ -61,19 +62,28 @@ public class HtmlOostende extends Html {
     private final static String LINK_DATASETS = "ul.dataviews li.item a:has(span)";
     private final static String LINK_DISTS = "div.odsub a.file";
     private final static String LIST_CATS = "ul.listcategorien li a";
-        
+ 
+
     /**
-     * Store page containing datasets
+     * Get the list of all the downloads (DCAT Dataset).
      * 
-     * @param cache 
-     * @throws java.io.IOException 
+     * @return List of URLs
+     * @throws IOException 
      */
-    private void scrapePage(Cache cache) throws IOException {
-        URL front = getBase();
-        String content = makeRequest(front);
-        cache.storePage(front, "", new Page(front, content));
+    private List<URL> scrapeDatasetList() throws IOException {
+        List<URL> urls = new ArrayList<>();
+        
+        URL base = getBase();
+        String front = makeRequest(base);
+        Elements links = Jsoup.parse(front).select(LINK_DATASETS);
+        
+        for(Element link : links) {
+            String href = link.attr(HTML.Attribute.HREF.toString());
+            urls.add(makeAbsURL(href));
+        }
+        return urls;
     }
-       
+    
     /**
      * Scrape the site.
      * 
@@ -84,22 +94,17 @@ public class HtmlOostende extends Html {
         logger.info("Start scraping");
         Cache cache = getCache();
         
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapePage(cache);
-            front = cache.retrievePage(getBase());   
+        List<URL> urls = cache.retrieveURLList();
+        if (urls.isEmpty()) {
+            urls = scrapeDatasetList();
+            cache.storeURLList(urls);
         }
-        // Calculate the number of datasets
-        Page p = front.get("");
-        String datasets = p.getContent();
-        Elements links = Jsoup.parse(datasets).select(LINK_DATASETS);
-        logger.info("Found {} datasets on page", String.valueOf(links.size()));
+    
+        logger.info("Found {} datasets on page", String.valueOf(urls.size()));
         logger.info("Start scraping (waiting between requests)");
         
         int i = 0;
-        for (Element link : links) {
-            String href = link.attr(HTML.Attribute.HREF.toString());  
-            URL u = makeAbsURL(href);
+        for (URL u : urls) {
             Map<String, Page> page = cache.retrievePage(u);
             if (page.isEmpty()) {
                 sleep();
