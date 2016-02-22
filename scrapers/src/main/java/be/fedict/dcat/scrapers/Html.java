@@ -43,7 +43,6 @@ import org.slf4j.LoggerFactory;
 public abstract class Html extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Html.class);
     
-       
     /**
      * Generate DCAT Dataset
      * 

@@ -48,50 +48,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Scraper for EANDIS website.
+ * Scraper for Oostende DO2 website.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class HtmlEandis extends Html {
-    private final Logger logger = LoggerFactory.getLogger(HtmlEandis.class);
+public class HtmlOostende extends Html {
+    private final Logger logger = LoggerFactory.getLogger(HtmlOostende.class);
 
-    /**
-     * Store page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    private void scrapePage(Cache cache) throws IOException {
-        URL front = getBase();
-        String lang = getDefaultLang();
-        String content = makeRequest(front);
-        cache.storePage(front, lang, new Page(front, content));
-    }
-    
-    /**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapePage(cache);
-            front = cache.retrievePage(getBase());   
-        }
-        // Calculate the number of datasets
-        Page p = front.get(getDefaultLang());
-        String datasets = p.getContent();
-        Elements tables = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TABLE.toString());
-        logger.info("Found {} datasets on page", String.valueOf(tables.size()));
-        
-        logger.info("Done scraping");
-    }
-
+    private final static String CONTENT_ID = "content";
+    private final static String DIV_DESC = "opendata_long";
+    private final static String LINK_DATASETS = "ul.dataviews li.item a:eq(1)";
+    private final static String LINK_DISTS = "div.odsub a.file";
+    private final static String LIST_CATS = "ul.listcategorien li a";
     
     /**
      * Generate DCAT distribution.
@@ -100,19 +68,18 @@ public class HtmlEandis extends Html {
      * @param dataset URI
      * @param front URL of the front page
      * @param link link element
-     * @param i dataset sequence
-     * @param j dist sequence
+     * @param i dist sequence
      * @param lang language code
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     private void generateDist(Storage store, URI dataset, URL access, 
-                                        Element link, int i, int j, String lang) 
+                                        Element link, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.attr(HTML.Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
-        URL u = makeDistURL(i + "/" + j + "/" + lang);
+        URL u = makeDistURL(access + "/" + i + "/" + lang);
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
@@ -123,45 +90,6 @@ public class HtmlEandis extends Html {
         store.add(dist, DCAT.ACCESS_URL, access);
         store.add(dist, DCAT.DOWNLOAD_URL, download);
         store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
-    }
-    
-    /**
-     * Generate one dataset
-     * 
-     * @param store  RDF store
-     * @param URL front
-     * @param table HTML table
-     * @param i number
-     * @param lang language
-     * @throws MalformedURLException
-     * @throws RepositoryException
-     */
-    private void generateDataset(Storage store, URL front, Element table, int i, String lang) 
-                            throws MalformedURLException, RepositoryException {
-        URL u = makeDatasetURL(String.valueOf(i));
-        URI dataset = store.getURI(u.toString());  
-        logger.debug("Generating dataset {}", dataset.toString());
-        
-        Element th = table.getElementsByTag(HTML.Tag.TH.toString()).first();
-        if (th == null) {
-            logger.warn("Empty title, skipping");
-            return;
-        }
-        String title = th.text().trim().toLowerCase();
-        String desc = title;
-        
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
-        store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dataset, DCTERMS.TITLE, title, lang);
-        store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-        store.add(dataset, DCAT.LANDING_PAGE, front);
-    
-        int j = 0;
-        Elements links = table.getElementsByTag(HTML.Tag.A.toString());
-        for(Element link : links) {
-            generateDist(store, dataset, front, link, i, j++, lang);
-        }
     }
     
     /**
@@ -178,19 +106,100 @@ public class HtmlEandis extends Html {
                             throws MalformedURLException, RepositoryException {
         String lang = getDefaultLang();
         
-        Page p = page.getOrDefault(lang, new Page());
+        Page p = page.getOrDefault("", new Page());
         String html = p.getContent();
-        URL front = p.getUrl();
-        Elements tables = 
-                Jsoup.parse(html).body().getElementsByTag(HTML.Tag.TABLE.toString());
-            
-        int i = 0;
-        for (Element table : tables) {
-            generateDataset(store, front, table, i, lang);
-            i++;
+        URL u = p.getUrl();
+        
+        Element content = Jsoup.parse(html).body().getElementById(CONTENT_ID);
+        
+        URI dataset = store.getURI(u.toString());  
+        logger.debug("Generating dataset {}", dataset.toString());
+        
+        Element h1 = content.getElementsByTag(HTML.Tag.H1.toString()).first();
+        if (h1 == null) {
+            logger.warn("Empty title, skipping");
+            return;
         }
-    }
+        String title = h1.text().trim();
+        
+        Element div = content.getElementsByClass(DIV_DESC).first();
+        String desc = div.text();
+        
+        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+        store.add(dataset, DCTERMS.TITLE, title, lang);
+        store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+        store.add(dataset, DCAT.LANDING_PAGE, u);
     
+        Elements cats = content.select(LIST_CATS);
+        for (Element cat : cats) {
+            store.add(dataset, DCAT.KEYWORD, cat.text(), lang);
+        }
+        
+        int i = 0;
+        Elements dists = content.select(LINK_DISTS);
+        for(Element dist : dists) {
+            generateDist(store, dataset, u, dist, ++i, lang);
+        }
+
+    }
+
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, Page> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapePage(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        // Calculate the number of datasets
+        Page p = front.get("");
+        String datasets = p.getContent();
+        Elements links = Jsoup.parse(datasets).select(LINK_DATASETS);
+        logger.info("Found {} datasets on page", String.valueOf(links.size()));
+        logger.info("Start scraping (waiting between requests)");
+        
+        int i = 0;
+        for (Element link : links) {
+            String href = link.attr(HTML.Attribute.HREF.toString());  
+            URL u = new URL(href);
+            Map<String, Page> page = cache.retrievePage(u);
+            if (page.isEmpty()) {
+                sleep();
+                if (++i % 100 == 0) {
+                    logger.info("Download {}...", Integer.toString(i));
+                }
+                try {
+                    String html = makeRequest(u);
+                    cache.storePage(u, "", new Page(u, html));
+                } catch (IOException ex) {
+                    logger.error("Failed to scrape {}", u);
+                }
+            }
+        }
+        logger.info("Done scraping");
+    }
+
+    
+    /**
+     * Store page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    private void scrapePage(Cache cache) throws IOException {
+        URL front = getBase();
+        String content = makeRequest(front);
+        cache.storePage(front, "", new Page(front, content));
+    }
     
     /**
      * Generate DCAT catalog information.
@@ -203,7 +212,7 @@ public class HtmlEandis extends Html {
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
         super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export Eandis", "en");
+        store.add(catalog, DCTERMS.TITLE, "DCAT export Oostende D02", "en");
         store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
     }
  
@@ -227,15 +236,14 @@ public class HtmlEandis extends Html {
     }
     
     /**
-     * HTML scraper EANDIS.
+     * HTML scraper Oostende DO2.
      * 
      * @param caching
      * @param storage
      * @param base 
      */
-    public HtmlEandis(File caching, File storage, URL base) {
+    public HtmlOostende(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setName("eandis");
+        setName("oostende");
     }
-
 }

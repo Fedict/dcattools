@@ -342,7 +342,6 @@ public abstract class Scraper extends Fetcher {
         generateDcat(cache, store);
         
         cache.shutdown();
-    
         store.write(out);
         store.shutdown();
     }
