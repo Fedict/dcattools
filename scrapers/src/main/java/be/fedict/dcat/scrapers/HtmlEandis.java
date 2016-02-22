@@ -56,6 +56,44 @@ public class HtmlEandis extends Html {
     private final Logger logger = LoggerFactory.getLogger(HtmlEandis.class);
 
     /**
+     * Store page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    private void scrapePage(Cache cache) throws IOException {
+        URL front = getBase();
+        String lang = getDefaultLang();
+        String content = makeRequest(front);
+        cache.storePage(front, lang, new Page(front, content));
+    }
+    
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, Page> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapePage(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        // Calculate the number of datasets
+        Page p = front.get(getDefaultLang());
+        String datasets = p.getContent();
+        Elements tables = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TABLE.toString());
+        logger.info("Found {} datasets on page", String.valueOf(tables.size()));
+        
+        logger.info("Done scraping");
+    }
+
+    
+    /**
      * Generate DCAT distribution.
      * 
      * @param store RDF store
@@ -142,43 +180,6 @@ public class HtmlEandis extends Html {
         }
     }
     
-    /**
-     * Store page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    private void scrapePage(Cache cache) throws IOException {
-        URL front = getBase();
-        String lang = getDefaultLang();
-        String content = makeRequest(front);
-        cache.storePage(front, lang, new Page(front, content));
-    }
-    
-    /**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapePage(cache);
-            front = cache.retrievePage(getBase());   
-        }
-        // Calculate the number of datasets
-        Page p = front.get(getDefaultLang());
-        String datasets = p.getContent();
-        Elements tables = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TABLE.toString());
-        logger.info("Found {} datasets on page", String.valueOf(tables.size()));
-        
-        logger.info("Done scraping");
-    }
-
     
     /**
      * Generate DCAT catalog information.
