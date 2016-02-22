@@ -155,7 +155,7 @@ public class HtmlStatbelPubs extends Html {
             for(Element row : rows) {
                 Element link = row.getElementsByTag(Tag.A.toString()).first();
                 String href = link.attr(Attribute.HREF.toString());
-                urls.add(new URL(getBase(), href));
+                urls.add(makeAbsURL(href));
             }
         } else {
             logger.error("Category {} not found", HtmlStatbelPubs.CAT_CAT);
@@ -178,7 +178,6 @@ public class HtmlStatbelPubs extends Html {
             urls = scrapeDatasetList();
             cache.storeURLList(urls);
         }
-        urls = cache.retrieveURLList();
         
         logger.info("Found {} downloads", String.valueOf(urls.size()));
         logger.info("Start scraping (waiting between requests)");
