@@ -237,5 +237,4 @@ public class HtmlEandis extends Html {
         super(caching, storage, base);
         setName("eandis");
     }
-
 }

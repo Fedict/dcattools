@@ -61,7 +61,63 @@ public class HtmlOostende extends Html {
     private final static String LINK_DATASETS = "ul.dataviews li.item a:eq(1)";
     private final static String LINK_DISTS = "div.odsub a.file";
     private final static String LIST_CATS = "ul.listcategorien li a";
-    
+        
+    /**
+     * Store page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    private void scrapePage(Cache cache) throws IOException {
+        URL front = getBase();
+        String content = makeRequest(front);
+        cache.storePage(front, "", new Page(front, content));
+    }
+       
+    /**
+     * Scrape the site.
+     * 
+     * @throws IOException 
+     */
+    @Override
+    public void scrape() throws IOException {
+        logger.info("Start scraping");
+        Cache cache = getCache();
+        
+        Map<String, Page> front = cache.retrievePage(getBase());
+        if (front.keySet().isEmpty()) {
+            scrapePage(cache);
+            front = cache.retrievePage(getBase());   
+        }
+        // Calculate the number of datasets
+        Page p = front.get("");
+        String datasets = p.getContent();
+        Elements links = Jsoup.parse(datasets).select(LINK_DATASETS);
+        logger.info("Found {} datasets on page", String.valueOf(links.size()));
+        logger.info("Start scraping (waiting between requests)");
+        
+        int i = 0;
+        for (Element link : links) {
+            String href = link.attr(HTML.Attribute.HREF.toString());  
+            URL u = new URL(href);
+            Map<String, Page> page = cache.retrievePage(u);
+            if (page.isEmpty()) {
+                sleep();
+                if (++i % 100 == 0) {
+                    logger.info("Download {}...", Integer.toString(i));
+                }
+                try {
+                    String html = makeRequest(u);
+                    cache.storePage(u, "", new Page(u, html));
+                } catch (IOException ex) {
+                    logger.error("Failed to scrape {}", u);
+                }
+            }
+        }
+        logger.info("Done scraping");
+    }
+
+
     /**
      * Generate DCAT distribution.
      * 
@@ -145,64 +201,7 @@ public class HtmlOostende extends Html {
         }
 
     }
-    
-    /**
-     * Store page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    private void scrapePage(Cache cache) throws IOException {
-        URL front = getBase();
-        String content = makeRequest(front);
-        cache.storePage(front, "", new Page(front, content));
-    }
-    
-    
-    /**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapePage(cache);
-            front = cache.retrievePage(getBase());   
-        }
-        // Calculate the number of datasets
-        Page p = front.get("");
-        String datasets = p.getContent();
-        Elements links = Jsoup.parse(datasets).select(LINK_DATASETS);
-        logger.info("Found {} datasets on page", String.valueOf(links.size()));
-        logger.info("Start scraping (waiting between requests)");
-        
-        int i = 0;
-        for (Element link : links) {
-            String href = link.attr(HTML.Attribute.HREF.toString());  
-            URL u = new URL(href);
-            Map<String, Page> page = cache.retrievePage(u);
-            if (page.isEmpty()) {
-                sleep();
-                if (++i % 100 == 0) {
-                    logger.info("Download {}...", Integer.toString(i));
-                }
-                try {
-                    String html = makeRequest(u);
-                    cache.storePage(u, "", new Page(u, html));
-                } catch (IOException ex) {
-                    logger.error("Failed to scrape {}", u);
-                }
-            }
-        }
-        logger.info("Done scraping");
-    }
-
-
+ 
     /**
      * Generate DCAT catalog information.
      * 
