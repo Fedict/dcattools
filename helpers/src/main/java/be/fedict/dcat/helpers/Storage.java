@@ -212,6 +212,35 @@ public class Storage {
     }
 
     /**
+     * Escape spaces in object URIs to avoid SPARQL issues
+     * 
+     * @param pred 
+     * @throws RepositoryException 
+     */
+    public void escapeURI(URI pred) throws RepositoryException {
+        RepositoryResult<Statement> stmts = 
+                                    conn.getStatements(null, pred, null, false);
+        int i = 0;
+        while(stmts.hasNext()) {
+            Statement stmt = stmts.next();
+            Value val = stmt.getObject();
+            // Check if object is Literal or URI
+            if (val instanceof Resource) {
+                String uri = stmt.getObject().stringValue();
+                // Check if URI contains a space
+                if (uri.lastIndexOf(' ') > 0) {
+                    URI obj = fac.createURI(uri.replaceAll(" ", "%20"));
+                    conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
+                    conn.remove(stmt);
+                    i++;
+                }
+            }
+        }
+        stmts.close();
+        logger.info("Replaced spaces in {} statements");
+    }
+    
+    /**
      * Execute SPARQL Select query
      * 
      * @param sparql
