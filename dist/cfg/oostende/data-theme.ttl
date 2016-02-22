@@ -1,0 +1,41 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/59>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+	skos:prefLabel "CULTURE AND SPORT"@en ;
+	skos:altLabel "Sport en ontspanning"@nl, "Bezoeken"@nl, "Verenigingen"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/33>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+	skos:prefLabel "EDUCATION"@en ;
+	skos:altLabel "Onderwijs"@nl .
+
+<http://data.gov.be/en/taxonomy/term/34>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+	skos:prefLabel "ENVIRONMENT"@en ;
+	skos:altLabel "Afval"@nl .
+
+<http://data.gov.be/en/taxonomy/term/41>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
+	skos:altLabel "Beleid en bestuur"@nl .
+
+<http://data.gov.be/en/taxonomy/term/40>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
+	skos:prefLabel "HEALTH"@en ;
+	skos:altLabel "Openbare toiletten"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/39>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
+	skos:altLabel "Kids"@nl  .
+
+<http://data.gov.be/en/taxonomy/term/42>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
+	skos:prefLabel "REGIONS, CITIES"@en ;
+	skos:altLabel "Toerisme"@nl .
+
+<http://data.gov.be/en/taxonomy/term/36>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+	skos:prefLabel "TRANSPORT"@en ;
+	skos:altLabel "Mobiliteit"@nl, "Parking"@nl .

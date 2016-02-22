@@ -1,0 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/oostende/contact> .
+		?dataset dcterms:publisher <http://data.gov.be/org/oostende> }
+WHERE
+	{ 	?dataset a dcat:Dataset  }
