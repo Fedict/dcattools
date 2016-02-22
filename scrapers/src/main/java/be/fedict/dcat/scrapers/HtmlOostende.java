@@ -145,13 +145,14 @@ public class HtmlOostende extends Html {
         URI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
+        String title = link.text().trim();
         store.add(dataset, DCAT.DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCTERMS.TITLE, link.text().trim(), lang);
+        store.add(dist, DCTERMS.TITLE, title, lang);
         store.add(dist, DCAT.ACCESS_URL, access);
         store.add(dist, DCAT.DOWNLOAD_URL, download);
-        store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
+        store.add(dist, DCAT.MEDIA_TYPE, title);
     }
     
     /**
