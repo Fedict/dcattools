@@ -58,7 +58,7 @@ public class HtmlOostende extends Html {
 
     private final static String CONTENT_ID = "content";
     private final static String DIV_DESC = "opendata_long";
-    private final static String LINK_DATASETS = "ul.dataviews li.item a:eq(1)";
+    private final static String LINK_DATASETS = "ul.dataviews li.item a:has(span)";
     private final static String LINK_DISTS = "div.odsub a.file";
     private final static String LIST_CATS = "ul.listcategorien li a";
         
@@ -99,7 +99,7 @@ public class HtmlOostende extends Html {
         int i = 0;
         for (Element link : links) {
             String href = link.attr(HTML.Attribute.HREF.toString());  
-            URL u = new URL(href);
+            URL u = makeAbsURL(href);
             Map<String, Page> page = cache.retrievePage(u);
             if (page.isEmpty()) {
                 sleep();
