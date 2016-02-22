@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML;
 import org.jsoup.Jsoup;
@@ -123,7 +124,7 @@ public class HtmlOostende extends Html {
         String title = h1.text().trim();
         
         Element div = content.getElementsByClass(DIV_DESC).first();
-        String desc = div.text();
+        String desc = (div != null) ? div.text() : title;
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
         store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
@@ -144,7 +145,20 @@ public class HtmlOostende extends Html {
         }
 
     }
-
+    
+    /**
+     * Store page containing datasets
+     * 
+     * @param cache 
+     * @throws java.io.IOException 
+     */
+    private void scrapePage(Cache cache) throws IOException {
+        URL front = getBase();
+        String content = makeRequest(front);
+        cache.storePage(front, "", new Page(front, content));
+    }
+    
+    
     /**
      * Scrape the site.
      * 
@@ -188,19 +202,7 @@ public class HtmlOostende extends Html {
         logger.info("Done scraping");
     }
 
-    
-    /**
-     * Store page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    private void scrapePage(Cache cache) throws IOException {
-        URL front = getBase();
-        String content = makeRequest(front);
-        cache.storePage(front, "", new Page(front, content));
-    }
-    
+
     /**
      * Generate DCAT catalog information.
      * 
@@ -230,8 +232,12 @@ public class HtmlOostende extends Html {
         logger.info("Generate DCAT");
         
         /* Get the list of all datasets */            
-        Map<String,Page> page = cache.retrievePage(getBase());
-        generateDataset(store, null, page);
+        List<URL> urls = cache.retrieveURLList();
+        for(URL u : urls) {
+            Map<String,Page> page = cache.retrievePage(u);
+            String id = makeHashId(u.toString());
+            generateDataset(store, id, page);
+        }
         generateCatalog(store);
     }
     
