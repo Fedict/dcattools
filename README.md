@@ -45,8 +45,15 @@ Some examples can be found in [dist/cfg](dist/cfg)
 ## Scraper
 
 This command-line Java tool scrapes various websites and CKAN portals.
-Each site / portal requires a specialized scraper Java class and a
+
+Each site / portal / file requires a specialized scraper Java class and a
 configuration file.
+
+Currently, there are abstract Java classes available for scraping
+ * CKAN portals, both via the JSON CKAN-API and via RDF rendering
+ * OpenDataSoft portals, using the API / DCAT-ish metadata
+ * Excel files
+ * HTML sites
 
 Invoke with
 
