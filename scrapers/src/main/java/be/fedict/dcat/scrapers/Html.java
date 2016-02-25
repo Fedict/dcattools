@@ -56,11 +56,11 @@ public abstract class Html extends Scraper {
             throws MalformedURLException, RepositoryException;
          
     /**
-     * HTML page scraper.
+     * Constructor
      * 
-     * @param caching local cache file
-     * @param storage local triple store file
-     * @param base URL of the CKAN site
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
      */
     public Html(File caching, File storage, URL base) {
         super(caching, storage, base);

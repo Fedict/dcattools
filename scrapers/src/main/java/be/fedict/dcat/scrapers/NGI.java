@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,13 @@
 
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import javax.json.JsonObject;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.repository.RepositoryException;
@@ -38,27 +40,54 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * CKAN Wallonie / AWT.
+ * Scraper for the NGI metadata portal.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanWallonie extends CkanJson {
-    private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
- 
+public class NGI extends Scraper {
+    private final Logger logger = LoggerFactory.getLogger(NGI.class);
+
+    // CKAN API
+    public final static String API_LIST = "/search/list";
+    
     @Override
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) {
-        // do nothing
+    public void scrape() throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+        /**
+     * Generate DCAT catalog information.
+     * 
+     * @param store
+     * @param catalog
+     * @throws RepositoryException 
+     */
+    @Override
+    public void generateCatalogInfo(Storage store, URI catalog) 
+                                                    throws RepositoryException {
+        super.generateCatalogInfo(store, catalog);
+        store.add(catalog, DCTERMS.TITLE, "DCAT export NGI Belgium", "en");
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.EN);
+        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.DE);
     }
     
-   /**
-    * CKAN parser for Opendata.DigitalWallonia.be / AWT.
-    * 
-    * @param caching
-    * @param storage
-    * @param base 
-    */
-    public CkanWallonie(File caching, File storage, URL base) {
+    /**
+     * Constructor
+     * 
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
+     */
+    public NGI(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setName("ckanwal");
-    }  
+        setName("ngi");
+    }
+
 }

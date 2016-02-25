@@ -98,11 +98,11 @@ public class CkanRDF extends Ckan {
     }
     
     /**
-     * CKAN scraper.
+     * Constructor
      * 
-     * @param caching local cache file
-     * @param storage local triple store file
-     * @param base URL of the CKAN site
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
      */
     public CkanRDF(File caching, File storage, URL base) {
         super(caching, storage, base);

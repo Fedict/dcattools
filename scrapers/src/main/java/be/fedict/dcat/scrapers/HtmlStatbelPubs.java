@@ -309,22 +309,6 @@ public class HtmlStatbelPubs extends Html {
     }
     
     /**
-     * Generate DCAT Catalog info.
-     * 
-     * @param store RDF store
-     * @param catalog
-     * @throws RepositoryException 
-     */
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export Statbel downloads", "en");
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-    }
-
-    /**
      * Generate DCAT.
      * 
      * @param cache

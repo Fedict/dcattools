@@ -209,22 +209,6 @@ public class HtmlFodMobilit extends Html {
             }
         }
     }
-    
-    /**
-     * Generate DCAT catalog information.
-     * 
-     * @param store
-     * @param catalog
-     * @throws RepositoryException 
-     */
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export FPS Mobility", "en");
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
-    }
            
     /**
      * Generate DCAT.

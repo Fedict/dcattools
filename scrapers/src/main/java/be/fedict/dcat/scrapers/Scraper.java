@@ -287,6 +287,7 @@ public abstract class Scraper extends Fetcher {
      */
     public void generateCatalogInfo(Storage store, URI catalog) 
                                                     throws RepositoryException {
+        store.add(catalog, DCTERMS.TITLE, "DCAT Catalog for " + getName(), "en");
         store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
         store.add(catalog, DCTERMS.MODIFIED, DATEFMT.format(new Date()));
         store.add(catalog, DCTERMS.LICENSE, DATAGOVBE.LICENSE_CC0);

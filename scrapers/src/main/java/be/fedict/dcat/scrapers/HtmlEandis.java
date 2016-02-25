@@ -191,22 +191,6 @@ public class HtmlEandis extends Html {
         }
     }
     
-    
-    /**
-     * Generate DCAT catalog information.
-     * 
-     * @param store
-     * @param catalog
-     * @throws RepositoryException 
-     */
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export Eandis", "en");
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-    }
- 
     /**
      * Generate DCAT.
      * 
@@ -227,11 +211,11 @@ public class HtmlEandis extends Html {
     }
     
     /**
-     * HTML scraper EANDIS.
+     * Constructor
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
      */
     public HtmlEandis(File caching, File storage, URL base) {
         super(caching, storage, base);

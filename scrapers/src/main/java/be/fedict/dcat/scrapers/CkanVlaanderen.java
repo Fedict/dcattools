@@ -101,14 +101,6 @@ public class CkanVlaanderen extends CkanJson {
         }
     }
     
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export CKAN Vlaanderen", "en");
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-    }
-    
     /**
      * CKAN parser for OpendataForum.info / Corve.
      * 

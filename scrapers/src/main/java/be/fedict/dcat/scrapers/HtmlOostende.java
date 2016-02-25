@@ -209,21 +209,6 @@ public class HtmlOostende extends Html {
     }
  
     /**
-     * Generate DCAT catalog information.
-     * 
-     * @param store
-     * @param catalog
-     * @throws RepositoryException 
-     */
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export Oostende D02", "en");
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-    }
- 
-    /**
      * Generate DCAT.
      * 
      * @param cache
