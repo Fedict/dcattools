@@ -36,13 +36,12 @@ import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.List;
 import java.util.Map;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
@@ -167,8 +166,8 @@ public abstract class CkanJson extends Ckan {
      * @param lang language
      * @throws RepositoryException 
      */
-    protected void parseString(Storage store, URI uri, JsonObject obj, 
-            String field, URI property, String lang) throws RepositoryException {
+    protected void parseString(Storage store, IRI uri, JsonObject obj, 
+            String field, IRI property, String lang) throws RepositoryException {
         String s = obj.getString(field, "");
         if (! s.isEmpty()) {
             if (lang != null) {
@@ -190,8 +189,8 @@ public abstract class CkanJson extends Ckan {
      * @throws RepositoryException 
      * @throws MalformedURLException 
      */
-    protected void parseURI(Storage store, URI uri, JsonObject obj, String field, 
-                URI property) throws RepositoryException, MalformedURLException {
+    protected void parseURI(Storage store, IRI uri, JsonObject obj, String field, 
+                IRI property) throws RepositoryException, MalformedURLException {
         String s = obj.getString(field, "");
         if (! s.isEmpty()) {
             URL url = new URL(s);
@@ -209,8 +208,8 @@ public abstract class CkanJson extends Ckan {
      * @param property RDF property
      * @throws RepositoryException 
      */
-    protected void parseDate(Storage store, URI uri, JsonObject obj, 
-                        String field, URI property) throws RepositoryException {
+    protected void parseDate(Storage store, IRI uri, JsonObject obj, 
+                        String field, IRI property) throws RepositoryException {
         String s = obj.getString(field, "");
         if (! s.isEmpty()) {
             try {
@@ -232,8 +231,8 @@ public abstract class CkanJson extends Ckan {
      * @param property RDF property
      * @throws RepositoryException 
      */
-    protected void parseContact(Storage store, URI uri, JsonObject obj,
-            String field, String field2, URI property) throws RepositoryException{
+    protected void parseContact(Storage store, IRI uri, JsonObject obj,
+            String field, String field2, IRI property) throws RepositoryException{
         String name = obj.getString(field, "");
         String email = obj.getString(field2, "");
        
@@ -257,7 +256,7 @@ public abstract class CkanJson extends Ckan {
         }
        
         if (!name.isEmpty() || !email.isEmpty()) {
-            URI vcard = store.getURI(v);
+            IRI vcard = store.getURI(v);
             store.add(uri, DCAT.CONTACT_POINT, vcard);
             store.add(vcard, RDF.TYPE, VCARD.A_ORGANIZATION);
             if (! name.isEmpty()) {
@@ -279,7 +278,7 @@ public abstract class CkanJson extends Ckan {
      * @throws RepositoryException 
      * @throws MalformedURLException 
      */
-    protected void ckanGeneral(Storage store, URI uri, JsonObject json, String lang) 
+    protected void ckanGeneral(Storage store, IRI uri, JsonObject json, String lang) 
                             throws RepositoryException, MalformedURLException {
         parseString(store, uri, json, CkanJson.ID, DCTERMS.IDENTIFIER, null);
         parseString(store, uri, json, CkanJson.TITLE, DCTERMS.TITLE, lang); 
@@ -301,7 +300,7 @@ public abstract class CkanJson extends Ckan {
      * @param lang language
      * @throws RepositoryException 
      */
-    protected void ckanTags(Storage store, URI uri, JsonObject json, String lang) 
+    protected void ckanTags(Storage store, IRI uri, JsonObject json, String lang) 
                                                     throws RepositoryException {
         JsonArray arr = json.getJsonArray(CkanJson.TAGS);
         
@@ -320,7 +319,7 @@ public abstract class CkanJson extends Ckan {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-    protected void ckanResources(Storage store, URI dataset, JsonObject json, String lang) 
+    protected void ckanResources(Storage store, IRI dataset, JsonObject json, String lang) 
                                 throws RepositoryException, MalformedURLException {
         
         /* CKAN page / access page */
@@ -330,7 +329,7 @@ public abstract class CkanJson extends Ckan {
                 
         for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
             String id = obj.getString(CkanJson.ID, "");
-            URI dist = store.getURI(makeDistURL(id).toString());
+            IRI dist = store.getURI(makeDistURL(id).toString());
             logger.debug("Generating distribution {}", dist.toString());
                     
             store.add(dataset, DCAT.DISTRIBUTION, dist);
@@ -362,14 +361,14 @@ public abstract class CkanJson extends Ckan {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-    protected void ckanOrganization(Storage store, URI uri, JsonObject json, String lang)
+    protected void ckanOrganization(Storage store, IRI uri, JsonObject json, String lang)
                                throws RepositoryException, MalformedURLException {
         if(! json.isNull(CkanJson.ORGANIZATION)) {
             JsonObject obj = json.getJsonObject(CkanJson.ORGANIZATION);
         
             if (obj.getBoolean(CkanJson.IS_ORG)) {
                 String s = obj.getString(CkanJson.ID, "");
-                URI org = store.getURI(makeOrgURL(s).toString());
+                IRI org = store.getURI(makeOrgURL(s).toString());
                 store.add(uri, DCTERMS.PUBLISHER, org);
                 store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
         
@@ -388,7 +387,7 @@ public abstract class CkanJson extends Ckan {
      * @throws RepositoryException
      * @throws MalformedURLException 
      */
-    protected abstract void ckanExtras(Storage store, URI uri, JsonObject json, String lang)
+    protected abstract void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
                                throws RepositoryException, MalformedURLException;
     
     /**
@@ -410,7 +409,7 @@ public abstract class CkanJson extends Ckan {
         JsonObject obj = reader.readObject();
         
         String ckanid = obj.getString(CkanJson.ID, "");
-        URI dataset = store.getURI(makeDatasetURL(ckanid).toString());
+        IRI dataset = store.getURI(makeDatasetURL(ckanid).toString());
         logger.info("Generating dataset {}", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);

@@ -37,7 +37,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import org.apache.poi.ss.usermodel.Row;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
@@ -98,12 +98,12 @@ public class XlsStatbelOpen extends Xls {
      * @param lang
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, Map<String,String> map,
+    private void generateDist(Storage store, IRI dataset, Map<String,String> map,
             String id, String lang) throws RepositoryException, MalformedURLException {
     
         for(String fmt: FMTS) {
             URL u  = makeDistURL(id + "/" + lang + "/" + fmt);
-            URI dist = store.getURI(u.toString());
+            IRI dist = store.getURI(u.toString());
             logger.debug("Generating distribution {}", dist.toString());
 
             String download = map.getOrDefault(
@@ -122,7 +122,7 @@ public class XlsStatbelOpen extends Xls {
     @Override
     public void generateDataset(Storage store, Map<String, String> map, URL u) 
             throws RepositoryException, MalformedURLException {
-        URI dataset = store.getURI(u.toString());  
+        IRI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);

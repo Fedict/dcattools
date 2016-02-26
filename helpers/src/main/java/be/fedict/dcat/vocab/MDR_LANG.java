@@ -27,9 +27,9 @@ package be.fedict.dcat.vocab;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.impl.SimpleValueFactory;
 
 
 /**
@@ -43,20 +43,20 @@ public class MDR_LANG {
     
     public final static String PREFIX = "mdrlang";
     
-    public final static URI DE;
-    public final static URI EN;
-    public final static URI FR;
-    public final static URI NL;
+    public final static IRI DE;
+    public final static IRI EN;
+    public final static IRI FR;
+    public final static IRI NL;
   
-    public final static Map<String,URI> MAP = new HashMap<>();
+    public final static Map<String,IRI> MAP = new HashMap<>();
     
     static {
-	ValueFactory factory = ValueFactoryImpl.getInstance();
+	ValueFactory factory = SimpleValueFactory.getInstance();
         
-        DE = factory.createURI(MDR_LANG.NAMESPACE, "DEU");
-        EN = factory.createURI(MDR_LANG.NAMESPACE, "ENG");
-        FR = factory.createURI(MDR_LANG.NAMESPACE, "FRA");
-        NL = factory.createURI(MDR_LANG.NAMESPACE, "NLD");
+        DE = factory.createIRI(MDR_LANG.NAMESPACE, "DEU");
+        EN = factory.createIRI(MDR_LANG.NAMESPACE, "ENG");
+        FR = factory.createIRI(MDR_LANG.NAMESPACE, "FRA");
+        NL = factory.createIRI(MDR_LANG.NAMESPACE, "NLD");
         
         MAP.put("de", DE);
         MAP.put("en", EN);

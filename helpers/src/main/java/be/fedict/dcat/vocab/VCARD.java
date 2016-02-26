@@ -25,9 +25,9 @@
  */
 package be.fedict.dcat.vocab;
 
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.impl.SimpleValueFactory;
 
 
 /**
@@ -39,20 +39,20 @@ public class VCARD {
     
     public final static String PREFIX = "vcard";
     
-    public final static URI A_ORGANIZATION;
+    public final static IRI A_ORGANIZATION;
 
-    public final static URI HAS_ADDRESS;
-    public final static URI HAS_EMAIL;
-    public final static URI HAS_FN;
-    public final static URI HAS_TEL;
+    public final static IRI HAS_ADDRESS;
+    public final static IRI HAS_EMAIL;
+    public final static IRI HAS_FN;
+    public final static IRI HAS_TEL;
     
     static {
-	ValueFactory factory = ValueFactoryImpl.getInstance();
-        A_ORGANIZATION = factory.createURI(VCARD.NAMESPACE, "Organization");
+	ValueFactory factory = SimpleValueFactory.getInstance();
+        A_ORGANIZATION = factory.createIRI(VCARD.NAMESPACE, "Organization");
 
-        HAS_ADDRESS = factory.createURI(VCARD.NAMESPACE, "hasAddress");
-        HAS_EMAIL = factory.createURI(VCARD.NAMESPACE, "hasEmail");
-        HAS_FN = factory.createURI(VCARD.NAMESPACE, "fn");
-        HAS_TEL = factory.createURI(VCARD.NAMESPACE, "hasTelephone");
+        HAS_ADDRESS = factory.createIRI(VCARD.NAMESPACE, "hasAddress");
+        HAS_EMAIL = factory.createIRI(VCARD.NAMESPACE, "hasEmail");
+        HAS_FN = factory.createIRI(VCARD.NAMESPACE, "fn");
+        HAS_TEL = factory.createIRI(VCARD.NAMESPACE, "hasTelephone");
     }
 }

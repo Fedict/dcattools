@@ -37,7 +37,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import org.apache.poi.ss.usermodel.Row;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
@@ -147,10 +147,10 @@ public class XlsPsiBelgium extends Xls {
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateOrg(Storage store, URI dataset, Map<String,String> map) 
+    private void generateOrg(Storage store, IRI dataset, Map<String,String> map) 
                             throws MalformedURLException, RepositoryException {
         String s = map.getOrDefault(XlsPsiBelgium.ORGID, "");
-        URI org = store.getURI(makeOrgURL(stringInt(s)).toString());
+        IRI org = store.getURI(makeOrgURL(stringInt(s)).toString());
         store.add(dataset, DCTERMS.PUBLISHER, org);
         store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
     }
@@ -164,10 +164,10 @@ public class XlsPsiBelgium extends Xls {
      * @param lang
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, Map<String,String> map,
+    private void generateDist(Storage store, IRI dataset, Map<String,String> map,
             String id, String lang) throws RepositoryException, MalformedURLException {
         URL u  = makeDistURL(id + "/" + lang);
-        URI dist = store.getURI(u.toString());
+        IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
 
         String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, "");
@@ -218,7 +218,7 @@ public class XlsPsiBelgium extends Xls {
     @Override
     public void generateDataset(Storage store, Map<String,String> map, URL u) 
                             throws RepositoryException, MalformedURLException {
-        URI dataset = store.getURI(u.toString());  
+        IRI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
         String id = stringInt(map.get(XlsPsiBelgium.ID));

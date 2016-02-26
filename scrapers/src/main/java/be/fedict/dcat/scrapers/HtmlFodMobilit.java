@@ -41,7 +41,7 @@ import javax.swing.text.html.HTML.Tag;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
@@ -132,14 +132,14 @@ public class HtmlFodMobilit extends Html {
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, URL access, 
+    private void generateDist(Storage store, IRI dataset, URL access, 
                                             Elements link, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.first().attr(Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
         URL u = makeDistURL(i + "/" + lang);
-        URI dist = store.getURI(u.toString());
+        IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
@@ -165,7 +165,7 @@ public class HtmlFodMobilit extends Html {
     private void generateDataset(Storage store, URL front, Element row, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         URL u = makeDatasetURL(String.valueOf(i));
-        URI dataset = store.getURI(u.toString());  
+        IRI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
                 
         Elements cells = row.getElementsByTag(Tag.TD.toString());

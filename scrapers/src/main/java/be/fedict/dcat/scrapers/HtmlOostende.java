@@ -42,7 +42,7 @@ import javax.swing.text.html.HTML;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
@@ -135,14 +135,14 @@ public class HtmlOostende extends Html {
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, URL access, 
+    private void generateDist(Storage store, IRI dataset, URL access, 
                                         Element link, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.attr(HTML.Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
         URL u = makeDistURL(access + "/" + i + "/" + lang);
-        URI dist = store.getURI(u.toString());
+        IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
         String title = link.text().trim();
@@ -175,7 +175,7 @@ public class HtmlOostende extends Html {
         
         Element content = Jsoup.parse(html).body().getElementById(CONTENT_ID);
         
-        URI dataset = store.getURI(u.toString());  
+        IRI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
         Element h1 = content.getElementsByTag(HTML.Tag.H1.toString()).first();

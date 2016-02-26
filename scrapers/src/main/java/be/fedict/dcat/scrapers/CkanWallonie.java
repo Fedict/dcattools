@@ -27,13 +27,10 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.URL;
 import javax.json.JsonObject;
-import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.DCTERMS;
-import org.openrdf.repository.RepositoryException;
+import org.openrdf.model.IRI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +43,7 @@ public class CkanWallonie extends CkanJson {
     private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
  
     @Override
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) {
+    protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) {
         // do nothing
     }
     

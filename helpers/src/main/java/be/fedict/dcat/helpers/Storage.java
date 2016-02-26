@@ -40,10 +40,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openrdf.model.IRI;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
 import org.openrdf.model.Value;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.vocabulary.RDF;
@@ -113,13 +113,13 @@ public class Storage {
     }
 
     /**
-     * Create URI using value factory.
+     * Create IRI using value factory.
      * 
      * @param str
      * @return 
      */
-    public URI getURI(String str) {
-        return fac.createURI(str.trim());
+    public IRI getURI(String str) {
+        return fac.createIRI(str.trim());
     }
     
     /**
@@ -130,7 +130,7 @@ public class Storage {
      * @return
      * @throws RepositoryException 
      */
-    public boolean has(URI subj, URI pred) throws RepositoryException {
+    public boolean has(IRI subj, IRI pred) throws RepositoryException {
         return conn.hasStatement(subj, pred, null, false);
     }
 
@@ -149,14 +149,14 @@ public class Storage {
     }
     
     /**
-     * Add an URI property to the repository.
+     * Add an IRI property to the repository.
      * 
      * @param subj
      * @param pred
      * @param obj
      * @throws RepositoryException 
      */
-    public void add(URI subj, URI pred, URI obj) throws RepositoryException {
+    public void add(IRI subj, IRI pred, IRI obj) throws RepositoryException {
         conn.add(subj, pred, obj);
     }
     
@@ -168,9 +168,9 @@ public class Storage {
      * @param url
      * @throws RepositoryException 
      */
-    public void add(URI subj, URI pred, URL url) throws RepositoryException {
+    public void add(IRI subj, IRI pred, URL url) throws RepositoryException {
         String s = url.toString().replaceAll(" ", "%20");
-        conn.add(subj, pred, fac.createURI(s));
+        conn.add(subj, pred, fac.createIRI(s));
     }
     
     /**
@@ -181,7 +181,7 @@ public class Storage {
      * @param date
      * @throws RepositoryException 
      */
-    public void add(URI subj, URI pred, Date date) throws RepositoryException {
+    public void add(IRI subj, IRI pred, Date date) throws RepositoryException {
         conn.add(subj, pred, fac.createLiteral(date));
     }
     
@@ -193,7 +193,7 @@ public class Storage {
      * @param value
      * @throws RepositoryException 
      */
-    public void add(URI subj, URI pred, String value) throws RepositoryException {
+    public void add(IRI subj, IRI pred, String value) throws RepositoryException {
         conn.add(subj, pred, fac.createLiteral(value));
     }
    
@@ -206,7 +206,7 @@ public class Storage {
      * @param lang
      * @throws RepositoryException 
      */
-    public void add(URI subj, URI pred, String value, String lang) 
+    public void add(IRI subj, IRI pred, String value, String lang) 
                                                 throws RepositoryException {
         conn.add(subj, pred, fac.createLiteral(value, lang));
     }
@@ -217,7 +217,7 @@ public class Storage {
      * @param pred 
      * @throws RepositoryException 
      */
-    public void escapeURI(URI pred) throws RepositoryException {
+    public void escapeURI(IRI pred) throws RepositoryException {
         RepositoryResult<Statement> stmts = 
                                     conn.getStatements(null, pred, null, false);
         int i = 0;
@@ -229,7 +229,7 @@ public class Storage {
                 String uri = stmt.getObject().stringValue();
                 // Check if URI contains a space
                 if (uri.lastIndexOf(' ') > 0) {
-                    URI obj = fac.createURI(uri.replaceAll(" ", "%20"));
+                    IRI obj = fac.createIRI(uri.replaceAll(" ", "%20"));
                     conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
                     conn.remove(stmt);
                     i++;
@@ -285,23 +285,23 @@ public class Storage {
      * @return list of subjects
      * @throws RepositoryException 
      */
-    public List<URI> query(URI rdfClass) throws RepositoryException {
-        ArrayList<URI> lst = new ArrayList<>();
-        
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(null, RDF.TYPE, rdfClass, false);
-     
-        if (! stmts.hasNext()) {
-            logger.warn("No results for class {}", rdfClass.stringValue());
-        }
-        
+    public List<IRI> query(IRI rdfClass) throws RepositoryException {
+        ArrayList<IRI> lst = new ArrayList<>();
         int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            lst.add((URI) stmt.getSubject());
-            i++;
+ 
+        try (RepositoryResult<Statement> stmts = 
+                        conn.getStatements(null, RDF.TYPE, rdfClass, false)) {
+ 
+            if (! stmts.hasNext()) {
+                logger.warn("No results for class {}", rdfClass.stringValue());
+            }
+
+            while(stmts.hasNext()) {
+                Statement stmt = stmts.next();
+                lst.add((IRI) stmt.getSubject());
+                i++;
+            }
         }
-        stmts.close();
         logger.debug("Retrieved {} statements for {}", i, rdfClass.stringValue());
         return lst;
     }
@@ -309,41 +309,40 @@ public class Storage {
     /**
      * Get a DCAT Dataset or a Distribution.
      * 
-     * @param uri
+     * @param iri
      * @return 
      * @throws org.openrdf.repository.RepositoryException 
      */
-    public Map<URI, ListMultimap<String, String>> queryProperties(URI uri) 
+    public Map<IRI, ListMultimap<String, String>> queryProperties(IRI uri) 
                                                 throws RepositoryException  {
-        Map<URI, ListMultimap<String, String>> map = new HashMap<>();
+        Map<IRI, ListMultimap<String, String>> map = new HashMap<>();
         
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(uri, null, null, true);
-        if (! stmts.hasNext()) {
-            logger.warn("No properties for {}", uri.stringValue());
-        }
-
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            URI pred = stmt.getPredicate();
-            Value val = stmt.getObject();
-             
-            String lang = "";
-            if (val instanceof Literal) {
-                String l = ((Literal) val).getLanguage();          
-                if (l != null) {
-                    lang = l;
+        try (RepositoryResult<Statement> stmts = conn.getStatements(uri, null, null, true)) {
+            if (! stmts.hasNext()) {
+                logger.warn("No properties for {}", uri.stringValue());
+            }
+            
+            while(stmts.hasNext()) {
+                Statement stmt = stmts.next();
+                IRI pred = stmt.getPredicate();
+                Value val = stmt.getObject();
+                
+                String lang = "";
+                if (val instanceof Literal) {
+                    String l = ((Literal) val).getLanguage().orElse(null);
+                    if (l != null) {
+                        lang = l;
+                    }
                 }
+                /* Handle multiple values for different languages */
+                ListMultimap<String, String> multi = map.get(pred);
+                if (multi == null) {
+                    multi = ArrayListMultimap.create();
+                    map.put(pred, multi);
+                }
+                multi.put(lang, val.stringValue());
             }
-            /* Handle multiple values for different languages */
-            ListMultimap<String, String> multi = map.get(pred);
-            if (multi == null) {
-                multi = ArrayListMultimap.create();
-                map.put(pred, multi);
-            }
-            multi.put(lang, val.stringValue());
         }
-        stmts.close();
         
         return map;
     }
@@ -355,35 +354,33 @@ public class Storage {
      * @param sep 
      * @throws org.openrdf.repository.RepositoryException 
      */
-    public void splitValues(URI property, String sep) throws RepositoryException {
-        RepositoryResult<Statement> stmts = 
-                conn.getStatements(null, property, null, false);
+    public void splitValues(IRI property, String sep) throws RepositoryException {
+        int i=0;
         
-        if (! stmts.hasNext()) {
-            logger.warn("No property {}", property.stringValue());
-        }
-        
-        int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            Value value = stmt.getObject();
-            
-            // Only makes sense for literals
-            if (value instanceof Literal) {
-                String l = ((Literal) value).getLanguage();
-                String[] parts = ((Literal) value).stringValue().split(sep);
-                // Only do something when value can be splitted
-                if (parts.length > 1) {
-                    for (String part : parts) {
-                        Literal newval = fac.createLiteral(part.trim(), l);
-                        conn.add(stmt.getSubject(), property, newval);
-                    }
-                    conn.remove(stmt);
-                }
+        try (RepositoryResult<Statement> stmts = conn.getStatements(null, property, null, false)) {
+            if (! stmts.hasNext()) {
+                logger.warn("No property {}", property.stringValue());
             }
-            i++;
+            while(stmts.hasNext()) {
+                Statement stmt = stmts.next();
+                Value value = stmt.getObject();
+                
+                // Only makes sense for literals
+                if (value instanceof Literal) {
+                    String l = ((Literal) value).getLanguage().orElse("");
+                    String[] parts = ((Literal) value).stringValue().split(sep);
+                    // Only do something when value can be splitted
+                    if (parts.length > 1) {
+                        for (String part : parts) {
+                            Literal newval = fac.createLiteral(part.trim(), l);
+                            conn.add(stmt.getSubject(), property, newval);
+                        }
+                        conn.remove(stmt);
+                    }
+                }
+                i++;
+            }
         }
-        stmts.close();
         logger.debug("Retrieved {} statements for {}", i, property.stringValue());
     }
     

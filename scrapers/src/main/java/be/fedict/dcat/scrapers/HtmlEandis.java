@@ -40,7 +40,7 @@ import javax.swing.text.html.HTML;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.repository.RepositoryException;
@@ -106,14 +106,14 @@ public class HtmlEandis extends Html {
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, URI dataset, URL access, 
+    private void generateDist(Storage store, IRI dataset, URL access, 
                                         Element link, int i, int j, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.attr(HTML.Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
         URL u = makeDistURL(i + "/" + j + "/" + lang);
-        URI dist = store.getURI(u.toString());
+        IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
         store.add(dataset, DCAT.DISTRIBUTION, dist);
@@ -139,7 +139,7 @@ public class HtmlEandis extends Html {
     private void generateDataset(Storage store, URL front, Element table, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         URL u = makeDatasetURL(String.valueOf(i));
-        URI dataset = store.getURI(u.toString());  
+        IRI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
         Element th = table.getElementsByTag(HTML.Tag.TH.toString()).first();

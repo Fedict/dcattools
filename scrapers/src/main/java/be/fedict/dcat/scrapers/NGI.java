@@ -33,7 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -58,24 +58,6 @@ public class NGI extends Scraper {
     @Override
     public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
-        /**
-     * Generate DCAT catalog information.
-     * 
-     * @param store
-     * @param catalog
-     * @throws RepositoryException 
-     */
-    @Override
-    public void generateCatalogInfo(Storage store, URI catalog) 
-                                                    throws RepositoryException {
-        super.generateCatalogInfo(store, catalog);
-        store.add(catalog, DCTERMS.TITLE, "DCAT export NGI Belgium", "en");
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.NL);
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.FR);
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.EN);
-        store.add(catalog, DCTERMS.LANGUAGE, MDR_LANG.DE);
     }
     
     /**

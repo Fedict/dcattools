@@ -43,7 +43,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
 import org.openrdf.model.vocabulary.RDF;
@@ -285,7 +285,7 @@ public abstract class Scraper extends Fetcher {
      * @param catalog catalog URI
      * @throws org.openrdf.repository.RepositoryException 
      */
-    public void generateCatalogInfo(Storage store, URI catalog) 
+    public void generateCatalogInfo(Storage store, IRI catalog) 
                                                     throws RepositoryException {
         store.add(catalog, DCTERMS.TITLE, "DCAT Catalog for " + getName(), "en");
         store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
@@ -309,11 +309,11 @@ public abstract class Scraper extends Fetcher {
      */
     public void generateCatalog(Storage store) 
                             throws RepositoryException, MalformedURLException {
-        URI catalog = store.getURI(makeCatalogURL().toString());
+        IRI catalog = store.getURI(makeCatalogURL().toString());
         store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
         
-        List<URI> uris = store.query(DCAT.A_DATASET);        
-        for (URI u : uris){
+        List<IRI> uris = store.query(DCAT.A_DATASET);        
+        for (IRI u : uris){
             store.add(catalog, DCAT.DATASET, u);
         }
         generateCatalogInfo(store, catalog);

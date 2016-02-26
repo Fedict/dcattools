@@ -26,7 +26,7 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +46,7 @@ public class SplitProperty extends Enhancer {
      * @param sep
      * @throws RepositoryException 
      */
-    private void split(URI prop, String sep) throws RepositoryException {
+    private void split(IRI prop, String sep) throws RepositoryException {
         logger.info("Split {} using separator {}", prop.toString(), sep);
         
         getStore().splitValues(prop, sep);
@@ -55,7 +55,7 @@ public class SplitProperty extends Enhancer {
     @Override
     public void enhance() {
         try {
-            URI property = getStore().getURI(getProperty("property"));
+            IRI property = getStore().getURI(getProperty("property"));
             String sep = getProperty("separator");
             split(property, sep);
         } catch (RepositoryException ex) {

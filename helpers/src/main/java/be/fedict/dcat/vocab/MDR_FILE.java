@@ -27,9 +27,9 @@ package be.fedict.dcat.vocab;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.impl.SimpleValueFactory;
 
 
 /**
@@ -43,39 +43,39 @@ public class MDR_FILE {
     
     public final static String PREFIX = "mdrfile";
     
-    public final static URI CSV;
-    public final static URI HTML;
-    public final static URI JSON;
-    public final static URI KML;
-    public final static URI KMZ;
-    public final static URI ODS;
-    public final static URI PDF;
-    public final static URI RSS;
-    public final static URI SHP;
-    public final static URI TXT;
-    public final static URI XLS;
-    public final static URI XLSX;
-    public final static URI XML;
+    public final static IRI CSV;
+    public final static IRI HTML;
+    public final static IRI JSON;
+    public final static IRI KML;
+    public final static IRI KMZ;
+    public final static IRI ODS;
+    public final static IRI PDF;
+    public final static IRI RSS;
+    public final static IRI SHP;
+    public final static IRI TXT;
+    public final static IRI XLS;
+    public final static IRI XLSX;
+    public final static IRI XML;
     
   
-    public final static Map<String,URI> MAP = new HashMap<>();
+    public final static Map<String,IRI> MAP = new HashMap<>();
     
     static {
-	ValueFactory factory = ValueFactoryImpl.getInstance();
+	ValueFactory factory = SimpleValueFactory.getInstance();
         
-        CSV = factory.createURI(MDR_FILE.NAMESPACE, "CSV");
-        HTML = factory.createURI(MDR_FILE.NAMESPACE, "HTML");
-        JSON = factory.createURI(MDR_FILE.NAMESPACE, "JSON");
-        KML = factory.createURI(MDR_FILE.NAMESPACE, "KML");
-        KMZ = factory.createURI(MDR_FILE.NAMESPACE, "KMZ");
-        ODS = factory.createURI(MDR_FILE.NAMESPACE, "ODS");
-        PDF = factory.createURI(MDR_FILE.NAMESPACE, "PDF");
-        RSS = factory.createURI(MDR_FILE.NAMESPACE, "RSS");
-        SHP = factory.createURI(MDR_FILE.NAMESPACE, "SHP");
-        TXT = factory.createURI(MDR_FILE.NAMESPACE, "TXT");
-        XLS = factory.createURI(MDR_FILE.NAMESPACE, "XLS");
-        XLSX = factory.createURI(MDR_FILE.NAMESPACE, "XLSX");
-        XML = factory.createURI(MDR_FILE.NAMESPACE, "XML");
+        CSV = factory.createIRI(MDR_FILE.NAMESPACE, "CSV");
+        HTML = factory.createIRI(MDR_FILE.NAMESPACE, "HTML");
+        JSON = factory.createIRI(MDR_FILE.NAMESPACE, "JSON");
+        KML = factory.createIRI(MDR_FILE.NAMESPACE, "KML");
+        KMZ = factory.createIRI(MDR_FILE.NAMESPACE, "KMZ");
+        ODS = factory.createIRI(MDR_FILE.NAMESPACE, "ODS");
+        PDF = factory.createIRI(MDR_FILE.NAMESPACE, "PDF");
+        RSS = factory.createIRI(MDR_FILE.NAMESPACE, "RSS");
+        SHP = factory.createIRI(MDR_FILE.NAMESPACE, "SHP");
+        TXT = factory.createIRI(MDR_FILE.NAMESPACE, "TXT");
+        XLS = factory.createIRI(MDR_FILE.NAMESPACE, "XLS");
+        XLSX = factory.createIRI(MDR_FILE.NAMESPACE, "XLSX");
+        XML = factory.createIRI(MDR_FILE.NAMESPACE, "XML");
         
         MAP.put("csv", CSV);
         MAP.put("htm", HTML);

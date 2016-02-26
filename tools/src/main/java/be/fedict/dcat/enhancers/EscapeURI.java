@@ -26,7 +26,7 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,7 @@ public class EscapeURI extends Enhancer {
      * @param pred predicate with URIs
      * @throws RepositoryException 
      */
-    private void escapeURI(URI pred) throws RepositoryException {
+    private void escapeURI(IRI pred) throws RepositoryException {
         logger.info("Escape URIs for {}", pred.toString());
         
         getStore().escapeURI(pred);
@@ -54,7 +54,7 @@ public class EscapeURI extends Enhancer {
     @Override
     public void enhance() {
         try {
-            URI property = getStore().getURI(getProperty("property"));
+            IRI property = getStore().getURI(getProperty("property"));
             escapeURI(property);
         } catch (RepositoryException ex) {
             logger.error("Repository error", ex);

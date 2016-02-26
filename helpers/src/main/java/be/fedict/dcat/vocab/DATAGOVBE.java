@@ -25,9 +25,9 @@
  */
 package be.fedict.dcat.vocab;
 
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.impl.SimpleValueFactory;
 
 /**
  *
@@ -38,14 +38,14 @@ public class DATAGOVBE {
     
     public final static String PREFIX = "datagovbe";
   
-    public final static URI FREQ;
-    public final static URI LICENSE;
-    public final static URI MEDIA_TYPE;
-    public final static URI ORG;
-    public final static URI SPATIAL;   
-    public final static URI THEME;
-    public final static URI LICENSE_CC0;
-    public final static URI LICENSE_CCBY;
+    public final static IRI FREQ;
+    public final static IRI LICENSE;
+    public final static IRI MEDIA_TYPE;
+    public final static IRI ORG;
+    public final static IRI SPATIAL;   
+    public final static IRI THEME;
+    public final static IRI LICENSE_CC0;
+    public final static IRI LICENSE_CCBY;
     
     
     public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
@@ -54,16 +54,16 @@ public class DATAGOVBE {
     public final static String PREFIX_URI_ORG = "http://data.gov.be/org";
       
     static {
-	ValueFactory factory = ValueFactoryImpl.getInstance();
+	ValueFactory factory = SimpleValueFactory.getInstance();
 
-        LICENSE = factory.createURI(DATAGOVBE.NAMESPACE, "license");
-        MEDIA_TYPE = factory.createURI(DATAGOVBE.NAMESPACE, "mediaType");
-        FREQ = factory.createURI(DATAGOVBE.NAMESPACE, "freq");
-        ORG = factory.createURI(DATAGOVBE.NAMESPACE, "org");
-        SPATIAL = factory.createURI(DATAGOVBE.NAMESPACE, "spatial");
-        THEME = factory.createURI(DATAGOVBE.NAMESPACE, "theme");
+        LICENSE = factory.createIRI(DATAGOVBE.NAMESPACE, "license");
+        MEDIA_TYPE = factory.createIRI(DATAGOVBE.NAMESPACE, "mediaType");
+        FREQ = factory.createIRI(DATAGOVBE.NAMESPACE, "freq");
+        ORG = factory.createIRI(DATAGOVBE.NAMESPACE, "org");
+        SPATIAL = factory.createIRI(DATAGOVBE.NAMESPACE, "spatial");
+        THEME = factory.createIRI(DATAGOVBE.NAMESPACE, "theme");
         
-        LICENSE_CC0 = factory.createURI("http://creativecommons.org/publicdomain/zero/1.0/");
-        LICENSE_CCBY = factory.createURI("http://creativecommons.org/licenses/by/4.0/");
+        LICENSE_CC0 = factory.createIRI("http://creativecommons.org/publicdomain/zero/1.0/");
+        LICENSE_CCBY = factory.createIRI("http://creativecommons.org/licenses/by/4.0/");
     }    
 }

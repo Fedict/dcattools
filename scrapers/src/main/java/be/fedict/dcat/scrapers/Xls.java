@@ -43,7 +43,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -101,8 +101,8 @@ public abstract class Xls extends Scraper {
      * @param lang language
      * @throws RepositoryException 
      */
-    protected void parseString(Storage store, URI uri, Map<String,String> map, 
-            String field, URI property, String lang) throws RepositoryException {
+    protected void parseString(Storage store, IRI uri, Map<String,String> map, 
+            String field, IRI property, String lang) throws RepositoryException {
         String s = map.get(field);
         if (! s.isEmpty()) {
             if (lang != null) {

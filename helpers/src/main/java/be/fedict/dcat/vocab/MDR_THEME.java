@@ -27,9 +27,10 @@ package be.fedict.dcat.vocab;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.impl.SimpleValueFactory;
+
 
 
 /**
@@ -43,37 +44,37 @@ public class MDR_THEME {
     
     public final static String PREFIX = "mdrtheme";
     
-    public final static URI AGRI;
-    public final static URI ECON;
-    public final static URI EDUC;
-    public final static URI ENER;
-    public final static URI ENVI;
-    public final static URI GOVE;
-    public final static URI HEAL;
-    public final static URI INTR;
-    public final static URI JUST;
-    public final static URI REGI;
-    public final static URI SOCI;
-    public final static URI TECH;
-    public final static URI TRANS;
+    public final static IRI AGRI;
+    public final static IRI ECON;
+    public final static IRI EDUC;
+    public final static IRI ENER;
+    public final static IRI ENVI;
+    public final static IRI GOVE;
+    public final static IRI HEAL;
+    public final static IRI INTR;
+    public final static IRI JUST;
+    public final static IRI REGI;
+    public final static IRI SOCI;
+    public final static IRI TECH;
+    public final static IRI TRANS;
   
-    public final static Map<String,URI> MAP = new HashMap<>();
+    public final static Map<String,IRI> MAP = new HashMap<>();
     
     static {
-	ValueFactory factory = ValueFactoryImpl.getInstance();
+	ValueFactory factory = SimpleValueFactory.getInstance();
         
-        AGRI = factory.createURI(MDR_THEME.NAMESPACE, "AGRI");
-        ECON = factory.createURI(MDR_THEME.NAMESPACE, "ECON");
-        EDUC = factory.createURI(MDR_THEME.NAMESPACE, "EDUC");
-        ENER = factory.createURI(MDR_THEME.NAMESPACE, "ENER");
-        ENVI = factory.createURI(MDR_THEME.NAMESPACE, "ENVI");
-        GOVE = factory.createURI(MDR_THEME.NAMESPACE, "GOVE");
-        HEAL = factory.createURI(MDR_THEME.NAMESPACE, "HEAL");
-        INTR = factory.createURI(MDR_THEME.NAMESPACE, "INTR");
-        JUST = factory.createURI(MDR_THEME.NAMESPACE, "JUST");
-        REGI = factory.createURI(MDR_THEME.NAMESPACE, "REGI");
-        SOCI = factory.createURI(MDR_THEME.NAMESPACE, "SOCI");
-        TECH = factory.createURI(MDR_THEME.NAMESPACE, "TECH");
-        TRANS = factory.createURI(MDR_THEME.NAMESPACE, "TRANS");
+        AGRI = factory.createIRI(MDR_THEME.NAMESPACE, "AGRI");
+        ECON = factory.createIRI(MDR_THEME.NAMESPACE, "ECON");
+        EDUC = factory.createIRI(MDR_THEME.NAMESPACE, "EDUC");
+        ENER = factory.createIRI(MDR_THEME.NAMESPACE, "ENER");
+        ENVI = factory.createIRI(MDR_THEME.NAMESPACE, "ENVI");
+        GOVE = factory.createIRI(MDR_THEME.NAMESPACE, "GOVE");
+        HEAL = factory.createIRI(MDR_THEME.NAMESPACE, "HEAL");
+        INTR = factory.createIRI(MDR_THEME.NAMESPACE, "INTR");
+        JUST = factory.createIRI(MDR_THEME.NAMESPACE, "JUST");
+        REGI = factory.createIRI(MDR_THEME.NAMESPACE, "REGI");
+        SOCI = factory.createIRI(MDR_THEME.NAMESPACE, "SOCI");
+        TECH = factory.createIRI(MDR_THEME.NAMESPACE, "TECH");
+        TRANS = factory.createIRI(MDR_THEME.NAMESPACE, "TRANS");
     }
 }

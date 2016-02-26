@@ -25,9 +25,9 @@
  */
 package be.fedict.dcat.vocab;
 
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.openrdf.model.impl.SimpleValueFactory;
 
 
 /**
@@ -39,37 +39,37 @@ public class DCAT {
     
     public final static String PREFIX = "dcat";
     
-    public final static URI A_CATALOG;
-    public final static URI A_DATASET;
-    public final static URI A_DISTRIBUTION;
+    public final static IRI A_CATALOG;
+    public final static IRI A_DATASET;
+    public final static IRI A_DISTRIBUTION;
 
-    public final static URI ACCESS_URL;
-    public final static URI BYTE_SIZE;
-    public final static URI CONTACT_POINT;
-    public final static URI DATASET;
-    public final static URI DISTRIBUTION;
-    public final static URI DOWNLOAD_URL;
-    public final static URI KEYWORD;
-    public final static URI LANDING_PAGE;
-    public final static URI MEDIA_TYPE;
-    public final static URI THEME;
+    public final static IRI ACCESS_URL;
+    public final static IRI BYTE_SIZE;
+    public final static IRI CONTACT_POINT;
+    public final static IRI DATASET;
+    public final static IRI DISTRIBUTION;
+    public final static IRI DOWNLOAD_URL;
+    public final static IRI KEYWORD;
+    public final static IRI LANDING_PAGE;
+    public final static IRI MEDIA_TYPE;
+    public final static IRI THEME;
     
     
     static {
-	ValueFactory factory = ValueFactoryImpl.getInstance();
-        A_CATALOG = factory.createURI(DCAT.NAMESPACE, "Catalog");
-        A_DATASET = factory.createURI(DCAT.NAMESPACE, "Dataset");
-        A_DISTRIBUTION = factory.createURI(DCAT.NAMESPACE, "Distribution");
+	ValueFactory factory = SimpleValueFactory.getInstance();
+        A_CATALOG = factory.createIRI(DCAT.NAMESPACE, "Catalog");
+        A_DATASET = factory.createIRI(DCAT.NAMESPACE, "Dataset");
+        A_DISTRIBUTION = factory.createIRI(DCAT.NAMESPACE, "Distribution");
         
-        ACCESS_URL = factory.createURI(DCAT.NAMESPACE, "accessURL");
-        BYTE_SIZE = factory.createURI(DCAT.NAMESPACE, "byteSize");
-        CONTACT_POINT = factory.createURI(DCAT.NAMESPACE, "contactPoint");
-        DATASET = factory.createURI(DCAT.NAMESPACE, "dataset");
-        DISTRIBUTION = factory.createURI(DCAT.NAMESPACE, "distribution");
-        DOWNLOAD_URL = factory.createURI(DCAT.NAMESPACE, "downloadURL");
-        KEYWORD = factory.createURI(DCAT.NAMESPACE, "keyword");
-        LANDING_PAGE = factory.createURI(DCAT.NAMESPACE, "landingPage");
-        MEDIA_TYPE = factory.createURI(DCAT.NAMESPACE, "mediaType");
-        THEME = factory.createURI(DCAT.NAMESPACE, "theme");
+        ACCESS_URL = factory.createIRI(DCAT.NAMESPACE, "accessURL");
+        BYTE_SIZE = factory.createIRI(DCAT.NAMESPACE, "byteSize");
+        CONTACT_POINT = factory.createIRI(DCAT.NAMESPACE, "contactPoint");
+        DATASET = factory.createIRI(DCAT.NAMESPACE, "dataset");
+        DISTRIBUTION = factory.createIRI(DCAT.NAMESPACE, "distribution");
+        DOWNLOAD_URL = factory.createIRI(DCAT.NAMESPACE, "downloadURL");
+        KEYWORD = factory.createIRI(DCAT.NAMESPACE, "keyword");
+        LANDING_PAGE = factory.createIRI(DCAT.NAMESPACE, "landingPage");
+        MEDIA_TYPE = factory.createIRI(DCAT.NAMESPACE, "mediaType");
+        THEME = factory.createIRI(DCAT.NAMESPACE, "theme");
     }
 }

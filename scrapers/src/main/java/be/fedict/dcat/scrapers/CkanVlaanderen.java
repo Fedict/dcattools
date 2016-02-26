@@ -27,13 +27,12 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
-import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
-import org.openrdf.model.URI;
+import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
@@ -66,7 +65,7 @@ public class CkanVlaanderen extends CkanJson {
      * @throws MalformedURLException 
      */
     @Override
-    protected void ckanExtras(Storage store, URI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
+    protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
         JsonArray arr = json.getJsonArray(CkanJson.EXTRA);
         if (arr == null) {
             return;
