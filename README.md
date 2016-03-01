@@ -1,8 +1,13 @@
 # DCAT tools
 
 Various DCAT tools for harvesting metadata from Belgian open data portals, 
-converting them to DCAT-AP files and updating the Belgian 
-[data.gov.be](http://data.gov.be) portal
+converting metadata to DCAT-AP files and updating the Belgian 
+[data.gov.be](http://data.gov.be) portal.
+
+The portal itself is a Drupal 7 website, based on Fedict's 
+[Openfed](https://drupal.org/project/openfed) distribution plus two extra modules
+[RestWS](https://drupal.org/project/restws) and 
+[RestWS i18n](https://www.drupal.org/project/restws_i18n).
 
 ## Data
 
@@ -20,16 +25,19 @@ but not tested), on a headless machine, i.e. there is no fancy GUI.
 
 Internet connection is obviously required, although a proxy can be used.
 
-Binaries can be found in [dist/bin](dist/bin), compiling from source requires the Oracle JDK and Maven.
+Binaries can be found in [dist/bin](dist/bin), compiling from source requires 
+the Oracle JDK and Maven.
 
 ### Main parts
 
 * Helper classes: for storing scraped pages locally, conversion tools etc.
 * Various [scrapers](#scraper): getting metadata from various repositories
 and websites, and turning the metadata into DCAT files
-* DCAT [enhancers](#enhancer): for improving the DCAT files, e.g. map site-specific themes
-add missing properties and prepare the files for updating data.gov.be
-* Data.gov.be [updater](#updater): update the data.gov.be (Drupal 7) website using the enhanced DCAT files
+* DCAT [enhancers](#enhancer): for improving the DCAT files, 
+e.g. map site-specific themes add missing properties
+and prepare the files for updating data.gov.be
+* Data.gov.be [updater](#updater): update the data.gov.be (Drupal 7) website 
+using the enhanced DCAT files
 * Some [tools](#tools): link checker
 
 ### Configuration
