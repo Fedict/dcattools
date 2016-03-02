@@ -24,6 +24,10 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/KML> ;
 	skos:altLabel "KML", "kml" .
 
+<http://data.gov.be/en/taxonomy/term/7>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
+	skos:altLabel "ods", "ods" .
+	
 <http://data.gov.be/en/taxonomy/term/65>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;
 	skos:altLabel "PDF", "pdf" .

@@ -63,3 +63,7 @@
 <http://data.gov.be/en/taxonomy/term/147>
 	skos:prefLabel "IRM" ;
 	skos:altLabel "meteo-nasa"@fr .	
+
+<http://data.gov.be/en/taxonomy/term/182>
+	skos:prefLabel "IWEPS" ;
+	skos:altLabel "iweps"@fr .	
