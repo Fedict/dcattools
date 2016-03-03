@@ -148,7 +148,6 @@ public abstract class Ckan extends Scraper {
     public void scrape() throws IOException {
         logger.info("Start scraping");
         Cache cache = getCache();
-        String lang = getDefaultLang();
         
         List<URL> urls = cache.retrieveURLList();
         if (urls.isEmpty()) {
@@ -169,7 +168,9 @@ public abstract class Ckan extends Scraper {
                 }
                 try {
                     String s = getPage(u);
-                    cache.storePage(u, "", new Page(u, s));
+                    if (!s.isEmpty()) {
+                        cache.storePage(u, "", new Page(u, s));
+                    }
                 } catch (IOException e) {
                     logger.warn("Failed to scrape {}", u);
                 }

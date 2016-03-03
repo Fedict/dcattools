@@ -109,6 +109,6 @@ public class CkanVlaanderen extends CkanJson {
      */
     public CkanVlaanderen(File caching, File storage, URL base) {
         super(caching, storage, base);
-        setName("ckanvl");
+        setName("vlaanderen");
     }
 }

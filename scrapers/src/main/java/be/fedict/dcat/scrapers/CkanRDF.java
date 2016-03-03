@@ -27,10 +27,12 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -46,7 +48,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanRDF extends Ckan {
+public abstract class CkanRDF extends Ckan {
     private final Logger logger = LoggerFactory.getLogger(CkanRDF.class);
     
     /**
@@ -90,21 +92,28 @@ public class CkanRDF extends Ckan {
         
          // Load turtle file into store
         try(InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            StringBuilder out = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                out.append(line);
+            }
+            System.err.println(line);
             store.add(in, RDFFormat.RDFXML);
         } catch (RDFParseException | IOException ex) {
             throw new RepositoryException(ex);
         }
         generateCatalog(store);
     }
-    
+
     /**
-     * Constructor
+     * CKAN scraper.
      * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
+     * @param caching local cache file
+     * @param storage local triple store file
+     * @param base URL of the CKAN site
      */
     public CkanRDF(File caching, File storage, URL base) {
         super(caching, storage, base);
-   }
+   } 
 }
