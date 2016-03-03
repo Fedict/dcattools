@@ -88,17 +88,15 @@ public abstract class CkanRDF extends Ckan {
     protected void generateDataset(Storage store, String id, Map<String, Page> page) 
             throws MalformedURLException, RepositoryException {
         Page p = page.getOrDefault("", new Page());
-        String xml = p.getContent();
         
+        String xml = p.getContent();
+        if (xml.isEmpty()) {
+            logger.warn("Page content is empty");
+            return;
+        }
+
          // Load turtle file into store
         try(InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            StringBuilder out = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                out.append(line);
-            }
-            System.err.println(line);
             store.add(in, RDFFormat.RDFXML);
         } catch (RDFParseException | IOException ex) {
             throw new RepositoryException(ex);
