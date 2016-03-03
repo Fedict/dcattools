@@ -32,8 +32,9 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
-import org.apache.http.client.fluent.Response;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -110,7 +111,7 @@ public class Fetcher {
      * Make HTTP GET request.
      * 
      * @param url
-     * @return String containing raw page
+     * @return String containing raw page or empty string
      * @throws IOException 
      */
     public String makeRequest(URL url) throws IOException {
@@ -119,13 +120,14 @@ public class Fetcher {
         if (getProxy() != null) {
             request = request.viaProxy(getProxy());
         }
-        Response res = request.execute();
-        int status = res.returnResponse().getStatusLine().getStatusCode();
+        HttpResponse res = request.execute().returnResponse();
+        // Return empty if the HTTP returns something faulty
+        int status = res.getStatusLine().getStatusCode();
         if (status != 200) {
             logger.warn("HTTP code {} getting page {}", status, url);
             return "";
         }
-        return res.returnContent().asString();
+        return EntityUtils.toString(res.getEntity());
     }
     
     /**
