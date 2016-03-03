@@ -40,6 +40,8 @@ public class Page implements Serializable {
     private String content;
 
     /**
+     * Get the URL of this page.
+     * 
      * @return the url
      */
     public URL getUrl() {
@@ -47,6 +49,8 @@ public class Page implements Serializable {
     }
 
     /**
+     * Set the URL of this page.
+     * 
      * @param url the url to set
      */
     public void setUrl(URL url) {
@@ -54,6 +58,8 @@ public class Page implements Serializable {
     }
 
     /**
+     * Get the content/body of this page.
+     * 
      * @return the content
      */
     public String getContent() {
@@ -61,6 +67,8 @@ public class Page implements Serializable {
     }
 
     /**
+     * Set the content/body of this page.
+     * 
      * @param content the content to set
      */
     public void setContent(String content) {
