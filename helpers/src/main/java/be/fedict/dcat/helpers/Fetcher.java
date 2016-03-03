@@ -33,6 +33,7 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import org.apache.http.HttpHost;
 import org.apache.http.client.fluent.Request;
+import org.apache.http.client.fluent.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -118,7 +119,13 @@ public class Fetcher {
         if (getProxy() != null) {
             request = request.viaProxy(getProxy());
         }
-        return request.execute().returnContent().asString();
+        Response res = request.execute();
+        int status = res.returnResponse().getStatusLine().getStatusCode();
+        if (status != 200) {
+            logger.warn("HTTP code {} getting page {}", status, url);
+            return "";
+        }
+        return res.returnContent().asString();
     }
     
     /**
