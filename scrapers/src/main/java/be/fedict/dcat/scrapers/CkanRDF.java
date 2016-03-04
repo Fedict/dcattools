@@ -101,7 +101,6 @@ public abstract class CkanRDF extends Ckan {
         } catch (RDFParseException | IOException ex) {
             throw new RepositoryException(ex);
         }
-        generateCatalog(store);
     }
 
     /**
