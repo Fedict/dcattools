@@ -68,7 +68,7 @@ public class Cache {
      */
     public List<URL> retrieveURLList() {
         ConcurrentMap<String, List<URL>> map = db.hashMap(Cache.CACHE);
-        return map.getOrDefault(Cache.URLS, new ArrayList<URL>());
+        return map.getOrDefault(Cache.URLS, new ArrayList<>());
     }
     
     /**
@@ -119,7 +119,7 @@ public class Cache {
      */
     public Map<String,String> retrieveMap(URL id) {
         ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
-        return map.getOrDefault(id, new HashMap<String,String>());
+        return map.getOrDefault(id, new HashMap<>());
     }
     
     /**
