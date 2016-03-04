@@ -16,8 +16,5 @@ WHERE
 			( dcat:theme )
 		}
 		FILTER ( isLiteral(?o) && langMatches(lang(?o), ""))
-		BIND ( STRLANG(?o, ?code) as ?literal)
-		VALUES (?lang ?code) {
-			( <http://publications.europa.eu/resource/authority/language/FRA> "nl" )
-		}
+		BIND ( STRLANG(?o, "nl") as ?literal)
 	}

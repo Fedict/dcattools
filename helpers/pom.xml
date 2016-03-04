@@ -90,4 +90,5 @@
             <version>4.1.0</version>
         </dependency>
     </dependencies>
+    <version>1.5</version>
 </project>
