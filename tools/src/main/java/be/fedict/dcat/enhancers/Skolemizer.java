@@ -39,25 +39,14 @@ import org.slf4j.LoggerFactory;
 public class Skolemizer extends Enhancer {
     private final Logger logger = LoggerFactory.getLogger(Skolemizer.class);
   
-    /**
-     * Replace blank nodes with URI.
-     * 
-     * @param prop
-     * @param sep
-     * @throws RepositoryException 
-     */
-    private void skolemize() throws RepositoryException {
-        getStore().skolemize();
-    }
-     
     @Override
     public void enhance() {
         try {
-            IRI property = getStore().getURI(getProperty("property"));
-            split(property, sep);
+            getStore().skolemize();
         } catch (RepositoryException ex) {
             logger.error("Repository error", ex);
-        }}
+        }
+    }
     
     /**
      * Constructor
