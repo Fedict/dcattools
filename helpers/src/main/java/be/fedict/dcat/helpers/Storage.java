@@ -244,7 +244,7 @@ public class Storage {
                 }
             }
         }
-        logger.info("Replaced {} BNodes");
+        logger.info("Replaced {} BNodes", i);
     }
     
     /**
@@ -273,7 +273,7 @@ public class Storage {
                 }
             }
         }
-        logger.info("Replaced spaces in {} URIs");
+        logger.info("Replaced spaces in {} URIs", i);
     }
     
     /**
@@ -391,7 +391,7 @@ public class Storage {
      * @throws org.openrdf.repository.RepositoryException 
      */
     public void splitValues(IRI property, String sep) throws RepositoryException {
-        int i=0;
+        int i = 0;
         
         try (RepositoryResult<Statement> stmts = conn.getStatements(null, property, null, false)) {
             if (! stmts.hasNext()) {
