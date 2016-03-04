@@ -70,4 +70,5 @@
     </build>
     <name>datagovbe</name>
     <description>Update tool for data.gov.be</description>
+    <version>1.5</version>
 </project>
