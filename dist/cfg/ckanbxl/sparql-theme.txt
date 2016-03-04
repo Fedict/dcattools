@@ -1,13 +1,16 @@
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
 
 DELETE 
-	{ 	?s dcat:theme ?o }
+	{ 	?dataset dcat:theme ?o }
 INSERT
-	{ 	?s dcat:theme ?uri }
+	{ 	?dataset dgov:theme ?drupal .
+		?dataset dcat:theme ?uri }
 WHERE
-	{ 	?s dcat:theme ?o .
+	{ 	?dataset dcat:theme ?o .
+		?drupal skos:exactMatch ?uri
 		FILTER ( isLiteral(?o) && STRSTARTS(?o, "http"))
 		BIND ( URI(?o) as ?uri)
 	}

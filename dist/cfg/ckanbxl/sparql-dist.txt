@@ -1,0 +1,20 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?dist dcat:accessURL ?o }
+INSERT
+	{ 	?dist dcat:accessURL ?dataset .
+		?dist dcat:downloadURL ?url .
+		?dist dcterms:language <http://publications.europa.eu/resource/authority/language/NLD>,
+								<http://publications.europa.eu/resource/authority/language/FRA>,
+								<http://publications.europa.eu/resource/authority/language/ENG> .}
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcat:distribution ?dist .
+		?dist dcat:accessURL ?o .
+		FILTER ( isLiteral(?o) && STRSTARTS(?o, "http") )
+		BIND ( URI(?o) as ?url )
+	}

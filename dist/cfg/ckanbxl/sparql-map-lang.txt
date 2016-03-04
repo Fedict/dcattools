@@ -7,7 +7,9 @@ DELETE
 INSERT
 	{ 	?s dcterms:language ?auth }
 WHERE
-	{ 	?s dcterms:language ?code
+	{ 	?s a dcat:Dataset .
+		?s dcterms:title ?literal .
+		BIND ( LANG(?literal) as ?code )
 		VALUES (?code ?auth) {
 			( "nl" <http://publications.europa.eu/resource/authority/language/NLD> )
 			( "fr" <http://publications.europa.eu/resource/authority/language/FRA> )

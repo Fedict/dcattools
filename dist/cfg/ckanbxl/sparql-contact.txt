@@ -1,0 +1,14 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{ 	?s vcard:hasEmail ?email }
+INSERT
+	{ 	?s vcard:hasEmail ?uri }
+WHERE
+	{ 	?s vcard:hasEmail ?email .
+		FILTER ( isLiteral(?email) && CONTAINS(?email, "@"))
+		BIND ( URI(CONCAT("mailto:", ?email)) as ?uri)
+	}

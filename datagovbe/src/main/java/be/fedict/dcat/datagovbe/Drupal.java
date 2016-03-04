@@ -259,6 +259,11 @@ public class Drupal {
                                                                 String lang) {
         List<String> datalangs = getMany(map, DCTERMS.LANGUAGE, "");
 
+        // If there is no language info, assume info is language-neutral
+        if (datalangs.isEmpty()) {
+            return true;
+        }
+        
         for(String datalang : datalangs) {
             if (MDR_LANG.MAP.get(lang).toString().equals(datalang)) {
                 return true;
@@ -398,14 +403,19 @@ public class Drupal {
      * 
      * @param org organization
      * @param language code
-     * @return email address or empty string
+     * @return organisation name or empty string
      * @throw RepositoryException
      */
     private String getOrgName(String org, String lang) throws RepositoryException {
         // Get DCAT contactpoints
         Map<IRI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-        return getOne(map, VCARD.HAS_FN, lang);
+        String name = getOne(map, VCARD.HAS_FN, lang);
+        if (name.isEmpty()) {
+            // check undefined language
+            name = getOne(map, VCARD.HAS_FN, "");
+        }
+        return name;
     }
     
     /**
