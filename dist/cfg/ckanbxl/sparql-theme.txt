@@ -1,0 +1,13 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcat:theme ?o }
+INSERT
+	{ 	?s dcat:theme ?uri }
+WHERE
+	{ 	?s dcat:theme ?o .
+		FILTER ( isLiteral(?o) && STRSTARTS(?o, "http"))
+		BIND ( URI(?o) as ?uri)
+	}

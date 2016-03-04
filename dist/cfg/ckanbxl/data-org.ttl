@@ -1,0 +1,37 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/183>
+	skos:prefLabel "Brussels-Capital Mobility"@en ;
+	skos:altLabel "Bruxelles Mobilité / Brussel Mobiliteit" .
+
+<http://data.gov.be/en/taxonomy/term/186>
+	skos:prefLabel "Brussels-Capital Environment"@en ;
+	skos:altLabel "Bruxelles Environnement / Leefmilieu Brussel" .
+
+<http://data.gov.be/en/taxonomy/term/187>
+	skos:prefLabel "Brussels-Capital Urban Development"@en ;
+	skos:altLabel "Bruxelles Développement urbain / Brussel Stedelijke Ontwikkeling" .
+	
+<http://data.gov.be/en/taxonomy/term/184>
+	skos:prefLabel "STIB-MIVB"@en ;
+	skos:altLabel "STIB / MIVB" .
+	
+<http://data.gov.be/en/taxonomy/term/185>
+	skos:prefLabel "BRIC"@en ;
+	skos:altLabel "CIRB -CIBG" .
+
+<http://data.gov.be/en/taxonomy/term/188>
+	skos:prefLabel "Parking Brussels"@en ;
+	skos:altLabel "Parking Brussels" .
+	
+<http://data.gov.be/en/taxonomy/term/175>
+	skos:prefLabel "Zen Car"@en ;
+	skos:altLabel "ZenCar"
+	
+<http://data.gov.be/en/taxonomy/term/176>
+	skos:prefLabel "Cambio"@en ;
+	skos:altLabel "Cambio" .
+	
+<http://data.gov.be/en/taxonomy/term/178>
+	skos:prefLabel "JCDecaux"@en ;
+	skos:altLabel "JC Decaux" .

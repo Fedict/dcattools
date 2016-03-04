@@ -1,0 +1,13 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+DELETE 
+	{	?dataset dcterms:spatial ?o }
+INSERT 
+	{ 	?dataset dcterms:coverage "Brussels Hoofdstedelijk Gewest"@nl .
+	 	?dataset dcterms:coverage "Région de Bruxelles-Capitale"@fr .
+		?dataset dcterms:spatial <http://sws.geonames.org/2800867/> .
+		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/48> }
+WHERE
+	{	?dataset dcterms:spatial ?o }

@@ -6,7 +6,15 @@
 
 <http://data.gov.be/en/taxonomy/term/73>
 	skos:prefLabel "Brussels-Capital Region"@en ;
-	skos:altLabel "Ministry of the Brussels-Capital Region/Monuments and Sites"@en, "Direction des Monuments et Sites du Ministère de la Région de Bruxelles-Capitale"@fr, "Bruxelles Environnement"@en, "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Bruxelles Mobilité"@fr, "Bruxelles Propreté"@en, "Bruxelles Propreté"@fr, "Ministerie van het Brussels Hoofdstedelijk Gewest/Directie Monumenten en Landschappen"@nl, "Leefmilieu Brussel"@nl, "Leefmilieu Brussel"@en, "Net Brussel"@nl .
+	skos:altLabel "Ministry of the Brussels-Capital Region/Monuments and Sites"@en, "Direction des Monuments et Sites du Ministère de la Région de Bruxelles-Capitale"@fr, "Bruxelles Propreté"@en, "Bruxelles Propreté"@fr, "Ministerie van het Brussels Hoofdstedelijk Gewest/Directie Monumenten en Landschappen"@nl, "Net Brussel"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/183>
+	skos:prefLabel "Brussels-Capital Mobility"@en ;
+	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Bruxelles Mobilité"@fr .
+
+<http://data.gov.be/en/taxonomy/term/186>
+	skos:prefLabel "Brussels-Capital Environment"@en ;
+	skos:altLabel "Leefmilieu Brussel"@nl, "Leefmilieu Brussel"@en, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/76>
 	skos:prefLabel "FPS Economy"@en ;
