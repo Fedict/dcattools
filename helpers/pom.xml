@@ -91,4 +91,5 @@
         </dependency>
     </dependencies>
     <version>1.5</version>
+    <name>helpers</name>
 </project>

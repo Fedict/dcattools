@@ -7,6 +7,9 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>scrapers</artifactId>
+  <name>scrapers</name>
+  <version>1.5</version>
+  <description>Various scrapers for Belgian data portals</description>
   <build>
     <plugins>
       <plugin>
