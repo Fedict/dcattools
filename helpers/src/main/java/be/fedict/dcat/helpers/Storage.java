@@ -417,7 +417,7 @@ public class Storage {
                 i++;
             }
         }
-        logger.debug("Retrieved {} statements for {}", i, property.stringValue());
+        logger.debug("Splitted {} statements for {}", i, property.stringValue());
     }
     
 
