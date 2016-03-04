@@ -40,6 +40,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openrdf.model.BNode;
 import org.openrdf.model.IRI;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
@@ -75,6 +76,8 @@ import org.slf4j.LoggerFactory;
  */
 public class Storage {
     private final Logger logger = LoggerFactory.getLogger(Storage.class);
+    
+    public final static String SKOLEM = "http://data.gov.be/.well-known/genid/";
     
     private Repository repo = null;
     private ValueFactory fac = null;
@@ -120,6 +123,10 @@ public class Storage {
      */
     public IRI getURI(String str) {
         return fac.createIRI(str.trim());
+    }
+    
+    public IRI skolemURI(BNode blank) {
+        return fac.createIRI(SKOLEM + blank.getID());
     }
     
     /**
@@ -211,6 +218,35 @@ public class Storage {
         conn.add(subj, pred, fac.createLiteral(value, lang));
     }
 
+    
+    /**
+     * Replace blank nodes with skolem URI
+     */
+    public void skolemize() {
+        int i = 0;
+        try (RepositoryResult<Statement> stmts = 
+                                        conn.getStatements(null, null, null)) {
+            while(stmts.hasNext()) {
+                Statement stmt = stmts.next();
+                Resource subject = stmt.getSubject();
+                if (subject instanceof BNode) {
+                    conn.add(skolemURI((BNode) subject), 
+                                        stmt.getPredicate(), stmt.getObject());
+                    conn.remove(stmt);
+                    i++;
+                }
+                Value object = stmt.getObject();
+                if (object instanceof BNode) {
+                    conn.add(stmt.getSubject(), stmt.getPredicate(), 
+                                                    skolemURI((BNode) object));
+                    conn.remove(stmt);
+                    i++;
+                }
+            }
+        }
+        logger.info("Replaced {} BNodes");
+    }
+    
     /**
      * Escape spaces in object URIs to avoid SPARQL issues
      * 
@@ -218,26 +254,26 @@ public class Storage {
      * @throws RepositoryException 
      */
     public void escapeURI(IRI pred) throws RepositoryException {
-        RepositoryResult<Statement> stmts = 
-                                    conn.getStatements(null, pred, null, false);
         int i = 0;
-        while(stmts.hasNext()) {
-            Statement stmt = stmts.next();
-            Value val = stmt.getObject();
-            // Check if object is Literal or URI
-            if (val instanceof Resource) {
-                String uri = stmt.getObject().stringValue();
-                // Check if URI contains a space
-                if (uri.lastIndexOf(' ') > 0) {
-                    IRI obj = fac.createIRI(uri.replaceAll(" ", "%20"));
-                    conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
-                    conn.remove(stmt);
-                    i++;
+        try (RepositoryResult<Statement> stmts = 
+                                conn.getStatements(null, pred, null, false)) {
+            while(stmts.hasNext()) {
+                Statement stmt = stmts.next();
+                Value val = stmt.getObject();
+                // Check if object is Literal or URI
+                if (val instanceof Resource) {
+                    String uri = stmt.getObject().stringValue();
+                    // Check if URI contains a space
+                    if (uri.lastIndexOf(' ') > 0) {
+                        IRI obj = fac.createIRI(uri.replaceAll(" ", "%20"));
+                        conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
+                        conn.remove(stmt);
+                        i++;
+                    }
                 }
             }
         }
-        stmts.close();
-        logger.info("Replaced spaces in {} statements");
+        logger.info("Replaced spaces in {} URIs");
     }
     
     /**
@@ -249,8 +285,8 @@ public class Storage {
      * @throws IOException
      */
     
-    public void querySelect(String sparql, OutputStream out) throws RepositoryException, IOException
-             {
+    public void querySelect(String sparql, OutputStream out) 
+                                    throws RepositoryException, IOException {
         try {
             TupleQuery select = conn.prepareTupleQuery(QueryLanguage.SPARQL, sparql);
             
@@ -309,7 +345,7 @@ public class Storage {
     /**
      * Get a DCAT Dataset or a Distribution.
      * 
-     * @param iri
+     * @param uri
      * @return 
      * @throws org.openrdf.repository.RepositoryException 
      */
