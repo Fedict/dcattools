@@ -26,25 +26,18 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import org.openrdf.repository.RepositoryException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.nio.charset.StandardCharsets;
 
 /**
- * Replaces blank nodes with URI
+ * Corrects string encoding.
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class Skolemizer extends Enhancer {
-    private final Logger logger = LoggerFactory.getLogger(Skolemizer.class);
-  
+public class CharRecoder extends Enhancer {
+
     @Override
     public void enhance() {
-        try {
-            getStore().skolemize();
-        } catch (RepositoryException ex) {
-            logger.error("Repository error", ex);
-        }
+        getStore().recode(StandardCharsets.ISO_8859_1);
     }
     
     /**
@@ -52,7 +45,7 @@ public class Skolemizer extends Enhancer {
      * 
      * @param store 
      */
-    public Skolemizer(Storage store) {
+    public CharRecoder(Storage store) {
         super(store);
     }
 }

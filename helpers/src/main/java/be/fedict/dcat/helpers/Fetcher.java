@@ -117,6 +117,7 @@ public class Fetcher {
     public String makeRequest(URL url) throws IOException {
         logger.info("Get request for page {}", url);
         Request request = Request.Get(url.toString());
+
         if (getProxy() != null) {
             request = request.viaProxy(getProxy());
         }

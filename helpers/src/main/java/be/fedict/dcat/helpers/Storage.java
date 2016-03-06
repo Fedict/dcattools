@@ -35,6 +35,7 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -262,7 +263,7 @@ public class Storage {
                 Value val = stmt.getObject();
                 // Check if object is Literal or URI
                 if (val instanceof Resource) {
-                    String uri = stmt.getObject().stringValue();
+                    String uri = val.stringValue();
                     // Check if URI contains a space
                     if (uri.lastIndexOf(' ') > 0) {
                         IRI obj = fac.createIRI(uri.replaceAll(" ", "%20"));
@@ -274,6 +275,36 @@ public class Storage {
             }
         }
         logger.info("Replaced spaces in {} URIs", i);
+    }
+
+    /**
+     * Correct character encoding for literal. 
+     * 
+     * @param charset 
+     */
+    public void recode(Charset charset) {
+        int i = 0;
+        try (RepositoryResult<Statement> stmts = 
+                                conn.getStatements(null, null, null, false)) {
+            while(stmts.hasNext()) {
+                Statement stmt = stmts.next();
+                Value val = stmt.getObject();
+                // Check if object is Literal or URI
+                if (val instanceof Literal) {
+                    String str = val.stringValue();
+                    String newstr = new String(str.getBytes(charset));
+                    // Check if URI contains a space
+                    if (!newstr.equals(str)) {
+                        String lang = ((Literal) val).getLabel();
+                        conn.add(stmt.getSubject(), stmt.getPredicate(), 
+                                                fac.createLiteral(newstr, lang));
+                        conn.remove(stmt);
+                        i++;
+                    }
+                }
+            }
+        }
+        logger.info("Replaced {} encoded strings", i);   
     }
     
     /**
