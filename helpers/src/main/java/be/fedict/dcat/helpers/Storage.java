@@ -36,11 +36,13 @@ import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.openrdf.model.BNode;
 import org.openrdf.model.IRI;
 import org.openrdf.model.Literal;
@@ -291,13 +293,16 @@ public class Storage {
                 Value val = stmt.getObject();
                 // Check if object is Literal or URI
                 if (val instanceof Literal) {
-                    String str = val.stringValue();
-                    String newstr = new String(str.getBytes(charset));
-                    // Check if URI contains a space
+                    String str = ((Literal) val).getLabel();
+                    String newstr = new String(str.getBytes(charset), 
+                                                StandardCharsets.UTF_8);
+                    // Check if new string is different from old
                     if (!newstr.equals(str)) {
-                        String lang = ((Literal) val).getLabel();
-                        conn.add(stmt.getSubject(), stmt.getPredicate(), 
-                                                fac.createLiteral(newstr, lang));
+                        Optional<String> lang = ((Literal) val).getLanguage();
+                        Literal newlit = lang.isPresent() 
+                                        ? fac.createLiteral(newstr, lang.get())
+                                        : fac.createLiteral(newstr);
+                        conn.add(stmt.getSubject(), stmt.getPredicate(), newlit);
                         conn.remove(stmt);
                         i++;
                     }
