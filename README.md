@@ -57,63 +57,27 @@ This command-line Java tool scrapes various websites and CKAN portals.
 Each site / portal / file requires a specialized scraper Java class and a
 configuration file.
 
-Currently, there are abstract Java classes available for scraping
- * CKAN portals, both via the JSON CKAN-API and via RDF rendering
- * OpenDataSoft portals, using the API / DCAT-ish metadata
- * Excel files
- * HTML sites
-
-Invoke with
-
-    # java -jar scraper.jar location/of/config.properties
-
-Use -D to set logging level and save the log to a file
-
-    # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
-           -Dorg.slf4j.simpleLogger.logFile=update.log
-           -jar scrapper.jar location/of/config.properties
-
-The configuration file is a Java properties file.
-
-    # full class name of the scraper implementation
-    be.fedict.dcat.scrapers.classname=be.fedict.dcat.scrapers.CkanWallonie
-    # full path to the location (MapDB)
-    be.fedict.dcat.scrapers.cache=B:/datagov/data/wallonie/cache
-    # full path to store the RDF backing store (SAIL)
-    be.fedict.dcat.scrapers.store=B:/datagov/data/wallonie/wallonie.sail
-    # full path for the result file (N-Triples)
-    be.fedict.dcat.scrapers.rdfout=B:/datagov/data/wallonie/wallonie.nt
-    # URL of the site/portal to scrape
-    be.fedict.dcat.scrapers.url=http://opendata.digitalwallonia.be
-    # default language of the site/portal (nl, fr, de or en)
-    be.fedict.dcat.scrapers.deflanguage=fr
-    # comma-separated list of the languages on the site/portal (nl fr de en)
-    be.fedict.dcat.scrapers.languages=fr
-
-    # optional proxy host and port
-    #be.fedict.dcat.scrapers.proxy.host=your.proxy.test
-    #be.fedict.dcat.scrapers.proxy.port=888
-
-
-Note that, in order to avoid overloading the site/portal being scraped, 
-the scrapers sleep about 1 second between HTTP requests.
+More info can be found in the [Scraper README file](README-SCRAPER.md)
 
 ## Enhancer
 
-* LoadRDF: load a RDF file containing triples (e.g. for "static metadata"
-like contact info) into the local triple store
-* SparqlSelect: perform a Sparql SELECT on the local triple store (e.g. for
-listing missing properties)
-* SparqlUpdate: perform a SparqlUpdate (INSERT and/or DELETE) on the local
-triple store
-* SplitProperty: split a property into multiple properties (useful when e.g.
-a keyword property contains a concatenated list of keywords) 
+Various tools for enhancing the harvested metadata.
 
-The enhancers can be chained.
+The various "enhancers" are chained by using a counter in the property name.
+
+E.g.
+
+    be.fedict.dcat.enhancers.1.classname=be.fedict.dcat.enhancers.SparqlUpdate
+    be.fedict.dcat.enhancers.1.sparqlfile=B:/datagov/cfg/bxlcity/sparql-cat.txt
+
+    be.fedict.dcat.enhancers.2.classname=be.fedict.dcat.enhancers.SparqlUpdate
+    be.fedict.dcat.enhancers.2.sparqlfile=B:/datagov/cfg/bxlcity/sparql-map.txt
 
 Mapping e.g. free text keywords to DCAT themes is typically done by loading
 an RDF file with SKOS mapping (using altLabel or exactMatch), performing a
 SparqlUpdate and removing the SKOS triples.
+
+### Running enhancer
 
 Invoke with
 
@@ -158,11 +122,52 @@ The configuration file is a Java properties file.
     # full path to the export file 
     be.fedict.dcat.enhancers.4.outfile=B:/datagov/data/wallonie/geo-missing.txt
 
+
+### LoadRDF
+
+Loads an RDF file containing triples (e.g. for "static metadata" like contact info,
+or mapping categories with SKOS-files) into the local triple store.
+
+Parameters:
+
+    be.fedict.dcat.enhancers.<counter>.classname=be.fedict.dcat.enhancers.LoadRDF
+    be.fedict.dcat.enhancers.<counter>.rdffile=/full/path/to/file.ttl
+
+### SparqlSelect
+
+Performs a Sparql SELECT on the local triple store (e.g. for listing properties).
+The output will be stored in a text file.
+
+Parameters:
+
+    be.fedict.dcat.enhancers.<counter>.classname=be.fedict.dcat.enhancers.SparqSelect
+    be.fedict.dcat.enhancers.<counter>.sparqlfile=/full/path/to/query.txt
+    be.fedict.dcat.enhancers.<counter>.outfile=/full/path/to/output.txt
+
+
+### SparqlUpdate
+
+Performs a SparqlUpdate (INSERT and/or DELETE) on the local triple store.
+Can be combined with LoadRDF to perform a mapping.
+
+Parameters:
+
+    be.fedict.dcat.enhancers.<counter>.classname=be.fedict.dcat.enhancers.SparqUpdate
+    be.fedict.dcat.enhancers.<counter>.sparqlfile=/full/path/to/query.txt
+
+
+### SplitProperty
+
+Split a property into multiple properties (useful when e.g.
+a keyword property contains a concatenated list of keywords) 
+
  
 ## Updater
 
 This tool updates the data.gov.be (Drupal 7) site using a REST interface,
 provided the Drupal modules RestWS and RestWS_i18n are installed.
+
+### Running updater 
 
 Invoke with
 
