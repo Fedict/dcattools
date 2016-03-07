@@ -364,15 +364,25 @@ public class Drupal {
             
         // Exists in another language ?
         if (node.isEmpty()) {
+            String lowlang = "";
+            int lownode = Integer.MAX_VALUE;
+            
             for (String otherlang : langs) {
                 if (!otherlang.equals(lang)) {
-                    node = checkExists(id, otherlang);
-                    if (! node.isEmpty()) {
-                        builder.add(Drupal.SOURCE, Json.createObjectBuilder()
-                                .add(otherlang, Integer.parseInt(node)));
-                        node = "";
+                    String othernode = checkExists(id, otherlang);
+                    if (! othernode.isEmpty()) {
+                        int n = Integer.parseInt(othernode);
+                        // Node with lowest ID is source
+                        if (n < lownode) {
+                            lownode = n;
+                            lowlang = otherlang;
+                        }
                     }
                 }
+            }
+            if (!lowlang.isEmpty()) {
+                builder.add(Drupal.SOURCE, 
+                            Json.createObjectBuilder().add(lowlang, lownode));
             }
         }
         return node;
