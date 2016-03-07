@@ -12,7 +12,38 @@ E.g.
     be.fedict.dcat.enhancers.2.classname=be.fedict.dcat.enhancers.SparqlUpdate
     be.fedict.dcat.enhancers.2.sparqlfile=B:/datagov/cfg/bxlcity/sparql-map.txt
 
+## Note on mappings
+
+Mapping e.g. free text keywords to the controlled list of DCAT themes is done by 
+loading an RDF file with SKOS mapping (using altLabel or exactMatch), performing a
+SparqlUpdate query and removing the SKOS triples afterwards.
+
+DCAT uses several pre-defined controlled vocabularies (e.g. file types, geo...),
+but these vocabularies are not directly supported by Drupal / the data.gov.be tools.
+
+Therefore, one has to manually create the taxonomies in Drupal, and map them to 
+the URIs of the controlled DCAT vocabularies.
+
+For example:
+    
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+    <http://data.gov.be/en/taxonomy/term/32>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
+	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
+	skos:altLabel  "arbre"@fr, "paysage"@fr .
+
+This indicates that the harvested metadata uses terms like "arbre" and "paysage",
+which are both corresponding to the http://data.gov.be/en/taxonomy/term/32 
+term on data.gov.be, and also (via skos:exactMatch) to the Agriculture theme
+on the EU Data portal.
+
+
+The same goes for the taxonomy of organizations, geo coverage and file types.
+
+
 ## Overview of available tools
+
 ### CharRecoder
 
 Re-codes literals to UTF8.
@@ -40,6 +71,13 @@ Parameters:
 
     be.fedict.dcat.enhancers.<counter>.classname=be.fedict.dcat.enhancers.LoadRDF
     be.fedict.dcat.enhancers.<counter>.rdffile=/full/path/to/file.ttl
+
+### Skolemizer
+
+Replaces blank nodes with "dummy" Skolem IRIs.
+Useful when additional SPARQL updates etc are needed, since not all SPARQL operations
+support blank nodes.
+
 
 ### SparqlSelect
 
@@ -120,5 +158,3 @@ The configuration file is a Java properties file.
     be.fedict.dcat.enhancers.4.sparqlfile=B:/datagov/cfg/common/select-spatial.txt
     # full path to the export file 
     be.fedict.dcat.enhancers.4.outfile=B:/datagov/data/wallonie/geo-missing.txt
-
-
