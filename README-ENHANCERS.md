@@ -29,9 +29,9 @@ For example:
     @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
     <http://data.gov.be/en/taxonomy/term/32>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
-	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
-	skos:altLabel  "arbre"@fr, "paysage"@fr .
+        skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
+        skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
+        skos:altLabel  "arbre"@fr, "paysage"@fr .
 
 This indicates that the harvested metadata uses terms like "arbre" and "paysage",
 which are both corresponding to the http://data.gov.be/en/taxonomy/term/32 
