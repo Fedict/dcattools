@@ -8,5 +8,5 @@ INSERT
 	{ 	?org dgov:org ?drupal }
 WHERE
 	{	?org a foaf:Organization .
-		?org vcard:fn ?label .
+		?org foaf:name ?label .
 		?drupal skos:altLabel ?label }

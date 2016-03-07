@@ -20,6 +20,14 @@
 	skos:prefLabel "BRIC"@en ;
 	skos:altLabel "CIRB -CIBG" .
 
+<http://data.gov.be/en/taxonomy/term/190>
+	skos:prefLabel "CESRBC"@en ; 
+	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale" .
+
+<http://data.gov.be/en/taxonomy/term/191>
+	skos:prefLabel "IBSA-BISA"@en ; 
+	skos:altLabel "IBSA" .
+	
 <http://data.gov.be/en/taxonomy/term/188>
 	skos:prefLabel "Parking Brussels"@en ;
 	skos:altLabel "Parking Brussels" .
