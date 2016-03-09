@@ -121,13 +121,19 @@ public class Storage {
     /**
      * Create IRI using value factory.
      * 
-     * @param str
-     * @return 
+     * @param str string
+     * @return trimmed IRI 
      */
     public IRI getURI(String str) {
         return fac.createIRI(str.trim());
     }
     
+    /**
+     * Replace blank node with skolem IRI
+     * 
+     * @param blank blank node
+     * @return skolem IRI
+     */
     public IRI skolemURI(BNode blank) {
         return fac.createIRI(SKOLEM + blank.getID());
     }
@@ -320,7 +326,6 @@ public class Storage {
      * @throws RepositoryException
      * @throws IOException
      */
-    
     public void querySelect(String sparql, OutputStream out) 
                                     throws RepositoryException, IOException {
         try {
