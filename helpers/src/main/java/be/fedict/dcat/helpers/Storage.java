@@ -274,7 +274,8 @@ public class Storage {
                     String uri = val.stringValue();
                     // Check if URI contains a space
                     if (uri.lastIndexOf(' ') > 0) {
-                        IRI obj = fac.createIRI(uri.replaceAll(" ", "%20"));
+                        String esc = uri.replaceAll(" ", "%20").replaceAll("\\", "%92");
+                        IRI obj = fac.createIRI(esc);
                         conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
                         conn.remove(stmt);
                         i++;
