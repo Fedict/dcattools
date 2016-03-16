@@ -198,6 +198,10 @@ public abstract class Scraper extends Fetcher {
      * @throws MalformedURLException 
      */
     public final URL makeAbsURL(String rel) throws MalformedURLException {
+        // Check if URL is already absolute
+        if (rel.startsWith("http:") || rel.startsWith("https:")) {
+            return new URL(rel);
+        }
         return new URL(getBase().getProtocol(), getBase().getHost(), rel);
     }
     
