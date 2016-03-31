@@ -40,6 +40,10 @@ and prepare the files for updating data.gov.be
 using the enhanced DCAT files
 * Some [tools](#tools): link checker
 
+There is also separate, stand-alone DCAT-AP [validator](https://github.com/fedict/dcatvalidator) 
+project which can be used to validate DCAT metadata,
+regardless if the metadata is to be published on data.gov.be or not.
+
 ### Configuration
 
 All configuration is done using Java (plain text) properties files.
