@@ -141,7 +141,7 @@ public abstract class CkanJson extends Ckan {
      * @throws MalformedURLException 
      */
     protected URL ckanPageURL(String id) throws MalformedURLException {        
-        return new URL(getBase(), CkanJson.DATASET + "/" + id);
+        return new URL(getBase(), CkanJson.DATASET + id);
     }
     
     
