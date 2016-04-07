@@ -74,13 +74,13 @@ public class CkanVlaanderen extends CkanJson {
             String key = obj.getString(CkanJson.KEY, "");
             switch(key) {
                 case CkanVlaanderen.DOMAIN:
-                    parseString(store, uri, obj, CkanJson.VALUE, DCAT.THEME, lang);
+                    parseString(store, uri, obj, CkanJson.VALUE, DCAT.KEYWORD, lang);
                     break;
                 case CkanVlaanderen.FREQ:
                     parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
                     break;
                 case CkanVlaanderen.GEMET:
-                    parseString(store, uri, obj, CkanJson.VALUE, DCAT.THEME, lang);
+                    parseString(store, uri, obj, CkanJson.VALUE, DCAT.KEYWORD, lang);
                     break;
                 case CkanVlaanderen.GEOCOVERAGE:
                     parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.COVERAGE, lang);

@@ -84,42 +84,6 @@ public abstract class CkanJson extends Ckan {
     public final static String KEY = "key";
     public final static String VALUE = "value";
     
-    /**
-     * Make a URL for a DCAT Dataset
-     * 
-     * @param id
-     * @return URL
-     * @throws MalformedURLException 
-     */
-    /*@Override
-    public URL makeDatasetURL(String id) throws MalformedURLException {
-        return new URL(getBase() + CkanJson.DATASET + id);
-    }*/
-    
-    /**
-     * Make a URL for a DCAT Distribution 
-     * 
-     * @param id
-     * @return URL
-     * @throws java.net.MalformedURLException 
-     */
-    /*@Override
-    public URL makeDistURL(String id) throws MalformedURLException {
-        return new URL(getBase() + CkanJson.RESOURCE + id);
-    }*/
-  
-    /**
-     * Make an URL for an organization 
-     * 
-     * @param id
-     * @return URL
-     * @throws java.net.MalformedURLException 
-     */
-    /*
-    @Override
-    public URL makeOrgURL(String id) throws MalformedURLException {
-        return new URL(getBase() + CkanJson.ORG + id);
-    }*/
       
     /**
      * Make an URL for retrieving JSON of CKAN Package (DCAT Dataset) 
