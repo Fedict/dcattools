@@ -1,0 +1,11 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{ 	?dataset dcterms:accrualPeriodicity ?psi }
+WHERE
+	{	?dataset dcterms:accrualPeriodicity ?psi
+		VALUES ?psi { "7" "8" "9" }
+	}

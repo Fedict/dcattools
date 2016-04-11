@@ -1,0 +1,12 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcat:theme ?theme }
+INSERT
+	{ 	?dataset dcterms:keyword ?theme }
+WHERE
+	{ 	?dataset dcat:theme ?theme
+		FILTER ( !STRSTARTS(?theme, "http://"))
+	}
