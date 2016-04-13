@@ -11,8 +11,8 @@ The portal itself is a Drupal 7 website, based on Fedict's
 
 ## Data
 
-Only interested in the result ? The N-Triples file (DCAT-AP-ish) can be found
-in [data/datagovbe.nt](data/datagovbe.nt)
+Only interested in the result ? The N-Triples and XML files (DCAT-AP-ish) 
+used to update data.gov.be can be found in the [dcat repository](https://github.com/fedict/dcat)
 
 ## Overview of the tools
 
