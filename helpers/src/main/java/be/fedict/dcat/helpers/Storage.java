@@ -488,7 +488,7 @@ public class Storage {
     }
     
     /**
-     * Read contents of input into a RDF repository
+     * Read contents of N-Triples input into a RDF repository
      * 
      * @param in
      * @throws RepositoryException 
@@ -503,7 +503,7 @@ public class Storage {
      * Read contents of input into a RDF repository
      * 
      * @param in
-     * @param format
+     * @param format RDF input format
      * @throws RepositoryException 
      * @throws java.io.IOException 
      * @throws org.openrdf.rio.RDFParseException 
@@ -515,12 +515,23 @@ public class Storage {
     }
     
     /**
-     * Write contents of RDF repository to output
+     * Write contents of RDF repository to N-Triples output
      * 
      * @param out
      * @throws RepositoryException 
      */
     public void write(Writer out) throws RepositoryException {
+        this.write(out, RDFFormat.NTRIPLES);
+    }    
+     
+    /**
+     * Write contents of RDF repository to N-Triples output
+     * 
+     * @param out
+     * @param format RDF output format
+     * @throws RepositoryException 
+     */
+    public void write(Writer out, RDFFormat format) throws RepositoryException {
         RDFWriter writer = Rio.createWriter(RDFFormat.NTRIPLES, out);
         try {
             conn.export(writer);
