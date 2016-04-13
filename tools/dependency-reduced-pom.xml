@@ -3,12 +3,12 @@
   <parent>
     <artifactId>dcattools</artifactId>
     <groupId>be.fedict.dcat</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.6</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tools</artifactId>
   <name>tools</name>
-  <version>1.5</version>
+  <version>1.6</version>
   <description>Misc tools for enhancing DCAT metadata</description>
   <build>
     <plugins>
@@ -35,8 +35,8 @@
     </plugins>
   </build>
   <properties>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 </project>
 

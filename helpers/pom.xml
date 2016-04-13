@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.6</version>
     </parent>
     <artifactId>helpers</artifactId>
     <packaging>jar</packaging>
@@ -22,11 +22,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.12</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0-rc2</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -56,40 +51,40 @@
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-rio-ntriples</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-model</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-query</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-queryresultio-text</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-repository</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-repository-sail</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-sail-memory</artifactId>
-            <version>4.1.0</version>
+            <version>4.1.1</version>
         </dependency>
     </dependencies>
-    <version>1.5</version>
+    <version>1.6</version>
     <name>helpers</name>
 </project>

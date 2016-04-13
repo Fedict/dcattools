@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.6</version>
     </parent>
     <artifactId>datagovbe</artifactId>
     <packaging>jar</packaging>
@@ -70,5 +70,5 @@
     </build>
     <name>datagovbe</name>
     <description>Update tool for data.gov.be</description>
-    <version>1.5</version>
+    <version>1.6</version>
 </project>
