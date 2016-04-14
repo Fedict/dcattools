@@ -35,10 +35,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -64,6 +68,18 @@ public class HtmlOostende extends Html {
     private final static String LIST_CATS = "ul.listcategorien li a";
  
 
+    /**
+     * Get the value of the ID parameter
+     * 
+     * @param url URL
+     * @return ID as string
+     */
+    private String getIDParam(URL url) {
+        String s = url.toString();
+        int pos = s.lastIndexOf("id=");
+        return (pos > 0) ? String.valueOf(s.substring(pos + 3)) : "";
+    }
+    
     /**
      * Get the list of all the downloads (DCAT Dataset).
      * 
@@ -128,20 +144,21 @@ public class HtmlOostende extends Html {
      * 
      * @param store RDF store
      * @param dataset URI
-     * @param front URL of the front page
+     * @param access URL of the front page
      * @param link link element
+     * @param id id of the dataset
      * @param i dist sequence
      * @param lang language code
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
     private void generateDist(Storage store, IRI dataset, URL access, 
-                                        Element link, int i, String lang) 
+                               Element link, String id, int i, String lang) 
                             throws MalformedURLException, RepositoryException {
         String href = link.attr(HTML.Attribute.HREF.toString());
         URL download = makeAbsURL(href);        
      
-        URL u = makeDistURL(access + "/" + i + "/" + lang);
+        URL u = makeDistURL(id + "/" + i);
         IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
@@ -175,7 +192,8 @@ public class HtmlOostende extends Html {
         
         Element content = Jsoup.parse(html).body().getElementById(CONTENT_ID);
         
-        IRI dataset = store.getURI(u.toString());  
+        String param = getIDParam(u);
+        IRI dataset = store.getURI(makeDatasetURL(param).toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
         Element h1 = content.getElementsByTag(HTML.Tag.H1.toString()).first();
@@ -203,7 +221,7 @@ public class HtmlOostende extends Html {
         int i = 0;
         Elements dists = content.select(LINK_DISTS);
         for(Element dist : dists) {
-            generateDist(store, dataset, u, dist, ++i, lang);
+            generateDist(store, dataset, u, dist, param, i++, lang);
         }
 
     }
