@@ -103,6 +103,7 @@ public class HtmlStatbelPubs extends Html {
                 }
             }
         }
+        logger.warn("No {} translation for page {}", lang, page);
         return null;
     }
     
@@ -124,8 +125,10 @@ public class HtmlStatbelPubs extends Html {
         for (String lang : langs) {
             if (! lang.equals(deflang)) {
                 URL url = switchLanguage(html, lang);
-                String body = makeRequest(url);
-                cache.storePage(u, lang, new Page(url, body));
+                if (url != null) {
+                    String body = makeRequest(url);
+                    cache.storePage(u, lang, new Page(url, body));
+                }
                 sleep();
             }
         } 
