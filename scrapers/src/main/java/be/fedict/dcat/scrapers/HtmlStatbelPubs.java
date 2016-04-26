@@ -260,10 +260,15 @@ public class HtmlStatbelPubs extends Html {
             
             Element doc = Jsoup.parse(html).body();
             if (doc == null) {
-                logger.warn("Empty body");
+                logger.warn("No body element");
                 continue;
             }
-            String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
+            Element h1 = doc.getElementsByTag(Tag.H1.toString()).first();
+            if (h1 == null) {
+                logger.warn("No H1 element");
+                continue;
+            }
+            String title = h1.text();
             // by default, also use the title as description
             String desc = title;
   
@@ -281,7 +286,7 @@ public class HtmlStatbelPubs extends Html {
                     desc = buf.toString();
                 }
             } else {
-                logger.warn("Empty element {}", HtmlStatbelPubs.DIV_MAIN);
+                logger.warn("No {} element", HtmlStatbelPubs.DIV_MAIN);
             }
             
             Matcher m = YEAR_PAT.matcher(title);
