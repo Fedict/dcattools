@@ -257,20 +257,32 @@ public class HtmlStatbelPubs extends Html {
                 continue;
             }
             String html = p.getContent();
+            
             Element doc = Jsoup.parse(html).body();
+            if (doc == null) {
+                logger.warn("Empty body");
+                continue;
+            }
             String title = doc.getElementsByTag(Tag.H1.toString()).first().text();
+            // by default, also use the title as description
+            String desc = title;
   
             Element divmain = doc.getElementsByClass(HtmlStatbelPubs.DIV_MAIN).first();
-            Elements paras  = divmain.getElementsByTag(Tag.P.toString());
-            
-            StringBuilder buf = new StringBuilder();
-            for (Element para : paras) {
-                buf.append(para.text()).append('\n');
+            if (divmain != null) {
+                Elements paras  = divmain.getElementsByTag(Tag.P.toString());
+                if (paras != null) {
+                    StringBuilder buf = new StringBuilder();
+                    for (Element para : paras) {
+                        buf.append(para.text()).append('\n');
+                    }
+                    if (buf.length() == 0) {
+                        buf.append(title);
+                    }
+                    desc = buf.toString();
+                }
+            } else {
+                logger.warn("Empty element {}", HtmlStatbelPubs.DIV_MAIN);
             }
-            if (buf.length() == 0) {
-                buf.append(title);
-            }
-            String desc = buf.toString();
             
             Matcher m = YEAR_PAT.matcher(title);
             if (m.matches()) {
