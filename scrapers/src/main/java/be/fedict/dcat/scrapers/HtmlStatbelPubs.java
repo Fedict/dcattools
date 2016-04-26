@@ -263,12 +263,12 @@ public class HtmlStatbelPubs extends Html {
                 logger.warn("No body element");
                 continue;
             }
-            Element h1 = doc.getElementsByTag(Tag.H1.toString()).first();
-            if (h1 == null) {
+            Elements h = doc.getElementsByTag(Tag.H1.toString());
+            if (h == null) {
                 logger.warn("No H1 element");
                 continue;
             }
-            String title = h1.text();
+            String title = h.first().text();
             // by default, also use the title as description
             String desc = title;
   
