@@ -1,0 +1,10 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/1> .
+		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> }
+WHERE
+	{ 	?dist a dcat:Dataset }

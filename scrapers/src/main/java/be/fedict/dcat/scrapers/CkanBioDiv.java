@@ -58,7 +58,7 @@ public class CkanBioDiv extends CkanJson {
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) 
 			throws RepositoryException, MalformedURLException {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	
 }

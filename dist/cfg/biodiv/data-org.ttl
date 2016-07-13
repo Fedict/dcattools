@@ -1,0 +1,13 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/193>
+	skos:prefLabel "Biodiversiteit" ;
+	skos:altLabel "belgium-biodiversity-platform"@en .
+
+<http://data.gov.be/en/taxonomy/term/194>
+	skos:prefLabel "INBO" ;
+	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en .
+
+<http://data.gov.be/en/taxonomy/term/195>
+	skos:prefLabel "Africa Museum" ;
+	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
