@@ -10,4 +10,5 @@
 <http://data.gov.be/org/oostende/contact>
 	a vcard:Organization ;
 	vcard:fn "Ostend"@en, "Oostende"@nl, "Ostende"@fr ;
+	vcard:hasUrl <http://www.oostende.be> ;
 	vcard:hasEmail <mailto:stadsbestuur@oostende.be> .

@@ -6,7 +6,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE
 	{	?dist dcat:accessURL ?o }
 INSERT
-	{ 	?dist dcat:accessURL ?dataset .
+	{ 	?dist dcat:accessURL ?access .
 		?dist dcat:downloadURL ?url .
 		?dist dcterms:language <http://publications.europa.eu/resource/authority/language/NLD>,
 								<http://publications.europa.eu/resource/authority/language/FRA>,
@@ -14,7 +14,9 @@ INSERT
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcat:distribution ?dist .
-		?dist dcat:accessURL ?o .
-		FILTER ( isLiteral(?o) && STRSTARTS(?o, "http") )
-		BIND ( URI(?o) as ?url )
+		?dist dcat:accessURL ?o 
+		BIND ( "http://opendatastore.brussels/dataset/" as ?old )
+		BIND ( "http://data.gov.be/dataset/brussels/" as ?new )
+		BIND ( IRI(REPLACE(STR(?dataset), ?new, ?old)) as ?access )
+		BIND ( IRI(?o) as ?url )
 	}

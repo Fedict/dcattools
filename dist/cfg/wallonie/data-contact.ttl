@@ -2,7 +2,7 @@
 @prefix dgov: <http://data.gov.be#> .
 
 <http://data.gov.be/org/wallonie/adn/contact>
-	dgov:org <http://data.gov.be/en/taxonomy/term/71> ;
 	a vcard:Organization ;
 	vcard:fn "Agence du Numérique"@en, "Agence du Numérique"@fr, "Agence du Numérique"@nl ;
+	vcard:hasUrl <http://www.digitalwallonia.be> ;
 	vcard:hasEmail <mailto:info@digitalwallonia.be> .

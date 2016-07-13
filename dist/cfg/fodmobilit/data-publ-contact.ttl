@@ -10,4 +10,5 @@
 <http://data.gov.be/org/fodmobilit/fod/contact>
 	a vcard:Organization ;
 	vcard:fn "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr ;
+	vcard:hasUrl <http://mobilit.belgium.be> ;
 	vcard:hasEmail <mailto:info@mobilit.fgov.be> .

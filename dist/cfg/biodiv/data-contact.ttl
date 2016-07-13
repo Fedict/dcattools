@@ -1,8 +1,7 @@
-﻿@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix dgov: <http://data.gov.be#> .
 
 <http://data.gov.be/org/biodiversity/belspo/contact>
-	dgov:org <http://data.gov.be/en/taxonomy/term/193> ;
 	a vcard:Organization ;
 	vcard:fn "Belgian Biodiversity Platform"@en, "Plateforme belge biodiversité"@fr, "Belgisch Biodiversiteitsplatform"@nl ;
 	vcard:hasUrl <http://www.biodiversity.be> ;
