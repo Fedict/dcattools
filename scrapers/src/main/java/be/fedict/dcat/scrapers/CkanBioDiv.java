@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,52 +23,42 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.previewer;
+package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Storage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.json.JsonObject;
+import org.openrdf.model.IRI;
+import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * CKAN Belgian Biodiversity portal.
+ * 
+ * @author Bart.Hanssens
  */
-public class Main {
-    private final static Logger logger = LoggerFactory.getLogger(Main.class);
+public class CkanBioDiv extends CkanJson {
+	private final Logger logger = LoggerFactory.getLogger(CkanBioDiv.class);
 
-    private final static Properties prop = new Properties();
-
-    /**
-     * Exit cleanly
+	/**
+     * Constructor
      * 
-     * @param code return code 
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
      */
-    private static void exit(int code) {
-        logger.info("-- STOP --");
-        System.exit(code);
-    }
-    
-    
-    public static void main(String[] args) {
-        logger.info("-- START --");
-        if (args.length == 0) {
-            logger.error("No config file");
-            exit(-1);
-        }
-        
-        File config = new File(args[0]);
-        try {
-            prop.load(new FileInputStream(config));
-        } catch (IOException ex) {
-            logger.error("I/O Exception while reading {}", config, ex);
-            exit(-2);
-        }
-        
-  //      Fetcher f = new Fetcher();
-        
-        exit(0);
-    }
+	public CkanBioDiv(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("biodiv");
+	}
+
+	@Override
+	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) 
+			throws RepositoryException, MalformedURLException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
 }
