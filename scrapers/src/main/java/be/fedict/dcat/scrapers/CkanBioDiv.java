@@ -63,7 +63,7 @@ public class CkanBioDiv extends CkanJson {
 		String contact = json.getString(ADMIN_CONTACT, "");
 		String email = extractEmail(contact);
 		if (! email.isEmpty()) {
-			contact = contact.replace(email, "").trim();
+			contact = contact.replaceFirst(email, "").trim();
 			parseContact(store, uri, contact, email);
 		}
 	}	
