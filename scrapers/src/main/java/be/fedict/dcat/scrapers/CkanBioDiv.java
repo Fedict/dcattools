@@ -43,6 +43,8 @@ import org.slf4j.LoggerFactory;
 public class CkanBioDiv extends CkanJson {
 	private final Logger logger = LoggerFactory.getLogger(CkanBioDiv.class);
 
+	// CKAN fields
+	public final static String ADMIN_CONTACT = "administrative_contact";
 	/**
      * Constructor
      * 
@@ -58,6 +60,11 @@ public class CkanBioDiv extends CkanJson {
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) 
 			throws RepositoryException, MalformedURLException {
+		String contact = json.getString(ADMIN_CONTACT, "");
+		String email = extractEmail(contact);
+		if (! email.isEmpty()) {
+			parseContact(store, uri, contact, email);
+		}
 		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 	

@@ -43,6 +43,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.openrdf.model.IRI;
 import org.openrdf.model.vocabulary.DCTERMS;
 import org.openrdf.model.vocabulary.FOAF;
@@ -73,9 +75,12 @@ public abstract class Scraper extends Fetcher {
     private String name = "";
     
     private final static HashFunction HASHER = Hashing.sha1();
+	
     public final static DateFormat DATEFMT = 
                             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
     
+	public final static Pattern REGEX_MAIL = 
+					Pattern.compile("[A-Z0-9._%+-]++@[A-Z0-9.-]++\\.[A-Z]{2,}+");
     
     /**
      * Get cache
@@ -157,6 +162,22 @@ public abstract class Scraper extends Fetcher {
         return name;
     }
     
+	/**
+	 * Try to extract email from a string
+	 * 
+	 * @param txt string
+	 * @return empty string when not found
+	 */
+	public String extractEmail(String txt) {
+		if (txt != null && !txt.isEmpty()) {
+			Matcher m = REGEX_MAIL.matcher(txt);
+			if (m.find()) {
+				return m.group(1);
+			}
+		}
+		return "";
+	}
+	
     /**
      * Get lowercase file extension
      * 

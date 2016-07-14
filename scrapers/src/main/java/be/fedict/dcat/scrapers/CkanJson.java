@@ -186,6 +186,37 @@ public abstract class CkanJson extends Ckan {
         }
     }
     
+	/**
+     * Parse a CKAN contact and store it in the RDF store
+     * 
+     * @param store RDF store
+     * @param uri RDF subject URI
+	 * @param name contact name
+	 * @param email contact
+	 * @throws RepositoryException 
+	 */
+	protected void parseContact(Storage store, IRI uri, String name, String email) 
+			throws RepositoryException {
+        String v = "";
+        try {
+            v = makeOrgURL(makeHashId(name + email)).toString();
+        } catch (MalformedURLException e) {
+            logger.error("Could not generate hash url", e);
+        }
+       
+        if (!name.isEmpty() || !email.isEmpty()) {
+            IRI vcard = store.getURI(v);
+            store.add(uri, DCAT.CONTACT_POINT, vcard);
+            store.add(vcard, RDF.TYPE, VCARD.A_ORGANIZATION);
+            if (! name.isEmpty()) {
+                store.add(vcard, VCARD.HAS_FN, name);
+            }
+            if(! email.isEmpty()) {
+                store.add(vcard, VCARD.HAS_EMAIL, store.getURI("mailto:" + email));
+            }
+        }
+    }
+	
     /**
      * Parse a CKAN contact and store it in the RDF store
      * 
@@ -213,26 +244,9 @@ public abstract class CkanJson extends Ckan {
             }
             return;
         }
-        
-        String v = "";
-        try {
-            v = makeOrgURL(makeHashId(name + email)).toString();
-        } catch (MalformedURLException e) {
-            logger.error("Could not generate hash url", e);
-        }
-       
-        if (!name.isEmpty() || !email.isEmpty()) {
-            IRI vcard = store.getURI(v);
-            store.add(uri, DCAT.CONTACT_POINT, vcard);
-            store.add(vcard, RDF.TYPE, VCARD.A_ORGANIZATION);
-            if (! name.isEmpty()) {
-                store.add(vcard, VCARD.HAS_FN, name);
-            }
-            if(! email.isEmpty()) {
-                store.add(vcard, VCARD.HAS_EMAIL, store.getURI("mailto:" + email));
-            }
-        }
-    }
+		parseContact(store, uri, name, email);
+	}
+	
     
     /**
      * Parse CKAN dataset in JSON format.
