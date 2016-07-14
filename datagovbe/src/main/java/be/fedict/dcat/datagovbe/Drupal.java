@@ -645,14 +645,22 @@ public class Drupal {
             }
         }
         
-        // remove duplicate links
+        // remove duplicate and empty links
         downloads.removeAll(accesses);
+		downloads.remove("");
+		
         rights.removeAll(accesses);
-                
-        builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
-                .add(Drupal.FLD_LINKS, urlArrayJson(downloads))
-                .add(Drupal.FLD_CONDITIONS, urlArrayJson(rights))
+		rights.remove("");
+
+		builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
                 .add(Drupal.FLD_FORMAT, arrayTermsJson(types));
+		
+        if (!downloads.isEmpty()) {
+			builder.add(Drupal.FLD_LINKS, urlArrayJson(downloads));
+		}
+        if (!rights.isEmpty()) {
+			builder.add(Drupal.FLD_LICENSE, urlArrayJson(rights));
+		}
     }
 
     
