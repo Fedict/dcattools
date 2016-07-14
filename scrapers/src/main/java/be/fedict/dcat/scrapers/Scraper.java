@@ -78,9 +78,9 @@ public abstract class Scraper extends Fetcher {
 	
     public final static DateFormat DATEFMT = 
                             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
-    
+   
 	public final static Pattern REGEX_MAIL = 
-					Pattern.compile("[A-Z0-9._%+-]++@[A-Z0-9.-]++\\.[A-Z]{2,}+");
+					Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
     
     /**
      * Get cache
