@@ -11,3 +11,35 @@
 <http://data.gov.be/en/taxonomy/term/195>
 	skos:prefLabel "Africa Museum" ;
 	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
+
+<http://data.gov.be/en/taxonomy/term/196>
+	skos:prefLabel "Botanic garden Meisse" ;
+	skos:altLabel "botanical-garden-meise"@en .
+
+<http://data.gov.be/en/taxonomy/term/197>
+	skos:prefLabel "Natural Sciences" ;
+	skos:altLabel "royal-belgian-institute-of-natural-sciences"@en .
+
+<http://data.gov.be/en/taxonomy/term/199>
+	skos:prefLabel "ULB" ;
+	skos:altLabel "universite-libre-de-bruxelles-ulb"@en .
+
+<http://data.gov.be/en/taxonomy/term/201>
+	skos:prefLabel "ULg" ;
+	skos:altLabel "university-of-liege"@en .
+
+<http://data.gov.be/en/taxonomy/term/203>
+	skos:prefLabel "ULG" ;
+	skos:altLabel "marine-biology-section-ugent"@en .
+
+<http://data.gov.be/en/taxonomy/term/204>
+	skos:prefLabel "UMons" ;
+	skos:altLabel "university-of-mons-hainaut"@en .
+
+<http://data.gov.be/en/taxonomy/term/205>
+	skos:prefLabel "Natuurpunt" ;
+	skos:altLabel "natuurpunt"@en .
+
+<http://data.gov.be/en/taxonomy/term/206>
+	skos:prefLabel "WoRMS" ;
+	skos:altLabel "worms-editorial-board"@en .
