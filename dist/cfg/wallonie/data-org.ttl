@@ -2,6 +2,7 @@
 
 <http://data.gov.be/en/taxonomy/term/74>
 	skos:prefLabel "French community" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0220916609> ;
 	skos:altLabel "fwb"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/104>
@@ -16,18 +17,22 @@
 
 <http://data.gov.be/en/taxonomy/term/133>
 	skos:prefLabel "DGO1 Routes" ;
+	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138> ;
 	skos:altLabel "wallonie-dgo1"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/134>
 	skos:prefLabel "DGO2 Mobilité" ;
+	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138> ;
 	skos:altLabel "wallonie-dgo2"@fr .
 
 <http://data.gov.be/en/taxonomy/term/135>
 	skos:prefLabel "DGO5 Action sociale" ;
+	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138> ;
 	skos:altLabel "wallonie-dgo5"@fr .
 
 <http://data.gov.be/en/taxonomy/term/136>
 	skos:prefLabel "DG06 Recherche" ;
+	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138> ;
 	skos:altLabel "wallonie-dgo6"@fr .
 
 <http://data.gov.be/en/taxonomy/term/137>
@@ -37,14 +42,17 @@
 
 <http://data.gov.be/en/taxonomy/term/138>
 	skos:prefLabel "ADN" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0568575002> ;
 	skos:altLabel "adn"@fr .
 
 <http://data.gov.be/en/taxonomy/term/139>
 	skos:prefLabel "Bureau Economique Namur" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0219802592> ;
 	skos:altLabel "bep"@fr .
 
 <http://data.gov.be/en/taxonomy/term/140>
 	skos:prefLabel "Tourisme Wallonie" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0888366085> ;
 	skos:altLabel "tourisme-asbl"@fr .	
 
 <http://data.gov.be/en/taxonomy/term/141>
@@ -53,15 +61,23 @@
 	
 <http://data.gov.be/en/taxonomy/term/142>
 	skos:prefLabel "TEC" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0242069339> ;
 	skos:altLabel "tec"@fr .	
 	
 <http://data.gov.be/en/taxonomy/term/143>
 	skos:prefLabel "Secretariat general" ;
+	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138>
 	skos:altLabel "secretariat-general-geo-donnees"@fr .
 
 <http://data.gov.be/en/taxonomy/term/144>
 	skos:prefLabel "FOREM" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0236363165> ;
 	skos:altLabel "le-forem"@fr .
+
+<http://data.gov.be/en/taxonomy/term/146>
+	skos:prefLabel "Pro Velo" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0458487524> ;
+	skos:altLabel "pro-velo"@fr .	
 	
 <http://data.gov.be/en/taxonomy/term/147>
 	skos:prefLabel "IRM" ;
@@ -69,4 +85,5 @@
 
 <http://data.gov.be/en/taxonomy/term/182>
 	skos:prefLabel "IWEPS" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0866518618> ;
 	skos:altLabel "iweps"@fr .	
