@@ -6,10 +6,12 @@
 	
 <http://data.gov.be/en/taxonomy/term/104>
 	skos:prefLabel "SNCB" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0203430576> ;
 	skos:altLabel "sncb"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/126>
 	skos:prefLabel "Ville de Namur" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0207362739> ;
 	skos:altLabel "ville-de-namur"@fr .
 
 <http://data.gov.be/en/taxonomy/term/133>
@@ -30,6 +32,7 @@
 
 <http://data.gov.be/en/taxonomy/term/137>
 	skos:prefLabel "CWAPE" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0850260131> ;
 	skos:altLabel "cwape"@fr .
 
 <http://data.gov.be/en/taxonomy/term/138>
