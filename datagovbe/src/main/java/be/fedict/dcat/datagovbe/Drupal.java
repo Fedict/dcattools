@@ -659,7 +659,7 @@ public class Drupal {
 			builder.add(Drupal.FLD_LINKS, urlArrayJson(downloads));
 		}
         if (!rights.isEmpty()) {
-			builder.add(Drupal.FLD_LICENSE, urlArrayJson(rights));
+			builder.add(Drupal.FLD_CONDITIONS, urlArrayJson(rights));
 		}
     }
 
