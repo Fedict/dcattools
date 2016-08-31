@@ -28,14 +28,14 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.MDR_LANG;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.DCTERMS;
-import org.openrdf.repository.RepositoryException;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -26,14 +26,18 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.nio.charset.StandardCharsets;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParseException;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

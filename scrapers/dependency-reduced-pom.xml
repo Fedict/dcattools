@@ -3,18 +3,18 @@
   <parent>
     <artifactId>dcattools</artifactId>
     <groupId>be.fedict.dcat</groupId>
-    <version>1.6</version>
+    <version>1.7</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>scrapers</artifactId>
   <name>scrapers</name>
-  <version>1.6</version>
+  <version>1.7</version>
   <description>Various scrapers for Belgian data portals</description>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>2.4.1</version>
+        <version>2.4.3</version>
         <executions>
           <execution>
             <phase>package</phase>

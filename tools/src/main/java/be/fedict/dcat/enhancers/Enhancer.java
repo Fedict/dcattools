@@ -27,6 +27,7 @@ package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
 import java.util.Properties;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

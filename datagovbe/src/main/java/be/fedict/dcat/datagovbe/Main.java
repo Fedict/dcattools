@@ -27,16 +27,20 @@
 package be.fedict.dcat.datagovbe;
 
 import be.fedict.dcat.helpers.Storage;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.rio.RDFParseException;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFParseException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

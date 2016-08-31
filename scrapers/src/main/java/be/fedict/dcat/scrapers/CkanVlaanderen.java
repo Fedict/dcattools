@@ -27,14 +27,18 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DCAT;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import javax.json.JsonArray;
 import javax.json.JsonObject;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.DCTERMS;
-import org.openrdf.repository.RepositoryException;
+
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.repository.RepositoryException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

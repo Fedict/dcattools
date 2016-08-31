@@ -28,10 +28,13 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
+
 import java.io.File;
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

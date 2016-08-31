@@ -31,25 +31,32 @@ import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
+
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.DCTERMS;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.repository.RepositoryException;
+
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.repository.RepositoryException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -308,7 +315,7 @@ public abstract class Scraper extends Fetcher {
      * 
      * @param store RDF store
      * @param catalog catalog URI
-     * @throws org.openrdf.repository.RepositoryException 
+     * @throws org.eclipse.rdf4j.repository.RepositoryException 
      */
     public void generateCatalogInfo(Storage store, IRI catalog) 
                                                     throws RepositoryException {

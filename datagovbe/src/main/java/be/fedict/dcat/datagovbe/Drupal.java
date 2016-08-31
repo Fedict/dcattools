@@ -30,14 +30,19 @@ import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
 import be.fedict.dcat.vocab.VCARD;
+
 import com.google.common.collect.ListMultimap;
+
 import java.io.IOException;
 import java.net.URL;
+
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -47,11 +52,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.net.ssl.SSLContext;
+
 import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
@@ -65,9 +72,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.ssl.SSLContexts;
-import org.openrdf.model.IRI;
-import org.openrdf.model.vocabulary.DCTERMS;
-import org.openrdf.repository.RepositoryException;
+
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.repository.RepositoryException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -763,7 +772,7 @@ public class Drupal {
      * Update site
      * 
      * @throws IOException 
-     * @throws org.openrdf.repository.RepositoryException 
+     * @throws org.eclipse.rdf4j.repository.RepositoryException 
      */
     public void update() throws IOException, RepositoryException {
         List<IRI> datasets = store.query(DCAT.A_DATASET);

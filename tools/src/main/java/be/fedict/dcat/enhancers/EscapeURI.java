@@ -26,8 +26,10 @@
 package be.fedict.dcat.enhancers;
 
 import be.fedict.dcat.helpers.Storage;
-import org.openrdf.model.IRI;
-import org.openrdf.repository.RepositoryException;
+
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.repository.RepositoryException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

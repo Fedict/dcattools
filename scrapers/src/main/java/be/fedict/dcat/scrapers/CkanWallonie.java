@@ -29,8 +29,11 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.net.URL;
+
 import javax.json.JsonObject;
-import org.openrdf.model.IRI;
+
+import org.eclipse.rdf4j.model.IRI;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

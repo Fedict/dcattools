@@ -27,17 +27,21 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParseException;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
