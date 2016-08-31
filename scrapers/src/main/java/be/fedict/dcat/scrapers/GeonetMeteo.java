@@ -26,24 +26,9 @@
 
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
-import be.fedict.dcat.helpers.Page;
-import be.fedict.dcat.helpers.Storage;
-
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
-import java.net.MalformedURLException;
 import java.net.URL;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-
-import org.eclipse.rdf4j.repository.RepositoryException;
-import org.eclipse.rdf4j.rio.RDFFormat;
-import org.eclipse.rdf4j.rio.RDFParseException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,42 +40,8 @@ import org.slf4j.LoggerFactory;
  */
 public class GeonetMeteo extends Geonet {
     private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
-   
-	/**
-     * Scrape DCAT catalog.
-     * @param cache
-     * @throws IOException
-     */
-    @Override
-    protected void scrapeCat(Cache cache) throws IOException {
-        URL front = getBase();
-        URL url = new URL(getBase(), Geonet.API_DCAT);
-        String content = makeRequest(url);
-        cache.storePage(front, "all", new Page(url, content));
-    }
-	
-    /**
-     * Generate DCAT file
-     * 
-     * @param cache
-     * @param store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
-    @Override
-    public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException {
-        Map<String, Page> map = cache.retrievePage(getBase());
-        String ttl = map.get("all").getContent();
-        
-        // Load RDF/XML file into store
-        try(InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-            store.add(in, RDFFormat.RDFXML);
-        } catch (RDFParseException | IOException ex) {
-            throw new RepositoryException(ex);
-        }
-        generateCatalog(store);
-    }
+   	
+
     /**
      * Constructor
      * 

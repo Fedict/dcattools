@@ -28,12 +28,21 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
+import be.fedict.dcat.helpers.Storage;
+import java.io.ByteArrayInputStream;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,15 +57,47 @@ public abstract class Geonet extends Scraper {
     private final Logger logger = LoggerFactory.getLogger(Geonet.class);
 
     // Geonet DCAT RDF/XML API
-    public final static String API_DCAT = "/srv/eng//rdf.metadata.public.get";
+    public final static String API_DCAT = "/srv/eng/rdf.metadata.public.get";
    
+	/**
+     * Generate DCAT file
+     * 
+     * @param cache
+     * @param store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
+    @Override
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        Map<String, Page> map = cache.retrievePage(getBase());
+        String xml = map.get("all").getContent();
+        
+        // Load RDF/XML file into store
+        try(InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+            store.add(in, RDFFormat.RDFXML);
+        } catch (RDFParseException | IOException ex) {
+            throw new RepositoryException(ex);
+        }
+        generateCatalog(store);
+    }
+	
 	/**
      * Scrape DCAT catalog.
      * @param cache
      * @throws IOException
      */
-    protected abstract void scrapeCat(Cache cache) throws IOException;
+    protected void scrapeCat(Cache cache) throws IOException {
+        URL front = getBase();
+        URL url = new URL(getBase() + Geonet.API_DCAT);
+        String content = makeRequest(url);
+        cache.storePage(front, "all", new Page(url, content));
+    }
 	
+	/**
+     * Scrape DCAT catalog.
+     * @throws IOException
+     */
     @Override
     public void scrape() throws IOException {
 		logger.info("Start scraping");
