@@ -27,13 +27,16 @@ package be.fedict.dcat.helpers;
 
 import java.io.File;
 import java.net.URL;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
+
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
