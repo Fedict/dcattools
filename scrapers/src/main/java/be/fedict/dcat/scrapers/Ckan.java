@@ -44,6 +44,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Abstract scraper for CKAN portals.
+ * @see http://ckan.org/
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */

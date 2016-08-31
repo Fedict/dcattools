@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,68 +28,53 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
-import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Abstract OpenDataSoft scraper.
- * @see https://www.opendatasoft.com/
+ * Abstract scraper for the Geonet v3 portal software with DCAT export.
+ * @see http://geonetwork-opensource.org/
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Ods extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Ods.class);
+public abstract class Geonet extends Scraper {
+    private final Logger logger = LoggerFactory.getLogger(Geonet.class);
 
-    public final static String API_DCAT = "/api/datasets/1.0/search?format=rdf&rows=-1";
-    public final static String API_PAGE = "/explore/dataset/";
-    public final static String API_EXP = "/export/";
-
-    /**
+    // Geonet DCAT RDF/XML API
+    public final static String API_DCAT = "/srv/eng//rdf.metadata.public.get";
+   
+	/**
      * Scrape DCAT catalog.
      * @param cache
      * @throws IOException
      */
     protected abstract void scrapeCat(Cache cache) throws IOException;
-    
+	
     @Override
     public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
+		logger.info("Start scraping");
+		Cache cache = getCache();
         
         Map<String, Page> front = cache.retrievePage(getBase());
         if (front.keySet().isEmpty()) {
             scrapeCat(cache);
         }
         logger.info("Done scraping");
-    }
+	}
 
-    /**
-     * Generate DCAT file
-     * 
-     * @param cache
-     * @param store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
-    @Override
-    public abstract void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException;
-    
+
     /**
      * Constructor
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
      */
-    public Ods(File caching, File storage, URL base) {
+    public Geonet(File caching, File storage, URL base) {
         super(caching, storage, base);
-    }    
+    }
 }

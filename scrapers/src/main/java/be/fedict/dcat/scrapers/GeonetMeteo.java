@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,47 +29,41 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import org.openrdf.repository.RepositoryException;
+import org.openrdf.rio.RDFFormat;
+import org.openrdf.rio.RDFParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Abstract OpenDataSoft scraper.
- * @see https://www.opendatasoft.com/
- * 
+ * Scraper for Meteo/RMI.
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Ods extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Ods.class);
-
-    public final static String API_DCAT = "/api/datasets/1.0/search?format=rdf&rows=-1";
-    public final static String API_PAGE = "/explore/dataset/";
-    public final static String API_EXP = "/export/";
-
-    /**
+public class GeonetMeteo extends Geonet {
+    private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
+   
+	/**
      * Scrape DCAT catalog.
      * @param cache
      * @throws IOException
      */
-    protected abstract void scrapeCat(Cache cache) throws IOException;
-    
     @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapeCat(cache);
-        }
-        logger.info("Done scraping");
+    protected void scrapeCat(Cache cache) throws IOException {
+        URL front = getBase();
+        URL url = new URL(getBase(), Geonet.API_DCAT);
+        String content = makeRequest(url);
+        cache.storePage(front, "all", new Page(url, content));
     }
-
+	
     /**
      * Generate DCAT file
      * 
@@ -79,17 +73,28 @@ public abstract class Ods extends Scraper {
      * @throws MalformedURLException 
      */
     @Override
-    public abstract void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException;
-    
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        Map<String, Page> map = cache.retrievePage(getBase());
+        String ttl = map.get("all").getContent();
+        
+        // Load RDF/XML file into store
+        try(InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+            store.add(in, RDFFormat.RDFXML);
+        } catch (RDFParseException | IOException ex) {
+            throw new RepositoryException(ex);
+        }
+        generateCatalog(store);
+    }
     /**
      * Constructor
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching DB cache file
+     * @param storage SDB file to be used as triple store backend
+     * @param base base URL
      */
-    public Ods(File caching, File storage, URL base) {
+    public GeonetMeteo(File caching, File storage, URL base) {
         super(caching, storage, base);
-    }    
+		setName("meteo");
+    }
 }
