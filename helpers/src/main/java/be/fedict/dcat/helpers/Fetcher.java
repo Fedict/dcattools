@@ -28,13 +28,16 @@ package be.fedict.dcat.helpers;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.util.EntityUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

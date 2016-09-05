@@ -9,4 +9,4 @@ INSERT
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/45> }
 WHERE
 	{	?dataset a dcat:Dataset .
-		?dataset dcterms:spatial ?coord }
+		OPTIONAL { ?dataset dcterms:spatial ?coord } }

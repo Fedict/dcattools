@@ -13,7 +13,7 @@ WHERE
 	{ 	?ref foaf:primaryTopic ?dataset .
 		BIND ( STR(?ref) as ?str )
 		BIND ( "http://opendata.meteo.be/catalog:8080/geonetwork/metadata/" as ?old )
-		BIND ( "http://opendata.meteo.be/geonetwork/eng/catalog.search#/metadata/" as ?newm )
+		BIND ( "http://opendata.meteo.be/geonetwork/srv/eng/catalog.search#/metadata/" as ?newm )
 		BIND ( "http://data.gov.be/dist/meteo/" as ?newd )
 		BIND ( IRI(REPLACE(?str, ?old, ?newm)) as ?url )
 		BIND ( IRI(REPLACE(?str, ?old, ?newd)) as ?dist )
