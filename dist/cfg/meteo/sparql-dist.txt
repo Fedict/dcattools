@@ -1,0 +1,20 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?ref foaf:primaryTopic ?dataset }
+INSERT
+	{ 	?dataset dcat:distribution ?dist .
+		?dist a dcat:Distribution .
+		?dist dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> .
+		?dist dcat:accessURL ?url }
+WHERE
+	{ 	?ref foaf:primaryTopic ?dataset .
+		BIND ( STR(?ref) as ?str )
+		BIND ( "http://opendata.meteo.be/catalog:8080/geonetwork/metadata/" as ?old )
+		BIND ( "http://opendata.meteo.be/geonetwork/eng/catalog.search#/metadata/" as ?newm )
+		BIND ( "http://data.gov.be/dist/meteo/" as ?newd )
+		BIND ( IRI(REPLACE(?str, ?old, ?newm)) as ?url )
+		BIND ( IRI(REPLACE(?str, ?old, ?newd)) as ?dist )
+	}

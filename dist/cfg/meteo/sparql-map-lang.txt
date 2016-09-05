@@ -1,0 +1,12 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?dataset dcterms:language "eng" }
+INSERT
+	{ 	?dataset dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> }
+WHERE {
+		?dataset a dcat:Dataset .
+		?dataset dcterms:language "eng" 
+	}

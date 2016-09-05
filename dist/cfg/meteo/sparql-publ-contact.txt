@@ -1,0 +1,11 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcterms:publisher ?publ }
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/meteo/meteo/contact> .
+		?dataset dcterms:publisher <http://data.gov.be/org/meteo/meteo> }
+WHERE
+	{ 	?dataset a dcat:Dataset  .
+		?dataset dcterms:publisher ?publ }

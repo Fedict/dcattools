@@ -1,0 +1,14 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://data.gov.be/org/meteo/meteo>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/147> ;
+	foaf:homepage <http://www.meteo.be> .
+	
+<http://data.gov.be/org/meteo/meteo/contact>
+	a vcard:Organization ;
+	vcard:fn "RMI"@en, "KMI"@nl, "IRM"@fr ;
+	vcard:hasUrl <http://opendata.meteo.be> ;
+	vcard:hasEmail <mailto:ui@meteo.be> .

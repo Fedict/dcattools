@@ -1,0 +1,8 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcterms:description ?literal }
+WHERE
+	{	?dataset dcterms:abstract ?literal	}
