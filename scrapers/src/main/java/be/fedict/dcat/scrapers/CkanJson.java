@@ -112,18 +112,6 @@ public abstract class CkanJson extends Ckan {
         return new URL(getBase(), Ckan.DATASET + id);
     }
     
-    
-    /**
-     * Generate URL from a string.
-     * 
-     * @param str
-     * @return URL
-     * @throws MalformedURLException 
-     */
-    protected URL getHashUrl(String str) throws MalformedURLException {
-        return new URL(getBase(), makeHashId(str));
-    }
-    
     /**
      * Parse a CKAN string and store it in the RDF store.
      * 
