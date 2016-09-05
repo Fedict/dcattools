@@ -34,6 +34,7 @@ import be.fedict.dcat.vocab.VCARD;
 import com.google.common.collect.ListMultimap;
 
 import java.io.IOException;
+
 import java.net.URL;
 
 import java.security.KeyManagementException;
@@ -661,9 +662,13 @@ public class Drupal {
         rights.removeAll(accesses);
 		rights.remove("");
 
-		builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses))
-                .add(Drupal.FLD_FORMAT, arrayTermsJson(types));
+		types.remove("");
 		
+		builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses));
+		
+		if (!types.isEmpty()) {
+			builder.add(Drupal.FLD_FORMAT, arrayTermsJson(types));
+		}
         if (!downloads.isEmpty()) {
 			builder.add(Drupal.FLD_LINKS, urlArrayJson(downloads));
 		}
@@ -714,9 +719,9 @@ public class Drupal {
             r.bodyString(obj.toString(), ContentType.APPLICATION_JSON);
             
             try {            
-                StatusLine status = exec.authPreemptive(host).execute(r)
-                                    .returnResponse().getStatusLine();
-                logger.debug(status.toString());
+				StatusLine status = exec.authPreemptive(host).execute(r)
+										.returnResponse().getStatusLine();
+                logger.info(status.toString());
             } catch (IOException ex) {
                 logger.error("Could not update {}", uri.toString(), ex);
             }
@@ -814,6 +819,7 @@ public class Drupal {
             CloseableHttpClient client = HttpClients.custom()
                     .setRedirectStrategy(new LaxRedirectStrategy())
                     .setSSLContext(ctx)
+					.disableContentCompression()
                     .build();
             e = Executor.newInstance(client);
         } catch (NoSuchAlgorithmException ex) {
