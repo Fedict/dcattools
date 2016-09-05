@@ -26,8 +26,16 @@
 
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.DCAT;
+
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+
 
 
 import org.slf4j.Logger;
@@ -41,7 +49,12 @@ import org.slf4j.LoggerFactory;
 public class GeonetMeteo extends Geonet {
     private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
    	
-
+	@Override
+	public void generateDcat(Cache cache, Storage store) 
+						throws RepositoryException, MalformedURLException {
+		super.generateDcat(cache, store);
+		store.escapeURI(DCAT.THEME);
+	}
     /**
      * Constructor
      * 
