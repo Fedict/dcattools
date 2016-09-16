@@ -1,0 +1,5 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/211>
+	skos:prefLabel "BTC CTB" ;
+	skos:altLabel "btc-ctb"@en .

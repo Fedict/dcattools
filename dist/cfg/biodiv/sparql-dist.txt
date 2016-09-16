@@ -1,0 +1,16 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dataset dcat:distribution ?dist .
+		?dist a dcat:Distribution .
+		?dist dcat:accessURL ?url .
+		?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/207> .
+		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcterms:identifier ?id .
+		BIND(IRI(CONCAT('http://data.gov.be/dist/biodiv/', ?id)) as ?dist) .
+		BIND(IRI(CONCAT('http://data.biodiversity.be/dataset/', ?id)) as ?url) }
