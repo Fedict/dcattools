@@ -148,12 +148,14 @@ public class HtmlEandis extends Html {
         IRI dataset = store.getURI(u.toString());  
         logger.debug("Generating dataset {}", dataset.toString());
         
-        Element th = table.getElementsByTag(HTML.Tag.TH.toString()).first();
-        if (th == null) {
+		Element h2 = table.previousElementSibling()
+							.getElementsByTag(HTML.Tag.H2.toString()).first();
+		if (h2 == null) {
             logger.warn("Empty title, skipping");
             return;
         }
-        String title = th.text().trim().toLowerCase();
+		
+        String title = h2.text().trim().toLowerCase();
         String desc = title;
         
         store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
@@ -162,7 +164,7 @@ public class HtmlEandis extends Html {
         store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         store.add(dataset, DCAT.LANDING_PAGE, front);
-    
+  
         int j = 0;
         Elements links = table.getElementsByTag(HTML.Tag.A.toString());
         for(Element link : links) {

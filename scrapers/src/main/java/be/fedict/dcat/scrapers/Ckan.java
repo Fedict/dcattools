@@ -59,6 +59,7 @@ public abstract class Ckan extends Scraper {
     // CKAN JSON fields
     public final static String RESULT = "result";
     public final static String SUCCESS = "success";
+	public final static String PACKAGES = "packages";
     
     // CKAN API
     public final static String API_LIST = "/api/3/action/package_list";
