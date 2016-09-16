@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,27 +35,38 @@ import java.util.List;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonString;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * CKAN BTC-CTB.
+ * Currently (9/2016) the JSON version is more reliable than the RDF
  * 
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class CkanBtcctb extends CkanRDF {
+public class CkanBtcctb extends CkanJson {
     private final Logger logger = LoggerFactory.getLogger(CkanBtcctb.class);
 	
 	private final static String BTC = "btc-ctb";
 	
-	  /**
+
+	@Override
+	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) 
+							throws RepositoryException, MalformedURLException {
+		//
+	}
+	
+	/**
      * Get the list of all the CKAN packages (DCAT Dataset).
      * 
      * @return List of URLs
      * @throws MalformedURLException
      * @throws IOException 
      */
+	@Override
     protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
         List<URL> urls = new ArrayList<>();
         URL getPackages = new URL(getBase(), Ckan.API_ORG + BTC + "&include_datasets=true");
@@ -82,4 +94,5 @@ public class CkanBtcctb extends CkanRDF {
         super(caching, storage, base);
         setName("btcctb");
    }    
+
 }
