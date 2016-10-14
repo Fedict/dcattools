@@ -1,7 +1,9 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix dgov: <http://data.gov.be#> .
+@prefix org: <http://www.w3.org/ns/org#> .
 
 <http://data.gov.be/org/vlaanderen/forum/contact>
+	org:unitOf <https://opencorporates.com/id/companies/be/0316380841> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/72> ;
 	a vcard:Organization ;
 	vcard:fn "Vlaams Open Data Forum"@en, "Vlaams Open Data Forum"@fr, "Vlaams Open Data Forum"@nl ;

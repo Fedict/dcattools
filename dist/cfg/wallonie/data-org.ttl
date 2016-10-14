@@ -57,6 +57,7 @@
 
 <http://data.gov.be/en/taxonomy/term/141>
 	skos:prefLabel "Sentiers" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0408148086> ;
 	skos:altLabel "sentiers"@fr .	
 	
 <http://data.gov.be/en/taxonomy/term/142>
@@ -66,7 +67,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/143>
 	skos:prefLabel "Secretariat general" ;
-	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138>
+	skos:broadMatch <https://opencorporates.com/id/companies/be/0316381138> ;
 	skos:altLabel "secretariat-general-geo-donnees"@fr .
 
 <http://data.gov.be/en/taxonomy/term/144>

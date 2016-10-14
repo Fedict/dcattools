@@ -2,65 +2,100 @@
 
 <http://data.gov.be/en/taxonomy/term/84>
 	skos:prefLabel "SVR" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "svr"@nl .
 
 <http://data.gov.be/en/taxonomy/term/86>
 	skos:prefLabel "Departement LNE" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "lne"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/88>
 	skos:prefLabel "VREG" ;	
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0886689767> ;
 	skos:altLabel "vreg"@nl  .
 
 <http://data.gov.be/en/taxonomy/term/93>
-	skos:prefLabel "Departement CSJM" ;	
+	skos:prefLabel "Departement CSJM" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "dcjsm"@nl .
 
 <http://data.gov.be/en/taxonomy/term/95>
-	skos:prefLabel "Toerisme Vlaanderen" ;	
+	skos:prefLabel "Toerisme Vlaanderen" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0225944375> ;
 	skos:altLabel "toerisme-vlaanderen"@nl .
 
 <http://data.gov.be/en/taxonomy/term/98>
-	skos:prefLabel "Departement MOW" ;	
+	skos:prefLabel "Departement MOW" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;	
 	skos:altLabel "dmow"@nl .
 
 <http://data.gov.be/en/taxonomy/term/108>
-	skos:prefLabel "Departement OV" ;	
+	skos:prefLabel "Departement OV" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "dov"@nl .
 
 <http://data.gov.be/en/taxonomy/term/115>
-	skos:prefLabel "Departement LV" ;	
+	skos:prefLabel "Departement LV" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "dlv"@nl .
 
 <http://data.gov.be/en/taxonomy/term/116>
-	skos:prefLabel "Agentschap Onroerend Erfgoed" ;	
+	skos:prefLabel "Agentschap Onroerend Erfgoed" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "onroerend-erfgoed"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/118>
 	skos:prefLabel "Departement WSE" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "dwse"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/123>
 	skos:prefLabel "Geopunt" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "geopunt"@nl .
 
 <http://data.gov.be/en/taxonomy/term/125>
 	skos:prefLabel "Gent" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0207451227> ;
 	skos:altLabel "stad-gent"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/128>
 	skos:prefLabel "Antwerpen" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0207500123> ;
 	skos:altLabel "stad-antwerpen"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/130>
 	skos:prefLabel "Kortrijk" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0207494678> ;
 	skos:altLabel "stad-kortrijk"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/132>
 	skos:prefLabel "Departement BZ" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
 	skos:altLabel "dbz"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/151>
 	skos:prefLabel "WestToer" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0267388418> ;
 	skos:altLabel "westtoer"@nl .
 	
+<http://data.gov.be/en/taxonomy/term/213>
+	skos:prefLabel "Informatie Vlaanderen" ;
+	skos:broaderMatch <https://opencorporates.com/id/companies/be/0316380841> ;
+	skos:altLabel "iv"@nl .
+
+<http://data.gov.be/en/taxonomy/term/214>
+	skos:prefLabel "V-ICT-OR" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0549874291> ;
+	skos:altLabel "v-ict-or"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/215>
+	skos:prefLabel "VRM" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0893159865> ;
+	skos:altLabel "vrm"@nl .
+
+<http://data.gov.be/en/taxonomy/term/216>
+	skos:prefLabel "Vlaams Parlement" ;
+	skos:exactMatch <https://opencorporates.com/id/companies/be/0931814563> ;
+	skos:altLabel "vlaams-parlement"@nl .
