@@ -5,5 +5,5 @@ INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/wallonie/adn/contact>  }
 WHERE
 	{ 	?dataset a dcat:Dataset
-		FILTER NOT EXISTS { ?s dcat:contactPoint ?o } 
+		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } 
 	}

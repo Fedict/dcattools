@@ -2,7 +2,7 @@
 
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "CSV" .
+	skos:altLabel "CSV", "csv" .
 
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOC> ;
@@ -26,7 +26,7 @@
 
 <http://data.gov.be/en/taxonomy/term/7>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
-	skos:altLabel "ods", "ods" .
+	skos:altLabel "ODS", "ods" .
 	
 <http://data.gov.be/en/taxonomy/term/65>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;

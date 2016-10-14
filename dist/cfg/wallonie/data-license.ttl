@@ -4,3 +4,11 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
 	skos:prefLabel "CC0" ;
 	skos:altLabel "cc-zero" .
+
+<http://data.gov.be/en/taxonomy/term/54>
+	skos:prefLabel "Open" ;
+	skos:altLabel "other-open", "other-pd" .
+
+<http://data.gov.be/en/taxonomy/term/68>
+	skos:prefLabel "Specific" ;
+	skos:altLabel "other-nc", "other-closed" .
