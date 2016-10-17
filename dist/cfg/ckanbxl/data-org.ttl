@@ -2,44 +2,55 @@
 
 <http://data.gov.be/en/taxonomy/term/183>
 	skos:prefLabel "Brussels-Capital Mobility"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
 	skos:altLabel "Bruxelles Mobilité / Brussel Mobiliteit", "{u'fr': u'Bruxelles Mobilit\xe9', u'en': u'Mobility Brussels', u'nl': u'Brussel Mobiliteit'}" .
 
 <http://data.gov.be/en/taxonomy/term/186>
 	skos:prefLabel "Brussels-Capital Environment"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0236_916_956#id> ;
 	skos:altLabel "Bruxelles Environnement / Leefmilieu Brussel", "{u'fr': u'Bruxelles Environnement', u'en': u'Brussels Environment', u'nl': u'Leefmilieu Brussel'}" .
 
 <http://data.gov.be/en/taxonomy/term/187>
 	skos:prefLabel "Brussels-Capital Urban Development"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
 	skos:altLabel "Bruxelles Développement urbain / Brussel Stedelijke Ontwikkeling", "{u'fr': u'Bruxelles D\xe9veloppement urbain', u'en': u'Brussels Urban Development', u'nl': u'Brussel Stedelijke Ontwikkeling'}" .
 	
 <http://data.gov.be/en/taxonomy/term/184>
 	skos:prefLabel "STIB-MIVB"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0247_499_953#id> ;
 	skos:altLabel "STIB / MIVB", "{u'fr': u'STIB', u'en': u'STIB / MIVB', u'nl': u'MIVB'}" .
 	
 <http://data.gov.be/en/taxonomy/term/185>
 	skos:prefLabel "BRIC"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0240_678_477#id> ;
 	skos:altLabel "CIRB -CIBG", "{u'fr': u'CIRB', u'en': u'BRIC', u'nl': u'CIBG'}" .
 
 <http://data.gov.be/en/taxonomy/term/190>
 	skos:prefLabel "CESRBC"@en ; 
+	skos:exactMatch <http://org.belgif.be/cbe/org/0253_777_437#id> ;
 	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale" .
 
 <http://data.gov.be/en/taxonomy/term/191>
-	skos:prefLabel "IBSA-BISA"@en ; 
+	skos:prefLabel "IBSA-BISA"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
 	skos:altLabel "IBSA" .
 	
 <http://data.gov.be/en/taxonomy/term/188>
 	skos:prefLabel "Parking Brussels"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0831_050_765#id> ;
 	skos:altLabel "Parking Brussels", "{u'fr': u'Parking Brussels', u'en': u'Parking Brussels', u'nl': u'Parking Brussels'}" .
 	
 <http://data.gov.be/en/taxonomy/term/175>
 	skos:prefLabel "Zen Car"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0828_586_767#id> ;
 	skos:altLabel "ZenCar", "{u'fr': u'ZenCar', u'en': u'ZenCar', u'nl': u'ZenCar'}" .
 	
 <http://data.gov.be/en/taxonomy/term/176>
 	skos:prefLabel "Cambio"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0433_457_663#id> ;
 	skos:altLabel "Cambio", "{u'fr': u'Cambio', u'en': u'Cambio', u'nl': u'Cambio'}" .
 	
 <http://data.gov.be/en/taxonomy/term/178>
 	skos:prefLabel "JCDecaux"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0444_436_776#id> ;
 	skos:altLabel "JC Decaux", "{u'fr': u'JC Decaux', u'en': u'JD Decaux', u'nl': u'JC Decaux'}" .
