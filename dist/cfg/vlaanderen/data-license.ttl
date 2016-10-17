@@ -9,4 +9,18 @@
 	skos:exactMatch <http://opendataforum.info/Docs/licenties/GOD.htm> ;
 	skos:prefLabel "Vlaamse Open Data licentie" ;
 	skos:altLabel "gratis-open-data-licentie-1.2", "gratis-open-data-licentie", "gratis-open-data-licentie-1.1" .
-		
+
+<http://data.gov.be/en/taxonomy/term/218>
+	skos:exactMatch <http://opendata.antwerpen.be/gratis-open-data-licentie> ;
+	skos:prefLabel "Open data licentie Antwerpen" ;
+	skos:altLabel "http://opendata.antwerpen.be/gratis-open-data-licentie" .
+
+<http://data.gov.be/en/taxonomy/term/219>
+	skos:exactMatch <http://www.kortrijk.be/opendata/licentie-open-data> ;
+	skos:prefLabel "Open data licentie Kortrijk" ;
+	skos:altLabel "http://www.kortrijk.be/opendata/licentie-open-data" .
+
+<http://data.gov.be/en/taxonomy/term/220>
+	skos:exactMatch <https://data.stad.gent/algemene-licentie> ;
+	skos:prefLabel "Open data licentie Gent" ;
+	skos:altLabel "https://data.stad.gent/algemene-licentie" .		

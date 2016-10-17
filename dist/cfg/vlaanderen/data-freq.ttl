@@ -23,7 +23,7 @@
 <http://data.gov.be/en/taxonomy/term/27>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/QUARTERLY> ;
 	skos:prefLabel "Quarterly"@en ;
-	skos:altLabel "5annually" .
+	skos:altLabel "5annually", "quarterly" .
 
 <http://data.gov.be/en/taxonomy/term/29>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2> ;
@@ -39,3 +39,14 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
 	skos:prefLabel "Irregular"@en ;
 	skos:altLabel "asNeeded", "irregular" .
+
+<http://data.gov.be/en/taxonomy/term/192>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+	skos:prefLabel "Unknown"@en ;
+	skos:altLabel "unknown" .
+
+<http://data.gov.be/en/taxonomy/term/192>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+	skos:prefLabel "Never"@en ;
+	skos:altLabel "notPlanned" .
+
