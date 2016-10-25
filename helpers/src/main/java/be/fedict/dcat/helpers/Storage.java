@@ -460,12 +460,13 @@ public class Storage {
                             conn.add(stmt.getSubject(), property, newval);
                         }
                         conn.remove(stmt);
+						i++;
                     }
                 }
-                i++;
             }
+			conn.commit();
         }
-        logger.debug("Splitted {} statements for {}", i, property.stringValue());
+        logger.debug("Splitted {} statements for '{}'", i, property.stringValue());
     }
     
 
