@@ -1,5 +1,5 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
+	
 <http://data.gov.be/en/taxonomy/term/20>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
 	skos:prefLabel "Continuously"@en ;
@@ -14,6 +14,11 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/MONTHLY> ;
 	skos:prefLabel "Monthly"@en ;
 	skos:altLabel "maandelijk", "maandelijks", "monthly", "mensuelle" .
+	
+<http://data.gov.be/en/taxonomy/term/26>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/BIMONTHLY> ;
+	skos:prefLabel "Monthly"@en ;
+	skos:altLabel "tweemaandelijks", "tous les 2 mois", "bimonthly" .
 
 <http://data.gov.be/en/taxonomy/term/30>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;

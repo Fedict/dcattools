@@ -2,9 +2,10 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
 
-<http://data.gov.be/org/oostende>
+<http://org.belgif.be/cbe/org/0207_436_775#id>
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/129> ;
+	foaf:name "Ostend"@en, "Oostende"@nl, "Ostende"@fr ;
 	foaf:homepage <http://www.oostende.be> .
 	
 <http://data.gov.be/org/oostende/contact>

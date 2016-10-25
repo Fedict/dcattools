@@ -2,9 +2,10 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
 
-<http://data.gov.be/org/meteo/meteo>
+<http://org.belgif.be/cbe/org/0349_294_822#id>
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/147> ;
+	foaf:name "RMI"@en, "KMI"@nl, "IRM"@fr ;
 	foaf:homepage <http://www.meteo.be> .
 	
 <http://data.gov.be/org/meteo/meteo/contact>
