@@ -29,12 +29,10 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -46,6 +44,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -122,8 +121,8 @@ public class HtmlEandis extends Html {
         IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
-        store.add(dataset, DCAT.DISTRIBUTION, dist);
-        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         store.add(dist, DCTERMS.TITLE, link.text().trim(), lang);
         store.add(dist, DCAT.ACCESS_URL, access);
@@ -158,7 +157,7 @@ public class HtmlEandis extends Html {
         String title = h2.text().trim().toLowerCase();
         String desc = title;
         
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, RDF.TYPE, DCAT.DATASET);
         store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         store.add(dataset, DCTERMS.TITLE, title, lang);
         store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);

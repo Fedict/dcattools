@@ -29,19 +29,15 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,6 +55,7 @@ import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -230,8 +227,8 @@ public class HtmlStatbelPubs extends Html {
         IRI dist = store.getURI(makeDistURL(id).toString());
         logger.debug("Generating distribution {}", dist.toString());
         
-        store.add(dataset, DCAT.DISTRIBUTION, dist);
-        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
         store.add(dist, DCAT.ACCESS_URL, access);
@@ -255,7 +252,7 @@ public class HtmlStatbelPubs extends Html {
         IRI dataset = store.getURI(makeDatasetURL(id).toString());
         logger.info("Generating dataset {}", dataset.toString());
         
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, RDF.TYPE, DCAT.DATASET);
         store.add(dataset, DCTERMS.IDENTIFIER, id);
             
         for (String lang : getAllLangs()) {

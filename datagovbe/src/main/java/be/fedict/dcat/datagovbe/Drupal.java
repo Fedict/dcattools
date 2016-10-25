@@ -26,7 +26,6 @@
 package be.fedict.dcat.datagovbe;
 
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
 import be.fedict.dcat.vocab.VCARD;
@@ -75,6 +74,7 @@ import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.ssl.SSLContexts;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
@@ -702,7 +702,7 @@ public class Drupal {
             addDataset(builder, dataset, lang);
 
             // Get DCAT distributions
-            List<String> dists = getMany(dataset, DCAT.DISTRIBUTION, "");
+            List<String> dists = getMany(dataset, DCAT.HAS_DISTRIBUTION, "");
             addDists(builder, dists, lang);
    
             // Add new or update existing dataset ?
@@ -780,7 +780,7 @@ public class Drupal {
      * @throws org.eclipse.rdf4j.repository.RepositoryException 
      */
     public void update() throws IOException, RepositoryException {
-        List<IRI> datasets = store.query(DCAT.A_DATASET);
+        List<IRI> datasets = store.query(DCAT.DATASET);
         
         logger.info("Updating {} datasets...", Integer.toString(datasets.size()));
         

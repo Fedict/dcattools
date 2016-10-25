@@ -26,15 +26,17 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.json.JsonArray;
 import javax.json.JsonObject;
-import javax.json.JsonString;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 

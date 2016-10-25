@@ -29,7 +29,6 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.vocab.DATAGOVBE;
-import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import com.google.common.hash.HashFunction;
@@ -52,6 +51,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -342,11 +342,11 @@ public abstract class Scraper extends Fetcher {
     public void generateCatalog(Storage store) 
                             throws RepositoryException, MalformedURLException {
         IRI catalog = store.getURI(makeCatalogURL().toString());
-        store.add(catalog, RDF.TYPE, DCAT.A_CATALOG);
+        store.add(catalog, RDF.TYPE, DCAT.CATALOG);
         
-        List<IRI> uris = store.query(DCAT.A_DATASET);        
+        List<IRI> uris = store.query(DCAT.DATASET);        
         for (IRI u : uris){
-            store.add(catalog, DCAT.DATASET, u);
+            store.add(catalog, DCAT.HAS_DATASET, u);
         }
         generateCatalogInfo(store, catalog);
     }

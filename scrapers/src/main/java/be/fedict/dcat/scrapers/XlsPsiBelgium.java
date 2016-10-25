@@ -26,23 +26,21 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Row;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -193,8 +191,8 @@ public class XlsPsiBelgium extends Xls {
         String reuse = stringInt(map.get(XlsPsiBelgium.REUSE));
         boolean open = reuse.equals("1") && fee.equals("0");
         
-        store.add(dataset, DCAT.DISTRIBUTION, dist);
-        store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         if(!access.isEmpty()) {
             store.add(dist, DCAT.ACCESS_URL, new URL(access));
@@ -230,7 +228,7 @@ public class XlsPsiBelgium extends Xls {
         String id = stringInt(map.get(XlsPsiBelgium.ID));
         String freq = stringInt(map.getOrDefault(XlsPsiBelgium.FREQID, "0"));
         
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, RDF.TYPE, DCAT.DATASET);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         
         Date created = getDate(map, XlsPsiBelgium.CREATED);

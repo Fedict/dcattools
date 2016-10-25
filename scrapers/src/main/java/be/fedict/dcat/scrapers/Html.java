@@ -29,7 +29,6 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.File;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;

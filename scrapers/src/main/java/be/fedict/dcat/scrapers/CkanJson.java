@@ -27,7 +27,6 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Page;
-import be.fedict.dcat.vocab.DCAT;
 import be.fedict.dcat.vocab.MDR_LANG;
 import be.fedict.dcat.vocab.VCARD;
 
@@ -45,6 +44,7 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -304,8 +304,8 @@ public abstract class CkanJson extends Ckan {
             IRI dist = store.getURI(makeDistURL(id).toString());
             logger.debug("Generating distribution {}", dist.toString());
                     
-            store.add(dataset, DCAT.DISTRIBUTION, dist);
-            store.add(dist, RDF.TYPE, DCAT.A_DISTRIBUTION);
+            store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+            store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
         
             parseString(store, dist, obj, CkanJson.ID, DCTERMS.IDENTIFIER, null);
             parseString(store, dist, obj, CkanJson.NAME, DCTERMS.TITLE, lang);
@@ -384,7 +384,7 @@ public abstract class CkanJson extends Ckan {
         IRI dataset = store.getURI(makeDatasetURL(ckanid).toString());
         logger.info("Generating dataset {}", dataset.toString());
         
-        store.add(dataset, RDF.TYPE, DCAT.A_DATASET);
+        store.add(dataset, RDF.TYPE, DCAT.DATASET);
         store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         
         /* Parse different sections of CKAN JSON */

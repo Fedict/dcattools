@@ -26,7 +26,6 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.DCAT;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -36,6 +35,7 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
