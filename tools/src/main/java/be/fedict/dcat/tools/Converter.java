@@ -30,6 +30,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import java.util.Optional;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -37,6 +40,9 @@ import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.WriterConfig;
+import org.eclipse.rdf4j.rio.helpers.BasicWriterSettings;
+import org.eclipse.rdf4j.rio.rdfxml.util.RDFXMLPrettyWriterFactory;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;
@@ -78,12 +84,28 @@ public class Converter {
         
         int code = 0;
         Repository repo = new SailRepository(new MemoryStore());
-	repo.initialize();
+		repo.initialize();
         
         try (RepositoryConnection con = repo.getConnection()) {
             con.add(new File(args[0]), "http://data.gov.be", fmtin.get());
-            RDFWriter writer = Rio.createWriter(fmtout.get(),
-                        new FileOutputStream(new File(args[1])));
+			// Various namespace prefixes
+            con.setNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
+			con.setNamespace(DCTERMS.PREFIX, DCTERMS.NAMESPACE);
+			con.setNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
+			con.setNamespace("vcard", "http://www.w3.org/2006/vcard/ns#");
+			con.setNamespace("locn", "http://www.w3.org/ns/locn#");
+		
+			FileOutputStream fout = new FileOutputStream(new File(args[1]));
+			
+			RDFWriter writer;
+			if (fmtout.get().equals(RDFFormat.RDFXML)) {
+				writer = new RDFXMLPrettyWriterFactory().getWriter(fout);
+			} else {
+				writer = Rio.createWriter(fmtout.get(), fout);
+			}
+		
+			logger.info("Using writer {}", writer.getClass().getCanonicalName());
+			
             con.export(writer);
         } catch (IOException ex) {
             logger.error("Error converting", ex);
