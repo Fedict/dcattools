@@ -21,11 +21,12 @@ Use -D to set logging level and save the log to a file
 ## Configuration
 
 The configuration file is a Java properties file.
+Make sure that the (sub)directories exist before running the scraper.
 
     # full class name of the scraper implementation
     be.fedict.dcat.scrapers.classname=be.fedict.dcat.scrapers.CkanWallonie
     # full path to the location of the local download cache (MapDB)
-    be.fedict.dcat.scrapers.cache=B:/datagov/data/wallonie/cache
+    be.fedict.dcat.scrapers.cache=B:/datagov/data/wallonie/cache.mdb
     # full path to the RDF backing store (SAIL)
     be.fedict.dcat.scrapers.store=B:/datagov/data/wallonie/wallonie.sail
     # full path for the result file (N-Triples)
