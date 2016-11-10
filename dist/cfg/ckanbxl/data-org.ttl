@@ -16,12 +16,12 @@
 	skos:altLabel "Bruxelles Développement urbain / Brussel Stedelijke Ontwikkeling", "{u'fr': u'Bruxelles D\xe9veloppement urbain', u'en': u'Brussels Urban Development', u'nl': u'Brussel Stedelijke Ontwikkeling'}" .
 	
 <http://data.gov.be/en/taxonomy/term/184>
-	skos:prefLabel "STIB-MIVB"@en ;
+	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0247_499_953#id> ;
 	skos:altLabel "STIB / MIVB", "{u'fr': u'STIB', u'en': u'STIB / MIVB', u'nl': u'MIVB'}" .
 	
 <http://data.gov.be/en/taxonomy/term/185>
-	skos:prefLabel "BRIC"@en ;
+	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0240_678_477#id> ;
 	skos:altLabel "CIRB -CIBG", "{u'fr': u'CIRB', u'en': u'BRIC', u'nl': u'CIBG'}" .
 
@@ -31,7 +31,7 @@
 	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale" .
 
 <http://data.gov.be/en/taxonomy/term/191>
-	skos:prefLabel "IBSA-BISA"@en ;
+	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
 	skos:altLabel "IBSA" .
 	
@@ -54,3 +54,8 @@
 	skos:prefLabel "JCDecaux"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0444_436_776#id> ;
 	skos:altLabel "JC Decaux", "{u'fr': u'JC Decaux', u'en': u'JD Decaux', u'nl': u'JC Decaux'}" .
+
+<http://data.gov.be/en/taxonomy/term/221>
+	skos:prefLabel "U Talk Freelance"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0637_731_250#id> ;
+	skos:altLabel "{u'fr': u'U Talk Freelance', u'en': u'U Talk Freelance', u'nl': u'U Talk Freelance'}" .

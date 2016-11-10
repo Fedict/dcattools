@@ -2,4 +2,5 @@
 
 <http://data.gov.be/en/taxonomy/term/211>
 	skos:prefLabel "BTC CTB" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0264_814_354#id> ;
 	skos:altLabel "btc-ctb"@en .

@@ -1,0 +1,7 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/189>
+	skos:exactMatch <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> ;
+	skos:prefLabel "Open data licentie Brussel" ;
+	skos:altLabel "http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data" .		
+

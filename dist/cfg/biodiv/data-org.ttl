@@ -2,44 +2,55 @@
 
 <http://data.gov.be/en/taxonomy/term/193>
 	skos:prefLabel "Biodiversiteit" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0865_537_829#id> ;
 	skos:altLabel "belgium-biodiversity-platform"@en .
 
 <http://data.gov.be/en/taxonomy/term/194>
 	skos:prefLabel "INBO" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_380_841#id> ;
 	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en .
 
 <http://data.gov.be/en/taxonomy/term/195>
 	skos:prefLabel "Africa Museum" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0306_562_560#id> ;
 	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
 
 <http://data.gov.be/en/taxonomy/term/196>
 	skos:prefLabel "Botanic garden Meisse" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0540_708_286#id> ;
 	skos:altLabel "botanical-garden-meise"@en .
 
 <http://data.gov.be/en/taxonomy/term/197>
 	skos:prefLabel "Natural Sciences" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0353_070_496#id> ;
 	skos:altLabel "royal-belgian-institute-of-natural-sciences"@en .
 
 <http://data.gov.be/en/taxonomy/term/199>
 	skos:prefLabel "ULB" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0407_626_464#id> ;
 	skos:altLabel "universite-libre-de-bruxelles-ulb"@en .
 
 <http://data.gov.be/en/taxonomy/term/201>
 	skos:prefLabel "ULg" ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2_182_928_085#id> ;
 	skos:altLabel "university-of-liege"@en .
 
 <http://data.gov.be/en/taxonomy/term/203>
-	skos:prefLabel "ULG" ;
+	skos:prefLabel "Marine UGent" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0248_015_142#id> ;
 	skos:altLabel "marine-biology-section-ugent"@en .
 
 <http://data.gov.be/en/taxonomy/term/204>
 	skos:prefLabel "UMons" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0259_396_509#id> ;
 	skos:altLabel "university-of-mons-hainaut"@en .
 
 <http://data.gov.be/en/taxonomy/term/205>
 	skos:prefLabel "Natuurpunt" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0409_423_736#id> ;
 	skos:altLabel "natuurpunt"@en .
 
 <http://data.gov.be/en/taxonomy/term/206>
 	skos:prefLabel "WoRMS" ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0466_279_196#id> ;
 	skos:altLabel "worms-editorial-board"@en .
