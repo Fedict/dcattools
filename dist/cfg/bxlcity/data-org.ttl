@@ -7,12 +7,12 @@
 
 <http://data.gov.be/en/taxonomy/term/73>
 	skos:prefLabel "Brussels-Capital Region"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-monuments> ;
 	skos:altLabel "Ministry of the Brussels-Capital Region/Monuments and Sites"@en, "Direction des Monuments et Sites du Ministère de la Région de Bruxelles-Capitale"@fr, "Bruxelles Propreté"@en, "Bruxelles Propreté"@fr, "Ministerie van het Brussels Hoofdstedelijk Gewest/Directie Monumenten en Landschappen"@nl, "Net Brussel"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/183>
 	skos:prefLabel "Brussels-Capital Mobility"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-mobility> ;
 	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Bruxelles Mobilité"@fr .
 
 <http://data.gov.be/en/taxonomy/term/186>

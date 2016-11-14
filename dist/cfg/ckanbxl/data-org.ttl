@@ -2,7 +2,7 @@
 
 <http://data.gov.be/en/taxonomy/term/183>
 	skos:prefLabel "Brussels-Capital Mobility"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-mobility> ;
 	skos:altLabel "Bruxelles Mobilité / Brussel Mobiliteit", "{u'fr': u'Bruxelles Mobilit\xe9', u'en': u'Mobility Brussels', u'nl': u'Brussel Mobiliteit'}" .
 
 <http://data.gov.be/en/taxonomy/term/186>
@@ -12,7 +12,7 @@
 
 <http://data.gov.be/en/taxonomy/term/187>
 	skos:prefLabel "Brussels-Capital Urban Development"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id> ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-urban> ;
 	skos:altLabel "Bruxelles Développement urbain / Brussel Stedelijke Ontwikkeling", "{u'fr': u'Bruxelles D\xe9veloppement urbain', u'en': u'Brussels Urban Development', u'nl': u'Brussel Stedelijke Ontwikkeling'}" .
 	
 <http://data.gov.be/en/taxonomy/term/184>
