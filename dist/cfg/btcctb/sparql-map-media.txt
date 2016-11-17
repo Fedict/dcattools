@@ -1,13 +1,12 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX gmd: <http://www.isotc211.org/2005/gmd#>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
-	{ 	?dataset dgov:theme ?drupal .
-		?dataset dcat:theme ?theme }
+	{ 	?dist dgov:mediaType ?drupal .
+		?dist dcterms:format ?auth }
 WHERE
-	{	?dataset gmd:theme ?label .
+	{	?dist dcat:mediaType ?label .
 		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?theme }
+		?drupal skos:exactMatch ?auth }

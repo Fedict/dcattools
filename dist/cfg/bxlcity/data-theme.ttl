@@ -22,7 +22,7 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "Cleanliness"@en, "Environment"@en, "Environnement"@fr, "Propreté"@fr, "Milieu"@nl .
+	skos:altLabel "Cleanliness"@en, "Environment"@en, "Environnement"@fr, "Propreté"@fr, "Milieu"@nl, "Netheid"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;

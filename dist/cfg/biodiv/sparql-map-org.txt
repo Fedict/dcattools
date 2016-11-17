@@ -17,4 +17,4 @@ WHERE
 		?org a foaf:Organization .
 		?org foaf:name ?label .
 		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?neworg }		}
+		?drupal skos:exactMatch ?neworg }

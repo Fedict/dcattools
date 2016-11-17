@@ -3,7 +3,7 @@
 <http://data.gov.be/en/taxonomy/term/20>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
 	skos:prefLabel "Continuously"@en ;
-	skos:altLabel "en temps réel", "temps réel", "realtime" .
+	skos:altLabel "en temps réel", "temps réel", "realtime", "één keer per uur (bij 35 na het uur)", "once an hour (at 35 past the hour)", "une fois par heure (à l'heure 30)" .
 	
 <http://data.gov.be/en/taxonomy/term/22>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
@@ -24,3 +24,8 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
 	skos:prefLabel "Annual"@en ;
 	skos:altLabel "annualy", "annually", "yearly", "jaarlijk", "jaarlijks", "annuel", "annuelle" .
+	
+<http://data.gov.be/en/taxonomy/term/192>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+	skos:prefLabel "Unknown"@en ;
+	skos:altLabel "indéterminée" .
