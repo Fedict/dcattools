@@ -34,6 +34,11 @@ import java.util.logging.Level;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+import net.sf.saxon.Configuration;
+import net.sf.saxon.s9api.Processor;
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.Serializer;
+import net.sf.saxon.s9api.Serializer.Property;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Resource;
@@ -77,11 +82,11 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */			
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
-		w.setPrefix(DCAT.PREFIX, DCAT.NAMESPACE);
-		w.setPrefix(DCTERMS.PREFIX, DCTERMS.NAMESPACE);
-		w.setPrefix(FOAF.PREFIX, FOAF.NAMESPACE);
-		w.setPrefix(RDF.PREFIX, RDF.NAMESPACE);
-		w.setPrefix(RDFS.PREFIX, RDFS.NAMESPACE);
+		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
+		w.writeNamespace(DCTERMS.PREFIX, DCTERMS.NAMESPACE);
+		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
+		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
+		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
 	}
 
 	private static void writeReference(XMLStreamWriter w, String el, Value val)
@@ -104,7 +109,10 @@ public class EDP {
 			throws XMLStreamException {
 		if (val instanceof Literal) {
 			w.writeStartElement(el);
-			w.writeAttribute("xml:lang", ((Literal) val).getLanguage().orElse(""));
+			String lang = ((Literal) val).getLanguage().orElse("");
+			if (! lang.isEmpty()) {
+				w.writeAttribute("xml:lang", lang);
+			}
 			w.writeCharacters(val.stringValue());
 			w.writeEndElement();
 		}
@@ -164,12 +172,12 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 		
-		try (RepositoryResult<Statement> res = con.getStatements(uri, null, null)) {
+	/*	try (RepositoryResult<Statement> res = con.getStatements(uri, null, null)) {
 			while (res.hasNext()) {
 				w.writeEndElement();
 			}
 		}
-
+*/
 		w.writeEndElement();
 	}
 	
@@ -200,7 +208,7 @@ public class EDP {
 	}	
 
 	/**
-	 * Write dcat datasets
+	 * Write DCAT datasets
 	 * 
 	 * @param w XML writer
 	 * @param con RDF triple store connection
@@ -219,12 +227,15 @@ public class EDP {
 	}
 	
 	/**
+	 * Write DCAT catalog to XML.
 	 * 
-	 * @param w 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
 	 */
 	private static void writeCatalog(XMLStreamWriter w, RepositoryConnection con) 
 			throws XMLStreamException {
 		w.writeStartElement("rdf:RDF");
+		writePrefixes(w);
 		w.writeStartElement("dcat:Catalog");
 		w.writeAttribute("dcterms:identifier", "http://data.gov.be/catalog#id");
 		w.writeAttribute("rdf:about", "http://data.gov.be/catalog#id");
@@ -237,17 +248,34 @@ public class EDP {
 		w.writeEndElement();
 	}
 
+	/**
+	 * Return indenting XML serializer
+	 * 
+	 * @return Saxon serializer 
+	 */
+	private static Serializer getSerializer() {
+		Configuration config = new Configuration();
+		Processor processor = new Processor(config);
+		Serializer s = processor.newSerializer();
+		s.setOutputProperty(Property.METHOD, "xml");
+		s.setOutputProperty(Property.ENCODING, "utf-8");
+		s.setOutputProperty(Property.INDENT, "yes");
+		return s;
+	}
 	
 	/**
      * Main program
      * 
      * @param args 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         logger.info("-- START --");
         if (args.length < 2) {
             logger.error("No input or output file");
-            System.exit(-1);
+    //        System.exit(-1);
+	args = new String[2];
+args[0] = "C:\\\\Data\\dcat\\all\\datagovbe.nt";
+args[1] = "C:\\\\Data\\dcat\\all\\datagovbe.rdf";	
         }
         
         Optional<RDFFormat> fmtin = Rio.getParserFormatForFileName(args[0]);
@@ -256,31 +284,28 @@ public class EDP {
             System.exit(-2);
         }
         
-		XMLOutputFactory xfac = XMLOutputFactory.newInstance();
-        
         int code = 0;
         Repository repo = new SailRepository(new MemoryStore());
 		repo.initialize();
-        
-        try (RepositoryConnection con = repo.getConnection();
-				FileOutputStream fout = new FileOutputStream(args[1])) {
+
+		Serializer s = getSerializer();		
+		s.setOutputFile(new File(args[1]));
 			
+        try (RepositoryConnection con = repo.getConnection()) {
             con.add(new File(args[0]), "http://data.gov.be", fmtin.get());
-			XMLStreamWriter w = xfac.createXMLStreamWriter(fout);
 			
+			XMLStreamWriter w = s.getXMLStreamWriter();
+
 			w.writeStartDocument();
-			writePrefixes(w);
 			writeCatalog(w, con);
 			w.writeEndDocument();
 	
 			w.close();		
-		} catch (IOException|XMLStreamException ex) {
+		} catch (IOException|XMLStreamException|SaxonApiException ex) {
             logger.error("Error converting", ex);
-            code = -1;
-        }
-		
-        repo.shutDown();
-        
-        System.exit(code);
+            System.exit(-1);
+        } finally {
+			repo.shutDown();
+		}
     }    
 }
