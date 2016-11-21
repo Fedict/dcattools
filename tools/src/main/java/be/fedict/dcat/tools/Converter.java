@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import java.util.Optional;
+
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -40,8 +41,6 @@ import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
-import org.eclipse.rdf4j.rio.WriterConfig;
-import org.eclipse.rdf4j.rio.helpers.BasicWriterSettings;
 import org.eclipse.rdf4j.rio.rdfxml.util.RDFXMLPrettyWriterFactory;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
@@ -54,9 +53,9 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class Converter {
-    private final static Logger logger = LoggerFactory.getLogger(LinkChecker.class);
+    private final static Logger logger = LoggerFactory.getLogger(Converter.class);
     
-    private final static String PROP_PREFIX = "be.fedict.dcat.tools.linkchecker";
+    private final static String PROP_PREFIX = "be.fedict.dcat.tools.converter";
 
     /**
      * Main program
