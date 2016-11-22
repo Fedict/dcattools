@@ -172,12 +172,17 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 		
-	/*	try (RepositoryResult<Statement> res = con.getStatements(uri, null, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.ACCESS_URL, null)) {
 			while (res.hasNext()) {
-				w.writeEndElement();
+				writeReference(w, "dcat:accessURL", res.next().getObject());
 			}
 		}
-*/
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.DOWNLOAD_URL, null)) {
+			while (res.hasNext()) {
+				writeReference(w, "dcat:downloadURL", res.next().getObject());
+			}
+		}
+		
 		w.writeEndElement();
 	}
 	
@@ -195,7 +200,17 @@ public class EDP {
 		w.writeAttribute("rdf:about", uri.stringValue());
 
 		writeGeneric(w, con, uri);
-		
+
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.KEYWORD, null)) {
+			while (res.hasNext()) {
+				writeLiteral(w, "dcat:keyword", res.next().getObject());
+			}
+		}
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.THEME, null)) {
+			while (res.hasNext()) {
+				writeReference(w, "dcat:theme", res.next().getObject());
+			}
+		}
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("dcat:distribution");
@@ -216,14 +231,17 @@ public class EDP {
 	 */
 	private static void writeDatasets(XMLStreamWriter w, RepositoryConnection con) 
 			throws XMLStreamException {
-
+		int nr = 0;
+		
 		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_DATASET, null)) {
 			while (res.hasNext()) {
+				nr++;
 				w.writeStartElement("dcat:dataset");
 				writeDataset(w, con, (Resource) res.next().getObject());
 				w.writeEndElement();
 			}
 		}
+		logger.info("Write {} dataset", nr);
 	}
 	
 	/**
@@ -234,12 +252,15 @@ public class EDP {
 	 */
 	private static void writeCatalog(XMLStreamWriter w, RepositoryConnection con) 
 			throws XMLStreamException {
+		String cat = "http://data.gov.be/catalog";
+		
 		w.writeStartElement("rdf:RDF");
 		writePrefixes(w);
 		w.writeStartElement("dcat:Catalog");
-		w.writeAttribute("dcterms:identifier", "http://data.gov.be/catalog#id");
-		w.writeAttribute("rdf:about", "http://data.gov.be/catalog#id");
+		w.writeAttribute("dcterms:identifier", cat);
+		w.writeAttribute("rdf:about", cat);
 	
+		writeGeneric(w, con, con.getValueFactory().createIRI(cat));
 		writeDatasets(w, con);
 		
 	//	writeOrgs(w, con);
