@@ -26,19 +26,18 @@
 package be.fedict.dcat.tools;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import java.util.Optional;
-import java.util.logging.Level;
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
 import net.sf.saxon.Configuration;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
 import net.sf.saxon.s9api.Serializer;
 import net.sf.saxon.s9api.Serializer.Property;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Resource;
@@ -56,9 +55,7 @@ import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryResult;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.rio.RDFFormat;
-import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
-import org.eclipse.rdf4j.rio.rdfxml.util.RDFXMLPrettyWriterFactory;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;
@@ -89,20 +86,13 @@ public class EDP {
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
 	}
 
-	private static void writeReference(XMLStreamWriter w, String el, Value val)
-			throws XMLStreamException {
-		if (val instanceof IRI) {
-			w.writeEmptyElement(el);
-			w.writeAttribute("rdf:resource", ((IRI) val).stringValue());
-		}
-	}
 	
 	/**
-	 * Write literal to RDF
+	 * Write literal (date, anyURI, string...) to XML file
 	 * 
-	 * @param w
-	 * @param el
-	 * @param val
+	 * @param w XML writer
+	 * @param el element name
+	 * @param val value
 	 * @throws XMLStreamException 
 	 */
 	private static void writeLiteral(XMLStreamWriter w, String el, Value val) 
@@ -116,45 +106,86 @@ public class EDP {
 			w.writeCharacters(val.stringValue());
 			w.writeEndElement();
 		}
+		if (val instanceof IRI) {
+			w.writeStartElement(el);
+			w.writeCharacters(val.stringValue());
+			w.writeEndElement();
+		}
 	}
 	
+	/**
+	 * Write multiple literals
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException 
+	 */
+	private static void writeLiterals(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri, IRI pred, String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				writeLiteral(w, el, res.next().getObject());
+			}
+		}	
+	}
+	
+	/**
+	 * Write RDF reference
+	 * 
+	 * @param w XML writer
+	 * @param el element name
+	 * @param uri ID
+	 * @throws XMLStreamException 
+	 */
+	private static void writeReference(XMLStreamWriter w, String el, Value uri)
+			throws XMLStreamException {
+		if (uri instanceof IRI) {
+			w.writeEmptyElement(el);
+			w.writeAttribute("rdf:resource", ((IRI) uri).stringValue());
+		}
+	}
+	
+	/**
+	 * Write multiple references
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException 
+	 */
+	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri, IRI pred, String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				writeReference(w, el, res.next().getObject());
+			}
+		}	
+	}
+	
+	/**
+	 * Write generic metadata
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException 
+	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 			Resource uri) throws XMLStreamException {
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.LANGUAGE, null)) {
-			while (res.hasNext()) {
-				writeReference(w, "dcterms:language", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.TITLE, null)) {
-			while (res.hasNext()) {
-				writeLiteral(w, "dcterms:title", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.SUBJECT, null)) {
-			while (res.hasNext()) {
-				writeLiteral(w, "dcterms:subject", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.ISSUED, null)) {
-			while (res.hasNext()) {
-				writeLiteral(w, "dcterms:issued", res.next().getObject());
-			}
-		}		
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.MODIFIED, null)) {
-			while (res.hasNext()) {
-				writeLiteral(w, "dcterms:modified", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.RIGHTS, null)) {
-			while (res.hasNext()) {
-				writeReference(w, "dcterms:rights", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.LICENSE, null)) {
-			while (res.hasNext()) {
-				writeReference(w, "dcterms:license", res.next().getObject());
-			}
-		}
+		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dcterms:language");
+		writeReferences(w, con, uri, DCTERMS.TITLE, "dcterms:title");
+		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dcterms:subject");
+		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dcterms:issued");
+		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dcterms:modified");
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dcterms:rights");
+		writeReferences(w, con, uri, DCTERMS.LICENSE, "dcterms:license");
+		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dcterms:spatial");
 	}
 	
 	/**
@@ -171,17 +202,10 @@ public class EDP {
 		w.writeAttribute("rdf:about", uri.stringValue());
 
 		writeGeneric(w, con, uri);
-		
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.ACCESS_URL, null)) {
-			while (res.hasNext()) {
-				writeReference(w, "dcat:accessURL", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.DOWNLOAD_URL, null)) {
-			while (res.hasNext()) {
-				writeReference(w, "dcat:downloadURL", res.next().getObject());
-			}
-		}
+	
+		// write as anyURI string
+		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
+		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:downloadURL");
 		
 		w.writeEndElement();
 	}
@@ -201,16 +225,9 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.KEYWORD, null)) {
-			while (res.hasNext()) {
-				writeLiteral(w, "dcat:keyword", res.next().getObject());
-			}
-		}
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.THEME, null)) {
-			while (res.hasNext()) {
-				writeReference(w, "dcat:theme", res.next().getObject());
-			}
-		}
+		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");	
+		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
+		
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("dcat:distribution");
