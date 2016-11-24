@@ -22,7 +22,7 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "Cleanliness"@en, "Environment"@en, "Environnement"@fr, "Propreté"@fr, "Milieu"@nl, "Netheid"@nl .
+	skos:altLabel "Cleanliness"@en, "Environment"@en, "Environnement"@fr, "Environnement"@nl, "Propreté"@fr, "Milieu"@nl, "Netheid"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
@@ -61,7 +61,7 @@
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "Mobility"@en, "Mobilité"@fr, "Mobiliteit"@nl, "Verplaatsingen"@nl, "Vervoer"@nl .
+	skos:altLabel "Mobility"@en, "Mobilité"@fr, "Mobiliteit"@nl, "Transports"@fr, "Verplaatsingen"@nl, "Vervoer"@nl .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;

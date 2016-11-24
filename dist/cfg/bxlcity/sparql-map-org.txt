@@ -11,8 +11,8 @@ INSERT
 		?org a foaf:Organization .
 		?org foaf:name ?name }
 WHERE
-	{	BIND (STR(?label) as ?str) .
-		?dataset dcterms:publisher ?label .
+	{	?dataset dcterms:publisher ?label .
 		?drupal skos:altLabel ?str .
 		?drupal skos:prefLabel ?name .
-		?drupal skos:exactMatch ?org }
+		?drupal skos:exactMatch ?org .
+		FILTER (STR(?str) = ?label) }
