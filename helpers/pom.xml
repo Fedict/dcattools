@@ -51,32 +51,32 @@
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-rio-ntriples</artifactId>
-            <version>2.1</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-query</artifactId>
-            <version>2.1</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-repository-sail</artifactId>
-            <version>2.1</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-sail-memory</artifactId>
-            <version>2.1</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model</artifactId>
-            <version>2.1</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-queryresultio-text</artifactId>
-            <version>2.1</version>
+            <version>2.1.1</version>
         </dependency>
     </dependencies>
     <version>1.8</version>
