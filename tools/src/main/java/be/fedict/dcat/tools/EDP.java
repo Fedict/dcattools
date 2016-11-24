@@ -208,8 +208,8 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dcterms:accrualPeriodicity");
 		
 		// write as anyURI string
-		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
-		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
+		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 		
 		w.writeEndElement();
 	}
