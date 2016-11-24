@@ -256,7 +256,7 @@ public abstract class CkanJson extends Ckan {
         parseString(store, uri, json, CkanJson.TITLE, DCTERMS.TITLE, lang); 
         parseString(store, uri, json, CkanJson.NOTES, DCTERMS.DESCRIPTION, lang);
         
-        parseDate(store, uri, json, CkanJson.META_CREATED, DCTERMS.CREATED);
+        parseDate(store, uri, json, CkanJson.META_CREATED, DCTERMS.ISSUED);
         parseDate(store, uri, json, CkanJson.META_MODIFIED, DCTERMS.MODIFIED);
         
         parseContact(store, uri, json, CkanJson.AUTHOR, CkanJson.AUTHOR_EML, DCAT.CONTACT_POINT);

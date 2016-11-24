@@ -144,7 +144,7 @@ public class XlsStatbelOpen extends Xls {
             
             Date created = getDate(map, XlsStatbelOpen.CREATED);
             if (created != null) {
-                store.add(dataset, DCTERMS.CREATED, created);
+                store.add(dataset, DCTERMS.ISSUED, created);
             }
             
             generateDist(store, dataset, map, id, lang);
