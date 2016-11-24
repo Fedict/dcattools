@@ -179,10 +179,11 @@ public class EDP {
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 			Resource uri) throws XMLStreamException {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dcterms:language");
-		writeReferences(w, con, uri, DCTERMS.TITLE, "dcterms:title");
-		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dcterms:subject");
+		writeLiterals(w, con, uri, DCTERMS.TITLE, "dcterms:title");
+		writeLiterals(w, con, uri, DCTERMS.SUBJECT, "dcterms:subject");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dcterms:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dcterms:modified");
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dcterms:publisher");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dcterms:rights");
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dcterms:license");
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dcterms:spatial");
@@ -203,9 +204,12 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 	
+		writeReferences(w, con, uri, DCTERMS.FORMAT, "dcterms:format");
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dcterms:accrualPeriodicity");
+		
 		// write as anyURI string
 		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
-		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:downloadURL");
+		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 		
 		w.writeEndElement();
 	}
