@@ -448,7 +448,7 @@ public class Drupal {
         Date modif = new Date();
         String m = getOne(dataset, DCTERMS.MODIFIED, "");
         if (m.isEmpty()) {
-           m = getOne(dataset, DCTERMS.CREATED, ""); 
+           m = getOne(dataset, DCTERMS.ISSUED, ""); 
         }
         if (!m.isEmpty() && (m.length() >= 10)) {
             try {
