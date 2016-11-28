@@ -8,9 +8,7 @@ INSERT
 	{ 	?dataset dgov:theme ?drupal .
 		?dataset dcat:theme ?theme }
 WHERE
-	{	?dataset a dcat:Dataset .
-		?dataset dcterms:publisher ?org .
-		?org a foaf:Organization .
-		?org skos:prefLabel ?label .
+	{	?dataset dcterms:publisher ?org .
+		?org foaf:name ?label .
 		?drupal skos:altLabel ?label .
 		?drupal skos:exactMatch ?theme }

@@ -11,7 +11,7 @@
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "FPS Economy"@en, "FPS Finances"@en, "SPF Employment"@en  .
+	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, "FPS Economy"@en, "SPF Finances"@fr, "FOD Financiën"@nl, "FPS Finances"@en, "FOD Werkgelegenheid"@nl, "SPF Emploi"@fr, "FPS Employment"@en  .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -20,7 +20,7 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "RMI"@en, "NGI"@en .
+	skos:altLabel "KMI"@nl, "IRM"@fr, "RMI"@en .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
@@ -29,40 +29,39 @@
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "FPS B&C"@en, "NGI"@en, "FPS P&O"@en, "Selor"@en .
+	skos:altLabel "FPS B&C"@en, "SPF B&CG"@fr, "FOD B&B"@nl, "IGN"@fr, "NGI"@nl, "NGI"@en, "FOD P&O"@nl, "SPF P&O"@fr, "FPS P&O"@en, "Selor"@en, "Selor"@fr, "Selor"@nl .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel "FBZ-FMP"@en .
+	skos:altLabel "FBZ-FMP"@en, "Fonds voor de beroepsziekten"@nl, "Fonds des maladies professionnelles"@fr, "KSZ"@nl, "BCSS"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
-	skos:altLabel "FPS Foreign Affairs"@en .
+	skos:altLabel "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
-	skos:altLabel "FPS Justice"@en .
+	skos:altLabel "FOD Justitie"@nl, "SPF Justice"@fr, "FPS Justice"@en .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "PPS Social Integration"@en, "CBSS"@en, "FPS Employment"@en, "NSSO"@en  .
+	skos:altLabel "PPS Social Integration"@en, "SPP Intégration Sociale"@fr, "POD Maatschappelijke Integratie"@nl, "KSZ"@nl, "BCSS"@fr, "CBSS"@en, "FPS Employment"@en, "RSZ"@nl, "ONSS"@fr, "NSSO"@en  .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:prefLabel "REGIONS, CITIES"@en ;
-	skos:altLabel "Logement"@fr, "Tourism"@en, "Town planning"@en, "Hébergement"@fr, "Tourisme"@fr, "Toerisme"@nl .
+	skos:prefLabel "REGIONS, CITIES"@en .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "FPS Mobility"@en .
+	skos:altLabel "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FPS Mobility"@en .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel "RMI"@en .
+	skos:altLabel "KMI"@nl, "IRM"@fr, "RMI"@en .
 	
