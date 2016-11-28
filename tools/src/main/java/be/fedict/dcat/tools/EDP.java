@@ -70,6 +70,8 @@ public class EDP {
     private final static Logger logger = LoggerFactory.getLogger(EDP.class);
     
     private final static String PROP_PREFIX = "be.fedict.dcat.tools.edp";
+	
+	private final static String BELGIF_PREFIX = "http://org.belgif.be";
 
 
 	/**
@@ -137,6 +139,42 @@ public class EDP {
 		}	
 	}
 	
+		
+	/**
+	 * Write RDF reference
+	 * 
+	 * @param w XML writer
+	 * @param el element name
+	 * @param val value
+	 * @throws XMLStreamException 
+	 */
+	private static void writeFormat(XMLStreamWriter w, String el, Literal val)
+			throws XMLStreamException {
+		w.writeStartElement(el);
+		w.writeEmptyElement("dcterms:IMT");
+		w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
+		w.writeEndElement();
+	}
+	
+	/**
+	 * Write multiple format
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException 
+	 */
+	private static void writeFormats(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri, IRI pred, String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				writeFormat(w, el, (Literal) res.next().getObject());
+			}
+		}	
+	}
+
 	/**
 	 * Write RDF reference
 	 * 
@@ -210,11 +248,12 @@ public class EDP {
 		writeGeneric(w, con, uri);
 	
 		writeReferences(w, con, uri, DCTERMS.FORMAT, "dcterms:format");
+		writeFormats(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dcterms:accrualPeriodicity");
 		
 		// write as anyURI string
-		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
-		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
+		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 		
 		w.writeEndElement();
 	}
@@ -237,6 +276,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");	
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dcterms:publisher");
+		writeLiterals(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage");
 		
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
@@ -282,14 +322,16 @@ public class EDP {
 	 */
 	private static void writeOrg(XMLStreamWriter w, RepositoryConnection con,
 			Resource uri) throws XMLStreamException {
-		w.writeStartElement("foaf:Organization");	
-		w.writeAttribute("rdf:about", uri.stringValue());
+		if (uri.stringValue().startsWith(BELGIF_PREFIX)) {
+			w.writeStartElement("foaf:Organization");	
+			w.writeAttribute("rdf:about", uri.stringValue());
 		
-		writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
-		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
-		writeReferences(w, con, uri, FOAF.MBOX, "foaf:mbox");
+			writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
+			writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
+			writeReferences(w, con, uri, FOAF.MBOX, "foaf:mbox");
 		
-		w.writeEndElement();
+			w.writeEndElement();
+		}
 	}
 	
 	/**
