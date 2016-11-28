@@ -13,7 +13,7 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "Afval"@nl .
+	skos:altLabel "Afval"@nl, "Honden"@nl .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -39,3 +39,8 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
 	skos:altLabel "Mobiliteit"@nl, "Parking"@nl .
+
+<http://data.gov.be/en/taxonomy/term/37>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
+	skos:altLabel "WIFI locaties"@nl .

@@ -41,21 +41,38 @@
 	skos:altLabel "Parking Brussels", "{u'fr': u'Parking Brussels', u'en': u'Parking Brussels', u'nl': u'Parking Brussels'}" .
 	
 <http://data.gov.be/en/taxonomy/term/175>
-	skos:prefLabel "Zen Car"@en ;
+	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0828_586_767#id> ;
 	skos:altLabel "ZenCar", "{u'fr': u'ZenCar', u'en': u'ZenCar', u'nl': u'ZenCar'}" .
 	
 <http://data.gov.be/en/taxonomy/term/176>
-	skos:prefLabel "Cambio"@en ;
+	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0433_457_663#id> ;
 	skos:altLabel "Cambio", "{u'fr': u'Cambio', u'en': u'Cambio', u'nl': u'Cambio'}" .
 	
 <http://data.gov.be/en/taxonomy/term/178>
-	skos:prefLabel "JCDecaux"@en ;
+	skos:prefLabel "JCDecaux"@fr, "JCDecaux"@nl, "JCDecaux"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0444_436_776#id> ;
 	skos:altLabel "JC Decaux", "{u'fr': u'JC Decaux', u'en': u'JD Decaux', u'nl': u'JC Decaux'}" .
+
+<http://data.gov.be/en/taxonomy/term/208>
+	skos:prefLabel "Brussels Jazz Marathon"@fr, "Brussels Jazz Marathon"@nl, "Brussels Jazz Marathon"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0457_783_679#id> ;
+	skos:altLabel "{u'fr': u'Brussels Jazz Marathon', u'en': u'Brussels Jazz Marathon', u'nl': u'Brussels Jazz Marathon'}" .
+
+<http://data.gov.be/en/taxonomy/term/210>
+	skos:prefLabel "Milonga"@fr, "Milonga"@nl, "Milonga"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0472_325_167#id> ;
+	skos:altLabel "{u'fr': u'milonga.be', u'en': u'milonga.be', u'nl': u'milonga.be'}" .
 
 <http://data.gov.be/en/taxonomy/term/221>
 	skos:prefLabel "U Talk Freelance"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0637_731_250#id> ;
 	skos:altLabel "{u'fr': u'U Talk Freelance', u'en': u'U Talk Freelance', u'nl': u'U Talk Freelance'}" .
+
+<http://data.gov.be/en/taxonomy/term/236>
+	skos:prefLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0455_555_451#id> ;
+	skos:altLabel "{u'fr': u'Amazone', u'en': u'Amazone', u'nl': u'Amazone'}" .
+	
+	

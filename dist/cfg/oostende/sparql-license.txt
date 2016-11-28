@@ -4,7 +4,7 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/173> .
-		?dist dcterms:rights <http://www.oostende.be/file_uploads/138630.pdf#id> .
+		?dist dcterms:license <http://www.oostende.be/file_uploads/138630.pdf#id> .
 		?dist dcterms:rights <http://www.oostende.be/file_uploads/138630.pdf> }
 WHERE
 	{	?dist a dcat:Distribution }
