@@ -103,7 +103,12 @@ public class EDP {
 			if (! lang.isEmpty()) {
 				w.writeAttribute("xml:lang", lang);
 			}
-			w.writeCharacters(val.stringValue());
+			String str = val.stringValue();
+			if (str.contains("<")) {
+				w.writeCData(str);
+			} else {
+				w.writeCharacters(str);
+			}
 			w.writeEndElement();
 		}
 		if (val instanceof IRI) {
@@ -180,7 +185,7 @@ public class EDP {
 			Resource uri) throws XMLStreamException {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dcterms:language");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dcterms:title");
-		writeLiterals(w, con, uri, DCTERMS.SUBJECT, "dcterms:subject");
+		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dcterms:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dcterms:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dcterms:modified");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dcterms:publisher");
@@ -215,7 +220,7 @@ public class EDP {
 	}
 	
 	/**
-	 * Write dcat dataset
+	 * Write DCAT dataset
 	 * 
 	 * @param w XML writer
 	 * @param con RDF triple store connection
@@ -231,6 +236,7 @@ public class EDP {
 
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");	
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dcterms:publisher");
 		
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
@@ -265,6 +271,48 @@ public class EDP {
 		logger.info("Write {} dataset", nr);
 	}
 	
+	
+	/**
+	 * Write FOAF organization
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the organization
+	 * @throws XMLStreamException 
+	 */
+	private static void writeOrg(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri) throws XMLStreamException {
+		w.writeStartElement("foaf:Organization");	
+		w.writeAttribute("rdf:about", uri.stringValue());
+		
+		writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
+		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
+		writeReferences(w, con, uri, FOAF.MBOX, "foaf:mbox");
+		
+		w.writeEndElement();
+	}
+	
+	/**
+	 * Write FOAF organizations
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @throws XMLStreamException 
+	 */
+	private static void writeOrgs(XMLStreamWriter w, RepositoryConnection con) 
+			throws XMLStreamException {
+		int nr = 0;
+		
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.ORGANIZATION)) {
+			while (res.hasNext()) {
+				nr++;
+				writeOrg(w, con, res.next().getSubject());
+			}
+		}
+		logger.info("Write {} organizations", nr);
+	}
+	
+	
 	/**
 	 * Write DCAT catalog to XML.
 	 * 
@@ -281,10 +329,12 @@ public class EDP {
 		w.writeAttribute("dcterms:identifier", cat);
 		w.writeAttribute("rdf:about", cat);
 	
-		writeGeneric(w, con, con.getValueFactory().createIRI(cat));
+		IRI uri = con.getValueFactory().createIRI(cat);
+		writeGeneric(w, con, uri);
+		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeDatasets(w, con);
 		
-	//	writeOrgs(w, con);
+		writeOrgs(w, con);
 		
 		w.writeEndElement();
 		w.writeEndElement();
@@ -340,6 +390,7 @@ args[1] = "C:\\\\Data\\dcat\\all\\datagovbe.rdf";
 
 			w.writeStartDocument();
 			writeCatalog(w, con);
+			writeOrgs(w, con);
 			w.writeEndDocument();
 	
 			w.close();		
