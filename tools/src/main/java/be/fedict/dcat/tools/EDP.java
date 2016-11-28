@@ -268,7 +268,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		logger.info("Write {} dataset", nr);
+		logger.info("Wrote {} dataset", nr);
 	}
 	
 	
@@ -309,7 +309,7 @@ public class EDP {
 				writeOrg(w, con, res.next().getSubject());
 			}
 		}
-		logger.info("Write {} organizations", nr);
+		logger.info("Wrote {} organizations", nr);
 	}
 	
 	
@@ -390,7 +390,6 @@ args[1] = "C:\\\\Data\\dcat\\all\\datagovbe.rdf";
 
 			w.writeStartDocument();
 			writeCatalog(w, con);
-			writeOrgs(w, con);
 			w.writeEndDocument();
 	
 			w.close();		
