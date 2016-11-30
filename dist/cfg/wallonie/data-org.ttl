@@ -1,96 +1,96 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/74>
-	skos:prefLabel "French community" ;
+	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0220_916_609#id> ;
 	skos:altLabel "fwb"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/104>
-	skos:prefLabel "SNCB" ;
+	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0203_430_576#id> ;
 	skos:altLabel "sncb"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/126>
-	skos:prefLabel "Ville de Namur" ;
+	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_362_739#id> ;
 	skos:altLabel "ville-de-namur"@fr .
 
 <http://data.gov.be/en/taxonomy/term/133>
-	skos:prefLabel "DGO1 Routes" ;
+	skos:prefLabel "DGO1 Routes"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_323_119#id> ;
 	skos:altLabel "wallonie-dgo1"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/134>
-	skos:prefLabel "DGO2 Mobilit�" ;
+	skos:prefLabel "DGO2 Mobilité"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_323_515#id> ;
 	skos:altLabel "wallonie-dgo2"@fr .
 
 <http://data.gov.be/en/taxonomy/term/135>
-	skos:prefLabel "DGO5 Action sociale" ;
+	skos:prefLabel "DGO5 Action sociale"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_324_406#id> ;
 	skos:altLabel "wallonie-dgo5"@fr .
 
 <http://data.gov.be/en/taxonomy/term/136>
-	skos:prefLabel "DG06 Recherche" ;
+	skos:prefLabel "DG06 Recherche"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_325_790#id> ;
 	skos:altLabel "wallonie-dgo6"@fr .
 
 <http://data.gov.be/en/taxonomy/term/137>
-	skos:prefLabel "CWAPE" ;
+	skos:prefLabel "CWAPE"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0850_260_131#id> ;
 	skos:altLabel "cwape"@fr .
 
 <http://data.gov.be/en/taxonomy/term/138>
-	skos:prefLabel "ADN" ;
+	skos:prefLabel "Agence du Numérique"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0568_575_002#id> ;
 	skos:altLabel "adn"@fr .
 
 <http://data.gov.be/en/taxonomy/term/139>
-	skos:prefLabel "Bureau Economique Namur" ;
+	skos:prefLabel "Bureau Economique Namur"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0219_802_592#id> ;
 	skos:altLabel "bep"@fr .
 
 <http://data.gov.be/en/taxonomy/term/140>
-	skos:prefLabel "Tourisme Wallonie" ;
+	skos:prefLabel "Tourisme Wallonie"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0888_366_085#id> ;
 	skos:altLabel "tourisme-asbl"@fr .	
 
 <http://data.gov.be/en/taxonomy/term/141>
-	skos:prefLabel "Sentiers" ;
+	skos:prefLabel "Sentiers"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0408_148_086#id> ;
 	skos:altLabel "sentiers"@fr .	
 	
 <http://data.gov.be/en/taxonomy/term/142>
-	skos:prefLabel "TEC" ;
+	skos:prefLabel "TEC"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0242_069_339#id> ;
 	skos:altLabel "tec"@fr .	
 	
 <http://data.gov.be/en/taxonomy/term/143>
-	skos:prefLabel "Secretariat general" ;
+	skos:prefLabel "Secrétariat général"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_322_327#id> ;
 	skos:altLabel "secretariat-general-geo-donnees"@fr .
 
 <http://data.gov.be/en/taxonomy/term/144>
-	skos:prefLabel "FOREM" ;
+	skos:prefLabel "FOREM"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0236_363_165#id> ;
 	skos:altLabel "le-forem"@fr .
 
 <http://data.gov.be/en/taxonomy/term/146>
-	skos:prefLabel "Pro Velo" ;
+	skos:prefLabel "Pro Velo"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0458_487_524#id> ;
 	skos:altLabel "pro-velo"@fr .	
 	
 <http://data.gov.be/en/taxonomy/term/147>
-	skos:prefLabel "IRM" ;
+	skos:prefLabel "IRM"@fr ;
 	skos:altLabel "meteo-nasa"@fr .	
 
 <http://data.gov.be/en/taxonomy/term/182>
-	skos:prefLabel "IWEPS" ;
+	skos:prefLabel "IWEPS"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0866_518_618#id> ;
 	skos:altLabel "iweps"@fr .	
 
 <http://data.gov.be/en/taxonomy>
-	skos:prefLabel "Statbel" ;
+	skos:prefLabel "FOD Economie"@nl, "FPS Economy"@en, "SPF Economie"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0314_595_348#id> ;
 	skos:altlabel "ins"@fr .
 	

@@ -2,4 +2,5 @@
 
 <http://data.gov.be/en/taxonomy/term/62>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
+	skos:prefLabel "XLSX" ;
 	skos:altLabel "XLSX", "xlsx", "xslx" .

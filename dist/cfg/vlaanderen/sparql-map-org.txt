@@ -11,10 +11,11 @@ INSERT
 	{ 	?dataset dcterms:publisher ?neworg .
 		?neworg a foaf:Organization .
 		?neworg dgov:org ?drupal .
-		?neworg foaf:name ?label }
+		?neworg foaf:name ?name }
 WHERE
 	{	?dataset dcterms:publisher ?org .
 		?org a foaf:Organization .
 		?org foaf:name ?label .
 		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?neworg }
+		?drupal skos:exactMatch ?neworg .
+		?drupal skos:prefLabel ?name }

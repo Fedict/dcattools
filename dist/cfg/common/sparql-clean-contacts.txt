@@ -1,0 +1,13 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{ 	?dataset dcat:contactPoint ?org.
+		?org a vcard:Organization .
+		?org vcard:fn ?name }
+WHERE 
+	{	?dataset dcat:contactPoint ?org .
+		?org a vcard:Organization .
+		?org vcard:fn ?name .
+		FILTER NOT EXISTS { ?org vcard:hasEmail ?mail }
+	}

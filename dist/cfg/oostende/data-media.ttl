@@ -2,12 +2,15 @@
 
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+	skos:prefLabel "CSV" ;
 	skos:altLabel "CSV", "csv" .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
+	skos:prefLabel "JSON" ;
 	skos:altLabel "JSON", "json" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
+	skos:prefLabel "XML" ;
 	skos:altLabel "XML", "xml" .

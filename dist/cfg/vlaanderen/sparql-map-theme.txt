@@ -7,7 +7,6 @@ INSERT
 	{ 	?dataset dgov:theme ?drupal .
 		?dataset dcat:theme ?theme }
 WHERE
-	{
-		?dataset dcat:keyword ?label .
+	{	?dataset dcat:keyword ?label .
 		?drupal skos:altLabel ?label .
         ?drupal skos:exactMatch ?theme }

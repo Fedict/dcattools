@@ -2,50 +2,62 @@
 
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+	skos:prefLabel "CSV" ;
 	skos:altLabel "CSV", "csv" .
 
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOC> ;
+	skos:prefLabel "DOC" ;
 	skos:altLabel "doc" .
 
 <http://data.gov.be/en/taxonomy/term/149>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOCX> ;
+	skos:prefLabel "DOCX" ;
 	skos:altLabel "docx" .
 	
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
+	skos:prefLabel "JSON" ;
 	skos:altLabel "JSON", "jsonp", "json" .
 
 <http://data.gov.be/en/taxonomy/term/69>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
+	skos:prefLabel "HTML" ;
 	skos:altLabel "HTML", "html", "HTM", "HTML" .
 	
 <http://data.gov.be/en/taxonomy/term/3>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/KML> ;
+	skos:prefLabel "KML" ;
 	skos:altLabel "KML", "kml" .
 
 <http://data.gov.be/en/taxonomy/term/7>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
+	skos:prefLabel "ODS" ;
 	skos:altLabel "ODS", "ods" .
 	
 <http://data.gov.be/en/taxonomy/term/65>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;
+	skos:prefLabel "PDF" ;
 	skos:altLabel "PDF", "pdf" .
 	
 <http://data.gov.be/en/taxonomy/term/10>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF> ;
+	skos:prefLabel "TTL" ;
 	skos:altLabel "TTL", "ttl" .
 	
 <http://data.gov.be/en/taxonomy/term/11>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RSS> ;
+	skos:prefLabel "RSS" ;
 	skos:altLabel "RSS", "rss" .	
 	
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
+	skos:prefLabel "SHP" ;
 	skos:altLabel "SHP", "shp" .
 
 <http://data.gov.be/en/taxonomy/term/5>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
+	skos:prefLabel "TXT" ;
 	skos:altLabel "TXT", "txt" .
 	
 <http://data.gov.be/en/taxonomy/term/63>
@@ -62,16 +74,21 @@
 	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLS> ;
+	skos:prefLabel "XLS" ;
 	skos:altLabel "XLS", "xls" .
 	
 <http://data.gov.be/en/taxonomy/term/62>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
+	skos:prefLabel "XLSX" ;
 	skos:altLabel "XLSX", "xlsx", "xslx" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
+	skos:prefLabel "XML" ;
 	skos:altLabel "XML", "xml" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ZIP> ;
+	skos:prefLabel "ZIP" ;
 	skos:altLabel "ZIP", "zip" .
+	

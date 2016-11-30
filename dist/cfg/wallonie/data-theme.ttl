@@ -3,7 +3,7 @@
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
-	skos:altLabel  "arbre"@fr, "paysage"@fr .
+	skos:altLabel  "arbre"@fr, "paysage"@fr, "ruralité"@fr .
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -13,17 +13,17 @@
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "économique"@fr, "travail"@fr, "e-business"@fr, "UDP"@fr, "entreprises"@fr, "e-commerce"@fr, "emploi"@fr, "tourisme"@fr, "TPE"@fr, "PME"@fr, "TIC"@fr, "rentic"@fr, "Bspace"@fr .
+	skos:altLabel "économique"@fr, "travail"@fr, "e-business"@fr, "UDP"@fr, "entreprises"@fr, "e-commerce"@fr, "e-business"@fr, "emploi"@fr, "tourisme"@fr, "TPE"@fr, "PME"@fr, "TIC"@fr, "rentic"@fr, "Bspace"@fr, "logement"@fr, "production"@fr .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "EDUCATION"@en ;
-	skos:altLabel "enseignement"@fr, "école"@fr, "éducation"@fr, "ecoles"@fr .
+	skos:altLabel "enseignement"@fr, "école"@fr, "éducation"@fr, "étude"@fr, "ecoles"@fr .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "vert"@fr, "météo"@fr, "meteo"@fr, "PICC"@fr, "natura 2000"@fr .
+	skos:altLabel "arbre"@fr, "vert"@fr, "météo"@fr, "meteo"@fr, "PICC"@fr, "natura 2000"@fr, "environnement"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
@@ -33,12 +33,12 @@
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "communes"@fr, "PICC"@fr, "Commune"@fr, "commune"@fr, "carte"@fr, "infrastructure"@fr, "FWB"@fr, "organisme"@fr .
+	skos:altLabel "communes"@fr, "PICC"@fr, "Commune"@fr, "commune"@fr, "carte"@fr, "infrastructure"@fr, "FWB"@fr, "organisme"@fr, "arrondissements"@fr .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel  "soins"@fr, "santé"@fr, "PMR"@fr .
+	skos:altLabel "soins"@fr, "santé"@fr, "PMR"@fr .
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
@@ -56,15 +56,15 @@
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
 	skos:prefLabel "REGIONS, CITIES"@en ;
-	skos:altLabel  "communes"@fr, "Commune"@fr, "commune"@fr, "RAvel"@fr, "ravel"@fr, "tourisme"@fr .
+	skos:altLabel  "communes"@fr, "Commune"@fr, "commune"@fr, "RAvel"@fr, "ravel"@fr, "tourisme"@fr, "namur"@fr, "logement"@fr, "provinces"@fr .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel  "Voirie"@fr, "Rue"@fr, "parking"@fr, "rue"@fr, "cycliste"@fr, "routes"@fr, "tec"@fr, "transport en commun"@fr, "trafic"@fr, "Routes"@fr, "stationnement"@fr, "RAvel"@fr, "sentiers"@fr, "vélo"@fr, "SNCB"@fr, "circulation"@fr, "ravel"@fr, "mobilité"@fr .
+	skos:altLabel  "Voirie"@fr, "Rue"@fr, "parking"@fr, "rue"@fr, "cycliste"@fr, "routes"@fr, "tec"@fr, "transport en commun"@fr, "trafic"@fr, "Routes"@fr, "stationnement"@fr, "RAvel"@fr, "sentiers"@fr, "vélo"@fr, "SNCB"@fr, "circulation"@fr, "ravel"@fr, "mobilité"@fr, "rues"@fr, "TEC"@fr, "Voiries"@fr .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel  "TIC"@fr, "ordinateurs"@fr, "internet"@fr .
+	skos:altLabel  "TIC"@fr, "ordinateurs"@fr, "internet"@fr, "GSM"@fr .
 	

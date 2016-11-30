@@ -2,4 +2,5 @@
 
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
+	skos:prefLabel "xml" ;
 	skos:altLabel "iati-xml" .

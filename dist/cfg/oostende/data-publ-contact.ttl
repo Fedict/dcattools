@@ -5,7 +5,7 @@
 <http://org.belgif.be/cbe/org/0207_436_775#id>
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/129> ;
-	foaf:name "Ostend"@en, "Oostende"@nl, "Ostende"@fr ;
+	foaf:name "City of Ostend"@en, "Stad Oostende"@nl, "Ville d'Ostende"@fr ;
 	foaf:homepage <http://www.oostende.be> .
 	
 <http://data.gov.be/org/oostende/contact>
