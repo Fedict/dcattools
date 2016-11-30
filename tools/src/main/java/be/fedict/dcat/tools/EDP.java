@@ -448,10 +448,7 @@ public class EDP {
         logger.info("-- START --");
         if (args.length < 2) {
             logger.error("No input or output file");
-    //        System.exit(-1);
-		args = new String[2];
-args[0] = "C:\\\\Datagov\\data\\all\\datagovbe.nt";
-args[1] = "C:\\\\Datagov\\data\\all\\datagovbe_edp.xml";	
+            System.exit(-1);
         }
         
         Optional<RDFFormat> fmtin = Rio.getParserFormatForFileName(args[0]);
