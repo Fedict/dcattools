@@ -73,7 +73,7 @@ public class EDP {
 	
 	private final static String BELGIF_PREFIX = "http://org.belgif.be";
 
-
+	
 	/**
 	 * Write XML namespace prefixes
 	 * 
@@ -86,6 +86,7 @@ public class EDP {
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
+		w.writeNamespace(VCARD.PREFIX, VCARD.NAMESPACE);
 	}
 
 	
@@ -141,7 +142,7 @@ public class EDP {
 	
 		
 	/**
-	 * Write RDF reference
+	 * Write file format of a dcat:Distribution
 	 * 
 	 * @param w XML writer
 	 * @param el element name
@@ -171,6 +172,44 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
 				writeFormat(w, el, (Literal) res.next().getObject());
+			}
+		}	
+	}
+
+	/**
+	 * Write contact point of a dcat:Dataset
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri 
+	 * @param el element name
+	 * @throws XMLStreamException 
+	 */
+	private static void writeContact(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri, String el) throws XMLStreamException {
+		w.writeStartElement(el);
+		w.writeStartElement("vcard:Organization");
+		writeLiterals(w, con, uri, VCARD.FN, "vcard:fn");
+		writeReferences(w, con, uri, VCARD.MAIL, "vcard:hasEmail");
+		w.writeEndElement();
+		w.writeEndElement();
+	}
+	
+	/**
+	 * Write multiple contact points of a dcat:Dataset
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException 
+	 */
+	private static void writeContacts(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri, IRI pred, String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				writeContact(w, con, (Resource) res.next().getObject(), el);
 			}
 		}	
 	}
@@ -275,7 +314,6 @@ public class EDP {
 
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");	
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
-		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dcterms:publisher");
 		writeLiterals(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage");
 		
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
@@ -285,6 +323,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
+		writeContacts(w, con, uri, DCAT.CONTACT_POINT, "dcat:contactPoint");
 		
 		w.writeEndElement();
 	}	
@@ -407,9 +446,9 @@ public class EDP {
         if (args.length < 2) {
             logger.error("No input or output file");
     //        System.exit(-1);
-	args = new String[2];
-args[0] = "C:\\\\Data\\dcat\\all\\datagovbe.nt";
-args[1] = "C:\\\\Data\\dcat\\all\\datagovbe.rdf";	
+		args = new String[2];
+args[0] = "C:\\\\Datagov\\data\\all\\datagovbe.nt";
+args[1] = "C:\\\\Datagov\\data\\all\\datagovbe_edp.xml";	
         }
         
         Optional<RDFFormat> fmtin = Rio.getParserFormatForFileName(args[0]);
