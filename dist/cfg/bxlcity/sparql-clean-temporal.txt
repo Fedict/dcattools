@@ -1,0 +1,6 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:temporal ?o }
+WHERE
+	{ 	?s dcterms:temporal ?o }

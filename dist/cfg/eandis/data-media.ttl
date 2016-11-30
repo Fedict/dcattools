@@ -52,7 +52,7 @@
 
 <http://data.gov.be/en/taxonomy/term/5>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
-	skos:prefLabel "TXT ;
+	skos:prefLabel "TXT" ;
 	skos:altLabel "TXT", "txt" .
 	
 <http://data.gov.be/en/taxonomy/term/63>

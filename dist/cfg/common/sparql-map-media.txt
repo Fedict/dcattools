@@ -3,6 +3,8 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+DELETE 
+	{	?dist dcat:mediaType ?label }
 INSERT 
 	{ 	?dist dgov:mediaType ?drupal .
 		?dist dcat:mediaType ?name .
@@ -11,4 +13,4 @@ WHERE
 	{	?dist dcat:mediaType ?label .
 		?drupal skos:altLabel ?label .
 		?drupal skos:prefLabel ?name .
-		?drupal skos:exactMatch ?auth }
+		OPTIONAL { ?drupal skos:exactMatch ?auth } }
