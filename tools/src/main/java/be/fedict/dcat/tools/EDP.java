@@ -72,6 +72,7 @@ public class EDP {
     private final static String PROP_PREFIX = "be.fedict.dcat.tools.edp";
 	
 	private final static String BELGIF_PREFIX = "http://org.belgif.be";
+	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	
 	/**
@@ -82,7 +83,7 @@ public class EDP {
 	 */			
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
-		w.writeNamespace(DCTERMS.PREFIX, DCTERMS.NAMESPACE);
+		w.writeNamespace("dct", DCTERMS.NAMESPACE);
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
@@ -116,6 +117,7 @@ public class EDP {
 		}
 		if (val instanceof IRI) {
 			w.writeStartElement(el);
+			w.writeAttribute("rdf:datatype", ANYURI);
 			w.writeCharacters(val.stringValue());
 			w.writeEndElement();
 		}
@@ -152,7 +154,7 @@ public class EDP {
 	private static void writeFormat(XMLStreamWriter w, String el, Literal val)
 			throws XMLStreamException {
 		w.writeStartElement(el);
-		w.writeEmptyElement("dcterms:IMT");
+		w.writeEmptyElement("dct:IMT");
 		w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
 		w.writeEndElement();
 	}
@@ -260,15 +262,16 @@ public class EDP {
 	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 			Resource uri) throws XMLStreamException {
-		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dcterms:language");
-		writeLiterals(w, con, uri, DCTERMS.TITLE, "dcterms:title");
-		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dcterms:description");
-		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dcterms:issued");
-		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dcterms:modified");
-		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dcterms:publisher");
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dcterms:rights");
-		writeReferences(w, con, uri, DCTERMS.LICENSE, "dcterms:license");
-		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dcterms:spatial");
+		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
+		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
+		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
+		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
+		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
+		writeLiterals(w, con, uri, DCTERMS.TEMPORAL, "dct:temporal");
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
+		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
+		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
 	}
 	
 	/**
@@ -286,9 +289,9 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 	
-		writeReferences(w, con, uri, DCTERMS.FORMAT, "dcterms:format");
+		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeFormats(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dcterms:accrualPeriodicity");
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
 		
 		// write as anyURI string
 		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
@@ -407,7 +410,7 @@ public class EDP {
 		w.writeStartElement("rdf:RDF");
 		writePrefixes(w);
 		w.writeStartElement("dcat:Catalog");
-		w.writeAttribute("dcterms:identifier", cat);
+		w.writeAttribute("dct:identifier", cat);
 		w.writeAttribute("rdf:about", cat);
 	
 		IRI uri = con.getValueFactory().createIRI(cat);
