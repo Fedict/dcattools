@@ -103,8 +103,8 @@ public class Main {
      * @param d Drupal instance 
      */
     private static void setProxy(Drupal d) {
-        String proxy = prop.getProperty(Drupal.PROP_PREFIX + ".proxy.host", "");
-        String port = prop.getProperty(Drupal.PROP_PREFIX + ".proxy.port", "");
+        String proxy = System.getProperty("http.proxyHost", "");
+        String port = System.getProperty("http.proxyPort", "");
         if (!proxy.isEmpty()) {
             d.setProxy(proxy, Integer.parseInt(port));
         }
