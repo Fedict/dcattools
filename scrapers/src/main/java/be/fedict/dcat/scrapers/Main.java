@@ -66,9 +66,9 @@ public class Main {
      * @param s Scraper instance.
      */
     private static void setProxy(Scraper s) {
-        String proxy = prop.getProperty(Scraper.PROP_PREFIX + ".proxy.host", "");
-        String port = prop.getProperty(Scraper.PROP_PREFIX + ".proxy.port", "");
-        if (!proxy.isEmpty()) {
+		String proxy = System.getProperty("http.proxyHost", "");
+        String port = System.getProperty("http.proxyPort", "");
+		if (!proxy.isEmpty()) {
             s.setProxy(proxy, Integer.parseInt(port));
         }
     }
