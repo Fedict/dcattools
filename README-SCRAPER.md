@@ -38,9 +38,9 @@ Make sure that the (sub)directories exist before running the scraper.
     # comma-separated list of the languages on the site/portal (nl fr de en)
     be.fedict.dcat.scrapers.languages=fr
 
-    # optional proxy host and port
-    #be.fedict.dcat.scrapers.proxy.host=your.proxy.test
-    #be.fedict.dcat.scrapers.proxy.port=888
+## Proxy
+
+Use the JVM system properties -Dhttp.proxyHost=proxy.host.be -Dhttp.proxyPort=8080
 
 ## Delay
 
