@@ -35,12 +35,11 @@ The configuration file is a Java properties file.
     # Drupal user password
     be.fedict.datagovbe7.pass=secret_password
 
-    # Proxy settings, comment out if no proxy is required
-    #be.fedict.datagovbe7.proxy.host=your.proxy
-    #be.fedict.datagovbe7.proxy.port=8080
-
     # Local N-Triples DCAT file to be used for updating the site
     be.fedict.datagovbe7.rdfin=B:/datagov/data/statbelpubs/enhanced.nt
     # Temporarily local RDF store that will be used to load the DCAT file 
     be.fedict.datagovbe7.store=B:/datagov/data/statbelpubs/drupal.sail
-    
+ 
+## Proxy
+
+Use the JVM system properties -Dhttp.proxyHost=proxy.host.be -Dhttp.proxyPort=8080 
