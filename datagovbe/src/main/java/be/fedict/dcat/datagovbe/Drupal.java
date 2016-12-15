@@ -255,7 +255,7 @@ public class Drupal {
      */
     private static JsonArrayBuilder arrayTermsJson(
             Map<IRI, ListMultimap<String, String>> map, IRI property) {
-        return arrayTermsJson(getMany(map, property, ""));
+        return arrayTermsJson(Storage.getMany(map, property, ""));
     }
      
     /**
@@ -267,7 +267,7 @@ public class Drupal {
      */
     private static boolean hasLang(Map<IRI, ListMultimap<String, String>> map, 
                                                                 String lang) {
-        List<String> datalangs = getMany(map, DCTERMS.LANGUAGE, "");
+        List<String> datalangs = Storage.getMany(map, DCTERMS.LANGUAGE, "");
 
         // If there is no language info, assume info is language-neutral
         if (datalangs.isEmpty()) {
@@ -281,51 +281,6 @@ public class Drupal {
         }
         return false;
     }
-    
-    /**
-     * Get multiple values from map structure.
-     * 
-     * @param map
-     * @param prop
-     * @param lang
-     * @return 
-     */
-    private static List<String> getMany(Map<IRI, ListMultimap<String, String>> map, 
-                                                        IRI prop, String lang) {
-        List<String> res = new ArrayList<>();
-        
-        ListMultimap<String, String> multi = map.get(prop);
-        if (multi != null && !multi.isEmpty()) {
-            List<String> list = multi.get(lang);
-            if (list != null && !list.isEmpty()) {
-                res = list;
-            }
-        }
-        return res;
-    }
-    
-    /**
-     * Get one value from map structure.
-     * 
-     * @param map
-     * @param prop
-     * @param lang
-     * @return 
-     */
-    private static String getOne(Map<IRI, ListMultimap<String, String>> map, 
-                                                    IRI prop, String lang) {
-        String res = "";
-        
-        ListMultimap<String, String> multi = map.get(prop);
-        if (multi != null && !multi.isEmpty()) {
-            List<String> list = multi.get(lang);
-            if (list != null && !list.isEmpty()) {
-                res = list.get(0);
-            }
-        }
-        return res;
-    }
-    
     
     /**
      * Check if dataset with ID already exists on drupal site.
@@ -411,7 +366,7 @@ public class Drupal {
         String email = "";
         Map<IRI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-        String contact = getOne(map, VCARD.HAS_EMAIL, "");
+        String contact = Storage.getOne(map, VCARD.HAS_EMAIL, "");
         if (contact.startsWith("mailto:")) {
             email = contact.substring(7);
         }
@@ -430,10 +385,10 @@ public class Drupal {
         // Get DCAT contactpoints
         Map<IRI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-        String name = getOne(map, VCARD.HAS_FN, lang);
+        String name = Storage.getOne(map, VCARD.HAS_FN, lang);
         if (name.isEmpty()) {
             // check undefined language
-            name = getOne(map, VCARD.HAS_FN, "");
+            name = Storage.getOne(map, VCARD.HAS_FN, "");
         }
         return name;
     }
@@ -446,9 +401,9 @@ public class Drupal {
      */
     private Date getModif(Map<IRI, ListMultimap<String, String>> dataset) {
         Date modif = new Date();
-        String m = getOne(dataset, DCTERMS.MODIFIED, "");
+        String m = Storage.getOne(dataset, DCTERMS.MODIFIED, "");
         if (m.isEmpty()) {
-           m = getOne(dataset, DCTERMS.ISSUED, ""); 
+           m = Storage.getOne(dataset, DCTERMS.ISSUED, ""); 
         }
         if (!m.isEmpty() && (m.length() >= 10)) {
             try {
@@ -470,7 +425,7 @@ public class Drupal {
     private List<String> getDatasetMails(Map<IRI, ListMultimap<String, String>> dataset) 
                                                     throws RepositoryException {
         ArrayList<String> arr = new ArrayList<>();
-        List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
+        List<String> orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
         for(String org : orgs) {
             String email = getOrgEmail(org);
             if (!email.isEmpty() && !arr.contains(email)) {
@@ -491,7 +446,7 @@ public class Drupal {
     private List<String> getDatasetOrgs(Map<IRI, ListMultimap<String, String>> dataset,
                                     String lang) throws RepositoryException {
         ArrayList<String> arr = new ArrayList<>();
-        List<String> orgs = getMany(dataset, DCAT.CONTACT_POINT, "");
+        List<String> orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
         for(String org : orgs) {
             String name = getOrgName(org, lang);
             if (!name.isEmpty() && !arr.contains(name)) {
@@ -513,7 +468,7 @@ public class Drupal {
                                         String lang) throws RepositoryException {
         StringBuilder b = new StringBuilder();
         
-        List<String> words = getMany(dataset, DCAT.KEYWORD, lang);
+        List<String> words = Storage.getMany(dataset, DCAT.KEYWORD, lang);
         for(String word : words) {
             if (!word.isEmpty()) {
                 b.append(word.trim()).append(", ");
@@ -535,7 +490,7 @@ public class Drupal {
                                                 throws RepositoryException {
         Map<IRI, ListMultimap<String, String>> m = new HashMap<>();
                 
-        String publ = getOne(dataset, DCTERMS.PUBLISHER, "");
+        String publ = Storage.getOne(dataset, DCTERMS.PUBLISHER, "");
         if (! publ.isEmpty()) {
             m = store.queryProperties(store.getURI(publ));
         }
@@ -553,11 +508,11 @@ public class Drupal {
     private void addDataset(JsonObjectBuilder builder, 
             Map<IRI, ListMultimap<String, String>> dataset, String lang) 
                                                     throws RepositoryException {
-        String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
-        String title = stripTags(getOne(dataset, DCTERMS.TITLE, lang));
+        String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
+        String title = stripTags(Storage.getOne(dataset, DCTERMS.TITLE, lang));
 
         // Just copy the title if description is empty
-        String desc = getOne(dataset, DCTERMS.DESCRIPTION, lang);
+        String desc = Storage.getOne(dataset, DCTERMS.DESCRIPTION, lang);
         desc = (desc.isEmpty()) ? title : stripTags(desc);
         
         // Max size for Drupal title
@@ -597,7 +552,7 @@ public class Drupal {
                 .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
         
-        String fromtill = getOne(dataset, DCTERMS.TEMPORAL, "");
+        String fromtill = Storage.getOne(dataset, DCTERMS.TEMPORAL, "");
         if (fromtill.isEmpty()) {
             builder.addNull(Drupal.FLD_TIME);
         } else {
@@ -615,7 +570,7 @@ public class Drupal {
     private static String getLink(Map<IRI, ListMultimap<String, String>> dist, IRI property) {
         String link = "";
         
-        String l = getOne(dist, property, "");
+        String l = Storage.getOne(dist, property, "");
         if (! l.isEmpty()) {
             link = l.replaceAll(" ", "%20");
         }
@@ -649,7 +604,7 @@ public class Drupal {
                 accesses.add(getLink(dist, DCAT.ACCESS_URL));
                 downloads.add(getLink(dist, DCAT.DOWNLOAD_URL));
                 rights.add(getLink(dist, DCTERMS.RIGHTS));
-                types.add(getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
+                types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
 
                 builder.add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
             }
@@ -702,11 +657,11 @@ public class Drupal {
             addDataset(builder, dataset, lang);
 
             // Get DCAT distributions
-            List<String> dists = getMany(dataset, DCAT.HAS_DISTRIBUTION, "");
+            List<String> dists = Storage.getMany(dataset, DCAT.HAS_DISTRIBUTION, "");
             addDists(builder, dists, lang);
    
             // Add new or update existing dataset ?
-            String id = getOne(dataset, DCTERMS.IDENTIFIER, "");
+            String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
             String node = checkExistsTrans(builder, id, lang);
     
             // Build the JSON array

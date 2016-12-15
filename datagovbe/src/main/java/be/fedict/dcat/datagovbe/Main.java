@@ -55,7 +55,7 @@ public class Main {
     private final static Properties prop = new Properties();
     private static Storage store = null;
     
-   /**
+	/**
      * Exit cleanly.
      * 
      * @param code return code 

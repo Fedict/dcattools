@@ -156,6 +156,52 @@ public class Storage {
         return conn.hasStatement(subj, pred, null, false);
     }
 
+	
+    /**
+     * Get multiple values from map structure.
+     * 
+     * @param map
+     * @param prop
+     * @param lang
+     * @return 
+     */
+    public static List<String> getMany(Map<IRI, ListMultimap<String, String>> map, 
+                                                        IRI prop, String lang) {
+        List<String> res = new ArrayList<>();
+        
+        ListMultimap<String, String> multi = map.get(prop);
+        if (multi != null && !multi.isEmpty()) {
+            List<String> list = multi.get(lang);
+            if (list != null && !list.isEmpty()) {
+                res = list;
+            }
+        }
+        return res;
+    }
+    
+    /**
+     * Get one value from map structure.
+     * 
+     * @param map
+     * @param prop
+     * @param lang
+     * @return 
+     */
+    public static String getOne(Map<IRI, ListMultimap<String, String>> map, 
+                                                    IRI prop, String lang) {
+        String res = "";
+        
+        ListMultimap<String, String> multi = map.get(prop);
+        if (multi != null && !multi.isEmpty()) {
+            List<String> list = multi.get(lang);
+            if (list != null && !list.isEmpty()) {
+                res = list.get(0);
+            }
+        }
+        return res;
+    }
+    
+    
     /**
      * Add to the repository
      * 

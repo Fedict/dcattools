@@ -10,6 +10,7 @@
         <module>datagovbe</module>
         <module>scrapers</module>
         <module>tools</module>
+        <module>classifier</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
