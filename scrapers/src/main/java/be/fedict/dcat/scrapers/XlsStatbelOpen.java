@@ -147,7 +147,7 @@ public class XlsStatbelOpen extends Xls {
             if (created != null) {
                 store.add(dataset, DCTERMS.ISSUED, created);
             }
-			String period = map.getOrDefault(XlsStatbelOpen.TEMPORAL, "");
+			String period = stringInt(map.getOrDefault(XlsStatbelOpen.TEMPORAL, ""));
 			if (! period.isEmpty()) {
                 store.add(dataset, DCTERMS.TEMPORAL, period);
             }
