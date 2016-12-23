@@ -62,10 +62,11 @@ public class XlsStatbelOpen extends Xls {
     public final static String TITLE = "dct:title";
     public final static String CREATED = "dcat:issued";
     public final static String DESC = "dct:description";
+	public final static String TEMPORAL = "dct:temporal";
     
     public final static String DOWNLOAD = "dcat:downloadurl,dct:format";
             
-    public final static String[] FMTS = { "xlsx", "txt" };
+    public final static String[] FMTS = { "xlsx", "txt", "gml", "shp" };
     
     @Override
     protected URL getId(Row row) throws MalformedURLException {
@@ -146,7 +147,10 @@ public class XlsStatbelOpen extends Xls {
             if (created != null) {
                 store.add(dataset, DCTERMS.ISSUED, created);
             }
-            
+			String period = map.getOrDefault(XlsStatbelOpen.TEMPORAL, "");
+			if (! period.isEmpty()) {
+                store.add(dataset, DCTERMS.TEMPORAL, period);
+            }
             generateDist(store, dataset, map, id, lang);
         }
     }
