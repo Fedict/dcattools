@@ -25,8 +25,15 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
+import be.fedict.dcat.helpers.Page;
+import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
+import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +46,35 @@ import org.slf4j.LoggerFactory;
 public class CkanBrussels extends CkanRDF {
     private final Logger logger = LoggerFactory.getLogger(CkanBrussels.class);
 
+	    /**
+     * Generate DCAT.
+     * 
+     * @param cache
+     * @param store RDF store
+     * @throws RepositoryException
+     * @throws MalformedURLException 
+     */
+    @Override
+    public void generateDcat(Cache cache, Storage store) 
+                            throws RepositoryException, MalformedURLException {
+        logger.info("Generate DCAT");
+        
+        /* Get the list of all datasets */
+        List<URL> urls = cache.retrieveURLList();
+        for (URL u : urls) {
+			/* Remove dummy sets used by BXL for special purposes */
+			if (u.toString().endsWith("-harvester")) {
+				logger.info("Remove dummy dataset {}", u);
+				urls.remove(u);
+			} else {
+				Map<String, Page> page = cache.retrievePage(u);
+				generateDataset(store, null, page);
+			}
+        }
+        generateCatalog(store);
+    }
+	
+	
     /**
      * Constructor
      * 
