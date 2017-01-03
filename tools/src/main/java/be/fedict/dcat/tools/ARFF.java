@@ -65,7 +65,7 @@ public class ARFF {
 	private final static Properties prop = new Properties();
 
 	private final static Pattern WHITES = Pattern.compile("\\s+");
-	private final static Pattern ALPHA = Pattern.compile("\\W+");
+	private final static Pattern NO_ALPHA = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS);
 	
 	private static Storage store = null;
 
@@ -122,7 +122,7 @@ public class ARFF {
 			return "";
 		}
 		String s = WHITES.matcher(str).replaceAll(" ");
-		s = ALPHA.matcher(s).replaceAll(" ");
+		s = NO_ALPHA.matcher(s).replaceAll(" ");
 		return s.toLowerCase();
 	}
 
@@ -140,7 +140,7 @@ public class ARFF {
 		String s = "";
 		for (String str: strs) {
 			String tmp = WHITES.matcher(str).replaceAll(" ");
-			s += ALPHA.matcher(tmp).replaceAll(" ");
+			s += NO_ALPHA.matcher(tmp).replaceAll(" ");
 		}
 		return s.toLowerCase();
 	}
@@ -165,54 +165,68 @@ public class ARFF {
 		return bools;
 	}
 	
-	
 	/**
-	 * Write ARFF header file
+	 * Not categorized
 	 * 
-	 * @param w output writer
+	 * @param themes list of themes
+	 * @return all themes set to 0
+	 */
+	private static String noThemes(String[] themes) {
+		StringBuilder w = new StringBuilder();
+		
+		for (int i = 0; i < themes.length -1; i++) {
+			w.append("0,");
+		}
+		w.append('0');
+		
+		return w.toString();
+	}
+
+	/**
+	 * Generate ARFF header data
+	 * 
 	 * @param langs languages
 	 * @param themes DCAT themes
+	 * @return String
 	 * @throws IOException 
 	 */
-	private static void writeARFFHeader(BufferedWriter w, String[] langs, String[] themes) 
-													throws IOException {
-		w.append("@relation 'DCAT datasets:")
-				.append(" -C -").append(String.valueOf(themes.length)).append("'");
-		w.newLine();
-		w.newLine();
+	private static String arffHeader(String[] langs, String[] themes) throws IOException {
+		StringBuilder w = new StringBuilder();
 		
-		w.append("@attribute id string");
-		w.newLine();
+		w.append("@relation 'DCAT datasets:")
+				.append(" -C -").append(String.valueOf(themes.length)).append("'")
+				.append(System.lineSeparator()).append(System.lineSeparator());
+		
+		w.append("@attribute id string").append(System.lineSeparator());
+		
 		for (String lang: langs) {
-			w.append("@attribute title").append(lang).append(" string");
-			w.newLine();
-			w.append("@attribute desc").append(lang).append(" string");
-			w.newLine();
-			w.append("@attribute keywords").append(lang).append(" string");
-			w.newLine();
+			w.append("@attribute title").append(lang).append(" string").append(System.lineSeparator());
+			w.append("@attribute desc").append(lang).append(" string").append(System.lineSeparator());
+			w.append("@attribute keywords").append(lang).append(" string").append(System.lineSeparator());
 		}
 		for (String theme: themes) {
-			w.append("@attribute ").append(theme).append(" {0,1}");
-			w.newLine();
+			w.append("@attribute ").append(theme).append(" {0,1}").append(System.lineSeparator());
 		}
 
-		w.newLine();
-		w.append("@data");
-		w.newLine();
-		w.newLine();
+		w.append(System.lineSeparator());
+		w.append("@data").append(System.lineSeparator());
+		w.append(System.lineSeparator());
+		
+		return w.toString();
 	}
 	
 	/**
 	 * Write data line to ARFF file
 	 * 
-	 * @param w output writer
 	 * @param langs languages
 	 * @param themes DCAT themes
 	 * @param uri IRI of the dataset
 	 * @throws IOException 
 	 */
-	private static void writeARFFLine(BufferedWriter w, String[] langs, String[] themes, IRI uri) 
+	private static String arffLine(String[] langs, String[] themes, IRI uri) 
 															throws IOException {		
+		StringBuilder w = new StringBuilder();
+		
 		Map<IRI, ListMultimap<String, String>> fields = store.queryProperties(uri);
 		
 		w.append(uri.stringValue()).append(',');
@@ -235,16 +249,24 @@ public class ARFF {
 				w.append(',');
 			}
 		}
-		w.newLine();
+		w.append(System.lineSeparator());
+		
+		return w.toString();
 	}
 
 	/**
 	 * Write ARFF file for Meka/Weka
 	 */
 	private static void writeARFF() {
-        String file = prop.getProperty(PROP_PREFIX + ".arff", "");
-		if (file.isEmpty()) {
-			logger.error("No output ARFF file defined");
+        String fDone = prop.getProperty(PROP_PREFIX + ".done", "");
+		if (fDone.isEmpty()) {
+			logger.error("No output ARFF file defined for classified datasets");
+			exit(-5);
+		}
+		
+		String fTodo = prop.getProperty(PROP_PREFIX + ".todo", "");
+		if (fTodo.isEmpty()) {
+			logger.error("No output ARFF file defined for unclassified datasets");
 			exit(-5);
 		}
 		
@@ -260,14 +282,25 @@ public class ARFF {
 			exit(-7);
 		}
 		
-		try (BufferedWriter w = Files.newBufferedWriter(Paths.get(file))) {
-			writeARFFHeader(w, langs, themes);
+		try (	BufferedWriter wDone = Files.newBufferedWriter(Paths.get(fDone));
+				BufferedWriter wTodo = Files.newBufferedWriter(Paths.get(fTodo))) {
+			
+			wDone.append(arffHeader(langs, themes));
+			wTodo.append(arffHeader(langs, themes));
 		
+			String none = noThemes(themes) + System.lineSeparator();
+
 			List<IRI> uris = store.query(DCAT.DATASET);
 			for(IRI uri: uris) {
-				writeARFFLine(w, langs, themes, uri);
+				String line = arffLine(langs, themes, uri);
+				if (line.endsWith(none)) {
+					wTodo.append(line);
+				} else {
+					wDone.append(line);
+				}
 			}
-			w.close();
+			wDone.close();
+			wTodo.close();
 		} catch (IOException ex) {
 			logger.error("Error writing to arff", ex);
 			exit(-8);
