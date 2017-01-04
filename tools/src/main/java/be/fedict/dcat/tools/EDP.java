@@ -263,7 +263,7 @@ public class EDP {
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 			Resource uri) throws XMLStreamException {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
-		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identfier");
+		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
