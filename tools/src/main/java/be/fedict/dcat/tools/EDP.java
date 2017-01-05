@@ -410,6 +410,7 @@ public class EDP {
 		
 		w.writeStartElement("rdf:RDF");
 		writePrefixes(w);
+		
 		w.writeStartElement("dcat:Catalog");
 		w.writeAttribute("dct:identifier", cat);
 		w.writeAttribute("rdf:about", cat);
@@ -419,9 +420,10 @@ public class EDP {
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeDatasets(w, con);
 		
+		w.writeEndElement();
+		
 		writeOrgs(w, con);
 		
-		w.writeEndElement();
 		w.writeEndElement();
 	}
 
