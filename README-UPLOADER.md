@@ -6,6 +6,13 @@ It is good practice to create a separate Drupal user per harvested source.
 This has to be done manually by the Drupal admin, and the user must have the
 rights to import data using the RestWS module.
 
+## Module settings and permissions
+
+Some Drupal modules need to be enabled / disabled:
+
+  * Enable `Basic Authentication`, `RestWS` and `RestWS i18n` modules
+  * Disable `Global Redirect` module
+  * Enable `Bypass content access control` for the `Dataset importer`
 
 ## Running uploader
 
@@ -42,4 +49,18 @@ The configuration file is a Java properties file.
  
 ## Proxy
 
-Use the JVM system properties -Dhttp.proxyHost=proxy.host.be -Dhttp.proxyPort=8080 
+Use the JVM system properties -Dhttp.proxyHost=proxy.host.be -Dhttp.proxyPort=8080
+
+## Update search index
+
+After (or during) the upload, the Lucene search index has to be updated in order to reflect the changes.
+This can be done by the Drupal admin (`Index all remaining content`)
+
+
+## Undo module settings and permissions
+
+For security reasons, the changes in module settings must be reverted
+
+  * Disable `Basic Authentication`, `RestWS` and `RestWS i18n` modules
+  * Enable `Global Redirect` module
+  * Disable `Bypass content access control` for the `Dataset importer`
