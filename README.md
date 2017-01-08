@@ -31,12 +31,12 @@ the Oracle JDK and Maven.
 ### Main parts
 
 * Helper classes: for storing scraped pages locally, conversion tools etc.
-* Various [scrapers](#scraper): getting metadata from various repositories
+* Various [scrapers](README-SCRAPER.md): getting metadata from various repositories
 and websites, and turning the metadata into DCAT files
-* DCAT [enhancers](#enhancer): for improving the DCAT files, 
+* DCAT [enhancers](README-ENHANCERS.md): for improving the DCAT files, 
 e.g. map site-specific themes add missing properties
 and prepare the files for updating data.gov.be
-* Data.gov.be [updater](#updater): update the data.gov.be (Drupal 7) website 
+* Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (Drupal 7) website 
 using the enhanced DCAT files
 * Some [tools](#tools): link checker
 
