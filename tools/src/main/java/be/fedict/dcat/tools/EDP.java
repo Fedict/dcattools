@@ -295,7 +295,7 @@ public class EDP {
 		
 		// write as anyURI string
 		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
-		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 		
 		w.writeEndElement();
 	}
