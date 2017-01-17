@@ -290,9 +290,8 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 	
-		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeFormats(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
+		//writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
+		writeFormats(w, con, uri, DCAT.MEDIA_TYPE, "dct:format");
 		
 		// write as anyURI string
 		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
@@ -328,7 +327,8 @@ public class EDP {
 			}
 		}
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT, "dcat:contactPoint");
-		
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
+				
 		w.writeEndElement();
 	}	
 
