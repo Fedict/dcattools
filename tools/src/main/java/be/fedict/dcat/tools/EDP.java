@@ -317,7 +317,7 @@ public class EDP {
 
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");	
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
-		writeLiterals(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage");
+		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage");
 		
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
