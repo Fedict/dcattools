@@ -179,14 +179,11 @@ public class XlsPsiBelgium extends Xls {
         
         String rights = map.getOrDefault(XlsPsiBelgium.RIGHTS + lang, "");
         String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, "");
-
-        String[] fmts = getFormats(map);
-        for(String fmt: fmts) {
-            if (!fmt.trim().equals("")) {
-                store.add(dist, DCAT.MEDIA_TYPE, fmt.trim());
-            }
+/*
+        if (!fmt.equals("")) {
+            store.add(dist, DCAT.MEDIA_TYPE, fmt.trim());
         }
-        
+  */      
         String fee = stringInt(map.get(XlsPsiBelgium.FEE));
         String reuse = stringInt(map.get(XlsPsiBelgium.REUSE));
         boolean open = reuse.equals("1") && fee.equals("0");
@@ -276,7 +273,7 @@ public class XlsPsiBelgium extends Xls {
                 store.add(dataset, DCAT.KEYWORD, word.trim(), lang);
             }
             
-            generateDist(store, dataset, map, id, lang);
+			generateDist(store, dataset, map, id, lang);
         }
         generateOrg(store, dataset, map);
     }
