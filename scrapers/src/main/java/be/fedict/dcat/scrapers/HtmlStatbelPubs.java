@@ -223,7 +223,8 @@ public class HtmlStatbelPubs extends Html {
         String href = link.attr(Attribute.HREF.toString());
         URL download = makeAbsURL(href);
         
-        String id = makeHashId(download.toString());
+		// important for EDP: does not like different datasets pointing to same distribution
+        String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
         IRI dist = store.getURI(makeDistURL(id).toString());
         logger.debug("Generating distribution {}", dist.toString());
         
