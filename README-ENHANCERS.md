@@ -55,7 +55,7 @@ Parameter:
 
 ### EscapeURI
 
-Converts whitespace in object URIs to "+20"
+Converts whitespace in object URIs to "%20"; and [ ] to "%5b" "%5d"
 
 Parameters:
 
