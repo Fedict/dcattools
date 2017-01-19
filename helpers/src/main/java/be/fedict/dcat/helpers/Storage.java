@@ -326,7 +326,8 @@ public class Storage {
                     String uri = val.stringValue();
                     // Check if URI contains a space
                     if (uri.lastIndexOf(' ') > 0) {
-                        String esc = uri.replace(" ", "%20");
+                        String esc = uri.replace(" ", "%20").replace("[", "%5b")
+															.replace("]", "%5d");
                         IRI obj = fac.createIRI(esc);
                         conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
                         conn.remove(stmt);
