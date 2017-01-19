@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>1.8</version>
+        <version>1.9</version>
     </parent>
     <artifactId>datagovbe</artifactId>
     <packaging>jar</packaging>
@@ -27,12 +27,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.22</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.22</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -70,5 +70,5 @@
     </build>
     <name>datagovbe</name>
     <description>Update tool for data.gov.be</description>
-    <version>1.8</version>
+    <version>1.9</version>
 </project>

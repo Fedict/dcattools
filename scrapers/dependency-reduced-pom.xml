@@ -3,12 +3,12 @@
   <parent>
     <artifactId>dcattools</artifactId>
     <groupId>be.fedict.dcat</groupId>
-    <version>1.8</version>
+    <version>1.9</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>scrapers</artifactId>
   <name>scrapers</name>
-  <version>1.8</version>
+  <version>1.9</version>
   <description>Various scrapers for Belgian data portals</description>
   <build>
     <plugins>

@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>1.8</version>
+        <version>1.9</version>
     </parent>
     <artifactId>scrapers</artifactId>
     <packaging>jar</packaging>
@@ -17,12 +17,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.22</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.22</version>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-rio-rdfxml</artifactId>
-            <version>2.1.1</version>
+            <version>2.1.4</version>
         </dependency>
     </dependencies>
     <properties>
@@ -84,7 +84,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>1.8</version>
+    <version>1.9</version>
     <name>scrapers</name>
     <description>Various scrapers for Belgian data portals</description>
 </project>
