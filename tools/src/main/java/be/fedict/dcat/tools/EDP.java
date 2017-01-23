@@ -43,6 +43,7 @@ import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -74,6 +75,10 @@ public class EDP {
 	private final static String BELGIF_PREFIX = "http://org.belgif.be";
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
+	private final static SimpleValueFactory F = SimpleValueFactory.getInstance();
+	private final static IRI STARTDATE = F.createIRI("http://schema.org/startDate");
+	private final static IRI ENDDATE = F.createIRI("http://schema.org/endDate");
+	
 	
 	/**
 	 * Write XML namespace prefixes
@@ -87,6 +92,7 @@ public class EDP {
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
+		w.writeNamespace("schema", "http://schema.org/");
 		w.writeNamespace(VCARD.PREFIX, VCARD.NAMESPACE);
 	}
 
@@ -134,7 +140,7 @@ public class EDP {
 	 * @throws XMLStreamException 
 	 */
 	private static void writeLiterals(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri, IRI pred, String el) throws XMLStreamException {
+			IRI uri, IRI pred, String el) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
 				writeLiteral(w, el, res.next().getObject());
@@ -142,18 +148,34 @@ public class EDP {
 		}	
 	}
 	
+	
+/**
+	 * Write temporal date info for a dcat:Dataset
+	 * 
+	 * @param w XML writer
+	 * @param lic license URI
+	 * @throws XMLStreamException 
+	 */
+	private static void writeDates(XMLStreamWriter w, RepositoryConnection con, IRI date)
+			throws XMLStreamException {
+		w.writeStartElement("dct:temporal");
+		w.writeStartElement("dct:PeriodOfTime");
+		writeLiterals(w, con, date, STARTDATE, "schema:startDate");
+		writeLiterals(w, con, date, ENDDATE, "schema:endDate");
+		w.writeEndElement();
+		w.writeEndElement();
+	}
 		
 	/**
 	 * Write file format of a dcat:Distribution
 	 * 
 	 * @param w XML writer
-	 * @param el element name
 	 * @param val value
 	 * @throws XMLStreamException 
 	 */
-	private static void writeFormat(XMLStreamWriter w, String el, Literal val)
+	private static void writeFormat(XMLStreamWriter w, Literal val)
 			throws XMLStreamException {
-		w.writeStartElement(el);
+		w.writeStartElement("");
 		w.writeEmptyElement("dct:IMT");
 		w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
 		w.writeEndElement();
@@ -166,14 +188,13 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @param uri URI of the dataset
 	 * @param pred RDF predicate
-	 * @param el element name
 	 * @throws XMLStreamException 
 	 */
 	private static void writeFormats(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri, IRI pred, String el) throws XMLStreamException {
+			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				writeFormat(w, el, (Literal) res.next().getObject());
+				writeFormat(w, (Literal) res.next().getObject());
 			}
 		}	
 	}
@@ -206,7 +227,7 @@ public class EDP {
 	 * @throws XMLStreamException 
 	 */
 	private static void writeLicenses(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri, IRI pred, String el) throws XMLStreamException {
+			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			if (res.hasNext()) {
 				IRI license = (IRI) res.next().getObject();
@@ -221,12 +242,11 @@ public class EDP {
 	 * @param w XML writer
 	 * @param con RDF triple store connection
 	 * @param uri 
-	 * @param el element name
 	 * @throws XMLStreamException 
 	 */
 	private static void writeContact(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri, String el) throws XMLStreamException {
-		w.writeStartElement(el);
+			IRI uri) throws XMLStreamException {
+		w.writeStartElement("dcat:contactPoint");
 		w.writeStartElement("vcard:Organization");
 		writeLiterals(w, con, uri, VCARD.FN, "vcard:fn");
 		writeReferences(w, con, uri, VCARD.MAIL, "vcard:hasEmail");
@@ -241,14 +261,13 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @param uri URI of the dataset
 	 * @param pred RDF predicate
-	 * @param el element name
 	 * @throws XMLStreamException 
 	 */
 	private static void writeContacts(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri, IRI pred, String el) throws XMLStreamException {
+			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				writeContact(w, con, (Resource) res.next().getObject(), el);
+				writeContact(w, con, (IRI) res.next().getObject());
 			}
 		}	
 	}
@@ -298,7 +317,7 @@ public class EDP {
 	 * @throws XMLStreamException 
 	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri) throws XMLStreamException {
+			IRI uri) throws XMLStreamException {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
@@ -320,20 +339,20 @@ public class EDP {
 	 * @throws XMLStreamException 
 	 */
 	private static void writeDist(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri) throws XMLStreamException {
+			IRI uri) throws XMLStreamException {
 		w.writeStartElement("dcat:Distribution");	
 		w.writeAttribute("rdf:about", uri.stringValue());
 
 		writeGeneric(w, con, uri);
 	
 		//writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeFormats(w, con, uri, DCAT.MEDIA_TYPE, "dct:format");
+		writeFormats(w, con, uri, DCAT.MEDIA_TYPE);
 		
 		// write as anyURI string
 		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
 		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 		
-		writeLicenses(w, con, uri, DCTERMS.LICENSE, "dct:license");
+		writeLicenses(w, con, uri, DCTERMS.LICENSE);
 		
 		w.writeEndElement();
 	}
@@ -347,7 +366,7 @@ public class EDP {
 	 * @throws XMLStreamException 
 	 */
 	private static void writeDataset(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri) throws XMLStreamException {
+			IRI uri) throws XMLStreamException {
 		w.writeStartElement("dcat:Dataset");	
 		w.writeAttribute("rdf:about", uri.stringValue());
 
@@ -360,13 +379,13 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("dcat:distribution");
-				writeDist(w, con, (Resource) res.next().getObject());
+				writeDist(w, con, (IRI) res.next().getObject());
 				w.writeEndElement();
 			}
 		}
-		writeContacts(w, con, uri, DCAT.CONTACT_POINT, "dcat:contactPoint");
+		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
-				
+		writeDates(w, con, uri);
 		w.writeEndElement();
 	}	
 
@@ -385,7 +404,7 @@ public class EDP {
 			while (res.hasNext()) {
 				nr++;
 				w.writeStartElement("dcat:dataset");
-				writeDataset(w, con, (Resource) res.next().getObject());
+				writeDataset(w, con, (IRI) res.next().getObject());
 				w.writeEndElement();
 			}
 		}
@@ -402,7 +421,7 @@ public class EDP {
 	 * @throws XMLStreamException 
 	 */
 	private static void writeOrg(XMLStreamWriter w, RepositoryConnection con,
-			Resource uri) throws XMLStreamException {
+			IRI uri) throws XMLStreamException {
 		if (uri.stringValue().startsWith(BELGIF_PREFIX)) {
 			w.writeStartElement("foaf:Organization");	
 			w.writeAttribute("rdf:about", uri.stringValue());
@@ -429,7 +448,7 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.ORGANIZATION)) {
 			while (res.hasNext()) {
 				nr++;
-				writeOrg(w, con, res.next().getSubject());
+				writeOrg(w, con, (IRI) res.next().getSubject());
 			}
 		}
 		logger.info("Wrote {} organizations", nr);
@@ -455,7 +474,7 @@ public class EDP {
 		IRI uri = con.getValueFactory().createIRI(cat);
 		writeGeneric(w, con, uri);
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
-		writeLicenses(w, con, uri, DCTERMS.LICENSE, "dct:license");
+		writeLicenses(w, con, uri, DCTERMS.LICENSE);
 		writeDatasets(w, con);
 		
 		w.writeEndElement();
