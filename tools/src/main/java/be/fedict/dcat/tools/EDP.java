@@ -179,6 +179,43 @@ public class EDP {
 	}
 
 	/**
+	 * Write license a dcat:Distribution
+	 * 
+	 * @param w XML writer
+	 * @param lic license URI
+	 * @throws XMLStreamException 
+	 */
+	private static void writeLicense(XMLStreamWriter w, RepositoryConnection con, IRI lic)
+			throws XMLStreamException {
+		w.writeStartElement("dct:license");
+		w.writeStartElement("dct:LicenseDocument");
+		writeLiterals(w, con, lic, DCTERMS.TITLE, "dct:title");
+		w.writeEndElement();
+		w.writeEndElement();
+	}
+	
+	
+	/**
+	 * Write multiple format
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException 
+	 */
+	private static void writeLicenses(XMLStreamWriter w, RepositoryConnection con,
+			Resource uri, IRI pred, String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			if (res.hasNext()) {
+				IRI license = (IRI) res.next().getObject();
+				writeLicense(w, con, license);
+			}
+		}
+	}
+	
+	/**
 	 * Write contact point of a dcat:Dataset
 	 * 
 	 * @param w XML writer
@@ -271,7 +308,6 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.TEMPORAL, "dct:temporal");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
-		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
 	}
 	
@@ -295,7 +331,9 @@ public class EDP {
 		
 		// write as anyURI string
 		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
-		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		
+		writeLicenses(w, con, uri, DCTERMS.LICENSE, "dct:license");
 		
 		w.writeEndElement();
 	}
@@ -395,9 +433,8 @@ public class EDP {
 			}
 		}
 		logger.info("Wrote {} organizations", nr);
-	}
-	
-	
+	}	
+		
 	/**
 	 * Write DCAT catalog to XML.
 	 * 
@@ -418,6 +455,7 @@ public class EDP {
 		IRI uri = con.getValueFactory().createIRI(cat);
 		writeGeneric(w, con, uri);
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
+		writeLicenses(w, con, uri, DCTERMS.LICENSE, "dct:license");
 		writeDatasets(w, con);
 		
 		w.writeEndElement();
