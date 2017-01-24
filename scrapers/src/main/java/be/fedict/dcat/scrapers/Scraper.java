@@ -276,6 +276,18 @@ public abstract class Scraper extends Fetcher {
         return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
     }
     
+	/**
+     * Make an URL for a date 
+     * 
+     * @param str date string
+     * @return URL
+     * @throws java.net.MalformedURLException 
+     */
+	public URL makeTemporalURL(String str) throws MalformedURLException {
+		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + 
+										str.replace(" ","").replace("/", "_"));
+	}
+	
     /**
      * Set property from config file and property prefix.
      * 

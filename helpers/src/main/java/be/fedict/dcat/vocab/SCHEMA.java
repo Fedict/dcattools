@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2017, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,42 +29,22 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
+
 /**
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class DATAGOVBE {
-    public static final String NAMESPACE = "http://data.gov.be#";
+public class SCHEMA {
+    public static final String NAMESPACE = "http://schema.org";
     
-    public final static String PREFIX = "datagovbe";
-  
-    public final static IRI FREQ;
-    public final static IRI LICENSE;
-    public final static IRI MEDIA_TYPE;
-    public final static IRI ORG;
-    public final static IRI SPATIAL;   
-    public final static IRI THEME;
-    public final static IRI LICENSE_CC0;
-    public final static IRI LICENSE_CCBY;
+    public final static String PREFIX = "schema";
     
-    
-    public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
-    public final static String PREFIX_URI_DATASET = "http://data.gov.be/dataset";
-	public final static String PREFIX_URI_TEMPORAL = "http://data.gov.be/temporal";
-    public final static String PREFIX_URI_DIST = "http://data.gov.be/dist";
-    public final static String PREFIX_URI_ORG = "http://data.gov.be/org";
-      
+    public final static IRI START_DATE;
+	public final static IRI END_DATE;
+	
     static {
-	ValueFactory factory = SimpleValueFactory.getInstance();
-
-        LICENSE = factory.createIRI(DATAGOVBE.NAMESPACE, "license");
-        MEDIA_TYPE = factory.createIRI(DATAGOVBE.NAMESPACE, "mediaType");
-        FREQ = factory.createIRI(DATAGOVBE.NAMESPACE, "freq");
-        ORG = factory.createIRI(DATAGOVBE.NAMESPACE, "org");
-        SPATIAL = factory.createIRI(DATAGOVBE.NAMESPACE, "spatial");
-        THEME = factory.createIRI(DATAGOVBE.NAMESPACE, "theme");
-        
-        LICENSE_CC0 = factory.createIRI("http://creativecommons.org/publicdomain/zero/1.0/");
-        LICENSE_CCBY = factory.createIRI("http://creativecommons.org/licenses/by/4.0/");
-    }    
+		ValueFactory factory = SimpleValueFactory.getInstance();
+        START_DATE = factory.createIRI(SCHEMA.NAMESPACE, "startDate");
+		END_DATE = factory.createIRI(SCHEMA.NAMESPACE, "endDate");
+    }
 }
