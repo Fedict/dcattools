@@ -1,7 +1,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/74>
-	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en ;
+	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, "Franstalige Gemeenschap"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0220_916_609#id> ;
 	skos:altLabel "fwb"@fr .
 	
@@ -89,8 +89,13 @@
 	skos:exactMatch <http://org.belgif.be/cbe/org/0866_518_618#id> ;
 	skos:altLabel "iweps"@fr .	
 
-<http://data.gov.be/en/taxonomy>
+<http://data.gov.be/en/taxonomy/term/76>
 	skos:prefLabel "FOD Economie"@nl, "FPS Economy"@en, "SPF Economie"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0314_595_348#id> ;
 	skos:altlabel "ins"@fr .
-	
+
+<http://data.gov.be/en/taxonomy/term/238>
+	skos:prefLabel "ThingsPlay"@fr, "ThingsPlay"@nl, "ThingsPlay"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0555_910_067#id> ;
+	skos:altlabel "thingsplay"@fr .
+		
