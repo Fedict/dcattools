@@ -208,28 +208,7 @@ public class HtmlStatbelPubs extends Html {
         logger.info("Done scraping");
     }
 
-	/**
-	 * Generate temporal triples
-	 * 
-	 * @param store triple store
-	 * @param dataset URI
-	 * @param str string to parse
-	 * @throws MalformedURLException
-	 */
-	public void generateTemporal(Storage store, IRI dataset, String str) 
-												throws MalformedURLException {
-		Matcher m = YEAR_PAT.matcher(str);
-        if (! m.matches()) {
-			return;
-		}
-		String date = m.group(1);
-		IRI u = store.getURI(makeTemporalURL(date).toString());
-		String[] split = date.split("-");
-        store.add(dataset, DCTERMS.TEMPORAL, u);
-		store.add(u, SCHEMA.START_DATE, split[0]);
-		store.add(u, SCHEMA.END_DATE, split[1]);
-	}
-	
+
     /**
      * Generate DCAT Distribution.
      * 
@@ -318,7 +297,7 @@ public class HtmlStatbelPubs extends Html {
                 logger.warn("No {} element", HtmlStatbelPubs.DIV_MAIN);
             }
             
-			generateTemporal(store, dataset, title);
+			generateTemporal(store, dataset, title, YEAR_PAT, "-");
 			
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);

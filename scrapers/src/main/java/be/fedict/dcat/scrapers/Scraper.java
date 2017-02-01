@@ -30,6 +30,7 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
+import be.fedict.dcat.vocab.SCHEMA;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
@@ -315,6 +316,30 @@ public abstract class Scraper extends Fetcher {
         return value;
     }
     
+	/**
+	 * Generate temporal triples
+	 * 
+	 * @param store triple store
+	 * @param dataset URI
+	 * @param str string to parse
+	 * @param p pattern
+	 * @param sep date separator
+	 * @throws MalformedURLException
+	 */
+	public void generateTemporal(Storage store, IRI dataset, String str, Pattern p, String sep) 
+												throws MalformedURLException {
+		Matcher m = p.matcher(str);
+        if (! m.matches()) {
+			return;
+		}
+		String date = m.group(1);
+		IRI u = store.getURI(makeTemporalURL(date).toString());
+		String[] split = date.split(sep);
+        store.add(dataset, DCTERMS.TEMPORAL, u);
+		store.add(u, SCHEMA.START_DATE, split[0].trim());
+		store.add(u, SCHEMA.END_DATE, split[1].trim());
+	}
+	
     /**
      * Fetch all metadata from repository / site
      * 

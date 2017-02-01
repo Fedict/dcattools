@@ -37,6 +37,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -88,7 +89,9 @@ public abstract class CkanJson extends Ckan {
     public final static String KEY = "key";
     public final static String VALUE = "value";
     
-      
+	public final static Pattern YEAR_PAT = 
+					Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
+	
     /**
      * Make an URL for retrieving JSON of CKAN Package (DCAT Dataset) 
      * 
@@ -135,6 +138,25 @@ public abstract class CkanJson extends Ckan {
         }
     }
     
+	/**
+     * Parse a CKAN temporal and store it in the RDF store.
+     * 
+     * @param store RDF store
+     * @param uri RDF subject URI
+     * @param obj JsonObject
+     * @param field CKAN field name 
+     * @param property RDF property
+     * @param lang language
+     * @throws RepositoryException 
+	 * @throws MalformedURLException 
+     */
+    protected void parseTemporal(Storage store, IRI uri, JsonObject obj, 
+            String field, IRI property, String lang) 
+							throws RepositoryException, MalformedURLException {
+        String s = obj.getString(field, "");
+		generateTemporal(store, uri, s, YEAR_PAT, "-");
+    }
+	
     /**
      * Parse a CKAN string and store it in the RDF store
      * 
