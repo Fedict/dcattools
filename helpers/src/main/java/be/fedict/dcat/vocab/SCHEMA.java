@@ -35,7 +35,7 @@ import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class SCHEMA {
-    public static final String NAMESPACE = "http://schema.org";
+    public static final String NAMESPACE = "http://schema.org/";
     
     public final static String PREFIX = "schema";
     
