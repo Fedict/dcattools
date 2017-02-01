@@ -280,13 +280,13 @@ public abstract class Scraper extends Fetcher {
 	/**
      * Make an URL for a date 
      * 
-     * @param str date string
-     * @return URL
+     * @param start start date string
+     * @param end end date string
+	 * @return URL
      * @throws java.net.MalformedURLException 
      */
-	public URL makeTemporalURL(String str) throws MalformedURLException {
-		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + 
-										str.replace(" ","").replace("/", "_"));
+	public URL makeTemporalURL(String start, String end) throws MalformedURLException {
+		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + start + "_" + end);
 	}
 	
     /**
@@ -332,12 +332,45 @@ public abstract class Scraper extends Fetcher {
         if (! m.matches()) {
 			return;
 		}
-		String date = m.group(1);
-		IRI u = store.getURI(makeTemporalURL(date).toString());
-		String[] split = date.split(sep);
+		String span = m.group(1);
+		String[] split = span.split(sep);
+		
+		generateTemporal(store, dataset, split[0], split[1]);
+	}
+	
+	/**
+	 * Generate temporal triples
+	 * 
+	 * @param store triple store
+	 * @param dataset URI
+	 * @param start start date
+	 * @param end end date
+	 * @throws MalformedURLException
+	 */
+	public void generateTemporal(Storage store, IRI dataset, String start, String end) 
+												throws MalformedURLException {
+		String s = start.trim();
+		String e = end.trim();
+		if (s.isEmpty() || e.isEmpty()) {
+			logger.warn("empty start or end date");
+			return;
+		}
+		// Assume start of year / end of year when only YYYY is given 
+		if (s.length() == 4) {
+			s += "-01-01";
+		} else {
+			s = s.replaceAll("/", "-");
+		}
+		if (e.length() == 4) {
+			e += "-12-31";
+		} else {
+			e = e.replaceAll("/", "-");
+		}
+		
+		IRI u = store.getURI(makeTemporalURL(s, e).toString());
         store.add(dataset, DCTERMS.TEMPORAL, u);
-		store.add(u, SCHEMA.START_DATE, split[0].trim());
-		store.add(u, SCHEMA.END_DATE, split[1].trim());
+		store.add(u, SCHEMA.START_DATE, s);
+		store.add(u, SCHEMA.END_DATE, e);
 	}
 	
     /**

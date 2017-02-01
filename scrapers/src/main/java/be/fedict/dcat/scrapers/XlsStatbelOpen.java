@@ -36,6 +36,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.apache.poi.ss.usermodel.Row;
 
@@ -57,7 +58,9 @@ public class XlsStatbelOpen extends Xls {
   
     public final static DateFormat DATEFMT = 
                             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-
+    public final static Pattern YEAR_PAT = 
+                    Pattern.compile(".*((18|19|20)[0-9]{2} / (19|20)[0-9]{2}).*");
+			
     public final static String ID = "dcat:dataset";
     public final static String TITLE = "dct:title";
     public final static String CREATED = "dcat:issued";
@@ -148,9 +151,8 @@ public class XlsStatbelOpen extends Xls {
                 store.add(dataset, DCTERMS.ISSUED, created);
             }
 			String period = stringInt(map.getOrDefault(XlsStatbelOpen.TEMPORAL, ""));
-			if (! period.isEmpty()) {
-                store.add(dataset, DCTERMS.TEMPORAL, period);
-            }
+			generateTemporal(store, dataset, period, YEAR_PAT, "/");
+			
             generateDist(store, dataset, map, id, lang);
         }
     }

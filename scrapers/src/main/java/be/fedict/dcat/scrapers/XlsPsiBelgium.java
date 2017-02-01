@@ -263,10 +263,8 @@ public class XlsPsiBelgium extends Xls {
             
             String from = stringInt(map.getOrDefault(XlsPsiBelgium.PFROM, ""));
             String till = stringInt(map.getOrDefault(XlsPsiBelgium.PTILL, ""));
-            String period = from + " / " + till;
-            if (! period.equals(" / ")) {
-                store.add(dataset, DCTERMS.TEMPORAL, period);
-            }
+			
+			generateTemporal(store, dataset, from, till);
             
             String[] words = getKeywords(map, lang);
             for (String word : words) {
