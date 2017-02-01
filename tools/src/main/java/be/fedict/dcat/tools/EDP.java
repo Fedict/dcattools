@@ -159,7 +159,7 @@ public class EDP {
 	 */
 	private static void writeDates(XMLStreamWriter w, RepositoryConnection con, IRI uri)
 			throws XMLStreamException {
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.TEMPORAL, null)) {
 			while (res.hasNext()) {
 				IRI date = (IRI) res.next().getObject();
 				w.writeStartElement("dct:temporal");
