@@ -349,8 +349,8 @@ public class EDP {
 		writeFormats(w, con, uri, DCAT.MEDIA_TYPE);
 		
 		// write as anyURI string
-		writeLiterals(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
-		writeLiterals(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
+		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 		
 		writeLicenses(w, con, uri, DCTERMS.LICENSE);
 		
