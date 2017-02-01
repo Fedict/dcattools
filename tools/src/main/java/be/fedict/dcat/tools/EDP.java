@@ -294,7 +294,6 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-		writeLiterals(w, con, uri, DCTERMS.TEMPORAL, "dct:temporal");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
