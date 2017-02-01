@@ -59,7 +59,8 @@ public class CkanVlaanderen extends CkanJson {
     public final static String GEOCOVERAGE = "Geografische Dekking";
     public final static String METADATA_REQ = "metadata_request";
 	public final static String TIMECOVERAGE = "Dekking In Tijd";
-    public final static String RESPONSABLE = "responsible-party";
+	public final static String TIMECOVERAGE2 = "dekking in tijd";
+	public final static String RESPONSABLE = "responsible-party";
     
     /**
      * Parse CKAN "extra" section.
@@ -95,6 +96,9 @@ public class CkanVlaanderen extends CkanJson {
                     parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.COVERAGE, lang);
                     break;
 				case CkanVlaanderen.TIMECOVERAGE:
+                    parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.TEMPORAL, lang);
+                    break;
+				case CkanVlaanderen.TIMECOVERAGE2:
                     parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.TEMPORAL, lang);
                     break;
                 case CkanVlaanderen.METADATA_REQ:
