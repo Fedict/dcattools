@@ -153,34 +153,25 @@ public class EDP {
 	 * Write temporal date info for a dcat:Dataset
 	 * 
 	 * @param w XML writer
-	 * @param lic license URI
+	 * @param con RDF triple store connection
+	 * @param uri dataset URI
 	 * @throws XMLStreamException 
 	 */
-	private static void writeDates(XMLStreamWriter w, RepositoryConnection con, IRI date)
+	private static void writeDates(XMLStreamWriter w, RepositoryConnection con, IRI uri)
 			throws XMLStreamException {
-		w.writeStartElement("dct:temporal");
-		w.writeStartElement("dct:PeriodOfTime");
-		writeLiterals(w, con, date, STARTDATE, "schema:startDate");
-		writeLiterals(w, con, date, ENDDATE, "schema:endDate");
-		w.writeEndElement();
-		w.writeEndElement();
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
+			while (res.hasNext()) {
+				IRI date = (IRI) res.next().getObject();
+				w.writeStartElement("dct:temporal");
+				w.writeStartElement("dct:PeriodOfTime");
+				writeLiterals(w, con, date, STARTDATE, "schema:startDate");
+				writeLiterals(w, con, date, ENDDATE, "schema:endDate");
+				w.writeEndElement();
+				w.writeEndElement();
+			}
+		}
 	}
-		
-	/**
-	 * Write file format of a dcat:Distribution
-	 * 
-	 * @param w XML writer
-	 * @param val value
-	 * @throws XMLStreamException 
-	 */
-	private static void writeFormat(XMLStreamWriter w, Literal val)
-			throws XMLStreamException {
-		w.writeStartElement("");
-		w.writeEmptyElement("dct:IMT");
-		w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
-		w.writeEndElement();
-	}
-	
+
 	/**
 	 * Write multiple format
 	 * 
@@ -194,27 +185,14 @@ public class EDP {
 			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				writeFormat(w, (Literal) res.next().getObject());
+				Literal val = (Literal) res.next().getObject();
+				w.writeStartElement("dct:format");
+				w.writeEmptyElement("dct:IMT");
+				w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
+				w.writeEndElement();
 			}
 		}	
 	}
-
-	/**
-	 * Write license a dcat:Distribution
-	 * 
-	 * @param w XML writer
-	 * @param lic license URI
-	 * @throws XMLStreamException 
-	 */
-	private static void writeLicense(XMLStreamWriter w, RepositoryConnection con, IRI lic)
-			throws XMLStreamException {
-		w.writeStartElement("dct:license");
-		w.writeStartElement("dct:LicenseDocument");
-		writeLiterals(w, con, lic, DCTERMS.TITLE, "dct:title");
-		w.writeEndElement();
-		w.writeEndElement();
-	}
-	
 	
 	/**
 	 * Write multiple format
@@ -231,27 +209,13 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			if (res.hasNext()) {
 				IRI license = (IRI) res.next().getObject();
-				writeLicense(w, con, license);
+				w.writeStartElement("dct:license");
+				w.writeStartElement("dct:LicenseDocument");
+				writeLiterals(w, con, license, DCTERMS.TITLE, "dct:title");
+				w.writeEndElement();
+				w.writeEndElement();
 			}
 		}
-	}
-	
-	/**
-	 * Write contact point of a dcat:Dataset
-	 * 
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @param uri 
-	 * @throws XMLStreamException 
-	 */
-	private static void writeContact(XMLStreamWriter w, RepositoryConnection con,
-			IRI uri) throws XMLStreamException {
-		w.writeStartElement("dcat:contactPoint");
-		w.writeStartElement("vcard:Organization");
-		writeLiterals(w, con, uri, VCARD.FN, "vcard:fn");
-		writeReferences(w, con, uri, VCARD.MAIL, "vcard:hasEmail");
-		w.writeEndElement();
-		w.writeEndElement();
 	}
 	
 	/**
@@ -267,7 +231,13 @@ public class EDP {
 			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				writeContact(w, con, (IRI) res.next().getObject());
+				IRI contact = (IRI) res.next().getObject();
+				w.writeStartElement("dcat:contactPoint");
+				w.writeStartElement("vcard:Organization");
+				writeLiterals(w, con, contact, VCARD.FN, "vcard:fn");
+				writeReferences(w, con, contact, VCARD.MAIL, "vcard:hasEmail");
+				w.writeEndElement();
+				w.writeEndElement();
 			}
 		}	
 	}
@@ -385,7 +355,9 @@ public class EDP {
 		}
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
+		
 		writeDates(w, con, uri);
+		
 		w.writeEndElement();
 	}	
 
