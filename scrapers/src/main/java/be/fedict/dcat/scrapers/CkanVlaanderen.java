@@ -54,10 +54,11 @@ public class CkanVlaanderen extends CkanJson {
     public final static String CONTACT = "contact-email";
     public final static String DOMAIN = "beleidsdomein";
     public final static String FREQ = "frequency-of-update";
-    public final static String GEMET = "gemet-theme";
+    public final static String FREQ2 = "update frequentie";
+	public final static String GEMET = "gemet-theme";
     public final static String GEOCOVERAGE = "Geografische Dekking";
     public final static String METADATA_REQ = "metadata_request";
-	public final static String TIMECOVERAGE = "Dekking in Tijd";
+	public final static String TIMECOVERAGE = "Dekking In Tijd";
     public final static String RESPONSABLE = "responsible-party";
     
     /**
@@ -84,7 +85,10 @@ public class CkanVlaanderen extends CkanJson {
                 case CkanVlaanderen.FREQ:
                     parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
                     break;
-                case CkanVlaanderen.GEMET:
+                case CkanVlaanderen.FREQ2:
+                    parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
+                    break;
+				case CkanVlaanderen.GEMET:
                     parseString(store, uri, obj, CkanJson.VALUE, DCAT.KEYWORD, lang);
                     break;
                 case CkanVlaanderen.GEOCOVERAGE:

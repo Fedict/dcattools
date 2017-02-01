@@ -318,7 +318,7 @@ public class HtmlStatbelPubs extends Html {
                 logger.warn("No {} element", HtmlStatbelPubs.DIV_MAIN);
             }
             
-			generateTemporal(store, title);
+			generateTemporal(store, dataset, title);
 			
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
