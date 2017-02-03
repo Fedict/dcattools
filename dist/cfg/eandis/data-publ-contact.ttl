@@ -12,4 +12,4 @@
 	a vcard:Organization ;
 	vcard:fn "Eandis"@en, "Eandis"@nl, "Eandis"@fr ;
 	vcard:hasUrl <http://www.eandis.be> ;
-	vcard:hasEmail <mailto:martktwerking@eandis.be> .
+	vcard:hasEmail <mailto:marktwerking@eandis.be> .

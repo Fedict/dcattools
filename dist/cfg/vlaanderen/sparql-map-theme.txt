@@ -9,4 +9,4 @@ INSERT
 WHERE
 	{	?dataset dcat:keyword ?label .
 		?drupal skos:altLabel ?label .
-        ?drupal skos:exactMatch ?theme }
+        	?drupal skos:exactMatch ?theme }
