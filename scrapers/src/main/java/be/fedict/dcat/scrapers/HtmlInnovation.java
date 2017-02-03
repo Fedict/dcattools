@@ -34,7 +34,6 @@ import be.fedict.dcat.vocab.MDR_LANG;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -64,7 +63,6 @@ import org.slf4j.LoggerFactory;
 public class HtmlInnovation extends Html {
     private final Logger logger = LoggerFactory.getLogger(HtmlInnovation.class);
 
-    private final static String CONTENT_ID = "div.container";
 	private final static String H_TITLE = "div.headline h4";
     private final static String DIV_DESC = "div#metadata";
 	private final static String LIST_CATS = "ul.breadcrumb li";
@@ -79,12 +77,13 @@ public class HtmlInnovation extends Html {
      * @return ID as string
      */
     private String getIDParam(URL url) {
-		try {
-			return Paths.get(url.toURI()).subpath(3, 4).toString();
-		} catch (URISyntaxException ex) {
-			logger.error("Could not find ID part in {}", url);
-			return "";
+		String u = url.getPath();
+		String[] parts = u.split("/");
+		if (parts.length >= 3) {
+			return parts[2];
 		}
+		logger.error("No path id found for {}", url);
+		return "";
     }
     
     /**
@@ -195,7 +194,7 @@ public class HtmlInnovation extends Html {
         String html = p.getContent();
         URL u = p.getUrl();
         
-        Element content = Jsoup.parse(html).body().select(CONTENT_ID).first();
+        Element content = Jsoup.parse(html).body();
         
         String param = getIDParam(u);
         IRI dataset = store.getURI(makeDatasetURL(param).toString());  
