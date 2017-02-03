@@ -33,6 +33,7 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
@@ -120,6 +121,8 @@ public class Fetcher {
     public String makeRequest(URL url) throws IOException {
         logger.info("Get request for page {}", url);
         Request request = Request.Get(url.toString());
+		// some servers return 503 if no accept header is present
+		request.addHeader(HttpHeaders.ACCEPT, "*/*");
 
         if (getProxy() != null) {
             request = request.viaProxy(getProxy());
