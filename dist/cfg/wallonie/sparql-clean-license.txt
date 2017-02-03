@@ -1,0 +1,9 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?dist dcterms:license ?license }
+WHERE
+	{
+		?dist dcterms:license ?license .
+		VALUES ?license { "other-closed" "other-nc" }
+	}

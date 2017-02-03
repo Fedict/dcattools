@@ -1,0 +1,31 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/38>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+	skos:prefLabel "ECONOMY AND FINANCE"@en ;
+	skos:altLabel "Macroeconomic Imbalance Procedure"@en, "Stability and Growth Pact (SGP)"@en, "GDP, inflation and labour productivity"@en, "Sectoral specialisation"@en, "Export performance and globalisation"@en, "Business environment, Finance and Entrepreneurship"@en, "Financing of innovation"@en, "Linkages"@en, "Intellectual assets"@en, "Economic effects"@en .
+
+<http://data.gov.be/en/taxonomy/term/33>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+	skos:prefLabel "EDUCATION"@en ;
+	skos:altLabel "Education"@en, "Education in Science and Technology"@en, "International scientific co-publications"@en, "Belgian publications per sector"@en .
+
+<http://data.gov.be/en/taxonomy/term/41>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
+	skos:altLabel "Infrastructure (tangible and intangible)"@en, "Public spending on education"@en, "Public support for R&D and innovation"@en .
+	
+<http://data.gov.be/en/taxonomy/term/44>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
+	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
+	skos:altLabel "Export performance and globalisation"@en, "International scientific co-publications"@en .
+	
+<http://data.gov.be/en/taxonomy/term/39>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
+	skos:altLabel "Population and employment"@en .
+
+<http://data.gov.be/en/taxonomy/term/37>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
+	skos:altLabel "Infrastructure (tangible and intangible)"@en, "Education in Science and Technology"@en, "R&D and innovation expenditure"@en, "R&D personnel"@en, "Public support for R&D and innovation"@en, "Linkages"@en, "Belgian publications per sector"@en, "Intellectual assets"@en, "Innovation performance"@en .
