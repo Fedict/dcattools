@@ -1,0 +1,28 @@
+<http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> <http://purl.org/dc/terms/title> "UrbIS Open Data License" .
+<http://creativecommons.org/publicdomain/zero/1.0/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://creativecommons.org/publicdomain/zero/1.0/> <http://purl.org/dc/terms/title> "CC Zero" .
+<http://opendata.antwerpen.be/gratis-open-data-licentie> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://opendata.antwerpen.be/gratis-open-data-licentie> <http://purl.org/dc/terms/title> "Open Data Licentie Antwerpen" .
+<http://opendataforum.info/Docs/licenties/GOD.htm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://opendataforum.info/Docs/licenties/GOD.htm> <http://purl.org/dc/terms/title> "Vlaamse Open Data Licentie" .
+<http://publications.europa.eu/resource/authority/licence/CC_BY> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://publications.europa.eu/resource/authority/licence/CC_BY> <http://purl.org/dc/terms/title> "CC BY" .
+<http://publications.europa.eu/resource/authority/licence/CC_BYSA> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://publications.europa.eu/resource/authority/licence/CC_BYSA> <http://purl.org/dc/terms/title> "CC BY-SA" .
+<http://publications.europa.eu/resource/authority/licence/CC0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://publications.europa.eu/resource/authority/licence/CC0> <http://purl.org/dc/terms/title> "CC Zero" .
+<http://publications.europa.eu/resource/authority/licence/ODC_PDDL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://publications.europa.eu/resource/authority/licence/ODC_PDDL> <http://purl.org/dc/terms/title> "ODC Public Domain" .
+<http://statbel.fgov.be/fr/statistiques/opendata/licence/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://statbel.fgov.be/fr/statistiques/opendata/licence/> <http://purl.org/dc/terms/title> "Statbel Open Data License" .
+<http://statbel.fgov.be/nl/statistieken/opendata/licentie/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://statbel.fgov.be/nl/statistieken/opendata/licentie/> <http://purl.org/dc/terms/title> "Statbel Open Data License" .
+<http://www.kortrijk.be/opendata/licentie-open-data> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://www.kortrijk.be/opendata/licentie-open-data> <http://purl.org/dc/terms/title> "Open Data Licentie Kortrijk" .
+<http://www.oostende.be/file_uploads/138630.pdf#id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://www.oostende.be/file_uploads/138630.pdf#id> <http://purl.org/dc/terms/title> "Open Data Licentie Oostende" .
+<https://data.stad.gent/algemene-licentie> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<https://data.stad.gent/algemene-licentie> <http://purl.org/dc/terms/title> "Open Data Licentie Gent" .
+<https://www.etalab.gouv.fr/licence-ouverte-open-licence> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<https://www.etalab.gouv.fr/licence-ouverte-open-licence> <http://purl.org/dc/terms/title> "Etalab Open License" .

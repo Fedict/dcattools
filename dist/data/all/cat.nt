@@ -1,0 +1,17 @@
+<http://data.gov.be/catalog> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Catalog> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/description> "Converted by Fedict's converter"@en .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/title> "DCAT export data.gov.be"@en .
+<http://data.gov.be/catalog> <http://xmlns.com/foaf/0.1/homepage> <http://data.gov.be> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ENG> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/FRA> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/NLD> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/license> <http://creativecommons.org/publicdomain/zero/1.0/> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/spatial> <http://sws.geonames.org/2802361/> .
+<http://data.gov.be/catalog> <http://purl.org/dc/terms/publisher> <http://org.belgif.be/cbe/org/0367_302_178#id> .
+<http://data.gov.be/catalog> <http://www.w3.org/ns/dcat#themeTaxonomy> <http://publications.europa.eu/resource/authority/data-theme> .
+<http://org.belgif.be/cbe/org/0367_302_178#id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Organization> .
+<http://org.belgif.be/cbe/org/0367_302_178#id> <http://xmlns.com/foaf/0.1/name> "Fedict"@nl .
+<http://org.belgif.be/cbe/org/0367_302_178#id> <http://xmlns.com/foaf/0.1/name> "Fedict"@fr .
+<http://org.belgif.be/cbe/org/0367_302_178#id> <http://xmlns.com/foaf/0.1/name> "Fedict"@en .
+<http://org.belgif.be/cbe/org/0367_302_178#id> <http://xmlns.com/foaf/0.1/homepage> <http://www.fedict.belgium.be> .
+<http://org.belgif.be/cbe/org/0367_302_178#id> <http://xmlns.com/foaf/0.1/mbox> <mailto:opendata@belgium.be> .
