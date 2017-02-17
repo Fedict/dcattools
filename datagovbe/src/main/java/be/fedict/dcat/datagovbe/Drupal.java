@@ -28,6 +28,7 @@ package be.fedict.dcat.datagovbe;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
+import be.fedict.dcat.vocab.SCHEMA;
 import be.fedict.dcat.vocab.VCARD;
 
 import com.google.common.collect.ListMultimap;
@@ -373,7 +374,8 @@ public class Drupal {
         return email;
     }
     
-      /**
+	
+    /**
      * Get contact email address
      * 
      * @param org organization
@@ -497,6 +499,27 @@ public class Drupal {
         return m;
     } 
     
+	/**
+	 * Get temporal coverage as string
+	 * 
+	 * @param dataset 
+	 * @return string
+	 * @throws RepositoryException 
+	 */
+	private String getTime(Map<IRI, ListMultimap<String, String>> dataset) 
+												throws RepositoryException {
+		Map<IRI, ListMultimap<String, String>> m = new HashMap<>();
+                
+        String time = Storage.getOne(dataset, DCTERMS.TEMPORAL, "");
+        if (! time.isEmpty()) {
+            m = store.queryProperties(store.getURI(time));
+			String start = Storage.getOne(m, SCHEMA.START_DATE, "");
+			String end = Storage.getOne(m, SCHEMA.END_DATE, "");
+			time = start + " / " + end;
+        }
+        return time;
+	}
+	
     /**
      * Add a dataset to Drupal form
      * 
@@ -552,7 +575,7 @@ public class Drupal {
                 .add(Drupal.FLD_KEYWORDS, keywords)
                 .add(Drupal.FLD_ID, id);
         
-        String fromtill = Storage.getOne(dataset, DCTERMS.TEMPORAL, "");
+        String fromtill = getTime(dataset);
         if (fromtill.isEmpty()) {
             builder.addNull(Drupal.FLD_TIME);
         } else {
