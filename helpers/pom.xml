@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+	<rdf4j.version>2.2</rdf4j.version>
     </properties>
     <dependencies>
         <dependency>
@@ -51,32 +52,32 @@
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-rio-ntriples</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-query</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-repository-sail</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-sail-memory</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-queryresultio-text</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
     </dependencies>
     <version>2.0</version>
