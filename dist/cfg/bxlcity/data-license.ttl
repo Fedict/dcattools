@@ -2,7 +2,7 @@
 
 <http://data.gov.be/en/taxonomy/term/68>
 	skos:prefLabel "Specific license"@en ;
-	skos:altLabel "contacter Bruxelles Mobilité" .
+	skos:altLabel "contacter Bruxelles Mobilité",  .
 
 <http://data.gov.be/en/taxonomy/term/179>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BYSA> ;
@@ -12,5 +12,5 @@
 <http://data.gov.be/en/taxonomy/term/154>
 	skos:exactMatch <https://www.etalab.gouv.fr/licence-ouverte-open-licence> ;
 	skos:prefLabel "Etalab License" ;
-	skos:altLabel "Licence Ouverte (Etalab)" .
+	skos:altLabel "Licence Ouverte (Etalab)", "Open Data Ville de Bruxelles" .
 	

@@ -3,7 +3,7 @@
 <http://data.gov.be/en/taxonomy/term/20>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
 	skos:prefLabel "Continuously"@en ;
-	skos:altLabel "en temps réel", "temps réel", "realtime", "één keer per uur (bij 35 na het uur)", "once an hour (at 35 past the hour)", "une fois par heure (à l'heure 30)" .
+	skos:altLabel "en temps réel", "temps réel", "realtime", "één keer per uur (bij 35 na het uur)", "once an hour (at 35 past the hour)", "une fois par heure (à l'heure 30)", "heure", "hour" .
 	
 <http://data.gov.be/en/taxonomy/term/22>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
@@ -13,7 +13,7 @@
 <http://data.gov.be/en/taxonomy/term/25>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/MONTHLY> ;
 	skos:prefLabel "Monthly"@en ;
-	skos:altLabel "maandelijk", "maandelijks", "monthly", "mensuelle", "maand", "mois" .
+	skos:altLabel "maandelijk", "maandelijks", "monthly", "mensuelle", "maand", "mois", "month" .
 	
 <http://data.gov.be/en/taxonomy/term/26>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/BIMONTHLY> ;

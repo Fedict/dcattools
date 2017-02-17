@@ -65,7 +65,7 @@
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
 	skos:prefLabel "XML" ;
-	skos:altLabel "XML", "xml" .
+	skos:altLabel "XML", "xml", "gpx" .
 
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ZIP> ;
@@ -75,4 +75,4 @@
 <http://data.gov.be/en/taxonomy/term/235>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:prefLabel "SLD" ;
-	skos:altLabel "sld" .
+	skos:altLabel "sld", "Datex II" .

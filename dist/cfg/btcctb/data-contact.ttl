@@ -1,8 +1,0 @@
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix dgov: <http://data.gov.be#> .
-
-<http://data.gov.be/org/btcctb/contact>
-	a vcard:Organization ;
-	vcard:fn "Belgian Development Agency"@en, "Agence belge de Développement"@fr, "Belgisch Ontwikkelingsagentschap"@nl ;
-	vcard:hasUrl <http://www.btcctb.org> ;
-	vcard:hasEmail <mailto:info@btcctb.org> .

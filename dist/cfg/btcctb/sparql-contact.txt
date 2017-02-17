@@ -1,9 +1,12 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/biodiversity/belspo/contact>  }
+	{ 	?org vcard:fn "Belgian Development Agency"@en .
+		?org vcard:fn "Agence belge de Développement"@fr .
+		?org vcard:fn "Belgisch Ontwikkelingsagentschap"@nl .
+		?org vcard:hasUrl <http://www.btcctb.org>	}
 WHERE
-	{ 	?dataset a dcat:Dataset
-		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } 
+	{ 	?org a vcard:Organization 
+		FILTER NOT EXISTS { ?org vcard:fn ?name } 
 	}
