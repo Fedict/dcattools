@@ -4,7 +4,7 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/1> .
-		?dist dcat:mediaType "CSV .
+		?dist dcat:mediaType "CSV" .
 		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> }
 WHERE
 	{	?dist a dcat:Distribution }
