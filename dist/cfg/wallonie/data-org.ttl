@@ -98,4 +98,8 @@
 	skos:prefLabel "ThingsPlay"@fr, "ThingsPlay"@nl, "ThingsPlay"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0555_910_067#id> ;
 	skos:altlabel "thingsplay"@fr .
-		
+
+<http://data.gov.be/en/taxonomy/term/240>
+	skos:prefLabel "IDELUX-AIVE"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0832_382_635#id> ;
+	skos:altlabel "idelux-aive"@fr .
