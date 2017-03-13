@@ -362,9 +362,9 @@ public class HtmlStatbelPubs extends Html {
     /**
      * HTML parser for Statbel publications
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching DB cache file
+     * @param storage RDF back-end
+     * @param base base URL
      */
     public HtmlStatbelPubs(File caching, File storage, URL base) {
         super(caching, storage, base);

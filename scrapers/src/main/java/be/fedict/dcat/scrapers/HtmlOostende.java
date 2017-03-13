@@ -224,7 +224,6 @@ public class HtmlOostende extends Html {
         for(Element dist : dists) {
             generateDist(store, dataset, u, dist, param, i++, lang);
         }
-
     }
  
     /**
@@ -253,9 +252,9 @@ public class HtmlOostende extends Html {
     /**
      * HTML scraper Oostende DO2.
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching DB cache file
+     * @param storage RDF back-end
+     * @param base base URL
      */
     public HtmlOostende(File caching, File storage, URL base) {
         super(caching, storage, base);

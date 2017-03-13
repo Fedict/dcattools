@@ -238,9 +238,9 @@ public class HtmlFodMobilit extends Html {
     /**
      * HTML scraper FPS Mobility.
      * 
-     * @param caching
-     * @param storage
-     * @param base 
+     * @param caching DB cache file
+     * @param storage RDF backing file
+     * @param base base URL
      */
     public HtmlFodMobilit(File caching, File storage, URL base) {
         super(caching, storage, base);

@@ -221,7 +221,7 @@ public class HtmlEandis extends Html {
      * Constructor
      * 
      * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
+     * @param storage RDF back-end
      * @param base base URL
      */
     public HtmlEandis(File caching, File storage, URL base) {
