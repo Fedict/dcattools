@@ -262,7 +262,11 @@ public class Storage {
      * @throws RepositoryException 
      */
     public void add(IRI subj, IRI pred, String value) throws RepositoryException {
-        conn.add(subj, pred, fac.createLiteral(value));
+		if ((value != null) && !value.isEmpty()) {
+			conn.add(subj, pred, fac.createLiteral(value));
+		} else {
+			logger.warn("Skipping empty or null value for {} {}", subj, pred);
+		}
     }
    
     /**
@@ -276,7 +280,11 @@ public class Storage {
      */
     public void add(IRI subj, IRI pred, String value, String lang) 
                                                 throws RepositoryException {
-        conn.add(subj, pred, fac.createLiteral(value, lang));
+		if ((value != null) && !value.isEmpty()) {
+			conn.add(subj, pred, fac.createLiteral(value, lang));
+		} else {
+			logger.warn("Skipping empty or null value for {} {}", subj, pred);
+		}
     }
 
     
