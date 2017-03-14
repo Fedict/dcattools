@@ -63,14 +63,13 @@ import org.slf4j.LoggerFactory;
 public class HtmlBrugge extends Html {
 	private final Logger logger = LoggerFactory.getLogger(HtmlBrugge.class);
 	
-    private final static String LINKS_DATASETS = "div.user-content div a:eq(0)[href]";
+    private final static String LINKS_DATASETS = "div.user-content div a:eq(1)[href]";
 	private final static String LINK_DATASET = "div.user-content h4";
 	private final static String NAME_DATASET = "strong a[name]";
 	
-	private final static String SIBL_TITLE = "em strong:contains(Titel)";
 	private final static String SIBL_DESC = "em strong:contains(Omschrijving)";
 	private final static String SIBL_FMTS = "em strong:contains(Bestandsformaten)";
-	private final static String DIST_HREF = "span a";
+	private final static String DIST_HREF = "a";
 
 	/**
      * Get the list of all the categories.
@@ -130,19 +129,20 @@ public class HtmlBrugge extends Html {
      * 
      * @param store RDF store
      * @param dataset URI
+	 * @param name short name
      * @param access URL of the acess page
      * @param link download link element
      * @param lang language code
      * @throws MalformedURLException
      * @throws RepositoryException 
      */
-    private void generateDist(Storage store, IRI dataset, String access, 
+    private void generateDist(Storage store, IRI dataset, String name, String access, 
 			Element link, String lang) throws MalformedURLException, RepositoryException {
         String href = link.attr(Attribute.HREF.toString());
 		String fmt = link.ownText();
-        URL download = makeAbsURL(href);        
+               
      
-        URL u = makeDistURL(dataset.stringValue() + "/" + fmt);
+        URL u = makeDistURL(name + "/" + fmt.replaceAll("/", "").replaceAll(" ", ""));
         IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
@@ -150,8 +150,8 @@ public class HtmlBrugge extends Html {
         store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
         store.add(dist, DCTERMS.TITLE, fmt, lang);
-        store.add(dist, DCAT.ACCESS_URL, access);
-        store.add(dist, DCAT.DOWNLOAD_URL, download);
+        store.add(dist, DCAT.ACCESS_URL, makeAbsURL(access));
+        store.add(dist, DCAT.DOWNLOAD_URL, makeAbsURL(href));
         store.add(dist, DCAT.MEDIA_TYPE, fmt);
     }
     
@@ -170,7 +170,8 @@ public class HtmlBrugge extends Html {
 	private void generateDataset(Storage store, String page, Element el, String anchor, 
 				String lang) throws MalformedURLException, RepositoryException {
 		String title = el.text();
-		URL u = makeDatasetURL(title.toLowerCase().replaceAll(" ", ""));
+		String name = title.toLowerCase().replaceAll(" ", "");
+		URL u = makeDatasetURL(name);
 		IRI dataset = store.getURI(u.toString()); 
 		logger.debug("Generating dataset {}", dataset);
 		
@@ -189,6 +190,7 @@ public class HtmlBrugge extends Html {
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
+		store.add(dataset, DCAT.KEYWORD, page.substring(page.lastIndexOf("/") + 1));
 		
 		Elements links = null;
 		sib = el.nextElementSibling();
@@ -200,7 +202,7 @@ public class HtmlBrugge extends Html {
 		}
 		if (links != null) {
 			for(Element link: links) {
-				generateDist(store, dataset, page + "#" + anchor, link, lang);
+				generateDist(store, dataset, name, page + "#" + anchor, link, lang);
 			}
 		}
 	}
@@ -221,11 +223,11 @@ public class HtmlBrugge extends Html {
 		
 		Page p = page.get("");
 		String html = p.getContent();
-		Elements datasets = Jsoup.parse(html).select(LINK_DATASET);
+		Elements elements = Jsoup.parse(html).select(LINK_DATASET);
             
-		for (Element dataset : datasets) {
-			String anchor = dataset.select(NAME_DATASET).attr(Attribute.NAME.toString());
-			generateDataset(store, id, dataset, anchor, lang);
+		for (Element element : elements) {
+			String anchor = element.select(NAME_DATASET).attr(Attribute.NAME.toString());
+			generateDataset(store, id, element, anchor, lang);
 		}
 	}
 
