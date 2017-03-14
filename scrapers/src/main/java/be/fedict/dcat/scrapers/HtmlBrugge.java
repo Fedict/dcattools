@@ -66,6 +66,8 @@ public class HtmlBrugge extends Html {
     private final static String LINKS_DATASETS = "div.user-content div a:eq(0)[href]";
 	private final static String LINK_DATASET = "div.user-content h4";
 	private final static String NAME_DATASET = "strong a[name]";
+	
+	private final static String SIBL_TITLE = "em strong:contains(Titel)";
 	private final static String SIBL_DESC = "em strong:contains(Omschrijving)";
 	private final static String SIBL_FMTS = "em strong:contains(Bestandsformaten)";
 	private final static String DIST_HREF = "span a";
@@ -140,14 +142,14 @@ public class HtmlBrugge extends Html {
 		String fmt = link.ownText();
         URL download = makeAbsURL(href);        
      
-        URL u = makeDistURL(fmt + "/" + lang);
+        URL u = makeDistURL(dataset.stringValue() + "/" + fmt);
         IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
         store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
         store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
+        store.add(dist, DCTERMS.TITLE, fmt, lang);
         store.add(dist, DCAT.ACCESS_URL, access);
         store.add(dist, DCAT.DOWNLOAD_URL, download);
         store.add(dist, DCAT.MEDIA_TYPE, fmt);
@@ -165,15 +167,14 @@ public class HtmlBrugge extends Html {
 	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
-	private void generateDataset(Storage store, String page, Element el, String name, 
+	private void generateDataset(Storage store, String page, Element el, String anchor, 
 				String lang) throws MalformedURLException, RepositoryException {
-		URL u = makeDatasetURL(name);
+		String title = el.text();
+		URL u = makeDatasetURL(title.toLowerCase().replaceAll(" ", ""));
 		IRI dataset = store.getURI(u.toString()); 
 		logger.debug("Generating dataset {}", dataset);
 		
-		String title = el.text();
 		String desc = title;
-		
 		Element sib = el.nextElementSibling();
 		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
 			if (! sib.select(SIBL_DESC).isEmpty()) {
@@ -187,17 +188,19 @@ public class HtmlBrugge extends Html {
         store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-        store.add(dataset, DCAT.LANDING_PAGE, page + "#" + name);
+        store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
 		
 		Elements links = null;
 		sib = el.nextElementSibling();
 		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
-			links = sib.select(SIBL_FMTS);
+			if(!sib.select(SIBL_FMTS).isEmpty()) {
+				links = sib.select(DIST_HREF);
+			}
 			sib = sib.nextElementSibling();
 		}
 		if (links != null) {
 			for(Element link: links) {
-				generateDist(store, dataset, page + "#" + name, link, lang);
+				generateDist(store, dataset, page + "#" + anchor, link, lang);
 			}
 		}
 	}
@@ -221,8 +224,8 @@ public class HtmlBrugge extends Html {
 		Elements datasets = Jsoup.parse(html).select(LINK_DATASET);
             
 		for (Element dataset : datasets) {
-			String name = dataset.select(NAME_DATASET).attr(Attribute.NAME.toString());
-			generateDataset(store, id, dataset, name, lang);
+			String anchor = dataset.select(NAME_DATASET).attr(Attribute.NAME.toString());
+			generateDataset(store, id, dataset, anchor, lang);
 		}
 	}
 
