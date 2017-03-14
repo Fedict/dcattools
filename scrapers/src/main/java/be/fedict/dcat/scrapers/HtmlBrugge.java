@@ -178,7 +178,7 @@ public class HtmlBrugge extends Html {
 		Element sib = el.nextElementSibling();
 		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
 			if (! sib.select(SIBL_DESC).isEmpty()) {
-				desc = sib.text();
+				desc = sib.text().replaceFirst("Omschrijving ", "");
 			}
 			sib = sib.nextElementSibling();
 		}
@@ -189,7 +189,7 @@ public class HtmlBrugge extends Html {
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
         store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
         store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
-		store.add(dataset, DCAT.KEYWORD, page.substring(page.lastIndexOf("/") + 1));
+		store.add(dataset, DCAT.KEYWORD, page.substring(page.lastIndexOf("/") + 1), lang);
 		
 		Elements links = null;
 		sib = el.nextElementSibling();
