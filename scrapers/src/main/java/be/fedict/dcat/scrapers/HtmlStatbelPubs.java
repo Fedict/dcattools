@@ -337,7 +337,7 @@ public class HtmlStatbelPubs extends Html {
     /**
      * Generate DCAT.
      * 
-     * @param cache
+     * @param cache DBC cache
      * @param store RDF store
      * @throws RepositoryException
      * @throws MalformedURLException 

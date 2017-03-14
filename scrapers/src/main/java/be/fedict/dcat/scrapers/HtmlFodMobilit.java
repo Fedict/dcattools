@@ -131,7 +131,7 @@ public class HtmlFodMobilit extends Html {
      * 
      * @param store RDF store
      * @param dataset URI
-     * @param front URL of the front page
+     * @param access access URL of the dataset
      * @param link link element
      * @param i row sequence
      * @param lang language code
@@ -161,7 +161,7 @@ public class HtmlFodMobilit extends Html {
      * Generate one dataset
      * 
      * @param store  RDF store
-     * @param URL front
+     * @param front front
      * @param row HTML row
      * @param i number
      * @param lang language
