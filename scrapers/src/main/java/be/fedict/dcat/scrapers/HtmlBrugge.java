@@ -68,7 +68,7 @@ public class HtmlBrugge extends Html {
 	private final static String NAME_DATASET = "strong a[name]";
 	
 	private final static String SIBL_DESC = "em strong:contains(Omschrijving)";
-	private final static String SIBL_FMTS = "em strong:contains(Bestandsformaten)";
+	private final static String SIBL_FMTS = "em :contains(Bestandsformaten)";
 	private final static String DIST_HREF = "a";
 
 	/**
@@ -139,9 +139,10 @@ public class HtmlBrugge extends Html {
     private void generateDist(Storage store, IRI dataset, String name, String access, 
 			Element link, String lang) throws MalformedURLException, RepositoryException {
         String href = link.attr(Attribute.HREF.toString());
-		String fmt = link.text();
-               
-        URL u = makeDistURL(name + "/" + fmt.replaceAll("/", "").replaceAll(" ", ""));
+		String fmt = link.text().replaceAll("/", "")
+								.replaceAll(" ", "")
+								.replaceAll("&nbsp;", "");         
+        URL u = makeDistURL(name + "/" + fmt);
         IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
         
@@ -169,7 +170,11 @@ public class HtmlBrugge extends Html {
 	private void generateDataset(Storage store, String page, Element el, String anchor, 
 				String lang) throws MalformedURLException, RepositoryException {
 		String title = el.text();
-		String name = title.toLowerCase().replaceAll(" ", "");
+		String name = title.toLowerCase().replaceAll(" ", "").replaceAll("&nbsp;", "");
+		// skip empty / invalid title
+		if (name.isEmpty()) {
+			return;
+		}
 		URL u = makeDatasetURL(name);
 		IRI dataset = store.getURI(u.toString()); 
 		logger.debug("Generating dataset {}", dataset);
