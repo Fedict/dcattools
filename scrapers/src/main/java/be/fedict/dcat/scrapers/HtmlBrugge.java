@@ -179,7 +179,7 @@ public class HtmlBrugge extends Html {
 		Element sib = el.nextElementSibling();
 		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
 			if (! sib.select(SIBL_DESC).isEmpty()) {
-				desc = sib.ownText();
+				desc = sib.text();
 			}
 			sib = sib.nextElementSibling();
 		}
