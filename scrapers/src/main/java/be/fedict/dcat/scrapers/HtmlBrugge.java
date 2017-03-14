@@ -139,9 +139,8 @@ public class HtmlBrugge extends Html {
     private void generateDist(Storage store, IRI dataset, String name, String access, 
 			Element link, String lang) throws MalformedURLException, RepositoryException {
         String href = link.attr(Attribute.HREF.toString());
-		String fmt = link.ownText();
+		String fmt = link.text();
                
-     
         URL u = makeDistURL(name + "/" + fmt.replaceAll("/", "").replaceAll(" ", ""));
         IRI dist = store.getURI(u.toString());
         logger.debug("Generating distribution {}", dist.toString());
