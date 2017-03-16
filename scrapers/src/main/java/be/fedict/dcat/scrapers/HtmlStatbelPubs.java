@@ -30,7 +30,6 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
-import be.fedict.dcat.vocab.SCHEMA;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +42,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.text.html.HTML;
@@ -98,8 +96,7 @@ public class HtmlStatbelPubs extends Html {
     private URL switchLanguage(String page, String lang) throws IOException {
         URL base = getBase();
         
-        Elements lis = Jsoup.parse(page)
-                            .getElementsByClass(HtmlStatbelPubs.LANG_LINK);
+        Elements lis = Jsoup.parse(page).getElementsByClass(LANG_LINK);
         
         for(Element li : lis) {
             if (li.text().equals(lang)) {
@@ -153,8 +150,8 @@ public class HtmlStatbelPubs extends Html {
         String front = makeRequest(base);
         
         // Select the correct page from dropdown-list, displaying all items
-        Element select = Jsoup.parse(front).getElementById(HtmlStatbelPubs.CAT_SELECT);
-        Element opt = select.getElementsMatchingOwnText(HtmlStatbelPubs.CAT_CAT).first();
+        Element select = Jsoup.parse(front).getElementById(CAT_SELECT);
+        Element opt = select.getElementsMatchingOwnText(CAT_CAT).first();
         if (opt != null) {
             URL downloads = new URL(base, opt.val() + "&size=250");
             String page = makeRequest(downloads);
@@ -167,7 +164,7 @@ public class HtmlStatbelPubs extends Html {
                 urls.add(makeAbsURL(href));
             }
         } else {
-            logger.error("Category {} not found", HtmlStatbelPubs.CAT_CAT);
+            logger.error("Category {} not found", CAT_CAT);
         }
         return urls;
     }
@@ -280,7 +277,7 @@ public class HtmlStatbelPubs extends Html {
             // by default, also use the title as description
             String desc = title;
   
-            Element divmain = doc.getElementsByClass(HtmlStatbelPubs.DIV_MAIN).first();
+            Element divmain = doc.getElementsByClass(DIV_MAIN).first();
             if (divmain != null) {
                 Elements paras  = divmain.getElementsByTag(Tag.P.toString());
                 if (paras != null) {
@@ -294,7 +291,7 @@ public class HtmlStatbelPubs extends Html {
                     desc = buf.toString();
                 }
             } else {
-                logger.warn("No {} element", HtmlStatbelPubs.DIV_MAIN);
+                logger.warn("No {} element", DIV_MAIN);
             }
             
 			generateTemporal(store, dataset, title, YEAR_PAT, "-");
@@ -303,19 +300,19 @@ public class HtmlStatbelPubs extends Html {
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
             
-            Element divdate = doc.getElementsByClass(HtmlStatbelPubs.DIV_DATE).first();
+            Element divdate = doc.getElementsByClass(DIV_DATE).first();
             if (divdate != null) {
                 Node n = divdate.childNodes().get(1);
                 String s = n.toString().trim();
                 try {
-                    Date modif = HtmlStatbelPubs.DATEFMT.parse(s);
+                    Date modif = DATEFMT.parse(s);
                     store.add(dataset, DCTERMS.MODIFIED, modif);
                 } catch(ParseException ex) {
                     logger.warn("Could not convert {} to date", s);
                 }
             }
             
-            Element divcat = doc.getElementsByClass(HtmlStatbelPubs.DIV_CAT).first();
+            Element divcat = doc.getElementsByClass(DIV_CAT).first();
             if (divcat != null) {
                 Node n = divcat.childNodes().get(1);
                 String[] cats = n.toString().split(",");
@@ -324,7 +321,7 @@ public class HtmlStatbelPubs extends Html {
                 }
             }
             
-            Element divlinks = doc.getElementsByClass(HtmlStatbelPubs.DIV_SCND).first();
+            Element divlinks = doc.getElementsByClass(DIV_SCND).first();
             if (divlinks != null) {
                 Elements links = divlinks.getElementsByTag(Tag.A.toString());
                 for(Element link : links) {
@@ -355,7 +352,6 @@ public class HtmlStatbelPubs extends Html {
             generateDataset(store, id, page);
         }
         generateCatalog(store);
-        
     }
     
     
