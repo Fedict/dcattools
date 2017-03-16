@@ -54,7 +54,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Infocenter / federal statistics scraper.
+ * 
  * @author Bart.Hanssens
  */
 public class HtmlInfocenter extends Html {
@@ -62,8 +63,8 @@ public class HtmlInfocenter extends Html {
 	
 	public final static String LANG_LINK = "blgm_lSwitch";
 	
-	private final static String LINKS_DATASETS = "div.container ul.no-style a[href]";
-	private final static String LINKS_SECOND = "div.navstats ul.stats-second-menu li a";
+	private final static String LINKS_DATASETS = "div.menu ul.no-style a[href]";
+	private final static String LINKS_SECOND = "div.nav-stats-wrapper ul.stats-second-menu li a";
 		
     /**
      * Get the URL of the  page in another language
@@ -83,7 +84,7 @@ public class HtmlInfocenter extends Html {
             if (li.text().equals(lang)) {
                 String href = li.attr(HTML.Attribute.HREF.toString());
                 if (href != null && !href.isEmpty()) {
-                    return new URL(base.getProtocol(), base.getHost(), href);
+                    return new URL(href);
                 }
             }
         }
@@ -242,7 +243,7 @@ public class HtmlInfocenter extends Html {
 			String desc = title;
   
             Elements navs = doc.select(LINKS_SECOND);	
-			if (navs != null) {
+			if (navs != null && !navs.isEmpty()) {
 				StringBuilder buf = new StringBuilder();
 				for(Element nav : navs) {
 					buf.append(nav.text()).append('\n');
