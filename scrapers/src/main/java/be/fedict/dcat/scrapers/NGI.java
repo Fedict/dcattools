@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
@@ -41,35 +40,36 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Scraper for the NGI metadata portal.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class NGI extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(NGI.class);
 
-    // CKAN API
-    public final static String API_LIST = "/search/list";
-    
-    @Override
-    public void scrape() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	private final Logger logger = LoggerFactory.getLogger(NGI.class);
 
-    @Override
-    public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public NGI(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("ngi");
-    }
+	// CKAN API
+	public final static String API_LIST = "/search/list";
+
+	@Override
+	public void scrape() throws IOException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public NGI(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("ngi");
+	}
 
 }

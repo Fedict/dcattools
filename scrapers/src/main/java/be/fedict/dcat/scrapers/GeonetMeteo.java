@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
@@ -45,23 +44,25 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class GeonetMeteo extends Geonet {
-    private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
-   	
+
+	private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
+
 	@Override
-	public void generateDcat(Cache cache, Storage store) 
-						throws RepositoryException, MalformedURLException {
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
 		super.generateDcat(cache, store);
 		store.escapeURI(DCAT.THEME);
 	}
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public GeonetMeteo(File caching, File storage, URL base) {
-        super(caching, storage, base);
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public GeonetMeteo(File caching, File storage, URL base) {
+		super(caching, storage, base);
 		setName("meteo");
-    }
+	}
 }

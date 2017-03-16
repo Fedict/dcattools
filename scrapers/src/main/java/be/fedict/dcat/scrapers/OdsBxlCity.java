@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
@@ -48,52 +47,53 @@ import org.slf4j.LoggerFactory;
 
 /**
  * OpenDataSoft City of Brussels / GIAL scraper.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class OdsBxlCity extends Ods {
-    private final Logger logger = LoggerFactory.getLogger(OdsBxlCity.class);
 
-    @Override
-    protected void scrapeCat(Cache cache) throws IOException {
-        URL front = getBase();
-        URL url = new URL(getBase(), Ods.API_DCAT);
-        String content = makeRequest(url);
-        cache.storePage(front, "all", new Page(url, content));
-    }
-    
-    /**
-     * Generate DCAT file
-     * 
-     * @param cache
-     * @param store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
-    @Override
-    public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException {
-        Map<String, Page> map = cache.retrievePage(getBase());
-        String ttl = map.get("all").getContent();
-        
-        // Load turtle file into store
-        try(InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-            store.add(in, RDFFormat.TURTLE);
-        } catch (RDFParseException | IOException ex) {
-            throw new RepositoryException(ex);
-        }
-        generateCatalog(store);
-    }
-    
-    /**
-     * Constructor
-     * 
-     * @param caching
-     * @param storage
-     * @param base 
-     */
-    public OdsBxlCity(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("bxlcity");
-    }
+	private final Logger logger = LoggerFactory.getLogger(OdsBxlCity.class);
+
+	@Override
+	protected void scrapeCat(Cache cache) throws IOException {
+		URL front = getBase();
+		URL url = new URL(getBase(), Ods.API_DCAT);
+		String content = makeRequest(url);
+		cache.storePage(front, "all", new Page(url, content));
+	}
+
+	/**
+	 * Generate DCAT file
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+		String ttl = map.get("all").getContent();
+
+		// Load turtle file into store
+		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.TURTLE);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+		generateCatalog(store);
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching
+	 * @param storage
+	 * @param base
+	 */
+	public OdsBxlCity(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("bxlcity");
+	}
 }

@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,137 +45,137 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class Main {
-    private final static Logger logger = LoggerFactory.getLogger(Main.class);
-    
-    private final static Properties prop = new Properties();
-    
-    /**
-     * Exit cleanly
-     * 
-     * @param code return code 
-     */
-    private static void exit(int code) {
-        logger.info("-- STOP --");
-        System.exit(code);
-    }
-    
-    /**
-     * Set proxy, if needed.
-     * 
-     * @param s Scraper instance.
-     */
-    private static void setProxy(Scraper s) {
-		String proxy = System.getProperty("http.proxyHost", "");
-        String port = System.getProperty("http.proxyPort", "");
-		if (!proxy.isEmpty()) {
-            s.setProxy(proxy, Integer.parseInt(port));
-        }
-    }
-    
-    /**
-     * Get required property
-     * 
-     * @param name unprefixed property
-     * @return value of the property
-     * @throws IOException if property is empty
-     */
-    private static String getRequired(String name) throws IOException {
-        String p = prop.getProperty(Scraper.PROP_PREFIX + "." + name, "");
-        if (p.isEmpty()) {
-            throw new IOException("Property missing: " + p);
-        }
-        return p;
-    }
-    
-     /**
-     * Load a scraper and scrape the site.
-     * 
-     * @param prefix properties prefix for additional configuration
-     */
-    private static Scraper getScraper() {
-        Scraper s = null;
-        
-        try {
-            String name = getRequired("classname");
-            Class<? extends Scraper> c = Class.forName(name).asSubclass(Scraper.class);
-                    
-            String cache = getRequired("cache");
-            String store = getRequired("store");
-            String url = getRequired("url");
 
-            s = c.getConstructor(File.class, File.class, URL.class).
-                newInstance(new File(cache), new File(store), new URL(url));
-            
-            s.setDefaultLang(getRequired("deflanguage"));
-            s.setAllLangs(getRequired("languages").split(","));
-            
-            setProxy(s);
-            
-            s.setProperties(prop, Scraper.PROP_PREFIX);
-        } catch (ClassNotFoundException|InstantiationException|NoSuchMethodException|
-                            IllegalAccessException|InvocationTargetException ex) {
-            logger.error("Scraper class could not be loaded", ex);
-            exit(-3);
-        } catch (MalformedURLException ex) {
-            logger.error("Base URL invalid", ex);
-            exit(-3);
-        } catch (IOException ex) {
-            logger.error("Property not found", ex);
-        }
-        return s;
-    }
-    
-    
-    /**
-     * Write result of scrape to DCAT file
-     * 
-     * @param scraper 
-     */
-    private static void writeDcat(Scraper scraper) {
-        String out = prop.getProperty(Scraper.PROP_PREFIX + ".rdfout");
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(out)));
-            scraper.writeDcat(bw);
-        } catch (IOException ex) {
-            logger.error("Error writing output file {}", out, ex);
-            exit(-5);
-        } catch (RepositoryException ex) {
-            logger.error("Repository error", ex);
-            exit(-6);          
-        }
-    }
-    
-    /**
-     * Main
-     * 
-     * @param args 
-     */
-    public static void main(String[] args) { 
-        logger.info("-- START --");
-        if (args.length == 0) {
-            logger.error("No config file");
-            exit(-1);
-        }
-        
-        File config = new File(args[0]);
-        try {
-            prop.load(new FileInputStream(config));
-        } catch (IOException ex) {
-            logger.error("I/O Exception while reading {}", config, ex);
-            exit(-2);
-        }
-        
-        Scraper scraper = getScraper();
-        
-        try {
-            scraper.scrape();
-        } catch (IOException ex) {
-            logger.error("Error while scraping", ex);
-            exit(-4);
-        }
-        
-        writeDcat(scraper);
-        
-        exit(0);
-    }
+	private final static Logger logger = LoggerFactory.getLogger(Main.class);
+
+	private final static Properties prop = new Properties();
+
+	/**
+	 * Exit cleanly
+	 *
+	 * @param code return code
+	 */
+	private static void exit(int code) {
+		logger.info("-- STOP --");
+		System.exit(code);
+	}
+
+	/**
+	 * Set proxy, if needed.
+	 *
+	 * @param s Scraper instance.
+	 */
+	private static void setProxy(Scraper s) {
+		String proxy = System.getProperty("http.proxyHost", "");
+		String port = System.getProperty("http.proxyPort", "");
+		if (!proxy.isEmpty()) {
+			s.setProxy(proxy, Integer.parseInt(port));
+		}
+	}
+
+	/**
+	 * Get required property
+	 *
+	 * @param name unprefixed property
+	 * @return value of the property
+	 * @throws IOException if property is empty
+	 */
+	private static String getRequired(String name) throws IOException {
+		String p = prop.getProperty(Scraper.PROP_PREFIX + "." + name, "");
+		if (p.isEmpty()) {
+			throw new IOException("Property missing: " + p);
+		}
+		return p;
+	}
+
+	/**
+	 * Load a scraper and scrape the site.
+	 *
+	 * @param prefix properties prefix for additional configuration
+	 */
+	private static Scraper getScraper() {
+		Scraper s = null;
+
+		try {
+			String name = getRequired("classname");
+			Class<? extends Scraper> c = Class.forName(name).asSubclass(Scraper.class);
+
+			String cache = getRequired("cache");
+			String store = getRequired("store");
+			String url = getRequired("url");
+
+			s = c.getConstructor(File.class, File.class, URL.class).
+					newInstance(new File(cache), new File(store), new URL(url));
+
+			s.setDefaultLang(getRequired("deflanguage"));
+			s.setAllLangs(getRequired("languages").split(","));
+
+			setProxy(s);
+
+			s.setProperties(prop, Scraper.PROP_PREFIX);
+		} catch (ClassNotFoundException | InstantiationException | NoSuchMethodException
+				| IllegalAccessException | InvocationTargetException ex) {
+			logger.error("Scraper class could not be loaded", ex);
+			exit(-3);
+		} catch (MalformedURLException ex) {
+			logger.error("Base URL invalid", ex);
+			exit(-3);
+		} catch (IOException ex) {
+			logger.error("Property not found", ex);
+		}
+		return s;
+	}
+
+	/**
+	 * Write result of scrape to DCAT file
+	 *
+	 * @param scraper
+	 */
+	private static void writeDcat(Scraper scraper) {
+		String out = prop.getProperty(Scraper.PROP_PREFIX + ".rdfout");
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(out)));
+			scraper.writeDcat(bw);
+		} catch (IOException ex) {
+			logger.error("Error writing output file {}", out, ex);
+			exit(-5);
+		} catch (RepositoryException ex) {
+			logger.error("Repository error", ex);
+			exit(-6);
+		}
+	}
+
+	/**
+	 * Main
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		logger.info("-- START --");
+		if (args.length == 0) {
+			logger.error("No config file");
+			exit(-1);
+		}
+
+		File config = new File(args[0]);
+		try {
+			prop.load(new FileInputStream(config));
+		} catch (IOException ex) {
+			logger.error("I/O Exception while reading {}", config, ex);
+			exit(-2);
+		}
+
+		Scraper scraper = getScraper();
+
+		try {
+			scraper.scrape();
+		} catch (IOException ex) {
+			logger.error("Error while scraping", ex);
+			exit(-4);
+		}
+
+		writeDcat(scraper);
+
+		exit(0);
+	}
 }

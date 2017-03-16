@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
@@ -54,178 +53,178 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Scraper for EANDIS website.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlEandis extends Html {
-    private final Logger logger = LoggerFactory.getLogger(HtmlEandis.class);
 
-    /**
-     * Store page containing datasets
-     * 
-     * @param cache 
-     * @throws java.io.IOException 
-     */
-    private void scrapePage(Cache cache) throws IOException {
-        URL front = getBase();
-        String lang = getDefaultLang();
-        String content = makeRequest(front);
-        cache.storePage(front, lang, new Page(front, content));
-    }
-    
-    /**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
-    @Override
-    public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapePage(cache);
-            front = cache.retrievePage(getBase());   
-        }
-        // Calculate the number of datasets
-        Page p = front.get(getDefaultLang());
-        String datasets = p.getContent();
-        Elements tables = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TABLE.toString());
-        logger.info("Found {} datasets on page", String.valueOf(tables.size()));
-        
-        logger.info("Done scraping");
-    }
+	private final Logger logger = LoggerFactory.getLogger(HtmlEandis.class);
 
-    
-    /**
-     * Generate DCAT distribution.
-     * 
-     * @param store RDF store
-     * @param dataset URI
-     * @param front URL of the front page
-     * @param link link element
-     * @param i dataset sequence
-     * @param j dist sequence
-     * @param lang language code
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    private void generateDist(Storage store, IRI dataset, URL access, 
-                                        Element link, int i, int j, String lang) 
-                            throws MalformedURLException, RepositoryException {
-        String href = link.attr(HTML.Attribute.HREF.toString());
-        URL download = makeAbsURL(href);        
-     
-        URL u = makeDistURL(i + "/" + j + "/" + lang);
-        IRI dist = store.getURI(u.toString());
-        logger.debug("Generating distribution {}", dist.toString());
-        
-        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCTERMS.TITLE, link.text().trim(), lang);
-        store.add(dist, DCAT.ACCESS_URL, access);
-        store.add(dist, DCAT.DOWNLOAD_URL, download);
-        store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
-    }
-    
-    /**
-     * Generate one dataset
-     * 
-     * @param store  RDF store
-     * @param URL front
-     * @param table HTML table
-     * @param i number
-     * @param lang language
-     * @throws MalformedURLException
-     * @throws RepositoryException
-     */
-    private void generateDataset(Storage store, URL front, Element table, int i, String lang) 
-                            throws MalformedURLException, RepositoryException {
-        URL u = makeDatasetURL(String.valueOf(i));
-        IRI dataset = store.getURI(u.toString());  
-        logger.debug("Generating dataset {}", dataset.toString());
-        
+	/**
+	 * Store page containing datasets
+	 *
+	 * @param cache
+	 * @throws java.io.IOException
+	 */
+	private void scrapePage(Cache cache) throws IOException {
+		URL front = getBase();
+		String lang = getDefaultLang();
+		String content = makeRequest(front);
+		cache.storePage(front, lang, new Page(front, content));
+	}
+
+	/**
+	 * Scrape the site.
+	 *
+	 * @throws IOException
+	 */
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		Map<String, Page> front = cache.retrievePage(getBase());
+		if (front.keySet().isEmpty()) {
+			scrapePage(cache);
+			front = cache.retrievePage(getBase());
+		}
+		// Calculate the number of datasets
+		Page p = front.get(getDefaultLang());
+		String datasets = p.getContent();
+		Elements tables = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TABLE.toString());
+		logger.info("Found {} datasets on page", String.valueOf(tables.size()));
+
+		logger.info("Done scraping");
+	}
+
+	/**
+	 * Generate DCAT distribution.
+	 *
+	 * @param store RDF store
+	 * @param dataset URI
+	 * @param front URL of the front page
+	 * @param link link element
+	 * @param i dataset sequence
+	 * @param j dist sequence
+	 * @param lang language code
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	private void generateDist(Storage store, IRI dataset, URL access,
+			Element link, int i, int j, String lang)
+			throws MalformedURLException, RepositoryException {
+		String href = link.attr(HTML.Attribute.HREF.toString());
+		URL download = makeAbsURL(href);
+
+		URL u = makeDistURL(i + "/" + j + "/" + lang);
+		IRI dist = store.getURI(u.toString());
+		logger.debug("Generating distribution {}", dist.toString());
+
+		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+		store.add(dist, DCTERMS.TITLE, link.text().trim(), lang);
+		store.add(dist, DCAT.ACCESS_URL, access);
+		store.add(dist, DCAT.DOWNLOAD_URL, download);
+		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
+	}
+
+	/**
+	 * Generate one dataset
+	 *
+	 * @param store RDF store
+	 * @param URL front
+	 * @param table HTML table
+	 * @param i number
+	 * @param lang language
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	private void generateDataset(Storage store, URL front, Element table, int i, String lang)
+			throws MalformedURLException, RepositoryException {
+		URL u = makeDatasetURL(String.valueOf(i));
+		IRI dataset = store.getURI(u.toString());
+		logger.debug("Generating dataset {}", dataset.toString());
+
 		Element h2 = table.previousElementSibling()
-							.getElementsByTag(HTML.Tag.H2.toString()).first();
+				.getElementsByTag(HTML.Tag.H2.toString()).first();
 		if (h2 == null) {
-            logger.warn("Empty title, skipping");
-            return;
-        }
-		
-        String title = h2.text().trim().toLowerCase();
-        String desc = title;
-        
-        store.add(dataset, RDF.TYPE, DCAT.DATASET);
-        store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dataset, DCTERMS.TITLE, title, lang);
-        store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-        store.add(dataset, DCAT.LANDING_PAGE, front);
-  
-        int j = 0;
-        Elements links = table.getElementsByTag(HTML.Tag.A.toString());
-        for(Element link : links) {
-            generateDist(store, dataset, front, link, i, j++, lang);
-        }
-    }
-    
-    /**
-     * Generate DCAT Dataset
-     * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    @Override
-    protected void generateDataset(Storage store, String id, Map<String, Page> page) 
-                            throws MalformedURLException, RepositoryException {
-        String lang = getDefaultLang();
-        
-        Page p = page.getOrDefault(lang, new Page());
-        String html = p.getContent();
-        URL front = p.getUrl();
-        Elements tables = 
-                Jsoup.parse(html).body().getElementsByTag(HTML.Tag.TABLE.toString());
-            
-        int i = 0;
-        for (Element table : tables) {
-            generateDataset(store, front, table, i, lang);
-            i++;
-        }
-    }
-    
-    /**
-     * Generate DCAT.
-     * 
-     * @param cache
-     * @param store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
-    @Override
-    public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException {
-        logger.info("Generate DCAT");
-        
-        /* Get the list of all datasets */            
-        Map<String,Page> page = cache.retrievePage(getBase());
-        generateDataset(store, null, page);
-        generateCatalog(store);
-    }
-    
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage RDF back-end
-     * @param base base URL
-     */
-    public HtmlEandis(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("eandis");
-    }
+			logger.warn("Empty title, skipping");
+			return;
+		}
+
+		String title = h2.text().trim().toLowerCase();
+		String desc = title;
+
+		store.add(dataset, RDF.TYPE, DCAT.DATASET);
+		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+		store.add(dataset, DCTERMS.TITLE, title, lang);
+		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+		store.add(dataset, DCAT.LANDING_PAGE, front);
+
+		int j = 0;
+		Elements links = table.getElementsByTag(HTML.Tag.A.toString());
+		for (Element link : links) {
+			generateDist(store, dataset, front, link, i, j++, lang);
+		}
+	}
+
+	/**
+	 * Generate DCAT Dataset
+	 *
+	 * @param store RDF store
+	 * @param id dataset id
+	 * @param page
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	@Override
+	protected void generateDataset(Storage store, String id, Map<String, Page> page)
+			throws MalformedURLException, RepositoryException {
+		String lang = getDefaultLang();
+
+		Page p = page.getOrDefault(lang, new Page());
+		String html = p.getContent();
+		URL front = p.getUrl();
+		Elements tables
+				= Jsoup.parse(html).body().getElementsByTag(HTML.Tag.TABLE.toString());
+
+		int i = 0;
+		for (Element table : tables) {
+			generateDataset(store, front, table, i, lang);
+			i++;
+		}
+	}
+
+	/**
+	 * Generate DCAT.
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		logger.info("Generate DCAT");
+
+		/* Get the list of all datasets */
+		Map<String, Page> page = cache.retrievePage(getBase());
+		generateDataset(store, null, page);
+		generateCatalog(store);
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage RDF back-end
+	 * @param base base URL
+	 */
+	public HtmlEandis(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("eandis");
+	}
 }

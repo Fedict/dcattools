@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
@@ -39,26 +38,27 @@ import org.slf4j.LoggerFactory;
 
 /**
  * CKAN Wallonie / AWT.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class CkanWallonie extends CkanJson {
-    private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
- 
-    @Override
-    protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) {
-        // do nothing
-    }
-    
-   /**
-    * CKAN parser for Opendata.DigitalWallonia.be / AWT.
-    * 
-    * @param caching
-    * @param storage
-    * @param base 
-    */
-    public CkanWallonie(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("wallonie");
-    }  
+
+	private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
+
+	@Override
+	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) {
+		// do nothing
+	}
+
+	/**
+	 * CKAN parser for Opendata.DigitalWallonia.be / AWT.
+	 *
+	 * @param caching
+	 * @param storage
+	 * @param base
+	 */
+	public CkanWallonie(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("wallonie");
+	}
 }

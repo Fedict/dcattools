@@ -54,118 +54,119 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class XlsStatbelOpen extends Xls {
-    private final Logger logger = LoggerFactory.getLogger(XlsStatbelOpen.class);
-  
-    public final static DateFormat DATEFMT = 
-                            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-    public final static Pattern YEAR_PAT = 
-                    Pattern.compile(".*((18|19|20)[0-9]{2} / (19|20)[0-9]{2}).*");
-			
-    public final static String ID = "dcat:dataset";
-    public final static String TITLE = "dct:title";
-    public final static String CREATED = "dcat:issued";
-    public final static String DESC = "dct:description";
+
+	private final Logger logger = LoggerFactory.getLogger(XlsStatbelOpen.class);
+
+	public final static DateFormat DATEFMT
+			= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+	public final static Pattern YEAR_PAT
+			= Pattern.compile(".*((18|19|20)[0-9]{2} / (19|20)[0-9]{2}).*");
+
+	public final static String ID = "dcat:dataset";
+	public final static String TITLE = "dct:title";
+	public final static String CREATED = "dcat:issued";
+	public final static String DESC = "dct:description";
 	public final static String TEMPORAL = "dct:temporal";
-    
-    public final static String DOWNLOAD = "dcat:downloadurl,dct:format";
-            
-    public final static String[] FMTS = { "xlsx", "txt", "gml", "shp" };
-    
-    @Override
-    protected URL getId(Row row) throws MalformedURLException {
-        String s = row.getCell(0).toString();
-        return makeDatasetURL(s);
-    }
 
-      /**
-     * Get date from field
-     * 
-     * @param map
-     * @param field 
-     * @return date or null
-     */
-    protected Date getDate(Map<String,String> map, String field) {
-        Date date = null;
-        String s = map.getOrDefault(field, "");
-        if (!s.isEmpty()) {
-            try {
-                date = XlsStatbelOpen.DATEFMT.parse(s);
-            } catch (ParseException ex) {
-                logger.warn("Could not parse {} to date", s);
-            }
-        }
-        return date;
-    }
-  
-    /**
-     * Generate DCAT Distribution.
-     * 
-     * @param store
-     * @param dataset
-     * @param map
-     * @param lang
-     * @throws RepositoryException 
-     */
-    private void generateDist(Storage store, IRI dataset, Map<String,String> map,
-            String id, String lang) throws RepositoryException, MalformedURLException {
-    
-        for(String fmt: FMTS) {
-            URL u  = makeDistURL(id + "/" + lang + "/" + fmt);
-            IRI dist = store.getURI(u.toString());
-            logger.debug("Generating distribution {}", dist.toString());
+	public final static String DOWNLOAD = "dcat:downloadurl,dct:format";
 
-            String download = map.getOrDefault(
-                        XlsStatbelOpen.DOWNLOAD + "<" + fmt + ">@" + lang, "");
-        
-            if (! download.isEmpty()) {
-                store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-                store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-                store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-                store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
-                store.add(dist, DCAT.MEDIA_TYPE, fmt);
-            }
-        }
-    }
-    
-    @Override
-    public void generateDataset(Storage store, Map<String, String> map, URL u) 
-            throws RepositoryException, MalformedURLException {
-        IRI dataset = store.getURI(u.toString());  
-        logger.debug("Generating dataset {}", dataset.toString());
-        
-        store.add(dataset, RDF.TYPE, DCAT.DATASET);
-        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-        
-        String[] langs = getAllLangs();
-        for (String lang : langs) {
-            String id = map.get(ID);
-            String title = map.getOrDefault(XlsStatbelOpen.TITLE + "@" + lang, "");
-            String desc = map.getOrDefault(XlsStatbelOpen.DESC + "@" + lang, title);
-            
-            store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-            store.add(dataset, DCTERMS.TITLE, title, lang);
-            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-            
-            Date created = getDate(map, XlsStatbelOpen.CREATED);
-            if (created != null) {
-                store.add(dataset, DCTERMS.ISSUED, created);
-            }
+	public final static String[] FMTS = {"xlsx", "txt", "gml", "shp"};
+
+	@Override
+	protected URL getId(Row row) throws MalformedURLException {
+		String s = row.getCell(0).toString();
+		return makeDatasetURL(s);
+	}
+
+	/**
+	 * Get date from field
+	 *
+	 * @param map
+	 * @param field
+	 * @return date or null
+	 */
+	protected Date getDate(Map<String, String> map, String field) {
+		Date date = null;
+		String s = map.getOrDefault(field, "");
+		if (!s.isEmpty()) {
+			try {
+				date = XlsStatbelOpen.DATEFMT.parse(s);
+			} catch (ParseException ex) {
+				logger.warn("Could not parse {} to date", s);
+			}
+		}
+		return date;
+	}
+
+	/**
+	 * Generate DCAT Distribution.
+	 *
+	 * @param store
+	 * @param dataset
+	 * @param map
+	 * @param lang
+	 * @throws RepositoryException
+	 */
+	private void generateDist(Storage store, IRI dataset, Map<String, String> map,
+			String id, String lang) throws RepositoryException, MalformedURLException {
+
+		for (String fmt : FMTS) {
+			URL u = makeDistURL(id + "/" + lang + "/" + fmt);
+			IRI dist = store.getURI(u.toString());
+			logger.debug("Generating distribution {}", dist.toString());
+
+			String download = map.getOrDefault(
+					XlsStatbelOpen.DOWNLOAD + "<" + fmt + ">@" + lang, "");
+
+			if (!download.isEmpty()) {
+				store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+				store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+				store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+				store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
+				store.add(dist, DCAT.MEDIA_TYPE, fmt);
+			}
+		}
+	}
+
+	@Override
+	public void generateDataset(Storage store, Map<String, String> map, URL u)
+			throws RepositoryException, MalformedURLException {
+		IRI dataset = store.getURI(u.toString());
+		logger.debug("Generating dataset {}", dataset.toString());
+
+		store.add(dataset, RDF.TYPE, DCAT.DATASET);
+		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+
+		String[] langs = getAllLangs();
+		for (String lang : langs) {
+			String id = map.get(ID);
+			String title = map.getOrDefault(XlsStatbelOpen.TITLE + "@" + lang, "");
+			String desc = map.getOrDefault(XlsStatbelOpen.DESC + "@" + lang, title);
+
+			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+			store.add(dataset, DCTERMS.TITLE, title, lang);
+			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+
+			Date created = getDate(map, XlsStatbelOpen.CREATED);
+			if (created != null) {
+				store.add(dataset, DCTERMS.ISSUED, created);
+			}
 			String period = stringInt(map.getOrDefault(XlsStatbelOpen.TEMPORAL, ""));
 			generateTemporal(store, dataset, period, YEAR_PAT, "/");
-			
-            generateDist(store, dataset, map, id, lang);
-        }
-    }
-    
-    /**
-     * Constructor.
-     * 
-     * @param caching
-     * @param storage
-     * @param base 
-     */
-    public XlsStatbelOpen(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("statbelopen");
-    }
+
+			generateDist(store, dataset, map, id, lang);
+		}
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 * @param caching
+	 * @param storage
+	 * @param base
+	 */
+	public XlsStatbelOpen(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("statbelopen");
+	}
 }

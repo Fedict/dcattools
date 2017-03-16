@@ -57,54 +57,55 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Scraper for website Brugge.
- * 
+ *
  * @author Bart.Hanssens
  */
 public class HtmlBrugge extends Html {
+
 	private final Logger logger = LoggerFactory.getLogger(HtmlBrugge.class);
-	
-    private final static String LINKS_DATASETS = "div.user-content div a:eq(1)[href]";
+
+	private final static String LINKS_DATASETS = "div.user-content div a:eq(1)[href]";
 	private final static String LINK_DATASET = "div.user-content h4";
 	private final static String NAME_DATASET = "strong a[name]";
-	
+
 	private final static String SIBL_DESC = "em strong:contains(Omschrijving)";
 	private final static String SIBL_FMTS = "em :contains(Bestandsformaten)";
 	private final static String DIST_HREF = "a";
 
 	/**
-     * Get the list of all the categories.
-     * 
-     * @return list of category URLs
-     * @throws IOException 
-     */
+	 * Get the list of all the categories.
+	 *
+	 * @return list of category URLs
+	 * @throws IOException
+	 */
 	private List<URL> scrapeDatasetLists() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
 		String front = makeRequest(base);
 		Elements links = Jsoup.parse(front).select(LINKS_DATASETS);
-        
-		for(Element link : links) {
+
+		for (Element link : links) {
 			String href = link.attr(HTML.Attribute.HREF.toString());
 			urls.add(makeAbsURL(href));
 		}
 		return urls;
 	}
-	
+
 	@Override
 	public void scrape() throws IOException {
-        logger.info("Start scraping");
-        Cache cache = getCache();
-		
-        List<URL> urls = cache.retrieveURLList();
-        if (urls.isEmpty()) {
-            urls = scrapeDatasetLists();
-            cache.storeURLList(urls);
-        }
-    
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
+			urls = scrapeDatasetLists();
+			cache.storeURLList(urls);
+		}
+
 		logger.info("Found {} dataset lists", String.valueOf(urls.size()));
 		logger.info("Start scraping (waiting between requests)");
-		
+
 		int i = 0;
 		for (URL u : urls) {
 			Map<String, Page> page = cache.retrievePage(u);
@@ -125,41 +126,40 @@ public class HtmlBrugge extends Html {
 	}
 
 	/**
-     * Generate DCAT distribution.
-     * 
-     * @param store RDF store
-     * @param dataset URI
+	 * Generate DCAT distribution.
+	 *
+	 * @param store RDF store
+	 * @param dataset URI
 	 * @param name short name
-     * @param access URL of the acess page
-     * @param link download link element
-     * @param lang language code
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    private void generateDist(Storage store, IRI dataset, String name, String access, 
+	 * @param access URL of the acess page
+	 * @param link download link element
+	 * @param lang language code
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	private void generateDist(Storage store, IRI dataset, String name, String access,
 			Element link, String lang) throws MalformedURLException, RepositoryException {
-        String href = link.attr(Attribute.HREF.toString());
+		String href = link.attr(Attribute.HREF.toString());
 		String fmt = link.text().replaceAll("/", "")
-								.replaceAll(" ", "")
-								.replaceAll("&nbsp;", "");         
-        URL u = makeDistURL(name + "/" + fmt);
-        IRI dist = store.getURI(u.toString());
-        logger.debug("Generating distribution {}", dist.toString());
-        
-        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dist, DCTERMS.TITLE, fmt, lang);
-        store.add(dist, DCAT.ACCESS_URL, makeAbsURL(access));
-        store.add(dist, DCAT.DOWNLOAD_URL, makeAbsURL(href));
-        store.add(dist, DCAT.MEDIA_TYPE, fmt);
-    }
-    
-	
+				.replaceAll(" ", "")
+				.replaceAll("&nbsp;", "");
+		URL u = makeDistURL(name + "/" + fmt);
+		IRI dist = store.getURI(u.toString());
+		logger.debug("Generating distribution {}", dist.toString());
+
+		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+		store.add(dist, DCTERMS.TITLE, fmt, lang);
+		store.add(dist, DCAT.ACCESS_URL, makeAbsURL(access));
+		store.add(dist, DCAT.DOWNLOAD_URL, makeAbsURL(href));
+		store.add(dist, DCAT.MEDIA_TYPE, fmt);
+	}
+
 	/**
 	 * Generate one dataset
-	 * 
-	 * @param store  RDF store
+	 *
+	 * @param store RDF store
 	 * @param page front
 	 * @param el HTML element
 	 * @param name anchor name
@@ -167,8 +167,8 @@ public class HtmlBrugge extends Html {
 	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
-	private void generateDataset(Storage store, String page, Element el, String anchor, 
-				String lang) throws MalformedURLException, RepositoryException {
+	private void generateDataset(Storage store, String page, Element el, String anchor,
+			String lang) throws MalformedURLException, RepositoryException {
 		String title = el.text();
 		String name = title.toLowerCase().replaceAll(" ", "").replaceAll("&nbsp;", "");
 		// skip empty / invalid title
@@ -176,96 +176,96 @@ public class HtmlBrugge extends Html {
 			return;
 		}
 		URL u = makeDatasetURL(name);
-		IRI dataset = store.getURI(u.toString()); 
+		IRI dataset = store.getURI(u.toString());
 		logger.debug("Generating dataset {}", dataset);
-		
+
 		String desc = title;
 		Element sib = el.nextElementSibling();
 		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
-			if (! sib.select(SIBL_DESC).isEmpty()) {
+			if (!sib.select(SIBL_DESC).isEmpty()) {
 				desc = sib.text().replaceFirst("Omschrijving ", "");
 			}
 			sib = sib.nextElementSibling();
 		}
-		
+
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
-        store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-        store.add(dataset, DCTERMS.TITLE, title, lang);
+		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-        store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-        store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
+		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
 		store.add(dataset, DCAT.KEYWORD, page.substring(page.lastIndexOf("/") + 1), lang);
-		
+
 		Elements links = null;
 		sib = el.nextElementSibling();
 		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
-			if(!sib.select(SIBL_FMTS).isEmpty()) {
+			if (!sib.select(SIBL_FMTS).isEmpty()) {
 				links = sib.select(DIST_HREF);
 			}
 			sib = sib.nextElementSibling();
 		}
 		if (links != null) {
-			for(Element link: links) {
+			for (Element link : links) {
 				generateDist(store, dataset, name, page + "#" + anchor, link, lang);
 			}
 		}
 	}
-	
+
 	/**
-     * Generate DCAT Dataset
-     * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    @Override
-    protected void generateDataset(Storage store, String id, Map<String, Page> page) 
-                            throws MalformedURLException, RepositoryException {
-        String lang = getDefaultLang();
-		
+	 * Generate DCAT Dataset
+	 *
+	 * @param store RDF store
+	 * @param id dataset id
+	 * @param page
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	@Override
+	protected void generateDataset(Storage store, String id, Map<String, Page> page)
+			throws MalformedURLException, RepositoryException {
+		String lang = getDefaultLang();
+
 		Page p = page.get("");
 		String html = p.getContent();
 		Elements elements = Jsoup.parse(html).select(LINK_DATASET);
-            
+
 		for (Element element : elements) {
 			String anchor = element.select(NAME_DATASET).attr(Attribute.NAME.toString());
 			generateDataset(store, id, element, anchor, lang);
 		}
 	}
 
-    /**
-     * Generate DCAT.
-     * 
-     * @param cache DBC cache
-     * @param store RDF store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
+	/**
+	 * Generate DCAT.
+	 *
+	 * @param cache DBC cache
+	 * @param store RDF store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
 	@Override
-	public void generateDcat(Cache cache, Storage store) 
-							throws RepositoryException, MalformedURLException {
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
 		logger.info("Generate DCAT");
-        
-		/* Get the list of all datasets */            
+
+		/* Get the list of all datasets */
 		List<URL> urls = cache.retrieveURLList();
-		for(URL u : urls) {
-			Map<String,Page> page = cache.retrievePage(u);
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
 			generateDataset(store, u.toString(), page);
 		}
-        generateCatalog(store);
+		generateCatalog(store);
 	}
-	
+
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param caching DB cache file
 	 * @param storage
-	 * @param base 
+	 * @param base
 	 */
 	public HtmlBrugge(File caching, File storage, URL base) {
 		super(caching, storage, base);
-        setName("brugge");
+		setName("brugge");
 	}
 }

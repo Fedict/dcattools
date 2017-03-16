@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
@@ -48,76 +47,79 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Abstract scraper for the Geonet v3 portal software with DCAT export.
+ *
  * @see http://geonetwork-opensource.org/
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Geonet extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Geonet.class);
 
-    // Geonet DCAT RDF/XML API
-    public final static String API_DCAT = "/srv/eng/rdf.metadata.public.get";
-   
+	private final Logger logger = LoggerFactory.getLogger(Geonet.class);
+
+	// Geonet DCAT RDF/XML API
+	public final static String API_DCAT = "/srv/eng/rdf.metadata.public.get";
+
 	/**
-     * Generate DCAT file
-     * 
-     * @param cache
-     * @param store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
-    @Override
-    public void generateDcat(Cache cache, Storage store) 
-                            throws RepositoryException, MalformedURLException {
-        Map<String, Page> map = cache.retrievePage(getBase());
-        String xml = map.get("all").getContent();
-        
-        // Load RDF/XML file into store
-        try(InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-            store.add(in, RDFFormat.RDFXML);
-        } catch (RDFParseException | IOException ex) {
-            throw new RepositoryException(ex);
-        }
-        generateCatalog(store);
-    }
-	
-	/**
-     * Scrape DCAT catalog.
-     * @param cache
-     * @throws IOException
-     */
-    protected void scrapeCat(Cache cache) throws IOException {
-        URL front = getBase();
-        URL url = new URL(getBase() + Geonet.API_DCAT);
-        String content = makeRequest(url);
-        cache.storePage(front, "all", new Page(url, content));
-    }
-	
-	/**
-     * Scrape DCAT catalog.
-     * @throws IOException
-     */
-    @Override
-    public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-        
-        Map<String, Page> front = cache.retrievePage(getBase());
-        if (front.keySet().isEmpty()) {
-            scrapeCat(cache);
-        }
-        logger.info("Done scraping");
+	 * Generate DCAT file
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+		String xml = map.get("all").getContent();
+
+		// Load RDF/XML file into store
+		try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.RDFXML);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+		generateCatalog(store);
 	}
 
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @param cache
+	 * @throws IOException
+	 */
+	protected void scrapeCat(Cache cache) throws IOException {
+		URL front = getBase();
+		URL url = new URL(getBase() + Geonet.API_DCAT);
+		String content = makeRequest(url);
+		cache.storePage(front, "all", new Page(url, content));
+	}
 
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public Geonet(File caching, File storage, URL base) {
-        super(caching, storage, base);
-    }
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @throws IOException
+	 */
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		Map<String, Page> front = cache.retrievePage(getBase());
+		if (front.keySet().isEmpty()) {
+			scrapeCat(cache);
+		}
+		logger.info("Done scraping");
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public Geonet(File caching, File storage, URL base) {
+		super(caching, storage, base);
+	}
 }

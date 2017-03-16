@@ -40,32 +40,33 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Abstract scraper for HTML sites.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Html extends Scraper {
-    private final Logger logger = LoggerFactory.getLogger(Html.class);
-    
-    /**
-     * Generate DCAT Dataset
-     * 
-     * @param store RDF store
-     * @param id dataset id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    protected abstract void generateDataset(Storage store, String id, Map<String,Page> page) 
-            throws MalformedURLException, RepositoryException;
-         
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public Html(File caching, File storage, URL base) {
-        super(caching, storage, base);
-    }
+
+	private final Logger logger = LoggerFactory.getLogger(Html.class);
+
+	/**
+	 * Generate DCAT Dataset
+	 *
+	 * @param store RDF store
+	 * @param id dataset id
+	 * @param page
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	protected abstract void generateDataset(Storage store, String id, Map<String, Page> page)
+			throws MalformedURLException, RepositoryException;
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public Html(File caching, File storage, URL base) {
+		super(caching, storage, base);
+	}
 }
