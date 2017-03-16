@@ -40,50 +40,50 @@ import org.slf4j.LoggerFactory;
 
 /**
  * CKAN Brussels Region.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class CkanBrussels extends CkanRDF {
-    private final Logger logger = LoggerFactory.getLogger(CkanBrussels.class);
 
-/**
-     * Get the list of all the CKAN packages (DCAT Dataset).
-     * 
-     * @return List of URLs
-     * @throws MalformedURLException
-     * @throws IOException 
-     */
+	private final Logger logger = LoggerFactory.getLogger(CkanBrussels.class);
+
+	/**
+	 * Get the list of all the CKAN packages (DCAT Dataset).
+	 *
+	 * @return List of URLs
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	@Override
-    protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
-        List<URL> urls = new ArrayList<>();
-        URL getPackages = new URL(getBase(), Ckan.API_LIST);
-        
-        JsonObject obj = makeJsonRequest(getPackages);
-        if (! obj.getBoolean(Ckan.SUCCESS)) {
-            return urls;
-        }
-        JsonArray arr = obj.getJsonArray(Ckan.RESULT);
-        for (JsonString str : arr.getValuesAs(JsonString.class)) {
+	protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
+		List<URL> urls = new ArrayList<>();
+		URL getPackages = new URL(getBase(), Ckan.API_LIST);
+
+		JsonObject obj = makeJsonRequest(getPackages);
+		if (!obj.getBoolean(Ckan.SUCCESS)) {
+			return urls;
+		}
+		JsonArray arr = obj.getJsonArray(Ckan.RESULT);
+		for (JsonString str : arr.getValuesAs(JsonString.class)) {
 			String url = str.getString();
 			if (url.endsWith("-harvester")) {
 				logger.info("Remove dummy dataset {}", url);
 			} else {
 				urls.add(ckanDatasetURL(url));
 			}
-        }
-        return urls;
-    }
-	
-	
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public CkanBrussels(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("brussels");
-   }    
+		}
+		return urls;
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public CkanBrussels(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("brussels");
+	}
 }

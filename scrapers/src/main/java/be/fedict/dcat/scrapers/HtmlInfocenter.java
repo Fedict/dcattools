@@ -23,7 +23,6 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
@@ -56,126 +55,127 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Infocenter / federal statistics scraper.
- * 
+ *
  * @author Bart.Hanssens
  */
 public class HtmlInfocenter extends Html {
-    private final Logger logger = LoggerFactory.getLogger(HtmlInfocenter.class);
-	
+
+	private final Logger logger = LoggerFactory.getLogger(HtmlInfocenter.class);
+
 	public final static String LANG_LINK = "blgm_lSwitch";
-	
+
 	private final static String LINKS_DATASETS = "div.menu ul.no-style a[href]";
 	private final static String LINKS_SECOND = "div.nav-stats-wrapper ul.stats-second-menu li a";
-		
-    /**
-     * Get the URL of the  page in another language
-     * 
-     * @param page
-     * @param lang
-     * @return URL of the page in another language
-     * @throws IOException 
-     */
-    private URL switchLanguage(String page, String lang) throws IOException { 
-        Elements lis = Jsoup.parse(page)
-                            .getElementsByClass(HtmlInfocenter.LANG_LINK);
-        
-        for(Element li : lis) {
-            if (li.text().equals(lang)) {
-                String href = li.attr(HTML.Attribute.HREF.toString());
-                if (href != null && !href.isEmpty()) {
-                    return new URL(href);
-                }
-            }
-        }
-        logger.warn("No {} translation for page {}", lang, page);
-        return null;
-    }
 
 	/**
-     * Scrape dataset
-     * 
-     * @param u
-     * @throws IOException
-     */
-    private void scrapeDataset(URL u) throws IOException {
-        Cache cache = getCache();
-        String deflang = getDefaultLang();
-        String html = makeRequest(u);
-        
-        cache.storePage(u, deflang, new Page(u, html));
-		
-        String[] langs = getAllLangs();
-        for (String lang : langs) {
-            if (! lang.equals(deflang)) {
-                URL url = switchLanguage(html, lang);
-                if (url != null) {
-                    String body = makeRequest(url);
-                    cache.storePage(u, lang, new Page(url, body));
-                }
-                sleep();
-            }
-        } 
-    }
+	 * Get the URL of the page in another language
+	 *
+	 * @param page
+	 * @param lang
+	 * @return URL of the page in another language
+	 * @throws IOException
+	 */
+	private URL switchLanguage(String page, String lang) throws IOException {
+		Elements lis = Jsoup.parse(page)
+				.getElementsByClass(HtmlInfocenter.LANG_LINK);
+
+		for (Element li : lis) {
+			if (li.text().equals(lang)) {
+				String href = li.attr(HTML.Attribute.HREF.toString());
+				if (href != null && !href.isEmpty()) {
+					return new URL(href);
+				}
+			}
+		}
+		logger.warn("No {} translation for page {}", lang, page);
+		return null;
+	}
 
 	/**
-     * Get the list of all the statistics.
-     * 
-     * @return list of category URLs
-     * @throws IOException 
-     */
+	 * Scrape dataset
+	 *
+	 * @param u
+	 * @throws IOException
+	 */
+	private void scrapeDataset(URL u) throws IOException {
+		Cache cache = getCache();
+		String deflang = getDefaultLang();
+		String html = makeRequest(u);
+
+		cache.storePage(u, deflang, new Page(u, html));
+
+		String[] langs = getAllLangs();
+		for (String lang : langs) {
+			if (!lang.equals(deflang)) {
+				URL url = switchLanguage(html, lang);
+				if (url != null) {
+					String body = makeRequest(url);
+					cache.storePage(u, lang, new Page(url, body));
+				}
+				sleep();
+			}
+		}
+	}
+
+	/**
+	 * Get the list of all the statistics.
+	 *
+	 * @return list of category URLs
+	 * @throws IOException
+	 */
 	private List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
 		String front = makeRequest(base);
 		Elements links = Jsoup.parse(front).select(LINKS_DATASETS);
-        
-		for(Element link : links) {
+
+		for (Element link : links) {
 			String href = link.attr(HTML.Attribute.HREF.toString());
 			urls.add(makeAbsURL(href.substring(0, href.lastIndexOf("/"))));
 		}
 		return urls;
 	}
-	
+
 	/**
-     * Scrape the site.
-     * 
-     * @throws IOException 
-     */
+	 * Scrape the site.
+	 *
+	 * @throws IOException
+	 */
 	@Override
 	public void scrape() throws IOException {
 		logger.info("Start scraping");
-        Cache cache = getCache();
-        
-        List<URL> urls = cache.retrieveURLList();
-        if (urls.isEmpty()) {
-            urls = scrapeDatasetList();
-            cache.storeURLList(urls);
-        }
-		
-        logger.info("Found {} downloads", String.valueOf(urls.size()));
-        logger.info("Start scraping (waiting between requests)");
-        int i = 0;
-        for (URL u : urls) {
-            Map<String, Page> page = cache.retrievePage(u);
-            if (page.isEmpty()) {
-                sleep();
-                if (++i % 100 == 0) {
-                    logger.info("Download {}...", Integer.toString(i));
-                }
-                try {
-                    scrapeDataset(u);
-                } catch (IOException ex) {
-                    logger.error("Failed to scrape {}", u);
-                }
-            }
-        }
-        logger.info("Done scraping");
+		Cache cache = getCache();
+
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
+			urls = scrapeDatasetList();
+			cache.storeURLList(urls);
+		}
+
+		logger.info("Found {} downloads", String.valueOf(urls.size()));
+		logger.info("Start scraping (waiting between requests)");
+		int i = 0;
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			if (page.isEmpty()) {
+				sleep();
+				if (++i % 100 == 0) {
+					logger.info("Download {}...", Integer.toString(i));
+				}
+				try {
+					scrapeDataset(u);
+				} catch (IOException ex) {
+					logger.error("Failed to scrape {}", u);
+				}
+			}
+		}
+		logger.info("Done scraping");
 	}
 
-	 /**
+	/**
 	 * Generate DCAT Distribution.
-	 * 
+	 *
 	 * @param store RDF store
 	 * @param dataset dataset URI
 	 * @param access access URL
@@ -184,8 +184,8 @@ public class HtmlInfocenter extends Html {
 	 * @throws MalformedUrlException
 	 * @throws RepositoryException
 	 */
-	private void generateDist(Storage store, IRI dataset, URL access, Element link, 
-				String lang) throws MalformedURLException, RepositoryException {
+	private void generateDist(Storage store, IRI dataset, URL access, Element link,
+			String lang) throws MalformedURLException, RepositoryException {
 		String href = link.attr(HTML.Attribute.HREF.toString());
 
 		String id = makeHashId(href);
@@ -201,17 +201,17 @@ public class HtmlInfocenter extends Html {
 	}
 
 	/**
-     * Generate DCAT Dataset.
-     * 
-     * @param store RDF store
-     * @param id
-     * @param page
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    @Override
-	public void generateDataset(Storage store, String id, Map<String,Page> page) 
-							throws MalformedURLException, RepositoryException {
+	 * Generate DCAT Dataset.
+	 *
+	 * @param store RDF store
+	 * @param id
+	 * @param page
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	@Override
+	public void generateDataset(Storage store, String id, Map<String, Page> page)
+			throws MalformedURLException, RepositoryException {
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
 
@@ -239,63 +239,62 @@ public class HtmlInfocenter extends Html {
 			String title = h.text();
 			// by default, also use the title as description
 			String desc = title;
-  
-            Elements navs = doc.select(LINKS_SECOND);	
+
+			Elements navs = doc.select(LINKS_SECOND);
 			if (navs != null && !navs.isEmpty()) {
 				StringBuilder buf = new StringBuilder();
-				for(Element nav : navs) {
+				for (Element nav : navs) {
 					buf.append(nav.text()).append('\n');
 				}
 				desc = buf.toString();
 			} else {
 				logger.warn("No second menu element");
-            }
-            
+			}
+
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 			store.add(dataset, DCTERMS.TITLE, title, lang);
 			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-			
-			if (navs != null) {
-				for(Element nav : navs) {
-					generateDist(store, dataset, p.getUrl(), nav, lang);
-                }
-			}
-        }
-    }
-   
 
-    /**
-     * Generate DCAT.
-     * 
-     * @param cache DBC cache
-     * @param store RDF store
-     * @throws RepositoryException
-     * @throws MalformedURLException 
-     */
-	@Override
-	public void generateDcat(Cache cache, Storage store) 
-						throws RepositoryException, MalformedURLException {
-        logger.info("Generate DCAT");
-        
-        /* Get the list of all datasets */
-        List<URL> urls = cache.retrieveURLList();
-        for(URL u : urls) {
-            Map<String,Page> page = cache.retrievePage(u);
-            String id = makeHashId(u.toString());
-            generateDataset(store, id, page);
-        }
-        generateCatalog(store);
+			if (navs != null) {
+				for (Element nav : navs) {
+					generateDist(store, dataset, p.getUrl(), nav, lang);
+				}
+			}
+		}
 	}
-	
+
 	/**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public HtmlInfocenter(File caching, File storage, URL base) {
-        super(caching, storage, base);
+	 * Generate DCAT.
+	 *
+	 * @param cache DBC cache
+	 * @param store RDF store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		logger.info("Generate DCAT");
+
+		/* Get the list of all datasets */
+		List<URL> urls = cache.retrieveURLList();
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			String id = makeHashId(u.toString());
+			generateDataset(store, id, page);
+		}
+		generateCatalog(store);
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public HtmlInfocenter(File caching, File storage, URL base) {
+		super(caching, storage, base);
 		setName("infocenter");
-    }
+	}
 }

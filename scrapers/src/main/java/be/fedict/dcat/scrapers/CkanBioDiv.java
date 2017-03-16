@@ -41,34 +41,36 @@ import org.slf4j.LoggerFactory;
 
 /**
  * CKAN Belgian Biodiversity portal.
- * 
+ *
  * @author Bart.Hanssens
  */
 public class CkanBioDiv extends CkanJson {
+
 	private final Logger logger = LoggerFactory.getLogger(CkanBioDiv.class);
 
 	// CKAN fields
 	public final static String ADMIN_CONTACT = "administrative_contact";
+
 	/**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
 	public CkanBioDiv(File caching, File storage, URL base) {
 		super(caching, storage, base);
 		setName("biodiv");
 	}
 
 	@Override
-	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) 
+	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
 			throws RepositoryException, MalformedURLException {
 		String contact = json.getString(ADMIN_CONTACT, "");
 		String email = extractEmail(contact);
-		if (! email.isEmpty()) {
+		if (!email.isEmpty()) {
 			contact = contact.replaceFirst(email, "").trim();
 			parseContact(store, uri, contact, email);
 		}
-	}	
+	}
 }

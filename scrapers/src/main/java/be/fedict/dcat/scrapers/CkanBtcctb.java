@@ -44,57 +44,57 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * CKAN BTC-CTB.
- * Currently (9/2016) the JSON version is more reliable than the RDF
- * 
+ * CKAN BTC-CTB. Currently (9/2016) the JSON version is more reliable than the
+ * RDF
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class CkanBtcctb extends CkanJson {
-    private final Logger logger = LoggerFactory.getLogger(CkanBtcctb.class);
-	
+
+	private final Logger logger = LoggerFactory.getLogger(CkanBtcctb.class);
+
 	private final static String BTC = "btc-ctb";
-	
 
 	@Override
-	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) 
-							throws RepositoryException, MalformedURLException {
+	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
+			throws RepositoryException, MalformedURLException {
 		//
 	}
-	
+
 	/**
-     * Get the list of all the CKAN packages (DCAT Dataset).
-     * 
-     * @return List of URLs
-     * @throws MalformedURLException
-     * @throws IOException 
-     */
+	 * Get the list of all the CKAN packages (DCAT Dataset).
+	 *
+	 * @return List of URLs
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	@Override
-    protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
-        List<URL> urls = new ArrayList<>();
-        URL getPackages = new URL(getBase(), Ckan.API_ORG + BTC + "&include_datasets=true");
-        
-        JsonObject obj = makeJsonRequest(getPackages);
-        if (! obj.getBoolean(Ckan.SUCCESS)) {
-            return urls;
-        }
-        JsonObject res = obj.getJsonObject(Ckan.RESULT);
+	protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
+		List<URL> urls = new ArrayList<>();
+		URL getPackages = new URL(getBase(), Ckan.API_ORG + BTC + "&include_datasets=true");
+
+		JsonObject obj = makeJsonRequest(getPackages);
+		if (!obj.getBoolean(Ckan.SUCCESS)) {
+			return urls;
+		}
+		JsonObject res = obj.getJsonObject(Ckan.RESULT);
 		JsonArray pkgs = res.getJsonArray(Ckan.PACKAGES);
-        for (JsonObject pkg : pkgs.getValuesAs(JsonObject.class)) {
-            urls.add(ckanDatasetURL(pkg.getString("name")));
-        }
-        return urls;
-    }
-	
-    /**
-     * Constructor
-     * 
-     * @param caching DB cache file
-     * @param storage SDB file to be used as triple store backend
-     * @param base base URL
-     */
-    public CkanBtcctb(File caching, File storage, URL base) {
-        super(caching, storage, base);
-        setName("btcctb");
-   }    
+		for (JsonObject pkg : pkgs.getValuesAs(JsonObject.class)) {
+			urls.add(ckanDatasetURL(pkg.getString("name")));
+		}
+		return urls;
+	}
+
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public CkanBtcctb(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("btcctb");
+	}
 
 }

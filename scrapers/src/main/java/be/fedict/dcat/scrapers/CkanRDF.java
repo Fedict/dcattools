@@ -47,73 +47,73 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Scraper for CKAN portals with RDF support enabled.
- * 
+ *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class CkanRDF extends Ckan {
-    private final Logger logger = LoggerFactory.getLogger(CkanRDF.class);
-    
-    /**
-     * Make an URL for retrieving RDF of CKAN Package (DCAT Dataset) 
-     * 
-     * @param id
-     * @return URL
-     * @throws MalformedURLException 
-     */
-    @Override
-    protected URL ckanDatasetURL(String id) throws MalformedURLException {
-        return new URL(getBase(), Ckan.DATASET + id + ".rdf"); 
-    }
-    
-    /**
-     * Get RDF body of a page
-     * 
-     * @param url
-     * @return string version of the page
-     * @throws IOException 
-     */
-    @Override
-    protected String getPage(URL url) throws IOException {
-        return makeRequest(url);
-    }
-    
-    /**
-     * Generate DCAT Dataset
-     * 
-     * @param store RDF store
-     * @param id
-     * @param page full RDF XML
-     * @throws MalformedURLException
-     * @throws RepositoryException 
-     */
-    @Override
-    protected void generateDataset(Storage store, String id, Map<String, Page> page) 
-            throws MalformedURLException, RepositoryException {
-        Page p = page.getOrDefault("", new Page());
-        
-        String xml = p.getContent();
-        if (xml.isEmpty()) {
-            logger.warn("Page content is empty");
-            return;
-        }
 
-         // Load turtle file into store
-         
-        try(InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-            store.add(in, RDFFormat.RDFXML);
-        } catch (RDFParseException | IOException ex) {
-            throw new RepositoryException(ex);
-        }
-    }
+	private final Logger logger = LoggerFactory.getLogger(CkanRDF.class);
 
-    /**
-     * CKAN scraper.
-     * 
-     * @param caching local cache file
-     * @param storage local triple store file
-     * @param base URL of the CKAN site
-     */
-    public CkanRDF(File caching, File storage, URL base) {
-        super(caching, storage, base);
-   } 
+	/**
+	 * Make an URL for retrieving RDF of CKAN Package (DCAT Dataset)
+	 *
+	 * @param id
+	 * @return URL
+	 * @throws MalformedURLException
+	 */
+	@Override
+	protected URL ckanDatasetURL(String id) throws MalformedURLException {
+		return new URL(getBase(), Ckan.DATASET + id + ".rdf");
+	}
+
+	/**
+	 * Get RDF body of a page
+	 *
+	 * @param url
+	 * @return string version of the page
+	 * @throws IOException
+	 */
+	@Override
+	protected String getPage(URL url) throws IOException {
+		return makeRequest(url);
+	}
+
+	/**
+	 * Generate DCAT Dataset
+	 *
+	 * @param store RDF store
+	 * @param id
+	 * @param page full RDF XML
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 */
+	@Override
+	protected void generateDataset(Storage store, String id, Map<String, Page> page)
+			throws MalformedURLException, RepositoryException {
+		Page p = page.getOrDefault("", new Page());
+
+		String xml = p.getContent();
+		if (xml.isEmpty()) {
+			logger.warn("Page content is empty");
+			return;
+		}
+
+		// Load turtle file into store
+		try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.RDFXML);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+	}
+
+	/**
+	 * CKAN scraper.
+	 *
+	 * @param caching local cache file
+	 * @param storage local triple store file
+	 * @param base URL of the CKAN site
+	 */
+	public CkanRDF(File caching, File storage, URL base) {
+		super(caching, storage, base);
+	}
 }
