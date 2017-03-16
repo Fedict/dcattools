@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -74,9 +75,7 @@ public class HtmlInfocenter extends Html {
      * @return URL of the page in another language
      * @throws IOException 
      */
-    private URL switchLanguage(String page, String lang) throws IOException {
-        URL base = getBase();
-        
+    private URL switchLanguage(String page, String lang) throws IOException { 
         Elements lis = Jsoup.parse(page)
                             .getElementsByClass(HtmlInfocenter.LANG_LINK);
         
@@ -104,7 +103,7 @@ public class HtmlInfocenter extends Html {
         String html = makeRequest(u);
         
         cache.storePage(u, deflang, new Page(u, html));
-        
+		
         String[] langs = getAllLangs();
         for (String lang : langs) {
             if (! lang.equals(deflang)) {
@@ -117,7 +116,7 @@ public class HtmlInfocenter extends Html {
             }
         } 
     }
-	
+
 	/**
      * Get the list of all the statistics.
      * 
@@ -133,7 +132,7 @@ public class HtmlInfocenter extends Html {
         
 		for(Element link : links) {
 			String href = link.attr(HTML.Attribute.HREF.toString());
-			urls.add(makeAbsURL(href));
+			urls.add(makeAbsURL(href.substring(0, href.lastIndexOf("/"))));
 		}
 		return urls;
 	}
@@ -213,7 +212,6 @@ public class HtmlInfocenter extends Html {
     @Override
 	public void generateDataset(Storage store, String id, Map<String,Page> page) 
 							throws MalformedURLException, RepositoryException {
-
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
 
