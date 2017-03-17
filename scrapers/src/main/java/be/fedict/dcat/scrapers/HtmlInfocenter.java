@@ -38,14 +38,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
-
 import org.eclipse.rdf4j.repository.RepositoryException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -64,6 +64,7 @@ public class HtmlInfocenter extends Html {
 
 	public final static String LANG_LINK = "blgm_lSwitch";
 
+	private final static String HEADER = "h1 a[href]";
 	private final static String LINKS_DATASETS = "div.menu ul.no-style a[href]";
 	private final static String LINKS_SECOND = "div.nav-stats-wrapper ul.stats-second-menu li a";
 
@@ -197,7 +198,6 @@ public class HtmlInfocenter extends Html {
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
-		//store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
 	}
 
 	/**
@@ -243,8 +243,14 @@ public class HtmlInfocenter extends Html {
 			Elements navs = doc.select(LINKS_SECOND);
 			if (navs != null && !navs.isEmpty()) {
 				StringBuilder buf = new StringBuilder();
+				String h1 = doc.select(HEADER).text();
+				if (h1 != null) {
+					buf.append(h1).append(":").append('\n');
+				} else {
+					logger.warn("No H1 element");
+				}
 				for (Element nav : navs) {
-					buf.append(nav.text()).append('\n');
+					buf.append("- ").append(nav.text()).append('\n');
 				}
 				desc = buf.toString();
 			} else {
