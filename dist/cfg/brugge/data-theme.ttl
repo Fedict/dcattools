@@ -8,7 +8,7 @@
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "opendata-werk-economie"@nl .
+	skos:altLabel "open-data-werk-economie"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;

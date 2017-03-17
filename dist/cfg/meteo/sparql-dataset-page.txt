@@ -1,0 +1,16 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?dataset dcat:distribution ?dist .
+		?dist ?prop ?val }
+INSERT 
+	{	?dataset dcat:landingPage ?dist }
+WHERE
+	{ 	?dataset dcat:accessURL ?dist .
+		?dist ?prop ?val
+		VALUES (?dist) {
+			(<http://opendata.meteo.be/viewer>)
+			(<http://opendata.meteo.be>)
+			(<http://ozone.meteo.be>)
+		}
+	}

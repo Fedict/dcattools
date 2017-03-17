@@ -8,7 +8,7 @@ INSERT
 		?dist a dcat:Distribution .
 		?dist dcat:accessURL ?url .
 		?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/207> .
-		?dist dcat:mediaType "csv" .
+		?dist dcat:mediaType "CSV" .
 		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> }
 WHERE
 	{ 	?dataset a dcat:Dataset .

@@ -2,7 +2,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/oostende/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/cbe/org/0207_436_775#id> }
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/brugge/contact> .
+		?dataset dcterms:publisher <http://org.belgif.be/cbe/org/0207_528_035#id> }
 WHERE
 	{ 	?dataset a dcat:Dataset  }
