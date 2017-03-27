@@ -4,7 +4,7 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dataset dcterms:coverage "Oostende"@nl .
-		?dataset dcterms:spatial <http://sws.geonames.org/2789786> .
+		?dataset dcterms:spatial <http://sws.geonames.org/2789786/> .
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/60> }
 WHERE
 	{	?dataset a dcat:Dataset }
