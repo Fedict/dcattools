@@ -64,7 +64,7 @@ public class HtmlBrugge extends Html {
 
 	private final Logger logger = LoggerFactory.getLogger(HtmlBrugge.class);
 
-	private final static String LINKS_DATASETS = "div.user-content div a:eq(1)[href]";
+	private final static String LINKS_DATASETS = "div.user-content div a:eq(0)[href]";
 	private final static String LINK_DATASET = "div.user-content h4";
 	private final static String NAME_DATASET = "strong a[name]";
 
@@ -84,7 +84,7 @@ public class HtmlBrugge extends Html {
 		URL base = getBase();
 		String front = makeRequest(base);
 		Elements links = Jsoup.parse(front).select(LINKS_DATASETS);
-
+		
 		for (Element link : links) {
 			String href = link.attr(HTML.Attribute.HREF.toString());
 			urls.add(makeAbsURL(href));
