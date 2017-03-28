@@ -8,12 +8,12 @@
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "CULTURE AND SPORT"@en ;
-	skos:altLabel "arts de la scène"@fr, "musique"@fr, "tourisme"@fr, "culture"@fr, "arts plastiques"@fr, "loisirs"@fr, "vie-associative"@fr, "cultureetloisirs"@fr, "sport"@fr, "bottin-associatif"@fr .
+	skos:altLabel "arts de la scène"@fr, "musique"@fr, "tourisme"@fr, "culture"@fr, "arts plastiques"@fr, "loisirs"@fr, "vie-associative"@fr, "cultureetloisirs"@fr, "sport"@fr, "bottin-associatif"@fr, "sports"@fr , "associations"@fr.
 
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "économique"@fr, "travail"@fr, "e-business"@fr, "UDP"@fr, "entreprises"@fr, "e-commerce"@fr, "e-business"@fr, "emploi"@fr, "tourisme"@fr, "TPE"@fr, "PME"@fr, "TIC"@fr, "rentic"@fr, "Bspace"@fr, "logement"@fr, "production"@fr, "horeca"@fr, "vie-economique"@fr, "commerces"@fr, "logement"@fr, "acteurs-economiques"@fr, "marché"@fr, "travail"@fr, "commerces-et-services"@fr .
+	skos:altLabel "économique"@fr, "travail"@fr, "e-business"@fr, "UDP"@fr, "entreprises"@fr, "e-commerce"@fr, "e-business"@fr, "emploi"@fr, "tourisme"@fr, "TPE"@fr, "PME"@fr, "TIC"@fr, "rentic"@fr, "Bspace"@fr, "logement"@fr, "production"@fr, "horeca"@fr, "vie-economique"@fr, "commerces"@fr, "logement"@fr, "acteurs-economiques"@fr, "marché"@fr, "travail"@fr, "commerces-et-services"@fr, "economie"@fr, "annuaires-commerces-et-entreprises"@fr, "commerces-et-independants"@fr .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;

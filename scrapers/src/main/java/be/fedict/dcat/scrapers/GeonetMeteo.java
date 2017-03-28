@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class GeonetMeteo extends Geonet {
+public class GeonetMeteo extends GeonetRDF {
 
 	private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
 

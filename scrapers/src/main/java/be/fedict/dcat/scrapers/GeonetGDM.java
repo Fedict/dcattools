@@ -52,9 +52,82 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Geonet extends Scraper {
+public abstract class GeonetGDM extends Geonet {
 
-	private final Logger logger = LoggerFactory.getLogger(Geonet.class);
+	private final Logger logger = LoggerFactory.getLogger(GeonetGDM.class);
+
+	private static String VERSION;
+
+	// GeonetRDF DCAT GDM/XML API
+	public final static String GMD = "http://www.isotc211.org/2005/gmd";
+	public final static String API = "/eng/csw?service=CSW&version=" + getVersion();
+	public final static String API_RECORDS = API
+			+ "&request=GetRecords&resultType=results"
+			+ "&ouputSchema=" + GMD
+			+ "&elementSetName=full&typeNames=gmd:MD_Metadata";
+	public final static String OFFSET = "startPosition";
+
+	/**
+	 * Get version
+	 *
+	 * @return version string
+	 */
+	protected static String getVersion() {
+		return VERSION;
+	}
+
+	/**
+	 * Generate DCAT file
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+		String xml = map.get("all").getContent();
+
+		// Load RDF/XML file into store
+		try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.RDFXML);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+		generateCatalog(store);
+	}
+
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @param cache
+	 * @throws IOException
+	 */
+	protected void scrapeCat(Cache cache) throws IOException {
+		URL front = getBase();
+		URL url = new URL(getBase() + GeonetGDM.API);
+		String content = makeRequest(url);
+		cache.storePage(front, "all", new Page(url, content));
+	}
+
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @throws IOException
+	 */
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		Map<String, Page> front = cache.retrievePage(getBase());
+		if (front.keySet().isEmpty()) {
+			scrapeCat(cache);
+		}
+		logger.info("Done scraping");
+	}
 
 	/**
 	 * Constructor
@@ -62,8 +135,10 @@ public abstract class Geonet extends Scraper {
 	 * @param caching DB cache file
 	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
+	 * @param version CSW service
 	 */
-	public Geonet(File caching, File storage, URL base) {
+	public GeonetGDM(File caching, File storage, URL base, String version) {
 		super(caching, storage, base);
+		VERSION = version;
 	}
 }

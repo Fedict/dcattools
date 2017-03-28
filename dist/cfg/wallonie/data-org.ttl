@@ -131,25 +131,50 @@
 	
 <http://data.gov.be/en/taxonomy/term/258>
 	skos:prefLabel "Braine-le-Château"@fr, "Kasteelbrakel"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_375_310#id> ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_315_229#id> ;
 	skos:altLabel "braine-le-chateau"@fr .
 
 <http://data.gov.be/en/taxonomy/term/260>
 	skos:prefLabel "Chastre"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0216_689_189#id>  ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_689_189#id> ;
 	skos:altLabel "chastre"@fr .
 
 <http://data.gov.be/en/taxonomy/term/262>
 	skos:prefLabel "Léglise"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0206_567_339#id>  ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_567_339#id> ;
 	skos:altLabel "communeleglise"@fr .
 
 <http://data.gov.be/en/taxonomy/term/264>
 	skos:prefLabel "Couvin"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0206_626_925#id>  ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_626_925#id> ;
 	skos:altLabel "couvin"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/266>
 	skos:prefLabel "Doische"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_364_818#id>  ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_364_818#id> ;
 	skos:altLabel "doische"@fr .
+
+<http://data.gov.be/en/taxonomy/term/268>
+	skos:prefLabel "Enghien"@fr, "Edingen"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_667_606#id> ;
+	skos:altLabel "enghien"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/270>
+	skos:prefLabel "Ferrières"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_333_837#id> ;
+	skos:altLabel "ferrieres"@fr .
+
+<http://data.gov.be/en/taxonomy/term/272>
+	skos:prefLabel "Florennes"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_703_040#id> ;
+	skos:altLabel "florennes"@fr .
+
+<http://data.gov.be/en/taxonomy/term/274>
+	skos:prefLabel "Frameries"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_287_713#id> ;
+	skos:altLabel "frameries"@fr .
+
+<http://data.gov.be/en/taxonomy/term/276>
+	skos:prefLabel "Gembloux"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_697_505#id> ;
+	skos:altLabel "gembloux"@fr .

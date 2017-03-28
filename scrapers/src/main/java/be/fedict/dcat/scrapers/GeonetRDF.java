@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,9 +52,65 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Geonet extends Scraper {
+public abstract class GeonetRDF extends Geonet {
 
-	private final Logger logger = LoggerFactory.getLogger(Geonet.class);
+	private final Logger logger = LoggerFactory.getLogger(GeonetRDF.class);
+
+	// GeonetRDF DCAT RDF/XML API
+	public final static String API_DCAT = "/srv/eng/rdf.metadata.public.get";
+
+	/**
+	 * Generate DCAT file
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+		String xml = map.get("all").getContent();
+
+		// Load RDF/XML file into store
+		try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.RDFXML);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+		generateCatalog(store);
+	}
+
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @param cache
+	 * @throws IOException
+	 */
+	protected void scrapeCat(Cache cache) throws IOException {
+		URL front = getBase();
+		URL url = new URL(getBase() + GeonetRDF.API_DCAT);
+		String content = makeRequest(url);
+		cache.storePage(front, "all", new Page(url, content));
+	}
+
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @throws IOException
+	 */
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		Map<String, Page> front = cache.retrievePage(getBase());
+		if (front.keySet().isEmpty()) {
+			scrapeCat(cache);
+		}
+		logger.info("Done scraping");
+	}
 
 	/**
 	 * Constructor
@@ -63,7 +119,7 @@ public abstract class Geonet extends Scraper {
 	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
 	 */
-	public Geonet(File caching, File storage, URL base) {
+	public GeonetRDF(File caching, File storage, URL base) {
 		super(caching, storage, base);
 	}
 }

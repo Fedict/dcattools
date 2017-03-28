@@ -42,5 +42,50 @@
 
 <http://data.gov.be/en/taxonomy/term/257>
 	skos:exactMatch <http://sws.geonames.org/2801148/> ;
-	skos:prefLabel "braives"@fr ;
+	skos:prefLabel "Braives"@fr ;
 	skos:altLabel "braives"@fr .	
+
+<http://data.gov.be/en/taxonomy/term/261>
+	skos:exactMatch <http://sws.geonames.org/2800458/> ;
+	skos:prefLabel "Chastre"@fr ;
+	skos:altLabel "chastre"@fr .
+
+<http://data.gov.be/en/taxonomy/term/263>
+	skos:exactMatch <http://sws.geonames.org/2792986> ;
+	skos:prefLabel "Léglise"@fr ;
+	skos:altLabel "communeleglise"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/265>
+	skos:exactMatch <http://sws.geonames.org/2800026/> ;
+	skos:prefLabel "Couvin"@fr ;
+	skos:altLabel "couvin"@fr .
+		
+<http://data.gov.be/en/taxonomy/term/267>
+	skos:exactMatch <http://sws.geonames.org/2799329/> ;
+	skos:prefLabel "Doische"@fr ;
+	skos:altLabel "doische"@fr .
+
+<http://data.gov.be/en/taxonomy/term/269>
+	skos:exactMatch <http://sws.geonames.org/2798748/> ;
+	skos:prefLabel "Enghien"@fr, "Edingen"@nl ;
+	skos:altLabel "enghien"@fr .
+
+<http://data.gov.be/en/taxonomy/term/271>
+	skos:exactMatch <http://sws.geonames.org/2798367/> ;
+	skos:prefLabel "Ferrières"@fr ;
+	skos:altLabel "ferrieres"@fr .
+
+<http://data.gov.be/en/taxonomy/term/273>
+	skos:exactMatch <http://sws.geonames.org/2798277/> ;
+	skos:prefLabel "Florennes"@fr ;
+	skos:altLabel "florennes"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/275>
+	skos:exactMatch <http://sws.geonames.org/2798024/> ;
+	skos:prefLabel "Frameries"@fr ;
+	skos:altLabel "frameries"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/277>
+	skos:exactMatch <http://sws.geonames.org/2797714/> ;
+	skos:prefLabel "Gembloux"@fr ;
+	skos:altLabel "gembloux"@fr .
