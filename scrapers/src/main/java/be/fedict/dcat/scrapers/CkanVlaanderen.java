@@ -57,7 +57,7 @@ public class CkanVlaanderen extends CkanJson {
 	public final static String FREQ = "frequency-of-update";
 	public final static String FREQ2 = "update frequentie";
 	public final static String GEMET = "gemet-theme";
-	public final static String GEOCOVERAGE = "Geografische Dekking";
+	public final static String GEOCOVERAGE = "geografische dekking";
 	public final static String METADATA_REQ = "metadata_request";
 	public final static String TIMECOVERAGE = "Dekking In Tijd";
 	public final static String TIMECOVERAGE2 = "dekking in tijd";
