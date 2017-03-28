@@ -1,9 +1,10 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
 	{ 	?dataset dcterms:description ?title }
 WHERE
 	{ 	?dataset a dcat:Dataset .
-		?dataset dcterms:title .
+		?dataset dcterms:title ?title .
 		FILTER NOT EXISTS { ?dataset dcterms:description ?desc } 
 	}

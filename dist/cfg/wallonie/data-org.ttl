@@ -92,64 +92,64 @@
 <http://data.gov.be/en/taxonomy/term/76>
 	skos:prefLabel "FOD Economie"@nl, "FPS Economy"@en, "SPF Economie"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0314_595_348#id> ;
-	skos:altlabel "ins"@fr .
+	skos:altLabel "ins"@fr .
 
 <http://data.gov.be/en/taxonomy/term/238>
 	skos:prefLabel "ThingsPlay"@fr, "ThingsPlay"@nl, "ThingsPlay"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0555_910_067#id> ;
-	skos:altlabel "thingsplay"@fr .
+	skos:altLabel "thingsplay"@fr .
 
 <http://data.gov.be/en/taxonomy/term/240>
 	skos:prefLabel "IDELUX-AIVE"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0832_382_635#id> ;
-	skos:altlabel "idelux-aive"@fr .
+	skos:altLabel "idelux-aive"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/248>
 	skos:prefLabel "Amay"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_330_471#id> ;
-	skos:altlabel "amay"@fr .
+	skos:altLabel "amay"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/249>
 	skos:prefLabel "Antoing"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_306_717#id> ;
-	skos:altlabel "antoing"@fr .
+	skos:altLabel "antoing"@fr .
 
 <http://data.gov.be/en/taxonomy/term/252>
 	skos:prefLabel "Berloz"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_374_617#id> ;
-	skos:altlabel "berloz"@fr .
+	skos:altLabel "berloz"@fr .
 
 <http://data.gov.be/en/taxonomy/term/254>
 	skos:prefLabel "Ath"@fr, "Aat"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_281_476#id> ;
-	skos:altlabel "ath"@fr .
+	skos:altLabel "ath"@fr .
 
 <http://data.gov.be/en/taxonomy/term/256>
 	skos:prefLabel "Braives"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_375_310#id> ;
-	skos:altlabel "braives"@fr .
+	skos:altLabel "braives"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/258>
 	skos:prefLabel "Braine-le-Château"@fr, "Kasteelbrakel"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_375_310#id> ;
-	skos:altlabel "braine-le-chateau"@fr .
+	skos:altLabel "braine-le-chateau"@fr .
 
 <http://data.gov.be/en/taxonomy/term/260>
 	skos:prefLabel "Chastre"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0216_689_189#id>  ;
-	skos:altlabel "chastre"@fr .
+	skos:altLabel "chastre"@fr .
 
 <http://data.gov.be/en/taxonomy/term/262>
 	skos:prefLabel "Léglise"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0206_567_339#id>  ;
-	skos:altlabel "communeleglise"@fr .
+	skos:altLabel "communeleglise"@fr .
 
 <http://data.gov.be/en/taxonomy/term/264>
 	skos:prefLabel "Couvin"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0206_626_925#id>  ;
-	skos:altlabel "couvin"@fr .
+	skos:altLabel "couvin"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/266>
 	skos:prefLabel "Doische"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_364_818#id>  ;
-	skos:altlabel "doische"@fr .
+	skos:altLabel "doische"@fr .

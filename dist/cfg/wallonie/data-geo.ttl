@@ -7,28 +7,40 @@
 
 <http://data.gov.be/en/taxonomy/term/47>
 	skos:exactMatch <http://sws.geonames.org/3337387/> ;
-	skos:prefLabel "Wallonia"@en ;
+	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
 	skos:altLabel "Wallonie"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/51>
-	skos:exactMatch <http://www.geonames.org/2790472/> ;
-	skos:prefLabel "Namur"@en ;
+	skos:exactMatch <http://sws.geonames.org/2790472/> ;
+	skos:prefLabel "Namur"@fr, "Namen"@nl ;
 	skos:altLabel "ville-de-namur"@fr .	
 
 <http://data.gov.be/en/taxonomy/term/250>
-	skos:exactMatch <http://www.geonames.org/2803247/> ;
-	skos:prefLabel "Amay"@en ;
+	skos:exactMatch <http://sws.geonames.org/2803247/> ;
+	skos:prefLabel "Amay"@fr ;
 	skos:altLabel "amay"@fr .
 
 <http://data.gov.be/en/taxonomy/term/251>
-	skos:exactMatch <http://www.geonames.org/2803145/> ;
-	skos:prefLabel "Antoing"@en ;
+	skos:exactMatch <http://sws.geonames.org/2803145/> ;
+	skos:prefLabel "Antoing"@fr ;
 	skos:altLabel "antoing"@fr .
 
 <http://data.gov.be/en/taxonomy/term/255>
-	skos:exactMatch <http://www.geonames.org/2803011/> ;
-	skos:prefLabel "Ath"@en ;
+	skos:exactMatch <http://sws.geonames.org/2803011/> ;
+	skos:prefLabel "Ath"@fr, "Aat"@nl ;
 	skos:altLabel "ath"@fr .
 
-	
+<http://data.gov.be/en/taxonomy/term/253>
+	skos:exactMatch <http://sws.geonames.org/2802144/> ;
+	skos:prefLabel "Berloz"@fr ;
+	skos:altLabel "berloz"@fr .
 
+<http://data.gov.be/en/taxonomy/term/259>
+	skos:exactMatch <http://sws.geonames.org/2801153/> ;
+	skos:prefLabel "Braine le Château"@fr, "Kasteelbrakel"@nl ;
+	skos:altLabel "braine-le-chateau"@fr .	
+
+<http://data.gov.be/en/taxonomy/term/257>
+	skos:exactMatch <http://sws.geonames.org/2801148/> ;
+	skos:prefLabel "braives"@fr ;
+	skos:altLabel "braives"@fr .	
