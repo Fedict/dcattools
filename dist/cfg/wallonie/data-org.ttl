@@ -178,3 +178,58 @@
 	skos:prefLabel "Gembloux"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0216_697_505#id> ;
 	skos:altLabel "gembloux"@fr .
+
+<http://data.gov.be/en/taxonomy/term/278>
+	skos:prefLabel "Gouvy"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_695_525#id> ;
+	skos:altLabel "gouvy"@fr .
+
+<http://data.gov.be/en/taxonomy/term/280>
+	skos:prefLabel "Grez-Doiceau"@fr, "Graven"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_227_731#id> ;
+	skos:altLabel "grez-doiceau"@fr .
+
+<http://data.gov.be/en/taxonomy/term/282>
+	skos:prefLabel "Havelange"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_396_490#id> ;
+	skos:altLabel "havelange"@fr .
+
+<http://data.gov.be/en/taxonomy/term/284>
+	skos:prefLabel "Honnelles"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_691_565#id> ;
+	skos:altLabel "honnelles"@fr .
+
+<http://data.gov.be/en/taxonomy/term/286>
+	skos:prefLabel "Jalhay"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_402_628#id> ;
+	skos:altLabel "jalhay"@fr .
+
+<http://data.gov.be/en/taxonomy/term/288>
+	skos:prefLabel "La Bruyère"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_697_802#id> ;
+	skos:altLabel "labruyere"@fr .
+
+<http://data.gov.be/en/taxonomy/term/290>
+	skos:prefLabel "Momignies"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_303_054#id> ;
+	skos:altLabel "momignies"@fr .
+
+<http://data.gov.be/en/taxonomy/term/292>
+	skos:prefLabel "Mont-Saint-Guibert"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_491_917#id> ;
+	skos:altLabel "montstguibert"@fr .
+
+<http://data.gov.be/en/taxonomy/term/294>
+	skos:prefLabel "Musson"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_391_641#id> ;
+	skos:altLabel "musson"@fr .
+
+<http://data.gov.be/en/taxonomy/term/296>
+	skos:prefLabel "Neufchâteau"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_543_781#id> ;
+	skos:altLabel "neufchateau"@fr .
+
+<http://data.gov.be/en/taxonomy/term/298>
+	skos:prefLabel "Oupeye"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_345_418#id> ;
+	skos:altLabel "oupeye"@fr .

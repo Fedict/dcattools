@@ -89,3 +89,58 @@
 	skos:exactMatch <http://sws.geonames.org/2797714/> ;
 	skos:prefLabel "Gembloux"@fr ;
 	skos:altLabel "gembloux"@fr .
+
+<http://data.gov.be/en/taxonomy/term/279>
+	skos:exactMatch <http://sws.geonames.org/2792344/> ;
+	skos:prefLabel "Gouvy"@fr ;
+	skos:altLabel "gouvy"@fr .
+
+<http://data.gov.be/en/taxonomy/term/281>
+	skos:exactMatch <http://sws.geonames.org/2797129/> ;
+	skos:prefLabel "Grez-Doiceau"@fr, "Graven"@nl ;
+	skos:altLabel "grez-doiceau"@fr .
+
+<http://data.gov.be/en/taxonomy/term/283>
+	skos:exactMatch <http://sws.geonames.org/2796370/> ;
+	skos:prefLabel "Havelange"@fr ;
+	skos:altLabel "havelange"@fr .
+
+<http://data.gov.be/en/taxonomy/term/285>
+	skos:exactMatch <http://sws.geonames.org/2802909/> ;
+	skos:prefLabel "Honnelles"@fr ;
+	skos:altLabel "honnelles"@fr .
+
+<http://data.gov.be/en/taxonomy/term/287>
+	skos:exactMatch <http://sws.geonames.org/2794990/> ;
+	skos:prefLabel "Jalhay"@fr ;
+	skos:altLabel "jalhay"@fr .
+
+<http://data.gov.be/en/taxonomy/term/289>
+	skos:exactMatch <http://sws.geonames.org/2788112/> ;
+	skos:prefLabel "La Bruyère"@fr ;
+	skos:altLabel "labruyere"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/291>
+	skos:exactMatch <http://sws.geonames.org/2790907/> ;
+	skos:prefLabel "Momignies"@fr ;
+	skos:altLabel "momignies"@fr .
+
+<http://data.gov.be/en/taxonomy/term/293>
+	skos:exactMatch <http://sws.geonames.org/2790757/> ;
+	skos:prefLabel "Mont-Saint-Guibert"@fr ;
+	skos:altLabel "montstguibert"@fr .
+
+<http://data.gov.be/en/taxonomy/term/295>
+	skos:exactMatch <http://sws.geonames.org/2790516/> ;
+	skos:prefLabel "Musson"@fr ;
+	skos:altLabel "musson"@fr .
+
+<http://data.gov.be/en/taxonomy/term/297>
+	skos:exactMatch <http://sws.geonames.org/2790288/> ;
+	skos:prefLabel "Neufchâteau"@fr ;
+	skos:altLabel "neufchateau"@fr .
+
+<http://data.gov.be/en/taxonomy/term/299>
+	skos:exactMatch <http://sws.geonames.org/2789472/> ;
+	skos:prefLabel "Oupeye"@fr ;
+	skos:altLabel "oupeye"@fr .
