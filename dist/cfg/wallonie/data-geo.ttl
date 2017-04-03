@@ -144,3 +144,40 @@
 	skos:exactMatch <http://sws.geonames.org/2789472/> ;
 	skos:prefLabel "Oupeye"@fr ;
 	skos:altLabel "oupeye"@fr .
+
+<http://data.gov.be/en/taxonomy/term/301>
+	skos:exactMatch <http://sws.geonames.org/2789158/> ;
+	skos:prefLabel "Perwez"@fr, "Perwijs"@nl ;
+	skos:altLabel "perwez"@fr .
+
+<http://data.gov.be/en/taxonomy/term/303>
+	skos:exactMatch <http://sws.geonames.org/2788578/> ;
+	skos:prefLabel "Profondeville"@fr ;
+	skos:altLabel "profondeville"@fr .
+
+<http://data.gov.be/en/taxonomy/term/305>
+	skos:exactMatch <http://sws.geonames.org/2802903/> ;
+	skos:prefLabel "Sambreville"@fr ;
+	skos:altLabel "sambreville"@fr .
+
+<http://data.gov.be/en/taxonomy/term/307>
+	skos:exactMatch <http://sws.geonames.org/2786853/> ;
+	skos:prefLabel "Seneffe"@fr ;
+	skos:altLabel "seneffe"@fr .
+
+<http://data.gov.be/en/taxonomy/term/309>
+	skos:exactMatch <http://sws.geonames.org/2786770/> ;
+	skos:prefLabel "Silly"@fr ;
+	skos:altLabel "silly"@fr .
+
+<http://data.gov.be/en/taxonomy/term/311>
+	skos:exactMatch <http://sws.geonames.org/2785594/> ;
+	skos:prefLabel "Theux"@fr ;
+	skos:altLabel "theux"@fr .
+
+<http://data.gov.be/en/taxonomy/term/313>
+	skos:exactMatch <http://sws.geonames.org/2785563/> ;
+	skos:prefLabel "Thimister-Clermont"@fr ;
+	skos:altLabel "thimister-clermont"@fr .
+
+	

@@ -34,10 +34,11 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/159> .
 	
 <http://data.gov.be/org/psibelgium/7863>
-	skos:prefLabel "FPS P&O"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0353_456_320#id> ;
-	foaf:name "FOD P&O"@nl, "SPF P&O"@fr ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/160> .
+	skos:prefLabel "FPS BOSA"@en ;
+	skos:altLabel "FPS P&O"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0671_516_647#id> ;
+	foaf:name "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr, "FÖD BOSA"@de ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/246> .
 
 <http://data.gov.be/org/psibelgium/7864>
 	skos:prefLabel "CBSS"@en ;
@@ -88,13 +89,16 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/147> .
 
 <http://data.gov.be/org/psibelgium/7880>
-	skos:prefLabel "FPS B&C"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0367_302_574#id> ;
-	foaf:name "FOD B&B"@nl, "SPF B&CG"@fr ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/167> .
-	
+	skos:prefLabel "FPS BOSA"@en ;
+	skos:altLabel "FPS B&C"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0671_516_647#id> ;
+	foaf:name "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr, "FÖD BOSA"@de ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/246> .
+
 <http://data.gov.be/org/psibelgium/7884>
-	skos:prefLabel "Selor"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0875_397_284#id> ;
-	foaf:name "Selor"@nl, "Selor"@fr ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/166> .
+	skos:prefLabel "FPS BOSA"@en ;
+	skos:altLabel "Selor"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0671_516_647#id> ;
+	foaf:name "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr, "FÖD BOSA"@de ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/246> .
+	

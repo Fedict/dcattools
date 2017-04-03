@@ -233,3 +233,40 @@
 	skos:prefLabel "Oupeye"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_345_418#id> ;
 	skos:altLabel "oupeye"@fr .
+
+<http://data.gov.be/en/taxonomy/term/300>
+	skos:prefLabel "Perwez"@fr, "Perwijs"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_492_610#id> ;
+	skos:altLabel "perwez"@fr .
+
+<http://data.gov.be/en/taxonomy/term/302>
+	skos:prefLabel "Profondeville"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_372_043#id> ;
+	skos:altLabel "profondeville"@fr .
+
+<http://data.gov.be/en/taxonomy/term/304>
+	skos:prefLabel "Sambreville"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_697_109#id> ;
+	skos:altLabel "sambreville"@fr .
+
+<http://data.gov.be/en/taxonomy/term/306>
+	skos:prefLabel "Seneffe"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_283_951#id> ;
+	skos:altLabel "seneffe"@fr .
+
+<http://data.gov.be/en/taxonomy/term/308>
+	skos:prefLabel "Silly"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_410_645#id> ;
+	skos:altLabel "silly"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/310>
+	skos:prefLabel "Theux"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_373_627#id> ;
+	skos:altLabel "theux"@fr .
+
+<http://data.gov.be/en/taxonomy/term/312>
+	skos:prefLabel "Thimister-Clermont"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_695_327#id> ;
+	skos:altLabel "thimister-clermont"@fr .
+
+	
