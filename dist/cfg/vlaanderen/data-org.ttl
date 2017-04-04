@@ -56,17 +56,17 @@
 	skos:altLabel "geopunt"@nl .
 
 <http://data.gov.be/en/taxonomy/term/125>
-	skos:prefLabel "Stad Gent"@nl, "Ville de Gand"@nl, "City of Ghent"@en ;
+	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_451_227#id> ;
 	skos:altLabel "stad-gent"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/128>
-	skos:prefLabel "Stad Antwerpen"@nl, "Ville d'Anvers"@fr, "City of Antwerp"@en ;
+	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_500_123#id> ;
 	skos:altLabel "stad-antwerpen"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/130>
-	skos:prefLabel "Stad Kortrijk"@nl, "Ville de Courtrai"@fr, "City of Courtray"@en ;
+	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_494_678#id> ;
 	skos:altLabel "stad-kortrijk"@nl .
 	

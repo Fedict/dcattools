@@ -44,6 +44,11 @@
 	skos:prefLabel "XLS" ;
 	skos:altLabel "excel", "xls" .
 
+<http://data.gov.be/en/taxonomy/term/11>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RSS> ;
+	skos:prefLabel "RSS" ;
+	skos:altLabel "RSS", "rss" .
+
 <http://data.gov.be/en/taxonomy/term/62>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
 	skos:prefLabel "XLSX" ;

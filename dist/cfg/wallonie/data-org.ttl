@@ -269,4 +269,22 @@
 	skos:exactMatch <http://org.belgif.be/cbe/org/0216_695_327#id> ;
 	skos:altLabel "thimister-clermont"@fr .
 
-	
+<http://data.gov.be/en/taxonomy/term/314>
+	skos:prefLabel "Trois-Ponts"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_690_955#id> ;
+	skos:altLabel "troisponts"@fr .
+
+<http://data.gov.be/en/taxonomy/term/316>
+	skos:prefLabel "Vielsalm"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_384_812#id> ;
+	skos:altLabel "vielsalm"@fr .
+
+<http://data.gov.be/en/taxonomy/term/318>
+	skos:prefLabel "Comines-Wareton"@fr, "Komen-Waasten"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_293_651#id> ;
+	skos:altLabel "villedecomines-warneton"@fr .
+
+<http://data.gov.be/en/taxonomy/term/320>
+	skos:prefLabel "Villers-la-Ville"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_275_538#id> ;
+	skos:altLabel "villers-la-ville"@fr .

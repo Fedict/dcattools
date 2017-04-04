@@ -180,4 +180,24 @@
 	skos:prefLabel "Thimister-Clermont"@fr ;
 	skos:altLabel "thimister-clermont"@fr .
 
+<http://data.gov.be/en/taxonomy/term/315>
+	skos:exactMatch <http://sws.geonames.org/2784103/> ;
+	skos:prefLabel "Trois-Ponts"@fr ;
+	skos:altLabel "troisponts"@fr .
+
+<http://data.gov.be/en/taxonomy/term/317>
+	skos:exactMatch <http://sws.geonames.org/2784776/> ;
+	skos:prefLabel "Vielsalm"@fr ;
+	skos:altLabel "vielsalm"@fr .
+
+<http://data.gov.be/en/taxonomy/term/319>
+	skos:exactMatch <http://sws.geonames.org/2800196/> ;
+	skos:prefLabel "Comines-Wareton"@fr, "Komen-Waasten"@nl ;
+	skos:altLabel "villedecomines-warneton"@fr .
+
+<http://data.gov.be/en/taxonomy/term/321>
+	skos:exactMatch <http://sws.geonames.org/2784642/> ;
+	skos:prefLabel "Villers-la-Ville"@fr ;
+	skos:altLabel "villers-la-ville"@fr .
+
 	
