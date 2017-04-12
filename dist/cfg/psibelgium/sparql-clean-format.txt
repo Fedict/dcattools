@@ -1,0 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s dcat:mediaType ?o }
+WHERE
+	{ ?s dcat:mediaType ?o .
+		FILTER isLiteral(?o)
+	}

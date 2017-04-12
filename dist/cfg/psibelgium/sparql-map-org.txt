@@ -15,6 +15,6 @@ INSERT
 		?neworg foaf:name ?label }
 WHERE
 	{	?dataset dcterms:publisher ?org .
-		?org foaf:name ?label .
 		?org dgov:org ?drupal .
+		?org skos:prefLabel ?label .
 		?org skos:exactMatch ?neworg }

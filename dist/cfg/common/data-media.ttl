@@ -1,141 +1,5 @@
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/format/CSV>
-	a dcterms:IMT ;
-	rdfs:label "CSV" ;
-	rdf:value "text/csv" .
-
-<http://data.gov.be/format/DOC>
-	a dcterms:IMT ;
-	rdfs:label "doc" ;
-	rdf:value "application/msword" .
-
-<http://data.gov.be/format/DOCX>
-	a dcterms:IMT ;
-	rdfs:label "DOCX" ;
-	rdf:value "application/vnd.openxmlformats-officedocument.wordprocessingml.document" .
-
-<http://data.gov.be/format/DWCA>
-	a dcterms:IMT ;
-	rdfs:label "DwC-A" ;
-	rdf:value "text/csv" .
-	
-<http://data.gov.be/format/DXF>
-	a dcterms:IMT ;
-	rdfs:label "DXF" ;
-	rdf:value "image/vnd.dxf" .
-
-<http://data.gov.be/format/GML>
-	a dcterms:IMT ;
-	rdfs:label "GML" ;
-	rdf:value "application/gml" .
-
-<http://data.gov.be/format/GTFS>
-	a dcterms:IMT ;
-	rdfs:label "GTFS" ;
-	rdf:value "application/zip" .
-
-<http://data.gov.be/format/HTML>
-	a dcterms:IMT ;
-	rdfs:label "HTML" ;
-	rdf:value "text/html" .
-	
-<http://data.gov.be/format/JPEG>
-	a dcterms:IMT ;
-	rdfs:label "JPEG" ;
-	rdf:value "image/jpeg" .
-	
-<http://data.gov.be/format/JSON>
-	a dcterms:IMT ;
-	rdfs:label "JSON" ;
-	rdf:value "application/json" .
-
-<http://data.gov.be/format/KML>
-	a dcterms:IMT ;
-	rdfs:label "KML" ;
-	rdf:value "application/vnd.google-earth.kml+xml" .
-
-<http://data.gov.be/format/ODS>
-	a dcterms:IMT ;
-	rdfs:label "ODS" ;
-	rdf:value "application/vnd.oasis.opendocument.spreadsheet" .
-
-<http://data.gov.be/format/PDF>
-	a dcterms:IMT ;
-	rdfs:label "PDF" ;
-	rdf:value "application/pdf" .
-	
-<http://data.gov.be/format/PNG>
-	a dcterms:IMT ;
-	rdfs:label "PNG" ;
-	rdf:value "image/png" .
-	
-<http://data.gov.be/format/RSS>
-	a dcterms:IMT ;
-	rdfs:label "RSS" ;
-	rdf:value "application/rss+xml" .
-	
-<http://data.gov.be/format/SLD>
-	a dcterms:IMT ;
-	rdfs:label "SLD" ;
-	rdf:value "octet/stream" .
-	
-<http://data.gov.be/format/SHP>
-	a dcterms:IMT ;
-	rdfs:label "SHP" ;
-	rdf:value "octet/stream" .
-
-<http://data.gov.be/format/TIFF>
-	a dcterms:IMT ;
-	rdfs:label "TIFF" ;
-	rdf:value "image/tiff" .
-
-<http://data.gov.be/format/TTL>
-	a dcterms:IMT ;
-	rdfs:label "TTL" ;
-	rdf:value "text/turtle" .
-	
-<http://data.gov.be/format/TXT>
-	a dcterms:IMT ;
-	rdfs:label "TXT" ;
-	rdf:value "text/plain" .
-
-<http://data.gov.be/format/WCS>
-	a dcterms:IMT ;
-	rdfs:label "WCS" .
-
-<http://data.gov.be/format/WFS>
-	a dcterms:IMT ;
-	rdfs:label "WFS" .
-
-<http://data.gov.be/format/WMS>
-	a dcterms:IMT ;
-	rdfs:label "WMS" .	
-	
-<http://data.gov.be/format/XLS>
-	a dcterms:IMT ;
-	rdfs:label "XLS" ;
-	rdf:value "application/vnd.ms-excel" .
-
-<http://data.gov.be/format/XLSX>
-	a dcterms:IMT ;
-	rdfs:label "XLSX" ;
-	rdf:value "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" .
-
-<http://data.gov.be/format/XML>
-	a dcterms:IMT ;
-	rdfs:label "XML" ;
-	rdf:value "text/xml" .
-	
-<http://data.gov.be/format/ZIP>
-	a dcterms:IMT ;
-	rdfs:label "ZIP" ;
-	rdf:value "application/zip" .
-
 	
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
@@ -213,7 +77,7 @@
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	owl:sameAs <http://data.gov.be/format/SHP> ;
-	skos:altLabel "SHP", "shp", "shape", "shapefile" .
+	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	owl:sameAs <http://data.gov.be/format/DXF> ;
@@ -227,7 +91,7 @@
 <http://data.gov.be/en/taxonomy/term/169>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TIFF> ;
 	owl:sameAs <http://data.gov.be/format/TIFF> ;
-	skos:altLabel "TIFF, "tiff" .
+	skos:altLabel "TIFF", "tiff" .
 
 <http://data.gov.be/en/taxonomy/term/5>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
