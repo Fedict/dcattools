@@ -189,17 +189,22 @@ public class EDP {
 			}
 			IRI fmt = (IRI) res.next().getObject();
 			w.writeStartElement("dcat:mediaType");
+			try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
+				if(vl.hasNext()) {
+					Value val = vl.next().getObject();
+					//w.writeAttribute("rdf:value", val.stringValue());
+					w.writeCharacters(val.stringValue());
+				}
+			}
+			w.writeEndElement();
+			
+			w.writeStartElement("dct:format");
 			w.writeEmptyElement("dct:IMT");
 			try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
 				Value val = lbl.next().getObject();
 				w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
 			}
-			try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
-				if(vl.hasNext()) {
-					Value val = vl.next().getObject();
-					w.writeAttribute("rdf:value", val.stringValue());
-				}
-			}
+
 			w.writeEndElement();
 		}	
 	}
@@ -324,7 +329,7 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 	
-		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
+	//	writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeFormats(w, con, uri, DCAT.MEDIA_TYPE);
 		
 		// write as anyURI string
