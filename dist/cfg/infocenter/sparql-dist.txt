@@ -15,20 +15,13 @@ INSERT
 		?newdist dcterms:language ?lang .
 		?newdist dcterms:title ?title .
 		?newdist dcat:accessURL ?url .
-		?newdist dgov:mediaType ?dgov .
-		?newdist dcat:mediaType ?type .
-		?newdist dcterms:format ?format }
+		?newdist dcat:mediaType ?type}
 WHERE
 	{ 	?dataset dcat:distribution ?dist .
 		?dist a dcat:Distribution .
 		?dist dcterms:language ?lang .
 		?dist dcterms:title ?title .
 		?dist dcat:accessURL ?url
-		VALUES (?dgov ?type ?format) {
-			( <http://data.gov.be/en/taxonomy/term/1> "CSV" <http://publications.europa.eu/resource/authority/file-type/CSV> )
-			( <http://data.gov.be/en/taxonomy/term/65> "PDF" <http://publications.europa.eu/resource/authority/file-type/PDF> )
-			( <http://data.gov.be/en/taxonomy/term/247> "PNG" <http://publications.europa.eu/resource/authority/file-type/PNG> )
-			( <http://data.gov.be/en/taxonomy/term/8> "XLS" <http://publications.europa.eu/resource/authority/file-type/XLS> )	
-		}
+		VALUES ?type { "CSV" "PDF" "PNG" "XLS" } 
 		BIND ( IRI(CONCAT(STR(?dist), "/", ?type)) AS ?newdist )
 	}

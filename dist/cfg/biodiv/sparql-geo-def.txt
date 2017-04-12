@@ -1,0 +1,9 @@
+﻿PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dataset dcterms:spatial <http://sws.geonames.org/2802361/> .
+		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/45> }
+WHERE
+	{	?dataset a dcat:Dataset }

@@ -29,7 +29,7 @@
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "FPS B&C"@en, "SPF B&CG"@fr, "FOD B&B"@nl, "IGN"@fr, "NGI"@nl, "NGI"@en, "FOD P&O"@nl, "SPF P&O"@fr, "FPS P&O"@en, "Selor"@en, "Selor"@fr, "Selor"@nl .
+	skos:altLabel "FPS B&C"@en, "SPF B&CG"@fr, "FOD B&B"@nl, "IGN"@fr, "NGI"@nl, "NGI"@en, "FOD P&O"@nl, "SPF P&O"@fr, "FPS P&O"@en, "Selor"@en, "Selor"@fr, "Selor"@nl, "IBZ"@nl, "IBZ"@fr, "IBZ"@en .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;

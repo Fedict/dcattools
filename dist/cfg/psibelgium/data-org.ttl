@@ -101,4 +101,9 @@
 	skos:exactMatch <http://org.belgif.be/cbe/org/0671_516_647#id> ;
 	foaf:name "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr, "FÖD BOSA"@de ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/246> .
-	
+
+<http://data.gov.be/org/psibelgium/10001>
+	skos:prefLabel "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, "FPS Internal Affairs"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0308_356_862#id> ;
+	foaf:name "IBZ"@fr, "IBZ"@nl, "IBZ"@en, "IBZ"@de ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/222> .

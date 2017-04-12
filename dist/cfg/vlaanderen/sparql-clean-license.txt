@@ -3,6 +3,4 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE 
 	{	?dist dcterms:license "notspecified" }
 WHERE
-	{
-		?dist dcterms:license "notspecified" .
-	}
+	{	?dist dcterms:license "notspecified" }
