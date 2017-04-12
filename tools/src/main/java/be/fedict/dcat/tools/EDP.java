@@ -184,13 +184,23 @@ public class EDP {
 	private static void writeFormats(XMLStreamWriter w, RepositoryConnection con,
 			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
-			while (res.hasNext()) {
-				Literal val = (Literal) res.next().getObject();
-				w.writeStartElement("dct:format");
-				w.writeEmptyElement("dct:IMT");
-				w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
-				w.writeEndElement();
+			if (!res.hasNext()) {
+				return;
 			}
+			IRI fmt = (IRI) res.next().getObject();
+			w.writeStartElement("dcat:mediaType");
+			w.writeEmptyElement("dct:IMT");
+			try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
+				Value val = lbl.next().getObject();
+				w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
+			}
+			try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
+				if(vl.hasNext()) {
+					Value val = vl.next().getObject();
+					w.writeAttribute("rdf:value", val.stringValue());
+				}
+			}
+			w.writeEndElement();
 		}	
 	}
 	
@@ -315,7 +325,7 @@ public class EDP {
 		writeGeneric(w, con, uri);
 	
 		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
+		writeFormats(w, con, uri, DCAT.MEDIA_TYPE);
 		
 		// write as anyURI string
 		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
