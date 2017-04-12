@@ -314,8 +314,8 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 	
-		//writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeFormats(w, con, uri, DCAT.MEDIA_TYPE);
+		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
+		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
 		
 		// write as anyURI string
 		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
