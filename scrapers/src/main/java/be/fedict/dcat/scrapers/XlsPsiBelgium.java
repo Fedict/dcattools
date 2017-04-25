@@ -34,8 +34,13 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
 
@@ -132,15 +137,27 @@ public class XlsPsiBelgium extends Xls {
 	 * Get array of formats
 	 *
 	 * @param map
+	 * @param deffmt default format
 	 * @return string array of formats
 	 */
-	private String[] getFormats(Map<String, String> map) {
-		String fmt1 = map.getOrDefault(XlsPsiBelgium.FMT1, "");
-		String fmt2 = map.getOrDefault(XlsPsiBelgium.FMT2, "");
-		String fmt3 = map.getOrDefault(XlsPsiBelgium.FMT3, "");
-
-		String fmt = fmt1 + "," + fmt2 + "," + fmt3;
-		return fmt.toLowerCase().replace(";", ",").replace(".", "").split(",");
+	private String[] getFormats(Map<String, String> map, String deffmt) {
+		Set<String> res = new HashSet<>();
+		String[] fmts = new String[] { getFileExt(deffmt.trim()),
+										map.getOrDefault(XlsPsiBelgium.FMT1, ""), 
+										map.getOrDefault(XlsPsiBelgium.FMT2, ""),
+										map.getOrDefault(XlsPsiBelgium.FMT3, "") };
+		for (String fmt: fmts) {
+			for (String f: fmt.toLowerCase().replace(";", ",").replace(".", "").split(",")) {
+				if (!f.trim().isEmpty()) {
+					res.add(f.trim());
+				}
+			}
+		}
+		res.remove("htm");
+		if (res.isEmpty()) {
+			res.add("html");
+		}
+		return res.toArray(new String[0]);
 	}
 
 	/**
@@ -171,40 +188,42 @@ public class XlsPsiBelgium extends Xls {
 	 */
 	private void generateDist(Storage store, IRI dataset, Map<String, String> map,
 			String id, String lang) throws RepositoryException, MalformedURLException {
-		URL u = makeDistURL(id + "/" + lang);
-		IRI dist = store.getURI(u.toString());
-		logger.debug("Generating distribution {}", dist.toString());
 
 		String access = map.getOrDefault(XlsPsiBelgium.ACCESS + lang, "");
 		String access2 = map.getOrDefault(XlsPsiBelgium.ACCESS2 + lang, "");
-
 		String rights = map.getOrDefault(XlsPsiBelgium.RIGHTS + lang, "");
+		
 		String download = map.getOrDefault(XlsPsiBelgium.DOWNLOAD + lang, "");
-		/*
-        if (!fmt.equals("")) {
-            store.add(dist, DCAT.MEDIA_TYPE, fmt.trim());
-        }
-		 */
-		String fee = stringInt(map.get(XlsPsiBelgium.FEE));
-		String reuse = stringInt(map.get(XlsPsiBelgium.REUSE));
-		boolean open = reuse.equals("1") && fee.equals("0");
+		String[] fmts = getFormats(map, download);
+		
+		for (String fmt: fmts ) {
+			URL u = makeDistURL(id + "/" + lang + "/" + fmt.replaceAll("\\W", ""));
+			IRI dist = store.getURI(u.toString());
+			logger.debug("Generating distribution {}", dist.toString());
 
-		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		if (!access.isEmpty()) {
-			store.add(dist, DCAT.ACCESS_URL, new URL(access));
-		}
-		if (!access2.isEmpty()) {
-			store.add(dist, DCAT.ACCESS_URL, new URL(access2));
-		}
-		if (!download.isEmpty()) {
-			store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
-			store.add(dist, DCAT.MEDIA_TYPE, getFileExt(download));
-		}
-		store.add(dist, DCTERMS.LICENSE, open ? "open" : "closed");
-		if (!rights.isEmpty()) {
-			store.add(dist, DCTERMS.RIGHTS, new URL(rights));
+			store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+			store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+			store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+			
+			if (!access.isEmpty()) {
+				store.add(dist, DCAT.ACCESS_URL, new URL(access));
+			}
+			if (!access2.isEmpty()) {
+				store.add(dist, DCAT.ACCESS_URL, new URL(access2));
+			}
+			if (!download.isEmpty()) {
+				store.add(dist, DCAT.DOWNLOAD_URL, new URL(download));
+			}
+			store.add(dist, DCAT.MEDIA_TYPE, fmt);
+			
+			String fee = stringInt(map.get(XlsPsiBelgium.FEE));
+			String reuse = stringInt(map.get(XlsPsiBelgium.REUSE));
+			boolean open = reuse.equals("1") && fee.equals("0");
+
+			if (!rights.isEmpty()) {
+				store.add(dist, DCTERMS.RIGHTS, new URL(rights));
+			}
+			store.add(dist, DCTERMS.LICENSE, open ? "open" : "closed");	
 		}
 	}
 
