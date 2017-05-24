@@ -93,7 +93,18 @@ public class Fetcher {
     public int getDelay() {
         return delay;
     }
-    
+    /**
+     * Set delay between HTTP requests (500 ms or higher)
+     * 
+     * @param delay milliseconds
+     */
+    public void setDelay(int delay) {
+		if (delay >= 500) {
+			this.delay = delay;
+			logger.info("Setting delay to {} ms", delay);
+		}
+		logger.warn("Delay of {} ms is too low", delay);
+    }
     /**
      * Make HTTP GET request.
      * 
