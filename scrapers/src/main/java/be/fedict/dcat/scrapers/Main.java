@@ -61,9 +61,21 @@ public class Main {
 	}
 
 	/**
+	 * Set custom delay between http requests, if needed (default is 1s)
+	 * 
+	 * @param s Scraper instance
+	 */
+	private static void setDelay(Scraper s) {
+		String delay = System.getProperty("http.delay", "");
+		if(!delay.isEmpty()) {
+			s.setDelay(Integer.valueOf(delay));
+		}
+	}
+	
+	/**
 	 * Set proxy, if needed.
 	 *
-	 * @param s Scraper instance.
+	 * @param s Scraper instance
 	 */
 	private static void setProxy(Scraper s) {
 		String proxy = System.getProperty("http.proxyHost", "");
@@ -110,6 +122,7 @@ public class Main {
 			s.setDefaultLang(getRequired("deflanguage"));
 			s.setAllLangs(getRequired("languages").split(","));
 
+			setDelay(s);
 			setProxy(s);
 
 			s.setProperties(prop, Scraper.PROP_PREFIX);
