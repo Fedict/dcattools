@@ -66,7 +66,7 @@ public class Main {
 	 * @param s Scraper instance
 	 */
 	private static void setDelay(Scraper s) {
-		String delay = System.getProperty("http.delay", "");
+		String delay = prop.getProperty(Scraper.PROP_PREFIX + ".http.delay", "");
 		if(!delay.isEmpty()) {
 			s.setDelay(Integer.valueOf(delay));
 		}
