@@ -146,6 +146,10 @@ public class HtmlFodDiplomatie extends Html {
 		String href = link.first().attr(Attribute.HREF.toString());
 		URL download = makeAbsURL(href);
 
+		// file type e.g. in "Link (pdf)"
+		String txt = link.first().text();
+		String ftype = txt.replaceAll("(\\w+\\s*\\()(\\w+)\\)", "$2");
+		
 		URL u = makeDistURL(code + "/" + lang);
 		IRI dist = store.getURI(u.toString());
 		logger.debug("Generating distribution {}", dist.toString());
@@ -156,7 +160,7 @@ public class HtmlFodDiplomatie extends Html {
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
+		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(ftype));
 	}
 
 	/**
