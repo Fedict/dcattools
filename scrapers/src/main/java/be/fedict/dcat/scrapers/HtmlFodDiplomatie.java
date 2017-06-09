@@ -160,7 +160,7 @@ public class HtmlFodDiplomatie extends Html {
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(ftype));
+		store.add(dist, DCAT.MEDIA_TYPE, ftype.toLowerCase());
 	}
 
 	/**
@@ -176,6 +176,10 @@ public class HtmlFodDiplomatie extends Html {
 	private void generateDataset(Storage store, URL front, Element row, String lang)
 			throws MalformedURLException, RepositoryException {
 		Elements cells = row.getElementsByTag(Tag.TD.toString());
+		if (cells.size() < 2) {
+			logger.warn("Skipping empty / too short table row");
+			return;
+		}
 		String code = cells.get(2).text();
 		
 		URL u = makeDatasetURL(code);
