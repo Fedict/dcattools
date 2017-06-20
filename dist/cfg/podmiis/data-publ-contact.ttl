@@ -1,0 +1,15 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/cbe/org/0864_484_487#id>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/159> ;
+	foaf:name "PPS Social Integration"@en, "POD Maatschappelijke Integratie"@nl, "SPP Intégration sociale"@fr ;
+	foaf:homepage <https://stat.mi-is.be> .
+	
+<http://data.gov.be/org/podmiis/pod/contact>
+	a vcard:Organization ;
+	vcard:fn "PPS Social Integration"@en, "POD Maatschappelijke Integratie"@nl, "SPP Intégration sociale"@fr ;
+	vcard:hasUrl <http://www.mi-is.be> ;
+	vcard:hasEmail <mailto:question@mi-is.be> .
