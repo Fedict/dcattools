@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2017, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,28 +62,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Statbel "publications" scraper.
+ * POD MI-IS scraper.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class HtmlStatbelPubs extends Html {
+public class HtmlPodMiis extends Html {
 
-	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
+	private final Logger logger = LoggerFactory.getLogger(HtmlPodMiis.class);
 
-	public final static String CAT_SELECT = "category_select";
-	public final static String CAT_CAT = "Statistieken - Download-tabellen";
+	public final static String ITEM_SELECT = "section.sidebar ul li.treeview a";
 
-	public final static String LANG_LINK = "blgm_lSwitch";
-	public final static String DIV_MAIN = "mainContent";
-	public final static String DIV_FRST = "detailFirstPart";
-	public final static String DIV_DATE = "date";
-	public final static String DIV_CAT = "facets";
-	public final static String DIV_SCND = "detailScdPart";
+	public final static String LANG_SELECT = "ul.nav li.dropdown ul.dropdown-menu li a";
 
-	public final static DateFormat DATEFMT = new SimpleDateFormat("dd/MM/yyyy");
-
-	public final static Pattern YEAR_PAT
-			= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
+	public final static String MODAL_LABEL = "myModalLabel";
+	public final static String MODAL_BODY = "modal-body";
+	public final static String DOWNLOAD = "download";
+	public final static String SLIDER = "month-slider";
+	public final static String SLIDER_DATA = "data-slider-ticks-labels";
+	
+	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy/dd");
 
 	/**
 	 * Get the URL of the page in another language
@@ -96,14 +93,15 @@ public class HtmlStatbelPubs extends Html {
 	private URL switchLanguage(String page, String lang) throws IOException {
 		URL base = getBase();
 
-		Elements lis = Jsoup.parse(page).getElementsByClass(LANG_LINK);
+		Elements lis = Jsoup.parse(page).getElementsByClass(LANG_SELECT);
 
 		for (Element li : lis) {
-			if (li.text().equals(lang)) {
+			String l = li.getElementsByTag("abbr").first().attr(HTML.Attribute.LANG.toString());
+			
+			if (l.equals(lang)) {
 				String href = li.attr(HTML.Attribute.HREF.toString());
 				if (href != null && !href.isEmpty()) {
 					return makeAbsURL(href);
-					//return new URL(base.getProtocol(), base.getHost(), href);
 				}
 			}
 		}
@@ -149,23 +147,15 @@ public class HtmlStatbelPubs extends Html {
 		URL base = getBase();
 		String front = makeRequest(base);
 
-		// Select the correct page from dropdown-list, displaying all items
-		Element select = Jsoup.parse(front).getElementById(CAT_SELECT);
-		Element opt = select.getElementsMatchingOwnText(CAT_CAT).first();
-		if (opt != null) {
-			URL downloads = new URL(base, opt.val() + "&size=250");
-			String page = makeRequest(downloads);
-
-			// Extract links from list
-			Elements rows = Jsoup.parse(page).getElementsByTag(Tag.TD.toString());
-			for (Element row : rows) {
-				Element link = row.getElementsByTag(Tag.A.toString()).first();
-				String href = link.attr(Attribute.HREF.toString());
-				urls.add(makeAbsURL(href));
+		// Select the correct page from sidebar menu
+		Elements items = Jsoup.parse(front).select(ITEM_SELECT);
+		if (!items.isEmpty()) {
+			for (Element item: items) {
+				urls.add(makeAbsURL(item.attr(HTML.Attribute.HREF.toString())));
 			}
 		} else {
-			logger.error("Category {} not found", CAT_CAT);
-		}
+			logger.error("Category {} not found", ITEM_SELECT);
+		} 
 		return urls;
 	}
 
@@ -267,7 +257,7 @@ public class HtmlStatbelPubs extends Html {
 				logger.warn("No body element");
 				continue;
 			}
-			Element h = doc.getElementsByTag(Tag.H1.toString()).first();
+			Element h = doc.getElementById(MODAL_LABEL);
 			if (h == null) {
 				logger.warn("No H1 element");
 				continue;
@@ -276,7 +266,7 @@ public class HtmlStatbelPubs extends Html {
 			// by default, also use the title as description
 			String desc = title;
 
-			Element divmain = doc.getElementsByClass(DIV_MAIN).first();
+			Element divmain = doc.getElementsByClass(MODAL_BODY).first();
 			if (divmain != null) {
 				Elements paras = divmain.getElementsByTag(Tag.P.toString());
 				if (paras != null) {
@@ -290,15 +280,20 @@ public class HtmlStatbelPubs extends Html {
 					desc = buf.toString();
 				}
 			} else {
-				logger.warn("No {} element", DIV_MAIN);
+				logger.warn("No {} element", MODAL_BODY);
 			}
-
-			generateTemporal(store, dataset, title, YEAR_PAT, "-");
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 			store.add(dataset, DCTERMS.TITLE, title, lang);
 			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-
+			
+			Element slider = doc.getElementById(SLIDER);
+			if (slider != null) {
+				String months = slider.attr(SLIDER_DATA).trim();
+				String[] split = months.split("\\\"");
+				generateTemporal(store, dataset, split[1], split[2]);
+			}
+/*
 			Element divdate = doc.getElementsByClass(DIV_DATE).first();
 			if (divdate != null) {
 				Node n = divdate.childNodes().get(1);
@@ -310,23 +305,9 @@ public class HtmlStatbelPubs extends Html {
 					logger.warn("Could not convert {} to date", s);
 				}
 			}
-
-			Element divcat = doc.getElementsByClass(DIV_CAT).first();
-			if (divcat != null) {
-				Node n = divcat.childNodes().get(1);
-				String[] cats = n.toString().split(",");
-				for (String cat : cats) {
-					store.add(dataset, DCAT.KEYWORD, cat.trim(), lang);
-				}
-			}
-
-			Element divlinks = doc.getElementsByClass(DIV_SCND).first();
-			if (divlinks != null) {
-				Elements links = divlinks.getElementsByTag(Tag.A.toString());
-				for (Element link : links) {
-					generateDist(store, dataset, p.getUrl(), link, lang);
-				}
-			}
+*/
+			Element link = doc.getElementById(DOWNLOAD);
+			generateDist(store, dataset, p.getUrl(), link, lang);
 		}
 	}
 
@@ -360,8 +341,8 @@ public class HtmlStatbelPubs extends Html {
 	 * @param storage RDF back-end
 	 * @param base base URL
 	 */
-	public HtmlStatbelPubs(File caching, File storage, URL base) {
+	public HtmlPodMiis(File caching, File storage, URL base) {
 		super(caching, storage, base);
-		setName("statbelpub");
+		setName("podmiis");
 	}
 }
