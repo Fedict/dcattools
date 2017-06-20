@@ -91,13 +91,10 @@ public class HtmlPodMiis extends Html {
 	 * @throws IOException
 	 */
 	private URL switchLanguage(String page, String lang) throws IOException {
-		URL base = getBase();
-
-		Elements lis = Jsoup.parse(page).getElementsByClass(LANG_SELECT);
+		Elements lis = Jsoup.parse(page).select(LANG_SELECT);
 
 		for (Element li : lis) {
 			String l = li.getElementsByTag("abbr").first().attr(HTML.Attribute.LANG.toString());
-			
 			if (l.equals(lang)) {
 				String href = li.attr(HTML.Attribute.HREF.toString());
 				if (href != null && !href.isEmpty()) {
@@ -291,7 +288,7 @@ public class HtmlPodMiis extends Html {
 			if (slider != null) {
 				String months = slider.attr(SLIDER_DATA).trim();
 				String[] split = months.split("\\\"");
-				generateTemporal(store, dataset, split[1], split[2]);
+				generateTemporal(store, dataset, split[1], split[3]);
 			}
 /*
 			Element divdate = doc.getElementsByClass(DIV_DATE).first();
