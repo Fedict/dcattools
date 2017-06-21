@@ -41,7 +41,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
@@ -49,7 +48,6 @@ import javax.swing.text.html.HTML.Tag;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 
 import org.eclipse.rdf4j.model.IRI;
@@ -57,6 +55,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,6 +69,8 @@ public class HtmlPodMiis extends Html {
 
 	private final Logger logger = LoggerFactory.getLogger(HtmlPodMiis.class);
 
+	public final static String ABBR = "abbr";
+	
 	public final static String ITEM_SELECT = "section.sidebar ul li.treeview a";
 
 	public final static String LANG_SELECT = "ul.nav li.dropdown ul.dropdown-menu li a";
@@ -79,8 +80,9 @@ public class HtmlPodMiis extends Html {
 	public final static String DOWNLOAD = "download";
 	public final static String SLIDER = "month-slider";
 	public final static String SLIDER_DATA = "data-slider-ticks-labels";
-	
-	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy/dd");
+	public final static String PICKER = "picker";
+	public final static String HREF_DATA = "data-href";
+	public final static String PLACEHOLDER = "__period__";
 
 	/**
 	 * Get the URL of the page in another language
@@ -94,7 +96,7 @@ public class HtmlPodMiis extends Html {
 		Elements lis = Jsoup.parse(page).select(LANG_SELECT);
 
 		for (Element li : lis) {
-			String l = li.getElementsByTag("abbr").first().attr(HTML.Attribute.LANG.toString());
+			String l = li.getElementsByTag(ABBR).first().attr(HTML.Attribute.LANG.toString());
 			if (l.equals(lang)) {
 				String href = li.attr(HTML.Attribute.HREF.toString());
 				if (href != null && !href.isEmpty()) {
@@ -199,13 +201,14 @@ public class HtmlPodMiis extends Html {
 	 * @param dataset dataset URI
 	 * @param access access URL
 	 * @param link link element
+	 * @param range range of time
 	 * @param lang language code
 	 * @throws MalformedUrlException
 	 * @throws RepositoryException
 	 */
-	private void generateDist(Storage store, IRI dataset, URL access, Element link,
-			String lang) throws MalformedURLException, RepositoryException {
-		String href = link.attr(Attribute.HREF.toString());
+	private void generateDist(Storage store, IRI dataset, URL access, Element link, 
+			String range, String lang) throws MalformedURLException, RepositoryException {
+		String href = link.attr(HREF_DATA).replace(PLACEHOLDER, range);
 		URL download = makeAbsURL(href);
 
 		// important for EDP: does not like different datasets pointing to same distribution
@@ -284,27 +287,44 @@ public class HtmlPodMiis extends Html {
 			store.add(dataset, DCTERMS.TITLE, title, lang);
 			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 			
+			Element link = doc.getElementById(DOWNLOAD);
+					
+			// Monthly
 			Element slider = doc.getElementById(SLIDER);
 			if (slider != null) {
 				String months = slider.attr(SLIDER_DATA).trim();
 				String[] split = months.split("\\\"");
+				
 				generateTemporal(store, dataset, split[1], split[3]);
+				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "M");
+				
+				String last = split[3].replaceAll("/", "");
+				generateDist(store, dataset, p.getUrl(), link, last, lang);
 			}
-/*
-			Element divdate = doc.getElementsByClass(DIV_DATE).first();
-			if (divdate != null) {
-				Node n = divdate.childNodes().get(1);
-				String s = n.toString().trim();
-				try {
-					Date modif = DATEFMT.parse(s);
-					store.add(dataset, DCTERMS.MODIFIED, modif);
-				} catch (ParseException ex) {
-					logger.warn("Could not convert {} to date", s);
+			
+			// Yearly
+			Element picker = doc.getElementById(PICKER);
+			if (picker != null) {
+				String start = "999912";
+				String end = "000012";
+				
+				Elements years = picker.getElementsByTag(HTML.Tag.OPTION.toString());
+				for (Element year: years) {
+					String range = year.attr(HTML.Attribute.VALUE.toString());
+					String[] split = range.split("-");
+					if (Integer.valueOf(split[0]) < Integer.valueOf(start)) {
+						start = split[0];
+					}
+					if (Integer.valueOf(split[1]) > Integer.valueOf(end)) {
+						end = split[1];
+					}
+					
+					generateDist(store, dataset, p.getUrl(), link, range, lang);
 				}
+
+				generateTemporal(store, dataset, start, end);
+				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "Y");
 			}
-*/
-			Element link = doc.getElementById(DOWNLOAD);
-			generateDist(store, dataset, p.getUrl(), link, lang);
 		}
 	}
 

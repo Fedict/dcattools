@@ -357,16 +357,18 @@ public abstract class Scraper extends Fetcher {
 			logger.warn("empty start or end date");
 			return;
 		}
+		
 		// Assume start of year / end of year when only YYYY is given 
-		if (s.length() == 4) {
-			s += "-01-01";
-		} else {
-			s = s.replaceAll("/", "-");
+		switch (s.length()) {
+			case 4: s += "-01-01"; break;
+			case 6: s = s.substring(0, 4) + "-" + s.substring(4) + "-01"; break;
+			default: s = s.replaceAll("/", "-");
 		}
-		if (e.length() == 4) {
-			e += "-12-31";
-		} else {
-			e = e.replaceAll("/", "-");
+		
+		switch (e.length()) {
+			case 4: e += "-12-31"; break;
+			case 6: e = e.substring(0, 4) + "-" + e.substring(4); break;
+			default: e = e.replaceAll("/", "-");
 		}
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
