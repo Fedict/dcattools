@@ -91,3 +91,8 @@
 	skos:altLabel "IBZ"@fr, "IBZ"@nl, "IBZ"@en, "IBZ"@de ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0308_356_862#id> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/222> .
+	
+<http://data.gov.be/org/psibelgium/10002>
+	skos:prefLabel "Federale Politie"@nl, "Police fédérale"@fr, "Federal Police"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0869_909_460#id> ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/323> .

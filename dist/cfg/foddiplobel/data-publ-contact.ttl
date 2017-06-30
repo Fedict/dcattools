@@ -6,7 +6,7 @@
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/156> ;
 	foaf:name "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
-	foaf:homepage <https://diplomatie.belgium.be/nl/Documentatie/open_data .
+	foaf:homepage <https://diplomatie.belgium.be/nl/Documentatie/open_data> .
 	
 <http://data.gov.be/org/foddiplobel/fod/contact>
 	a vcard:Organization ;

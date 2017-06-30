@@ -44,7 +44,7 @@
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
-	skos:altLabel "FOD Justitie"@nl, "SPF Justice"@fr, "FPS Justice"@en .
+	skos:altLabel "FOD Justitie"@nl, "SPF Justice"@fr, "FPS Justice"@en, "Federale Politie"@nl, "Police fédérale"@fr, "Federal Police"@en .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
