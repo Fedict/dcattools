@@ -96,3 +96,8 @@
 	skos:prefLabel "Federale Politie"@nl, "Police fédérale"@fr, "Federal Police"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0869_909_460#id> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/323> .
+
+<http://data.gov.be/org/psibelgium/10003>
+	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2_138_196_041#id> ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/325> .

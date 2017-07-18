@@ -7,4 +7,3 @@
 <http://data.gov.be/en/taxonomy/term/68>
 	skos:prefLabel "Specific license" ;
 	skos:altLabel "closed" .
-		

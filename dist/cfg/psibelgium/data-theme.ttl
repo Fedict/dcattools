@@ -20,7 +20,7 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "KMI"@nl, "IRM"@fr, "RMI"@en .
+	skos:altLabel "KMI"@nl, "IRM"@fr, "RMI"@en, "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE@en" .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;

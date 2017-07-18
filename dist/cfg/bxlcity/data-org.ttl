@@ -20,12 +20,12 @@
 	skos:exactMatch <http://org.belgif.be/cbe/site/0449_971_914#id> ;
 	skos:altLabel "GIAL"@nl, "GIAL"@en, "GIAL"@fr, "GIAL" .
 
-<http://data.gov.be/en/taxonomy/term/234>
+<http://data.gov.be/en/taxonomy/term/233>
 	skos:prefLabel "Spullenhulp"@nl, "Les Petits Riens"@en, "Les Petits Riens"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/0407_139_088#id> ;
 	skos:altLabel "Spullenhulp"@nl, "Les Petits Riens"@en, "Les Petits Riens"@fr .
 
-<http://data.gov.be/en/taxonomy/term/235>
+<http://data.gov.be/en/taxonomy/term/234>
 	skos:prefLabel "Bureau d'études AME"@nl, "Bureau d'études AME"@en, "Bureau d'études AME"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/0884_883_686#id> ;
 	skos:altLabel "AME"@nl, "AME"@en, "Bureau d'études AME"@fr .
