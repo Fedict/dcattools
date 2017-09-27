@@ -331,29 +331,6 @@ public class HtmlStatbelPubs extends Html {
 	}
 
 	/**
-	 * Generate DCAT.
-	 *
-	 * @param cache DBC cache
-	 * @param store RDF store
-	 * @throws RepositoryException
-	 * @throws MalformedURLException
-	 */
-	@Override
-	public void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
-
-		/* Get the list of all datasets */
-		List<URL> urls = cache.retrieveURLList();
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			String id = makeHashId(u.toString());
-			generateDataset(store, id, page);
-		}
-		generateCatalog(store);
-	}
-
-	/**
 	 * HTML parser for Statbel publications
 	 *
 	 * @param caching DB cache file

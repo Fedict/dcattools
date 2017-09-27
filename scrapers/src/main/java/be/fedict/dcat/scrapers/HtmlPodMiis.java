@@ -34,16 +34,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 
 import org.jsoup.Jsoup;
@@ -55,7 +50,6 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
-import org.eclipse.rdf4j.rio.RDFFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -326,29 +320,6 @@ public class HtmlPodMiis extends Html {
 				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "Y");
 			}
 		}
-	}
-
-	/**
-	 * Generate DCAT.
-	 *
-	 * @param cache DBC cache
-	 * @param store RDF store
-	 * @throws RepositoryException
-	 * @throws MalformedURLException
-	 */
-	@Override
-	public void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
-
-		/* Get the list of all datasets */
-		List<URL> urls = cache.retrieveURLList();
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			String id = makeHashId(u.toString());
-			generateDataset(store, id, page);
-		}
-		generateCatalog(store);
 	}
 
 	/**

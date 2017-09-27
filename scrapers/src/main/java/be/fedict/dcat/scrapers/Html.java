@@ -25,12 +25,14 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -59,6 +61,29 @@ public abstract class Html extends Scraper {
 	protected abstract void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException;
 
+	/**
+	 * Generate DCAT.
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		logger.info("Generate DCAT");
+
+		/* Get the list of all datasets */
+		List<URL> urls = cache.retrieveURLList();
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			String id = makeHashId(u.toString());
+			generateDataset(store, id, page);
+		}
+		generateCatalog(store);
+	}
+	
 	/**
 	 * Constructor
 	 *
