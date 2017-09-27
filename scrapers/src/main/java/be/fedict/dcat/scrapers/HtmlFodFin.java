@@ -65,6 +65,7 @@ public class HtmlFodFin extends Html {
 	private final Logger logger = LoggerFactory.getLogger(HtmlFodFin.class);
 
 	private final static String LANG_LINK = "language-link";
+	private final static String TITLE = "h1.page-title";
 	private final static String LIST_DATASETS = "section#content nav div.item-list li a";
 	private final static String TABLE = "div.field-type-text-with-summary table tr";
 
@@ -216,9 +217,6 @@ public class HtmlFodFin extends Html {
 			IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
 
-		store.add(dataset, RDF.TYPE, DCAT.DATASET);
-		store.add(dataset, DCTERMS.IDENTIFIER, id);
-
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
@@ -232,7 +230,7 @@ public class HtmlFodFin extends Html {
 				logger.warn("No body element");
 				continue;
 			}
-			Element h = doc.getElementsByTag(Tag.H1.toString()).first();
+			Element h = doc.select(TITLE).first();
 			if (h == null) {
 				logger.warn("No H1 element");
 				continue;
@@ -240,11 +238,14 @@ public class HtmlFodFin extends Html {
 			String title = h.text();
 			String desc = "";
 
-			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-			store.add(dataset, DCTERMS.TITLE, title, lang);
 			Elements rows = doc.select(TABLE);
 
-			if (rows != null) {
+			if (rows != null && !rows.isEmpty()) {
+				store.add(dataset, RDF.TYPE, DCAT.DATASET);
+				store.add(dataset, DCTERMS.IDENTIFIER, id);
+				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+				store.add(dataset, DCTERMS.TITLE, title, lang);
+				
 				for (Element row : rows) {
 					String text = null;
 					Element el = row.getElementsByTag(Tag.TD.toString()).first();
