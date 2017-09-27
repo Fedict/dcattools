@@ -94,8 +94,6 @@ public class HtmlStatbelPubs extends Html {
 	 * @throws IOException
 	 */
 	private URL switchLanguage(String page, String lang) throws IOException {
-		URL base = getBase();
-
 		Elements lis = Jsoup.parse(page).getElementsByClass(LANG_LINK);
 
 		for (Element li : lis) {
@@ -103,7 +101,6 @@ public class HtmlStatbelPubs extends Html {
 				String href = li.attr(HTML.Attribute.HREF.toString());
 				if (href != null && !href.isEmpty()) {
 					return makeAbsURL(href);
-					//return new URL(base.getProtocol(), base.getHost(), href);
 				}
 			}
 		}

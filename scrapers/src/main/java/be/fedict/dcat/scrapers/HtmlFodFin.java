@@ -35,6 +35,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.text.html.HTML.Attribute;
@@ -63,56 +65,78 @@ public class HtmlFodFin extends Html {
 	private final Logger logger = LoggerFactory.getLogger(HtmlFodFin.class);
 
 	private final static String LANG_LINK = "language-link";
-	private final static String LIST_ITEMS = "section#id div.item-list li";
-	private final static String TITLE = "h1.page-title";
+	private final static String LIST_DATASETS = "section#content nav div.item-list li a";
 	private final static String TABLE = "div.field-type-text-with-summary table tr";
 
 	/**
 	 * Switch to another language
 	 *
-	 * @param lang
+	 * @param page
+	 * @param lang language code
 	 * @return
 	 * @throws IOException
 	 */
-	private URL switchLanguage(String lang) throws IOException {
-		URL base = getBase();
-
-		String front = makeRequest(base);
-
-		Elements lis = Jsoup.parse(front).getElementsByClass(HtmlFodFin.LANG_LINK);
+	private URL switchLanguage(String page, String lang) throws IOException {
+		Elements lis = Jsoup.parse(page).getElementsByClass(LANG_LINK);
+		
 		for (Element li : lis) {
 			if (li.text().equals(lang)) {
 				String href = li.attr(Attribute.HREF.toString());
-				return new URL(base, href);
+				if (href != null && !href.isEmpty()) {
+					return makeAbsURL(href);
+				}
 			}
 		}
-		return base;
+		logger.warn("No {} translation for page {}", lang, page);
+		return null;
 	}
 
 	/**
-	 * Store page containing datasets
+	 * Scrape dataset
 	 *
-	 * @param cache
-	 * @throws java.io.IOException
+	 * @param u
+	 * @throws IOException
 	 */
-	private void scrapePages(Cache cache) throws IOException {
-		URL front = getBase();
+	private void scrapeDataset(URL u) throws IOException {
+		Cache cache = getCache();
+		String deflang = getDefaultLang();
+		String html = makeRequest(u);
 
-		String sections = makeRequest(front);
-		Elements items = Jsoup.parse(sections).select(LIST_ITEMS);
-		
-		for (Element item: items) {
-			Element href = item.getElementsByTag(Tag.A.toString()).first();
-			URL section = new URL(getBase(), href.attr(Attribute.HREF.toString()));
+		cache.storePage(u, deflang, new Page(u, html));
 
-			for (String lang : getAllLangs()) {
-				URL url = switchLanguage(lang);
-				String content = makeRequest(url);
-				cache.storePage(section, lang, new Page(url, content));
+		String[] langs = getAllLangs();
+		for (String lang : langs) {
+			if (!lang.equals(deflang)) {
+				URL url = switchLanguage(html, lang);
+				if (url != null) {
+					String body = makeRequest(url);
+					cache.storePage(u, lang, new Page(url, body));
+				}
+				sleep();
 			}
 		}
 	}
+	
+	/**
+	 * Get the list of all the statistics.
+	 *
+	 * @return list of category URLs
+	 * @throws IOException
+	 */
+	private List<URL> scrapeDatasetList() throws IOException {
+		List<URL> urls = new ArrayList<>();
 
+		URL base = getBase();
+		String front = makeRequest(base);
+		Elements links = Jsoup.parse(front).select(LIST_DATASETS);
+
+		for (Element link : links) {
+			String href = link.attr(Attribute.HREF.toString());
+			urls.add(makeAbsURL(href));
+		}
+		return urls;
+	}
+	
 	/**
 	 * Scrape the site.
 	 *
@@ -123,18 +147,25 @@ public class HtmlFodFin extends Html {
 		logger.info("Start scraping");
 		Cache cache = getCache();
 
-		Map<String, Page> front = cache.retrievePage(getBase());
-		if (front.keySet().isEmpty()) {
-			scrapePages(cache);
-			front = cache.retrievePage(getBase());
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
+			urls = scrapeDatasetList();
+			cache.storeURLList(urls);
 		}
-		// Calculate the number of datasets
-		Page p = front.get(getDefaultLang());
-		String datasets = p.getContent();
-		Elements list = Jsoup.parse(datasets).select(LIST_ITEMS); 
-		
-		logger.info("Found {} datasets on page", String.valueOf(list.size()));
+		logger.info("Found {} datasets on page", urls.size());
+		logger.info("Start scraping (waiting between requests)");
 
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			if (page.isEmpty()) {
+				sleep();
+				try {
+					scrapeDataset(u);
+				} catch (IOException ex) {
+					logger.error("Failed to scrape {}", u);
+				}
+			}
+		}
 		logger.info("Done scraping");
 	}
 
@@ -219,7 +250,7 @@ public class HtmlFodFin extends Html {
 					Element el = row.getElementsByTag(Tag.TD.toString()).first();
 					if (el != null) {
 						text = el.ownText();
-						desc += text + " ";
+						desc += text + "\n";
 					}
 					// a row may contain multiple downloads / distributions
 					Elements hrefs = row.getElementsByTag(Tag.A.toString());

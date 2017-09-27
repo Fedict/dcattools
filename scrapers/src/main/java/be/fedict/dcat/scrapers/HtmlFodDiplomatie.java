@@ -81,7 +81,7 @@ public class HtmlFodDiplomatie extends Html {
 		for (Element li : lis) {
 			if (li.text().equals(lang)) {
 				String href = li.attr(Attribute.HREF.toString());
-				return new URL(base, href);
+				return makeAbsURL(href);
 			}
 		}
 		return base;
@@ -90,12 +90,12 @@ public class HtmlFodDiplomatie extends Html {
 	/**
 	 * Store page containing datasets
 	 *
-	 * @param cache
 	 * @throws java.io.IOException
 	 */
-	private void scrapePage(Cache cache) throws IOException {
+	private void scrapePage() throws IOException {
 		URL front = getBase();
-
+		Cache cache = getCache();
+	
 		for (String lang : getAllLangs()) {
 			URL url = switchLanguage(lang);
 			String content = makeRequest(url);
@@ -115,7 +115,7 @@ public class HtmlFodDiplomatie extends Html {
 
 		Map<String, Page> front = cache.retrievePage(getBase());
 		if (front.keySet().isEmpty()) {
-			scrapePage(cache);
+			scrapePage();
 			front = cache.retrievePage(getBase());
 		}
 		// Calculate the number of datasets
