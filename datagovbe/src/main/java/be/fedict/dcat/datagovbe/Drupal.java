@@ -29,7 +29,6 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
 import be.fedict.dcat.vocab.SCHEMA;
-import be.fedict.dcat.vocab.VCARD;
 
 import com.google.common.collect.ListMultimap;
 
@@ -77,6 +76,7 @@ import org.apache.http.ssl.SSLContexts;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
@@ -367,7 +367,7 @@ public class Drupal {
         String email = "";
         Map<IRI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-        String contact = Storage.getOne(map, VCARD.HAS_EMAIL, "");
+        String contact = Storage.getOne(map, VCARD4.HAS_EMAIL, "");
         if (contact.startsWith("mailto:")) {
             email = contact.substring(7);
         }
@@ -387,10 +387,10 @@ public class Drupal {
         // Get DCAT contactpoints
         Map<IRI, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
-        String name = Storage.getOne(map, VCARD.HAS_FN, lang);
+        String name = Storage.getOne(map, VCARD4.HAS_FN, lang);
         if (name.isEmpty()) {
             // check undefined language
-            name = Storage.getOne(map, VCARD.HAS_FN, "");
+            name = Storage.getOne(map, VCARD4.HAS_FN, "");
         }
         return name;
     }
