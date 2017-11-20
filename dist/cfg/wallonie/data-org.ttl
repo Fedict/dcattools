@@ -68,7 +68,7 @@
 <http://data.gov.be/en/taxonomy/term/143>
 	skos:prefLabel "Secrétariat général"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_322_327#id> ;
-	skos:altLabel "secretariat-general-geo-donnees"@fr .
+	skos:altLabel "secretariat-general-geo-donnees"@fr, "geoportail-de-la-wallonie"@fr .
 
 <http://data.gov.be/en/taxonomy/term/144>
 	skos:prefLabel "FOREM"@fr ;

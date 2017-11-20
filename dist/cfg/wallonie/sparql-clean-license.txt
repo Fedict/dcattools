@@ -1,9 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE 
-	{	?dist dcterms:license ?license }
+DELETE
+	{ 	?dataset dcterms:license "notspecified" } 
 WHERE
-	{
-		?dist dcterms:license ?license .
-		VALUES ?license { "other-closed" "other-nc" "other-at" }
-	}
+	{ 	?dataset dcterms:license "notspecified" }
+

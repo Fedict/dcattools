@@ -72,12 +72,12 @@
 <http://data.gov.be/en/taxonomy/term/235>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	owl:sameAs <http://data.gov.be/format/SLD> ;
-	skos:altLabel "sld", "Datex II" .
+	skos:altLabel "sld" .
 	
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	owl:sameAs <http://data.gov.be/format/SHP> ;
-	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies" .
+	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	owl:sameAs <http://data.gov.be/format/DXF> ;
@@ -108,7 +108,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/67>
 	owl:sameAs <http://data.gov.be/format/WMS> ;
-	skos:altLabel "WMS", "wms", "vms" .
+	skos:altLabel "WMS", "wms", "vms", "WMTS" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLS> ;
@@ -123,7 +123,7 @@
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
 	owl:sameAs <http://data.gov.be/format/XML> ;
-	skos:altLabel "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx".
+	skos:altLabel "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ZIP> ;
