@@ -28,7 +28,6 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.MDR_LANG;
-import be.fedict.dcat.vocab.VCARD;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +48,8 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
+
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
@@ -222,12 +223,12 @@ public abstract class CkanJson extends Ckan {
 		if (!name.isEmpty() || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
-			store.add(vcard, RDF.TYPE, VCARD.A_ORGANIZATION);
+			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
 			if (!name.isEmpty()) {
-				store.add(vcard, VCARD.HAS_FN, name);
+				store.add(vcard, VCARD4.HAS_FN, name);
 			}
 			if (!email.isEmpty()) {
-				store.add(vcard, VCARD.HAS_EMAIL, store.getURI("mailto:" + email));
+				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
 			}
 		}
 	}

@@ -8,6 +8,12 @@
     </parent>
     <artifactId>scrapers</artifactId>
     <packaging>jar</packaging>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+	<rdf4j.version>2.2.2</rdf4j.version>
+	<slf4j.version>1.7.25</slf4j.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -17,12 +23,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.22</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.22</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -52,13 +58,9 @@
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-rio-rdfxml</artifactId>
-            <version>2.2</version>
+            <version>${rdf4j.version}</version>
         </dependency>
     </dependencies>
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
     <build>
         <plugins>
             <plugin>
@@ -84,7 +86,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>2.0</version>
+    <version>2.1</version>
     <name>scrapers</name>
     <description>Various scrapers for Belgian data portals</description>
 </project>
