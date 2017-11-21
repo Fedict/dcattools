@@ -1,0 +1,13 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?dataset dcterms:description ?desc2 }
+INSERT
+	{	?dataset dcterms:description ?desc1 }
+WHERE
+	{	?dataset a dcat:Dataset .
+		?dataset dcterms:description ?desc1 .
+		?dataset dcterms:description ?desc2 .
+		FILTER (?desc1 != ?desc2)
+	}
