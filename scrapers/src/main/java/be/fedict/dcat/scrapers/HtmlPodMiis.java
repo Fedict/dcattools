@@ -75,6 +75,7 @@ public class HtmlPodMiis extends Html {
 	public final static String SLIDER = "month-slider";
 	public final static String SLIDER_DATA = "data-slider-ticks-labels";
 	public final static String PICKER = "picker";
+	public final static String PERIOD_PICKER = "period-picker";
 	public final static String HREF_DATA = "data-href";
 	public final static String PLACEHOLDER = "__period__";
 
@@ -222,6 +223,31 @@ public class HtmlPodMiis extends Html {
 	}
 
 	/**
+	 * Create description from paragraphs
+	 * 
+	 * @param el HTML element containing p
+	 * @param title title to be used as default
+	 * @return description
+	 */
+	private String buildDesc(Element el, String title) {
+		if (el == null) {
+			logger.warn("No {} element", MODAL_BODY);
+			return title;
+		}
+		Elements paras = el.getElementsByTag(Tag.P.toString());
+		if (paras != null) {
+			StringBuilder buf = new StringBuilder();
+			for (Element para : paras) {
+				buf.append(para.text()).append('\n');
+			}
+			if (buf.length() > 0) {
+				buf.toString();
+			}
+		}
+		return title;
+	}
+	
+	/**
 	 * Generate DCAT Dataset.
 	 *
 	 * @param store RDF store
@@ -260,24 +286,9 @@ public class HtmlPodMiis extends Html {
 			}
 			String title = h.text();
 			// by default, also use the title as description
-			String desc = title;
 
 			Element divmain = doc.getElementsByClass(MODAL_BODY).first();
-			if (divmain != null) {
-				Elements paras = divmain.getElementsByTag(Tag.P.toString());
-				if (paras != null) {
-					StringBuilder buf = new StringBuilder();
-					for (Element para : paras) {
-						buf.append(para.text()).append('\n');
-					}
-					if (buf.length() == 0) {
-						buf.append(title);
-					}
-					desc = buf.toString();
-				}
-			} else {
-				logger.warn("No {} element", MODAL_BODY);
-			}
+			String desc = buildDesc(divmain, title);
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 			store.add(dataset, DCTERMS.TITLE, title, lang);
@@ -303,34 +314,9 @@ public class HtmlPodMiis extends Html {
 					generateDist(store, dataset, p.getUrl(), link, 
 												end.replaceAll("-", ""), lang);
 				}
-				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "M");
-				
+				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "M");	
 			}
-			
-			// Yearly
-			Element picker = doc.getElementById(PICKER);
-			if (slider == null && picker != null) {
-				String start = "999912";
-				String end = "000012";
-				
-				Elements years = picker.getElementsByTag(HTML.Tag.OPTION.toString());
-				for (Element year: years) {
-					String range = year.attr(HTML.Attribute.VALUE.toString());
-					String[] split = range.split("-");
-					if (Integer.valueOf(split[0]) < Integer.valueOf(start)) {
-						start = split[0];
-					}
-					if (Integer.valueOf(split[1]) > Integer.valueOf(end)) {
-						end = split[1];
-					}
-					
-					generateDist(store, dataset, p.getUrl(), link, range, lang);
-				}
-
-				generateTemporal(store, dataset, start, end);
-				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "Y");
-			}
-		}
+		} 
 	}
 
 	/**
