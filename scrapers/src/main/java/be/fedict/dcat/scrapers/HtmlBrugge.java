@@ -170,7 +170,9 @@ public class HtmlBrugge extends Html {
 	private void generateDataset(Storage store, String page, Element el, String anchor,
 			String lang) throws MalformedURLException, RepositoryException {
 		String title = el.text();
-		String name = title.toLowerCase().replaceAll(" ", "").replaceAll("&nbsp;", "");
+		String name = title.toLowerCase().replaceAll(" ", "")
+										.replaceAll("&nbsp;", "")
+										.replaceAll("\\u00A0", "");
 		// skip empty / invalid title
 		if (name.isEmpty()) {
 			return;
@@ -187,7 +189,7 @@ public class HtmlBrugge extends Html {
 			}
 			sib = sib.nextElementSibling();
 		}
-
+		
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);

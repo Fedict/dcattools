@@ -65,7 +65,7 @@ public class HtmlPodMiis extends Html {
 
 	public final static String ABBR = "abbr";
 	
-	public final static String ITEM_SELECT = "section.sidebar ul li.treeview a";
+	public final static String ITEM_SELECT = "section.sidebar ul li a";
 
 	public final static String LANG_SELECT = "ul.nav li.dropdown ul.dropdown-menu li a";
 
