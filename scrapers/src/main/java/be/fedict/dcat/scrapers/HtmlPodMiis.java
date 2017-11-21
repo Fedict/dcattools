@@ -210,10 +210,12 @@ public class HtmlPodMiis extends Html {
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		logger.debug("Generating distribution {}", dist.toString());
 
+		String title = link.ownText().isEmpty() ? range : link.ownText();
+		
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
+		store.add(dist, DCTERMS.TITLE, title, lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
 		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
@@ -286,19 +288,28 @@ public class HtmlPodMiis extends Html {
 			// Monthly
 			Element slider = doc.getElementById(SLIDER);
 			if (slider != null) {
-				String months = slider.attr(SLIDER_DATA).trim();
-				String[] split = months.split("\\\"");
+				// extract min/max date from data attribute
+				String months = slider.attr(SLIDER_DATA).trim()
+											.replaceFirst("\\[", "")
+											.replaceAll("\"", "")
+											.replaceFirst("]", "");
+				String[] split = months.split(",");
 				
-				generateTemporal(store, dataset, split[1], split[3]);
+				if (split.length > 1) {
+					String start = split[0].replaceAll("\\\\/", "-");
+					String end = split[split.length-1].replaceAll("\\\\/", "-");
+					
+					generateTemporal(store, dataset, start, end);
+					generateDist(store, dataset, p.getUrl(), link, 
+												end.replaceAll("-", ""), lang);
+				}
 				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "M");
 				
-				String last = split[3].replaceAll("/", "");
-				generateDist(store, dataset, p.getUrl(), link, last, lang);
 			}
 			
 			// Yearly
 			Element picker = doc.getElementById(PICKER);
-			if (picker != null) {
+			if (slider == null && picker != null) {
 				String start = "999912";
 				String end = "000012";
 				
