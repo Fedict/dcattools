@@ -108,7 +108,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/67>
 	owl:sameAs <http://data.gov.be/format/WMS> ;
-	skos:altLabel "WMS", "wms", "vms", "WMTS" .
+	skos:altLabel "WMS", "wms", "vms", "WMTS", "3DTiles" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLS> ;
@@ -118,7 +118,7 @@
 <http://data.gov.be/en/taxonomy/term/62>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
 	owl:sameAs <http://data.gov.be/format/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;

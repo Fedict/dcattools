@@ -3,7 +3,7 @@
 <http://data.gov.be/en/taxonomy/term/48>
 	skos:exactMatch <http://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Brussels Hoofdstedelijk Gewest "@nl, "Brussels-Capital Region"@en, "Région de Bruxelles-Capitale"@fr ;
-	skos:altLabel " Brussels Hoofdstedelijk Gewest"@nl, " Brussels-Capital Region"@en, "Brussels Capital Region"@en, "Brussels Gewest"@nl, "Brussels Hoofdstedelijk Gewest"@nl, "Brussels Hoofdstedelijk Gewest "@nl, "Brussels-Capital Region"@en, "Région de Bruxelles-Capitale"@fr .
+	skos:altLabel " Brussels Hoofdstedelijk Gewest"@nl, " Brussels-Capital Region"@en, "Brussels Capital Region"@en, "Brussels Gewest"@nl, "Brussels Hoofdstedelijk Gewest"@nl, "Brussels Hoofdstedelijk Gewest "@nl, "Brussels-Capital Region"@en, "Région de Bruxelles-Capitale"@fr, "Region of Brussels Capital"@en, "Région de Bruxelles Capitale"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/155>
 	skos:exactMatch <http://sws.geonames.org/2800866/> ;

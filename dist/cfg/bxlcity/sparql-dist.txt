@@ -4,19 +4,18 @@ PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT
-	{ 	?dataset dcat:distribution ?dist .
+	{ 	
+		?dataset dcat:distribution ?dist .
 		?dist a dcat:Distribution .
 		?dist dcat:mediaType ?media .
 		?dist dcat:accessURL ?page .
 		?dist dcat:downloadURL ?data .
 		?dist dcterms:language ?lang }
 WHERE
-	{ 	?dataset a dcat:Dataset .
+	{ 
+		?dataset a dcat:Dataset .	
 		?dataset dcterms:identifier ?id .
-		?dataset dcterms:language ?lang .
-		BIND(IRI(CONCAT('http://data.gov.be/dist/bxlcity/', ?id, '/', ?media)) as ?dist)
-		BIND(IRI(CONCAT(?prefix, '/explore/dataset/', ?id)) as ?page)
-		BIND(IRI(CONCAT(?prefix, '/explore/dataset/', ?id, '/download/?format=', ?media)) as ?data)
+		?dataset dcterms:language ?lang
 		VALUES (?media) {
 			( "csv" )
 			( "json" )
@@ -27,4 +26,8 @@ WHERE
 			( <http://id.loc.gov/vocabulary/iso639-1/fr> "http://opendata.bruxelles.be" )
 			( <http://id.loc.gov/vocabulary/iso639-1/en> "http://opendata.brussels.be" )
 		}
+		BIND(IRI(CONCAT('http://data.gov.be/dist/bxlcity/', ?id, '/', ?media)) as ?dist)
+		BIND(IRI(CONCAT(?prefix, '/explore/dataset/', ?id)) as ?page)
+		BIND(IRI(CONCAT(?prefix, '/explore/dataset/', ?id, '/download/?format=', ?media)) as ?data)
+		
 	}

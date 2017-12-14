@@ -74,5 +74,8 @@
 	skos:prefLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0455_555_451#id> ;
 	skos:altLabel "{u'fr': u'Amazone', u'en': u'Amazone', u'nl': u'Amazone'}" .
-	
-	
+
+<http://data.gov.be/en/taxonomy/term/329>
+	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0862_000_792#id> ;
+	skos:altLabel "{u'fr': u'Cyclo', u'en': u'Cyclo', u'nl': u'Cyclo'}" .

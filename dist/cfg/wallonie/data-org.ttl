@@ -68,7 +68,7 @@
 <http://data.gov.be/en/taxonomy/term/143>
 	skos:prefLabel "Secrétariat général"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_204_322_327#id> ;
-	skos:altLabel "secretariat-general-geo-donnees"@fr, "geoportail-de-la-wallonie"@fr .
+	skos:altLabel "secretariat-general-geo-donnees"@fr .
 
 <http://data.gov.be/en/taxonomy/term/144>
 	skos:prefLabel "FOREM"@fr ;
@@ -288,3 +288,13 @@
 	skos:prefLabel "Villers-la-Ville"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_275_538#id> ;
 	skos:altLabel "villers-la-ville"@fr .
+
+<http://data.gov.be/en/taxonomy/term/327>
+	skos:prefLabel "Arlon"@fr, "Aarlen"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0206_524_876#id> ;
+	skos:altLabel "commune-d-arlon"@fr .
+
+<http://data.gov.be/en/taxonomy/term/328>
+	skos:prefLabel "Géoportail"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2_224_330_061#id> ;
+	skos:altLabel "geoportail-de-la-wallonie"@fr .

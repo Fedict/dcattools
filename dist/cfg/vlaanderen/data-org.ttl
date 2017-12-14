@@ -99,3 +99,14 @@
 	skos:prefLabel "Vlaams Parlement"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0931_814_563#id> ;
 	skos:altLabel "vlaams-parlement"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/180>
+	skos:prefLabel "Eandis"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0215_266_160#id> ;
+	skos:altLabel "eandis"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/194>
+	skos:prefLabel "INBO"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_335_933#id> ;
+	skos:altLabel "inbo"@nl .
+
