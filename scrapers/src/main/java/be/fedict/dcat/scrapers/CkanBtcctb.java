@@ -53,7 +53,7 @@ public class CkanBtcctb extends CkanJson {
 
 	private final Logger logger = LoggerFactory.getLogger(CkanBtcctb.class);
 
-	private final static String BTC = "btc-ctb";
+	private final static String BTC = "enabel";
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
