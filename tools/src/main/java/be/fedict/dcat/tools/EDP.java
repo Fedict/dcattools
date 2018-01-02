@@ -161,13 +161,18 @@ public class EDP {
 			throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.TEMPORAL, null)) {
 			while (res.hasNext()) {
-				IRI date = (IRI) res.next().getObject();
-				w.writeStartElement("dct:temporal");
-				w.writeStartElement("dct:PeriodOfTime");
-				writeLiterals(w, con, date, STARTDATE, "schema:startDate");
-				writeLiterals(w, con, date, ENDDATE, "schema:endDate");
-				w.writeEndElement();
-				w.writeEndElement();
+				Value v = res.next().getObject();
+				if (v instanceof IRI) {
+					IRI date = (IRI) v;
+					w.writeStartElement("dct:temporal");
+					w.writeStartElement("dct:PeriodOfTime");
+					writeLiterals(w, con, date, STARTDATE, "schema:startDate");
+					writeLiterals(w, con, date, ENDDATE, "schema:endDate");
+					w.writeEndElement();
+					w.writeEndElement();
+				} else {
+					logger.error("Not an IRI {}", v.stringValue());
+				}
 			}
 		}
 	}
@@ -223,12 +228,17 @@ public class EDP {
 			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			if (res.hasNext()) {
-				IRI license = (IRI) res.next().getObject();
-				w.writeStartElement("dct:license");
-				w.writeStartElement("dct:LicenseDocument");
-				writeLiterals(w, con, license, DCTERMS.TITLE, "dct:title");
-				w.writeEndElement();
-				w.writeEndElement();
+				Value v = res.next().getObject();
+				if (v instanceof IRI) {
+					IRI license = (IRI) v;
+					w.writeStartElement("dct:license");
+					w.writeStartElement("dct:LicenseDocument");
+					writeLiterals(w, con, license, DCTERMS.TITLE, "dct:title");
+					w.writeEndElement();
+					w.writeEndElement();
+				} else {
+					logger.error("Not an IRI {}", v.stringValue());
+				}
 			}
 		}
 	}
@@ -246,13 +256,18 @@ public class EDP {
 			IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				IRI contact = (IRI) res.next().getObject();
-				w.writeStartElement("dcat:contactPoint");
-				w.writeStartElement("vcard:Organization");
-				writeLiterals(w, con, contact, VCARD.FN, "vcard:fn");
-				writeReferences(w, con, contact, VCARD.MAIL, "vcard:hasEmail");
-				w.writeEndElement();
-				w.writeEndElement();
+				Value v = res.next().getObject();
+				if (v instanceof IRI) {
+					IRI contact = (IRI) v;
+					w.writeStartElement("dcat:contactPoint");
+					w.writeStartElement("vcard:Organization");
+					writeLiterals(w, con, contact, VCARD.FN, "vcard:fn");
+					writeReferences(w, con, contact, VCARD.MAIL, "vcard:hasEmail");
+					w.writeEndElement();
+					w.writeEndElement();
+				} else {
+					logger.error("Not an IRI {}", v.stringValue());
+				}
 			}
 		}	
 	}
@@ -270,6 +285,8 @@ public class EDP {
 		if (uri instanceof IRI) {
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", ((IRI) uri).stringValue());
+		} else {
+			logger.error("Not an IRI {}", uri.stringValue());
 		}
 	}
 	
@@ -458,7 +475,7 @@ public class EDP {
 		w.writeAttribute("rdf:about", cat);
 	
 		IRI uri = con.getValueFactory().createIRI(cat);
-		writeGeneric(w, con, uri);
+		writeGeneric(w, con, uri);		
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeLicenses(w, con, uri, DCTERMS.LICENSE);
 		writeDatasets(w, con);
