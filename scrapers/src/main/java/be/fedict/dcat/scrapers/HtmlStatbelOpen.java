@@ -65,7 +65,7 @@ public class HtmlStatbelOpen extends Html {
 
 	public final static String VIEW_HREF = "div.view-open-data h2 a";
 	
-	public final static String LANG_LINK = "section.block--language li";
+	public final static String LANG_LINK = "section.block--language li a";
 
 	public final static String P_DESC = "article.node div.field--name-body p";
 	public final static String DIV_TEMP = "div.field--name-field-period-manual";
@@ -84,17 +84,17 @@ public class HtmlStatbelOpen extends Html {
 	 * @throws IOException
 	 */
 	private URL switchLanguage(String page, String lang) throws IOException {
-		Elements lis = Jsoup.parse(page).select(LANG_LINK);
+		Elements hrefs = Jsoup.parse(page).select(LANG_LINK);
 
-		for (Element li : lis) {
-			if (li.text().toLowerCase().equals(lang)) {
-				String href = li.attr(HTML.Attribute.HREF.toString());
-				if (href != null && !href.isEmpty()) {
-					return makeAbsURL(href);
+		for (Element href : hrefs) {
+			if (href.text().trim().toLowerCase().equals(lang)) {
+				String link = href.attr(HTML.Attribute.HREF.toString());
+				if (link != null && !link.isEmpty()) {
+					return makeAbsURL(link);
 				}
 			}
 		}
-		logger.warn("No {} translation for page {}", lang, page);
+		logger.warn("No {} translation for page", lang);
 		return null;
 	}
 
