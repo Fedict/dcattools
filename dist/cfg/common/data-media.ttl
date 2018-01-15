@@ -4,7 +4,7 @@
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
 	owl:sameAs <http://data.gov.be/format/CSV> ;
-	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)" .
+	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOC> ;
@@ -23,7 +23,7 @@
 <http://data.gov.be/en/taxonomy/term/4>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
 	owl:sameAs <http://data.gov.be/format/GML> ;
-	skos:altLabel "GML", "gml" .
+	skos:altLabel "GML", "GML (ZIP)", "gml" .
 
 <http://data.gov.be/en/taxonomy/term/322>
 	owl:sameAs <http://data.gov.be/format/GTFS> ;
@@ -77,7 +77,7 @@
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	owl:sameAs <http://data.gov.be/format/SHP> ;
-	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST" .
+	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	owl:sameAs <http://data.gov.be/format/DXF> ;
