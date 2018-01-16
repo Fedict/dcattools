@@ -59,14 +59,11 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart.Hanssens
  */
-public class HtmlStatbelOpen extends Html {
-
+public class HtmlStatbelOpen extends HtmlStatbel {
 	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelOpen.class);
 
 	public final static String VIEW_HREF = "div.view-open-data h2 a";
 	
-	public final static String LANG_LINK = "section.block--language li a";
-
 	public final static String P_DESC = "article.node div.field--name-body p";
 	public final static String DIV_TEMP = "div.field--name-field-period-manual";
 	public final static String DIV_CAT = "div.field--name-field-category div";
@@ -75,115 +72,10 @@ public class HtmlStatbelOpen extends Html {
 	public final static Pattern YEAR_PAT
 			= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
 	
-	/**
-	 * Get the URL of the page in another language
-	 *
-	 * @param page
-	 * @param lang
-	 * @return URL of the page in another language
-	 * @throws IOException
-	 */
-	private URL switchLanguage(String page, String lang) throws IOException {
-		Elements hrefs = Jsoup.parse(page).select(LANG_LINK);
-
-		for (Element href : hrefs) {
-			if (href.text().trim().toLowerCase().equals(lang)) {
-				String link = href.attr(HTML.Attribute.HREF.toString());
-				if (link != null && !link.isEmpty()) {
-					return makeAbsURL(link);
-				}
-			}
-		}
-		logger.warn("No {} translation for page", lang);
-		return null;
-	}
-
-	
-	/**
-	 * Scrape dataset
-	 *
-	 * @param u
-	 * @throws IOException
-	 */
-	private void scrapeDataset(URL u) throws IOException {
-		Cache cache = getCache();
-		String deflang = getDefaultLang();
-		String html = makeRequest(u);
-
-		cache.storePage(u, deflang, new Page(u, html));
-
-		String[] langs = getAllLangs();
-		for (String lang : langs) {
-			if (!lang.equals(deflang)) {
-				URL url = switchLanguage(html, lang);
-				if (url != null) {
-					String body = makeRequest(url);
-					cache.storePage(u, lang, new Page(url, body));
-				}
-				sleep();
-			}
-		}
-	}
-
-	/**
-	 * Get the list of all the downloads (DCAT Dataset).
-	 *
-	 * @return List of URLs
-	 * @throws IOException
-	 */
-	private List<URL> scrapeDatasetList() throws IOException {
-		List<URL> urls = new ArrayList<>();
-
-		URL base = getBase();
-		
-		// Go through paginated list
-		for(int i = 0; ; i++) { 
-			URL p = new URL(base + "?page=" + i);
-			String page = makeRequest(p);
-			Elements links = Jsoup.parse(page).select(VIEW_HREF);
-			if (links == null || links.isEmpty()) {
-				break;
-			}
-			
-			for(Element link: links) {
-				String href = link.attr(Attribute.HREF.toString());
-				urls.add(new URL(base, href));
-			}
-			sleep();
-		}
-		return urls;
-	}
-
 	
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList();
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} downloads", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					scrapeDataset(u);
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
+		scrape(VIEW_HREF);
 	}
 
 	/**

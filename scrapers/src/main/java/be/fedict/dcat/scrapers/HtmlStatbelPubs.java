@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2017, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -34,22 +33,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
-
-import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
 
 import org.eclipse.rdf4j.model.IRI;
@@ -66,142 +55,20 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class HtmlStatbelPubs extends Html {
+public class HtmlStatbelPubs extends HtmlStatbel {
 
 	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
-
-	public final static String CAT_SELECT = "category_select";
-	public final static String CAT_CAT = "Statistieken - Download-tabellen";
-
-	public final static String LANG_LINK = "blgm_lSwitch";
-	public final static String DIV_MAIN = "mainContent";
-	public final static String DIV_FRST = "detailFirstPart";
-	public final static String DIV_DATE = "date";
-	public final static String DIV_CAT = "facets";
-	public final static String DIV_SCND = "detailScdPart";
-
-	public final static DateFormat DATEFMT = new SimpleDateFormat("dd/MM/yyyy");
-
-	public final static Pattern YEAR_PAT
-			= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
-
-	/**
-	 * Get the URL of the page in another language
-	 *
-	 * @param page
-	 * @param lang
-	 * @return URL of the page in another language
-	 * @throws IOException
-	 */
-	private URL switchLanguage(String page, String lang) throws IOException {
-		Elements lis = Jsoup.parse(page).getElementsByClass(LANG_LINK);
-
-		for (Element li : lis) {
-			if (li.text().equals(lang)) {
-				String href = li.attr(HTML.Attribute.HREF.toString());
-				if (href != null && !href.isEmpty()) {
-					return makeAbsURL(href);
-				}
-			}
-		}
-		logger.warn("No {} translation for page {}", lang, page);
-		return null;
-	}
-
-	/**
-	 * Scrape dataset
-	 *
-	 * @param u
-	 * @throws IOException
-	 */
-	private void scrapeDataset(URL u) throws IOException {
-		Cache cache = getCache();
-		String deflang = getDefaultLang();
-		String html = makeRequest(u);
-
-		cache.storePage(u, deflang, new Page(u, html));
-
-		String[] langs = getAllLangs();
-		for (String lang : langs) {
-			if (!lang.equals(deflang)) {
-				URL url = switchLanguage(html, lang);
-				if (url != null) {
-					String body = makeRequest(url);
-					cache.storePage(u, lang, new Page(url, body));
-				}
-				sleep();
-			}
-		}
-	}
-
-	/**
-	 * Get the list of all the downloads (DCAT Dataset).
-	 *
-	 * @return List of URLs
-	 * @throws IOException
-	 */
-	private List<URL> scrapeDatasetList() throws IOException {
-		List<URL> urls = new ArrayList<>();
-
-		URL base = getBase();
-		String front = makeRequest(base);
-
-		// Select the correct page from dropdown-list, displaying all items
-		Element select = Jsoup.parse(front).getElementById(CAT_SELECT);
-		Element opt = select.getElementsMatchingOwnText(CAT_CAT).first();
-		if (opt != null) {
-			URL downloads = new URL(base, opt.val() + "&size=250");
-			String page = makeRequest(downloads);
-
-			// Extract links from list
-			Elements rows = Jsoup.parse(page).getElementsByTag(Tag.TD.toString());
-			for (Element row : rows) {
-				Element link = row.getElementsByTag(Tag.A.toString()).first();
-				String href = link.attr(Attribute.HREF.toString());
-				urls.add(makeAbsURL(href));
-			}
-		} else {
-			logger.error("Category {} not found", CAT_CAT);
-		}
-		return urls;
-	}
-
-	/**
-	 * Scrape the site.
-	 *
-	 * @throws IOException
-	 */
+	
+	public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.menu a";
+	public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
+	public final static String DIV_FILES = "div field--name-field-documents a";
+	public final static String LI_THEMES = "ol.breadcrumb li a";
+	
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList();
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} downloads", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					scrapeDataset(u);
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
+		scrape(LINK_THEME);
 	}
-
+	
 	/**
 	 * Generate DCAT Distribution.
 	 *
@@ -273,53 +140,32 @@ public class HtmlStatbelPubs extends Html {
 			// by default, also use the title as description
 			String desc = title;
 
-			Element divmain = doc.getElementsByClass(DIV_MAIN).first();
+			Element divmain = doc.select(DIV_DOCUMENT).first();
 			if (divmain != null) {
-				Elements paras = divmain.getElementsByTag(Tag.P.toString());
-				if (paras != null) {
-					StringBuilder buf = new StringBuilder();
-					for (Element para : paras) {
-						buf.append(para.text()).append('\n');
-					}
-					if (buf.length() == 0) {
-						buf.append(title);
-					}
-					desc = buf.toString();
-				}
+				desc = divmain.text();
 			} else {
-				logger.warn("No {} element", DIV_MAIN);
+				logger.warn("No {} element", DIV_DOCUMENT);
 			}
-
-			generateTemporal(store, dataset, title, YEAR_PAT, "-");
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 			store.add(dataset, DCTERMS.TITLE, title, lang);
 			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 
-			Element divdate = doc.getElementsByClass(DIV_DATE).first();
-			if (divdate != null) {
-				Node n = divdate.childNodes().get(1);
-				String s = n.toString().trim();
-				try {
-					Date modif = DATEFMT.parse(s);
-					store.add(dataset, DCTERMS.MODIFIED, modif);
-				} catch (ParseException ex) {
-					logger.warn("Could not convert {} to date", s);
+			Elements themes = doc.select(LI_THEMES);
+			if (themes != null && themes.size() > 2) {
+				//ignore Home > Themes
+				themes.remove(0);
+				themes.remove(1);
+				
+				for (Element theme : themes) {
+					store.add(dataset, DCAT.KEYWORD, theme.text().trim(), lang);
 				}
+			} else {
+				logger.warn("No themes found");
 			}
 
-			Element divcat = doc.getElementsByClass(DIV_CAT).first();
-			if (divcat != null) {
-				Node n = divcat.childNodes().get(1);
-				String[] cats = n.toString().split(",");
-				for (String cat : cats) {
-					store.add(dataset, DCAT.KEYWORD, cat.trim(), lang);
-				}
-			}
-
-			Element divlinks = doc.getElementsByClass(DIV_SCND).first();
-			if (divlinks != null) {
-				Elements links = divlinks.getElementsByTag(Tag.A.toString());
+			Elements links = doc.select(DIV_FILES);
+			if (links != null) {
 				for (Element link : links) {
 					generateDist(store, dataset, p.getUrl(), link, lang);
 				}
