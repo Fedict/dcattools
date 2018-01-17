@@ -25,10 +25,8 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
-import static be.fedict.dcat.scrapers.HtmlStatbelOpen.VIEW_HREF;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
@@ -63,32 +61,71 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 
 	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
 	
-	public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.menu h3 a";
+	public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.nav h3 a";
+	public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";
+	public final static String LINK_SUBTHEME = "h3 a";
+	public final static String LINK_SUBSUBTHEME = "ul.menu li>a";
 	public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
+	public final static String DIV_SUMMARY = "div.field--name-body";
 	public final static String DIV_FILES = "div field--name-field-document a";
 	public final static String LI_THEMES = "ol.breadcrumb li a";
 	
-		/**
+	/**
+	 * Scrape URLs from subthemes
+	 * 
+	 * @param u link to subtheme
+	 * @return list of URLs
+	 * @throws IOException 
+	 */
+	private List<URL> scrapeSubList(String u) throws IOException {
+		List<URL> urls = new ArrayList<>();
+		String subtheme = makeRequest(makeAbsURL(u));
+
+		Elements nav = Jsoup.parse(subtheme).select(NAV_SUBTHEME);
+		if (nav == null) {
+			logger.warn("No subtheme element found");
+			return urls;
+		}
+		
+		// Check if there is a third level of themes
+		Elements subs = nav.select(LINK_SUBSUBTHEME);
+		if (subs != null && !subs.isEmpty()) {
+			for (Element sub: subs) {
+				String href = sub.attr(Attribute.HREF.toString());
+				urls.add(makeAbsURL(href));
+			}
+		} else {
+			Element link = nav.select(LINK_SUBTHEME).first();
+			String href = link.attr(Attribute.HREF.toString());
+			urls.add(makeAbsURL(href));
+		}
+		return urls;
+	}
+	
+	/**
 	 * Get the list of all the downloads (DCAT Dataset).
 	 *
 	 * @return List of URLs
 	 * @throws IOException
 	 */
+	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
 		String front = makeRequest(base);
 
-		// Select the correct page from dropdown-list, displaying all items
-		Elements links = Jsoup.parse(front).select(VIEW_HREF);
-		if (links != null) {
-			for (Element link: links) {
-				String href = link.attr(Attribute.HREF.toString());
-				urls.add(makeAbsURL(href));
+		// Get all the main themes
+		Elements themes = Jsoup.parse(front).select(LINK_THEME);
+		
+		if (themes != null) {
+			for (Element theme: themes) {
+				String href = theme.attr(Attribute.HREF.toString());
+				urls.addAll(scrapeSubList(href));
+				sleep();
 			}
 		} else {
-			logger.error("No themes {} found", VIEW_HREF);
+			logger.error("No themes {} found", LINK_THEME);
 		}
 		return urls;
 	}
@@ -169,8 +206,13 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 			if (divmain != null) {
 				desc = divmain.text();
 			} else {
-				logger.warn("No {} element", DIV_DOCUMENT);
-				logger.warn(title);
+				divmain = doc.select(DIV_SUMMARY).first();
+				if (divmain != null) {
+					desc = divmain.text();
+				} else {
+					logger.warn("No description found");
+					logger.warn(title);
+				}
 			}
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
