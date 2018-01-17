@@ -67,7 +67,7 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 	public final static String LINK_SUBSUBTHEME = "ul.menu li>a";
 	public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
 	public final static String DIV_SUMMARY = "div.field--name-body";
-	public final static String DIV_FILES = "div field--name-field-document a";
+	public final static String DIV_FILES = "div.field--name-field-document a";
 	public final static String LI_THEMES = "ol.breadcrumb li a";
 	
 	/**

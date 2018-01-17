@@ -80,6 +80,7 @@ public class HtmlStatbelOpen extends HtmlStatbel {
 	 * @return List of URLs
 	 * @throws IOException
 	 */
+	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
@@ -99,42 +100,6 @@ public class HtmlStatbelOpen extends HtmlStatbel {
 		return urls;
 	}
 
-	/**
-	 * Scrape the site.
-	 *
-	 * @throws IOException
-	 */
-	@Override
-	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList();
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} downloads", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					scrapeDataset(u);
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
-	}
-	
 	/**
 	 * Generate DCAT Distribution.
 	 *
