@@ -117,27 +117,7 @@ public class HtmlInfocenter extends Html {
 			}
 		}
 	}
-
-	/**
-	 * Get the list of all the statistics.
-	 *
-	 * @return list of category URLs
-	 * @throws IOException
-	 */
-	private List<URL> scrapeDatasetList() throws IOException {
-		List<URL> urls = new ArrayList<>();
-
-		URL base = getBase();
-		String front = makeRequest(base);
-		Elements links = Jsoup.parse(front).select(LINKS_DATASETS);
-
-		for (Element link : links) {
-			String href = link.attr(HTML.Attribute.HREF.toString());
-			urls.add(makeAbsURL(href.substring(0, href.lastIndexOf("/"))));
-		}
-		return urls;
-	}
-
+	
 	/**
 	 * Scrape the site.
 	 *
@@ -172,6 +152,27 @@ public class HtmlInfocenter extends Html {
 			}
 		}
 		logger.info("Done scraping");
+	}
+	
+	/**
+	 * Get the list of all the statistics.
+	 *
+	 * @return list of category URLs
+	 * @throws IOException
+	 */
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
+		List<URL> urls = new ArrayList<>();
+
+		URL base = getBase();
+		String front = makeRequest(base);
+		Elements links = Jsoup.parse(front).select(LINKS_DATASETS);
+
+		for (Element link : links) {
+			String href = link.attr(HTML.Attribute.HREF.toString());
+			urls.add(makeAbsURL(href.substring(0, href.lastIndexOf("/"))));
+		}
+		return urls;
 	}
 
 	/**

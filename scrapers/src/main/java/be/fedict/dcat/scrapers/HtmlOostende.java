@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -86,7 +85,8 @@ public class HtmlOostende extends Html {
 	 * @return List of URLs
 	 * @throws IOException
 	 */
-	private List<URL> scrapeDatasetList() throws IOException {
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
@@ -98,44 +98,6 @@ public class HtmlOostende extends Html {
 			urls.add(makeAbsURL(href));
 		}
 		return urls;
-	}
-
-	/**
-	 * Scrape the site.
-	 *
-	 * @throws IOException
-	 */
-	@Override
-	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList();
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} datasets on page", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					String html = makeRequest(u);
-					cache.storePage(u, "", new Page(u, html));
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
 	}
 
 	/**

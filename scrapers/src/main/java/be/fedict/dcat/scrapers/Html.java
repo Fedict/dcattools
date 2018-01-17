@@ -30,6 +30,7 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -84,6 +85,52 @@ public abstract class Html extends Scraper {
 		generateCatalog(store);
 	}
 	
+	/**
+	 * Get the list of all the downloads (DCAT Dataset).
+	 *
+	 * @return List of URLs
+	 * @throws IOException
+	 */
+	protected abstract List<URL> scrapeDatasetList() throws IOException;
+			
+	/**
+	 * Scrape the site.
+	 *
+	 * @throws IOException
+	 */
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
+			urls = scrapeDatasetList();
+			cache.storeURLList(urls);
+		}
+
+		logger.info("Found {} datasets on page", String.valueOf(urls.size()));
+		logger.info("Start scraping (waiting between requests)");
+
+		int i = 0;
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			if (page.isEmpty()) {
+				sleep();
+				if (++i % 100 == 0) {
+					logger.info("Download {}...", Integer.toString(i));
+				}
+				try {
+					String html = makeRequest(u);
+					cache.storePage(u, "", new Page(u, html));
+				} catch (IOException ex) {
+					logger.error("Failed to scrape {}", u);
+				}
+			}
+		}
+		logger.info("Done scraping");
+	}
+
 	/**
 	 * Constructor
 	 *

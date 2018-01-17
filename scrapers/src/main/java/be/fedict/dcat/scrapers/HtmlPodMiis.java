@@ -135,7 +135,8 @@ public class HtmlPodMiis extends Html {
 	 * @return List of URLs
 	 * @throws IOException
 	 */
-	private List<URL> scrapeDatasetList() throws IOException {
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
@@ -152,7 +153,7 @@ public class HtmlPodMiis extends Html {
 		} 
 		return urls;
 	}
-
+	
 	/**
 	 * Scrape the site.
 	 *
@@ -188,7 +189,7 @@ public class HtmlPodMiis extends Html {
 		}
 		logger.info("Done scraping");
 	}
-
+	
 	/**
 	 * Generate DCAT Distribution.
 	 *

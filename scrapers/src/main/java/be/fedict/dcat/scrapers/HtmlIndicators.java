@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -34,7 +33,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -91,7 +89,8 @@ public class HtmlIndicators extends Html {
 	 * @return List of URLs
 	 * @throws IOException
 	 */
-	private List<URL> scrapeDatasetList() throws IOException {
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
@@ -105,44 +104,7 @@ public class HtmlIndicators extends Html {
 		return urls;
 	}
 
-	/**
-	 * Scrape the site.
-	 *
-	 * @throws IOException
-	 */
-	@Override
-	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList();
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} datasets on page", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					String html = makeRequest(u);
-					cache.storePage(u, "", new Page(u, html));
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
-	}
-
+	
 	/**
 	 * Generate DCAT distribution.
 	 *

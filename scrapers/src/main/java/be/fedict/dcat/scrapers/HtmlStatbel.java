@@ -86,7 +86,7 @@ public abstract class HtmlStatbel extends Html {
 	 * @param u
 	 * @throws IOException
 	 */
-	private void scrapeDataset(URL u) throws IOException {
+	protected void scrapeDataset(URL u) throws IOException {
 		Cache cache = getCache();
 		String deflang = getDefaultLang();
 		String html = makeRequest(u);
@@ -104,68 +104,6 @@ public abstract class HtmlStatbel extends Html {
 				sleep();
 			}
 		}
-	}
-
-	/**
-	 * Get the list of all the downloads (DCAT Dataset).
-	 *
-	 * @param selector
-	 * @return List of URLs
-	 * @throws IOException
-	 */
-	protected List<URL> scrapeDatasetList(String selector) throws IOException {
-		List<URL> urls = new ArrayList<>();
-
-		URL base = getBase();
-		String front = makeRequest(base);
-
-		// Select the correct page from dropdown-list, displaying all items
-		Elements links = Jsoup.parse(front).select(selector);
-		if (links != null) {
-			for (Element link: links) {
-				String href = link.attr(Attribute.HREF.toString());
-				urls.add(makeAbsURL(href));
-			}
-		} else {
-			logger.error("No themes {} found", selector);
-		}
-		return urls;
-	}
-
-	/**
-	 * Scrape the site.
-	 *
-	 * @param selector
-	 * @throws IOException
-	 */
-	protected void scrape(String selector) throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList(selector);
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} downloads", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					scrapeDataset(u);
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
 	}
 
 	/**

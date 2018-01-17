@@ -71,14 +71,15 @@ public class HtmlBrugge extends Html {
 	private final static String SIBL_DESC = "em strong:contains(Omschrijving)";
 	private final static String SIBL_FMTS = "em :contains(Bestandsformaten)";
 	private final static String DIST_HREF = "a";
-
+	
 	/**
 	 * Get the list of all the categories.
 	 *
 	 * @return list of category URLs
 	 * @throws IOException
 	 */
-	private List<URL> scrapeDatasetLists() throws IOException {
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
@@ -90,39 +91,6 @@ public class HtmlBrugge extends Html {
 			urls.add(makeAbsURL(href));
 		}
 		return urls;
-	}
-
-	@Override
-	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetLists();
-			cache.storeURLList(urls);
-		}
-
-		logger.info("Found {} dataset lists", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
-
-		int i = 0;
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
-				}
-				try {
-					String html = makeRequest(u);
-					cache.storePage(u, "", new Page(u, html));
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
 	}
 
 	/**
@@ -270,4 +238,6 @@ public class HtmlBrugge extends Html {
 		super(caching, storage, base);
 		setName("brugge");
 	}
+
+
 }

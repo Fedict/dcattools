@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.text.html.HTML;
@@ -65,6 +66,11 @@ public class HtmlFodMobilit extends Html {
 
 	public final static String LANG_LINK = "language-link";
 
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	
 	/**
 	 * Switch to another language
 	 *

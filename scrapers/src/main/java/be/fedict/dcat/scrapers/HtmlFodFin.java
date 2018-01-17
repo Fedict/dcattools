@@ -124,7 +124,8 @@ public class HtmlFodFin extends Html {
 	 * @return list of category URLs
 	 * @throws IOException
 	 */
-	private List<URL> scrapeDatasetList() throws IOException {
+	@Override
+	protected List<URL> scrapeDatasetList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();

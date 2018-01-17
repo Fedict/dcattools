@@ -25,14 +25,18 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
+import static be.fedict.dcat.scrapers.HtmlStatbelOpen.VIEW_HREF;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
@@ -59,15 +63,36 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 
 	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
 	
-	public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.menu a";
+	public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.menu h3 a";
 	public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
-	public final static String DIV_FILES = "div field--name-field-documents a";
+	public final static String DIV_FILES = "div field--name-field-document a";
 	public final static String LI_THEMES = "ol.breadcrumb li a";
 	
-	@Override
-	public void scrape() throws IOException {
-		scrape(LINK_THEME);
+		/**
+	 * Get the list of all the downloads (DCAT Dataset).
+	 *
+	 * @return List of URLs
+	 * @throws IOException
+	 */
+	protected List<URL> scrapeDatasetList() throws IOException {
+		List<URL> urls = new ArrayList<>();
+
+		URL base = getBase();
+		String front = makeRequest(base);
+
+		// Select the correct page from dropdown-list, displaying all items
+		Elements links = Jsoup.parse(front).select(VIEW_HREF);
+		if (links != null) {
+			for (Element link: links) {
+				String href = link.attr(Attribute.HREF.toString());
+				urls.add(makeAbsURL(href));
+			}
+		} else {
+			logger.error("No themes {} found", VIEW_HREF);
+		}
+		return urls;
 	}
+
 	
 	/**
 	 * Generate DCAT Distribution.
@@ -145,6 +170,7 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 				desc = divmain.text();
 			} else {
 				logger.warn("No {} element", DIV_DOCUMENT);
+				logger.warn(title);
 			}
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
@@ -155,13 +181,13 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 			if (themes != null && themes.size() > 2) {
 				//ignore Home > Themes
 				themes.remove(0);
-				themes.remove(1);
+				themes.remove(0);
 				
 				for (Element theme : themes) {
 					store.add(dataset, DCAT.KEYWORD, theme.text().trim(), lang);
 				}
 			} else {
-				logger.warn("No themes found");
+				logger.warn("No themes found {}", LI_THEMES);
 			}
 
 			Elements links = doc.select(DIV_FILES);
@@ -169,6 +195,8 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 				for (Element link : links) {
 					generateDist(store, dataset, p.getUrl(), link, lang);
 				}
+			} else {
+				logger.warn("No downloads found {}", DIV_FILES);
 			}
 		}
 	}
