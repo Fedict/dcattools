@@ -92,7 +92,19 @@ public abstract class Html extends Scraper {
 	 * @throws IOException
 	 */
 	protected abstract List<URL> scrapeDatasetList() throws IOException;
-			
+	
+	/**
+	 * Scrape a dataset
+	 * 
+	 * @param u url
+	 * @throws IOException 
+	 */
+	protected void scrapeDataset(URL u) throws IOException {
+		Cache cache = getCache();
+		String html = makeRequest(u);
+		cache.storePage(u, "", new Page(u, html));
+	}
+	
 	/**
 	 * Scrape the site.
 	 *
@@ -121,8 +133,7 @@ public abstract class Html extends Scraper {
 					logger.info("Download {}...", Integer.toString(i));
 				}
 				try {
-					String html = makeRequest(u);
-					cache.storePage(u, "", new Page(u, html));
+					scrapeDataset(u);
 				} catch (IOException ex) {
 					logger.error("Failed to scrape {}", u);
 				}

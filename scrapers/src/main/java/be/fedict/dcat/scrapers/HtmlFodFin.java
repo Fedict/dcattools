@@ -98,7 +98,8 @@ public class HtmlFodFin extends Html {
 	 * @param u
 	 * @throws IOException
 	 */
-	private void scrapeDataset(URL u) throws IOException {
+	@Override
+	protected void scrapeDataset(URL u) throws IOException {
 		Cache cache = getCache();
 		String deflang = getDefaultLang();
 		String html = makeRequest(u);
@@ -139,38 +140,6 @@ public class HtmlFodFin extends Html {
 		return urls;
 	}
 	
-	/**
-	 * Scrape the site.
-	 *
-	 * @throws IOException
-	 */
-	@Override
-	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		List<URL> urls = cache.retrieveURLList();
-		if (urls.isEmpty()) {
-			urls = scrapeDatasetList();
-			cache.storeURLList(urls);
-		}
-		logger.info("Found {} datasets on page", urls.size());
-		logger.info("Start scraping (waiting between requests)");
-
-		for (URL u : urls) {
-			Map<String, Page> page = cache.retrievePage(u);
-			if (page.isEmpty()) {
-				sleep();
-				try {
-					scrapeDataset(u);
-				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
-				}
-			}
-		}
-		logger.info("Done scraping");
-	}
-
 	/**
 	 * Generate DCAT distribution.
 	 *
