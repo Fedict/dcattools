@@ -34,7 +34,6 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import org.apache.http.HttpHeaders;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.util.EntityUtils;
@@ -110,7 +109,7 @@ public class Fetcher {
 		// some servers return 503 if no accept header is present
 		request.addHeader(HttpHeaders.ACCEPT, "*/*");
 		request.connectTimeout(20 * 1000);
-		
+		request.socketTimeout(20 * 1000);
         HttpResponse res = request.execute().returnResponse();
         // Return empty if the HTTP returns something faulty
         int status = res.getStatusLine().getStatusCode();

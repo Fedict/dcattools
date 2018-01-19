@@ -105,26 +105,13 @@ public class LinkChecker {
         }
         return code;
     }
-    
-    /**
-     * Set proxy 
-     */
-    private static void setProxy() {
-        String host = getProperty("proxy.host");
-        String port = getProperty("proxy.port");
-       
-        if (!host.isEmpty()) {
-            fetcher.setProxy(host, Integer.parseInt(port));
-        }
-    }
+   
     
     /**
      * Parse CSV file with URLs.
      * Last column of the row should be the URL.
      */
     private static void parse() {
-        setProxy();
-        
         String file = getProperty("urlfile");
         String outfile = getProperty("outfile");
         
