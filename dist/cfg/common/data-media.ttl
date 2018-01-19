@@ -44,6 +44,11 @@
 	owl:sameAs <http://data.gov.be/format/KML> ;
 	skos:altLabel "KML", "kml", "KML(zip)", "KML\u00A0(zip)" .
 
+<http://data.gov.be/en/taxonomy/term/6>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
+	owl:sameAs <http://data.gov.be/format/MDB> ;
+	skos:altLabel "MDB", "MDB (ZIP)" .
+	
 <http://data.gov.be/en/taxonomy/term/7>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
 	owl:sameAs <http://data.gov.be/format/ODS> ;
@@ -80,6 +85,7 @@
 	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	owl:sameAs <http://data.gov.be/format/DXF> ;
 	skos:altLabel "dxf" .
 
@@ -88,6 +94,11 @@
 	owl:sameAs <http://data.gov.be/format/JPEG> ;
 	skos:altLabel "JPG", "jpg", "JPEG", "jpeg" .
 
+<http://data.gov.be/en/taxonomy/term/332>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	owl:sameAs <http://data.gov.be/format/SQLITE> ;
+	skos:altLabel "sqilte (TGZ)" .
+	
 <http://data.gov.be/en/taxonomy/term/169>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TIFF> ;
 	owl:sameAs <http://data.gov.be/format/TIFF> ;
