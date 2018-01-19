@@ -74,18 +74,6 @@ public class Main {
 		}
 	}
 	
-	/**
-	 * Set proxy, if needed.
-	 *
-	 * @param s Scraper instance
-	 */
-	private static void setProxy(Scraper s) {
-		String proxy = System.getProperty("http.proxyHost", "");
-		String port = System.getProperty("http.proxyPort", "");
-		if (!proxy.isEmpty()) {
-			s.setProxy(proxy, Integer.parseInt(port));
-		}
-	}
 
 	/**
 	 * Get required property
@@ -125,7 +113,6 @@ public class Main {
 			s.setAllLangs(getRequired("languages").split(","));
 
 			setDelay(s);
-			setProxy(s);
 
 			s.setProperties(prop, Scraper.PROP_PREFIX);
 		} catch (ClassNotFoundException | InstantiationException | NoSuchMethodException

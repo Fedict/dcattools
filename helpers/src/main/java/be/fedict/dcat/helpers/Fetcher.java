@@ -49,7 +49,6 @@ import org.slf4j.LoggerFactory;
 public class Fetcher {
     private final Logger logger = LoggerFactory.getLogger(Fetcher.class);
     
-    private HttpHost proxy = null;
     private int delay = 1000;
     
     /**
@@ -61,29 +60,7 @@ public class Fetcher {
         } catch (InterruptedException ex) {
         }
     }
-    
-    /**
-     * Set HTTP proxy.
-     * 
-     * @param proxy proxy server
-     * @param port proxy port
-     */
-    public void setProxy(String proxy, int port) {
-        if (proxy == null || proxy.isEmpty()) {
-            this.proxy = null;
-        } else {
-            this.proxy = new HttpHost(proxy, port);
-        }
-    }
-    
-    /**
-     * Get HTTP proxy
-     * 
-     * @return proxy or null
-     */
-    public HttpHost getProxy() {
-        return proxy;
-    }
+
     
     /**
      * Get delay between HTTP requests
@@ -114,12 +91,10 @@ public class Fetcher {
      */
     public JsonObject makeJsonRequest(URL url) throws IOException {
         Request request = Request.Get(url.toString());
-        if (getProxy() != null) {
-            request = request.viaProxy(getProxy());
-        }
         String json = request.execute().returnContent().asString();
         JsonReader reader = Json.createReader(new StringReader(json));
-        return reader.readObject();
+
+		return reader.readObject();
     }
     
     /**
@@ -134,10 +109,8 @@ public class Fetcher {
         Request request = Request.Get(url.toString());
 		// some servers return 503 if no accept header is present
 		request.addHeader(HttpHeaders.ACCEPT, "*/*");
-
-        if (getProxy() != null) {
-            request = request.viaProxy(getProxy());
-        }
+		request.connectTimeout(20 * 1000);
+		
         HttpResponse res = request.execute().returnResponse();
         // Return empty if the HTTP returns something faulty
         int status = res.getStatusLine().getStatusCode();
@@ -158,9 +131,7 @@ public class Fetcher {
     public int makeHeadRequest(URL url) throws IOException {
         logger.info("Head request for {}", url);
         Request request = Request.Head(url.toString());
-        if (getProxy() != null) {
-            request = request.viaProxy(getProxy());
-        }
+        
         return request.execute().returnResponse()
                                 .getStatusLine().getStatusCode();
     }
