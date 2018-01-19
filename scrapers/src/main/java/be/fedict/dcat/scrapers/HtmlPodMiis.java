@@ -65,7 +65,7 @@ public class HtmlPodMiis extends Html {
 
 	public final static String ABBR = "abbr";
 	
-	public final static String ITEM_SELECT = "section.sidebar ul li a";
+	public final static String ITEM_SELECT = "section.sidebar ul ul li a";
 
 	public final static String LANG_SELECT = "ul.nav li.dropdown ul.dropdown-menu li a";
 
@@ -279,6 +279,8 @@ public class HtmlPodMiis extends Html {
 					generateTemporal(store, dataset, start, end);
 					generateDist(store, dataset, p.getUrl(), link, 
 												end.replaceAll("-", ""), lang);
+				} else {
+					logger.warn("No distribution");
 				}
 				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "M");	
 			}
