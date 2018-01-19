@@ -149,7 +149,7 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 
 		// important for EDP: does not like different datasets pointing to same distribution
 		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
-		IRI dist = store.getURI(makeDistURL(id).toString());
+		IRI dist = store.getURI(makeDistURL(id).toString() + "/" + lang);
 		logger.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
