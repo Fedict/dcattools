@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -85,17 +84,19 @@ public class HtmlStatbelOpen extends HtmlStatbel {
 		List<URL> urls = new ArrayList<>();
 
 		URL base = getBase();
-		String front = makeRequest(base);
+		// Go through all the pages
+		for(int i = 1; ; i++) {
+			logger.debug("Scraping page {}", i);
+			String page = makeRequest(new URL(base + "?page" + i));
 
-		// Select the correct page from dropdown-list, displaying all items
-		Elements links = Jsoup.parse(front).select(VIEW_HREF);
-		if (links != null) {
+			Elements links = Jsoup.parse(page).select(VIEW_HREF);
+			if (links == null || links.isEmpty()) {
+				break;
+			}
 			for (Element link: links) {
 				String href = link.attr(Attribute.HREF.toString());
 				urls.add(makeAbsURL(href));
 			}
-		} else {
-			logger.error("No themes {} found", VIEW_HREF);
 		}
 		return urls;
 	}
