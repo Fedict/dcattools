@@ -207,7 +207,7 @@ public class HtmlPodMiis extends Html {
 				buf.append(para.text()).append('\n');
 			}
 			if (buf.length() > 0) {
-				buf.toString();
+				return buf.toString();
 			}
 		}
 		return title;
