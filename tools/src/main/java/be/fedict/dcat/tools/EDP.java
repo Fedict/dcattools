@@ -172,7 +172,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not an IRI {}", v.stringValue());
+					logger.error("Not a date IRI {}", v.stringValue());
 				}
 			}
 		}
@@ -193,25 +193,30 @@ public class EDP {
 			if (!res.hasNext()) {
 				return;
 			}
-			IRI fmt = (IRI) res.next().getObject();
-			w.writeStartElement("dcat:mediaType");
-			try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
-				if(vl.hasNext()) {
-					Value val = vl.next().getObject();
-					//w.writeAttribute("rdf:value", val.stringValue());
-					w.writeCharacters(val.stringValue());
-				}
-			}
-			w.writeEndElement();
+			Value v = res.next().getObject();
+			if (v instanceof IRI) {
+				IRI fmt = (IRI) v;
+				w.writeStartElement("dcat:mediaType");
+				try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
+					if(vl.hasNext()) {
+						Value val = vl.next().getObject();
+						//w.writeAttribute("rdf:value", val.stringValue());
+						w.writeCharacters(val.stringValue());
+					}
+				} 		 
+				w.writeEndElement();
 			
-			w.writeStartElement("dct:format");
-			w.writeEmptyElement("dct:IMT");
-			try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
-				Value val = lbl.next().getObject();
-				w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
-			}
+				w.writeStartElement("dct:format");
+				w.writeEmptyElement("dct:IMT");
+				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
+					Value val = lbl.next().getObject();
+					w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
+				}
 
-			w.writeEndElement();
+				w.writeEndElement();
+			} else {
+				logger.error("Not a format IRI {}", v.stringValue());				
+			}
 		}	
 	}
 	
@@ -238,7 +243,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not an IRI {}", v.stringValue());
+					logger.error("Not a license IRI {}", v.stringValue());
 				}
 			}
 		}
@@ -267,7 +272,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not an IRI {}", v.stringValue());
+					logger.error("Not a contac IRI {}", v.stringValue());
 				}
 			}
 		}	
@@ -287,7 +292,7 @@ public class EDP {
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", ((IRI) uri).stringValue());
 		} else {
-			logger.error("Not an IRI {}", uri.stringValue());
+			logger.error("Not a reference IRI {}", uri.stringValue());
 		}
 	}
 	
