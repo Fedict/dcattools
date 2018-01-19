@@ -50,6 +50,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -93,7 +94,7 @@ public class EDP {
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
 		w.writeNamespace("schema", "http://schema.org/");
-		w.writeNamespace(VCARD.PREFIX, VCARD.NAMESPACE);
+		w.writeNamespace(VCARD4.PREFIX, VCARD4.NAMESPACE);
 	}
 
 	
@@ -261,8 +262,8 @@ public class EDP {
 					IRI contact = (IRI) v;
 					w.writeStartElement("dcat:contactPoint");
 					w.writeStartElement("vcard:Organization");
-					writeLiterals(w, con, contact, VCARD.FN, "vcard:fn");
-					writeReferences(w, con, contact, VCARD.MAIL, "vcard:hasEmail");
+					writeLiterals(w, con, contact, VCARD4.FN, "vcard:fn");
+					writeReferences(w, con, contact, VCARD4.HAS_EMAIL, "vcard:hasEmail");
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {

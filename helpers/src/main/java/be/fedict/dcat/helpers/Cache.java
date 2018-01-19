@@ -133,9 +133,13 @@ public class Cache {
         db.close();
     }
     
+	/**
+	 * Constructor
+	 * 
+	 * @param f 
+	 */
     public Cache(File f) {
         logger.info("Opening cache file " + f.getAbsolutePath());
-        
         db = DBMaker.fileDB(f).make();
     }
 }

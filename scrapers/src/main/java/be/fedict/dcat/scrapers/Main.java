@@ -28,11 +28,13 @@ package be.fedict.dcat.scrapers;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -146,8 +148,8 @@ public class Main {
 	 */
 	private static void writeDcat(Scraper scraper) {
 		String out = prop.getProperty(Scraper.PROP_PREFIX + ".rdfout");
-		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(out)));
+		try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(out), 
+													StandardCharsets.UTF_8)) {
 			scraper.writeDcat(bw);
 		} catch (IOException ex) {
 			logger.error("Error writing output file {}", out, ex);
