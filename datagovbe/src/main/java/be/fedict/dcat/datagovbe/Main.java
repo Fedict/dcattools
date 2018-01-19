@@ -31,11 +31,12 @@ import be.fedict.dcat.helpers.Storage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -86,8 +87,9 @@ public class Main {
         }
         
         String rdfin = prop.getProperty(Drupal.PROP_PREFIX + ".rdfin");
-        try {
-            store.read(new BufferedReader(new FileReader(rdfin)));
+        try (BufferedReader r = 
+				Files.newBufferedReader(Paths.get(rdfin), StandardCharsets.UTF_8)) {
+            store.read(r);
         } catch (IOException ex ) {
             logger.error("Could not read from rdf file {}", rdfin, ex);
             exit(-4);
