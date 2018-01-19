@@ -108,7 +108,7 @@ public class HtmlBrugge extends Html {
 	private void generateDist(Storage store, IRI dataset, String name, String access,
 			Element link, String lang) throws MalformedURLException, RepositoryException {
 		String href = link.attr(Attribute.HREF.toString());
-		String fmt = link.text().replaceAll("/", "")
+		String fmt = link.ownText().replaceAll("/", "")
 				.replaceAll(" ", "")
 				.replaceAll("&nbsp;", "");
 		URL u = makeDistURL(name + "/" + fmt);
