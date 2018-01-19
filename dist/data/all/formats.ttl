@@ -57,6 +57,10 @@
 	rdfs:label "KML" ;
 	rdf:value "application/vnd.google-earth.kml+xml" .
 
+<http://data.gov.be/format/MDB>
+	a dcterms:IMT ;
+	rdfs:label "MDB" .
+	
 <http://data.gov.be/format/ODS>
 	a dcterms:IMT ;
 	rdfs:label "ODS" ;
@@ -87,6 +91,10 @@
 	rdfs:label "SHP" ;
 	rdf:value "octet/stream" .
 
+<http://data.gov.be/format/SQLITE>
+	a dcterms:IMT ;
+	rdfs:label "SQLITE" .
+	
 <http://data.gov.be/format/TIFF>
 	a dcterms:IMT ;
 	rdfs:label "TIFF" ;

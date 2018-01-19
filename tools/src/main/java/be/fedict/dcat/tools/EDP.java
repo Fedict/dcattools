@@ -209,8 +209,12 @@ public class EDP {
 				w.writeStartElement("dct:format");
 				w.writeEmptyElement("dct:IMT");
 				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
-					Value val = lbl.next().getObject();
-					w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
+					if (lbl.hasNext()) {
+						Value val = lbl.next().getObject();
+						w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
+					} else {
+						logger.error("No label for format {}", fmt);
+					}
 				}
 
 				w.writeEndElement();
