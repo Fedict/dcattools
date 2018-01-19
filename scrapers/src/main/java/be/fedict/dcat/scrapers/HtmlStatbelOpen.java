@@ -86,8 +86,8 @@ public class HtmlStatbelOpen extends HtmlStatbel {
 		URL base = getBase();
 		// Go through all the pages
 		for(int i = 1; ; i++) {
-			logger.debug("Scraping page {}", i);
-			String page = makeRequest(new URL(base + "?page" + i));
+			logger.info("Scraping page {}", i);
+			String page = makeRequest(new URL(base + "?page=" + i));
 
 			Elements links = Jsoup.parse(page).select(VIEW_HREF);
 			if (links == null || links.isEmpty()) {
@@ -97,6 +97,7 @@ public class HtmlStatbelOpen extends HtmlStatbel {
 				String href = link.attr(Attribute.HREF.toString());
 				urls.add(makeAbsURL(href));
 			}
+			sleep();
 		}
 		return urls;
 	}
