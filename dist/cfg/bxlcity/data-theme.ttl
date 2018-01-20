@@ -7,12 +7,12 @@
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "CULTURE AND SPORT"@en ;
-	skos:altLabel "Culture"@fr, "Culture"@en, "Heritage"@en, "Leisure"@en, "Sports"@en, "Loisirs"@fr, "Cultuur"@nl, "Erfgoed"@nl, "Sport"@nl, "Vrije tijd"@nl, "Sport"@fr, "Folklore"@nl, "Patrimoine"@fr, "Folklore"@en .
+	skos:altLabel "Culture"@fr, "Culture"@en, "Heritage"@en, "Leisure"@en, "Sports"@en, "Loisirs"@fr, "Cultuur"@nl, "Erfgoed"@nl, "Sport"@en, "Sport"@nl, "Vrije tijd"@nl, "Sport"@fr, "Folklore"@nl, "Patrimoine"@fr, "Folklore"@en, "Folklore"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "Buildings"@en, "Business"@fr, "Business"@en, "Bâtiments"@fr, "Bâtiments"@en, "Economic development"@en, "Economy"@en, "Employment"@en, "SME"@en, "Tourism"@en, "Développement économique"@fr, "Economie"@fr, "Economie"@nl, "Emploi"@fr, "Tewerkstelling"@nl, "Hébergement"@fr, "PME"@fr, "Restauration"@fr, "Gebouwen"@nl, "Economische groei"@nl, "Economische ontwikkeling"@nl, "KMO"@nl .
+	skos:altLabel "Buildings"@en, "Business"@nl, "Business"@fr, "Business"@en,  "Bâtiments"@nl, "Bâtiments"@fr, "Bâtiments"@en, "Economic development"@en, "Economy"@en, "Employment"@en, "SME"@nl, "SME"@fr, "SME"@en, "Tourism"@en, "Toerism"@nl, "Développement économique"@fr, "Economie"@fr, "Economie"@nl, "Emploi"@fr, "tewerkstelling"@nl, "Tewerkstelling"@nl, "Hébergement"@fr, "PME"@fr, "Restauration"@fr, "Gebouwen"@nl, "Economische groei"@nl, "Economische ontwikkeling"@nl, "KMO"@nl .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -32,7 +32,7 @@
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "Administration"@en, "Administration"@fr, "Aménagement du territoire"@fr, "Aménagement du territoire"@nl, "Government"@en, "Public finances"@en, "Spatial planning"@en, "Finances publiques"@fr, "Gouvernement"@fr, "Administratie"@nl, "Services"@fr, "Diensten"@nl, "Overheid"@nl, "Openbare financiën"@nl, "Stedenbouw"@nl, "Ruimtelijke ordening"@nl, "Urbanisme"@fr, "Urbanisme"@nl, "Equipements"@fr, "Equipements"@nl, "Uitrusting"@nl, "Equipment"@en .
+	skos:altLabel "Administration"@en, "Administration"@fr, "Aménagement du territoire"@en, "Aménagement du territoire"@fr, "Aménagement du territoire"@nl, "Government"@en, "Public finances"@en, "Spatial planning"@en, "Finances publiques"@fr, "Gouvernement"@fr, "Administratie"@nl, "Services"@en, "Services"@fr, "Diensten"@nl, "Overheid"@nl, "Openbare financiën"@nl, "Stedenbouw"@nl, "Ruimtelijke ordening"@nl, "Urbanisme"@fr, "Urbanisme"@nl, "Urbanisme"@en, "Equipements"@en, "Equipements"@fr, "Equipements"@nl, "Uitrusting"@nl, "Equipment"@en .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
@@ -46,22 +46,22 @@
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
-	skos:altLabel "Crime"@en, "Crime"@fr, "Justice"@en, "Justice"@fr, "Police"@en, "Police"@fr, "Safety"@en, "Criminaliteit"@nl, "Justitie"@nl, "Sécurité"@fr .
+	skos:altLabel "Crime"@en, "Crime"@fr, "Justice"@en, "Justice"@fr, "Police"@en, "Police"@fr, "Politie"@nl, "Safety"@en, "Veiligheid"@nl, "Criminaliteit"@nl, "Justitie"@nl, "Sécurité"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "Citizenship"@en, "Employment"@en, "Housing"@en, "Social"@en, "Citoyenneté"@fr, "Emploi"@fr, "Burgerschap"@nl, "Huisvesting"@nl, "Logement"@fr, "Social"@fr, "Sociaal"@nl, "Tewerkstelling"@nl .
+	skos:altLabel "Citizenship"@en, "Employment"@en, "Housing"@en, "Social"@en, "Citoyenneté"@fr, "Emploi"@fr, "Burgerschap"@nl, "Huisvesting"@nl, "Logement"@fr, "Social"@fr, "Sociaal"@nl, "Tewerkstelling"@nl, "Hébergement"@fr .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
 	skos:prefLabel "REGIONS, CITIES"@en ;
-	skos:altLabel "Logement"@fr, "Tourism"@en, "Town planning"@en, "Hébergement"@fr, "Tourisme"@fr, "Toerisme"@nl .
+	skos:altLabel "Logement"@en, "Logement"@fr, "Logement"@nl, "Tourism"@en, "Town planning"@en, "Hébergement"@fr, "Tourisme"@fr, "Toerisme"@nl, "Ruimtelijke ordening"@nl, "Urbanisme"@fr, "Urbanisme"@nl, "Urbanisme"@en, "Stedenbouw"@nl, "Aménagement du territoire"@fr, "Aménagement du territoire"@nl, "Hébergement"@fr .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "Mobility"@en, "Mobilité"@fr, "Mobiliteit"@nl, "Transports"@fr, "Verplaatsingen"@nl, "Vervoer"@nl, "Transport"@nl, "Transport"@en .
+	skos:altLabel "Mobility"@en, "Mobilité"@fr, "Mobiliteit"@nl, "Transports"@fr, "Verplaatsingen"@nl, "Vervoer"@nl, "Transport"@fr, "Transport"@nl, "Transport"@en .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
