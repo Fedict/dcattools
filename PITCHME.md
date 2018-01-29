@@ -15,27 +15,45 @@ Various local, regional and federal portals ...
 
 ## How it works
 
----
-
-## In a nutshell
-
 - Scrapers, harvesting metadata from portals 
 - Enhancers, cleaning and transforming metadata |
 - Upload tool, sends the metadata to Drupal |
 - Drupal website data.gov.be |
+-
 
 +++
 
 ### Scrapers
 
+- Custom parser per scraped site
+- Written in Java |
+  - JSoup HTML parser
+  - RDF4J linked data library
+- Command-line |
+
++++
+
+### Enhancers
+
+- Cleaning en enriching the scraped metadata
+   - Various small SPARQL queries for small corrections
+- Mapping keywords and themes to EU ODP themes |
+   - Using SKOS files
+
++++
+
+### Upload tool
+
+- Translates DCAT-AP into Drupal JSON
+
 +++
 
 ### Drupal
 
- - Drupal 7 website, based on OpenFed
- - Additional modules Rest-WS and Rest-WS i18n
-   - Allows updates via JSON REST API
-   - Services modules too heavy / overkill
+- Drupal 7 website, based on OpenFed
+- Additional modules Rest-WS and Rest-WS i18n
+  - Allows updates via JSON REST API
+  - Services modules too heavy / overkill
 
 ---
 
@@ -60,11 +78,13 @@ The data is sent to the ODP anyway
 
 - Metadata exchange format (RDF)
   - Titles, descriptions, download links ...
-- "Application Profile" of W3C DCAT
-- Promoted by JoinUp / European Commission
+- "Application Profile" of W3C DCAT |
+- Promoted by JoinUp.eu / European Commission |
 
 ---
 
 ## Thank you
 
-Questions ? Contact opendata@belgium.be
+Questions ? 
+
+Contact opendata@belgium.be
