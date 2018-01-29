@@ -20,36 +20,35 @@ Various local, regional and federal portals ...
 
 ## How it works
 
-- Scrapers, harvesting metadata from portals 
-- Enhancers, cleaning and transforming metadata |
-- Upload tool, sends the metadata to Drupal |
-- Drupal website [data.gov.be](http://data.gov.be) |
-- Full export on [github](https://github.com/fedict/dcat)
+- Scrapers harvest metadata from various portals 
+- Enhancers clean and transform the metadata |
+- Upload tool sends the metadata to [data.gov.be](http://data.gov.be) |
+- Metadata is also published on [github](https://github.com/fedict/dcat) |
 
 +++
 
 ### The need for scrapers
 
 > In a perfect world, everyone is using the same format to exchange data.
+> The world isn't perfect.
 
 +++
 
 ### Scrapers
 
-- Command-line
+- Written in Java, open source
+- Command-line, runs almost everywhere |
 - Custom parser per scraped site |
-- Written in Java, open source |
-  - [JSoup](https://jsoup.org/) HTML parser
-  - [RDF4J](http://rdf4j.org/) linked data library
+  - Luckily some portals are standardising on DCAT-AP
 
 +++
 
 ### Enhancers
 
-- Cleaning en enriching the scraped metadata
-   - Various small SPARQL queries for small corrections
+- Cleaning and enriching the scraped metadata
+   - Various SPARQL queries for small corrections
 - Mapping keywords and themes to EU ODP themes |
-   - Using (manually created) SKOS files
+   - Using (manually created) SKOS files |
 
 +++
 
