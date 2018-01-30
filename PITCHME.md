@@ -48,7 +48,7 @@ Various local, regional and federal portals ...
 - Cleaning and enriching the scraped metadata
    - Various SPARQL queries for small corrections
 - Mapping keywords and themes to EU ODP themes |
-   - Using (manually created) SKOS files |
+   - Using (manually created) [SKOS](https://www.w3.org/2004/02/skos/) files |
 
 +++
 
@@ -88,7 +88,7 @@ The data is sent to the ODP anyway
 
 - Metadata exchange format (RDF)
   - Titles, descriptions, download links ...
-- "Application Profile" of W3C DCAT |
+- ["Application Profile"](https://joinup.ec.europa.eu/page/dcat-ap) of W3C DCAT |
 - Promoted by JoinUp.eu / European Commission |
 
 ---
