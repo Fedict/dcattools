@@ -59,199 +59,198 @@ import org.slf4j.LoggerFactory;
  */
 public class HtmlStatbelPubs extends HtmlStatbel {
 
-	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
-	
-	public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.nav h3 a";
-	public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";
-	public final static String LINK_SUBTHEME = "h3 a";
-	public final static String LINK_SUBSUBTHEME = "ul.menu li>a";
-	public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
-	public final static String DIV_SUMMARY = "div.field--name-body";
-	public final static String DIV_FILES = "div.field--name-field-document a";
-	public final static String LI_THEMES = "ol.breadcrumb li a";
-	
-	/**
-	 * Scrape URLs from subthemes
-	 * 
-	 * @param u link to subtheme
-	 * @return list of URLs
-	 * @throws IOException 
-	 */
-	private List<URL> scrapeSubList(String u) throws IOException {
-		List<URL> urls = new ArrayList<>();
-		String subtheme = makeRequest(makeAbsURL(u));
+    private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
 
-		Elements nav = Jsoup.parse(subtheme).select(NAV_SUBTHEME);
-		if (nav == null) {
-			logger.warn("No subtheme element found");
-			return urls;
-		}
-		
-		// Check if there is a third level of themes
-		Elements subs = nav.select(LINK_SUBSUBTHEME);
-		if (subs != null && !subs.isEmpty()) {
-			for (Element sub: subs) {
-				String href = sub.attr(Attribute.HREF.toString());
-				urls.add(makeAbsURL(href));
-			}
-		} else {
-			Element link = nav.select(LINK_SUBTHEME).first();
-			String href = link.attr(Attribute.HREF.toString());
-			urls.add(makeAbsURL(href));
-		}
-		return urls;
-	}
-	
-	/**
-	 * Get the list of all the downloads (DCAT Dataset).
-	 *
-	 * @return List of URLs
-	 * @throws IOException
-	 */
-	@Override
-	protected List<URL> scrapeDatasetList() throws IOException {
-		List<URL> urls = new ArrayList<>();
+    public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.nav h3 a";
+    public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";
+    public final static String LINK_SUBTHEME = "h3 a";
+    public final static String LINK_SUBSUBTHEME = "li a";
+    public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
+    public final static String DIV_SUMMARY = "div.field--name-body";
+    public final static String DIV_FILES = "div.field--name-field-document a";
+    public final static String LI_THEMES = "ol.breadcrumb li a";
 
-		URL base = getBase();
-		String front = makeRequest(base);
+    /**
+     * Scrape URLs from subthemes
+     *
+     * @param u link to subtheme
+     * @return list of URLs
+     * @throws IOException
+     */
+    private List<URL> scrapeSubList(String u) throws IOException {
+        List<URL> urls = new ArrayList<>();
+        String subtheme = makeRequest(makeAbsURL(u));
 
-		// Get all the main themes
-		Elements themes = Jsoup.parse(front).select(LINK_THEME);
-		
-		if (themes != null) {
-			for (Element theme: themes) {
-				String href = theme.attr(Attribute.HREF.toString());
-				urls.addAll(scrapeSubList(href));
-				sleep();
-			}
-		} else {
-			logger.error("No themes {} found", LINK_THEME);
-		}
-		return urls;
-	}
+        Elements nav = Jsoup.parse(subtheme).select(NAV_SUBTHEME);
+        if (nav == null) {
+            logger.warn("No subtheme element found");
+            return urls;
+        }
 
-	
-	/**
-	 * Generate DCAT Distribution.
-	 *
-	 * @param store RDF store
-	 * @param dataset dataset URI
-	 * @param access access URL
-	 * @param link link element
-	 * @param lang language code
-	 * @throws MalformedUrlException
-	 * @throws RepositoryException
-	 */
-	private void generateDist(Storage store, IRI dataset, URL access, Element link,
-			String lang) throws MalformedURLException, RepositoryException {
-		String href = link.attr(Attribute.HREF.toString());
-		URL download = makeAbsURL(href);
+        // Check if there is a third level of themes
+        Elements subs = nav.select(LINK_SUBSUBTHEME);
+        if (subs != null && !subs.isEmpty()) {
+            for (Element sub : subs) {
+                String href = sub.attr(Attribute.HREF.toString());
+                urls.add(makeAbsURL(href));
+            }
+        } else {
+            Element link = nav.select(LINK_SUBTHEME).first();
+            String href = link.attr(Attribute.HREF.toString());
+            urls.add(makeAbsURL(href));
+        }
+        return urls;
+    }
 
-		// important for EDP: does not like different datasets pointing to same distribution
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
-		IRI dist = store.getURI(makeDistURL(id).toString() + "/" + lang);
-		logger.debug("Generating distribution {}", dist.toString());
+    /**
+     * Get the list of all the downloads (DCAT Dataset).
+     *
+     * @return List of URLs
+     * @throws IOException
+     */
+    @Override
+    protected List<URL> scrapeDatasetList() throws IOException {
+        List<URL> urls = new ArrayList<>();
 
-		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
-		store.add(dist, DCAT.ACCESS_URL, access);
-		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
-	}
+        URL base = getBase();
+        String front = makeRequest(base);
 
-	/**
-	 * Generate DCAT Dataset.
-	 *
-	 * @param store RDF store
-	 * @param id
-	 * @param page
-	 * @throws MalformedURLException
-	 * @throws RepositoryException
-	 */
-	@Override
-	public void generateDataset(Storage store, String id, Map<String, Page> page)
-			throws MalformedURLException, RepositoryException {
+        // Get all the main themes
+        Elements themes = Jsoup.parse(front).select(LINK_THEME);
 
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
-		logger.info("Generating dataset {}", dataset.toString());
+        if (themes != null) {
+            for (Element theme : themes) {
+                String href = theme.attr(Attribute.HREF.toString());
+                urls.addAll(scrapeSubList(href));
+                sleep();
+            }
+        } else {
+            logger.error("No themes {} found", LINK_THEME);
+        }
+        return urls;
+    }
 
-		store.add(dataset, RDF.TYPE, DCAT.DATASET);
-		store.add(dataset, DCTERMS.IDENTIFIER, id);
+    /**
+     * Generate DCAT Distribution.
+     *
+     * @param store RDF store
+     * @param dataset dataset URI
+     * @param access access URL
+     * @param link link element
+     * @param lang language code
+     * @throws MalformedUrlException
+     * @throws RepositoryException
+     */
+    private void generateDist(Storage store, IRI dataset, URL access, Element link,
+            String lang) throws MalformedURLException, RepositoryException {
+        String href = link.attr(Attribute.HREF.toString());
+        URL download = makeAbsURL(href);
 
-		for (String lang : getAllLangs()) {
-			Page p = page.get(lang);
-			if (p == null) {
-				logger.warn("Page {} not available in {}", dataset.toString(), lang);
-				continue;
-			}
-			String html = p.getContent();
+        // important for EDP: does not like different datasets pointing to same distribution
+        String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
+        IRI dist = store.getURI(makeDistURL(id).toString() + "/" + lang);
+        logger.debug("Generating distribution {}", dist.toString());
 
-			Element doc = Jsoup.parse(html).body();
-			if (doc == null) {
-				logger.warn("No body element");
-				continue;
-			}
-			Element h = doc.getElementsByTag(Tag.H1.toString()).first();
-			if (h == null) {
-				logger.warn("No H1 element");
-				continue;
-			}
-			String title = h.text();
-			// by default, also use the title as description
-			String desc = title;
+        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+        store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
+        store.add(dist, DCAT.ACCESS_URL, access);
+        store.add(dist, DCAT.DOWNLOAD_URL, download);
+        store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
+    }
 
-			Element divmain = doc.select(DIV_DOCUMENT).first();
-			if (divmain != null) {
-				desc = divmain.text();
-			} else {
-				divmain = doc.select(DIV_SUMMARY).first();
-				if (divmain != null) {
-					desc = divmain.text();
-				} else {
-					logger.warn("No description found");
-					logger.warn(title);
-				}
-			}
+    /**
+     * Generate DCAT Dataset.
+     *
+     * @param store RDF store
+     * @param id
+     * @param page
+     * @throws MalformedURLException
+     * @throws RepositoryException
+     */
+    @Override
+    public void generateDataset(Storage store, String id, Map<String, Page> page)
+            throws MalformedURLException, RepositoryException {
 
-			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-			store.add(dataset, DCTERMS.TITLE, title, lang);
-			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+        IRI dataset = store.getURI(makeDatasetURL(id).toString());
+        logger.info("Generating dataset {}", dataset.toString());
 
-			Elements themes = doc.select(LI_THEMES);
-			if (themes != null && themes.size() > 2) {
-				//ignore Home > Themes
-				themes.remove(0);
-				themes.remove(0);
-				
-				for (Element theme : themes) {
-					store.add(dataset, DCAT.KEYWORD, theme.text().trim(), lang);
-				}
-			} else {
-				logger.warn("No themes found {}", LI_THEMES);
-			}
+        store.add(dataset, RDF.TYPE, DCAT.DATASET);
+        store.add(dataset, DCTERMS.IDENTIFIER, id);
 
-			Elements links = doc.select(DIV_FILES);
-			if (links != null) {
-				for (Element link : links) {
-					generateDist(store, dataset, p.getUrl(), link, lang);
-				}
-			} else {
-				logger.warn("No downloads found {}", DIV_FILES);
-			}
-		}
-	}
+        for (String lang : getAllLangs()) {
+            Page p = page.get(lang);
+            if (p == null) {
+                logger.warn("Page {} not available in {}", dataset.toString(), lang);
+                continue;
+            }
+            String html = p.getContent();
 
-	/**
-	 * HTML parser for Statbel publications
-	 *
-	 * @param caching DB cache file
-	 * @param storage RDF back-end
-	 * @param base base URL
-	 */
-	public HtmlStatbelPubs(File caching, File storage, URL base) {
-		super(caching, storage, base);
-		setName("statbelpub");
-	}
+            Element doc = Jsoup.parse(html).body();
+            if (doc == null) {
+                logger.warn("No body element");
+                continue;
+            }
+            Element h = doc.getElementsByTag(Tag.H1.toString()).first();
+            if (h == null) {
+                logger.warn("No H1 element");
+                continue;
+            }
+            String title = h.text();
+            // by default, also use the title as description
+            String desc = title;
+
+            Element divmain = doc.select(DIV_DOCUMENT).first();
+            if (divmain != null) {
+                desc = divmain.text();
+            } else {
+                divmain = doc.select(DIV_SUMMARY).first();
+                if (divmain != null) {
+                    desc = divmain.text();
+                } else {
+                    logger.warn("No description found");
+                    logger.warn(title);
+                }
+            }
+
+            store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+            store.add(dataset, DCTERMS.TITLE, title, lang);
+            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+
+            Elements themes = doc.select(LI_THEMES);
+            if (themes != null && themes.size() > 2) {
+                //ignore Home > Themes
+                themes.remove(0);
+                themes.remove(0);
+
+                for (Element theme : themes) {
+                    store.add(dataset, DCAT.KEYWORD, theme.text().trim(), lang);
+                }
+            } else {
+                logger.warn("No themes found {}", LI_THEMES);
+            }
+
+            Elements links = doc.select(DIV_FILES);
+            if (links != null) {
+                for (Element link : links) {
+                    generateDist(store, dataset, p.getUrl(), link, lang);
+                }
+            } else {
+                logger.warn("No downloads found {}", DIV_FILES);
+            }
+        }
+    }
+
+    /**
+     * HTML parser for Statbel publications
+     *
+     * @param caching DB cache file
+     * @param storage RDF back-end
+     * @param base base URL
+     */
+    public HtmlStatbelPubs(File caching, File storage, URL base) {
+        super(caching, storage, base);
+        setName("statbelpub");
+    }
 }

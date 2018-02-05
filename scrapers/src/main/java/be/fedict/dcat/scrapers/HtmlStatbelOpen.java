@@ -59,168 +59,167 @@ import org.slf4j.LoggerFactory;
  * @author Bart.Hanssens
  */
 public class HtmlStatbelOpen extends HtmlStatbel {
-	private final Logger logger = LoggerFactory.getLogger(HtmlStatbelOpen.class);
 
-	public final static String VIEW_HREF = "div.view-open-data h2 a";
-	
-	public final static String P_DESC = "article.node div.field--name-body p";
-	public final static String DIV_TEMP = "div.field--name-field-period-manual";
-	public final static String DIV_CAT = "div.field--name-field-category div";
-	public final static String DIV_FILES = "div.field--name-field-downloads a";
-	
-	public final static Pattern YEAR_PAT
-			= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
-	
-	
+    private final Logger logger = LoggerFactory.getLogger(HtmlStatbelOpen.class);
 
-	/**
-	 * Get the list of all the downloads (DCAT Dataset).
-	 *
-	 * @return List of URLs
-	 * @throws IOException
-	 */
-	@Override
-	protected List<URL> scrapeDatasetList() throws IOException {
-		List<URL> urls = new ArrayList<>();
+    public final static String VIEW_HREF = "div.view-open-data h2 a";
 
-		URL base = getBase();
-		// Go through all the pages
-		for(int i = 1; ; i++) {
-			logger.info("Scraping page {}", i);
-			String page = makeRequest(new URL(base + "?page=" + i));
+    public final static String P_DESC = "article.node div.field--name-body p";
+    public final static String DIV_TEMP = "div.field--name-field-period-manual";
+    public final static String DIV_CAT = "div.field--name-field-category div";
+    public final static String DIV_FILES = "div.field--name-field-downloads a";
 
-			Elements links = Jsoup.parse(page).select(VIEW_HREF);
-			if (links == null || links.isEmpty()) {
-				break;
-			}
-			for (Element link: links) {
-				String href = link.attr(Attribute.HREF.toString());
-				urls.add(makeAbsURL(href));
-			}
-			sleep();
-		}
-		return urls;
-	}
+    public final static Pattern YEAR_PAT
+            = Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
 
-	/**
-	 * Generate DCAT Distribution.
-	 *
-	 * @param store RDF store
-	 * @param dataset dataset URI
-	 * @param access access URL
-	 * @param link link element
-	 * @param lang language code
-	 * @throws MalformedUrlException
-	 * @throws RepositoryException
-	 */
-	private void generateDist(Storage store, IRI dataset, URL access, Element link,
-			String lang) throws MalformedURLException, RepositoryException {
-		String href = link.attr(Attribute.HREF.toString());
-		URL download = makeAbsURL(href);
+    /**
+     * Get the list of all the downloads (DCAT Dataset).
+     *
+     * @return List of URLs
+     * @throws IOException
+     */
+    @Override
+    protected List<URL> scrapeDatasetList() throws IOException {
+        List<URL> urls = new ArrayList<>();
 
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
-		IRI dist = store.getURI(makeDistURL(id).toString() + "/" + lang);
-		logger.debug("Generating distribution {}", dist.toString());
+        URL base = getBase();
+        // Go through all the pages
+        for (int i = 0;; i++) {
+            logger.info("Scraping page {}", i);
+            String page = makeRequest(new URL(base + "?page=" + i));
 
-		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
-		store.add(dist, DCAT.ACCESS_URL, access);
-		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, link.ownText());
-	}
+            Elements links = Jsoup.parse(page).select(VIEW_HREF);
+            if (links == null || links.isEmpty()) {
+                break;
+            }
+            for (Element link : links) {
+                String href = link.attr(Attribute.HREF.toString());
+                urls.add(makeAbsURL(href));
+            }
+            sleep();
+        }
+        return urls;
+    }
 
-	/**
-	 * Generate DCAT Dataset.
-	 *
-	 * @param store RDF store
-	 * @param id
-	 * @param page
-	 * @throws MalformedURLException
-	 * @throws RepositoryException
-	 */
-	@Override
-	public void generateDataset(Storage store, String id, Map<String, Page> page)
-			throws MalformedURLException, RepositoryException {
+    /**
+     * Generate DCAT Distribution.
+     *
+     * @param store RDF store
+     * @param dataset dataset URI
+     * @param access access URL
+     * @param link link element
+     * @param lang language code
+     * @throws MalformedUrlException
+     * @throws RepositoryException
+     */
+    private void generateDist(Storage store, IRI dataset, URL access, Element link,
+            String lang) throws MalformedURLException, RepositoryException {
+        String href = link.attr(Attribute.HREF.toString());
+        URL download = makeAbsURL(href);
 
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
-		logger.info("Generating dataset {}", dataset.toString());
+        String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
+        IRI dist = store.getURI(makeDistURL(id).toString() + "/" + lang);
+        logger.debug("Generating distribution {}", dist.toString());
 
-		store.add(dataset, RDF.TYPE, DCAT.DATASET);
-		store.add(dataset, DCTERMS.IDENTIFIER, id);
+        store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+        store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+        store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+        store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
+        store.add(dist, DCAT.ACCESS_URL, access);
+        store.add(dist, DCAT.DOWNLOAD_URL, download);
+        store.add(dist, DCAT.MEDIA_TYPE, link.ownText());
+    }
 
-		for (String lang : getAllLangs()) {
-			Page p = page.get(lang);
-			if (p == null) {
-				logger.warn("Page {} not available in {}", dataset.toString(), lang);
-				continue;
-			}
-			String html = p.getContent();
+    /**
+     * Generate DCAT Dataset.
+     *
+     * @param store RDF store
+     * @param id
+     * @param page
+     * @throws MalformedURLException
+     * @throws RepositoryException
+     */
+    @Override
+    public void generateDataset(Storage store, String id, Map<String, Page> page)
+            throws MalformedURLException, RepositoryException {
 
-			Element doc = Jsoup.parse(html).body();
-			if (doc == null) {
-				logger.warn("No body element");
-				continue;
-			}
-			Element h = doc.getElementsByTag(HTML.Tag.H1.toString()).first();
-			if (h == null) {
-				logger.warn("No H1 element");
-				continue;
-			}
-			String title = h.text();
-			// by default, also use the title as description
-			String desc = title;
+        IRI dataset = store.getURI(makeDatasetURL(id).toString());
+        logger.info("Generating dataset {}", dataset.toString());
 
-			Elements paras = doc.select(P_DESC);
-			if (paras != null) {
-				StringBuilder buf = new StringBuilder();
-				for (Element para : paras) {
-					buf.append(para.text()).append('\n');
-				}
-				if (buf.length() == 0) {
-					buf.append(title);
-				}
-				desc = buf.toString();
-			} else {
-				logger.warn("No {} element", P_DESC);
-			}
+        store.add(dataset, RDF.TYPE, DCAT.DATASET);
+        store.add(dataset, DCTERMS.IDENTIFIER, id);
 
-			Element t = doc.select(DIV_TEMP).first();
-			if (t != null) {
-				String temp = t.text().trim();
-				if (temp.length() == 4) {
-					temp = temp + "-" + temp;
-				}
-				generateTemporal(store, dataset, temp, YEAR_PAT, "-");
-			}
-			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-			store.add(dataset, DCTERMS.TITLE, title, lang);
-			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+        for (String lang : getAllLangs()) {
+            Page p = page.get(lang);
+            if (p == null) {
+                logger.warn("Page {} not available in {}", dataset.toString(), lang);
+                continue;
+            }
+            String html = p.getContent();
 
-			Elements cats = doc.select(DIV_CAT);
-			if (cats != null) {
-				for (Element cat: cats) {
-					store.add(dataset, DCAT.KEYWORD, cat.text().toLowerCase().trim(), lang);
-				}
-			}
+            Element doc = Jsoup.parse(html).body();
+            if (doc == null) {
+                logger.warn("No body element");
+                continue;
+            }
+            Element h = doc.getElementsByTag(HTML.Tag.H1.toString()).first();
+            if (h == null) {
+                logger.warn("No H1 element");
+                continue;
+            }
+            String title = h.text();
+            // by default, also use the title as description
+            String desc = title;
 
-			Elements links = doc.select(DIV_FILES);
-			for (Element link : links) {
-				generateDist(store, dataset, p.getUrl(), link, lang);
-			}
-		}
-	}
+            Elements paras = doc.select(P_DESC);
+            if (paras != null) {
+                StringBuilder buf = new StringBuilder();
+                for (Element para : paras) {
+                    buf.append(para.text()).append('\n');
+                }
+                if (buf.length() == 0) {
+                    buf.append(title);
+                }
+                desc = buf.toString();
+            } else {
+                logger.warn("No {} element", P_DESC);
+            }
 
-	/**
-	 * HTML parser for Statbel opendata publications
-	 *
-	 * @param caching DB cache file
-	 * @param storage RDF back-end
-	 * @param base base URL
-	 */
-	public HtmlStatbelOpen(File caching, File storage, URL base) {
-		super(caching, storage, base);
-		setName("statbelopen");
-	}
+            Element t = doc.select(DIV_TEMP).first();
+            if (t != null) {
+                String temp = t.text().trim();
+                if (temp.length() == 4) {
+                    temp = temp + "-" + temp;
+                }
+                generateTemporal(store, dataset, temp, YEAR_PAT, "-");
+            }
+            store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+            store.add(dataset, DCTERMS.TITLE, title, lang);
+            store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+
+            Elements cats = doc.select(DIV_CAT);
+            if (cats != null) {
+                for (Element cat : cats) {
+                    store.add(dataset, DCAT.KEYWORD, cat.text().toLowerCase().trim(), lang);
+                }
+            }
+
+            Elements links = doc.select(DIV_FILES);
+            for (Element link : links) {
+                generateDist(store, dataset, p.getUrl(), link, lang);
+            }
+        }
+    }
+
+    /**
+     * HTML parser for Statbel opendata publications
+     *
+     * @param caching DB cache file
+     * @param storage RDF back-end
+     * @param base base URL
+     */
+    public HtmlStatbelOpen(File caching, File storage, URL base) {
+        super(caching, storage, base);
+        setName("statbelopen");
+    }
 }

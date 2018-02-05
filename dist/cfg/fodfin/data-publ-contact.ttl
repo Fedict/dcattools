@@ -8,7 +8,7 @@
 	foaf:name "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
 	foaf:homepage <https://finance.belgium.be> .
 	
-<http://data.gov.be/org/fodmobilit/fod/contact>
+<http://data.gov.be/org/fodfinance/fod/contact>
 	a vcard:Organization ;
 	vcard:fn "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
 	vcard:hasUrl <https://finance.belgium.be> ;

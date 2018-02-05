@@ -5,9 +5,9 @@ PREFIX dgov: <http://data.gov.be#>
 INSERT 
 	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/ECON> .
 		?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/38> .
-		?dataset dcat:keyword "Financiën"@nl, "Finances"@fr, "Finance"@en ;
-		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;		
-		?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/41> ;
+		?dataset dcat:keyword "Financiën"@nl, "Finances"@fr, "Finance"@en .
+		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> .	
+		?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/41> .
 		?dataset dcat:keyword "Overheid"@nl, "Gouvernement"@fr, "Government"@en .
 	}
 WHERE

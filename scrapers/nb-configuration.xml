@@ -13,8 +13,6 @@ You can copy and paste the single properties, into the pom.xml file and the IDE 
 That way multiple projects can share the same settings (useful for formatting rules for example).
 Any value defined here will override the pom.xml file value but is only applicable to the current project.
 -->
-        <org-netbeans-modules-whitelist.whitelist-oracle>false</org-netbeans-modules-whitelist.whitelist-oracle>
-        <org-netbeans-modules-javascript2-requirejs.enabled>true</org-netbeans-modules-javascript2-requirejs.enabled>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.text-line-wrap>none</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.text-line-wrap>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.continuationIndentSize>4</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.continuationIndentSize>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.indent-shift-width>4</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.indent-shift-width>

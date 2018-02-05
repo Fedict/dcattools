@@ -40,7 +40,7 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/161> .
 	
 <http://data.gov.be/org/psibelgium/7866>
-	skos:prefLabel "FPS Finances"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
+	skos:prefLabel "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0308_357_159#id> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/162> .
 
