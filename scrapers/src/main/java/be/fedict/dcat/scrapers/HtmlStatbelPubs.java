@@ -64,7 +64,7 @@ public class HtmlStatbelPubs extends HtmlStatbel {
     public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.nav h3 a";
     public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";
     public final static String LINK_SUBTHEME = "h3 a";
-    public final static String LINK_SUBSUBTHEME = "li a";
+    public final static String LINK_SUBSUBTHEME = "ul.menu li a";
     public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
     public final static String DIV_SUMMARY = "div.field--name-body";
     public final static String DIV_FILES = "div.field--name-field-document a";
@@ -95,9 +95,13 @@ public class HtmlStatbelPubs extends HtmlStatbel {
                 urls.add(makeAbsURL(href));
             }
         } else {
-            Element link = nav.select(LINK_SUBTHEME).first();
-            String href = link.attr(Attribute.HREF.toString());
-            urls.add(makeAbsURL(href));
+            Elements links = nav.select(LINK_SUBTHEME);
+			if (links != null) {
+				for (Element link : links) {
+					String href = link.attr(Attribute.HREF.toString());
+					urls.add(makeAbsURL(href));
+				}
+			}
         }
         return urls;
     }
