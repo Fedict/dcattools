@@ -29,21 +29,20 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
+import org.eclipse.rdf4j.model.IRI;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
-import org.eclipse.rdf4j.rio.RDFFormat;
-import org.eclipse.rdf4j.rio.RDFParseException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xmlbeam.XBProjector;
+import org.xmlbeam.annotation.XBRead;
 
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
@@ -52,30 +51,58 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class GeonetGDM extends Geonet {
+public abstract class GeonetGmd extends Geonet {
 
-	private final Logger logger = LoggerFactory.getLogger(GeonetGDM.class);
-
-	private static String VERSION;
-
-	// GeonetRDF DCAT GDM/XML API
+	private final Logger logger = LoggerFactory.getLogger(GeonetGmd.class);
 	public final static String GMD = "http://www.isotc211.org/2005/gmd";
-	public final static String API = "/eng/csw?service=CSW&version=" + getVersion();
+	public final static String API = "/eng/csw?service=CSW&version=2.0.2";
 	public final static String API_RECORDS = API
 			+ "&request=GetRecords&resultType=results"
-			+ "&ouputSchema=" + GMD
-			+ "&elementSetName=full&typeNames=gmd:MD_Metadata";
+			+ "&outputSchema=" + GMD
+			+ "&elementSetName=full&typeNames=gmd:MD_Metadata"
+			+ "&maxRecords=150";
 	public final static String OFFSET = "startPosition";
 
-	/**
-	 * Get version
-	 *
-	 * @return version string
-	 */
-	protected static String getVersion() {
-		return VERSION;
-	}
 
+	protected interface GmdContact {
+		@XBRead("/gmd:organisationName/gco:CharacterString")
+		public String getName();
+
+		@XBRead("/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
+		public String getEmail();
+		
+	}
+	
+	protected interface GmdMetadata {
+		@XBRead("/gmd:fileIdentifier/gco:CharacterString")
+		public String getID();
+		
+		@XBRead("/gmd:contact/gmd:CI_ResponsibleParty")
+		public GmdContact getContact();
+		
+		@XBRead("/gmd:dateStamp/gco:DateTime")
+		public String getData();
+	}
+	
+	protected interface GmdRoot {
+		@XBRead("//gmd:MD_Metadata")
+		public List<GmdMetadata> getEntries();
+	}
+	
+	/**
+	 * Generate DCAT dataset
+	 * 
+	 * @param store 
+	 * @param id 
+	 * @param meta 
+	 * @throws java.net.MalformedURLException 
+	 */
+	protected void generateDataset(Storage store, String id, GmdMetadata meta) 
+			throws MalformedURLException {
+		IRI dataset = store.getURI(makeDatasetURL(id).toString());
+		logger.info("Generating dataset {}", dataset.toString());
+	} 
+	
 	/**
 	 * Generate DCAT file
 	 *
@@ -89,13 +116,17 @@ public abstract class GeonetGDM extends Geonet {
 			throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
 		String xml = map.get("all").getContent();
-
-		// Load RDF/XML file into store
-		try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-			store.add(in, RDFFormat.RDFXML);
-		} catch (RDFParseException | IOException ex) {
+System.err.println(xml);
+		try {
+			GmdRoot m = new XBProjector().projectXMLString(xml, GmdRoot.class);
+			for (GmdMetadata e: m.getEntries()) {
+				generateDataset(store, e.getID(), e);
+			}
+		} catch (IOException ex) {
+			logger.error("Error projecting XML");
 			throw new RepositoryException(ex);
 		}
+	
 		generateCatalog(store);
 	}
 
@@ -107,7 +138,8 @@ public abstract class GeonetGDM extends Geonet {
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL front = getBase();
-		URL url = new URL(getBase() + GeonetGDM.API);
+		URL url = new URL(getBase() + GeonetGmd.API_RECORDS);
+		System.err.println(url);
 		String content = makeRequest(url);
 		cache.storePage(front, "all", new Page(url, content));
 	}
@@ -135,10 +167,8 @@ public abstract class GeonetGDM extends Geonet {
 	 * @param caching DB cache file
 	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
-	 * @param version CSW service
 	 */
-	public GeonetGDM(File caching, File storage, URL base, String version) {
+	public GeonetGmd(File caching, File storage, URL base) {
 		super(caching, storage, base);
-		VERSION = version;
 	}
 }

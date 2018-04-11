@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2018, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,28 +28,22 @@ package be.fedict.dcat.scrapers;
 import java.io.File;
 import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
- * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
- *
- * @see http://geonetwork-opensource.org/
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * Scraper for the NGI Geo.be portal
+ * 
+ * @author Bart Hanssens
  */
-public abstract class Geonet extends Scraper {
-
-	private final Logger logger = LoggerFactory.getLogger(Geonet.class);
-
+public class GeonetNGI extends GeonetGmd {
+	
 	/**
-	 * Constructor
-	 *
-	 * @param caching DB cache file
-	 * @param storage SDB file to be used as triple store backend
-	 * @param base base URL
+	 * Geonet scraper for NGI geo.be portal
+	 * 
+	 * @param caching
+	 * @param storage
+	 * @param base 
 	 */
-	public Geonet(File caching, File storage, URL base) {
+	public GeonetNGI(File caching, File storage, URL base) {
 		super(caching, storage, base);
+		setName("ngi");
 	}
 }

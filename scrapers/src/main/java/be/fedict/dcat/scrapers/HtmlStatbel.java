@@ -31,12 +31,8 @@ import be.fedict.dcat.helpers.Page;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTML.Attribute;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -86,6 +82,7 @@ public abstract class HtmlStatbel extends Html {
 	 * @param u
 	 * @throws IOException
 	 */
+	@Override
 	protected void scrapeDataset(URL u) throws IOException {
 		Cache cache = getCache();
 		String deflang = getDefaultLang();
