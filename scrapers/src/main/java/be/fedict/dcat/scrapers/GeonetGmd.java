@@ -37,7 +37,6 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -85,11 +84,27 @@ public abstract class GeonetGmd extends Geonet {
 	}
 	
 	protected interface GmdContact {
-		@XBRead("gmd:organisationName/gco:CharacterString")
+		@XBRead("./gmd:organisationName/gco:CharacterString")
 		public String getName();
 
-		@XBRead("gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
+		@XBRead("./gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
 		public String getEmail();		
+	}
+	
+	protected interface GmdLink {
+		@XBRead("./gmd:linkage/gmd:URL")
+		public String getHref();
+		
+		@XBRead("./gmd:description")
+		public GmdMultiString getDescription();
+	}
+	
+	protected interface GmdDist {
+		@XBRead("./gmd:distributionFormat/gmd:MD_Format/gmd:name")
+		public GmdMultiString getFormat();
+		
+		@XBRead("./gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource")
+		public List<GmdLink> getLinks();
 	}
 	
 	protected interface GmdMeta {
@@ -115,6 +130,9 @@ public abstract class GeonetGmd extends Geonet {
 		
 		@XBRead("./gmd:identificationInfo/gmd:MD_DataIdentification")
 		public GmdMeta getMeta();
+		
+		@XBRead("./gmd:distributionInfo/gmd:MD_Distribution")
+		public List<GmdDist> getDistributions();
 	}
 	
 	protected interface GmdRoot {
@@ -123,7 +141,7 @@ public abstract class GeonetGmd extends Geonet {
 	}
 	
 	/**
-	 * Parse a CKAN contact and store it in the RDF store
+	 * Parse a contact and store it in the RDF store
 	 *
 	 * @param store RDF store
 	 * @param uri RDF subject URI
@@ -199,27 +217,30 @@ public abstract class GeonetGmd extends Geonet {
 		}
 		
 		GmdMeta metadata = meta.getMeta();	
-		if (metadata != null) {
-			List<GmdMultiString> keywords = metadata.getKeywords();
-			GmdMultiString title = metadata.getTitle();
-			GmdMultiString desc = metadata.getDescription();
-			
-			for (String lang : getAllLangs()) {
-				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-
-				parseMulti(store, dataset, title, DCTERMS.TITLE, lang);
-				parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
-				for (GmdMultiString keyword: keywords) {
-					parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
-				}
-			}
-			GmdContact contact = meta.getContact();
-			if (contact != null) {
-				parseContact(store, dataset, contact.getName(), contact.getEmail());
-			}
-		} else {
+		if (metadata == null) {
 			logger.warn("No metadata for {}", id);
+			return;
+		}	
+
+		List<GmdMultiString> keywords = metadata.getKeywords();
+		GmdMultiString title = metadata.getTitle();
+		GmdMultiString desc = metadata.getDescription();
+
+		for (String lang : getAllLangs()) {
+			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+
+			parseMulti(store, dataset, title, DCTERMS.TITLE, lang);
+			parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
+			for (GmdMultiString keyword : keywords) {
+				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
+			}
 		}
+		GmdContact contact = meta.getContact();
+		if (contact != null) {
+			parseContact(store, dataset, contact.getName(), contact.getEmail());
+		}
+		
+		List<GmdDist> dists = meta.getDistributions();
 	}
 	
 	/**
