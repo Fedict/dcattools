@@ -65,6 +65,11 @@
             <artifactId>xmlprojector</artifactId>
             <version>1.4.14</version>
         </dependency>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.8.0-10</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

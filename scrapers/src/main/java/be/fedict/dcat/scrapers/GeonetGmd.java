@@ -39,6 +39,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPathFactoryConfigurationException;
+import net.sf.saxon.lib.NamespaceConstant;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -49,8 +53,12 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.xmlbeam.XBProjector;
 import org.xmlbeam.annotation.XBRead;
+import org.xmlbeam.config.DefaultXMLFactoriesConfig;
+import org.xmlbeam.config.DefaultXMLFactoriesConfig.NamespacePhilosophy;
+import org.xmlbeam.config.XMLFactoriesConfig;
 
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
@@ -117,28 +125,47 @@ public abstract class GeonetGmd extends Geonet {
 		@XBRead("./gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
 		public List<GmdMultiString> getKeywords();
 	}
-	
-	protected interface GmdMetadata {
-		@XBRead("./gmd:fileIdentifier/gco:CharacterString")
+			
+	public interface GmdDuration {
+		@XBRead("./gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
+		public String getStart();
+
+		@XBRead("./gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition")
+		public String getEnd();
+	}
+		
+	protected interface GmdDataset {
+		@XBRead("gmd:fileIdentifier/gco:CharacterString")
 		public String getID();
 		
-		@XBRead("./gmd:contact/gmd:CI_ResponsibleParty")
+		@XBRead("gmd:contact/gmd:CI_ResponsibleParty")
 		public GmdContact getContact();
 		
-		@XBRead("./gmd:dateStamp/gco:DateTime")
+		@XBRead("gmd:dateStamp/gco:DateTime")
 		public String getTimestamp();
 		
-		@XBRead("./gmd:identificationInfo/gmd:MD_DataIdentification")
+		@XBRead("gmd:identificationInfo/gmd:MD_DataIdentification")
 		public GmdMeta getMeta();
 		
-		@XBRead("./gmd:distributionInfo/gmd:MD_Distribution")
+		@XBRead("gmd:extent/gmd:EX_Extent/gmd:temporalElement")
+		public GmdDuration getDuration();
+			
+		@XBRead("gmd:distributionInfo/gmd:MD_Distribution")
 		public List<GmdDist> getDistributions();
 	}
 	
 	protected interface GmdRoot {
 		@XBRead("//gmd:MD_Metadata")
-		public List<GmdMetadata> getEntries();
+		public List<GmdDataset> getDatasets();
 	}
+	
+	// Saxon XPath parser is 3x faster than the JDK's
+	protected final XMLFactoriesConfig xmlcfg = new DefaultXMLFactoriesConfig() {
+		@Override
+		public XPathFactory createXPathFactory() {
+			return new net.sf.saxon.xpath.XPathFactoryImpl();
+		}
+	};
 	
 	/**
 	 * Parse a contact and store it in the RDF store
@@ -199,7 +226,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param meta 
 	 * @throws java.net.MalformedURLException 
 	 */
-	protected void generateDataset(Storage store, String id, GmdMetadata meta) 
+	protected void generateDataset(Storage store, String id, GmdDataset meta) 
 			throws MalformedURLException {
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
@@ -258,8 +285,8 @@ public abstract class GeonetGmd extends Geonet {
 		String xml = map.get("all").getContent();
 
 		try {
-			GmdRoot m = new XBProjector().projectXMLString(xml, GmdRoot.class);
-			for (GmdMetadata e: m.getEntries()) {
+			GmdRoot m = new XBProjector(xmlcfg).projectXMLString(xml, GmdRoot.class);
+			for (GmdDataset e: m.getDatasets()) {
 				generateDataset(store, e.getID(), e);
 			}
 		} catch (IOException ex) {
