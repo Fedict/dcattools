@@ -37,6 +37,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,7 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
@@ -74,17 +76,12 @@ public abstract class GeonetGmd extends Geonet {
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	
 	// XMLBeam "projection" interfaces
-	protected interface GmdString {
-		@XBRead("gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale=$PARAM0]")
-		public String getText(String lang);
-	}
-	
 	protected interface GmdMultiString {
-		@XBRead("gco:CharacterString")
+		@XBRead("./gco:CharacterString")
 		public String getString();
 		
-		@XBRead(".")
-		public GmdString getLocal();
+		@XBRead("./gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale=$PARAM0]")
+		public String getString(String lang);
 	}
 	
 	protected interface GmdContact {
@@ -92,32 +89,31 @@ public abstract class GeonetGmd extends Geonet {
 		public String getName();
 
 		@XBRead("gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
-		public String getEmail();
-		
+		public String getEmail();		
 	}
 	
 	protected interface GmdMeta {
-		@XBRead("gmd:citation/gmd:CI_Citation/gmd:title")
+		@XBRead("./gmd:citation/gmd:CI_Citation/gmd:title")
 		public GmdMultiString getTitle();
 		
-		@XBRead("gmd:abstract")
+		@XBRead("./gmd:abstract")
 		public GmdMultiString getDescription();
 		
-		@XBRead("gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
+		@XBRead("./gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
 		public List<GmdMultiString> getKeywords();
 	}
 	
 	protected interface GmdMetadata {
-		@XBRead("gmd:fileIdentifier/gco:CharacterString")
+		@XBRead("./gmd:fileIdentifier/gco:CharacterString")
 		public String getID();
 		
-		@XBRead("gmd:contact/gmd:CI_ResponsibleParty")
+		@XBRead("./gmd:contact/gmd:CI_ResponsibleParty")
 		public GmdContact getContact();
 		
-		@XBRead("gmd:dateStamp/gco:DateTime")
+		@XBRead("./gmd:dateStamp/gco:DateTime")
 		public String getTimestamp();
 		
-		@XBRead("gmd:identificationInfo/gmd:MD_DataIdentification")
+		@XBRead("./gmd:identificationInfo/gmd:MD_DataIdentification")
 		public GmdMeta getMeta();
 	}
 	
@@ -126,6 +122,37 @@ public abstract class GeonetGmd extends Geonet {
 		public List<GmdMetadata> getEntries();
 	}
 	
+	/**
+	 * Parse a CKAN contact and store it in the RDF store
+	 *
+	 * @param store RDF store
+	 * @param uri RDF subject URI
+	 * @param name contact name
+	 * @param email contact
+	 * @throws RepositoryException
+	 */
+	protected void parseContact(Storage store, IRI uri, String name, String email)
+			throws RepositoryException {
+		String v = "";
+		try {
+			v = makeOrgURL(makeHashId(name + email)).toString();
+		} catch (MalformedURLException e) {
+			logger.error("Could not generate hash url", e);
+		}
+
+		if (!name.isEmpty() || !email.isEmpty()) {
+			IRI vcard = store.getURI(v);
+			store.add(uri, DCAT.CONTACT_POINT, vcard);
+			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			if (!name.isEmpty()) {
+				store.add(vcard, VCARD4.HAS_FN, name);
+			}
+			if (!email.isEmpty()) {
+				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
+			}
+		}
+	}
+
 	/**
 	 * Parse and store multilingual string
 	 * 
@@ -139,7 +166,7 @@ public abstract class GeonetGmd extends Geonet {
 	protected void parseMulti(Storage store, IRI uri, GmdMultiString multi, IRI property, String lang) 
 			throws RepositoryException {
 		String str = multi.getString();
-		String title = multi.getLocal().getText("#" + lang.toUpperCase());
+		String title = multi.getString("#" + lang.toUpperCase());
 
 		if (title != null && (!str.equals(title) || lang.equals("en"))) {
 			store.add(uri, property, title, lang);
@@ -171,16 +198,24 @@ public abstract class GeonetGmd extends Geonet {
 			}
 		}
 		
-		GmdMeta metadata = meta.getMeta();
+		GmdMeta metadata = meta.getMeta();	
 		if (metadata != null) {
+			List<GmdMultiString> keywords = metadata.getKeywords();
+			GmdMultiString title = metadata.getTitle();
+			GmdMultiString desc = metadata.getDescription();
+			
 			for (String lang : getAllLangs()) {
 				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 
-				parseMulti(store, dataset, metadata.getTitle(), DCTERMS.TITLE, lang);
-				parseMulti(store, dataset, metadata.getDescription(), DCTERMS.DESCRIPTION, lang);
-				for (GmdMultiString keyword: metadata.getKeywords()) {
+				parseMulti(store, dataset, title, DCTERMS.TITLE, lang);
+				parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
+				for (GmdMultiString keyword: keywords) {
 					parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
 				}
+			}
+			GmdContact contact = meta.getContact();
+			if (contact != null) {
+				parseContact(store, dataset, contact.getName(), contact.getEmail());
 			}
 		} else {
 			logger.warn("No metadata for {}", id);
