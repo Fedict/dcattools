@@ -184,9 +184,13 @@ public class HtmlFodFin extends Html {
 	@Override
 	public void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
-			IRI dataset = store.getURI(makeDatasetURL(id).toString());
+		
+		IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
-
+		
+		store.add(dataset, RDF.TYPE, DCAT.DATASET);
+		store.add(dataset, DCTERMS.IDENTIFIER, id);
+				
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
@@ -211,8 +215,6 @@ public class HtmlFodFin extends Html {
 			Elements rows = doc.select(TABLE);
 
 			if (rows != null && !rows.isEmpty()) {
-				store.add(dataset, RDF.TYPE, DCAT.DATASET);
-				store.add(dataset, DCTERMS.IDENTIFIER, id);
 				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 				store.add(dataset, DCTERMS.TITLE, title, lang);
 				

@@ -28,6 +28,7 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,8 +36,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
-import org.eclipse.rdf4j.model.IRI;
 
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
@@ -64,29 +68,79 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String OFFSET = "startPosition";
 
 
+	// XMLBeam "projection" interfaces
+	protected interface GmdString {
+		@XBRead("gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[locale=$PARAM0]")
+		public String getText(String lang);
+	}
+	
 	protected interface GmdContact {
-		@XBRead("/gmd:organisationName/gco:CharacterString")
+		@XBRead("gmd:organisationName/gco:CharacterString")
 		public String getName();
 
-		@XBRead("/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
+		@XBRead("gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
 		public String getEmail();
 		
 	}
 	
+	protected interface GmdKeyword {
+		@XBRead("gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
+		public List<GmdString> getKeywords();
+	}
+	
+	protected interface GmdMultiString {
+		@XBRead("gco:CharacterString")
+		public String getString();
+		
+		@XBRead(".")
+		public GmdString getLocal();
+	}
+
+	protected interface GmdMeta {
+		@XBRead("gmd:citation/gmd:CI_Citation/gmd:title")
+		public GmdMultiString getTitle();
+		
+		@XBRead("gmd:abstract")
+		public GmdMultiString getDescription();
+	}
+	
 	protected interface GmdMetadata {
-		@XBRead("/gmd:fileIdentifier/gco:CharacterString")
+		@XBRead("gmd:fileIdentifier/gco:CharacterString")
 		public String getID();
 		
-		@XBRead("/gmd:contact/gmd:CI_ResponsibleParty")
+		@XBRead("gmd:contact/gmd:CI_ResponsibleParty")
 		public GmdContact getContact();
 		
-		@XBRead("/gmd:dateStamp/gco:DateTime")
-		public String getData();
+		@XBRead("gmd:dateStamp/gco:DateTime")
+		public String getTimestamp();
+		
+		@XBRead("gmd:identificationInfo/gmd:MD_DataIdentification")
+		public GmdMeta getMeta();
 	}
 	
 	protected interface GmdRoot {
 		@XBRead("//gmd:MD_Metadata")
 		public List<GmdMetadata> getEntries();
+	}
+	
+	/**
+	 * Parse and store multilingual string
+	 * 
+	 * @param store RDF store
+	 * @param uri IRI of the dataset
+	 * @param property RDF property
+	 * @param multi multi language structure
+	 * @param lang language code
+	 * @throws RepositoryException 
+	 */
+	protected void parseMulti(Storage store, IRI uri, GmdMultiString multi, IRI property, String lang) 
+			throws RepositoryException {
+		String str = multi.getString();
+		String title = multi.getLocal().getText("#" + lang.toUpperCase());
+		
+		if (title != null && (!str.equals(title) || lang.equals("en"))) {
+			store.add(uri, property, title, lang);
+		}
 	}
 	
 	/**
@@ -101,7 +155,21 @@ public abstract class GeonetGmd extends Geonet {
 			throws MalformedURLException {
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
-	} 
+		
+		store.add(dataset, RDF.TYPE, DCAT.DATASET);
+		store.add(dataset, DCTERMS.IDENTIFIER, id);
+		
+		for (String lang : getAllLangs()) {
+			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+			GmdMeta metadata = meta.getMeta();
+			if (metadata != null) {
+				parseMulti(store, dataset, metadata.getTitle(), DCTERMS.TITLE, lang);
+				parseMulti(store, dataset, metadata.getDescription(), DCTERMS.DESCRIPTION, lang);
+			} else {
+				logger.warn("No metadata for {}", id);
+			}
+		}
+	}
 	
 	/**
 	 * Generate DCAT file
@@ -116,7 +184,7 @@ public abstract class GeonetGmd extends Geonet {
 			throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
 		String xml = map.get("all").getContent();
-System.err.println(xml);
+
 		try {
 			GmdRoot m = new XBProjector().projectXMLString(xml, GmdRoot.class);
 			for (GmdMetadata e: m.getEntries()) {
