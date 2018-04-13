@@ -85,18 +85,25 @@ public abstract class GeonetGmd extends Geonet {
 	}
 		
 	public final static String XP_DATASETS = "//gmd:MD_Metadata";
+	
 	public final static String XP_ID = "gmd:fileIdentifier/gco:CharacterString";
 	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
+	
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
 	public final static String XP_DESC = "gmd:abstract";
 	public final static String XP_STR = "gco:CharacterString";
 	public final static String XP_STRLNG = "gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
+	
 	public final static String XP_CONTACT = "gmd:contact/gmd:CI_ResponsibleParty";
 	public final static String XP_ORG_NAME = "gmd:organisationName/gco:CharacterString";
 	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 	
+	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement";
+	public final static String XP_TEMP_EXT = "gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/";
+	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
+	public final static String XP_TEMP_END = XP_TEMP_EXT + "gml:endPosition";
 	
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 /*	
@@ -185,6 +192,26 @@ public abstract class GeonetGmd extends Geonet {
 		}
 	};
 */	
+	
+		/**
+	 * Parse a CKAN temporal and store it in the RDF store.
+	 *
+	 * @param store RDF store
+	 * @param uri RDF subject URI
+	 * @param node
+	 * @param field CKAN field name
+	 * @param property RDF property
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	protected void parseTemporal(Storage store, IRI uri, Node node, String field, IRI property)
+			throws RepositoryException, MalformedURLException {
+		String start = node.valueOf(XP_TEMP_BEGIN);
+		String end = node.valueOf(XP_TEMP_END);
+		
+		generateTemporal(store, uri, start, end);
+	}
+
 	/**
 	 * Parse a contact and store it in the RDF store
 	 *
@@ -230,7 +257,6 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	protected void parseMulti(Storage store, IRI uri, Node node, IRI property, String lang) 
 			throws RepositoryException {
-
 		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() +"']");
 
 		if (txt == null || txt.isEmpty()) {
@@ -246,8 +272,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * Generate DCAT dataset
 	 * 
 	 * @param store 
-	 * @param id 
-	 * @param meta 
+	 * @param node 
 	 * @throws java.net.MalformedURLException 
 	 */
 	protected void generateDataset(Storage store, Node node) 
@@ -260,7 +285,7 @@ public abstract class GeonetGmd extends Geonet {
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
 		String date = node.valueOf(XP_TSTAMP);
-		if (date != null) {
+		if (date != null && !date.isEmpty()) {
 			try {
 				store.add(dataset, DCTERMS.MODIFIED, DATEFMT.parse(date));
 			} catch (ParseException ex) {

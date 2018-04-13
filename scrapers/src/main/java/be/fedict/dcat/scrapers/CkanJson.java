@@ -148,12 +148,10 @@ public abstract class CkanJson extends Ckan {
 	 * @param obj JsonObject
 	 * @param field CKAN field name
 	 * @param property RDF property
-	 * @param lang language
 	 * @throws RepositoryException
 	 * @throws MalformedURLException
 	 */
-	protected void parseTemporal(Storage store, IRI uri, JsonObject obj,
-			String field, IRI property, String lang)
+	protected void parseTemporal(Storage store, IRI uri, JsonObject obj, String field, IRI property)
 			throws RepositoryException, MalformedURLException {
 		String s = obj.getString(field, "");
 		generateTemporal(store, uri, s, YEAR_PAT, "-");
