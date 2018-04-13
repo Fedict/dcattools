@@ -97,19 +97,19 @@ public class CkanVlaanderen extends CkanJson {
 					parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.COVERAGE, lang);
 					break;
 				case CkanVlaanderen.TIMECOVERAGE:
-					parseTemporal(store, uri, obj, CkanJson.VALUE, DCTERMS.TEMPORAL);
+					parseTemporal(store, uri, obj, CkanJson.VALUE);
 					break;
 				case CkanVlaanderen.TIMECOVERAGE2:
-					parseTemporal(store, uri, obj, CkanJson.VALUE, DCTERMS.TEMPORAL);
+					parseTemporal(store, uri, obj, CkanJson.VALUE);
 					break;
 				case CkanVlaanderen.METADATA_REQ:
 					parseURI(store, uri, obj, CkanJson.VALUE, DCAT.LANDING_PAGE);
 					break;
 				case CkanVlaanderen.CONTACT:
-					parseContact(store, uri, obj, CkanJson.VALUE, "", DCAT.CONTACT_POINT);
+					parseContact(store, uri, obj, CkanJson.VALUE, "");
 					break;
 				case CkanVlaanderen.RESPONSABLE:
-					parseContact(store, uri, obj, CkanJson.VALUE, "", DCAT.CONTACT_POINT);
+					parseContact(store, uri, obj, CkanJson.VALUE, "");
 					break;
 				default:
 					break;

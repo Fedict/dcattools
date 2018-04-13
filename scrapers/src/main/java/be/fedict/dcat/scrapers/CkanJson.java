@@ -147,11 +147,10 @@ public abstract class CkanJson extends Ckan {
 	 * @param uri RDF subject URI
 	 * @param obj JsonObject
 	 * @param field CKAN field name
-	 * @param property RDF property
 	 * @throws RepositoryException
 	 * @throws MalformedURLException
 	 */
-	protected void parseTemporal(Storage store, IRI uri, JsonObject obj, String field, IRI property)
+	protected void parseTemporal(Storage store, IRI uri, JsonObject obj, String field)
 			throws RepositoryException, MalformedURLException {
 		String s = obj.getString(field, "");
 		generateTemporal(store, uri, s, YEAR_PAT, "-");
@@ -239,11 +238,10 @@ public abstract class CkanJson extends Ckan {
 	 * @param obj JsonObject
 	 * @param field CKAN field name
 	 * @param field2 CKAN field email
-	 * @param property RDF property
 	 * @throws RepositoryException
 	 */
 	protected void parseContact(Storage store, IRI uri, JsonObject obj,
-			String field, String field2, IRI property) throws RepositoryException {
+			String field, String field2) throws RepositoryException {
 		String name = obj.getString(field, "");
 		String email = obj.getString(field2, "");
 
@@ -254,7 +252,7 @@ public abstract class CkanJson extends Ckan {
 			JsonReader json = Json.createReader(new StringReader(name));
 			JsonArray arr = json.readArray();
 			for (JsonObject o : arr.getValuesAs(JsonObject.class)) {
-				parseContact(store, uri, o, CkanJson.NAME, field2, property);
+				parseContact(store, uri, o, CkanJson.NAME, field2);
 			}
 			return;
 		}
@@ -280,8 +278,8 @@ public abstract class CkanJson extends Ckan {
 		parseDate(store, uri, json, CkanJson.META_CREATED, DCTERMS.ISSUED);
 		parseDate(store, uri, json, CkanJson.META_MODIFIED, DCTERMS.MODIFIED);
 
-		parseContact(store, uri, json, CkanJson.AUTHOR, CkanJson.AUTHOR_EML, DCAT.CONTACT_POINT);
-		parseContact(store, uri, json, CkanJson.MAINT, CkanJson.MAINT_EML, DCAT.CONTACT_POINT);
+		parseContact(store, uri, json, CkanJson.AUTHOR, CkanJson.AUTHOR_EML);
+		parseContact(store, uri, json, CkanJson.MAINT, CkanJson.MAINT_EML);
 	}
 
 	/**

@@ -199,12 +199,10 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param store RDF store
 	 * @param uri RDF subject URI
 	 * @param node
-	 * @param field CKAN field name
-	 * @param property RDF property
 	 * @throws RepositoryException
 	 * @throws MalformedURLException
 	 */
-	protected void parseTemporal(Storage store, IRI uri, Node node, String field, IRI property)
+	protected void parseTemporal(Storage store, IRI uri, Node node)
 			throws RepositoryException, MalformedURLException {
 		String start = node.valueOf(XP_TEMP_BEGIN);
 		String end = node.valueOf(XP_TEMP_END);
@@ -313,6 +311,8 @@ public abstract class GeonetGmd extends Geonet {
 				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
 			}
 		}
+		Node range = node.selectSingleNode(XP_TEMPORAL);
+		parseTemporal(store, dataset, node);
 		
 		Node contact = node.selectSingleNode(XP_CONTACT);
 		if (contact != null) {
