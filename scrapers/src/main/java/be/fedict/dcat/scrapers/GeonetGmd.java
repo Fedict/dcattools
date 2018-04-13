@@ -32,14 +32,20 @@ import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.xml.xpath.XPathFactory;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentFactory;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -51,10 +57,6 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.xmlbeam.XBProjector;
-import org.xmlbeam.annotation.XBRead;
-import org.xmlbeam.config.DefaultXMLFactoriesConfig;
-import org.xmlbeam.config.XMLFactoriesConfig;
 
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
@@ -76,8 +78,28 @@ public abstract class GeonetGmd extends Geonet {
 			+ "&maxRecords=150";
 	public final static String OFFSET = "startPosition";
 
-	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	private final static Map<String,String> NS = new HashMap<>();
+	static {
+		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
+		NS.put("gco", "http://www.isotc211.org/2005/gco");
+	}
+		
+	public final static String XP_DATASETS = "//gmd:MD_Metadata";
+	public final static String XP_ID = "gmd:fileIdentifier/gco:CharacterString";
+	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
+	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
+	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
+	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
+	public final static String XP_DESC = "gmd:abstract";
+	public final static String XP_STR = "gco:CharacterString";
+	public final static String XP_STRLNG = "gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
+	public final static String XP_CONTACT = "gmd:contact/gmd:CI_ResponsibleParty";
+	public final static String XP_ORG_NAME = "gmd:organisationName/gco:CharacterString";
+	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 	
+	
+	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+/*	
 	// XMLBeam "projection" interfaces
 	protected interface GmdMultiString {
 		@XBRead("gco:CharacterString")
@@ -149,32 +171,34 @@ public abstract class GeonetGmd extends Geonet {
 		@XBRead("gmd:distributionInfo/gmd:MD_Distribution")
 		public List<GmdDist> getDistributions();
 	}
-	
+/*	
 	protected interface GmdRoot {
 		@XBRead("//gmd:MD_Metadata")
 		public List<GmdDataset> getDatasets();
 	}
-	
-	// Saxon XPath parser is 3x faster than the JDK's
+*/	
+/*	// Saxon XPath parser is 3x faster than the JDK's
 	protected final XMLFactoriesConfig xmlcfg = new DefaultXMLFactoriesConfig() {
 		@Override
 		public XPathFactory createXPathFactory() {
 			return new net.sf.saxon.xpath.XPathFactoryImpl();
 		}
 	};
-	
+*/	
 	/**
 	 * Parse a contact and store it in the RDF store
 	 *
 	 * @param store RDF store
 	 * @param uri RDF subject URI
-	 * @param name contact name
-	 * @param email contact
+	 * @param contact contact DOM node
 	 * @throws RepositoryException
 	 */
-	protected void parseContact(Storage store, IRI uri, String name, String email)
-			throws RepositoryException {
+	protected void parseContact(Storage store, IRI uri, Node contact) throws RepositoryException {
 		String v = "";
+		
+		String name = contact.valueOf(XP_ORG_NAME);
+		String email = contact.valueOf(XP_EMAIL);
+		
 		try {
 			v = makeOrgURL(makeHashId(name + email)).toString();
 		} catch (MalformedURLException e) {
@@ -199,19 +223,23 @@ public abstract class GeonetGmd extends Geonet {
 	 * 
 	 * @param store RDF store
 	 * @param uri IRI of the dataset
+	 * @param node multilingual DOM node
 	 * @param property RDF property
-	 * @param multi multi language structure
 	 * @param lang language code
 	 * @throws RepositoryException 
 	 */
-	protected void parseMulti(Storage store, IRI uri, GmdMultiString multi, IRI property, String lang) 
+	protected void parseMulti(Storage store, IRI uri, Node node, IRI property, String lang) 
 			throws RepositoryException {
-		String str = multi.getString();
-		String title = multi.getString("#" + lang.toUpperCase());
 
-		if (title != null && (!str.equals(title) || lang.equals("en"))) {
-			store.add(uri, property, title, lang);
+		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() +"']");
+
+		if (txt == null || txt.isEmpty()) {
+			return;
+		}	
+		if (!lang.equals("en") && txt.equals(node.valueOf(XP_STR))) {
+			return;
 		}
+		store.add(uri, property, txt, lang);
 	}
 	
 	/**
@@ -222,15 +250,16 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param meta 
 	 * @throws java.net.MalformedURLException 
 	 */
-	protected void generateDataset(Storage store, String id, GmdDataset meta) 
+	protected void generateDataset(Storage store, Node node) 
 			throws MalformedURLException {
+		String id = node.valueOf(XP_ID);
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
 		logger.info("Generating dataset {}", dataset.toString());
 		
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
-		String date = meta.getTimestamp();
+		String date = node.valueOf(XP_TSTAMP);
 		if (date != null) {
 			try {
 				store.add(dataset, DCTERMS.MODIFIED, DATEFMT.parse(date));
@@ -239,31 +268,33 @@ public abstract class GeonetGmd extends Geonet {
 			}
 		}
 		
-		GmdMeta metadata = meta.getMeta();	
+		Node metadata = node.selectSingleNode(XP_META);
 		if (metadata == null) {
 			logger.warn("No metadata for {}", id);
 			return;
 		}	
 
-		List<GmdMultiString> keywords = metadata.getKeywords();
-		GmdMultiString title = metadata.getTitle();
-		GmdMultiString desc = metadata.getDescription();
+		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
+
+		Node title = metadata.selectSingleNode(XP_TITLE);
+		Node desc = metadata.selectSingleNode(XP_DESC);
 
 		for (String lang : getAllLangs()) {
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 
 			parseMulti(store, dataset, title, DCTERMS.TITLE, lang);
 			parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
-			for (GmdMultiString keyword : keywords) {
+			for (Node keyword : keywords) {
 				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
 			}
 		}
-		GmdContact contact = meta.getContact();
+		
+		Node contact = node.selectSingleNode(XP_CONTACT);
 		if (contact != null) {
-			parseContact(store, dataset, contact.getName(), contact.getEmail());
+			parseContact(store, dataset, contact);
 		}
 		
-		List<GmdDist> dists = meta.getDistributions();
+	//	List<GmdDist> dists = meta.getDistributions();
 	}
 	
 	/**
@@ -280,13 +311,17 @@ public abstract class GeonetGmd extends Geonet {
 		Map<String, Page> map = cache.retrievePage(getBase());
 		String xml = map.get("all").getContent();
 
+		SAXReader sax = new SAXReader();
+
 		try {
-			GmdRoot m = new XBProjector(xmlcfg).projectXMLString(xml, GmdRoot.class);
-			for (GmdDataset e: m.getDatasets()) {
-				generateDataset(store, e.getID(), e);
+			DocumentFactory.getInstance().setXPathNamespaceURIs(NS);
+			Document doc = sax.read(new StringReader(xml));
+			List<Node> datasets = doc.selectNodes(XP_DATASETS);
+			for (Node dataset: datasets) {
+				generateDataset(store, dataset);
 			}
-		} catch (IOException ex) {
-			logger.error("Error projecting XML");
+		} catch (DocumentException ex) {
+			logger.error("Error parsing XML");
 			throw new RepositoryException(ex);
 		}
 	
