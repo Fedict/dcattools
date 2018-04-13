@@ -81,6 +81,7 @@ public abstract class GeonetGmd extends Geonet {
 	private final static Map<String,String> NS = new HashMap<>();
 	static {
 		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
+		NS.put("gml", "http://www.opengis.net/gml");
 		NS.put("gco", "http://www.isotc211.org/2005/gco");
 	}
 		
@@ -311,9 +312,10 @@ public abstract class GeonetGmd extends Geonet {
 				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
 			}
 		}
-		Node range = node.selectSingleNode(XP_TEMPORAL);
-		parseTemporal(store, dataset, node);
-		
+		Node range = metadata.selectSingleNode(XP_TEMPORAL);
+		if (range != null) {
+			parseTemporal(store, dataset, range);
+		}
 		Node contact = node.selectSingleNode(XP_CONTACT);
 		if (contact != null) {
 			parseContact(store, dataset, contact);
