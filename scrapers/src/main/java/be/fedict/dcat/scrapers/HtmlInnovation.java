@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -188,7 +187,7 @@ public class HtmlInnovation extends Html {
 
 
 	/**
-	 * HTML scraper Oostende DO2.
+	 * HTML scraper InnovationData.
 	 *
 	 * @param caching DB cache file
 	 * @param storage RDF back-end
