@@ -39,10 +39,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import javax.xml.xpath.XPathFactory;
-import javax.xml.xpath.XPathFactoryConfigurationException;
-import net.sf.saxon.lib.NamespaceConstant;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -57,7 +54,6 @@ import org.slf4j.LoggerFactory;
 import org.xmlbeam.XBProjector;
 import org.xmlbeam.annotation.XBRead;
 import org.xmlbeam.config.DefaultXMLFactoriesConfig;
-import org.xmlbeam.config.DefaultXMLFactoriesConfig.NamespacePhilosophy;
 import org.xmlbeam.config.XMLFactoriesConfig;
 
 /**
@@ -84,53 +80,53 @@ public abstract class GeonetGmd extends Geonet {
 	
 	// XMLBeam "projection" interfaces
 	protected interface GmdMultiString {
-		@XBRead("./gco:CharacterString")
+		@XBRead("gco:CharacterString")
 		public String getString();
 		
-		@XBRead("./gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale=$PARAM0]")
+		@XBRead("gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale=$PARAM0]")
 		public String getString(String lang);
 	}
 	
 	protected interface GmdContact {
-		@XBRead("./gmd:organisationName/gco:CharacterString")
+		@XBRead("gmd:organisationName/gco:CharacterString")
 		public String getName();
 
-		@XBRead("./gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
+		@XBRead("gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
 		public String getEmail();		
 	}
 	
 	protected interface GmdLink {
-		@XBRead("./gmd:linkage/gmd:URL")
+		@XBRead("gmd:linkage/gmd:URL")
 		public String getHref();
 		
-		@XBRead("./gmd:description")
+		@XBRead("gmd:description")
 		public GmdMultiString getDescription();
 	}
 	
 	protected interface GmdDist {
-		@XBRead("./gmd:distributionFormat/gmd:MD_Format/gmd:name")
+		@XBRead("gmd:distributionFormat/gmd:MD_Format/gmd:name")
 		public GmdMultiString getFormat();
 		
-		@XBRead("./gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource")
+		@XBRead("gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource")
 		public List<GmdLink> getLinks();
 	}
 	
 	protected interface GmdMeta {
-		@XBRead("./gmd:citation/gmd:CI_Citation/gmd:title")
+		@XBRead("gmd:citation/gmd:CI_Citation/gmd:title")
 		public GmdMultiString getTitle();
 		
-		@XBRead("./gmd:abstract")
+		@XBRead("gmd:abstract")
 		public GmdMultiString getDescription();
 		
-		@XBRead("./gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
+		@XBRead("gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
 		public List<GmdMultiString> getKeywords();
 	}
 			
 	public interface GmdDuration {
-		@XBRead("./gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
+		@XBRead("gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
 		public String getStart();
 
-		@XBRead("./gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition")
+		@XBRead("gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition")
 		public String getEnd();
 	}
 		
