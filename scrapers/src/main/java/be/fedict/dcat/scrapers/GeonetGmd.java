@@ -105,9 +105,10 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TEMP_EXT = "gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/";
 	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
 	public final static String XP_TEMP_END = XP_TEMP_EXT + "gml:endPosition";
-	
+
+		
 	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
-	public final static String XP_TRANSF = "gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:CI_OnlineResource";
+	public final static String XP_TRANSF = XP_DISTS + "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
 	public final static String XP_DIST_NAME = "gmd:name";
 	public final static String XP_DIST_DESC = "gmd:description";
@@ -176,6 +177,9 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	protected void parseMulti(Storage store, IRI uri, Node node, IRI property, String lang) 
 			throws RepositoryException {
+		if (node == null) {
+			return;
+		}
 		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() +"']");
 
 		if (txt == null || txt.isEmpty()) {
@@ -186,7 +190,15 @@ public abstract class GeonetGmd extends Geonet {
 		}
 		store.add(uri, property, txt, lang);
 	}
-	
+
+	/**
+	 * Generate distribution
+	 * 
+	 * @param store
+	 * @param dataset
+	 * @param node
+	 * @throws MalformedURLException 
+	 */
 	protected void generateDist(Storage store, IRI dataset, Node node) 
 												throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
@@ -195,7 +207,7 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 			
-		String id = dataset.toString() + "/" + makeHashId(url);
+		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url);
         IRI dist = store.getURI(makeDistURL(id).toString());
         logger.debug("Generating distribution {}", dist.toString());
 		
