@@ -25,8 +25,11 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Storage;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
+import org.dom4j.Node;
 
 /**
  * Scraper for the NGI Geo.be portal

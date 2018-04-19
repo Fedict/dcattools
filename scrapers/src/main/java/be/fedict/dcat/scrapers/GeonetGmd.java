@@ -106,96 +106,16 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
 	public final static String XP_TEMP_END = XP_TEMP_EXT + "gml:endPosition";
 	
+	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
+	public final static String XP_TRANSF = "gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:CI_OnlineResource";
+	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
+	public final static String XP_DIST_NAME = "gmd:name";
+	public final static String XP_DIST_DESC = "gmd:description";
+	
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-/*	
-	// XMLBeam "projection" interfaces
-	protected interface GmdMultiString {
-		@XBRead("gco:CharacterString")
-		public String getString();
-		
-		@XBRead("gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale=$PARAM0]")
-		public String getString(String lang);
-	}
 	
-	protected interface GmdContact {
-		@XBRead("gmd:organisationName/gco:CharacterString")
-		public String getName();
-
-		@XBRead("gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString")		
-		public String getEmail();		
-	}
-	
-	protected interface GmdLink {
-		@XBRead("gmd:linkage/gmd:URL")
-		public String getHref();
-		
-		@XBRead("gmd:description")
-		public GmdMultiString getDescription();
-	}
-	
-	protected interface GmdDist {
-		@XBRead("gmd:distributionFormat/gmd:MD_Format/gmd:name")
-		public GmdMultiString getFormat();
-		
-		@XBRead("gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource")
-		public List<GmdLink> getLinks();
-	}
-	
-	protected interface GmdMeta {
-		@XBRead("gmd:citation/gmd:CI_Citation/gmd:title")
-		public GmdMultiString getTitle();
-		
-		@XBRead("gmd:abstract")
-		public GmdMultiString getDescription();
-		
-		@XBRead("gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword")
-		public List<GmdMultiString> getKeywords();
-	}
-			
-	public interface GmdDuration {
-		@XBRead("gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:beginPosition")
-		public String getStart();
-
-		@XBRead("gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/gml:endPosition")
-		public String getEnd();
-	}
-		
-	protected interface GmdDataset {
-		@XBRead("gmd:fileIdentifier/gco:CharacterString")
-		public String getID();
-		
-		@XBRead("gmd:contact/gmd:CI_ResponsibleParty")
-		public GmdContact getContact();
-		
-		@XBRead("gmd:dateStamp/gco:DateTime")
-		public String getTimestamp();
-		
-		@XBRead("gmd:identificationInfo/gmd:MD_DataIdentification")
-		public GmdMeta getMeta();
-		
-		@XBRead("gmd:extent/gmd:EX_Extent/gmd:temporalElement")
-		public GmdDuration getDuration();
-			
-		@XBRead("gmd:distributionInfo/gmd:MD_Distribution")
-		public List<GmdDist> getDistributions();
-	}
-/*	
-	protected interface GmdRoot {
-		@XBRead("//gmd:MD_Metadata")
-		public List<GmdDataset> getDatasets();
-	}
-*/	
-/*	// Saxon XPath parser is 3x faster than the JDK's
-	protected final XMLFactoriesConfig xmlcfg = new DefaultXMLFactoriesConfig() {
-		@Override
-		public XPathFactory createXPathFactory() {
-			return new net.sf.saxon.xpath.XPathFactoryImpl();
-		}
-	};
-*/	
-	
-		/**
-	 * Parse a CKAN temporal and store it in the RDF store.
+	/**
+	 * Parse a temporal and store it in the RDF store.
 	 *
 	 * @param store RDF store
 	 * @param uri RDF subject URI
@@ -267,18 +187,49 @@ public abstract class GeonetGmd extends Geonet {
 		store.add(uri, property, txt, lang);
 	}
 	
+	protected void generateDist(Storage store, IRI dataset, Node node) 
+												throws MalformedURLException {
+		String url = node.valueOf(XP_DIST_URL);
+		if (url == null || url.isEmpty() || url.equals("undefined")) {
+			logger.debug("No url for distribution");
+			return;
+		}
+			
+		String id = dataset.toString() + "/" + makeHashId(url);
+        IRI dist = store.getURI(makeDistURL(id).toString());
+        logger.debug("Generating distribution {}", dist.toString());
+		
+		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+		store.add(dist, DCAT.ACCESS_URL, store.getURI(url));
+
+		Node title = node.selectSingleNode(XP_DIST_NAME);
+		Node desc = node.selectSingleNode(XP_DIST_DESC);
+		
+		for (String lang : getAllLangs()) {
+			parseMulti(store, dist, title, DCTERMS.TITLE, lang);
+			parseMulti(store, dist, desc, DCTERMS.DESCRIPTION, lang);
+		}
+	}
+	
 	/**
 	 * Generate DCAT dataset
 	 * 
+	 * @param dataset
+	 * @param id
 	 * @param store 
 	 * @param node 
-	 * @throws java.net.MalformedURLException 
+	 * @throws MalformedURLException 
 	 */
-	protected void generateDataset(Storage store, Node node) 
-			throws MalformedURLException {
-		String id = node.valueOf(XP_ID);
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
+	protected void generateDataset(IRI dataset, String id, Storage store, Node node) 
+												throws MalformedURLException {
 		logger.info("Generating dataset {}", dataset.toString());
+		
+		Node metadata = node.selectSingleNode(XP_META);
+		if (metadata == null) {
+			logger.warn("No metadata for {}", id);
+			return;
+		}	
 		
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
@@ -292,12 +243,6 @@ public abstract class GeonetGmd extends Geonet {
 			}
 		}
 		
-		Node metadata = node.selectSingleNode(XP_META);
-		if (metadata == null) {
-			logger.warn("No metadata for {}", id);
-			return;
-		}	
-
 		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
 
 		Node title = metadata.selectSingleNode(XP_TITLE);
@@ -321,7 +266,10 @@ public abstract class GeonetGmd extends Geonet {
 			parseContact(store, dataset, contact);
 		}
 		
-	//	List<GmdDist> dists = meta.getDistributions();
+		List<Node> dists = node.selectNodes(XP_TRANSF);
+		for (Node dist: dists) {
+			generateDist(store, dataset, dist);
+		}
 	}
 	
 	/**
@@ -343,9 +291,12 @@ public abstract class GeonetGmd extends Geonet {
 		try {
 			DocumentFactory.getInstance().setXPathNamespaceURIs(NS);
 			Document doc = sax.read(new StringReader(xml));
+			
 			List<Node> datasets = doc.selectNodes(XP_DATASETS);
 			for (Node dataset: datasets) {
-				generateDataset(store, dataset);
+				String id = dataset.valueOf(XP_ID);
+				IRI iri = store.getURI(makeDatasetURL(id).toString());
+				generateDataset(iri, id, store, dataset);
 			}
 		} catch (DocumentException ex) {
 			logger.error("Error parsing XML");

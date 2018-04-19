@@ -31,6 +31,7 @@ import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.dom4j.Node;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
