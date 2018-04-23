@@ -30,6 +30,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.dom4j.Node;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 
 /**
  * Scraper for the NGI Geo.be portal
@@ -37,7 +39,15 @@ import org.dom4j.Node;
  * @author Bart Hanssens
  */
 public class GeonetNGI extends GeonetGmd {
+	private final static String LANDING = "https://www.geo.be/#!/catalog/details/";
 	
+	@Override
+	protected void generateDataset(IRI dataset, String id, Storage store, Node node) 
+												throws MalformedURLException {
+		super.generateDataset(dataset, id, store, node);
+		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(LANDING + id));
+	}
+
 	/**
 	 * Geonet scraper for NGI geo.be portal
 	 * 

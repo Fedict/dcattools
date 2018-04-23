@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2018, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -94,6 +94,8 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
 	public final static String XP_DESC = "gmd:abstract";
+	public final static String XP_PURP = "gmd:purpose";
+	
 	public final static String XP_STR = "gco:CharacterString";
 	public final static String XP_STRLNG = "gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
 	
@@ -106,12 +108,21 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
 	public final static String XP_TEMP_END = XP_TEMP_EXT + "gml:endPosition";
 
-		
+	public final static String XP_QUAL = "gmd:dataQualityInfo/gmd:DQ_DataQuality";
+	public final static String XP_QUAL_LIN = XP_QUAL + "/gmd:lineage/gmd:LI_Lineage/gmd:statement";
+	public final static String XP_QUAL_TYPE = XP_QUAL + "/gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue";
+	
 	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
 	public final static String XP_TRANSF = XP_DISTS + "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
+	public final static String XP_FORMAT = XP_DISTS + "/gmd:distributionFormat/gmd:MD_Format/gmd:name";
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
 	public final static String XP_DIST_NAME = "gmd:name";
 	public final static String XP_DIST_DESC = "gmd:description";
+	
+	public final static String XP_MAINT = "gmd:resourceMaintenance/gmd:MD_MaintenanceInformation";
+	public final static String XP_FREQ = XP_MAINT + "/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue";
+	
+	public final static String INSPIRE_TYPE = "http://inspire.ec.europa.eu/metadatacodelist/ResourceType/";
 	
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	
@@ -259,7 +270,7 @@ public abstract class GeonetGmd extends Geonet {
 
 		Node title = metadata.selectSingleNode(XP_TITLE);
 		Node desc = metadata.selectSingleNode(XP_DESC);
-
+		
 		for (String lang : getAllLangs()) {
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 
@@ -273,6 +284,17 @@ public abstract class GeonetGmd extends Geonet {
 		if (range != null) {
 			parseTemporal(store, dataset, range);
 		}
+		
+		String dtype = node.valueOf(XP_QUAL_TYPE);
+		if (dtype != null) {
+			store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + dtype));
+		}
+		
+		String freq = metadata.valueOf(XP_FREQ);
+		if (freq != null) {
+			store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
+		}
+		
 		Node contact = node.selectSingleNode(XP_CONTACT);
 		if (contact != null) {
 			parseContact(store, dataset, contact);
