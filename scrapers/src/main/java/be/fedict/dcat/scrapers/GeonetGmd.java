@@ -83,6 +83,7 @@ public abstract class GeonetGmd extends Geonet {
 		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
 		NS.put("gml", "http://www.opengis.net/gml");
 		NS.put("gco", "http://www.isotc211.org/2005/gco");
+		NS.put("srv", "http://www.isotc211.org/2005/srv");
 	}
 		
 	public final static String XP_DATASETS = "//gmd:MD_Metadata";
@@ -121,6 +122,8 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_MAINT = "gmd:resourceMaintenance/gmd:MD_MaintenanceInformation";
 	public final static String XP_FREQ = XP_MAINT + "/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue";
+	
+	public final static String SERV_TYPE = "srv:serviceType/gco:LocalName";
 	
 	public final static String INSPIRE_TYPE = "http://inspire.ec.europa.eu/metadatacodelist/ResourceType/";
 	
@@ -253,6 +256,15 @@ public abstract class GeonetGmd extends Geonet {
 			logger.warn("No metadata for {}", id);
 			return;
 		}	
+	
+		String dtype = node.valueOf(XP_QUAL_TYPE);
+		if (dtype != null) {
+			if (!dtype.equals("dataset")) {
+				logger.warn("Not a dataset: {} is {}", id, dtype);
+				return;
+			}
+			store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + dtype));
+		}
 		
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
@@ -283,11 +295,6 @@ public abstract class GeonetGmd extends Geonet {
 		Node range = metadata.selectSingleNode(XP_TEMPORAL);
 		if (range != null) {
 			parseTemporal(store, dataset, range);
-		}
-		
-		String dtype = node.valueOf(XP_QUAL_TYPE);
-		if (dtype != null) {
-			store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + dtype));
 		}
 		
 		String freq = metadata.valueOf(XP_FREQ);
