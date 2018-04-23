@@ -27,7 +27,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/337>
 	skos:exactMatch <http://org.belgif.be/cbe/org/0349_294_624#id> ;
-	skos:prefLabel "Royal Observatory of Belgium"@en, "Königliche Sternwarte von Belgien"@de,  Koninklijke Sterrenwacht van België"@nl, "Observatoire royal de Belgique"@fr ;
+	skos:prefLabel "Royal Observatory of Belgium"@en, "Königliche Sternwarte von Belgien"@de,  "Koninklijke Sterrenwacht van België"@nl, "Observatoire royal de Belgique"@fr ;
 	skos:altLabel "Royal Observatory of Belgium"@en .
 
 <http://data.gov.be/en/taxonomy/term/197>
