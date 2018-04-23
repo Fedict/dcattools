@@ -101,7 +101,7 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_STRLNG = "gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
 	
 	public final static String XP_CONTACT = "gmd:contact/gmd:CI_ResponsibleParty";
-	public final static String XP_ORG_NAME = "gmd:organisationName/gco:CharacterString";
+	public final static String XP_ORG_NAME = "gmd:organisationName";
 	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 	
 	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement";
@@ -157,7 +157,7 @@ public abstract class GeonetGmd extends Geonet {
 	protected void parseContact(Storage store, IRI uri, Node contact) throws RepositoryException {
 		String v = "";
 		
-		String name = contact.valueOf(XP_ORG_NAME);
+		Node name = contact.selectSingleNode(XP_ORG_NAME);
 		String email = contact.valueOf(XP_EMAIL);
 		
 		try {
@@ -166,12 +166,12 @@ public abstract class GeonetGmd extends Geonet {
 			logger.error("Could not generate hash url", e);
 		}
 
-		if (!name.isEmpty() || !email.isEmpty()) {
+		if (name != null || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
 			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
-			if (!name.isEmpty()) {
-				store.add(vcard, VCARD4.HAS_FN, name);
+			for (String lang : getAllLangs()) {
+				parseMulti(store, vcard, name, VCARD4.HAS_FN, lang);
 			}
 			if (!email.isEmpty()) {
 				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
@@ -194,12 +194,14 @@ public abstract class GeonetGmd extends Geonet {
 		if (node == null) {
 			return;
 		}
+		String txten = node.valueOf(XP_STR);
 		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() +"']");
 
 		if (txt == null || txt.isEmpty()) {
+			store.add(uri, property, txten, "en");
 			return;
 		}	
-		if (!lang.equals("en") && txt.equals(node.valueOf(XP_STR))) {
+		if (!lang.equals("en") && txt.equals(txten)) {
 			return;
 		}
 		store.add(uri, property, txt, lang);
