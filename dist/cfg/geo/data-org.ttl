@@ -1,0 +1,41 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/147>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0349_294_822#id> ;
+	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr ;
+	skos:altLabel "Royal Meteorological Institute of Belgium"@en .
+	
+<http://data.gov.be/en/taxonomy/term/157>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0216_755_012#id> ;
+	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
+	skos:altLabel "National Geographic Institute"@en .
+	
+<http://data.gov.be/en/taxonomy/term/325>
+	skos:exactMatch <http://org.belgif.be/cbe/site/2_138_196_041#id> ;
+	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
+	skos:altLabel "Belgian Interregional Environment Agency (IRCEL - CELINE)"@en .
+
+<http://data.gov.be/en/taxonomy/term/76>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0314_595_348#id> ;
+	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr ;
+	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en .
+
+<http://data.gov.be/en/taxonomy/term/162> 
+	skos:exactMatch <http://org.belgif.be/cbe/org/0308_357_159#id> ;
+	skos:prefLabel "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
+	skos:altLabel "FPS Finances - General Administration of Patrimonial Documentation (GAPD)"@en .
+	
+<http://data.gov.be/en/taxonomy/term/337>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0349_294_624#id> ;
+	skos:prefLabel "Royal Observatory of Belgium"@en, "Königliche Sternwarte von Belgien"@de,  Koninklijke Sterrenwacht van België"@nl, "Observatoire royal de Belgique"@fr ;
+	skos:altLabel "Royal Observatory of Belgium"@en .
+
+<http://data.gov.be/en/taxonomy/term/197>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0353_070_496#id> ;
+	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, "Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, "Königliches Belgisches Institut für Naturwissenschaften"@de ;
+	skos:altLabel "Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment, GeoCell"@en, "Royal Belgian Institute of Natural Sciences, Directorate Earth and History of life, Geological Survey of Belgium"@en .
+
+<http://data.gov.be/en/taxonomy/term/338>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0349_010_750#id> ;
+	skos:prefLabel "Royal Belgian Institute for Space Aeronomy (IASB-BIRA)"@en, "Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de, "Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, "Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ;
+	skos:altLabel "Royal Belgian Institute for Space Aeronomy (IASB-BIRA)"@en .
