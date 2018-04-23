@@ -189,22 +189,23 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param lang language code
 	 * @throws RepositoryException 
 	 */
-	protected void parseMulti(Storage store, IRI uri, Node node, IRI property, String lang) 
+	protected boolean parseMulti(Storage store, IRI uri, Node node, IRI property, String lang) 
 			throws RepositoryException {
 		if (node == null) {
-			return;
+			return false;
 		}
 		String txten = node.valueOf(XP_STR);
 		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() +"']");
 
 		if (txt == null || txt.isEmpty()) {
 			store.add(uri, property, txten, "en");
-			return;
+			return false;
 		}	
 		if (!lang.equals("en") && txt.equals(txten)) {
-			return;
+			return false;
 		}
 		store.add(uri, property, txt, lang);
+		return true;
 	}
 
 	/**
@@ -231,7 +232,7 @@ public abstract class GeonetGmd extends Geonet {
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
 		store.add(dist, DCTERMS.FORMAT, format);
-		store.add(dist, DCAT.ACCESS_URL, store.getURI(url));
+		store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(url));
 		
 		Node title = node.selectSingleNode(XP_DIST_NAME);
 		Node desc = node.selectSingleNode(XP_DIST_DESC);
@@ -288,9 +289,9 @@ public abstract class GeonetGmd extends Geonet {
 		Node desc = metadata.selectSingleNode(XP_DESC);
 		
 		for (String lang : getAllLangs()) {
-			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-
-			parseMulti(store, dataset, title, DCTERMS.TITLE, lang);
+			if (parseMulti(store, dataset, title, DCTERMS.TITLE, lang)) {
+				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));	
+			}
 			parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
 			for (Node keyword : keywords) {
 				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
