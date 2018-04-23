@@ -115,7 +115,7 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
 	public final static String XP_TRANSF = XP_DISTS + "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
-	public final static String XP_FORMAT = XP_DISTS + "/gmd:distributionFormat/gmd:MD_Format/gmd:name";
+	public final static String XP_DIST_FMT = XP_DISTS + "/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString";
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
 	public final static String XP_DIST_NAME = "gmd:name";
 	public final static String XP_DIST_DESC = "gmd:description";
@@ -211,24 +211,26 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param store
 	 * @param dataset
 	 * @param node
+	 * @param format
 	 * @throws MalformedURLException 
 	 */
-	protected void generateDist(Storage store, IRI dataset, Node node) 
+	protected void generateDist(Storage store, IRI dataset, Node node, String format) 
 												throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
 			logger.debug("No url for distribution");
 			return;
 		}
-			
+
 		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url);
         IRI dist = store.getURI(makeDistURL(id).toString());
         logger.debug("Generating distribution {}", dist.toString());
 		
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+		store.add(dist, DCTERMS.FORMAT, format);
 		store.add(dist, DCAT.ACCESS_URL, store.getURI(url));
-
+		
 		Node title = node.selectSingleNode(XP_DIST_NAME);
 		Node desc = node.selectSingleNode(XP_DIST_DESC);
 		
@@ -308,8 +310,12 @@ public abstract class GeonetGmd extends Geonet {
 		}
 		
 		List<Node> dists = node.selectNodes(XP_TRANSF);
+		if (dists == null || dists.isEmpty()) {
+			logger.warn("No dists for {}", id);
+		}
 		for (Node dist: dists) {
-			generateDist(store, dataset, dist);
+			String fmt = node.valueOf(XP_DIST_FMT);
+			generateDist(store, dataset, dist, fmt);
 		}
 	}
 	
