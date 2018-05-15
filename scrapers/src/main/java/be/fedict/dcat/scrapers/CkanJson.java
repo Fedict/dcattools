@@ -171,7 +171,9 @@ public abstract class CkanJson extends Ckan {
 			IRI property) throws RepositoryException, MalformedURLException {
 		String s = obj.getString(field, "");
 		if (!s.isEmpty()) {
-			s = s.replace(" ", "%20").replace("\\", "%5C");
+			s = s.replace(" ", "%20").replace("\\", "%5C").replace("|", "%7C")
+				.replace("[", "%5B").replace("]", "%5D")
+				.replace("{", "%7B").replace("}", "%7D");
 			URL url = new URL(s);
 			store.add(uri, property, url);
 		}
