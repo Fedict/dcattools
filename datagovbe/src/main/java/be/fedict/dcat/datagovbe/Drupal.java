@@ -159,6 +159,7 @@ public class Drupal {
      * 
      * @param s string
      * @param len maximum length
+	 * @return 
      */
     private static String ellipsis(String s, int len) {
         int cut = s.lastIndexOf(' ', len - 3);
@@ -175,8 +176,8 @@ public class Drupal {
      * @return 
      */
     private static String stripTags(String s) {
-        return s.replaceAll("<[bB][rR] ?/?>|</[pP]>", "\n")
-                .replaceAll("<[hH].?>|<[pP]>", "").trim();
+        return s.replaceAll("<[bB][rR] ?/?>|</[pP]>|</[dD][iI][vV]>", "\n")
+                .replaceAll("<[hH].?>|<[pP]>|<[dD][iI][vV]>", "").trim();
     }
     
     /**
@@ -533,14 +534,16 @@ public class Drupal {
                                                     throws RepositoryException {
         String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
         String title = stripTags(Storage.getOne(dataset, DCTERMS.TITLE, lang));
-
+		if (title.isEmpty()) {
+			logger.warn("Title for {} empty", id);
+		}
         // Just copy the title if description is empty
         String desc = Storage.getOne(dataset, DCTERMS.DESCRIPTION, lang);
         desc = (desc.isEmpty()) ? title : stripTags(desc);
         
         // Max size for Drupal title
         if (title.length() > Drupal.LEN_TITLE) {
-            logger.warn("Title {} too long", title);
+            logger.warn("Title {} for {} too long", title, id);
             title = ellipsis(title, Drupal.LEN_TITLE);
         }
         
