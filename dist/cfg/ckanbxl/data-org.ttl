@@ -14,6 +14,11 @@
 	skos:prefLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-urban> ;
 	skos:altLabel "Bruxelles Développement urbain / Brussel Stedelijke Ontwikkeling", "{u'fr': u'Bruxelles D\xe9veloppement urbain', u'en': u'Brussels Urban Development', u'nl': u'Brussel Stedelijke Ontwikkeling'}" .
+
+<http://data.gov.be/en/taxonomy/term/342>
+	skos:prefLabel "Brussel Gewestelijke Coördinatoe"@nl, "Bruxelles Coordination régionale"@fr, "Brussels Region Coordination"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-coord> ;
+	skos:altLabel "{u'fr': u'Bruxelles Coordination r\xe9gionale', u'en': u'Brussels regional coordination', u'nl': u'Brussel Gewestelijke Co\xf6rdinatie'}" .
 	
 <http://data.gov.be/en/taxonomy/term/184>
 	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
@@ -28,12 +33,12 @@
 <http://data.gov.be/en/taxonomy/term/190>
 	skos:prefLabel "CESRBC"@en ; 
 	skos:exactMatch <http://org.belgif.be/cbe/org/0253_777_437#id> ;
-	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale" .
+	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale", {u'fr': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'en': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'nl': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale'} .
 
 <http://data.gov.be/en/taxonomy/term/191>
 	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-ibsa> ;
-	skos:altLabel "IBSA" .
+	skos:altLabel "IBSA", {u'fr': u'IBSA', u'en': u'BISA', u'nl': u'BISA'} .
 	
 <http://data.gov.be/en/taxonomy/term/188>
 	skos:prefLabel "Parking Brussels"@en ;
@@ -79,3 +84,13 @@
 	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0862_000_792#id> ;
 	skos:altLabel "{u'fr': u'Cyclo', u'en': u'Cyclo', u'nl': u'Cyclo'}" .
+
+<http://data.gov.be/en/taxonomy/term/341>
+	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0806_001_011#id> ;
+	skos:altLabel "{u'fr': u"Le r\xe9gulateur bruxellois pour l'\xe9nergie", u'en': u'Brussels energy regulator', u'nl': u'De Brusselse regulator voor energie'} .
+
+<http://data.gov.be/en/taxonomy/term/343>
+	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_540_408#id> ;
+	skos:altLabel "{u'fr': u'Auderghem', u'en': u'Auderghem/Oudergem', u'nl': u'Oudergem'}" .

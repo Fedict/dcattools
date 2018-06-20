@@ -28,7 +28,7 @@
 <http://data.gov.be/en/taxonomy/term/330>
 	skos:exactMatch <http://sws.geonames.org/2803073/> ;
 	skos:prefLabel "Arlon"@fr ;
-	skos:altLabel "arlon"@fr .
+	skos:altLabel "commune-d-arlon"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/255>
 	skos:exactMatch <http://sws.geonames.org/2803011/> ;
@@ -205,4 +205,13 @@
 	skos:prefLabel "Villers-la-Ville"@fr ;
 	skos:altLabel "villers-la-ville"@fr .
 
-	
+<http://data.gov.be/en/taxonomy/term/333>
+	skos:exactMatch <http://sws.geonames.org/2786318/> ;
+	skos:prefLabel "Spa"@fr ;
+	skos:altLabel "commune-de-spa"@fr .
+
+<http://data.gov.be/en/taxonomy/term/336>
+	skos:exactMatch <http://sws.geonames.org/2790869/> ;
+	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
+	skos:altLabel "mons"@fr .
+

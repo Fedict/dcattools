@@ -20,10 +20,15 @@
 	owl:sameAs <http://data.gov.be/format/DWCA> ;
 	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA" .
 
+<http://data.gov.be/en/taxonomy/term/340>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GDB> ;
+	owl:sameAs <http://data.gov.be/format/GDB> ;
+	skos:altLabel "ESRI file geodatabase" .
+
 <http://data.gov.be/en/taxonomy/term/4>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
 	owl:sameAs <http://data.gov.be/format/GML> ;
-	skos:altLabel "GML", "GML (ZIP)", "gml" .
+	skos:altLabel "GML", "GML (ZIP)", "gml", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", "Environmental Monitoring Facilities GML application schema" .
 
 <http://data.gov.be/en/taxonomy/term/322>
 	owl:sameAs <http://data.gov.be/format/GTFS> ;
@@ -72,7 +77,7 @@
 <http://data.gov.be/en/taxonomy/term/11>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RSS> ;
 	owl:sameAs <http://data.gov.be/format/RSS> ;
-	skos:altLabel "RSS", "rss" .	
+	skos:altLabel "RSS", "rss" .
 	
 <http://data.gov.be/en/taxonomy/term/235>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
@@ -82,7 +87,7 @@
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	owl:sameAs <http://data.gov.be/format/SHP> ;
-	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)"  .
+	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
@@ -97,17 +102,17 @@
 <http://data.gov.be/en/taxonomy/term/332>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	owl:sameAs <http://data.gov.be/format/SQLITE> ;
-	skos:altLabel "sqilte (TGZ)" .
+	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)" .
 	
 <http://data.gov.be/en/taxonomy/term/169>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TIFF> ;
 	owl:sameAs <http://data.gov.be/format/TIFF> ;
-	skos:altLabel "TIFF", "tiff" .
+	skos:altLabel "TIFF", "tiff", "GeoTIFF, Surfer copyright binary grid.grd" .
 
 <http://data.gov.be/en/taxonomy/term/5>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
 	owl:sameAs <http://data.gov.be/format/TXT> ;
-	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal" .
+	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)" .
 	
 <http://data.gov.be/en/taxonomy/term/63>
 	owl:sameAs <http://data.gov.be/format/WCS> ;
