@@ -109,7 +109,7 @@ public class HtmlStatbelOpen extends HtmlStatbel {
      * @param access access URL
      * @param link link element
      * @param lang language code
-     * @throws MalformedUrlException
+     * @throws MalformedURLException
      * @throws RepositoryException
      */
     private void generateDist(Storage store, IRI dataset, URL access, Element link,

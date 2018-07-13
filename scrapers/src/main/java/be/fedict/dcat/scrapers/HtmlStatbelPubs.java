@@ -65,6 +65,7 @@ public class HtmlStatbelPubs extends HtmlStatbel {
     public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";
     public final static String LINK_SUBTHEME = "h3 a";
     public final static String LINK_SUBSUBTHEME = "ul.menu li a";
+	public final static String LI = "ul > li";
     public final static String DIV_DOCUMENT = "div.field--name-field-document-description";
     public final static String DIV_SUMMARY = "div.field--name-body";
     public final static String DIV_FILES = "div.field--name-field-document a";
@@ -82,27 +83,37 @@ public class HtmlStatbelPubs extends HtmlStatbel {
         String subtheme = makeRequest(makeAbsURL(u));
 
         Elements nav = Jsoup.parse(subtheme).select(NAV_SUBTHEME);
-        if (nav == null) {
+        if (nav == null || nav.isEmpty()) {
             logger.warn("No subtheme element found");
             return urls;
         }
 
-        // Check if there is a third level of themes
-        Elements subs = nav.select(LINK_SUBSUBTHEME);
-        if (subs != null && !subs.isEmpty()) {
-            for (Element sub : subs) {
-                String href = sub.attr(Attribute.HREF.toString());
-                urls.add(makeAbsURL(href));
-            }
-        } else {
-            Elements links = nav.select(LINK_SUBTHEME);
-			if (links != null) {
-				for (Element link : links) {
-					String href = link.attr(Attribute.HREF.toString());
+		Elements lis = nav.select(LI);
+		if (lis == null || lis.isEmpty()) {
+	        logger.warn("No subtheme links found");
+            return urls;
+    	}
+		for (Element li: lis) {
+			// Check if there is a third level of themes
+			Elements subs = li.select(LINK_SUBSUBTHEME);
+			if (subs != null && !subs.isEmpty()) {
+				logger.debug("Subsubtheme elements {} for {}", subs.size(), u);
+				for (Element sub : subs) {
+					String href = sub.attr(Attribute.HREF.toString());
 					urls.add(makeAbsURL(href));
 				}
+			} else {
+				// Not the case, so only the title points to a dataset
+				logger.info("No subsubtheme elements for {}", u);
+				Element link = li.select(LINK_SUBTHEME).first();
+				if (link != null) {
+					String href = link.attr(Attribute.HREF.toString());
+					urls.add(makeAbsURL(href));
+				} else {
+					logger.warn("No subthemes nor subsubthemes found {}", u);
+				}
 			}
-        }
+		}
         return urls;
     }
 
@@ -142,7 +153,7 @@ public class HtmlStatbelPubs extends HtmlStatbel {
      * @param access access URL
      * @param link link element
      * @param lang language code
-     * @throws MalformedUrlException
+     * @throws MalformedURLException
      * @throws RepositoryException
      */
     private void generateDist(Storage store, IRI dataset, URL access, Element link,

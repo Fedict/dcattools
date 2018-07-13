@@ -187,6 +187,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param node multilingual DOM node
 	 * @param property RDF property
 	 * @param lang language code
+	 * @return boolean
 	 * @throws RepositoryException 
 	 */
 	protected boolean parseMulti(Storage store, IRI uri, Node node, IRI property, String lang) 
@@ -365,7 +366,6 @@ public abstract class GeonetGmd extends Geonet {
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL front = getBase();
 		URL url = new URL(getBase() + GeonetGmd.API_RECORDS);
-		System.err.println(url);
 		String content = makeRequest(url);
 		cache.storePage(front, "all", new Page(url, content));
 	}
