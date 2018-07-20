@@ -42,6 +42,7 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.stream.JsonParsingException;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -399,8 +400,14 @@ public abstract class CkanJson extends Ckan {
 
 		Page p = page.getOrDefault("", new Page());
 		JsonReader reader = Json.createReader(new StringReader(p.getContent()));
-		JsonObject obj = reader.readObject();
-
+		
+		JsonObject obj;
+		try {
+			obj = reader.readObject();
+		} catch (JsonParsingException jpe) {
+			logger.error("Could not parse JSON page");
+			return;
+		}
 		String ckanid = obj.getString(CkanJson.ID, "");
 		IRI dataset = store.getURI(makeDatasetURL(ckanid).toString());
 		logger.info("Generating dataset {}", dataset.toString());
