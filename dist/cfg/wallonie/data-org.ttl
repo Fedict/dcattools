@@ -308,4 +308,8 @@
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_656_808#id> ;
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "mons"@fr .
-	
+
+<http://data.gov.be/en/taxonomy/term/350>
+	skos:exactMatch <http://org.belgif.be/cbe/org/0931_814_167#id> ;
+	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
+	skos:altLabel "parlement-de-wallonie"@fr .

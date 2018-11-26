@@ -1,0 +1,15 @@
+﻿@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/cbe/org/0206_737_484#id>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/326> ;
+	foaf:name "NEO"@en, "RVA"@nl, "ONEM"@fr, "LFA"@de ;
+	foaf:homepage <http://www.rva.be> .
+	
+<http://data.gov.be/org/rva/contact>
+	a vcard:Organization ;
+	vcard:fn "NEO"@en, "RVA"@nl, "ONEM"@fr, "LFA"@de ;
+	vcard:hasUrl <http://www.rva.be> ;
+	vcard:hasEmail <mailto:dircom@rva.be> .

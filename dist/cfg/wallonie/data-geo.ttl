@@ -8,7 +8,7 @@
 <http://data.gov.be/en/taxonomy/term/47>
 	skos:exactMatch <http://sws.geonames.org/3337387/> ;
 	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
-	skos:altLabel "Wallonie"@fr, "wallonie-dgo1"@fr, "wallonie-dgo2"@fr, "wallonie-dgo5"@fr, "wallonie-dgo6"@fr, "cwape"@fr, "adn"@fr, "bep"@fr, "tourisme-asbl"@fr, "sentiers"@fr, "tec"@fr, "secretariat-general-geo-donnees"@fr, "geoportail-de-la-wallonie"@fr, "le-forem"@fr, "pro-velo"@fr, "iweps"@fr, "idelux-aive"@fr .
+	skos:altLabel "Wallonie"@fr, "wallonie-dgo1"@fr, "wallonie-dgo2"@fr, "wallonie-dgo5"@fr, "wallonie-dgo6"@fr, "cwape"@fr, "adn"@fr, "bep"@fr, "tourisme-asbl"@fr, "sentiers"@fr, "tec"@fr, "secretariat-general-geo-donnees"@fr, "geoportail-de-la-wallonie"@fr, "le-forem"@fr, "pro-velo"@fr, "iweps"@fr, "idelux-aive"@fr, "parlement-de-wallonie"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/51>
 	skos:exactMatch <http://sws.geonames.org/2790472/> ;

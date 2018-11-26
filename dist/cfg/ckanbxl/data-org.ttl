@@ -33,12 +33,12 @@
 <http://data.gov.be/en/taxonomy/term/190>
 	skos:prefLabel "CESRBC"@en ; 
 	skos:exactMatch <http://org.belgif.be/cbe/org/0253_777_437#id> ;
-	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale", {u'fr': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'en': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'nl': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale'} .
+	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale", "{u'fr': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'en': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'nl': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale'}" .
 
 <http://data.gov.be/en/taxonomy/term/191>
 	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0316_381_039#id-ibsa> ;
-	skos:altLabel "IBSA", {u'fr': u'IBSA', u'en': u'BISA', u'nl': u'BISA'} .
+	skos:altLabel "IBSA", "{u'fr': u'IBSA', u'en': u'BISA', u'nl': u'BISA'}" .
 	
 <http://data.gov.be/en/taxonomy/term/188>
 	skos:prefLabel "Parking Brussels"@en ;
@@ -88,9 +88,25 @@
 <http://data.gov.be/en/taxonomy/term/341>
 	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0806_001_011#id> ;
-	skos:altLabel "{u'fr': u"Le r\xe9gulateur bruxellois pour l'\xe9nergie", u'en': u'Brussels energy regulator', u'nl': u'De Brusselse regulator voor energie'} .
+	skos:altLabel "{u'fr': u\"Le r\xe9gulateur bruxellois pour l'\xe9nergie\", u'en': u'Brussels energy regulator', u'nl': u'De Brusselse regulator voor energie'}" .
 
 <http://data.gov.be/en/taxonomy/term/343>
 	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_540_408#id> ;
 	skos:altLabel "{u'fr': u'Auderghem', u'en': u'Auderghem/Oudergem', u'nl': u'Oudergem'}" .
+
+<http://data.gov.be/en/taxonomy/term/352>
+	skos:prefLabel "Evere"@fr, "Evere"@en, "Evere"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_365_709#id> ;
+	skos:altLabel "{u'fr': u'Evere', u'en': u'Evere', u'nl': u'Evere'}" .
+
+<http://data.gov.be/en/taxonomy/term/354>
+	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_367_588#id> ;
+	skos:altLabel "{u'fr': u'Saint-Gilles', u'en': u'Saint-Gilles/Sint-Gillis', u'nl': u'Sint-Gillis'}" .
+
+<http://data.gov.be/en/taxonomy/term/355>
+	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0249_268_719#id> ;
+	skos:altLabel "{u'fr': u'Port de Bruxelles', u'en': u'Port of Brussels', u'nl': u'Haven van Brussel'}" .	
+
