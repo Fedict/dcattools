@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -35,6 +36,8 @@ import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -42,6 +45,7 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonString;
 import javax.json.stream.JsonParsingException;
 
 import org.eclipse.rdf4j.model.IRI;
@@ -59,7 +63,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Abstract scraper for CKAN portals, using the JSON API.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class CkanJson extends Ckan {
 
@@ -96,13 +100,96 @@ public abstract class CkanJson extends Ckan {
 			= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
 
 	/**
+	 * Generate DCAT.
+	 *
+	 * @param cache
+	 * @param store RDF store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		logger.info("Generate DCAT");
+
+		/* Get the list of all datasets */
+		List<URL> urls = cache.retrieveURLList();
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			generateDataset(store, null, page);
+		}
+		generateCatalog(store);
+	}
+
+	/**
+	 * Get the list of all the CKAN packages (DCAT Dataset).
+	 *
+	 * @return List of URLs
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
+		List<URL> urls = new ArrayList<>();
+		URL getPackages = new URL(getBase(), Ckan.API_LIST);
+
+		JsonObject obj = makeJsonRequest(getPackages);
+		if (!obj.getBoolean(Ckan.SUCCESS)) {
+			return urls;
+		}
+		JsonArray arr = obj.getJsonArray(Ckan.RESULT);
+		for (JsonString str : arr.getValuesAs(JsonString.class)) {
+			urls.add(ckanDatasetURL(str.getString()));
+		}
+		return urls;
+	}
+
+	/**
+	 * Fetch all metadata from the CKAN repository.
+	 *
+	 * @throws IOException
+	 */
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
+			urls = scrapePackageList();
+			cache.storeURLList(urls);
+		}
+		urls = cache.retrieveURLList();
+
+		logger.info("Found {} CKAN packages", String.valueOf(urls.size()));
+		logger.info("Start scraping (waiting between requests)");
+		int i = 0;
+		for (URL u : urls) {
+			Map<String, Page> page = cache.retrievePage(u);
+			if (page.isEmpty()) {
+				sleep();
+				if (++i % 100 == 0) {
+					logger.info("Package {}...", Integer.toString(i));
+				}
+				try {
+					String s = getPage(u);
+					if (!s.isEmpty()) {
+						cache.storePage(u, "", new Page(u, s));
+					}
+				} catch (IOException e) {
+					logger.warn("Failed to scrape {}", u);
+				}
+			}
+		}
+		logger.info("Done scraping");
+	}
+
+	/**
 	 * Make an URL for retrieving JSON of CKAN Package (DCAT Dataset)
 	 *
 	 * @param id
 	 * @return URL
 	 * @throws java.net.MalformedURLException
 	 */
-	@Override
 	protected URL ckanDatasetURL(String id) throws MalformedURLException {
 		return new URL(getBase(), Ckan.API_PKG + id);
 	}
@@ -393,7 +480,6 @@ public abstract class CkanJson extends Ckan {
 	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
-	@Override
 	protected void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
 		String lang = getDefaultLang();
@@ -445,7 +531,6 @@ public abstract class CkanJson extends Ckan {
 	 * @return string version of the page
 	 * @throws IOException
 	 */
-	@Override
 	protected String getPage(URL url) throws IOException {
 		JsonObject obj = scrapePackage(url);
 		return obj.toString();

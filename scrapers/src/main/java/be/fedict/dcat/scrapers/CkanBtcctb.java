@@ -47,7 +47,7 @@ import org.slf4j.LoggerFactory;
  * CKAN BTC-CTB. Currently (9/2016) the JSON version is more reliable than the
  * RDF
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public class CkanBtcctb extends CkanJson {
 

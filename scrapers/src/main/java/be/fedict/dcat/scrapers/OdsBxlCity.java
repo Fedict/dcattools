@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
 /**
  * OpenDataSoft City of Brussels / GIAL scraper.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public class OdsBxlCity extends Ods {
 

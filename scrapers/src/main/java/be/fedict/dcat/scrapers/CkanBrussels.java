@@ -26,14 +26,7 @@
 package be.fedict.dcat.scrapers;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonString;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,39 +34,11 @@ import org.slf4j.LoggerFactory;
 /**
  * CKAN Brussels Region.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public class CkanBrussels extends CkanRDF {
 
 	private final Logger logger = LoggerFactory.getLogger(CkanBrussels.class);
-
-	/**
-	 * Get the list of all the CKAN packages (DCAT Dataset).
-	 *
-	 * @return List of URLs
-	 * @throws MalformedURLException
-	 * @throws IOException
-	 */
-	@Override
-	protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
-		List<URL> urls = new ArrayList<>();
-		URL getPackages = new URL(getBase(), Ckan.API_LIST);
-
-		JsonObject obj = makeJsonRequest(getPackages);
-		if (!obj.getBoolean(Ckan.SUCCESS)) {
-			return urls;
-		}
-		JsonArray arr = obj.getJsonArray(Ckan.RESULT);
-		for (JsonString str : arr.getValuesAs(JsonString.class)) {
-			String url = str.getString();
-			if (url.endsWith("-harvester")) {
-				logger.info("Remove dummy dataset {}", url);
-			} else {
-				urls.add(ckanDatasetURL(url));
-			}
-		}
-		return urls;
-	}
 
 	/**
 	 * Constructor

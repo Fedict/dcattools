@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.scrapers;
 
+import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
@@ -36,6 +37,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -55,55 +57,64 @@ public abstract class CkanRDF extends Ckan {
 	private final Logger logger = LoggerFactory.getLogger(CkanRDF.class);
 
 	/**
-	 * Make an URL for retrieving RDF of CKAN Package (DCAT Dataset)
-	 *
-	 * @param id
-	 * @return URL
-	 * @throws MalformedURLException
+	 * Scrape paginated catalog file
+	 * 
+	 * @param cache
+	 * @throws IOException 
 	 */
-	@Override
-	protected URL ckanDatasetURL(String id) throws MalformedURLException {
-		return new URL(getBase(), Ckan.DATASET + id + ".rdf");
+	protected void scrapeCat(Cache cache) throws IOException {
+		URL front = getBase();
+		
+		int lastpage = 100;
+		for(int i = 1; i < lastpage; i++) {
+			URL url = new URL(getBase(), Ckan.CATALOG + 
+										"ttl?page=" + String.valueOf(i));
+			String content = makeRequest(url);
+			cache.storePage(front, String.valueOf(i), new Page(url, content));
+			if (content.length() < 1500) {
+				lastpage = i;
+			}
+		}
 	}
+	
 
-	/**
-	 * Get RDF body of a page
-	 *
-	 * @param url
-	 * @return string version of the page
-	 * @throws IOException
-	 */
 	@Override
-	protected String getPage(URL url) throws IOException {
-		return makeRequest(url);
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+		
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
+			scrapeCat(cache);
+		}
+		logger.info("Done scraping");
 	}
-
+	
 	/**
-	 * Generate DCAT Dataset
+	 * Generate DCAT file
 	 *
-	 * @param store RDF store
-	 * @param id
-	 * @param page full RDF XML
-	 * @throws MalformedURLException
+	 * @param cache
+	 * @param store
 	 * @throws RepositoryException
+	 * @throws MalformedURLException
 	 */
 	@Override
-	protected void generateDataset(Storage store, String id, Map<String, Page> page)
-			throws MalformedURLException, RepositoryException {
-		Page p = page.getOrDefault("", new Page());
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		
+		List<URL> urls = cache.retrieveURLList();
+		for (URL url: urls) {
+			Map<String, Page> map = cache.retrievePage(url);
+			String ttl = map.get(url).getContent();
 
-		String xml = p.getContent();
-		if (xml.isEmpty()) {
-			logger.warn("Page content is empty");
-			return;
+			// Load turtle file into store
+			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+				store.add(in, RDFFormat.TURTLE);
+			} catch (RDFParseException | IOException ex) {
+				throw new RepositoryException(ex);
+			}
 		}
-
-		// Load turtle file into store
-		try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-			store.add(in, RDFFormat.RDFXML);
-		} catch (RDFParseException | IOException ex) {
-			throw new RepositoryException(ex);
-		}
+		generateCatalog(store);
 	}
 
 	/**

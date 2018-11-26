@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
 /**
  * CKAN Wallonie / AWT.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public class CkanWallonie extends CkanJson {
 
