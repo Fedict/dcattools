@@ -28,7 +28,7 @@
 <http://data.gov.be/en/taxonomy/term/185>
 	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0240_678_477#id> ;
-	skos:altLabel "CIRB -CIBG", "{u'fr': u'CIRB', u'en': u'BRIC', u'nl': u'CIBG'}" .
+	skos:altLabel "CIRB-CIBG", "{u'fr': u'CIRB', u'en': u'BRIC', u'nl': u'CIBG'}" .
 
 <http://data.gov.be/en/taxonomy/term/190>
 	skos:prefLabel "CESRBC"@en ; 
@@ -108,5 +108,10 @@
 <http://data.gov.be/en/taxonomy/term/355>
 	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0249_268_719#id> ;
-	skos:altLabel "{u'fr': u'Port de Bruxelles', u'en': u'Port of Brussels', u'nl': u'Haven van Brussel'}" .	
+	skos:altLabel "{u'fr': u'Port de Bruxelles', u'en': u'Port of Brussels', u'nl': u'Haven van Brussel'}" .
+
+<http://data.gov.be/en/taxonomy/term/356>
+	skos:prefLabel "Centre de Documentation et de Coordination Sociales"@fr, "Center for social documentation and coordination"@en, "Centrum voor Maatschappelijke Documentatie en Coördinatie"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0417_167_603#id> ;
+	skos:altLabel "{u'fr': u'CDCS-CMDC asbl |    social.brussels', u'en': u'CDCS-CMDC |    social.brussels', u'nl': u'CMDC-CDCS vzw |   sociaal.brussels'}" .
 

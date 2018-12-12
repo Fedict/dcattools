@@ -37,6 +37,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -63,18 +64,21 @@ public abstract class CkanRDF extends Ckan {
 	 * @throws IOException 
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
-		URL front = getBase();
-		
 		int lastpage = 100;
+		List<URL> urls = new ArrayList<>();
+		
 		for(int i = 1; i < lastpage; i++) {
 			URL url = new URL(getBase(), Ckan.CATALOG + 
-										"ttl?page=" + String.valueOf(i));
+										".ttl?page=" + String.valueOf(i));
 			String content = makeRequest(url);
-			cache.storePage(front, String.valueOf(i), new Page(url, content));
+			cache.storePage(url, "all", new Page(url, content));
 			if (content.length() < 1500) {
 				lastpage = i;
+			} else {
+				urls.add(url);
 			}
 		}
+		cache.storeURLList(urls);
 	}
 	
 
@@ -104,9 +108,10 @@ public abstract class CkanRDF extends Ckan {
 		
 		List<URL> urls = cache.retrieveURLList();
 		for (URL url: urls) {
+			logger.info("Generating from " + url);
 			Map<String, Page> map = cache.retrievePage(url);
-			String ttl = map.get(url).getContent();
-
+			String ttl = map.get("all").getContent();
+			
 			// Load turtle file into store
 			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.TURTLE);

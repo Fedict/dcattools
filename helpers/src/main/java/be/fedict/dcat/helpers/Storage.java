@@ -71,12 +71,14 @@ import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.repository.RepositoryResult;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.rio.ParserConfig;
 
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFHandlerException;
 import org.eclipse.rdf4j.rio.RDFParseException;
 import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.helpers.BasicParserSettings;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;
@@ -538,6 +540,11 @@ public class Storage {
         repo.initialize(); 
         conn = repo.getConnection();
         fac = repo.getValueFactory();
+		
+		ParserConfig cfg = new ParserConfig();
+		cfg.addNonFatalError(BasicParserSettings.VERIFY_RELATIVE_URIS);
+		cfg.addNonFatalError(BasicParserSettings.VERIFY_URI_SYNTAX);
+		conn.setParserConfig(cfg);
     }
     
     /**

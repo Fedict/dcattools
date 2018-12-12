@@ -25,19 +25,8 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Storage;
-
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
-
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-
-import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.vocabulary.DCAT;
-import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
-import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,77 +34,11 @@ import org.slf4j.LoggerFactory;
 /**
  * CKAN Corve / Vlaanderen BZ.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
-public class CkanVlaanderen extends CkanJson {
+public class CkanVlaanderen extends CkanRDF {
 
 	private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen.class);
-
-	public final static String CONFORM = "conformity-specification-title";
-	public final static String CONTACT = "contact-email";
-	public final static String DOMAIN = "beleidsdomein";
-	public final static String FREQ = "frequency-of-update";
-	public final static String FREQ2 = "update frequentie";
-	public final static String GEMET = "gemet-theme";
-	public final static String GEOCOVERAGE = "geografische dekking";
-	public final static String METADATA_REQ = "metadata_request";
-	public final static String TIMECOVERAGE = "Dekking In Tijd";
-	public final static String TIMECOVERAGE2 = "dekking in tijd";
-	public final static String RESPONSABLE = "responsible-party";
-
-	/**
-	 * Parse CKAN "extra" section.
-	 *
-	 * @param store
-	 * @param uri
-	 * @param json
-	 * @throws RepositoryException
-	 * @throws MalformedURLException
-	 */
-	@Override
-	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
-		JsonArray arr = json.getJsonArray(CkanJson.EXTRA);
-		if (arr == null) {
-			return;
-		}
-		for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
-			String key = obj.getString(CkanJson.KEY, "");
-			switch (key) {
-				case CkanVlaanderen.DOMAIN:
-					parseString(store, uri, obj, CkanJson.VALUE, DCAT.KEYWORD, lang);
-					break;
-				case CkanVlaanderen.FREQ:
-					parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
-					break;
-				case CkanVlaanderen.FREQ2:
-					parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.ACCRUAL_PERIODICITY, null);
-					break;
-				case CkanVlaanderen.GEMET:
-					parseString(store, uri, obj, CkanJson.VALUE, DCAT.KEYWORD, lang);
-					break;
-				case CkanVlaanderen.GEOCOVERAGE:
-					parseString(store, uri, obj, CkanJson.VALUE, DCTERMS.COVERAGE, lang);
-					break;
-				case CkanVlaanderen.TIMECOVERAGE:
-					parseTemporal(store, uri, obj, CkanJson.VALUE);
-					break;
-				case CkanVlaanderen.TIMECOVERAGE2:
-					parseTemporal(store, uri, obj, CkanJson.VALUE);
-					break;
-				case CkanVlaanderen.METADATA_REQ:
-					parseURI(store, uri, obj, CkanJson.VALUE, DCAT.LANDING_PAGE);
-					break;
-				case CkanVlaanderen.CONTACT:
-					parseContact(store, uri, obj, CkanJson.VALUE, "");
-					break;
-				case CkanVlaanderen.RESPONSABLE:
-					parseContact(store, uri, obj, CkanJson.VALUE, "");
-					break;
-				default:
-					break;
-			}
-		}
-	}
 
 	/**
 	 * CKAN parser for OpendataForum.info / Corve.

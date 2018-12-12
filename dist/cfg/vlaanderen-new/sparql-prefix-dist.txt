@@ -1,0 +1,19 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s ?p ?o }
+INSERT
+	{ 	?news ?p ?newo }
+WHERE
+	{ 	?s ?p ?o .
+		BIND ( STR(?s) as ?strs )
+		BIND ( STR(?o) as ?stro )
+		BIND ( "https://opendata.vlaanderen.be/dataset/.*/resource/.*" as ?old )
+		BIND ( "http://data.gov.be/dist/vlaanderen/" as ?new )
+		BIND ( IRI(REPLACE(?strs, ?old, CONCAT(?new, STRAFTER(?strs, "/resource/")))) as ?news )
+		BIND ( IF(isIRI(?o),
+				IRI(REPLACE(?stro, ?old, CONCAT(?new, STRAFTER(?stro, "/resource/")))),
+				?o) as ?newo )
+		FILTER ( REGEX(?strs, ?old) || REGEX(?stro, ?old) )	
+	}
