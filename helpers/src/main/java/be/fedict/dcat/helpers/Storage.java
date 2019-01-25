@@ -577,12 +577,16 @@ public class Storage {
      * @param in
      * @param format RDF input format
      * @throws RepositoryException 
-     * @throws java.io.IOException 
-     * @throws org.eclipse.rdf4j.rio.RDFParseException 
+     * @throws IOException 
+     * @throws RDFParseException 
      */
     public void read(Reader in, RDFFormat format) throws RepositoryException,
                                                 IOException, RDFParseException {
         logger.info("Reading triples from input stream");
+		ParserConfig cfg = new ParserConfig();
+		cfg.set(BasicParserSettings.VERIFY_RELATIVE_URIS, false);
+		cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, false);
+		conn.setParserConfig(cfg);
         conn.add(in, "http://data.gov.be", format);
     }
     
