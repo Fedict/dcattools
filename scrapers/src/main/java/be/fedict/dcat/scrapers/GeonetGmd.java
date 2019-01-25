@@ -75,7 +75,7 @@ public abstract class GeonetGmd extends Geonet {
 			+ "&request=GetRecords&resultType=results"
 			+ "&outputSchema=" + GMD
 			+ "&elementSetName=full&typeNames=gmd:MD_Metadata"
-			+ "&maxRecords=150";
+			+ "&maxRecords=200";
 	public final static String OFFSET = "startPosition";
 
 	private final static Map<String,String> NS = new HashMap<>();
@@ -233,7 +233,13 @@ public abstract class GeonetGmd extends Geonet {
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
 		store.add(dist, DCTERMS.FORMAT, format);
-		store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(url));
+		
+		try {
+			IRI iri = store.getURI(url);
+			store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(url));
+		} catch (IllegalArgumentException e) {
+			logger.debug("Cannot create download URL for {}", url);
+		}
 		
 		Node title = node.selectSingleNode(XP_DIST_NAME);
 		Node desc = node.selectSingleNode(XP_DIST_DESC);
