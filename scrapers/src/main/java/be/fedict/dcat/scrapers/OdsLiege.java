@@ -36,8 +36,10 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens
  */
-public class OdsBxlCity extends Ods {
-	private final Logger logger = LoggerFactory.getLogger(OdsBxlCity.class);
+public class OdsLiege extends Ods {
+
+	private final Logger logger = LoggerFactory.getLogger(OdsLiege.class);
+
 	
 	/**
 	 * Constructor
@@ -46,8 +48,8 @@ public class OdsBxlCity extends Ods {
 	 * @param storage
 	 * @param base
 	 */
-	public OdsBxlCity(File caching, File storage, URL base) {
+	public OdsLiege(File caching, File storage, URL base) {
 		super(caching, storage, base);
-		setName("bxlcity");
+		setName("liege");
 	}
 }

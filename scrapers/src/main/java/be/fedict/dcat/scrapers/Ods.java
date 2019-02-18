@@ -29,14 +29,18 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +56,7 @@ public abstract class Ods extends Scraper {
 
 	private final Logger logger = LoggerFactory.getLogger(Ods.class);
 
-	public final static String API_DCAT = "/api/datasets/1.0/search?format=rdf&rows=-1";
+	public final static String API_DCAT = "/api/v2/catalog/exports/ttl";
 	public final static String API_PAGE = "/explore/dataset/";
 	public final static String API_EXP = "/export/";
 
@@ -62,7 +66,35 @@ public abstract class Ods extends Scraper {
 	 * @param cache
 	 * @throws IOException
 	 */
-	protected abstract void scrapeCat(Cache cache) throws IOException;
+	protected void scrapeCat(Cache cache) throws IOException {
+		URL front = getBase();
+		URL url = new URL(getBase(), Ods.API_DCAT);
+		String content = makeRequest(url);
+		cache.storePage(front, "all", new Page(url, content));
+	}
+
+	/**
+	 * Generate DCAT file
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+		String ttl = map.get("all").getContent();
+
+		// Load turtle file into store
+		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.TURTLE);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+		generateCatalog(store);
+	}
 
 	@Override
 	public void scrape() throws IOException {
@@ -75,18 +107,6 @@ public abstract class Ods extends Scraper {
 		}
 		logger.info("Done scraping");
 	}
-
-	/**
-	 * Generate DCAT file
-	 *
-	 * @param cache
-	 * @param store
-	 * @throws RepositoryException
-	 * @throws MalformedURLException
-	 */
-	@Override
-	public abstract void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException;
 
 	/**
 	 * Constructor
