@@ -1,7 +1,6 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
@@ -13,7 +12,7 @@ INSERT
 WHERE
 	{	?dist ?fmt ?label .
 		?drupal skos:altLabel ?label .
-		?drupal owl:sameAs ?imt .
+		?drupal skos:closeMatch ?imt .
 		OPTIONAL { ?drupal skos:exactMatch ?auth } 
 		VALUES ?fmt { dcat:mediaType dcterms:format }
 	}
