@@ -9,6 +9,7 @@ WHERE {
 				( skos:exactMatch )
 				( skos:closeMatch )
 				( skos:inScheme )
+				( skos:topConceptOf )
 			}
 		} UNION {
 			?s a skos:Concept

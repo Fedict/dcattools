@@ -1,69 +1,99 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/32>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
-	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en .
-
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "CULTURE AND SPORT"@en ;
-	skos:altLabel "Culture"@fr, "Culture"@en, "Heritage"@en, "Leisure"@en, "Sports"@en, "Loisirs"@fr, "Cultuur"@nl, "Erfgoed"@nl, "Sport"@en, "Sport"@nl, "Vrije tijd"@nl, "Sport"@fr, "Folklore"@nl, "Patrimoine"@fr, "Folklore"@en, "Folklore"@fr .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Culture%2C%20Heritage>,
+		<https://opendata.brussels.be/id/theme/Culture%2C%20Patrimoine%2C%20Folklore>,
+		<https://opendata.brussels.be/id/theme/Cultuur%2C%20Erfgoed>,
+		<https://opendata.brussels.be/id/theme/Sport%2C%20Leisure>,
+		<https://opendata.brussels.be/id/theme/Sport%2C%20Loisirs>,
+		<https://opendata.brussels.be/id/theme/Sport%2C%20Vrije%20tijd>,
+		<https://opendata.brussels.be/id/theme/Sports%2C%20Leisure> .
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "Buildings"@en, "Business"@nl, "Business"@fr, "Business"@en,  "Bâtiments"@nl, "Bâtiments"@fr, "Bâtiments"@en, "Economic development"@en, "Economy"@en, "Employment"@en, "SME"@nl, "SME"@fr, "SME"@en, "Tourism"@en, "Toerism"@nl, "Développement économique"@fr, "Economie"@fr, "Economie"@nl, "Emploi"@fr, "tewerkstelling"@nl, "Tewerkstelling"@nl, "Hébergement"@fr, "PME"@fr, "Restauration"@fr, "Gebouwen"@nl, "Economische groei"@nl, "Economische ontwikkeling"@nl, "KMO"@nl .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Economie%2C%20Business%2C%20KMO%2C%20Economische%20ontwikkeling%2C%20Tewerkstelling>,
+		<https://opendata.brussels.be/id/theme/Economie%2C%20Business%2C%20PME%2C%20D%C3%A9veloppement%20%C3%A9conomique%2C%20Emploi>,
+		<https://opendata.brussels.be/id/theme/Economie%2C%20Business%2C%20SME%2C%20Economische%20groei%2C%20tewerkstelling>,
+		<https://opendata.brussels.be/id/theme/Economy%2C%20Business%2C%20SME%2C%20Economic%20development%2C%20Employment>,
+		<https://opendata.brussels.be/id/theme/Economy%2C%20Business%2C%20SME%2C%20Economic%20development%2C%20Employment%20>,
+		<https://opendata.brussels.be/id/theme/H%C3%A9bergement%2C%20Restauration>,
+		<https://opendata.brussels.be/id/theme/Toerism>,
+		<https://opendata.brussels.be/id/theme/Toerisme>,
+		<https://opendata.brussels.be/id/theme/Tourism>,
+		<https://opendata.brussels.be/id/theme/Tourisme> .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "EDUCATION"@en ;
-	skos:altLabel "Education"@en, "Education"@fr, "Training"@en, "Onderwijs"@nl, "Opleiding"@nl, "Enseignement"@fr, "Formation"@fr .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Education%2C%20Formation%2C%20Recherche%2C%20Enseignement>,
+		<https://opendata.brussels.be/id/theme/Education%2C%20Training%2C%20Research>,
+		<https://opendata.brussels.be/id/theme/Onderwijs%2C%20Opleiding%2C%20Onderzoek> .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "Cleanliness"@en, "Environment"@en, "Environnement"@fr, "Environnement"@nl, "Propreté"@fr, "Milieu"@nl, "Netheid"@nl, "Propreté"@nl .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Milieu%2C%20Netheid>,
+		<https://opendata.brussels.be/id/theme/Milieu%2C%20Netheid%20>, 
+		<https://opendata.brussels.be/id/theme/Environment%2C%20Cleanliness>,
+		<https://opendata.brussels.be/id/theme/Environment%2C%20Cleanliness%20>,
+		<https://opendata.brussels.be/id/theme/Environnement%2C%20Propret%C3%A9> .
 	
-<http://data.gov.be/en/taxonomy/term/35>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
-	skos:prefLabel "ENERGY"@en ;
-	skos:altLabel "energie - algemeen"@nl, "Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl .
-
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "Administration"@en, "Administration"@fr, "Aménagement du territoire"@en, "Aménagement du territoire"@fr, "Aménagement du territoire"@nl, "Government"@en, "Public finances"@en, "Spatial planning"@en, "Finances publiques"@fr, "Gouvernement"@fr, "Administratie"@nl, "Services"@en, "Services"@fr, "Diensten"@nl, "Overheid"@nl, "Openbare financiën"@nl, "Stedenbouw"@nl, "Ruimtelijke ordening"@nl, "Urbanisme"@fr, "Urbanisme"@nl, "Urbanisme"@en, "Equipements"@en, "Equipements"@fr, "Equipements"@nl, "Uitrusting"@nl, "Equipment"@en .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Administratie%2C%20Overheid%2C%20Openbare%20financi%C3%ABn%2C%20Burgerschap>,
+		<https://opendata.brussels.be/id/theme/Administration%2C%20Gouvernement%2C%20Finances%20publiques%2C%20Citoyennet%C3%A9>,
+		<https://opendata.brussels.be/id/theme/Administration%2C%20Government%2C%20Public%20finances%2C%20Citizenship>,
+		<https://opendata.brussels.be/id/theme/Am%C3%A9nagement%20du%20territoire%2C%20Urbanisme%2C%20B%C3%A2timents%2C%20Equipements%2C%20Logement>,
+		<https://opendata.brussels.be/id/theme/Ruimtelijke%20ordening%2C%20Stedenbouw%2C%20Gebouwen%2C%20Uitrusting%2C%20Huisvesting>,
+		<https://opendata.brussels.be/id/theme/Spatial%20planning%2C%20Town%20planning%2C%20Buildings%2C%20Equipment%2C%20Housing> .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel "Health"@en, "Santé"@fr, "Gezondheid"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/44>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
-	skos:prefLabel "INTERNATIONAL ISSUES"@en .
-	
+	skos:closeMatch <https://opendata.liege.be/id/theme/Sant%C3%A9>,
+		<https://opendata.brussels.be/id/theme/Gezondheid>,
+		<https://opendata.brussels.be/id/theme/Health> .
+
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
-	skos:altLabel "Crime"@en, "Crime"@fr, "Justice"@en, "Justice"@fr, "Police"@en, "Police"@fr, "Politie"@nl, "Safety"@en, "Veiligheid"@nl, "Criminaliteit"@nl, "Justitie"@nl, "Sécurité"@fr .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Justice%2C%20S%C3%A9curit%C3%A9%2C%20Police%2C%20Crime>,
+		<https://opendata.brussels.be/id/theme/Justice%2C%20Safety%2C%20Police%2C%20Crime>,
+		<https://opendata.brussels.be/id/theme/Justitie%2C%20Veiligheid%2C%20Politie%2C%20Criminaliteit> .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "Citizenship"@en, "Employment"@en, "Housing"@en, "Social"@en, "Citoyenneté"@fr, "Emploi"@fr, "Burgerschap"@nl, "Huisvesting"@nl, "Logement"@fr, "Social"@fr, "Sociaal"@nl, "Tewerkstelling"@nl, "Hébergement"@fr .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Services%2C%20Social>, 
+		<https://opendata.brussels.be/id/theme/Diensten%2C%20Sociaal>,
+		<https://opendata.brussels.be/id/theme/Am%C3%A9nagement%20du%20territoire%2C%20Urbanisme%2C%20B%C3%A2timents%2C%20Equipements%2C%20Logement>,
+		<https://opendata.brussels.be/id/theme/Ruimtelijke%20ordening%2C%20Stedenbouw%2C%20Gebouwen%2C%20Uitrusting%2C%20Huisvesting>,
+		<https://opendata.brussels.be/id/theme/Spatial%20planning%2C%20Town%20planning%2C%20Buildings%2C%20Equipment%2C%20Housing> .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
 	skos:prefLabel "REGIONS, CITIES"@en ;
-	skos:altLabel "Logement"@en, "Logement"@fr, "Logement"@nl, "Tourism"@en, "Town planning"@en, "Hébergement"@fr, "Tourisme"@fr, "Toerisme"@nl, "Ruimtelijke ordening"@nl, "Urbanisme"@fr, "Urbanisme"@nl, "Urbanisme"@en, "Stedenbouw"@nl, "Aménagement du territoire"@fr, "Aménagement du territoire"@nl, "Hébergement"@fr .
-
-<http://data.gov.be/en/taxonomy/term/36>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
-	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "Mobility"@en, "Mobilité"@fr, "Mobiliteit"@nl, "Transports"@fr, "Verplaatsingen"@nl, "Vervoer"@nl, "Transport"@fr, "Transport"@nl, "Transport"@en .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Toerism>,
+		<https://opendata.brussels.be/id/theme/Toerisme>,
+		<https://opendata.brussels.be/id/theme/Tourism>,
+		<https://opendata.brussels.be/id/theme/Tourisme>,  
+		<https://opendata.brussels.be/id/theme/H%C3%A9bergement%2C%20Restauration> .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel "ICT"@nl, "ICT"@en, "Internet"@en, "Internet"@fr, "Internet"@nl, "Research"@en, "Onderzoek"@nl, "TIC"@fr, "Recherche"@fr .
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Internet%2C%20ICT>,
+		<https://opendata.brussels.be/id/theme/Internet%2C%20TIC> .
+	
+<http://data.gov.be/en/taxonomy/term/36>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+	skos:prefLabel "TRANSPORT"@en ;
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Mobilit%C3%A9%2C%20Transport>,
+		<https://opendata.brussels.be/id/theme/Mobilit%C3%A9%2C%20Transports>,
+		<https://opendata.brussels.be/id/theme/Mobiliteit%2C%20Vervoer>,
+		<https://opendata.brussels.be/id/theme/Mobility%2C%20Transport>,
+		<https://opendata.brussels.be/id/theme/Vervoer%2C%20Verplaatsingen> .

@@ -8,5 +8,5 @@ INSERT
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcterms:identifier ?label .
-		BIND ( SHA1(CONCAT('bxlcity/', ?label)) as ?hash )
+		BIND ( SHA1(CONCAT('brussels/', ?label)) as ?hash )
 	}

@@ -3,13 +3,13 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{ <http://opendata.brussels.be/api/datasets/1.0/search?rows=-1&format=rdf> ?p ?o }
+	{ <https://opendata.brussels.be/api/v2/catalog/exports/ttl> ?p ?o }
 INSERT
 	{ <http://data.gov.be/catalog/bxlcity> dcat:dataset ?dataset }
 WHERE
 	{
-		{ <http://opendata.brussels.be/api/datasets/1.0/search?rows=-1&format=rdf> dcat:dataset ?dataset }
+		{ <https://opendata.brussels.be/api/v2/catalog/exports/ttl> dcat:dataset ?dataset }
 	UNION
-		{ <http://opendata.brussels.be/api/datasets/1.0/search?rows=-1&format=rdf> ?p ?o }
+		{ <https://opendata.brussels.be/api/v2/catalog/exports/ttl> ?p ?o }
 	}
 

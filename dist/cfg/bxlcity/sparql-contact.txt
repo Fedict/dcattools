@@ -2,7 +2,6 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/bxlcity/gial/contact> .
-		?dataset dgov:org <http://data.gov.be/en/taxonomy/term/127> }
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/bxlcity/contact> }
 WHERE
 	{ 	?dataset a dcat:Dataset }
