@@ -8,6 +8,7 @@ INSERT
 	{ 	?s ?p ?literal }
 WHERE
 	{ 	?s ?p ?o .
+		?s dcterms:language ?lang .
 		VALUES (?p) {
 			( dcterms:title )
 			( dcterms:description )
@@ -16,5 +17,10 @@ WHERE
 			( dcat:theme )
 		}
 		FILTER ( isLiteral(?o) && langMatches(lang(?o), ""))
-		BIND ( STRLANG(?o, "fr") as ?literal)
+		BIND ( STRLANG(?o, ?code) as ?literal)
+		VALUES (?lang ?code) {
+			( <http://id.loc.gov/vocabulary/iso639-1/nl> "nl" )
+			( <http://id.loc.gov/vocabulary/iso639-1/fr> "fr" )
+			( <http://id.loc.gov/vocabulary/iso639-1/en> "en" )
+		}
 	}
