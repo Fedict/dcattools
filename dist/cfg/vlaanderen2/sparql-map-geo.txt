@@ -1,14 +1,18 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+DELETE 
+	{	?dataset dgov:spatial ?o }
 INSERT 
 	{ 	?dataset dgov:spatial ?drupal .
 		?dataset dcterms:spatial ?spatial }
 WHERE
 	{	?dataset a dcat:Dataset .
-		?dataset dcterms:coverage ?label .
+		?dataset dcterms:publisher ?publisher .
+		?publisher foaf:name ?label .
 		?drupal skos:altLabel ?label .
 		?drupal skos:exactMatch ?spatial
 	}

@@ -1,0 +1,13 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ ?s dcterms:language ?oldlang }
+INSERT 
+	{ ?s dcterms:language ?newlang }
+WHERE 
+	{ ?s dcterms:language ?oldlang .
+		VALUES (?oldlang ?newlang)  { 
+			( "eng" <http://publications.europa.eu/resource/authority/language/ENG> )
+			( "dut" <http://publications.europa.eu/resource/authority/language/NLD> )
+		}
+	}

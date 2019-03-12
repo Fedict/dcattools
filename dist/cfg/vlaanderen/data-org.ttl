@@ -15,6 +15,11 @@
 	skos:exactMatch <http://org.belgif.be/cbe/org/0886_689_767#id> ;
 	skos:altLabel "vreg"@nl  .
 
+<http://data.gov.be/en/taxonomy/term/92>
+	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0887_290_276#id> ;
+	skos:altLabel "vmm"@nl .
+	
 <http://data.gov.be/en/taxonomy/term/93>
 	skos:prefLabel "Departement CSJM"@nl	;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_322_471#id> ;
@@ -96,7 +101,7 @@
 	skos:altLabel "vrm"@nl .
 
 <http://data.gov.be/en/taxonomy/term/216>
-	skos:prefLabel "Vlaams Parlement"@nl ;
+	skos:prefLabel "Vlaams Parlement"@nl, "Flemish Parliament"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0931_814_563#id> ;
 	skos:altLabel "vlaams-parlement"@nl .
 	
@@ -110,3 +115,12 @@
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_335_933#id> ;
 	skos:altLabel "inbo"@nl .
 
+<http://data.gov.be/en/taxonomy/term/349>
+	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_499_430#id> ;
+	skos:altLabel "stad-mechelen"@nl .
+
+<http://data.gov.be/en/taxonomy/term/361>
+	skos:prefLabel "Vlaams Energieagentschap"@nl, "Flemish Energy Agency"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0316_380_841#id> ;
+	skos:altLabel "vea"@nl .

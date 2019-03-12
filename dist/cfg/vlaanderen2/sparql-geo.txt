@@ -3,10 +3,9 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dataset dcterms:coverage "Vlaanderen"@nl .
-		?dataset dcterms:spatial <http://sws.geonames.org/3337388> .
+	{ 	?dataset dcterms:spatial <http://sws.geonames.org/3337388> .
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/46> }
 WHERE
 	{	?dataset a dcat:Dataset 
-		FILTER NOT EXISTS { ?dataset dcterms:coverage ?o } 
+		FILTER NOT EXISTS { ?dataset dgov:spatial ?o } 
 	}

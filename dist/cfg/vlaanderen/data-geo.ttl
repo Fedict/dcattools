@@ -8,14 +8,19 @@
 <http://data.gov.be/en/taxonomy/term/49>
 	skos:exactMatch <http://sws.geonames.org/2803138/> ;
 	skos:prefLabel "Antwerp"@en, "Antwerpen"@nl, "Anvers"@fr ;
-	skos:altLabel "Antwerpen"@nl, "stad Antwerpen"@nl .
+	skos:altLabel "Antwerpen"@nl, "stad Antwerpen"@nl, "Stad Antwerpen"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/50>
 	skos:exactMatch <http://sws.geonames.org/2797656/> ;
 	skos:prefLabel "Ghent"@en, "Gent"@nl, "Gand"@fr ;
-	skos:altLabel "Gent"@nl, "stad Gent"@nl .
+	skos:altLabel "Gent"@nl, "stad Gent"@nl, "Stad Gent"@nl .
 
 <http://data.gov.be/en/taxonomy/term/61>
 	skos:exactMatch <http://sws.geonames.org/2794056/> ;
 	skos:prefLabel "Coutray"@en, "Kortrijk"@nl, "Courtrai"@fr ;
-	skos:altLabel "Kortrijk"@nl, "stad Kortrijk"@nl .
+	skos:altLabel "Kortrijk"@nl, "stad Kortrijk"@nl, "Stad Kortrijk"@nl .
+
+<http://data.gov.be/en/taxonomy/term/348>
+	skos:exactMatch <http://sws.geonames.org/2791537/> ;
+	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
+	skos:altLabel "Mechelen"@nl, "stad Mechelen"@nl, "Stad Mechelen"@nl .
