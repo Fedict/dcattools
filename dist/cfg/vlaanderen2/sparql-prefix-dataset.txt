@@ -4,16 +4,11 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE
 	{	?s ?p ?o }
 INSERT
-	{ 	?news ?p ?newo }
+	{ 	?news ?p ?o }
 WHERE
 	{ 	?s ?p ?o .
+		?s a dcat:Dataset 
 		BIND ( STR(?s) as ?strs )
-		BIND ( STR(?o) as ?stro )
-		BIND ( "https://opendata.vlaanderen.be/dataset/" as ?old )
-		BIND ( "http://data.gov.be/dataset/vlaanderen/" as ?new )
-		BIND ( IRI(REPLACE(?strs, ?old, ?new)) as ?news )
-		BIND ( IF(isIRI(?o),
-				IRI(REPLACE(?stro, ?old, ?new)),
-				?o) as ?newo )
-		FILTER ( STRSTARTS(?strs, ?old) || STRSTARTS(?stro, ?old) )
+		BIND ( IRI(CONCAT("http://data.gov.be/dataset/vlaanderen/", MD5(?strs))) 
+				as ?news )
 	}
