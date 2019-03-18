@@ -1,7 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-DELETE 
-	{ ?dist dcat:downloadURL ?url}
-WHERE
-	{ ?dist dcat:downloadURL ?url .
-	FILTER REGEX(STR(?url), "^ftp://.+:.+@.+") }

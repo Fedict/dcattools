@@ -25,7 +25,8 @@
 	skos:exactMatch <http://org.belgif.be/cbe/org/0887_290_276#id> ;
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij", 
 	"Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", 
-	"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer" .
+	"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer", 
+	"Flanders Environment Agency" .
 
 <http://data.gov.be/en/taxonomy/term/93>
 	skos:prefLabel "Departement CSJM"@nl	;
@@ -75,7 +76,7 @@
 	skos:altLabel "Geopunt" .
 
 <http://data.gov.be/en/taxonomy/term/124>
-	skos:prefLabel ""Provincie West-Vlaanderen"@nl ;
+	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, "Province West Flanders"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_696#id> ;
 	skos:altLabel ""Provincie West-Vlaanderen" .	
 	
@@ -150,7 +151,7 @@
 	skos:altLabel "Stad Mechelen" .
 	
 <http://data.gov.be/en/taxonomy/term/364>
-	skos:prefLabel "Departement Omgeving"@nl
+	skos:prefLabel "Departement Omgeving"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_335_339#id> ;
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", "Vlaamse overheid - Departement Omgeving",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Beleidsontwikkeling en Juridische Ondersteuning",
@@ -158,7 +159,47 @@
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving",
 	"Departement Omgeving" .
 
+<http://data.gov.be/en/taxonomy/term/361>
+	skos:prefLabel "Vlaams Energie Agentschap"@nl, "Flemish Energy Agency"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2199_336_131@id> ;
+	skos:altLabel "Vlaams Energieagentschap (VEA)" .
+	
 <http://data.gov.be/en/taxonomy/term/365>
 	skos:prefLabel "Agentschap MDK"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_336_725#id> ;
 	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie" .
+
+<http://data.gov.be/en/taxonomy/term/366>
+	skos:prefLabel "Provincie Limburg"@nl, "Province de Limbourg"@fr, "Province of Limburg"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_203#id> ;
+	skos:altLabel "Provincie Limburg" .
+
+<http://data.gov.be/en/taxonomy/term/367>
+	skos:prefLabel "Provincie Antwerpen"@nl, "Province d'Anvers"@fr, "Provice of Antwerp"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_597#id> ;
+	skos:altLabel "Provincie Antwerpen" .	
+
+<http://data.gov.be/en/taxonomy/term/368>
+	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, "Provice of Flemish Brabant"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0253_973_219#id> ;
+	skos:altLabel "Provincie Vlaams-Brabant" .	
+
+<http://data.gov.be/en/taxonomy/term/203>
+	skos:prefLabel "Universiteit Gent"@nl; "Université de Gand"@fr, "Ghent University"@en ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0248_015_142#id> ;
+	skos:altLabel "UG - Vakgroep Geografie", "Ghent University" .
+
+<http://data.gov.be/en/taxonomy/term/369>
+	skos:prefLabel "Vlaamse Vervoersmaatschappij De Lijn"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0242_069_537#id> ;
+	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn" .
+	
+<http://data.gov.be/en/taxonomy/term/374>
+	skos:prefLabel "Departement WVG"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2199_318_612#id> ;
+	skos:altLabel "Afdeling Welzijn en Samenleving (Departement Welzijn, Volksgezondheid en Gezin)", "DWVG" .
+
+<http://data.gov.be/en/taxonomy/term/375>
+	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/site/2251_007_239#id> ;
+	skos:altLabel "Agentschap Innoveren & Ondernemen", "VLAIO" .

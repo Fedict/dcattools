@@ -1,0 +1,11 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/46>
+	skos:exactMatch <http://sws.geonames.org/3337388/> ;
+	skos:prefLabel "Flanders"@en, "Vlaanderen"@nl, "Flandre"@fr, "Flandern"@de ;
+	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en, "natuurpunt"@en, "flanders-environment-agency"@en  .
+
+<http://data.gov.be/en/taxonomy/term/47>
+	skos:exactMatch <http://sws.geonames.org/3337387/> ;
+	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
+	skos:altLabel "natagriwal-asbl"@en, "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .

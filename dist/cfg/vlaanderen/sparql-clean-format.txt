@@ -1,7 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-DELETE 
-	{ ?dist dcat:mediaType ?value }
-WHERE
-	{ ?dist dcat:mediaType ?value .
-	VALUES ?value { "api" "API" "Rapport" "link" } }
