@@ -47,6 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 import org.eclipse.rdf4j.model.BNode;
 import org.eclipse.rdf4j.model.IRI;
@@ -464,7 +465,7 @@ public class Storage {
      */
     public Map<Resource, ListMultimap<String, String>> queryProperties(IRI uri) 
                                                 throws RepositoryException  {
-        Map<Resource, ListMultimap<String, String>> map = new HashMap<>();
+        Map<Resource, ListMultimap<String, String>> map = new TreeMap<>();
         
         try (RepositoryResult<Statement> stmts = conn.getStatements(uri, null, null, true)) {
             if (! stmts.hasNext()) {
