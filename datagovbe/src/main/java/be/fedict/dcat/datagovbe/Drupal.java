@@ -74,6 +74,7 @@ import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.ssl.SSLContexts;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
@@ -256,7 +257,7 @@ public class Drupal {
      * @return JsonArrayBuilder
      */
     private static JsonArrayBuilder arrayTermsJson(
-            Map<IRI, ListMultimap<String, String>> map, IRI property) {
+            Map<Resource, ListMultimap<String, String>> map, IRI property) {
         return arrayTermsJson(Storage.getMany(map, property, ""));
     }
      
@@ -267,7 +268,7 @@ public class Drupal {
      * @param lang
      * @return boolean 
      */
-    private static boolean hasLang(Map<IRI, ListMultimap<String, String>> map, 
+    private static boolean hasLang(Map<Resource, ListMultimap<String, String>> map, 
                                                                 String lang) {
         List<String> datalangs = Storage.getMany(map, DCTERMS.LANGUAGE, "");
 
@@ -366,7 +367,7 @@ public class Drupal {
     private String getOrgEmail(String org) throws RepositoryException {
         // Get DCAT contactpoints
         String email = "";
-        Map<IRI, ListMultimap<String, String>> map = 
+        Map<Resource, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
         String contact = Storage.getOne(map, VCARD4.HAS_EMAIL, "");
         if (contact.startsWith("mailto:")) {
@@ -386,7 +387,7 @@ public class Drupal {
      */
     private String getOrgName(String org, String lang) throws RepositoryException {
         // Get DCAT contactpoints
-        Map<IRI, ListMultimap<String, String>> map = 
+        Map<Resource, ListMultimap<String, String>> map = 
                                         store.queryProperties(store.getURI(org));
         String name = Storage.getOne(map, VCARD4.HAS_FN, lang);
         if (name.isEmpty()) {
@@ -402,7 +403,7 @@ public class Drupal {
      * @param dataset
      * @return 
      */
-    private Date getModif(Map<IRI, ListMultimap<String, String>> dataset) {
+    private Date getModif(Map<Resource, ListMultimap<String, String>> dataset) {
         Date modif = new Date();
         String m = Storage.getOne(dataset, DCTERMS.MODIFIED, "");
         if (m.isEmpty()) {
@@ -425,7 +426,7 @@ public class Drupal {
      * @return list of email addresses
      * @throws RepositoryException 
      */
-    private List<String> getDatasetMails(Map<IRI, ListMultimap<String, String>> dataset) 
+    private List<String> getDatasetMails(Map<Resource, ListMultimap<String, String>> dataset) 
                                                     throws RepositoryException {
         ArrayList<String> arr = new ArrayList<>();
         List<String> orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
@@ -446,7 +447,7 @@ public class Drupal {
      * @return list of email addresses
      * @throws RepositoryException 
      */
-    private List<String> getDatasetOrgs(Map<IRI, ListMultimap<String, String>> dataset,
+    private List<String> getDatasetOrgs(Map<Resource, ListMultimap<String, String>> dataset,
                                     String lang) throws RepositoryException {
         ArrayList<String> arr = new ArrayList<>();
         List<String> orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
@@ -467,7 +468,7 @@ public class Drupal {
      * @return comma-separatedlist of keywords
      * @throws RepositoryException 
      */
-    private String getKeywords(Map<IRI, ListMultimap<String, String>> dataset, 
+    private String getKeywords(Map<Resource, ListMultimap<String, String>> dataset, 
                                         String lang) throws RepositoryException {
         StringBuilder b = new StringBuilder();
         
@@ -488,10 +489,10 @@ public class Drupal {
      * @return
      * @throws RepositoryException 
      */
-    private Map<IRI, ListMultimap<String, String>> 
-        getPublisher(Map<IRI, ListMultimap<String, String>> dataset) 
+    private Map<Resource, ListMultimap<String, String>> 
+        getPublisher(Map<Resource, ListMultimap<String, String>> dataset) 
                                                 throws RepositoryException {
-        Map<IRI, ListMultimap<String, String>> m = new HashMap<>();
+        Map<Resource, ListMultimap<String, String>> m = new HashMap<>();
                 
         String publ = Storage.getOne(dataset, DCTERMS.PUBLISHER, "");
         if (! publ.isEmpty()) {
@@ -507,9 +508,9 @@ public class Drupal {
 	 * @return string
 	 * @throws RepositoryException 
 	 */
-	private String getTime(Map<IRI, ListMultimap<String, String>> dataset) 
+	private String getTime(Map<Resource, ListMultimap<String, String>> dataset) 
 												throws RepositoryException {
-		Map<IRI, ListMultimap<String, String>> m = new HashMap<>();
+		Map<Resource, ListMultimap<String, String>> m = new HashMap<>();
                 
         String time = Storage.getOne(dataset, DCTERMS.TEMPORAL, "");
         if (! time.isEmpty()) {
@@ -530,7 +531,7 @@ public class Drupal {
      * @throws RepositoryException
      */
     private void addDataset(JsonObjectBuilder builder, 
-            Map<IRI, ListMultimap<String, String>> dataset, String lang) 
+            Map<Resource, ListMultimap<String, String>> dataset, String lang) 
                                                     throws RepositoryException {
         String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
         String title = stripTags(Storage.getOne(dataset, DCTERMS.TITLE, lang));
@@ -556,7 +557,7 @@ public class Drupal {
             keywords = ellipsis(keywords, Drupal.LEN_KEYWORDS);
         }
         
-        Map<IRI, ListMultimap<String, String>> publ = getPublisher(dataset);
+        Map<Resource, ListMultimap<String, String>> publ = getPublisher(dataset);
         JsonArrayBuilder emails = fieldArrayJson(getDatasetMails(dataset));
         JsonArrayBuilder orgs = fieldArrayJson(getDatasetOrgs(dataset, lang));
 
@@ -593,7 +594,7 @@ public class Drupal {
      * @param property
      * @return 
      */
-    private static String getLink(Map<IRI, ListMultimap<String, String>> dist, IRI property) {
+    private static String getLink(Map<Resource, ListMultimap<String, String>> dist, IRI property) {
         String link = "";
         
         String l = Storage.getOne(dist, property, "");
@@ -622,7 +623,7 @@ public class Drupal {
         HashSet<String> types = new HashSet<>();
         
         for (String uri : uris) {
-            Map<IRI, ListMultimap<String, String>> dist
+            Map<Resource, ListMultimap<String, String>> dist
                     = store.queryProperties(store.getURI(uri));
             if (hasLang(dist, lang)) {
                 // Data.gov.be displays this information as fields on dataset
@@ -666,7 +667,7 @@ public class Drupal {
      * @throws RepositoryException
      */
     private void add(IRI uri) throws RepositoryException {
-        Map<IRI, ListMultimap<String, String>> dataset = store.queryProperties(uri);
+        Map<Resource, ListMultimap<String, String>> dataset = store.queryProperties(uri);
         
         if (dataset.isEmpty()) {
             logger.warn("Empty dataset for {}", uri.stringValue());

@@ -78,7 +78,7 @@
 <http://data.gov.be/en/taxonomy/term/124>
 	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, "Province West Flanders"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_696#id> ;
-	skos:altLabel ""Provincie West-Vlaanderen" .	
+	skos:altLabel "Provincie West-Vlaanderen" .	
 	
 <http://data.gov.be/en/taxonomy/term/125>
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
@@ -177,15 +177,15 @@
 <http://data.gov.be/en/taxonomy/term/367>
 	skos:prefLabel "Provincie Antwerpen"@nl, "Province d'Anvers"@fr, "Provice of Antwerp"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_597#id> ;
-	skos:altLabel "Provincie Antwerpen" .	
+	skos:altLabel "Provincie Antwerpen" .
 
 <http://data.gov.be/en/taxonomy/term/368>
 	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, "Provice of Flemish Brabant"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0253_973_219#id> ;
-	skos:altLabel "Provincie Vlaams-Brabant" .	
+	skos:altLabel "Provincie Vlaams-Brabant" .
 
 <http://data.gov.be/en/taxonomy/term/203>
-	skos:prefLabel "Universiteit Gent"@nl; "Université de Gand"@fr, "Ghent University"@en ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0248_015_142#id> ;
 	skos:altLabel "UG - Vakgroep Geografie", "Ghent University" .
 

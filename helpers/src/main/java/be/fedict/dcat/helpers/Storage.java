@@ -136,7 +136,12 @@ public class Storage {
      * @return trimmed IRI 
      */
     public IRI getURI(String str) {
-        return fac.createIRI(str.trim());
+		try {
+			return fac.createIRI(str.trim());
+		} catch (IllegalArgumentException ioe) {
+			logger.warn("Not a valid IRI {}, skolemizing", str);
+			return skolemURI(fac.createBNode(str.trim()));
+		}
     }
     
     /**
@@ -170,7 +175,7 @@ public class Storage {
      * @param lang
      * @return 
      */
-    public static List<String> getMany(Map<IRI, ListMultimap<String, String>> map, 
+    public static List<String> getMany(Map<Resource, ListMultimap<String, String>> map, 
                                                         IRI prop, String lang) {
         List<String> res = new ArrayList<>();
         
@@ -192,7 +197,7 @@ public class Storage {
      * @param lang
      * @return 
      */
-    public static String getOne(Map<IRI, ListMultimap<String, String>> map, 
+    public static String getOne(Map<Resource, ListMultimap<String, String>> map, 
                                                     IRI prop, String lang) {
         String res = "";
         
@@ -457,9 +462,9 @@ public class Storage {
      * @return 
      * @throws org.eclipse.rdf4j.repository.RepositoryException 
      */
-    public Map<IRI, ListMultimap<String, String>> queryProperties(IRI uri) 
+    public Map<Resource, ListMultimap<String, String>> queryProperties(IRI uri) 
                                                 throws RepositoryException  {
-        Map<IRI, ListMultimap<String, String>> map = new HashMap<>();
+        Map<Resource, ListMultimap<String, String>> map = new HashMap<>();
         
         try (RepositoryResult<Statement> stmts = conn.getStatements(uri, null, null, true)) {
             if (! stmts.hasNext()) {
