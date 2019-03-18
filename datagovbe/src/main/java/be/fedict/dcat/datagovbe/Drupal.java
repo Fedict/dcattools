@@ -758,10 +758,11 @@ public class Drupal {
     /**
      * Update site
      * 
+	 * @param skip skip number of datasets
      * @throws IOException 
-     * @throws org.eclipse.rdf4j.repository.RepositoryException 
+     * @throws RepositoryException 
      */
-    public void update() throws IOException, RepositoryException {
+    public void update(int skip) throws IOException, RepositoryException {
         List<IRI> datasets = store.query(DCAT.DATASET);
         
         logger.info("Updating {} datasets...", Integer.toString(datasets.size()));
@@ -770,7 +771,9 @@ public class Drupal {
         
         int i = 0;
         for (IRI d : datasets) {
-            add(d);
+			if (i >= skip) {
+				add(d);
+			}
             if (++i % 100 == 0) {
                 logger.info("Updated {}", Integer.toString(i));
             }

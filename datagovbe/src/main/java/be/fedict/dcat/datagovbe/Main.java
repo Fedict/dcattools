@@ -114,8 +114,10 @@ public class Main {
     
     /**
      * Update Drupal site
+	 * 
+	 * @param skip skip number of datasets
      */
-    public static void drupal() {
+    public static void drupal(int skip) {
         String u = prop.getProperty(Drupal.PROP_PREFIX + ".drupal");
         URL url = null;
         
@@ -139,7 +141,7 @@ public class Main {
         d.setUserPassID(user, pass, userid);
         
         try {
-            d.update();
+            d.update(skip);
         } catch (IOException ex) {
             logger.error("IO exception while updating", ex);
             exit(-5);
@@ -170,9 +172,11 @@ public class Main {
             exit(-2);
         }
         
+		int skip = (args.length == 2) ? Integer.valueOf(args[1]) : 0;
+
         readRDF();
 
-        drupal();
+        drupal(skip);
 
         exit(0);
     }
