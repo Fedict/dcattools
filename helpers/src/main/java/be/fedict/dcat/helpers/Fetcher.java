@@ -28,6 +28,8 @@ package be.fedict.dcat.helpers;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -94,16 +96,28 @@ public class Fetcher {
         JsonReader reader = Json.createReader(new StringReader(json));
 
 		return reader.readObject();
-    }
-    
+	}
+
     /**
-     * Make HTTP GET request.
+     * Make HTTP GET request, assuming UTF8 response
      * 
      * @param url
      * @return String containing raw page or empty string
      * @throws IOException 
      */
-    public String makeRequest(URL url) throws IOException {
+	public String makeRequest(URL url) throws IOException {
+		return makeRequest(url, StandardCharsets.UTF_8);
+	}
+    
+    /**
+     * Make HTTP GET request, assuming a specific charset used in the response
+     *
+     * @param url
+	 * @param charset response charset
+     * @return String containing raw page or empty string
+     * @throws IOException 
+     */
+    public String makeRequest(URL url, Charset charset) throws IOException {
         logger.info("Get request for page {}", url);
         Request request = Request.Get(url.toString());
 		// some servers return 503 if no accept header is present
@@ -117,7 +131,8 @@ public class Fetcher {
             logger.warn("HTTP code {} getting page {}", status, url);
             return "";
         }
-        return EntityUtils.toString(res.getEntity());
+
+        return EntityUtils.toString(res.getEntity(), charset);
     }
     
     /**

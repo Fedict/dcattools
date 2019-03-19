@@ -45,6 +45,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -227,7 +228,7 @@ public class ARFF {
 															throws IOException {		
 		StringBuilder w = new StringBuilder();
 		
-		Map<IRI, ListMultimap<String, String>> fields = store.queryProperties(uri);
+		Map<Resource, ListMultimap<String, String>> fields = store.queryProperties(uri);
 		
 		w.append(uri.stringValue()).append(',');
 		

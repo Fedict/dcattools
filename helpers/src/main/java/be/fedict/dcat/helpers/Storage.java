@@ -235,7 +235,7 @@ public class Storage {
      * @param obj
      * @throws RepositoryException 
      */
-    public void add(IRI subj, IRI pred, IRI obj) throws RepositoryException {
+    public void add(Resource subj, IRI pred, IRI obj) throws RepositoryException {
         conn.add(subj, pred, obj);
     }
     
@@ -289,7 +289,7 @@ public class Storage {
      * @param lang
      * @throws RepositoryException 
      */
-    public void add(IRI subj, IRI pred, String value, String lang) 
+    public void add(Resource subj, IRI pred, String value, String lang) 
                                                 throws RepositoryException {
 		if ((value != null) && !value.isEmpty()) {
 			conn.add(subj, pred, fac.createLiteral(value, lang));
@@ -463,9 +463,9 @@ public class Storage {
      * @return 
      * @throws org.eclipse.rdf4j.repository.RepositoryException 
      */
-    public Map<Resource, ListMultimap<String, String>> queryProperties(IRI uri) 
+    public Map<Resource, ListMultimap<String, String>> queryProperties(Resource uri) 
                                                 throws RepositoryException  {
-        Map<Resource, ListMultimap<String, String>> map = new TreeMap<>();
+        Map<Resource, ListMultimap<String, String>> map = new HashMap<>();
         
         try (RepositoryResult<Statement> stmts = conn.getStatements(uri, null, null, true)) {
             if (! stmts.hasNext()) {

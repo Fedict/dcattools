@@ -318,7 +318,7 @@ public abstract class Scraper extends Fetcher {
 
 		String value = prop.getProperty(p);
 		if (value == null) {
-			logger.error("No property {}", p);
+			logger.warn("No property {}", p);
 		}
 		return value;
 	}

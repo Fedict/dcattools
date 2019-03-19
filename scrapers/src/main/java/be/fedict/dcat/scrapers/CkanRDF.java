@@ -36,6 +36,7 @@ import java.io.InputStream;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,10 +68,21 @@ public abstract class CkanRDF extends Ckan {
 		int lastpage = 100;
 		List<URL> urls = new ArrayList<>();
 		
+		Charset charset = StandardCharsets.UTF_8;
+		String chr = getProperty("charset");
+		if (chr != null) {
+			try {
+				charset = Charset.forName(chr);
+			} catch (Exception e) {
+				logger.error("Charset not supported {}", chr);
+			}
+		}
+		logger.info("Assuming charset {}", charset);
+
 		for(int i = 1; i < lastpage; i++) {
 			URL url = new URL(getBase(), Ckan.CATALOG + 
 										".ttl?page=" + String.valueOf(i));
-			String content = makeRequest(url);
+			String content = makeRequest(url, charset);
 			cache.storePage(url, "all", new Page(url, content));
 			if (content.length() < 1500) {
 				lastpage = i;
