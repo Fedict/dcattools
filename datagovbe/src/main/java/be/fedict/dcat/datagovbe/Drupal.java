@@ -613,15 +613,20 @@ public class Drupal {
      * @param builder 
      * @param uris
      * @param lang
+	 * @param landing
      * @throws RepositoryException
      */
-    private void addDists(JsonObjectBuilder builder, List<String> uris, String lang) 
+    private void addDists(JsonObjectBuilder builder, List<String> uris, String lang, String landing) 
                                                     throws RepositoryException {
         HashSet<String> accesses = new HashSet<>();
         HashSet<String> downloads = new HashSet<>();
         HashSet<String> rights = new HashSet<>();
         HashSet<String> types = new HashSet<>();
-        
+
+		if (landing != null && !landing.isEmpty()) {
+			accesses.add(landing);
+		}
+
         for (String uri : uris) {
             Map<Resource, ListMultimap<String, String>> dist
                     = store.queryProperties(store.getURI(uri));
@@ -647,7 +652,7 @@ public class Drupal {
 		types.remove("");
 		
 		builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses));
-		
+
 		if (!types.isEmpty()) {
 			builder.add(Drupal.FLD_FORMAT, arrayTermsJson(types));
 		}
@@ -683,9 +688,11 @@ public class Drupal {
             
             addDataset(builder, dataset, lang);
 
+			String landingPage = Storage.getOne(dataset, DCAT.LANDING_PAGE, "");
+
             // Get DCAT distributions
             List<String> dists = Storage.getMany(dataset, DCAT.HAS_DISTRIBUTION, "");
-            addDists(builder, dists, lang);
+            addDists(builder, dists, lang, landingPage);
    
             // Add new or update existing dataset ?
             String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
