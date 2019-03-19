@@ -1,0 +1,6 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcat:landingPage ?dataset  }
+WHERE
+	{ 	?dataset a dcat:Dataset }

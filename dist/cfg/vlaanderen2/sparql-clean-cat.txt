@@ -1,5 +1,5 @@
 DELETE	{ ?s ?p ?o }
 WHERE	{ 
 		?s ?p ?o 
-		VALUES ?s  { <https://opendata.vlaanderen.be> <https://opendata.vlaanderen.be/catalog.ttl?page=1> }
+		VALUES ?s  { <https://opendata.vlaanderen.be> <https://opendata.vlaanderen.be/catalog.ttl?page=1> <http://www.afdelingkust.be/en> }
 		}

@@ -7,8 +7,8 @@
 
 <http://data.gov.be/en/taxonomy/term/86>
 	skos:prefLabel "Departement LNE"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_335_339#id> ;
-	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "LNE - Vlaams Energieagentschap" .
+	skos:exactMatch <http://org.belgif.be/cbe/site/2_143_716_826#id> ;
+	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid" .
 	
 <http://data.gov.be/en/taxonomy/term/88>
 	skos:prefLabel "VREG"@nl ;
@@ -88,7 +88,7 @@
 <http://data.gov.be/en/taxonomy/term/128>
 	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/org/0207_500_123#id> ;
-	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca" .
+	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV" .
 
 <http://data.gov.be/en/taxonomy/term/130>
 	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
@@ -162,7 +162,7 @@
 <http://data.gov.be/en/taxonomy/term/361>
 	skos:prefLabel "Vlaams Energie Agentschap"@nl, "Flemish Energy Agency"@en ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2199_336_131@id> ;
-	skos:altLabel "Vlaams Energieagentschap (VEA)" .
+	skos:altLabel "Vlaams Energieagentschap (VEA)", "LNE - Vlaams Energieagentschap" .
 	
 <http://data.gov.be/en/taxonomy/term/365>
 	skos:prefLabel "Agentschap MDK"@nl ;
@@ -203,3 +203,13 @@
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
 	skos:exactMatch <http://org.belgif.be/cbe/site/2251_007_239#id> ;
 	skos:altLabel "Agentschap Innoveren & Ondernemen", "VLAIO" .
+	
+<http://data.gov.be/en/taxonomy/term/376>
+	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0236_506_685#id> ;
+	skos:altLabel "Vlaamse Landmaatschappij - afdeling Projectrealisatie", "Vlaamse Landmaatschappij" .	
+	
+<http://data.gov.be/en/taxonomy/term/377>
+	skos:prefLabel "OVAM"@nl ;
+	skos:exactMatch <http://org.belgif.be/cbe/org/0842_399_963#id> ;
+	skos:altLabel "Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest" .	

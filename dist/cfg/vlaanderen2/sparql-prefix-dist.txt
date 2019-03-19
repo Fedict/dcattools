@@ -8,7 +8,7 @@ INSERT
 WHERE
 	{ 	?s ?p ?o .
 		?s a dcat:Distribution .
-		BIND ( STR(?o) as ?strs )
+		BIND ( STR(?s) as ?strs )
 		BIND ( IRI(CONCAT("http://data.gov.be/dist/vlaanderen/", MD5(?strs))) 
 				as ?news )
 	}

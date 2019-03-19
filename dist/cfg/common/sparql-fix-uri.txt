@@ -7,6 +7,6 @@ INSERT
 WHERE 
 	{ ?s ?prop ?val .
 		VALUES ?prop  { dcat:accessURL dcat:downloadURL }
-		BIND (IRI(ENCODE_FOR_URI(?val)) as ?iri)
+		BIND (IRI(?val) as ?iri)
 		FILTER ISLITERAL(?val) 
 	}
