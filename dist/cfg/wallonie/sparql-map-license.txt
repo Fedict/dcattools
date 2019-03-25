@@ -7,10 +7,12 @@ DELETE
 	{	?dist dcterms:license ?label }
 INSERT 
 	{ 	?dist dcterms:license ?license .
+		?license rdfs:label ?name .
 		?dist dgov:license ?drupal }
 WHERE
 	{	?dist a dcat:Distribution .
 		?dist dcterms:license ?label .
 		?drupal skos:altLabel ?label .
-		OPTIONAL { ?drupal skos:exactMatch ?license }
+		?drupal skos:prefLabel ?name .
+		?drupal skos:exactMatch ?license
 	}

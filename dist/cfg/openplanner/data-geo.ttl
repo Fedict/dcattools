@@ -1,0 +1,18 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/45>
+	skos:exactMatch <http://sws.geonames.org/2802361/> ;
+	skos:prefLabel "Belgium"@en, "Belgium"@nl, "Belgique"@fr, "Belgien"@de .
+
+<http://data.gov.be/en/taxonomy/term/46>
+	skos:exactMatch <http://sws.geonames.org/3337388/> ;
+	skos:prefLabel "Flanders"@en, "Vlaanderen"@nl, "Flandre"@fr, "Flandern"@de .
+
+<http://data.gov.be/en/taxonomy/term/47>
+	skos:exactMatch <http://sws.geonames.org/3337387/> ;
+	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl, "Wallonische Region"@de .
+	
+<http://data.gov.be/en/taxonomy/term/48>
+	skos:exactMatch <http://sws.geonames.org/2800866/> ;
+	skos:prefLabel "Brussels-Capital Region"@en, "Brussels Hoofdstedelijk Gewest"@nl, 
+					"Région de Bruxelles-Capitale"@fr, "Region_Brüssel-Hauptstadt"@de .

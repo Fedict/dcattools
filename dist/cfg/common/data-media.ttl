@@ -2,146 +2,181 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 	
 <http://data.gov.be/en/taxonomy/term/1>
+	skos:prefLabel "CSV" ;
+	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:closeMatch <http://data.gov.be/format/CSV> ;
 	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
+	skos:prefLabel "DOC" ;
+	skos:closeMatch "application/msword" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOC> ;
-	skos:closeMatch <http://data.gov.be/format/DOC> ;
 	skos:altLabel "DOC", "doc" .
 
 <http://data.gov.be/en/taxonomy/term/149>
+	skos:prefLabel "DOCX" ;
+	skos:closeMatch "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOCX> ;
-	skos:closeMatch <http://data.gov.be/format/DOCX> ;
 	skos:altLabel "DOCX", "docx" .
 
 <http://data.gov.be/en/taxonomy/term/207>
-	skos:closeMatch <http://data.gov.be/format/DWCA> ;
+	skos:prefLabel "DWCA" ;
+	skos:closeMatch "application/dwca" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
 	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA" .
 
 <http://data.gov.be/en/taxonomy/term/340>
+	skos:prefLabel "GDB" ;
+	skos:closeMatch "application/octet-stream" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GDB> ;
-	skos:closeMatch <http://data.gov.be/format/GDB> ;
 	skos:altLabel "ESRI file geodatabase" .
 
 <http://data.gov.be/en/taxonomy/term/4>
+	skos:prefLabel "GML" ;
+	skos:closeMatch "application/gml+xml";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
-	skos:closeMatch <http://data.gov.be/format/GML> ;
 	skos:altLabel "GML", "GML (ZIP)", "gml", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", "Environmental Monitoring Facilities GML application schema" .
 
 <http://data.gov.be/en/taxonomy/term/322>
-	skos:closeMatch <http://data.gov.be/format/GTFS> ;
+	skos:prefLabel "GTFS" ;
+	skos:closeMatch "application/zip";
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ZIP> ;
 	skos:altLabel "GTFS", "gtfs" .
 	
 <http://data.gov.be/en/taxonomy/term/69>
+	skos:prefLabel "HTML" ;
+	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
-	skos:closeMatch <http://data.gov.be/format/HTML> ;
 	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml" .
 
 <http://data.gov.be/en/taxonomy/term/9>
+	skos:prefLabel "JSON" ;
+	skos:closeMatch "application/json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-	skos:closeMatch <http://data.gov.be/format/JSON> ;
 	skos:altLabel "JSON", "jsonp", "json", "GeoJSON", "geojson", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)" .
 
 <http://data.gov.be/en/taxonomy/term/3>
+	skos:prefLabel "KML" ;
+	skos:closeMatch "application/vnd.google-earth.kml+xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/KML> ;
-	skos:closeMatch <http://data.gov.be/format/KML> ;
 	skos:altLabel "KML", "kml", "KML(zip)", "KML\u00A0(zip)" .
 
 <http://data.gov.be/en/taxonomy/term/6>
+	skos:prefLabel "MDB" ;
+	skos:closeMatch "application/vnd.ms-access" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
-	skos:closeMatch <http://data.gov.be/format/MDB> ;
 	skos:altLabel "MDB", "MDB (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/7>
+	skos:prefLabel "ODS" ;
+	skos:closeMatch "application/vnd.oasis.opendocument.spreadsheet" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
-	skos:closeMatch <http://data.gov.be/format/ODS> ;
 	skos:altLabel "ODS", "ods" .
 	
 <http://data.gov.be/en/taxonomy/term/65>
+	skos:prefLabel "PDF" ;
+	skos:closeMatch "application/pdf" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;
-	skos:closeMatch <http://data.gov.be/format/PDF> ;
 	skos:altLabel "PDF", "pdf" .
 	
 <http://data.gov.be/en/taxonomy/term/247>
+	skos:prefLabel "PNG" ;
+	skos:closeMatch "image/png" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PNG> ;
-	skos:closeMatch <http://data.gov.be/format/PNG> ;
 	skos:altLabel "PNG", "png" .
 	
 <http://data.gov.be/en/taxonomy/term/10>
+	skos:prefLabel "TTL" ;
+	skos:closeMatch "text/turtle" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-	skos:closeMatch <http://data.gov.be/format/TTL> ;
 	skos:altLabel "TTL", "ttl", "rdf" .
 	
 <http://data.gov.be/en/taxonomy/term/11>
+	skos:prefLabel "RSS" ;
+	skos:closeMatch "application/rss+xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RSS> ;
-	skos:closeMatch <http://data.gov.be/format/RSS> ;
 	skos:altLabel "RSS", "rss" .
 	
 <http://data.gov.be/en/taxonomy/term/235>
+	skos:prefLabel "SLD" ;
+	skos:closeMatch "application/octet-stream" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:closeMatch <http://data.gov.be/format/SLD> ;
 	skos:altLabel "sld" .
 	
 <http://data.gov.be/en/taxonomy/term/66>
+	skos:prefLabel "SHP" ;
+	skos:closeMatch "application/octet-stream" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-	skos:closeMatch <http://data.gov.be/format/SHP> ;
 	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
+	skos:prefLabel "DXF" ;
+	skos:closeMatch "image/vnd.dxf" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:closeMatch <http://data.gov.be/format/DXF> ;
 	skos:altLabel "dxf" .
 
 <http://data.gov.be/en/taxonomy/term/170>
+	skos:prefLabel "JPG" ;
+	skos:closeMatch "image/jpeg" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JPEG> ;
-	skos:closeMatch <http://data.gov.be/format/JPEG> ;
 	skos:altLabel "JPG", "jpg", "JPEG", "jpeg" .
 
 <http://data.gov.be/en/taxonomy/term/332>
+	skos:prefLabel "SQLITE" ;
+	skos:closeMatch "application/vnd.sqlite3" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:closeMatch <http://data.gov.be/format/SQLITE> ;
 	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)" .
 	
 <http://data.gov.be/en/taxonomy/term/169>
+	skos:prefLabel "TIFF" ;
+	skos:closeMatch "image/tiff" ;	
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TIFF> ;
-	skos:closeMatch <http://data.gov.be/format/TIFF> ;
 	skos:altLabel "TIFF", "tiff", "GeoTIFF, Surfer copyright binary grid.grd" .
 
 <http://data.gov.be/en/taxonomy/term/5>
+	skos:prefLabel "TXT" ;
+	skos:closeMatch "text/plain" ;		
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
-	skos:closeMatch <http://data.gov.be/format/TXT> ;
 	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)" .
 	
 <http://data.gov.be/en/taxonomy/term/63>
-	skos:closeMatch <http://data.gov.be/format/WCS> ;
-	skos:altLabel "WCS" .
+	skos:prefLabel "WCS" ;
+	skos:closeMatch "application/xml" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
+	skos:altLabel "WCS", "wcs" .
 	
 <http://data.gov.be/en/taxonomy/term/64>
-	skos:closeMatch <http://data.gov.be/format/WFS> ;
-	skos:altLabel "WFS" .
+	skos:prefLabel "WFS" ;
+	skos:closeMatch "application/xml" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/WFS_SRVC> ;
+	skos:altLabel "WFS", "wfs" .
 	
 <http://data.gov.be/en/taxonomy/term/67>
-	skos:closeMatch <http://data.gov.be/format/WMS> ;
+	skos:prefLabel "WMS" ;
+	skos:closeMatch "application/xml" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/WMS_SRVC> ;
 	skos:altLabel "WMS", "wms", "vms", "WMTS", "3DTiles" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
+	skos:prefLabel "XLS" ;
+	skos:closeMatch "application/vnd.ms-excel" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLS> ;
-	skos:closeMatch <http://data.gov.be/format/XLS> ;
 	skos:altLabel "XLS", "xls", "application/xls", "excel", "XLS (XLS)" .
 	
 <http://data.gov.be/en/taxonomy/term/62>
+	skos:prefLabel "XLSX" ;
+	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:closeMatch <http://data.gov.be/format/XLSX> ;
 	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
+	skos:prefLabel "XML" ;
+	skos:closeMatch "text/xml"; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
-	skos:closeMatch <http://data.gov.be/format/XML> ;
 	skos:altLabel "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
+	skos:prefLabel "ZIP" ;
+	skos:closeMatch "application/zip"; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ZIP> ;
-	skos:closeMatch <http://data.gov.be/format/ZIP> ;
 	skos:altLabel "ZIP", "zip" .

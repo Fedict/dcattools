@@ -8,7 +8,7 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/72> ;
 	a vcard:Organization ;
 	vcard:fn "Vlaams Open Data Forum"@en, "Vlaams Open Data Forum"@fr, "Vlaams Open Data Forum"@nl ;
-	vcard:hasEmail <opendata@vlaanderen.be> .
+	vcard:hasEmail <mailto:opendata@vlaanderen.be> .
 
 <http://data.gov.be/org/gent/contact>	
 	dgov:org <http://data.gov.be/en/taxonomy/term/125> ;

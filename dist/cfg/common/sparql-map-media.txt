@@ -1,18 +1,25 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
-	{	?dist ?fmt ?label }
+	{	?dist ?prop ?label . 
+		?dist dcterms:FileFormat ?fmt }
 INSERT 
 	{ 	?dist dgov:mediaType ?drupal .
-		?dist dcat:mediaType ?imt .
-		?dist dcterms:format ?auth }
+		?dist dcterms:format ?auth .
+		?dist dcat:mediaType ?mime .
+		?auth a dcterms:IMT .
+		?auth rdfs:label ?imt 
+	}
 WHERE
-	{	?dist ?fmt ?label .
+	{	?dist ?prop ?label .
 		?drupal skos:altLabel ?label .
-		?drupal skos:closeMatch ?imt .
-		OPTIONAL { ?drupal skos:exactMatch ?auth } 
-		VALUES ?fmt { dcat:mediaType dcterms:format }
+		?drupal skos:prefLabel ?imt .
+		?drupal skos:closeMatch ?mime .
+		?drupal skos:exactMatch ?auth .
+		OPTIONAL { ?dist dcterms:FileFormat ?fmt }
+		VALUES ?prop { dcat:mediaType dcterms:format }
 	}
