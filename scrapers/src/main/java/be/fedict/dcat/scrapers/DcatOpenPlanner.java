@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens
  */
-public abstract class DcatOpenPlanner extends Dcat {
+public class DcatOpenPlanner extends Dcat {
 	
 	private final Logger logger = LoggerFactory.getLogger(DcatOpenPlanner.class);
 

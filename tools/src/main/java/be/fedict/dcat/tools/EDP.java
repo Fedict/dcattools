@@ -195,26 +195,10 @@ public class EDP {
 			if (v instanceof IRI) {
 				IRI fmt = (IRI) v;
 
-				try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
-					if (vl.hasNext()) {
-						w.writeStartElement("dcat:mediaType");
-						Value val = vl.next().getObject();
-						//w.writeAttribute("rdf:value", val.stringValue());
-						w.writeCharacters(val.stringValue());
-						w.writeEndElement();
-					}
-				}
-
 				w.writeStartElement("dct:format");
-				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, DCTERMS.FORMAT, null)) {
-					if (lbl.hasNext()) {
-						Value val = lbl.next().getObject();
-						w.writeAttribute("rdf:about", val.stringValue());
-					} else {
-						logger.error("No resource for format {}", fmt);
-					}
-				}
+
 				w.writeEmptyElement("dct:IMT");
+				w.writeAttribute("rdf:about", fmt.toString());
 				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
 					if (lbl.hasNext()) {
 						Value val = lbl.next().getObject();
@@ -249,7 +233,8 @@ public class EDP {
 					IRI license = (IRI) v;
 					w.writeStartElement("dct:license");
 					w.writeStartElement("dct:LicenseDocument");
-					writeLiterals(w, con, license, DCTERMS.TITLE, "dct:title");
+					w.writeAttribute("rdf:about", license.toString());
+					writeLiterals(w, con, license, RDFS.LABEL, "rdfs:label");
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
@@ -362,7 +347,8 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		//	writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeFormats(w, con, uri, DCAT.MEDIA_TYPE);
+		writeLiterals(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
+		writeFormats(w, con, uri, DCTERMS.FORMAT);
 
 		// write as anyURI string
 		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
