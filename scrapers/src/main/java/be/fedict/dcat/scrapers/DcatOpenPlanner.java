@@ -26,30 +26,30 @@
 package be.fedict.dcat.scrapers;
 
 import java.io.File;
+
 import java.net.URL;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * OpenDataSoft City of Liege.
+ * Generic DCAT
  *
  * @author Bart Hanssens
  */
-public class OdsLiege extends Ods {
-
-	private final Logger logger = LoggerFactory.getLogger(OdsLiege.class);
-
+public abstract class DcatOpenPlanner extends Dcat {
 	
+	private final Logger logger = LoggerFactory.getLogger(DcatOpenPlanner.class);
+
 	/**
 	 * Constructor
-	 *
+	 * 
 	 * @param caching
 	 * @param storage
-	 * @param base
+	 * @param base 
 	 */
-	public OdsLiege(File caching, File storage, URL base) {
+	public DcatOpenPlanner(File caching, File storage, URL base) {
 		super(caching, storage, base);
-		setName("liege");
+		setName("openplanner");
 	}
 }

@@ -194,17 +194,26 @@ public class EDP {
 			Value v = res.next().getObject();
 			if (v instanceof IRI) {
 				IRI fmt = (IRI) v;
-				w.writeStartElement("dcat:mediaType");
+
 				try (RepositoryResult<Statement> vl = con.getStatements(fmt, RDF.VALUE, null)) {
 					if (vl.hasNext()) {
+						w.writeStartElement("dcat:mediaType");
 						Value val = vl.next().getObject();
 						//w.writeAttribute("rdf:value", val.stringValue());
 						w.writeCharacters(val.stringValue());
+						w.writeEndElement();
 					}
 				}
-				w.writeEndElement();
 
 				w.writeStartElement("dct:format");
+				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, DCTERMS.FORMAT, null)) {
+					if (lbl.hasNext()) {
+						Value val = lbl.next().getObject();
+						w.writeAttribute("rdf:about", val.stringValue());
+					} else {
+						logger.error("No resource for format {}", fmt);
+					}
+				}
 				w.writeEmptyElement("dct:IMT");
 				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
 					if (lbl.hasNext()) {

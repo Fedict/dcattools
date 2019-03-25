@@ -122,8 +122,8 @@ public class Fetcher {
         Request request = Request.Get(url.toString());
 		// some servers return 503 if no accept header is present
 		request.addHeader(HttpHeaders.ACCEPT, "*/*");
-		request.connectTimeout(110 * 1000);
-		request.socketTimeout(110 * 1000);
+		request.connectTimeout(240 * 1000);
+		request.socketTimeout(240 * 1000);
         HttpResponse res = request.execute().returnResponse();
         // Return empty if the HTTP returns something faulty
         int status = res.getStatusLine().getStatusCode();

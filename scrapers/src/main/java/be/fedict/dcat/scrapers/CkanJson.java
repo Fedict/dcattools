@@ -81,6 +81,7 @@ public abstract class CkanJson extends Ckan {
 	public final static String MAINT_EML = "maintainer_email";
 	public final static String META_CREATED = "metadata_created";
 	public final static String META_MODIFIED = "metadata_modified";
+	public final static String MIMETYPE = "mimetype";
 	public final static String MODIFIED = "last_modified";
 	public final static String NAME = "name";
 	public final static String NOTES = "notes";
@@ -421,6 +422,7 @@ public abstract class CkanJson extends Ckan {
 			parseDate(store, dist, obj, CkanJson.CREATED, DCTERMS.CREATED);
 			parseDate(store, dist, obj, CkanJson.MODIFIED, DCTERMS.MODIFIED);
 			parseString(store, dist, obj, CkanJson.FORMAT, DCAT.MEDIA_TYPE, null);
+			parseString(store, dist, obj, CkanJson.MIMETYPE, DCTERMS.FILE_FORMAT, null);
 			parseURI(store, dist, obj, CkanJson.URL, DCAT.DOWNLOAD_URL);
 
 			// License from dataset must be on the distribution

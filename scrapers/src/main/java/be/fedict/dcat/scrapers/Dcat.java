@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2019, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,26 +27,32 @@ package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
-
+import be.fedict.dcat.helpers.Storage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Abstract OpenDataSoft scraper.
+ * Generic DCAT
  *
- * @see https://www.opendatasoft.com/
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
-public abstract class Ods extends Dcat {
-
-	private final Logger logger = LoggerFactory.getLogger(Ods.class);
-
-	public final static String API_DCAT = "/api/v2/catalog/exports/ttl";
+public abstract class Dcat extends Scraper {
+	
+	private final Logger logger = LoggerFactory.getLogger(Dcat.class);
 
 	/**
 	 * Scrape DCAT catalog.
@@ -54,22 +60,55 @@ public abstract class Ods extends Dcat {
 	 * @param cache
 	 * @throws IOException
 	 */
-	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
-		URL front = getBase();
-		URL url = new URL(getBase(), Ods.API_DCAT);
+		URL url = getBase();
 		String content = makeRequest(url);
-		cache.storePage(front, "all", new Page(url, content));
+		cache.storePage(url, "all", new Page(url, content));
 	}
 
 	/**
-	 * Constructor
+	 * Generate DCAT file
 	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store)
+			throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+		String ttl = map.get("all").getContent();
+
+		// Load turtle file into store
+		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, RDFFormat.TURTLE);
+		} catch (RDFParseException | IOException ex) {
+			throw new RepositoryException(ex);
+		}
+		generateCatalog(store);
+	}
+
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+
+		Map<String, Page> front = cache.retrievePage(getBase());
+		if (front.keySet().isEmpty()) {
+			scrapeCat(cache);
+		}
+		logger.info("Done scraping");
+	}
+	
+	/**
+	 * Constructor
+	 * 
 	 * @param caching
 	 * @param storage
-	 * @param base
+	 * @param base 
 	 */
-	public Ods(File caching, File storage, URL base) {
+	public Dcat(File caching, File storage, URL base) {
 		super(caching, storage, base);
 	}
 }

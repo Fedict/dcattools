@@ -81,7 +81,7 @@ public abstract class CkanRDF extends Ckan {
 
 		for(int i = 1; i < lastpage; i++) {
 			URL url = new URL(getBase(), Ckan.CATALOG + 
-										".ttl?page=" + String.valueOf(i));
+										".xml?page=" + String.valueOf(i));
 			String content = makeRequest(url, charset);
 			cache.storePage(url, "all", new Page(url, content));
 			if (content.length() < 1500) {
@@ -126,7 +126,7 @@ public abstract class CkanRDF extends Ckan {
 			
 			// Load turtle file into store
 			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-				store.add(in, RDFFormat.TURTLE);
+				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
 				throw new RepositoryException(ex);
 			}
