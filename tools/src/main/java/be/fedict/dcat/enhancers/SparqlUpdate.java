@@ -28,6 +28,7 @@ package be.fedict.dcat.enhancers;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -48,7 +49,7 @@ public class SparqlUpdate extends Enhancer {
         try {
             String file = getProperty("sparqlfile");
             logger.info("Loading Sparql Update from {}", file);
-            String q = new String(Files.readAllBytes(Paths.get(file)));
+            String q = new String(Files.readAllBytes(Paths.get(file)), StandardCharsets.UTF_8);
             getStore().queryUpdate(q);
         } catch (RepositoryException|IOException ex) {
             logger.error("Error executing update", ex);

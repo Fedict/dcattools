@@ -30,6 +30,7 @@ import be.fedict.dcat.helpers.Storage;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -55,7 +56,7 @@ public class SparqlSelect extends Enhancer {
                                         new FileOutputStream(outfile));
             
             logger.info("Loading Sparql Select from {}", file);
-            String q = new String(Files.readAllBytes(Paths.get(file)));
+            String q = new String(Files.readAllBytes(Paths.get(file)), StandardCharsets.UTF_8);
             getStore().querySelect(q, buf);
             
         } catch (RepositoryException|IOException ex) {
