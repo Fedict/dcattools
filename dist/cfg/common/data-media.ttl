@@ -105,7 +105,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:prefLabel "SHP" ;
-	skos:closeMatch "application/octet-stream" ;
+	skos:closeMatch "application/zip" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile" .
 	
@@ -173,7 +173,7 @@
 	skos:prefLabel "XML" ;
 	skos:closeMatch "text/xml"; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
-	skos:altLabel "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II" .
+	skos:altLabel "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:prefLabel "ZIP" ;
