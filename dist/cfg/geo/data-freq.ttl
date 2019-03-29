@@ -30,3 +30,8 @@
 	skos:prefLabel "Never"@en ;
 	skos:altLabel "notPlanned" .
 
+<http://data.gov.be/en/taxonomy/term/192>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+	skos:prefLabel "Unknown"@en ;
+	skos:altLabel "unknown" .
+	

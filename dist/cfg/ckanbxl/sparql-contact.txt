@@ -6,9 +6,12 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 DELETE 
 	{ 	?s vcard:hasEmail ?email }
 INSERT
-	{ 	?s vcard:hasEmail ?uri }
+	{ 	?s vcard:fn ?name .
+		?s vcard:hasEmail ?uri }
 WHERE
 	{ 	?s vcard:hasEmail ?email .
+		OPTIONAL { ?s vcard:fn ?fn }
 		FILTER ( isLiteral(?email) && CONTAINS(?email, "@"))
-		BIND ( URI(CONCAT("mailto:", ?email)) as ?uri)
+		BIND ( URI(CONCAT("mailto:", REPLACE(?email, " ", ""))) as ?uri)
+		BIND ( IF(BOUND(?fn), ?fn, ?email) AS ?name)
 	}

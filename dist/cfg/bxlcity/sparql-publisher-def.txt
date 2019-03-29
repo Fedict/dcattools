@@ -1,0 +1,8 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 	{ ?dataset dcterms:publisher <http://org.belgif.be/cbe/org/0207_373_429#id> }
+WHERE { 
+	?dataset a dcat:Dataset
+	FILTER NOT EXISTS { ?dataset dcterms:publisher ?publ }
+}

@@ -171,7 +171,7 @@ public abstract class GeonetGmd extends Geonet {
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
 			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
 			for (String lang : getAllLangs()) {
-				parseMulti(store, vcard, name, VCARD4.HAS_FN, lang);
+				parseMulti(store, vcard, name, VCARD4.FN, lang);
 			}
 			if (!email.isEmpty()) {
 				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));

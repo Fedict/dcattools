@@ -5,7 +5,7 @@
 	skos:prefLabel "CSV" ;
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)" .
+	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)", "link (html/csv)", "Lien (html/csv)" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:prefLabel "DOC" ;
@@ -35,7 +35,8 @@
 	skos:prefLabel "GML" ;
 	skos:closeMatch "application/gml+xml";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
-	skos:altLabel "GML", "GML (ZIP)", "gml", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", "Environmental Monitoring Facilities GML application schema" .
+	skos:altLabel "GML", "GML (ZIP)", "gml", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
+			"Environmental Monitoring Facilities GML application schema", "Administrative units GML application schema" .
 
 <http://data.gov.be/en/taxonomy/term/322>
 	skos:prefLabel "GTFS" ;
@@ -47,13 +48,13 @@
 	skos:prefLabel "HTML" ;
 	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
-	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml" .
+	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", "power bi" .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
 	skos:closeMatch "application/json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-	skos:altLabel "JSON", "jsonp", "json", "GeoJSON", "geojson", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)" .
+	skos:altLabel "JSON", "jsonp", "json", "GeoJSON", "geojson", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" .
 
 <http://data.gov.be/en/taxonomy/term/3>
 	skos:prefLabel "KML" ;
@@ -107,7 +108,7 @@
 	skos:prefLabel "SHP" ;
 	skos:closeMatch "application/zip" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-	skos:altLabel "SHP", "shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile" .
+	skos:altLabel "SHP", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:prefLabel "DXF" ;
