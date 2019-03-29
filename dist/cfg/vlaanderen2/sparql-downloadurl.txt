@@ -9,5 +9,8 @@ WHERE
 	{ 	?s a dcat:Distribution .
 		?s dcat:accessURL ?o .
 		?s dcterms:format ?fmt .
+		BIND (STR(?o) as ?url)
 		FILTER NOT EXISTS { ?s dcat:downloadURL ?url }
+		FILTER STRENDS(?url, ?file)
+		VALUES ?file { "csv" "json" "kml" "xls" "xlsx" "zip" }
 	}

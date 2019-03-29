@@ -1,6 +1,8 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 INSERT
-	{ 	?dataset dcat:landingPage ?dataset  }
+	{ 	?dataset dcat:landingPage ?page }
 WHERE
-	{ 	?dataset a dcat:Dataset }
+	{ 	?dataset a dcat:Dataset 
+		BIND (?dataset as ?page) 
+	}

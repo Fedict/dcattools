@@ -1,17 +1,27 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE { ?s ?p ?o }
 WHERE { 
-		{	?s ?p ?o 
-			VALUES (?p) {
-				( skos:prefLabel )
-				( skos:altLabel )
-				( skos:exactMatch )
-				( skos:closeMatch )
-				( skos:inScheme )
-				( skos:topConceptOf )
-			}
-		} UNION {
-			?s a skos:Concept
+	{
+		?s ?p ?o 
+		VALUES ?p {
+			skos:prefLabel
+			skos:altLabel
+			skos:exactMatch
+			skos:closeMatch
+			skos:inScheme
+			skos:topConceptOf
 		}
 	}
+	UNION
+	{
+		?s ?p ?o .
+		?s a skos:ConceptScheme
+	}	
+	UNION
+	{
+		?s ?p ?o .
+		?s a skos:Concept
+	}
+}

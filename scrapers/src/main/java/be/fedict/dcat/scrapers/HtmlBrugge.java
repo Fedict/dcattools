@@ -66,9 +66,9 @@ public class HtmlBrugge extends Html {
 
 	private final static String LINKS_DATASETS = "div.user-content div a:eq(0)[href]";
 	private final static String LINK_DATASET = "div.user-content h4";
-	private final static String NAME_DATASET = "strong a[name]";
+	private final static String NAME_DATASET = "a[name]";
 
-	private final static String SIBL_DESC = "em strong:contains(Omschrijving)";
+	private final static String SIBL_DESC = "em :contains(Omschrijving)";
 	private final static String SIBL_FMTS = "em :contains(Bestandsformaten)";
 	private final static String DIST_HREF = "a";
 	
@@ -110,7 +110,11 @@ public class HtmlBrugge extends Html {
 		String href = link.attr(Attribute.HREF.toString());
 		String fmt = link.ownText().replaceAll("/", "")
 				.replaceAll(" ", "")
-				.replaceAll("&nbsp;", "");
+				.replaceAll("&nbsp;", "")
+				.replaceAll("\u00A0", "");
+		if (fmt.isEmpty()) {
+			return;
+		}
 		URL u = makeDistURL(name + "/" + fmt);
 		IRI dist = store.getURI(u.toString());
 		logger.debug("Generating distribution {}", dist.toString());
@@ -151,7 +155,9 @@ public class HtmlBrugge extends Html {
 
 		String desc = title;
 		Element sib = el.nextElementSibling();
-		while (sib != null && sib.tagName().equals(Tag.P.toString())) {
+		while (sib != null && 
+				(	sib.tagName().equals(Tag.P.toString()) || 
+					sib.tagName().equals(Tag.H5.toString()))) {
 			if (!sib.select(SIBL_DESC).isEmpty()) {
 				desc = sib.text().replaceFirst("Omschrijving ", "");
 			}

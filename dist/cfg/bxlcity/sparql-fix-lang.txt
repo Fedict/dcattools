@@ -1,0 +1,12 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE  { ?dist dcterms:description ?olddesc }
+INSERT 	{ ?dist dcterms:description ?newdesc }
+WHERE { 
+	?dataset dcat:distribution ?dist .
+	?dist dcterms:description ?olddesc .
+	BIND (STRLANG(?olddesc, "en") as ?newdesc)
+	FILTER (CONTAINS(?olddesc, " export of "))
+	FILTER (LANG(?olddesc) = "")
+}

@@ -54,7 +54,7 @@
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:closeMatch <https://opendata.liege.be/id/theme/Sant%C3%A9>,
+	skos:closeMatch <https://opendata.brussels.be/id/theme/Sant%C3%A9>,
 		<https://opendata.brussels.be/id/theme/Gezondheid>,
 		<https://opendata.brussels.be/id/theme/Health> .
 
@@ -70,6 +70,11 @@
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:closeMatch <https://opendata.brussels.be/id/theme/Services%2C%20Social>, 
 		<https://opendata.brussels.be/id/theme/Diensten%2C%20Sociaal>,
+		<https://opendata.brussels.be/id/theme/Duurzame%20ontwikkeling>,
+		<https://opendata.brussels.be/id/theme/Duurzame%20ontkwikkeling>,
+		<https://opendata.brussels.be/id/theme/Development%20durable>,
+		<https://opendata.brussels.be/id/theme/D%C3%A9veloppement%20durable>,
+		<https://opendata.brussels.be/id/theme/D%C3%A9veloppement%20Durable>,
 		<https://opendata.brussels.be/id/theme/Am%C3%A9nagement%20du%20territoire%2C%20Urbanisme%2C%20B%C3%A2timents%2C%20Equipements%2C%20Logement>,
 		<https://opendata.brussels.be/id/theme/Ruimtelijke%20ordening%2C%20Stedenbouw%2C%20Gebouwen%2C%20Uitrusting%2C%20Huisvesting>,
 		<https://opendata.brussels.be/id/theme/Spatial%20planning%2C%20Town%20planning%2C%20Buildings%2C%20Equipment%2C%20Housing> .

@@ -1,11 +1,14 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
-	{ ?s dcterms:language ?oldlang }
+	{ ?dataset dcterms:language ?oldlang }
 INSERT 
-	{ ?s dcterms:language ?newlang }
+	{ ?dataset dcterms:language ?newlang .
+	  ?dist dcterms:language ?newlang }
 WHERE 
-	{ ?s dcterms:language ?oldlang .
+	{ ?dataset dcterms:language ?oldlang .
+	  ?dataset dcat:distribution ?dist 
 		VALUES (?oldlang ?newlang)  { 
 			( <http://id.loc.gov/vocabulary/iso639-1/en> <http://publications.europa.eu/resource/authority/language/ENG> )
 			( <http://id.loc.gov/vocabulary/iso639-1/fr> <http://publications.europa.eu/resource/authority/language/FRA> )
