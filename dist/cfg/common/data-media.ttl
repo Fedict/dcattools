@@ -5,7 +5,7 @@
 	skos:prefLabel "CSV" ;
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)", "link (html/csv)", "Lien (html/csv)" .
+	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:prefLabel "DOC" ;

@@ -1,7 +1,7 @@
 PREFIX dcat:    <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-INSERT	{ ?dataset dcat:contactPoint <http://org.belgif.be/cbe/org/0240_678_477#id> }
+INSERT	{ ?dataset dcat:contactPoint <http://org.belgif.be/id/cbe/org/0240_678_477> }
 WHERE	{ ?dataset a dcat:Dataset
     		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?value }
 }

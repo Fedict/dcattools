@@ -2,75 +2,75 @@
 
 <http://data.gov.be/en/taxonomy/term/193>
 	skos:prefLabel "Belgian Biodiversity Platform"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0865_537_829#id-biodiv> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0865_537_829-biodiv> ;
 	skos:altLabel "belgium-biodiversity-platform"@en, "bccm-belgian-coordinated-collections-of-micro-organisms"@en .
 
 <http://data.gov.be/en/taxonomy/term/194>
 	skos:prefLabel "Instituut voor Natuur- en Bosonderzoek"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0316_380_841#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_380_841> ;
 	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en .
 
 <http://data.gov.be/en/taxonomy/term/195>
 	skos:prefLabel "Koninklijk Museum voor Midden-Afrika"@nl, "Musée royal de l'Afrique centrale"@fr, "Royal Museum for Central Africa"@en, "Königliches Museum für Zentralafrika"@de ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0306_562_560#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0306_562_560> ;
 	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
 
 <http://data.gov.be/en/taxonomy/term/196>
 	skos:prefLabel "Plantentuin Meise"@nl, "Jardin botanique Meise"@fr, "Botanic garden Meise"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0540_708_286#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0540_708_286> ;
 	skos:altLabel "botanical-garden-meise"@en .
 
 <http://data.gov.be/en/taxonomy/term/197>
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, "Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, "Königliches Belgisches Institut für Naturwissenschaften"@de ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0353_070_496#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0353_070_496> ;
 	skos:altLabel "royal-belgian-institute-of-natural-sciences"@en .
 
 <http://data.gov.be/en/taxonomy/term/199>
 	skos:prefLabel "Université libre de Bruxelles"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0407_626_464#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0407_626_464> ;
 	skos:altLabel "universite-libre-de-bruxelles-ulb"@en .
 
 <http://data.gov.be/en/taxonomy/term/201>
 	skos:prefLabel "Université de Liège"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_182_928_085#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_182_928_085> ;
 	skos:altLabel "university-of-liege"@en .
 
 <http://data.gov.be/en/taxonomy/term/203>
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0248_015_142#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0248_015_142> ;
 	skos:altLabel "marine-biology-section-ugent"@en .
 
 <http://data.gov.be/en/taxonomy/term/204>
 	skos:prefLabel "Université de Mons"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0259_396_509#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0259_396_509> ;
 	skos:altLabel "university-of-mons-hainaut"@en .
 
 <http://data.gov.be/en/taxonomy/term/205>
 	skos:prefLabel "Natuurpunt"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0409_423_736#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0409_423_736> ;
 	skos:altLabel "natuurpunt"@en .
 
 <http://data.gov.be/en/taxonomy/term/370>
 	skos:prefLabel "Flanders Marine Institute"@en, "Vlaams Instituut voor Zee"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0466_279_196#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0466_279_196> ;
 	skos:altLabel "flanders-marine-institute"@en, "worms-editorial-board"@en .
 
 <http://data.gov.be/en/taxonomy/term/92>
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0887_290_276#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0887_290_276> ;
 	skos:altLabel "flanders-environment-agency"@en .
 
 <http://data.gov.be/en/taxonomy/term/371>
 	skos:prefLabel "Natagriwal"@fr, "Natagriwal"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0501_968_466#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0501_968_466> ;
 	skos:altLabel "natagriwal-asbl"@en .
 	
 <http://data.gov.be/en/taxonomy/term/372>
 	skos:prefLabel "Université de Namur"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0409_530_535#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0409_530_535> ;
 	skos:altLabel "universite-de-namur-departement-de-biologie"@en .
 
 <http://data.gov.be/en/taxonomy/term/372>
 	skos:prefLabel "SPW DGO3 DEMNA"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_225_118_335#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_225_118_335> ;
 	skos:altLabel "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .

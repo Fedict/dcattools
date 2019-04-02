@@ -1,0 +1,5 @@
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE	{ ?s vcard:hasFN ?name }
+INSERT	{ ?s vcard:fn ?name }
+WHERE	{ ?s vcard:hasFN ?name }
