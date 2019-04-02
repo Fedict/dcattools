@@ -3,6 +3,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/statbel/fod/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/cbe/site/2_146_814_391#id> }
+		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/site/2_146_814_391> }
 WHERE
 	{ 	?dataset a dcat:Dataset  }

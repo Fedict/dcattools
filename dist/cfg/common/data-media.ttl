@@ -5,7 +5,7 @@
 	skos:prefLabel "CSV" ;
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)" .
+	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:prefLabel "DOC" ;
@@ -35,7 +35,7 @@
 	skos:prefLabel "GML" ;
 	skos:closeMatch "application/gml+xml";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
-	skos:altLabel "GML", "GML (ZIP)", "gml", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
+	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
 			"Environmental Monitoring Facilities GML application schema", "Administrative units GML application schema" .
 
 <http://data.gov.be/en/taxonomy/term/322>
@@ -54,8 +54,14 @@
 	skos:prefLabel "JSON" ;
 	skos:closeMatch "application/json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-	skos:altLabel "JSON", "jsonp", "json", "GeoJSON", "geojson", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" .
+	skos:altLabel "JSON", "jsonp", "json", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" .
 
+<http://data.gov.be/en/taxonomy/term/9>
+	skos:prefLabel "GeoJSON" ;
+	skos:closeMatch "application/vnd.geo+json" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GEOJSON> ;
+	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)" .
+	
 <http://data.gov.be/en/taxonomy/term/3>
 	skos:prefLabel "KML" ;
 	skos:closeMatch "application/vnd.google-earth.kml+xml" ;
@@ -126,7 +132,7 @@
 	skos:prefLabel "SQLITE" ;
 	skos:closeMatch "application/vnd.sqlite3" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)" .
+	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/169>
 	skos:prefLabel "TIFF" ;
@@ -168,7 +174,7 @@
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", "M XSLX", "F XSLX" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;

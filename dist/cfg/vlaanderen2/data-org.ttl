@@ -2,27 +2,27 @@
 
 <http://data.gov.be/en/taxonomy/term/84>
 	skos:prefLabel "Studiedienst Vlaanderen"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_299_707#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_299_707> ;
 	skos:altLabel "SVR" .
 
 <http://data.gov.be/en/taxonomy/term/86>
 	skos:prefLabel "Departement LNE"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_143_716_826#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_143_716_826> ;
 	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid" .
 	
 <http://data.gov.be/en/taxonomy/term/88>
 	skos:prefLabel "VREG"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0886_689_767#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0886_689_767> ;
 	skos:altLabel "VREG" .
 
 <http://data.gov.be/en/taxonomy/term/91>
 	skos:prefLabel "Agentschap Binnenlands Bestuur"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_300_596#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_300_596> ;
 	skos:altLabel "ABB", "Agentschap Binnenlands Bestuur" .
 
 <http://data.gov.be/en/taxonomy/term/92>
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0887_290_276#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0887_290_276> ;
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij", 
 	"Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", 
 	"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer", 
@@ -30,129 +30,129 @@
 
 <http://data.gov.be/en/taxonomy/term/93>
 	skos:prefLabel "Departement CSJM"@nl	;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_322_471#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_322_471> ;
 	skos:altLabel "Departement Cultuur, Jeugd en Media", "DCJM" .
 
 <http://data.gov.be/en/taxonomy/term/95>
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0225_944_375#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0225_944_375> ;
 	skos:altLabel "Toerisme Vlaanderen", "Toerisme Vlaandeen" .
 	
 <http://data.gov.be/en/taxonomy/term/96>
 	skos:prefLabel "Departement RV"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0225_944_375#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0225_944_375> ;
 	skos:altLabel "Vlaamse overheid - Departement Ruimte Vlaanderen" .
 	
 <http://data.gov.be/en/taxonomy/term/98>
 	skos:prefLabel "Departement MOW"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_336_230#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_336_230> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
 	"Departement Mobiliteit en Openbare Werken, afdeling Waterbouwkundig Laboratorium", "DMOW",
 	"Beleidsdomein Mobiliteit en Openbare Werken" .
 
 <http://data.gov.be/en/taxonomy/term/108>
 	skos:prefLabel "Departement OV"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_310_989#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_310_989> ;
 	skos:altLabel "dov"@nl .
 
 <http://data.gov.be/en/taxonomy/term/115>
 	skos:prefLabel "Departement LV"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_324_550#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_324_550> ;
 	skos:altLabel "Departement Landbouw en Visserij" .
 
 <http://data.gov.be/en/taxonomy/term/116>
 	skos:prefLabel "Agentschap Onroerend Erfgoed"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_338_408#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_338_408> ;
 	skos:altLabel "Vlaamse Overheid - Agentschap Onroerend Erfgoed", "Agentschap Onroerend Erfgoed", "Onroerend Erfgoed" .
 
 <http://data.gov.be/en/taxonomy/term/118>
 	skos:prefLabel "Departement WSE"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_323_857#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_323_857> ;
 	skos:altLabel "DWSE"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/123>
 	skos:prefLabel "Geopunt"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_256_181_002#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_256_181_002> ;
 	skos:altLabel "Geopunt" .
 
 <http://data.gov.be/en/taxonomy/term/124>
 	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, "Province West Flanders"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_696#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_725_696> ;
 	skos:altLabel "Provincie West-Vlaanderen" .	
 	
 <http://data.gov.be/en/taxonomy/term/125>
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_451_227#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_451_227> ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
 	
 <http://data.gov.be/en/taxonomy/term/128>
 	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_500_123#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_500_123> ;
 	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV" .
 
 <http://data.gov.be/en/taxonomy/term/130>
 	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_494_678#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_494_678> ;
 	skos:altLabel "Stad Kortrijk" .
 	
 <http://data.gov.be/en/taxonomy/term/132>
 	skos:prefLabel "Departement BZ"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_299_410#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_299_410> ;
 	skos:altLabel "dbz"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/151>
 	skos:prefLabel "WestToer"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0267_388_418#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0267_388_418> ;
 	skos:altLabel "Westtoer" .
 	
 <http://data.gov.be/en/taxonomy/term/180>
 	skos:prefLabel "Fluvius"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0215_266_160#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0215_266_160> ;
 	skos:altLabel "EANDIS cvba", "Fluvius" .
 
 <http://data.gov.be/en/taxonomy/term/194>
 	skos:prefLabel "INBO"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_335_933#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_335_933> ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Research Institute for Nature and Forest (INBO)" .
 	
 <http://data.gov.be/en/taxonomy/term/205>
 	skos:prefLabel "Natuurpunt"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0434_364_713#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0434_364_713> ;
 	skos:altLabel "Natuurpunt" .
 	
 <http://data.gov.be/en/taxonomy/term/213>
 	skos:prefLabel "Informatie Vlaanderen"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_256_180_804#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_256_180_804> ;
 	skos:altLabel "agentschap Informatie Vlaanderen", "Informatie Vlaanderen" .
 
 <http://data.gov.be/en/taxonomy/term/214>
 	skos:prefLabel "V-ICT-OR"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0549_874_291#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0549_874_291> ;
 	skos:altLabel "V-ICT-OR" .
 	
 <http://data.gov.be/en/taxonomy/term/215>
 	skos:prefLabel "VRM"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0893_159_865#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0893_159_865> ;
 	skos:altLabel "vrm"@nl .
 
 <http://data.gov.be/en/taxonomy/term/216>
 	skos:prefLabel "Vlaams Parlement"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0931_814_563#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0931_814_563> ;
 	skos:altLabel "Vlaams Parlement" .
 
 <http://data.gov.be/en/taxonomy/term/225>
 	skos:prefLabel "Kind en Gezin"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0886_886_638#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0886_886_638> ;
 	skos:altLabel "Kind en Gezin" .
 	
 <http://data.gov.be/en/taxonomy/term/349>
 	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_499_430#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_499_430> ;
 	skos:altLabel "Stad Mechelen" .
 	
 <http://data.gov.be/en/taxonomy/term/364>
 	skos:prefLabel "Departement Omgeving"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_335_339#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_335_339> ;
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", "Vlaamse overheid - Departement Omgeving",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Beleidsontwikkeling en Juridische Ondersteuning",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -projecten",
@@ -161,62 +161,62 @@
 
 <http://data.gov.be/en/taxonomy/term/361>
 	skos:prefLabel "Vlaams Energie Agentschap"@nl, "Flemish Energy Agency"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2199_336_131@id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2199_336_131@id> ;
 	skos:altLabel "Vlaams Energieagentschap (VEA)", "LNE - Vlaams Energieagentschap" .
 	
 <http://data.gov.be/en/taxonomy/term/365>
 	skos:prefLabel "Agentschap MDK"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2_199_336_725#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_336_725> ;
 	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie" .
 
 <http://data.gov.be/en/taxonomy/term/366>
 	skos:prefLabel "Provincie Limburg"@nl, "Province de Limbourg"@fr, "Province of Limburg"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_203#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_725_203> ;
 	skos:altLabel "Provincie Limburg" .
 
 <http://data.gov.be/en/taxonomy/term/367>
 	skos:prefLabel "Provincie Antwerpen"@nl, "Province d'Anvers"@fr, "Provice of Antwerp"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0207_725_597#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_725_597> ;
 	skos:altLabel "Provincie Antwerpen" .
 
 <http://data.gov.be/en/taxonomy/term/368>
 	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, "Provice of Flemish Brabant"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0253_973_219#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0253_973_219> ;
 	skos:altLabel "Provincie Vlaams-Brabant" .
 
 <http://data.gov.be/en/taxonomy/term/203>
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0248_015_142#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0248_015_142> ;
 	skos:altLabel "UG - Vakgroep Geografie", "Ghent University" .
 
 <http://data.gov.be/en/taxonomy/term/369>
 	skos:prefLabel "Vlaamse Vervoersmaatschappij De Lijn"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0242_069_537#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0242_069_537> ;
 	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn" .
 	
 <http://data.gov.be/en/taxonomy/term/374>
 	skos:prefLabel "Departement WVG"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2199_318_612#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2199_318_612> ;
 	skos:altLabel "Afdeling Welzijn en Samenleving (Departement Welzijn, Volksgezondheid en Gezin)", "DWVG" .
 
 <http://data.gov.be/en/taxonomy/term/375>
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/site/2251_007_239#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2251_007_239> ;
 	skos:altLabel "Agentschap Innoveren & Ondernemen", "VLAIO" .
 	
 <http://data.gov.be/en/taxonomy/term/376>
 	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0236_506_685#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0236_506_685> ;
 	skos:altLabel "Vlaamse Landmaatschappij - afdeling Projectrealisatie", "Vlaamse Landmaatschappij" .	
 	
 <http://data.gov.be/en/taxonomy/term/377>
 	skos:prefLabel "OVAM"@nl ;
-	skos:exactMatch <http://org.belgif.be/cbe/org/0842_399_963#id> ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0842_399_963> ;
 	skos:altLabel "Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest" .
 
 <http://data.gov.be/en/taxonomy/term/380>
 	skos:prefLabel "De Vlaamse Waterweg NV"@nl ;
-	skos:exactMatch  <http://org.belgif.be/cbe/org/0216_173_309#id> ;
+	skos:exactMatch  <http://org.belgif.be/id/cbe/org/0216_173_309> ;
 	skos:altLabel "Waterwegen en Zeekanaal NV", "nv De Scheepvaart" .
 	
 	

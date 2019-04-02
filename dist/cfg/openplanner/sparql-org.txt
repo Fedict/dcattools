@@ -5,9 +5,9 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 DELETE 
 	{	?dataset dcterms:publisher <https://openplanner.team/> }
 INSERT 
-	{ 	?dataset dcterms:publisher <http://org.belgif.be/cbe/org/0845_419_930#id> .
-		<http://org.belgif.be/cbe/org/0845_419_930#id> dgov:org <http://data.gov.be/en/taxonomy/term/378> .
-		<http://org.belgif.be/cbe/org/0845_419_930#id> a foaf:Organization .
-		<http://org.belgif.be/cbe/org/0845_419_930#id> foaf:name "OpenPlanner Team"@en, "OpenPlanner Team"@fr, "OpenPlanner Team"@nl, "OpenPlanner Team"@de }
+	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0845_419_930> .
+		<http://org.belgif.be/id/cbe/org/0845_419_930> dgov:org <http://data.gov.be/en/taxonomy/term/378> .
+		<http://org.belgif.be/id/cbe/org/0845_419_930> a foaf:Organization .
+		<http://org.belgif.be/id/cbe/org/0845_419_930> foaf:name "OpenPlanner Team"@en, "OpenPlanner Team"@fr, "OpenPlanner Team"@nl, "OpenPlanner Team"@de }
 WHERE
 	{	?dataset dcterms:publisher <https://openplanner.team/> }

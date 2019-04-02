@@ -4,7 +4,7 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 <http://data.gov.be/org/vlaanderen/forum/contact>
-	org:unitOf <http://org.belgif.be/cbe/org/0316_380_841#id> ;
+	org:unitOf <http://org.belgif.be/id/cbe/org/0316_380_841> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/72> ;
 	a vcard:Organization ;
 	vcard:fn "Vlaams Open Data Forum"@en, "Vlaams Open Data Forum"@fr, "Vlaams Open Data Forum"@nl ;

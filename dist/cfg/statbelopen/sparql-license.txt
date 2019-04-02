@@ -10,7 +10,7 @@ WHERE
 	{	?dist a dcat:Distribution .
 		?dist dcterms:language ?lang 	
 		VALUES(?lang ?rights) {
-			( <http://publications.europa.eu/resource/authority/language/NLD> <http://statbel.fgov.be/nl/statistieken/opendata/licentie/> )
-			( <http://publications.europa.eu/resource/authority/language/FRA> <http://statbel.fgov.be/fr/statistiques/opendata/licence/> )
-		}
+			( <http://publications.europa.eu/resource/authority/language/NLD> <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf> )
+			( <http://publications.europa.eu/resource/authority/language/FRA> <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_FR.pdf> )
+			( <http://publications.europa.eu/resource/authority/language/ENG> <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_FR.pdf> )		}
 	}

@@ -1,4 +1,4 @@
-PREFIX dcterms: <http://purl.org/dc/terms/>
+﻿PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -7,11 +7,11 @@ DELETE
 	{	?dataset dcterms:publisher ?pub .
 		?pub ?p ?o }
 INSERT 
-	{ 	?dataset dcterms:publisher <http://org.belgif.be/cbe/org/0207_343_933#id> .
-		<http://org.belgif.be/cbe/org/0207_343_933#id> dgov:org <http://data.gov.be/en/taxonomy/term/363> .
-		<http://org.belgif.be/cbe/org/0207_343_933#id> a foaf:Organization .
-		<http://org.belgif.be/cbe/org/0207_343_933#id> foaf:name "Stad Luik"@nl .
-		<http://org.belgif.be/cbe/org/0207_343_933#id> foaf:name "Ville de Liège"@fr .
-		<http://org.belgif.be/cbe/org/0207_343_933#id> foaf:name "City of Liège"@en }
+	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0207_343_933> .
+		<http://org.belgif.be/id/cbe/org/0207_343_933> dgov:org <http://data.gov.be/en/taxonomy/term/363> .
+		<http://org.belgif.be/id/cbe/org/0207_343_933> a foaf:Organization .
+		<http://org.belgif.be/id/cbe/org/0207_343_933> foaf:name "Stad Luik"@nl .
+		<http://org.belgif.be/id/cbe/org/0207_343_933> foaf:name "Ville de Liège"@fr .
+		<http://org.belgif.be/id/cbe/org/0207_343_933> foaf:name "City of Liège"@en }
 WHERE
 	{	?dataset dcterms:publisher ?pub }

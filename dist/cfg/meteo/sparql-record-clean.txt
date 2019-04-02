@@ -1,7 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-DELETE
-	{	?record ?prop ?val }
-WHERE
-	{ 	?record a dcat:CatalogRecord .
-		?record ?prop ?val }
