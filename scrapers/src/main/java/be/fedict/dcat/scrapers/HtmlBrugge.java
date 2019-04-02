@@ -68,8 +68,10 @@ public class HtmlBrugge extends Html {
 	private final static String LINK_DATASET = "div.user-content h4";
 	private final static String NAME_DATASET = "a[name]";
 
-	private final static String SIBL_DESC = "em :contains(Omschrijving)";
-	private final static String SIBL_FMTS = "em :contains(Bestandsformaten)";
+	private final static String SIBL_DESC = 
+									"em:contains(Omschrijving), span:contains(Omschrijving)";
+	private final static String SIBL_FMTS = 
+									"em:contains(Bestandsformaten), span:contains(Bestandsformaten)";
 	private final static String DIST_HREF = "a";
 	
 	/**
