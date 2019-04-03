@@ -1,7 +1,10 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
-	{ ?dist dcat:mediaType ?value }
+	{ ?dist ?prop ?value }
 WHERE
-	{ ?dist dcat:mediaType ?value .
-	VALUES ?value { "api" "API" "Rapport" "link" } }
+	{ 	?dist dcat:mediaType ?value .
+		VALUES ?value { "afbeelding" "api" "API" "Rapport" "link" "Kaart" "HTML Grafiek" } 
+		VALUES ?prop { dcterms:format dcat:mediaType }
+	}

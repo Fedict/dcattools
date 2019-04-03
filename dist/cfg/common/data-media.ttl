@@ -48,7 +48,7 @@
 	skos:prefLabel "HTML" ;
 	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
-	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", "power bi" .
+	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", "power bi", "HTML Tabel" .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
@@ -56,7 +56,7 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
 	skos:altLabel "JSON", "jsonp", "json", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" .
 
-<http://data.gov.be/en/taxonomy/term/9>
+<http://data.gov.be/en/taxonomy/term/381>
 	skos:prefLabel "GeoJSON" ;
 	skos:closeMatch "application/vnd.geo+json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GEOJSON> ;
@@ -72,7 +72,7 @@
 	skos:prefLabel "MDB" ;
 	skos:closeMatch "application/vnd.ms-access" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
-	skos:altLabel "MDB", "MDB (ZIP)" .
+	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/7>
 	skos:prefLabel "ODS" ;
@@ -92,11 +92,17 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PNG> ;
 	skos:altLabel "PNG", "png" .
 	
-<http://data.gov.be/en/taxonomy/term/10>
+<http://data.gov.be/en/taxonomy/term/382>
 	skos:prefLabel "TTL" ;
 	skos:closeMatch "text/turtle" ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF> ;
-	skos:altLabel "TTL", "ttl", "rdf" .
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+	skos:altLabel "TTL", "ttl".
+	
+<http://data.gov.be/en/taxonomy/term/10>
+	skos:prefLabel "RDF/XML" ;
+	skos:closeMatch "application/rdf+xml" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
+	skos:altLabel "RDF", "rdf" .
 	
 <http://data.gov.be/en/taxonomy/term/11>
 	skos:prefLabel "RSS" ;
@@ -132,7 +138,7 @@
 	skos:prefLabel "SQLITE" ;
 	skos:closeMatch "application/vnd.sqlite3" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)" .
+	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/169>
 	skos:prefLabel "TIFF" ;
@@ -174,7 +180,7 @@
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", "M XSLX", "F XSLX" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
