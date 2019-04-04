@@ -4,7 +4,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE 
 	{ ?dist ?prop ?value }
 WHERE
-	{ 	?dist dcat:mediaType ?value .
-		VALUES ?value { "afbeelding" "api" "API" "Rapport" "link" "Kaart" "HTML Grafiek" } 
+	{ 	?dist ?prop ?value .
+		VALUES ?value { "afbeelding" "api" "API" "Rapport" "link" "kaart" "Kaart" "HTML Grafiek" } 
 		VALUES ?prop { dcterms:format dcat:mediaType }
 	}

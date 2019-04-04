@@ -7,6 +7,7 @@ INSERT
 WHERE 
 	{ ?s dcterms:language ?oldlang .
 		VALUES (?oldlang ?newlang)  { 
+			( "http://id.loc.gov/vocabulary/iso639-1/en" <http://publications.europa.eu/resource/authority/language/ENG> )
 			( "http://lexvo.org/id/iso639-3/eng" <http://publications.europa.eu/resource/authority/language/ENG> )
 			( "eng" <http://publications.europa.eu/resource/authority/language/ENG> )
 			( "http://lexvo.org/id/iso639-3/nld" <http://publications.europa.eu/resource/authority/language/NLD> )

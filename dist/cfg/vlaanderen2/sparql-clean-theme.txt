@@ -1,0 +1,3 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE WHERE { ?s dcat:theme <http://data.gov.be/geospatial> }

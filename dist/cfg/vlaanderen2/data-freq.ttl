@@ -18,7 +18,7 @@
 <http://data.gov.be/en/taxonomy/term/25>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/MONTHLY> ;
 	skos:prefLabel "Monthly"@en ;
-	skos:altLabel "monthly" .
+	skos:altLabel "monthly", "http://publications.europa.eu/resource/authority/frequency/MONTHLY" .
 
 <http://data.gov.be/en/taxonomy/term/27>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/QUARTERLY> ;

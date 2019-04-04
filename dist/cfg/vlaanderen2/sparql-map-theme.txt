@@ -6,7 +6,14 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 INSERT 
 	{ 	?dataset dgov:theme ?drupal .
 		?dataset dcat:theme ?theme }
-WHERE
-	{	?dataset dcat:keyword ?label .
+WHERE	{
+		{
+		?dataset dcat:theme ?label .
+		?drupal skos:closeMatch ?label .
+        	?drupal skos:exactMatch ?theme
+	} UNION {	
+		?dataset dcat:keyword ?label .
 		?drupal skos:altLabel ?label .
-        	?drupal skos:exactMatch ?theme }
+        	?drupal skos:exactMatch ?theme 
+		}
+	}

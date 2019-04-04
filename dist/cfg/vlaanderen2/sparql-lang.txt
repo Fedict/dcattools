@@ -5,7 +5,8 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE 
 	{ 	?s ?p ?o }
 INSERT
-	{ 	?s ?p ?literal }
+	{ 	?s ?p ?literal .
+		?s dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> }
 WHERE
 	{ 	?s ?p ?o .
 		VALUES (?p) {
