@@ -65,7 +65,7 @@ public abstract class CkanRDF extends Ckan {
 	 * @throws IOException 
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
-		int lastpage = 100;
+		int lastpage = 1000;
 		List<URL> urls = new ArrayList<>();
 		
 		Charset charset = StandardCharsets.UTF_8;
