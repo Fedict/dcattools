@@ -1,0 +1,9 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ ?dist dcterms:format "shapefile" }
+WHERE
+	{ ?dist dcterms:description ?label
+	VALUES ?label { "Download alle shape-files"@nl "Link naar downloadbare bestanden (rapport, correlatietabel en databestanden) op overzichtspagina van DOV-website"@nl }
+	FILTER NOT EXISTS { ?dist dcterms:format ?fmt } }

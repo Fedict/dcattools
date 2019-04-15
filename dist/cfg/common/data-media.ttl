@@ -150,7 +150,7 @@
 	skos:prefLabel "TXT" ;
 	skos:closeMatch "text/plain" ;		
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
-	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)" .
+	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)", "application/php" .
 	
 <http://data.gov.be/en/taxonomy/term/63>
 	skos:prefLabel "WCS" ;
