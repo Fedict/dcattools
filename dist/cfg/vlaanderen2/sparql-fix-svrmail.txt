@@ -1,0 +1,5 @@
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE { ?s vcard:hasEmail <mailto:file:///home/ckan/svr@kb.vlaanderen.be> }
+INSERT { ?s vcard:hasEmail <mailto:svr@kb.vlaanderen.be>  }
+WHERE { ?s vcard:hasEmail <mailto:file:///home/ckan/svr@kb.vlaanderen.be> }

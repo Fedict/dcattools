@@ -8,7 +8,8 @@
 <http://data.gov.be/en/taxonomy/term/56>
 	skos:exactMatch <http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0> ;
 	skos:prefLabel "Vlaamse Open Data licentie" ;
-	skos:altLabel "gratis-hergebruik-1.0", "Gratis Vlaamse Open Data", "gratis-open-data-licentie-1.2", "gratis-open-data-licentie", "gratis-open-data-licentie-1.1", "https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html","http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0/", "http://media.toerismevlaanderen.be/OpenData/licenties/modellicentie_gratis_hergebruik.html", "http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0", "http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0" .
+	skos:altLabel "gratis-hergebruik-1.0", "Gratis Vlaamse Open Data", "gratis-open-data-licentie-1.2", "gratis-open-data-licentie", "gratis-open-data-licentie-1.1", "https://overheid.vlaanderen.be/sites/default/files/documenten/ict-egov/licenties/hergebruik/modellicentie_gratis_hergebruik_v1_0.html","http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0/", "http://media.toerismevlaanderen.be/OpenData/licenties/modellicentie_gratis_hergebruik.html", "http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0", "http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0",
+<http://overheid.vlaanderen.be/hergebruik/licenties/v1-0/html/modellicentie-gratis-hergebruik>,	.
 
 <http://data.gov.be/en/taxonomy/term/218>
 	skos:exactMatch <http://opendata.antwerpen.be/gratis-open-data-licentie> ;
