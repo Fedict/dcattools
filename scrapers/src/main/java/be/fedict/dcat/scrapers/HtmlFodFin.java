@@ -28,7 +28,6 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
-
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
@@ -64,9 +63,10 @@ public class HtmlFodFin extends Html {
 
 	private final Logger logger = LoggerFactory.getLogger(HtmlFodFin.class);
 
+    private final static String LINK_THEME = "nav.block-menu-doormat ul.menu h2 a";
 	private final static String LANG_LINK = "language-link";
 	private final static String TITLE = "h1.page-title";
-	private final static String LIST_DATASETS = "section#content nav div.item-list li a";
+	//private final static String LIST_DATASETS = "section#content nav div.item-list li a";
 	private final static String TABLE = "div.field-type-text-with-summary table tr";
 
 	/**
@@ -127,18 +127,27 @@ public class HtmlFodFin extends Html {
 	 */
 	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
-		List<URL> urls = new ArrayList<>();
+        List<URL> urls = new ArrayList<>();
 
-		URL base = getBase();
-		String front = makeRequest(base);
-		Elements links = Jsoup.parse(front).select(LIST_DATASETS);
+        URL base = getBase();
+        String front = makeRequest(base);
 
-		for (Element link : links) {
-			String href = link.attr(Attribute.HREF.toString());
-			urls.add(makeAbsURL(href));
-		}
-		return urls;
-	}
+        // Get all the main themes
+        Elements themes = Jsoup.parse(front).select(LINK_THEME);
+
+        if (themes != null) {
+            for (Element theme : themes) {
+				logger.error("Data");
+                String href = theme.attr(Attribute.HREF.toString());
+                urls.add(makeAbsURL(href));
+                sleep();
+            }
+        } else {
+            logger.error("No themes {} found", LINK_THEME);
+        }
+        return urls;
+    }
+
 	
 	/**
 	 * Generate DCAT distribution.
