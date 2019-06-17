@@ -50,6 +50,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 import org.eclipse.rdf4j.repository.Repository;
@@ -261,7 +262,7 @@ public class EDP {
 				if (v instanceof IRI) {
 					IRI contact = (IRI) v;
 					w.writeStartElement("dcat:contactPoint");
-					w.writeStartElement("vcard:Organization");
+					w.writeStartElement("vcard:Kind");
 					writeLiterals(w, con, contact, VCARD4.FN, "vcard:fn");
 					writeReferences(w, con, contact, VCARD4.HAS_EMAIL, "vcard:hasEmail");
 					w.writeEndElement();
@@ -281,8 +282,7 @@ public class EDP {
 	 * @param uri ID
 	 * @throws XMLStreamException
 	 */
-	private static void writeReference(XMLStreamWriter w, String el, Value uri)
-		throws XMLStreamException {
+	private static void writeReference(XMLStreamWriter w, String el, Value uri) throws XMLStreamException {
 		if (uri instanceof IRI) {
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", ((IRI) uri).stringValue());
@@ -309,6 +309,35 @@ public class EDP {
 			}
 		}
 	}
+	/**
+	 * Write references and their wrapper class
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @param classWrap rdf wrapper class 
+	 * @throws XMLStreamException
+	 */
+	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con,
+		Resource uri, IRI pred, String el, String classWrap) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement(classWrap);
+				Value refUri = res.next().getObject();
+				if (refUri instanceof IRI) {
+					w.writeEmptyElement(el);
+					w.writeAttribute("rdf:about", ((IRI) refUri).stringValue());
+				} else {
+					w.writeStartElement(el);
+					w.writeCharacters(refUri.stringValue());
+					w.writeEndElement();
+				}
+				w.writeEndElement();
+			}
+		}
+	}
 
 	/**
 	 * Write generic metadata
@@ -320,14 +349,14 @@ public class EDP {
 	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 		IRI uri) throws XMLStreamException {
-		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
+		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language", "dct:LinguisticSystem");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement");
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
 	}
 
@@ -347,7 +376,7 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		//	writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeLiterals(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
+		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaTypeOrExtent");
 		writeFormats(w, con, uri, DCTERMS.FORMAT);
 
 		// write as anyURI string
@@ -375,8 +404,8 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
-		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
-		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage");
+		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme", "skos:Concept");
+		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document");
 
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
@@ -386,7 +415,7 @@ public class EDP {
 			}
 		}
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "skos:Concept");
 
 		writeDates(w, con, uri);
 
@@ -430,7 +459,7 @@ public class EDP {
 			w.writeAttribute("rdf:about", uri.stringValue());
 
 			writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
-			writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
+			writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document");
 			writeReferences(w, con, uri, FOAF.MBOX, "foaf:mbox");
 
 			w.writeEndElement();
