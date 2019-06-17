@@ -1,7 +1,7 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-<http://data.gov.be/org/infrabel/contact>
+<http://data.gov.be/org/liege/contact>
 	a vcard:Organization ;
-	vcard:fn "Infrabel"@nl, "Infrabel"@fr, "Infrabel"@en;
-	vcard:hasUrl <https://opendata.infrabel.be> ;
-	vcard:hasEmail <mailto:info@infrabel.be> .
+	vcard:fn "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en;
+	vcard:hasUrl <https://opendata.liege.be> ;
+	vcard:hasEmail <mailto:info@liege.be> .

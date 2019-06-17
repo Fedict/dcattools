@@ -324,13 +324,13 @@ public class EDP {
 		Resource uri, IRI pred, String el, String classWrap) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				w.writeStartElement(classWrap);
+				w.writeStartElement(el);
 				Value refUri = res.next().getObject();
 				if (refUri instanceof IRI) {
-					w.writeEmptyElement(el);
+					w.writeEmptyElement(classWrap);
 					w.writeAttribute("rdf:about", ((IRI) refUri).stringValue());
 				} else {
-					w.writeStartElement(el);
+					w.writeStartElement(classWrap);
 					w.writeCharacters(refUri.stringValue());
 					w.writeEndElement();
 				}
