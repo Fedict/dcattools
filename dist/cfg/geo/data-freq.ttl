@@ -25,12 +25,12 @@
 	skos:prefLabel "Irregular"@en ;
 	skos:altLabel "asNeeded", "irregular" .
 
-<http://data.gov.be/en/taxonomy/term/192>
+<http://data.gov.be/en/taxonomy/term/192#NP>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
 	skos:prefLabel "Never"@en ;
 	skos:altLabel "notPlanned" .
 
-<http://data.gov.be/en/taxonomy/term/192>
+<http://data.gov.be/en/taxonomy/term/192#UKN>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
 	skos:prefLabel "Unknown"@en ;
 	skos:altLabel "unknown" .

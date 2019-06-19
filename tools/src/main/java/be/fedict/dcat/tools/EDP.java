@@ -95,6 +95,7 @@ public class EDP {
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
 		w.writeNamespace("schema", "http://schema.org/");
+		w.writeNamespace(SKOS.PREFIX, SKOS.NAMESPACE);
 		w.writeNamespace(VCARD4.PREFIX, VCARD4.NAMESPACE);
 	}
 
@@ -198,7 +199,7 @@ public class EDP {
 
 				w.writeStartElement("dct:format");
 
-				w.writeEmptyElement("dct:IMT");
+				w.writeEmptyElement("dct:MediaTypeOrExtent");
 				w.writeAttribute("rdf:about", fmt.toString());
 				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
 					if (lbl.hasNext()) {
@@ -326,13 +327,11 @@ public class EDP {
 			while (res.hasNext()) {
 				w.writeStartElement(el);
 				Value refUri = res.next().getObject();
+				w.writeEmptyElement(classWrap);
 				if (refUri instanceof IRI) {
-					w.writeEmptyElement(classWrap);
 					w.writeAttribute("rdf:about", ((IRI) refUri).stringValue());
 				} else {
-					w.writeStartElement(classWrap);
-					w.writeCharacters(refUri.stringValue());
-					w.writeEndElement();
+					w.writeAttribute("rdf:value", refUri.stringValue());
 				}
 				w.writeEndElement();
 			}
@@ -355,9 +354,9 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement");
-		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
+		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location");
 	}
 
 	/**
@@ -415,7 +414,7 @@ public class EDP {
 			}
 		}
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "skos:Concept");
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency");
 
 		writeDates(w, con, uri);
 

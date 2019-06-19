@@ -70,7 +70,7 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0409_530_535> ;
 	skos:altLabel "universite-de-namur-departement-de-biologie"@en .
 
-<http://data.gov.be/en/taxonomy/term/372>
+<http://data.gov.be/en/taxonomy/term/373>
 	skos:prefLabel "SPW DGO3 DEMNA"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_225_118_335> ;
 	skos:altLabel "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .

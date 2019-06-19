@@ -11,7 +11,7 @@ INSERT
 	{ 	?dist dgov:mediaType ?drupal .
 		?dist dcterms:format ?auth .
 		?dist dcat:mediaType ?mime .
-		?auth a dcterms:IMT .
+		?auth a dcterms:mediaTypeOrExtent  .
 		?auth rdfs:label ?imt 
 	}
 WHERE
