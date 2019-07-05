@@ -1,0 +1,21 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dataset dcterms:publisher ?bnode .
+		?bnode ?p ?o }
+INSERT 
+	{ 	?dataset dcterms:publisher ?org .
+		?org dgov:org ?drupal .
+		?org a foaf:Organization .
+		?org foaf:name ?name }
+WHERE
+	{	?dataset dcterms:publisher ?bnode .
+		?bnode rdfs:label ?str .
+		?drupal skos:altLabel ?label .
+		?drupal skos:prefLabel ?name .
+		?drupal skos:exactMatch ?org .
+		FILTER (STR(?label) = ?str) }

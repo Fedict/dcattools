@@ -1,0 +1,15 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ <https://www.odwb.be/api/v2/catalog/exports/ttl> ?p ?o }
+INSERT
+	{ <http://data.gov.be/catalog/wallonie> dcat:dataset ?dataset }
+WHERE
+	{
+		{ <https://www.odwb.be/api/v2/catalog/exports/ttl> dcat:dataset ?dataset }
+	UNION
+		{ <https://www.odwb.be/api/v2/catalog/exports/ttl> ?p ?o }
+	}
+
