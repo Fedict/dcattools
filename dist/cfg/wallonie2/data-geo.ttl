@@ -3,17 +3,22 @@
 <http://data.gov.be/en/taxonomy/term/45>
 	skos:exactMatch <http://sws.geonames.org/2802361/> ;
 	skos:prefLabel "Belgium"@en ;
-	skos:altLabel "Belgique"@fr .
+	skos:altLabel "Belgique" .
 
 <http://data.gov.be/en/taxonomy/term/47>
 	skos:exactMatch <http://sws.geonames.org/3337387/> ;
 	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
-	skos:altLabel "Wallonie"@fr, "wallonie-dgo1"@fr, "wallonie-dgo2"@fr, "wallonie-dgo5"@fr, "wallonie-dgo6"@fr, "cwape"@fr, "adn"@fr, "bep"@fr, "tourisme-asbl"@fr, "sentiers"@fr, "tec"@fr, "secretariat-general-geo-donnees"@fr, "geoportail-de-la-wallonie"@fr, "le-forem"@fr, "pro-velo"@fr, "iweps"@fr, "idelux-aive"@fr, "parlement-de-wallonie"@fr .
-	
+	skos:altLabel "Wallonie", " Service public de Wallonie (SPW) ", "Service public de Wallonie (SPW) ", "Fédération Wallonie-Bruxelles" .
+
+<http://data.gov.be/en/taxonomy/term/48> 
+	skos:exactMatch <http://sws.geonames.org/2800867/> ;
+	skos:prefLabel "Brussels"@en, "Bruxelles"@fr, "Brussel"@nl ;
+	skos:altLabel "Fédération Wallonie-Bruxelles" .
+		
 <http://data.gov.be/en/taxonomy/term/51>
 	skos:exactMatch <http://sws.geonames.org/2790472/> ;
 	skos:prefLabel "Namur"@fr, "Namen"@nl ;
-	skos:altLabel "BEP"@fr .	
+	skos:altLabel "BEP", "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances" .	
 
 <http://data.gov.be/en/taxonomy/term/250>
 	skos:exactMatch <http://sws.geonames.org/2803247/> ;
@@ -218,9 +223,9 @@
 <http://data.gov.be/en/taxonomy/term/389>
 	skos:exactMatch <http://sws.geonames.org/2803204/> ;
 	skos:prefLabel "Andenne"@fr ;
-	skos:altLabel "Ville d'Andenne"@fr .
+	skos:altLabel "Ville d'Andenne" .
 	
 <http://data.gov.be/en/taxonomy/term/362>
 	skos:exactMatch <http://sws.geonames.org/2792413/> ;
 	skos:prefLabel "Ville de Liège"@fr ;
-	skos:altLabel "Ville de Liège"@fr .
+	skos:altLabel "Ville de Liège" .

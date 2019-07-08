@@ -14,8 +14,8 @@ INSERT
 		?org foaf:name ?name }
 WHERE
 	{	?dataset dcterms:publisher ?bnode .
-		?bnode rdfs:label ?str .
-		?drupal skos:altLabel ?label .
+		?bnode rdfs:label ?label .
+		?drupal skos:altLabel ?str .
 		?drupal skos:prefLabel ?name .
 		?drupal skos:exactMatch ?org .
 		FILTER (STR(?label) = ?str) }
