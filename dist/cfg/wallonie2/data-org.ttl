@@ -4,6 +4,11 @@
 	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, "Franstalige Gemeenschap"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0220_916_609> ;
 	skos:altLabel "Fédération Wallonie-Bruxelles" .
+
+<http://data.gov.be/en/taxonomy/term/386>
+	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0869_763_267> ;
+	skos:altLabel "Infrabel" .
 	
 <http://data.gov.be/en/taxonomy/term/104>
 	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
@@ -312,7 +317,7 @@
 <http://data.gov.be/en/taxonomy/term/350>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0931_814_167> ;
 	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
-	skos:altLabel "parlement-de-wallonie"@fr .
+	skos:altLabel "Parlement de Wallonie" .
 
 <http://data.gov.be/en/taxonomy/term/363>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_343_933> ;
