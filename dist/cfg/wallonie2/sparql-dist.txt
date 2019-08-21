@@ -13,5 +13,5 @@ WHERE {
 	?dataset dcterms:identifier ?id .
 	?dataset dcat:distribution ?dist .
 	?dist dcat:accessURL ?data  .
-	BIND(IRI(CONCAT("<https://www.odwb.be/explore/dataset/", ?id, "/information/")) as ?url) 
+	BIND(IRI(CONCAT("https://www.odwb.be/explore/dataset/", ?id, "/information/")) as ?url) 
 }

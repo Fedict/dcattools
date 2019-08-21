@@ -8,7 +8,7 @@
 <http://data.gov.be/en/taxonomy/term/386>
 	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0869_763_267> ;
-	skos:altLabel "Infrabel" .
+	skos:altLabel "Infrabel", "Traffic Management & Services" .
 	
 <http://data.gov.be/en/taxonomy/term/104>
 	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
@@ -18,7 +18,7 @@
 <http://data.gov.be/en/taxonomy/term/126>
 	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_362_739> ;
-	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances" .
+	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur" .
 
 <http://data.gov.be/en/taxonomy/term/133>
 	skos:prefLabel "DGO1 Routes"@fr ;
@@ -68,7 +68,7 @@
 <http://data.gov.be/en/taxonomy/term/142>
 	skos:prefLabel "TEC"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0242_069_339> ;
-	skos:altLabel "tec"@fr .	
+	skos:altLabel "TEC", "SRWT - Direction du Marketing de la Mobilité (SRWT - DMM - Mobilité) " .	
 	
 <http://data.gov.be/en/taxonomy/term/143>
 	skos:prefLabel "Secrétariat général"@fr ;
@@ -107,7 +107,7 @@
 <http://data.gov.be/en/taxonomy/term/240>
 	skos:prefLabel "IDELUX-AIVE"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0832_382_635> ;
-	skos:altLabel "idelux-aive"@fr .
+	skos:altLabel "IDELUX-AIVE" .
 	
 <http://data.gov.be/en/taxonomy/term/248>
 	skos:prefLabel "Amay"@fr ;
@@ -297,7 +297,7 @@
 <http://data.gov.be/en/taxonomy/term/327>
 	skos:prefLabel "Arlon"@fr, "Aarlen"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0206_524_876> ;
-	skos:altLabel "commune-d-arlon"@fr .
+	skos:altLabel "Arlon Centre-Ville asbl", "Ville d'Arlon" .
 
 <http://data.gov.be/en/taxonomy/term/328>
 	skos:prefLabel "Géoportail"@fr ;
@@ -312,7 +312,7 @@
 <http://data.gov.be/en/taxonomy/term/335>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_656_808> ;
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
-	skos:altLabel "mons"@fr .
+	skos:altLabel "Ville de Mons" .
 
 <http://data.gov.be/en/taxonomy/term/350>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0931_814_167> ;
