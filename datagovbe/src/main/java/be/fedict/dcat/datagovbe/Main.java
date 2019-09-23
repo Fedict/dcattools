@@ -165,6 +165,7 @@ public class Main {
 
 		File config = new File(args[0]);
 		try {
+			logger.debug("Using config file " + config);
 			prop.load(new FileInputStream(config));
 		} catch (IOException ex) {
 			logger.error("I/O Exception while reading {}", config, ex);
