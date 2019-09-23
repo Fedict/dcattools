@@ -174,7 +174,6 @@ public class HtmlBIPT extends Html {
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-		store.add(dataset, DCAT.LANDING_PAGE, front);
 
 		Elements files = row.select(FILES);
 		int j = 0;
@@ -200,7 +199,12 @@ public class HtmlBIPT extends Html {
 		for (String lang : langs) {
 			Page p = page.getOrDefault(lang, new Page());
 			String html = p.getContent();
-			URL front = p.getUrl();
+			URL front = null;
+			try {
+				front = switchLanguage(lang);
+			} catch (IOException ioe) {
+				//
+			}
 			Elements rows = Jsoup.parse(html).body().select(DIV_DATASET);
 
 			int i = 0;

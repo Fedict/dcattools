@@ -1,6 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-DELETE 
-	{ ?dist dcat:mediaType "carte" }
-WHERE
-	{ ?dist dcat:mediaType "carte" }
