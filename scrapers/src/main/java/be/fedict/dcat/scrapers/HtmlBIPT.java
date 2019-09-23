@@ -38,9 +38,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
-import javax.swing.text.html.HTML.Tag;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -134,19 +132,19 @@ public class HtmlBIPT extends Html {
 	 * @throws RepositoryException
 	 */
 	private void generateDist(Storage store, IRI dataset, URL access,
-			Elements link, int i, String lang)
+			Element link, int i, int j, String lang)
 			throws MalformedURLException, RepositoryException {
-		String href = link.first().attr(Attribute.HREF.toString());
+		String href = link.attr(Attribute.HREF.toString());
 		URL download = makeAbsURL(href);
 
-		URL u = makeDistURL(i + "/" + lang);
+		URL u = makeDistURL(i + "/" + j + "/" + lang);
 		IRI dist = store.getURI(u.toString());
 		logger.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
+		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
 		store.add(dist, DCAT.MEDIA_TYPE, "csv");
@@ -179,7 +177,11 @@ public class HtmlBIPT extends Html {
 		store.add(dataset, DCAT.LANDING_PAGE, front);
 
 		Elements files = row.select(FILES);
-		generateDist(store, dataset, front, files, i, lang);
+		int j = 0;
+		for (Element file : files) {
+			generateDist(store, dataset, front, file, i, j, lang);
+			j++;
+		}
 	}
 
 	/**
