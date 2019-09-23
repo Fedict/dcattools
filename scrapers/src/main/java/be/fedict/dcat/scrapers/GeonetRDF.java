@@ -42,9 +42,6 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
  *
@@ -53,8 +50,6 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class GeonetRDF extends Geonet {
-
-	private final Logger logger = LoggerFactory.getLogger(GeonetRDF.class);
 
 	// GeonetRDF DCAT RDF/XML API
 	public final static String API_DCAT = "/srv/eng/rdf.metadata.public.get";

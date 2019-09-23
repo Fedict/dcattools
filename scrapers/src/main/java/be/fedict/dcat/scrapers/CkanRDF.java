@@ -46,18 +46,12 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Scraper for CKAN portals with RDF support enabled.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class CkanRDF extends Ckan {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanRDF.class);
-
 	/**
 	 * Scrape paginated catalog file
 	 * 

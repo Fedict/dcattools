@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2019, Bart Hanssens <bart.hanssens@bosa.fgov.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,14 +53,18 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
- * Scraper FPS Mobility
+ * Scraper BIPT
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public class HtmlFodMobilit extends Html {
-
-	public final static String LANG_LINK = "language-link";
-
+public class HtmlBIPT extends Html {
+	private final static String PAGE = "/opendata";
+	private final static String DIV_DATASET = "div.project";
+	private final static String TITLE = "div.project-title h3";
+	private final static String DESC = "div.project-description p";
+	private final static String FILES = "div.files ul li a";
+	
+	
 	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -74,25 +78,14 @@ public class HtmlFodMobilit extends Html {
 	 * @throws IOException
 	 */
 	private URL switchLanguage(String lang) throws IOException {
-		URL base = getBase();
-
-		String front = makeRequest(base);
-
-		Elements lis = Jsoup.parse(front).getElementsByClass(HtmlFodMobilit.LANG_LINK);
-		for (Element li : lis) {
-			if (li.text().equals(lang)) {
-				String href = li.attr(Attribute.HREF.toString());
-				return new URL(base, href);
-			}
-		}
-		return base;
+		return new URL(getBase(), lang + PAGE);
 	}
 
 	/**
 	 * Store page containing datasets
 	 *
 	 * @param cache
-	 * @throws java.io.IOException
+	 * @throws IOException
 	 */
 	private void scrapePage(Cache cache) throws IOException {
 		URL front = getBase();
@@ -122,7 +115,7 @@ public class HtmlFodMobilit extends Html {
 		// Calculate the number of datasets
 		Page p = front.get(getDefaultLang());
 		String datasets = p.getContent();
-		Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
+		Elements rows = Jsoup.parse(datasets).select(DIV_DATASET);
 		logger.info("Found {} datasets on page", String.valueOf(rows.size()));
 
 		logger.info("Done scraping");
@@ -156,7 +149,7 @@ public class HtmlFodMobilit extends Html {
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
+		store.add(dist, DCAT.MEDIA_TYPE, "csv");
 	}
 
 	/**
@@ -176,10 +169,8 @@ public class HtmlFodMobilit extends Html {
 		IRI dataset = store.getURI(u.toString());
 		logger.debug("Generating dataset {}", dataset.toString());
 
-		Elements cells = row.getElementsByTag(Tag.TD.toString());
-		String desc = cells.get(0).text();
-		String title = desc;
-
+		String title = row.select(TITLE).first().text();
+		String desc = row.select(DESC).text();
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
@@ -187,8 +178,8 @@ public class HtmlFodMobilit extends Html {
 		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
 		store.add(dataset, DCAT.LANDING_PAGE, front);
 
-		Elements link = cells.get(1).getElementsByTag(Tag.A.toString());
-		generateDist(store, dataset, front, link, i, lang);
+		Elements files = row.select(FILES);
+		generateDist(store, dataset, front, files, i, lang);
 	}
 
 	/**
@@ -208,7 +199,7 @@ public class HtmlFodMobilit extends Html {
 			Page p = page.getOrDefault(lang, new Page());
 			String html = p.getContent();
 			URL front = p.getUrl();
-			Elements rows = Jsoup.parse(html).body().getElementsByTag(Tag.TR.toString());
+			Elements rows = Jsoup.parse(html).body().select(DIV_DATASET);
 
 			int i = 0;
 			for (Element row : rows) {
@@ -244,8 +235,8 @@ public class HtmlFodMobilit extends Html {
 	 * @param storage RDF backing file
 	 * @param base base URL
 	 */
-	public HtmlFodMobilit(File caching, File storage, URL base) {
+	public HtmlBIPT(File caching, File storage, URL base) {
 		super(caching, storage, base);
-		setName("fpsmobilit");
+		setName("bipt");
 	}
 }

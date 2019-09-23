@@ -29,18 +29,12 @@ import java.io.File;
 
 import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Generic DCAT
  *
  * @author Bart Hanssens
  */
 public class DcatOpenPlanner extends Dcat {
-	
-	private final Logger logger = LoggerFactory.getLogger(DcatOpenPlanner.class);
-
 	/**
 	 * Constructor
 	 * 

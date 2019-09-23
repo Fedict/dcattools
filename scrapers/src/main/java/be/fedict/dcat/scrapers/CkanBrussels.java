@@ -28,18 +28,12 @@ package be.fedict.dcat.scrapers;
 import java.io.File;
 import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CKAN Brussels Region.
  *
  * @author Bart Hanssens
  */
 public class CkanBrussels extends CkanRDF {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanBrussels.class);
-
 	/**
 	 * Constructor
 	 *

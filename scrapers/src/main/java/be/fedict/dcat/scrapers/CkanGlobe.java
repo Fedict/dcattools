@@ -40,9 +40,6 @@ import javax.json.JsonObject;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CKAN BTC-CTB. Currently (9/2016) the JSON version is more reliable than the
  * RDF
@@ -50,8 +47,6 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class CkanGlobe extends CkanJson {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanGlobe.class);
 
 	private final static String BTC = "be-dgd";
 

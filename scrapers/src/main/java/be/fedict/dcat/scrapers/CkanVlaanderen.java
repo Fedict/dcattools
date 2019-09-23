@@ -38,18 +38,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CKAN Corve / Vlaanderen BZ.
  *
  * @author Bart Hanssens
  */
 public class CkanVlaanderen extends CkanJson {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen.class);
-
 	public final static String CONFORM = "conformity-specification-title";
 	public final static String CONTACT = "contact-email";
 	public final static String DOMAIN = "beleidsdomein";

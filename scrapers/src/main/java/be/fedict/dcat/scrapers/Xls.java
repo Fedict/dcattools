@@ -59,9 +59,6 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Xls extends Scraper {
-
-	private final Logger logger = LoggerFactory.getLogger(Xls.class);
-
 	/**
 	 * Convert an Excel numeric ID to a string
 	 *

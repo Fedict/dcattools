@@ -33,17 +33,12 @@ import javax.json.JsonObject;
 
 import org.eclipse.rdf4j.model.IRI;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CKAN Wallonie / AWT.
  *
  * @author Bart Hanssens
  */
 public class CkanWallonie extends CkanJson {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanWallonie.class);
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) {

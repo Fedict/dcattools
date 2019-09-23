@@ -54,10 +54,6 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
  *
@@ -67,8 +63,6 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class GeonetGmd extends Geonet {
 
-	private final Logger logger = LoggerFactory.getLogger(GeonetGmd.class);
-	
 	public final static String GMD = "http://www.isotc211.org/2005/gmd";
 	public final static String API = "/eng/csw?service=CSW&version=2.0.2";
 	public final static String API_RECORDS = API

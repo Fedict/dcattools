@@ -28,19 +28,12 @@ package be.fedict.dcat.scrapers;
 import java.io.File;
 import java.net.URL;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CKAN Vlaanderen via DCAT-AP catalog.
  *
  * @author Bart Hanssens
  */
 public class CkanVlaanderen2 extends CkanRDF {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanVlaanderen2.class);
-
 	/**
 	 * CKAN parser for Vlaams Open Data Portaal (rdf).
 	 *

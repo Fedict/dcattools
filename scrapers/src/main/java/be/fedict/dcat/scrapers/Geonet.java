@@ -28,9 +28,6 @@ package be.fedict.dcat.scrapers;
 import java.io.File;
 import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
  *
@@ -39,9 +36,6 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Geonet extends Scraper {
-
-	private final Logger logger = LoggerFactory.getLogger(Geonet.class);
-
 	/**
 	 * Constructor
 	 *

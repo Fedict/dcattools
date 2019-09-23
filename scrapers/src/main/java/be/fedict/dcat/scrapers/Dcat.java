@@ -42,18 +42,12 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Generic DCAT
  *
  * @author Bart Hanssens
  */
 public abstract class Dcat extends Scraper {
-	
-	private final Logger logger = LoggerFactory.getLogger(Dcat.class);
-
 	/**
 	 * Scrape DCAT catalog.
 	 *

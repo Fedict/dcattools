@@ -52,20 +52,13 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Scraper FPS Mobility
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlFodDiplomatie extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlFodDiplomatie.class);
-
 	public final static String LANG_LINK = "language-link";
-
 	
 	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {

@@ -4,15 +4,15 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>2.5</version>
+        <version>2.6</version>
     </parent>
     <artifactId>scrapers</artifactId>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-	<rdf4j.version>2.5.0</rdf4j.version>
-	<slf4j.version>1.7.25</slf4j.version>
+	<rdf4j.version>2.5.4</rdf4j.version>
+	<slf4j.version>1.7.26</slf4j.version>
     </properties>
     <dependencies>
         <dependency>
@@ -114,7 +114,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>2.5</version>
+    <version>2.6</version>
     <name>scrapers</name>
     <description>Various scrapers for Belgian data portals</description>
 </project>

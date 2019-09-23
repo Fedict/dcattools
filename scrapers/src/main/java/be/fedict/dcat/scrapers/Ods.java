@@ -32,9 +32,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Abstract OpenDataSoft scraper.
  *
@@ -43,8 +40,6 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Ods extends Dcat {
-
-	private final Logger logger = LoggerFactory.getLogger(Ods.class);
 
 	public final static String API_DCAT = "/api/v2/catalog/exports/ttl";
 

@@ -49,17 +49,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Statbel "publications" scraper.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlStatbelPubs extends HtmlStatbel {
-
-    private final Logger logger = LoggerFactory.getLogger(HtmlStatbelPubs.class);
 
     public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.nav h3 a";
     public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";

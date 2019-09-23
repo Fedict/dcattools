@@ -50,17 +50,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Infocenter / federal statistics scraper.
  *
  * @author Bart.Hanssens
  */
 public class HtmlInfocenter extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlInfocenter.class);
 
 	public final static String LANG_LINK = "blgm_lSwitch";
 

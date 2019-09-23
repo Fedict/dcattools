@@ -63,8 +63,6 @@ import org.slf4j.LoggerFactory;
  */
 public class HtmlRVA extends Html {
 
-	private final Logger logger = LoggerFactory.getLogger(HtmlRVA.class);
-
 	public final static String LANG_LINK = "language-link";
 	
 	public final static String ITEM_LIST = "div.view-navigation-view div.item-list a";

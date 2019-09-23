@@ -51,17 +51,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  *
  * @author Bart.Hanssens
  */
 public class HtmlStatbelOpen extends HtmlStatbel {
-
-    private final Logger logger = LoggerFactory.getLogger(HtmlStatbelOpen.class);
-
     public final static String VIEW_HREF = "div.view-open-data h2 a";
 
     public final static String P_DESC = "article.node div.field--name-body p";

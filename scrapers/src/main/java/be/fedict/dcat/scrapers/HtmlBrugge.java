@@ -52,18 +52,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Scraper for website Brugge.
  *
  * @author Bart.Hanssens
  */
 public class HtmlBrugge extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlBrugge.class);
-
 	private final static String LINKS_DATASETS = "div.user-content div a:eq(0)[href]";
 	private final static String LINK_DATASET = "div.user-content h4";
 	private final static String NAME_DATASET = "a[name]";

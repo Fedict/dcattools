@@ -31,13 +31,9 @@ import be.fedict.dcat.helpers.Storage;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.dom4j.Node;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Scraper for Meteo/RMI.
@@ -45,8 +41,6 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class GeonetMeteo extends GeonetRDF {
-
-	private final Logger logger = LoggerFactory.getLogger(GeonetMeteo.class);
 
 	@Override
 	public void generateDcat(Cache cache, Storage store)

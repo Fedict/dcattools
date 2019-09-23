@@ -49,18 +49,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Scraper for InnovationData website.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlInnovation extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlInnovation.class);
-
 	private final static String H_TITLE = "div.headline h4";
 	private final static String DIV_DESC = "div#metadata";
 	private final static String LIST_CATS = "ul.breadcrumb li";

@@ -49,17 +49,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Scraper for Oostende DO2 website.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlOostende extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlOostende.class);
 
 	private final static String CONTENT_ID = "content";
 	private final static String DIV_DESC = "opendata_long";

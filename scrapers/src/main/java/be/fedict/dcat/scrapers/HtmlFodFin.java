@@ -51,17 +51,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Scraper FPS Finance
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlFodFin extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlFodFin.class);
 
     private final static String LINK_THEME = "nav.block-menu-doormat ul.menu h2 a";
 	private final static String LANG_LINK = "language-link";

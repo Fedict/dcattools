@@ -28,19 +28,12 @@ package be.fedict.dcat.scrapers;
 import java.io.File;
 
 import java.net.URL;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Generic DCAT
  *
  * @author Bart Hanssens
  */
 public class DcatBosa extends Dcat {
-	
-	private final Logger logger = LoggerFactory.getLogger(DcatBosa.class);
-
 	/**
 	 * Constructor
 	 * 

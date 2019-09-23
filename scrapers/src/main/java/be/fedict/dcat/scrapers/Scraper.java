@@ -68,7 +68,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class Scraper extends Fetcher {
 
-	private final Logger logger = LoggerFactory.getLogger(Scraper.class);
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
 

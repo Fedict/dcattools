@@ -36,17 +36,12 @@ import javax.json.JsonObject;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * CKAN Belgian Biodiversity portal.
  *
  * @author Bart.Hanssens
  */
 public class CkanBioDiv extends CkanJson {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanBioDiv.class);
 
 	// CKAN fields
 	public final static String ADMIN_CONTACT = "administrative_contact";

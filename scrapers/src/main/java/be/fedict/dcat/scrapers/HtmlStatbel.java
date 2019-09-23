@@ -38,18 +38,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Abstract Statbel scraper.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class HtmlStatbel extends Html {
-	private final Logger logger = LoggerFactory.getLogger(HtmlStatbel.class);
-	
 	public final static String LANG_LINK = "section.block--language li a";
 	
 	/**

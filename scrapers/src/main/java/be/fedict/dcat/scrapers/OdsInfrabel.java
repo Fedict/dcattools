@@ -28,9 +28,6 @@ package be.fedict.dcat.scrapers;
 import java.io.File;
 import java.net.URL;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * OpenDataSoft InfraBel
  *
@@ -38,9 +35,6 @@ import org.slf4j.LoggerFactory;
  */
 public class OdsInfrabel extends Ods {
 
-	private final Logger logger = LoggerFactory.getLogger(OdsInfrabel.class);
-
-	
 	/**
 	 * Constructor
 	 *

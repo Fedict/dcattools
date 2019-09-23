@@ -38,17 +38,12 @@ import java.util.Map;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Abstract scraper for HTML sites.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class Html extends Scraper {
-
-	private final Logger logger = LoggerFactory.getLogger(Html.class);
 
 	/**
 	 * Generate DCAT Dataset

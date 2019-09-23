@@ -51,17 +51,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * POD MI-IS scraper.
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public class HtmlPodMiis extends Html {
-
-	private final Logger logger = LoggerFactory.getLogger(HtmlPodMiis.class);
 
 	public final static String ABBR = "abbr";
 	

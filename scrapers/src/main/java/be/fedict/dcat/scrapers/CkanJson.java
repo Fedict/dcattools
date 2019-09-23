@@ -57,17 +57,12 @@ import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Abstract scraper for CKAN portals, using the JSON API.
  *
  * @author Bart Hanssens
  */
 public abstract class CkanJson extends Ckan {
-
-	private final Logger logger = LoggerFactory.getLogger(CkanJson.class);
 
 	// CKAN JSON fields   
 	public final static String ID = "id";
