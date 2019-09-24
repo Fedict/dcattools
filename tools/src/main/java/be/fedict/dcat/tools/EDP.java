@@ -27,8 +27,10 @@ package be.fedict.dcat.tools;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 
 import java.util.Optional;
+import java.util.Set;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -73,14 +75,14 @@ public class EDP {
 
 	private final static Logger logger = LoggerFactory.getLogger(EDP.class);
 
-	private final static String PROP_PREFIX = "be.fedict.dcat.tools.edp";
-
 	private final static String BELGIF_PREFIX = "http://org.belgif.be";
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	private final static SimpleValueFactory F = SimpleValueFactory.getInstance();
 	private final static IRI STARTDATE = F.createIRI("http://schema.org/startDate");
 	private final static IRI ENDDATE = F.createIRI("http://schema.org/endDate");
+
+	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
 	/**
 	 * Write XML namespace prefixes
@@ -201,6 +203,7 @@ public class EDP {
 
 				w.writeEmptyElement("dct:MediaTypeOrExtent");
 				w.writeAttribute("rdf:about", fmt.toString());
+				CONCEPTS.add(fmt);
 				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
 					if (lbl.hasNext()) {
 						Value val = lbl.next().getObject();
@@ -269,7 +272,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not a contac IRI {}", v.stringValue());
+					logger.error("Not a contact IRI {}", v.stringValue());
 				}
 			}
 		}
@@ -322,14 +325,21 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con,
-		Resource uri, IRI pred, String el, String classWrap) throws XMLStreamException {
+		Resource uri, IRI pred, String el, String classWrap, boolean concept) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				w.writeStartElement(el);
 				Value refUri = res.next().getObject();
+				if (refUri instanceof IRI && refUri.toString().contains("well-known")) {
+					break;
+				}
+				w.writeStartElement(el);
 				w.writeEmptyElement(classWrap);
 				if (refUri instanceof IRI) {
-					w.writeAttribute("rdf:about", ((IRI) refUri).stringValue());
+					IRI iri = (IRI) refUri;
+					if (concept == true) {
+						CONCEPTS.add(iri);
+					}
+					w.writeAttribute("rdf:about", iri.stringValue());
 				} else {
 					w.writeAttribute("rdf:value", refUri.stringValue());
 				}
@@ -348,15 +358,15 @@ public class EDP {
 	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 		IRI uri) throws XMLStreamException {
-		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language", "dct:LinguisticSystem");
+		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language", "dct:LinguisticSystem", true);
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent");
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement");
-		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location");
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
 	}
 
 	/**
@@ -375,7 +385,7 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		//	writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaTypeOrExtent");
+		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaTypeOrExtent", true);
 		writeFormats(w, con, uri, DCTERMS.FORMAT);
 
 		// write as anyURI string
@@ -403,8 +413,8 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
-		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme", "skos:Concept");
-		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document");
+		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme", "skos:Concept", false);
+		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
 
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
@@ -414,7 +424,7 @@ public class EDP {
 			}
 		}
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency");
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 
 		writeDates(w, con, uri);
 
@@ -458,7 +468,7 @@ public class EDP {
 			w.writeAttribute("rdf:about", uri.stringValue());
 
 			writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
-			writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document");
+			writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
 			writeReferences(w, con, uri, FOAF.MBOX, "foaf:mbox");
 
 			w.writeEndElement();
@@ -486,6 +496,35 @@ public class EDP {
 	}
 
 	/**
+	 * Write SKOS concepts
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @throws XMLStreamException
+	 */
+	private static void writeConcepts(XMLStreamWriter w, RepositoryConnection con)
+		throws XMLStreamException {
+		int nr = 0;
+
+		for (IRI iri: CONCEPTS) {
+			w.writeStartElement("skos:Concept");
+			String concept = iri.toString();
+			w.writeAttribute("rdf:about", concept);
+			
+			w.writeEmptyElement("skos:inScheme");
+			String scheme = concept.contains("geonames") 
+				? "http://sws.geonames.org"
+				: concept.substring(0, concept.lastIndexOf("/"));
+			w.writeAttribute("rdf:resource", scheme);
+
+			w.writeEndElement();
+			nr++;
+		}
+		logger.info("Wrote {} concepts", nr);
+	}
+
+	
+	/**
 	 * Write DCAT catalog to XML.
 	 *
 	 * @param w XML writer
@@ -507,10 +546,11 @@ public class EDP {
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeLicenses(w, con, uri, DCTERMS.LICENSE);
 		writeDatasets(w, con);
-
 		w.writeEndElement();
 
 		writeOrgs(w, con);
+		writeConcepts(w, con);
+
 
 		w.writeEndElement();
 	}
