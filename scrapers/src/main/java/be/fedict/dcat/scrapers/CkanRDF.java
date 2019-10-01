@@ -122,7 +122,7 @@ public abstract class CkanRDF extends Ckan {
 			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
-				throw new RepositoryException(ex);
+				logger.error("Exception" + url, ex);
 			}
 		}
 		generateCatalog(store);
