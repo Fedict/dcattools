@@ -461,9 +461,10 @@ public class EDP {
 	 * @param uri URI of the organization
 	 * @throws XMLStreamException
 	 */
-	private static void writeOrg(XMLStreamWriter w, RepositoryConnection con,
-		IRI uri) throws XMLStreamException {
+	private static void writeOrg(XMLStreamWriter w, RepositoryConnection con, IRI uri) 
+			throws XMLStreamException {
 		if (uri.stringValue().startsWith(BELGIF_PREFIX)) {
+			CONCEPTS.add(uri);
 			w.writeStartElement("foaf:Organization");
 			w.writeAttribute("rdf:about", uri.stringValue());
 
@@ -502,7 +503,7 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @throws XMLStreamException
 	 */
-	private static void writeConcepts(XMLStreamWriter w, RepositoryConnection con)
+	private static void writeConcepts(XMLStreamWriter w)
 		throws XMLStreamException {
 		int nr = 0;
 
@@ -549,7 +550,7 @@ public class EDP {
 		w.writeEndElement();
 
 		writeOrgs(w, con);
-		writeConcepts(w, con);
+		writeConcepts(w);
 
 
 		w.writeEndElement();
