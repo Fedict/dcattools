@@ -118,7 +118,7 @@ public abstract class CkanRDF extends Ckan {
 			Map<String, Page> map = cache.retrievePage(url);
 			String ttl = map.get("all").getContent();
 			
-			// Load turtle file into store
+			// Load rdf file into store
 			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {

@@ -47,7 +47,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.TreeMap;
 
 import org.eclipse.rdf4j.model.BNode;
 import org.eclipse.rdf4j.model.IRI;
@@ -80,6 +79,7 @@ import org.eclipse.rdf4j.rio.RDFParseException;
 import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
 import org.eclipse.rdf4j.rio.helpers.BasicParserSettings;
+import org.eclipse.rdf4j.rio.helpers.XMLParserSettings;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;
@@ -344,9 +344,14 @@ public class Storage {
                 if (val instanceof Resource) {
                     String uri = val.stringValue();
                     // Check if URI contains a space or brackets
+					if (uri.startsWith("[") && uri.endsWith("]")) {
+						uri = uri.substring(1, uri.length() - 1);
+					}
                     if (uri.contains(" ") || uri.contains("[") || uri.contains("]")) {
-                        String esc =  uri.replace(" ", "%20").replace("[", "%5b")
-															.replace("]", "%5d");
+                        String esc =  uri.replace(" ", "%20")
+										.replace("\\", "%92")
+										.replace("[", "%5b")
+										.replace("]", "%5d");
                         IRI obj = fac.createIRI(esc);
                         conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
                         conn.remove(stmt);
@@ -548,8 +553,11 @@ public class Storage {
         fac = repo.getValueFactory();
 		
 		ParserConfig cfg = new ParserConfig();
-		cfg.addNonFatalError(BasicParserSettings.VERIFY_RELATIVE_URIS);
+		cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, false);
+		cfg.set(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS, false);
+/*		cfg.addNonFatalError(BasicParserSettings.VERIFY_RELATIVE_URIS);
 		cfg.addNonFatalError(BasicParserSettings.VERIFY_URI_SYNTAX);
+		cfg.addNonFatalError(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS); */
 		conn.setParserConfig(cfg);
     }
     
