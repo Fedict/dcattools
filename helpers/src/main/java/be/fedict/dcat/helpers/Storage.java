@@ -341,22 +341,22 @@ public class Storage {
                 Statement stmt = stmts.next();
                 Value val = stmt.getObject();
                 // Check if object is Literal or URI
-                if (val instanceof Resource) {
+				if (val instanceof Resource) {
                     String uri = val.stringValue();
+					if (uri.contains(" ") || uri.contains("\\") || uri.contains("[") || uri.contains("]")) {
                     // Check if URI contains a space or brackets
-					if (uri.startsWith("[") && uri.endsWith("]")) {
-						uri = uri.substring(1, uri.length() - 1);
-					}
-                    if (uri.contains(" ") || uri.contains("[") || uri.contains("]")) {
-                        String esc =  uri.replace(" ", "%20")
+						if (uri.startsWith("[") && uri.endsWith("]")) {
+							uri = uri.substring(1, uri.length() - 1);
+						}
+						String esc =  uri.replace(" ", "%20")
 										.replace("\\", "%92")
 										.replace("[", "%5b")
 										.replace("]", "%5d");
-                        IRI obj = fac.createIRI(esc);
-                        conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
-                        conn.remove(stmt);
-                        i++;
-                    }
+						IRI obj = fac.createIRI(esc);
+						conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
+						conn.remove(stmt);
+						i++;
+					}
                 }
             }
         }
