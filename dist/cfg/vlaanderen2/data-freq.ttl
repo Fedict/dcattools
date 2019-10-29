@@ -3,12 +3,12 @@
 <http://data.gov.be/en/taxonomy/term/20>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
 	skos:prefLabel "Continuously"@en ;
-	skos:altLabel "continual" .
+	skos:altLabel "continual", "http://publications.europa.eu/resource/authority/frequency/CONT" .
 	
 <http://data.gov.be/en/taxonomy/term/22>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
 	skos:prefLabel "Daily"@en ;
-	skos:altLabel "daily" .
+	skos:altLabel "daily", "http://purl.org/cld/freq/daily" .
 
 <http://data.gov.be/en/taxonomy/term/23>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/WEEKLY> ;
@@ -38,15 +38,15 @@
 <http://data.gov.be/en/taxonomy/term/192>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
 	skos:prefLabel "Irregular"@en ;
-	skos:altLabel "asNeeded", "irregular" .
+	skos:altLabel "asNeeded", "irregular", "http://purl.org/cld/freq/irregular", "http://publications.europa.eu/resource/authority/frequency/IRREG" .
 
 <http://data.gov.be/en/taxonomy/term/192>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
 	skos:prefLabel "Unknown"@en ;
-	skos:altLabel "unknown" .
+	skos:altLabel "unknown", "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded", "http://publications.europa.eu/resource/authority/frequency/UNKNOWN" .
 
 <http://data.gov.be/en/taxonomy/term/192>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
 	skos:prefLabel "Never"@en ;
-	skos:altLabel "notPlanned" .
+	skos:altLabel "notPlanned", "http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned" .
 

@@ -18,7 +18,7 @@
 <http://data.gov.be/en/taxonomy/term/126>
 	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_362_739> ;
-	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur" .
+	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur", "SIRS" .
 
 <http://data.gov.be/en/taxonomy/term/133>
 	skos:prefLabel "DGO1 Routes"@fr ;
@@ -48,7 +48,7 @@
 <http://data.gov.be/en/taxonomy/term/138>
 	skos:prefLabel "Agence du Numérique"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0568_575_002> ;
-	skos:altLabel "adn"@fr .
+	skos:altLabel "adn", "Agence du Numérique" .
 
 <http://data.gov.be/en/taxonomy/term/139>
 	skos:prefLabel "Bureau Economique Namur"@fr ;
@@ -107,7 +107,7 @@
 <http://data.gov.be/en/taxonomy/term/240>
 	skos:prefLabel "IDELUX-AIVE"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0832_382_635> ;
-	skos:altLabel "IDELUX-AIVE" .
+	skos:altLabel "IDELUX-AIVE", "IDELUX" .
 	
 <http://data.gov.be/en/taxonomy/term/248>
 	skos:prefLabel "Amay"@fr ;
@@ -322,7 +322,7 @@
 <http://data.gov.be/en/taxonomy/term/363>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_343_933> ;
 	skos:pefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
-	skos:altLabel "Ville de Liège" .
+	skos:altLabel "Ville de Liège", "Ville de Liège " .
 
 <http://data.gov.be/en/taxonomy/term/389>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_258_514> ;

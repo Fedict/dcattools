@@ -1,0 +1,4 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { ?s dcat:accessURL <http://EU-rapportering%20NEC%20–%20National%20Emission%20Ceilings%20(2016/2284/EU)> }
+WHERE { ?s dcat:accessURL <http://EU-rapportering%20NEC%20–%20National%20Emission%20Ceilings%20(2016/2284/EU)>  }
