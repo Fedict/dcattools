@@ -1,0 +1,7 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/iweps/contact> }
+WHERE
+	{ 	?dataset a dcat:Dataset }

@@ -1,0 +1,6 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/54>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
+	skos:prefLabel "CC 0" ;
+	skos:altLabel <http://purl.org/adms/licencetype/PublicDomain>.

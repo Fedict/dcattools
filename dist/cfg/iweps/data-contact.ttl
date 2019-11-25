@@ -1,0 +1,7 @@
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://data.gov.be/org/iweps/contact>
+	a vcard:Organization ;
+	vcard:fn "IWEPS"@fr;
+	vcard:hasUrl <https://opendata.iweps.be> ;
+	vcard:hasEmail <mailto:info@iweps.be> .

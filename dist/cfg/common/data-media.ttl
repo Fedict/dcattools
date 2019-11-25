@@ -5,7 +5,7 @@
 	skos:prefLabel "CSV" ;
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)" .
+	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", <http://publications.europa.eu/resource/authority/file-type/CSV> .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:prefLabel "DOC" ;
@@ -54,7 +54,7 @@
 	skos:prefLabel "JSON" ;
 	skos:closeMatch "application/json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-	skos:altLabel "JSON", "jsonp", "json", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" .
+	skos:altLabel "JSON", "jsonp", "json", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" , <http://publications.europa.eu/resource/authority/file-type/JSON>.
 
 <http://data.gov.be/en/taxonomy/term/381>
 	skos:prefLabel "GeoJSON" ;

@@ -26,7 +26,7 @@
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij", 
 	"Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", 
 	"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer", 
-	"Flanders Environment Agency" .
+	"Flanders Environment Agency", "VMM" .
 
 <http://data.gov.be/en/taxonomy/term/93>
 	skos:prefLabel "Departement CSJM"@nl	;
@@ -68,7 +68,7 @@
 <http://data.gov.be/en/taxonomy/term/118>
 	skos:prefLabel "Departement WSE"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_323_857> ;
-	skos:altLabel "DWSE"@nl .
+	skos:altLabel "DWSE" .
 	
 <http://data.gov.be/en/taxonomy/term/123>
 	skos:prefLabel "Geopunt"@nl ;
@@ -162,7 +162,7 @@
 <http://data.gov.be/en/taxonomy/term/361>
 	skos:prefLabel "Vlaams Energie Agentschap"@nl, "Flemish Energy Agency"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_336_131@id> ;
-	skos:altLabel "Vlaams Energieagentschap (VEA)", "LNE - Vlaams Energieagentschap" .
+	skos:altLabel "Vlaams Energieagentschap (VEA)", "LNE - Vlaams Energieagentschap", "Vlaams Energieagentschap" .
 	
 <http://data.gov.be/en/taxonomy/term/365>
 	skos:prefLabel "Agentschap MDK"@nl ;
@@ -233,3 +233,8 @@
 	skos:prefLabel "Agentschap Jongerenwelzijn"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_318_909> ;
 	skos:altLabel "Agentschap Jongerenwelzijn" .
+	
+<http://data.gov.be/en/taxonomy/term/393>
+	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_380_841> ;
+	skos:altLabel "Agentschap Wegen en Verkeer", "AWV" .

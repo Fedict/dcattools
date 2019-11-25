@@ -1,0 +1,15 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dataset dcterms:publisher ?pub .
+		?pub ?p ?o }
+INSERT 
+	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0866_518_618> .
+		<http://org.belgif.be/id/cbe/org/0866_518_618> dgov:org <http://data.gov.be/en/taxonomy/term/182> .
+		<http://org.belgif.be/id/cbe/org/0866_518_618> a foaf:Organization .
+		<http://org.belgif.be/id/cbe/org/0866_518_618> foaf:name "IWEPS"@fr .
+WHERE
+	{	?dataset dcterms:publisher ?pub }
