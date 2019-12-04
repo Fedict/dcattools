@@ -349,7 +349,8 @@ public class Storage {
 							uri = uri.substring(1, uri.length() - 1);
 						}
 						String esc =  uri.replace(" ", "%20")
-										.replace("\\", "%92")
+										.replace("\\\\", "%5c")
+										.replace("\\", "%5c")
 										.replace("[", "%5b")
 										.replace("]", "%5d");
 						IRI obj = fac.createIRI(esc);
