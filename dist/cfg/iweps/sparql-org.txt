@@ -10,6 +10,7 @@ INSERT
 	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0866_518_618> .
 		<http://org.belgif.be/id/cbe/org/0866_518_618> dgov:org <http://data.gov.be/en/taxonomy/term/182> .
 		<http://org.belgif.be/id/cbe/org/0866_518_618> a foaf:Organization .
-		<http://org.belgif.be/id/cbe/org/0866_518_618> foaf:name "IWEPS"@fr .
+		<http://org.belgif.be/id/cbe/org/0866_518_618> foaf:name "IWEPS"@fr 
+	}
 WHERE
 	{	?dataset dcterms:publisher ?pub }
