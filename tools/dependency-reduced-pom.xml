@@ -8,7 +8,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tools</artifactId>
   <name>tools</name>
-  <version>2.6</version>
+  <version>2.7</version>
   <description>Misc tools for enhancing DCAT metadata</description>
   <build>
     <plugins>

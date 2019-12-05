@@ -653,6 +653,7 @@ public class Drupal {
 		rights.remove("");
 
 		types.remove("");
+		accesses.remove("");
 
 		builder.add(Drupal.FLD_DETAILS, urlArrayJson(accesses));
 
