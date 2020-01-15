@@ -353,6 +353,7 @@ public class Storage {
 										.replace("\\", "%5c")
 										.replace("[", "%5b")
 										.replace("]", "%5d");
+						logger.debug("Changing {} into {}", uri, esc);
 						IRI obj = fac.createIRI(esc);
 						conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
 						conn.remove(stmt);
@@ -361,7 +362,7 @@ public class Storage {
                 }
             }
         }
-        logger.info("Replaced spaces in {} URIs", i);
+        logger.info("Replaced characters in {} URIs", i);
     }
 
     /**
