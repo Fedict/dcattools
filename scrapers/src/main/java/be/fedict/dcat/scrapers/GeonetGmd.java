@@ -86,7 +86,8 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
-	
+	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString";
+
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
 	public final static String XP_DESC = "gmd:abstract";
 	public final static String XP_PURP = "gmd:purpose";
@@ -210,9 +211,10 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param dataset
 	 * @param node
 	 * @param format
+	 * @param license
 	 * @throws MalformedURLException 
 	 */
-	protected void generateDist(Storage store, IRI dataset, Node node, String format) 
+	protected void generateDist(Storage store, IRI dataset, Node node, String format, String license) 
 												throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
@@ -226,8 +228,12 @@ public abstract class GeonetGmd extends Geonet {
 		
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-		store.add(dist, DCTERMS.FORMAT, format);
-		
+		if (format != null) {
+			store.add(dist, DCTERMS.FORMAT, format);
+		}
+		if (license != null) {
+			store.add(dist, DCTERMS.LICENSE, license);
+		}
 		try {
 			IRI iri = store.getURI(url);
 			store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(url));
@@ -302,7 +308,7 @@ public abstract class GeonetGmd extends Geonet {
 		if (range != null) {
 			parseTemporal(store, dataset, range);
 		}
-		
+
 		String freq = metadata.valueOf(XP_FREQ);
 		if (freq != null) {
 			store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
@@ -317,9 +323,11 @@ public abstract class GeonetGmd extends Geonet {
 		if (dists == null || dists.isEmpty()) {
 			logger.warn("No dists for {}", id);
 		}
+		
+		String fmt = node.valueOf(XP_DIST_FMT);
+		String lic = metadata.valueOf(XP_LICENSE);
 		for (Node dist: dists) {
-			String fmt = node.valueOf(XP_DIST_FMT);
-			generateDist(store, dataset, dist, fmt);
+			generateDist(store, dataset, dist, fmt, lic);
 		}
 	}
 	
