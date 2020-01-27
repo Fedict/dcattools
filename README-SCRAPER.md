@@ -3,6 +3,7 @@
 Currently, there are abstract Java classes available for scraping
  * CKAN portals, both via the JSON CKAN-API and via RDF rendering
  * OpenDataSoft portals, using the API / DCAT-ish metadata
+ * GeoNetwork, CSW and RDF
  * Excel files
  * HTML sites
 
