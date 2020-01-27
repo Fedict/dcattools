@@ -75,9 +75,11 @@ public abstract class GeonetGmd extends Geonet {
 	private final static Map<String,String> NS = new HashMap<>();
 	static {
 		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
+		NS.put("gmx", "http://www.isotc211.org/2005/gmx");
 		NS.put("gml", "http://www.opengis.net/gml");
 		NS.put("gco", "http://www.isotc211.org/2005/gco");
 		NS.put("srv", "http://www.isotc211.org/2005/srv");
+		NS.put("xlink", "http://www.w3.org/1999/xlink");
 	}
 		
 	public final static String XP_DATASETS = "//gmd:MD_Metadata";
@@ -86,11 +88,15 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
-	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString";
-
+	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
+		
+	public final static String XP_TYPE = "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue";
+	
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
 	public final static String XP_DESC = "gmd:abstract";
 	public final static String XP_PURP = "gmd:purpose";
+	public final static String XP_ANCHOR = "gmx:Anchor";
+	public final static String XP_CHAR = "gco:CharacterString";
 	
 	public final static String XP_STR = "gco:CharacterString";
 	public final static String XP_STRLNG = "gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
@@ -103,14 +109,18 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TEMP_EXT = "gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/";
 	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
 	public final static String XP_TEMP_END = XP_TEMP_EXT + "gml:endPosition";
-
+    
 	public final static String XP_QUAL = "gmd:dataQualityInfo/gmd:DQ_DataQuality";
 	public final static String XP_QUAL_LIN = XP_QUAL + "/gmd:lineage/gmd:LI_Lineage/gmd:statement";
 	public final static String XP_QUAL_TYPE = XP_QUAL + "/gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue";
 	
 	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
-	public final static String XP_TRANSF = XP_DISTS + "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
-	public final static String XP_DIST_FMT = XP_DISTS + "/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString";
+	public final static String XP_DISTS2 = "gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MS_Distributor";
+
+	public final static String XP_TRANSF = "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
+	public final static String XP_PROTO = "/gmd:protocol/gco:CharacterString";
+	public final static String XP_FMT = "/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString";
+	
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
 	public final static String XP_DIST_NAME = "gmd:name";
 	public final static String XP_DIST_DESC = "gmd:description";
@@ -214,15 +224,15 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param license
 	 * @throws MalformedURLException 
 	 */
-	protected void generateDist(Storage store, IRI dataset, Node node, String format, String license) 
+	protected void generateDist(Storage store, IRI dataset, Node node, int i, String format, String license) 
 												throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
-			logger.debug("No url for distribution");
+			logger.warn("No url for distribution");
 			return;
 		}
 
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url);
+		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url) + "/" + i;
         IRI dist = store.getURI(makeDistURL(id).toString());
         logger.debug("Generating distribution {}", dist.toString());
 		
@@ -267,17 +277,18 @@ public abstract class GeonetGmd extends Geonet {
 		if (metadata == null) {
 			logger.warn("No metadata for {}", id);
 			return;
-		}	
-	
-		String dtype = node.valueOf(XP_QUAL_TYPE);
-		if (dtype != null) {
-			if (!dtype.equals("dataset")) {
-				logger.warn("Not a dataset: {} is {}", id, dtype);
-				return;
-			}
-			store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + dtype));
 		}
-		
+
+		String dtype = node.valueOf(XP_QUAL_TYPE);
+		if (dtype == null || dtype.isEmpty()) {
+			dtype = metadata.valueOf(XP_TYPE);
+		}
+		if (dtype != null && !dtype.isEmpty() && !dtype.equals("dataset")) {
+			logger.warn("Not a dataset: {} is {}", id, dtype);
+			return;
+		}
+
+		store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + "dataset"));
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
@@ -319,15 +330,40 @@ public abstract class GeonetGmd extends Geonet {
 			parseContact(store, dataset, contact);
 		}
 		
-		List<Node> dists = node.selectNodes(XP_TRANSF);
+		List<Node> dists = node.selectNodes(XP_DISTS2 + XP_TRANSF);
+		List<Node> fmts = node.selectNodes(XP_DISTS2 + XP_FMT);
+		
+		if (dists == null || dists.isEmpty()) {
+			dists = node.selectNodes(XP_DISTS + XP_TRANSF);
+			fmts = node.selectNodes(XP_DISTS + XP_FMT);
+		}
+
 		if (dists == null || dists.isEmpty()) {
 			logger.warn("No dists for {}", id);
+			return;
 		}
-		
-		String fmt = node.valueOf(XP_DIST_FMT);
-		String lic = metadata.valueOf(XP_LICENSE);
+	
+		List<Node> licenses = metadata.selectNodes(XP_LICENSE);
+		String license = null;
+		for (Node n: licenses) {
+			String anchor = n.valueOf(XP_ANCHOR);
+			if (anchor != null && !anchor.isEmpty()) {
+				license = anchor;
+				break;
+			}
+			if (license == null || !license.isEmpty()) {
+				license = n.valueOf(XP_CHAR);
+			}
+		}
+
 		for (Node dist: dists) {
-			generateDist(store, dataset, dist, fmt, lic);
+			for (int f = 0; f < fmts.size(); f++) {
+				String fmt = fmts.get(f).getText();
+				generateDist(store, dataset, dist, f, fmt, license);
+			}
+			if (fmts.isEmpty()) {
+				generateDist(store, dataset, dist, 0, null, license);
+			}
 		}
 	}
 	
