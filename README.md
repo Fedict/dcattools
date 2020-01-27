@@ -44,7 +44,7 @@ There is also separate, stand-alone RDF [validator](https://github.com/fedict/rd
 project which can be used to validate DCAT metadata,
 regardless if the metadata is to be published on data.gov.be or not.
 
-## Steps
+## Steps for updating data.gov.be and the EU Data Portal
 
   * The various portals (except `all`) should be harvested using the scrapers.
   * The resulting RDF files must be improved using the enhancers
