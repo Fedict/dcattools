@@ -1,11 +1,14 @@
 # Scraper tool
 
 Currently, there are abstract Java classes available for scraping
+ * DCAT RDF files
  * CKAN portals, both via the JSON CKAN-API and via RDF rendering
  * OpenDataSoft portals, using the API / DCAT-ish metadata
  * GeoNetwork, CSW and RDF
  * Excel files
  * HTML sites
+
+Adding a new one can be as simple as subclassing `be.fedict.dcat.scrapers.Scraper`, setting a new name and recompiling the scraper module.
 
 ## Running
 
@@ -24,6 +27,8 @@ Use -D to set logging level and save the log to a file
 The configuration file is a Java properties file.
 Make sure that the (sub)directories exist before running the scraper.
 
+For example:
+
     # full class name of the scraper implementation
     be.fedict.dcat.scrapers.classname=be.fedict.dcat.scrapers.CkanWallonie
     # full path to the location of the local download cache (MapDB)
@@ -41,7 +46,7 @@ Make sure that the (sub)directories exist before running the scraper.
 
 ## Proxy
 
-Use the JVM system properties -Dhttp.proxyHost=proxy.host.be -Dhttp.proxyPort=8080
+If needed, use the JVM system properties -Dhttp.proxyHost=proxy.host.be -Dhttp.proxyPort=8080
 
 ## Delay
 
