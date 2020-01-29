@@ -115,11 +115,14 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_QUAL_TYPE = XP_QUAL + "/gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue";
 	
 	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
-	public final static String XP_DISTS2 = "gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MS_Distributor";
-
-	public final static String XP_TRANSF = "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
-	public final static String XP_PROTO = "/gmd:protocol/gco:CharacterString";
 	public final static String XP_FMT = "/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString";
+	public final static String XP_TRANSF = "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
+	
+	public final static String XP_DISTS2 = "gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor";
+	public final static String XP_FMT2 = "../../../../*/gmd:MD_Format/gmd:name/gco:CharacterString";
+	public final static String XP_TRANSF2 = "/gmd:distributorTransferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
+
+	public final static String XP_PROTO = "gmd:protocol/gco:CharacterString";
 	
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
 	public final static String XP_DIST_NAME = "gmd:name";
@@ -224,7 +227,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param license
 	 * @throws MalformedURLException 
 	 */
-	protected void generateDist(Storage store, IRI dataset, Node node, int i, String format, String license) 
+	protected void generateDist(Storage store, IRI dataset, Node node, String format, String license) 
 												throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
@@ -232,7 +235,7 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url) + "/" + i;
+		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url);
         IRI dist = store.getURI(makeDistURL(id).toString());
         logger.debug("Generating distribution {}", dist.toString());
 		
@@ -279,6 +282,7 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
+		// try to filter out non-datasets
 		String dtype = node.valueOf(XP_QUAL_TYPE);
 		if (dtype == null || dtype.isEmpty()) {
 			dtype = metadata.valueOf(XP_TYPE);
@@ -330,12 +334,12 @@ public abstract class GeonetGmd extends Geonet {
 			parseContact(store, dataset, contact);
 		}
 		
-		List<Node> dists = node.selectNodes(XP_DISTS2 + XP_TRANSF);
-		List<Node> fmts = node.selectNodes(XP_DISTS2 + XP_FMT);
-		
+		// Distributions can be defined on several (hierarchical) levels
+		List<Node> dists = node.selectNodes(XP_DISTS + XP_TRANSF);
+		// check deeper level if no distributions could be found
 		if (dists == null || dists.isEmpty()) {
-			dists = node.selectNodes(XP_DISTS + XP_TRANSF);
-			fmts = node.selectNodes(XP_DISTS + XP_FMT);
+			logger.warn("Checking for dists on distributor level");
+			dists = node.selectNodes(XP_DISTS2 + XP_TRANSF2);
 		}
 
 		if (dists == null || dists.isEmpty()) {
@@ -357,13 +361,16 @@ public abstract class GeonetGmd extends Geonet {
 		}
 
 		for (Node dist: dists) {
-			for (int f = 0; f < fmts.size(); f++) {
-				String fmt = fmts.get(f).getText();
-				generateDist(store, dataset, dist, f, fmt, license);
+			// check proto first, in case of a OGC service
+			Node fmt = dist.selectSingleNode(XP_PROTO);
+			if (fmt == null || fmt.getText().startsWith("http") || fmt.getText().startsWith("WWW")) {
+				fmt = dist.selectSingleNode(XP_FMT2);
 			}
-			if (fmts.isEmpty()) {
-				generateDist(store, dataset, dist, 0, null, license);
+			String str = null;
+			if (fmt != null) {
+				str = fmt.getText();
 			}
+			generateDist(store, dataset, dist, str, license);
 		}
 	}
 	
