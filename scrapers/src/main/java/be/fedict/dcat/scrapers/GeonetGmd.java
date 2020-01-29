@@ -120,7 +120,7 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_DISTS2 = "gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor";
 	public final static String XP_FMT2 = "../../../../*/gmd:MD_Format/gmd:name/gco:CharacterString";
-	public final static String XP_TRANSF2 = "/gmd:distributorTransferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
+	public final static String XP_TRANSF2 = "/*/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
 
 	public final static String XP_PROTO = "gmd:protocol/gco:CharacterString";
 	
@@ -210,9 +210,6 @@ public abstract class GeonetGmd extends Geonet {
 			store.add(uri, property, txten, "en");
 			return false;
 		}	
-		if (!lang.equals("en") && txt.equals(txten)) {
-			return false;
-		}
 		store.add(uri, property, txt, lang);
 		return true;
 	}
@@ -335,11 +332,11 @@ public abstract class GeonetGmd extends Geonet {
 		}
 		
 		// Distributions can be defined on several (hierarchical) levels
-		List<Node> dists = node.selectNodes(XP_DISTS + XP_TRANSF);
-		// check deeper level if no distributions could be found
+		List<Node> dists = node.selectNodes(XP_DISTS2 + XP_TRANSF2);
+		// check higher level if no distributions could be found
 		if (dists == null || dists.isEmpty()) {
-			logger.warn("Checking for dists on distributor level");
-			dists = node.selectNodes(XP_DISTS2 + XP_TRANSF2);
+			logger.warn("Checking for dists on higher level");
+			dists = node.selectNodes(XP_DISTS + XP_TRANSF);
 		}
 
 		if (dists == null || dists.isEmpty()) {
