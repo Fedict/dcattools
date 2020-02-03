@@ -633,7 +633,7 @@ public class Drupal {
 		for (String uri : uris) {
 			Map<Resource, ListMultimap<String, String>> dist
 				= store.queryProperties(store.getURI(uri));
-			if (hasLang(dist, lang)) {
+			if (hasLang(dist, lang) || hasLang(dist, "en")) {
 				// Data.gov.be displays this information as fields on dataset
 				// not on distribution.
 				accesses.add(getLink(dist, DCAT.ACCESS_URL));
