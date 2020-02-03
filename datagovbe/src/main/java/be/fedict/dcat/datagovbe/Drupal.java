@@ -581,7 +581,7 @@ public class Drupal {
 			.add(Drupal.FLD_ORG, orgs)
 			.add(Drupal.FLD_MAIL, emails)
 			.add(Drupal.FLD_KEYWORDS, keywords)
-			.add(Drupal.FLD_ID, id);
+			.add(Drupal.FLD_ID, id.replace(":", "-").replace(".", "-"));
 
 		String fromtill = getTime(dataset);
 		if (fromtill.isEmpty()) {
