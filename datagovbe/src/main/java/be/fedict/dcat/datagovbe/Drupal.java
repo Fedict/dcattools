@@ -294,7 +294,8 @@ public class Drupal {
 	private String checkExists(String id, String lang) {
 		String node = "";
 
-		String u = this.url.toString() + "/" + lang + "/" + Drupal.TYPE_DATA + "/" + id;
+		String u = this.url.toString() + "/" + lang + "/" + Drupal.TYPE_DATA + "/" 
+			+ id.replace(".", "-").replace(":", "-");
 
 		Request r = Request.Head(u);
 		if (proxy != null) {

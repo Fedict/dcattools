@@ -550,7 +550,6 @@ public class Storage {
      */
     public void startup() throws RepositoryException {
         logger.info("Opening RDF repository");
-        repo.initialize(); 
         conn = repo.getConnection();
         fac = repo.getValueFactory();
 		
