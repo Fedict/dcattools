@@ -1,11 +1,9 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-DELETE 
-	{	?dataset dcterms:publisher ?pub .
-		?pub ?p ?o }
 INSERT 
 	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0353_070_496> .
 		<http://org.belgif.be/id/cbe/org/0353_070_496> dgov:org <http://data.gov.be/en/taxonomy/term/197> .
@@ -15,4 +13,4 @@ INSERT
 		<http://org.belgif.be/id/cbe/org/0353_070_496> foaf:name "Royal Belgian Institute of Natural Sciences"@en .
 		<http://org.belgif.be/id/cbe/org/0353_070_496> foaf:name "Königliches Belgisches Institut für Naturwissenschaften"@de . }
 WHERE
-	{	?dataset dcterms:publisher ?pub }
+	{	?dataset a dcat:Dataset }
