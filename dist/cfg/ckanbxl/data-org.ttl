@@ -31,7 +31,7 @@
 	skos:altLabel "CIRB-CIBG", "{u'fr': u'CIRB', u'en': u'BRIC', u'nl': u'CIBG'}" .
 
 <http://data.gov.be/en/taxonomy/term/190>
-	skos:prefLabel "CESRBC"@en ; 
+	skos:prefLabel "CESRBC"@en, "CESRBC"@fr, "ESRBHG"@nl ; 
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0253_777_437> ;
 	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale", "{u'fr': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'en': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'nl': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale'}" .
 
@@ -41,7 +41,7 @@
 	skos:altLabel "IBSA", "{u'fr': u'IBSA', u'en': u'BISA', u'nl': u'BISA'}" .
 	
 <http://data.gov.be/en/taxonomy/term/188>
-	skos:prefLabel "Parking Brussels"@en ;
+	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0831_050_765> ;
 	skos:altLabel "Parking Brussels", "{u'fr': u'Parking Brussels', u'en': u'Parking Brussels', u'nl': u'Parking Brussels'}" .
 	
@@ -71,7 +71,7 @@
 	skos:altLabel "{u'fr': u'milonga.be', u'en': u'milonga.be', u'nl': u'milonga.be'}" .
 
 <http://data.gov.be/en/taxonomy/term/221>
-	skos:prefLabel "U Talk Freelance"@en ;
+	skos:prefLabel "U Talk Freelance"@en, "U Talk Freelance"@nl, "U Talk Freelance"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0637_731_250> ;
 	skos:altLabel "{u'fr': u'U Talk Freelance', u'en': u'U Talk Freelance', u'nl': u'U Talk Freelance'}" .
 
