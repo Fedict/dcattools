@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,41 +23,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.enhancers;
+package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Storage;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import org.eclipse.rdf4j.repository.RepositoryException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.File;
+import java.net.URL;
 
 /**
+ * CKAN Brussels Region.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
-public class SparqlUpdate extends Enhancer {
-    private final static Logger logger = LoggerFactory.getLogger(SparqlUpdate.class);
-    
-    @Override
-    public void enhance() {
-        try {
-            String file = getProperty("sparqlfile");
-            logger.info("Loading Sparql Update from {}", file);
-            String q = new String(Files.readAllBytes(Paths.get(file)), StandardCharsets.UTF_8);
-            getStore().queryUpdate(q);
-        } catch (RepositoryException|IOException ex) {
-            logger.error("Error executing update", ex);
-        }
-    }
-    
-    public SparqlUpdate(Storage store) {
-        super(store);
-    }
-
+public class CkanSciensano extends CkanRDF {
+	/**
+	 * Constructor
+	 *
+	 * @param caching DB cache file
+	 * @param storage SDB file to be used as triple store backend
+	 * @param base base URL
+	 */
+	public CkanSciensano(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("sciensano");
+	}
 }

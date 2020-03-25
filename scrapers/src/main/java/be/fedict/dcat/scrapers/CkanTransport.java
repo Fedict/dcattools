@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2020, Bart Hanssens <bart.hanssens@fedict.be>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,41 +23,39 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.enhancers;
+package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.json.JsonObject;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
+ * CKAN TransportData.be via DCAT-AP catalog.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
-public class SparqlUpdate extends Enhancer {
-    private final static Logger logger = LoggerFactory.getLogger(SparqlUpdate.class);
-    
-    @Override
-    public void enhance() {
-        try {
-            String file = getProperty("sparqlfile");
-            logger.info("Loading Sparql Update from {}", file);
-            String q = new String(Files.readAllBytes(Paths.get(file)), StandardCharsets.UTF_8);
-            getStore().queryUpdate(q);
-        } catch (RepositoryException|IOException ex) {
-            logger.error("Error executing update", ex);
-        }
-    }
-    
-    public SparqlUpdate(Storage store) {
-        super(store);
-    }
+public class CkanTransport extends CkanJson {
+	public final static String NOTES_TRANSLATED = "notes_translated";
+		
+	/**
+	 * CKAN parser for TransportData.be(json).
+	 *
+	 * @param caching
+	 * @param storage
+	 * @param base
+	 */
+	public CkanTransport(File caching, File storage, URL base) {
+		super(caching, storage, base);
+		setName("transportdata");
+	}
 
+	@Override
+	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
+		parseString(store, uri, json, CkanTransport.NOTES_TRANSLATED, DCTERMS.DESCRIPTION, lang);
+	}
 }
