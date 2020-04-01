@@ -65,7 +65,7 @@ public class HtmlBIPT extends Html {
 	
 	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		throw new UnsupportedOperationException("Not supported yet."); 
 	}
 	
 	/**
@@ -235,7 +235,7 @@ public class HtmlBIPT extends Html {
 	}
 
 	/**
-	 * HTML scraper FPS Mobility.
+	 * HTML scraper BIPT.
 	 *
 	 * @param caching DB cache file
 	 * @param storage RDF backing file
