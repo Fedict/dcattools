@@ -180,7 +180,7 @@
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", "Excel", "excel" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
