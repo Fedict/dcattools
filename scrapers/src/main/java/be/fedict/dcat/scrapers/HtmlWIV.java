@@ -83,17 +83,17 @@ public class HtmlWIV extends Html {
 	private void generateDist(Storage store, IRI dataset, URL access,
 			Elements lis, String lang) throws MalformedURLException, RepositoryException {
 		for(Element li: lis) {
-			String title = li.text();
+			String title = li.ownText();
+			title = title.replaceAll("[^\\w ,;]*", "").trim();
 			
 			Elements links = li.select(HREFS);
 			for (Element link: links) {
 				String href = link.attr(Attribute.HREF.toString());
 				URL download = makeAbsURL(href);
 
-				// file type e.g. in "Link (pdf)"
 				String ftype = link.text().trim();
 
-				URL u = makeDistURL(title.hashCode() + "/" + ftype);
+				URL u = makeDistURL(makeHashId(title) + "/" + ftype);
 				IRI dist = store.getURI(u.toString());
 				logger.debug("Generating distribution {}", dist.toString());
 
@@ -128,7 +128,7 @@ public class HtmlWIV extends Html {
 
 		Element content = Jsoup.parse(html).body();
 
-		IRI dataset = store.getURI(makeDatasetURL(u.toString()).toString());
+		IRI dataset = store.getURI(makeDatasetURL(makeHashId(id)).toString());
 		logger.debug("Generating dataset {}", dataset.toString());
 
 		Element h2 = content.select(H_TITLE).first();
@@ -145,7 +145,7 @@ public class HtmlWIV extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(id));
 		store.add(dataset, DCAT.LANDING_PAGE, u);
 
 		Elements dist = content.select(DIST_LINKS);
@@ -169,7 +169,7 @@ public class HtmlWIV extends Html {
 		List<URL> urls = cache.retrieveURLList();
 		for (URL u : urls) {
 			Map<String, Page> page = cache.retrievePage(u);
-			generateDataset(store, null, page);
+			generateDataset(store, u.toString(), page);
 		}
 		generateCatalog(store);
 	}
