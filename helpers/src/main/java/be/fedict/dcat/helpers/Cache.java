@@ -28,10 +28,10 @@ package be.fedict.dcat.helpers;
 import java.io.File;
 import java.net.URL;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 
 import org.mapdb.DB;
@@ -70,7 +70,7 @@ public class Cache {
      */
     public List<URL> retrieveURLList() {
         ConcurrentMap<String, List<URL>> map = db.hashMap(Cache.CACHE);
-        return map.getOrDefault(Cache.URLS, new ArrayList<>());
+        return map.getOrDefault(Cache.URLS, Collections.EMPTY_LIST);
     }
     
     /**
@@ -83,7 +83,7 @@ public class Cache {
     public void storePage(URL id, String lang, Page page) {
         logger.debug("Storing page {} with lang {} to cache", id, lang);
         ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
-        Map<String, Page> p = map.getOrDefault(id, new HashMap<>());
+        Map<String, Page> p = map.getOrDefault(id, Collections.EMPTY_MAP);
         p.put(lang, page);
         map.put(id, p);
         db.commit();
@@ -98,7 +98,17 @@ public class Cache {
     public Map<String, Page> retrievePage(URL id) {
         logger.debug("Retrieving page {} from cache", id);
         ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
-        return map.getOrDefault(id, new HashMap<>());
+        return map.getOrDefault(id, Collections.EMPTY_MAP);
+    }
+	
+	/**
+     * Get the list of pages in the cache.
+     * 
+     * @return 
+     */
+    public Set<URL> retrievePageList() {
+		ConcurrentMap<URL, Map<String, Page>> map  = db.hashMap(Cache.PAGES);
+        return (map == null) ? Collections.EMPTY_SET : map.keySet();
     }
     
     /**
@@ -121,7 +131,7 @@ public class Cache {
      */
     public Map<String,String> retrieveMap(URL id) {
         ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
-        return map.getOrDefault(id, new HashMap<>());
+        return map.getOrDefault(id, Collections.EMPTY_MAP);
     }
     
     /**
