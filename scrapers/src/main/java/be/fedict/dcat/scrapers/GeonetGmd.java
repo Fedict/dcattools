@@ -41,9 +41,9 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.DocumentFactory;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
@@ -65,12 +65,13 @@ public abstract class GeonetGmd extends Geonet {
 
 	public final static String GMD = "http://www.isotc211.org/2005/gmd";
 	public final static String API = "/eng/csw?service=CSW&version=2.0.2";
+	public final static int MAX_RECORDS = 200;
 	public final static String API_RECORDS = API
 			+ "&request=GetRecords&resultType=results"
 			+ "&outputSchema=" + GMD
 			+ "&elementSetName=full&typeNames=gmd:MD_Metadata"
-			+ "&maxRecords=200";
-	public final static String OFFSET = "startPosition";
+			+ "&maxRecords=" + MAX_RECORDS;
+	public final static String POSITION = "&startPosition=";
 
 	private final static Map<String,String> NS = new HashMap<>();
 	static {
@@ -81,7 +82,9 @@ public abstract class GeonetGmd extends Geonet {
 		NS.put("srv", "http://www.isotc211.org/2005/srv");
 		NS.put("xlink", "http://www.w3.org/1999/xlink");
 	}
-		
+
+	public final static String NUM_REC = "csw:GetRecordsResponse/csw:SearchResults/@numberOfRecordsMatched";
+	
 	public final static String XP_DATASETS = "//gmd:MD_Metadata";
 	
 	public final static String XP_ID = "gmd:fileIdentifier/gco:CharacterString";
@@ -382,20 +385,22 @@ public abstract class GeonetGmd extends Geonet {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		Map<String, Page> map = cache.retrievePage(getBase());
-		String xml = map.get("all").getContent();
+		List<URL> urls = cache.retrieveURLList();
 
 		SAXReader sax = new SAXReader();
 
 		try {
-			DocumentFactory.getInstance().setXPathNamespaceURIs(NS);
-			Document doc = sax.read(new StringReader(xml));
+			for (URL url: urls) {
+				Map<String, Page> map = cache.retrievePage(url);
+				String xml = map.get("all").getContent();
+				Document doc = sax.read(new StringReader(xml));
 			
-			List<Node> datasets = doc.selectNodes(XP_DATASETS);
-			for (Node dataset: datasets) {
-				String id = dataset.valueOf(XP_ID);
-				IRI iri = store.getURI(makeDatasetURL(id).toString());
-				generateDataset(iri, id, store, dataset);
+				List<Node> datasets = doc.selectNodes(XP_DATASETS);
+				for (Node dataset: datasets) {
+					String id = dataset.valueOf(XP_ID);
+					IRI	iri = store.getURI(makeDatasetURL(id).toString());
+					generateDataset(iri, id, store, dataset);
+				}
 			}
 		} catch (DocumentException ex) {
 			logger.error("Error parsing XML");
@@ -406,16 +411,45 @@ public abstract class GeonetGmd extends Geonet {
 	}
 
 	/**
+	 * Get total number of results from XML response
+	 * 
+	 * @param doc
+	 * @return number of records
+	 */
+	private int getNumRecords(Document doc) {
+		Node rec = doc.selectSingleNode(NUM_REC);
+		if (rec != null) {
+			String n = rec.getText();
+			logger.info(n + " records found");
+			return Integer.valueOf(n);
+		}
+		return MAX_RECORDS;
+	}
+
+	/**
 	 * Scrape DCAT catalog.
 	 *
 	 * @param cache
 	 * @throws IOException
 	 */
-	protected void scrapeCat(Cache cache) throws IOException {
-		URL front = getBase();
-		URL url = new URL(getBase() + GeonetGmd.API_RECORDS);
-		String content = makeRequest(url);
-		cache.storePage(front, "all", new Page(url, content));
+	protected void scrapeCat(Cache cache) throws IOException {		
+		SAXReader sax = new SAXReader();
+
+		try {
+			for (int pos = 1, recs = MAX_RECORDS; pos < recs; pos += MAX_RECORDS) {
+				URL url = new URL(getBase() + API_RECORDS + POSITION + pos);
+				String xml = makeRequest(url);
+
+				Document doc = sax.read(new StringReader(xml));
+				if (pos == 1) {
+					recs = getNumRecords(doc);
+				}
+				cache.storePage(url, "all", new Page(url, xml));
+			}
+		} catch (DocumentException ex) {
+			logger.error("Error parsing XML");
+			throw new RepositoryException(ex);
+		}
 	}
 
 	/**
@@ -428,8 +462,8 @@ public abstract class GeonetGmd extends Geonet {
 		logger.info("Start scraping");
 		Cache cache = getCache();
 
-		Map<String, Page> front = cache.retrievePage(getBase());
-		if (front.keySet().isEmpty()) {
+		List<URL> urls = cache.retrieveURLList();
+		if (urls.isEmpty()) {
 			scrapeCat(cache);
 		}
 		logger.info("Done scraping");
