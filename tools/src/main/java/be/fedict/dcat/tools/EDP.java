@@ -590,7 +590,6 @@ public class EDP {
 		}
 
 		Repository repo = new SailRepository(new MemoryStore());
-		repo.initialize();
 
 		Serializer s = getSerializer();
 		s.setOutputFile(new File(args[1]));

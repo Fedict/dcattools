@@ -52,7 +52,6 @@ public class Cache {
     private static final String URLS = "urls";
     private static final String PAGES = "pages";
 
-    
     /**
      * Store list of URLs.
      * 
