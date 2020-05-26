@@ -41,9 +41,11 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
@@ -73,6 +75,7 @@ public abstract class GeonetGmd extends Geonet {
 			+ "&maxRecords=" + MAX_RECORDS;
 	public final static String POSITION = "&startPosition=";
 
+	private final static SAXReader sax;
 	private final static Map<String,String> NS = new HashMap<>();
 	static {
 		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
@@ -81,6 +84,11 @@ public abstract class GeonetGmd extends Geonet {
 		NS.put("gco", "http://www.isotc211.org/2005/gco");
 		NS.put("srv", "http://www.isotc211.org/2005/srv");
 		NS.put("xlink", "http://www.w3.org/1999/xlink");
+		
+		DocumentFactory factory = DocumentFactory.getInstance();
+		factory.setXPathNamespaceURIs(NS);
+		sax = new SAXReader();
+		sax.setDocumentFactory(factory);
 	}
 
 	public final static String NUM_REC = "csw:GetRecordsResponse/csw:SearchResults/@numberOfRecordsMatched";
@@ -191,6 +199,16 @@ public abstract class GeonetGmd extends Geonet {
 	}
 
 	/**
+	 * Map language code to geonet language string
+	 * 
+	 * @param lang
+	 * @return 
+	 */
+	protected String mapLanguage(String lang) {
+		return lang.toUpperCase();
+	}
+
+	/**
 	 * Parse and store multilingual string
 	 * 
 	 * @param store RDF store
@@ -207,7 +225,7 @@ public abstract class GeonetGmd extends Geonet {
 			return false;
 		}
 		String txten = node.valueOf(XP_STR);
-		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() +"']");
+		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + mapLanguage(lang) +"']");
 
 		if (txt == null || txt.isEmpty()) {
 			store.add(uri, property, txten, "en");
@@ -310,6 +328,7 @@ public abstract class GeonetGmd extends Geonet {
 		Node title = metadata.selectSingleNode(XP_TITLE);
 		Node desc = metadata.selectSingleNode(XP_DESC);
 		
+		boolean hasTitle = false;
 		for (String lang : getAllLangs()) {
 			if (parseMulti(store, dataset, title, DCTERMS.TITLE, lang)) {
 				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));	
@@ -319,6 +338,7 @@ public abstract class GeonetGmd extends Geonet {
 				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
 			}
 		}
+	
 		Node range = metadata.selectSingleNode(XP_TEMPORAL);
 		if (range != null) {
 			parseTemporal(store, dataset, range);
@@ -385,12 +405,13 @@ public abstract class GeonetGmd extends Geonet {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		List<URL> urls = cache.retrieveURLList();
+		Set<URL> urls = cache.retrievePageList();
 
 		SAXReader sax = new SAXReader();
 
 		try {
 			for (URL url: urls) {
+				System.err.println(url);
 				Map<String, Page> map = cache.retrievePage(url);
 				String xml = map.get("all").getContent();
 				Document doc = sax.read(new StringReader(xml));
@@ -432,9 +453,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param cache
 	 * @throws IOException
 	 */
-	protected void scrapeCat(Cache cache) throws IOException {		
-		SAXReader sax = new SAXReader();
-
+	protected void scrapeCat(Cache cache) throws IOException {
 		try {
 			for (int pos = 1, recs = MAX_RECORDS; pos < recs; pos += MAX_RECORDS) {
 				URL url = new URL(getBase() + API_RECORDS + POSITION + pos);
@@ -462,7 +481,7 @@ public abstract class GeonetGmd extends Geonet {
 		logger.info("Start scraping");
 		Cache cache = getCache();
 
-		List<URL> urls = cache.retrieveURLList();
+		Set<URL> urls = cache.retrievePageList();
 		if (urls.isEmpty()) {
 			scrapeCat(cache);
 		}
