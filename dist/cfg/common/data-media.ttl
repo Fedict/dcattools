@@ -162,7 +162,7 @@
 	skos:prefLabel "WFS" ;
 	skos:closeMatch "application/xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/WFS_SRVC> ;
-	skos:altLabel "WFS", "wfs", "OGC:WFS" .
+	skos:altLabel "WFS", "wfs", "OGC:WFS", "OGC:WFS-1.0.0-http-get-capabilities" .
 	
 <http://data.gov.be/en/taxonomy/term/67>
 	skos:prefLabel "WMS" ;

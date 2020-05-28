@@ -54,6 +54,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
+@Deprecated
 public class HtmlOostende extends Html {
 
 	private final static String CONTENT_ID = "content";
