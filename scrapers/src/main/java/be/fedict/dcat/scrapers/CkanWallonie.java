@@ -38,6 +38,7 @@ import org.eclipse.rdf4j.model.IRI;
  *
  * @author Bart Hanssens
  */
+@Deprecated
 public class CkanWallonie extends CkanJson {
 
 	@Override

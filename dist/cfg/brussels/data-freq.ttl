@@ -28,7 +28,7 @@
 <http://data.gov.be/en/taxonomy/term/192>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
 	skos:prefLabel "Irregular"@en ;
-	skos:altLabel "asNeeded", "irregular", "Irregular" .
+	skos:altLabel "asNeeded", "irregular" .
 
 <http://data.gov.be/en/taxonomy/term/390>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/NEVER> ;

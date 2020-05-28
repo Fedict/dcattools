@@ -1,0 +1,6 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/53>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_2_0> ;
+	skos:prefLabel "CC-BY" ;
+	skos:altLabel "https://creativecommons.org/licenses/by/2.0/" .

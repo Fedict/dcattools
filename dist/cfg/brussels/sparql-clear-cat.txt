@@ -1,0 +1,5 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { <http://opendatastore.brussels> ?p ?o }
+WHERE { <http://opendatastore.brussels> ?p ?o }
