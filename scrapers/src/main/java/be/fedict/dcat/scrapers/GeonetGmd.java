@@ -78,6 +78,7 @@ public abstract class GeonetGmd extends Geonet {
 	private final static SAXReader sax;
 	private final static Map<String,String> NS = new HashMap<>();
 	static {
+		NS.put("csw", "http://www.opengis.net/cat/csw/2.0.2");
 		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
 		NS.put("gmx", "http://www.isotc211.org/2005/gmx");
 		NS.put("gml", "http://www.opengis.net/gml");

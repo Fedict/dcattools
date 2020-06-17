@@ -27,8 +27,10 @@ package be.fedict.dcat.helpers;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -70,7 +72,7 @@ public class Cache {
      */
     public List<URL> retrieveURLList() {
         ConcurrentMap<String, List<URL>> map = db.hashMap(Cache.CACHE);
-        return map.getOrDefault(Cache.URLS, Collections.EMPTY_LIST);
+        return map.getOrDefault(Cache.URLS, new ArrayList<>());
     }
     
     /**
@@ -83,7 +85,7 @@ public class Cache {
     public void storePage(URL id, String lang, Page page) {
         logger.debug("Storing page {} with lang {} to cache", id, lang);
         ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
-        Map<String, Page> p = map.getOrDefault(id, Collections.EMPTY_MAP);
+        Map<String, Page> p = map.getOrDefault(id, new HashMap<>());
         p.put(lang, page);
         map.put(id, p);
         db.commit();
