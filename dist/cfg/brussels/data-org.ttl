@@ -1,84 +1,123 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/183>
-	skos:prefLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-mobi> ;
-	skos:altLabel "Bruxelles Mobilité / Brussel Mobiliteit", "{u'fr': u'Bruxelles Mobilit\xe9', u'en': u'Mobility Brussels', u'nl': u'Brussel Mobiliteit'}" .
+<http://data.gov.be/en/taxonomy/term/127>
+	skos:prefLabel "Stad Brussel"@nl, "Ville de Bruxelles"@fr, "City of Brussels"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_373_429> ;
+	skos:altLabel "City of Brussels"@en, "City of Brussels/Archives"@en, "City of Brussels/Cleanliness"@en, "City of Brussels/Cleanliness Service"@en, "City of Brussels/Commerce"@en, "City of Brussels/Culture"@en, "City of Brussels/Demography"@en, "City of Brussels/Economic Affairs"@en, "City of Brussels/Family"@en, "City of Brussels/Finances"@en, "City of Brussels/Green Spaces"@en, "City of Brussels/Historical Heritage"@en, "City of Brussels/Mobility"@en, "City of Brussels/Protocol"@en, "City of Brussels/Protocole"@en, "City of Brussels/Public Education"@en, "City of Brussels/Recruitment"@en, "City of Brussels/Road works"@en, "City of Brussels/Seniors"@en, "City of Brussels/Sports"@en, "City of Brussels/Town Planning"@en, "City of Brussels/Web Dvlp"@en, "City of Brussels/Web Unit"@en, "Stad Brussel"@nl, "Stad Brussel/Archieven"@nl, "Stad Brussel/Cel Web"@nl, "Stad Brussel/Cultuur"@nl, "Stad Brussel/Demografie"@nl, "Stad Brussel/Dienst Cultuur"@nl, "Stad Brussel/Dienst Netheid"@nl, "Stad Brussel/Economische zaken"@nl, "Stad Brussel/Familie"@nl, "Stad Brussel/Financiën"@nl, "Stad Brussel/Groene Ruimten"@nl, "Stad Brussel/Handel"@nl, "Stad Brussel/Historisch Patrimonium"@nl, "Stad Brussel/Mobiliteit"@nl, "Stad Brussel/Musea"@nl, "Stad Brussel/Netheid"@nl, "Stad Brussel/Op"@nl, "Stad Brussel/Openbaar onderwijs"@nl, "Stad Brussel/Protocol"@nl, "Stad Brussel/Senioren"@nl, "Stad Brussel/Sport"@nl, "Stad Brussel/Sportdienst"@nl, "Stad Brussel/Stedenbouw"@nl, "Stad Brussel/Web Dvlp"@nl, "Stad Brussel/Wegeniswerken"@nl, "Ville de Bruxelles"@fr, "Ville de Bruxelles - Service des sports"@fr, "Ville de Bruxelles/Affaires économiques"@fr, "Ville de Bruxelles/Archives"@fr, "Ville de Bruxelles/Cellule Web"@fr, "Ville de Bruxelles/Cellule Web Web"@fr, "Ville de Bruxelles/Commerce"@fr, "Ville de Bruxelles/Culture"@fr, "Ville de Bruxelles/Démographie"@fr, "Ville de Bruxelles/Espaces verts"@fr, "Ville de Bruxelles/Famille"@fr, "Ville de Bruxelles/Finances"@fr, "Ville de Bruxelles/Instruction publique"@fr, "Ville de Bruxelles/Maisons de quartier"@fr, "Ville de Bruxelles/Mobilité"@fr, "Ville de Bruxelles/Patrimoine Historique"@fr, "Ville de Bruxelles/Propreté"@fr, "Ville de Bruxelles/Protocole"@fr, "Ville de Bruxelles/Seniors"@fr, "Ville de Bruxelles/Sports"@fr, "Ville de Bruxelles/Travaux de Voirie"@fr, "Ville de Bruxelles/Urbanisme"@fr, "Buurthuizen"@nl, "Grondregie"@nl, "De Brusseleir"@nl, "Le Brusseleir"@fr, "Le Brusseleir"@en, "Régie foncière - Property Management Agency "@en, "Régie foncière"@fr, "Open Data Team - Ville de Bruxelles"@fr,  "Stad Brussel / Duurzame ontwikkeling "@nl, "Ville de Bruxelles/Développement Durable"@fr .
 
-<http://data.gov.be/en/taxonomy/term/186>
-	skos:prefLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0236_916_956> ;
-	skos:altLabel "Bruxelles Environnement / Leefmilieu Brussel", "{u'fr': u'Bruxelles Environnement', u'en': u'Brussels Environment', u'nl': u'Leefmilieu Brussel'}" .
-
-<http://data.gov.be/en/taxonomy/term/187>
-	skos:prefLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-urban> ;
-	skos:altLabel "Bruxelles Développement urbain / Brussel Stedelijke Ontwikkeling", "{u'fr': u'Bruxelles D\xe9veloppement urbain', u'en': u'Brussels Urban Development', u'nl': u'Brussel Stedelijke Ontwikkeling'}" .
-
-<http://data.gov.be/en/taxonomy/term/342>
-	skos:prefLabel "Brussel Gewestelijke Coördinatoe"@nl, "Bruxelles Coordination régionale"@fr, "Brussels Region Coordination"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-coord> ;
-	skos:altLabel "{u'fr': u'Bruxelles Coordination r\xe9gionale', u'en': u'Brussels regional coordination', u'nl': u'Brussel Gewestelijke Co\xf6rdinatie'}" .
-	
-<http://data.gov.be/en/taxonomy/term/184>
-	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0247_499_953> ;
-	skos:altLabel "STIB / MIVB", "{u'fr': u'STIB', u'en': u'STIB / MIVB', u'nl': u'MIVB'}" .
-	
-<http://data.gov.be/en/taxonomy/term/185>
-	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0240_678_477> ;
-	skos:altLabel "CIRB-CIBG", "{u'fr': u'CIRB', u'en': u'BRIC', u'nl': u'CIBG'}" .
-
-<http://data.gov.be/en/taxonomy/term/190>
-	skos:prefLabel "CESRBC"@en, "CESRBC"@fr, "ESRBHG"@nl ; 
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0253_777_437> ;
-	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale", "{u'fr': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'en': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale', u'nl': u'Conseil \xe9conomique et social de la R\xe9gion de Bruxelles-Capitale'}" .
-
-<http://data.gov.be/en/taxonomy/term/191>
-	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-ibsa> ;
-	skos:altLabel "IBSA", "{u'fr': u'IBSA', u'en': u'BISA', u'nl': u'BISA'}" .
-	
-<http://data.gov.be/en/taxonomy/term/188>
-	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0831_050_765> ;
-	skos:altLabel "Parking Brussels", "{u'fr': u'Parking Brussels', u'en': u'Parking Brussels', u'nl': u'Parking Brussels'}" .
-	
 <http://data.gov.be/en/taxonomy/term/175>
 	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0828_586_767> ;
-	skos:altLabel "ZenCar", "{u'fr': u'ZenCar', u'en': u'ZenCar', u'nl': u'ZenCar'}" .
+	skos:altLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en .
 	
 <http://data.gov.be/en/taxonomy/term/176>
 	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0433_457_663> ;
-	skos:altLabel "Cambio", "{u'fr': u'Cambio', u'en': u'Cambio', u'nl': u'Cambio'}" .
+	skos:altLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en .
 	
 <http://data.gov.be/en/taxonomy/term/178>
 	skos:prefLabel "JCDecaux"@fr, "JCDecaux"@nl, "JCDecaux"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0444_436_776> ;
-	skos:altLabel "JC Decaux", "{u'fr': u'JC Decaux', u'en': u'JD Decaux', u'nl': u'JC Decaux'}" .
+	skos:altLabel "JCDecaux"@fr, "JCDecaux"@nl, "JCDecaux"@en .
+
+<http://data.gov.be/en/taxonomy/term/183>
+	skos:prefLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-mobi> ;
+	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en .
+	
+<http://data.gov.be/en/taxonomy/term/184>
+	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0247_499_953> ;
+	skos:altLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/185>
+	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0240_678_477> ;
+	skos:altLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr .
+
+<http://data.gov.be/en/taxonomy/term/186>
+	skos:prefLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0236_916_956> ;
+	skos:altLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr .
+
+<http://data.gov.be/en/taxonomy/term/187>
+	skos:prefLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-urban> ;
+	skos:altLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en .
+
+<http://data.gov.be/en/taxonomy/term/188>
+	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0831_050_765> ;
+	skos:prefLabel "parking.brussels"@en, "parking.brussels"@nl, "parking.brussels"@fr .
+
+<http://data.gov.be/en/taxonomy/term/191>
+	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-ibsa> ;
+	skos:altLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr .
 
 <http://data.gov.be/en/taxonomy/term/208>
 	skos:prefLabel "Brussels Jazz Marathon"@fr, "Brussels Jazz Marathon"@nl, "Brussels Jazz Marathon"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0457_783_679> ;
-	skos:altLabel "{u'fr': u'Brussels Jazz Marathon', u'en': u'Brussels Jazz Marathon', u'nl': u'Brussels Jazz Marathon'}" .
+	skos:altLabel "Brussels Jazz Marathon"@fr, "Brussels Jazz Marathon"@nl, "Brussels Jazz Marathon"@en .
 
 <http://data.gov.be/en/taxonomy/term/210>
 	skos:prefLabel "Milonga"@fr, "Milonga"@nl, "Milonga"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0472_325_167> ;
-	skos:altLabel "{u'fr': u'milonga.be', u'en': u'milonga.be', u'nl': u'milonga.be'}" .
+	skos:altLabel "milonga.be"@fr, "milonga.be"@nl, "milonga.be"@en .
+	
+<http://data.gov.be/en/taxonomy/term/224>
+	skos:prefLabel "VisitBrussels"@fr, "VisitBrussels"@nl, "VisitBrussels"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0600_885_207> ;
+	skos:altLabel "visit.brussels"@fr, "visit.brussels"@nl, "visit.brussels"@en .
+
+<http://data.gov.be/en/taxonomy/term/236>
+	skos:prefLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0455_555_451> ;
+	skos:altLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en .
+
+<http://data.gov.be/en/taxonomy/term/343>
+	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_540_408> ;
+	skos:altLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl  .
+
+<http://data.gov.be/en/taxonomy/term/352>
+	skos:prefLabel "Evere"@fr, "Evere"@en, "Evere"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_365_709> ;
+	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl .
+
+<http://data.gov.be/en/taxonomy/term/354>
+	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_367_588> ;
+	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl  .
+
+<http://data.gov.be/en/taxonomy/term/355>
+	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0249_268_719> ;
+	skos:altLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl  .
+
+<http://data.gov.be/en/taxonomy/term/356>
+	skos:prefLabel "Centre de Documentation et de Coordination Sociales"@fr, "Center for social documentation and coordination"@en, "Centrum voor Maatschappelijke Documentatie en Coördinatie"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0417_167_603> ;
+	skos:altLabel "CDCS-CMDC Social.brussels"@nl, "CDCS-CMDC asbl Social.brussels"@fr, "CMDC-CDCS vzw Sociaal.brussels"@en  .
+	
+
+<http://data.gov.be/en/taxonomy/term/342>
+	skos:prefLabel "Brussel Gewestelijke Coördinatie"@nl, "Bruxelles Coordination régionale"@fr, "Brussels Region Coordination"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-coord> ;
+	skos:altLabel "{u'fr': u'Bruxelles Coordination r\xe9gionale', u'en': u'Brussels regional coordination', u'nl': u'Brussel Gewestelijke Co\xf6rdinatie'}" .
+
+
+<http://data.gov.be/en/taxonomy/term/190>
+	skos:prefLabel "CESRBC"@en, "CESRBC"@fr, "ESRBHG"@nl ; 
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0253_777_437> ;
+	skos:altLabel "" .
+
 
 <http://data.gov.be/en/taxonomy/term/221>
 	skos:prefLabel "U Talk Freelance"@en, "U Talk Freelance"@nl, "U Talk Freelance"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0637_731_250> ;
 	skos:altLabel "{u'fr': u'U Talk Freelance', u'en': u'U Talk Freelance', u'nl': u'U Talk Freelance'}" .
 
-<http://data.gov.be/en/taxonomy/term/236>
-	skos:prefLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0455_555_451> ;
-	skos:altLabel "{u'fr': u'Amazone', u'en': u'Amazone', u'nl': u'Amazone'}" .
 
 <http://data.gov.be/en/taxonomy/term/329>
 	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
@@ -90,28 +129,4 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0806_001_011> ;
 	skos:altLabel "{u'fr': u\"Le r\xe9gulateur bruxellois pour l'\xe9nergie\", u'en': u'Brussels energy regulator', u'nl': u'De Brusselse regulator voor energie'}" .
 
-<http://data.gov.be/en/taxonomy/term/343>
-	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_540_408> ;
-	skos:altLabel "{u'fr': u'Auderghem', u'en': u'Auderghem/Oudergem', u'nl': u'Oudergem'}" .
-
-<http://data.gov.be/en/taxonomy/term/352>
-	skos:prefLabel "Evere"@fr, "Evere"@en, "Evere"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_365_709> ;
-	skos:altLabel "{u'fr': u'Evere', u'en': u'Evere', u'nl': u'Evere'}" .
-
-<http://data.gov.be/en/taxonomy/term/354>
-	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_367_588> ;
-	skos:altLabel "{u'fr': u'Saint-Gilles', u'en': u'Saint-Gilles/Sint-Gillis', u'nl': u'Sint-Gillis'}" .
-
-<http://data.gov.be/en/taxonomy/term/355>
-	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0249_268_719> ;
-	skos:altLabel "{u'fr': u'Port de Bruxelles', u'en': u'Port of Brussels', u'nl': u'Haven van Brussel'}" .
-
-<http://data.gov.be/en/taxonomy/term/356>
-	skos:prefLabel "Centre de Documentation et de Coordination Sociales"@fr, "Center for social documentation and coordination"@en, "Centrum voor Maatschappelijke Documentatie en Coördinatie"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0417_167_603> ;
-	skos:altLabel "{u'fr': u'CDCS-CMDC asbl |    social.brussels', u'en': u'CDCS-CMDC |    social.brussels', u'nl': u'CMDC-CDCS vzw |   sociaal.brussels'}" .
 
