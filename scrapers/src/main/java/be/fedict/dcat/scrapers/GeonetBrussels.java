@@ -41,6 +41,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 public class GeonetBrussels extends GeonetGmd {
 	private final static String LANDING = "http://datastore.brussels/geonetwork/srv/eng/catalog.search#/metadata/";
 
+/*	
 	@Override
 	protected String mapLanguage(String lang) {
 		switch(lang) {
@@ -50,7 +51,7 @@ public class GeonetBrussels extends GeonetGmd {
 		}
 		return "";
 	}
-
+*/
 	@Override
 	protected void generateDataset(IRI dataset, String id, Storage store, Node node) 
 												throws MalformedURLException {
