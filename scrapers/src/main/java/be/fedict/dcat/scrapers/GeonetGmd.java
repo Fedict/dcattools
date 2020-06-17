@@ -101,7 +101,8 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
-		
+	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
+
 	public final static String XP_TYPE = "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue";
 	
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
@@ -369,6 +370,15 @@ public abstract class GeonetGmd extends Geonet {
 		}
 	
 		List<Node> licenses = metadata.selectNodes(XP_LICENSE);
+		List<Node> licenses2 = metadata.selectNodes(XP_LICENSE2);
+		if (licenses.isEmpty()) {
+			licenses = licenses2;
+		} else {
+			if (! licenses2.isEmpty()) {
+				licenses.addAll(licenses2);
+			}
+		}
+		
 		String license = null;
 		for (Node n: licenses) {
 			String anchor = n.valueOf(XP_ANCHOR);
