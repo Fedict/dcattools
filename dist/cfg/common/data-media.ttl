@@ -6,6 +6,12 @@
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
 	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", <http://publications.europa.eu/resource/authority/file-type/CSV> .
+
+<http://data.gov.be/en/taxonomy/term/399>
+	skos:prefLabel "DGN" ;
+	skos:closeMatch "image/vnd.dgn" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "DGN Microstation", "Bentley DGN", "DGN (Microstation)", "DGN Bentley", "Bentley DGN" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:prefLabel "DOC" ;

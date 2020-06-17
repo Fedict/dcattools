@@ -4,6 +4,11 @@
 	skos:exactMatch <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> ;
 	skos:prefLabel "Open Data Licentie Brussel" ;
 	skos:altLabel "http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data" .
+	
+<http://data.gov.be/en/taxonomy/term/154>
+	skos:exactMatch <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> ;
+	skos:prefLabel "Etalab Licence Ouverte" ;	
+	skos:altLabel "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf" .
 
 <http://data.gov.be/en/taxonomy/term/54>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;

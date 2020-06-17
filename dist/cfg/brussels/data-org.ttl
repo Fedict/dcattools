@@ -75,6 +75,16 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0455_555_451> ;
 	skos:altLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en .
 
+<http://data.gov.be/en/taxonomy/term/221>
+	skos:prefLabel "U Talk Freelance"@en, "U Talk Freelance"@nl, "U Talk Freelance"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0637_731_250> ;
+	skos:altLabel "U Talk Freelance"@fr, "U Talk Freelance"@nl, "U Talk Freelance"@en .
+
+<http://data.gov.be/en/taxonomy/term/329>
+	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0862_000_792> ;
+	skos:altLabel "Cyclo"@en, "Cyclo"@fr, "Cyclo"@en .
+
 <http://data.gov.be/en/taxonomy/term/343>
 	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_540_408> ;
@@ -98,14 +108,12 @@
 <http://data.gov.be/en/taxonomy/term/356>
 	skos:prefLabel "Centre de Documentation et de Coordination Sociales"@fr, "Center for social documentation and coordination"@en, "Centrum voor Maatschappelijke Documentatie en Coördinatie"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0417_167_603> ;
-	skos:altLabel "CDCS-CMDC Social.brussels"@nl, "CDCS-CMDC asbl Social.brussels"@fr, "CMDC-CDCS vzw Sociaal.brussels"@en  .
-	
+	skos:altLabel "CDCS-CMDC Social.brussels"@nl, "CDCS-CMDC asbl Social.brussels"@fr, "CMDC-CDCS vzw Sociaal.brussels"@en .
 
 <http://data.gov.be/en/taxonomy/term/342>
 	skos:prefLabel "Brussel Gewestelijke Coördinatie"@nl, "Bruxelles Coordination régionale"@fr, "Brussels Region Coordination"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-coord> ;
-	skos:altLabel "{u'fr': u'Bruxelles Coordination r\xe9gionale', u'en': u'Brussels regional coordination', u'nl': u'Brussel Gewestelijke Co\xf6rdinatie'}" .
-
+	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, "Brussel Gewestelijke Coördinatie"@nl .
 
 <http://data.gov.be/en/taxonomy/term/190>
 	skos:prefLabel "CESRBC"@en, "CESRBC"@fr, "ESRBHG"@nl ; 
@@ -113,16 +121,6 @@
 	skos:altLabel "" .
 
 
-<http://data.gov.be/en/taxonomy/term/221>
-	skos:prefLabel "U Talk Freelance"@en, "U Talk Freelance"@nl, "U Talk Freelance"@fr ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0637_731_250> ;
-	skos:altLabel "{u'fr': u'U Talk Freelance', u'en': u'U Talk Freelance', u'nl': u'U Talk Freelance'}" .
-
-
-<http://data.gov.be/en/taxonomy/term/329>
-	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0862_000_792> ;
-	skos:altLabel "{u'fr': u'Cyclo', u'en': u'Cyclo', u'nl': u'Cyclo'}" .
 
 <http://data.gov.be/en/taxonomy/term/341>
 	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
