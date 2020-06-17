@@ -36,7 +36,7 @@
 	skos:closeMatch "application/gml+xml";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
 	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
-			"Environmental Monitoring Facilities GML application schema", "Administrative units GML application schema", "OGC:GML", "application/gml+xml" .
+			"Environmental Monitoring Facilities GML application schema", "Administrative units GML application schema", "OGC:GML", "application/gml+xml", "GML application schema" .
 
 <http://data.gov.be/en/taxonomy/term/322>
 	skos:prefLabel "GTFS" ;
@@ -72,7 +72,7 @@
 	skos:prefLabel "MDB" ;
 	skos:closeMatch "application/vnd.ms-access" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
-	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)" .
+	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access" .
 	
 <http://data.gov.be/en/taxonomy/term/7>
 	skos:prefLabel "ODS" ;
@@ -90,13 +90,13 @@
 	skos:prefLabel "PNG" ;
 	skos:closeMatch "image/png" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PNG> ;
-	skos:altLabel "PNG", "png" .
+	skos:altLabel "PNG", "png", "image/png" .
 	
 <http://data.gov.be/en/taxonomy/term/382>
 	skos:prefLabel "TTL" ;
 	skos:closeMatch "text/turtle" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
-	skos:altLabel "TTL", "ttl".
+	skos:altLabel "TTL", "ttl", "turtle".
 	
 <http://data.gov.be/en/taxonomy/term/10>
 	skos:prefLabel "RDF/XML" ;
@@ -120,7 +120,7 @@
 	skos:prefLabel "SHP" ;
 	skos:closeMatch "application/zip" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-	skos:altLabel "SHP", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile" .
+	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", "ESRI shapefile" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:prefLabel "DXF" ;
@@ -150,7 +150,7 @@
 	skos:prefLabel "TXT" ;
 	skos:closeMatch "text/plain" ;		
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
-	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)", "application/php" .
+	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)", "application/php", "text/plain" .
 	
 <http://data.gov.be/en/taxonomy/term/63>
 	skos:prefLabel "WCS" ;
@@ -168,7 +168,7 @@
 	skos:prefLabel "WMS" ;
 	skos:closeMatch "application/xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/WMS_SRVC> ;
-	skos:altLabel "WMS", "wms", "vms", "WMTS", "3DTiles", "OGC:WMS", "OGC:WMS-1.3.0-http-get-capabilities", "OGC:WMS-2.0-http-get-capabilities" .
+	skos:altLabel "WMS", "wms", "vms", "WMTS", "3DTiles", "OGC:WMS", "OGC:WMS-1.3.0-http-get-map", "OGC:WMS-1.3.0-http-get-capabilities", "OGC:WMS-2.0-http-get-capabilities" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:prefLabel "XLS" ;
