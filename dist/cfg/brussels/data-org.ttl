@@ -24,21 +24,30 @@
 	skos:prefLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-mobi> ;
 	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en .
-	
+
+<http://data.gov.be/en/taxonomy/term/187>
+	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, "Bruxelles Urbanisme et Patrimoine"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_269_796_337> ;
+	skos:altLabel "Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@nl, "Brussel Stedenbouw en Erfgoed"@nl,
+		"Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@en, "Brussels Planning and Heritage"@en,
+		"Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@fr, "Bruxelles Urbanisme et Patrimoine"@fr .
+
 <http://data.gov.be/en/taxonomy/term/184>
 	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0247_499_953> ;
 	skos:altLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr .
-	
+
 <http://data.gov.be/en/taxonomy/term/185>
 	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0240_678_477> ;
-	skos:altLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr .
+	skos:altLabel "CIRB / CIBG"@en, "CIBG"@nl, "CIRB"@fr .
 
 <http://data.gov.be/en/taxonomy/term/186>
 	skos:prefLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0236_916_956> ;
-	skos:altLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr .
+	skos:altLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement / Leefmilieu Brussel"@nl,
+		"Bruxelles Environnement"@en, "Bruxelles Environnement / Leefmilieu Brussel"@en, 
+		"Bruxelles Environnement"@fr, "Bruxelles Environnement / Leefmilieu Brussel"@fr .
 
 <http://data.gov.be/en/taxonomy/term/187>
 	skos:prefLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en ;
@@ -110,6 +119,11 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0417_167_603> ;
 	skos:altLabel "CDCS-CMDC Social.brussels"@nl, "CDCS-CMDC asbl Social.brussels"@fr, "CMDC-CDCS vzw Sociaal.brussels"@en .
 
+<http://data.gov.be/en/taxonomy/term/341>
+	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0806_001_011> ;
+	skos:altLabel "Brussels energy regulator"@nl, "Le régulateur bruxellois pour l'énergie"@fr, "De Brusselse regulator voor energie"@en .
+
 <http://data.gov.be/en/taxonomy/term/342>
 	skos:prefLabel "Brussel Gewestelijke Coördinatie"@nl, "Bruxelles Coordination régionale"@fr, "Brussels Region Coordination"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-coord> ;
@@ -122,9 +136,6 @@
 
 
 
-<http://data.gov.be/en/taxonomy/term/341>
-	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0806_001_011> ;
-	skos:altLabel "{u'fr': u\"Le r\xe9gulateur bruxellois pour l'\xe9nergie\", u'en': u'Brussels energy regulator', u'nl': u'De Brusselse regulator voor energie'}" .
+
 
 
