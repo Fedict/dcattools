@@ -134,8 +134,15 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0253_777_437> ;
 	skos:altLabel "" .
 
+<http://data.gov.be/en/taxonomy/term/403>
+	skos:prefLabel "Perspective Brussels"@en, "Bureau bruxellois de la planification"@fr, "Brussels Planningsbureau"@nl ; 
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0664_820_875> ;
+	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr .
 
-
+<http://data.gov.be/en/taxonomy/term/404>
+	skos:prefLabel "CommuniThings"@en, "CommuniThings"@fr, "CommuniThings"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0555_656_283> ;
+	skos:altLabel "CommuniThings"@en, "CommuniThings"@fr, "CommuniThings"@nl .
 
 
 

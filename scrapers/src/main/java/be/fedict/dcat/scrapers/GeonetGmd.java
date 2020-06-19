@@ -116,6 +116,7 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_CONTACT = "gmd:contact/gmd:CI_ResponsibleParty";
 	public final static String XP_ORG_NAME = "gmd:organisationName";
+	public final static String XP_INDIVIDUAL = "gmd:individualName";
 	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 	
 	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement";
@@ -128,13 +129,15 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_QUAL_TYPE = XP_QUAL + "/gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue";
 	
 	public final static String XP_DISTS = "gmd:distributionInfo/gmd:MD_Distribution";
-	public final static String XP_FMT = "/gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString";
 	public final static String XP_TRANSF = "/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
 	
 	public final static String XP_DISTS2 = "gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor";
-	public final static String XP_FMT2 = "../../../../*/gmd:MD_Format/gmd:name/gco:CharacterString";
 	public final static String XP_TRANSF2 = "/*/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource";
 
+	public final static String XP_FMT = "gmd:distributionFormat/gmd:MD_Format/gmd:name/gco:CharacterString";
+	public final static String XP_FMT2 = "../../../../*/gmd:MD_Format/gmd:name/gco:CharacterString";
+	public final static String XP_MIME = "gmd:name/gmx:MimeFileType";
+	
 	public final static String XP_PROTO = "gmd:protocol/gco:CharacterString";
 	
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
@@ -179,20 +182,29 @@ public abstract class GeonetGmd extends Geonet {
 		String v = "";
 		
 		Node name = contact.selectSingleNode(XP_ORG_NAME);
+		Node name2 = contact.selectSingleNode(XP_INDIVIDUAL);
+			
 		String email = contact.valueOf(XP_EMAIL);
-		
+
 		try {
 			v = makeOrgURL(makeHashId(name + email)).toString();
 		} catch (MalformedURLException e) {
 			logger.error("Could not generate hash url", e);
 		}
 
-		if (name != null || !email.isEmpty()) {
+		if (name != null || name2 != null || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
 			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+
+			boolean found = false;
 			for (String lang : getAllLangs()) {
-				parseMulti(store, vcard, name, VCARD4.FN, lang);
+				found |= parseMulti(store, vcard, name, VCARD4.FN, lang);
+			}
+			if (!found) {
+				for (String lang : getAllLangs()) {
+					parseMulti(store, vcard, name2, VCARD4.FN, lang);
+				}
 			}
 			if (!email.isEmpty()) {
 				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
@@ -395,7 +407,10 @@ public abstract class GeonetGmd extends Geonet {
 			// check proto first, in case of a OGC service
 			Node fmt = dist.selectSingleNode(XP_PROTO);
 			if (fmt == null || fmt.getText().startsWith("http") || fmt.getText().startsWith("WWW")) {
-				fmt = dist.selectSingleNode(XP_FMT2);
+				fmt = dist.selectSingleNode(XP_MIME);
+				if (fmt == null) {
+					fmt = dist.selectSingleNode(XP_FMT2);
+				}
 			}
 			String str = null;
 			if (fmt != null) {
