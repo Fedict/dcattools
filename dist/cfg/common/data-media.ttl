@@ -60,7 +60,13 @@
 	skos:prefLabel "JSON" ;
 	skos:closeMatch "application/json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-	skos:altLabel "JSON", "jsonp", "json", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" , <http://publications.europa.eu/resource/authority/file-type/JSON>.
+	skos:altLabel "JSON", "jsonp", "json", "jsonl", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" , <http://publications.europa.eu/resource/authority/file-type/JSON> .
+	
+<http://data.gov.be/en/taxonomy/term/400>
+	skos:prefLabel "JSON-LD" ;
+	skos:closeMatch "application/ld+json" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON_LD> ;
+	skos:altLabel "jsonld" .
 
 <http://data.gov.be/en/taxonomy/term/381>
 	skos:prefLabel "GeoJSON" ;
@@ -79,12 +85,24 @@
 	skos:closeMatch "application/vnd.ms-access" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
 	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access" .
+
+<http://data.gov.be/en/taxonomy/term/401>
+	skos:prefLabel "N3" ;
+	skos:closeMatch "text/n3" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/N3> ;
+	skos:altLabel "n3" .
 	
 <http://data.gov.be/en/taxonomy/term/7>
 	skos:prefLabel "ODS" ;
 	skos:closeMatch "application/vnd.oasis.opendocument.spreadsheet" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
 	skos:altLabel "ODS", "ods" .
+
+<http://data.gov.be/en/taxonomy/term/402>
+	skos:prefLabel "OV2" ;
+	skos:closeMatch "application/octet-stream" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "ov2" .
 	
 <http://data.gov.be/en/taxonomy/term/65>
 	skos:prefLabel "PDF" ;
@@ -108,7 +126,7 @@
 	skos:prefLabel "RDF/XML" ;
 	skos:closeMatch "application/rdf+xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF_XML> ;
-	skos:altLabel "RDF", "rdf" .
+	skos:altLabel "RDF", "rdf", "rdfxml" .
 	
 <http://data.gov.be/en/taxonomy/term/11>
 	skos:prefLabel "RSS" ;
@@ -186,7 +204,7 @@
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", "Excel", "excel" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx" "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", "Excel", "excel" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
