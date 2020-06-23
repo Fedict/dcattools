@@ -13,15 +13,24 @@
 <http://data.gov.be/en/taxonomy/term/53>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> ;
 	skos:prefLabel "CC-BY" ;
-	skos:altLabel "https://creativecommons.org/licenses/by/4.0/" .
+	skos:altLabel "https://creativecommons.org/licenses/by/4.0/", "This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License." .
+
+<http://data.gov.be/en/taxonomy/term/53>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_2_0> ;
+	skos:prefLabel "CC-BY" ;
+	skos:altLabel "https://creativecommons.org/licenses/by/2.0/" .
+
+<http://data.gov.be/en/taxonomy/term/54>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
+	skos:prefLabel "CC-Zero" ;
+	skos:altLabel "https://creativecommons.org/publicdomain/zero/1.0/" .
 
 <http://data.gov.be/en/taxonomy/term/179>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BYSA_4_0> ;
 	skos:prefLabel "CC-BY-SA" ;
 	skos:altLabel "https://creativecommons.org/licenses/by-sa/4.0/" .
 
-<http://data.gov.be/en/taxonomy/term/54>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
-	skos:prefLabel "CC-Zero" ;
-	skos:altLabel "https://creativecommons.org/publicdomain/zero/1.0/" .
-	
+<http://data.gov.be/en/taxonomy/term/55>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0> ;
+	skos:prefLabel "CC-BY-NC" ;
+	skos:altLabel "This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License." .

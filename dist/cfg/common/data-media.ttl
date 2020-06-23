@@ -5,7 +5,7 @@
 	skos:prefLabel "CSV" ;
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", <http://publications.europa.eu/resource/authority/file-type/CSV> .
+	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", <http://publications.europa.eu/resource/authority/file-type/CSV> .
 
 <http://data.gov.be/en/taxonomy/term/399>
 	skos:prefLabel "DGN" ;
@@ -180,7 +180,7 @@
 	skos:prefLabel "WCS" ;
 	skos:closeMatch "application/xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
-	skos:altLabel "WCS", "wcs" .
+	skos:altLabel "WCS", "wcs", "OGC:WCS-1.1.0-http-get-capabilities" .
 	
 <http://data.gov.be/en/taxonomy/term/64>
 	skos:prefLabel "WFS" ;
@@ -204,13 +204,13 @@
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx" "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", "Excel", "excel" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx", "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", "Excel", "excel" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
 	skos:closeMatch "text/xml"; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
-	skos:altLabel "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML" .
+	skos:altLabel "application/xml", "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:prefLabel "ZIP" ;
