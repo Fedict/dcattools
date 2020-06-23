@@ -113,6 +113,10 @@ public class HtmlInnovation extends Html {
 	private void generateDist(Storage store, IRI dataset, URL access,
 			Element link, String id, String lang)
 			throws MalformedURLException, RepositoryException {
+		if (link == null) {
+			logger.error("Empty link for " + access.toString());
+			return;
+		}
 		String href = link.attr(HTML.Attribute.HREF.toString());
 		URL download = makeAbsURL(href);
 
