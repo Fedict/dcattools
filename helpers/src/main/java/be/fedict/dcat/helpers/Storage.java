@@ -281,7 +281,7 @@ public class Storage {
     }
    
     /**
-     * Add a string property to the repository.
+     * Add a language string property to the repository.
      * 
      * @param subj
      * @param pred
@@ -298,7 +298,24 @@ public class Storage {
 		}
     }
 
-    
+    /**
+     * Add a typed property to the repository.
+     * 
+     * @param subj
+     * @param pred
+     * @param value
+     * @param dtype
+     * @throws RepositoryException 
+     */
+    public void add(Resource subj, IRI pred, String value, IRI dtype) 
+                                                throws RepositoryException {
+		if ((value != null) && !value.isEmpty()) {
+			conn.add(subj, pred, fac.createLiteral(value, dtype));
+		} else {
+			logger.warn("Skipping empty or null value for {} {}", subj, pred);
+		}
+    }
+
     /**
      * Replace blank nodes with skolem URI
      */

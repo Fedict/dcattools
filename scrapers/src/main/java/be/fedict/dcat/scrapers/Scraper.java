@@ -56,6 +56,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 import org.slf4j.Logger;
@@ -382,8 +383,8 @@ public abstract class Scraper extends Fetcher {
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
 		store.add(dataset, DCTERMS.TEMPORAL, u);
-		store.add(u, SCHEMA.START_DATE, s);
-		store.add(u, SCHEMA.END_DATE, e);
+		store.add(u, SCHEMA.START_DATE, s, XMLSchema.DATE);
+		store.add(u, SCHEMA.END_DATE, e, XMLSchema.DATE);
 	}
 
 	/**
