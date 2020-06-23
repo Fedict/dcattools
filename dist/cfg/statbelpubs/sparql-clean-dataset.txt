@@ -1,0 +1,10 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+		<http://data.gov.be/catalog/statbelpub> dcat:dataset ?dataset .
+		?dataset ?p ?o 
+} WHERE {	
+		?dataset ?p ?o .
+		?dataset dcterms:title "indicators.be"@nl 
+	}
