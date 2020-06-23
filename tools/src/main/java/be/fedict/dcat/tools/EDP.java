@@ -54,6 +54,7 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -113,9 +114,15 @@ public class EDP {
 		throws XMLStreamException {
 		if (val instanceof Literal) {
 			w.writeStartElement(el);
+			// write language or datatype
 			String lang = ((Literal) val).getLanguage().orElse("");
 			if (!lang.isEmpty()) {
 				w.writeAttribute("xml:lang", lang);
+			} else {
+				IRI dtype = ((Literal) val).getDatatype();
+				if ((dtype != null) && (dtype.equals(XMLSchema.DATE) || dtype.equals(XMLSchema.DATETIME))) {
+					w.writeAttribute("rdf:datatype", dtype.toString());
+				}
 			}
 			String str = val.stringValue();
 			if (str.contains("<")) {
@@ -507,6 +514,7 @@ public class EDP {
 		throws XMLStreamException {
 		int nr = 0;
 
+		Set<String> schemes = new HashSet<>(); 
 		for (IRI iri: CONCEPTS) {
 			w.writeStartElement("skos:Concept");
 			String concept = iri.toString();
@@ -516,10 +524,15 @@ public class EDP {
 			String scheme = concept.contains("geonames") 
 				? "http://sws.geonames.org"
 				: concept.substring(0, concept.lastIndexOf("/"));
+			schemes.add(scheme);
 			w.writeAttribute("rdf:resource", scheme);
 
 			w.writeEndElement();
 			nr++;
+		}
+		for (String scheme: schemes) {
+			w.writeEmptyElement("skos:ConceptScheme");	
+			w.writeAttribute("rdf:about", scheme);
 		}
 		logger.info("Wrote {} concepts", nr);
 	}
