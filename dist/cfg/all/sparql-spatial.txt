@@ -1,0 +1,4 @@
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+
+INSERT	{ ?spatial a dcterms:Location }
+WHERE	{ ?dataset dcterms:spatial ?spatial }
