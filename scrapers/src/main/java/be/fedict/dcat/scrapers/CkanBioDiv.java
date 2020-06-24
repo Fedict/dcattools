@@ -39,6 +39,8 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 /**
  * CKAN Belgian Biodiversity portal.
  *
+ * @see http://www.biodiversity.be/
+ * 
  * @author Bart.Hanssens
  */
 public class CkanBioDiv extends CkanJson {

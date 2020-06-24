@@ -31,6 +31,8 @@ import java.net.URL;
 /**
  * CKAN Brussels Region.
  *
+ * @see https://datastore.brussels/
+ * 
  * @author Bart Hanssens
  */
 public class CkanBrussels extends CkanRDF {
