@@ -31,6 +31,8 @@ import java.net.URL;
 /**
  * CKAN Vlaanderen via DCAT-AP catalog.
  *
+ * @see https://opendata.vlaanderen.be/
+ * 
  * @author Bart Hanssens
  */
 public class CkanVlaanderen2 extends CkanRDF {

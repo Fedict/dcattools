@@ -36,6 +36,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 /**
  * Scraper for the Data Store Brussels portal
  * 
+ * @see http://datastore.brussels
  * @author Bart Hanssens
  */
 public class GeonetBrussels extends GeonetGmd {
@@ -60,7 +61,7 @@ public class GeonetBrussels extends GeonetGmd {
 	}
 
 	/**
-	 * Geonet scraper for Data Store Brussel http://geonetwork.bmdc.be
+	 * Geonet scraper for Data Store Brussel
 	 * 
 	 * @param caching
 	 * @param storage

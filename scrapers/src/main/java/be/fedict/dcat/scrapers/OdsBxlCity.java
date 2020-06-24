@@ -33,6 +33,7 @@ import java.net.URL;
  *
  * @author Bart Hanssens
  */
+@Deprecated
 public class OdsBxlCity extends Ods {
 	/**
 	 * Constructor

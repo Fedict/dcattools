@@ -30,7 +30,8 @@ import java.io.File;
 import java.net.URL;
 
 /**
- * Generic DCAT
+ * Scraper for OpenPlanner Team 
+ * @see https://openplanner.team/
  *
  * @author Bart Hanssens
  */
