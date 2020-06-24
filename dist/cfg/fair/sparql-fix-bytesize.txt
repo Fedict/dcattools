@@ -1,0 +1,11 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE	{ 
+			?s dcat:byteSize ?o }
+INSERT 	{ 
+			?s dcat:byteSize ?dtype }
+WHERE	{
+			?s dcat:byteSize ?o .
+			BIND(STRDT(STR(?o), xsd:decimal) AS ?dtype)
+}

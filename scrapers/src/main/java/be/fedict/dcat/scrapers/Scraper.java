@@ -383,8 +383,8 @@ public abstract class Scraper extends Fetcher {
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
 		store.add(dataset, DCTERMS.TEMPORAL, u);
-		store.add(u, SCHEMA.START_DATE, s, XMLSchema.DATE);
-		store.add(u, SCHEMA.END_DATE, e, XMLSchema.DATE);
+		store.add(u, SCHEMA.START_DATE, s, (s.length() == 10) ? XMLSchema.DATE : XMLSchema.DATETIME);
+		store.add(u, SCHEMA.END_DATE, e, (e.length() == 10) ? XMLSchema.DATE : XMLSchema.DATETIME);
 	}
 
 	/**

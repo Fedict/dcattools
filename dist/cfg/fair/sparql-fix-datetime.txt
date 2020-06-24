@@ -1,0 +1,15 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE	{ 
+			?s ?p ?o }
+INSERT 	{ 
+			?s ?p ?dtype }
+WHERE	{
+			?s ?p ?o .
+			VALUES (?p) {
+				( dcterms:issued )
+				( dcterms:modified )
+			}
+			BIND(STRDT(STR(?o), xsd:dateTime) AS ?dtype)
+}
