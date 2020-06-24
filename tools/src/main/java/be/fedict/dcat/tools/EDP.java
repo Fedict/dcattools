@@ -62,6 +62,7 @@ import org.eclipse.rdf4j.repository.RepositoryResult;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.helpers.NTriplesParserSettings;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;
@@ -608,6 +609,7 @@ public class EDP {
 		s.setOutputFile(new File(args[1]));
 
 		try (RepositoryConnection con = repo.getConnection()) {
+			con.getParserConfig().set(NTriplesParserSettings.FAIL_ON_INVALID_LINES, false);
 			con.add(new File(args[0]), "http://data.gov.be", fmtin.get());
 
 			XMLStreamWriter w = s.getXMLStreamWriter();
