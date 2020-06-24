@@ -392,6 +392,8 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
+		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
+
 		//	writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaTypeOrExtent", true);
 		writeFormats(w, con, uri, DCTERMS.FORMAT);
@@ -524,7 +526,9 @@ public class EDP {
 			w.writeEmptyElement("skos:inScheme");
 			String scheme = concept.contains("geonames") 
 				? "http://sws.geonames.org"
-				: concept.substring(0, concept.lastIndexOf("/"));
+				: (concept.contains("belgif") 
+					? "http://org.belgif.be/id/cbe"
+					: concept.substring(0, concept.lastIndexOf("/")));
 			schemes.add(scheme);
 			w.writeAttribute("rdf:resource", scheme);
 

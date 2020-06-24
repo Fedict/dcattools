@@ -1,0 +1,10 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?s dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> }
+WHERE
+	{ 	{ ?s a dcat:Dataset }
+	UNION
+		{ ?s a dcat:Distribution }
+	}
