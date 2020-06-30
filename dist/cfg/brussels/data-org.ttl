@@ -3,12 +3,12 @@
 <http://data.gov.be/en/taxonomy/term/127>
 	skos:prefLabel "Stad Brussel"@nl, "Ville de Bruxelles"@fr, "City of Brussels"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_373_429> ;
-	skos:altLabel "City of Brussels"@en, "City of Brussels/Archives"@en, "City of Brussels/Cleanliness"@en, "City of Brussels/Cleanliness Service"@en, "City of Brussels/Commerce"@en, "City of Brussels/Culture"@en, "City of Brussels/Demography"@en, "City of Brussels/Economic Affairs"@en, "City of Brussels/Family"@en, "City of Brussels/Finances"@en, "City of Brussels/Green Spaces"@en, "City of Brussels/Historical Heritage"@en, "City of Brussels/Mobility"@en, "City of Brussels/Protocol"@en, "City of Brussels/Protocole"@en, "City of Brussels/Public Education"@en, "City of Brussels/Recruitment"@en, "City of Brussels/Road works"@en, "City of Brussels/Seniors"@en, "City of Brussels/Sports"@en, "City of Brussels/Town Planning"@en, "City of Brussels/Web Dvlp"@en, "City of Brussels/Web Unit"@en, "Stad Brussel"@nl, "Stad Brussel/Archieven"@nl, "Stad Brussel/Cel Web"@nl, "Stad Brussel/Cultuur"@nl, "Stad Brussel/Demografie"@nl, "Stad Brussel/Dienst Cultuur"@nl, "Stad Brussel/Dienst Netheid"@nl, "Stad Brussel/Economische zaken"@nl, "Stad Brussel/Familie"@nl, "Stad Brussel/Financiën"@nl, "Stad Brussel/Groene Ruimten"@nl, "Stad Brussel/Handel"@nl, "Stad Brussel/Historisch Patrimonium"@nl, "Stad Brussel/Mobiliteit"@nl, "Stad Brussel/Musea"@nl, "Stad Brussel/Netheid"@nl, "Stad Brussel/Op"@nl, "Stad Brussel/Openbaar onderwijs"@nl, "Stad Brussel/Protocol"@nl, "Stad Brussel/Senioren"@nl, "Stad Brussel/Sport"@nl, "Stad Brussel/Sportdienst"@nl, "Stad Brussel/Stedenbouw"@nl, "Stad Brussel/Web Dvlp"@nl, "Stad Brussel/Wegeniswerken"@nl, "Ville de Bruxelles"@fr, "Ville de Bruxelles - Service des sports"@fr, "Ville de Bruxelles/Affaires économiques"@fr, "Ville de Bruxelles/Archives"@fr, "Ville de Bruxelles/Cellule Web"@fr, "Ville de Bruxelles/Cellule Web Web"@fr, "Ville de Bruxelles/Commerce"@fr, "Ville de Bruxelles/Culture"@fr, "Ville de Bruxelles/Démographie"@fr, "Ville de Bruxelles/Espaces verts"@fr, "Ville de Bruxelles/Famille"@fr, "Ville de Bruxelles/Finances"@fr, "Ville de Bruxelles/Instruction publique"@fr, "Ville de Bruxelles/Maisons de quartier"@fr, "Ville de Bruxelles/Mobilité"@fr, "Ville de Bruxelles/Patrimoine Historique"@fr, "Ville de Bruxelles/Propreté"@fr, "Ville de Bruxelles/Protocole"@fr, "Ville de Bruxelles/Seniors"@fr, "Ville de Bruxelles/Sports"@fr, "Ville de Bruxelles/Travaux de Voirie"@fr, "Ville de Bruxelles/Urbanisme"@fr, "Buurthuizen"@nl, "Grondregie"@nl, "De Brusseleir"@nl, "Le Brusseleir"@fr, "Le Brusseleir"@en, "Régie foncière - Property Management Agency "@en, "Régie foncière"@fr, "Open Data Team - Ville de Bruxelles"@fr,  "Stad Brussel / Duurzame ontwikkeling "@nl, "Ville de Bruxelles/Développement Durable"@fr .
+	skos:altLabel "City of Brussels"@en, "City of Brussels/Archives"@en, "City of Brussels/Cleanliness"@en, "City of Brussels/Cleanliness Service"@en, "City of Brussels/Commerce"@en, "City of Brussels/Culture"@en, "City of Brussels/Demography"@en, "City of Brussels/Economic Affairs"@en, "City of Brussels/Family"@en, "City of Brussels/Finances"@en, "City of Brussels/Green Spaces"@en, "City of Brussels/Historical Heritage"@en, "City of Brussels/Mobility"@en, "City of Brussels/Protocol"@en, "City of Brussels/Protocole"@en, "City of Brussels/Public Education"@en, "City of Brussels/Recruitment"@en, "City of Brussels/Road works"@en, "City of Brussels/Seniors"@en, "City of Brussels/Sports"@en, "City of Brussels/Town Planning"@en, "City of Brussels/Web Dvlp"@en, "City of Brussels/Web Unit"@en, "Stad Brussel"@nl, "Stad Brussel/Archieven"@nl, "Stad Brussel/Cel Web"@nl, "Stad Brussel/Cultuur"@nl, "Stad Brussel/Demografie"@nl, "Stad Brussel/Dienst Cultuur"@nl, "Stad Brussel/Dienst Netheid"@nl, "Stad Brussel/Economische zaken"@nl, "Stad Brussel/Familie"@nl, "Stad Brussel/Financiën"@nl, "Stad Brussel/Groene Ruimten"@nl, "Stad Brussel/Handel"@nl, "Stad Brussel/Historisch Patrimonium"@nl, "Stad Brussel/Mobiliteit"@nl, "Stad Brussel/Musea"@nl, "Stad Brussel/Netheid"@nl, "Stad Brussel/Op"@nl, "Stad Brussel/Openbaar onderwijs"@nl, "Stad Brussel/Protocol"@nl, "Stad Brussel/Senioren"@nl, "Stad Brussel/Sport"@nl, "Stad Brussel/Sportdienst"@nl, "Stad Brussel/Stedenbouw"@nl, "Stad Brussel/Web Dvlp"@nl, "Stad Brussel/Wegeniswerken"@nl, "Ville de Bruxelles"@fr, "Ville de Bruxelles - Service des sports"@fr, "Ville de Bruxelles/Affaires économiques"@fr, "Ville de Bruxelles/Archives"@fr, "Ville de Bruxelles/Cellule Web"@fr, "Ville de Bruxelles/Cellule Web Web"@fr, "Ville de Bruxelles/Commerce"@fr, "Ville de Bruxelles/Culture"@fr, "Ville de Bruxelles/Démographie"@fr, "Ville de Bruxelles/Espaces verts"@fr, "Ville de Bruxelles/Famille"@fr, "Ville de Bruxelles/Finances"@fr, "Ville de Bruxelles/Instruction publique"@fr, "Ville de Bruxelles/Maisons de quartier"@fr, "Ville de Bruxelles/Mobilité"@fr, "Ville de Bruxelles/Patrimoine Historique"@fr, "Ville de Bruxelles/Propreté"@fr, "Ville de Bruxelles/Protocole"@fr, "Ville de Bruxelles/Seniors"@fr, "Ville de Bruxelles/Sports"@fr, "Ville de Bruxelles/Travaux de Voirie"@fr, "Ville de Bruxelles/Urbanisme"@fr, "Buurthuizen"@nl, "Grondregie"@nl, "De Brusseleir"@nl, "Le Brusseleir"@fr, "Le Brusseleir"@en, "Régie foncière - Property Management Agency "@en, "Régie foncière"@fr, "Open Data Team - Ville de Bruxelles"@fr,  "Stad Brussel / Duurzame ontwikkeling "@nl, "Ville de Bruxelles/Développement Durable"@fr, "Ville de Bruxelles"@fr, "Ville de Bruxelles/Stad Brussel"@en .
 
 <http://data.gov.be/en/taxonomy/term/175>
 	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0828_586_767> ;
-	skos:altLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en .
+	skos:altLabel "Zencar"@fr, "Zencar"@nl, "Zencar"@en .
 	
 <http://data.gov.be/en/taxonomy/term/176>
 	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
@@ -16,15 +16,20 @@
 	skos:altLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en .
 	
 <http://data.gov.be/en/taxonomy/term/178>
-	skos:prefLabel "JCDecaux"@fr, "JCDecaux"@nl, "JCDecaux"@en ;
+	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0444_436_776> ;
-	skos:altLabel "JCDecaux"@fr, "JCDecaux"@nl, "JCDecaux"@en .
+	skos:altLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en .
 
 <http://data.gov.be/en/taxonomy/term/183>
 	skos:prefLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-mobi> ;
-	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en .
+	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, "Mobigis"@en .
 
+<http://data.gov.be/en/taxonomy/term/411>
+	skos:prefLabel "Bruxelles-Propreté"@nl, "Net Brussel"@nl, "ARP-GAN"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0241_347_282> ;
+	skos:altLabel "Gewestelijk agentschap voor netheid, Net Brussel"@en, "Agence régionale pour la propreté, Bruxelles-Propreté"@nl, "Agence régionale pour la propreté, Bruxelles-Propreté"@fr, "Gewestelijk agentschap voor netheid, Net Brussel"@nl  .
+	
 <http://data.gov.be/en/taxonomy/term/187>
 	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, "Bruxelles Urbanisme et Patrimoine"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_269_796_337> ;
@@ -35,7 +40,7 @@
 <http://data.gov.be/en/taxonomy/term/184>
 	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0247_499_953> ;
-	skos:altLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr .
+	skos:altLabel "STIB-MIVB"@en,  "STIB-MIVB"@nl, "STIB / MIVB"@fr, "MIVB"@nl, "STIB"@fr .
 
 <http://data.gov.be/en/taxonomy/term/185>
 	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
@@ -107,7 +112,17 @@
 <http://data.gov.be/en/taxonomy/term/354>
 	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_367_588> ;
-	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl  .
+	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl, "Saint-Gilles/Sint-Gillis"@en  .
+
+<http://data.gov.be/en/taxonomy/term/409>
+	skos:prefLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_366_501> ;
+	skos:altLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl .
+
+<http://data.gov.be/en/taxonomy/term/410>
+	skos:prefLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_372_538> ;
+	skos:altLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl .
 
 <http://data.gov.be/en/taxonomy/term/355>
 	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
@@ -144,5 +159,22 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0555_656_283> ;
 	skos:altLabel "CommuniThings"@en, "CommuniThings"@fr, "CommuniThings"@nl .
 
-
-
+<http://data.gov.be/en/taxonomy/term/406>
+	skos:prefLabel "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0202_962_701> ;
+	skos:altLabel "VIVAQUA"@en, "VIVAQUA"@fr, "VIVAQUA"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/407>
+	skos:prefLabel "Talent Brussels"@en, "Talent Brussels"@fr, "Talent Brussels"@nl ; 
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0851_360_585> ;
+	skos:altLabel "talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/408>
+	skos:prefLabel "SLRB-BGHM"@en, "SLRB-BGHM"@fr, "SLRB-BGHM"@nl ; 
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0227_581_301> ;
+	skos:altLabel "SLRB-BGHM"@en, "SLRB-BGHM"@nl, "SLRB-BGHM"@fr .
+	
+<http://data.gov.be/en/taxonomy/term/209>
+	skos:prefLabel "Belgische Cardiologische Liga"@nl, "Ligue Cardiologique Belge / Belgische Cardiologische Liga"@en, "Ligue Cardiologique Belge"@fr ; 
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0410_107_090> ;
+	skos:altLabel "Belgische Cardiologische Liga"@nl, "Ligue Cardiologique Belge / Belgische Cardiologische Liga"@en, "Ligue Cardiologique Belge"@fr .
