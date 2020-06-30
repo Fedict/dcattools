@@ -5,5 +5,8 @@ INSERT
 	{ 	?dist dcat:accessURL ?page }
 WHERE
 	{	?dataset a dcat:Dataset .
-		?dataset dcat:landingPage ?page .
-		?dataset dcat:distribution ?dist }
+		?dataset dcat:landingPage ?url .
+		?dataset dcat:distribution ?dist .
+		BIND (IRI(REPLACE
+			(STR(?url), '/geonetwork/srv/eng/catalog.search#/metadata/', '/web/data/dataset/')
+			) as ?page) }
