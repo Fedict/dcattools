@@ -23,7 +23,7 @@
 <http://data.gov.be/en/taxonomy/term/183>
 	skos:prefLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-mobi> ;
-	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, "Mobigis"@en .
+	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, "Mobigis"@en, "Bruxelles Mobilité / Brussel Mobiliteit"@en .
 
 <http://data.gov.be/en/taxonomy/term/411>
 	skos:prefLabel "Bruxelles-Propreté"@nl, "Net Brussel"@nl, "ARP-GAN"@en ;
@@ -45,7 +45,7 @@
 <http://data.gov.be/en/taxonomy/term/185>
 	skos:prefLabel "BRIC"@en, "CIBG"@nl, "CIRB"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0240_678_477> ;
-	skos:altLabel "CIBG / CIRB"@en, "CIRB / CIBG"@en, "CIBG"@nl, "CIRB"@fr, "IRISline"@en .
+	skos:altLabel "CIBG / CIRB"@en, "CIRB / CIBG"@en, "BRIC"@en, "CIBG"@nl, "CIRB"@fr, "IRISline"@en .
 
 <http://data.gov.be/en/taxonomy/term/186>
 	skos:prefLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr ;
@@ -67,7 +67,7 @@
 <http://data.gov.be/en/taxonomy/term/191>
 	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-ibsa> ;
-	skos:altLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr .
+	skos:altLabel "IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr .
 
 <http://data.gov.be/en/taxonomy/term/208>
 	skos:prefLabel "Brussels Jazz Marathon"@fr, "Brussels Jazz Marathon"@nl, "Brussels Jazz Marathon"@en ;
@@ -97,7 +97,7 @@
 <http://data.gov.be/en/taxonomy/term/329>
 	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0862_000_792> ;
-	skos:altLabel "Cyclo"@en, "Cyclo"@fr, "Cyclo"@en .
+	skos:altLabel "Cyclo"@en, "Cyclo"@fr, "Cyclo"@nl .
 
 <http://data.gov.be/en/taxonomy/term/343>
 	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
@@ -190,7 +190,11 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0870_532_933> ;
 	skos:altLabel "innoviris"@en, "innoviris"@nl, "innoviris"@fr .
 	
-	
+<http://data.gov.be/en/taxonomy/term/415>
+	skos:prefLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-easyb> ;
+	skos:altLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en .
+
 <http://data.gov.be/en/taxonomy/term/209>
 	skos:prefLabel "Belgische Cardiologische Liga"@nl, "Ligue Cardiologique Belge / Belgische Cardiologische Liga"@en, "Ligue Cardiologique Belge"@fr ; 
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0410_107_090> ;
