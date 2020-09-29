@@ -8,7 +8,7 @@
 <http://data.gov.be/en/taxonomy/term/386>
 	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0869_763_267> ;
-	skos:altLabel "Infrabel", "Traffic Management & Services" .
+	skos:altLabel "Infrabel", "InfraBel", "Traffic Management & Services" .
 	
 <http://data.gov.be/en/taxonomy/term/104>
 	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
@@ -60,6 +60,11 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0888_366_085> ;
 	skos:altLabel "tourisme-asbl"@fr .	
 
+<http://data.gov.be/en/taxonomy/term/417>
+	skos:prefLabel "Commissariat général au Tourisme"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0898_739_543> ;
+	skos:altLabel "CGT - Commissariat Général au Tourisme" .	
+	
 <http://data.gov.be/en/taxonomy/term/141>
 	skos:prefLabel "Sentiers"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0408_148_086> ;
@@ -321,15 +326,25 @@
 
 <http://data.gov.be/en/taxonomy/term/363>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_343_933> ;
-	skos:pefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
+	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
 	skos:altLabel "Ville de Liège", "Ville de Liège " .
 
 <http://data.gov.be/en/taxonomy/term/389>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_258_514> ;
-	skos:pefLabel "Stad Andenne"@nl, "Ville d'Andenne"@fr, "City of Andenne"@en ;
+	skos:prefLabel "Stad Andenne"@nl, "Ville d'Andenne"@fr, "City of Andenne"@en ;
 	skos:altLabel "Ville d'Andenne" .	
 
 <http://data.gov.be/en/taxonomy/term/201>
-	skos:prefLabel "Geomatics Unit - Université Liège"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_182_928_085> ;
-	skos:altLabel "Geomatics Unit - ULg " .
+	skos:prefLabel "Geomatics Unit - Université Liège"@fr ;
+	skos:altLabel "Geomatics Unit - ULg ", "Geomatics Unit - ULg, NGI/IGN" .
+
+<http://data.gov.be/en/taxonomy/term/416>
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0546_740_696> ;
+	skos:prefLabel "ARES"@nl, "ARES"@fr, "ARES"@en ;
+	skos:altLabel "ARES" .
+
+<http://data.gov.be/en/taxonomy/term/418>
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_725_401> ;
+	skos:prefLabel "Luxemburg"@nl, "Luxembourg"@fr, "Luxemburg"@en ;
+	skos:altLabel "Province de Luxembourg".
