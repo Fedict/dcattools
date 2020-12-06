@@ -9,9 +9,9 @@
     <artifactId>scrapers</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-	<rdf4j.version>3.2.2</rdf4j.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+	<rdf4j.version>3.4.4</rdf4j.version>
 	<slf4j.version>1.7.30</slf4j.version>
     </properties>
     <dependencies>
@@ -63,7 +63,7 @@
         <dependency>
             <groupId>org.xmlbeam</groupId>
             <artifactId>xmlprojector</artifactId>
-            <version>1.4.16</version>
+            <version>1.4.17</version>
         </dependency>
         <dependency>
             <groupId>org.dom4j</groupId>
@@ -81,7 +81,7 @@
 	    <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-jar-plugin</artifactId>
-		<version>3.0.2</version>
+		<version>3.2.0</version>
 		<configuration>
 		    <archive>
 			<manifest>
