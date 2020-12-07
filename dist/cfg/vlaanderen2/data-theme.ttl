@@ -32,6 +32,7 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Environment> ;
+	skos:closeMatch <https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, "bodem"@nl, "lucht"@nl, "water"@nl, "bodemgebruik"@nl, "Geologie"@nl, "Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, "Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, "Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl, "Gebieden met natuurrisico's"@nl, "bodembestemming"@nl, "Biologie"@nl, "Bodem"@nl, "Hondenpoep"@nl, "Herbruikbaar"@nl, "Hondentoiletten"@nl, "Huisvuil"@nl, "afvalkalender"@nl, "biodiversiteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl, "duurzame energie"@nl, "duurzame mobiliteit"@nl, "groen"@nl, "klimaat"@nl, "vogel"@nl, "vogeltelling"@nl, "water"@nl, "waterpeil"@nl, "waterstand"@nl, "(milieu)beschermingsbeleid"@nl, "(rivier)oevervegetatie"@nl, "(zand)duin"@nl, "aardverschuiving"@nl, "afgrenzing van polder"@nl, "afgrenzing van watering"@nl, "afvalwater"@nl, "afvalwaterkwaliteit"@nl, "afvalwaterzuivering"@nl, "afzetting"@nl, "afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, "BEKEN"@nl, "Zwin en Zwinbosjes"@nl .
 	

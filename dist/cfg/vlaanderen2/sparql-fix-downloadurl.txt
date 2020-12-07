@@ -1,0 +1,11 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?dist dcat:accessURL ?download }
+INSERT
+	{ 	?dist dcat:downloadURL ?download }
+WHERE
+	{ 	?dist a dcat:Distribution .
+		?dist dcat:accessURL ?download
+	}

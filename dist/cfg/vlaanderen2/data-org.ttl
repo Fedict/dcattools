@@ -8,7 +8,7 @@
 <http://data.gov.be/en/taxonomy/term/86>
 	skos:prefLabel "Departement LNE"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_143_716_826> ;
-	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid" .
+	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "MercatorNet" .
 	
 <http://data.gov.be/en/taxonomy/term/88>
 	skos:prefLabel "VREG"@nl ;
@@ -26,7 +26,7 @@
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij", 
 	"Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", 
 	"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer", 
-	"Flanders Environment Agency", "VMM" .
+	"Flanders Environment Agency", "VMM", "Flanders Environment Agency (VMM)" .
 
 <http://data.gov.be/en/taxonomy/term/93>
 	skos:prefLabel "Departement CSJM"@nl	;
@@ -46,14 +46,15 @@
 <http://data.gov.be/en/taxonomy/term/98>
 	skos:prefLabel "Departement MOW"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_336_230> ;
-	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
+	skos:altLabel "Departement Mobiliteit en Openbare Werken", "Dienst Mobilteit", "Dienst mobiliteit",
 	"Departement Mobiliteit en Openbare Werken, afdeling Waterbouwkundig Laboratorium", "DMOW",
-	"Beleidsdomein Mobiliteit en Openbare Werken" .
+	"Beleidsdomein Mobiliteit en Openbare Werken", "Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning", 
+	"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang" .
 
 <http://data.gov.be/en/taxonomy/term/108>
 	skos:prefLabel "Departement OV"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_310_989> ;
-	skos:altLabel "dov"@nl .
+	skos:altLabel "dov"@nl, "Ondersteunend Centrum Databank Ondergrond Vlaanderen" .
 
 <http://data.gov.be/en/taxonomy/term/115>
 	skos:prefLabel "Departement LV"@nl ;
@@ -108,7 +109,7 @@
 <http://data.gov.be/en/taxonomy/term/180>
 	skos:prefLabel "Fluvius"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0215_266_160> ;
-	skos:altLabel "EANDIS cvba", "Fluvius" .
+	skos:altLabel "EANDIS cvba", "Fluvius", "FLUVIUS cvba" .
 
 <http://data.gov.be/en/taxonomy/term/194>
 	skos:prefLabel "INBO"@nl ;
@@ -123,7 +124,7 @@
 <http://data.gov.be/en/taxonomy/term/213>
 	skos:prefLabel "Informatie Vlaanderen"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_256_180_804> ;
-	skos:altLabel "agentschap Informatie Vlaanderen", "Informatie Vlaanderen" .
+	skos:altLabel "agentschap Informatie Vlaanderen", "Informatie Vlaanderen", "Helpdesk Informatie Vlaanderen" .
 
 <http://data.gov.be/en/taxonomy/term/214>
 	skos:prefLabel "V-ICT-OR"@nl ;
