@@ -1,0 +1,11 @@
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE
+	{	?s vcard:hasEmail ?mail }
+INSERT
+	{ 	?s vcard:hasEmail ?iri }
+WHERE
+	{ 	?s vcard:hasEmail ?mail .
+		BIND ( IRI(?mail) as ?iri ) .
+		FILTER (ISLITERAL(?mail))
+	}

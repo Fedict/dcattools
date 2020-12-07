@@ -1,5 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-DELETE	{ <https://opendata.vlaanderen.be> dcat:dataset ?dataset }
-INSERT	{ <http://data.gov.be/catalog/vlaanderen> dcat:dataset ?dataset }
-WHERE	{ <https://opendata.vlaanderen.be> dcat:dataset ?dataset }

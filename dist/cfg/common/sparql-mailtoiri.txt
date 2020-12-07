@@ -1,0 +1,11 @@
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{ ?s vcard:hasEmail ?val }
+INSERT 
+	{ ?s vcard:hasEmail ?iri }
+WHERE 
+	{ ?s vcard:hasEmail ?val .
+		BIND (IRI(CONCAT("mailto:", ?val)) as ?iri)
+		FILTER ISLITERAL(?val) 
+	}

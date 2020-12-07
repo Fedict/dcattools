@@ -1,8 +1,24 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
 	{ 	?dataset dcat:landingPage ?page }
 WHERE
-	{ 	?dataset a dcat:Dataset 
-		BIND (?dataset as ?page) 
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcterms:title ?title .
+		BIND (
+			IRI(
+				CONCAT("https://opendata.vlaanderen.be/dataset/", 
+					SUBSTR(
+						REPLACE(
+							REPLACE(
+								REPLACE(
+									LCASE(?title), 
+									'[,:\\/()]', ''), 
+								' - ', '-'),
+							'[ \\.]', '-'), 
+					1, 95)
+					)
+				)
+		as ?page) 
 	}
