@@ -6,6 +6,6 @@ INSERT
 	{ 	?s vcard:hasEmail ?iri }
 WHERE
 	{ 	?s vcard:hasEmail ?mail .
-		BIND ( IRI(?mail) as ?iri ) .
+		BIND ( IRI(CONCAT('mailto:', ?mail)) as ?iri ) .
 		FILTER (ISLITERAL(?mail))
 	}

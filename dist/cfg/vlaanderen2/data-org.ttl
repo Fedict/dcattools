@@ -54,7 +54,7 @@
 <http://data.gov.be/en/taxonomy/term/108>
 	skos:prefLabel "Departement OV"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/site/2_199_310_989> ;
-	skos:altLabel "dov"@nl, "Ondersteunend Centrum Databank Ondergrond Vlaanderen" .
+	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming" .
 
 <http://data.gov.be/en/taxonomy/term/115>
 	skos:prefLabel "Departement LV"@nl ;
@@ -158,7 +158,7 @@
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Beleidsontwikkeling en Juridische Ondersteuning",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -projecten",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving",
-	"Departement Omgeving" .
+	"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen" .
 
 <http://data.gov.be/en/taxonomy/term/361>
 	skos:prefLabel "Vlaams Energie Agentschap"@nl, "Flemish Energy Agency"@en ;
