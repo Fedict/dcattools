@@ -1,3 +1,5 @@
+# Add default geonames location URI when no other location was set
+
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>

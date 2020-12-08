@@ -1,6 +1,0 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/en/taxonomy/term/154>
-	skos:exactMatch <https://opendata.brussel.be/page/license/> ;
-	skos:prefLabel "Etalab", "Open Data Ville de Bruxelles", "Brussels OpenData License", 
-				"Licentie Brussels OpenData License", "https://developer.jcdecaux.com/#/opendata/license" .

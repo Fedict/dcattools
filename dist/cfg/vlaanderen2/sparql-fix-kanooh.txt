@@ -1,17 +1,15 @@
+# Move foaf:page to DCAT-AP accessURL for statistics published on kanooh.be
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 DELETE
-	{	?s foaf:page ?page .
-		?s dcat:accessURL ?download }
+	{	?s foaf:page ?page }
 INSERT
-	{ 	?s dcat:accessURL ?access .
-		?s dcat:downloadURL ?download }
+	{ 	?s dcat:accessURL ?access }
 WHERE
 	{ 	?s foaf:page ?page .
 		?s a dcat:Distribution .
-		?s dcat:accessURL ?download
 		BIND ( IRI(?page) as ?access ) .
 		FILTER (STRSTARTS(STR(?s), "https://vlaamsestatistieken.login.kanooh.be"))
 	}
