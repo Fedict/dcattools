@@ -1,3 +1,6 @@
+# Create an URI based on start and end date
+# Using this instead of blank nodes or other URIs to reuse (and reduce the number of) triples
+
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX schema:  <http://schema.org/>
 

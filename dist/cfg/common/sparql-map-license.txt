@@ -1,3 +1,6 @@
+# Map licenses to a list of well known URIs
+# Typically licenses are described as text instead of URIs, or use portal-specific URIs
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>

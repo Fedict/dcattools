@@ -1,3 +1,6 @@
+# Convert access to download URL
+# Most datasets only provide an accessURL which is actually a direct download link
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
