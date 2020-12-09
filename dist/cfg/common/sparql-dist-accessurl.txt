@@ -1,3 +1,5 @@
+# Add accessURL of the dataset to the distribution if none was defined
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 INSERT
@@ -6,4 +8,5 @@ WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcat:landingPage ?page .
 		?dataset dcat:distribution ?dist 
+		FILTER NOT EXISTS { ?dist dcat:accessURL ?url }
 	}
