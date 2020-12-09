@@ -54,7 +54,7 @@
 	skos:prefLabel "HTML" ;
 	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
-	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", "power bi", "HTML Tabel", "text/html" .
+	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", "power bi", "HTML Tabel", "text/html", "powerbi" .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
@@ -86,6 +86,12 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
 	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access" .
 
+<http://data.gov.be/en/taxonomy/term/419>
+	skos:prefLabel "N-Triples" ;
+	skos:closeMatch "application/n-triples" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES> ;
+	skos:altLabel "nt" .
+	
 <http://data.gov.be/en/taxonomy/term/401>
 	skos:prefLabel "N3" ;
 	skos:closeMatch "text/n3" ;
