@@ -1,5 +1,0 @@
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
-DELETE { <https://opendata.vlaanderen.be/organization/add3bba1-b9ff-49d6-928f-5a7aba501e35> ?p ?o }
-INSERT { <https://opendata.vlaanderen.be/organization/add3bba1-b9ff-49d6-928f-5a7aba501e35> foaf:name "Geopunt" }
-WHERE { <https://opendata.vlaanderen.be/organization/add3bba1-b9ff-49d6-928f-5a7aba501e35> ?p ?o }

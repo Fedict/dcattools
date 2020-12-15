@@ -1,8 +1,0 @@
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-DELETE { ?s dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> .
-        ?s dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> .
-		?s dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> }
-WHERE { ?s dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> .
-        ?s dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> .
-		?s dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/IRREG> }

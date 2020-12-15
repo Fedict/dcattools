@@ -1,3 +1,6 @@
+# Remove various HTML tags from literals.
+# This reduces layout-issues when harvesting data from other sites.
+
 DELETE { ?s ?p ?o }
 INSERT { ?s ?p ?clean }
 WHERE { 
