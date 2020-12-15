@@ -1,9 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-INSERT	{ ?dist dcterms:format ?fmt }
-WHERE
-	{ ?dist dcterms:description ?desc .
-	FILTER NOT EXISTS { ?dist dcterms:format ?o } 
-	FILTER (STRSTARTS(?desc, "WMS") || STRSTARTS(?desc, "WCS") || STRSTARTS(?desc, "WFS")) 
-	BIND (SUBSTR(?desc, 1, 3) AS ?fmt) }
