@@ -1,3 +1,5 @@
+# Set default language for datasets and distributions to English
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
