@@ -1,4 +1,4 @@
-# Add accessURL of the dataset to the distribution if none was defined
+# Use landing page of the dataset if the access URL of the distribution is missing
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
