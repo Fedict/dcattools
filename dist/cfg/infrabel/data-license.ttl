@@ -1,6 +1,0 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/en/taxonomy/term/387>
-	skos:exactMatch <https://infrabel.opendatasoft.com/pages/license/> ;
-	skos:prefLabel "Infrabel Open Data" ;
-	skos:altLabel "Infrabel Open Data" .
