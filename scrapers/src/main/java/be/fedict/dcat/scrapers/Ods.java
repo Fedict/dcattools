@@ -41,7 +41,7 @@ import java.net.URL;
  */
 public abstract class Ods extends Dcat {
 
-	public final static String API_DCAT = "/api/v2/catalog/exports/ttl";
+	public final static String API_DCAT = "/api/v2/catalog/exports/ttl?lang=";
 
 	/**
 	 * Scrape DCAT catalog.
@@ -52,7 +52,7 @@ public abstract class Ods extends Dcat {
 	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL front = getBase();
-		URL url = new URL(getBase(), Ods.API_DCAT);
+		URL url = new URL(getBase(), Ods.API_DCAT + getDefaultLang());
 		String content = makeRequest(url);
 		cache.storePage(front, "all", new Page(url, content));
 	}
