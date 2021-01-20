@@ -23,7 +23,7 @@
 <http://data.gov.be/en/taxonomy/term/54>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
 	skos:prefLabel "CC-Zero" ;
-	skos:altLabel "https://creativecommons.org/publicdomain/zero/1.0/", <http://wiki.data.gouv.fr/wiki/Licence_Ouverte_/_Open_Licence>, "Open licentie CC0 - Universeel"  .
+	skos:altLabel "https://creativecommons.org/publicdomain/zero/1.0/", <http://wiki.data.gouv.fr/wiki/Licence_Ouverte_/_Open_Licence>, "Open licentie CC0 - Universeel", "CC0 - Universal open license"  .
 
 <http://data.gov.be/en/taxonomy/term/179>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BYSA_4_0> ;
