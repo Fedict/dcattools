@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2015, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -85,14 +85,14 @@ public abstract class Scraper extends Fetcher {
 	private String name = "";
 
 	private final static HashFunction HASHER = Hashing.sha1();
-	
+
 	public final static DateFormat DATEFMT
-			= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
+		= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
 
 	public final static String TODAY = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-			
+
 	public final static Pattern REGEX_MAIL
-			= Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
+		= Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
 
 	/**
 	 * Get cache
@@ -257,8 +257,8 @@ public abstract class Scraper extends Fetcher {
 	 * @throws MalformedURLException
 	 */
 	public URL makeDatasetURL(String id) throws MalformedURLException {
-		return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/" + 
-			id.replace(".", "-").replace(":", "-"));
+		return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
+			+ id.replace(".", "-").replace(":", "-"));
 	}
 
 	/**
@@ -269,8 +269,8 @@ public abstract class Scraper extends Fetcher {
 	 * @throws java.net.MalformedURLException
 	 */
 	public URL makeDistURL(String id) throws MalformedURLException {
-		return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/" + 
-			id.replace(".", "-").replace(":", "-"));
+		return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
+			+ id.replace(".", "-").replace(":", "-"));
 	}
 
 	/**
@@ -295,7 +295,7 @@ public abstract class Scraper extends Fetcher {
 	public URL makeTemporalURL(String start, String end) throws MalformedURLException {
 		String s[] = start.split("T");
 		String e[] = end.split("T");
-		
+
 		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
 	}
 
@@ -337,7 +337,7 @@ public abstract class Scraper extends Fetcher {
 	 * @throws MalformedURLException
 	 */
 	public void generateTemporal(Storage store, IRI dataset, String str, Pattern p, String sep)
-			throws MalformedURLException {
+		throws MalformedURLException {
 		Matcher m = p.matcher(str);
 		if (!m.matches()) {
 			return;
@@ -358,7 +358,7 @@ public abstract class Scraper extends Fetcher {
 	 * @throws MalformedURLException
 	 */
 	public void generateTemporal(Storage store, IRI dataset, String start, String end)
-			throws MalformedURLException {
+		throws MalformedURLException {
 		String s = start.trim();
 
 		if (s.isEmpty()) {
@@ -366,19 +366,31 @@ public abstract class Scraper extends Fetcher {
 			return;
 		}
 		String e = end.trim();
-		
+
 		// Assume start of year / end of year when only YYYY is given 
 		switch (s.length()) {
-			case 4: s += "-01-01"; break;
-			case 6: s = s.substring(0, 4) + "-" + s.substring(4) + "-01"; break;
-			default: s = s.replaceAll("/", "-");
+			case 4:
+				s += "-01-01";
+				break;
+			case 6:
+				s = s.substring(0, 4) + "-" + s.substring(4) + "-01";
+				break;
+			default:
+				s = s.replaceAll("/", "-");
 		}
-		
+
 		switch (e.length()) {
-			case 0: e = TODAY; break;
-			case 4: e += "-12-31"; break;
-			case 6: e = e.substring(0, 4) + "-" + e.substring(4); break;
-			default: e = e.replaceAll("/", "-");
+			case 0:
+				e = TODAY;
+				break;
+			case 4:
+				e += "-12-31";
+				break;
+			case 6:
+				e = e.substring(0, 4) + "-" + e.substring(4);
+				break;
+			default:
+				e = e.replaceAll("/", "-");
 		}
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
@@ -399,12 +411,12 @@ public abstract class Scraper extends Fetcher {
 	 *
 	 * @param store RDF store
 	 * @param catalog catalog URI
-	 * @throws org.eclipse.rdf4j.repository.RepositoryException
+	 * @throws RepositoryException
 	 */
 	public void generateCatalogInfo(Storage store, IRI catalog)
-			throws RepositoryException {
+		throws RepositoryException {
 		store.add(catalog, DCTERMS.TITLE, "DCAT Catalog for " + getName(), "en");
-		store.add(catalog, DCTERMS.DESCRIPTION, "Converted by Fedict's converter", "en");
+		store.add(catalog, DCTERMS.DESCRIPTION, "Converted by BOSA DG DT converter", "en");
 		store.add(catalog, DCTERMS.MODIFIED, new Date());
 		store.add(catalog, DCTERMS.LICENSE, DATAGOVBE.LICENSE_CC0);
 		store.add(catalog, FOAF.HOMEPAGE, getBase());
@@ -420,10 +432,10 @@ public abstract class Scraper extends Fetcher {
 	 *
 	 * @param store RDF store
 	 * @throws RepositoryException
-	 * @throws java.net.MalformedURLException
+	 * @throws MalformedURLException
 	 */
 	public void generateCatalog(Storage store)
-			throws RepositoryException, MalformedURLException {
+		throws RepositoryException, MalformedURLException {
 		IRI catalog = store.getURI(makeCatalogURL().toString());
 		store.add(catalog, RDF.TYPE, DCAT.CATALOG);
 
@@ -443,7 +455,7 @@ public abstract class Scraper extends Fetcher {
 	 * @throws MalformedURLException
 	 */
 	public abstract void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException;
+		throws RepositoryException, MalformedURLException;
 
 	/**
 	 * Write DCAT file to output stream

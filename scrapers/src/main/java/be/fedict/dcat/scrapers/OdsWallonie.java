@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2019, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ import java.net.URL;
 
 
 /**
- * OpenDataSoft City of Liege.
+ * OpenDataSoft Wallonie
  *
  * @author Bart Hanssens
  */

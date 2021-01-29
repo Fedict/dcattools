@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,7 +24,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 package be.fedict.dcat.scrapers;
-
 
 import java.io.File;
 import java.net.URL;
@@ -53,7 +52,6 @@ public abstract class Ckan extends Scraper {
 	public final static String DATASET = "/dataset/";
 	public final static String ORG = "/organization";
 	public final static String RESOURCE = "/resource/";
-
 
 	/**
 	 * CKAN scraper.

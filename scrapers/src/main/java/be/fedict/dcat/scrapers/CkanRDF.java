@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,16 +52,17 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
 public abstract class CkanRDF extends Ckan {
+
 	/**
 	 * Scrape paginated catalog file
-	 * 
+	 *
 	 * @param cache
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
 		int lastpage = 1000;
 		List<URL> urls = new ArrayList<>();
-		
+
 		Charset charset = StandardCharsets.UTF_8;
 		String chr = getProperty("charset");
 		if (chr != null) {
@@ -73,9 +74,9 @@ public abstract class CkanRDF extends Ckan {
 		}
 		logger.info("Assuming charset {}", charset);
 
-		for(int i = 1; i < lastpage; i++) {
-			URL url = new URL(getBase(), Ckan.CATALOG + 
-										".xml?page=" + String.valueOf(i));
+		for (int i = 1; i < lastpage; i++) {
+			URL url = new URL(getBase(), Ckan.CATALOG
+				+ ".xml?page=" + String.valueOf(i));
 			String content = makeRequest(url, charset);
 			cache.storePage(url, "all", new Page(url, content));
 			if (content.length() < 1500) {
@@ -86,20 +87,19 @@ public abstract class CkanRDF extends Ckan {
 		}
 		cache.storeURLList(urls);
 	}
-	
 
 	@Override
 	public void scrape() throws IOException {
 		logger.info("Start scraping");
 		Cache cache = getCache();
-		
+
 		List<URL> urls = cache.retrieveURLList();
 		if (urls.isEmpty()) {
 			scrapeCat(cache);
 		}
 		logger.info("Done scraping");
 	}
-	
+
 	/**
 	 * Generate DCAT file
 	 *
@@ -110,14 +110,14 @@ public abstract class CkanRDF extends Ckan {
 	 */
 	@Override
 	public void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException {
-		
+		throws RepositoryException, MalformedURLException {
+
 		List<URL> urls = cache.retrieveURLList();
-		for (URL url: urls) {
+		for (URL url : urls) {
 			logger.info("Generating from " + url);
 			Map<String, Page> map = cache.retrievePage(url);
 			String ttl = map.get("all").getContent();
-			
+
 			// Load rdf file into store
 			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);

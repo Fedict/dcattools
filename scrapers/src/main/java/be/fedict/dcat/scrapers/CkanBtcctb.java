@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,6 @@ import javax.json.JsonObject;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-
 /**
  * CKAN BTC-CTB. Currently (9/2016) the JSON version is more reliable than the
  * RDF
@@ -53,7 +52,7 @@ public class CkanBtcctb extends CkanJson {
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
-			throws RepositoryException, MalformedURLException {
+		throws RepositoryException, MalformedURLException {
 		//
 	}
 

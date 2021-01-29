@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2019, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ public class CkanGlobe extends CkanJson {
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
-			throws RepositoryException, MalformedURLException {
+		throws RepositoryException, MalformedURLException {
 		//
 	}
 

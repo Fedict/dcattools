@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2019, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,6 +48,7 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  * @author Bart Hanssens
  */
 public abstract class Dcat extends Scraper {
+
 	/**
 	 * Scrape DCAT catalog.
 	 *
@@ -70,7 +71,7 @@ public abstract class Dcat extends Scraper {
 	 */
 	@Override
 	public void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException {
+		throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
 		String ttl = map.get("all").getContent();
 
@@ -94,13 +95,13 @@ public abstract class Dcat extends Scraper {
 		}
 		logger.info("Done scraping");
 	}
-	
+
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param caching
 	 * @param storage
-	 * @param base 
+	 * @param base
 	 */
 	public Dcat(File caching, File storage, URL base) {
 		super(caching, storage, base);

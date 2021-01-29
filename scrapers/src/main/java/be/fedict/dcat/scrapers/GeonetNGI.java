@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2018, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

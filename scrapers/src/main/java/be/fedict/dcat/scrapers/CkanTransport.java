@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2020, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,8 +40,9 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  * @author Bart Hanssens
  */
 public class CkanTransport extends CkanJson {
+
 	public final static String NOTES_TRANSLATED = "notes_translated";
-		
+
 	/**
 	 * CKAN parser for TransportData.be(json).
 	 *
