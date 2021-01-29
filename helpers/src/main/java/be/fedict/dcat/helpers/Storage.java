@@ -32,7 +32,6 @@ import com.google.common.collect.ListMultimap;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 
@@ -52,13 +51,9 @@ import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import org.eclipse.rdf4j.query.MalformedQueryException;
-import org.eclipse.rdf4j.query.QueryEvaluationException;
 import org.eclipse.rdf4j.query.QueryLanguage;
-import org.eclipse.rdf4j.query.TupleQuery;
-import org.eclipse.rdf4j.query.TupleQueryResultHandlerException;
 import org.eclipse.rdf4j.query.Update;
 import org.eclipse.rdf4j.query.UpdateExecutionException;
-import org.eclipse.rdf4j.query.resultio.text.csv.SPARQLResultsCSVWriter;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -344,28 +339,6 @@ public class Storage {
         logger.info("Replaced characters in {} URIs", i);
     }
     
-    /**
-     * Execute SPARQL Select query
-     * 
-     * @param sparql
-     * @param out outputstream
-     * @throws RepositoryException
-     * @throws IOException
-     */
-    public void querySelect(String sparql, OutputStream out) 
-                                    throws RepositoryException, IOException {
-        try {
-            TupleQuery select = conn.prepareTupleQuery(QueryLanguage.SPARQL, sparql);
-            
-            SPARQLResultsCSVWriter w = new SPARQLResultsCSVWriter(out);
-            select.evaluate(w);
-            
-        } catch (MalformedQueryException | QueryEvaluationException ex) {
-            throw new RepositoryException(ex);
-        } catch (TupleQueryResultHandlerException ex) {
-            throw new IOException(ex);
-        }
-    }
     /**
      * Execute SPARQL Update query
      * 
