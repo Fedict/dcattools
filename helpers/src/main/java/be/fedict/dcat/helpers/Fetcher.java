@@ -49,7 +49,6 @@ import org.slf4j.LoggerFactory;
  */
 public class Fetcher {
     private final Logger logger = LoggerFactory.getLogger(Fetcher.class);
-    
     private int delay = 1000;
     
     /**
