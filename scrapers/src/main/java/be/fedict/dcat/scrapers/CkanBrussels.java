@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2016, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,10 +32,11 @@ import java.net.URL;
  * CKAN Brussels Region.
  *
  * @see https://datastore.brussels/
- * 
+ *
  * @author Bart Hanssens
  */
 public class CkanBrussels extends CkanRDF {
+
 	/**
 	 * Constructor
 	 *

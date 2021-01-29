@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Bart Hanssens <bart.hanssens@fedict.be>
+ * Copyright (c) 2015, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.helpers;
 
-import be.fedict.dcat.vocab.DATAGOVBE;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
@@ -38,17 +37,12 @@ import java.io.Reader;
 import java.io.Writer;
 
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-
-import org.eclipse.rdf4j.model.BNode;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Resource;
@@ -92,8 +86,8 @@ import org.slf4j.LoggerFactory;
 public class Storage {
     private final Logger logger = LoggerFactory.getLogger(Storage.class);
     
-    public final static String SKOLEM = "http://data.gov.be/.well-known/genid/";
-    
+	public final static String DATAGOVBE = "http://data.gov.be";
+
     private Repository repo = null;
     private ValueFactory fac = null;
     private RepositoryConnection conn = null;
@@ -130,6 +124,19 @@ public class Storage {
         return fac;
     }
 
+	/**
+	 * Get parser configuration
+	 * 
+	 * @return 
+	 */
+	private ParserConfig getParserConfig() {
+		ParserConfig cfg = new ParserConfig();
+		cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, false);
+		cfg.set(BasicParserSettings.SKOLEMIZE_ORIGIN, DATAGOVBE);
+		cfg.set(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS, false);
+		return cfg;
+	}
+
     /**
      * Create IRI using value factory.
      * 
@@ -137,24 +144,9 @@ public class Storage {
      * @return trimmed IRI 
      */
     public IRI getURI(String str) {
-		try {
-			return fac.createIRI(str.trim());
-		} catch (IllegalArgumentException ioe) {
-			logger.warn("Not a valid IRI {}, skolemizing", str);
-			return skolemURI(fac.createBNode(str.trim()));
-		}
+		return fac.createIRI(str.trim());
     }
-    
-    /**
-     * Replace blank node with skolem IRI
-     * 
-     * @param blank blank node
-     * @return skolem IRI
-     */
-    public IRI skolemURI(BNode blank) {
-        return fac.createIRI(SKOLEM + blank.getID());
-    }
-    
+   
     /**
      * Check if a triple exists.
      * 
@@ -167,7 +159,6 @@ public class Storage {
         return conn.hasStatement(subj, pred, null, false);
     }
 
-	
     /**
      * Get multiple values from map structure.
      * 
@@ -211,8 +202,7 @@ public class Storage {
         }
         return res;
     }
-    
-    
+
     /**
      * Add to the repository
      * 
@@ -224,7 +214,7 @@ public class Storage {
      */
     public void add(InputStream in, RDFFormat format) 
             throws RepositoryException, RDFParseException, IOException {
-        conn.add(in, DATAGOVBE.NAMESPACE, format, (Resource) null);
+        conn.add(in, DATAGOVBE, format, (Resource) null);
     }
     
     /**
@@ -317,34 +307,6 @@ public class Storage {
     }
 
     /**
-     * Replace blank nodes with skolem URI
-     */
-    public void skolemize() {
-        int i = 0;
-        try (RepositoryResult<Statement> stmts = 
-                                        conn.getStatements(null, null, null)) {
-            while(stmts.hasNext()) {
-                Statement stmt = stmts.next();
-                Resource subject = stmt.getSubject();
-                if (subject instanceof BNode) {
-                    conn.add(skolemURI((BNode) subject), 
-                                        stmt.getPredicate(), stmt.getObject());
-                    conn.remove(stmt);
-                    i++;
-                }
-                Value object = stmt.getObject();
-                if (object instanceof BNode) {
-                    conn.add(stmt.getSubject(), stmt.getPredicate(), 
-                                                    skolemURI((BNode) object));
-                    conn.remove(stmt);
-                    i++;
-                }
-            }
-        }
-        logger.info("Replaced {} BNodes", i);
-    }
-    
-    /**
      * Escape spaces in object URIs to avoid SPARQL issues
      * 
      * @param pred 
@@ -380,39 +342,6 @@ public class Storage {
             }
         }
         logger.info("Replaced characters in {} URIs", i);
-    }
-
-    /**
-     * Correct character encoding for literal. 
-     * 
-     * @param charset 
-     */
-    public void recode(Charset charset) {
-        int i = 0;
-        try (RepositoryResult<Statement> stmts = 
-                                conn.getStatements(null, null, null, false)) {
-            while(stmts.hasNext()) {
-                Statement stmt = stmts.next();
-                Value val = stmt.getObject();
-                // Check if object is Literal or URI
-                if (val instanceof Literal) {
-                    String str = ((Literal) val).getLabel();
-                    String newstr = new String(str.getBytes(charset), 
-                                                StandardCharsets.UTF_8);
-                    // Check if new string is different from old
-                    if (!newstr.equals(str)) {
-                        Optional<String> lang = ((Literal) val).getLanguage();
-                        Literal newlit = lang.isPresent() 
-                                        ? fac.createLiteral(newstr, lang.get())
-                                        : fac.createLiteral(newstr);
-                        conn.add(stmt.getSubject(), stmt.getPredicate(), newlit);
-                        conn.remove(stmt);
-                        i++;
-                    }
-                }
-            }
-        }
-        logger.info("Replaced {} encoded strings", i);   
     }
     
     /**
@@ -520,45 +449,6 @@ public class Storage {
         
         return map;
     }
-    
-    /**
-     * Split property value into multiple values using a separator.
-     * 
-     * @param property
-     * @param sep 
-     * @throws org.eclipse.rdf4j.repository.RepositoryException 
-     */
-    public void splitValues(IRI property, String sep) throws RepositoryException {
-        int i = 0;
-        
-        try (RepositoryResult<Statement> stmts = conn.getStatements(null, property, null, false)) {
-            if (! stmts.hasNext()) {
-                logger.warn("No property {}", property.stringValue());
-            }
-            while(stmts.hasNext()) {
-                Statement stmt = stmts.next();
-                Value value = stmt.getObject();
-                
-                // Only makes sense for literals
-                if (value instanceof Literal) {
-                    String l = ((Literal) value).getLanguage().orElse("");
-                    String[] parts = ((Literal) value).stringValue().split(sep);
-                    // Only do something when value can be splitted
-                    if (parts.length > 1) {
-                        for (String part : parts) {
-                            Literal newval = fac.createLiteral(part.trim(), l);
-                            conn.add(stmt.getSubject(), property, newval);
-                        }
-                        conn.remove(stmt);
-						i++;
-                    }
-                }
-            }
-			conn.commit();
-        }
-        logger.debug("Splitted {} statements for '{}'", i, property.stringValue());
-    }
-    
 
     /**
      * Initialize RDF repository
@@ -569,14 +459,8 @@ public class Storage {
         logger.info("Opening RDF repository");
         conn = repo.getConnection();
         fac = repo.getValueFactory();
-		
-		ParserConfig cfg = new ParserConfig();
-		cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, false);
-		cfg.set(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS, false);
-/*		cfg.addNonFatalError(BasicParserSettings.VERIFY_RELATIVE_URIS);
-		cfg.addNonFatalError(BasicParserSettings.VERIFY_URI_SYNTAX);
-		cfg.addNonFatalError(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS); */
-		conn.setParserConfig(cfg);
+
+		conn.setParserConfig(getParserConfig());
     }
     
     /**
@@ -615,11 +499,8 @@ public class Storage {
     public void read(Reader in, RDFFormat format) throws RepositoryException,
                                                 IOException, RDFParseException {
         logger.info("Reading triples from input stream");
-		ParserConfig cfg = new ParserConfig();
-		cfg.set(BasicParserSettings.VERIFY_RELATIVE_URIS, false);
-		cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, false);
-		conn.setParserConfig(cfg);
-        conn.add(in, "http://data.gov.be", format);
+		conn.setParserConfig(getParserConfig());
+        conn.add(in, DATAGOVBE, format);
     }
     
     /**
