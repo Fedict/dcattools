@@ -585,7 +585,7 @@ public class EDP {
 		Serializer s = processor.newSerializer();
 		s.setOutputProperty(Property.METHOD, "xml");
 		s.setOutputProperty(Property.ENCODING, "utf-8");
-		s.setOutputProperty(Property.INDENT, "yes");
+		s.setOutputProperty(Property.INDENT, "no");
 		return s;
 	}
 
@@ -615,8 +615,8 @@ public class EDP {
 		try (RepositoryConnection con = repo.getConnection()) {
 			con.getParserConfig().set(NTriplesParserSettings.FAIL_ON_INVALID_LINES, false);
 			con.add(new File(args[0]), "http://data.gov.be", fmtin.get());
-
 			XMLStreamWriter w = s.getXMLStreamWriter();
+
 
 			w.writeStartDocument();
 			writeCatalog(w, con);
