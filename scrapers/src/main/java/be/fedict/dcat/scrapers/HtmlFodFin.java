@@ -39,7 +39,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.text.html.HTML.Attribute;
-import javax.swing.text.html.HTML.Tag;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -58,11 +57,12 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  */
 public class HtmlFodFin extends Html {
 
-    private final static String LINK_THEME = "nav.block-menu-doormat ul.menu h2 a";
+    private final static String LINK_THEME = "nav.block-menu-doormat div ul.menu li ul.menu li a";
 	private final static String LANG_LINK = "language-link";
 	private final static String TITLE = "h1.page-title";
-	//private final static String LIST_DATASETS = "section#content nav div.item-list li a";
-	private final static String TABLE = "div.field-type-text-with-summary table tr";
+	private final static String HEAD_DATASETS = "article h2";
+	private final static String LINK_DISTS = "li span a";
+	//private final static String TABLE = "div.field-type-text-with-summary table tr";
 
 	/**
 	 * Switch to another language
@@ -117,7 +117,7 @@ public class HtmlFodFin extends Html {
 	/**
 	 * Get the list of all the statistics.
 	 *
-	 * @return list of category URLs
+	 * @return list of dataset URLs
 	 * @throws IOException
 	 */
 	@Override
@@ -132,7 +132,6 @@ public class HtmlFodFin extends Html {
 
         if (themes != null) {
             for (Element theme : themes) {
-				logger.error("Data");
                 String href = theme.attr(Attribute.HREF.toString());
                 urls.add(makeAbsURL(href));
                 sleep();
@@ -149,6 +148,7 @@ public class HtmlFodFin extends Html {
 	 *
 	 * @param store RDF store
 	 * @param dataset URI
+	 * @param seq number
 	 * @param access access URL of the dataset
 	 * @param row row element
 	 * @param link link element
@@ -156,13 +156,12 @@ public class HtmlFodFin extends Html {
 	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
-	private void generateDist(Storage store, IRI dataset, URL access,
-			String text, Element link, String lang)
+	private void generateDist(Storage store, IRI dataset, int seq, URL access, String text, Element link, String lang)
 			throws MalformedURLException, RepositoryException {
 		String href = link.attr(Attribute.HREF.toString());
 		URL download = makeAbsURL(href);
 
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
+		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString() + seq);
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		logger.debug("Generating distribution {}", dist.toString());
 
@@ -189,16 +188,10 @@ public class HtmlFodFin extends Html {
 	public void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
 		
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
-		logger.info("Generating dataset {}", dataset.toString());
-		
-		store.add(dataset, RDF.TYPE, DCAT.DATASET);
-		store.add(dataset, DCTERMS.IDENTIFIER, id);
-				
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
-				logger.warn("Page {} not available in {}", dataset.toString(), lang);
+				logger.warn("Page not available in {}", lang);
 				continue;
 			}
 			String html = p.getContent();
@@ -208,38 +201,47 @@ public class HtmlFodFin extends Html {
 				logger.warn("No body element");
 				continue;
 			}
-			Element h = doc.select(TITLE).first();
-			if (h == null) {
-				logger.warn("No H1 element");
+			Element eltitle = doc.select(TITLE).first();
+	
+			Elements heads = doc.select(HEAD_DATASETS);
+			if (heads == null) {
+				logger.warn("No dataset head element");
 				continue;
 			}
-			String title = h.text();
-			String desc = "";
-
-			Elements rows = doc.select(TABLE);
-
-			if (rows != null && !rows.isEmpty()) {
-				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-				store.add(dataset, DCTERMS.TITLE, title, lang);
+	
+			// create a id for dataset based on the order of the dataset on the page
+			int i = 0;
+			for(Element h: heads) {
+				i++;
+				String head = h.text();
+				String title = eltitle.text() + ": " + head;
+				String desc = title;
 				
-				for (Element row : rows) {
-					String text = null;
-					Element el = row.getElementsByTag(Tag.TD.toString()).first();
-					if (el != null) {
-						text = el.ownText();
-						desc += text + "\n";
+				Element next = h.nextElementSibling();
+				if (next != null) {
+					Elements dists = next.select(LINK_DISTS);
+					if (dists == null || dists.isEmpty()) {
+						logger.warn("No distribution link element");
+						continue;
 					}
-					// a row may contain multiple downloads / distributions
-					Elements hrefs = row.getElementsByTag(Tag.A.toString());
-					for (Element href: hrefs) {
-						generateDist(store, dataset, p.getUrl(), text, href, lang);
+					// only add datasets if there are distributions available
+					IRI dataset = store.getURI(makeDatasetURL(id + i).toString());
+					logger.info("Generating dataset {}", dataset.toString());
+		
+					store.add(dataset, RDF.TYPE, DCAT.DATASET);
+					store.add(dataset, DCTERMS.IDENTIFIER, id + i);
+					store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+					store.add(dataset, DCTERMS.TITLE, title, lang);
+					store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+
+					// create a id for distribution based on the order of the distribution on the page
+					int j = 0;
+					for(Element d: dists) {
+						j++;
+						generateDist(store, dataset, j,  p.getUrl(), d.ownText(), d, lang);
 					}
 				}
 			}
-			if (desc.isEmpty()) {
-				desc = title;
-			}
-			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 		}
 	}
 

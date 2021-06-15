@@ -33,7 +33,7 @@ import java.net.URL;
  *
  * @see http://geonetwork-opensource.org/
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class Geonet extends Scraper {
 

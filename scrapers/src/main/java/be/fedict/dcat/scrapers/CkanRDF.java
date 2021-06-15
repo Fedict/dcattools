@@ -49,7 +49,7 @@ import org.eclipse.rdf4j.rio.RDFParseException;
 /**
  * Scraper for CKAN portals with RDF support enabled.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class CkanRDF extends Ckan {
 
