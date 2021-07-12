@@ -39,7 +39,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
  * @author Bart Hanssens
  */
 public class GeonetBMDC extends GeonetGmd {
-	private final static String LANDING = "http://geonetwork.bmdc.be/geonetwork/srv/eng/catalog.search#/metadata/";
+	private final static String LANDING = "https://metadata.naturalsciences.be/geonetwork/srv/eng/catalog.search#/metadata/";
 	
 	@Override
 	protected void generateDataset(IRI dataset, String id, Storage store, Node node) 
