@@ -58,7 +58,9 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 public class HtmlWIV extends Html {
 	private final static String H_TITLE = "h2";
 	private final static String SECTION_P = "section#Covid p";
-	private final static String DIST_LINKS = "section#Data ul li";
+	//private final static String DIST_LINKS = "section#Data ul li";
+	private final static String DIST_ROW = "table.table tbody tr";
+	
 	private final static String HREFS = "a";
 
 	@Override
@@ -75,36 +77,35 @@ public class HtmlWIV extends Html {
 	 * @param store RDF store
 	 * @param dataset URI
 	 * @param access access URL of the dataset
-	 * @param lis ul elements
+	 * @param row row element
 	 * @param lang language code
 	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
 	private void generateDist(Storage store, IRI dataset, URL access,
-			Elements lis, String lang) throws MalformedURLException, RepositoryException {
-		for(Element li: lis) {
-			String title = li.ownText();
-			title = title.replaceAll("[^\\w ,;]*", "").trim();
-			
-			Elements links = li.select(HREFS);
-			for (Element link: links) {
-				String href = link.attr(Attribute.HREF.toString());
-				URL download = makeAbsURL(href);
+			Elements rows, String lang) throws MalformedURLException, RepositoryException {
 
-				String ftype = link.text().trim();
+		for (Element row: rows) {
+			Elements cols = row.select("td");
+			String title = cols.get(0).ownText().trim();
+			Element link = cols.get(1).selectFirst(HREFS);
 
-				URL u = makeDistURL(makeHashId(title) + "/" + ftype);
-				IRI dist = store.getURI(u.toString());
-				logger.debug("Generating distribution {}", dist.toString());
+			String href = link.attr(Attribute.HREF.toString());
+			URL download = makeAbsURL(href);
 
-				store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
-				store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
-				store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-				store.add(dist, DCTERMS.TITLE, title, lang);
-				store.add(dist, DCAT.ACCESS_URL, access);
-				store.add(dist, DCAT.DOWNLOAD_URL, download);
-				store.add(dist, DCAT.MEDIA_TYPE, ftype.toLowerCase());
-			}
+			String ftype = link.text().trim();
+
+			URL u = makeDistURL(makeHashId(title) + "/" + ftype);
+			IRI dist = store.getURI(u.toString());
+			logger.debug("Generating distribution {}", dist.toString());
+
+			store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
+			store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
+			store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+			store.add(dist, DCTERMS.TITLE, title, lang);
+			store.add(dist, DCAT.ACCESS_URL, access);
+			store.add(dist, DCAT.DOWNLOAD_URL, download);
+			store.add(dist, DCAT.MEDIA_TYPE, ftype.toLowerCase());
 		}
 	}
 
@@ -148,7 +149,7 @@ public class HtmlWIV extends Html {
 		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(id));
 		store.add(dataset, DCAT.LANDING_PAGE, u);
 
-		Elements dist = content.select(DIST_LINKS);
+		Elements dist = content.select(DIST_ROW);
 		generateDist(store, dataset, u, dist, lang);
 	}
 
