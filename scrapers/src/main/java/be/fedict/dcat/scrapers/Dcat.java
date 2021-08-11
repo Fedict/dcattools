@@ -70,8 +70,7 @@ public abstract class Dcat extends Scraper {
 	 * @throws MalformedURLException
 	 */
 	@Override
-	public void generateDcat(Cache cache, Storage store)
-		throws RepositoryException, MalformedURLException {
+	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
 		String ttl = map.get("all").getContent();
 
