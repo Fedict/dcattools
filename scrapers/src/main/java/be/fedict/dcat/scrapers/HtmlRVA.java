@@ -177,11 +177,10 @@ public class HtmlRVA extends Html {
 	 * HTML scraper RVA/ONEM
 	 *
 	 * @param caching DB cache file
-	 * @param storage RDF backing file
 	 * @param base base URL
 	 */
-	public HtmlRVA(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public HtmlRVA(File caching, URL base) {
+		super(caching, base);
 		setName("rva");
 	}
 

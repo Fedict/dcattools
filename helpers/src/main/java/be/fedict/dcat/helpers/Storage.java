@@ -29,7 +29,6 @@ package be.fedict.dcat.helpers;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -505,12 +504,11 @@ public class Storage {
     /**
      * RDF store
      * 
-     * @param f file to be used as storage
      */
-    public Storage(File f) {
-        logger.info("Opening RDF store " + f.getAbsolutePath());
+    public Storage() {
+        logger.info("Opening RDF store");
         
-        MemoryStore mem = new MemoryStore(f);
+        MemoryStore mem = new MemoryStore();
         mem.setPersist(false);
         repo = new SailRepository(mem);
     }

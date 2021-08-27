@@ -27,13 +27,14 @@ package be.fedict.dcat.scrapers;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -50,8 +51,6 @@ public class Main {
 
 	private final static Logger logger = LoggerFactory.getLogger(Main.class);
 
-	private final static Properties prop = new Properties();
-
 	/**
 	 * Exit cleanly
 	 *
@@ -63,26 +62,14 @@ public class Main {
 	}
 
 	/**
-	 * Set custom delay between http requests, if needed (default is 1s)
-	 * 
-	 * @param s Scraper instance
-	 */
-	private static void setDelay(Scraper s) {
-		String delay = prop.getProperty(Scraper.PROP_PREFIX + ".http.delay", "");
-		if(!delay.isEmpty()) {
-			s.setDelay(Integer.valueOf(delay));
-		}
-	}
-	
-
-	/**
 	 * Get required property
 	 *
+	 * @param prop properties
 	 * @param name unprefixed property
 	 * @return value of the property
 	 * @throws IOException if property is empty
 	 */
-	private static String getRequired(String name) throws IOException {
+	private static String getRequired(Properties prop, String name) throws IOException {
 		String p = prop.getProperty(Scraper.PROP_PREFIX + "." + name, "");
 		if (p.isEmpty()) {
 			throw new IOException("Property missing: " + p);
@@ -93,26 +80,25 @@ public class Main {
 	/**
 	 * Load a scraper and scrape the site.
 	 *
-	 * @param prefix properties prefix for additional configuration
+	 * @param cache location of cache file
+	 * @param prop propertie for additional configuration
 	 */
-	private static Scraper getScraper() {
+	private static Scraper getScraper(String cache, Properties prop) {
 		Scraper s = null;
 
 		try {
-			String name = getRequired("classname");
-			Class<? extends Scraper> c = Class.forName(name).asSubclass(Scraper.class);
+			String cname = getRequired(prop, "classname");
+			Class<? extends Scraper> c = Class.forName(cname).asSubclass(Scraper.class);
 
-			String cache = getRequired("cache");
-			String store = getRequired("store");
-			String url = getRequired("url");
+			String url = getRequired(prop, "url");
 
-			s = c.getConstructor(File.class, File.class, URL.class).
-					newInstance(new File(cache), new File(store), new URL(url));
+			s = c.getConstructor(File.class, URL.class).newInstance(new File(cache), new URL(url));
 
-			s.setDefaultLang(getRequired("deflanguage"));
-			s.setAllLangs(getRequired("languages").split(","));
+			s.setDefaultLang(getRequired(prop, "deflanguage"));
+			s.setAllLangs(getRequired(prop, "languages").split(","));
 
-			setDelay(s);
+			String delay = prop.getProperty(Scraper.PROP_PREFIX + ".http.delay", "500");
+			s.setDelay(Integer.valueOf(delay));
 
 			s.setProperties(prop, Scraper.PROP_PREFIX);
 		} catch (ClassNotFoundException | InstantiationException | NoSuchMethodException
@@ -131,15 +117,14 @@ public class Main {
 	/**
 	 * Write result of scrape to DCAT file
 	 *
-	 * @param scraper
+	 * @param outFile path
+	 * @param scraper scraper instance
 	 */
-	private static void writeDcat(Scraper scraper) {
-		String out = prop.getProperty(Scraper.PROP_PREFIX + ".rdfout");
-		try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(out), 
-													StandardCharsets.UTF_8)) {
+	private static void writeDcat(Path outFile, Scraper scraper) throws IOException {
+		try (BufferedWriter bw = Files.newBufferedWriter(outFile, StandardCharsets.UTF_8)) {
 			scraper.writeDcat(bw);
 		} catch (IOException ex) {
-			logger.error("Error writing output file {}", out, ex);
+			logger.error("Error writing output file {}", outFile, ex);
 			exit(-5);
 		} catch (RepositoryException ex) {
 			logger.error("Repository error", ex);
@@ -155,29 +140,51 @@ public class Main {
 	public static void main(String[] args) {
 		logger.info("-- START --");
 		if (args.length == 0) {
-			logger.error("No config file");
+			System.err.println("Usage: name <data-directory>");
+			logger.error("No scraper specified");
 			exit(-1);
 		}
 
-		File config = new File(args[0]);
-		try {
-			prop.load(new FileInputStream(config));
+		String name = args[0];
+		Properties prop = new Properties();
+
+		String dir = (args.length == 2) ? args[1] : ".";
+
+		// load properties from resources
+		try(InputStream is = Scraper.class.getResourceAsStream("/" + name + "/scraper.properties")) {
+			prop.load(is);
 		} catch (IOException ex) {
-			logger.error("I/O Exception while reading {}", config, ex);
+			logger.error("I/O Exception while reading {}", name, ex);
 			exit(-2);
 		}
 
-		Scraper scraper = getScraper();
+		// create data directory if not exists
+		String dataDir = String.join(File.separator, dir, "data", name);
+		try {
+			Files.createDirectories(Paths.get(dataDir));
+		} catch (IOException ex) {
+			logger.error("Could not create data directory {}", dataDir);
+			exit(-3);
+		}
+	
+		String cache = String.join(File.separator, dataDir, "cache");
+
+		// find and load specific scraper
+		Scraper scraper = getScraper(cache, prop);
+		if (scraper == null) {
+			logger.error("Scraper not found");
+			exit(-4);			
+		}
+
+		// output file
+		String outfile = String.join(File.separator, dataDir, scraper.getName() + ".nt");
 
 		try {
 			scraper.scrape();
+			writeDcat(Paths.get(outfile), scraper);
 		} catch (IOException ex) {
 			logger.error("Error while scraping", ex);
-			exit(-4);
+			exit(-5);
 		}
-
-		writeDcat(scraper);
-
-		exit(0);
 	}
 }

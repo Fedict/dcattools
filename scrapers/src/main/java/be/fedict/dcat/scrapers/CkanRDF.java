@@ -52,6 +52,23 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  * @author Bart Hanssens
  */
 public abstract class CkanRDF extends Ckan {
+	
+	/**
+	 * Get property from config file.
+	 *
+	 * @param name
+	 * @return property value
+	 */
+	public final String getProperty(String name) {
+		String p = Scraper.PROP_PREFIX + "." + name;
+
+		String value = getProperties().getProperty(p);
+		if (value == null) {
+			logger.warn("No property {}", p);
+		}
+		return value;
+	}
+
 
 	/**
 	 * Scrape paginated catalog file
@@ -132,10 +149,9 @@ public abstract class CkanRDF extends Ckan {
 	 * CKAN scraper.
 	 *
 	 * @param caching local cache file
-	 * @param storage local triple store file
 	 * @param base URL of the CKAN site
 	 */
-	public CkanRDF(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public CkanRDF(File caching, URL base) {
+		super(caching, base);
 	}
 }

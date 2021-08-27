@@ -26,14 +26,10 @@
 package be.fedict.dcat.helpers;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
@@ -82,20 +78,7 @@ public class Fetcher {
 		}
 		logger.warn("Delay of {} ms is too low", delay);
     }
-    /**
-     * Make HTTP GET request.
-     * 
-     * @param url
-     * @return JsonObject containing CKAN info
-     * @throws IOException 
-     */
-    public JsonObject makeJsonRequest(URL url) throws IOException {
-        Request request = Request.Get(url.toString());
-        String json = request.execute().returnContent().asString();
-        JsonReader reader = Json.createReader(new StringReader(json));
-
-		return reader.readObject();
-	}
+    
 
     /**
      * Make HTTP GET request, assuming UTF8 response

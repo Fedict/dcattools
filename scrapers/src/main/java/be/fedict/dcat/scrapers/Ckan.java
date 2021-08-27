@@ -53,14 +53,7 @@ public abstract class Ckan extends Scraper {
 	public final static String ORG = "/organization";
 	public final static String RESOURCE = "/resource/";
 
-	/**
-	 * CKAN scraper.
-	 *
-	 * @param caching local cache file
-	 * @param storage local triple store file
-	 * @param base URL of the CKAN site
-	 */
-	public Ckan(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	protected Ckan(File caching, URL base) {
+		super(caching, base);
 	}
 }

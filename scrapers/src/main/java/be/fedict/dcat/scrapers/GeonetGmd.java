@@ -519,10 +519,9 @@ public abstract class GeonetGmd extends Geonet {
 	 * Constructor
 	 *
 	 * @param caching DB cache file
-	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
 	 */
-	public GeonetGmd(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public GeonetGmd(File caching, URL base) {
+		super(caching, base);
 	}
 }
