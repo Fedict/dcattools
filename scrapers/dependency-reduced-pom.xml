@@ -37,6 +37,10 @@
         </executions>
         <configuration>
           <transformers>
+            <transformer />
+            <transformer>
+              <addHeader>false</addHeader>
+            </transformer>
             <transformer>
               <mainClass>be.fedict.dcat.scrapers.Main</mainClass>
             </transformer>
