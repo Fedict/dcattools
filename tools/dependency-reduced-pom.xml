@@ -59,6 +59,5 @@
   <properties>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
-    <rdf4j.version>3.7.2</rdf4j.version>
   </properties>
 </project>

@@ -11,8 +11,6 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-	<rdf4j.version>3.7.2</rdf4j.version>
-	<slf4j.version>1.7.31</slf4j.version>
     </properties>
     <dependencies>
         <dependency>
@@ -38,12 +36,12 @@
         <dependency>
             <groupId>javax.json</groupId>
             <artifactId>javax.json-api</artifactId>
-            <version>1.1.4</version>
+            <version>${json.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
-            <version>1.1.4</version>
+            <version>${json.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
