@@ -151,7 +151,7 @@ public class Main {
 		String dir = (args.length == 2) ? args[1] : ".";
 
 		// load properties from resources
-		try(InputStream is = Scraper.class.getResourceAsStream("/" + name + "/scraper.properties")) {
+		try(InputStream is = Scraper.class.getResourceAsStream("/be/fedict/dcat/scrapers/" + name + "/scraper.properties")) {
 			prop.load(is);
 		} catch (IOException ex) {
 			logger.error("I/O Exception while reading {}", name, ex);
