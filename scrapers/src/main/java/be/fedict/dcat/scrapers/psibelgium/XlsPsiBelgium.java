@@ -23,9 +23,10 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.scrapers;
+package be.fedict.dcat.scrapers.psibelgium;
 
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.scrapers.Xls;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.File;
