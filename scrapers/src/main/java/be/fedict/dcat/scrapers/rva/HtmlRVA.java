@@ -23,11 +23,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.scrapers;
+package be.fedict.dcat.scrapers.rva;
 
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.scrapers.Html;
 
 import be.fedict.dcat.vocab.MDR_LANG;
 
@@ -54,9 +55,9 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 
 
 /**
- * Scraper FPS Mobility
+ * Scraper RVA-ONSS
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public class HtmlRVA extends Html {
 
