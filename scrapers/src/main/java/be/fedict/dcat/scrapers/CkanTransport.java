@@ -43,20 +43,21 @@ public class CkanTransport extends CkanJson {
 
 	public final static String NOTES_TRANSLATED = "notes_translated";
 
-	/**
-	 * CKAN parser for TransportData.be(json).
-	 *
-	 * @param caching
-	 * @param storage
-	 * @param base
-	 */
-	public CkanTransport(File caching, File storage, URL base) {
-		super(caching, storage, base);
-		setName("transportdata");
-	}
-
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
 		parseString(store, uri, json, CkanTransport.NOTES_TRANSLATED, DCTERMS.DESCRIPTION, lang);
 	}
+
+	/**
+	 * CKAN parser for TransportData.be(json).
+	 *
+	 * @param caching
+	 * @param base
+	 */
+	public CkanTransport(File caching, URL base) {
+		super(caching, base);
+		setName("transportdata");
+	}
+
+
 }

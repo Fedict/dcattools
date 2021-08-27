@@ -99,10 +99,9 @@ public abstract class Dcat extends Scraper {
 	 * Constructor
 	 *
 	 * @param caching
-	 * @param storage
 	 * @param base
 	 */
-	public Dcat(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public Dcat(File caching, URL base) {
+		super(caching, base);
 	}
 }

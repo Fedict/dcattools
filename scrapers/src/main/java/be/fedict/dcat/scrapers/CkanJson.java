@@ -35,7 +35,9 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,7 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonString;
 import javax.json.stream.JsonParsingException;
+import org.apache.http.client.fluent.Request;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -94,6 +97,24 @@ public abstract class CkanJson extends Ckan {
 
 	public final static Pattern YEAR_PAT
 		= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
+	
+	public final static DateFormat DATEFMT
+		= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
+
+/**
+     * Make HTTP GET request.
+     * 
+     * @param url
+     * @return JsonObject containing CKAN info
+     * @throws IOException 
+     */
+    public JsonObject makeJsonRequest(URL url) throws IOException {
+        Request request = Request.Get(url.toString());
+        String json = request.execute().returnContent().asString();
+        JsonReader reader = Json.createReader(new StringReader(json));
+
+		return reader.readObject();
+	}
 
 	/**
 	 * Generate DCAT.
@@ -534,10 +555,9 @@ public abstract class CkanJson extends Ckan {
 	 * CKAN scraper.
 	 *
 	 * @param caching local cache file
-	 * @param storage local triple store file
 	 * @param base URL of the CKAN site
 	 */
-	public CkanJson(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public CkanJson(File caching, URL base) {
+		super(caching, base);
 	}
 }

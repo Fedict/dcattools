@@ -78,7 +78,7 @@ public class Main {
 	 */
 	private static void readRDF() {
 		String file = prop.getProperty(Drupal.PROP_PREFIX + ".store");
-		store = new Storage(new File(file));
+		store = new Storage();
 		try {
 			store.startup();
 		} catch (RepositoryException ex) {

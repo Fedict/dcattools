@@ -111,10 +111,9 @@ public abstract class GeonetRDF extends Geonet {
 	 * Constructor
 	 *
 	 * @param caching DB cache file
-	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
 	 */
-	public GeonetRDF(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public GeonetRDF(File caching, URL base) {
+		super(caching, base);
 	}
 }

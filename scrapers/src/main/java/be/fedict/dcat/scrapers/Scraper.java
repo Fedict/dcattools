@@ -42,7 +42,6 @@ import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
@@ -86,13 +85,7 @@ public abstract class Scraper extends Fetcher {
 
 	private final static HashFunction HASHER = Hashing.sha1();
 
-	public final static DateFormat DATEFMT
-		= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
-
 	public final static String TODAY = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-
-	public final static Pattern REGEX_MAIL
-		= Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
 
 	/**
 	 * Get cache
@@ -101,15 +94,6 @@ public abstract class Scraper extends Fetcher {
 	 */
 	public final Cache getCache() {
 		return cache;
-	}
-
-	/**
-	 * Get triple store
-	 *
-	 * @return RDF triple store
-	 */
-	public final Storage getTripleStore() {
-		return store;
 	}
 
 	/**
@@ -173,22 +157,6 @@ public abstract class Scraper extends Fetcher {
 	 */
 	public final String getName() {
 		return name;
-	}
-
-	/**
-	 * Try to extract email from a string
-	 *
-	 * @param txt string
-	 * @return empty string when not found
-	 */
-	public String extractEmail(String txt) {
-		if (txt != null && !txt.isEmpty()) {
-			Matcher m = REGEX_MAIL.matcher(txt);
-			if (m.find()) {
-				return m.group(1);
-			}
-		}
-		return "";
 	}
 
 	/**
@@ -310,22 +278,14 @@ public abstract class Scraper extends Fetcher {
 		this.prefix = prefix;
 	}
 
-	/**
-	 * Get property from config file.
-	 *
-	 * @param name
-	 * @return property value
-	 */
-	public final String getProperty(String name) {
-		String p = prefix + "." + name;
-
-		String value = prop.getProperty(p);
-		if (value == null) {
-			logger.warn("No property {}", p);
-		}
-		return value;
+	public Properties getProperties() {
+		return this.prop;
 	}
 
+	public String getPrefix() {
+		return this.prefix;
+	}
+	
 	/**
 	 * Generate temporal triples
 	 *
@@ -376,7 +336,7 @@ public abstract class Scraper extends Fetcher {
 				s = s.substring(0, 4) + "-" + s.substring(4) + "-01";
 				break;
 			default:
-				s = s.replaceAll("/", "-");
+				s = s.replace("/", "-");
 		}
 
 		switch (e.length()) {
@@ -390,7 +350,7 @@ public abstract class Scraper extends Fetcher {
 				e = e.substring(0, 4) + "-" + e.substring(4);
 				break;
 			default:
-				e = e.replaceAll("/", "-");
+				e = e.replace("/", "-");
 		}
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
@@ -478,12 +438,11 @@ public abstract class Scraper extends Fetcher {
 	 * Constructor
 	 *
 	 * @param caching DB cache file
-	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
 	 */
-	public Scraper(File caching, File storage, URL base) {
+	protected Scraper(File caching, URL base) {
 		cache = new Cache(caching);
-		store = new Storage(storage);
+		store = new Storage();
 		this.base = base;
 	}
 }

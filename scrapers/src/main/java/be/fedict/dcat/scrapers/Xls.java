@@ -233,10 +233,9 @@ public abstract class Xls extends Scraper {
 	 * Constructor
 	 *
 	 * @param caching
-	 * @param storage SDB file to be used as triple store backend
 	 * @param base path to file
 	 */
-	public Xls(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public Xls(File caching, URL base) {
+		super(caching, base);
 	}
 }

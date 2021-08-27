@@ -100,7 +100,7 @@ public class Cache {
     public Map<String, Page> retrievePage(URL id) {
         logger.debug("Retrieving page {} from cache", id);
         ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
-        return map.getOrDefault(id, Collections.EMPTY_MAP);
+        return map.getOrDefault(id, Collections.emptyMap());
     }
 	
 	/**
@@ -110,7 +110,7 @@ public class Cache {
      */
     public Set<URL> retrievePageList() {
 		ConcurrentMap<URL, Map<String, Page>> map  = db.hashMap(Cache.PAGES);
-        return (map == null) ? Collections.EMPTY_SET : map.keySet();
+        return (map == null) ? Collections.emptySet() : map.keySet();
     }
     
     /**
@@ -133,7 +133,7 @@ public class Cache {
      */
     public Map<String,String> retrieveMap(URL id) {
         ConcurrentMap<URL, Map<String,String>> map = db.hashMap(Cache.PAGES);
-        return map.getOrDefault(id, Collections.EMPTY_MAP);
+        return map.getOrDefault(id, Collections.emptyMap());
     }
     
     /**

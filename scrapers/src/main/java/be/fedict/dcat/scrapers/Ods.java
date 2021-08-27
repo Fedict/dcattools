@@ -61,10 +61,9 @@ public abstract class Ods extends Dcat {
 	 * Constructor
 	 *
 	 * @param caching
-	 * @param storage
 	 * @param base
 	 */
-	public Ods(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public Ods(File caching, URL base) {
+		super(caching, base);
 	}
 }

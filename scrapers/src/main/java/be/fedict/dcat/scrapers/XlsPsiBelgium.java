@@ -293,11 +293,10 @@ public class XlsPsiBelgium extends Xls {
 	 * Constructor.
 	 *
 	 * @param caching
-	 * @param storage
 	 * @param base
 	 */
-	public XlsPsiBelgium(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public XlsPsiBelgium(File caching, URL base) {
+		super(caching, base);
 		setName("psibelgium");
 	}
 }

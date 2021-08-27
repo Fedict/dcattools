@@ -41,10 +41,9 @@ public abstract class Geonet extends Scraper {
 	 * Constructor
 	 *
 	 * @param caching DB cache file
-	 * @param storage SDB file to be used as triple store backend
 	 * @param base base URL
 	 */
-	public Geonet(File caching, File storage, URL base) {
-		super(caching, storage, base);
+	public Geonet(File caching, URL base) {
+		super(caching, base);
 	}
 }

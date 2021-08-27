@@ -98,8 +98,7 @@ public class Main {
      * Read RDF file.
      */
     private static void readRDF() {
-        String file = prop.getProperty(Enhancer.PROP_PREFIX + ".store");
-        store = new Storage(new File(file));       
+        store = new Storage();       
         try {
             store.startup();
         } catch (RepositoryException ex) {
