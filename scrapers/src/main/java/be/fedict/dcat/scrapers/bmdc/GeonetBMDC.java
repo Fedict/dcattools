@@ -27,36 +27,37 @@ package be.fedict.dcat.scrapers.bmdc;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.GeonetGmd;
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Properties;
 import org.dom4j.Node;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 
 /**
- * Geonet scraper for BMDC RBINS http://geonetwork.bmdc.be
+ * Geonet scraper for BMDC RBINS
  * 
+ * @see http://geonetwork.bmdc.be
  * @author Bart Hanssens
  */
 public class GeonetBMDC extends GeonetGmd {
 	private final static String LANDING = "https://metadata.naturalsciences.be/geonetwork/srv/eng/catalog.search#/metadata/";
 	
 	@Override
-	protected void generateDataset(IRI dataset, String id, Storage store, Node node) 
-												throws MalformedURLException {
+	protected void generateDataset(IRI dataset, String id, Storage store, Node node)
+			throws MalformedURLException {
 		super.generateDataset(dataset, id, store, node);
 		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(LANDING + id));
 	}
 
 	/**
-	 * Scraper
+	 * Constructor
 	 * 
-	 * @param caching
-	 * @param base 
+	 * @param prop
+	 * @throws IOException 
 	 */
-	public GeonetBMDC(File caching, URL base) {
-		super(caching, base);
+	public GeonetBMDC(Properties prop) throws IOException {
+		super(prop);
 		setName("bmdc");
 	}
 }

@@ -29,13 +29,13 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 import javax.swing.text.html.HTML;
@@ -52,8 +52,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /**
+ * Statbel "open data" scraper.
  *
- * @author Bart.Hanssens
+ * @see https://statbel.fgov.be/nl/open-data
+ * @author Bart Hanssens
  */
 public class HtmlStatbelOpen extends HtmlStatbel {
     public final static String VIEW_HREF = "div.view-open-data h2 a";
@@ -206,13 +208,13 @@ public class HtmlStatbelOpen extends HtmlStatbel {
     }
 
     /**
-     * HTML parser for Statbel opendata publications
+     * Constructor
      *
-     * @param caching DB cache file
-     * @param base base URL
+     * @param prop
+	 * @throws IOException
      */
-    public HtmlStatbelOpen(File caching, URL base) {
-        super(caching, base);
+    public HtmlStatbelOpen(Properties prop) throws IOException {
+        super(prop);
         setName("statbelopen");
     }
 }

@@ -27,9 +27,9 @@ package be.fedict.dcat.scrapers.transportdata;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.CkanJson;
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Properties;
 import javax.json.JsonObject;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -38,11 +38,12 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 /**
  * CKAN TransportData.be via DCAT-AP catalog.
  *
+ * @see https://www.transportdata.be/
  * @author Bart Hanssens
  */
 public class CkanTransportData extends CkanJson {
 
-	public final static String NOTES_TRANSLATED = "notes_translated";
+	private final static String NOTES_TRANSLATED = "notes_translated";
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
@@ -52,11 +53,11 @@ public class CkanTransportData extends CkanJson {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public CkanTransportData(File caching, URL base) {
-		super(caching, base);
+	public CkanTransportData(Properties prop) throws IOException {
+		super(prop);
 		setName("transportdata");
 	}
 

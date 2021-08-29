@@ -30,7 +30,6 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
@@ -41,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.dom4j.Document;
@@ -518,10 +518,10 @@ public abstract class GeonetGmd extends Geonet {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws java.io.IOException
 	 */
-	public GeonetGmd(File caching, URL base) {
-		super(caching, base);
+	protected GeonetGmd(Properties prop) throws IOException {
+		super(prop);
 	}
 }

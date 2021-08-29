@@ -28,9 +28,9 @@ package be.fedict.dcat.scrapers.biodiv;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.CkanJson;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,20 +43,17 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  * CKAN Belgian Biodiversity portal.
  *
  * @see http://www.biodiversity.be/
- *
- * @author Bart.Hanssens
+ * @author Bart Hanssens
  */
 public class CkanBioDiv extends CkanJson {
 
 	// CKAN fields
 	public final static String ADMIN_CONTACT = "administrative_contact";
-	
-	public final static Pattern REGEX_MAIL
-		= Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
+	public final static Pattern REGEX_MAIL = Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
-		throws RepositoryException, MalformedURLException {
+			throws RepositoryException, MalformedURLException {
 		String contact = json.getString(ADMIN_CONTACT, "");
 		String email = extractEmail(contact);
 		if (email != null && !email.isEmpty() && contact != null && !contact.isEmpty()) {
@@ -84,11 +81,11 @@ public class CkanBioDiv extends CkanJson {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public CkanBioDiv(File caching, URL base) {
-		super(caching, base);
+	public CkanBioDiv(Properties prop) throws IOException {
+		super(prop);
 		setName("biodiv");
 	}
 }

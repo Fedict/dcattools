@@ -28,16 +28,16 @@ package be.fedict.dcat.scrapers;
 import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 
 /**
  * Abstract OpenDataSoft scraper.
  *
  * @see https://www.opendatasoft.com/
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class Ods extends Dcat {
 
@@ -60,10 +60,9 @@ public abstract class Ods extends Dcat {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
 	 */
-	public Ods(File caching, URL base) {
-		super(caching, base);
+	protected Ods(Properties prop) throws IOException {
+		super(prop);
 	}
 }

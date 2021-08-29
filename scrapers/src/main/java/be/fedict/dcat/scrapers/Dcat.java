@@ -30,13 +30,13 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -98,10 +98,10 @@ public abstract class Dcat extends Scraper {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public Dcat(File caching, URL base) {
-		super(caching, base);
+	protected Dcat(Properties prop) throws IOException {
+		super(prop);
 	}
 }

@@ -30,7 +30,6 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -41,6 +40,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -52,23 +52,7 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  * @author Bart Hanssens
  */
 public abstract class CkanRDF extends Ckan {
-	
-	/**
-	 * Get property from config file.
-	 *
-	 * @param name
-	 * @return property value
-	 */
-	public final String getProperty(String name) {
-		String p = Scraper.PROP_PREFIX + "." + name;
-
-		String value = getProperties().getProperty(p);
-		if (value == null) {
-			logger.warn("No property {}", p);
-		}
-		return value;
-	}
-
+	private final Charset charset;
 
 	/**
 	 * Scrape paginated catalog file
@@ -79,21 +63,10 @@ public abstract class CkanRDF extends Ckan {
 	protected void scrapeCat(Cache cache) throws IOException {
 		int lastpage = 1000;
 		List<URL> urls = new ArrayList<>();
-
-		Charset charset = StandardCharsets.UTF_8;
-		String chr = getProperty("charset");
-		if (chr != null) {
-			try {
-				charset = Charset.forName(chr);
-			} catch (Exception e) {
-				logger.error("Charset not supported {}", chr);
-			}
-		}
 		logger.info("Assuming charset {}", charset);
 
 		for (int i = 1; i < lastpage; i++) {
-			URL url = new URL(getBase(), Ckan.CATALOG
-				+ ".xml?page=" + String.valueOf(i));
+			URL url = new URL(getBase(), Ckan.CATALOG + ".xml?page=" + i);
 			String content = makeRequest(url, charset);
 			cache.storePage(url, "all", new Page(url, content));
 			if (content.length() < 1500) {
@@ -146,12 +119,14 @@ public abstract class CkanRDF extends Ckan {
 	}
 
 	/**
-	 * CKAN scraper.
-	 *
-	 * @param caching local cache file
-	 * @param base URL of the CKAN site
+	 * Constructor
+	 * 
+	 * @param prop
+	 * @throws IOException
 	 */
-	public CkanRDF(File caching, URL base) {
-		super(caching, base);
+	protected CkanRDF(Properties prop) throws IOException {
+		super(prop);
+		String chr = getProperty(prop, "charset");
+		this.charset = (chr != null) ? Charset.forName(chr) : StandardCharsets.UTF_8;
 	}
 }
