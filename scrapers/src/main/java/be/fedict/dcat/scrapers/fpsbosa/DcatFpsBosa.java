@@ -26,23 +26,25 @@
 package be.fedict.dcat.scrapers.fpsbosa;
 
 import be.fedict.dcat.scrapers.Dcat;
-import java.io.File;
+import java.io.IOException;
 
-import java.net.URL;
+import java.util.Properties;
+
 /**
- * Generic DCAT
+ * DCAT file for BeST opendata
  *
+ * @see https://opendata.bosa.be/
  * @author Bart Hanssens
  */
 public class DcatFpsBosa extends Dcat {
 	/**
 	 * Constructor
 	 * 
-	 * @param caching
-	 * @param base 
+	 * @param prop 
+	 * @throws IOException 
 	 */
-	public DcatFpsBosa(File caching, URL base) {
-		super(caching, base);
+	public DcatFpsBosa(Properties prop) throws IOException {
+		super(prop);
 		setName("fpsbosa");
 	}
 }

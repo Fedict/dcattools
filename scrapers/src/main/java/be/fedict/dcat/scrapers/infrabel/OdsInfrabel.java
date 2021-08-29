@@ -26,12 +26,13 @@
 package be.fedict.dcat.scrapers.infrabel;
 
 import be.fedict.dcat.scrapers.Ods;
-import java.io.File;
-import java.net.URL;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * OpenDataSoft InfraBel
  *
+ * @see https://opendata.infrabel.be/
  * @author Bart Hanssens
  */
 public class OdsInfrabel extends Ods {
@@ -39,11 +40,11 @@ public class OdsInfrabel extends Ods {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public OdsInfrabel(File caching, URL base) {
-		super(caching, base);
+	public OdsInfrabel(Properties prop) throws IOException {
+		super(prop);
 		setName("infrabel");
 	}
 }

@@ -31,13 +31,13 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Ods;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -46,6 +46,7 @@ import org.eclipse.rdf4j.rio.RDFParseException;
 /**
  * OpenDataSoft IWEPS.
  *
+ * @see https://www.iweps.be/outils/open-data/
  * @author Bart Hanssens
  */
 public class OdsIweps extends Ods {
@@ -89,11 +90,11 @@ public class OdsIweps extends Ods {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public OdsIweps(File caching, URL base) {
-		super(caching, base);
+	public OdsIweps(Properties prop) throws IOException {
+		super(prop);
 		setName("iweps");
 	}
 }

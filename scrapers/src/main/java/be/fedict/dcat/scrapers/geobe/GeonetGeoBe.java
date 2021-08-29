@@ -27,16 +27,19 @@ package be.fedict.dcat.scrapers.geobe;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.GeonetGmd;
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Properties;
+
 import org.dom4j.Node;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 
 /**
  * Scraper for the NGI Geo.be portal
  * 
+ * @see https://www.geo.be
  * @author Bart Hanssens
  */
 public class GeonetGeoBe extends GeonetGmd {
@@ -52,11 +55,11 @@ public class GeonetGeoBe extends GeonetGmd {
 	/**
 	 * Constructor
 	 * 
-	 * @param caching
-	 * @param base 
+	 * @param prop
+	 * @throws IOException 
 	 */
-	public GeonetGeoBe(File caching, URL base) {
-		super(caching, base);
+	public GeonetGeoBe(Properties prop) throws IOException {
+		super(prop);
 		setName("geobe");
 	}
 }

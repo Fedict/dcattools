@@ -31,13 +31,13 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Html;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Tag;
 
@@ -54,7 +54,8 @@ import org.jsoup.select.Elements;
 /**
  * Infocenter / federal statistics scraper.
  *
- * @author Bart.Hanssens
+ * @see https://infocenter.belgium.be
+ * @author Bart Hanssens
  */
 public class HtmlInfocenter extends Html {
 
@@ -234,11 +235,11 @@ public class HtmlInfocenter extends Html {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public HtmlInfocenter(File caching, URL base) {
-		super(caching, base);
+	public HtmlInfocenter(Properties prop) throws IOException {
+		super(prop);
 		setName("infocenter");
 	}
 }

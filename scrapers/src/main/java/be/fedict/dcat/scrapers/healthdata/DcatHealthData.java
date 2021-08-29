@@ -33,25 +33,24 @@ import be.fedict.dcat.scrapers.Dcat;
 import com.github.jsonldjava.utils.JsonUtils;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
 /**
- * Scraper for FAIR HealthData portal
- * The format returned by the API is almost JSON-LD
+ * Scraper for FAIR HealthData portal, the format returned by the API is almost JSON-LD
  *
+ * @see https://fair.healthdata.be/
  * @author Bart Hanssens
  */
 public class DcatHealthData extends Dcat {
@@ -128,11 +127,11 @@ public class DcatHealthData extends Dcat {
 	/**
 	 * Constructor
 	 * 
-	 * @param caching
-	 * @param base 
+	 * @param prop
+	 * @throws IOException 
 	 */
-	public DcatHealthData(File caching, URL base) {
-		super(caching, base);
+	public DcatHealthData(Properties prop) throws IOException {
+		super(prop);
 		setName("healthdata");
 	}
 }
