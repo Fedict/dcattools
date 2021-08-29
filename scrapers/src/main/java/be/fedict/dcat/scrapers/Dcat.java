@@ -47,7 +47,7 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  *
  * @author Bart Hanssens
  */
-public abstract class Dcat extends Scraper {
+public abstract class Dcat extends BaseScraper {
 
 	/**
 	 * Scrape DCAT catalog.

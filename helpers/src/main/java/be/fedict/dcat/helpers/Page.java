@@ -29,12 +29,12 @@ import java.io.Serializable;
 import java.net.URL;
 
 /**
- * Page helper class
+ * Page helper class, useful for storing in Cache
  * 
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public class Page implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 14846132166L;
             
     private URL url;
     private String content;

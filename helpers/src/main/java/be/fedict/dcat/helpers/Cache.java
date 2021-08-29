@@ -26,7 +26,9 @@
 package be.fedict.dcat.helpers;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 import java.util.Collections;
@@ -43,8 +45,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * Object store for keeping downloaded pages / feeds
+ * 
+ * @author Bart Hanssens
  */
 public class Cache {
     private final Logger logger = LoggerFactory.getLogger(Cache.class);
@@ -150,7 +153,15 @@ public class Cache {
 	 * @param f 
 	 */
     public Cache(File f) {
-        logger.info("Opening cache file " + f.getAbsolutePath());
+        logger.info("Opening cache file {}", f.getAbsolutePath());
+
+		if (f.exists()) {
+			try {
+				Files.delete(f.toPath());
+			} catch(IOException ioe) {
+				logger.error("Could not delete cache file {}", f, ioe);
+			}
+		}
         db = DBMaker.fileDB(f).make();
     }
 }

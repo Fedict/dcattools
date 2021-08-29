@@ -35,7 +35,7 @@ import java.util.Properties;
  *
  * @author Bart Hanssens
  */
-public abstract class Ckan extends Scraper {
+public abstract class Ckan extends BaseScraper {
 
 	// CKAN JSON fields
 	public final static String RESULT = "result";

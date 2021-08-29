@@ -56,7 +56,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Xls extends Scraper {
+public abstract class Xls extends BaseScraper {
 	/**
 	 * Convert an Excel numeric ID to a string
 	 *
