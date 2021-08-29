@@ -29,12 +29,12 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Ckan;
 import be.fedict.dcat.scrapers.CkanJson;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -43,9 +43,9 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
- * CKAN BTC-CTB. Currently (9/2016) the JSON version is more reliable than the
- * RDF
+ * CKAN BTC-CTB. Currently (9/2016) the JSON version is more reliable than the RDF
  *
+ * @see https://www.glo-be.be/
  * @author Bart Hanssens
  */
 public class CkanGlobe extends CkanJson {
@@ -85,11 +85,11 @@ public class CkanGlobe extends CkanJson {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public CkanGlobe(File caching, URL base) {
-		super(caching, base);
+	public CkanGlobe(Properties prop) throws IOException {
+		super(prop);
 		setName("globe");
 	}
 

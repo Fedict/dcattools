@@ -26,25 +26,25 @@
 package be.fedict.dcat.scrapers.openplanner;
 
 import be.fedict.dcat.scrapers.Dcat;
-import java.io.File;
 
-import java.net.URL;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
- * Scraper for OpenPlanner Team 
+ * Scraper for OpenPlanner Team
+ * 
  * @see https://openplanner.team/
- *
  * @author Bart Hanssens
  */
 public class DcatOpenPlanner extends Dcat {
 	/**
 	 * Constructor
 	 * 
-	 * @param caching
-	 * @param base 
+	 * @param prop
+	 * @throws IOException
 	 */
-	public DcatOpenPlanner(File caching, URL base) {
-		super(caching, base);
+	public DcatOpenPlanner(Properties prop) throws IOException {
+		super(prop);
 		setName("openplanner");
 	}
 }

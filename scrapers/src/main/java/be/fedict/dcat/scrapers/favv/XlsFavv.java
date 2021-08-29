@@ -29,7 +29,7 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Xls;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -37,6 +37,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.poi.ss.usermodel.Row;
 
@@ -47,11 +48,12 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
+ * FAVV-AFSCA
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @see https://www.favv-afsca.be/smiley/nl/
+ * @author Bart Hanssens
  */
 public class XlsFavv extends Xls {
-
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd");
 
 	public final static String ID = "dataset";
@@ -145,13 +147,13 @@ public class XlsFavv extends Xls {
 	}
 
 	/**
-	 * Constructor.
+	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public XlsFavv(File caching, URL base) {
-		super(caching, base);
+	public XlsFavv(Properties prop) throws IOException {
+		super(prop);
 		setName("favv");
 	}
 }

@@ -31,13 +31,13 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Html;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.swing.text.html.HTML.Attribute;
 
@@ -54,7 +54,8 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 /**
  * Scraper FPS Finance
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @see https://financien.belgium.be/nl/Statistieken_en_analysen
+ * @author Bart Hanssens
  */
 public class HtmlFpsFinance extends Html {
 
@@ -249,11 +250,11 @@ public class HtmlFpsFinance extends Html {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public HtmlFpsFinance(File caching, URL base) {
-		super(caching, base);
+	public HtmlFpsFinance(Properties prop) throws IOException {
+		super(prop);
 		setName("fpsfinance");
 	}
 }

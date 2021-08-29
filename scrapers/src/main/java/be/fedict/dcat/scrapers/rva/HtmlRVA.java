@@ -32,13 +32,13 @@ import be.fedict.dcat.scrapers.Html;
 
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
@@ -55,7 +55,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 
 
 /**
- * Scraper RVA-ONSS
+ * Scraper RVA-ONSS (work in progress)
  *
  * @author Bart Hanssens
  */
@@ -177,11 +177,11 @@ public class HtmlRVA extends Html {
 	/**
 	 * HTML scraper RVA/ONEM
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public HtmlRVA(File caching, URL base) {
-		super(caching, base);
+	public HtmlRVA(Properties prop) throws IOException {
+		super(prop);
 		setName("rva");
 	}
 

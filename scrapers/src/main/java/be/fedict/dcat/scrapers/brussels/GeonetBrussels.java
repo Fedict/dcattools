@@ -27,9 +27,9 @@ package be.fedict.dcat.scrapers.brussels;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.GeonetGmd;
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.Properties;
 import org.dom4j.Node;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -64,11 +64,11 @@ public class GeonetBrussels extends GeonetGmd {
 	/**
 	 * Constructor
 	 * 
-	 * @param caching
-	 * @param base 
+	 * @param prop
+	 * @throws IOException
 	 */
-	public GeonetBrussels(File caching, URL base) {
-		super(caching, base);
+	public GeonetBrussels(Properties prop) throws IOException {
+		super(prop);
 		setName("brussels");
 	}
 }

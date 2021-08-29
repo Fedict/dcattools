@@ -29,7 +29,7 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Xls;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -38,6 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -53,8 +54,9 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 /**
  * Scraper for PSI Belgium Excel export.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
+@Deprecated
 public class XlsPsiBelgium extends Xls {
 
 	public final static String ID = "contentid";
@@ -293,11 +295,11 @@ public class XlsPsiBelgium extends Xls {
 	/**
 	 * Constructor.
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public XlsPsiBelgium(File caching, URL base) {
-		super(caching, base);
+	public XlsPsiBelgium(Properties prop) throws IOException {
+		super(prop);
 		setName("psibelgium");
 	}
 }
