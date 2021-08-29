@@ -30,13 +30,13 @@ import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -63,8 +63,7 @@ public abstract class GeonetRDF extends Geonet {
 	 * @throws MalformedURLException
 	 */
 	@Override
-	public void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException {
+	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
 		String xml = map.get("all").getContent();
 
@@ -110,10 +109,10 @@ public abstract class GeonetRDF extends Geonet {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public GeonetRDF(File caching, URL base) {
-		super(caching, base);
+	protected GeonetRDF(Properties prop) throws IOException {
+		super(prop);
 	}
 }

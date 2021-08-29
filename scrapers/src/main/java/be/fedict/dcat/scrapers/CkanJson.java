@@ -30,7 +30,6 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
@@ -41,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.regex.Pattern;
 
 import javax.json.Json;
@@ -95,11 +95,9 @@ public abstract class CkanJson extends Ckan {
 	public final static String KEY = "key";
 	public final static String VALUE = "value";
 
-	public final static Pattern YEAR_PAT
-		= Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
+	public final static Pattern YEAR_PAT = Pattern.compile(".*((18|19|20)[0-9]{2}-(19|20)[0-9]{2}).*");
 	
-	public final static DateFormat DATEFMT
-		= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
+	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
 
 /**
      * Make HTTP GET request.
@@ -141,10 +139,9 @@ public abstract class CkanJson extends Ckan {
 	 * Get the list of all the CKAN packages (DCAT Dataset).
 	 *
 	 * @return List of URLs
-	 * @throws MalformedURLException
 	 * @throws IOException
 	 */
-	protected List<URL> scrapePackageList() throws MalformedURLException, IOException {
+	protected List<URL> scrapePackageList() throws IOException {
 		List<URL> urls = new ArrayList<>();
 		URL getPackages = new URL(getBase(), Ckan.API_LIST);
 
@@ -552,12 +549,11 @@ public abstract class CkanJson extends Ckan {
 	}
 
 	/**
-	 * CKAN scraper.
+	 * Constructor
 	 *
-	 * @param caching local cache file
-	 * @param base URL of the CKAN site
+	 * @param prop
 	 */
-	public CkanJson(File caching, URL base) {
-		super(caching, base);
+	protected CkanJson(Properties prop) throws IOException {
+		super(prop);
 	}
 }

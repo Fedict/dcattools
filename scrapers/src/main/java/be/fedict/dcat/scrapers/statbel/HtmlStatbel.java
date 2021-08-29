@@ -29,9 +29,9 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.scrapers.Html;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 
 import javax.swing.text.html.HTML;
 
@@ -101,10 +101,10 @@ public abstract class HtmlStatbel extends Html {
 	/**
 	 * HTML parser for Statbel publications
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	protected HtmlStatbel(File caching, URL base) {
-		super(caching, base);
+	protected HtmlStatbel(Properties prop) throws IOException {
+		super(prop);
 	}
 }

@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -232,10 +233,9 @@ public abstract class Xls extends Scraper {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base path to file
+	 * @param prop
 	 */
-	public Xls(File caching, URL base) {
-		super(caching, base);
+	protected Xls(Properties prop) throws IOException {
+		super(prop);
 	}
 }

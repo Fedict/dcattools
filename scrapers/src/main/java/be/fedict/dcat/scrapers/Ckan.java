@@ -25,8 +25,8 @@
  */
 package be.fedict.dcat.scrapers;
 
-import java.io.File;
-import java.net.URL;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Abstract scraper for CKAN portals.
@@ -53,7 +53,13 @@ public abstract class Ckan extends Scraper {
 	public final static String ORG = "/organization";
 	public final static String RESOURCE = "/resource/";
 
-	protected Ckan(File caching, URL base) {
-		super(caching, base);
+	/**
+	 * Constructor
+	 * 
+	 * @param prop 
+	 * @throws java.io.IOException 
+	 */
+	protected Ckan(Properties prop) throws IOException {
+		super(prop);
 	}
 }

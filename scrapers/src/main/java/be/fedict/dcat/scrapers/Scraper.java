@@ -64,7 +64,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Scraper scraper class
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class Scraper extends Fetcher {
 
@@ -72,15 +72,13 @@ public abstract class Scraper extends Fetcher {
 
 	public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
 
-	private Properties prop = null;
-	private String prefix = "";
+	private Cache cache = null;
+	private Storage store = null;
+	private URL base = null;
 
 	private String defLang = "";
 	private String[] allLangs = {};
 
-	private Cache cache = null;
-	private Storage store = null;
-	private URL base = null;
 	private String name = "";
 
 	private final static HashFunction HASHER = Hashing.sha1();
@@ -165,7 +163,7 @@ public abstract class Scraper extends Fetcher {
 	 * @param href
 	 * @return file extension or empty string
 	 */
-	public String getFileExt(String href) {
+	public final String getFileExt(String href) {
 		String ext = "";
 		int dot = href.lastIndexOf('.');
 		if (dot > 0) {
@@ -224,7 +222,7 @@ public abstract class Scraper extends Fetcher {
 	 * @return URL
 	 * @throws MalformedURLException
 	 */
-	public URL makeDatasetURL(String id) throws MalformedURLException {
+	public final URL makeDatasetURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
 			+ id.replace(".", "-").replace(":", "-"));
 	}
@@ -236,7 +234,7 @@ public abstract class Scraper extends Fetcher {
 	 * @return URL
 	 * @throws java.net.MalformedURLException
 	 */
-	public URL makeDistURL(String id) throws MalformedURLException {
+	public final URL makeDistURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
 			+ id.replace(".", "-").replace(":", "-"));
 	}
@@ -248,7 +246,7 @@ public abstract class Scraper extends Fetcher {
 	 * @return URL
 	 * @throws java.net.MalformedURLException
 	 */
-	public URL makeOrgURL(String id) throws MalformedURLException {
+	public final URL makeOrgURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
 	}
 
@@ -267,25 +265,6 @@ public abstract class Scraper extends Fetcher {
 		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
 	}
 
-	/**
-	 * Set property from config file and property prefix.
-	 *
-	 * @param prop
-	 * @param prefix
-	 */
-	public final void setProperties(Properties prop, String prefix) {
-		this.prop = prop;
-		this.prefix = prefix;
-	}
-
-	public Properties getProperties() {
-		return this.prop;
-	}
-
-	public String getPrefix() {
-		return this.prefix;
-	}
-	
 	/**
 	 * Generate temporal triples
 	 *
@@ -362,8 +341,19 @@ public abstract class Scraper extends Fetcher {
 	/**
 	 * Fetch all metadata from repository / site
 	 *
+	 * @param cache cache file
 	 * @throws IOException
 	 */
+	public final void scrape(File cache) throws IOException {
+		this.cache = new Cache(cache);
+		scrape();
+	}
+
+	/**
+	 * Fetch all metadata from repository / site
+	 *
+	 * @throws java.io.IOException
+	 */	
 	public abstract void scrape() throws IOException;
 
 	/**
@@ -435,14 +425,48 @@ public abstract class Scraper extends Fetcher {
 	}
 
 	/**
-	 * Constructor
+	 * Get required property
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop properties
+	 * @param name unprefixed property
+	 * @return value of the property
+	 * @throws IOException if property is empty
 	 */
-	protected Scraper(File caching, URL base) {
-		cache = new Cache(caching);
-		store = new Storage();
-		this.base = base;
+	public final String getRequiredProperty(Properties prop, String name) throws IOException {
+		String value = prop.getProperty(Scraper.PROP_PREFIX + "." + name, "");
+		if (value.isEmpty()) {
+			throw new IOException("Property missing: " + name);
+		}
+		return value;
+	}
+
+	/**
+	 * Get optional property
+	 *
+	 * @param prop properties
+	 * @param name unprefixed property
+	 * @return property value
+	 */
+	public final String getProperty(Properties prop, String name) {
+		String value = prop.getProperty(Scraper.PROP_PREFIX + "." + name);
+		if (value == null) {
+			logger.warn("No property {}", name);
+		}
+		return value;
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param prop
+	 * @throws IOException 
+	 */
+	protected Scraper(Properties prop) throws IOException {
+		this.base = new URL(getRequiredProperty(prop, "url"));
+		this.defLang = getRequiredProperty(prop, "deflanguage");
+		this.allLangs = getRequiredProperty(prop, "languages").split(",");
+
+		String delay = prop.getProperty(Scraper.PROP_PREFIX + ".http.delay", "500");
+		setDelay(Integer.valueOf(delay));
 	}
 }

@@ -32,13 +32,13 @@ import be.fedict.dcat.scrapers.Html;
 
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.text.html.HTML.Attribute;
 
 import org.jsoup.Jsoup;
@@ -52,14 +52,14 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
- * Scraper BIPT
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * Scraper WIV-ISP Covid data
+ * 
+ * @see https://epistat.wiv-isp.be/covid/
+ * @author Bart Hanssens
  */
 public class HtmlWIV extends Html {
 	private final static String H_TITLE = "h2";
 	private final static String SECTION_P = "section#Covid p";
-	//private final static String DIST_LINKS = "section#Data ul li";
 	private final static String DIST_ROW = "table.table tbody tr";
 	
 	private final static String HREFS = "a";
@@ -177,13 +177,13 @@ public class HtmlWIV extends Html {
 	}
 
 	/**
-	 * HTML scraper FPS Mobility.
+	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public HtmlWIV(File caching, URL base) {
-		super(caching, base);
+	public HtmlWIV(Properties prop) throws IOException {
+		super(prop);
 		setName("wiv");
 	}
 }

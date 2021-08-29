@@ -32,12 +32,12 @@ import be.fedict.dcat.scrapers.Html;
 
 import be.fedict.dcat.vocab.MDR_LANG;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.swing.text.html.HTML.Attribute;
 
@@ -54,7 +54,8 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 /**
  * Scraper BIPT
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @see https://www.bipt.be/consumers/open-data
+ * @author Bart Hanssens
  */
 public class HtmlBIPT extends Html {
 	private final static String PAGE = "/opendata";
@@ -236,13 +237,13 @@ public class HtmlBIPT extends Html {
 	}
 
 	/**
-	 * HTML scraper BIPT.
+	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public HtmlBIPT(File caching, URL base) {
-		super(caching, base);
+	public HtmlBIPT(Properties prop) throws IOException {
+		super(prop);
 		setName("bipt");
 	}
 }

@@ -26,13 +26,14 @@
 package be.fedict.dcat.scrapers.wallonie;
 
 import be.fedict.dcat.scrapers.Ods;
-import java.io.File;
-import java.net.URL;
+import java.io.IOException;
+import java.util.Properties;
 
 
 /**
- * OpenDataSoft Wallonie
+ * OpenDataSoft Wallonie-Bruxelles (ODWB)
  *
+ * @see https://www.odwb.be/
  * @author Bart Hanssens
  */
 public class OdsWallonie extends Ods {
@@ -40,11 +41,11 @@ public class OdsWallonie extends Ods {
 	/**
 	 * Constructor
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public OdsWallonie(File caching, URL base) {
-		super(caching, base);
+	public OdsWallonie(Properties prop) throws IOException {
+		super(prop);
 		setName("wallonie");
 	}
 }

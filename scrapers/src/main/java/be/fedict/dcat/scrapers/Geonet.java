@@ -25,8 +25,8 @@
  */
 package be.fedict.dcat.scrapers;
 
-import java.io.File;
-import java.net.URL;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Abstract scraper for the GeonetRDF v3 portal software with DCAT export.
@@ -40,10 +40,10 @@ public abstract class Geonet extends Scraper {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public Geonet(File caching, URL base) {
-		super(caching, base);
+	protected Geonet(Properties prop) throws IOException {
+		super(prop);
 	}
 }

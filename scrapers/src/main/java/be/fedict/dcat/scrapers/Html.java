@@ -29,12 +29,12 @@ import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 
@@ -66,8 +66,7 @@ public abstract class Html extends Scraper {
 	 * @throws MalformedURLException
 	 */
 	@Override
-	public void generateDcat(Cache cache, Storage store)
-			throws RepositoryException, MalformedURLException {
+	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
 		logger.info("Generate DCAT");
 
 		/* Get the list of all datasets */
@@ -140,10 +139,10 @@ public abstract class Html extends Scraper {
 	/**
 	 * Constructor
 	 *
-	 * @param caching DB cache file
-	 * @param base base URL
+	 * @param prop
+	 * @throws IOException
 	 */
-	public Html(File caching, URL base) {
-		super(caching, base);
+	protected Html(Properties prop) throws IOException {
+		super(prop);
 	}
 }

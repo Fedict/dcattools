@@ -26,25 +26,24 @@
 package be.fedict.dcat.scrapers.vlaanderen;
 
 import be.fedict.dcat.scrapers.CkanRDF;
-import java.io.File;
-import java.net.URL;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * CKAN Vlaanderen via DCAT-AP catalog.
  *
  * @see https://opendata.vlaanderen.be/
- * 
  * @author Bart Hanssens
  */
 public class CkanVlaanderen extends CkanRDF {
 	/**
-	 * CKAN parser for Vlaams Open Data Portaal (rdf).
+	 * Constructor.
 	 *
-	 * @param caching
-	 * @param base
+	 * @param prop
+	 * @throws IOException
 	 */
-	public CkanVlaanderen(File caching, URL base) {
-		super(caching, base);
+	public CkanVlaanderen(Properties prop) throws IOException {
+		super(prop);
 		setName("vlaanderen");
 	}
 }
