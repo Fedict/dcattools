@@ -68,7 +68,7 @@ public class Main {
 		Properties prop = null;
 		String file = "/be/fedict/dcat/scrapers/" + name + "/scraper.properties";
 
-		try(InputStream is = Scraper.class.getResourceAsStream(file)) {
+		try(InputStream is = BaseScraper.class.getResourceAsStream(file)) {
 			prop = new Properties();
 			prop.load(is);
 		} catch (IOException ex) {
@@ -82,12 +82,12 @@ public class Main {
 	 *
 	 * @param prop propertie for additional configuration
 	 */
-	private static Scraper configureScraper(Properties prop) {
-		Scraper s = null;
+	private static BaseScraper configureScraper(Properties prop) {
+		BaseScraper s = null;
 
 		try {
-			String cname = prop.getProperty(Scraper.PROP_PREFIX + ".classname");
-			Class<? extends Scraper> c = Class.forName(cname).asSubclass(Scraper.class);
+			String cname = prop.getProperty(BaseScraper.PROP_PREFIX + ".classname");
+			Class<? extends BaseScraper> c = Class.forName(cname).asSubclass(BaseScraper.class);
 			s = c.getConstructor(Properties.class).newInstance(prop);
 		} catch (ClassNotFoundException | InstantiationException | NoSuchMethodException
 				| IllegalAccessException | InvocationTargetException ex) {
@@ -115,7 +115,7 @@ public class Main {
 		}
 
 		// find and load specific scraper
-		Scraper scraper = configureScraper(prop);
+		BaseScraper scraper = configureScraper(prop);
 		if (scraper != null) {
 			String dir = (args.length == 2) ? args[1] : ".";
 			String dataDir = String.join(File.separator, dir, "data", args[0]);

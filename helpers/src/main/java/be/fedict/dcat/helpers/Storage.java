@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.helpers;
 
-
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 
@@ -74,8 +73,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * RDF store helper class
+ * 
+ * @author Bart Hanssens
  */
 public class Storage {
     private final Logger logger = LoggerFactory.getLogger(Storage.class);

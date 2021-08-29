@@ -43,7 +43,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  *
  * @author Bart Hanssens <bart.hanssens@fedict.be>
  */
-public abstract class Html extends Scraper {
+public abstract class Html extends BaseScraper {
 
 	/**
 	 * Generate DCAT Dataset

@@ -35,7 +35,7 @@ import java.util.Properties;
  *
  * @author Bart Hanssens
  */
-public abstract class Geonet extends Scraper {
+public abstract class Geonet extends BaseScraper {
 
 	/**
 	 * Constructor

@@ -40,8 +40,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * Helper class for fetching data over HTTP(s)
+ * 
+ * @author Bart Hanssens
  */
 public class Fetcher {
     private final Logger logger = LoggerFactory.getLogger(Fetcher.class);
@@ -75,10 +76,11 @@ public class Fetcher {
 		if (delay >= 500) {
 			this.delay = delay;
 			logger.info("Setting delay to {} ms", delay);
+		} else {
+			logger.warn("Delay of {} ms is too low", delay);
 		}
-		logger.warn("Delay of {} ms is too low", delay);
     }
-    
+
 
     /**
      * Make HTTP GET request, assuming UTF8 response
