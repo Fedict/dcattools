@@ -1,0 +1,10 @@
+# extra queries to be executed and data to be loaded 
+btcctb/sparql-theme.txt
+btcctb/data-org.ttl
+sparql-map-org.txt
+btcctb/sparql-contact.txt
+data-license.ttl
+sparql-map-license.txt
+data-media.ttl
+sparql-map-media.txt
+clear-skos.txt

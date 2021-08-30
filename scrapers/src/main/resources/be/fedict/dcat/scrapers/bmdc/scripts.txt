@@ -4,7 +4,7 @@ bmdc/sparql-org.qry
 bmdc/data-theme.ttl
 sparql-map-theme.qry
 bmdc/sparql-default-theme.qry
-bmdc/data-freq.ttl
+data-freq.ttl
 sparql-map-frequency.qry
 sparql-geo-belgium.qry
 data-media.ttl

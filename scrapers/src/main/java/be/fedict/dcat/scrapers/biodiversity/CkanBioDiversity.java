@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.scrapers.biodiv;
+package be.fedict.dcat.scrapers.biodiversity;
 
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.CkanJson;
@@ -45,7 +45,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  * @see http://www.biodiversity.be/
  * @author Bart Hanssens
  */
-public class CkanBioDiv extends CkanJson {
+public class CkanBioDiversity extends CkanJson {
 
 	// CKAN fields
 	public final static String ADMIN_CONTACT = "administrative_contact";
@@ -84,7 +84,7 @@ public class CkanBioDiv extends CkanJson {
 	 * @param prop
 	 * @throws IOException
 	 */
-	public CkanBioDiv(Properties prop) throws IOException {
+	public CkanBioDiversity(Properties prop) throws IOException {
 		super(prop);
 		setName("biodiv");
 	}

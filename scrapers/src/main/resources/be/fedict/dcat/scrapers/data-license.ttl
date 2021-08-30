@@ -36,3 +36,8 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0> ;
 	skos:prefLabel "CC-BY-NC" ;
 	skos:altLabel "This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License." .
+
+<http://data.gov.be/en/taxonomy/term/212>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/ODC_PDDL> ;
+	skos:prefLabel "ODC PDDL" ;
+	skos:altLabel "odc-pddl" .
