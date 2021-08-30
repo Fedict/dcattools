@@ -1,0 +1,18 @@
+# extra queries to be executed and data to be loaded 
+bmdc/data-publ.ttl
+bmdc/sparql-org.qry
+bmdc/data-theme.ttl
+sparql-map-theme.qry
+bmdc/sparql-default-theme.qry
+bmdc/data-freq.ttl
+sparql-map-frequency.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry
+sparql-dist-accessurl.qry
+bmdc/sparql-fix-language.qry
+sparql-dist-lang.qry
+sparql-vcard-fn.qry
+data-license.ttl
+sparql-map-license.qry

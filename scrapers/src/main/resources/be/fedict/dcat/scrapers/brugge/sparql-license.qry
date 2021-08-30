@@ -1,0 +1,12 @@
+# Set license to Bruges open data license
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/244> .
+		?dist dcterms:license <https://www.brugge.be/handleiding-open-data-brugge-(versie-februari-2017)#id> .
+		?dist dcterms:rights <https://www.brugge.be/handleiding-open-data-brugge-(versie-februari-2017)> }
+WHERE
+	{	?dist a dcat:Distribution }

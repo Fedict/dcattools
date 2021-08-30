@@ -1,0 +1,9 @@
+# Map publisher to semi-official Crossroad Bank Enterprises URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0353_070_496> }
+WHERE
+	{	?dataset a dcat:Dataset }

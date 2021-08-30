@@ -1,0 +1,39 @@
+# Data for mapping frequency names to an EU list of frequencies
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/20>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
+	skos:prefLabel "Continuously"@en ;
+	skos:altLabel "continual" .
+	
+<http://data.gov.be/en/taxonomy/term/22>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
+	skos:prefLabel "Daily"@en ;
+	skos:altLabel "daily" .
+
+<http://data.gov.be/en/taxonomy/term/27>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/QUARTERLY> ;
+	skos:prefLabel "Quarterly"@en ;
+	skos:altLabel "quarterly" .
+
+<http://data.gov.be/en/taxonomy/term/30>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
+	skos:prefLabel "Annual"@en ;
+	skos:altLabel "annually" .
+	
+<http://data.gov.be/en/taxonomy/term/192>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+	skos:prefLabel "Irregular"@en ;
+	skos:altLabel "asNeeded", "irregular" .
+
+<http://data.gov.be/en/taxonomy/term/390>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+	skos:prefLabel "Never"@en ;
+	skos:altLabel "notPlanned" .
+
+<http://data.gov.be/en/taxonomy/term/391>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+	skos:prefLabel "Unknown"@en ;
+	skos:altLabel "unknown" .
+	
