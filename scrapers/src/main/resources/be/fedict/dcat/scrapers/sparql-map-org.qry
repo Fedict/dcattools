@@ -1,0 +1,23 @@
+# Map publisher to semi-official Crossroad Bank Enterprises URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dataset dcterms:publisher ?org .
+		?org a foaf:Organization .
+		?org foaf:name ?label }
+INSERT 
+	{ 	?dataset dcterms:publisher ?neworg .
+		?neworg a foaf:Organization .
+		?neworg dgov:org ?drupal .
+		?neworg foaf:name ?name }
+WHERE
+	{	?dataset dcterms:publisher ?org .
+		?org a foaf:Organization .
+		?org foaf:name ?label .
+		?drupal skos:altLabel ?label .
+		?drupal skos:exactMatch ?neworg .
+		?drupal skos:prefLabel ?name }

@@ -26,9 +26,7 @@
 package be.fedict.dcat.helpers;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.util.ArrayList;
 
 import java.util.Collections;
@@ -154,14 +152,6 @@ public class Cache {
 	 */
     public Cache(File f) {
         logger.info("Opening cache file {}", f.getAbsolutePath());
-
-		if (f.exists()) {
-			try {
-				Files.delete(f.toPath());
-			} catch(IOException ioe) {
-				logger.error("Could not delete cache file {}", f, ioe);
-			}
-		}
         db = DBMaker.fileDB(f).make();
     }
 }

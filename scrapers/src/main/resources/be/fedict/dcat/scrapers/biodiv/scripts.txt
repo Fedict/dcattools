@@ -1,0 +1,15 @@
+# extra queries to be executed and data to be loaded 
+biodiv/sparql-dist.qry
+biodiv/sparql-language.qry
+sparql-tag-language.qry
+biodiv/sparql-theme.qry
+biodiv/data-geo.ttl
+sparql-map-geo.qry
+sparql-geo-belgium.qry
+biodiv/data-org.ttl
+sparql-map-org.qry
+biodiv/data-contact.ttl
+biodiv/sparql-default-contact.qry
+sparql-title-to-desc.qry
+clear-skos.qry
+sparql-strip-html.qry

@@ -1,0 +1,12 @@
+# Use the title as default description if the description is missing, 
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT { ?s dcterms:description ?title }
+WHERE {
+	?s a dcat:Dataset .
+	?s dcterms:title ?title 
+	FILTER NOT EXISTS { ?s dcterms:description ?desc }
+}
+

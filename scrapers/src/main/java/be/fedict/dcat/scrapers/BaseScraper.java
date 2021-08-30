@@ -35,20 +35,22 @@ import be.fedict.dcat.vocab.SCHEMA;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Writer;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -57,6 +59,7 @@ import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.XSD;
 import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,12 +69,12 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bart Hanssens
  */
-public abstract class BaseScraper extends Fetcher implements Scraper {
-
+public abstract class BaseScraper extends Fetcher implements Scraper, AutoCloseable {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-	public final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
-
+	protected final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
+	protected final static String PKG_PREFIX = "/be/fedict/dcat/scrapers";
+	
 	private Cache cache = null;
 	private Storage store = null;
 	private URL base = null;
@@ -83,14 +86,14 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 
 	private final static HashFunction HASHER = Hashing.sha1();
 
-	public final static String TODAY = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	protected final static String TODAY = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
 	/**
 	 * Get cache
 	 *
 	 * @return local cache file
 	 */
-	public final Cache getCache() {
+	protected Cache getCache() {
 		return cache;
 	}
 
@@ -108,7 +111,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 *
 	 * @param lang language code
 	 */
-	public final void setDefaultLang(String lang) {
+	public void setDefaultLang(String lang) {
 		this.defLang = lang;
 	}
 
@@ -117,7 +120,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 *
 	 * @return language language code
 	 */
-	public final String getDefaultLang() {
+	public String getDefaultLang() {
 		return defLang;
 	}
 
@@ -126,7 +129,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 *
 	 * @param langs array of language codes
 	 */
-	public final void setAllLangs(String langs[]) {
+	public void setAllLangs(String[] langs) {
 		this.allLangs = langs;
 	}
 
@@ -135,7 +138,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 *
 	 * @return array of language codes
 	 */
-	public final String[] getAllLangs() {
+	public String[] getAllLangs() {
 		return allLangs;
 	}
 
@@ -144,7 +147,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 *
 	 * @param name name
 	 */
-	public final void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -153,7 +156,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 *
 	 * @return name
 	 */
-	public final String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -163,7 +166,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @param href
 	 * @return file extension or empty string
 	 */
-	public final String getFileExt(String href) {
+	protected String getFileExt(String href) {
 		String ext = "";
 		int dot = href.lastIndexOf('.');
 		if (dot > 0) {
@@ -186,7 +189,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @param s
 	 * @return
 	 */
-	public final String makeHashId(String s) {
+	protected String makeHashId(String s) {
 		return HASHER.hashBytes(s.getBytes()).toString();
 	}
 
@@ -197,7 +200,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return
 	 * @throws MalformedURLException
 	 */
-	public final URL makeAbsURL(String rel) throws MalformedURLException {
+	protected URL makeAbsURL(String rel) throws MalformedURLException {
 		// Check if URL is already absolute
 		if (rel.startsWith("http:") || rel.startsWith("https:")) {
 			return new URL(rel);
@@ -211,7 +214,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return URL
 	 * @throws MalformedURLException
 	 */
-	public URL makeCatalogURL() throws MalformedURLException {
+	protected URL makeCatalogURL() throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + getName());
 	}
 
@@ -222,7 +225,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return URL
 	 * @throws MalformedURLException
 	 */
-	public final URL makeDatasetURL(String id) throws MalformedURLException {
+	protected URL makeDatasetURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
 			+ id.replace(".", "-").replace(":", "-"));
 	}
@@ -234,7 +237,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return URL
 	 * @throws java.net.MalformedURLException
 	 */
-	public final URL makeDistURL(String id) throws MalformedURLException {
+	protected URL makeDistURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
 			+ id.replace(".", "-").replace(":", "-"));
 	}
@@ -246,7 +249,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return URL
 	 * @throws java.net.MalformedURLException
 	 */
-	public final URL makeOrgURL(String id) throws MalformedURLException {
+	protected URL makeOrgURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
 	}
 
@@ -258,9 +261,9 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return URL
 	 * @throws java.net.MalformedURLException
 	 */
-	public URL makeTemporalURL(String start, String end) throws MalformedURLException {
-		String s[] = start.split("T");
-		String e[] = end.split("T");
+	protected URL makeTemporalURL(String start, String end) throws MalformedURLException {
+		String[] s = start.split("T");
+		String[] e = end.split("T");
 
 		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
 	}
@@ -275,7 +278,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @param sep date separator
 	 * @throws MalformedURLException
 	 */
-	public void generateTemporal(Storage store, IRI dataset, String str, Pattern p, String sep)
+	protected void generateTemporal(Storage store, IRI dataset, String str, Pattern p, String sep)
 		throws MalformedURLException {
 		Matcher m = p.matcher(str);
 		if (!m.matches()) {
@@ -296,7 +299,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @param end end date
 	 * @throws MalformedURLException
 	 */
-	public void generateTemporal(Storage store, IRI dataset, String start, String end)
+	protected void generateTemporal(Storage store, IRI dataset, String start, String end)
 		throws MalformedURLException {
 		String s = start.trim();
 
@@ -339,17 +342,48 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	}
 
 	@Override
-	public final void scrape(File cache) throws IOException {
-		this.cache = new Cache(cache);
-		scrape();
+	public void enhance() throws IOException {
+		List<String> scripts = loadScripts();
+		
+		for (String script: scripts) {
+			if (script.endsWith("ttl")) {
+				logger.info("Loading data from {}", script);
+				try(InputStream is = BaseScraper.class.getResourceAsStream(script)) {
+					store.add(is, RDFFormat.TURTLE);
+				}
+			} else if (script.endsWith("qry")) {
+				logger.info("Execute query {}", script);
+				try(InputStream is = BaseScraper.class.getResourceAsStream(script);
+					BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+					String sparql = r.lines().collect(Collectors.joining(System.lineSeparator()));
+					store.queryUpdate(sparql);
+				}
+			}
+		}
 	}
 
 	/**
-	 * Fetch all metadata from repository / site
-	 *
-	 * @throws java.io.IOException
-	 */	
-	public abstract void scrape() throws IOException;
+	 * Load script file names from resources scripts.txt file
+	 * 
+	 * @param name name of the scraper
+	 * @return list of file names
+	 */
+	private List<String> loadScripts() throws IOException {
+		List<String> scripts;
+
+		String file = PKG_PREFIX + "/" + getName() + "/scripts.txt";
+
+		try(InputStream is = BaseScraper.class.getResourceAsStream(file);
+			BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+			scripts = r.lines().filter(s -> !s.startsWith("#"))		// remove comments
+								.filter(s -> !s.isBlank())			// remove empty lines
+								.map(s -> PKG_PREFIX + "/" + s)			// add prefix
+								.collect(Collectors.toList());
+		}
+		logger.info("Found {} scripts", scripts.size());
+
+		return scripts;
+	}
 
 	/**
 	 * Extra DCAT catalog info
@@ -402,16 +436,22 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	public abstract void generateDcat(Cache cache, Storage store)
 		throws RepositoryException, MalformedURLException;
 
-
 	@Override
-	public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
-		store.startup();
-
+	public void generateDcat() throws RepositoryException, MalformedURLException {
 		generateDcat(cache, store);
 
-		cache.shutdown();
+	}
+		
+	@Override
+	public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
 		store.write(out);
-		store.shutdown();
+
+	}
+
+	@Override
+	public void close() {
+		cache.shutdown();
+		store.shutdown();		
 	}
 
 	/**
@@ -422,7 +462,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @return value of the property
 	 * @throws IOException if property is empty
 	 */
-	public final String getRequiredProperty(Properties prop, String name) throws IOException {
+	protected String getRequiredProperty(Properties prop, String name) throws IOException {
 		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name, "");
 		if (value.isEmpty()) {
 			throw new IOException("Property missing: " + name);
@@ -437,7 +477,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 * @param name unprefixed property
 	 * @return property value
 	 */
-	public final String getProperty(Properties prop, String name) {
+	protected String getProperty(Properties prop, String name) {
 		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name);
 		if (value == null) {
 			logger.warn("No property {}", name);
@@ -453,10 +493,14 @@ public abstract class BaseScraper extends Fetcher implements Scraper {
 	 */
 	protected BaseScraper(Properties prop) throws IOException {
 		this.base = new URL(getRequiredProperty(prop, "url"));
+		this.store = new Storage();
 		this.defLang = getRequiredProperty(prop, "deflanguage");
 		this.allLangs = getRequiredProperty(prop, "languages").split(",");
+		this.cache = new Cache(new File(getRequiredProperty(prop, "cache")));
 
 		String delay = prop.getProperty(BaseScraper.PROP_PREFIX + ".http.delay", "500");
 		setDelay(Integer.valueOf(delay));
+		
+		store.startup();
 	}
 }
