@@ -40,8 +40,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * Executes a scraper, using the per-scraper properties file from resource jar
+ * 
+ * @author Bart Hanssens
  */
 public class Main {
 
@@ -59,20 +60,21 @@ public class Main {
 
 
 	/**
-	 * Load properties from resources
+	 * Load properties from resources scraper.properties file
 	 * 
 	 * @param name name of the scraper
 	 * @return properties or null
 	 */
 	private static Properties loadProperties(String name) {
 		Properties prop = null;
-		String file = "/be/fedict/dcat/scrapers/" + name + "/scraper.properties";
+		String file = BaseScraper.PKG_PREFIX + "/" + name + "/scraper.properties";
 
-		try(InputStream is = BaseScraper.class.getResourceAsStream(file)) {
+		logger.info("Read properties from {}", file);
+		try(InputStream is = Main.class.getResourceAsStream(file)) {
 			prop = new Properties();
 			prop.load(is);
 		} catch (IOException ex) {
-			logger.error("Exception while reading {}", file, ex);
+			logger.error("Exception while properties {}", file, ex);
 		}
 		return prop;
 	}
@@ -113,24 +115,33 @@ public class Main {
 		if (prop == null) {
 			exit(-2);
 		}
+		
+		String dir = (args.length == 2) ? args[1] : ".";
+		String dataDir = String.join(File.separator, dir, "data", args[0]);
+		String cache = String.join(File.separator, dataDir, "cache");
+
+		prop.setProperty(BaseScraper.PROP_PREFIX + ".cache", cache);
 
 		// find and load specific scraper
-		BaseScraper scraper = configureScraper(prop);
-		if (scraper != null) {
-			String dir = (args.length == 2) ? args[1] : ".";
-			String dataDir = String.join(File.separator, dir, "data", args[0]);
-			String cache = String.join(File.separator, dataDir, "cache");
-
-			// output file
-			String outfile = String.join(File.separator, dataDir, scraper.getName() + ".nt");
-
-			try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {
-				scraper.scrape(new File(cache));
-				scraper.writeDcat(bw);
-			} catch (IOException ex) {
-				logger.error("Error while scraping to {}", ex, outfile);
-				exit(-5);
+		try (BaseScraper scraper = configureScraper(prop)) {
+			if (scraper != null) {
+				// output file
+				//scraper.scrape();
+				scraper.generateDcat();
+				scraper.enhance();
+					
+				String outfile = String.join(File.separator, dataDir, scraper.getName() + ".nt");
+				logger.info("Write results to {}", outfile);
+				try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {
+					scraper.writeDcat(bw);
+				} catch (IOException ex) {
+					logger.error("Error while writing to {}", ex, outfile);
+					exit(-5);
+				}
 			}
+		} catch (IOException ex) {
+			logger.error("Error while scraping", ex);
+			exit(-6);
 		}
 	}
 }

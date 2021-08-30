@@ -25,7 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -35,6 +34,28 @@ import java.io.Writer;
  * @author Bart Hanssens
  */
 public interface Scraper {
+
+	/**
+	 * Fetch all metadata from repository / site into a cache
+	 *
+	 * @throws IOException
+	 */
+	public void scrape() throws IOException;
+
+	/**
+	 * Generate DCAT-AP from cache
+	 *
+	 * @throws IOException
+	 */
+	public void generateDcat() throws IOException;
+
+	/**
+	 * Run additional scripts, if any
+	 *
+	 * @throws IOException
+	 */	
+	public void enhance() throws IOException;
+
 	/**
 	 * Write DCAT-AP triples to a writer
 	 * 
@@ -42,12 +63,4 @@ public interface Scraper {
 	 * @throws IOException 
 	 */
 	public void writeDcat(Writer w) throws IOException;
-
-	/**
-	 * Fetch all metadata from repository / site
-	 *
-	 * @param cache cache file
-	 * @throws IOException
-	 */
-	public void scrape(File cache) throws IOException;
 }
