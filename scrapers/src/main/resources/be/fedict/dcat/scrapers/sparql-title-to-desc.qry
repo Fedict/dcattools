@@ -1,4 +1,4 @@
-# Use the title as default description if the description is missing, 
+# Use the title as default description if the description is missing
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>

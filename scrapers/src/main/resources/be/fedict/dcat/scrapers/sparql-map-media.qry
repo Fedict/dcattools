@@ -1,0 +1,28 @@
+# Map file formats to an EU list of well known URIs and mimetypes
+# Typically file formats are described as text instead of URIs, or use portal-specific URIs
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dist ?prop ?label . 
+		?dist dcterms:FileFormat ?fmt }
+INSERT 
+	{ 	?dist dgov:mediaType ?drupal .
+		?dist dcterms:format ?auth .
+		?dist dcat:mediaType ?mime .
+		?auth a dcterms:mediaTypeOrExtent  .
+		?auth rdfs:label ?imt 
+	}
+WHERE
+	{	?dist ?prop ?label .
+		?drupal skos:altLabel ?label .
+		?drupal skos:prefLabel ?imt .
+		?drupal skos:closeMatch ?mime .
+		?drupal skos:exactMatch ?auth .
+		OPTIONAL { ?dist dcterms:FileFormat ?fmt }
+		VALUES ?prop { dcat:mediaType dcterms:format }
+	}

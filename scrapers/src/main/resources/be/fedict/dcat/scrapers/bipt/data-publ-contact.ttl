@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0243_405_860>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/392> ;
+	foaf:name "BIPT"@en, "BIPT"@nl, "IBPT"@fr ;
+	foaf:homepage <https://bipt.be> .
+	
+<http://data.gov.be/org/bipt/contact>
+	a vcard:Organization ;
+	vcard:fn "BIPT"@en, "BIPT"@nl, "IBPT"@fr ;
+	vcard:hasUrl <https://bipt-data.be> ;
+	vcard:hasEmail <mailto:info@bipt.be> .

@@ -1,0 +1,9 @@
+# extra queries to be executed and data to be loaded 
+bipt/data-publ-contact.ttl
+bipt/sparql-publ-contact.qry
+bipt/sparql-license.qry
+bipt/sparql-theme.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry

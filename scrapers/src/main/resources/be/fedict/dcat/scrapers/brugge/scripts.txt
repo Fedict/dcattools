@@ -1,0 +1,11 @@
+# extra queries to be executed and data to be loaded 
+brugge/data-publ-contact.ttl
+brugge/sparql-publ-contact.qry
+brugge/sparql-license.qry
+brugge/data-theme.ttl
+sparql-map-theme.qry
+brugge/sparql-geo.qry
+data-media.ttl
+sparql-map-media.qry
+brugge/sparql-desc-single.qry
+clear-skos.qry

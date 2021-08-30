@@ -1,0 +1,28 @@
+# Data for mapping keywords to an EU list of themes/categories
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/34>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+	skos:prefLabel "ENVIRONMENT"@en ;
+	skos:altLabel "open-data-milieu-natuur"@nl .
+
+<http://data.gov.be/en/taxonomy/term/38>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+	skos:prefLabel "ECONOMY AND FINANCE"@en ;
+	skos:altLabel "open-data-werk-economie"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/41>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
+	skos:altLabel "open-data-grondgebied"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/39>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
+	skos:altLabel "open-data-bevolking"@nl .
+
+<http://data.gov.be/en/taxonomy/term/36>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+	skos:prefLabel "TRANSPORT"@en ;
+	skos:altLabel "open-data-mobiliteit"@nl .
