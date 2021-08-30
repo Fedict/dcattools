@@ -17,6 +17,11 @@
 	skos:prefLabel "Quarterly"@en ;
 	skos:altLabel "quarterly" .
 
+<http://data.gov.be/en/taxonomy/term/29>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2> ;
+	skos:prefLabel "Semiannual"@en ;
+	skos:altLabel "biannually" .
+
 <http://data.gov.be/en/taxonomy/term/30>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
 	skos:prefLabel "Annual"@en ;
