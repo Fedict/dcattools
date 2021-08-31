@@ -62,7 +62,8 @@
 	skos:prefLabel "JSON" ;
 	skos:closeMatch "application/json" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JSON> ;
-	skos:altLabel "JSON", "jsonp", "json", "jsonl", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" , <http://publications.europa.eu/resource/authority/file-type/JSON> .
+	skos:altLabel "JSON", "jsonp", "json", "jsonl", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" , 
+			"application/json", <http://publications.europa.eu/resource/authority/file-type/JSON> .
 	
 <http://data.gov.be/en/taxonomy/term/400>
 	skos:prefLabel "JSON-LD" ;
