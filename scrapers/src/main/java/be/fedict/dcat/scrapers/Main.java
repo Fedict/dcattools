@@ -105,14 +105,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		logger.info("-- START --");
-		if (args.length < 2) {
+		if (args.length == 0) {
 			logger.warn("No scraper specified");
-			logger.info("Usage: name [true|false] <data-directory>");
+			logger.info("Usage: name <data-directory>");
 			exit(-1);
 		}
 
 		String name = args[0];
-		boolean scrape = Boolean.valueOf(args[1]); // false = don't scrape but convert from cache
 
 		Properties prop = null;
 		try {
@@ -122,19 +121,18 @@ public class Main {
 			exit(-2);
 		}
 		
-		String dir = (args.length == 3) ? args[2] : ".";
+		String dir = (args.length == 2) ? args[1] : ".";
 		String dataDir = String.join(File.separator, dir, "data", name);
+		
+		// set cache, note that the scraper will not use the site-to-be-scraped when the c
 		String cache = String.join(File.separator, dataDir, "cache");
-
 		prop.setProperty(BaseScraper.PROP_PREFIX + ".cache", cache);		
 
 		// find and load specific scraper
 		try (BaseScraper scraper = configureScraper(prop)) {
 			if (scraper != null) {
 				// output file
-				if (scrape) {
-					scraper.scrape();
-				}
+				scraper.scrape();
 				scraper.generateDcat();
 				scraper.enhance();
 					
