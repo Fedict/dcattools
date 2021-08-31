@@ -99,6 +99,8 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
+	public final static String XP_TOPIC = "gmd:topicCategory/gmd:MD_TopicCategoryCode";
+	
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
 	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
 
@@ -336,6 +338,10 @@ public abstract class GeonetGmd extends Geonet {
 			}
 		}
 
+		List<Node> topics = metadata.selectNodes(XP_TOPIC);
+		for (Node topic: topics) {
+			store.add(dataset, DCAT.THEME, topic.getText());
+		}
 		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
 
 		Node title = metadata.selectSingleNode(XP_TITLE);

@@ -136,6 +136,11 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_401_044> ;
 	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
 
+<http://data.gov.be/en/taxonomy/term/421>
+	skos:prefLabel "Woluwé-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_366_994> ;
+	skos:altLabel "Woluwé-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl .
+
 <http://data.gov.be/en/taxonomy/term/355>
 	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0249_268_719> ;

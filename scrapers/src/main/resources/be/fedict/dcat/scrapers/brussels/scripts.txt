@@ -7,7 +7,7 @@ data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 brussels/data-org.ttl
-sparql-map-org.qry
+brussels/sparql-map-org.qry
 brussels/sparql-contact-vcard.qry
 data-license.ttl
 sparql-map-license.qry
@@ -19,8 +19,8 @@ sparql-map-media.qry
 data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
-#brussels/sparql-accessurl.qry
+brussels/sparql-accessurl.qry
 #brussels/sparql-clear-catalog.qry
 #brussels/sparql-contact.qry
 #sparql-default-desc.qry
-#sparql-strip-html.qry
+sparql-strip-html.qry

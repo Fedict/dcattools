@@ -56,7 +56,7 @@
 	skos:prefLabel "HTML" ;
 	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
-	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", "power bi", "HTML Tabel", "text/html", "powerbi" .
+	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", ".html", "HTML Tabel", "text/html", "powerbi" .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
@@ -151,7 +151,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/66>
 	skos:prefLabel "SHP" ;
-	skos:closeMatch "application/zip" ;
+	skos:closeMatch "application/vnd.shp" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", "ESRI shapefile" .
 	
@@ -183,7 +183,8 @@
 	skos:prefLabel "TXT" ;
 	skos:closeMatch "text/plain" ;		
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
-	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", "ASCII (XYZ triplet per line)", "application/php", "text/plain" .
+	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", 
+				"ASCII (XYZ triplet per line)", "application/php", "text/plain", "PostgreSQL" .
 	
 <http://data.gov.be/en/taxonomy/term/63>
 	skos:prefLabel "WCS" ;
@@ -219,7 +220,9 @@
 	skos:prefLabel "XML" ;
 	skos:closeMatch "text/xml"; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
-	skos:altLabel "application/xml", "XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML" .
+	skos:altLabel "application/xml",
+				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
+				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:prefLabel "ZIP" ;
