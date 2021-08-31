@@ -137,17 +137,17 @@ public class Main {
 				scraper.enhance();
 					
 				String outfile = String.join(File.separator, dataDir, scraper.getName() + ".nt");
-				logger.info("Write results to {}", outfile);
+				logger.info("Write end results to {}", outfile);
 				try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {
 					scraper.writeDcat(bw);
 				} catch (IOException ex) {
 					logger.error("Error while writing to {}", ex, outfile);
-					exit(-3);
+					exit(-4);
 				}
 			}
 		} catch (IOException ex) {
 			logger.error("Error while scraping", ex);
-			exit(-4);
+			exit(-5);
 		}
 	}
 }
