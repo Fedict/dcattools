@@ -25,42 +25,72 @@
  */
 package be.fedict.dcat.scrapers;
 
-
-import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
-import java.util.Properties;
 
 /**
- * Abstract OpenDataSoft scraper.
- *
- * @see https://www.opendatasoft.com/
- *
+ * Page helper class, useful for storing in Cache
+ * 
  * @author Bart Hanssens
  */
-public abstract class Ods extends Dcat {
+public class Page implements Serializable {
+    private static final long serialVersionUID = 14846132166L;
+            
+    private URL url;
+    private String content;
 
-	public final static String API_DCAT = "/api/v2/catalog/exports/ttl?lang=";
+    /**
+     * Get the URL of this page.
+     * 
+     * @return the url
+     */
+    public URL getUrl() {
+        return url;
+    }
 
-	/**
-	 * Scrape DCAT catalog.
-	 *
-	 * @param cache
-	 * @throws IOException
-	 */
-	@Override
-	protected void scrapeCat(Cache cache) throws IOException {
-		URL front = getBase();
-		URL url = new URL(getBase(), Ods.API_DCAT + getDefaultLang());
-		String content = makeRequest(url);
-		cache.storePage(front, "all", new Page(url, content));
-	}
+    /**
+     * Set the URL of this page.
+     * 
+     * @param url the url to set
+     */
+    public void setUrl(URL url) {
+        this.url = url;
+    }
 
-	/**
-	 * Constructor
-	 *
-	 * @param prop
-	 */
-	protected Ods(Properties prop) throws IOException {
-		super(prop);
-	}
+    /**
+     * Get the content/body of this page.
+     * 
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * Set the content/body of this page.
+     * 
+     * @param content the content to set
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+    
+    /**
+     * Constructor
+     * 
+     * @param url
+     * @param content 
+     */
+    public Page(URL url, String content) {
+        this.url = url;
+        this.content = content;
+    }
+    
+    /**
+     * Empty constructor.
+     */
+    public Page() {
+        this.url = null;
+        this.content = "";
+    }
 }

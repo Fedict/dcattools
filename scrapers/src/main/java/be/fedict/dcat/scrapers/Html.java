@@ -25,8 +25,6 @@
  */
 package be.fedict.dcat.scrapers;
 
-import be.fedict.dcat.helpers.Cache;
-import be.fedict.dcat.helpers.Page;
 import be.fedict.dcat.helpers.Storage;
 
 import java.io.IOException;
@@ -41,9 +39,24 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 /**
  * Abstract scraper for HTML sites.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class Html extends BaseScraper {
+		/**
+	 * Return an absolute URL
+	 *
+	 * @param rel relative URL
+	 * @return
+	 * @throws MalformedURLException
+	 */
+	protected URL makeAbsURL(String rel) throws MalformedURLException {
+		// Check if URL is already absolute
+		if (rel.startsWith("http:") || rel.startsWith("https:")) {
+			return new URL(rel);
+		}
+		return new URL(getBase().getProtocol(), getBase().getHost(), rel);
+	}
+
 
 	/**
 	 * Generate DCAT Dataset

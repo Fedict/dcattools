@@ -1,0 +1,23 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0267_387_230>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/237> ;
+	foaf:name "Federal Agency for the Safety of the Food Chain"@en, 
+		"Federaal Agentschap voor de Veiligheid van de Voedselketen"@nl, 
+		"Agence Fédérale pour la Sécurité de la Chaîne Alimentaire"@fr, 
+		"Föderalagentur für die Sicherheit der Nahrungsmittelkette"@de ;
+	foaf:homepage <http://www.favv-afsca.be> .
+	
+<http://data.gov.be/org/favv/contact>
+	a vcard:Organization ;
+	vcard:fn "Federal Agency for the Safety of the Food Chain"@en, 
+			"Federaal Agentschap voor de Veiligheid van de Voedselketen"@nl, 
+			"Agence Fédérale pour la Sécurité de la Chaîne Alimentaire"@fr, 
+			"Föderalagentur für die Sicherheit der Nahrungsmittelkette"@de ;
+	vcard:hasUrl <http://www.favv-afsca.be> ;
+	vcard:hasEmail <mailto:info@favv.be> .

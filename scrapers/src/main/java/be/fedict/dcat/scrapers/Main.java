@@ -35,7 +35,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,16 +64,17 @@ public class Main {
 	 * @param name name of the scraper
 	 * @return properties or null
 	 */
-	private static Properties loadProperties(String name) {
+	private static Properties loadProperties(String name) throws IOException {
 		Properties prop = null;
 		String file = BaseScraper.PKG_PREFIX + "/" + name + "/scraper.properties";
 
 		logger.info("Read properties from {}", file);
 		try(InputStream is = Main.class.getResourceAsStream(file)) {
+			if (is == null) {
+				throw new IOException("Could not read from " + file);
+			}
 			prop = new Properties();
 			prop.load(is);
-		} catch (IOException ex) {
-			logger.error("Exception while properties {}", file, ex);
 		}
 		return prop;
 	}
@@ -105,28 +105,36 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		logger.info("-- START --");
-		if (args.length == 0) {
-			System.err.println("Usage: name <data-directory>");
+		if (args.length < 2) {
 			logger.warn("No scraper specified");
+			logger.info("Usage: name [true|false] <data-directory>");
 			exit(-1);
 		}
 
-		Properties prop = loadProperties(args[0]);
-		if (prop == null) {
+		String name = args[0];
+		boolean scrape = Boolean.valueOf(args[1]); // false = don't scrape but convert from cache
+
+		Properties prop = null;
+		try {
+			prop = loadProperties(name);
+		} catch (IOException ioe) {
+			logger.error("Could not read properties for {}", name);
 			exit(-2);
 		}
 		
-		String dir = (args.length == 2) ? args[1] : ".";
-		String dataDir = String.join(File.separator, dir, "data", args[0]);
+		String dir = (args.length == 3) ? args[2] : ".";
+		String dataDir = String.join(File.separator, dir, "data", name);
 		String cache = String.join(File.separator, dataDir, "cache");
 
-		prop.setProperty(BaseScraper.PROP_PREFIX + ".cache", cache);
+		prop.setProperty(BaseScraper.PROP_PREFIX + ".cache", cache);		
 
 		// find and load specific scraper
 		try (BaseScraper scraper = configureScraper(prop)) {
 			if (scraper != null) {
 				// output file
-				//scraper.scrape();
+				if (scrape) {
+					scraper.scrape();
+				}
 				scraper.generateDcat();
 				scraper.enhance();
 					
@@ -136,12 +144,12 @@ public class Main {
 					scraper.writeDcat(bw);
 				} catch (IOException ex) {
 					logger.error("Error while writing to {}", ex, outfile);
-					exit(-5);
+					exit(-3);
 				}
 			}
 		} catch (IOException ex) {
 			logger.error("Error while scraping", ex);
-			exit(-6);
+			exit(-4);
 		}
 	}
 }

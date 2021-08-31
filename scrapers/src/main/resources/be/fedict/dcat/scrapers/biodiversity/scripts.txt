@@ -1,15 +1,19 @@
 # extra queries to be executed and data to be loaded 
-biodiv/sparql-dist.qry
-biodiv/sparql-language.qry
+biodiversity/sparql-dist.qry
+biodiversity/sparql-language.qry
 sparql-tag-language.qry
-biodiv/sparql-theme.qry
-biodiv/data-geo.ttl
+biodiversity/sparql-theme.qry
+biodiversity/data-geo.ttl
 sparql-map-geo.qry
 sparql-geo-belgium.qry
-biodiv/data-org.ttl
+biodiversity/data-org.ttl
 sparql-map-org.qry
-biodiv/data-contact.ttl
-biodiv/sparql-default-contact.qry
+biodiversity/data-contact.ttl
+biodiversity/sparql-default-contact.qry
+data-media.ttl
+sparql-map-media.qry
+data-license.ttl
+sparql-map-license.qry
 sparql-title-to-desc.qry
 clear-skos.qry
 sparql-strip-html.qry
