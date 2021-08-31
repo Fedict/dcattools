@@ -1,5 +1,4 @@
 # extra queries to be executed and data to be loaded 
-biodiversity/sparql-dist.qry
 biodiversity/sparql-language.qry
 sparql-tag-language.qry
 biodiversity/sparql-theme.qry
