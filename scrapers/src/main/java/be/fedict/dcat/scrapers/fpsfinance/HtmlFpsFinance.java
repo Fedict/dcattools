@@ -25,8 +25,8 @@
  */
 package be.fedict.dcat.scrapers.fpsfinance;
 
-import be.fedict.dcat.helpers.Cache;
-import be.fedict.dcat.helpers.Page;
+import be.fedict.dcat.scrapers.Cache;
+import be.fedict.dcat.scrapers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Html;
 import be.fedict.dcat.vocab.MDR_LANG;

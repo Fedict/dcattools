@@ -86,6 +86,6 @@ public class CkanBioDiversity extends CkanJson {
 	 */
 	public CkanBioDiversity(Properties prop) throws IOException {
 		super(prop);
-		setName("biodiv");
+		setName("biodiversity");
 	}
 }

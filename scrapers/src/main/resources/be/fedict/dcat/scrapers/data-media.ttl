@@ -31,7 +31,7 @@
 	skos:prefLabel "DWCA" ;
 	skos:closeMatch "application/dwca" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "Darwin Core Archive (DwC-A)" .
+	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "DWC_ARCHIVE", "Darwin Core Archive (DwC-A)" .
 
 <http://data.gov.be/en/taxonomy/term/340>
 	skos:prefLabel "GDB" ;

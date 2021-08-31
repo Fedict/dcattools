@@ -26,7 +26,6 @@
 package be.fedict.dcat.scrapers;
 
 import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.helpers.Cache;
 import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
@@ -194,21 +193,6 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
-	 * Return an absolute URL
-	 *
-	 * @param rel relative URL
-	 * @return
-	 * @throws MalformedURLException
-	 */
-	protected URL makeAbsURL(String rel) throws MalformedURLException {
-		// Check if URL is already absolute
-		if (rel.startsWith("http:") || rel.startsWith("https:")) {
-			return new URL(rel);
-		}
-		return new URL(getBase().getProtocol(), getBase().getHost(), rel);
-	}
-
-	/**
 	 * Make an URL for a DCAT Catalog
 	 *
 	 * @return URL
@@ -355,7 +339,8 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 				logger.info("Execute query {}", script);
 				try(InputStream is = BaseScraper.class.getResourceAsStream(script);
 					BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-					String sparql = r.lines().collect(Collectors.joining(System.lineSeparator()));
+					String sparql = r.lines().filter(s -> !s.startsWith("#"))
+											.collect(Collectors.joining(System.lineSeparator()));
 					store.queryUpdate(sparql);
 				}
 			}
@@ -372,7 +357,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		List<String> scripts;
 
 		String file = PKG_PREFIX + "/" + getName() + "/scripts.txt";
-
+		logger.info("Load script list from {}", file);
 		try(InputStream is = BaseScraper.class.getResourceAsStream(file);
 			BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 			scripts = r.lines().filter(s -> !s.startsWith("#"))		// remove comments
@@ -462,7 +447,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @return value of the property
 	 * @throws IOException if property is empty
 	 */
-	protected String getRequiredProperty(Properties prop, String name) throws IOException {
+	protected final String getRequiredProperty(Properties prop, String name) throws IOException {
 		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name, "");
 		if (value.isEmpty()) {
 			throw new IOException("Property missing: " + name);
@@ -477,7 +462,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @param name unprefixed property
 	 * @return property value
 	 */
-	protected String getProperty(Properties prop, String name) {
+	protected final String getProperty(Properties prop, String name) {
 		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name);
 		if (value == null) {
 			logger.warn("No property {}", name);

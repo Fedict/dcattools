@@ -19,4 +19,4 @@ WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcterms:identifier ?id .
 		BIND(IRI(CONCAT('http://data.gov.be/dist/biodiv/', ?id)) as ?dist) .
-		BIND(IRI(CONCAT('http://data.biodiversity.be/dataset/', ?id)) as ?url) }
+		BIND(IRI(CONCAT('https://data.biodiversity.be/dataset/', ?id)) as ?url) }
