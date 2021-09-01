@@ -1,0 +1,19 @@
+# extra queries to be executed and data to be loaded 
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry
+healthdata/sparql-keyword-theme.qry
+sparql-geo-belgium.qry
+healthdata/data-publ-contact.ttl
+healthdata/sparql-publ-contact.qry
+healthdata/sparql-language-en.qry
+healthdata/sparql-language-tag.qry
+healthdata/sparql-date-type.qry
+healthdata/sparql-bytesize-type.qry
+healthdata/sparql-accessurl-hash.qry
+healthdata/sparql-remove-pages.qry
+healthdata/sparql-landingpage-hash.qry
+healthdata/data-freq.ttl
+sparql-map-frequency.qry
+healthdata/sparql-license.qry
+clear-skos.qry

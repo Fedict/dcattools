@@ -1,0 +1,6 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/156>
+	skos:prefLabel "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0308_358_149> ;
+	skos:altLabel "be-dgd"@en .

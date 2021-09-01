@@ -1,3 +1,4 @@
+# extra queries to be executed and data to be loaded 
 geobe/data-org.ttl
 geobe/sparql-map-org.qry
 geobe/data-theme.ttl

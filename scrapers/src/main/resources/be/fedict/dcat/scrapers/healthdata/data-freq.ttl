@@ -1,0 +1,13 @@
+# Data for mapping frequencies to EU list
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/22>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
+	skos:prefLabel "Daily"@en ;
+	skos:altLabel "R/P1D" .
+
+<http://data.gov.be/en/taxonomy/term/405>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> ;
+	skos:prefLabel "Semiweekly"@en ;
+	skos:altLabel "R/P3.5D" .
