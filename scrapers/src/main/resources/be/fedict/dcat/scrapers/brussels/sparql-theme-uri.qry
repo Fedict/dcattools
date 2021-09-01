@@ -1,0 +1,13 @@
+# Convert themes literals that are actually URIs (i.e. starting with http)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{ 	?dataset dcat:theme ?o }
+INSERT
+	{ 	?dataset dcat:theme ?uri }
+WHERE
+	{ 	?dataset dcat:theme ?o
+		FILTER ( isLiteral(?o) && STRSTARTS(?o, "http"))
+		BIND ( URI(?o) as ?uri)
+	}

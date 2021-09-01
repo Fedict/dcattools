@@ -12,7 +12,7 @@
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:altLabel "economy", "Finances publiques", "Tourisme" .
+	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business" .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -21,16 +21,18 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
-			"Environnement", "Propreté"  .
+			"Environnement", "Propreté", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
+			"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren"  .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
-	skos:prefLabel "ENERGY"@en .
+	skos:altLabel "Energie" .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
-					"Administration", "Gouvernement", "Citoyenneté" .
+					"Administration", "Gouvernement", "Citoyenneté",
+					"Erkenningen en registraties", "Agréments et enregistrements" .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
@@ -42,16 +44,16 @@
 	
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
-	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en .
+	skos:altLabel "Dierenwelzijn" .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
-				"Bâtiments", "Aménagement du territoire" .
+				"Bâtiments", "Aménagement du territoire", "WC" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:altLabel "Urbanisme", "Tourisme" .
+	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale" .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
