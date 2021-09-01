@@ -1,0 +1,9 @@
+# extra queries to be executed and data to be loaded 
+fpsdiplobel/data-publ-contact.ttl
+fpsdiplobel/sparql-publ-contact.qry
+sparql-license-cczero.qry
+fpsdiplobel/sparql-theme.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry

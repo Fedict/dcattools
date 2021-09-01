@@ -12,7 +12,8 @@
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business" .
+	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business",
+				"Economie en financiën", "Économie et finances", "Economy and finance" .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -22,22 +23,25 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
 			"Environnement", "Propreté", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
-			"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren"  .
+			"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
+			"Bruit", "Geluid", "Air", "Lucht"  .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
-	skos:altLabel "Energie" .
+	skos:altLabel "Energie", "Energy", "Énergie" .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
 					"Administration", "Gouvernement", "Citoyenneté",
-					"Erkenningen en registraties", "Agréments et enregistrements" .
+					"Erkenningen en registraties", "Agréments et enregistrements",
+					"Government and public sector", "Overheid en publieke sector",
+					"Gouvernement et secteur public", "Overheidsopdrachten" .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
-	skos:altLabel "Santé" .
-	
+	skos:altLabel "Santé", "Gezondheid" .
+
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en .
@@ -49,7 +53,7 @@
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
-				"Bâtiments", "Aménagement du territoire", "WC" .
+				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
@@ -61,5 +65,5 @@
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
-				"Internet", "TIC" ;
+				"Internet", "TIC", "Installations industrielles", "Industriële installaties" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .
