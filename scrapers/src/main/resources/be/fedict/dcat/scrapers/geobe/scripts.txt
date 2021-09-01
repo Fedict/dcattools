@@ -1,0 +1,17 @@
+geobe/data-org.ttl
+geobe/sparql-map-org.qry
+geobe/data-theme.ttl
+sparql-map-theme.qry
+geobe/data-freq.ttl
+sparql-map-frequency.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry
+sparql-dist-accessurl.qry
+geo/sparql-map-lang.txt
+sparql-dist-lang.qry
+sparql-vcard-fn.qry
+data-license.ttl
+sparql-map-license.qry
+clear-skos.qry

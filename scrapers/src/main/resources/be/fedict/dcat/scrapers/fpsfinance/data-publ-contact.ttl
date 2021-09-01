@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0308_357_159>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/162> ;
+	foaf:name "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
+	foaf:homepage <https://finance.belgium.be> .
+	
+<http://data.gov.be/org/fodfinance/fod/contact>
+	a vcard:Organization ;
+	vcard:fn "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
+	vcard:hasUrl <https://finance.belgium.be> ;
+	vcard:hasEmail <francis.adyns@minfin.fed.be> .
