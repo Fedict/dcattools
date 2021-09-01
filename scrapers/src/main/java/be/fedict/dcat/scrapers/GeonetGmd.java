@@ -59,7 +59,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  *
  * @see http://geonetwork-opensource.org/
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens
  */
 public abstract class GeonetGmd extends Geonet {
 
@@ -100,6 +100,8 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
 	public final static String XP_TOPIC = "gmd:topicCategory/gmd:MD_TopicCategoryCode";
+	public final static String XP_THESAURUS = "../gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString";
+	
 	
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
 	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
@@ -338,15 +340,11 @@ public abstract class GeonetGmd extends Geonet {
 			}
 		}
 
-		List<Node> topics = metadata.selectNodes(XP_TOPIC);
-		for (Node topic: topics) {
-			store.add(dataset, DCAT.THEME, topic.getText());
-		}
-		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
-
 		Node title = metadata.selectSingleNode(XP_TITLE);
 		Node desc = metadata.selectSingleNode(XP_DESC);
 
+		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
+	
 		boolean hasTitle = false;
 		for (String lang : getAllLangs()) {
 			if (parseMulti(store, dataset, title, DCTERMS.TITLE, lang)) {
@@ -354,20 +352,36 @@ public abstract class GeonetGmd extends Geonet {
 			}
 			parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
 			for (Node keyword : keywords) {
-				parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);
+				Node thesaurus = keyword.selectSingleNode(XP_THESAURUS);
+				if (thesaurus == null || !thesaurus.getText().equals("Theme")) {
+					// full text keyword
+					parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);					
+				} else {
+					// actually a theme
+					parseMulti(store, dataset, keyword, DCAT.THEME, lang);	
+				}
 			}
 		}
+		
+		// themes
+		List<Node> topics = metadata.selectNodes(XP_TOPIC);
+		for (Node topic: topics) {
+			store.add(dataset, DCAT.THEME, topic.getText());
+		}
 
+		// time range
 		Node range = metadata.selectSingleNode(XP_TEMPORAL);
 		if (range != null) {
 			parseTemporal(store, dataset, range);
 		}
 
+		// frequency
 		String freq = metadata.valueOf(XP_FREQ);
 		if (freq != null) {
 			store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, freq);
 		}
 
+		// contact point
 		Node contact = node.selectSingleNode(XP_CONTACT);
 		if (contact != null) {
 			parseContact(store, dataset, contact);
