@@ -4,23 +4,24 @@
 
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
-	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en .
+	skos:altLabel "farming" .
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
-	skos:prefLabel "CULTURE AND SPORT"@en .
+	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs" .
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:prefLabel "ECONOMY AND FINANCE"@en .
+	skos:altLabel "economy", "Finances publiques", "Tourisme" .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
-	skos:prefLabel "EDUCATION"@en .
+	skos:altLabel "Education", "Recherche", "Formation", "Enseignement" .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
-	skos:prefLabel "ENVIRONMENT"@en .
+	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
+			"Environnement", "Propreté"  .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
@@ -28,11 +29,12 @@
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
-	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en .
+	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
+					"Administration", "Gouvernement", "Citoyenneté" .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
-	skos:prefLabel "HEALTH"@en .
+	skos:altLabel "Santé" .
 	
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
@@ -44,16 +46,18 @@
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
-	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en .
+	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
+				"Bâtiments", "Aménagement du territoire" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:prefLabel "REGIONS, CITIES"@en .
+	skos:altLabel "Urbanisme", "Tourisme" .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
-	skos:prefLabel "TRANSPORT"@en .
+	skos:altLabel "transportation", "Verplaatsingen", "Vervoer" .
 
 <http://data.gov.be/en/taxonomy/term/37>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
-	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en .
+	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
+				"Internet", "TIC" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .

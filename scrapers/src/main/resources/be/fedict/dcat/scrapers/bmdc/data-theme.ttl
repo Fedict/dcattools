@@ -4,56 +4,45 @@
 
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
-	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
 	skos:altLabel "Bodemgebruik"@nl, "Relief"@nl, "Zeebodem"@nl, "Orthofoto"@nl .
 
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "Kadaster"@nl, "exploitatie van de zeebodem"@nl, "economic planning"@en .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
-	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "Milieubewakingsvoorzieningen"@nl, "Atmosferische omstandigheden"@nl, "Earthquakes"@en, "luchtkwaliteit"@nl, "binnenwater"@nl, "Atmospheric conditions"@en, "rain"@en, "wind"@en, "observation"@en, "climate statistics"@en, "environmental planning"@en, "temperature"@en .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
-	skos:prefLabel "ENERGY"@en ;
 	skos:altLabel "elektriciteit"@nl, "renewable energy"@en .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
-	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:altLabel "Kadaster"@nl, "Geografische namen"@nl, "Straatnamen"@nl, "Gebouwen"@nl  .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
-	skos:prefLabel "HEALTH"@en ;
 	skos:altLabel "Menselijke gezondheid en veiligheid"@nl, "luchtkwaliteit"@nl, "Human health and safety"@en  .
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
-	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
 	skos:altLabel "antarctica"@en .
 
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
-	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "bevolking"@n .
+	skos:altLabel "bevolking"@nl .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:prefLabel "REGIONS, CITIES"@en ;
 	skos:altLabel "Geografische namen"@nl, "Gemeente"@nl, "Straatnamen"@nl, "stad"@nl .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
-	skos:prefLabel "TRANSPORT"@en ;
 	skos:altLabel "Vervoersnetwerken"@nl, "zeevervoer"@nl, "Zeebodem"@nl, "Kanaal"@nl, "Straatnamen"@nl, "scheepvaart"@nl, "transport"@nl  .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
-	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
 	skos:altLabel "Geologie"@nl, "Atmosferische omstandigheden"@nl, "Gravimetry"@en, "Relief"@nl, "Orthofoto"@nl, "Kaartprojectiesysteem"@nl, "geologie"@de, "observation"@en, "climate statistics"@en, "maritime navigation"@en, "temperature"@en .
 	
