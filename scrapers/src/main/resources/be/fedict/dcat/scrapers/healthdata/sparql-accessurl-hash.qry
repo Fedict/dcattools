@@ -1,0 +1,10 @@
+# Add hash character to accessURL to make a distinction between ID and URL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE	{ ?s dcat:accessURL ?o }
+INSERT  { ?s dcat:accessURL ?url }
+WHERE
+	{	?s dcat:accessURL ?o .
+		BIND(IRI(CONCAT(STR(?s), "#")) AS ?url) 
+	}
