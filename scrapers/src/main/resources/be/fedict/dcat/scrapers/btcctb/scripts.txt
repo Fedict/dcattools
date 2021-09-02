@@ -1,10 +1,10 @@
 # extra queries to be executed and data to be loaded 
-btcctb/sparql-theme.txt
+btcctb/sparql-theme.qry
 btcctb/data-org.ttl
-sparql-map-org.txt
-btcctb/sparql-contact.txt
+sparql-map-org.qry
+btcctb/sparql-contact.qry
 data-license.ttl
-sparql-map-license.txt
+sparql-map-license.qry
 data-media.ttl
-sparql-map-media.txt
-clear-skos.txt
+sparql-map-media.qry
+clear-skos.qry

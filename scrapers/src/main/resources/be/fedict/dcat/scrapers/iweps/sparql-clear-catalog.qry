@@ -1,0 +1,17 @@
+# Remove catalog leftover info
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ <http://walstat.iweps.be> ?p ?o }
+INSERT
+	{ <http://data.gov.be/catalog/iweps> dcat:dataset ?dataset }
+WHERE
+	{
+		{ <http://walstat.iweps.be> dcat:dataset ?dataset }
+	UNION
+		{ <http://walstat.iweps.be> ?p ?o }
+	}
+

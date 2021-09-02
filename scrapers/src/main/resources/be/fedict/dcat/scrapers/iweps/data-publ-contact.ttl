@@ -1,0 +1,16 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0866_518_618> 
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/182> ; 
+	foaf:name "IWEPS"@fr .
+
+<http://data.gov.be/org/iweps/contact>
+	a vcard:Organization ;
+	vcard:fn "IWEPS"@fr;
+	vcard:hasUrl <https://opendata.iweps.be> ;
+	vcard:hasEmail <mailto:info@iweps.be> .

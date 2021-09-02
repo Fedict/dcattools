@@ -10,7 +10,7 @@ data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 sparql-dist-accessurl.qry
-geo/sparql-map-lang.txt
+geobe/sparql-map-lang.qry
 sparql-dist-lang.qry
 sparql-vcard-fn.qry
 data-license.ttl
