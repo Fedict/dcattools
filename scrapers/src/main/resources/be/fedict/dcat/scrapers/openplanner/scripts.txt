@@ -1,17 +1,17 @@
 # extra queries to be executed and data to be loaded
-openplanner/sparql-cat.txt
+openplanner/sparql-clear-catalog.qry
 openplanner/sparql-lang.txt
 openplanner/sparql-org.txt
-openplanner/sparql-theme.txt
-openplanner/sparql-contact.txt
+openplanner/sparql-theme.qry
+openplanner/sparql-contact.qry
 openplanner/sparql-map-lang.txt
 data-media.ttl
-sparql-map-media.txt
-clear-skos.txt
-openplanner/sparql-prefix-dataset.txt
-openplanner/sparql-prefix-dist.txt
+sparql-map-media.qry
+clear-skos.qry
+#openplanner/sparql-prefix-dataset.txt
+#openplanner/sparql-prefix-dist.txt
 openplanner/data-geo.ttl
 openplanner/sparql-map-geo.txt
-clear-skos.txt
+clear-skos.qry
 openplanner/sparql-clear-rights.txt
 

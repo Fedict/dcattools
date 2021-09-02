@@ -1,0 +1,4 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?dist dcterms:rights ?rights }
+WHERE { ?dist dcterms:rights ?rights }

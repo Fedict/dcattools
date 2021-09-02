@@ -23,5 +23,5 @@ clear-skos.qry
 brussels/sparql-accessurl.qry
 #brussels/sparql-clear-catalog.qry
 #brussels/sparql-contact.qry
-#sparql-default-desc.qry
+sparql-default-desc.qry
 sparql-strip-html.qry
