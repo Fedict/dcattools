@@ -1,0 +1,21 @@
+# extra queries to be executed and data to be loaded
+infrabel/sparql-fix-language.qry
+sparql-dist-lang.qry
+infrabel/sparql-downloadurl.qry
+common/data-license.ttl
+sparql-map-license.qry
+infrabel/sparql-data-publ-contact.ttl
+infrabel/sparql-publ-contact.qry
+clear-skos.qry
+infrabel/data-theme.ttl
+infrabel/sparql-map-theme.qry
+clear-skos.qry
+sparql-map-language.qry
+sparql-geo-belgium.qry
+data-media.ttl
+infrabel/sparql-delete-mediatype.qry
+sparql-map-media.qry
+sparql-tag-language.qry
+clear-skos.qry
+sparql-title-to-desc.qry
+sparql-strip-html.qry

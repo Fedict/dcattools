@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0869_763_267> 
+		a foaf:Organization ;
+		dgov:org <http://data.gov.be/en/taxonomy/term/386> ;
+		foaf:name "Infrabel"@nl, "Infrabel"@fr, "Infrabel"@en .
+
+<http://data.gov.be/org/infrabel/contact>
+	a vcard:Organization ;
+	vcard:fn "Infrabel"@nl, "Infrabel"@fr, "Infrabel"@en;
+	vcard:hasUrl <https://opendata.infrabel.be> ;
+	vcard:hasEmail <mailto:info@infrabel.be> .
+

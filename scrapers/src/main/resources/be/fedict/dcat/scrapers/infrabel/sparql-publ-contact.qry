@@ -1,0 +1,16 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+
+DELETE 
+	{	?dataset dcterms:publisher ?pub .
+		?pub ?p ?o }
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/infrabel/contact> .
+		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0869_763_267> }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		OPTIONAL { ?dataset dcterms:publisher ?pub .
+					?pub ?p ?o } 
+	}
