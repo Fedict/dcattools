@@ -2,7 +2,7 @@
 brussels/sparql-keyword-theme.qry
 brussels/sparql-theme-uri.qry
 brussels/data-theme.ttl
-brussels/sparql-map-theme.qry
+sparql-map-theme.qry
 brussels/sparql-geo.qry
 data-media.ttl
 sparql-map-media.qry
@@ -23,5 +23,5 @@ clear-skos.qry
 brussels/sparql-accessurl.qry
 #brussels/sparql-clear-catalog.qry
 #brussels/sparql-contact.qry
-sparql-default-desc.qry
+sparql-title-to-desc.qry
 sparql-strip-html.qry

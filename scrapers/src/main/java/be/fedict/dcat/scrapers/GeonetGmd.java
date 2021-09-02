@@ -456,7 +456,6 @@ public abstract class GeonetGmd extends Geonet {
 
 		try {
 			for (URL url : urls) {
-				System.err.println(url);
 				Map<String, Page> map = cache.retrievePage(url);
 				String xml = map.get("all").getContent();
 				Document doc = sax.read(new StringReader(xml));
