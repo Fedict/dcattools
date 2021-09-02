@@ -1,3 +1,5 @@
+# Data for mapping keywords to an EU list of themes/categories
+
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 	
 <http://data.gov.be/en/taxonomy/term/38>

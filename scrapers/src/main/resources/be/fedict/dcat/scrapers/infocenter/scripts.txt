@@ -1,10 +1,10 @@
 # extra queries to be executed and data to be loaded 
 infocenter/data-publ-contact.ttl
-infocenter/sparql-publ-contact.txt
-infocenter/sparql-theme.txt
+infocenter/sparql-publ-contact.qry
+infocenter/sparql-theme.qry
 sparql-geo-belgium.qry
 infocenter/sparql-dist-type.qry
-infocenter/sparql-license.txt
+infocenter/sparql-license.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry

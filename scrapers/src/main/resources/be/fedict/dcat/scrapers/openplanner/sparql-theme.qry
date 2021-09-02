@@ -1,0 +1,10 @@
+# Set theme/category
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/36> .
+		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TRAN> }
+WHERE
+	{	?dataset a dcat:Dataset }

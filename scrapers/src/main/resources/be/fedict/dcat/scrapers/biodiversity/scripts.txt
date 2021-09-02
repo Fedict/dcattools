@@ -3,7 +3,7 @@ biodiversity/sparql-language.qry
 sparql-tag-language.qry
 biodiversity/sparql-theme.qry
 biodiversity/data-geo.ttl
-sparql-map-geo.qry
+sparql-map-geo-publisher.qry
 sparql-geo-belgium.qry
 biodiversity/data-org.ttl
 sparql-map-org.qry
