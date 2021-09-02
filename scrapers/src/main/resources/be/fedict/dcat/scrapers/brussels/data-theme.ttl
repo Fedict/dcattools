@@ -8,12 +8,13 @@
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
-	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs" .
+	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure" .
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business",
-				"Economie en financiën", "Économie et finances", "Economy and finance" .
+	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
+				"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
+				"Emploi", "Développement économique", "Toerism", "Economy", "Economic development" .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -36,9 +37,9 @@
 			"Administration", "Gouvernement", "Citoyenneté",
 			"Erkenningen en registraties", "Agréments et enregistrements",
 			"Government and public sector", "Overheid en publieke sector",
-			"Gouvernement et secteur public", "Overheidsopdrachten", 
+			"Gouvernement et secteur public", "Overheidsopdrachten", "Nutsdiensten en overheidsdiensten", 
 			"Services d'utilité publique et services publics", "Unités statistiques", "Unités administratives",
-			"Addresses", "Administrative units", "Statistical units",
+			"Addresses", "Administrative units", "Statistical units", "Administratieve eenheden", 
 			"Unités administratives", "Utility and governmental services", "Adresses" .
 
 <http://data.gov.be/en/taxonomy/term/40>
@@ -53,22 +54,24 @@
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
 	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", 
-				"Justice, système juridique et sécurité publique" .
+				"Justice, système juridique et sécurité publique", "Crime" .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
 				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
-				"Bevolking en samenleving", "Population et société", "Population and society" .
+				"Bevolking en samenleving", "Population et société", "Population and society",
+				"Emploi" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
 	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
-			"Regions and cities", "Régions et villes", "Regio's en steden" .
+			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism" .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
-	skos:altLabel "transportation", "Verplaatsingen", "Vervoer", "Transport", "Transports" .
+	skos:altLabel "transportation", "Verplaatsingen", "Vervoer", "Transport", "Transports", "Mobilité",
+			"Transport networks", "Réseaux de transport", "Vervoersnetwerken".
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
