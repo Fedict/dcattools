@@ -1,0 +1,26 @@
+# Map keyword or existing theme to a DCAT-AP theme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT 
+	{ 	?dataset dgov:theme ?drupal .
+		?dataset dcat:theme ?theme }
+WHERE	
+	{
+		{
+			?dataset dcat:keyword ?label .
+			?drupal skos:altLabel ?label .
+			?drupal skos:exactMatch ?theme 
+		}
+		UNION
+		{
+			?dataset dcat:theme ?label .
+			?drupal skos:closeMatch ?label .
+			?drupal skos:exactMatch ?theme 
+			FILTER (
+				!STRSTARTS(STR(?label), "http://publications.europa.eu")
+			)
+		}
+	}

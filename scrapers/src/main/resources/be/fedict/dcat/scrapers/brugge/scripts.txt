@@ -3,7 +3,7 @@ brugge/data-publ-contact.ttl
 brugge/sparql-publ-contact.qry
 brugge/sparql-license.qry
 brugge/data-theme.ttl
-sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 brugge/sparql-geo.qry
 data-media.ttl
 sparql-map-media.qry

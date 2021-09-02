@@ -8,19 +8,19 @@
 
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:altLabel "Kadaster"@nl, "exploitatie van de zeebodem"@nl, "economic planning"@en .
+	skos:altLabel "planningCadastre", "economy" .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
-	skos:altLabel "Milieubewakingsvoorzieningen"@nl, "Atmosferische omstandigheden"@nl, "Earthquakes"@en, "luchtkwaliteit"@nl, "binnenwater"@nl, "Atmospheric conditions"@en, "rain"@en, "wind"@en, "observation"@en, "climate statistics"@en, "environmental planning"@en, "temperature"@en .
+	skos:altLabel  "temperature", "environment", "biota", "oceans" .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
-	skos:altLabel "elektriciteit"@nl, "renewable energy"@en .
+	skos:altLabel "energy" .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
-	skos:altLabel "Kadaster"@nl, "Geografische namen"@nl, "Straatnamen"@nl, "Gebouwen"@nl  .
+	skos:altLabel "intelligenceMilitary", "location"  .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
@@ -28,7 +28,7 @@
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
-	skos:altLabel "antarctica"@en .
+	skos:altLabel "intelligenceMilitary" .
 
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
@@ -40,9 +40,9 @@
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
-	skos:altLabel "Vervoersnetwerken"@nl, "zeevervoer"@nl, "Zeebodem"@nl, "Kanaal"@nl, "Straatnamen"@nl, "scheepvaart"@nl, "transport"@nl  .
+	skos:altLabel "transportation" .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
-	skos:altLabel "Geologie"@nl, "Atmosferische omstandigheden"@nl, "Gravimetry"@en, "Relief"@nl, "Orthofoto"@nl, "Kaartprojectiesysteem"@nl, "geologie"@de, "observation"@en, "climate statistics"@en, "maritime navigation"@en, "temperature"@en .
+	skos:altLabel "geoscientificInformation", "utilitiesCommunication", "structure", "location" .
 	

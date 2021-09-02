@@ -33,14 +33,18 @@
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
-					"Administration", "Gouvernement", "Citoyenneté",
-					"Erkenningen en registraties", "Agréments et enregistrements",
-					"Government and public sector", "Overheid en publieke sector",
-					"Gouvernement et secteur public", "Overheidsopdrachten" .
+			"Administration", "Gouvernement", "Citoyenneté",
+			"Erkenningen en registraties", "Agréments et enregistrements",
+			"Government and public sector", "Overheid en publieke sector",
+			"Gouvernement et secteur public", "Overheidsopdrachten", 
+			"Services d'utilité publique et services publics", "Unités statistiques", "Unités administratives",
+			"Addresses", "Administrative units", "Statistical units",
+			"Unités administratives", "Utility and governmental services", "Adresses" .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
-	skos:altLabel "Santé", "Gezondheid" .
+	skos:altLabel "Santé", "Gezondheid", "Health", "Human health and safety", 
+				"Santé et sécurité des personnes" .
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
@@ -48,20 +52,23 @@
 	
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
-	skos:altLabel "Dierenwelzijn" .
+	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", 
+				"Justice, système juridique et sécurité publique" .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
-				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC" .
+				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
+				"Bevolking en samenleving", "Population et société", "Population and society" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale" .
+	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
+			"Regions and cities", "Régions et villes", "Regio's en steden" .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
-	skos:altLabel "transportation", "Verplaatsingen", "Vervoer" .
+	skos:altLabel "transportation", "Verplaatsingen", "Vervoer", "Transport", "Transports" .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
