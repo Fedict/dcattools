@@ -1,0 +1,10 @@
+# Temporary fix: currently all dataset descriptions are EN, not NL
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:language <http://id.loc.gov/vocabulary/iso639-1/nl>  }
+INSERT
+	{ 	?s dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en> }
+WHERE
+	{ 	?s dcterms:language <http://id.loc.gov/vocabulary/iso639-1/nl> }
