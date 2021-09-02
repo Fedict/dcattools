@@ -8,7 +8,7 @@ healthdata/data-publ-contact.ttl
 healthdata/sparql-publ-contact.qry
 healthdata/sparql-language-en.qry
 healthdata/sparql-language-tag.qry
-healthdata/sparql-date-type.qry
+sparql-date-type.qry
 healthdata/sparql-bytesize-type.qry
 healthdata/sparql-accessurl-hash.qry
 healthdata/sparql-remove-pages.qry

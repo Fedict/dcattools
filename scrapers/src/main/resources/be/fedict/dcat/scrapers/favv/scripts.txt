@@ -1,8 +1,8 @@
 # extra queries to be executed and data to be loaded 
 favv/data-publ-contact.ttl
-favv/sparql-publ-contact.txt
-favv/sparql-theme.txt
-sparql-geo-belgium.txt
+favv/sparql-publ-contact.qry
+favv/sparql-theme.qry
+sparql-geo-belgium.qry
 data-media.ttl
-sparql-map-media.txt
-clear-skos.txt
+sparql-map-media.qry
+clear-skos.qry

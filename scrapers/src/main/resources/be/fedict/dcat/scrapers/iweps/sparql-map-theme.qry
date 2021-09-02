@@ -1,0 +1,12 @@
+# Map theme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT 
+	{ 	?dataset dgov:theme ?drupal }
+WHERE
+	{	?dataset dcat:theme ?uri .
+		?drupal skos:exactMatch ?uri }
