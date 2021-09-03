@@ -48,4 +48,9 @@
 <http://data.gov.be/en/taxonomy/term/212>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/ODC_PDDL> ;
 	skos:prefLabel "ODC PDDL" ;
-	skos:altLabel "odc-pddl" .
+	skos:altLabel "odc-pddl".
+
+<http://data.gov.be/en/taxonomy/term/242>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/ODC_BY> ;
+	skos:prefLabel "ODC BY" ;
+	skos:altLabel "https://opendatacommons.org/licenses/by/1.0/" . 
