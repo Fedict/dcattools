@@ -5,7 +5,21 @@
 <http://data.gov.be/en/taxonomy/term/127>
 	skos:prefLabel "Stad Brussel"@nl, "Ville de Bruxelles"@fr, "City of Brussels"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_373_429> ;
-	skos:altLabel "City of Brussels"@en, "City of Brussels/Archives"@en, "City of Brussels/Cleanliness"@en, "City of Brussels/Cleanliness Service"@en, "City of Brussels/Commerce"@en, "City of Brussels/Culture"@en, "City of Brussels/Demography"@en, "City of Brussels/Economic Affairs"@en, "City of Brussels/Family"@en, "City of Brussels/Finances"@en, "City of Brussels/Green Spaces"@en, "City of Brussels/Historical Heritage"@en, "City of Brussels/Mobility"@en, "City of Brussels/Protocol"@en, "City of Brussels/Protocole"@en, "City of Brussels/Public Education"@en, "City of Brussels/Recruitment"@en, "City of Brussels/Road works"@en, "City of Brussels/Seniors"@en, "City of Brussels/Sports"@en, "City of Brussels/Town Planning"@en, "City of Brussels/Web Dvlp"@en, "City of Brussels/Web Unit"@en, "Stad Brussel"@nl, "Stad Brussel/Archieven"@nl, "Stad Brussel/Cel Web"@nl, "Stad Brussel/Cultuur"@nl, "Stad Brussel/Demografie"@nl, "Stad Brussel/Dienst Cultuur"@nl, "Stad Brussel/Dienst Netheid"@nl, "Stad Brussel/Economische zaken"@nl, "Stad Brussel/Familie"@nl, "Stad Brussel/Financiën"@nl, "Stad Brussel/Groene Ruimten"@nl, "Stad Brussel/Handel"@nl, "Stad Brussel/Historisch Patrimonium"@nl, "Stad Brussel/Mobiliteit"@nl, "Stad Brussel/Musea"@nl, "Stad Brussel/Netheid"@nl, "Stad Brussel/Op"@nl, "Stad Brussel/Openbaar onderwijs"@nl, "Stad Brussel/Protocol"@nl, "Stad Brussel/Senioren"@nl, "Stad Brussel/Sport"@nl, "Stad Brussel/Sportdienst"@nl, "Stad Brussel/Stedenbouw"@nl, "Stad Brussel/Web Dvlp"@nl, "Stad Brussel/Wegeniswerken"@nl, "Ville de Bruxelles"@fr, "Ville de Bruxelles - Service des sports"@fr, "Ville de Bruxelles/Affaires économiques"@fr, "Ville de Bruxelles/Archives"@fr, "Ville de Bruxelles/Cellule Web"@fr, "Ville de Bruxelles/Cellule Web Web"@fr, "Ville de Bruxelles/Commerce"@fr, "Ville de Bruxelles/Culture"@fr, "Ville de Bruxelles/Démographie"@fr, "Ville de Bruxelles/Espaces verts"@fr, "Ville de Bruxelles/Famille"@fr, "Ville de Bruxelles/Finances"@fr, "Ville de Bruxelles/Instruction publique"@fr, "Ville de Bruxelles/Maisons de quartier"@fr, "Ville de Bruxelles/Mobilité"@fr, "Ville de Bruxelles/Patrimoine Historique"@fr, "Ville de Bruxelles/Propreté"@fr, "Ville de Bruxelles/Protocole"@fr, "Ville de Bruxelles/Seniors"@fr, "Ville de Bruxelles/Sports"@fr, "Ville de Bruxelles/Travaux de Voirie"@fr, "Ville de Bruxelles/Urbanisme"@fr, "Buurthuizen"@nl, "Grondregie"@nl, "De Brusseleir"@nl, "Le Brusseleir"@fr, "Le Brusseleir"@en, "Régie foncière - Property Management Agency "@en, "Régie foncière"@fr, "Open Data Team - Ville de Bruxelles"@fr,  "Stad Brussel / Duurzame ontwikkeling "@nl, "Ville de Bruxelles/Développement Durable"@fr, "Ville de Bruxelles"@fr, "Ville de Bruxelles/Stad Brussel"@en .
+	skos:altLabel "City of Brussels"@en, "City of Brussels/Archives"@en, 
+			"City of Brussels/Cleanliness"@en, "City of Brussels/Cleanliness Service"@en, 
+		"City of Brussels/Commerce"@en, "City of Brussels/Culture"@en, 
+		"City of Brussels/Demography"@en, "City of Brussels/Economic Affairs"@en, 
+		"City of Brussels/Family"@en, "City of Brussels/Finances"@en, "City of Brussels/Green Spaces"@en, 
+		"City of Brussels/Historical Heritage"@en, "City of Brussels/Mobility"@en, 
+		"City of Brussels/Protocol"@en, "City of Brussels/Protocole"@en, 
+		"City of Brussels/Public Education"@en, "City of Brussels/Recruitment"@en, 
+		"City of Brussels/Road works"@en, "City of Brussels/Seniors"@en, "City of Brussels/Sports"@en, 
+	"City of Brussels/Town Planning"@en, "City of Brussels/Web Dvlp"@en, "City of Brussels/Web Unit"@en, 
+	"Stad Brussel"@nl, "Stad Brussel/Archieven"@nl, "Stad Brussel/Cel Web"@nl, "Stad Brussel/Cultuur"@nl, 
+	"Stad Brussel/Demografie"@nl, "Stad Brussel/Dienst Cultuur"@nl, "Stad Brussel/Dienst Netheid"@nl, 
+	"Stad Brussel/Economische zaken"@nl, "Stad Brussel/Familie"@nl, "Stad Brussel/Financiën"@nl,
+	 "Stad Brussel/Groene Ruimten"@nl, "Stad Brussel/Handel"@nl, "Stad Brussel/Historisch Patrimonium"@nl, 
+	"Stad Brussel/Mobiliteit"@nl, "Stad Brussel/Musea"@nl, "Stad Brussel/Netheid"@nl, "Stad Brussel/Op"@nl, "Stad Brussel/Openbaar onderwijs"@nl, "Stad Brussel/Protocol"@nl, "Stad Brussel/Senioren"@nl, "Stad Brussel/Sport"@nl, "Stad Brussel/Sportdienst"@nl, "Stad Brussel/Stedenbouw"@nl, "Stad Brussel/Web Dvlp"@nl, "Stad Brussel/Wegeniswerken"@nl, "Ville de Bruxelles"@fr, "Ville de Bruxelles - Service des sports"@fr, "Ville de Bruxelles/Affaires économiques"@fr, "Ville de Bruxelles/Archives"@fr, "Ville de Bruxelles/Cellule Web"@fr, "Ville de Bruxelles/Cellule Web Web"@fr, "Ville de Bruxelles/Commerce"@fr, "Ville de Bruxelles/Culture"@fr, "Ville de Bruxelles/Démographie"@fr, "Ville de Bruxelles/Espaces verts"@fr, "Ville de Bruxelles/Famille"@fr, "Ville de Bruxelles/Finances"@fr, "Ville de Bruxelles/Instruction publique"@fr, "Ville de Bruxelles/Maisons de quartier"@fr, "Ville de Bruxelles/Mobilité"@fr, "Ville de Bruxelles/Patrimoine Historique"@fr, "Ville de Bruxelles/Propreté"@fr, "Ville de Bruxelles/Protocole"@fr, "Ville de Bruxelles/Seniors"@fr, "Ville de Bruxelles/Sports"@fr, "Ville de Bruxelles/Travaux de Voirie"@fr, "Ville de Bruxelles/Urbanisme"@fr, "Buurthuizen"@nl, "Grondregie"@nl, "De Brusseleir"@nl, "Le Brusseleir"@fr, "Le Brusseleir"@en, "Régie foncière - Property Management Agency "@en, "Régie foncière"@fr, "Open Data Team - Ville de Bruxelles"@fr,  "Stad Brussel / Duurzame ontwikkeling "@nl, "Ville de Bruxelles/Développement Durable"@fr, "Ville de Bruxelles"@fr, "Ville de Bruxelles/Stad Brussel"@en .
 
 <http://data.gov.be/en/taxonomy/term/175>
 	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en ;
@@ -21,11 +35,6 @@
 	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0444_436_776> ;
 	skos:altLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en .
-
-<http://data.gov.be/en/taxonomy/term/183>
-	skos:prefLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-mobi> ;
-	skos:altLabel "Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, "Mobigis"@en, "Bruxelles Mobilité / Brussel Mobiliteit"@en .
 
 <http://data.gov.be/en/taxonomy/term/411>
 	skos:prefLabel "Bruxelles-Propreté"@nl, "Net Brussel"@nl, "ARP-GAN"@en ;
@@ -55,11 +64,6 @@
 	skos:altLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement / Leefmilieu Brussel"@nl,
 		"Bruxelles Environnement"@en, "Bruxelles Environnement / Leefmilieu Brussel"@en, 
 		"Bruxelles Environnement"@fr, "Bruxelles Environnement / Leefmilieu Brussel"@fr .
-
-<http://data.gov.be/en/taxonomy/term/187>
-	skos:prefLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-urban> ;
-	skos:altLabel "Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, "Brussels-Capital Urban Development"@en .
 
 <http://data.gov.be/en/taxonomy/term/188>
 	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
@@ -156,10 +160,20 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0806_001_011> ;
 	skos:altLabel "Brussels energy regulator"@nl, "Le régulateur bruxellois pour l'énergie"@fr, "De Brusselse regulator voor energie"@en .
 
-<http://data.gov.be/en/taxonomy/term/342>
-	skos:prefLabel "Brussel Gewestelijke Coördinatie"@nl, "Bruxelles Coordination régionale"@fr, "Brussels Region Coordination"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-coord> ;
-	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, "Brussel Gewestelijke Coördinatie"@nl .
+<http://data.gov.be/en/taxonomy/term/422>
+	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
+					"Services du Gouvernement de la Région bruxelloise"@fr, 
+					"Regionaler öffentlicher Dienst Brüssel"@de ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039> ;
+	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, 
+			"Brussel Gewestelijke Coördinatie"@nl, "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en,
+			"Gewestelijke Overheidsdienst Brussel (GOB)"@nl, "Service public régional de Bruxelles (SPRB)"@fr,
+			"SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
+			"Bruxelles économie et emploi"@en,
+			"Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, 
+			"Mobigis"@en, "Bruxelles Mobilité / Brussel Mobiliteit"@en,
+			"Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, 
+			"Brussels-Capital Urban Development"@en .
 
 <http://data.gov.be/en/taxonomy/term/190>
 	skos:prefLabel "CESRBC"@en, "CESRBC"@fr, "ESRBHG"@nl ; 
@@ -196,13 +210,9 @@
 	skos:prefLabel "Innoviris"@en, "Innoviris"@fr, "Innoviris"@nl ; 
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0870_532_933> ;
 	skos:altLabel "innoviris"@en, "innoviris"@nl, "innoviris"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/415>
-	skos:prefLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0316_381_039-easyb> ;
-	skos:altLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en .
 
 <http://data.gov.be/en/taxonomy/term/209>
 	skos:prefLabel "Belgische Cardiologische Liga"@nl, "Ligue Cardiologique Belge / Belgische Cardiologische Liga"@en, "Ligue Cardiologique Belge"@fr ; 
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0410_107_090> ;
 	skos:altLabel "Belgische Cardiologische Liga"@nl, "Ligue Cardiologique Belge / Belgische Cardiologische Liga"@en, "Ligue Cardiologique Belge"@fr .
+

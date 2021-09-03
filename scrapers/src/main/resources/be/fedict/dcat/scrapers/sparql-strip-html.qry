@@ -7,9 +7,13 @@ WHERE {
 	BIND (
 		REPLACE(
 			REPLACE(
-				REPLACE(?o, "<br>", "\n", "i"), 
-			"</p>", "\n", "i"),
-		"<[^>]+>", "")
+				REPLACE(
+					REPLACE(
+						REPLACE(?o, "<br>", "\n", "i"), 
+					"</p>", "\n", "i"),
+				"<[^>]+>", ""),
+			"^\n *", ""),
+		"\n *$", "")
 	as ?clean)
 	FILTER ISLITERAL(?o) 
 }
