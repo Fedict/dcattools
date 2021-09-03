@@ -24,7 +24,7 @@
 <http://data.gov.be/en/taxonomy/term/175>
 	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0828_586_767> ;
-	skos:altLabel "Zencar"@fr, "Zencar"@nl, "Zencar"@en .
+	skos:altLabel "Zencar"@fr, "Zencar"@nl, "Zencar"@en, "ZenCar"@fr, "ZenCar"@nl, "ZenCar"@en .
 	
 <http://data.gov.be/en/taxonomy/term/176>
 	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
@@ -140,6 +140,16 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_401_044> ;
 	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
 
+<http://data.gov.be/en/taxonomy/term/424>
+	skos:prefLabel "Schaerbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_367_687> ;
+	skos:altLabel "Schaerbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
+
+<http://data.gov.be/en/taxonomy/term/425>
+	skos:prefLabel "Jette"@nl, "Jette"@fr, "Jette"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_366_895> ;
+	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en .
+
 <http://data.gov.be/en/taxonomy/term/421>
 	skos:prefLabel "Woluwé-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0207_366_994> ;
@@ -158,7 +168,10 @@
 <http://data.gov.be/en/taxonomy/term/341>
 	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0806_001_011> ;
-	skos:altLabel "Brussels energy regulator"@nl, "Le régulateur bruxellois pour l'énergie"@fr, "De Brusselse regulator voor energie"@en .
+	skos:altLabel "Brussels energy regulator"@en, "Le régulateur bruxellois pour l'énergie"@fr, 
+			"De Brusselse regulator voor energie"@nl,
+			"Brugel, De Brusselse regulator voor energie"@nl, 
+			"Brugel, Le régulateur bruxellois pour l'énergie"@fr, "Brugel, Brussels energy regulator"@en .
 
 <http://data.gov.be/en/taxonomy/term/422>
 	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
@@ -216,3 +229,7 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0410_107_090> ;
 	skos:altLabel "Belgische Cardiologische Liga"@nl, "Ligue Cardiologique Belge / Belgische Cardiologische Liga"@en, "Ligue Cardiologique Belge"@fr .
 
+<http://data.gov.be/en/taxonomy/term/423>
+	skos:prefLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0252_168_920> ;
+	skos:altLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en .
