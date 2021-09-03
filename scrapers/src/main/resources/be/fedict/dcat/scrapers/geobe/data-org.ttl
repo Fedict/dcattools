@@ -20,12 +20,16 @@
 <http://data.gov.be/en/taxonomy/term/76>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0314_595_348> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr ;
-	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en .
+	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
+			"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl .
 
 <http://data.gov.be/en/taxonomy/term/162> 
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0308_357_159> ;
 	skos:prefLabel "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
-	skos:altLabel "FPS Finances - General Administration of Patrimonial Documentation (GAPD)"@en .
+	skos:altLabel 	"FOD Financien - Algemene Administratie van de Patrimoniumdocumentatie (AAPD)"@nl ,
+					"SPF Finances - Administration Générale de la Documentation Patrimoniale (AGDP)"@fr ,
+					"FOD Finanzen - Algemeine Verwaltung des Vermögens-documentation (AVVD)"@de,
+					 "FPS Finance - General Administration of Patrimonial Documentation (GAPD)"@en .
 	
 <http://data.gov.be/en/taxonomy/term/337>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0349_294_624> ;
@@ -35,7 +39,14 @@
 <http://data.gov.be/en/taxonomy/term/197>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0353_070_496> ;
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, "Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, "Königliches Belgisches Institut für Naturwissenschaften"@de ;
-	skos:altLabel "Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment, GeoCell"@en, "Royal Belgian Institute of Natural Sciences, Directorate Earth and History of life, Geological Survey of Belgium"@en, "Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Belgian Marine Data Centre (BMDC)"@en, "Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en .
+	skos:altLabel "Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment, GeoCell"@en, 
+		"Royal Belgian Institute of Natural Sciences, Directorate Earth and History of life, Geological Survey of Belgium"@en, 
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Belgian Marine Data Centre (BMDC)"@en, 
+		"Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen, Operationele Directie Aarde en Geschiedenis van het Leven, Belgische Geologische Dienst (BGS)"@nl,
+		"Institut royal des Sciences naturelles de Belgique, Direction opérationnelle Terre et Histoire de la Vie, Service géologique de Belgique (SGB)"@fr,
+		"Königliches Belgisches Institut für Naturwissenschaften, Operationelle Direktion Erde und Geschichte des Lebens, Belgischer Geologischer Dienst (BGS)"@de,
+		"Royal Belgian Institute for Natural Sciences, Directorate Earth and History of life, Geological Survey of Belgium (GSB)"@en .
 
 <http://data.gov.be/en/taxonomy/term/338>
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0349_010_750> ;
@@ -46,3 +57,11 @@
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0214_596_464> ;
 	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
 	skos:altLabel "bpost nv"@en .
+
+<http://data.gov.be/en/taxonomy/term/182>
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0866_518_618> ;
+	skos:prefLabel "IWEPS"@en, "IWEPS"@fr, "IWEPS"@nl, "IWEPS"@de ;
+	skos:altLabel "Waals Instituut voor Evaluatie, Prospectie en Statistiek (IWEPS)"@nl,
+		"Institut Wallon de l'Evaluation, de la Prospective et de la Statistique (IWEPS)"@fr ,
+		"Wallonisches Institut für Schätzung, Zukunftsforschung und Statistik (IWEPS)"@de,
+		"Walloon Institute for Evaluation, Foresight and Statistics (IWEPS)"@en .
