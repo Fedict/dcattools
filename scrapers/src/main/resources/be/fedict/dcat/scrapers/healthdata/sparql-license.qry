@@ -9,3 +9,5 @@ INSERT
 		?dist dgov:license <http://data.gov.be/en/taxonomy/term/242> }
 WHERE
 	{	?dist a dcat:Distribution }
+
+https://opendatacommons.org/licenses/by/1.0/

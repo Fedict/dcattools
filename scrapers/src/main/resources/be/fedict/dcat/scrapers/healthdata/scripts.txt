@@ -15,5 +15,6 @@ healthdata/sparql-remove-pages.qry
 healthdata/sparql-landingpage-hash.qry
 healthdata/data-freq.ttl
 sparql-map-frequency.qry
-healthdata/sparql-license.qry
+data-license.ttl
+sparql-map-license.qry
 clear-skos.qry

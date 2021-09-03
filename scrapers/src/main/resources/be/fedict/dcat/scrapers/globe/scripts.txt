@@ -1,4 +1,4 @@
-# extra queries to be executed and data to be loaded 
+# extra queries to be executed and data to be loaded
 globe/sparql-theme.qry
 globe/data-org.ttl
 sparql-map-org.qry
@@ -7,5 +7,5 @@ globe/data-license.ttl
 sparql-map-license.qry
 data-media.ttl
 sparql-map-media.qry
-sparql-default-desc.qry
+sparql-title-to-desc.qry
 clear-skos.qry
