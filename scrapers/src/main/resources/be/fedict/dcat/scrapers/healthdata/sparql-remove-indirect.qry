@@ -1,0 +1,17 @@
+# Replace indirect node and add keyword/theme directly to dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE { 
+	?s ?prop ?node .
+	?node ?p ?o }
+INSERT {
+	?s ?prop ?label }
+WHERE { 
+	?s ?prop ?node .
+	?node rdfs:label ?label .
+	?node ?p ?o
+	VALUES ?prop { dcat:keyword dcat:theme }
+}
+

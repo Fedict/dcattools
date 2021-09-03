@@ -42,6 +42,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -57,29 +61,30 @@ public class DcatHealthData extends Dcat {
 	private final static Map<String,String> CONTEXT = new HashMap<>();
 	
 	static {
-		CONTEXT.put("title", "http://purl.org/dc/terms/title");
-		CONTEXT.put("identifier", "http://purl.org/dc/terms/identifier");
-		CONTEXT.put("dcat:Dataset", "http://www.w3.org/ns/dcat#Dataset");
-		CONTEXT.put("dcat:Distribution", "http://www.w3.org/ns/dcat#Distribution");
-		CONTEXT.put("vcard:Contact", "http://www.w3.org/2006/vcard/ns#Contact");
-		CONTEXT.put("description", "http://purl.org/dc/terms/description");
-		CONTEXT.put("accessLevel", "http://purl.org/dc/terms/accessRights");
-		CONTEXT.put("issued", "http://purl.org/dc/terms/issued");
-		CONTEXT.put("accrualPeriodicity", "http://purl.org/dc/terms/accrualPeriodicity");
-		CONTEXT.put("modified", "http://purl.org/dc/terms/modified");
-		CONTEXT.put("license", "http://purl.org/dc/terms/license");
-		CONTEXT.put("spatial", "http://purl.org/dc/terms/spatial");
-		CONTEXT.put("publisher", "http://purl.org/dc/terms/publisher");
-		CONTEXT.put("fn", "http://www.w3.org/2006/vcard/ns#fn");
-		CONTEXT.put("isPartOf", "http://purl.org/dc/terms/isPartOf");
-		CONTEXT.put("contactPoint", "http://www.w3.org/ns/dcat#contactPoint");
-		CONTEXT.put("distribution", "http://www.w3.org/ns/dcat#distribution");
-		CONTEXT.put("format", "http://purl.org/dc/terms/format");
-		CONTEXT.put("mediaType", "http://www.w3.org/ns/dcat#mediaType");
-		CONTEXT.put("downloadURL", "http://www.w3.org/ns/dcat#downloadURL");
-		CONTEXT.put("keyword", "http://www.w3.org/ns/dcat#keyword");
-		CONTEXT.put("theme", "http://www.w3.org/ns/dcat#theme");
-		CONTEXT.put("references", "http://purl.org/dc/terms/references");
+		CONTEXT.put("title", DCTERMS.TITLE.toString());
+		CONTEXT.put("identifier", DCTERMS.IDENTIFIER.toString());
+		CONTEXT.put("dcat:Dataset", DCAT.DATASET.toString());
+		CONTEXT.put("dcat:Distribution", DCAT.DISTRIBUTION.toString());
+		CONTEXT.put("vcard:Contact", VCARD4.CONTACT.toString());
+		CONTEXT.put("description", DCTERMS.DESCRIPTION.toString());
+		CONTEXT.put("accessLevel", DCTERMS.ACCESS_RIGHTS.toString());
+		CONTEXT.put("issued", DCTERMS.ISSUED.toString());
+		CONTEXT.put("accrualPeriodicity", DCTERMS.ACCRUAL_PERIODICITY.toString());
+		CONTEXT.put("modified", DCTERMS.MODIFIED.toString());
+		CONTEXT.put("license", DCTERMS.LICENSE.toString());
+		CONTEXT.put("spatial", DCTERMS.SPATIAL.toString());
+		CONTEXT.put("publisher", DCTERMS.PUBLISHER.toString());
+		CONTEXT.put("fn", VCARD4.FN.toString());
+		CONTEXT.put("isPartOf", DCTERMS.IS_PART_OF.toString());
+		CONTEXT.put("contactPoint", DCAT.CONTACT_POINT.toString());
+		CONTEXT.put("distribution", DCAT.HAS_DISTRIBUTION.toString());
+		CONTEXT.put("format", DCTERMS.FORMAT.toString());
+		CONTEXT.put("mediaType", DCAT.MEDIA_TYPE.toString());
+		CONTEXT.put("downloadURL", DCAT.DOWNLOAD_URL.toString());
+		CONTEXT.put("keyword", DCAT.KEYWORD.toString());
+		CONTEXT.put("theme", DCAT.THEME.toString());
+		CONTEXT.put("references", DCTERMS.REFERENCES.toString());
+		CONTEXT.put("data", RDFS.LABEL.toString());
 	}
 	private final static String DISTS = "distribution";
 

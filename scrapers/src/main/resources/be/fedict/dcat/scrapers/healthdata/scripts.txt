@@ -2,8 +2,8 @@
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
-healthdata/sparql-keyword-theme.qry
 sparql-geo-belgium.qry
+healthdata/sparql-remove-indirect.qry
 healthdata/data-publ-contact.ttl
 healthdata/sparql-publ-contact.qry
 healthdata/sparql-language-en.qry
@@ -18,3 +18,4 @@ sparql-map-frequency.qry
 data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
+sparql-strip-html.qry
