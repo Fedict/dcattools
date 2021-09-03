@@ -4,17 +4,22 @@
 
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
-	skos:altLabel "farming" .
+	skos:altLabel "farming", "Agriculture, pêche, sylviculture et alimentation",
+				"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
+				"Bien-être animal", "Bodem" .
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
-	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure" .
+	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
+				"Education, culture and sport", "Éducation, culture et sport", "Onderwijs, cultuur en sport" .
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
 				"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
-				"Emploi", "Développement économique", "Toerism", "Economy", "Economic development" .
+				"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
+				"Economische groei", "tewerkstelling", "Duurzame ontkwikkeling",
+				"Marchés publics", "Employment", "Development durable", "Restauration" .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -25,7 +30,9 @@
 	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
 			"Environnement", "Propreté", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
 			"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
-			"Bruit", "Geluid", "Air", "Lucht"  .
+			"Bruit", "Geluid", "Air", "Lucht", "Cleanliness", "eau", "Habitats and biotopes",
+			"Land cover", "Land usage", "Usage des sols", "Bodemgebruik", "Sols", "Hydrografie",
+			"Habitats et biotopes", "Habitats en biotopen"  .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
@@ -34,18 +41,23 @@
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
-			"Administration", "Gouvernement", "Citoyenneté",
+			"Administration", "Gouvernement", "Citoyenneté", "Marchés publics",
 			"Erkenningen en registraties", "Agréments et enregistrements",
 			"Government and public sector", "Overheid en publieke sector",
 			"Gouvernement et secteur public", "Overheidsopdrachten", "Nutsdiensten en overheidsdiensten", 
 			"Services d'utilité publique et services publics", "Unités statistiques", "Unités administratives",
 			"Addresses", "Administrative units", "Statistical units", "Administratieve eenheden", 
-			"Unités administratives", "Utility and governmental services", "Adresses" .
+			"Unités administratives", "Utility and governmental services", "Adresses", "Adressen",
+			"Area management/restriction/regulation zones and reporting units", "Statistische eenheden",
+			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
+			"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden",
+			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
+			"Finances et budget", "Financiëen en begroting", "Subsides", "Subsidies" .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:altLabel "Santé", "Gezondheid", "Health", "Human health and safety", 
-				"Santé et sécurité des personnes" .
+				"Santé et sécurité des personnes", "Menselijke gezondheid en veiligheid" .
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
@@ -53,20 +65,21 @@
 	
 <http://data.gov.be/en/taxonomy/term/43>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
-	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", 
-				"Justice, système juridique et sécurité publique", "Crime" .
+	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", "Sécurité",
+				"Justice, système juridique et sécurité publique", "Crime", "Police", "Justice",
+				"Justitie, rechtsstelsel en openbare veiligheid" .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
 				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
 				"Bevolking en samenleving", "Population et société", "Population and society",
-				"Emploi" .
+				"Emploi", "tewerkstelling", "Buildings", "Employment", "Hébergement", "chien" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
 	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
-			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism" .
+			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration" .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
@@ -74,6 +87,10 @@
 			"Transport networks", "Réseaux de transport", "Vervoersnetwerken".
 
 <http://data.gov.be/en/taxonomy/term/37>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
 	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
-				"Internet", "TIC", "Installations industrielles", "Industriële installaties" ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .
+			"Internet", "TIC", "Installations industrielles", "Industriële installaties",
+			"Systemen voor verwijzing door middel van coördinaten", "Coordinate reference systems",
+			"Référentiels de coordonnées", "Geographical grid systems", "Systèmes de maillage géographique",
+			"Bodem", "Geologie", "Geology", "Géologie", "Sols", "Science and technology",
+			"Wetenschap en technologie", "Science et technologie" .

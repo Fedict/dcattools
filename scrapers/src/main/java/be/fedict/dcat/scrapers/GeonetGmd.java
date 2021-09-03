@@ -245,10 +245,10 @@ public abstract class GeonetGmd extends Geonet {
 		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + mapLanguage(lang) + "']");
 
 		if (txt == null || txt.isEmpty()) {
-			store.add(uri, property, txten, "en");
+			store.add(uri, property, txten.strip(), "en");
 			return false;
 		}
-		store.add(uri, property, txt, lang);
+		store.add(uri, property, txt.strip(), lang);
 		return true;
 	}
 
