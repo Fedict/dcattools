@@ -42,8 +42,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.ORG;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
@@ -65,6 +67,7 @@ public class DcatHealthData extends Dcat {
 		CONTEXT.put("identifier", DCTERMS.IDENTIFIER.toString());
 		CONTEXT.put("dcat:Dataset", DCAT.DATASET.toString());
 		CONTEXT.put("dcat:Distribution", DCAT.DISTRIBUTION.toString());
+		CONTEXT.put("org:Organization", ORG.ORGANIZATION.toString());
 		CONTEXT.put("vcard:Contact", VCARD4.CONTACT.toString());
 		CONTEXT.put("description", DCTERMS.DESCRIPTION.toString());
 		CONTEXT.put("accessLevel", DCTERMS.ACCESS_RIGHTS.toString());
@@ -83,6 +86,7 @@ public class DcatHealthData extends Dcat {
 		CONTEXT.put("downloadURL", DCAT.DOWNLOAD_URL.toString());
 		CONTEXT.put("keyword", DCAT.KEYWORD.toString());
 		CONTEXT.put("theme", DCAT.THEME.toString());
+		CONTEXT.put("%Ref:downloadURL", DCAT.DOWNLOAD_URL.toString());
 		CONTEXT.put("references", DCTERMS.REFERENCES.toString());
 		CONTEXT.put("data", RDFS.LABEL.toString());
 	}

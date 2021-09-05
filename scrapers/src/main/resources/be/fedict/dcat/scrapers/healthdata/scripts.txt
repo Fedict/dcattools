@@ -3,7 +3,8 @@ data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 sparql-geo-belgium.qry
-healthdata/sparql-remove-indirect.qry
+healthdata/sparql-indirect-classes.qry
+healthdata/sparql-indirect-props.qry
 healthdata/data-publ-contact.ttl
 healthdata/sparql-publ-contact.qry
 healthdata/sparql-language-en.qry
@@ -17,5 +18,8 @@ healthdata/data-freq.ttl
 sparql-map-frequency.qry
 data-license.ttl
 sparql-map-license.qry
+healthdata/sparql-theme.qry
+healthdata/sparql-accessurl.qry
+healthdata/sparql-downloadurl.qry
 clear-skos.qry
 sparql-strip-html.qry

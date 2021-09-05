@@ -1,0 +1,10 @@
+# Convert downloadURL label to an IRI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { ?s dcat:downloadURL ?label }
+INSERT { ?s dcat:downloadURL ?iri }
+WHERE { 
+	?s dcat:downloadURL ?label .
+	BIND(IRI(?label) as ?iri) .
+	FILTER (ISLITERAL(?label)) }
