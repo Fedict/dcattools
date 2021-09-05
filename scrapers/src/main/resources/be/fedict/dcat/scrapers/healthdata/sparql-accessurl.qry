@@ -1,0 +1,12 @@
+# Create accessURL based on dataset identifier
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT { ?dist dcat:accessURL ?url }
+WHERE { 
+	?dataset a dcat:Dataset .
+	?dataset dcterms:identifier ?id .
+	?dataset dcat:distribution ?dist
+	BIND (URI(CONCAT('https://fair.healthdata.be/dataset/', ?id)) AS ?url)
+ }

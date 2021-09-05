@@ -1,0 +1,23 @@
+# Replace indirect node and link directly to dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX org: <http://www.w3.org/ns/org#> 
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#> 
+
+DELETE { ?s ?prop ?node .
+		?node rdfs:label ?subnode }
+INSERT { ?s ?prop ?subnode }
+WHERE { 
+	?s ?prop ?node .
+	?node rdfs:label ?subnode .
+	?subnode a ?class 
+	VALUES (?prop ?class) { 
+			(dcat:dataset dcat:Dataset)
+			(dcat:distribution dcat:Distribution) 
+			(dcat:contactPoint vcard:Contact)
+			(dcterms:publisher org:Organization)
+	}
+}
+
