@@ -1,0 +1,26 @@
+# Create an URI based on start and end date
+# Using this instead of blank nodes or other URIs to reuse (and reduce the number of) triples
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema:  <http://schema.org/>
+
+DELETE 
+	{	?s dcterms:temporal ?uri .
+		?uri schema:startDate ?start .
+		?uri schema:endDate ?end }
+INSERT 
+	{ 	?s dcterms:temporal ?newuri .
+		?newuri schema:startDate ?start .
+		?newuri schema:endDate ?end }
+WHERE 
+	{	?s dcterms:temporal ?uri .
+		?uri schema:startDate ?start .
+		OPTIONAL { ?uri schema:endDate ?end }
+		BIND (
+			IRI(
+				CONCAT("https://data.gov.be/.genid/", 
+					REPLACE(CONCAT(STR(?start), '-', STR(?end)), '[ :]', '-')
+					)
+				)
+		as ?newuri)
+	}
