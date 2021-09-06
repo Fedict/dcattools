@@ -1,0 +1,10 @@
+# Add statbel license information
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/168> }
+WHERE
+	{	?dist a dcat:Distribution }

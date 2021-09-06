@@ -1,0 +1,15 @@
+statbelpubs/data-publ-contact.ttl
+statbelpubs/sparql-publ-contact.qry
+statbelpubs/sparql-license.qry
+#be.fedict.dcat.enhancers.4.classname=be.fedict.dcat.enhancers.SplitProperty
+#be.fedict.dcat.enhancers.4.property=http://www.w3.org/ns/dcat#keyword
+#be.fedict.dcat.enhancers.4.separator=-
+statbelpubs/data-theme.ttl
+sparql-map-theme.qry
+statbelpubs/sparql-theme.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry
+sparql-clean-keyword.qry
+#statbelpubs/sparql-clean-dataset.qry

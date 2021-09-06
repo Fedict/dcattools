@@ -1,0 +1,12 @@
+# extra queries to be executed and data to be loaded
+statbelopen/data-publ-contact.ttl
+statbelopen/sparql-publ-contact.qry
+sparql-geo-belgium.qry
+statbelopen/data-theme.ttl
+sparql-map-theme.qry
+statbelopen/sparql-theme.qry
+clear-skos.qry
+statbelopen/sparql-license.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry
