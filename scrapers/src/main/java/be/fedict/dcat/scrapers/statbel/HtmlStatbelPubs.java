@@ -261,6 +261,6 @@ public class HtmlStatbelPubs extends HtmlStatbel {
      */
     public HtmlStatbelPubs(Properties prop) throws IOException {
         super(prop);
-        setName("statbelpub");
+        setName("statbelpubs");
     }
 }
