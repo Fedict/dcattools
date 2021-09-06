@@ -1,6 +1,7 @@
 # Set publisher and contactpoint
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -9,8 +10,8 @@ DELETE
 	{	?dataset dcterms:publisher ?pub .
 		?pub ?p ?o }
 INSERT 
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/iweps/contact> }
-		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0866_518_618> .
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/iweps/contact> .
+		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0866_518_618> 
 	}
 WHERE
 	{	?dataset dcterms:publisher ?pub .

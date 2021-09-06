@@ -2,9 +2,9 @@
 infrabel/sparql-fix-language.qry
 sparql-dist-lang.qry
 infrabel/sparql-downloadurl.qry
-common/data-license.ttl
+data-license.ttl
 sparql-map-license.qry
-infrabel/sparql-data-publ-contact.ttl
+infrabel/data-publ-contact.ttl
 infrabel/sparql-publ-contact.qry
 clear-skos.qry
 infrabel/data-theme.ttl

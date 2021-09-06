@@ -12,6 +12,7 @@ WHERE
 	{ 	?s ?p ?o .
 		VALUES (?p) {
 			( dcterms:title )
+			( dcat:keyword) 
 			( dcterms:description )
 		}
 		BIND ( STRLANG(?o, "en") as ?literal)

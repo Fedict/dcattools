@@ -3,7 +3,7 @@ geobe/data-org.ttl
 geobe/sparql-map-org.qry
 geobe/data-theme.ttl
 sparql-map-theme.qry
-geobe/data-freq.ttl
+data-frequency.ttl
 sparql-map-frequency.qry
 sparql-geo-belgium.qry
 data-media.ttl

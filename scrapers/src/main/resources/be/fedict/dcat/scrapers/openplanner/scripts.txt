@@ -7,8 +7,7 @@ openplanner/sparql-contact.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
-#openplanner/sparql-prefix-dataset.txt
-#openplanner/sparql-prefix-dist.txt
+openplanner/sparql-language-tag.qry
 openplanner/data-geo.ttl
 sparql-map-geo.qry
 clear-skos.qry
