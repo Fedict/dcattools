@@ -1,0 +1,14 @@
+# Set theme/category if not already set
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT 
+	{ 	?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/38> .
+		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/ECON> }
+WHERE
+	{	?dataset a dcat:Dataset .
+		FILTER NOT EXISTS  { ?dataset dcat:theme ?theme } 
+	}

@@ -1,0 +1,38 @@
+# Data for mapping keywords to an EU list of themes/categories
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/32>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
+	skos:prefLabel "bodembezetting"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/38>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+	skos:prefLabel "ECONOMY AND FINANCE"@en ;
+	skos:altLabel "consumptieprijsindex"@nl, "consumptieprijzen"@nl, "vastgoedprijzen"@nl, "tools"@nl, "nomenclaturen"@nl, "bodembezetting"@nl .
+
+<http://data.gov.be/en/taxonomy/term/34>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+	skos:prefLabel "ENVIRONMENT"@en ;
+	skos:altLabel "milieu"@nl .
+
+<http://data.gov.be/en/taxonomy/term/41>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
+	skos:altLabel "grond"@nl, "geografische bestanden"@nl .
+
+<http://data.gov.be/en/taxonomy/term/40>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
+	skos:prefLabel "HEALTH"@en ;
+	skos:altLabel "medische index"@nl, "sterfte"@nl, "geboorten"@nl .
+	
+<http://data.gov.be/en/taxonomy/term/39>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
+	skos:altLabel "bevolking"@nl, "vastgoedprijzen"@nl, "bouwen & wonen"@nl, "sterfte"@nl, "geboorten"@nl, "census 2011"@nl  .
+
+<http://data.gov.be/en/taxonomy/term/36>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+	skos:prefLabel "TRANSPORT"@en ;
+	skos:altLabel "mobiliteit"@nl, "verkeer"@nl .
+	

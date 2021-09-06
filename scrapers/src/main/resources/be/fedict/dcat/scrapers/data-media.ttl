@@ -153,7 +153,9 @@
 	skos:prefLabel "SHP" ;
 	skos:closeMatch "application/vnd.shp" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", "Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", "ESRI shapefile" .
+	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", 
+			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
+			"ESRI shapefile", "shp (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:prefLabel "DXF" ;
