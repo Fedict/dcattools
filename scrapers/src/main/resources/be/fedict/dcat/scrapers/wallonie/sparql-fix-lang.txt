@@ -1,0 +1,10 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcterms:language <http://id.loc.gov/vocabulary/iso639-1/fr> }
+WHERE
+	{ 	?dataset a dcat:Dataset
+		FILTER NOT EXISTS { ?dataset dcterms:language ?lang }
+	}
