@@ -1,10 +1,10 @@
 # extra queries to be executed and data to be loaded
 iweps/sparql-clear-catalog.qry
-sparql-dist-lang.txt
+sparql-dist-lang.qry
 iweps/sparql-downloadurl.qry
-iweps/data-license.ttl
+data-license.ttl
 sparql-map-license.qry
-iweps/data-contact.ttl
+iweps/data-publ-contact.ttl
 iweps/sparql-publ-contact.qry
 clear-skos.qry
 iweps/data-theme.ttl
@@ -21,6 +21,6 @@ sparql-map-media.qry
 sparql-date-type.qry
 sparql-tag-language.qry
 clear-skos.qry
-sparql-default-desc.qry
-sparql-clear-bnodes.qry
+sparql-title-to-desc.qry
+#sparql-clear-bnodes.qry
 sparql-strip-html.qry

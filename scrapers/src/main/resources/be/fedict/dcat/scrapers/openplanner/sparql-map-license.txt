@@ -1,3 +1,5 @@
+# Map licenses to an EU list of licenses, typically licenses are text labels or use portal-specific URIs
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>

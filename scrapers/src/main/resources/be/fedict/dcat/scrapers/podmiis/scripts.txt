@@ -1,0 +1,11 @@
+# extra queries to be executed and data to be loaded
+podmiis/data-publ-contact.ttl
+podmiis/sparql-publ-contact.qry
+sparql-license-cczero.qry
+podmiis/sparql-theme.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+data-frequency.ttl
+sparql-map-frequency.qry
+clear-skos.qry

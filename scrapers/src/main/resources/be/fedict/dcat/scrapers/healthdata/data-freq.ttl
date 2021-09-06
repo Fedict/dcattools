@@ -6,16 +6,11 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2> ;
 	skos:altLabel "R/P6M" .
 
-<http://data.gov.be/en/taxonomy/term/426>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DECENNIAL> ;
-	skos:altLabel "R/P10Y" .
+
 
 <http://data.gov.be/en/taxonomy/term/22>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
 	skos:prefLabel "Daily"@en ;
 	skos:altLabel "R/P1D" .
 
-<http://data.gov.be/en/taxonomy/term/405>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> ;
-	skos:prefLabel "Semiweekly"@en ;
-	skos:altLabel "R/P3.5D" .
+
