@@ -1,0 +1,8 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {	?dist dcterms:license ?label }
+WHERE
+	{
+		?dist dcterms:license ?label .
+		FILTER ISLITERAL(?label)
+	}

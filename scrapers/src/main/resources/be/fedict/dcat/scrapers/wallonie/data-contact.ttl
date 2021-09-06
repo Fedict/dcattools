@@ -1,0 +1,13 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix dgov: <http://data.gov.be#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+
+<http://data.gov.be/org/wallonie/adn/contact>
+	org:unitOf <https://opencorporates.com/id/companies/be/0568575002> ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/138> ;
+	a vcard:Organization ;
+	vcard:fn "Agence du Numérique"@en, "Agence du Numérique"@fr, "Agence du Numérique"@nl ;
+	vcard:hasUrl <https://www.odwb.be> ;
+	vcard:hasEmail <mailto:info@adn.be> .

@@ -1,3 +1,4 @@
+# extra queries to be executed and data to be loaded
 vlaanderen/sparql-map-language.qry
 sparql-map-loc-lang.qry
 vlaanderen/sparql-language.qry
