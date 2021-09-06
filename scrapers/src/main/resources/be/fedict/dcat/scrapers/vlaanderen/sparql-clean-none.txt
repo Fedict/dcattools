@@ -1,0 +1,7 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { 
+	?s dcat:distribution <http://data.gov.be/None> .
+	<http://data.gov.be/None> ?p ?o } 
+WHERE {	?s dcat:distribution <http://data.gov.be/None> .
+		<http://data.gov.be/None> ?p ?o }

@@ -1,0 +1,9 @@
+# Delete empty string keywords
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s dcterms:keyword ?o }
+
+WHERE {	?s dcterms:keyword ?empty .
+		VALUES ?empty { "" ""@nl ""@fr ""@en } 
+	}

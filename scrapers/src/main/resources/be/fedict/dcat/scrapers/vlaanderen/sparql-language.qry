@@ -1,0 +1,23 @@
+# Add missing language tag to various labels
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s ?p ?o }
+INSERT
+	{ 	?s ?p ?literal .
+		?s dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> }
+WHERE
+	{ 	?s ?p ?o .
+		VALUES (?p) {
+			( dcterms:title )
+			( dcterms:description )
+			( dcterms:spatial )
+			( dcat:keyword )
+			( dcat:theme )
+		}
+		FILTER ( isLiteral(?o) && langMatches(lang(?o), ""))
+		BIND ( STRLANG(?o, "nl") as ?literal)
+	}
