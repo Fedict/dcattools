@@ -15,6 +15,7 @@ sparql-map-media.qry
 vlaanderen/sparql-fix-theme.qry
 vlaanderen/data-theme.ttl
 sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 vlaanderen/sparql-map-theme.qry
 vlaanderen/sparql-fix-kanooh.qry
 vlaanderen/sparql-vcard-mailto.qry
