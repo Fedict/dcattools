@@ -1,0 +1,12 @@
+# extra queries to be executed and data to be loaded
+all/catalog.ttl
+all/licenses.ttl
+all/themes.ttl
+all/sparql-remove-catalog.qry
+all/sparql-dataset.qry
+all/sparql-datestamp.qry
+all/sparql-clear-drupal.qry
+#all/clear-empty.txt
+all/sparql-landingpage.qry
+all/sparql-vcard-kind.qry
+all/sparql-spatial-location.qry

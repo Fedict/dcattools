@@ -1,0 +1,12 @@
+# Remove leftover catalog info from combined data
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?cat ?p ?o }
+WHERE
+	{	?cat a dcat:Catalog .
+		?cat ?p ?o  
+		FILTER( ?cat != <http://data.gov.be/catalog>) 
+	}

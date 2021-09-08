@@ -1,0 +1,21 @@
+# Remove duplicate dataset based on identifier
+
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?dataset2 dcterms:identifier ?value .
+		?dataset2 ?p2 ?o2 .
+		?dataset2 dcat:distribution ?dist2 .
+		?dist2 ?pdist2 ?odist2
+}
+WHERE {
+    ?dataset dcterms:identifier ?value .
+    ?dataset2 dcterms:identifier ?value .
+	?dataset2 ?p2 ?o2
+	OPTIONAL { 
+		?dataset2 dcat:distribution ?dist2 .
+		?dist2 ?pdist2 ?odist2
+	}
+    FILTER (?dataset < ?dataset2)
+}
