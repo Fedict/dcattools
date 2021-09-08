@@ -1,3 +1,5 @@
+# Map publisher/organization URI based on name
+
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>

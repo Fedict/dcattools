@@ -1,3 +1,5 @@
+# Add default contact point if none are set
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
 
