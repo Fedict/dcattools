@@ -1,0 +1,6 @@
+# Add location class to spatial for SHACL validation purposes
+
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+
+INSERT	{ ?spatial a dcterms:Location }
+WHERE	{ ?dataset dcterms:spatial ?spatial }

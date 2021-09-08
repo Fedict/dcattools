@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded
+sparql-remove-duplicates.qry
 vlaanderen/sparql-map-language.qry
 sparql-map-loc-lang.qry
 vlaanderen/sparql-language.qry
@@ -8,7 +9,7 @@ sparql-dist-accessurl.qry
 sparql-startenddate.qry
 vlaanderen/data-geo.ttl
 sparql-map-geo.qry
-#vlaanderen/sparql-default-geo.qry
+vlaanderen/sparql-default-geo.qry
 data-media.ttl
 vlaanderen/sparql-format-extension.qry
 sparql-map-media.qry

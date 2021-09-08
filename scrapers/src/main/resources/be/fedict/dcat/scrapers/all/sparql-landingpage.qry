@@ -1,0 +1,7 @@
+# Add document class to landing pages for SHACL validation purposes
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT	{ ?page a foaf:Document }
+WHERE	{ ?dataset dcat:landingPage ?page }

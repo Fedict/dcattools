@@ -15,6 +15,7 @@
 		<http://ns.thedatatank.com/dcat/themes#Media> ,
 		<http://ns.thedatatank.com/dcat/themes#CulturalHeritage> ,
 		<http://ns.thedatatank.com/dcat/themes#CulturalEvents> ,
+		<http://vocab.belgif.be/auth/datatheme/CULT>, 
 		<http://vocab.belgif.be/auth/datatheme/EDUC>,
 		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ,
