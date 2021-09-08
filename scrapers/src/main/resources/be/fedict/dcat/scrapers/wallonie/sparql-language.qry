@@ -1,3 +1,5 @@
+# Set language tag on literals
+
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -17,11 +19,5 @@ WHERE
 			( dcat:theme )
 		}
 		FILTER ( isLiteral(?o) && langMatches(lang(?o), ""))
-		BIND ( STRLANG(?o, ?code) as ?literal)
-		VALUES (?lang ?code) {
-			( <http://id.loc.gov/vocabulary/iso639-1/Fran\u00E7ais> "fr" )
-			( <http://id.loc.gov/vocabulary/iso639-1/nl> "nl" )
-			( <http://id.loc.gov/vocabulary/iso639-1/fr> "fr" )
-			( <http://id.loc.gov/vocabulary/iso639-1/en> "en" )
-		}
+		BIND ( STRLANG(?o, "fr") as ?literal)
 	}

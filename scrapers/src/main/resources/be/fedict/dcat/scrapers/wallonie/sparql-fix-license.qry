@@ -1,3 +1,5 @@
+# Delete unspecified license
+
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {	?dist dcterms:license ?label }
