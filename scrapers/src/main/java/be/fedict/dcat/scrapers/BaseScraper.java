@@ -415,16 +415,13 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 *
 	 * @param cache cache
 	 * @param store RDF store
-	 * @throws RepositoryException
-	 * @throws MalformedURLException
+	 * @throws IOException
 	 */
-	public abstract void generateDcat(Cache cache, Storage store)
-		throws RepositoryException, MalformedURLException;
+	public abstract void generateDcat(Cache cache, Storage store) throws IOException;
 
 	@Override
-	public void generateDcat() throws RepositoryException, MalformedURLException {
+	public void generateDcat() throws IOException {
 		generateDcat(cache, store);
-
 	}
 		
 	@Override

@@ -1,0 +1,6 @@
+# extra queries to be executed and data to be loaded
+wiv/data-publ-contact.ttl
+wiv/sparql-publ-contact.qry
+sparql-geo-belgium.qry
+sparql-license-cczero.qry
+wiv/sparql-keyword-theme.qry
