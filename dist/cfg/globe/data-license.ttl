@@ -1,9 +1,0 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/en/taxonomy/term/212>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/ODC_PDDL> ;
-	skos:prefLabel "ODC PDDL" ;
-	skos:altLabel "odc-pddl" .
-
-
-		
