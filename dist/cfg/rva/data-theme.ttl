@@ -1,9 +1,0 @@
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
-	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:prefLabel "ECONOMY AND FINANCE"@en ;

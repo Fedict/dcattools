@@ -1,9 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-INSERT 	{ ?dist dcterms:language ?lang }
-WHERE	{ 	
-	?dataset dcat:distribution ?dist .
-	?dataset dcterms:language ?lang
-	FILTER NOT EXISTS { ?dist dcterms:language ?l }
-	}

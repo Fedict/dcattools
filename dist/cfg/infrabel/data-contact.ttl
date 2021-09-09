@@ -1,7 +1,0 @@
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-
-<http://data.gov.be/org/infrabel/contact>
-	a vcard:Organization ;
-	vcard:fn "Infrabel"@nl, "Infrabel"@fr, "Infrabel"@en;
-	vcard:hasUrl <https://opendata.infrabel.be> ;
-	vcard:hasEmail <mailto:info@infrabel.be> .

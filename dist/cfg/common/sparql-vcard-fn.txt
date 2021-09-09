@@ -1,8 +1,0 @@
-# Use vcard:fn instead of hasFN
-# Both are correct, but DCAT-AP suggests to use fn
-
-PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-
-DELETE	{ ?s vcard:hasFN ?name }
-INSERT	{ ?s vcard:fn ?name }
-WHERE	{ ?s vcard:hasFN ?name }

@@ -1,8 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/rva/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/cbe/org/0206_737_484#id> }
-WHERE
-	{ 	?dataset a dcat:Dataset  }

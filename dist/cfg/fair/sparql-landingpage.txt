@@ -1,7 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-INSERT  { ?s dcat:landingPage ?url }
-WHERE
-	{	?s a dcat:Dataset .
-		BIND(IRI(CONCAT(STR(?s), "#")) AS ?url) 
-	}

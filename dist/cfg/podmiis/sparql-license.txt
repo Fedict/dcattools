@@ -1,9 +1,0 @@
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
-
-INSERT 
-	{ 	?dist dcterms:license <http://publications.europa.eu/resource/authority/licence/CC0>  .
-		?dist dgov:license <http://data.gov.be/en/taxonomy/term/54> }
-WHERE
-	{	?dist a dcat:Distribution }
