@@ -183,6 +183,37 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
+	 * Get required property
+	 *
+	 * @param prop properties
+	 * @param name unprefixed property
+	 * @return value of the property
+	 * @throws IOException if property is empty
+	 */
+	protected final String getRequiredProperty(Properties prop, String name) throws IOException {
+		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name, "");
+		if (value.isEmpty()) {
+			throw new IOException("Property missing: " + name);
+		}
+		return value;
+	}
+
+	/**
+	 * Get optional property
+	 *
+	 * @param prop properties
+	 * @param name unprefixed property
+	 * @return property value
+	 */
+	protected final String getProperty(Properties prop, String name) {
+		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name);
+		if (value == null) {
+			logger.warn("No property {}", name);
+		}
+		return value;
+	}
+
+	/**
 	 * Make a hashed ID based upon a string.
 	 *
 	 * @param s
@@ -325,9 +356,37 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		store.add(u, SCHEMA.END_DATE, e, (e.length() == 10) ? XSD.DATE : XSD.DATETIME);
 	}
 
-	@Override
-	public void enhance() throws IOException {
-		List<String> scripts = loadScripts();
+	/**
+	 * Load script file names from resources scripts.txt file
+	 * 
+	 * @param file name of the file with the list of scrips
+	 * @return list of file names
+	 */
+	private List<String> loadScripts(String file) throws IOException {
+		List<String> scripts;
+
+		String fname = PKG_PREFIX + "/" + getName() + "/" + file;
+		logger.info("Load script list from {}", file);
+		try(InputStream is = BaseScraper.class.getResourceAsStream(fname);
+			BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+			scripts = r.lines().filter(s -> !s.startsWith("#"))		// remove comments
+								.filter(s -> !s.isBlank())			// remove empty lines
+								.map(s -> PKG_PREFIX + "/" + s)			// add prefix
+								.collect(Collectors.toList());
+		}
+		logger.info("Found {} scripts", scripts.size());
+
+		return scripts;
+	}
+
+	/**
+	 * Load additional data and run additional scripts, if any
+	 * 
+	 * @param file name of the script file
+	 * @throws IOException 
+	 */
+	protected void enhance(String file) throws IOException {
+		List<String> scripts = loadScripts(file);
 		
 		for (String script: scripts) {
 			if (script.endsWith("ttl")) {
@@ -348,26 +407,22 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
-	 * Load script file names from resources scripts.txt file
-	 * 
-	 * @param name name of the scraper
-	 * @return list of file names
+	 * Generate DCAT from cache and write it to the RDF store
+	 *
+	 * @param cache cache
+	 * @param store RDF store
+	 * @throws IOException
 	 */
-	private List<String> loadScripts() throws IOException {
-		List<String> scripts;
+	protected abstract void generateDcat(Cache cache, Storage store) throws IOException;
 
-		String file = PKG_PREFIX + "/" + getName() + "/scripts.txt";
-		logger.info("Load script list from {}", file);
-		try(InputStream is = BaseScraper.class.getResourceAsStream(file);
-			BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
-			scripts = r.lines().filter(s -> !s.startsWith("#"))		// remove comments
-								.filter(s -> !s.isBlank())			// remove empty lines
-								.map(s -> PKG_PREFIX + "/" + s)			// add prefix
-								.collect(Collectors.toList());
-		}
-		logger.info("Found {} scripts", scripts.size());
-
-		return scripts;
+	/**
+	 * Generate DCAT-AP from cache
+	 *
+	 * @throws IOException
+	 */
+	protected void generateDcat() throws IOException {
+		generateDcat(cache, store);
+		enhance("scripts.txt");
 	}
 
 	/**
@@ -410,19 +465,6 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		generateCatalogInfo(store, catalog);
 	}
 
-	/**
-	 * Generate DCAT from cache and write it to the RDF store
-	 *
-	 * @param cache cache
-	 * @param store RDF store
-	 * @throws IOException
-	 */
-	public abstract void generateDcat(Cache cache, Storage store) throws IOException;
-
-	@Override
-	public void generateDcat() throws IOException {
-		generateDcat(cache, store);
-	}
 		
 	@Override
 	public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
@@ -434,37 +476,6 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	public void close() {
 		cache.shutdown();
 		store.shutdown();		
-	}
-
-	/**
-	 * Get required property
-	 *
-	 * @param prop properties
-	 * @param name unprefixed property
-	 * @return value of the property
-	 * @throws IOException if property is empty
-	 */
-	protected final String getRequiredProperty(Properties prop, String name) throws IOException {
-		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name, "");
-		if (value.isEmpty()) {
-			throw new IOException("Property missing: " + name);
-		}
-		return value;
-	}
-
-	/**
-	 * Get optional property
-	 *
-	 * @param prop properties
-	 * @param name unprefixed property
-	 * @return property value
-	 */
-	protected final String getProperty(Properties prop, String name) {
-		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name);
-		if (value == null) {
-			logger.warn("No property {}", name);
-		}
-		return value;
 	}
 
 	/**
