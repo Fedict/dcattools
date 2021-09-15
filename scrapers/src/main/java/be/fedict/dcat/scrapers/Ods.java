@@ -26,9 +26,18 @@
 package be.fedict.dcat.scrapers;
 
 
+import be.fedict.dcat.helpers.Storage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
 import java.util.Properties;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 /**
  * Abstract OpenDataSoft scraper.
@@ -38,9 +47,48 @@ import java.util.Properties;
  * @author Bart Hanssens
  */
 public abstract class Ods extends Dcat {
-
+	
 	public final static String API_DCAT = "/api/v2/catalog/exports/ttl?lang=";
+	
+	// correction per language
+	private final static String QRY_LANGUAGE = 
+		"PREFIX dcat: <http://www.w3.org/ns/dcat#> " +
+		"PREFIX dcterms: <http://purl.org/dc/terms/> " +
+		" " +
+		"DELETE { ?s ?p ?o } " +
+		"INSERT { ?s ?p ?literal } " +
+		"WHERE { ?s ?p ?o . " +
+			"FILTER ( isLiteral(?o) && langMatches(lang(?o), '')) " +
+			"VALUES ?p { dcterms:title dcterms:description dcat:keyword } " +
+			"BIND ( STRLANG(?o, '%s') as ?literal) " +
+		"}";
 
+
+	/**
+	 * Generate DCAT file
+	 *
+	 * @param cache
+	 * @param store
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	@Override
+	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+		Map<String, Page> map = cache.retrievePage(getBase());
+
+		for (String lang: super.getAllLangs()) {
+			String ttl = map.get(lang).getContent();
+			// Load turtle file into store
+			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+				store.add(in, RDFFormat.TURTLE);
+				store.queryUpdate(String.format(QRY_LANGUAGE, lang));
+			} catch (RDFParseException | IOException ex) {
+				throw new RepositoryException(ex);
+			}
+		}
+		generateCatalog(store);
+	}
+	
 	/**
 	 * Scrape DCAT catalog.
 	 *
@@ -50,9 +98,11 @@ public abstract class Ods extends Dcat {
 	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL front = getBase();
-		URL url = new URL(getBase(), Ods.API_DCAT + getDefaultLang());
-		String content = makeRequest(url);
-		cache.storePage(front, "all", new Page(url, content));
+		for (String lang: super.getAllLangs()) {
+			URL url = new URL(getBase(), Ods.API_DCAT + lang);
+			String content = makeRequest(url);
+			cache.storePage(front, lang, new Page(url, content));
+		}
 	}
 
 	/**

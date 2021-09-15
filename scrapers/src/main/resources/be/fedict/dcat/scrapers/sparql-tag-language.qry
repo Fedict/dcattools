@@ -1,6 +1,5 @@
 # Add language tag on literals based on dcterms:language (if the tag was missing)
 
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 

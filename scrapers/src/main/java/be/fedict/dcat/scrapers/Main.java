@@ -131,11 +131,11 @@ public class Main {
 		// find and load specific scraper
 		try (BaseScraper scraper = configureScraper(prop)) {
 			if (scraper != null) {
-				// output file
+
 				scraper.scrape();
 				scraper.generateDcat();
-				scraper.enhance();
-					
+
+				// output file
 				String outfile = String.join(File.separator, dataDir, scraper.getName() + ".nt");
 				logger.info("Write end results to {}", outfile);
 				try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {

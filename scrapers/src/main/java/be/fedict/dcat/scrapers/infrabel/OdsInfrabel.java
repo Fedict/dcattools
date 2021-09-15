@@ -36,7 +36,7 @@ import java.util.Properties;
  * @author Bart Hanssens
  */
 public class OdsInfrabel extends Ods {
-
+	
 	/**
 	 * Constructor
 	 *

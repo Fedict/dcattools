@@ -42,19 +42,7 @@ public interface Scraper {
 	 */
 	public void scrape() throws IOException;
 
-	/**
-	 * Generate DCAT-AP from cache
-	 *
-	 * @throws IOException
-	 */
-	public void generateDcat() throws IOException;
-
-	/**
-	 * Run additional scripts, if any
-	 *
-	 * @throws IOException
-	 */	
-	public void enhance() throws IOException;
+	
 
 	/**
 	 * Write DCAT-AP triples to a writer
