@@ -1,4 +1,4 @@
-# Set publisher and contactpoint
+# Add distribution with all properties (note that download is actually XLSX despite the CSV label)
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
@@ -10,6 +10,7 @@ INSERT
 		?dist dcterms:language ?lang .
 		?dist dcat:accessUrl ?access .
 		?dist dcat:downloadUrl ?download .
+		?dist dcat:accessUrl ?access .
 		?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/62> .
 		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLSX>  .
 		?dist dcat:mediaType "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; .
@@ -18,9 +19,17 @@ INSERT
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcterms:title ?title .
-		?dataset dcterms:language ?lang .
+		?dataset dcat:keyword ?keyw .
 		BIND (LANG(?title) as ?langcode) .
 		BIND (IRI(CONCAT(
 					REPLACE(STR(?dataset), "dataset", "dist"), 
 				"/", ?langcode)) as ?dist) .
-		BIND (CONCAT("https://indicators.be/", ?langcode, "/x/G01_PSE/download+csv") as ?download) }
+		BIND (IRI(CONCAT("https://indicators.be/", ?langcode, "/i/", ?keyw, "/", ?langcode)) as ?access).
+		BIND (IRI(CONCAT("https://indicators.be/", ?langcode, "/x/", ?keyw, "/download+csv")) as ?download)
+		VALUES (?lang ?langcode) {
+			( <http://publications.europa.eu/resource/authority/language/NLD> "nl" )
+			( <http://publications.europa.eu/resource/authority/language/FRA> "fr" )
+			( <http://publications.europa.eu/resource/authority/language/ENG> "en" )
+			( <http://publications.europa.eu/resource/authority/language/DEU> "de" ) 
+		}
+}

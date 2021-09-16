@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.text.html.HTML.Attribute;
 
@@ -64,6 +66,7 @@ public class HtmlIndicators extends Html {
 	private final static String TITLE = "div.headline h4";
 	private final static String DESC = "div.tab-content div#metadata p";
 
+	private final static Pattern PATTERN = Pattern.compile(".*/(G\\w*)/.*");
 
 	/**
 	 * Switch to another language
@@ -175,12 +178,16 @@ public class HtmlIndicators extends Html {
 			IRI dataset = store.getURI(makeDatasetURL(id).toString());
 			logger.info("Generating dataset {}", dataset.toString());
 		
+			String link = p.getUrl().toString();
+			Matcher matcher = PATTERN.matcher(link);
+			String keyw = matcher.matches() ? matcher.group(1) : "";
+			
 			store.add(dataset, RDF.TYPE, DCAT.DATASET);
 			store.add(dataset, DCTERMS.IDENTIFIER, id);
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 			store.add(dataset, DCTERMS.TITLE, title, lang);
 			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-			store.add(dataset, DCAT.LANDING_PAGE, p.getUrl());
+			store.add(dataset, DCAT.KEYWORD, keyw);
 		}
 	}
 
