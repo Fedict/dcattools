@@ -3,6 +3,7 @@ indicators/data-publ-contact.ttl
 indicators/sparql-publ-contact.qry
 sparql-license-cczero.qry
 indicators/sparql-distribution.qry
-indicators/sparql-theme.txt
+indicators/data-theme.ttl
+indicators/sparql-map-keyword-theme.qry
 sparql-geo-belgium.qry
 clear-skos.qry
