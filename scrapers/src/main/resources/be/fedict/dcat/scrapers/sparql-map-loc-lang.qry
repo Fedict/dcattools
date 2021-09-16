@@ -9,6 +9,7 @@ INSERT
 WHERE 
 	{ ?s dcterms:language ?oldlang .
 		VALUES (?oldlang ?newlang)  { 
+			( <http://id.loc.gov/vocabulary/iso639-1/Fran\u00E7ais> <http://publications.europa.eu/resource/authority/language/FRA> )
 			( <http://id.loc.gov/vocabulary/iso639-1/en> <http://publications.europa.eu/resource/authority/language/ENG> )
 			( "http://id.loc.gov/vocabulary/iso639-1/en" <http://publications.europa.eu/resource/authority/language/ENG> )
 			( <http://id.loc.gov/vocabulary/iso639-1/fr> <http://publications.europa.eu/resource/authority/language/FRA> )
