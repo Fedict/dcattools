@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0254_013_997>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/239> ;
+	foaf:name "Federal Planning Bureau"@en, "Federaal Planbureau"@nl, "Bureau fédéral du Plan"@fr;
+	foaf:homepage <https://www.plan.be> .
+	
+<http://data.gov.be/org/fpp/contact>
+	a vcard:Organization ;
+	vcard:fn "Federal Planning Bureau"@en, "Federaal Planbureau"@nl, "Bureau fédéral du Plan"@fr ;
+	vcard:hasUrl <https://indicators.be/> ;
+	vcard:hasEmail <mailto:indicators@plan.be> .
