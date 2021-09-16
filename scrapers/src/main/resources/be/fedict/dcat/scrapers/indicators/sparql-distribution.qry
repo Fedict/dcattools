@@ -1,0 +1,26 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:distribution ?dist .
+		?dist a dcat:Distribution .
+		?dist dcterms:language ?lang .
+		?dist dcat:accessUrl ?access .
+		?dist dcat:downloadUrl ?download .
+		?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/62> .
+		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLSX>  .
+		?dist dcat:mediaType "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; .
+		<http://data.gov.be/en/taxonomy/term/62> a dcterms:mediaTypeOrExtent  .
+		<http://data.gov.be/en/taxonomy/term/62> rdfs:label "XLSX"  }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcterms:title ?title .
+		?dataset dcterms:language ?lang .
+		BIND (LANG(?title) as ?langcode) .
+		BIND (IRI(CONCAT(
+					REPLACE(STR(?dataset), "dataset", "dist"), 
+				"/", ?langcode)) as ?dist) .
+		BIND (CONCAT("https://indicators.be/", ?langcode, "/x/G01_PSE/download+csv") as ?download) }

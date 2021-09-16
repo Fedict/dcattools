@@ -1,0 +1,8 @@
+# extra queries to be executed and data to be loaded 
+indicators/data-publ-contact.ttl
+indicators/sparql-publ-contact.qry
+sparql-license-cczero.qry
+indicators/sparql-distribution.qry
+indicators/sparql-theme.txt
+sparql-geo-belgium.qry
+clear-skos.qry
