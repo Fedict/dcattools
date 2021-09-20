@@ -10,3 +10,4 @@ all/sparql-clear-drupal.qry
 all/sparql-landingpage.qry
 all/sparql-vcard-kind.qry
 all/sparql-spatial-location.qry
+clear-skos.qry
