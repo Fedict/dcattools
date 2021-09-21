@@ -13,7 +13,7 @@ brussels/sparql-contact-vcard.qry
 data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
-data-freq.ttl
+data-frequency.ttl
 sparql-map-frequency.qry
 data-media.ttl
 sparql-map-media.qry
