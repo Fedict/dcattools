@@ -10,7 +10,7 @@ clear-skos.qry
 infrabel/data-theme.ttl
 infrabel/sparql-map-theme.qry
 clear-skos.qry
-sparql-map-language.qry
+sparql-map-loc-lang.qry
 sparql-geo-belgium.qry
 sparql-delete-mediatype.qry
 data-media.ttl
