@@ -1,10 +1,11 @@
-# Temporary fix: currently all dataset descriptions are EN, not NL
+# Set 3 languages on all datasets
 
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE 
-	{ 	?s dcterms:language <http://id.loc.gov/vocabulary/iso639-1/nl>  }
-INSERT
-	{ 	?s dcterms:language <http://id.loc.gov/vocabulary/iso639-1/en> }
+INSERT { 	?s dcterms:language <http://publications.europa.eu/resource/authority/language/FRA>,
+							<http://publications.europa.eu/resource/authority/language/NLD>,
+							<http://publications.europa.eu/resource/authority/language/ENG>  
+}
 WHERE
-	{ 	?s dcterms:language <http://id.loc.gov/vocabulary/iso639-1/nl> }
+	{ 	?s a dcat:Dataset }
