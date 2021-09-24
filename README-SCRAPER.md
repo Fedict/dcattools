@@ -8,7 +8,12 @@ Currently, there are abstract Java classes available for scraping
  * Excel files
  * HTML sites
 
-Adding a new one can be as simple as subclassing `be.fedict.dcat.scrapers.Scraper`, setting a new name and recompiling the scraper module.
+Adding a new one can be as simple as:
+- subclassing `be.fedict.dcat.scrapers.Scraper` in new separate package `be.fedict.dcat.scrapers.<datasource>`, 
+- setting a new name
+- adding a `scraper.properties` configuration file (as a resource) in the package
+- adding a `script.txt` file (as a resource) listing additional data and queries to be used
+- recompiling the scraper module.
 
 ## Running
 
