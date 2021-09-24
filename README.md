@@ -33,9 +33,8 @@ the Oracle JDK and Maven.
 * Helper classes: for storing scraped pages locally, conversion tools etc.
 * Various [scrapers](README-SCRAPER.md): getting metadata from various repositories
 and websites, and turning the metadata into DCAT files
-* DCAT [enhancers](README-ENHANCERS.md): for improving the DCAT files, 
-e.g. map site-specific themes, add missing properties
-and prepare the files for updating data.gov.be
+* Also part of the scrapers are a series of [SPARQL scripts](README-ENHANCERS.md) to turn DCAT into DCAT-AP: 
+e.g. map site-specific themes, add missing properties and prepare the files for updating data.gov.be
 * Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (Drupal 7) website 
 using the enhanced DCAT files
 * Some [tools](#tools): link checker, EDP converter tool
