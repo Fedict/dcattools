@@ -3,8 +3,12 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
+DELETE
+	{	?dataset dcterms:publisher ?o }
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/elia/contact> .
 		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0731_852_231> }
 WHERE
-	{ 	?dataset a dcat:Dataset  }
+	{ 	?dataset a dcat:Dataset 
+		OPTIONAL {	?dataset dcterms:publisher ?o }
+	}
