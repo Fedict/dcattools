@@ -8,35 +8,34 @@ Currently, there are abstract Java classes available for scraping
  * Excel files
  * HTML sites
 
-Adding a new one can be as simple as subclassing `be.fedict.dcat.scrapers.Scraper`, setting a new name and recompiling the scraper module.
+Adding a new one can be as simple as:
+- subclassing `be.fedict.dcat.scrapers.Scraper` in new separate package `be.fedict.dcat.scrapers.<datasource>`, 
+- setting a new name
+- adding a `scraper.properties` configuration file (as a resource) in the package
+- adding a `script.txt` file (as a resource) listing additional data and queries to be used
+- recompiling the scraper module.
 
 ## Running
 
 Invoke with
 
-    # java -jar scraper.jar location/of/config.properties
+    # java -jar scraper.jar name-of-datasource
 
 Use -D to set logging level and save the log to a file
 
     # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
            -Dorg.slf4j.simpleLogger.logFile=update.log
-           -jar scrapper.jar location/of/config.properties
+           -jar scraper.jar name-of-datasource
 
 ## Configuration
 
-The configuration file is a Java properties file.
+The configuration file is a `scraper.properties` file .
 Make sure that the (sub)directories exist before running the scraper.
 
 For example:
 
     # full class name of the scraper implementation
-    be.fedict.dcat.scrapers.classname=be.fedict.dcat.scrapers.CkanWallonie
-    # full path to the location of the local download cache (MapDB)
-    be.fedict.dcat.scrapers.cache=B:/datagov/data/wallonie/cache.mdb
-    # full path to the RDF backing store (SAIL)
-    be.fedict.dcat.scrapers.store=B:/datagov/data/wallonie/wallonie.sail
-    # full path for the result file (N-Triples)
-    be.fedict.dcat.scrapers.rdfout=B:/datagov/data/wallonie/wallonie.nt
+    be.fedict.dcat.scrapers.classname=be.fedict.dcat.scrapers.wallonie.OdsWallonie
     # URL of the site/portal to scrape
     be.fedict.dcat.scrapers.url=http://opendata.digitalwallonia.be
     # default language of the site/portal (nl, fr, de or en)
