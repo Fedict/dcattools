@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>2.20</version>
+        <version>2.21</version>
     </parent>
     <artifactId>scrapers</artifactId>
     <packaging>jar</packaging>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.14.2</version>
+            <version>1.14.3</version>
         </dependency>
         <dependency>
             <groupId>javax.json</groupId>
@@ -77,7 +77,17 @@
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
-        </dependency>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.10.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.6.0</version>
+		</dependency>
     </dependencies>
     <build>
         <plugins>
@@ -121,7 +131,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>2.20</version>
+    <version>2.21</version>
     <name>scrapers</name>
     <description>Various scrapers for Belgian data portals</description>
 </project>

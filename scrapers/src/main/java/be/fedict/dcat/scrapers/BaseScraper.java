@@ -52,6 +52,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -244,7 +245,19 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
 			+ id.replace(".", "-").replace(":", "-"));
 	}
-
+	
+	/**
+	 * Make an IRI for a DCAT Dataset
+	 *
+	 * @param id
+	 * @return URL
+	 * @throws MalformedURLException
+	 */
+	protected IRI makeDatasetIRI(String id) throws MalformedURLException {
+		return Values.iri(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
+			+ id.replace(".", "-").replace(":", "-"));
+	}
+	
 	/**
 	 * Make an URL for a DCAT Distribution
 	 *
@@ -254,6 +267,16 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 */
 	protected URL makeDistURL(String id) throws MalformedURLException {
 		return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
+			+ id.replace(".", "-").replace(":", "-"));
+	}
+	/**
+	 * Make an IRI for a DCAT Distribution
+	 *
+	 * @param id
+	 * @return URL
+	 */
+	protected IRI makeDistIRI(String id) {
+		return Values.iri(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
 			+ id.replace(".", "-").replace(":", "-"));
 	}
 
@@ -432,8 +455,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @param catalog catalog URI
 	 * @throws RepositoryException
 	 */
-	public void generateCatalogInfo(Storage store, IRI catalog)
-		throws RepositoryException {
+	public void generateCatalogInfo(Storage store, IRI catalog) throws RepositoryException {
 		store.add(catalog, DCTERMS.TITLE, "DCAT Catalog for " + getName(), "en");
 		store.add(catalog, DCTERMS.DESCRIPTION, "Converted by BOSA DG DT converter", "en");
 		store.add(catalog, DCTERMS.MODIFIED, new Date());
@@ -453,8 +475,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @throws RepositoryException
 	 * @throws MalformedURLException
 	 */
-	public void generateCatalog(Storage store)
-		throws RepositoryException, MalformedURLException {
+	public void generateCatalog(Storage store) throws RepositoryException, MalformedURLException {
 		IRI catalog = store.getURI(makeCatalogURL().toString());
 		store.add(catalog, RDF.TYPE, DCAT.CATALOG);
 

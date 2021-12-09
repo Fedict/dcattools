@@ -222,7 +222,20 @@ public class Storage {
     public void add(Resource subj, IRI pred, IRI obj) throws RepositoryException {
         conn.add(subj, pred, obj);
     }
+
+    /**
+     * Add a value to the repository.
+     * 
+     * @param subj
+     * @param pred
+     * @param obj
+     * @throws RepositoryException 
+     */
+    public void add(Resource subj, IRI pred, Value obj) throws RepositoryException {
+        conn.add(subj, pred, obj);
+    }
     
+	
     /**
      * Add an URL property to the repository.
      * 
