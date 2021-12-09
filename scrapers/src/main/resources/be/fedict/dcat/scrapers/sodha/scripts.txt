@@ -1,0 +1,7 @@
+# extra queries to be executed and data to be loaded
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+data-frequency.ttl
+sparql-map-frequency.qry
+clear-skos.qry
