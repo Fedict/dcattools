@@ -20,22 +20,17 @@ used to update data.gov.be can be found in the [dcat repository](https://github.
 
 ### Requirements
 
-These tools can be used with Oracle Java runtime 1.8 (1.7 will probably work, 
-but not tested), on a headless machine, i.e. there is no fancy GUI.
+These tools can be used with a Java runtime 11 or newer, on a headless machine, i.e. there is no fancy GUI.
 
 Internet connection is obviously required, although a proxy can be used.
-
-Binaries can be found in [dist/bin](dist/bin), compiling from source requires 
-the Oracle JDK and Maven.
 
 ### Main parts
 
 * Helper classes: for storing scraped pages locally, conversion tools etc.
 * Various [scrapers](README-SCRAPER.md): getting metadata from various repositories
 and websites, and turning the metadata into DCAT files
-* DCAT [enhancers](README-ENHANCERS.md): for improving the DCAT files, 
-e.g. map site-specific themes, add missing properties
-and prepare the files for updating data.gov.be
+* Also part of the scrapers are a series of [SPARQL scripts](README-ENHANCERS.md) to turn DCAT into DCAT-AP: 
+e.g. map site-specific themes, add missing properties and prepare the files for updating data.gov.be
 * Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (Drupal 7) website 
 using the enhanced DCAT files
 * Some [tools](#tools): link checker, EDP converter tool
@@ -47,7 +42,6 @@ regardless if the metadata is to be published on data.gov.be or not.
 ## Steps for updating data.gov.be and the EU Data Portal
 
   * The various portals (except `all`) should be harvested using the scrapers.
-  * The resulting RDF files must be improved using the enhancers
   * The enhanced files can be uploaded to the data.gov.be portal using the updater
   * Then use `all` enhancer to merge all the files from the various portals into one file `datagovbe.nt`
   * Convert the merged file using the EDP tool to an XML file called `datagovbe_edp.xml`
