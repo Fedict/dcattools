@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<http://org.belgif.be/id/cbe/org/0731_852_231>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/428> ;
+	foaf:name "Elia"@fr, "Elia"@en, "Elia"@nl ;
+	foaf:homepage <https://www.elia.be/> .
+	
+<http://data.gov.be/org/elia/contact>
+	a vcard:Organization ;
+	vcard:fn "Elia"@fr, "Elia"@en, "Elia"@nl ;
+	vcard:hasUrl <https://www.elia.be/> ;
+	vcard:hasEmail <mailto:info@elia.be> .
