@@ -2,13 +2,18 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<http://data.gov.be/en/taxonomy/term/427>
+	skos:exactMatch <https://www.elia.be/en/grid-data/elia-open-data-license> ;
+	skos:prefLabel "Elia Open Data Licence";
+	skos:altLabel "Elia Open Data Licence" .
+
 <http://data.gov.be/en/taxonomy/term/189>
 	skos:exactMatch <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> ;
 	skos:prefLabel "Open Data Licentie Brussel" ;
 	skos:altLabel "http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data" .
 	
 <http://data.gov.be/en/taxonomy/term/154>
-	skos:exactMatch <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> ;
+	skos:exactMatch <https://www.etalab.gouv.fr/licence-ouverte-open-licence> ;
 	skos:prefLabel "Etalab Licence Ouverte" ;	
 	skos:altLabel "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf" .
 

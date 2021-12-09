@@ -1,0 +1,10 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/elia/contact> .
+		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0731_852_231> }
+WHERE
+	{ 	?dataset a dcat:Dataset  }
