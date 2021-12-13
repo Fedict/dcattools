@@ -3,19 +3,17 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-DELETE	{ 
-			?s ?p ?o }
-INSERT 	{ 
-			?s ?p ?dtype }
+DELETE	{	?s ?p ?o }
+INSERT 	{	?s ?p ?dtype }
 WHERE	{
 			?s ?p ?o .
-			VALUES (?p) {
-				( dcterms:issued )
-				( dcterms:modified )
-			}
+			VALUES ?p {
+				dcterms:created
+				dcterms:issued
+				dcterms:modified
+			} .
 			BIND(
-				IF(STRLEN(STR(?o)) = 10,
-					STRDT(STR(?o), xsd:date),
-					STRDT(STR(?o), xsd:dateTime)) AS ?dtype
-				)
+				STRDT(STR(?o), xsd:dateTime)
+				AS ?dtype
+			)
 }
