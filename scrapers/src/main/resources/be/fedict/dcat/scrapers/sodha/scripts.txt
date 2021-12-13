@@ -1,10 +1,10 @@
 # extra queries to be executed and data to be loaded
-sparql-date-type.qry
 sparql-geo-belgium.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 sparql-strip-html.qry
+sparql-date-type.qry
 sodha/sparql-fix-license.qry
 data-license.ttl
 sodha/sparql-license.qry
