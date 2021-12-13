@@ -1,0 +1,14 @@
+# Set default language to English
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcterms:language ?lang }
+INSERT
+	{ 	?dataset dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> }
+WHERE
+	{ 	?dataset a dcat:Dataset
+		OPTIONAL { ?dataset dcterms:language ?lang }
+	}

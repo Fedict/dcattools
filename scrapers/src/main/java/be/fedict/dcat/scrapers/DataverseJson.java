@@ -40,12 +40,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 
@@ -185,6 +188,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			JsonPath contactPath, Map<IRI,Object> contactMap) throws MalformedURLException {
 
 		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(datasetIdPath).toString());
+		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, datasetMap);
 	
 		JSONArray files = jsonObj.read(distPath);
@@ -202,10 +206,12 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				}
 			}
 			if (idPath == null) {
-				logger.warn("No dist ID for");
+				logger.warn("No dist ID for {}", node.jsonString());
 				break;
 			}
 			IRI distSubj = makeDistIRI(idPath);
+			store.add(datasetSubj, DCAT.HAS_DISTRIBUTION, distSubj);
+			store.add(distSubj, RDF.TYPE, DCAT.DATASET);
 			add(store, distSubj, node, distMap);
 		};
 
@@ -296,6 +302,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 
 		map(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, 
 			distMap, contactPath, contactMap);
+		
+		generateCatalog(store);
 	}
 
 	@Override
@@ -317,7 +325,6 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		Set<URL> urls = cache.retrievePageList();
 		for(URL url: urls) {
 			Page page = cache.retrievePage(url).get(lang);
-			System.err.println(page.getContent());
 			generateDcat(store, parse(page.getContent()));
 		}
 	}
