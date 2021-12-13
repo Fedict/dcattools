@@ -1,4 +1,4 @@
-# Set datatype on issues/modified
+# Set datatype on created/issues/modified
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -13,5 +13,9 @@ WHERE	{
 				( dcterms:issued )
 				( dcterms:modified )
 			}
-			BIND(STRDT(STR(?o), xsd:dateTime) AS ?dtype)
+			BIND(
+				IF(STRLEN(STR(?o)) = 10,
+					STRDT(STR(?o), xsd:date),
+					STRDT(STR(?o), xsd:dateTime)) AS ?dtype
+				)
 }

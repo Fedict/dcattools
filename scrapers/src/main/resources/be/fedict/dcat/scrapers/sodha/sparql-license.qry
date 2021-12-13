@@ -1,0 +1,10 @@
+# Move rights to license
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:rights ?license }
+INSERT 
+	{ 	?dist dcterms:license ?license }
+WHERE
+	{	?dist dcterms:rights ?license }

@@ -1,0 +1,8 @@
+# Remove "NONE" license
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:license "NONE" }
+WHERE
+	{	?dist dcterms:license "NONE" }

@@ -20,15 +20,16 @@
 <http://data.gov.be/en/taxonomy/term/53>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> ;
 	skos:prefLabel "CC-BY" ;
-	skos:altLabel "cc-by",
+	skos:altLabel "cc-by", "CC BY",
 					"https://creativecommons.org/licenses/by/4.0/", 
-					"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License." .
+					"https://creativecommons.org/licenses/by/4.0/deed.fr",
+					"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License." ,
+					"This work is licensed under a Creative Commons Attribution 4.0 International License (CC-BY).".
 
 <http://data.gov.be/en/taxonomy/term/53>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_2_0> ;
 	skos:prefLabel "CC-BY" ;
-	skos:altLabel "https://creativecommons.org/licenses/by/2.0/",
-					"CC BY", "cc-by", "https://creativecommons.org/licenses/by/4.0/deed.fr", "other-at" .
+	skos:altLabel "https://creativecommons.org/licenses/by/2.0/", "other-at" .
 
 <http://data.gov.be/en/taxonomy/term/54>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC0> ;
