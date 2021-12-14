@@ -30,13 +30,12 @@ import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.ReadContext;
+
 import java.io.IOException;
-
-
 import java.util.Map;
 import java.util.Properties;
-import net.minidev.json.JSONArray;
 
+import net.minidev.json.JSONArray;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Value;
@@ -67,10 +66,16 @@ public abstract class BasicScraperJson extends BaseScraper {
 	protected void add(Storage store, IRI subj, ReadContext jsonObj, Map<IRI,Object> propMap) {
 		propMap.forEach((k,v) -> { 
 			Object obj = jsonObj.read((JsonPath) v);
-			if (obj instanceof String) {
+			if (obj == null) {
+				logger.warn("Null value for path " + v.toString());
+			} else if (obj instanceof String) {
 				add(store, subj, k, obj);
+			} else if (obj instanceof Integer) {
+				add(store, subj, k, String.valueOf(obj));
 			} else if (obj instanceof JSONArray) {
 				((JSONArray) obj).forEach(p -> add(store, subj, k, p));
+			} else {
+				logger.warn("Unknown instance " + obj.getClass());
 			}
 		});
 	}

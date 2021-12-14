@@ -1,9 +1,9 @@
 # extra queries to be executed and data to be loaded
+sparql-strip-html.qry
 sparql-geo-belgium.qry
 data-media.ttl
-sparql-map-media.qry
+sodha/sparql-map-media.qry
 clear-skos.qry
-sparql-strip-html.qry
 sparql-date-type.qry
 sodha/sparql-fix-license.qry
 data-license.ttl
@@ -13,3 +13,7 @@ sodha/sparql-theme.qry
 sodha/sparql-default-language.qry
 sparql-tag-language.qry
 clear-skos.qry
+sodha/sparql-landingpage.qry
+sodha/sparql-accessurl.qry
+sodha/data-contact.ttl
+sodha/sparql-default-contact.qry

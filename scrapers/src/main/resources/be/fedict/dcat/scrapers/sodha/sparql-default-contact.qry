@@ -1,0 +1,10 @@
+# Set default contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/sodha/contact>  }
+WHERE
+	{ 	?dataset a dcat:Dataset
+		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } }
+

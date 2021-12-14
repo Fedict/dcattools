@@ -2,12 +2,26 @@
 
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-	
+
+<http://data.gov.be/en/taxonomy/term/433>
+	skos:prefLabel "AIFF" ;
+	skos:closeMatch "audio/x-aiff" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "AIFF" .
+
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:prefLabel "CSV" ;
 	skos:closeMatch "text/csv" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
-	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", "M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", <http://publications.europa.eu/resource/authority/file-type/CSV> .
+	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
+					"M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
+					<http://publications.europa.eu/resource/authority/file-type/CSV> .
+
+<http://data.gov.be/en/taxonomy/term/429>
+	skos:prefLabel "TSV" ;
+	skos:closeMatch "text/tab-separated-values" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TSV> ;
+	skos:altLabel "text/tab-separated-values" .
 
 <http://data.gov.be/en/taxonomy/term/399>
 	skos:prefLabel "DGN" ;
@@ -56,7 +70,8 @@
 	skos:prefLabel "HTML" ;
 	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
-	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", ".html", "HTML Tabel", "text/html", "powerbi" .
+	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", ".html", 
+				"HTML Tabel", "text/html", "powerbi" .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
@@ -88,6 +103,24 @@
 	skos:closeMatch "application/vnd.ms-access" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
 	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access" .
+
+<http://data.gov.be/en/taxonomy/term/431>
+	skos:prefLabel "MPEG4" ;
+	skos:closeMatch "video/mp4" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MPEG4> ;
+	skos:altLabel "MPEG4" .
+
+<http://data.gov.be/en/taxonomy/term/432>
+	skos:prefLabel "MOV" ;
+	skos:closeMatch "video/quicktime" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "MOV", "Quicktime" .
+
+<http://data.gov.be/en/taxonomy/term/434>
+	skos:prefLabel "M4V" ;
+	skos:closeMatch "video/x-m4v" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "M4V" .
 
 <http://data.gov.be/en/taxonomy/term/419>
 	skos:prefLabel "N-Triples" ;
@@ -187,7 +220,13 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TXT> ;
 	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", 
 				"ASCII (XYZ triplet per line)", "application/php", "text/plain", "PostgreSQL" .
-	
+
+<http://data.gov.be/en/taxonomy/term/430>
+	skos:prefLabel "WAV" ;
+	skos:closeMatch "audio/vnd.wave", "audio/x-wav" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "WAV" .
+
 <http://data.gov.be/en/taxonomy/term/63>
 	skos:prefLabel "WCS" ;
 	skos:closeMatch "application/xml" ;
