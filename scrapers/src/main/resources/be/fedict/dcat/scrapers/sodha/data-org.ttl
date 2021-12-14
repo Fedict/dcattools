@@ -1,0 +1,44 @@
+# Data for mapping organizations
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/436>
+	skos:prefLabel "Mediahuis"@nl, "Mediahuis"@fr, "Mediahuis"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0439_849_666> ;
+	skos:altLabel "Mediahuis" .
+
+<http://data.gov.be/en/taxonomy/term/202>
+	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, "Catholic University of Leuven"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0419_052_173> ;
+	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven" .
+
+<http://data.gov.be/en/taxonomy/term/203>
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0248_015_142> ;
+	skos:altLabel "Ghent University", "UGent", "IDLab - Ghent Unviersity" .
+
+<http://data.gov.be/en/taxonomy/term/435>
+	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, "Catholic University of Louvain"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0419_052_272> ;
+	skos:altLabel "Université catholique de Louvain" .
+
+<http://data.gov.be/en/taxonomy/term/439>
+	skos:prefLabel"Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, "State Archives of Belgium"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0875_388_475> ;
+	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
+				"Belgian State Archives" .
+
+<http://data.gov.be/en/taxonomy/term/438>
+	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@fr ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0875_395_207> ;
+	skos:altLabel "KBR"@en, "KBR"@nl, "KBR"@fr .
+
+<http://data.gov.be/en/taxonomy/term/437>
+	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0257_216_482> ;
+	skos:altLabel "Universiteit Antwerpen" .
+
+<http://data.gov.be/en/taxonomy/term/200>
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0449_012_406> ;
+	skos:altLabel "Vrije Universiteit Brussel" .

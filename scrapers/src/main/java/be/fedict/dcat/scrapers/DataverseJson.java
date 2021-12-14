@@ -268,15 +268,14 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
 			DCTERMS.FILE_FORMAT, JsonPath.compile("$.dataFile.contentType"),
 			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
-			DCTERMS.CREATED, JsonPath.compile("$.data.creationDate")
+			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
 		);
 
 		JsonPath contactPath = 
 			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*]");
 
 		Map<IRI,Object> contactMap = Map.of(
-			VCARD4.FN, JsonPath.compile("$.datasetContactName.value"),
-			VCARD4.ORGANIZATION_NAME, JsonPath.compile("$.datasetContactAffiliation.value")
+			VCARD4.ORGANIZATION_NAME, JsonPath.compile("$.*.datasetContactAffiliation.value")
 		);
 
 		mapDataset(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, 

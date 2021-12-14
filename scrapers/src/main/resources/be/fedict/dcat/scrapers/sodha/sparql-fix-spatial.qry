@@ -1,0 +1,8 @@
+# Remove spatial label
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?dataset dcterms:spatial ?label }
+WHERE
+	{	?dataset dcterms:spatial ?label }
