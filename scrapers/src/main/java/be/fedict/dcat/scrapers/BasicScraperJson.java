@@ -67,7 +67,7 @@ public abstract class BasicScraperJson extends BaseScraper {
 		propMap.forEach((k,v) -> { 
 			Object obj = jsonObj.read((JsonPath) v);
 			if (obj == null) {
-				logger.warn("Null value for path " + v.toString());
+				logger.warn("Null value for path " + ((JsonPath)v).getPath());
 			} else if (obj instanceof String) {
 				add(store, subj, k, obj);
 			} else if (obj instanceof Integer) {

@@ -4,10 +4,11 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{	?dataset dcterms:language ?lang }
+	{	?s dcterms:language ?lang }
 INSERT
-	{ 	?dataset dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> }
+	{ 	?s dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> }
 WHERE
-	{ 	?dataset a dcat:Dataset
-		OPTIONAL { ?dataset dcterms:language ?lang }
+	{ 	?s a ?o .
+		VALUES ?o { dcat:Dataset dcat:Distribution }
+		OPTIONAL { ?s dcterms:language ?lang }
 	}

@@ -13,7 +13,7 @@ WHERE	{
 				dcterms:modified
 			} .
 			BIND(
-				STRDT(STR(?o), xsd:dateTime)
+				STRDT(STR(?o), IF(STRLEN(STR(?o)) = 10, xsd:date, xsd:dateTime))
 				AS ?dtype
 			)
 }
