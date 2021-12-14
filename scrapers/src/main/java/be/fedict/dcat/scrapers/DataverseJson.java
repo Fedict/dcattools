@@ -38,11 +38,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import static java.util.Map.entry;
 import java.util.Properties;
 import java.util.Set;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.util.Values;
@@ -183,24 +183,25 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @param contactMap
 	 * @throws java.net.MalformedURLException
 	 */
-	protected void map(Storage store, ReadContext jsonObj, JsonPath datasetIdPath, Map<IRI,Object> datasetMap, 
+	protected void mapDataset(Storage store, ReadContext jsonObj, 
+			JsonPath datasetIdPath, Map<IRI,Object> datasetMap, 
 			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap,
 			JsonPath contactPath, Map<IRI,Object> contactMap) throws MalformedURLException {
-
 		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(datasetIdPath).toString());
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, datasetMap);
 	
 		JSONArray files = jsonObj.read(distPath);
 
+		// download files / distribution
 		for(Object f: files) {
 			ReadContext node = JsonPath.using(conf).parse(f);
 			String idPath = null;
-			Object p = jsonObj.read(distIdPath);
-			if (p != null) {
+			Object p = node.read(distIdPath);
+			if (p != null && !p.toString().isBlank()) {
 				idPath = p.toString();
 			} else {
-				p = jsonObj.read(distIdPathAlt);
+				p = node.read(distIdPathAlt);
 				if (p != null) {
 					idPath = p.toString().replace("file://", "");
 				}
@@ -211,74 +212,51 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			}
 			IRI distSubj = makeDistIRI(idPath);
 			store.add(datasetSubj, DCAT.HAS_DISTRIBUTION, distSubj);
-			store.add(distSubj, RDF.TYPE, DCAT.DATASET);
+			store.add(distSubj, RDF.TYPE, DCAT.DISTRIBUTION);
 			add(store, distSubj, node, distMap);
-		};
+		}
 
+		// contact point
 		JSONArray obj = jsonObj.read(contactPath);
 		ReadContext node = JsonPath.using(conf).parse(obj);
+		IRI contactSubj = Values.iri(datasetSubj.stringValue() + "/contact");
+		store.add(datasetSubj, DCAT.CONTACT_POINT, contactSubj);
+		add(store, contactSubj, node, contactMap);
 	}
 
-	/**
-	 * Generate DCAT from JSON
-	 * 
-	 * @param store
-	 * @param jsonObj JSON object
-	 * @param datasetIdPath
-	 * @param datasetMap datasetMap property map
-	 * @param distPath path to distribution
-	 * @param distMap distribution property map
-	 * @param distIdPath
-	 * @param contactPath
-	 * @param contactMap
-	 * @throws java.net.MalformedURLException
-	 */
-	protected void generateDcat(Storage store, ReadContext jsonObj, JsonPath datasetIdPath, 
-			Map<IRI,Object> datasetMap, 
-			JsonPath distPath, JsonPath distIdPath, Map<IRI,Object> distMap,
-			JsonPath contactPath, Map<IRI,Object> contactMap) throws MalformedURLException {
-
-		URL datasetSubj = makeDatasetURL(jsonObj.read(datasetIdPath).toString());
-		add(store, Values.iri(datasetSubj.toString()), jsonObj, datasetMap);
-	
-		JSONArray files = jsonObj.read(distPath);
-		
-		for(Object f : files) {
-			ReadContext node = JsonPath.using(conf).parse(f);
-			URL distSubj = makeDistURL(jsonObj.read(distIdPath).toString());
-			add(store, Values.iri(distSubj.toString()), node, distMap);
-		};
-
-		JSONObject obj = jsonObj.read(contactPath);
-		ReadContext node = JsonPath.using(conf).parse(obj);
-	}
-	
 	/**
 	 * Map JSON to DCAT(-ish) series of triples
 	 * 
+	 * @param store
 	 * @param jsonObj 
 	 * @throws java.net.MalformedURLException
 	 */
 	public void generateDcat(Storage store, ReadContext jsonObj) throws MalformedURLException {
 		JsonPath datasetIdPath = JsonPath.compile("$.data.latestVersion.datasetPersistentId");
 		
-		Map<IRI,Object> datasetMap = Map.of(
-			DCTERMS.TITLE, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='title')].value"),
-			DCTERMS.DESCRIPTION, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='dsDescription')].value[*].dsDescriptionValue.value"),
-			DCTERMS.CREATED, JsonPath.compile("$.data.latestVersion.createTime"),
-			DCTERMS.MODIFIED, JsonPath.compile("$.data.latestVersion.lastUpdateTime"),
-			DCTERMS.LICENSE, JsonPath.compile("$.data.latestVersion.license"),
-			DCTERMS.RIGHTS, JsonPath.compile("$.data.latestVersion.termsOfUse"),
-			DCAT.THEME, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='subject')].value[*]"),
-			DCAT.KEYWORD, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='keyword')].value[*].keywordValue.value"),
-			DCTERMS.LANGUAGE, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='language')].value[*]"),
-			DCTERMS.SPATIAL, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].value")
+		Map<IRI,Object> datasetMap = Map.ofEntries(
+			entry(DCTERMS.IDENTIFIER, 
+				JsonPath.compile("$.data.latestVersion.datasetPersistentId")),
+			entry(DCTERMS.TITLE,
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='title')].value")),
+			entry(DCTERMS.DESCRIPTION, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='dsDescription')].value[*].dsDescriptionValue.value")),
+			entry(DCTERMS.CREATED, 
+				JsonPath.compile("$.data.latestVersion.createTime")),
+			entry(DCTERMS.MODIFIED, 
+				JsonPath.compile("$.data.latestVersion.lastUpdateTime")),
+			entry(DCTERMS.LICENSE, 
+				JsonPath.compile("$.data.latestVersion.license")),
+			entry(DCTERMS.RIGHTS, 
+				JsonPath.compile("$.data.latestVersion.termsOfUse")),
+			entry(DCAT.THEME, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='subject')].value[*]")),
+			entry(DCAT.KEYWORD, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='keyword')].value[*].keywordValue.value")),
+			entry(DCTERMS.LANGUAGE, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='language')].value[*]")),
+			entry(DCTERMS.SPATIAL, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value"))
 		);
 
 		JsonPath distPath = JsonPath.compile("$.data.latestVersion.files[*]");
@@ -286,6 +264,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		JsonPath distIdPathAlt = JsonPath.compile("$.dataFile.storageIdentifier");
 
 		Map<IRI,Object> distMap = Map.of(
+			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
 			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
 			DCTERMS.FILE_FORMAT, JsonPath.compile("$.dataFile.contentType"),
 			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
@@ -300,7 +279,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			VCARD4.ORGANIZATION_NAME, JsonPath.compile("$.datasetContactAffiliation.value")
 		);
 
-		map(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, 
+		mapDataset(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, 
 			distMap, contactPath, contactMap);
 		
 		generateCatalog(store);
