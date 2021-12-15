@@ -19,5 +19,5 @@ sodha/sparql-accessurl.qry
 sodha/data-contact.ttl
 sodha/sparql-default-contact.qry
 sodha/data-org.ttl
-sparql-map-org.qry
+sodha/sparql-map-org.qry
 clear-skos.qry
