@@ -20,18 +20,18 @@
 <http://data.gov.be/en/taxonomy/term/435>
 	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, "Catholic University of Louvain"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0419_052_272> ;
-	skos:altLabel "Université catholique de Louvain" .
+	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain" .
 
 <http://data.gov.be/en/taxonomy/term/439>
 	skos:prefLabel"Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, "State Archives of Belgium"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0875_388_475> ;
 	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
-				"Belgian State Archives" .
+				"Belgian State Archives", "State Archives Belgium" .
 
 <http://data.gov.be/en/taxonomy/term/438>
 	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@fr ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0875_395_207> ;
-	skos:altLabel "KBR"@en, "KBR"@nl, "KBR"@fr .
+	skos:altLabel "KBR" .
 
 <http://data.gov.be/en/taxonomy/term/437>
 	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
