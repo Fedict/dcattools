@@ -49,7 +49,6 @@ import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
-import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 
 
@@ -275,7 +274,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*]");
 
 		Map<IRI,Object> contactMap = Map.of(
-			VCARD4.ORGANIZATION_NAME, JsonPath.compile("$.*.datasetContactAffiliation.value")
+			DCTERMS.PUBLISHER, JsonPath.compile("$.*.datasetContactAffiliation.value")
 		);
 
 		mapDataset(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, 
