@@ -1,8 +1,10 @@
-# Remove "NONE" license
+# Remove "NONE" license, and license that is a lengthy text
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{	?dist dcterms:license "NONE" }
+	{	?dist dcterms:license ?lic }
 WHERE
-	{	?dist dcterms:license "NONE" }
+	{	?dist dcterms:license ?lic .
+		FILTER((?lic = "NONE") || (STRLEN(?lic) > 80))
+	}
