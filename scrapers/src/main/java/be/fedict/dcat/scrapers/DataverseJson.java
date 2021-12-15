@@ -45,7 +45,6 @@ import java.util.Set;
 import net.minidev.json.JSONArray;
 
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -178,14 +177,12 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @param distMap distribution property map
 	 * @param distIdPathAlt
 	 * @param distIdPath
-	 * @param contactPath
-	 * @param contactMap
 	 * @throws java.net.MalformedURLException
 	 */
 	protected void mapDataset(Storage store, ReadContext jsonObj, 
 			JsonPath datasetIdPath, Map<IRI,Object> datasetMap, 
-			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap,
-			JsonPath contactPath, Map<IRI,Object> contactMap) throws MalformedURLException {
+			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap) 
+			throws MalformedURLException {
 		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(datasetIdPath).toString());
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, datasetMap);
@@ -214,13 +211,6 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			store.add(distSubj, RDF.TYPE, DCAT.DISTRIBUTION);
 			add(store, distSubj, node, distMap);
 		}
-
-		// contact point
-		JSONArray obj = jsonObj.read(contactPath);
-		ReadContext node = JsonPath.using(conf).parse(obj);
-		IRI contactSubj = Values.iri(datasetSubj.stringValue() + "/contact");
-		store.add(datasetSubj, DCAT.CONTACT_POINT, contactSubj);
-		add(store, contactSubj, node, contactMap);
 	}
 
 	/**
@@ -255,7 +245,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			entry(DCTERMS.LANGUAGE, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='language')].value[*]")),
 			entry(DCTERMS.SPATIAL, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value"))
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
+			entry(DCTERMS.PUBLISHER, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value"))
 		);
 
 		JsonPath distPath = JsonPath.compile("$.data.latestVersion.files[*]");
@@ -270,15 +262,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
 		);
 
-		JsonPath contactPath = 
-			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*]");
-
-		Map<IRI,Object> contactMap = Map.of(
-			DCTERMS.PUBLISHER, JsonPath.compile("$.*.datasetContactAffiliation.value")
-		);
-
-		mapDataset(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, 
-			distMap, contactPath, contactMap);
+		mapDataset(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, distMap);
 		
 		generateCatalog(store);
 	}
