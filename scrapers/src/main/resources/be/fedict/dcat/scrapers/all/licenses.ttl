@@ -5,7 +5,7 @@
 <https://www.elia.be/en/grid-data/elia-open-data-license> ;
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:title "Elia Open Data License .
+	dcterms:title "Elia Open Data License" .
 
 <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> 
 	a dcterms:LicenseDocument ;
