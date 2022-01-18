@@ -70,7 +70,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public abstract class BaseScraper extends Fetcher implements Scraper, AutoCloseable {
-	protected final static Logger logger = LoggerFactory.getLogger(getClass());
+	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	protected final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
 	protected final static String PKG_PREFIX = "/be/fedict/dcat/scrapers";
