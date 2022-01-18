@@ -77,7 +77,6 @@ public class Main {
 	 * Read RDF file.
 	 */
 	private static void readRDF() {
-		String file = prop.getProperty(Drupal.PROP_PREFIX + ".store");
 		store = new Storage();
 		try {
 			store.startup();

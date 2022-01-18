@@ -196,7 +196,6 @@ public class HtmlFpsDiplobel extends Html {
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
-//		store.add(dataset, DCAT.LANDING_PAGE, front);
 
 		Elements link = cells.get(1).getElementsByTag(Tag.A.toString());
 		generateDist(store, dataset, front, link, code, lang);

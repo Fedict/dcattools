@@ -64,7 +64,6 @@ public class HtmlFpsFinance extends Html {
 	private final static String TITLE = "h1.page-title";
 	private final static String HEAD_DATASETS = "article h2";
 	private final static String LINK_DISTS = "li span a";
-	//private final static String TABLE = "div.field-type-text-with-summary table tr";
 
 	/**
 	 * Switch to another language

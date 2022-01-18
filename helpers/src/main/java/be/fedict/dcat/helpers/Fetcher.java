@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class Fetcher {
-    private final Logger logger = LoggerFactory.getLogger(Fetcher.class);
+    private final static Logger logger = LoggerFactory.getLogger(Fetcher.class);
     private int delay = 1000;
     
     /**

@@ -514,7 +514,7 @@ public class Drupal {
 	 */
 	private String getTime(Map<Resource, ListMultimap<String, String>> dataset)
 		throws RepositoryException {
-		Map<Resource, ListMultimap<String, String>> m = new HashMap<>();
+		Map<Resource, ListMultimap<String, String>> m;
 
 		String time = Storage.getOne(dataset, DCTERMS.TEMPORAL, "");
 		if (!time.isEmpty()) {
@@ -603,7 +603,7 @@ public class Drupal {
 
 		String l = Storage.getOne(dist, property, "");
 		if (!l.isEmpty()) {
-			link = l.replaceAll(" ", "%20");
+			link = l.replace(" ", "%20");
 		}
 		if (link.length() > Drupal.LEN_LINK) {
 			logger.warn("Download URL too long ({}): {} ", l.length(), l);

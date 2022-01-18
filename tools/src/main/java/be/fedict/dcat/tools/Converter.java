@@ -54,9 +54,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Converter {
     private final static Logger logger = LoggerFactory.getLogger(Converter.class);
-    
-    private final static String PROP_PREFIX = "be.fedict.dcat.tools.converter";
-
+	
     /**
      * Main program
      * 

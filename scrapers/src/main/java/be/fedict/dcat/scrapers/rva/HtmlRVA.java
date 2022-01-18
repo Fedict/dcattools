@@ -104,7 +104,7 @@ public class HtmlRVA extends Html {
 		String[] langs = getAllLangs();
 		for (String lang : langs) {
 			if (!lang.equals(deflang)) {
-				URL url = switchLanguage(html, lang);
+				URL url = switchLanguage(lang, html);
 				if (url != null) {
 					String body = makeRequest(url);
 					cache.storePage(u, lang, new Page(url, body));
