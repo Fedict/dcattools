@@ -345,7 +345,6 @@ public abstract class GeonetGmd extends Geonet {
 
 		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
 	
-		boolean hasTitle = false;
 		for (String lang : getAllLangs()) {
 			if (parseMulti(store, dataset, title, DCTERMS.TITLE, lang)) {
 				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
@@ -498,21 +497,20 @@ public abstract class GeonetGmd extends Geonet {
 	 * @throws IOException
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
-		try {
-			for (int pos = 1, recs = MAX_RECORDS; pos < recs; pos += MAX_RECORDS) {
-				URL url = new URL(getBase() + API_RECORDS + POSITION + pos);
-				String xml = makeRequest(url);
+		for (int pos = 1, recs = MAX_RECORDS; pos < recs; pos += MAX_RECORDS) {
+			URL url = new URL(getBase() + API_RECORDS + POSITION + pos);
+			String xml = makeRequest(url);
 
+			try {
 				Document doc = sax.read(new StringReader(xml));
 				if (pos == 1) {
 					recs = getNumRecords(doc);
 				}
 				cache.storePage(url, "all", new Page(url, xml));
+			} catch (DocumentException ex) {
+				logger.error("Error parsing XML " + url);
 			}
-		} catch (DocumentException ex) {
-			logger.error("Error parsing XML");
-			throw new RepositoryException(ex);
-		}
+		}			
 	}
 
 	/**
