@@ -78,7 +78,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class Storage {
-    private final Logger logger = LoggerFactory.getLogger(Storage.class);
+    private final static Logger logger = LoggerFactory.getLogger(Storage.class);
     
 	public final static String DATAGOVBE = "http://data.gov.be";
 
@@ -245,7 +245,7 @@ public class Storage {
      * @throws RepositoryException 
      */
     public void add(IRI subj, IRI pred, URL url) throws RepositoryException {
-        String s = url.toString().replaceAll(" ", "%20");
+        String s = url.toString().replace(" ", "%20");
         conn.add(subj, pred, fac.createIRI(s));
     }
     

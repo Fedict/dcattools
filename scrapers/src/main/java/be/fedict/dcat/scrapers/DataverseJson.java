@@ -59,8 +59,8 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
  * @see https://guides.dataverse.org/en/latest/
  */
 public abstract class DataverseJson extends BasicScraperJson implements ScraperPaginated<ReadContext>  {
-	private final String API_LIST = "/api/search?q=*&type=dataset";
-	private final String API_DATASET = "/api/datasets/:persistentId/?persistentId=";
+	private final static String API_LIST = "/api/search?q=*&type=dataset";
+	private final static String API_DATASET = "/api/datasets/:persistentId/?persistentId=";
 
 	@Override
 	public ReadContext getPaginated(int start, int results) throws IOException {

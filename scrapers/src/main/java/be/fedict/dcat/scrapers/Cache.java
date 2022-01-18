@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class Cache {
-    private final Logger logger = LoggerFactory.getLogger(Cache.class);
+    private static final Logger logger = LoggerFactory.getLogger(Cache.class);
         
     private DB db = null;
     private static final String CACHE = "cache";

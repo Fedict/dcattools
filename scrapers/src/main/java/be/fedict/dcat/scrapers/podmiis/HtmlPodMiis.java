@@ -265,7 +265,7 @@ public class HtmlPodMiis extends Html {
 				// extract min/max date from data attribute
 				String months = slider.attr(SLIDER_DATA).trim()
 											.replaceFirst("\\[", "")
-											.replaceAll("\"", "")
+											.replace("\"", "")
 											.replaceFirst("]", "");
 				String[] split = months.split(",");
 				
@@ -275,7 +275,7 @@ public class HtmlPodMiis extends Html {
 					
 					generateTemporal(store, dataset, start, end);
 					generateDist(store, dataset, p.getUrl(), link, 
-												end.replaceAll("-", ""), lang);
+												end.replace("-", ""), lang);
 				} else {
 					logger.warn("No distribution");
 				}

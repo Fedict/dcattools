@@ -40,6 +40,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -57,12 +58,16 @@ public class Combine extends BaseScraper {
 	public void generateDcat(Cache cache, Storage store) throws IOException {
 		Path root = Paths.get(".");
 
-		List<File> files = Files.walk(root).map(Path::toFile)
-								.filter(File::isFile)
-								.filter(f -> f.toString().endsWith(".nt"))
-								.filter(f -> !f.toString().endsWith("enhanced.nt"))
-								.filter(f -> !f.getParentFile().toString().equals("all"))
-								.collect(Collectors.toList());
+		List<File> files;
+		try(Stream<Path> path = Files.walk(root)) {
+			files = path.map(Path::toFile)
+						.filter(File::isFile)
+						.filter(f -> f.toString().endsWith(".nt"))
+						.filter(f -> !f.toString().endsWith("enhanced.nt"))
+						.filter(f -> !f.getParentFile().toString().equals("all"))
+						.collect(Collectors.toList());
+		}
+
 		for (File f: files) {
 			logger.info("Reading {}", f);
 			// Load turtle file into store

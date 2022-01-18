@@ -124,7 +124,7 @@ public class XlsPsiBelgium extends Xls {
 		int pos = s.lastIndexOf('.');
 		if (pos > 0) {
 			s = s.substring(pos + 1);
-			return s.replaceAll("\n", "").split(",");
+			return s.replace("\n", "").split(",");
 		}
 		return (new String[0]);
 	}

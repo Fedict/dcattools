@@ -344,7 +344,7 @@ public class EDP {
 				w.writeEmptyElement(classWrap);
 				if (refUri instanceof IRI) {
 					IRI iri = (IRI) refUri;
-					if (concept == true) {
+					if (concept) {
 						CONCEPTS.add(iri);
 					}
 					w.writeAttribute("rdf:about", iri.stringValue());
@@ -394,7 +394,6 @@ public class EDP {
 
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 
-		//	writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaTypeOrExtent", true);
 		writeFormats(w, con, uri, DCTERMS.FORMAT);
 
