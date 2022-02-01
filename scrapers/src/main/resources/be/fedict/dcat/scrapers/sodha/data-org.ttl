@@ -42,3 +42,8 @@
 	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
 	skos:exactMatch <http://org.belgif.be/id/cbe/org/0449_012_406> ;
 	skos:altLabel "Vrije Universiteit Brussel" .
+
+<http://data.gov.be/en/taxonomy/term/204>
+	skos:prefLabel "Universiteit Bergen"@nl, "Université de Mons"@fr, "University of Mons"@en ;
+	skos:exactMatch <http://org.belgif.be/id/cbe/org/0259_396_509> ;
+	skos:altLabel "University of Mons (UMONS)" .
