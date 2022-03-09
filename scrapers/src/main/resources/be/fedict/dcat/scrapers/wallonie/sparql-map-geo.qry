@@ -12,7 +12,7 @@ INSERT
 WHERE
 	{	?dataset a dcat:Dataset .
 		?dataset dcterms:publisher ?org .
-		?org foaf:name ?name .
+		?org rdfs:label ?name .
 		?drupal skos:altLabel ?name .
 		?drupal skos:exactMatch ?spatial
 	}
