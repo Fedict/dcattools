@@ -20,7 +20,9 @@
 <http://data.gov.be/en/taxonomy/term/51>
 	skos:exactMatch <http://sws.geonames.org/2790472/> ;
 	skos:prefLabel "Namur"@fr, "Namen"@nl ;
-	skos:altLabel "BEP", "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur" .	
+	skos:altLabel "BEP", "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
+			"Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", 
+			"Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur" .	
 
 <http://data.gov.be/en/taxonomy/term/250>
 	skos:exactMatch <http://sws.geonames.org/2803247/> ;
