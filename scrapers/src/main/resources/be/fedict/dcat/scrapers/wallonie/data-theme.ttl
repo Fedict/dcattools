@@ -25,6 +25,7 @@
 		<https://www.odwb.be/id/theme/Economie%2C%20D%C3%A9veloppement%2C%20Commerce%2C%20Emploi>, 
 		<https://www.odwb.be/id/theme/Finances%2C%20Budgets>,
 		<https://www.odwb.be/id/theme/Rapport%20financier>,
+		<https://www.odwb.be/id/theme/Parcs%20d%27Activit%C3%A9%20Economique>,
 		<https://www.odwb.be/id/theme/%C3%89conomie%2C%20Business%2C%20PME%2C%20D%C3%A9veloppement%20%C3%A9conomique%2C%20Emploi>  .
 
 <http://data.gov.be/en/taxonomy/term/33>
@@ -43,7 +44,9 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:closeMatch "déchet"@fr, "Environnement"@fr, "arbre"@fr ,
-		 <https://www.odwb.be/id/theme/Environnement>, <https://www.odwb.be/id/theme/Territoire> .
+		<https://www.odwb.be/id/theme/Environment>,
+		<https://www.odwb.be/id/theme/Environnement>, 
+		<https://www.odwb.be/id/theme/Territoire> .
 	
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -87,7 +90,9 @@
 		<https://www.odwb.be/id/theme/Mobilit%C3%A9%2C%20Espace%20public>, 
 		<https://www.odwb.be/id/theme/Mobilit%C3%A9%2C%20espaces%20publics>, 
 		<https://www.odwb.be/id/theme/Gestion%20du%20trafic>, <https://www.odwb.be/id/theme/Voiries>, 
-		<https://www.odwb.be/id/theme/Mobilit%C3%A9>, <https://www.odwb.be/id/theme/Transports%2CD%C3%A9placements>  .
+		<https://www.odwb.be/id/theme/Mobilit%C3%A9>,
+		<https://www.odwb.be/id/theme/Transports%2C%20D%C3%A9placements">,
+		<https://www.odwb.be/id/theme/Transports%2CD%C3%A9placements>  .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
