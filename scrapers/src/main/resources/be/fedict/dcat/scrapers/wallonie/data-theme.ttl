@@ -31,7 +31,7 @@
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:prefLabel "EDUCATION"@en ;
-	skos:closeMatch "école"@fr, "éducation"@fr ,
+	skos:closeMatch "école"@fr, "éducation"@fr, "Education"@fr ,
 		<https://www.odwb.be/id/theme/%C3%89ducation>, <https://www.odwb.be/id/theme/%C3%89ducation%2C%20Jeunesse%2C%20Petite%20enfance>, <https://www.odwb.be/id/theme/%C3%89ducation%2C%20Formation%2C%20Recherche%2C%20Enseignement>, <https://www.odwb.be/id/theme/Education%2C%20Jeunesse%2C%20Petite%20enfance> .
 
 <http://data.gov.be/en/taxonomy/term/35>
@@ -91,7 +91,7 @@
 		<https://www.odwb.be/id/theme/Mobilit%C3%A9%2C%20espaces%20publics>, 
 		<https://www.odwb.be/id/theme/Gestion%20du%20trafic>, <https://www.odwb.be/id/theme/Voiries>, 
 		<https://www.odwb.be/id/theme/Mobilit%C3%A9>,
-		<https://www.odwb.be/id/theme/Transports%2C%20D%C3%A9placements">,
+		<https://www.odwb.be/id/theme/Transports%2C%20D%C3%A9placements>,
 		<https://www.odwb.be/id/theme/Transports%2CD%C3%A9placements>  .
 
 <http://data.gov.be/en/taxonomy/term/37>
