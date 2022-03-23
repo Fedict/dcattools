@@ -224,7 +224,7 @@
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "Ville de Mons" .
 
-<http://data.gov.be/en/taxonomy/term/389>
+<http://data.gov.be/en/taxonomy/term/388>
 	skos:exactMatch <http://sws.geonames.org/2803204/> ;
 	skos:prefLabel "Andenne"@fr ;
 	skos:altLabel "Ville d'Andenne" .
