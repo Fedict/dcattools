@@ -11,7 +11,7 @@
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<slf4j.version>1.7.32</slf4j.version>
+		<slf4j.version>1.7.36</slf4j.version>
 		<hc.version>4.5.13</hc.version>
 	</properties>
 	<dependencies>
