@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, FPS BOSA DG DT
+ * Copyright (c) 2022, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,25 +25,59 @@
  */
 package be.fedict.dcat.scrapers.vlaanderen;
 
-import be.fedict.dcat.scrapers.CkanRDF;
+import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.scrapers.Cache;
+import be.fedict.dcat.scrapers.GeonetHydra;
+import be.fedict.dcat.scrapers.Page;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+import java.util.Set;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 /**
- * CKAN Vlaanderen via DCAT-AP catalog.
+ * Vlaanderen via DCAT-AP catalog.
  *
  * @see https://opendata.vlaanderen.be/
  * @author Bart Hanssens
  */
-public class CkanVlaanderen extends CkanRDF {
+public class GeonetVlaanderen extends GeonetHydra {
+	@Override
+	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
+		Set<URL> urls = cache.retrievePageList();
+		for (URL url: urls) {
+			Page page = cache.retrievePage(url).get("all");
+			// fix buggy input
+			try (InputStream in = new ByteArrayInputStream(page.getContent()
+									.replaceAll(
+										"(?s)<dct:spatial([^>]*?)?>(?!\\s*<dct:Location(.*?)>)(.+?)</dct:spatial>", 
+										"<dct:spatial><dct:Location$2>$3</dct:Location></dct:spatial>")
+									.replaceAll("rdf:resoure", "rdf:resource")
+									.getBytes(StandardCharsets.UTF_8))) {
+
+				store.add(in, RDFFormat.RDFXML);
+			} catch (RDFParseException | IOException ex) {
+				throw new RepositoryException(ex);
+			}
+		}
+		generateCatalog(store);
+	}
+
 	/**
 	 * Constructor.
 	 *
 	 * @param prop
 	 * @throws IOException
 	 */
-	public CkanVlaanderen(Properties prop) throws IOException {
+	public GeonetVlaanderen(Properties prop) throws IOException {
 		super(prop);
 		setName("vlaanderen");
 	}
+
 }

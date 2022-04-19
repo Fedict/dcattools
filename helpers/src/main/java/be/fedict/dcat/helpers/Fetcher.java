@@ -30,10 +30,15 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-
 import org.apache.http.HttpHeaders;
-import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.fluent.Request;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 import org.slf4j.Logger;
@@ -47,6 +52,8 @@ import org.slf4j.LoggerFactory;
 public class Fetcher {
     private final static Logger logger = LoggerFactory.getLogger(Fetcher.class);
     private int delay = 1000;
+	
+	private final static CloseableHttpClient client = HttpClientBuilder.create().build();
     
     /**
      * Sleep (between HTTP requests)
@@ -103,20 +110,26 @@ public class Fetcher {
      */
     public String makeRequest(URL url, Charset charset) throws IOException {
         logger.info("Get request for page {}", url);
-        Request request = Request.Get(url.toString());
-		// some servers return 503 if no accept header is present
-		request.addHeader(HttpHeaders.ACCEPT, "*/*");
-		request.connectTimeout(240 * 1000);
-		request.socketTimeout(240 * 1000);
-        HttpResponse res = request.execute().returnResponse();
-        // Return empty if the HTTP returns something faulty
-        int status = res.getStatusLine().getStatusCode();
-        if (status != 200) {
-            logger.warn("HTTP code {} getting page {}", status, url);
-            return "";
-        }
 
-        return EntityUtils.toString(res.getEntity(), charset);
+		RequestConfig reqConfig = RequestConfig.custom()
+			.setCookieSpec(CookieSpecs.IGNORE_COOKIES)
+			.setConnectTimeout(240 * 1000)
+			.setSocketTimeout(240 * 1000)
+			.build();
+		HttpGet httpGet = new HttpGet(url.toString());
+		httpGet.setConfig(reqConfig);
+		// some servers return 503 if no accept header is present
+		httpGet.addHeader(HttpHeaders.ACCEPT, "*/*");
+		
+		try(CloseableHttpResponse res = client.execute(httpGet)) {
+			// Return empty if the HTTP returns something faulty
+			int status = res.getStatusLine().getStatusCode();
+			if (status != HttpStatus.SC_OK) {
+				logger.warn("HTTP code {} getting page {}", status, url);
+				return "";
+			}
+			return EntityUtils.toString(res.getEntity(), charset);
+		}
     }
     
     /**

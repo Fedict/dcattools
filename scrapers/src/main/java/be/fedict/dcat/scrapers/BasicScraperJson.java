@@ -106,6 +106,7 @@ public abstract class BasicScraperJson extends BaseScraper {
 	 * Constructor
 	 * 
 	 * @param prop 
+	 * @throws java.io.IOException 
 	 */
 	protected BasicScraperJson(Properties prop) throws IOException {
 		super(prop);

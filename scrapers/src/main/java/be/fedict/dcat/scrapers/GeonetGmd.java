@@ -73,7 +73,7 @@ public abstract class GeonetGmd extends Geonet {
 		+ "&maxRecords=" + MAX_RECORDS;
 	public final static String POSITION = "&startPosition=";
 
-	private final static SAXReader sax;
+	private final SAXReader sax;
 	private final static Map<String, String> NS = new HashMap<>();
 
 	static {
@@ -84,11 +84,6 @@ public abstract class GeonetGmd extends Geonet {
 		NS.put("gco", "http://www.isotc211.org/2005/gco");
 		NS.put("srv", "http://www.isotc211.org/2005/srv");
 		NS.put("xlink", "http://www.w3.org/1999/xlink");
-
-		DocumentFactory factory = DocumentFactory.getInstance();
-		factory.setXPathNamespaceURIs(NS);
-		sax = new SAXReader();
-		sax.setDocumentFactory(factory);
 	}
 
 	public final static String NUM_REC = "csw:GetRecordsResponse/csw:SearchResults/@numberOfRecordsMatched";
@@ -451,8 +446,6 @@ public abstract class GeonetGmd extends Geonet {
 		throws RepositoryException, MalformedURLException {
 		Set<URL> urls = cache.retrievePageList();
 
-		SAXReader sax = new SAXReader();
-
 		try {
 			for (URL url : urls) {
 				Map<String, Page> map = cache.retrievePage(url);
@@ -538,5 +531,10 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	protected GeonetGmd(Properties prop) throws IOException {
 		super(prop);
+		
+		DocumentFactory factory = DocumentFactory.getInstance();
+		factory.setXPathNamespaceURIs(NS);
+		sax = new SAXReader();
+		sax.setDocumentFactory(factory);
 	}
 }
