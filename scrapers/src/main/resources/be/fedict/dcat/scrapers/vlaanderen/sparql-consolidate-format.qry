@@ -1,0 +1,23 @@
+# Consolidate format info
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?s dcterms:format ?genfmt .
+		?genfmt skos:prefLabel ?lbl .
+		?genfmt ?p ?o }
+INSERT
+	{	?s dcterms:format ?fmt .
+		?fmt skos:prefLabel?lbl .
+		?fmt ?p ?o }
+WHERE
+	{ 	?s dcterms:format ?genfmt .
+		?genfmt ?p ?o .
+		?genfmt skos:prefLabel ?lbl .
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/fmt/", LCASE(?lbl))
+			)
+		AS ?fmt)
+	}

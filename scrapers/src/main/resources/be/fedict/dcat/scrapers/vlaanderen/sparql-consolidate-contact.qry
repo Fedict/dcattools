@@ -1,0 +1,23 @@
+# Consolidate contact info
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?dataset dcat:contactPoint ?gencontact .
+		?gencontact vcard:fn ?name .
+		?gencontact ?p ?o }
+INSERT
+	{	?s dcat:contactPoint ?contact .
+		?contact vcard:fn ?name .
+		?contact ?p ?o }
+WHERE
+	{ 	?dataset dcat:contactPoint ?gencontact .
+		?gencontact ?p ?o .
+		?gencontact vcard:fn ?name .
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/contact/", SHA1(LCASE(?name)))
+			)
+		AS ?contact)
+	}

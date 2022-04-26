@@ -1,0 +1,10 @@
+# Remove Hydra hypermedia info
+
+PREFIX hydra: <http://www.w3.org/ns/hydra/core#>
+
+DELETE 
+	{	?s ?p ?o }
+WHERE
+	{ 	?s a hydra:PagedCollection .
+		?s ?p ?o .
+	}

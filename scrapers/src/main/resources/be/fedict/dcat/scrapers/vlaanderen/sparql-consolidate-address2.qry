@@ -1,0 +1,26 @@
+# Consolidate address info (using vCard)
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s vcard:hasAddress ?genaddr .
+		?genaddr vcard:street-address ?street .
+		?genaddr vcard:postal-code ?code .
+		?genaddr ?p ?o }
+INSERT
+	{	?s vcard:hasAddress ?addr .
+		?addr vcard:street-address ?street .
+		?addr vcard:postal-code ?code .
+		?addr ?p ?o }
+WHERE
+	{ 	?s vcard:hasAddress ?genaddr .
+		?genaddr ?p ?o .
+		?genaddr vcard:street-address ?street .
+		?genaddr vcard:postal-code ?code .
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/address/", 
+					SHA1(CONCAT(?street, ?code)))
+			)
+		AS ?addr)
+	}

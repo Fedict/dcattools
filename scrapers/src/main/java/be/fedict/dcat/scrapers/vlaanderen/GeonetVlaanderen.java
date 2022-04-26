@@ -60,7 +60,6 @@ public class GeonetVlaanderen extends GeonetHydra {
 										"<dct:spatial><dct:Location$2>$3</dct:Location></dct:spatial>")
 									.replaceAll("rdf:resoure", "rdf:resource")
 									.getBytes(StandardCharsets.UTF_8))) {
-
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
 				throw new RepositoryException(ex);
