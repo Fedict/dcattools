@@ -1,0 +1,25 @@
+# Consolidate publisher info
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?dataset ?rel ?genpub .
+		?genpub a foaf:Agent .
+		?genpub foaf:name ?name .
+		?genpub ?p ?o }
+INSERT
+	{	?dataset ?rel ?publ .
+		?publ a foaf:Agent .
+		?publ foaf:name ?name .
+		?publ ?p ?o }
+WHERE
+	{ 	?dataset ?rel ?genpub .
+		?genpub a foaf:Agent .
+		?genpub ?p ?o .
+		?genpub foaf:name ?name 
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/publ/", SHA1(LCASE(?name)))
+			)
+		AS ?publ)
+	}

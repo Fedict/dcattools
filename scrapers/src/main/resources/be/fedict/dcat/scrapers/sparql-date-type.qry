@@ -1,5 +1,6 @@
-# Set datatype on created/issues/modified
+# Set datatype on created/issues/modified/startDate/endDate
 
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -8,6 +9,8 @@ INSERT 	{	?s ?p ?dtype }
 WHERE	{
 			?s ?p ?o .
 			VALUES ?p {
+				dcat:startDate
+				dcat:endDate
 				dcterms:created
 				dcterms:issued
 				dcterms:modified
@@ -16,4 +19,5 @@ WHERE	{
 				STRDT(STR(?o), IF(STRLEN(STR(?o)) = 10, xsd:date, xsd:dateTime))
 				AS ?dtype
 			)
+			FILTER ( datatype(?o) = xsd:string )
 }
