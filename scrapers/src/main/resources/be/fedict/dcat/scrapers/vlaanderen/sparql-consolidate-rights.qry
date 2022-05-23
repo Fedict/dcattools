@@ -1,0 +1,21 @@
+# Consolidate rights statement
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?s dcterms:rights ?genrights .
+		?genrights ?p ?o }
+INSERT
+	{	?s dcterms:rights ?rights .
+		?rights ?p ?o }
+WHERE
+	{ 	?s dcterms:rights ?genrights .
+		?genrights ?p ?o .
+		?genrights dcterms:title ?title
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(?title))
+			)
+		AS ?rights)
+	}
