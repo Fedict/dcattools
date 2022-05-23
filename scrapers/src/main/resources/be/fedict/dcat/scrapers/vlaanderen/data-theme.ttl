@@ -18,6 +18,8 @@
 		<http://ns.thedatatank.com/dcat/themes#CulturalEvents> ,
 		<http://vocab.belgif.be/auth/datatheme/CULT>, 
 		<http://vocab.belgif.be/auth/datatheme/EDUC>,
+		<http://www.eionet.europa.eu/gemet/concept/1917> ,
+		<http://www.eionet.europa.eu/gemet/concept/10847> ,
 		<https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed>,
 		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ,
@@ -49,17 +51,37 @@
 		<http://vocab.belgif.be/auth/datatheme/ENVI> ,
 		<http://inspire.ec.europa.eu/theme/hy>,	<http://inspire.ec.europa.eu/theme/lu>,
 		<http://inspire.ec.europa.eu/theme/oi>, <http://inspire.ec.europa.eu/theme/ps> ,
+		<http://www.eionet.europa.eu/gemet/concept/8167> ,
+		<http://www.eionet.europa.eu/gemet/concept/6376> ,
+		<http://www.eionet.europa.eu/gemet/concept/7902> ,
+		<http://www.eionet.europa.eu/gemet/concept/2339> ,
+		<http://www.eionet.europa.eu/gemet/concept/3780> ,
 		<https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, 
 		"bodem"@nl, "lucht"@nl, "water"@nl, "bodemgebruik"@nl, "Geologie"@nl, "hydrografie"@nl ,
-		"Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, "Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, "Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl, "Gebieden met natuurrisico's"@nl, "bodembestemming"@nl, "Biologie"@nl, "Bodem"@nl, "Hondenpoep"@nl, "Herbruikbaar"@nl, "Hondentoiletten"@nl, "Huisvuil"@nl, "afvalkalender"@nl, "biodiversiteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl, "duurzame energie"@nl, "duurzame mobiliteit"@nl, "groen"@nl, "klimaat"@nl, "vogel"@nl, "vogeltelling"@nl, "water"@nl, "waterpeil"@nl, "waterstand"@nl, "(milieu)beschermingsbeleid"@nl, "(rivier)oevervegetatie"@nl, "(zand)duin"@nl, "aardverschuiving"@nl, "afgrenzing van polder"@nl, "afgrenzing van watering"@nl, "afvalwater"@nl, "afvalwaterkwaliteit"@nl, "afvalwaterzuivering"@nl, "afzetting"@nl, "afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, "BEKEN"@nl, "Zwin en Zwinbosjes"@nl .
+		"Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, 
+		"Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, 
+		"Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl, "Gebieden met natuurrisico's"@nl,
+		"bodembestemming"@nl, "Biologie"@nl, "Bodem"@nl, "Hondenpoep"@nl, "Herbruikbaar"@nl, 
+		"Hondentoiletten"@nl, "Huisvuil"@nl, "afvalkalender"@nl, "biodiversiteit"@nl, "boom"@nl, 
+		"bomen"@nl, "boomsoort"@nl, "duurzame energie"@nl, "duurzame mobiliteit"@nl, "groen"@nl, 
+		"klimaat"@nl, "vogel"@nl, "vogeltelling"@nl, "water"@nl, "waterpeil"@nl, "waterstand"@nl, 
+		"(milieu)beschermingsbeleid"@nl, "(rivier)oevervegetatie"@nl, "(zand)duin"@nl, 
+		"aardverschuiving"@nl, "afgrenzing van polder"@nl, "afgrenzing van watering"@nl, 
+		"afvalwater"@nl, "afvalwaterkwaliteit"@nl, "afvalwaterzuivering"@nl, "afzetting"@nl, 
+		"afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, 
+		"beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, 
+		"BEKEN"@nl, "Zwin en Zwinbosjes"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
-	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER> ;
+	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER>,
+		<http://inspire.ec.europa.eu/theme/er> ;
 	skos:prefLabel "ENERGY"@en ;
-	skos:altLabel "energie energieopwekking"@nl, "Energie"@nl, "energie"@nl, "Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl, "duurzame energie"@nl, "gas"@nl, "Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl .
+	skos:altLabel "energie energieopwekking"@nl, "Energie"@nl, "energie"@nl, 
+		"Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl, "duurzame energie"@nl, "gas"@nl, 
+		"Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl .
 
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
@@ -120,6 +142,7 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
 		<http://vocab.belgif.be/auth/datatheme/REGI> ,
+		<http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional> ,
 		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ;
 	skos:prefLabel "REGIONS, CITIES"@en ;
@@ -153,6 +176,9 @@
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Research> ,
 		<http://vocab.belgif.be/auth/datatheme/TECH> ,
 		<http://inspire.ec.europa.eu/theme/ge> ,
+		<http://www.eionet.europa.eu/gemet/concept/3650> ,
+		<http://www.eionet.europa.eu/gemet/concept/4108> ,
+		<http://www.eionet.europa.eu/gemet/concept/7168> ,
 		<http://eurovoc.europa.eu/2176> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
 	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 

@@ -26,6 +26,7 @@ vlaanderen/data-theme.ttl
 # sparql-map-theme.qry
 sparql-map-keyword-theme.qry
 vlaanderen/sparql-map-theme.qry
+vlaanderen/sparql-map-theme2.qry
 #vlaanderen/sparql-vcard-mailto.qry
 #vlaanderen/sparql-contactmbox.qry
 data-frequency.ttl
