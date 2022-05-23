@@ -16,9 +16,9 @@ vlaanderen/sparql-language.qry
 # vlaanderen/data-geo.ttl
 # sparql-map-geo.qry
 # vlaanderen/sparql-default-geo.qry
-# data-media.ttl
-# vlaanderen/sparql-format-extension.qry
-# sparql-map-media.qry
+data-media.ttl
+vlaanderen/sparql-format-extension.qry
+sparql-map-media.qry
 # vlaanderen/sparql-fix-theme.qry
 # vlaanderen/data-theme.ttl
 # sparql-map-theme.qry
@@ -31,11 +31,11 @@ vlaanderen/sparql-language.qry
 #sparql-map-frequency.qry
 #vlaanderen/data-contact.ttl
 #vlaanderen/sparql-default-contact.qry
-#vlaanderen/data-license.ttl
-#sparql-map-license.qry
+vlaanderen/data-license.ttl
+sparql-map-license.qry
 #clear-skos.qry
 #vlaanderen/data-org.ttl
 #sparql-map-org.qry
 #clear-skos.qry
 sparql-date-type.qry
-sparql-strip-html.qry
+#sparql-strip-html.qry

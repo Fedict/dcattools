@@ -15,7 +15,8 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
 	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
-					<http://publications.europa.eu/resource/authority/file-type/CSV> .
+					<http://publications.europa.eu/resource/authority/file-type/CSV>,
+					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
 <http://data.gov.be/en/taxonomy/term/429>
 	skos:prefLabel "TSV" ;
@@ -58,7 +59,10 @@
 	skos:closeMatch "application/gml+xml";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
 	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
-			"Environmental Monitoring Facilities GML application schema", "Administrative units GML application schema", "OGC:GML", "application/gml+xml", "GML application schema" .
+		"Environmental Monitoring Facilities GML application schema", 
+		"Administrative units GML application schema", "OGC:GML", 
+		"application/gml+xml", "GML application schema",
+		<http://data.gov.be/.well-known/genid/fmt/gml> .
 
 <http://data.gov.be/en/taxonomy/term/322>
 	skos:prefLabel "GTFS" ;
@@ -71,7 +75,8 @@
 	skos:closeMatch "text/html";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/HTML> ;
 	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", ".html", 
-				"HTML Tabel", "text/html", "powerbi" .
+				"HTML Tabel", "text/html", "powerbi",
+				<http://data.gov.be/.well-known/genid/fmt/html> .
 
 <http://data.gov.be/en/taxonomy/term/9>
 	skos:prefLabel "JSON" ;
@@ -150,7 +155,7 @@
 	skos:prefLabel "PDF" ;
 	skos:closeMatch "application/pdf" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;
-	skos:altLabel "PDF", "pdf" .
+	skos:altLabel "PDF", "pdf" , <http://data.gov.be/.well-known/genid/fmt/pdf> .
 	
 <http://data.gov.be/en/taxonomy/term/247>
 	skos:prefLabel "PNG" ;
@@ -212,7 +217,14 @@
 	skos:prefLabel "TIFF" ;
 	skos:closeMatch "image/tiff" ;	
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/TIFF> ;
-	skos:altLabel "TIFF", "tiff", "GeoTIFF, Surfer copyright binary grid.grd" .
+	skos:altLabel "TIFF", "tiff" .
+
+<http://data.gov.be/en/taxonomy/term/440>
+	skos:prefLabel "GeoTIFF" ;
+	skos:closeMatch "image/tiff" ;	
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GEOTIFF> ;
+	skos:altLabel "geotiff", "GEOTIFF", "GeoTIFF, Surfer copyright binary grid.grd" ,
+		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
 <http://data.gov.be/en/taxonomy/term/5>
 	skos:prefLabel "TXT" ;
@@ -255,7 +267,9 @@
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
-	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx", "M XLSX", "F XLSX", "Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", "Excel", "excel" .
+	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx", "M XLSX", "F XLSX", 
+			"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
+			"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx> .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;
