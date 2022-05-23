@@ -2,20 +2,23 @@
 # Using this instead of blank nodes or other URIs to reuse (and reduce the number of) triples
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX schema:  <http://schema.org/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
 	{	?s dcterms:temporal ?uri .
-		?uri schema:startDate ?start .
-		?uri schema:endDate ?end }
+		?uri a dcterms:PeriodOfTime .
+		?uri dcat:startDate ?start .
+		?uri dcat:endDate ?end }
 INSERT 
 	{ 	?s dcterms:temporal ?newuri .
-		?newuri schema:startDate ?start .
-		?newuri schema:endDate ?end }
+		?newuri a dcterms:PeriodOfTime .
+		?newuri dcat:startDate ?start .
+		?newuri dcat:endDate ?end }
 WHERE 
 	{	?s dcterms:temporal ?uri .
-		?uri schema:startDate ?start .
-		OPTIONAL { ?uri schema:endDate ?end }
+		?uri a dcterms:PeriodOfTime .
+		?uri dcat:startDate ?start .
+		OPTIONAL { ?uri dcat:endDate ?end }
 		BIND (
 			IRI(
 				CONCAT("https://data.gov.be/.well-known/genid/temporal/", 

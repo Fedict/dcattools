@@ -18,6 +18,7 @@
 		<http://ns.thedatatank.com/dcat/themes#CulturalEvents> ,
 		<http://vocab.belgif.be/auth/datatheme/CULT>, 
 		<http://vocab.belgif.be/auth/datatheme/EDUC>,
+		<https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed>,
 		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ,
 		<https://data.stad.gent/id/theme/Evenementen%20%26%20Feesten> ;
@@ -98,7 +99,22 @@
 		<http://inspire.ec.europa.eu/theme/bu>, <http://inspire.ec.europa.eu/theme/pd>,
 		<https://data.stad.gent/id/theme/Burgerzaken> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "sociaal"@nl, "zorg"@nl, "gelijke kansen gender"@nl, "jeugdwerk"@nl , "gezondheid - nataliteit_en_mortaliteit"@nl , "vruchtbaarheid"@nl , "algemeen_welzijnswerk"@nl , "demografie - 3_loop_van_de_bevolking"@nl , "gezondheid - morbiditeit"@nl, "handicap"@nl, "samenlevingsvormen"@nl, "woonbeleid - steun_particulieren"@nl, "bevolkingsvooruitzichten"@nl, "minderheden"@nl, "woningmarkt"@nl, "demografie - 8_levensverwachting"@nl, "demografie - 5_huishoudens"@nl, "gelijke - algemeen"@nl, "woonbeleid - bewoners"@nl, "woonbeleid - sociale_huisvesting"@nl, "welzijn - vrijwilligers"@nl, "toegankelijkheid"@nl, "welzijn - algemeen"@nl, "woningkwaliteit"@nl, "huishoudens"@nl, "woonbeleid"@nl, "ouderen"@nl, "demografie"@nl, "Arbeid"@nl, "Armoede"@nl, "Bevolking"@nl, "Bevolkingsgroei"@nl, "Bevolkingsindicatoren"@nl, "CRECHE"@nl, "Demografie"@nl, "Geboortes"@nl, "Huisdieren"@nl, "Huishoudens"@nl, "Jeugd"@nl, "KINDERDAGVERBLIJF"@nl, "Loop_van_de_bevolking"@nl, "OCMW"@nl, "ONTHAALMOEDER"@nl, "Overlijdens"@nl, "Werkloosheid"@nl, "Werkzoekenden"@nl, "arbeid"@nl, "arbeidsmarkt"@nl, "bevolking"@nl, "buurtcentrum"@nl, "demografie"@nl, "digitale kloof"@nl, "gezin"@nl, "gezinnen"@nl, "huishoudens"@nl, "kansarmoede"@nl, "kinderen"@nl, "migratie"@nl, "minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl, "woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl .
+	skos:altLabel "sociaal"@nl, "zorg"@nl, "gelijke kansen gender"@nl, "jeugdwerk"@nl , 
+		"gezondheid - nataliteit_en_mortaliteit"@nl , "vruchtbaarheid"@nl , "algemeen_welzijnswerk"@nl ,
+		"demografie - 3_loop_van_de_bevolking"@nl , "gezondheid - morbiditeit"@nl, "handicap"@nl, 
+		"samenlevingsvormen"@nl, "woonbeleid - steun_particulieren"@nl, "bevolkingsvooruitzichten"@nl, 
+		"minderheden"@nl, "woningmarkt"@nl, "demografie - 8_levensverwachting"@nl, 
+		"demografie - 5_huishoudens"@nl, "gelijke - algemeen"@nl, "woonbeleid - bewoners"@nl, 
+		"woonbeleid - sociale_huisvesting"@nl, "welzijn - vrijwilligers"@nl, "toegankelijkheid"@nl, 
+		"welzijn - algemeen"@nl, "woningkwaliteit"@nl, "huishoudens"@nl, "woonbeleid"@nl, "ouderen"@nl,
+		"demografie"@nl, "Arbeid"@nl, "Armoede"@nl, "Bevolking"@nl, "Bevolkingsgroei"@nl, 
+		"Bevolkingsindicatoren"@nl, "CRECHE"@nl, "Demografie"@nl, "Geboortes"@nl, "Huisdieren"@nl, 
+		"Huishoudens"@nl, "Jeugd"@nl, "KINDERDAGVERBLIJF"@nl, "Loop_van_de_bevolking"@nl, "OCMW"@nl, 
+		"ONTHAALMOEDER"@nl, "Overlijdens"@nl, "Werkloosheid"@nl, "Werkzoekenden"@nl, "arbeid"@nl, 
+		"arbeidsmarkt"@nl, "bevolking"@nl, "buurtcentrum"@nl, "demografie"@nl, "digitale kloof"@nl, 
+		"gezin"@nl, "gezinnen"@nl, "huishoudens"@nl, "kansarmoede"@nl, "kinderen"@nl, "migratie"@nl, 
+		"minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl,
+		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
@@ -107,7 +123,14 @@
 		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ;
 	skos:prefLabel "REGIONS, CITIES"@en ;
-	skos:altLabel "BED AND BREAKFAST"@nl, "toerisme"@nl, "overnachtingen"@nl, "economie - 3regionaal"@nl, "toerisme - vakantieparticipatie"@nl, "bestuur - lokaal_bestuur"@nl, "toerisme - tewerkstelling"@nl, "BED AND BREAKFAST"@nl, "CAMPING"@nl, "GASTENKAMER"@nl, "Gemeente"@nl, "HOSTEL"@nl, "HOTEL"@nl, "INFOKANTOOR"@nl, "INTERESSANTE PLAATS"@nl, "KAMPEREN"@nl, "LOGIE"@nl, "LOKAAL BESTUUR"@nl, "Toerisme"@nl, "buurt"@nl, "camping"@nl, "campings"@nl, "diensten voor toerisme"@nl, "gemeente"@nl, "gastenkamers"@nl, "hostels"@nl, "hotel"@nl, "hotels"@nl, "jeugdverblijven"@nl, "kampeerautoterreinen"@nl, "kampeerlogies"@nl, "logies"@nl, "lokale besturen"@nl .
+	skos:altLabel "BED AND BREAKFAST"@nl, "toerisme"@nl, "overnachtingen"@nl, "economie - 3regionaal"@nl,
+		"toerisme - vakantieparticipatie"@nl, "bestuur - lokaal_bestuur"@nl, 
+		"toerisme - tewerkstelling"@nl, "BED AND BREAKFAST"@nl, "CAMPING"@nl, "GASTENKAMER"@nl, 
+		"Gemeente"@nl, "HOSTEL"@nl, "HOTEL"@nl, "INFOKANTOOR"@nl, "INTERESSANTE PLAATS"@nl, 
+		"KAMPEREN"@nl, "LOGIE"@nl, "LOKAAL BESTUUR"@nl, "Toerisme"@nl, "buurt"@nl, "camping"@nl, 
+		"campings"@nl, "diensten voor toerisme"@nl, "gemeente"@nl, "gastenkamers"@nl, "hostels"@nl, 
+		"hotel"@nl, "hotels"@nl, "jeugdverblijven"@nl, "kampeerautoterreinen"@nl, "kampeerlogies"@nl, 
+		"logies"@nl, "lokale besturen"@nl .
 
 <http://data.gov.be/en/taxonomy/term/36>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
@@ -115,7 +138,15 @@
 		<http://vocab.belgif.be/auth/datatheme/TRAN> , <http://inspire.ec.europa.eu/theme/tn>,
 		<https://data.stad.gent/id/theme/Mobiliteit> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "mobiliteit"@nl, "vervoermiddelen"@nl, "zeehavens_economisch"@nl, "vervoersprestaties"@nl, "mobiliteit - bereikbaarheid"@nl, "verkeersveiligheid"@nl, "infrastructuur"@nl, "Vervoersnetwerken"@nl, "Auto"@nl, "Fiets"@nl, "Mobiliteit"@nl, "Havengebied"@nl, "Parkeren"@nl, "Station"@nl, "Wandelroute"@nl, "aanrijtijden"@nl, "autosnelweg"@nl, "autosnelwegen"@nl, "bevaarbaar"@nl, "duwbakken"@nl, "elektrische fiest"@nl, "elektrische wagen"@nl, "duurzame mobiliteit"@nl, "file"@nl, "fileduur"@nl, "haven"@nl, "kanalen"@nl, "mobiliteit"@nl, "schelde"@nl, "sluis"@nl, "taxi"@nl, "traject"@nl, "voetgangers"@nl, "wandelroutes"@nl, "afrit"@nl, "afritten"@nl, "ANKERPLAATSEN"@nl, "autoweg"@nl, "autocar"@nl .
+	skos:altLabel "mobiliteit"@nl, "vervoermiddelen"@nl, "zeehavens_economisch"@nl, 
+		"vervoersprestaties"@nl, "mobiliteit - bereikbaarheid"@nl, "verkeersveiligheid"@nl, 
+		"infrastructuur"@nl, "Vervoersnetwerken"@nl, "Auto"@nl, "Fiets"@nl, "Mobiliteit"@nl, 
+		"Havengebied"@nl, "Parkeren"@nl, "Station"@nl, "Wandelroute"@nl, "aanrijtijden"@nl, 
+		"autosnelweg"@nl, "autosnelwegen"@nl, "bevaarbaar"@nl, "duwbakken"@nl, "elektrische fiest"@nl, 
+		"elektrische wagen"@nl, "duurzame mobiliteit"@nl, "file"@nl, "fileduur"@nl, "haven"@nl, 
+		"kanalen"@nl, "mobiliteit"@nl, "schelde"@nl, "sluis"@nl, "taxi"@nl, "traject"@nl, 
+		"voetgangers"@nl, "wandelroutes"@nl, "afrit"@nl, "afritten"@nl, "ANKERPLAATSEN"@nl, 
+		"autoweg"@nl, "autocar"@nl .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
@@ -124,4 +155,8 @@
 		<http://inspire.ec.europa.eu/theme/ge> ,
 		<http://eurovoc.europa.eu/2176> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, "Hydrografie"@nl, "Orthobeeldvorming"@nl, "Geology"@nl, "Archeologie"@nl, "Biologie"@nl, "Onderzoek en Ontwikkeling"@nl, "ict"@nl, "geografie"@nl, "wetenschap"@nl, "archeologie"@nl, "Archeologie@nl" .
+	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 
+		"wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, 
+		"Hydrografie"@nl, "Orthobeeldvorming"@nl, "Geology"@nl, "Archeologie"@nl, "Biologie"@nl, 
+		"Onderzoek en Ontwikkeling"@nl, "ict"@nl, "geografie"@nl, "wetenschap"@nl, "archeologie"@nl, 
+		"Archeologie@nl" .

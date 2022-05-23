@@ -1,0 +1,21 @@
+# Consolidate bounding boxes
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcterms:spatial ?genspatial .
+		?genspatial ?p ?o }
+INSERT
+	{	?s dcterms:spatial ?spatial .
+		?spatial ?p ?o }
+WHERE
+	{ 	?s dcterms:spatial ?genspatial .
+		?genspatial ?p ?o .
+		?genspatial dcat:bbox ?bbox
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/spatial/", SHA1(?bbox))
+			)
+		AS ?spatial)
+	}
