@@ -9,8 +9,8 @@
 	org:unitOf <http://org.belgif.be/id/cbe/org/0316_380_841> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/72> ;
 	a vcard:Organization ;
-	vcard:fn "Vlaams Open Data Forum"@en, "Vlaams Open Data Forum"@fr, "Vlaams Open Data Forum"@nl ;
-	vcard:hasEmail <mailto:opendata@vlaanderen.be> .
+	vcard:fn "Datavindplaats Vlaanderen"@en, "Datavindplaats Vlaanderen"@fr, "Datavindplaats Vlaanderen"@nl ;
+	vcard:hasEmail <mailto:digitaal.vlaanderen@vlaanderen.be> .
 
 <http://data.gov.be/org/gent/contact>	
 	dgov:org <http://data.gov.be/en/taxonomy/term/125> ;
