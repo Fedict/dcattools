@@ -6,16 +6,17 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
 	{	?dataset dcat:contactPoint ?gencontact .
-		?gencontact vcard:fn ?name .
+		?gencontact vcard:organization-name ?name .
 		?gencontact ?p ?o }
 INSERT
 	{	?s dcat:contactPoint ?contact .
-		?contact vcard:fn ?name .
+		?contact a vcard:Organization .
+		?contact vcard:organization-name ?name .
 		?contact ?p ?o }
 WHERE
 	{ 	?dataset dcat:contactPoint ?gencontact .
 		?gencontact ?p ?o .
-		?gencontact vcard:fn ?name .
+		?gencontact vcard:organization-name ?name .
 		BIND(IRI(
 				CONCAT("http://data.gov.be/.well-known/genid/contact/", SHA1(LCASE(?name)))
 			)

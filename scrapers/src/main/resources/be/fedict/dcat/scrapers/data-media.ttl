@@ -193,7 +193,7 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", 
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
-			"ESRI shapefile", "shp (ZIP)" .
+			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)" .
 	
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:prefLabel "DXF" ;
@@ -223,7 +223,7 @@
 	skos:prefLabel "GeoTIFF" ;
 	skos:closeMatch "image/tiff" ;	
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GEOTIFF> ;
-	skos:altLabel "geotiff", "GEOTIFF", "GeoTIFF, Surfer copyright binary grid.grd" ,
+	skos:altLabel "geotiff", "GEOTIFF", "GeoTiff", "GeoTIFF, Surfer copyright binary grid.grd" ,
 		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
 <http://data.gov.be/en/taxonomy/term/5>
