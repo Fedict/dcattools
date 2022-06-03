@@ -3,7 +3,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
 
-<http://org.belgif.be/id/cbe/org/0353_070_496> 
+<https://org.belgif.be/id/CbeRegisteredEntity/0353070496> 
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/197> ;
 	foaf:name "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl ,

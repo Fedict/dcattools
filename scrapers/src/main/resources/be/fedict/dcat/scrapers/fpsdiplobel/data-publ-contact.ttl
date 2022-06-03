@@ -4,7 +4,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
 
-<http://org.belgif.be/id/cbe/org/0308_358_149>
+<https://org.belgif.be/id/CbeRegisteredEntity/0308358149>
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/156> ;
 	foaf:name "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;

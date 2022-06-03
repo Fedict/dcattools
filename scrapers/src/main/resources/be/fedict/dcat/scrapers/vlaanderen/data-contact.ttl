@@ -6,7 +6,7 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 <http://data.gov.be/org/vlaanderen/forum/contact>
-	org:unitOf <http://org.belgif.be/id/cbe/org/0316_380_841> ;
+	org:unitOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/72> ;
 	a vcard:Organization ;
 	vcard:fn "Datavindplaats Vlaanderen"@en, "Datavindplaats Vlaanderen"@fr, "Datavindplaats Vlaanderen"@nl ;

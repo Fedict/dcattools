@@ -5,7 +5,6 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 
 <http://data.gov.be/org/wallonie/adn/contact>
-	org:unitOf <https://opencorporates.com/id/companies/be/0568575002> ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/138> ;
 	a vcard:Organization ;
 	vcard:fn "Agence du Numérique"@en, "Agence du Numérique"@fr, "Agence du Numérique"@nl ;

@@ -4,7 +4,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
 
-<http://org.belgif.be/id/cbe/org/0869_763_267> 
+<https://org.belgif.be/id/CbeRegisteredEntity/0869763267> 
 		a foaf:Organization ;
 		dgov:org <http://data.gov.be/en/taxonomy/term/386> ;
 		foaf:name "Infrabel"@nl, "Infrabel"@fr, "Infrabel"@en .
