@@ -6,7 +6,7 @@
 <http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/title> "BeSt adressen"@nl .
 <http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/title> "Adresses BeSt"@fr .
 <http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/identifier> "c646365c4441f53426a72e2f1b14b9d6e63e0756" .
-<http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/publisher> <http://org.belgif.be/id/cbe/org/0671_516_647> .
+<http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/publisher> <https://org.belgif.be/id/CbeRegisteredEntity/0671516647> .
 <http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/NLD> .
 <http://data.gov.be/dataset/fodbosadt/best> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/FRA> .
 <http://data.gov.be/dataset/fodbosadt/best> <http://www.w3.org/ns/dcat#contactPoint> <http://opendata.bosa.be/contact> .
@@ -31,10 +31,10 @@
 <http://data.gov.be/dist/fodbosadt/best/fr> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/XML> .
 <http://data.gov.be/dist/fodbosadt/best/fr> <http://www.w3.org/ns/dcat#accessURL> <https://opendata.bosa.be/index.fr.html> .
 <http://data.gov.be/dist/fodbosadt/best/fr> <http://www.w3.org/ns/dcat#downloadURL> <https://opendata.bosa.be/download/best/best-full-latest.zip> .
-<http://org.belgif.be/id/cbe/org/0671_516_647> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/foaf/Organization> .
-<http://org.belgif.be/id/cbe/org/0671_516_647> <http://xmlns.com/foaf/0.1/foaf/name> "FPS BOSA"@en .
-<http://org.belgif.be/id/cbe/org/0671_516_647> <http://xmlns.com/foaf/0.1/foaf/name> "FOD BOSA"@nl .
-<http://org.belgif.be/id/cbe/org/0671_516_647> <http://xmlns.com/foaf/0.1/foaf/name> "SPF BOSA"@fr .
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/foaf/Organization> .
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647> <http://xmlns.com/foaf/0.1/foaf/name> "FPS BOSA"@en .
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647> <http://xmlns.com/foaf/0.1/foaf/name> "FOD BOSA"@nl .
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647> <http://xmlns.com/foaf/0.1/foaf/name> "SPF BOSA"@fr .
 <http://opendata.bosa.be/contact> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Organization> .
 <http://opendata.bosa.be/contact> <http://www.w3.org/2006/vcard/ns#fn> "Open Data FPS BOSA DG DT"@en .
 <http://opendata.bosa.be/contact> <http://www.w3.org/2006/vcard/ns#fn> "Open Data FOD BOSA DG DT"@nl .
