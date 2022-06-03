@@ -7,7 +7,7 @@ DELETE
 	{	?dataset dcterms:publisher ?o }
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/elia/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0731_852_231> }
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0731852231> }
 WHERE
 	{ 	?dataset a dcat:Dataset 
 		OPTIONAL {	?dataset dcterms:publisher ?o }

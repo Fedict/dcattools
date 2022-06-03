@@ -4,5 +4,5 @@
 
 <http://data.gov.be/en/taxonomy/term/211>
 	skos:prefLabel "Enabel"@nl, "Enabel"@fr, "Enabel"@en ;
-	skos:exactMatch <http://org.belgif.be/id/cbe/org/0264_814_354> ;
+	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0264814354> ;
 	skos:altLabel "enabel"@en .

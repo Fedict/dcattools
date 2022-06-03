@@ -11,7 +11,7 @@ DELETE
 		?pub ?p ?o }
 INSERT 
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/iweps/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0866_518_618> 
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> 
 	}
 WHERE
 	{	?dataset dcterms:publisher ?pub .

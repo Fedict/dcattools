@@ -7,6 +7,6 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 DELETE 
 	{	?dataset dcterms:publisher <https://openplanner.team/> }
 INSERT 
-	{ 	?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0845_419_930> }
+	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0845419930> }
 WHERE
 	{	?dataset dcterms:publisher <https://openplanner.team/> }

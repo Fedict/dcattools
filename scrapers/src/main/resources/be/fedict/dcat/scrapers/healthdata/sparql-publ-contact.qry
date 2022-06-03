@@ -5,6 +5,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/sciensano/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0693_876_830> }
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0693876830> }
 WHERE
 	{ 	?dataset a dcat:Dataset  }

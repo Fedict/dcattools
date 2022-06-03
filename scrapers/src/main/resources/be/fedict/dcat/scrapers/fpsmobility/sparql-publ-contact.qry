@@ -5,6 +5,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/fodmobilit/fod/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0308_357_852> }
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0308357852> }
 WHERE
 	{ 	?dataset a dcat:Dataset  }

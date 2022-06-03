@@ -4,7 +4,7 @@
 @prefix dgov: <http://data.gov.be#>
 @prefix foaf: <http://xmlns.com/foaf/0.1/>
 
-<http://org.belgif.be/id/cbe/org/0845_419_930> 
+<https://org.belgif.be/id/CbeRegisteredEntity/0845419930> 
 	a foaf:Organization ;
 	 dgov:org <http://data.gov.be/en/taxonomy/term/378> .
 	foaf:name "OpenPlanner Team"@en, "OpenPlanner Team"@fr, "OpenPlanner Team"@nl, "OpenPlanner Team"@de .

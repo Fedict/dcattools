@@ -9,7 +9,7 @@ DELETE
 		?pub ?p ?o }
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/infrabel/contact> .
-		?dataset dcterms:publisher <http://org.belgif.be/id/cbe/org/0869_763_267> }
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0869763267> }
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		OPTIONAL { ?dataset dcterms:publisher ?pub .
