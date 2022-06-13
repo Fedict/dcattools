@@ -1,0 +1,10 @@
+# Remove empty format
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:format ?val }
+WHERE
+	{ 	?s dcterms:format ?val 
+		VALUES ?val { "" "Niet gekend" "Niet Gekend" }
+	}

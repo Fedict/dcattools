@@ -17,7 +17,7 @@ WHERE
 		} UNION {
 			?dist a dcat:Distribution .
 			?dist dcterms:title ?title
-			BIND (CONCAT(" ", LCASE(?title)) as ?str)
+			BIND (CONCAT(" ", LCASE(STR(?title))) as ?str)
 		}
 		VALUES ?ext { ".geojson" "-geojson" ".json" "-json" ".csv" "-csv" ".kml" ".xlsx" ".shp" "-shp" ".xml" 
 					"-xml" "/jsonld" "/ttl" "/nt" ".powerbi" "/wms" ".zip" "WFS-" "KML " "WMS-" }

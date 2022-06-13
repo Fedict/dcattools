@@ -8,9 +8,10 @@ DELETE
 		?genfmt skos:prefLabel ?lbl .
 		?genfmt ?p ?o }
 INSERT
-	{	?s dcterms:format ?lbl }
+	{	?s dcterms:format ?str }
 WHERE
 	{ 	?s dcterms:format ?genfmt .
 		?genfmt ?p ?o .
 		?genfmt skos:prefLabel ?lbl .
+		BIND(str(?lbl) AS ?str)
 	}
