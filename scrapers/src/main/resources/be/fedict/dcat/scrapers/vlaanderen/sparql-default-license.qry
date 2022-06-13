@@ -1,0 +1,13 @@
+# Add default license information
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT 
+	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/56> .
+		?dist dcterms:license <http://overheid.vlaanderen.be/hergebruik/licenties/v1-0/html/modellicentie-gratis-hergebruik> }
+WHERE
+	{	?dist a dcat:Distribution .
+		FILTER NOT EXISTS { ?dist dcterms:license ?lic }
+	}

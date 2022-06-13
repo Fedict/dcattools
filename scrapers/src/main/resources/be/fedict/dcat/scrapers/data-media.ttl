@@ -52,14 +52,14 @@
 	skos:prefLabel "GDB" ;
 	skos:closeMatch "application/octet-stream" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GDB> ;
-	skos:altLabel "ESRI file geodatabase" .
+	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase" .
 
 <http://data.gov.be/en/taxonomy/term/4>
 	skos:prefLabel "GML" ;
 	skos:closeMatch "application/gml+xml";
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GML> ;
 	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
-		"Environmental Monitoring Facilities GML application schema", 
+		"Environmental Monitoring Facilities GML application schema", "Gml",
 		"Administrative units GML application schema", "OGC:GML", 
 		"application/gml+xml", "GML application schema",
 		<http://data.gov.be/.well-known/genid/fmt/gml> .
@@ -191,7 +191,8 @@
 	skos:prefLabel "SHP" ;
 	skos:closeMatch "application/vnd.shp" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
-	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "shape", "shapefile", "shape file", "shape fies", 
+	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "Shape", "shape", "shapefile", "shape file", 
+			"shape fies", "shapefiile",
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
 			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)" .
 	
@@ -205,7 +206,13 @@
 	skos:prefLabel "JPG" ;
 	skos:closeMatch "image/jpeg" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JPEG> ;
-	skos:altLabel "JPG", "jpg", "JPEG", "jpeg" .
+	skos:altLabel "JPG", "JPEG2000", "jpg", "JPEG", "jpeg" .
+
+<http://data.gov.be/en/taxonomy/term/170>
+	skos:prefLabel "JP2" ;
+	skos:closeMatch "image/jp2" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JPEG2000> ;
+	skos:altLabel "JPEG2000", "jpeg2000" .
 
 <http://data.gov.be/en/taxonomy/term/332>
 	skos:prefLabel "SQLITE" ;
@@ -223,7 +230,8 @@
 	skos:prefLabel "GeoTIFF" ;
 	skos:closeMatch "image/tiff" ;	
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GEOTIFF> ;
-	skos:altLabel "geotiff", "GEOTIFF", "GeoTiff", "GeoTIFF, Surfer copyright binary grid.grd" ,
+	skos:altLabel "geotiff", "geoTIFF", "GEOTIFF", "GeoTIFF", "GeoTiff", "GeoTIFFs",
+		"GeoTIFF, Surfer copyright binary grid.grd" ,
 		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
 <http://data.gov.be/en/taxonomy/term/5>
@@ -255,7 +263,9 @@
 	skos:prefLabel "WMS" ;
 	skos:closeMatch "application/xml" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/WMS_SRVC> ;
-	skos:altLabel "WMS", "wms", "vms", "WMTS", "3DTiles", "OGC:WMS", "OGC:WMS-1.3.0-http-get-map", "OGC:WMS-1.3.0-http-get-capabilities", "OGC:WMS-2.0-http-get-capabilities" .
+	skos:altLabel "WMS", "wms", "vms", "WMTS", "3DTiles", "OGC:WMS", 
+		"OGC:WMS-1.3.0-http-get-map", "OGC:WMS-1.3.0-http-get-capabilities", 
+		"OGC:WMS-2.0-http-get-capabilities", "WMS-service" .
 	
 <http://data.gov.be/en/taxonomy/term/8>
 	skos:prefLabel "XLS" ;
@@ -268,6 +278,7 @@
 	skos:closeMatch "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
 	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx", "M XLSX", "F XLSX", 
+			"Excel XLSX",
 			"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
 			"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx> .
 	

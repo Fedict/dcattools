@@ -1,0 +1,14 @@
+# Guess file format based on conformance level
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcterms:format "WMS" }
+WHERE
+	{
+		?dist a dcat:Distribution .
+		?dist dcterms:conformsTo <https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map> .
+		FILTER NOT EXISTS { ?dist dcterms:format ?fmt } 
+	}
+	
