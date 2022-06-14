@@ -7,8 +7,9 @@ INSERT
 	{ 	?dist dcterms:format "WMS" }
 WHERE
 	{
-		?dist a dcat:Distribution .
-		?dist dcterms:conformsTo <https://data.vlaanderen.be/id/concept/dataserviceprotocol/OGC:WMS-1.3.0-http-get-map> .
+		?dist dcterms:conformsTo ?std .
+		?std a dcterms:Standard .
+		?std dcterms:identifier "OGC:WMS-1.3.0-http-get-map" .
 		FILTER NOT EXISTS { ?dist dcterms:format ?fmt } 
 	}
 	

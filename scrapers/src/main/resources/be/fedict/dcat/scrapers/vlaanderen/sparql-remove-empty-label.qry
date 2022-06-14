@@ -1,4 +1,4 @@
-# Move format label so it can be used for matching in another query
+# Delete format that references a class with only empty skos labels
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -7,11 +7,12 @@ DELETE
 	{	?s dcterms:format ?genfmt .
 		?genfmt skos:prefLabel ?lbl .
 		?genfmt ?p ?o }
-INSERT
-	{	?s dcterms:format ?str }
 WHERE
 	{ 	?s dcterms:format ?genfmt .
 		?genfmt ?p ?o .
 		?genfmt skos:prefLabel ?lbl .
-		BIND(str(?lbl) AS ?str)
+		FILTER NOT EXISTS {
+			?genfmt skos:prefLabel ?lbl .
+			FILTER(STRLEN(?lbl) > 0)
+		}
 	}
