@@ -10,11 +10,11 @@ vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-standards.qry
 data-media.ttl
 vlaanderen/sparql-remove-empty-label.qry
-vlaanderen/sparql-remove-format-empty.qry
 vlaanderen/sparql-format-label.qry
 vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
 vlaanderen/sparql-format-conforms.qry
+vlaanderen/sparql-remove-format-empty.qry
 sparql-map-media.qry
 sparql-map-media-drupal.qry
 vlaanderen/sparql-default-language.qry
