@@ -7,14 +7,18 @@ vlaanderen/sparql-consolidate-agent.qry
 vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-bbox.qry
 vlaanderen/sparql-consolidate-date.qry
+vlaanderen/sparql-consolidate-standards.qry
 data-media.ttl
+vlaanderen/sparql-remove-empty-label.qry
+vlaanderen/sparql-remove-format-empty.qry
+vlaanderen/sparql-format-label.qry
 vlaanderen/sparql-format-extension.qry
+vlaanderen/sparql-format-title.qry
 vlaanderen/sparql-format-conforms.qry
-vlaanderen/sparql-fix-format.qry
 sparql-map-media.qry
 sparql-map-media-drupal.qry
-vlaanderen/sparql-remove-format-empty.qry
 vlaanderen/sparql-default-language.qry
+vlaanderen/sparql-map-lexvo-lang.qry
 sparql-dist-lang.qry
 # sparql-remove-duplicates.qry
 # vlaanderen/sparql-map-language.qry

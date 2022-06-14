@@ -29,6 +29,12 @@
 	skos:closeMatch "image/vnd.dgn" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "DGN Microstation", "Bentley DGN", "DGN (Microstation)", "DGN Bentley", "Bentley DGN" .
+
+<http://data.gov.be/en/taxonomy/term/442>
+	skos:prefLabel "DBF" ;
+	skos:closeMatch "application/x-dbase" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DBF> ;
+	skos:altLabel "DBF", "dBase", "dBASE" .
 	
 <http://data.gov.be/en/taxonomy/term/148>
 	skos:prefLabel "DOC" ;
@@ -52,7 +58,13 @@
 	skos:prefLabel "GDB" ;
 	skos:closeMatch "application/octet-stream" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GDB> ;
-	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase" .
+	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase" .
+
+<http://data.gov.be/en/taxonomy/term/441>
+	skos:prefLabel "GPKG" ;
+	skos:closeMatch "application/geopackage+sqlite3" ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GPKG> ;
+	skos:altLabel "Geopackage", "geopackage" .
 
 <http://data.gov.be/en/taxonomy/term/4>
 	skos:prefLabel "GML" ;
@@ -107,7 +119,7 @@
 	skos:prefLabel "MDB" ;
 	skos:closeMatch "application/vnd.ms-access" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
-	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access" .
+	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access", "AccessDB", "Access" .
 
 <http://data.gov.be/en/taxonomy/term/431>
 	skos:prefLabel "MPEG4" ;
@@ -200,7 +212,7 @@
 	skos:prefLabel "DXF" ;
 	skos:closeMatch "image/vnd.dxf" ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "dxf" .
+	skos:altLabel "dxf", "DXF" .
 
 <http://data.gov.be/en/taxonomy/term/170>
 	skos:prefLabel "JPG" ;

@@ -1,0 +1,15 @@
+# Guess file format based on title
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT
+	{ 	?dist dcterms:format ?fmt }
+WHERE
+	{
+		?dist dcterms:title ?title .
+		BIND(STR(?title) as ?fmt) .
+		?uri skos:altLabel ?fmt .
+		FILTER NOT EXISTS { ?dist dcterms:format ?fmt }
+	}
+	
