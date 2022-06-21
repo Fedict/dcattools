@@ -1,5 +1,7 @@
 # Remove various HTML tags from literals, this reduces layout-issues when harvesting data from other sites.
 
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
 DELETE { ?s ?p ?o }
 INSERT { ?s ?p ?clean }
 WHERE { 
@@ -15,5 +17,6 @@ WHERE {
 			"^\n *", ""),
 		"\n *$", "")
 	as ?clean)
+	VALUES ?p { dcterms:title dcterms:description }
 	FILTER ISLITERAL(?o) 
 }

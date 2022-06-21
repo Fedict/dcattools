@@ -24,9 +24,9 @@ sparql-dist-lang.qry
 # vlaanderen/sparql-map-language.qry
 # sparql-map-loc-lang.qry
 vlaanderen/sparql-language.qry
-# vlaanderen/sparql-landingpage.qry
+vlaanderen/sparql-landingpage.qry
 # vlaanderen/sparql-access-to-downloadurl.qry
-# sparql-dist-accessurl.qry
+sparql-dist-accessurl.qry
 # vlaanderen/data-geo.ttl
 # sparql-map-geo.qry
 # vlaanderen/sparql-default-geo.qry
@@ -50,4 +50,5 @@ vlaanderen/data-org.ttl
 sparql-map-org.qry
 #clear-skos.qry
 sparql-date-type.qry
-#sparql-strip-html.qry
+vlaanderen/sparql-accessurl.qry
+sparql-strip-html.qry
