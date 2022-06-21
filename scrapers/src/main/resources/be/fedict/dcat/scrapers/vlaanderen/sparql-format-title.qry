@@ -8,8 +8,8 @@ INSERT
 WHERE
 	{
 		?dist dcterms:title ?title .
-		BIND(STR(?title) as ?fmt) .
 		?uri skos:altLabel ?fmt .
-		FILTER NOT EXISTS { ?dist dcterms:format ?fmt }
+		FILTER(STR(?title) = ?fmt) .
+		FILTER NOT EXISTS { ?dist dcterms:format ?f }
 	}
 	

@@ -1,16 +1,18 @@
-# Map subjects to EU themes
+# Map subjects and GEMET-concepts to EU themes
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX vl: <http://data.vlaanderen.be/ns/metadata-dcat#G>
 
 INSERT
 	{ 	?dataset dcat:theme ?uri .
 		?dataset dgov:theme ?drupal }
 WHERE
 	{ 	
-		?dataset dcterms:subject ?theme .
+		?dataset ?p ?theme .
 		?drupal skos:closeMatch ?theme .
 		?drupal skos:exactMatch ?uri .
+		VALUES ?p { dcterms:subject vl:GEMET-concept }
 	}

@@ -14,6 +14,7 @@ vlaanderen/sparql-format-label.qry
 vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
 vlaanderen/sparql-format-conforms.qry
+vlaanderen/sparql-format-jp2.qry
 vlaanderen/sparql-remove-format-empty.qry
 sparql-map-media.qry
 sparql-map-media-drupal.qry
@@ -40,6 +41,7 @@ vlaanderen/sparql-map-theme2.qry
 #vlaanderen/sparql-contactmbox.qry
 data-frequency.ttl
 sparql-map-frequency.qry
+vlaanderen/sparql-fix-frequency.qry
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-default-contact.qry
 vlaanderen/sparql-default-license.qry
