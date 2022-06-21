@@ -9,7 +9,6 @@ WHERE
 	{	?rec foaf:primaryTopic ?s .
 		?rec dcterms:identifier ?id .
 		?s a dcat:Dataset .
-		?s dcterms:title ?title .
 		BIND (IRI(
 				CONCAT("https://www.vlaanderen.be/DataCatalogRecord/", ?id)
 			) as ?url)
