@@ -10,6 +10,6 @@ WHERE
 	{ 	?dataset ?p ?dist .
 		?dataset dcterms:language ?lang .
 		?dist a dcat:Distribution 
-		VALUES ?p { adms:sample dcterms:distribution }
+		VALUES ?p { adms:sample dcat:distribution }
 		FILTER NOT EXISTS { ?dist dcterms:language ?l }
 	}

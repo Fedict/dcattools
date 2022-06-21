@@ -10,6 +10,6 @@ WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcat:landingPage ?page .
 		?dataset ?p ?dist 
-		VALUES ?p { adms:sample dcterms:distribution }
+		VALUES ?p { adms:sample dcat:distribution }
 		FILTER NOT EXISTS { ?dist dcat:accessURL ?url }
 	}
