@@ -1,0 +1,15 @@
+# Add format based on mediatype (preview images)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+
+INSERT
+	{ 	?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/JPEG2000> .
+		?dist dgov:format <http://data.gov.be/en/taxonomy/term/170> }
+WHERE
+	{
+		?dist dcat:mediaType <https://www.iana.org/assignments/media-types/image/jp2> .
+		FILTER NOT EXISTS { ?dist dcterms:format ?f }
+	}
+	
