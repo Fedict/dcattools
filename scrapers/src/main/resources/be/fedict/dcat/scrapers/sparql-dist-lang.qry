@@ -2,12 +2,14 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
 
 INSERT
 	{ 	?dist dcterms:language ?lang }
 WHERE
-	{ 	?dataset dcat:distribution ?dist .
+	{ 	?dataset ?p ?dist .
 		?dataset dcterms:language ?lang .
 		?dist a dcat:Distribution 
+		VALUES ?p { adms:sample dcterms:distribution }
 		FILTER NOT EXISTS { ?dist dcterms:language ?l }
 	}
