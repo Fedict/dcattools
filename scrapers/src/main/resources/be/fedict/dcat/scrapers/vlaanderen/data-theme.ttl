@@ -5,10 +5,13 @@
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
 	skos:closeMatch <http://eurovoc.europa.eu/5463>,
+		<http://www.eionet.europa.eu/gemet/concept/1600> ,
 		<http://inspire.ec.europa.eu/theme/af>,
 		<http://vocab.belgif.be/auth/datatheme/AGRI> ;
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
-	skos:altLabel "mest"@nl, "visserij"@nl, "areaal"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, "bio"@nl, "landbouw"@nl, "akker"@nl, "AKKER"@nl, "AKKERBOUW"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl .
+	skos:altLabel "mest"@nl, "visserij"@nl, "areaal"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, 
+		"bio"@nl, "landbouw"@nl, "akker"@nl, "AKKER"@nl, "AKKERBOUW"@nl, "agromilieumaatregelen"@nl, 
+		"bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl .
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -55,7 +58,11 @@
 		<http://www.eionet.europa.eu/gemet/concept/6376> ,
 		<http://www.eionet.europa.eu/gemet/concept/7902> ,
 		<http://www.eionet.europa.eu/gemet/concept/2339> ,
+		<http://www.eionet.europa.eu/gemet/concept/3646> ,
+		<http://www.eionet.europa.eu/gemet/concept/901> ,
+		<http://www.eionet.europa.eu/gemet/concept/827> ,
 		<http://www.eionet.europa.eu/gemet/concept/3780> ,
+		<http://www.eionet.europa.eu/gemet/concept/7983> ,
 		<https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, 
@@ -91,13 +98,32 @@
 		<https://data.stad.gent/id/theme/Administration%2C%20Government%2C%20Public%20finances%2C%20Citizenship> ,
 		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "Dienstverlening"@nl, "publieke diensten"@nl, "begroting"@nl, "subsidiering"@nl, "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, "begroting - inkomsten"@nl, "ambtenaren"@nl, "lokaal_bestuur"@nl, "schuld"@nl, "Kadastrale percelen"@nl, "Administratieve eenheden"@nl, "Bodemgebruik"@nl, "Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden"@nl, "Adressen"@nl, "Begroting"@nl, "Beleid"@nl, "Bestuur"@nl, "Budget"@nl, "Gemeente"@nl, "LOKAAL BESTUUR"@nl, "Overheid"@nl, "Overheidsopdrachten"@nl, "Departementen"@nl, "Ruimtelijke Ordening"@nl, "beleidsvelden"@nl, "besparing"@nl, "bestuur"@nl, "gemeente"@nl, "grond"@nl, "gronden"@nl, "grondgebied"@nl, "lokale besturen"@nl, "overheidsproducten"@nl, "productencatalogus"@nl, "ruimte"@nl, "ruimtelijke ordening"@nl, "Vlaams Parlement"@nl, "woonbeleid"@nl, "Vlaamse overheid"@nl, "Landgebruik"@nl, "aankoopplicht"@nl, "administratief perceel"@nl, "administratieve eenheid"@nl, "administratieve eenheden"@nl, "administratieve grens"@nl, "adres"@nl, "Adressen"@nl, "administratieve grenzen"@nl, "afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl .
+	skos:altLabel "Dienstverlening"@nl, "publieke diensten"@nl, "begroting"@nl, "subsidiering"@nl, 
+		"wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 
+		"begroting - inkomsten"@nl, "ambtenaren"@nl, "lokaal_bestuur"@nl, "schuld"@nl, 
+		"Kadastrale percelen"@nl, "Administratieve eenheden"@nl, "Bodemgebruik"@nl, 
+		"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden"@nl, 
+		"Adressen"@nl, "Begroting"@nl, "Beleid"@nl, "Bestuur"@nl, "Budget"@nl, "Gemeente"@nl, 
+		"LOKAAL BESTUUR"@nl, "Overheid"@nl, "Overheidsopdrachten"@nl, "Departementen"@nl, 
+		"Ruimtelijke Ordening"@nl, "beleidsvelden"@nl, "besparing"@nl, "bestuur"@nl, "gemeente"@nl, 
+		"grond"@nl, "gronden"@nl, "grondgebied"@nl, "lokale besturen"@nl, "overheidsproducten"@nl, 
+		"productencatalogus"@nl, "ruimte"@nl, "ruimtelijke ordening"@nl, "Vlaams Parlement"@nl, 
+		"woonbeleid"@nl, "Vlaamse overheid"@nl, "Landgebruik"@nl, "aankoopplicht"@nl, 
+		"administratief perceel"@nl, "administratieve eenheid"@nl, "administratieve eenheden"@nl, 
+		"administratieve grens"@nl, "adres"@nl, "Adressen"@nl, "administratieve grenzen"@nl, 
+		"afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl,
+		"voorkooprecht"@nl, "landeigendom"@nl, "CRAB"@nl .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/HEAL>, <http://inspire.ec.europa.eu/theme/hh> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel "apothekers"@nl, "gezondheid"@nl, "morbiditeit"@nl, "vruchtbaarheid"@nl, "handicap"@nl, "ziektepreventie"@nl, "medische_en_paramedische_beroepen"@nl, "gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, "milieu gezondheid"@nl, "Menselijke gezondheid en veiligheid"@nl, "Gezondheid"@nl, "Gezondheidscentrum"@nl, "Overlijdens"@nl, "apotheek"@nl, "apotheker"@nl, "dokter"@nl, "gezondheid"@nl, "gezondheidszorg"@nl, "toegankelijkheid"@nl .
+	skos:altLabel "apothekers"@nl, "gezondheid"@nl, "morbiditeit"@nl, "vruchtbaarheid"@nl, 
+		"handicap"@nl, "ziektepreventie"@nl, "medische_en_paramedische_beroepen"@nl, 
+		"gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, 
+		"milieu gezondheid"@nl, "Menselijke gezondheid en veiligheid"@nl, "Gezondheid"@nl, 
+		"Gezondheidscentrum"@nl, "Overlijdens"@nl, "apotheek"@nl, "apotheker"@nl, "dokter"@nl, 
+		"gezondheid"@nl, "gezondheidszorg"@nl, "toegankelijkheid"@nl, "Zorgatlas"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;

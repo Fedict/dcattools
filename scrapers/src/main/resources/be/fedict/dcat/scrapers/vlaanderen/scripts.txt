@@ -14,10 +14,11 @@ vlaanderen/sparql-format-label.qry
 vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
 vlaanderen/sparql-format-conforms.qry
-vlaanderen/sparql-format-jp2.qry
+vlaanderen/sparql-format-mediatype.qry
 vlaanderen/sparql-remove-format-empty.qry
 sparql-map-media.qry
 sparql-map-media-drupal.qry
+sparql-map-loc-lang.qry
 vlaanderen/sparql-default-language.qry
 vlaanderen/sparql-map-lexvo-lang.qry
 sparql-dist-lang.qry

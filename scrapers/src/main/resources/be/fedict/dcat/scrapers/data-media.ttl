@@ -325,3 +325,9 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream>; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MAP_SRVC> ;
 	skos:altLabel "ArcGIS GeoService" .
+
+<http://data.gov.be/en/taxonomy/term/444>
+	skos:prefLabel "ArcGIS Hub" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/text/html>; 
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MAP_PRVW> ;
+	skos:altLabel "ArcGIS Hub Dataset" .

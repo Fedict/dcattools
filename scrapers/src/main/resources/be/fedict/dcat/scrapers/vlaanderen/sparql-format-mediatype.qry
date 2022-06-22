@@ -1,0 +1,18 @@
+# Add format based on mediatype (preview images)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT
+	{ 	?dist dcterms:format ?fmt .
+		?dist dgov:format ?drupal }
+WHERE
+	{
+		?dist dcat:mediaType ?mt .
+		?drupal skos:closeMatch ?mt .
+		?drupal skos:exactMatch ?fmt .
+		FILTER NOT EXISTS { ?dist dcterms:format ?f }
+	}
+	
