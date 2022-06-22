@@ -21,6 +21,7 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> ;
 	skos:prefLabel "CC-BY" ;
 	skos:altLabel "cc-by", "CC BY",
+					<http://creativecommons.org/licenses/by/4.0/legalcode>,
 					"https://creativecommons.org/licenses/by/4.0/", 
 					"https://creativecommons.org/licenses/by/4.0/deed.fr",
 					"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License." ,
