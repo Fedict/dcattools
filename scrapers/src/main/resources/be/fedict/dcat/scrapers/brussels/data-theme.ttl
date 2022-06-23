@@ -5,21 +5,22 @@
 <http://data.gov.be/en/taxonomy/term/32>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
 	skos:altLabel "farming", "Agriculture, pêche, sylviculture et alimentation",
-				"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
-				"Bien-être animal", "Bodem" .
+		"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
+		"Bien-être animal", "Bodem" .
 
 <http://data.gov.be/en/taxonomy/term/59>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
 	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
-				"Education, culture and sport", "Éducation, culture et sport", "Onderwijs, cultuur en sport" .
+		"Education, culture and sport", "Éducation, culture et sport", 
+		"Onderwijs, cultuur en sport" .
 	
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
-				"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
-				"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
-				"Economische groei", "tewerkstelling", "Duurzame ontkwikkeling",
-				"Marchés publics", "Employment", "Development durable", "Restauration" .
+		"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
+		"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
+		"Economische groei", "tewerkstelling", "Duurzame ontkwikkeling",	
+		"Marchés publics", "Employment", "Development durable", "Restauration" .
 
 <http://data.gov.be/en/taxonomy/term/33>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
@@ -28,11 +29,11 @@
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
-			"Environnement", "Propreté", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
-			"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
-			"Bruit", "Geluid", "Air", "Lucht", "Cleanliness", "eau", "Habitats and biotopes",
-			"Land cover", "Land usage", "Usage des sols", "Bodemgebruik", "Sols", "Hydrografie",
-			"Habitats et biotopes", "Habitats en biotopen"  .
+		"Environnement", "Propreté", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
+		"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
+		"Bruit", "Geluid", "Air", "Lucht", "Cleanliness", "eau", "Habitats and biotopes",
+		"Land cover", "Land use", "Land usage", "Usage des sols", "Bodemgebruik", "Sols", "Hydrografie",
+		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres"  .
 	
 <http://data.gov.be/en/taxonomy/term/35>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
@@ -52,7 +53,8 @@
 			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
 			"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden",
 			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
-			"Finances et budget", "Financiëen en begroting", "Subsides", "Subsidies" .
+			"Finances et budget", "Financiëen en begroting", "Subsides", "Subsidies",
+		"intelligenceMilitary" .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
