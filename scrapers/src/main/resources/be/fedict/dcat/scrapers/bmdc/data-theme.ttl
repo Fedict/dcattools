@@ -32,7 +32,7 @@
 
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
-	skos:altLabel "bevolking"@nl .
+	skos:altLabel "bevolking"@nl, "society" .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;

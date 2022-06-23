@@ -1,0 +1,1776 @@
+<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+	<csw:SearchStatus timestamp="2022-06-23T10:19:22.526Z"/>
+	<csw:SearchResults numberOfRecordsMatched="228" numberOfRecordsReturned="3" elementSet="full" nextRecord="4">
+		<gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:functx="http://www.functx.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd">
+			<gmd:fileIdentifier>
+				<gco:CharacterString>rbins:dataset::</gco:CharacterString>
+			</gmd:fileIdentifier>
+			<gmd:language>
+				<gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng"/>
+			</gmd:language>
+			<gmd:characterSet>
+				<gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+			</gmd:characterSet>
+			<gmd:hierarchyLevel>
+				<gmd:MD_ScopeCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">Dataset</gmd:MD_ScopeCode>
+			</gmd:hierarchyLevel>
+			<gmd:contact>
+				<gmd:CI_ResponsibleParty>
+					<gmd:individualName>
+						<gmx:Anchor xlink:href="http://orcid.org/http://orcid.org/0000-0002-9269-6548">Thomas Vandenberghe</gmx:Anchor>
+					</gmd:individualName>
+					<gmd:organisationName>
+						<gco:CharacterString>Biodiversity and Ecological Data and Information Centre - Royal Belgian Institute for Natural Sciences</gco:CharacterString>
+					</gmd:organisationName>
+					<gmd:role>
+						<gmd:CI_RoleCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="author">Author</gmd:CI_RoleCode>
+					</gmd:role>
+				</gmd:CI_ResponsibleParty>
+			</gmd:contact>
+			<gmd:dateStamp>
+				<gco:Date>2019-05-07</gco:Date>
+			</gmd:dateStamp>
+			<gmd:metadataStandardName>
+				<gco:CharacterString>Geographic Information — Metadata Part 1: Fundamentals</gco:CharacterString>
+			</gmd:metadataStandardName>
+			<gmd:metadataStandardVersion>
+				<gco:CharacterString>ISO 19115-1:2014(E)</gco:CharacterString>
+			</gmd:metadataStandardVersion>
+			<gmd:spatialRepresentationInfo>
+				<gmd:MD_VectorSpatialRepresentation>
+					<gmd:topologyLevel>
+						<gmd:MD_TopologyLevelCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_TopologyLevelCode" codeListValue="geometryOnly"/>
+					</gmd:topologyLevel>
+				</gmd:MD_VectorSpatialRepresentation>
+			</gmd:spatialRepresentationInfo>
+			<gmd:referenceSystemInfo>
+				<gmd:MD_ReferenceSystem>
+					<gmd:referenceSystemIdentifier>
+						<gmd:RS_Identifier>
+							<gmd:authority>
+								<gmd:CI_Citation>
+									<gmd:title>
+										<gco:CharacterString>SeaDataNet geographic co-ordinate reference frames</gco:CharacterString>
+									</gmd:title>
+									<gmd:alternateTitle>
+										<gco:CharacterString>L10</gco:CharacterString>
+									</gmd:alternateTitle>
+									<gmd:date gco:nilReason="missing"/>
+									<gmd:edition>
+										<gmx:Anchor xlink:href="SDN:C371:1:2">3</gmx:Anchor>
+									</gmd:edition>
+									<gmd:identifier>
+										<gmd:RS_Identifier>
+											<gmd:code>
+												<gmx:Anchor xlink:href="http://vocab.nerc.ac.uk/collection/L10/current"/>
+											</gmd:code>
+										</gmd:RS_Identifier>
+									</gmd:identifier>
+								</gmd:CI_Citation>
+							</gmd:authority>
+							<gmd:code>
+								<gmx:Anchor xlink:href="http://vocab.nerc.ac.uk/collection/L10/current/4326"/>
+							</gmd:code>
+							<gmd:codeSpace>
+								<gco:CharacterString>L10</gco:CharacterString>
+							</gmd:codeSpace>
+						</gmd:RS_Identifier>
+					</gmd:referenceSystemIdentifier>
+				</gmd:MD_ReferenceSystem>
+			</gmd:referenceSystemInfo>
+			<gmd:identificationInfo>
+				<gmd:MD_DataIdentification>
+					<gmd:citation>
+						<gmd:CI_Citation>
+							<gmd:title>
+								<gco:CharacterString>Advanced Modelling & Research on Eutrophication & the Structure of coastal planktonic food-webs: mechanisms & modelling (AMORE)</gco:CharacterString>
+							</gmd:title>
+							<gmd:date>
+								<gmd:CI_Date>
+									<gmd:date>
+										<gco:Date>2019-05-07</gco:Date>
+									</gmd:date>
+									<gmd:dateType>
+										<gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="revision">revision</gmd:CI_DateTypeCode>
+									</gmd:dateType>
+								</gmd:CI_Date>
+							</gmd:date>
+							<gmd:edition>
+								<gco:CharacterString>v1.9</gco:CharacterString>
+							</gmd:edition>
+							<gmd:identifier>
+								<gmd:MD_Identifier>
+									<gmd:authority>
+										<gmd:CI_Citation>
+											<gmd:title>
+												<gco:CharacterString>Global Biodiversity Information Facility dataset identifier</gco:CharacterString>
+											</gmd:title>
+											<gmd:date gco:nilReason="inapplicable"/>
+										</gmd:CI_Citation>
+									</gmd:authority>
+									<gmd:code>
+										<gco:CharacterString/>
+									</gmd:code>
+								</gmd:MD_Identifier>
+							</gmd:identifier>
+							<gmd:identifier>
+								<gmd:MD_Identifier>
+									<gmd:authority>
+										<gmd:CI_Citation>
+											<gmd:title>
+												<gco:CharacterString>Royal Belgian Institute for Natural Sciences IPT dataset identifier</gco:CharacterString>
+											</gmd:title>
+											<gmd:date gco:nilReason="inapplicable"/>
+										</gmd:CI_Citation>
+									</gmd:authority>
+									<gmd:code>
+										<gco:CharacterString/>
+									</gmd:code>
+								</gmd:MD_Identifier>
+							</gmd:identifier>
+							<gmd:citedResponsibleParty>
+								<gmd:CI_ResponsibleParty>
+									<gmd:individualName>
+										<gco:CharacterString>M.-H. Daro</gco:CharacterString>
+									</gmd:individualName>
+									<gmd:organisationName>
+										<gco:CharacterString>Vrije Universiteit Brussel - VUB-ECOL</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:address>
+												<gmd:CI_Address>
+													<gmd:deliveryPoint gco:nilReason="missing"/>
+													<gmd:city gco:nilReason="missing"/>
+													<gmd:administrativeArea gco:nilReason="missing"/>
+													<gmd:postalCode gco:nilReason="missing"/>
+													<gmd:country>
+														<gco:CharacterString>BE</gco:CharacterString>
+													</gmd:country>
+													<gmd:electronicMailAddress gco:nilReason="missing"/>
+												</gmd:CI_Address>
+											</gmd:address>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="author">Author</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:citedResponsibleParty>
+							<gmd:citedResponsibleParty>
+								<gmd:CI_ResponsibleParty>
+									<gmd:individualName>
+										<gco:CharacterString>Christiane Lancelot</gco:CharacterString>
+									</gmd:individualName>
+									<gmd:organisationName>
+										<gco:CharacterString>Université Libre de Bruxelles - ESA</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:address>
+												<gmd:CI_Address>
+													<gmd:deliveryPoint gco:nilReason="missing"/>
+													<gmd:city gco:nilReason="missing"/>
+													<gmd:administrativeArea gco:nilReason="missing"/>
+													<gmd:postalCode gco:nilReason="missing"/>
+													<gmd:country>
+														<gco:CharacterString>BE</gco:CharacterString>
+													</gmd:country>
+													<gmd:electronicMailAddress gco:nilReason="missing"/>
+												</gmd:CI_Address>
+											</gmd:address>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="author">Author</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:citedResponsibleParty>
+						</gmd:CI_Citation>
+					</gmd:citation>
+					<gmd:abstract>
+						<gco:CharacterString>The AMORE project contributes to the implementation of an integrated land-coastal zone research methodology to assess and predict the eutrophication level of the coastal North Sea and the associated undesirable effects. The ultimate aim is to reduce the current context of uncertainty in which decisions to counteract the eutrophication of the NS and protect its natural resources are made. Process-level field and laboratory-scale experiments were conducted to improve the basic knowledge on mechanisms through which a change in nutrients (in terms of N:P:Si NO3:NH4 inorganic:organic N ratios) induced modification in the phytoplanktonic community structure and hence the functioning of the whole planktonic food-web. For this the MUMM station 330_a has been monitored for a period of three years.</gco:CharacterString>
+					</gmd:abstract>
+					<gmd:pointOfContact>
+						<gmd:CI_ResponsibleParty>
+							<gmd:individualName>
+								<gmx:Anchor xlink:href="http://orcid.org/http://orcid.org/0000-0003-2692-8651">Serge Scory</gmx:Anchor>
+							</gmd:individualName>
+							<gmd:organisationName>
+								<gco:CharacterString>Biodiversity and Ecological Data and Information Centre - Royal Belgian Institute for Natural Sciences</gco:CharacterString>
+							</gmd:organisationName>
+							<gmd:contactInfo>
+								<gmd:CI_Contact>
+									<gmd:address>
+										<gmd:CI_Address>
+											<gmd:deliveryPoint gco:nilReason="missing"/>
+											<gmd:city gco:nilReason="missing"/>
+											<gmd:administrativeArea gco:nilReason="missing"/>
+											<gmd:postalCode gco:nilReason="missing"/>
+											<gmd:country>
+												<gco:CharacterString>BE</gco:CharacterString>
+											</gmd:country>
+											<gmd:electronicMailAddress>
+												<gco:CharacterString>bedic@naturalsciences.be</gco:CharacterString>
+											</gmd:electronicMailAddress>
+										</gmd:CI_Address>
+									</gmd:address>
+								</gmd:CI_Contact>
+							</gmd:contactInfo>
+							<gmd:role>
+								<gmd:CI_RoleCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact">PointOfContact</gmd:CI_RoleCode>
+							</gmd:role>
+						</gmd:CI_ResponsibleParty>
+					</gmd:pointOfContact>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword>
+								<gco:CharacterString>Occurrence</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:thesaurusName>
+								<gmd:CI_Citation>
+									<gmd:title>
+										<gco:CharacterString>GBIF Dataset Type Vocabulary:</gco:CharacterString>
+									</gmd:title>
+									<gmd:date>
+										<gmd:CI_Date>
+											<gmd:date gco:nilReason="unknown"/>
+											<gmd:dateType>
+												<gmd:CI_DateTypeCode codeListValue="publication" codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"/>
+											</gmd:dateType>
+										</gmd:CI_Date>
+									</gmd:date>
+									<gmd:otherCitationDetails>
+										<gco:CharacterString>http://rs.gbif.org/vocabulary/gbif/dataset_type.xml</gco:CharacterString>
+									</gmd:otherCitationDetails>
+								</gmd:CI_Citation>
+							</gmd:thesaurusName>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword>
+								<gco:CharacterString>modelling</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>eutrophication</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>planktonic food webs</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>nutrients</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>bloom</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>Phaeocystis</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>diatom</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>zooplankton</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>North Atlantic Oscillation</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>North Sea</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>Belgium</gco:CharacterString>
+							</gmd:keyword>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:resourceConstraints>
+						<gmd:MD_LegalConstraints>
+							<gmd:useLimitation>
+								<gco:CharacterString>This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License .</gco:CharacterString>
+							</gmd:useLimitation>
+							<gmd:accessConstraints>
+								<gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions"/>
+							</gmd:accessConstraints>
+							<gmd:useConstraints>
+								<gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions"/>
+							</gmd:useConstraints>
+							<gmd:otherConstraints>
+								<gco:CharacterString>This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License .</gco:CharacterString>
+							</gmd:otherConstraints>
+						</gmd:MD_LegalConstraints>
+					</gmd:resourceConstraints>
+					<gmd:resourceConstraints>
+						<gmd:MD_SecurityConstraints>
+							<gmd:classification>
+								<gmd:MD_ClassificationCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ClassificationCode" codeListValue="unclassified"/>
+							</gmd:classification>
+						</gmd:MD_SecurityConstraints>
+					</gmd:resourceConstraints>
+					<gmd:language>
+						<gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng"/>
+					</gmd:language>
+					<gmd:characterSet>
+						<gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8">utf8</gmd:MD_CharacterSetCode>
+					</gmd:characterSet>
+					<gmd:topicCategory>
+						<gmd:MD_TopicCategoryCode>biota</gmd:MD_TopicCategoryCode>
+					</gmd:topicCategory>
+					<gmd:extent>
+						<gmd:EX_Extent>
+							<gmd:geographicElement>
+								<gmd:EX_GeographicBoundingBox>
+									<gmd:westBoundLongitude>
+										<gco:Decimal>2.808</gco:Decimal>
+									</gmd:westBoundLongitude>
+									<gmd:eastBoundLongitude>
+										<gco:Decimal>2.808</gco:Decimal>
+									</gmd:eastBoundLongitude>
+									<gmd:southBoundLatitude>
+										<gco:Decimal>51.433</gco:Decimal>
+									</gmd:southBoundLatitude>
+									<gmd:northBoundLatitude>
+										<gco:Decimal>51.433</gco:Decimal>
+									</gmd:northBoundLatitude>
+								</gmd:EX_GeographicBoundingBox>
+							</gmd:geographicElement>
+							<gmd:temporalElement>
+								<gmd:EX_TemporalExtent>
+									<gmd:extent>
+										<gml:TimePeriod xsi:type="gml:TimePeriodType" gml:id="d1e180">
+											<gml:beginPosition>1997-01-28</gml:beginPosition>
+											<gml:endPosition>2000-12-07</gml:endPosition>
+										</gml:TimePeriod>
+									</gmd:extent>
+								</gmd:EX_TemporalExtent>
+							</gmd:temporalElement>
+						</gmd:EX_Extent>
+					</gmd:extent>
+				</gmd:MD_DataIdentification>
+			</gmd:identificationInfo>
+			<gmd:distributionInfo>
+				<gmd:MD_Distribution>
+					<gmd:distributor>
+						<gmd:MD_Distributor>
+							<gmd:distributorContact>
+								<gmd:CI_ResponsibleParty>
+									<gmd:organisationName>
+										<gco:CharacterString>Global Biodiversity Information Facility</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:address>
+												<gmd:CI_Address>
+													<gmd:electronicMailAddress>
+														<gco:CharacterString>info@gbif.org</gco:CharacterString>
+													</gmd:electronicMailAddress>
+												</gmd:CI_Address>
+											</gmd:address>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">Distributor</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:distributorContact>
+							<gmd:distributorFormat>
+								<gmd:MD_Format>
+									<gmd:name>
+										<gco:CharacterString>Darwin Core Archive (DwC-A)</gco:CharacterString>
+									</gmd:name>
+									<gmd:version/>
+								</gmd:MD_Format>
+							</gmd:distributorFormat>
+							<gmd:distributorFormat>
+								<gmd:MD_Format>
+									<gmd:name>
+										<gco:CharacterString>Comma-separated values (CSV) file</gco:CharacterString>
+									</gmd:name>
+									<gmd:version/>
+								</gmd:MD_Format>
+							</gmd:distributorFormat>
+							<gmd:distributorTransferOptions>
+								<gmd:MD_DigitalTransferOptions>
+									<gmd:onLine>
+										<gmd:CI_OnlineResource>
+											<gmd:linkage>
+												<gmd:URL>http://www.gbif.org/occurrence/search?datasetKey=</gmd:URL>
+											</gmd:linkage>
+											<gmd:protocol>
+												<gco:CharacterString>http</gco:CharacterString>
+											</gmd:protocol>
+											<gmd:description>
+												<gco:CharacterString>The csv file and the Darwin Core Archive as found on the GBIF portal.</gco:CharacterString>
+											</gmd:description>
+											<gmd:function>
+												<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" codeSpace="ISOTC211/19115">download</gmd:CI_OnLineFunctionCode>
+											</gmd:function>
+										</gmd:CI_OnlineResource>
+									</gmd:onLine>
+								</gmd:MD_DigitalTransferOptions>
+							</gmd:distributorTransferOptions>
+						</gmd:MD_Distributor>
+					</gmd:distributor>
+					<gmd:distributor>
+						<gmd:MD_Distributor>
+							<gmd:distributorContact>
+								<gmd:CI_ResponsibleParty>
+									<gmd:organisationName>
+										<gco:CharacterString>Royal Belgian Institute for Natural Sciences</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:address>
+												<gmd:CI_Address>
+													<gmd:electronicMailAddress>
+														<gco:CharacterString>bedic@naturalsciences.be</gco:CharacterString>
+													</gmd:electronicMailAddress>
+												</gmd:CI_Address>
+											</gmd:address>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://schemas.opengis.net/iso/19139/20070417/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">Distributor</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:distributorContact>
+							<gmd:distributorFormat>
+								<gmd:MD_Format>
+									<gmd:name>
+										<gco:CharacterString>Darwin Core Archive (DwC-A)</gco:CharacterString>
+									</gmd:name>
+									<gmd:version/>
+								</gmd:MD_Format>
+							</gmd:distributorFormat>
+							<gmd:distributorTransferOptions>
+								<gmd:MD_DigitalTransferOptions>
+									<gmd:onLine>
+										<gmd:CI_OnlineResource>
+											<gmd:linkage>
+												<gmd:URL>http://ipt.naturalsciences.be/ipt/archive.do?r=</gmd:URL>
+											</gmd:linkage>
+											<gmd:protocol>
+												<gco:CharacterString>http</gco:CharacterString>
+											</gmd:protocol>
+											<gmd:description>
+												<gco:CharacterString>The Darwin Core Archive as found on the IPT of the data publisher.</gco:CharacterString>
+											</gmd:description>
+											<gmd:function>
+												<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" codeSpace="ISOTC211/19115">download</gmd:CI_OnLineFunctionCode>
+											</gmd:function>
+										</gmd:CI_OnlineResource>
+									</gmd:onLine>
+								</gmd:MD_DigitalTransferOptions>
+							</gmd:distributorTransferOptions>
+						</gmd:MD_Distributor>
+					</gmd:distributor>
+				</gmd:MD_Distribution>
+			</gmd:distributionInfo>
+			<gmd:dataQualityInfo>
+				<gmd:DQ_DataQuality>
+					<gmd:scope>
+						<gmd:DQ_Scope>
+							<gmd:level>
+								<gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+							</gmd:level>
+						</gmd:DQ_Scope>
+					</gmd:scope>
+					<gmd:lineage>
+						<gmd:LI_Lineage>
+							<gmd:statement>
+								<gco:CharacterString>The dataset has been data managed in order to be stored as Darwin Core archive: taxa were matched and columns were mapped with DarwinCore headers.</gco:CharacterString>
+							</gmd:statement>
+						</gmd:LI_Lineage>
+					</gmd:lineage>
+				</gmd:DQ_DataQuality>
+			</gmd:dataQualityInfo>
+		</gmd:MD_Metadata>
+		<gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd">
+			<gmd:fileIdentifier>
+				<gco:CharacterString>mean_swell_direction_TS</gco:CharacterString>
+			</gmd:fileIdentifier>
+			<gmd:language>
+				<gmd:LanguageCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:LanguageCode" codeListValue="eng">eng</gmd:LanguageCode>
+			</gmd:language>
+			<gmd:characterSet>
+				<gmd:MD_CharacterSetCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_CharacterSetCode" codeListValue="UTF8">UTF8</gmd:MD_CharacterSetCode>
+			</gmd:characterSet>
+			<gmd:hierarchyLevel>
+				<gmd:MD_ScopeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+			</gmd:hierarchyLevel>
+			<gmd:hierarchyLevel>
+				<gmd:MD_ScopeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_ScopeCode" codeListValue="service">service</gmd:MD_ScopeCode>
+			</gmd:hierarchyLevel>
+			<gmd:contact>
+				<gmd:CI_ResponsibleParty>
+					<gmd:individualName>
+						<gco:CharacterString>Marine Forecasting Centre</gco:CharacterString>
+					</gmd:individualName>
+					<gmd:organisationName>
+						<gco:CharacterString>Royal Belgian Institute of Natural Sciences</gco:CharacterString>
+					</gmd:organisationName>
+					<gmd:contactInfo>
+						<gmd:CI_Contact>
+							<gmd:phone>
+								<gmd:CI_Telephone>
+									<gmd:voice>
+										<gco:CharacterString>+32.2.627.43.18</gco:CharacterString>
+									</gmd:voice>
+								</gmd:CI_Telephone>
+							</gmd:phone>
+							<gmd:address>
+								<gmd:CI_Address>
+									<gmd:deliveryPoint>
+										<gco:CharacterString>Rue Vautier,29</gco:CharacterString>
+									</gmd:deliveryPoint>
+									<gmd:city>
+										<gco:CharacterString>Brussels</gco:CharacterString>
+									</gmd:city>
+									<gmd:administrativeArea>
+										<gco:CharacterString>Brussels</gco:CharacterString>
+									</gmd:administrativeArea>
+									<gmd:postalCode>
+										<gco:CharacterString>1000</gco:CharacterString>
+									</gmd:postalCode>
+									<gmd:country>
+										<gco:CharacterString>Belgium</gco:CharacterString>
+									</gmd:country>
+									<gmd:electronicMailAddress>
+										<gco:CharacterString>marine-forecasting-officer@naturalsciences.be</gco:CharacterString>
+									</gmd:electronicMailAddress>
+								</gmd:CI_Address>
+							</gmd:address>
+						</gmd:CI_Contact>
+					</gmd:contactInfo>
+					<gmd:role>
+						<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+					</gmd:role>
+				</gmd:CI_ResponsibleParty>
+			</gmd:contact>
+			<gmd:dateStamp>
+				<gco:Date>2021-11-22</gco:Date>
+			</gmd:dateStamp>
+			<gmd:metadataStandardName>
+				<gco:CharacterString xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">ISO 19115:2003/19139</gco:CharacterString>
+			</gmd:metadataStandardName>
+			<gmd:metadataStandardVersion>
+				<gco:CharacterString xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">1.0</gco:CharacterString>
+			</gmd:metadataStandardVersion>
+			<gmd:spatialRepresentationInfo>
+				<gmd:MD_GridSpatialRepresentation>
+					<gmd:numberOfDimensions>
+						<gco:Integer>3</gco:Integer>
+					</gmd:numberOfDimensions>
+					<gmd:axisDimensionProperties>
+						<gmd:MD_Dimension>
+							<gmd:dimensionName>
+								<gmd:MD_DimensionNameTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_DimensionNameTypeCode" codeListValue="column">column</gmd:MD_DimensionNameTypeCode>
+							</gmd:dimensionName>
+							<gmd:dimensionSize gco:nilReason="unknown"/>
+						</gmd:MD_Dimension>
+					</gmd:axisDimensionProperties>
+					<gmd:axisDimensionProperties>
+						<gmd:MD_Dimension>
+							<gmd:dimensionName>
+								<gmd:MD_DimensionNameTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_DimensionNameTypeCode" codeListValue="row">row</gmd:MD_DimensionNameTypeCode>
+							</gmd:dimensionName>
+							<gmd:dimensionSize gco:nilReason="unknown"/>
+						</gmd:MD_Dimension>
+					</gmd:axisDimensionProperties>
+					<gmd:axisDimensionProperties>
+						<gmd:MD_Dimension>
+							<gmd:dimensionName>
+								<gmd:MD_DimensionNameTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_DimensionNameTypeCode" codeListValue="temporal">temporal</gmd:MD_DimensionNameTypeCode>
+							</gmd:dimensionName>
+							<gmd:dimensionSize gco:nilReason="unknown"/>
+						</gmd:MD_Dimension>
+					</gmd:axisDimensionProperties>
+					<gmd:cellGeometry>
+						<gmd:MD_CellGeometryCode codeList="" codeListValue="" codeSpace=""/>
+					</gmd:cellGeometry>
+					<gmd:transformationParameterAvailability gco:nilReason="unknown"/>
+				</gmd:MD_GridSpatialRepresentation>
+			</gmd:spatialRepresentationInfo>
+			<gmd:identificationInfo>
+				<gmd:MD_DataIdentification>
+					<gmd:citation>
+						<gmd:CI_Citation>
+							<gmd:title>
+								<gco:CharacterString>Average Wave Direction for the Swell Timeseries - North Sea - WAM ECMWF</gco:CharacterString>
+							</gmd:title>
+							<gmd:date>
+								<gmd:CI_Date>
+									<gmd:date>
+										<gco:Date>2021-11-22</gco:Date>
+									</gmd:date>
+									<gmd:dateType>
+										<gmd:CI_DateTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+									</gmd:dateType>
+								</gmd:CI_Date>
+							</gmd:date>
+							<gmd:identifier>
+								<gmd:MD_Identifier>
+									<gmd:authority>
+										<gmd:CI_Citation>
+											<gmd:title>
+												<gco:CharacterString>erddap.naturalsciences.be</gco:CharacterString>
+											</gmd:title>
+											<gmd:date gco:nilReason="inapplicable"/>
+										</gmd:CI_Citation>
+									</gmd:authority>
+									<gmd:code>
+										<gco:CharacterString>mean_swell_direction_TS</gco:CharacterString>
+									</gmd:code>
+								</gmd:MD_Identifier>
+							</gmd:identifier>
+							<gmd:citedResponsibleParty>
+								<gmd:CI_ResponsibleParty>
+									<gmd:individualName gco:nilReason="missing"/>
+									<gmd:organisationName>
+										<gco:CharacterString>MFC ODNature RBINS</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:address gco:nilReason="missing"/>
+											<gmd:onlineResource>
+												<gmd:CI_OnlineResource>
+													<gmd:linkage>
+														<gmd:URL>http://www.marineforecasts.be</gmd:URL>
+													</gmd:linkage>
+													<gmd:protocol>
+														<gco:CharacterString>information</gco:CharacterString>
+													</gmd:protocol>
+													<gmd:applicationProfile>
+														<gco:CharacterString>web browser</gco:CharacterString>
+													</gmd:applicationProfile>
+													<gmd:name>
+														<gco:CharacterString>Background Information</gco:CharacterString>
+													</gmd:name>
+													<gmd:description>
+														<gco:CharacterString>Background information from the source</gco:CharacterString>
+													</gmd:description>
+													<gmd:function>
+														<gmd:CI_OnLineFunctionCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_OnLineFunctionCode" codeListValue="information">information</gmd:CI_OnLineFunctionCode>
+													</gmd:function>
+												</gmd:CI_OnlineResource>
+											</gmd:onlineResource>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:citedResponsibleParty>
+						</gmd:CI_Citation>
+					</gmd:citation>
+					<gmd:abstract>
+						<gco:CharacterString>Average Wave Direction for the Swell Timeseries - North Sea - The domain is a lon/lat grid that covers the range [48.5, 57.033] in latitude and the range [-4.05, 9.25] in longitude. The latitude increment is 0.066 degrees, the longitude increment is 0.1 degrees. The spectral analysis is provided every hour. The sea surface is forced by the 1-hourly meteo forecasts provided by the ECMWF</gco:CharacterString>
+					</gmd:abstract>
+					<gmd:credit gco:nilReason="missing"/>
+					<gmd:pointOfContact>
+						<gmd:CI_ResponsibleParty xmlns="http://www.isotc211.org/2005/gmi" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmi="http://www.isotc211.org/2005/gmi">
+							<gmd:individualName>
+								<gco:CharacterString>Marine Forecasting Centre</gco:CharacterString>
+							</gmd:individualName>
+							<gmd:organisationName>
+								<gco:CharacterString>Royal Belgian Institute of Natural Sciences</gco:CharacterString>
+							</gmd:organisationName>
+							<gmd:contactInfo>
+								<gmd:CI_Contact>
+									<gmd:phone>
+										<gmd:CI_Telephone>
+											<gmd:voice>
+												<gco:CharacterString>+32.2.627.43.18</gco:CharacterString>
+											</gmd:voice>
+										</gmd:CI_Telephone>
+									</gmd:phone>
+									<gmd:address>
+										<gmd:CI_Address>
+											<gmd:deliveryPoint>
+												<gco:CharacterString>Rue Vautier,29</gco:CharacterString>
+											</gmd:deliveryPoint>
+											<gmd:city>
+												<gco:CharacterString>Brussels</gco:CharacterString>
+											</gmd:city>
+											<gmd:administrativeArea>
+												<gco:CharacterString>Brussels</gco:CharacterString>
+											</gmd:administrativeArea>
+											<gmd:postalCode>
+												<gco:CharacterString>1000</gco:CharacterString>
+											</gmd:postalCode>
+											<gmd:country>
+												<gco:CharacterString>Belgium</gco:CharacterString>
+											</gmd:country>
+											<gmd:electronicMailAddress>
+												<gco:CharacterString>marine-forecasting-officer@naturalsciences.be</gco:CharacterString>
+											</gmd:electronicMailAddress>
+										</gmd:CI_Address>
+									</gmd:address>
+								</gmd:CI_Contact>
+							</gmd:contactInfo>
+							<gmd:role>
+								<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+							</gmd:role>
+						</gmd:CI_ResponsibleParty>
+					</gmd:pointOfContact>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+								<gco:CharacterString>ERDDAP</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>belgian</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>centre</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>coastal</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>data</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>direction</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>ecwmf</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>environment</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>forecasting</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>marine</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>sciences</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>sea</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>timeseries</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>wam</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>wave</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>zone</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:type>
+								<gmd:MD_KeywordTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+							</gmd:type>
+							<gmd:thesaurusName gco:nilReason="unknown"/>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+								<gco:CharacterString>ERDDAP</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>Royal Belgian Institute of Natural Sciences, Directorate Natural Environment, Marine Forecasting Centre</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:type>
+								<gmd:MD_KeywordTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_KeywordTypeCode" codeListValue="project">project</gmd:MD_KeywordTypeCode>
+							</gmd:type>
+							<gmd:thesaurusName gco:nilReason="unknown"/>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+								<gco:CharacterString>ERDDAP</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>longitude</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>latitude</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>time</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:type>
+								<gmd:MD_KeywordTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+							</gmd:type>
+							<gmd:thesaurusName>
+								<gmd:CI_Citation>
+									<gmd:title>
+										<gco:CharacterString>CF Standard Name Table v55</gco:CharacterString>
+									</gmd:title>
+									<gmd:date gco:nilReason="unknown"/>
+								</gmd:CI_Citation>
+							</gmd:thesaurusName>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:resourceConstraints>
+						<gmd:MD_LegalConstraints>
+							<gmd:useLimitation>
+								<gco:CharacterString>The data may be used and redistributed for free but is not intended for legal use, since it may contain inaccuracies. Neither the data Contributor, ERD, NOAA, nor the United States Government, nor any of their employees or contractors, makes any warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, or assumes any legal liability for the accuracy, completeness, or usefulness, of this information.</gco:CharacterString>
+							</gmd:useLimitation>
+						</gmd:MD_LegalConstraints>
+					</gmd:resourceConstraints>
+					<gmd:aggregationInfo>
+						<gmd:MD_AggregateInformation>
+							<gmd:aggregateDataSetName>
+								<gmd:CI_Citation>
+									<gmd:title>
+										<gco:CharacterString>Royal Belgian Institute of Natural Sciences, Directorate Natural Environment, Marine Forecasting Centre</gco:CharacterString>
+									</gmd:title>
+									<gmd:date gco:nilReason="inapplicable"/>
+								</gmd:CI_Citation>
+							</gmd:aggregateDataSetName>
+							<gmd:associationType>
+								<gmd:DS_AssociationTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_AssociationTypeCode" codeListValue="largerWorkCitation">largerWorkCitation</gmd:DS_AssociationTypeCode>
+							</gmd:associationType>
+							<gmd:initiativeType>
+								<gmd:DS_InitiativeTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_InitiativeTypeCode" codeListValue="project">project</gmd:DS_InitiativeTypeCode>
+							</gmd:initiativeType>
+						</gmd:MD_AggregateInformation>
+					</gmd:aggregationInfo>
+					<gmd:aggregationInfo>
+						<gmd:MD_AggregateInformation>
+							<gmd:aggregateDataSetIdentifier>
+								<gmd:MD_Identifier>
+									<gmd:authority>
+										<gmd:CI_Citation>
+											<gmd:title>
+												<gco:CharacterString>Unidata Common Data Model</gco:CharacterString>
+											</gmd:title>
+											<gmd:date gco:nilReason="inapplicable"/>
+										</gmd:CI_Citation>
+									</gmd:authority>
+									<gmd:code>
+										<gco:CharacterString>TimeSeries</gco:CharacterString>
+									</gmd:code>
+								</gmd:MD_Identifier>
+							</gmd:aggregateDataSetIdentifier>
+							<gmd:associationType>
+								<gmd:DS_AssociationTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_AssociationTypeCode" codeListValue="largerWorkCitation">largerWorkCitation</gmd:DS_AssociationTypeCode>
+							</gmd:associationType>
+							<gmd:initiativeType>
+								<gmd:DS_InitiativeTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_InitiativeTypeCode" codeListValue="project">project</gmd:DS_InitiativeTypeCode>
+							</gmd:initiativeType>
+						</gmd:MD_AggregateInformation>
+					</gmd:aggregationInfo>
+					<gmd:language>
+						<gco:CharacterString>eng</gco:CharacterString>
+					</gmd:language>
+					<gmd:topicCategory>
+						<gmd:MD_TopicCategoryCode>geoscientificInformation</gmd:MD_TopicCategoryCode>
+					</gmd:topicCategory>
+					<gmd:extent>
+						<gmd:EX_Extent id="boundingExtent">
+							<gmd:geographicElement>
+								<gmd:EX_GeographicBoundingBox id="boundingGeographicBoundingBox">
+									<gmd:extentTypeCode>
+										<gco:Boolean>1</gco:Boolean>
+									</gmd:extentTypeCode>
+									<gmd:westBoundLongitude>
+										<gco:Decimal>1.5</gco:Decimal>
+									</gmd:westBoundLongitude>
+									<gmd:eastBoundLongitude>
+										<gco:Decimal>3.416667</gco:Decimal>
+									</gmd:eastBoundLongitude>
+									<gmd:southBoundLatitude>
+										<gco:Decimal>51.0</gco:Decimal>
+									</gmd:southBoundLatitude>
+									<gmd:northBoundLatitude>
+										<gco:Decimal>53.2183</gco:Decimal>
+									</gmd:northBoundLatitude>
+								</gmd:EX_GeographicBoundingBox>
+							</gmd:geographicElement>
+							<gmd:temporalElement>
+								<gmd:EX_TemporalExtent id="boundingTemporalExtent">
+									<gmd:extent>
+										<gml:TimePeriod xmlns:gml="http://www.opengis.net/gml/3.2" gml:id="DI_gmdExtent_timePeriod_id">
+											<gml:description>seconds</gml:description>
+											<gml:beginPosition>2017-09-12T01:00:00Z</gml:beginPosition>
+											<gml:endPosition>2021-11-26T23:00:00Z</gml:endPosition>
+										</gml:TimePeriod>
+									</gmd:extent>
+								</gmd:EX_TemporalExtent>
+							</gmd:temporalElement>
+						</gmd:EX_Extent>
+					</gmd:extent>
+					<gmd:graphicOverview xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+						<gmd:MD_BrowseGraphic>
+							<gmd:fileName>
+								<gco:CharacterString>http://metadata.naturalsciences.be/geonetwork/images/harvesting/mean_swell_direction_TS.png</gco:CharacterString>
+							</gmd:fileName>
+							<gmd:fileDescription>
+								<gco:CharacterString>large_thumbnail</gco:CharacterString>
+							</gmd:fileDescription>
+							<gmd:fileType>
+								<gco:CharacterString>png</gco:CharacterString>
+							</gmd:fileType>
+						</gmd:MD_BrowseGraphic>
+					</gmd:graphicOverview>
+				</gmd:MD_DataIdentification>
+			</gmd:identificationInfo>
+			<gmd:identificationInfo/>
+			<gmd:identificationInfo/>
+			<gmd:contentInfo>
+				<gmi:MI_CoverageDescription xmlns:gmi="http://www.isotc211.org/2005/gmi">
+					<gmd:attributeDescription gco:nilReason="unknown"/>
+					<gmd:contentType>
+						<gmd:MD_CoverageContentTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_CoverageContentTypeCode" codeListValue="physicalMeasurement">physicalMeasurement</gmd:MD_CoverageContentTypeCode>
+					</gmd:contentType>
+					<gmd:dimension>
+						<gmd:MD_Band>
+							<gmd:sequenceIdentifier>
+								<gco:MemberName>
+									<gco:aName>
+										<gco:CharacterString>station_id</gco:CharacterString>
+									</gco:aName>
+									<gco:attributeType>
+										<gco:TypeName>
+											<gco:aName>
+												<gco:CharacterString>String</gco:CharacterString>
+											</gco:aName>
+										</gco:TypeName>
+									</gco:attributeType>
+								</gco:MemberName>
+							</gmd:sequenceIdentifier>
+							<gmd:descriptor>
+								<gco:CharacterString>station_id</gco:CharacterString>
+							</gmd:descriptor>
+						</gmd:MD_Band>
+					</gmd:dimension>
+					<gmd:dimension>
+						<gmd:MD_Band>
+							<gmd:sequenceIdentifier>
+								<gco:MemberName>
+									<gco:aName>
+										<gco:CharacterString>time</gco:CharacterString>
+									</gco:aName>
+									<gco:attributeType>
+										<gco:TypeName>
+											<gco:aName>
+												<gco:CharacterString>double</gco:CharacterString>
+											</gco:aName>
+										</gco:TypeName>
+									</gco:attributeType>
+								</gco:MemberName>
+							</gmd:sequenceIdentifier>
+							<gmd:descriptor>
+								<gco:CharacterString>Time</gco:CharacterString>
+							</gmd:descriptor>
+							<gmd:units xlink:href="http://unitsofmeasure.org/ucum.html#s%7Bsince%201970-01-01T00%3A00%3A00Z%7D"/>
+						</gmd:MD_Band>
+					</gmd:dimension>
+					<gmd:dimension>
+						<gmd:MD_Band>
+							<gmd:sequenceIdentifier>
+								<gco:MemberName>
+									<gco:aName>
+										<gco:CharacterString>mean_swell_direction</gco:CharacterString>
+									</gco:aName>
+									<gco:attributeType>
+										<gco:TypeName>
+											<gco:aName>
+												<gco:CharacterString>float</gco:CharacterString>
+											</gco:aName>
+										</gco:TypeName>
+									</gco:attributeType>
+								</gco:MemberName>
+							</gmd:sequenceIdentifier>
+							<gmd:descriptor>
+								<gco:CharacterString>Average Wave Direction for the Swell</gco:CharacterString>
+							</gmd:descriptor>
+							<gmd:units xlink:href="http://unitsofmeasure.org/ucum.html#%7Bdeg%7D"/>
+						</gmd:MD_Band>
+					</gmd:dimension>
+				</gmi:MI_CoverageDescription>
+			</gmd:contentInfo>
+			<gmd:distributionInfo>
+				<gmd:MD_Distribution>
+					<gmd:distributor>
+						<gmd:MD_Distributor>
+							<gmd:distributorContact>
+								<gmd:CI_ResponsibleParty>
+									<gmd:individualName>
+										<gco:CharacterString>Marine Forecasting Centre</gco:CharacterString>
+									</gmd:individualName>
+									<gmd:organisationName>
+										<gco:CharacterString>Royal Belgian Institute of Natural Sciences</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:phone>
+												<gmd:CI_Telephone>
+													<gmd:voice>
+														<gco:CharacterString>+32.2.627.43.18</gco:CharacterString>
+													</gmd:voice>
+												</gmd:CI_Telephone>
+											</gmd:phone>
+											<gmd:address>
+												<gmd:CI_Address>
+													<gmd:deliveryPoint>
+														<gco:CharacterString>Rue Vautier,29</gco:CharacterString>
+													</gmd:deliveryPoint>
+													<gmd:city>
+														<gco:CharacterString>Brussels</gco:CharacterString>
+													</gmd:city>
+													<gmd:administrativeArea>
+														<gco:CharacterString>Brussels</gco:CharacterString>
+													</gmd:administrativeArea>
+													<gmd:postalCode>
+														<gco:CharacterString>1000</gco:CharacterString>
+													</gmd:postalCode>
+													<gmd:country>
+														<gco:CharacterString>Belgium</gco:CharacterString>
+													</gmd:country>
+													<gmd:electronicMailAddress>
+														<gco:CharacterString>marine-forecasting-officer@naturalsciences.be</gco:CharacterString>
+													</gmd:electronicMailAddress>
+												</gmd:CI_Address>
+											</gmd:address>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:distributorContact>
+							<gmd:distributorFormat>
+								<gmd:MD_Format>
+									<gmd:name>
+										<gco:CharacterString>OPeNDAP</gco:CharacterString>
+									</gmd:name>
+									<gmd:version>
+										<gco:CharacterString>DAP/2.0</gco:CharacterString>
+									</gmd:version>
+								</gmd:MD_Format>
+							</gmd:distributorFormat>
+							<gmd:distributorTransferOptions>
+								<gmd:MD_DigitalTransferOptions>
+									<gmd:onLine>
+										<gmd:CI_OnlineResource>
+											<gmd:linkage>
+												<gmd:URL>http://erddap.naturalsciences.be/erddap/tabledap/mean_swell_direction_TS.html</gmd:URL>
+											</gmd:linkage>
+											<gmd:protocol>
+												<gco:CharacterString>order</gco:CharacterString>
+											</gmd:protocol>
+											<gmd:name>
+												<gco:CharacterString>Data Subset Form</gco:CharacterString>
+											</gmd:name>
+											<gmd:description>
+												<gco:CharacterString>ERDDAP's version of the OPeNDAP .html web page for this dataset. Specify a subset of the dataset and download the data via OPeNDAP or in many different file types.</gco:CharacterString>
+											</gmd:description>
+											<gmd:function>
+												<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download">download</gmd:CI_OnLineFunctionCode>
+											</gmd:function>
+										</gmd:CI_OnlineResource>
+									</gmd:onLine>
+								</gmd:MD_DigitalTransferOptions>
+							</gmd:distributorTransferOptions>
+							<gmd:distributorTransferOptions>
+								<gmd:MD_DigitalTransferOptions>
+									<gmd:onLine>
+										<gmd:CI_OnlineResource>
+											<gmd:linkage>
+												<gmd:URL>http://erddap.naturalsciences.be/erddap/tabledap/mean_swell_direction_TS.graph</gmd:URL>
+											</gmd:linkage>
+											<gmd:protocol>
+												<gco:CharacterString>order</gco:CharacterString>
+											</gmd:protocol>
+											<gmd:name>
+												<gco:CharacterString>Make-A-Graph Form</gco:CharacterString>
+											</gmd:name>
+											<gmd:description>
+												<gco:CharacterString>ERDDAP's Make-A-Graph .html web page for this dataset. Create an image with a map or graph of a subset of the data.</gco:CharacterString>
+											</gmd:description>
+											<gmd:function>
+												<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="mapDigital">mapDigital</gmd:CI_OnLineFunctionCode>
+											</gmd:function>
+										</gmd:CI_OnlineResource>
+									</gmd:onLine>
+								</gmd:MD_DigitalTransferOptions>
+							</gmd:distributorTransferOptions>
+						</gmd:MD_Distributor>
+					</gmd:distributor>
+				</gmd:MD_Distribution>
+			</gmd:distributionInfo>
+			<gmd:dataQualityInfo>
+				<gmd:DQ_DataQuality>
+					<gmd:scope>
+						<gmd:DQ_Scope>
+							<gmd:level>
+								<gmd:MD_ScopeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+							</gmd:level>
+						</gmd:DQ_Scope>
+					</gmd:scope>
+					<gmd:lineage>
+						<gmd:LI_Lineage>
+							<gmd:statement>
+								<gco:CharacterString>Operational Forecasts based on model WAM. For more information on WAM, please refer to : Komen, G. J., Cavaleri, L., Donelan, M., Hasselmann, K., Hassel-mann, S., and Janssen, P. A. E. M.: Dynamics and modellingof ocean waves, Cambridge University Press, Cambridge, UK,560 pp., 1994. - and - The WAMDI Group, 1988: The WAM Model. A Third Generation Ocean Wave Prediction Model. J. Phys. Oceanogr., 18, 1775-1810, http://doi.org/10.1175/1520-0485(1988)018<1775:TWMTGO>2.0.CO;2</gco:CharacterString>
+							</gmd:statement>
+						</gmd:LI_Lineage>
+					</gmd:lineage>
+				</gmd:DQ_DataQuality>
+			</gmd:dataQualityInfo>
+			<gmd:metadataMaintenance>
+				<gmd:MD_MaintenanceInformation>
+					<gmd:maintenanceAndUpdateFrequency gco:nilReason="unknown"/>
+					<gmd:maintenanceNote>
+						<gco:CharacterString>This record was created from dataset metadata by ERDDAP Version 2.01</gco:CharacterString>
+					</gmd:maintenanceNote>
+				</gmd:MD_MaintenanceInformation>
+			</gmd:metadataMaintenance>
+		</gmd:MD_Metadata>
+		<gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:geonet="http://www.fao.org/geonetwork" xsi:schemaLocation="http://www.isotc211.org/2005/gmd http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd">
+			<gmd:fileIdentifier>
+				<gco:CharacterString>Tmws_TS</gco:CharacterString>
+			</gmd:fileIdentifier>
+			<gmd:language>
+				<gmd:LanguageCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:LanguageCode" codeListValue="eng">eng</gmd:LanguageCode>
+			</gmd:language>
+			<gmd:characterSet>
+				<gmd:MD_CharacterSetCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_CharacterSetCode" codeListValue="UTF8">UTF8</gmd:MD_CharacterSetCode>
+			</gmd:characterSet>
+			<gmd:hierarchyLevel>
+				<gmd:MD_ScopeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+			</gmd:hierarchyLevel>
+			<gmd:hierarchyLevel>
+				<gmd:MD_ScopeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_ScopeCode" codeListValue="service">service</gmd:MD_ScopeCode>
+			</gmd:hierarchyLevel>
+			<gmd:contact>
+				<gmd:CI_ResponsibleParty>
+					<gmd:individualName>
+						<gco:CharacterString>Marine Forecasting Centre</gco:CharacterString>
+					</gmd:individualName>
+					<gmd:organisationName>
+						<gco:CharacterString>Royal Belgian Institute of Natural Sciences</gco:CharacterString>
+					</gmd:organisationName>
+					<gmd:contactInfo>
+						<gmd:CI_Contact>
+							<gmd:phone>
+								<gmd:CI_Telephone>
+									<gmd:voice>
+										<gco:CharacterString>+32.2.627.43.18</gco:CharacterString>
+									</gmd:voice>
+								</gmd:CI_Telephone>
+							</gmd:phone>
+							<gmd:address>
+								<gmd:CI_Address>
+									<gmd:deliveryPoint>
+										<gco:CharacterString>Rue Vautier,29</gco:CharacterString>
+									</gmd:deliveryPoint>
+									<gmd:city>
+										<gco:CharacterString>Brussels</gco:CharacterString>
+									</gmd:city>
+									<gmd:administrativeArea>
+										<gco:CharacterString>Brussels</gco:CharacterString>
+									</gmd:administrativeArea>
+									<gmd:postalCode>
+										<gco:CharacterString>1000</gco:CharacterString>
+									</gmd:postalCode>
+									<gmd:country>
+										<gco:CharacterString>Belgium</gco:CharacterString>
+									</gmd:country>
+									<gmd:electronicMailAddress>
+										<gco:CharacterString>marine-forecasting-officer@naturalsciences.be</gco:CharacterString>
+									</gmd:electronicMailAddress>
+								</gmd:CI_Address>
+							</gmd:address>
+						</gmd:CI_Contact>
+					</gmd:contactInfo>
+					<gmd:role>
+						<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+					</gmd:role>
+				</gmd:CI_ResponsibleParty>
+			</gmd:contact>
+			<gmd:dateStamp>
+				<gco:Date>2021-11-22</gco:Date>
+			</gmd:dateStamp>
+			<gmd:metadataStandardName>
+				<gco:CharacterString xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">ISO 19115:2003/19139</gco:CharacterString>
+			</gmd:metadataStandardName>
+			<gmd:metadataStandardVersion>
+				<gco:CharacterString xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">1.0</gco:CharacterString>
+			</gmd:metadataStandardVersion>
+			<gmd:spatialRepresentationInfo>
+				<gmd:MD_GridSpatialRepresentation>
+					<gmd:numberOfDimensions>
+						<gco:Integer>3</gco:Integer>
+					</gmd:numberOfDimensions>
+					<gmd:axisDimensionProperties>
+						<gmd:MD_Dimension>
+							<gmd:dimensionName>
+								<gmd:MD_DimensionNameTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_DimensionNameTypeCode" codeListValue="column">column</gmd:MD_DimensionNameTypeCode>
+							</gmd:dimensionName>
+							<gmd:dimensionSize gco:nilReason="unknown"/>
+						</gmd:MD_Dimension>
+					</gmd:axisDimensionProperties>
+					<gmd:axisDimensionProperties>
+						<gmd:MD_Dimension>
+							<gmd:dimensionName>
+								<gmd:MD_DimensionNameTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_DimensionNameTypeCode" codeListValue="row">row</gmd:MD_DimensionNameTypeCode>
+							</gmd:dimensionName>
+							<gmd:dimensionSize gco:nilReason="unknown"/>
+						</gmd:MD_Dimension>
+					</gmd:axisDimensionProperties>
+					<gmd:axisDimensionProperties>
+						<gmd:MD_Dimension>
+							<gmd:dimensionName>
+								<gmd:MD_DimensionNameTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_DimensionNameTypeCode" codeListValue="temporal">temporal</gmd:MD_DimensionNameTypeCode>
+							</gmd:dimensionName>
+							<gmd:dimensionSize gco:nilReason="unknown"/>
+						</gmd:MD_Dimension>
+					</gmd:axisDimensionProperties>
+					<gmd:cellGeometry>
+						<gmd:MD_CellGeometryCode codeList="" codeListValue="" codeSpace=""/>
+					</gmd:cellGeometry>
+					<gmd:transformationParameterAvailability gco:nilReason="unknown"/>
+				</gmd:MD_GridSpatialRepresentation>
+			</gmd:spatialRepresentationInfo>
+			<gmd:identificationInfo>
+				<gmd:MD_DataIdentification>
+					<gmd:citation>
+						<gmd:CI_Citation>
+							<gmd:title>
+								<gco:CharacterString>Average Zero-upcrossing Period for the Windsea Timeseries - North Sea - WAM ECMWF</gco:CharacterString>
+							</gmd:title>
+							<gmd:date>
+								<gmd:CI_Date>
+									<gmd:date>
+										<gco:Date>2021-11-22</gco:Date>
+									</gmd:date>
+									<gmd:dateType>
+										<gmd:CI_DateTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_DateTypeCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+									</gmd:dateType>
+								</gmd:CI_Date>
+							</gmd:date>
+							<gmd:identifier>
+								<gmd:MD_Identifier>
+									<gmd:authority>
+										<gmd:CI_Citation>
+											<gmd:title>
+												<gco:CharacterString>erddap.naturalsciences.be</gco:CharacterString>
+											</gmd:title>
+											<gmd:date gco:nilReason="inapplicable"/>
+										</gmd:CI_Citation>
+									</gmd:authority>
+									<gmd:code>
+										<gco:CharacterString>Tmws_TS</gco:CharacterString>
+									</gmd:code>
+								</gmd:MD_Identifier>
+							</gmd:identifier>
+							<gmd:citedResponsibleParty>
+								<gmd:CI_ResponsibleParty>
+									<gmd:individualName gco:nilReason="missing"/>
+									<gmd:organisationName>
+										<gco:CharacterString>MFC ODNature RBINS</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:address gco:nilReason="missing"/>
+											<gmd:onlineResource>
+												<gmd:CI_OnlineResource>
+													<gmd:linkage>
+														<gmd:URL>http://www.marineforecasts.be</gmd:URL>
+													</gmd:linkage>
+													<gmd:protocol>
+														<gco:CharacterString>information</gco:CharacterString>
+													</gmd:protocol>
+													<gmd:applicationProfile>
+														<gco:CharacterString>web browser</gco:CharacterString>
+													</gmd:applicationProfile>
+													<gmd:name>
+														<gco:CharacterString>Background Information</gco:CharacterString>
+													</gmd:name>
+													<gmd:description>
+														<gco:CharacterString>Background information from the source</gco:CharacterString>
+													</gmd:description>
+													<gmd:function>
+														<gmd:CI_OnLineFunctionCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_OnLineFunctionCode" codeListValue="information">information</gmd:CI_OnLineFunctionCode>
+													</gmd:function>
+												</gmd:CI_OnlineResource>
+											</gmd:onlineResource>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:citedResponsibleParty>
+						</gmd:CI_Citation>
+					</gmd:citation>
+					<gmd:abstract>
+						<gco:CharacterString>Average Zero-upcrossing Period for the Windsea Timeseries - North Sea - The domain is a lon/lat grid that covers the range [48.5, 57.033] in latitude and the range [-4.05, 9.25] in longitude. The latitude increment is 0.066 degrees, the longitude increment is 0.1 degrees. The spectral analysis is provided every hour. The sea surface is forced by the 1-hourly meteo forecasts provided by the ECMWF</gco:CharacterString>
+					</gmd:abstract>
+					<gmd:credit gco:nilReason="missing"/>
+					<gmd:pointOfContact>
+						<gmd:CI_ResponsibleParty xmlns="http://www.isotc211.org/2005/gmi" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmi="http://www.isotc211.org/2005/gmi">
+							<gmd:individualName>
+								<gco:CharacterString>Marine Forecasting Centre</gco:CharacterString>
+							</gmd:individualName>
+							<gmd:organisationName>
+								<gco:CharacterString>Royal Belgian Institute of Natural Sciences</gco:CharacterString>
+							</gmd:organisationName>
+							<gmd:contactInfo>
+								<gmd:CI_Contact>
+									<gmd:phone>
+										<gmd:CI_Telephone>
+											<gmd:voice>
+												<gco:CharacterString>+32.2.627.43.18</gco:CharacterString>
+											</gmd:voice>
+										</gmd:CI_Telephone>
+									</gmd:phone>
+									<gmd:address>
+										<gmd:CI_Address>
+											<gmd:deliveryPoint>
+												<gco:CharacterString>Rue Vautier,29</gco:CharacterString>
+											</gmd:deliveryPoint>
+											<gmd:city>
+												<gco:CharacterString>Brussels</gco:CharacterString>
+											</gmd:city>
+											<gmd:administrativeArea>
+												<gco:CharacterString>Brussels</gco:CharacterString>
+											</gmd:administrativeArea>
+											<gmd:postalCode>
+												<gco:CharacterString>1000</gco:CharacterString>
+											</gmd:postalCode>
+											<gmd:country>
+												<gco:CharacterString>Belgium</gco:CharacterString>
+											</gmd:country>
+											<gmd:electronicMailAddress>
+												<gco:CharacterString>marine-forecasting-officer@naturalsciences.be</gco:CharacterString>
+											</gmd:electronicMailAddress>
+										</gmd:CI_Address>
+									</gmd:address>
+								</gmd:CI_Contact>
+							</gmd:contactInfo>
+							<gmd:role>
+								<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="pointOfContact">pointOfContact</gmd:CI_RoleCode>
+							</gmd:role>
+						</gmd:CI_ResponsibleParty>
+					</gmd:pointOfContact>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+								<gco:CharacterString>ERDDAP</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>belgian</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>centre</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>coastal</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>data</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>ecwmf</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>environment</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>forecasting</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>marine</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>period</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>sciences</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>sea</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>timeseries</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>wam</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>wave</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>windsea</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>zone</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:type>
+								<gmd:MD_KeywordTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+							</gmd:type>
+							<gmd:thesaurusName gco:nilReason="unknown"/>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+								<gco:CharacterString>ERDDAP</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>Royal Belgian Institute of Natural Sciences, Directorate Natural Environment, Marine Forecasting Centre</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:type>
+								<gmd:MD_KeywordTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_KeywordTypeCode" codeListValue="project">project</gmd:MD_KeywordTypeCode>
+							</gmd:type>
+							<gmd:thesaurusName gco:nilReason="unknown"/>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:descriptiveKeywords>
+						<gmd:MD_Keywords>
+							<gmd:keyword xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+								<gco:CharacterString>ERDDAP</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>longitude</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>latitude</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:keyword>
+								<gco:CharacterString>time</gco:CharacterString>
+							</gmd:keyword>
+							<gmd:type>
+								<gmd:MD_KeywordTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+							</gmd:type>
+							<gmd:thesaurusName>
+								<gmd:CI_Citation>
+									<gmd:title>
+										<gco:CharacterString>CF Standard Name Table v55</gco:CharacterString>
+									</gmd:title>
+									<gmd:date gco:nilReason="unknown"/>
+								</gmd:CI_Citation>
+							</gmd:thesaurusName>
+						</gmd:MD_Keywords>
+					</gmd:descriptiveKeywords>
+					<gmd:resourceConstraints>
+						<gmd:MD_LegalConstraints>
+							<gmd:useLimitation>
+								<gco:CharacterString>The data may be used and redistributed for free but is not intended for legal use, since it may contain inaccuracies. Neither the data Contributor, ERD, NOAA, nor the United States Government, nor any of their employees or contractors, makes any warranty, express or implied, including warranties of merchantability and fitness for a particular purpose, or assumes any legal liability for the accuracy, completeness, or usefulness, of this information.</gco:CharacterString>
+							</gmd:useLimitation>
+						</gmd:MD_LegalConstraints>
+					</gmd:resourceConstraints>
+					<gmd:aggregationInfo>
+						<gmd:MD_AggregateInformation>
+							<gmd:aggregateDataSetName>
+								<gmd:CI_Citation>
+									<gmd:title>
+										<gco:CharacterString>Royal Belgian Institute of Natural Sciences, Directorate Natural Environment, Marine Forecasting Centre</gco:CharacterString>
+									</gmd:title>
+									<gmd:date gco:nilReason="inapplicable"/>
+								</gmd:CI_Citation>
+							</gmd:aggregateDataSetName>
+							<gmd:associationType>
+								<gmd:DS_AssociationTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_AssociationTypeCode" codeListValue="largerWorkCitation">largerWorkCitation</gmd:DS_AssociationTypeCode>
+							</gmd:associationType>
+							<gmd:initiativeType>
+								<gmd:DS_InitiativeTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_InitiativeTypeCode" codeListValue="project">project</gmd:DS_InitiativeTypeCode>
+							</gmd:initiativeType>
+						</gmd:MD_AggregateInformation>
+					</gmd:aggregationInfo>
+					<gmd:aggregationInfo>
+						<gmd:MD_AggregateInformation>
+							<gmd:aggregateDataSetIdentifier>
+								<gmd:MD_Identifier>
+									<gmd:authority>
+										<gmd:CI_Citation>
+											<gmd:title>
+												<gco:CharacterString>Unidata Common Data Model</gco:CharacterString>
+											</gmd:title>
+											<gmd:date gco:nilReason="inapplicable"/>
+										</gmd:CI_Citation>
+									</gmd:authority>
+									<gmd:code>
+										<gco:CharacterString>TimeSeries</gco:CharacterString>
+									</gmd:code>
+								</gmd:MD_Identifier>
+							</gmd:aggregateDataSetIdentifier>
+							<gmd:associationType>
+								<gmd:DS_AssociationTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_AssociationTypeCode" codeListValue="largerWorkCitation">largerWorkCitation</gmd:DS_AssociationTypeCode>
+							</gmd:associationType>
+							<gmd:initiativeType>
+								<gmd:DS_InitiativeTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:DS_InitiativeTypeCode" codeListValue="project">project</gmd:DS_InitiativeTypeCode>
+							</gmd:initiativeType>
+						</gmd:MD_AggregateInformation>
+					</gmd:aggregationInfo>
+					<gmd:language>
+						<gco:CharacterString>eng</gco:CharacterString>
+					</gmd:language>
+					<gmd:topicCategory>
+						<gmd:MD_TopicCategoryCode>geoscientificInformation</gmd:MD_TopicCategoryCode>
+					</gmd:topicCategory>
+					<gmd:extent>
+						<gmd:EX_Extent id="boundingExtent">
+							<gmd:geographicElement>
+								<gmd:EX_GeographicBoundingBox id="boundingGeographicBoundingBox">
+									<gmd:extentTypeCode>
+										<gco:Boolean>1</gco:Boolean>
+									</gmd:extentTypeCode>
+									<gmd:westBoundLongitude>
+										<gco:Decimal>1.5</gco:Decimal>
+									</gmd:westBoundLongitude>
+									<gmd:eastBoundLongitude>
+										<gco:Decimal>3.416667</gco:Decimal>
+									</gmd:eastBoundLongitude>
+									<gmd:southBoundLatitude>
+										<gco:Decimal>51.0</gco:Decimal>
+									</gmd:southBoundLatitude>
+									<gmd:northBoundLatitude>
+										<gco:Decimal>53.2183</gco:Decimal>
+									</gmd:northBoundLatitude>
+								</gmd:EX_GeographicBoundingBox>
+							</gmd:geographicElement>
+							<gmd:temporalElement>
+								<gmd:EX_TemporalExtent id="boundingTemporalExtent">
+									<gmd:extent>
+										<gml:TimePeriod xmlns:gml="http://www.opengis.net/gml/3.2" gml:id="DI_gmdExtent_timePeriod_id">
+											<gml:description>seconds</gml:description>
+											<gml:beginPosition>2017-09-12T01:00:00Z</gml:beginPosition>
+											<gml:endPosition>2021-11-26T23:00:00Z</gml:endPosition>
+										</gml:TimePeriod>
+									</gmd:extent>
+								</gmd:EX_TemporalExtent>
+							</gmd:temporalElement>
+						</gmd:EX_Extent>
+					</gmd:extent>
+					<gmd:graphicOverview xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:srv="http://www.isotc211.org/2005/srv">
+						<gmd:MD_BrowseGraphic>
+							<gmd:fileName>
+								<gco:CharacterString>http://metadata.naturalsciences.be/geonetwork/images/harvesting/Tmws_TS.png</gco:CharacterString>
+							</gmd:fileName>
+							<gmd:fileDescription>
+								<gco:CharacterString>large_thumbnail</gco:CharacterString>
+							</gmd:fileDescription>
+							<gmd:fileType>
+								<gco:CharacterString>png</gco:CharacterString>
+							</gmd:fileType>
+						</gmd:MD_BrowseGraphic>
+					</gmd:graphicOverview>
+				</gmd:MD_DataIdentification>
+			</gmd:identificationInfo>
+			<gmd:identificationInfo/>
+			<gmd:identificationInfo/>
+			<gmd:contentInfo>
+				<gmi:MI_CoverageDescription xmlns:gmi="http://www.isotc211.org/2005/gmi">
+					<gmd:attributeDescription gco:nilReason="unknown"/>
+					<gmd:contentType>
+						<gmd:MD_CoverageContentTypeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_CoverageContentTypeCode" codeListValue="physicalMeasurement">physicalMeasurement</gmd:MD_CoverageContentTypeCode>
+					</gmd:contentType>
+					<gmd:dimension>
+						<gmd:MD_Band>
+							<gmd:sequenceIdentifier>
+								<gco:MemberName>
+									<gco:aName>
+										<gco:CharacterString>station_id</gco:CharacterString>
+									</gco:aName>
+									<gco:attributeType>
+										<gco:TypeName>
+											<gco:aName>
+												<gco:CharacterString>String</gco:CharacterString>
+											</gco:aName>
+										</gco:TypeName>
+									</gco:attributeType>
+								</gco:MemberName>
+							</gmd:sequenceIdentifier>
+							<gmd:descriptor>
+								<gco:CharacterString>station_id</gco:CharacterString>
+							</gmd:descriptor>
+						</gmd:MD_Band>
+					</gmd:dimension>
+					<gmd:dimension>
+						<gmd:MD_Band>
+							<gmd:sequenceIdentifier>
+								<gco:MemberName>
+									<gco:aName>
+										<gco:CharacterString>time</gco:CharacterString>
+									</gco:aName>
+									<gco:attributeType>
+										<gco:TypeName>
+											<gco:aName>
+												<gco:CharacterString>double</gco:CharacterString>
+											</gco:aName>
+										</gco:TypeName>
+									</gco:attributeType>
+								</gco:MemberName>
+							</gmd:sequenceIdentifier>
+							<gmd:descriptor>
+								<gco:CharacterString>Time</gco:CharacterString>
+							</gmd:descriptor>
+							<gmd:units xlink:href="http://unitsofmeasure.org/ucum.html#s%7Bsince%201970-01-01T00%3A00%3A00Z%7D"/>
+						</gmd:MD_Band>
+					</gmd:dimension>
+					<gmd:dimension>
+						<gmd:MD_Band>
+							<gmd:sequenceIdentifier>
+								<gco:MemberName>
+									<gco:aName>
+										<gco:CharacterString>Tmws</gco:CharacterString>
+									</gco:aName>
+									<gco:attributeType>
+										<gco:TypeName>
+											<gco:aName>
+												<gco:CharacterString>float</gco:CharacterString>
+											</gco:aName>
+										</gco:TypeName>
+									</gco:attributeType>
+								</gco:MemberName>
+							</gmd:sequenceIdentifier>
+							<gmd:descriptor>
+								<gco:CharacterString>Average Zero-upcrossing Period for the Windsea</gco:CharacterString>
+							</gmd:descriptor>
+							<gmd:units xlink:href="http://unitsofmeasure.org/ucum.html#s"/>
+						</gmd:MD_Band>
+					</gmd:dimension>
+				</gmi:MI_CoverageDescription>
+			</gmd:contentInfo>
+			<gmd:distributionInfo>
+				<gmd:MD_Distribution>
+					<gmd:distributor>
+						<gmd:MD_Distributor>
+							<gmd:distributorContact>
+								<gmd:CI_ResponsibleParty>
+									<gmd:individualName>
+										<gco:CharacterString>Marine Forecasting Centre</gco:CharacterString>
+									</gmd:individualName>
+									<gmd:organisationName>
+										<gco:CharacterString>Royal Belgian Institute of Natural Sciences</gco:CharacterString>
+									</gmd:organisationName>
+									<gmd:contactInfo>
+										<gmd:CI_Contact>
+											<gmd:phone>
+												<gmd:CI_Telephone>
+													<gmd:voice>
+														<gco:CharacterString>+32.2.627.43.18</gco:CharacterString>
+													</gmd:voice>
+												</gmd:CI_Telephone>
+											</gmd:phone>
+											<gmd:address>
+												<gmd:CI_Address>
+													<gmd:deliveryPoint>
+														<gco:CharacterString>Rue Vautier,29</gco:CharacterString>
+													</gmd:deliveryPoint>
+													<gmd:city>
+														<gco:CharacterString>Brussels</gco:CharacterString>
+													</gmd:city>
+													<gmd:administrativeArea>
+														<gco:CharacterString>Brussels</gco:CharacterString>
+													</gmd:administrativeArea>
+													<gmd:postalCode>
+														<gco:CharacterString>1000</gco:CharacterString>
+													</gmd:postalCode>
+													<gmd:country>
+														<gco:CharacterString>Belgium</gco:CharacterString>
+													</gmd:country>
+													<gmd:electronicMailAddress>
+														<gco:CharacterString>marine-forecasting-officer@naturalsciences.be</gco:CharacterString>
+													</gmd:electronicMailAddress>
+												</gmd:CI_Address>
+											</gmd:address>
+										</gmd:CI_Contact>
+									</gmd:contactInfo>
+									<gmd:role>
+										<gmd:CI_RoleCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+									</gmd:role>
+								</gmd:CI_ResponsibleParty>
+							</gmd:distributorContact>
+							<gmd:distributorFormat>
+								<gmd:MD_Format>
+									<gmd:name>
+										<gco:CharacterString>OPeNDAP</gco:CharacterString>
+									</gmd:name>
+									<gmd:version>
+										<gco:CharacterString>DAP/2.0</gco:CharacterString>
+									</gmd:version>
+								</gmd:MD_Format>
+							</gmd:distributorFormat>
+							<gmd:distributorTransferOptions>
+								<gmd:MD_DigitalTransferOptions>
+									<gmd:onLine>
+										<gmd:CI_OnlineResource>
+											<gmd:linkage>
+												<gmd:URL>http://erddap.naturalsciences.be/erddap/tabledap/Tmws_TS.html</gmd:URL>
+											</gmd:linkage>
+											<gmd:protocol>
+												<gco:CharacterString>order</gco:CharacterString>
+											</gmd:protocol>
+											<gmd:name>
+												<gco:CharacterString>Data Subset Form</gco:CharacterString>
+											</gmd:name>
+											<gmd:description>
+												<gco:CharacterString>ERDDAP's version of the OPeNDAP .html web page for this dataset. Specify a subset of the dataset and download the data via OPeNDAP or in many different file types.</gco:CharacterString>
+											</gmd:description>
+											<gmd:function>
+												<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download">download</gmd:CI_OnLineFunctionCode>
+											</gmd:function>
+										</gmd:CI_OnlineResource>
+									</gmd:onLine>
+								</gmd:MD_DigitalTransferOptions>
+							</gmd:distributorTransferOptions>
+							<gmd:distributorTransferOptions>
+								<gmd:MD_DigitalTransferOptions>
+									<gmd:onLine>
+										<gmd:CI_OnlineResource>
+											<gmd:linkage>
+												<gmd:URL>http://erddap.naturalsciences.be/erddap/tabledap/Tmws_TS.graph</gmd:URL>
+											</gmd:linkage>
+											<gmd:protocol>
+												<gco:CharacterString>order</gco:CharacterString>
+											</gmd:protocol>
+											<gmd:name>
+												<gco:CharacterString>Make-A-Graph Form</gco:CharacterString>
+											</gmd:name>
+											<gmd:description>
+												<gco:CharacterString>ERDDAP's Make-A-Graph .html web page for this dataset. Create an image with a map or graph of a subset of the data.</gco:CharacterString>
+											</gmd:description>
+											<gmd:function>
+												<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="mapDigital">mapDigital</gmd:CI_OnLineFunctionCode>
+											</gmd:function>
+										</gmd:CI_OnlineResource>
+									</gmd:onLine>
+								</gmd:MD_DigitalTransferOptions>
+							</gmd:distributorTransferOptions>
+						</gmd:MD_Distributor>
+					</gmd:distributor>
+				</gmd:MD_Distribution>
+			</gmd:distributionInfo>
+			<gmd:dataQualityInfo>
+				<gmd:DQ_DataQuality>
+					<gmd:scope>
+						<gmd:DQ_Scope>
+							<gmd:level>
+								<gmd:MD_ScopeCode codeList="http://data.noaa.gov/resources/iso19139/schema/resources/Codelist/gmxCodelists.xml#gmd:MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+							</gmd:level>
+						</gmd:DQ_Scope>
+					</gmd:scope>
+					<gmd:lineage>
+						<gmd:LI_Lineage>
+							<gmd:statement>
+								<gco:CharacterString>Operational Forecasts based on model WAM. For more information on WAM, please refer to : Komen, G. J., Cavaleri, L., Donelan, M., Hasselmann, K., Hassel-mann, S., and Janssen, P. A. E. M.: Dynamics and modellingof ocean waves, Cambridge University Press, Cambridge, UK,560 pp., 1994. - and - The WAMDI Group, 1988: The WAM Model. A Third Generation Ocean Wave Prediction Model. J. Phys. Oceanogr., 18, 1775-1810, http://doi.org/10.1175/1520-0485(1988)018<1775:TWMTGO>2.0.CO;2</gco:CharacterString>
+							</gmd:statement>
+						</gmd:LI_Lineage>
+					</gmd:lineage>
+				</gmd:DQ_DataQuality>
+			</gmd:dataQualityInfo>
+			<gmd:metadataMaintenance>
+				<gmd:MD_MaintenanceInformation>
+					<gmd:maintenanceAndUpdateFrequency gco:nilReason="unknown"/>
+					<gmd:maintenanceNote>
+						<gco:CharacterString>This record was created from dataset metadata by ERDDAP Version 2.01</gco:CharacterString>
+					</gmd:maintenanceNote>
+				</gmd:MD_MaintenanceInformation>
+			</gmd:metadataMaintenance>
+		</gmd:MD_Metadata>
+	</csw:SearchResults>
+</csw:GetRecordsResponse>
