@@ -8,4 +8,5 @@ brugge/sparql-geo.qry
 data-media.ttl
 sparql-map-media.qry
 brugge/sparql-desc-single.qry
+brugge/sparql-compression-format.qry
 clear-skos.qry

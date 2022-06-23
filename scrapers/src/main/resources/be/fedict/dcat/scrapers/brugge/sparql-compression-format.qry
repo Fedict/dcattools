@@ -1,0 +1,11 @@
+# Add compression format if title contains "ZIP"
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{	?dist dcat:compressFormat <https://www.iana.org/assignments/media-types/application/zip> }
+WHERE
+	{	?dist dcterms:title ?title .
+		FILTER (CONTAINS(LCASE(?title), "(zip)"))
+	}
