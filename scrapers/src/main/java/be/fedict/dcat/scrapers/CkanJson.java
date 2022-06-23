@@ -200,7 +200,7 @@ public abstract class CkanJson extends Ckan {
 	 *
 	 * @param id
 	 * @return URL
-	 * @throws java.net.MalformedURLException
+	 * @throws MalformedURLException
 	 */
 	protected URL ckanDatasetURL(String id) throws MalformedURLException {
 		return new URL(getBase(), Ckan.API_PKG + id);
@@ -551,6 +551,7 @@ public abstract class CkanJson extends Ckan {
 	 * Constructor
 	 *
 	 * @param prop
+	 * @throws java.io.IOException
 	 */
 	protected CkanJson(Properties prop) throws IOException {
 		super(prop);

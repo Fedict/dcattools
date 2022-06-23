@@ -1,0 +1,85 @@
+{
+  "administrative_contact": "John Doe - dr. - john.doe@inbo.be - +32 02 345 67 89",
+  "administrative_contact_name": "John Doe",
+  "author": null,
+  "author_email": null,
+  "creator_user_id": "364b3f13-144b-4302-97bb-0b9a80696b63",
+  "dataset_type": "SAMPLING_EVENT",
+  "dwca_url": "https://ipt.biodiversity.be/archive.do?r=flemish_waterbodies_phytoplankton_ecopot_2",
+  "gbif_uuid": "35327b62-a8d4-46b7-bd21-95d5287c8baf",
+  "id": "18bc301e-b3f2-4f5d-b960-5c07574db966",
+  "isopen": true,
+  "license_id": "cc-by",
+  "license_title": "Creative Commons Attribution",
+  "license_url": "http://www.opendefinition.org/licenses/cc-by",
+  "maintainer": null,
+  "maintainer_email": null,
+  "metadata_contact": "Jane Bar - jane.bar@ugent.be",
+  "metadata_created": "2021-11-08T12:56:08.705015",
+  "metadata_modified": "2021-11-08T12:56:09.275531",
+  "name": "35327b62-a8d4-46b7-bd21-95d5287c8baf",
+  "notes": "Monitoring data from the Ecopot projects: Determining the maximal and good ecological potential, as well as the current state of Flemish regional water bodies. The data contains phytoplankton counts of Flemish lakes and pools.",
+  "num_resources": 1,
+  "num_tags": 0,
+  "organization": {
+    "id": "05c249d0-dfa0-11d8-b22e-b8a03c50a862",
+    "name": "ghent-university",
+    "title": "Ghent University",
+    "type": "organization",
+    "description": "Ghent University is a top 100 university and one of the major universities in Belgium. 11 faculties offer a wide range of courses and conduct in-depth research in  both exact and social sciences.",
+    "image_url": "https://www.ugent.be/++theme++ugent/static/images/logo_ugent_en.svg",
+    "created": "2021-11-08T13:54:04.073469",
+    "is_organization": true,
+    "approval_status": "approved",
+    "state": "active"
+  },
+  "owner_org": "05c249d0-dfa0-11d8-b22e-b8a03c50a862",
+  "private": false,
+  "state": "active",
+  "title": "ECOPOT_2: Phytoplankton in  Flemish waterbodies",
+  "type": "dataset",
+  "url": "http://www.gbif.org/dataset/35327b62-a8d4-46b7-bd21-95d5287c8baf",
+  "version": null,
+  "groups": [
+    {
+      "description": "",
+      "display_name": "Sampling Event",
+      "id": "cd888bb5-48f1-47ee-bc5e-f9d96ceb43db",
+      "image_display_url": "https://c2.staticflickr.com/4/3364/3199279066_479d4084d8_b_d.jpg",
+      "name": "sampling-event",
+      "title": "Sampling Event"
+    }
+  ],
+  "resources": [
+    {
+      "cache_last_updated": null,
+      "cache_url": null,
+      "created": "2021-11-08T12:56:09.289249",
+      "description": null,
+      "format": "DWC_ARCHIVE",
+      "hash": "",
+      "id": "ed4bbe43-8417-41cf-806b-9987cc56de25",
+      "last_modified": null,
+      "metadata_modified": "2021-11-08T12:56:09.283182",
+      "mimetype": null,
+      "mimetype_inner": null,
+      "name": null,
+      "package_id": "18bc301e-b3f2-4f5d-b960-5c07574db966",
+      "position": 0,
+      "resource_type": null,
+      "size": null,
+      "state": "active",
+      "url": "",
+      "url_type": null
+    }
+  ],
+  "tags": [
+    
+  ],
+  "relationships_as_subject": [
+    
+  ],
+  "relationships_as_object": [
+    
+  ]
+}

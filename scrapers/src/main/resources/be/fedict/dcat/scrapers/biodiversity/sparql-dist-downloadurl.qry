@@ -1,0 +1,13 @@
+# Move downloadURL from Dataset to Distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?dataset dcat:downloadURL ?url }
+INSERT
+	{ 	?dist dcat:downloadURL ?url }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcat:downloadURL ?url .
+		?dataset dcat:distribution ?dist }
+
