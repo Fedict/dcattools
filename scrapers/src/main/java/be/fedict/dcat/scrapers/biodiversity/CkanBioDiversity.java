@@ -37,6 +37,7 @@ import java.util.regex.Pattern;
 import javax.json.JsonObject;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
@@ -50,6 +51,7 @@ public class CkanBioDiversity extends CkanJson {
 	// CKAN fields
 	public final static String ADMIN_CONTACT = "administrative_contact";
 	public final static Pattern REGEX_MAIL = Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
+	public final static String DWCA_URL = "dwca_url";
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
@@ -60,6 +62,7 @@ public class CkanBioDiversity extends CkanJson {
 			contact = contact.replaceFirst(email, "").trim();
 			parseContact(store, uri, contact, email);
 		}
+		parseURI(store, uri, json, DWCA_URL, DCAT.DOWNLOAD_URL);
 	}
 	
 	/**
