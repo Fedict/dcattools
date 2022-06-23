@@ -35,6 +35,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -257,7 +258,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param license
 	 * @throws MalformedURLException
 	 */
-	protected void generateDist(Storage store, IRI dataset, Node node, String format, String license)
+	protected void generateDist(Storage store, IRI dataset, Node node, String format, List<String> license)
 		throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
@@ -275,7 +276,9 @@ public abstract class GeonetGmd extends Geonet {
 			store.add(dist, DCTERMS.FORMAT, format);
 		}
 		if (license != null) {
-			store.add(dist, DCTERMS.LICENSE, license);
+			for (String l: license) {
+				store.add(dist, DCTERMS.LICENSE, l);
+			}
 		}
 		try {
 			IRI iri = store.getURI(url);
@@ -394,25 +397,26 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
-		List<Node> licenses = metadata.selectNodes(XP_LICENSE);
-		List<Node> licenses2 = metadata.selectNodes(XP_LICENSE2);
-		if (licenses.isEmpty()) {
-			licenses = licenses2;
+		// License / rights can be listed in different nodes
+		List<Node> lic = metadata.selectNodes(XP_LICENSE);
+		List<Node> lic2 = metadata.selectNodes(XP_LICENSE2);
+		if (lic.isEmpty()) {
+			lic = lic2;
 		} else {
-			if (!licenses2.isEmpty()) {
-				licenses.addAll(licenses2);
+			if (!lic2.isEmpty()) {
+				lic.addAll(lic2);
 			}
 		}
 
-		String license = null;
-		for (Node n : licenses) {
+		List<String> licenses = new ArrayList<>();
+		for (Node n : lic) {
 			String anchor = n.valueOf(XP_ANCHOR);
 			if (anchor != null && !anchor.isEmpty()) {
-				license = anchor;
-				break;
+				licenses.add(anchor);
 			}
-			if (license == null || !license.isEmpty()) {
-				license = n.valueOf(XP_CHAR);
+			String str = n.valueOf(XP_CHAR);
+			if (str != null && !str.isEmpty()) {
+				licenses.add(str);
 			}
 		}
 
@@ -429,7 +433,7 @@ public abstract class GeonetGmd extends Geonet {
 			if (fmt != null) {
 				str = fmt.getText();
 			}
-			generateDist(store, dataset, dist, str, license);
+			generateDist(store, dataset, dist, str, licenses);
 		}
 	}
 

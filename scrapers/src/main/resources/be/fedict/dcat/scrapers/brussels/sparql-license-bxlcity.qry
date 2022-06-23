@@ -1,0 +1,12 @@
+# Add default Etalab license if download is from BXL opendatasoft
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{	?dist dcterms:license "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf" }
+WHERE
+	{	?dist dcat:downloadURL ?url .
+		FILTER (CONTAINS(STR(?url), "https://bruxellesdata.opendatasoft.com"))
+		FILTER NOT EXISTS { ?dist dcterms:license ?lic }
+	}

@@ -64,7 +64,7 @@
 	skos:prefLabel "GPKG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GPKG> ;
-	skos:altLabel "Geopackage", "geopackage" .
+	skos:altLabel "Geopackage", "geopackage", "GPKG" .
 
 <http://data.gov.be/en/taxonomy/term/4>
 	skos:prefLabel "GML" ;
@@ -107,7 +107,7 @@
 	skos:prefLabel "GeoJSON" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.geo+json> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/GEOJSON> ;
-	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)" .
+	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)", "GEOJSON" .
 	
 <http://data.gov.be/en/taxonomy/term/3>
 	skos:prefLabel "KML" ;

@@ -11,7 +11,10 @@ brussels/data-org.ttl
 brussels/sparql-map-org.qry
 brussels/sparql-contact-vcard.qry
 data-license.ttl
+brussels/sparql-license-contains.qry
+brussels/sparql-license-bxlcity.qry
 sparql-map-license.qry
+sparql-delete-label-license.qry
 clear-skos.qry
 data-frequency.ttl
 sparql-map-frequency.qry
