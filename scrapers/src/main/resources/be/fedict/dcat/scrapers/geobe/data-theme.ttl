@@ -10,7 +10,8 @@
 <http://data.gov.be/en/taxonomy/term/38>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "Kadaster"@nl, "exploitatie van de zeebodem"@nl, "economic planning"@en .
+	skos:altLabel "Kadaster"@nl, "exploitatie van de zeebodem"@nl, "economic planning"@en,
+		"economy" .
 
 <http://data.gov.be/en/taxonomy/term/34>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
@@ -29,22 +30,23 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:altLabel "Kadaster"@nl, "Geografische namen"@nl, "Straatnamen"@nl, "Gebouwen"@nl, "boundaries", 
-		"structure", "planningCadastre", "location"  .
+		"structure", "planningCadastre", "location", "federale regering"@nl  .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel "Menselijke gezondheid en veiligheid"@nl, "luchtkwaliteit"@nl, "Human health and safety"@en  .
+	skos:altLabel "Menselijke gezondheid en veiligheid"@nl, "luchtkwaliteit"@nl, "Human health and safety"@en,
+		"health"  .
 
 <http://data.gov.be/en/taxonomy/term/44>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
-	skos:altLabel "antarctica"@en, "intelligenceMilitary" .
+	skos:altLabel "antarctica"@en, "intelligenceMilitary", "HAUTS-DE-FRANCE" .
 
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "bevolking"@nl, "society" .
+	skos:altLabel "bevolking"@nl, "society", "Bevolking"@nl .
 
 <http://data.gov.be/en/taxonomy/term/42>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
@@ -62,6 +64,6 @@
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
 	skos:altLabel "Geologie"@nl, "Atmosferische omstandigheden"@nl, "Gravimetry"@en, "Relief"@nl, "Orthofoto"@nl, 
 		"Kaartprojectiesysteem"@nl, "geologie"@de, "observation"@en, "climate statistics"@en, 
-		"maritime navigation"@en, "temperature"@en, "geoscientificInformation", "biota",
-		"utilitiesCommunication", "imageryBaseMapsEarthCover" .
+		"maritime navigation"@en, "temperature"@en, "geoscientificInformation", "biota", "Hoogte"@nl,
+		"utilitiesCommunication", "imageryBaseMapsEarthCover", "elevation", "digitaal terreinmodel" .
 	

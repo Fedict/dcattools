@@ -3,10 +3,12 @@ geobe/data-org.ttl
 geobe/sparql-map-org.qry
 geobe/data-theme.ttl
 sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 sparql-geo-belgium.qry
 data-media.ttl
+geobe/sparql-format-extension.qry
 sparql-map-media.qry
 clear-skos.qry
 sparql-dist-accessurl.qry
@@ -14,5 +16,8 @@ geobe/sparql-map-lang.qry
 sparql-dist-lang.qry
 sparql-vcard-fn.qry
 data-license.ttl
+geobe/sparql-license-contains.qry
 sparql-map-license.qry
+geobe/sparql-remove-wrong-license.qry
+sparql-delete-label-license.qry
 clear-skos.qry

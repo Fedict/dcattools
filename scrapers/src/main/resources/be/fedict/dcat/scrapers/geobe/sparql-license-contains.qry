@@ -1,0 +1,16 @@
+# Replace (lengthy) description of license by link or shorter description (for mapping)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?dist dcterms:license ?txt }
+INSERT 
+	{	?dist dcterms:license ?str }
+WHERE
+	{	?dist dcterms:license ?txt
+		VALUES ?str { 
+			"CC BY 4.0" "https://statbel.fgov.be/en/open-data"
+		}
+		FILTER (CONTAINS(?txt, ?str)) 
+	}
