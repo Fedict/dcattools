@@ -1,0 +1,11 @@
+# Remove "No limitations on public access" since it is often combined with limitations on _reuse_
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?dist dcterms:license ?lic }
+WHERE
+	{	?dist dcterms:license ?lic
+		VALUES ?lic { "No limitations on public access" "Unknown" "No limitations" }
+		}

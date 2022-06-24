@@ -18,6 +18,11 @@
 	skos:prefLabel "Etalab Licence Ouverte" ;
 	skos:altLabel "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf" .
 
+<http://data.gov.be/en/taxonomy/term/168>
+	skos:exactMatch <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf> ;
+	skos:prefLabel "Statbel open license" ;
+	skos:altLabel "https://statbel.fgov.be/en/open-data" .
+
 <http://data.gov.be/en/taxonomy/term/53>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> ;
 	skos:prefLabel "CC-BY" ;
@@ -26,6 +31,7 @@
 		"https://creativecommons.org/licenses/by/4.0/", 
 		"https://creativecommons.org/licenses/by/4.0/deed.fr",
 		"https://creativecommons.org/licenses/by/4.0/legalcode",
+		"CC BY 4.0",
 		"This work is licensed under a         Creative Commons Attribution (CC-BY) 4.0 License         .",
 		"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License." ,
 		"This work is licensed under a Creative Commons Attribution 4.0 International License (CC-BY).".

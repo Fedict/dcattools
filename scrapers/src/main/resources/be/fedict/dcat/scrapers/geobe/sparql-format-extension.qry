@@ -1,0 +1,16 @@
+# Guess file format based on extension (from downloadURL or URI)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcterms:format ?fmt }
+WHERE
+	{	
+		?dist a dcat:Distribution .
+		?dist dcat:downloadURL ?url
+		VALUES ?ext { "_gml" "/csv" ".xlsx" "_csv" "=WFS" "=WMS" "-shapefile" "_geopackage" ".shp" ".pdf"}
+		BIND (IF(CONTAINS(STR(?url), ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
+		FILTER NOT EXISTS { ?dist dcterms:format ?fmt } 
+	}
+	

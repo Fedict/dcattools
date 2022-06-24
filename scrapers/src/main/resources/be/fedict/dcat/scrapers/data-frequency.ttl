@@ -56,7 +56,7 @@
 <http://data.gov.be/en/taxonomy/term/192>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
 	skos:prefLabel "Irregular"@en ;
-	skos:altLabel "asNeeded", "irregular", "http://purl.org/cld/freq/irregular", 
+	skos:altLabel "asNeeded", "irregular", "http://purl.org/cld/freq/irregular", "Irregular",
 		"http://publications.europa.eu/resource/authority/frequency/IRREG",
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded> .
 

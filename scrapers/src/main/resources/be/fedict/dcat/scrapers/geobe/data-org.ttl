@@ -10,7 +10,8 @@
 <http://data.gov.be/en/taxonomy/term/157>
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216755012> ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
-	skos:altLabel "National Geographic Institute"@en .
+	skos:altLabel "National Geographic Institute"@en, "Nationaal Geografisch Instituut"@nl, 
+	"Institut géographique national"@fr ,"Nationales geographisches Institut"@de .
 	
 <http://data.gov.be/en/taxonomy/term/325>
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2138196041> ;
@@ -65,3 +66,10 @@
 		"Institut Wallon de l'Evaluation, de la Prospective et de la Statistique (IWEPS)"@fr ,
 		"Wallonisches Institut für Schätzung, Zukunftsforschung und Statistik (IWEPS)"@de,
 		"Walloon Institute for Evaluation, Foresight and Statistics (IWEPS)"@en .
+
+<http://data.gov.be/en/taxonomy/term/124>
+	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207725696> ;
+	skos:prefLabel "Province of West Flanders"@en, "Province de Flandre occidentale"@fr, 
+			"Provincie West-Vlaanderen"@nl, "Provinz Westflandern"@de ;
+	skos:altLabel "Province of West Flanders"@en, "Province de Flandre occidentale"@fr, 
+			"Provincie West-Vlaanderen"@nl, "Provinz Westflandern"@de .
