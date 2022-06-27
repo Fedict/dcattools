@@ -4,3 +4,7 @@ wiv/sparql-publ-contact.qry
 sparql-geo-belgium.qry
 sparql-license-cczero.qry
 wiv/sparql-keyword-theme.qry
+data-media.ttl
+wiv/sparql-format-extension.qry
+sparql-map-media.qry
+clear-skos.qry
