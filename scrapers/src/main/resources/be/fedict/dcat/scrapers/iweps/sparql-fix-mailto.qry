@@ -1,0 +1,13 @@
+# Turn email address into mailto: URI
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s vcard:hasEmail ?mail }
+INSERT 
+	{ 	?s vcard:hasEmail ?mailto }
+WHERE
+	{	?s vcard:hasEmail ?mail 
+		FILTER ISLITERAL(?mail)
+		BIND (IRI(CONCAT("mailto:", ?mail)) AS ?mailto)
+	}

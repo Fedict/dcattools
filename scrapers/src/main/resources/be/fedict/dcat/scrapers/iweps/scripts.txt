@@ -2,6 +2,7 @@
 iweps/sparql-clear-catalog.qry
 sparql-dist-lang.qry
 iweps/sparql-downloadurl.qry
+iweps/sparql-landing-accessurl.qry
 data-license.ttl
 sparql-map-license.qry
 iweps/data-publ-contact.ttl
@@ -23,4 +24,5 @@ sparql-tag-language.qry
 clear-skos.qry
 sparql-title-to-desc.qry
 #sparql-clear-bnodes.qry
+iweps/sparql-fix-mailto.qry
 sparql-strip-html.qry
