@@ -6,4 +6,8 @@ indicators/sparql-distribution.qry
 indicators/data-theme.ttl
 indicators/sparql-map-keyword-theme.qry
 sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+indicators/sparql-dist-lang.qry
+sparql-map-lang.qry
 clear-skos.qry
