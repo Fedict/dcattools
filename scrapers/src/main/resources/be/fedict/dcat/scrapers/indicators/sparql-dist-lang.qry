@@ -1,0 +1,13 @@
+# Set distribution language from URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcterms:language ?lang }
+WHERE
+	{
+		?dist a dcat:Distribution 
+		BIND(STR(?dist) as ?str)
+		BIND(SUBSTR(?str, STRLEN(?str) - 1, 2) as ?lang)
+	}
