@@ -1,0 +1,386 @@
+{
+  "status": "OK",
+  "data": {
+    "id": 2439,
+    "identifier": "DVN/ADI7OA",
+    "persistentUrl": "https://doi.org/10.34934/DVN/ADI7OA",
+    "protocol": "doi",
+    "authority": "10.34934",
+    "publisher": "Social Sciences and Digital Humanities Archive – SODHA",
+    "publicationDate": "2021-06-07",
+    "storageIdentifier": "file://10.34934/DVN/ADI7OA",
+    "latestVersion": {
+      "id": 417,
+      "datasetId": 2439,
+      "datasetPersistentId": "doi:10.34934/DVN/ADI7OA",
+      "storageIdentifier": "file://10.34934/DVN/ADI7OA",
+      "versionNumber": 1,
+      "versionMinorNumber": 0,
+      "versionState": "RELEASED",
+      "lastUpdateTime": "2021-06-07T07:52:33Z",
+      "releaseTime": "2021-06-07T07:52:33Z",
+      "createTime": "2021-06-03T15:05:01Z",
+      "license": "NONE",
+      "termsOfUse": "<a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by/4.0/88x31.png\" /></a><br />This work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a> (CC-BY).",
+      "fileAccessRequest": false,
+      "metadataBlocks": {
+        "citation": {
+          "displayName": "Citation Metadata",
+          "fields": [
+            {
+              "typeName": "title",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "Thesaurus of Early Modern Archival Sources (TEMAS)"
+            },
+            {
+              "typeName": "author",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "authorName": {
+                    "typeName": "authorName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Vrancken, Valerie"
+                  },
+                  "authorAffiliation": {
+                    "typeName": "authorAffiliation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "State Archives of Belgium"
+                  },
+                  "authorIdentifierScheme": {
+                    "typeName": "authorIdentifierScheme",
+                    "multiple": false,
+                    "typeClass": "controlledVocabulary",
+                    "value": "ORCID"
+                  },
+                  "authorIdentifier": {
+                    "typeName": "authorIdentifier",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "0000-0003-0085-8341"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "datasetContact",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "datasetContactName": {
+                    "typeName": "datasetContactName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Vrancken, Valerie"
+                  },
+                  "datasetContactAffiliation": {
+                    "typeName": "datasetContactAffiliation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "State Archives of Belgium"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "dsDescription",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "dsDescriptionValue": {
+                    "typeName": "dsDescriptionValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "(NL) Deze tweetalige databank (NL/FR) reikt definities aan voor circa 450 archivalische documenttypes uit de vroegmoderne periode. Ze is ontwikkeld met het expliciete doel om archiefgebruikers te ondersteunen bij de interpretatie van archivalische beschrijvingen in inventarissen. Gebruikers kunnen de relationele databank of een overzichtelijke PDF downloaden."
+                  }
+                },
+                {
+                  "dsDescriptionValue": {
+                    "typeName": "dsDescriptionValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "(FR) Cette base de données bilingue (NL/FR) propose des définitions pour environ 450 types de documents archivistiques de la période moderne. Elle a été développée dans le but explicite de soutenir les utilisateurs d'archives dans l'interprétation des descriptions archivistiques dans les instruments de recherche. Les utilisateurs peuvent télécharger la base de données ou un document PDF dérivé."
+                  }
+                },
+                {
+                  "dsDescriptionValue": {
+                    "typeName": "dsDescriptionValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "(ENG) This bilingual dataset (Dutch/French) offers definitions for approximately 450 archival document types from the early modern period. It was developed with the explicit purpose of supporting archive users in the interpretation of archival descriptions in finding aids. Users can download the database or a derived PDF document."
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "subject",
+              "multiple": true,
+              "typeClass": "controlledVocabulary",
+              "value": [
+                "Arts and Humanities"
+              ]
+            },
+            {
+              "typeName": "keyword",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Early Modern Period"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Archives"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Archival sources"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Controlled vocabularies"
+                  }
+                },
+                {
+                  "keywordValue": {
+                    "typeName": "keywordValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Thesaurus"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "topicClassification",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "topicClassValue": {
+                    "typeName": "topicClassValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "History"
+                  },
+                  "topicClassVocab": {
+                    "typeName": "topicClassVocab",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "CESSDA"
+                  },
+                  "topicClassVocabURI": {
+                    "typeName": "topicClassVocabURI",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "https://vocabularies.cessda.eu/vocabulary/TopicClassification"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "publication",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "publicationCitation": {
+                    "typeName": "publicationCitation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Vrancken V., 'Databank TEMAS als brug tussen archiefontsluiting en historisch onderzoek', in <i>Ten dienste van de gebruiker. Over de zoekinstrumenten ontwikkeld door archivarissen en bibliothecarissen. Akten van het colloquium van 8 december 2017</i> (<i>Archief en Bibliotheekwezen in België</i>. Extranummer, nr. 105), Brussel, 2019, p. 113-123."
+                  }
+                },
+                {
+                  "publicationCitation": {
+                    "typeName": "publicationCitation",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Vrancken V., 'La plateforme de connaissances TEMAS. Une clé pour accéder aux archives des Temps modernes' / 'Kennisplatform TEMAS. Sleutel tot de rijkdom van vroegmoderne archieven', in <i>Science Connection</i>, 59 (2018), p. 39-42."
+                  },
+                  "publicationURL": {
+                    "typeName": "publicationURL",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "http://www.belspo.be/belspo/organisation/publ/pub_ostc/sciencecon/59sci_fr.pdf"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "notesText",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "In creating this database, we were able to rely on the expertise and support of many colleagues. Therefore, we would like to express our sincere gratitude to Eddy Put, Erik Aerts (KU Leuven) and Johan Verberckmoes (KU Leuven), the supportive and devoted  supervisors of this project; our colleagues Hendrik Callewier, Marc Carnier, Johan Dambruyne, Emma D’Haene, Lieve De Mecheleer, Rombout Nijssen, Michel Oosterbosch, Annelies Somers, Marc Therry, Karel Velle, Joke Verfaillie & Bart Willems; lecturers in heuristics of the Early modern period, in particular Guido Marnef (University of Antwerp), René Vermeir (Ghent University), Anne Winter (VUB), Violet Soen & Werner Thomas (KU Leuven); the archivists of the city archives of Antwerp, Bruges, Ghent, Louvain and Mechelen, specifically Marie Juliette Marinus (Antwerp), Jan D’hondt (Bruges), Pieter-Jan Lachaert, Tom Haeck & Guy Dupont (Ghent), Marika Ceunen (Louvain), Willy Van de Vijver & Erwin Steegen (Mechelen); as well as Louis Berkvens, Bram De Ridder, Dave De Ruysscher, Bernard Desmaele, Gustaaf Janssens, Georges Martyn & Paul Nève. ---<br><br>\r\n\r\nA special thanks goes to Emmanuel Bodart, Bernard Desmaele, Sébastien Dubois, Marc Libert & Pascal Neckebrouck, who worked with particular dedication on the French translation of TEMAS. Their work led to a thorough revision, which improved the quality of the entire database."
+            },
+            {
+              "typeName": "language",
+              "multiple": true,
+              "typeClass": "controlledVocabulary",
+              "value": [
+                "Dutch",
+                "French"
+              ]
+            },
+            {
+              "typeName": "grantNumber",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "grantNumberAgency": {
+                    "typeName": "grantNumberAgency",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Belgian Science Policy Office (BELSPO)"
+                  },
+                  "grantNumberValue": {
+                    "typeName": "grantNumberValue",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "BR/165/PI/TEMAS"
+                  }
+                }
+              ]
+            },
+            {
+              "typeName": "depositor",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "Vrancken, Valerie"
+            },
+            {
+              "typeName": "dateOfDeposit",
+              "multiple": false,
+              "typeClass": "primitive",
+              "value": "2021-06-03"
+            },
+            {
+              "typeName": "software",
+              "multiple": true,
+              "typeClass": "compound",
+              "value": [
+                {
+                  "softwareName": {
+                    "typeName": "softwareName",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "Microsoft Access"
+                  },
+                  "softwareVersion": {
+                    "typeName": "softwareVersion",
+                    "multiple": false,
+                    "typeClass": "primitive",
+                    "value": "2007-2010"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "geospatial": {
+          "displayName": "Geospatial Metadata",
+          "fields": [
+            
+          ]
+        }
+      },
+      "files": [
+        {
+          "description": "PDF version of TEMAS (French)",
+          "label": "Database_TEMAS_V. 1.0_FR_SODHA.pdf",
+          "restricted": false,
+          "version": 1,
+          "datasetVersionId": 417,
+          "dataFile": {
+            "id": 2440,
+            "persistentId": "",
+            "pidURL": "",
+            "filename": "Database_TEMAS_V. 1.0_FR_SODHA.pdf",
+            "contentType": "application/pdf",
+            "filesize": 507118,
+            "description": "PDF version of TEMAS (French)",
+            "storageIdentifier": "file://179d265bc40-466bbef5023b",
+            "rootDataFileId": -1,
+            "md5": "feccb6ef49d636e75fb460264eb59ec8",
+            "checksum": {
+              "type": "MD5",
+              "value": "feccb6ef49d636e75fb460264eb59ec8"
+            },
+            "creationDate": "2021-06-03"
+          }
+        },
+        {
+          "description": "PDF version of TEMAS (Dutch)",
+          "label": "Database_TEMAS_V. 1.0_NL_SODHA.pdf",
+          "restricted": false,
+          "version": 1,
+          "datasetVersionId": 417,
+          "dataFile": {
+            "id": 2441,
+            "persistentId": "",
+            "pidURL": "",
+            "filename": "Database_TEMAS_V. 1.0_NL_SODHA.pdf",
+            "contentType": "application/pdf",
+            "filesize": 515998,
+            "description": "PDF version of TEMAS (Dutch)",
+            "storageIdentifier": "file://179d265c8df-8b4688f5e133",
+            "rootDataFileId": -1,
+            "md5": "2434a85e2363c52752580be7897153a8",
+            "checksum": {
+              "type": "MD5",
+              "value": "2434a85e2363c52752580be7897153a8"
+            },
+            "creationDate": "2021-06-03"
+          }
+        },
+        {
+          "description": "Access database of TEMAS",
+          "label": "Database TEMAS_V. 1.0_SODHA.accdb",
+          "restricted": false,
+          "version": 1,
+          "datasetVersionId": 417,
+          "dataFile": {
+            "id": 2442,
+            "persistentId": "",
+            "pidURL": "",
+            "filename": "Database TEMAS_V. 1.0_SODHA.accdb",
+            "contentType": "application/msaccess",
+            "filesize": 8650752,
+            "description": "Access database of TEMAS",
+            "storageIdentifier": "file://179d265b7f5-4f4dbf3ea456",
+            "rootDataFileId": -1,
+            "md5": "42f478c083073439666e9fdf0d8d1f31",
+            "checksum": {
+              "type": "MD5",
+              "value": "42f478c083073439666e9fdf0d8d1f31"
+            },
+            "creationDate": "2021-06-03"
+          }
+        }
+      ]
+    }
+  }
+}
