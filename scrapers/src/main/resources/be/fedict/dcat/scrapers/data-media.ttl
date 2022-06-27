@@ -7,7 +7,7 @@
 	skos:prefLabel "AIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/x-aiff> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "AIFF" .
+	skos:altLabel "AIFF", "audio/x-aiff" .
 
 <http://data.gov.be/en/taxonomy/term/1>
 	skos:prefLabel "CSV" ;
@@ -16,6 +16,7 @@
 	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
 					<http://publications.europa.eu/resource/authority/file-type/CSV>,
+					"text/comma-separated-values",
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
 <http://data.gov.be/en/taxonomy/term/429>
@@ -40,13 +41,13 @@
 	skos:prefLabel "DOC" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/msword> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOC> ;
-	skos:altLabel "DOC", "doc" .
+	skos:altLabel "DOC", "doc", "application/msword" .
 
 <http://data.gov.be/en/taxonomy/term/149>
 	skos:prefLabel "DOCX" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.wordprocessingml.document> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DOCX> ;
-	skos:altLabel "DOCX", "docx" .
+	skos:altLabel "DOCX", "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" .
 
 <http://data.gov.be/en/taxonomy/term/207>
 	skos:prefLabel "DWCA" ;
@@ -119,25 +120,39 @@
 	skos:prefLabel "MDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-access> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
-	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "ACCDB (ZIP)", "MDB Microsoft Access", "AccessDB", "Access" .
+	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "ACCDB (ZIP)", "MDB Microsoft Access", "AccessDB", 
+		"application/msaccess", "Access" .
 
 <http://data.gov.be/en/taxonomy/term/431>
 	skos:prefLabel "MPEG4" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/mp4> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MPEG4> ;
-	skos:altLabel "MPEG4" .
+	skos:altLabel "MPEG4", "video/mp4" .
+
+<http://data.gov.be/en/taxonomy/term/446>
+	skos:prefLabel "MP3" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mpeg> ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "audio/mpeg".
+
+<http://data.gov.be/en/taxonomy/term/447>
+	skos:prefLabel "M4A" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mp4> ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
+
 
 <http://data.gov.be/en/taxonomy/term/432>
 	skos:prefLabel "MOV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/quicktime> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "MOV", "Quicktime" .
+	skos:altLabel "MOV", "Quicktime", "video/quicktime", "mov" .
 
 <http://data.gov.be/en/taxonomy/term/434>
 	skos:prefLabel "M4V" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/x-m4> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "M4V" .
+	skos:altLabel "M4V", "video/x-m4v" .
 
 <http://data.gov.be/en/taxonomy/term/419>
 	skos:prefLabel "N-Triples" ;
@@ -155,7 +170,7 @@
 	skos:prefLabel "ODS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.spreadsheet> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/ODS> ;
-	skos:altLabel "ODS", "ods" .
+	skos:altLabel "ODS", "ods", "application/vnd.oasis.opendocument.spreadsheet" .
 
 <http://data.gov.be/en/taxonomy/term/402>
 	skos:prefLabel "OV2" ;
@@ -167,7 +182,7 @@
 	skos:prefLabel "PDF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/pdf> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/PDF> ;
-	skos:altLabel "PDF", "pdf" , <http://data.gov.be/.well-known/genid/fmt/pdf> .
+	skos:altLabel "PDF", "pdf" , <http://data.gov.be/.well-known/genid/fmt/pdf>, "application/pdf" .
 	
 <http://data.gov.be/en/taxonomy/term/247>
 	skos:prefLabel "PNG" ;
@@ -204,7 +219,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.shp> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/SHP> ;
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "Shape", "shape", "shapefile", "shape file", 
-			"shape fies", "shapefiile",
+			"shape fies", "shapefiile", "application/zipped-shapefile",
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
 			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)" .
 	
@@ -218,7 +233,7 @@
 	skos:prefLabel "JPG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jpeg> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/JPEG> ;
-	skos:altLabel "JPG", "JPEG2000", "jpg", "JPEG", "jpeg" .
+	skos:altLabel "JPG", "JPEG2000", "jpg", "JPEG", "jpeg", "image/jpeg" .
 
 <http://data.gov.be/en/taxonomy/term/170>
 	skos:prefLabel "JP2" ;
@@ -257,7 +272,7 @@
 	skos:prefLabel "WAV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/vnd.wave> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "WAV", "audio/x-wav" .
+	skos:altLabel "WAV", "audio/x-wav", "audio/vnd.wave" .
 
 <http://data.gov.be/en/taxonomy/term/63>
 	skos:prefLabel "WCS" ;
@@ -290,9 +305,10 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> ; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XLSX> ;
 	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx", "M XLSX", "F XLSX", 
-			"Excel XLSX",
-			"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
-			"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx> .
+		"Excel XLSX",
+		"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
+		"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx>,
+		"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" .
 	
 <http://data.gov.be/en/taxonomy/term/2>
 	skos:prefLabel "XML" ;

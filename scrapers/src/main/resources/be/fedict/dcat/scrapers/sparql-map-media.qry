@@ -8,8 +8,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
-	{	?dist ?prop ?label . 
-		?dist dcterms:FileFormat ?fmt }
+	{	?dist ?prop ?label }
 INSERT 
 	{ 	?dist dgov:mediaType ?drupal .
 		?dist dcterms:format ?auth .
@@ -23,6 +22,5 @@ WHERE
 		?drupal skos:prefLabel ?imt .
 		?drupal skos:closeMatch ?mime .
 		?drupal skos:exactMatch ?auth .
-		OPTIONAL { ?dist dcterms:FileFormat ?fmt }
-		VALUES ?prop { dcat:mediaType dcterms:format }
+		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format }
 	}

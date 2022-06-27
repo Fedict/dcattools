@@ -18,7 +18,8 @@
 	skos:altLabel "Ghent University", "UGent", "IDLab - Ghent Unviersity" .
 
 <http://data.gov.be/en/taxonomy/term/435>
-	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, "Catholic University of Louvain"@en ;
+	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, 
+			"Catholic University of Louvain"@en, "Université catholique de Louvain & European University Institute" ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0419052272> ;
 	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain" .
 
@@ -26,7 +27,7 @@
 	skos:prefLabel"Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, "State Archives of Belgium"@en ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0875388475> ;
 	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
-				"Belgian State Archives", "State Archives Belgium" .
+				"Belgian State Archives", "State Archives Belgium", "AGR" .
 
 <http://data.gov.be/en/taxonomy/term/438>
 	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@fr ;
