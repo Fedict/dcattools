@@ -14,7 +14,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/csv> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
 	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
-					"M TXT (ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
+					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
 					<http://publications.europa.eu/resource/authority/file-type/CSV>,
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
@@ -119,7 +119,7 @@
 	skos:prefLabel "MDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-access> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/MDB> ;
-	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "MDB Microsoft Access", "AccessDB", "Access" .
+	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "ACCDB (ZIP)", "MDB Microsoft Access", "AccessDB", "Access" .
 
 <http://data.gov.be/en/taxonomy/term/431>
 	skos:prefLabel "MPEG4" ;
