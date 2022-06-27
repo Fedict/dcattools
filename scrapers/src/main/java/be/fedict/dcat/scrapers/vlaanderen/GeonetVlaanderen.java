@@ -55,14 +55,18 @@ public class GeonetVlaanderen extends GeonetHydra {
 			Page page = cache.retrievePage(url).get("all");
 			// fix buggy input
 			try (InputStream in = new ByteArrayInputStream(page.getContent()
-									.replaceAll(
-										"(?s)<dct:spatial([^>]*?)?>(?!\\s*<dct:Location(.*?)>)(.+?)</dct:spatial>", 
-										"<dct:spatial><dct:Location$2>$3</dct:Location></dct:spatial>")
-									.replaceAll("rdf:resoure", "rdf:resource")
+						//			.replaceAll(
+						//				"(?s)<dct:spatial([^>]*?)?>(?!\\s*<dct:Location(.*?)>)(.+?)</dct:spatial>", 
+						//				"<dct:spatial><dct:Location$2>$3</dct:Location></dct:spatial>")
+						//			.replaceAll("rdf:resoure", "rdf:resource")
 									.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
-				throw new RepositoryException(ex);
+				if (ex.getMessage().contains("Premature end")) {
+					logger.warn("Premature end of file in {}", url);
+				} else {
+					throw new RepositoryException(ex);
+				}
 			}
 		}
 		generateCatalog(store);

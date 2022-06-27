@@ -1,0 +1,10 @@
+# Delete rights statements
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:rights ?rights }
+WHERE
+	{ 	?s dcterms:rights ?rights
+		FILTER (ISLITERAL(?rights) && CONTAINS(?rights, "["))
+	}
