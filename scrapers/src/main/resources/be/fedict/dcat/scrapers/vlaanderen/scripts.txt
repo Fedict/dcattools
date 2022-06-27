@@ -48,6 +48,7 @@ vlaanderen/sparql-default-contact.qry
 vlaanderen/sparql-default-license.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
+vlaanderen/sparql-remove-rights.qry
 #clear-skos.qry
 vlaanderen/data-org.ttl
 sparql-map-org.qry

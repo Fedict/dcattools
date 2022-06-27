@@ -12,7 +12,7 @@ WHERE
 			BIND (STR(?dist) as ?str)
 		} UNION {
 			?dist a dcat:Distribution .
-			?dist dcat:downloadURL ?url
+			?dist dcat:downloadURL|dcat:accessURL ?url
 			BIND (STR(?url) as ?str)
 		} UNION {
 			?dist a dcat:Distribution .
@@ -21,7 +21,7 @@ WHERE
 		}
 		VALUES ?ext { ".geojson" "-geojson" ".json" "-json" ".csv" "-csv" ".kml" ".xlsx" ".shp" "-shp" 
 					".xml" "-xml" "/jsonld" "/ttl" "/nt" ".powerbi" "/wms" ".zip" "WFS-" "KML " "WMS-" 
-					".jpg" ".jpeg" ".JPG" ".png" }
+					".jpg" ".jpeg" ".JPG" ".png" "/kml" "/wfs" "/excel" "=WMS" }
 		BIND (IF(CONTAINS(?str, ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
 		FILTER NOT EXISTS { ?dist dcterms:format ?fmt } 
 	}
