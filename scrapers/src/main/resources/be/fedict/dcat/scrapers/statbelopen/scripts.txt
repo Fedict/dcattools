@@ -9,4 +9,5 @@ clear-skos.qry
 statbelopen/sparql-license.qry
 data-media.ttl
 sparql-map-media.qry
+statbelopen/sparql-compression-format.qry
 clear-skos.qry
