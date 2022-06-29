@@ -605,15 +605,15 @@ public class Drupal {
 	 * @return
 	 */
 	private static String getLink(Map<Resource, ListMultimap<String, String>> dist, IRI property) {
-		String link = "";
-
 		String l = Storage.getOne(dist, property, "");
 		// don't add empty links or generated "well-known" skolemized links
-		if (!l.isEmpty() && !l.contains(".well-known/genid")) {
-			link = l.replace(" ", "%20");
-			if (link.length() > Drupal.LEN_LINK) {
-				logger.warn("Download URL too long ({}): {} ", l.length(), l);
-			}
+		if (l.isEmpty() || l.contains(".well-known/genid")) {
+			return "";
+		}
+		
+		String link = l.replace(" ", "%20");
+		if (link.length() > Drupal.LEN_LINK) {
+			logger.warn("Download URL too long ({}): {} ", l.length(), l);
 		}
 		return link;
 	}
