@@ -617,18 +617,18 @@ public class Drupal {
 	 * @param builder
 	 * @param uris
 	 * @param lang
-	 * @param landing
+	 * @param landings
 	 * @throws RepositoryException
 	 */
-	private void addDists(JsonObjectBuilder builder, List<String> uris, String lang, String landing)
+	private void addDists(JsonObjectBuilder builder, List<String> uris, String lang, List<String> landings)
 		throws RepositoryException {
 		HashSet<String> accesses = new HashSet<>();
 		HashSet<String> downloads = new HashSet<>();
 		HashSet<String> rights = new HashSet<>();
 		HashSet<String> types = new HashSet<>();
 
-		if (landing != null && !landing.isEmpty()) {
-			accesses.add(landing);
+		if (!landings.isEmpty()) {
+			accesses.addAll(landings);
 		}
 
 		for (String uri : uris) {
@@ -637,7 +637,9 @@ public class Drupal {
 			if (hasLang(dist, lang) || hasLang(dist, "en")) {
 				// Data.gov.be displays this information as fields on dataset
 				// not on distribution.
-				accesses.add(getLink(dist, DCAT.ACCESS_URL));
+				if (landings.isEmpty()) {
+					accesses.add(getLink(dist, DCAT.ACCESS_URL));
+				}
 				downloads.add(getLink(dist, DCAT.DOWNLOAD_URL));
 				rights.add(getLink(dist, DCTERMS.RIGHTS));
 				types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
@@ -692,11 +694,11 @@ public class Drupal {
 
 			addDataset(builder, dataset, lang);
 
-			String landingPage = Storage.getOne(dataset, DCAT.LANDING_PAGE, "");
+			List<String> landingPages = Storage.getMany(dataset, DCAT.LANDING_PAGE, "");
 
 			// Get DCAT distributions
 			List<String> dists = Storage.getMany(dataset, DCAT.HAS_DISTRIBUTION, "");
-			addDists(builder, dists, lang, landingPage);
+			addDists(builder, dists, lang, landingPages);
 
 			// Add new or update existing dataset ?
 			String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
