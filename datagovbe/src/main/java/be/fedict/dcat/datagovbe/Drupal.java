@@ -602,11 +602,12 @@ public class Drupal {
 		String link = "";
 
 		String l = Storage.getOne(dist, property, "");
-		if (!l.isEmpty()) {
+		// don't add empty links or generated "well-known" skolemized links
+		if (!l.isEmpty() && !l.contains(".well-known/genid")) {
 			link = l.replace(" ", "%20");
-		}
-		if (link.length() > Drupal.LEN_LINK) {
-			logger.warn("Download URL too long ({}): {} ", l.length(), l);
+			if (link.length() > Drupal.LEN_LINK) {
+				logger.warn("Download URL too long ({}): {} ", l.length(), l);
+			}
 		}
 		return link;
 	}
