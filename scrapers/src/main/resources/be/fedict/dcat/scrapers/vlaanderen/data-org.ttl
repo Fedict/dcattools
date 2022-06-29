@@ -31,35 +31,40 @@
 	"Flanders Environment Agency", "VMM", "Flanders Environment Agency (VMM)" .
 
 <http://data.gov.be/en/taxonomy/term/93>
-	skos:prefLabel "Departement CSJM"@nl	;
+	skos:prefLabel "Departement CSJM"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471> ;
 	skos:altLabel "Departement Cultuur, Jeugd en Media", "DCJM" .
 
 <http://data.gov.be/en/taxonomy/term/95>
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0225944375> ;
-	skos:altLabel "Toerisme Vlaanderen", "Toerisme Vlaandeen" .
+	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
 	
 <http://data.gov.be/en/taxonomy/term/96>
-	skos:prefLabel "Departement RV"@nl ;
+	skos:prefLabel "Departement Ruimte Vlaanderen"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199336923> ;
 	skos:altLabel "Vlaamse overheid - Departement Ruimte Vlaanderen" .
 	
 <http://data.gov.be/en/taxonomy/term/98>
-	skos:prefLabel "Departement MOW"@nl ;
+	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", "Dienst Mobilteit", "Dienst mobiliteit",
-	"Departement Mobiliteit en Openbare Werken, afdeling Waterbouwkundig Laboratorium", "DMOW",
+	"Departement Mobiliteit en Openbare Werken, afdeling Waterbouwkundig Laboratorium", "DMOW"@nl,
 	"Beleidsdomein Mobiliteit en Openbare Werken", "Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning", 
 	"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang" .
 
+<http://data.gov.be/en/taxonomy/term/448>
+	skos:prefLabel "Databank Ondergrond Vlaanderen (DOV)"@nl ;
+	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2143719695>;
+	skos:altLabel "Databank Ondergrond Vlaanderen (DOV)"@nl .
+
 <http://data.gov.be/en/taxonomy/term/108>
-	skos:prefLabel "Departement OV"@nl ;
+	skos:prefLabel "Departement Onderwijs en Vorming"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199310989> ;
 	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming" .
 
 <http://data.gov.be/en/taxonomy/term/115>
-	skos:prefLabel "Departement LV"@nl ;
+	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199324550> ;
 	skos:altLabel "Departement Landbouw en Visserij" .
 
@@ -91,7 +96,8 @@
 <http://data.gov.be/en/taxonomy/term/128>
 	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207500123> ;
-	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV" .
+	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV",
+		"opendatabeheer" .
 
 <http://data.gov.be/en/taxonomy/term/130>
 	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
@@ -124,9 +130,9 @@
 	skos:altLabel "Natuurpunt" .
 	
 <http://data.gov.be/en/taxonomy/term/213>
-	skos:prefLabel "Informatie Vlaanderen"@nl ;
+	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804> ;
-	skos:altLabel "agentschap Informatie Vlaanderen", "Informatie Vlaanderen", "Helpdesk Informatie Vlaanderen" .
+	skos:altLabel "agentschap Digitaal Vlaanderen"@nl .
 
 <http://data.gov.be/en/taxonomy/term/214>
 	skos:prefLabel "V-ICT-OR"@nl ;
@@ -160,7 +166,7 @@
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Beleidsontwikkeling en Juridische Ondersteuning",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -projecten",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving",
-	"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen" .
+	"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen"@nl .
 
 <http://data.gov.be/en/taxonomy/term/361>
 	skos:prefLabel "Vlaams Energie Agentschap"@nl, "Flemish Energy Agency"@en ;
@@ -205,7 +211,7 @@
 <http://data.gov.be/en/taxonomy/term/375>
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2251007239> ;
-	skos:altLabel "Agentschap Innoveren & Ondernemen", "VLAIO" .
+	skos:altLabel "Agentschap Innoveren & Ondernemen"@nl, "VLAIO" .
 	
 <http://data.gov.be/en/taxonomy/term/376>
 	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
@@ -236,8 +242,8 @@
 	skos:prefLabel "Agentschap Jongerenwelzijn"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199318909> ;
 	skos:altLabel "Agentschap Jongerenwelzijn" .
-	
+
 <http://data.gov.be/en/taxonomy/term/393>
 	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
-	skos:altLabel "Agentschap Wegen en Verkeer", "AWV" .
+	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2143729494> ;
+	skos:altLabel "Agentschap Wegen en Verkeer"@nl, "AWV" .
