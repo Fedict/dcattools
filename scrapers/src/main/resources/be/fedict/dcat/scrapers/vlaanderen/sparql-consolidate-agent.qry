@@ -22,4 +22,5 @@ WHERE
 				CONCAT("http://data.gov.be/.well-known/genid/publ/", SHA1(LCASE(?name)))
 			)
 		AS ?publ)
+		FILTER (?p != foaf:name)
 	}
