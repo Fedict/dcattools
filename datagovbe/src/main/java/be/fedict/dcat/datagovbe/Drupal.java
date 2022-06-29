@@ -520,7 +520,13 @@ public class Drupal {
 		if (!time.isEmpty()) {
 			m = store.queryProperties(store.getURI(time));
 			String start = Storage.getOne(m, SCHEMA.START_DATE, "");
+			if (start.isEmpty()) {
+				start = Storage.getOne(m, DCAT.START_DATE, "");
+			}
 			String end = Storage.getOne(m, SCHEMA.END_DATE, "");
+			if (end.isEmpty()) {
+				end = Storage.getOne(m, DCAT.END_DATE, "");
+			}
 			time = start + " / " + end;
 		}
 		return time;
