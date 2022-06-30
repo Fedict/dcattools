@@ -2,10 +2,18 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/vlaanderen/forum/contact>  }
+	{ 	?dataset dcat:contactPoint ?publ .
+		?publ vcard:fn ?name .
+		?public vcard:hasEmail ?mail
+	}
 WHERE
-	{ 	?dataset a dcat:Dataset
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcat:publisher ?publ .
+		?publ foaf:name ?name .
+		?publ foaf:mbox ?mail .
 		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } 
 	}
