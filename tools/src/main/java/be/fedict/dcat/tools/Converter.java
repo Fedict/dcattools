@@ -81,7 +81,6 @@ public class Converter {
         
         int code = 0;
         Repository repo = new SailRepository(new MemoryStore());
-		repo.initialize();
         
         try (RepositoryConnection con = repo.getConnection()) {
             con.add(new File(args[0]), "http://data.gov.be", fmtin.get());

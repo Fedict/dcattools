@@ -7,21 +7,21 @@ PREFIX eu: <http://data.europa.eu/930/>
 
 DELETE 
 	{	?dataset ?rel ?gencontact .
-		?gencontact vcard:organization-name ?name .
+		?gencontact vcard:fn ?name .
 		?gencontact ?p ?o }
 INSERT
 	{	?dataset ?rel ?contact .
 		?contact a vcard:Organization .
-		?contact vcard:organization-name ?name .
+		?contact vcard:fn ?name .
 		?contact ?p ?o }
 WHERE
 	{ 	?dataset ?rel ?gencontact .
 		?gencontact ?p ?o .
-		?gencontact vcard:organization-name ?name .
+		?gencontact vcard:fn ?name .
 		VALUES ?rel { dcat:contactPoint eu:distributor }
 		BIND(IRI(
 				CONCAT("http://data.gov.be/.well-known/genid/contact/", SHA1(LCASE(?name)))
 			)
 		AS ?contact)
-		FILTER(?p != vcard:organization-name)
+		FILTER(?p != vcard:fn)
 	}

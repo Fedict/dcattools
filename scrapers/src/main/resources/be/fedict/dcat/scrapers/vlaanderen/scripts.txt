@@ -1,10 +1,11 @@
 # extra queries to be executed and data to be loaded
 vlaanderen/sparql-remove-hydra.qry
+vlaanderen/sparql-default-contact.qry
 vlaanderen/data-org.ttl
 sparql-map-org.qry
 vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-consolidate-address2.qry
-vlaanderen/sparql-consolidate-contact.qry
+#vlaanderen/sparql-consolidate-contact.qry
 vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-bbox.qry
 vlaanderen/sparql-consolidate-date.qry
@@ -30,9 +31,9 @@ vlaanderen/sparql-language.qry
 vlaanderen/sparql-landingpage.qry
 # vlaanderen/sparql-access-to-downloadurl.qry
 sparql-dist-accessurl.qry
-# vlaanderen/data-geo.ttl
-# sparql-map-geo.qry
-# vlaanderen/sparql-default-geo.qry
+vlaanderen/data-geo.ttl
+sparql-map-geo.qry
+vlaanderen/sparql-default-geo.qry
 # vlaanderen/sparql-fix-theme.qry
 vlaanderen/data-theme.ttl
 # sparql-map-theme.qry
@@ -44,11 +45,11 @@ vlaanderen/sparql-map-theme2.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 vlaanderen/sparql-fix-frequency.qry
-vlaanderen/data-contact.ttl
+#vlaanderen/data-contact.ttl
 #vlaanderen/sparql-default-contact.qry
-vlaanderen/sparql-default-license.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
+vlaanderen/sparql-default-license.qry
 vlaanderen/sparql-remove-rights.qry
 clear-skos.qry
 sparql-date-type.qry
