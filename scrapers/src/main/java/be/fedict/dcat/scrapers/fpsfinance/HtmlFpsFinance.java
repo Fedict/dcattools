@@ -62,8 +62,11 @@ public class HtmlFpsFinance extends Html {
     private final static String LINK_THEME = "nav.block-menu-doormat div ul.menu li ul.menu li a";
 	private final static String LANG_LINK = "language-link";
 	private final static String TITLE = "h1.page-title";
-	private final static String HEAD_DATASETS = "article h2";
-	private final static String LINK_DISTS = "li span a";
+	private final static String DESC = "div.field-type-text-with-summary";
+	private final static String HEAD_DATASETS = "div.field-name-field-question";
+	private final static String BODY_DATASETS = "div.field-name-field-answer";
+	private final static String TITLE_DIST = "p strong, p span[style*=bolder]";
+	private final static String LINK_DISTS = "p span.file-with-file-info a";
 
 	/**
 	 * Switch to another language
@@ -113,6 +116,15 @@ public class HtmlFpsFinance extends Html {
 				sleep();
 			}
 		}
+	}
+	
+	private String findTitle(Element a) {
+		Elements paras = a.parent().parent().previousElementSiblings();
+		Element el = paras.select(TITLE_DIST).first();
+		if (el != null) {
+			return el.ownText();
+		}
+		return "";
 	}
 	
 	/**
@@ -169,8 +181,8 @@ public class HtmlFpsFinance extends Html {
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
-		store.add(dist, DCTERMS.DESCRIPTION, text, lang);
+		store.add(dist, DCTERMS.TITLE, text, lang);
+		store.add(dist, DCTERMS.DESCRIPTION, link.ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
 		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
@@ -203,44 +215,61 @@ public class HtmlFpsFinance extends Html {
 				continue;
 			}
 			Element eltitle = doc.select(TITLE).first();
-	
+			Element eldesc = doc.select(DESC).first();
+			
 			Elements heads = doc.select(HEAD_DATASETS);
-			if (heads == null) {
+			if (heads == null || heads.isEmpty()) {
 				logger.warn("No dataset head element");
 				continue;
 			}
-	
+
 			// create a id for dataset based on the order of the dataset on the page
 			int i = 0;
 			for(Element h: heads) {
 				i++;
 				String head = h.text();
 				String title = eltitle.text() + ": " + head;
-				String desc = title;
+
+				String desc = title;				
+				if (eldesc != null) {
+					desc = eldesc.text();
+				}
+
+				Element body = h.nextElementSibling();
+				if (body == null) {
+					logger.warn("Empty body");
+					continue;
+				}
+
+				Elements dists = body.select(LINK_DISTS);
+				if (dists == null || dists.isEmpty()) {
+					logger.warn("No distribution link element");
+					continue;
+				}
 				
-				Element next = h.nextElementSibling();
-				if (next != null) {
-					Elements dists = next.select(LINK_DISTS);
-					if (dists == null || dists.isEmpty()) {
-						logger.warn("No distribution link element");
+				// only add datasets if there are distributions available
+				IRI dataset = store.getURI(makeDatasetURL(id + i).toString());
+				logger.info("Generating dataset {}", dataset.toString());
+		
+				store.add(dataset, RDF.TYPE, DCAT.DATASET);
+				store.add(dataset, DCTERMS.IDENTIFIER, id + i);
+				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+				store.add(dataset, DCTERMS.TITLE, title, lang);
+				store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+
+				// create a id for distribution based on the order of the distribution on the page
+				int j = 0;
+				for(Element d: dists) {
+					// don't add distribution for separate metadata
+					String distTitle = d.ownText().trim();
+					if (distTitle.contains("metadata") || distTitle.contains("métadonnées")) {
 						continue;
 					}
-					// only add datasets if there are distributions available
-					IRI dataset = store.getURI(makeDatasetURL(id + i).toString());
-					logger.info("Generating dataset {}", dataset.toString());
-		
-					store.add(dataset, RDF.TYPE, DCAT.DATASET);
-					store.add(dataset, DCTERMS.IDENTIFIER, id + i);
-					store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-					store.add(dataset, DCTERMS.TITLE, title, lang);
-					store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-
-					// create a id for distribution based on the order of the distribution on the page
-					int j = 0;
-					for(Element d: dists) {
-						j++;
-						generateDist(store, dataset, j,  p.getUrl(), d.ownText(), d, lang);
+					if (distTitle.startsWith("data") || distTitle.startsWith("données")) {
+						distTitle = findTitle(d);
 					}
+					j++;
+					generateDist(store, dataset, j,  p.getUrl(), distTitle, d, lang);
 				}
 			}
 		}
