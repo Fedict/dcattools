@@ -36,12 +36,15 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -60,6 +63,9 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  * @author Bart Hanssens
  */
 public class DcatHealthData extends Dcat {
+
+	private final static String KEYWORDS = "/api/1/metastore/schemas/keyword/items";
+			
 	private final static Map<String,String> CONTEXT = new HashMap<>();
 	
 	static {
@@ -86,11 +92,9 @@ public class DcatHealthData extends Dcat {
 		CONTEXT.put("downloadURL", DCAT.DOWNLOAD_URL.toString());
 		CONTEXT.put("keyword", DCAT.KEYWORD.toString());
 		CONTEXT.put("theme", DCAT.THEME.toString());
-		CONTEXT.put("%Ref:downloadURL", DCAT.DOWNLOAD_URL.toString());
 		CONTEXT.put("references", DCTERMS.REFERENCES.toString());
 		CONTEXT.put("data", RDFS.LABEL.toString());
 	}
-	private final static String DISTS = "distribution";
 
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
@@ -104,16 +108,17 @@ public class DcatHealthData extends Dcat {
 		} catch (IOException ex) {
 			throw new RepositoryException(ex);
 		}
-		
+
+		// replace references to keyword by keyword label
+		Map<String,String> keywords = cache.retrieveMap(getKeywordURL());
 		for(Map dataset: datasets) {
-			dataset.remove("spatial");
-			List<Map> dists = (List<Map>) dataset.get(DISTS);
-			if (dists != null) {
-				for(Map dist: dists) {
-					dist.remove("%Ref:downloadURL");
-				}
+			List<String> refs = (List<String>) dataset.get("keyword");
+			if (refs != null) {
+				List<String> keyws = refs.stream().map(r -> keywords.getOrDefault(r, "")).collect(Collectors.toList());
+				dataset.replace("keyword", keyws);
 			}
 		}
+
 		Map<String,Object> jsonld = new HashMap<>();
 		jsonld.put("@context", CONTEXT);
 		jsonld.put("@graph", datasets);
@@ -131,6 +136,55 @@ public class DcatHealthData extends Dcat {
 			throw new RepositoryException(ex);
 		}
 		generateCatalog(store);
+	}
+
+	/**
+	 * Build URL for retrieving keyword definitions
+	 * 
+	 * @return URL
+	 * @throws IOException 
+	 */
+	private URL getKeywordURL() throws MalformedURLException {
+		try {
+			return getBase().toURI().resolve(KEYWORDS).toURL();
+		} catch (URISyntaxException ex) {
+			throw new MalformedURLException(ex.getMessage());
+		}
+	}
+		
+	/**
+	 * Get a list of keyword id/label
+	 * 
+	 * @return
+	 * @throws URISyntaxException
+	 * @throws IOException 
+	 */
+	private Map<String,String> getKeywords(URL url) throws IOException {
+		Map<String,String> keywords = new HashMap<>();
+
+		logger.info("Retrieving keywords {}", url.toString());
+		try (InputStream in = url.openStream()) {
+			List<Map> data = (List<Map>) JsonUtils.fromInputStream(in);
+			data.forEach(k  -> keywords.put(k.get("identifier").toString(), k.get("data").toString()));
+		}
+		return keywords;
+	}
+
+	@Override
+	public void scrape() throws IOException {
+		logger.info("Start scraping");
+		Cache cache = getCache();
+	
+		Map<String, Page> front = cache.retrievePage(getBase());
+		if (front.keySet().isEmpty()) {
+			// there is an issue with '?show-reference-ids=true', so retrieve the keyword labels separately
+			URL url = getKeywordURL();
+			Map<String,String> keywords = getKeywords(url);
+	
+			cache.storeMap(url, keywords);
+			scrapeCat(cache);
+		}
+		logger.info("Done scraping");
 	}
 	
 	/**
