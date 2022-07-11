@@ -1,9 +1,10 @@
 # extra queries to be executed and data to be loaded 
 fpsfinance/data-publ-contact.ttl
-fpsfinance/sparql-publ-contact.qry
+#fpsfinance/sparql-publ-contact.qry
 sparql-license-cczero.qry
+sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
-sparql-geo-belgium.qry
+#sparql-geo-belgium.qry
 data-media.ttl
-sparql-map-media.qry
+sparql-map-media-drupal.qry
 clear-skos.qry
