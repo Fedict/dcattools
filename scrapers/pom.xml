@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>2.22</version>
+        <version>2.23.0</version>
     </parent>
     <artifactId>scrapers</artifactId>
     <packaging>jar</packaging>
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.14.3</version>
+            <version>1.15.1</version>
         </dependency>
         <dependency>
             <groupId>javax.json</groupId>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.xmlbeam</groupId>
             <artifactId>xmlprojector</artifactId>
-            <version>1.4.20</version>
+            <version>1.4.23</version>
         </dependency>
         <dependency>
             <groupId>org.dom4j</groupId>
@@ -131,7 +131,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>2.22</version>
+    <version>2.23.0</version>
     <name>scrapers</name>
     <description>Various scrapers for Belgian data portals</description>
 </project>
