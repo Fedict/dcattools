@@ -10,8 +10,8 @@
 	foaf:name "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
 	foaf:homepage <https://finance.belgium.be> .
 	
-<http://data.gov.be/org/fodfinance/fod/contact>
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a vcard:Organization ;
 	vcard:fn "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
 	vcard:hasUrl <https://finance.belgium.be> ;
-	vcard:hasEmail <francis.adyns@minfin.fed.be> .
+	vcard:hasEmail <mailto:datadelivery@minfin.fed.be> .

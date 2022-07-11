@@ -295,7 +295,7 @@ public class Drupal {
 		String node = "";
 
 		String u = this.url.toString() + "/" + lang + "/" + Drupal.TYPE_DATA + "/" 
-			+ id.replace(".", "-").replace(":", "-");
+			+ id.replace(".", "-").replace(":", "-").replace(" ", "%20");
 
 		Request r = Request.Head(u);
 		if (proxy != null) {

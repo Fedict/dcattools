@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, FPS BOSA DG DT
+ * Copyright (c) 2022, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,30 +23,24 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.scrapers;
+package be.fedict.dcat.scrapers.fpsfinance;
 
-import be.fedict.dcat.helpers.Storage;
-
-import java.io.ByteArrayInputStream;
+import be.fedict.dcat.scrapers.Cache;
+import be.fedict.dcat.scrapers.Dcat;
+import be.fedict.dcat.scrapers.Page;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
+
 import java.util.Properties;
 
-import org.eclipse.rdf4j.repository.RepositoryException;
-import org.eclipse.rdf4j.rio.RDFFormat;
-import org.eclipse.rdf4j.rio.RDFParseException;
-
 /**
- * Generic DCAT
+ * DCAT file for BeST opendata
  *
+ * @see https://opendata.bosa.be/
  * @author Bart Hanssens
  */
-public abstract class Dcat extends BaseScraper {
-
+public class DcatFpsFinance extends Dcat {
+	
 	/**
 	 * Scrape DCAT catalog.
 	 *
@@ -56,50 +50,19 @@ public abstract class Dcat extends BaseScraper {
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL url = getBase();
 		String content = makeRequest(url);
+		// FIX incorrect mailto
+		content = content.replace("mailto=\"", "rdf:resource=\"mailto:");
 		cache.storePage(url, "all", new Page(url, content));
 	}
-
-	/**
-	 * Generate DCAT file
-	 *
-	 * @param cache
-	 * @param store
-	 * @throws RepositoryException
-	 * @throws MalformedURLException
-	 */
-	@Override
-	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-		Map<String, Page> map = cache.retrievePage(getBase());
-		String ttl = map.get("all").getContent();
-
-		// Load RDF file into store
-		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-			store.add(in, getBase().toString().endsWith("xml") ? RDFFormat.RDFXML : RDFFormat.TURTLE);
-		} catch (RDFParseException | IOException ex) {
-			throw new RepositoryException(ex);
-		}
-		generateCatalog(store);
-	}
-
-	@Override
-	public void scrape() throws IOException {
-		logger.info("Start scraping");
-		Cache cache = getCache();
-
-		Map<String, Page> front = cache.retrievePage(getBase());
-		if (front.keySet().isEmpty()) {
-			scrapeCat(cache);
-		}
-		logger.info("Done scraping");
-	}
-
+	
 	/**
 	 * Constructor
-	 *
-	 * @param prop
-	 * @throws IOException
+	 * 
+	 * @param prop 
+	 * @throws IOException 
 	 */
-	protected Dcat(Properties prop) throws IOException {
+	public DcatFpsFinance(Properties prop) throws IOException {
 		super(prop);
+		setName("fpsfinance");
 	}
 }
