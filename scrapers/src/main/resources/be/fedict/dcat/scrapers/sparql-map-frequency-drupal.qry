@@ -1,0 +1,14 @@
+# Add Drupal/data.gov.be-specific frequency when frequency is already correctly using a URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT 
+	{ 	?dist dgov:freq ?drupal .
+	}
+WHERE
+	{	?dist dcterms:accrualPeriodicity ?freq .
+		?drupal skos:exactMatch ?freq
+	}
