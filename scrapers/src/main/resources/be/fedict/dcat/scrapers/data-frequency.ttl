@@ -7,7 +7,7 @@
 	skos:prefLabel "Continuously"@en ;
 	skos:altLabel "continual", 
 		"http://publications.europa.eu/resource/authority/frequency/CONT" .
-	
+
 <http://data.gov.be/en/taxonomy/term/22>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
 	skos:prefLabel "Daily"@en ;

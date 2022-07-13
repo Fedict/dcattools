@@ -5,6 +5,8 @@ sparql-license-cczero.qry
 sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 #sparql-geo-belgium.qry
+data-frequency.ttl
+sparql-map-frequency-drupal.qry
 data-media.ttl
 sparql-map-media-drupal.qry
 clear-skos.qry
