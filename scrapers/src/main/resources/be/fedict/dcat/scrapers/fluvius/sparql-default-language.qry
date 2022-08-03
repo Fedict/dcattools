@@ -1,0 +1,12 @@
+# Set default language to English
+
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> }
+WHERE
+	{ 	?dataset a dcat:Dataset
+		FILTER NOT EXISTS { ?dataset dcterms:language ?lang }
+	}

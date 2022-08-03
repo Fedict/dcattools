@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0477445084>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/449> ;
+	foaf:name "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
+	foaf:homepage <https://www.fluvius.be> .
+	
+<http://data.gov.be/org/fluvius/contact>
+	a vcard:Organization ;
+	vcard:fn "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
+	vcard:hasUrl <https://www.fluvius.be> ;
+	vcard:hasEmail <mailto:info@fluvius.be> .

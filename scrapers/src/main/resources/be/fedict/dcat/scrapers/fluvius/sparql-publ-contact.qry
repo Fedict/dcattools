@@ -1,0 +1,14 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcterms:publisher ?o }
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/fluvius/contact> .
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0477445084> }
+WHERE
+	{ 	?dataset a dcat:Dataset 
+		OPTIONAL {	?dataset dcterms:publisher ?o }
+	}
