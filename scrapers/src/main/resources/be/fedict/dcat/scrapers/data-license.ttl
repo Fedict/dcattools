@@ -4,8 +4,13 @@
 
 <http://data.gov.be/en/taxonomy/term/427>
 	skos:exactMatch <https://www.elia.be/en/grid-data/elia-open-data-license> ;
-	skos:prefLabel "Elia Open Data Licence";
+	skos:prefLabel "Elia Open Data License";
 	skos:altLabel "Elia Open Data Licence" .
+
+<http://data.gov.be/en/taxonomy/term/450>
+	skos:exactMatch <https://opendata.fluvius.be/p/licentieopendatafluvius/> ;
+	skos:prefLabel "Fluvius Open Data License";
+	skos:altLabel "Open data license - FLUVIUS" .
 
 <http://data.gov.be/en/taxonomy/term/189>
 	skos:exactMatch <http://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data> ;
