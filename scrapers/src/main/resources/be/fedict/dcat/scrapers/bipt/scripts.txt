@@ -1,7 +1,7 @@
 # extra queries to be executed and data to be loaded 
 bipt/data-publ-contact.ttl
 bipt/sparql-publ-contact.qry
-sparql-license.qry
+sparql-license-cczero.qry
 bipt/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl
