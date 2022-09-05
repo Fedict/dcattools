@@ -75,6 +75,7 @@ import org.apache.http.ssl.SSLContexts;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
@@ -140,6 +141,13 @@ public class Drupal {
 		= Pattern.compile("/([0-9]+)>; rel=\"shortlink\"");
 
 	public final static SimpleDateFormat ISODATE = new SimpleDateFormat("yyyy-MM-dd");
+
+	private final static Map<String,IRI> langMap = Map.of(
+		"nl", Values.iri("http://publications.europa.eu/resource/authority/language/NLD"),
+		"fr", Values.iri("http://publications.europa.eu/resource/authority/language/FRA"),
+		"de", Values.iri("http://publications.europa.eu/resource/authority/language/DEU"),
+		"en", Values.iri("http://publications.europa.eu/resource/authority/language/ENG")
+	);
 
 	public final static int LEN_TITLE = 128;
 	public final static int LEN_KEYWORDS = 255;
@@ -267,8 +275,7 @@ public class Drupal {
 	 * @param lang
 	 * @return boolean
 	 */
-	private static boolean hasLang(Map<Resource, ListMultimap<String, String>> map,
-		String lang) {
+	private static boolean hasLang(Map<Resource, ListMultimap<String, String>> map, String lang) {
 		List<String> datalangs = Storage.getMany(map, DCTERMS.LANGUAGE, "");
 
 		// If there is no language info, assume info is language-neutral
@@ -455,7 +462,12 @@ public class Drupal {
 	private List<String> getDatasetOrgs(Map<Resource, ListMultimap<String, String>> dataset,
 		String lang) throws RepositoryException {
 		ArrayList<String> arr = new ArrayList<>();
-		List<String> orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
+		
+		List<String> orgs = Storage.getMany(dataset, DCTERMS.CREATOR, "");
+		if (orgs == null || orgs.isEmpty()) {
+			orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
+		}
+		
 		for (String org : orgs) {
 			String name = getOrgName(org, lang);
 			if (!name.isEmpty() && !arr.contains(name)) {
@@ -602,15 +614,25 @@ public class Drupal {
 	 *
 	 * @param dist
 	 * @param property
+	 * @param store
+	 * @param lang
 	 * @return
 	 */
-	private static String getLink(Map<Resource, ListMultimap<String, String>> dist, IRI property) {
+	private static String getLink(Map<Resource, ListMultimap<String, String>> dist, IRI property, 
+									Storage store, String lang) {
 		String l = Storage.getOne(dist, property, "");
 		// don't add empty links or generated "well-known" skolemized links
 		if (l.isEmpty() || l.contains(".well-known/genid")) {
 			return "";
 		}
-		
+		Map<Resource, ListMultimap<String, String>> linkmap = store.queryProperties(store.getURI(l));
+		List<String> langs = Storage.getMany(linkmap, DCTERMS.LANGUAGE, "");
+		if (!langs.isEmpty()) {
+			for (String s: langs) {
+				System.err.println(s);
+			}
+		}
+					
 		String link = l.replace(" ", "%20");
 		if (link.length() > Drupal.LEN_LINK) {
 			logger.warn("Download URL too long ({}): {} ", l.length(), l);
@@ -645,10 +667,10 @@ public class Drupal {
 				// Data.gov.be displays this information as fields on dataset
 				// not on distribution.
 				if (landings.isEmpty()) {
-					accesses.add(getLink(dist, DCAT.ACCESS_URL));
+					accesses.add(getLink(dist, DCAT.ACCESS_URL, store, lang));
 				}
-				downloads.add(getLink(dist, DCAT.DOWNLOAD_URL));
-				rights.add(getLink(dist, DCTERMS.RIGHTS));
+				downloads.add(getLink(dist, DCAT.DOWNLOAD_URL, store, lang));
+				rights.add(getLink(dist, DCTERMS.RIGHTS, store, lang));
 				types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
 
 				builder.add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
