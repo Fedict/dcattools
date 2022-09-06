@@ -47,11 +47,15 @@ public class DcatFpsFinance extends Dcat {
 	 * @param cache
 	 * @throws IOException
 	 */
+	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL url = getBase();
 		String content = makeRequest(url);
-		// FIX incorrect mailto
-		content = content.replace("mailto=\"", "rdf:resource=\"mailto:");
+		// FIX incorrect suborganizations
+		content = content.replace(
+			"<dct:creator><foaf:Organization xsi:schemaLocation=\"http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd\" rdf:about=\"https://org.belgif.be/id/CbeRegisteredEntity/0308357159\">",
+			"<dct:creator><foaf:Organization xsi:schemaLocation=\"http://www.w3.org/1999/02/22-rdf-syntax-ns# http://www.openarchives.org/OAI/2.0/rdf.xsd\">");
+
 		cache.storePage(url, "all", new Page(url, content));
 	}
 	
