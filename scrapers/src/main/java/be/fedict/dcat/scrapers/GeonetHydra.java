@@ -27,10 +27,13 @@ package be.fedict.dcat.scrapers;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentFactory;
@@ -49,6 +52,38 @@ public abstract class GeonetHydra extends Geonet {
 	private final SAXReader sax;
 	
 	/**
+	 * Guess next url based on number of results and offset on previous page
+	 * 
+	 * @param url
+	 * @return 
+	 */
+	protected URL guessNext(URL url) {
+		String str = url.toString();
+		Matcher matchFrom = Pattern.compile("from=(\\d+)").matcher(str);
+		Matcher matchTo = Pattern.compile("to=(\\d+)").matcher(str);
+		
+		if (! (matchFrom.matches() && matchTo.matches())) {
+			return null;
+		}
+		String prevFrom = matchFrom.group(1);
+		String prevTo = matchTo.group(1);
+
+		int nextFrom = Integer.valueOf(prevTo) - Integer.valueOf(prevFrom) + 1;
+		int nextTo = nextFrom + Integer.valueOf(prevTo) - Integer.valueOf(prevFrom) - 1;
+
+		str = str.replace("from=" + prevFrom, "from=" + nextFrom);
+		str = str.replace("to=" + prevTo, "to=" + nextTo);
+		
+		try {
+			logger.info("Guessing next URL is " + str);
+			return new URL(str);
+		} catch (MalformedURLException ex) {
+			logger.error("Could not guess new URL");
+			return null;
+		}
+	}
+
+	/**
 	 * Scrape DCAT catalog.
 	 *
 	 * @param cache
@@ -65,6 +100,8 @@ public abstract class GeonetHydra extends Geonet {
 				url = (next != null) ? new URL(next.getStringValue()) : null;
 			} catch (DocumentException ex) {
 				logger.error("Error parsing XML " + url);
+				// guess next URL to avoid endless loop
+				url = guessNext(url);
 			}
 		}			
 	}
