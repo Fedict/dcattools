@@ -59,8 +59,8 @@ public abstract class GeonetHydra extends Geonet {
 	 */
 	protected URL guessNext(URL url) {
 		String str = url.toString();
-		Matcher matchFrom = Pattern.compile("from=(\\d+)").matcher(str);
-		Matcher matchTo = Pattern.compile("to=(\\d+)").matcher(str);
+		Matcher matchFrom = Pattern.compile(".*from=(\\d+).*").matcher(str);
+		Matcher matchTo = Pattern.compile(".*to=(\\d+).*").matcher(str);
 		
 		if (! (matchFrom.matches() && matchTo.matches())) {
 			return null;
@@ -68,8 +68,8 @@ public abstract class GeonetHydra extends Geonet {
 		String prevFrom = matchFrom.group(1);
 		String prevTo = matchTo.group(1);
 
-		int nextFrom = Integer.valueOf(prevTo) - Integer.valueOf(prevFrom) + 1;
-		int nextTo = nextFrom + Integer.valueOf(prevTo) - Integer.valueOf(prevFrom) - 1;
+		int nextFrom = Integer.valueOf(prevTo)  + 1;
+		int nextTo = nextFrom + Integer.valueOf(prevTo) - Integer.valueOf(prevFrom);
 
 		str = str.replace("from=" + prevFrom, "from=" + nextFrom);
 		str = str.replace("to=" + prevTo, "to=" + nextTo);
