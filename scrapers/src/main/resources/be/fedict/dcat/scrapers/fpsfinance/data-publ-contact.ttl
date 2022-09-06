@@ -13,4 +13,4 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a vcard:Organization ;
 	vcard:fn "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
-	vcard:hasUrl <https://finance.belgium.be> .
+	vcard:hasURL <https://eservices.minfin.fgov.be/webForm/public/fin/fin.jsf> .
