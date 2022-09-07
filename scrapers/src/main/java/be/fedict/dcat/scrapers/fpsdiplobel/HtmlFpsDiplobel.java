@@ -81,7 +81,7 @@ public class HtmlFpsDiplobel extends Html {
 
 		Elements lis = Jsoup.parse(front).getElementsByClass(HtmlFpsDiplobel.LANG_LINK);
 		for (Element li : lis) {
-			if (li.text().equals(lang)) {
+			if (li.text().toLowerCase().equals(lang)) {
 				String href = li.attr(Attribute.HREF.toString());
 				return makeAbsURL(href);
 			}
