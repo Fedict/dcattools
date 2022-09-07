@@ -4,7 +4,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/fodfinance/fod/contact> .
+	{ 	?dataset dcat:contactPoint <https://org.belgif.be/id/CbeRegisteredEntity/0308357159/contact> .
 		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0308357159> }
 WHERE
 	{ 	?dataset a dcat:Dataset  }

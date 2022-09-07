@@ -1,0 +1,16 @@
+# Fix datatype of various date properties
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE 
+	{	?s ?prop ?o	}
+INSERT 
+	{	?s ?prop ?newo }
+WHERE 
+	{	?s ?prop ?o
+		VALUES ?prop { dcterms:created dcterms:modified dcterms:issued }
+		BIND (
+				IF(STRLEN(STR(?o)) > 0, STRDT(STR(?o), xsd:date), ?invalid)
+			as ?newo)
+	}
