@@ -78,6 +78,7 @@ import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
@@ -364,26 +365,29 @@ public class Drupal {
 	}
 
 	/**
-	 * Get contact email address
+	 * Get contact contact address or contact form
 	 *
 	 * @param org organization
-	 * @return email address or empty string
+	 * @return contact address / contact form URL or empty string
 	 * @throw RepositoryException
 	 */
-	private String getOrgEmail(String org) throws RepositoryException {
+	private String getOrgContact(String org) throws RepositoryException {
 		// Get DCAT contactpoints
-		String email = "";
+		String str = "";
 		Map<Resource, ListMultimap<String, String>> map
 			= store.queryProperties(store.getURI(org));
 		String contact = Storage.getOne(map, VCARD4.HAS_EMAIL, "");
 		if (contact.startsWith("mailto:")) {
-			email = contact.substring(7);
+			str = contact.substring(7);
 		}
-		return email;
+		if (str.isEmpty()) {
+			str = Storage.getOne(map, VCARD4.HAS_URL, "");
+		}
+		return str;
 	}
 
 	/**
-	 * Get contact email address
+	 * Get contact contact address
 	 *
 	 * @param org organization
 	 * @param language code
@@ -405,6 +409,12 @@ public class Drupal {
 		if (name.isEmpty()) {
 			// check undefined language
 			name = Storage.getOne(map, VCARD4.HAS_FN, "");
+		}
+		if (name.isEmpty()) {
+			name = Storage.getOne(map, FOAF.NAME, lang);
+		}
+		if (name.isEmpty()) {
+			name = Storage.getOne(map, FOAF.NAME, "");
 		}
 		return name;
 	}
@@ -432,10 +442,10 @@ public class Drupal {
 	}
 
 	/**
-	 * Get list of contact email addresses
+	 * Get list of contact contact addresses
 	 *
 	 * @param dataset
-	 * @return list of email addresses
+	 * @return list of contact addresses
 	 * @throws RepositoryException
 	 */
 	private List<String> getDatasetMails(Map<Resource, ListMultimap<String, String>> dataset)
@@ -443,7 +453,7 @@ public class Drupal {
 		ArrayList<String> arr = new ArrayList<>();
 		List<String> orgs = Storage.getMany(dataset, DCAT.CONTACT_POINT, "");
 		for (String org : orgs) {
-			String email = getOrgEmail(org);
+			String email = getOrgContact(org);
 			if (!email.isEmpty() && !arr.contains(email)) {
 				arr.add(email);
 			}
@@ -456,7 +466,7 @@ public class Drupal {
 	 *
 	 * @param dataset
 	 * @param lang language code
-	 * @return list of email addresses
+	 * @return list of contact addresses
 	 * @throws RepositoryException
 	 */
 	private List<String> getDatasetOrgs(Map<Resource, ListMultimap<String, String>> dataset,
