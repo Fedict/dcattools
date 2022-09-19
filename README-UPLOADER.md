@@ -11,20 +11,20 @@ rights to import data using the RestWS module.
 Some Drupal modules need to be enabled / disabled:
 
   * Enable `Basic Authentication`, `RestWS` and `RestWS i18n` modules
-  * Disable `Global Redirect` module
+  * Disable `Global Redirect` and `Antibot` modules
   * Enable `Bypass content access control` for the `Dataset importer`
 
 ## Running uploader
 
 Invoke with
 
-    # java -jar datagovbe.jar location/of/config.properties
+    # java -jar uploader.jar location/of/config.properties
 
 Use -D to set logging level and save the log to a file
 
     # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
            -Dorg.slf4j.simpleLogger.logFile=update.log
-           -jar datagovbe.jar location/of/config.properties
+           -jar uploader.jar location/of/config.properties
 
 ## Configuration
 
@@ -62,5 +62,5 @@ This can be done by the Drupal admin (`Index all remaining content`)
 For security reasons, the changes in module settings must be reverted
 
   * Disable `Basic Authentication`, `RestWS` and `RestWS i18n` modules
-  * Enable `Global Redirect` module
+  * Enable `Global Redirect` and `Antibot` modules
   * Disable `Bypass content access control` for the `Dataset importer`

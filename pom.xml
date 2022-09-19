@@ -7,9 +7,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>helpers</module>
-        <module>datagovbe</module>
         <module>scrapers</module>
         <module>tools</module>
+        <module>uploader</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
