@@ -88,7 +88,7 @@ Language-independent
 ## Content type: Application
 
 | Field | Type | Mandatory | Translatable | Multiple |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
 | Description | Text field | yes | yes | no |
 | Image | Image | no | no | no |
@@ -98,7 +98,7 @@ Language-independent
 ## Content type: Dataset
 
 | Field | Type | Mandatory | Translatable | Multiple |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
 | Description | Text field | yes | yes | no |
 | Update frequancy | Taxonomy: Update Frequencies | no | -- | no |
@@ -121,7 +121,7 @@ Language-independent
 ## Content type: News
 
 | Field | Type | Mandatory | Translatable | Multiple |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
 | Description | Text field | yes | yes | no |
 | Image | Image | no | no | no |
