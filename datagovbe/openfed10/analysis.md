@@ -97,7 +97,7 @@ Language-independent
 | Description | Text field | yes | yes | no |
 | Image | Image | no | no | no |
 | Website | Link | yes | yes | no |
-| Category | Taxonomy: Data Categories | -- | yes |
+| Category | Taxonomy: Data Categories | yes | -- | yes |
 
 ### Content type: Dataset
 
