@@ -10,6 +10,7 @@
 - HAL
 - HTTP Basic Authentication
 - Geofield
+- JSON:API
 - Metatag: Dublin Core
 - Metatag: Dublin Core Advanced
 - Openfed multilingual
@@ -28,19 +29,19 @@
 
 ## Taxonomy: Application Types
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
 ## Taxonomy: Contact Types
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
 ## Taxonomy: Data Categories
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
@@ -48,14 +49,14 @@
 
 Language-independent
 
-| Field | Type | Mandatory |
+| Field | Type | Required |
 | --- | --- | --- |
 | Title | String | yes |
 | URI | Link | yes |
 
 ## Taxonomy: Geographies
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes  | yes |
 | Box | Geo | yes | no |
@@ -63,7 +64,7 @@ Language-independent
 
 ## Taxonomy: Licenses
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 | Abbreviation | String | no | yes |
@@ -71,7 +72,7 @@ Language-independent
 
 ## Taxonomy: Organizations
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 | Abbreviation | String | no | yes |
@@ -79,7 +80,7 @@ Language-independent
 
 ## Taxonomy: Update Frequencies
 
-| Field | Type | Mandatory | Translatable |
+| Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 | Abbreviation | String | no | yes |
@@ -87,7 +88,7 @@ Language-independent
 
 ## Content type: Application
 
-| Field | Type | Mandatory | Translatable | Multiple |
+| Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
 | Description | Text field | yes | yes | no |
@@ -97,7 +98,7 @@ Language-independent
 
 ## Content type: Dataset
 
-| Field | Type | Mandatory | Translatable | Multiple |
+| Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
 | Description | Text field | yes | yes | no |
@@ -120,7 +121,7 @@ Language-independent
 
 ## Content type: News
 
-| Field | Type | Mandatory | Translatable | Multiple |
+| Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
 | Description | Text field | yes | yes | no |
@@ -129,7 +130,7 @@ Language-independent
 
 ## Contact form
 
-| Field | Type | Mandatory |
+| Field | Type | Required |
 | --- | --- | --- |
 | Your name | String | yes |
 | Your e-mail | Email | yes |
