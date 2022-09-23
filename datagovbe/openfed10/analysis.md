@@ -120,7 +120,7 @@ Language-independent
 | Web page | Link | no | yes, no sync | yes | link |
 | Download URL | Link | no | yes, no sync | yes | link |
 | Service URL | Link | no | yes, no sync | yes | link |
-| Keyword | String | yes, no sync | yes | hidden |
+| Keyword | String | no | yes, no sync | yes | hidden |
 
 ### Content type: News
 
