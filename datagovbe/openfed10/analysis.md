@@ -102,7 +102,7 @@ Language-independent
 ### Content type: Dataset
 
 | Field | Type | Required | Translatable | Multiple | Display |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no | text |
 | Description | Text field | yes | yes | no | text |
 | URI | Link | yes | no | no | hidden |
@@ -131,7 +131,11 @@ Language-independent
 | Image | Image | no | no | no |
 | Website | Link | no | yes | no |
 
+### Forms
+
 ### Contact form
+
+Default contact form
 
 | Field | Type | Required | Display |
 | --- | --- | --- | --- |
