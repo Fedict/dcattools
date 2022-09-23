@@ -27,25 +27,26 @@
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
 
-## Taxonomy: Application Types
+## Taxonomies
+### Taxonomy: Application Types
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
-## Taxonomy: Contact Types
+### Taxonomy: Contact Types
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
-## Taxonomy: Data Categories
+### Taxonomy: Data Categories
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
-## Taxonomy: File Types
+### Taxonomy: File Types
 
 Language-independent
 
@@ -54,7 +55,7 @@ Language-independent
 | Title | String | yes |
 | URI | Link | yes |
 
-## Taxonomy: Geographies
+### Taxonomy: Geographies
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -62,7 +63,7 @@ Language-independent
 | Bounding box | Geofield (WKT) | yes | no |
 | URI | Link | yes | no |
 
-## Taxonomy: Licenses
+### Taxonomy: Licenses
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -70,7 +71,7 @@ Language-independent
 | Abbreviation | String | no | yes |
 | URI | Link | yes | no |
 
-## Taxonomy: Organizations
+### Taxonomy: Organizations
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -78,7 +79,7 @@ Language-independent
 | Abbreviation | String | no | yes |
 | URI | Link | yes | no |
 
-## Taxonomy: Update Frequencies
+### Taxonomy: Update Frequencies
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -86,7 +87,9 @@ Language-independent
 | Abbreviation | String | no | yes |
 | URI | Link | yes | no |
 
-## Content type: Application
+## Conten types
+
+### Content type: Application
 
 | Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
@@ -96,30 +99,30 @@ Language-independent
 | Website | Link | yes | yes | no |
 | Category | Taxonomy: Data Categories | -- | yes |
 
-## Content type: Dataset
+### Content type: Dataset
 
-| Field | Type | Required | Translatable | Multiple |
+| Field | Type | Required | Translatable | Multiple | Display |
 | --- | --- | --- | --- | --- |
-| Title | String | yes | yes | no |
-| Description | Text field | yes | yes | no |
-| Update frequancy | Taxonomy: Update Frequencies | no | -- | no |
-| Last modified | Timestamp | no | no | no |
-| From / till | Date range | no | no | no |
-| Author | String | yes | yes | yes |
-| Publisher | Taxonomy: Organizations | -- | no |
-| Contact e-mail | E-mail | no | yes | no |
-| Contact form | Link | no | yes | no |
+| Title | String | yes | yes | no | text |
+| Description | Text field | yes | yes | no | text |
+| URI | Link | yes | no | no | hidden |
+| Update frequancy | Taxonomy: Update Frequencies | no | -- | no | text |
+| Last modified | Timestamp | no | no | no | date |
+| From / till | Date range | no | no | no | date range |
+| Author | String | yes | yes | yes | text |
+| Publisher | Taxonomy: Organizations | -- | no | link |
+| Contact e-mail | E-mail | no | yes | no | link |
+| Contact form | Link | no | yes | no | link |
 | Geography | Taxonomy: Geographies | yes | -- | yes |
-| Category | Taxonomy: Data Categories | yes | -- | yes |
-| License | Taxonomy: Licenses | yes | -- | yes |
-| Format | Taxonomy: File types | yes | -- | yes |
-| Web page | Link | no | yes, no sync | yes |
-| Download URL | Link | no | yes, no sync | yes |
-| Service URL | Link | no | yes, no sync | yes |
-| Keyword | String | yes, no sync | yes |
+| Category | Taxonomy: Data Categories | yes | -- | yes | text |
+| License | Taxonomy: Licenses | yes | -- | yes | text |
+| Format | Taxonomy: File types | yes | -- | yes | text |
+| Web page | Link | no | yes, no sync | yes | link |
+| Download URL | Link | no | yes, no sync | yes | link |
+| Service URL | Link | no | yes, no sync | yes | link |
+| Keyword | String | yes, no sync | yes | hidden |
 
-
-## Content type: News
+### Content type: News
 
 | Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
@@ -128,13 +131,13 @@ Language-independent
 | Image | Image | no | no | no |
 | Website | Link | no | yes | no |
 
-## Contact form
+### Contact form
 
-| Field | Type | Required |
-| --- | --- | --- |
-| Your name | String | yes |
-| Your e-mail | Email | yes |
-| Category | Taxonomy: Contact Types | yes |
-| Subject | String | yes |
-| Message | Text field | yes |
-| Agree policy | Boolean | yes |
+| Field | Type | Required | Display |
+| --- | --- | --- | --- |
+| Your name | String | yes | single line |
+| Your e-mail | Email | yes | single line |
+| Category | Taxonomy: Contact Types | yes | select list |
+| Subject | String | yes | string |
+| Message | Text field | yes | multi-line text field |
+| Agree policy | Boolean | yes | checkbox |
