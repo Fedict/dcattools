@@ -110,7 +110,7 @@ Language-independent
 | Last modified | Timestamp | no | no | no | date |
 | From / till | Date range | no | no | no | date range |
 | Author | String | yes | yes | yes | text |
-| Publisher | Taxonomy: Organizations | -- | no | link |
+| Publisher | Taxonomy: Organizations | yes | -- | no | link |
 | Contact e-mail | E-mail | no | yes | no | link |
 | Contact form | Link | no | yes | no | link |
 | Geography | Taxonomy: Geographies | yes | -- | yes |
