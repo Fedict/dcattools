@@ -87,7 +87,7 @@ Language-independent
 | Abbreviation | String | no | yes |
 | URI | Link | yes | no |
 
-## Conten types
+## Content types
 
 ### Content type: Application
 
@@ -113,7 +113,7 @@ Language-independent
 | Publisher | Taxonomy: Organizations | yes | -- | no | link |
 | Contact e-mail | E-mail | no | yes | no | link |
 | Contact form | Link | no | yes | no | link |
-| Geography | Taxonomy: Geographies | yes | -- | yes |
+| Geography | Taxonomy: Geographies | yes | -- | yes | text |
 | Category | Taxonomy: Data Categories | yes | -- | yes | text |
 | License | Taxonomy: Licenses | yes | -- | yes | text |
 | Format | Taxonomy: File types | yes | -- | yes | text |
@@ -131,7 +131,7 @@ Language-independent
 | Image | Image | no | no | no |
 | Website | Link | no | yes | no |
 
-### Forms
+## Forms
 
 ### Contact form
 
