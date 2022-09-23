@@ -59,7 +59,7 @@ Language-independent
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes  | yes |
-| Box | Geo | yes | no |
+| Bounding box | Geofield (WKT) | yes | no |
 | URI | Link | yes | no |
 
 ## Taxonomy: Licenses
