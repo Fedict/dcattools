@@ -27,7 +27,12 @@
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
 
+### JSON:API
+
+Setting: `Accept all JSON:API create, read, update, and delete operations.`
+
 ## Taxonomies
+
 ### Taxonomy: Application Types
 
 | Field | Type | Required | Translatable |
@@ -146,3 +151,16 @@ Default contact form
 | Subject | String | yes | string |
 | Message | Text field | yes | multi-line text field |
 | Agree policy | Boolean | yes | checkbox |
+
+## Views
+
+### News per date
+
+- Filter
+   - Content type is News
+- Page settings
+   - Path: /news 
+- Pager
+  - Mini: 10 items page
+  - More link: yes
+
