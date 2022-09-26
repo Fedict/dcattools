@@ -19,6 +19,7 @@
 - Path
 - RESTful Web Services
 - RDF
+- Sarch
 - Search API Autocomplete
 - Search API Solr
 - Search API Solr Admin
@@ -159,7 +160,21 @@ Default contact form
 - Filter
    - Content type is News
 - Page settings
-   - Path: /news 
+   - Path: /news
+- Language
+  - Rendering Language: Interface text language selected for page
+- Pager
+  - Mini: 10 items page
+  - More link: yes
+
+### Applications per date
+
+- Filter
+   - Content type is Application
+- Page settings
+   - Path: /apps
+- Language
+  - Rendering Language: Interface text language selected for page
 - Pager
   - Mini: 10 items page
   - More link: yes
