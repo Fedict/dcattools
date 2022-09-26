@@ -98,6 +98,7 @@ Language-independent
 | Image | Image | no | no | no |
 | Website | Link | yes | yes | no |
 | Category | Taxonomy: Data Categories | yes | -- | yes |
+| Reuse | Link | no | yes | no |
 
 ### Content type: Dataset
 
