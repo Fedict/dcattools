@@ -104,6 +104,7 @@ Language-independent
 | Image | Image | no | no | no |
 | Website | Link | yes | yes | no |
 | Category | Taxonomy: Data Categories | yes | -- | yes |
+| Type | Taxonomy: Application Types | yes | -- | no |
 | Reuse | Link | no | yes | no |
 
 ### Content type: Dataset
