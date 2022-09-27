@@ -2,6 +2,7 @@
 
 ## Modules
 
+Enable
 - Contact
 - Date time
 - Date time range
@@ -19,7 +20,6 @@
 - Path
 - RESTful Web Services
 - RDF
-- Sarch
 - Search API Autocomplete
 - Search API Solr
 - Search API Solr Admin
@@ -27,6 +27,9 @@
 - Serialization
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
+
+Disable
+- Search (use the Search API Solr search intead)
 
 ### JSON:API
 
@@ -180,3 +183,6 @@ Default contact form
   - Mini: 10 items page
   - More link: yes
 
+## Search
+
+### Facets
