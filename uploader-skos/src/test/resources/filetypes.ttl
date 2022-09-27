@@ -1,0 +1,9 @@
+# Data for mapping file types names to EU list of file types
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/file-type/CSV>
+	a skos:Concept ;
+	skos:prefLabel "CSV" .
+
