@@ -18,7 +18,6 @@ Enable
 - Openfed social links
 - Optional end date
 - Path
-- RESTful Web Services
 - RDF
 - Search API Autocomplete
 - Search API Solr
