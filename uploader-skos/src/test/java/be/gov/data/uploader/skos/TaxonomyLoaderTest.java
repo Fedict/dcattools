@@ -41,6 +41,5 @@ public class TaxonomyLoaderTest {
 		File file = new File(this.getClass().getResource("/filetypes.ttl").toURI());
 		TaxonomyLoader loader = new TaxonomyLoader();
 		Set<Term> parse = loader.parse(file);
-		
 	}
 }

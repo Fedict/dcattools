@@ -26,11 +26,11 @@
 package be.gov.data.uploader.skos;
 
 import java.util.Map;
+import java.util.UUID;
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.Resource;
 
 /**
  *
  * @author Bart Hanssens
  */
-public record Term(Resource subject, Map<String,String> values, IRI parent) { }
+public record Term(IRI subject, Map<String,String> values, IRI parent, UUID drupalID) { }

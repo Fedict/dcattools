@@ -26,14 +26,21 @@
 package be.gov.data.uploader.skos;
 
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonString;
 import jakarta.json.JsonValue;
+import jakarta.json.stream.JsonParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 //import javax.json.Json;
 //import javax.json.JsonObject;
@@ -41,10 +48,12 @@ import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
+import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -63,7 +72,7 @@ public class TaxonomyLoader {
 	 * Build the (mandatory) name, depending on whether or not the thesaurus is language-agnostic (or not)
 	 * 
 	 * @param term term to get the name(s) from
-	 * @return string (for language-agnostic) or object with an array per language
+	 * @return JSON string (for language-agnostic) or JSON object with an array per language
 	 */
 	private JsonValue buildName(Term term) {
 		Map<String, String> values = term.values();
@@ -77,6 +86,24 @@ public class TaxonomyLoader {
 				.add("langcode", e.getKey())
 				.add("value", e.getValue()).build()).collect(Collectors.toSet())).build();
 	}
+
+	/**
+	 * Build the (mandatory) name, depending on whether or not the thesaurus is language-agnostic (or not)
+	 * 
+	 * @param json json value to get the name(s) from
+	 * @return map of the names, using "und" for undefined / language-agnostic 
+	 */
+	private Map<String,String> buildName(JsonValue json) {
+		if (json instanceof JsonString js) {
+			return Map.of("und", js.getString());
+		}
+		if (json instanceof JsonArray arr) {
+			return arr.stream().map(JsonObject.class::cast)
+				.collect(Collectors.toMap(o -> o.getString("langcode"), o -> o.getString("value")));
+		}
+		return Collections.emptyMap();
+	}
+
 	
 	/**
 	 * Build a taxonomy term JSON object for Drupal, which may or may not be translated
@@ -106,19 +133,62 @@ public class TaxonomyLoader {
 	 * @param user user name
 	 * @param pass password
 	 * @param term taxonomy term
+	 * @return true if the term has been created
 	 * @throws IOException 
 	 */
-	public void postTerm(String website, String taxonomy, String user, String pass, Term term) throws IOException {
+	public boolean postTerm(String website, String taxonomy, String user, String pass, Term term) throws IOException {
 		JsonObject obj = buildTerm(taxonomy, term);
-		LOG.info(obj.toString());
+		LOG.debug(obj.toString());
 				
-		String auth = Base64.getEncoder().encodeToString((user + ":" + pass).getBytes());
+		String auth = Base64.getEncoder().encodeToString((user + ":" + pass).getBytes(StandardCharsets.ISO_8859_1));
 		Request req = Request.Post(website + "/en/jsonapi/taxonomy_term/" + taxonomy)
 			.setHeader(HttpHeaders.AUTHORIZATION, "Basic " + auth)
 			.bodyString(obj.toString(), ContentType.create("application/vnd.api+json"));
 
 		HttpResponse resp = req.execute().returnResponse();
 		LOG.info(resp.toString());
+
+		return resp.getStatusLine().getStatusCode() < 400;
+	}
+
+	/**
+	 * 
+	 * @param website
+	 * @param taxonomy
+	 * @param term
+	 * @throws IOException 
+	 */
+	public Term getTerm(String website, String taxonomy, IRI term) throws IOException {
+		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy 
+										+ "?filter[field_uri.uri]=" + term.stringValue());
+		
+		HttpResponse resp = req.execute().returnResponse();
+		LOG.info(resp.toString());
+
+		if (resp.getStatusLine().getStatusCode() >= 400) {
+			LOG.error("Error in HTTP status");
+			return null;
+		}
+
+		JsonParser parser;
+		try(InputStream is = resp.getEntity().getContent()) {
+			parser = Json.createParser(is);
+		}
+		if (parser == null) {
+			LOG.error("Could not parse JSON");
+			return null;
+		}
+		
+		JsonArray arr = (JsonArray) parser.getObject().get("data");
+		// there should be only one
+		JsonObject obj = arr.getJsonObject(0);
+
+		String uri = obj.getJsonObject("field_uri").getJsonString("uri").getString();
+		IRI iri = Values.iri(uri);
+		Map<String,String> names = buildName(obj.get("name"));
+		UUID uuid = UUID.fromString(obj.getString("id"));
+		
+		return new Term(iri, names, null, uuid);
 	}
 
 	/**
@@ -157,7 +227,7 @@ public class TaxonomyLoader {
 			Set<Value> values = m.filter(u, SKOS.PREF_LABEL, null).objects();
 			Map<String, String> prefs = values.stream().map(Literal.class::cast)
 				.collect(Collectors.toMap(l -> l.getLanguage().orElse("und"), l -> l.getLabel()));
-			return new Term(u, prefs, null);
+			return new Term((IRI) u, prefs, null, null);
 		}).collect(Collectors.toSet());
 	}
 
