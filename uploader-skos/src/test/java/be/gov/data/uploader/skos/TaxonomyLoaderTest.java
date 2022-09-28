@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Set;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -40,6 +41,10 @@ public class TaxonomyLoaderTest {
 	void loadTerms() throws URISyntaxException, IOException {
 		File file = new File(this.getClass().getResource("/filetypes.ttl").toURI());
 		TaxonomyLoader loader = new TaxonomyLoader();
-		Set<Term> parse = loader.parse(file);
+		Set<Term> terms = loader.parse(file);
+		
+		assertEquals(1, terms.size());
+		assertEquals("http://publications.europa.eu/resource/authority/file-type/CSV", 
+					terms.iterator().next().subject().toString());
 	}
 }

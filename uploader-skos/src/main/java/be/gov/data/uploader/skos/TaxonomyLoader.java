@@ -152,15 +152,36 @@ public class TaxonomyLoader {
 	}
 
 	/**
+	 * Parse JSON object into a taxonomy term
+	 * 
+	 * @param json json object
+	 * @return 
+	 */
+	private Term parseTerm(JsonObject json) {
+		JsonArray arr = (JsonArray) json.get("data");
+		// there should be only one
+		JsonObject obj = arr.getJsonObject(0);
+
+		String uri = obj.getJsonObject("field_uri").getJsonString("uri").getString();
+		IRI iri = Values.iri(uri);
+		Map<String,String> names = buildName(obj.get("name"));
+		UUID uuid = UUID.fromString(obj.getString("id"));
+		
+		return new Term(iri, names, null, uuid);
+	}
+
+	/**
+	 * Get a term with a specific IRI from a Drupal 9 website 
 	 * 
 	 * @param website
 	 * @param taxonomy
-	 * @param term
+	 * @param iri 
+	 * @return taxonomy term or null
 	 * @throws IOException 
 	 */
-	public Term getTerm(String website, String taxonomy, IRI term) throws IOException {
+	public Term getTerm(String website, String taxonomy, IRI iri) throws IOException {
 		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy 
-										+ "?filter[field_uri.uri]=" + term.stringValue());
+										+ "?filter[field_uri.uri]=" + iri.stringValue());
 		
 		HttpResponse resp = req.execute().returnResponse();
 		LOG.info(resp.toString());
@@ -179,16 +200,7 @@ public class TaxonomyLoader {
 			return null;
 		}
 		
-		JsonArray arr = (JsonArray) parser.getObject().get("data");
-		// there should be only one
-		JsonObject obj = arr.getJsonObject(0);
-
-		String uri = obj.getJsonObject("field_uri").getJsonString("uri").getString();
-		IRI iri = Values.iri(uri);
-		Map<String,String> names = buildName(obj.get("name"));
-		UUID uuid = UUID.fromString(obj.getString("id"));
-		
-		return new Term(iri, names, null, uuid);
+		return parseTerm(parser.getObject());
 	}
 
 	/**
