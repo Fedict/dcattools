@@ -1,7 +1,8 @@
-# Analysis
+# Analysis (WIP)
 
 ## Modules
 
+Enable
 - Contact
 - Date time
 - Date time range
@@ -17,9 +18,7 @@
 - Openfed social links
 - Optional end date
 - Path
-- RESTful Web Services
 - RDF
-- Sarch
 - Search API Autocomplete
 - Search API Solr
 - Search API Solr Admin
@@ -36,11 +35,15 @@ Setting: `Accept all JSON:API create, read, update, and delete operations.`
 
 ### Taxonomy: Application Types
 
+To be used in examples of reuse, e.g. "Blog post"
+
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
 ### Taxonomy: Contact Types
+
+To be used in default contact form, e.g. "General question"
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -48,13 +51,17 @@ Setting: `Accept all JSON:API create, read, update, and delete operations.`
 
 ### Taxonomy: Data Categories
 
+E.g "Transport"
+
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
 ### Taxonomy: File Types
 
-Language-independent
+Language-independent, e.g. "CSV"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
 
 | Field | Type | Required |
 | --- | --- | --- |
@@ -62,6 +69,10 @@ Language-independent
 | URI | Link | yes |
 
 ### Taxonomy: Geographies
+
+Tree-structure, e.g "Flanders > Ghent"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -71,6 +82,10 @@ Language-independent
 
 ### Taxonomy: Licenses
 
+Tree-structure, e.g "Open > Creative Commons"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
+
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
@@ -79,6 +94,10 @@ Language-independent
 
 ### Taxonomy: Organizations
 
+Tree-structure, e.g "Federal > FPS BOSA"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
+
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
@@ -86,6 +105,10 @@ Language-independent
 | URI | Link | yes | no |
 
 ### Taxonomy: Update Frequencies
+
+E.g. "Weekly"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -96,6 +119,8 @@ Language-independent
 ## Content types
 
 ### Content type: Application
+
+Example of re-use of open data sets / services
 
 | Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
@@ -109,6 +134,10 @@ Language-independent
 
 ### Content type: Dataset
 
+Metadata about an open dataset or service (note that the files themselves are hosted elsewhere, no attachments)
+
+URI is not visible in front-end, used for mapping with other sources / portals.
+
 | Field | Type | Required | Translatable | Multiple | Display |
 | --- | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no | text |
@@ -120,17 +149,19 @@ Language-independent
 | Author | String | yes | yes | yes | text |
 | Publisher | Taxonomy: Organizations | yes | -- | no | link |
 | Contact e-mail | E-mail | no | yes | no | link |
-| Contact form | Link | no | yes | no | link |
+| Contact form | Link (external) | no | yes | no | link |
 | Geography | Taxonomy: Geographies | yes | -- | yes | text |
 | Category | Taxonomy: Data Categories | yes | -- | yes | text |
 | License | Taxonomy: Licenses | yes | -- | yes | text |
 | Format | Taxonomy: File types | yes | -- | yes | text |
-| Web page | Link | no | yes, no sync | yes | link |
-| Download URL | Link | no | yes, no sync | yes | link |
-| Service URL | Link | no | yes, no sync | yes | link |
-| Keyword | String | no | yes, no sync | yes | hidden |
+| Web page | Link (external) | no | yes, no sync | yes | link |
+| Download URL | Link (external) | no | yes, no sync | yes | link |
+| Service URL | Link (external) | no | yes, no sync | yes | link |
+| Keyword | String | no | yes, no sync | yes | hidden, only used in search |
 
 ### Content type: News
+
+Short news item about an event or new dataset
 
 | Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
@@ -138,6 +169,15 @@ Language-independent
 | Description | Text field | yes | yes | no |
 | Image | Image | no | no | no |
 | Website | Link | no | yes | no |
+
+### Content type: Page
+
+Basic web page, used for documentation in general
+
+| Field | Type | Required | Translatable | Multiple |
+| --- | --- | --- | --- | --- |
+| Title | String | yes | yes | no |
+| Description | Text field | yes | yes | no |
 
 ## Forms
 
@@ -158,6 +198,8 @@ Default contact form
 
 ### News per date
 
+Overview of the news, newest item first
+
 - Filter
    - Content type is News
 - Page settings
@@ -170,6 +212,8 @@ Default contact form
 
 ### Applications per date
 
+Overview of re-use of datasets, newest items first
+
 - Filter
    - Content type is Application
 - Page settings
@@ -180,3 +224,52 @@ Default contact form
   - Mini: 10 items page
   - More link: yes
 
+## Search
+
+### Solr Index
+
+Fields
+
+- Title
+- Body
+- Language
+- Keyword
+- Taxonomy: Application Types
+- Taxonomy: Data Categories
+- Taxonomy: File Types
+- Taxonomy: Geographies (with parent)
+- Taxonomy: Licenses
+- Taxonomy: Organizations (with parent)
+
+### Datasets search
+
+Faceted search + free text.
+
+For the tree-structures Geographies and Organizations, results of the children must be included in the search.
+E.g searching on Geographies: Flanders should also return the results for Ghent, 
+searching for Organization: federal should also return the results for FPS BOSA
+
+- Taxonomy: Data Categories
+- Taxonomy: File Types
+- Taxonomy: Geographies (with parent)
+- Taxonomy: Licenses
+- Taxonomy: Organizations (with parent)
+
+
+## Menus
+
+### Top
+
+- Home
+- Apps (link to applications)
+- Data (link to datasets search)
+- News (link to latest news)
+- Info & FAQ (generic documentation)
+- Contact
+### Bottom
+
+- Terms of use
+- Accessibility statement
+- Cookie policy
+- Privavy statement
+- Link to github tools
