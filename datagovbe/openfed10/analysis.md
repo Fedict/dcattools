@@ -61,6 +61,8 @@ E.g "Transport"
 
 Language-independent, e.g. "CSV"
 
+URI is not visible in front-end, used for mapping with other sources / portals.
+
 | Field | Type | Required |
 | --- | --- | --- |
 | Title | String | yes |
@@ -70,6 +72,8 @@ Language-independent, e.g. "CSV"
 
 Tree-structure, e.g "Flanders > Ghent"
 
+URI is not visible in front-end, used for mapping with other sources / portals.
+
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes  | yes |
@@ -77,6 +81,10 @@ Tree-structure, e.g "Flanders > Ghent"
 | URI | Link | yes | no |
 
 ### Taxonomy: Licenses
+
+Tree-structure, e.g "Open > Creative Commons"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -88,6 +96,8 @@ Tree-structure, e.g "Flanders > Ghent"
 
 Tree-structure, e.g "Federal > FPS BOSA"
 
+URI is not visible in front-end, used for mapping with other sources / portals.
+
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
@@ -97,6 +107,8 @@ Tree-structure, e.g "Federal > FPS BOSA"
 ### Taxonomy: Update Frequencies
 
 E.g. "Weekly"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -123,6 +135,8 @@ Example of re-use of open data sets / services
 ### Content type: Dataset
 
 Metadata about an open dataset or service (note that the files themselves are hosted elsewhere, no attachments)
+
+URI is not visible in front-end, used for mapping with other sources / portals.
 
 | Field | Type | Required | Translatable | Multiple | Display |
 | --- | --- | --- | --- | --- | --- |
