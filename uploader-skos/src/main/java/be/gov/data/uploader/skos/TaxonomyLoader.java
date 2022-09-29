@@ -28,9 +28,11 @@ package be.gov.data.uploader.skos;
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 import jakarta.json.JsonString;
 import jakarta.json.JsonValue;
-import jakarta.json.stream.JsonParser;
+import java.io.BufferedInputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -42,12 +44,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
-//import javax.json.Json;
-//import javax.json.JsonObject;
+
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
@@ -58,6 +60,7 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -154,18 +157,16 @@ public class TaxonomyLoader {
 	/**
 	 * Parse JSON object into a taxonomy term
 	 * 
-	 * @param json json object
+	 * @param obj json object
 	 * @return 
 	 */
-	private Term parseTerm(JsonObject json) {
-		JsonArray arr = (JsonArray) json.get("data");
-		// there should be only one
-		JsonObject obj = arr.getJsonObject(0);
-
-		String uri = obj.getJsonObject("field_uri").getJsonString("uri").getString();
-		IRI iri = Values.iri(uri);
-		Map<String,String> names = buildName(obj.get("name"));
+	private Term parseTerm(JsonObject obj) {
 		UUID uuid = UUID.fromString(obj.getString("id"));
+				
+		JsonObject attributes = obj.getJsonObject("attributes");
+		String uri = attributes.getJsonObject("field_uri").getJsonString("uri").getString();
+		IRI iri = Values.iri(uri);
+		Map<String,String> names = buildName(attributes.get("name"));
 		
 		return new Term(iri, names, null, uuid);
 	}
@@ -191,16 +192,55 @@ public class TaxonomyLoader {
 			return null;
 		}
 
-		JsonParser parser;
-		try(InputStream is = resp.getEntity().getContent()) {
-			parser = Json.createParser(is);
+
+		try(InputStream is = resp.getEntity().getContent();
+			JsonReader reader = Json.createReader(is)) {
+
+			if (reader == null) {
+				LOG.error("Could not parse JSON");
+				return null;
+			}
+		
+			JsonArray arr = (JsonArray) reader.readObject().get("data");
+			// there should be only one
+			return parseTerm(arr.getJsonObject(0));
 		}
-		if (parser == null) {
-			LOG.error("Could not parse JSON");
+	}
+
+	/**
+	 * Get a term with a specific IRI from a Drupal 9 website 
+	 * 
+	 * @param website
+	 * @param taxonomy
+	 * @return taxonomy term or null
+	 * @throws IOException 
+	 */
+	public Set<Term> getAllTerms(String website, String taxonomy) throws IOException {
+		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy)
+			.addHeader(HttpHeaders.ACCEPT, "application/vnd.api+json");
+		
+		HttpResponse resp = req.execute().returnResponse();
+
+		if (resp.getStatusLine().getStatusCode() >= 400) {
+			LOG.error("Error in HTTP status");
 			return null;
 		}
-		
-		return parseTerm(parser.getObject());
+
+		try(InputStream is = new BufferedInputStream(resp.getEntity().getContent());
+			JsonReader reader = Json.createReader(is)) {
+
+			if (reader == null) {
+				LOG.error("Could not read JSON");
+				return null;
+			}
+
+			JsonArray arr = (JsonArray) reader.readObject().get("data");
+
+			return arr.stream().filter(JsonObject.class::isInstance)
+							.map(JsonObject.class::cast)
+							.map(o -> parseTerm(o))
+							.collect(Collectors.toSet());
+		}
 	}
 
 	/**
