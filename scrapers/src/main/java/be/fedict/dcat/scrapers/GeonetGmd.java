@@ -242,7 +242,7 @@ public abstract class GeonetGmd extends Geonet {
 
 		if (txt == null || txt.isEmpty()) {
 			store.add(uri, property, txten.strip(), "en");
-			return false;
+			return true;
 		}
 		store.add(uri, property, txt.strip(), lang);
 		return true;
