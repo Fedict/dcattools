@@ -71,11 +71,11 @@ public class Main {
 		String pass = line.getOptionValue("p");
 		String taxo = line.getOptionValue("t");
 			
-		TaxonomyLoader loader = new TaxonomyLoader();
+		TaxonomyLoader loader = new TaxonomyLoader(host, user, pass);
 		List<Term> terms = loader.parse(new File(file));
 		for (Term t: terms) {
 			LOG.info("Loading term {}", t.subject());
-			loader.postTerm(host, taxo, user, pass, t);
+			loader.postTerm(taxo, t);
 		}
 	}
 }

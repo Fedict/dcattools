@@ -3,7 +3,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.b/license/open>
+<http://data.gov.be/license/open>
 	a skos:Concept ;
 	skos:altLabel "Open" ;
 	skos:prefLabel "Open license"@en, 
@@ -20,9 +20,9 @@
 					"ODC Open Database Licentie"@nl,
 					"ODC Open Database Lizenz"@de .
 
-<http://data.gov.b/license/open/cc>
+<http://data.gov.be/license/open/cc>
 	a skos:Concept ;
-	skos:broader <http://data.gov.b/license/open> ;
+	skos:broader <http://data.gov.be/license/open> ;
 	skos:altLabel "CC" ;
 	skos:prefLabel "Creative Commons"@en, 
 					"Creative Commons"@fr,
@@ -31,14 +31,14 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC_BY_2_0>
 	a skos:Concept ;
-	skos:broader <http://data.gov.b/license/open/cc> ;
+	skos:broader <http://data.gov.be/license/open/cc> ;
 	skos:altLabel "CC-BY" ;
 	skos:prefLabel "Creative Commons Attribution"@en, 
 					"Creative Commons Attribution"@fr,
 					"Creative Commons Naamsvermelding"@nl,
 					"Creative Commons Namensnennung"@de .
 
-<http://data.gov.b/license/closed>
+<http://data.gov.be/license/closed>
 	a skos:Concept ;
 	skos:altLabel "Closed" ;
 	skos:prefLabel "Closed license"@en, 

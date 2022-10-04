@@ -28,11 +28,12 @@ package be.gov.data.uploader.skos;
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 import jakarta.json.JsonReader;
 import jakarta.json.JsonString;
 import jakarta.json.JsonValue;
-import java.io.BufferedInputStream;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -72,6 +73,10 @@ import org.slf4j.LoggerFactory;
  * @author Bart.Hanssens
  */
 public class TaxonomyLoader {
+	private String website;
+	private String user;
+	private String pass;
+
 	private final static Logger LOG = LoggerFactory.getLogger(TaxonomyLoader.class);
 	
 	/**
@@ -90,7 +95,9 @@ public class TaxonomyLoader {
 		return Json.createArrayBuilder(values.entrySet().stream()
 			.map(e -> Json.createObjectBuilder()
 				.add("langcode", e.getKey())
-				.add("value", e.getValue()).build()).collect(Collectors.toSet())).build();
+				.add("value", e.getValue()).build())
+			.collect(Collectors.toSet()))
+			.build();
 	}
 
 	/**
@@ -104,13 +111,46 @@ public class TaxonomyLoader {
 			return Map.of("und", js.getString());
 		}
 		if (json instanceof JsonArray arr) {
-			return arr.stream().map(JsonObject.class::cast)
+			return arr.stream()
+				.map(JsonObject.class::cast)
 				.collect(Collectors.toMap(o -> o.getString("langcode"), o -> o.getString("value")));
 		}
 		return Collections.emptyMap();
 	}
 
-	
+	/**
+	 * Get UUID of parent (if any) and build relationship object
+	 * 
+	 * @param taxonomy Drupal internal name of the taxonomy
+	 * @param term term
+	 * @return (potentially empty) relationship object
+	 */
+	private JsonObjectBuilder buildParent(String taxonomy, Term term) {
+		if (term.parent() == null) {
+			return Json.createObjectBuilder();
+		}
+
+		String uuid = null;
+		try {
+			Term parent = getTerm(taxonomy, term.parent());
+			uuid = parent.drupalID().toString();
+		} catch (IOException ioe) {
+			LOG.error("Parent not found", ioe);
+		}
+
+		return Json.createObjectBuilder()
+					.add("relationships", Json.createObjectBuilder()
+						.add("parent", Json.createObjectBuilder()
+							.add("data", Json.createArrayBuilder()
+								.add(Json.createObjectBuilder()
+									.add("type", "taxonomy_term--" + taxonomy)
+									.add("id", uuid)
+								)
+							)
+						)
+					);
+	}
+
 	/**
 	 * Build a taxonomy term JSON object for Drupal, which may or may not be translated
 	 * 
@@ -126,25 +166,23 @@ public class TaxonomyLoader {
 						.add("field_uri", Json.createObjectBuilder()
 							.add("uri", term.subject().toString())
 							.add("title", ""))
-						.add("name", buildName(term)
+						.add("name", buildName(term))
 					)
-			)).build();
+					.addAll(buildParent(taxonomy, term))
+			).build();
 	}
 	
 	/**
 	 * Post a term to a Drupal 9 website
 	 * 
-	 * @param website domain name
 	 * @param taxonomy internal Drupal nam of the taxonomy
-	 * @param user user name
-	 * @param pass password
 	 * @param term taxonomy term
 	 * @return true if the term has been created
 	 * @throws IOException 
 	 */
-	public boolean postTerm(String website, String taxonomy, String user, String pass, Term term) throws IOException {
+	public boolean postTerm(String taxonomy, Term term) throws IOException {
 		JsonObject obj = buildTerm(taxonomy, term);
-		LOG.debug(obj.toString());
+		LOG.info(obj.toString());
 				
 		String auth = Base64.getEncoder().encodeToString((user + ":" + pass).getBytes(StandardCharsets.ISO_8859_1));
 		Request req = Request.Post(website + "/en/jsonapi/taxonomy_term/" + taxonomy)
@@ -177,13 +215,12 @@ public class TaxonomyLoader {
 	/**
 	 * Get a term with a specific IRI from a Drupal 9 website 
 	 * 
-	 * @param website
 	 * @param taxonomy
 	 * @param iri 
 	 * @return taxonomy term or null
 	 * @throws IOException 
 	 */
-	public Term getTerm(String website, String taxonomy, IRI iri) throws IOException {
+	public Term getTerm(String taxonomy, IRI iri) throws IOException {
 		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy 
 										+ "?filter[field_uri.uri]=" + iri.stringValue());
 		
@@ -213,12 +250,11 @@ public class TaxonomyLoader {
 	/**
 	 * Get a term with a specific IRI from a Drupal 9 website 
 	 * 
-	 * @param website
 	 * @param taxonomy
 	 * @return taxonomy term or null
 	 * @throws IOException 
 	 */
-	public Set<Term> getAllTerms(String website, String taxonomy) throws IOException {
+	public Set<Term> getAllTerms(String taxonomy) throws IOException {
 		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy)
 			.addHeader(HttpHeaders.ACCEPT, "application/vnd.api+json");
 		
@@ -323,7 +359,13 @@ public class TaxonomyLoader {
 	/**
 	 * Constructor
 	 * 
+	 * @param website base url of the website
+	 * @param user user name
+	 * @param pass password
 	 */
-	public TaxonomyLoader() {
+	public TaxonomyLoader(String website, String user, String pass) {
+		this.website = website;
+		this.user = user;
+		this.pass = pass;
 	}
 }

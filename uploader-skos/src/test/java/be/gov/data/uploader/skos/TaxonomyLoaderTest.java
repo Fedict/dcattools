@@ -55,7 +55,7 @@ public class TaxonomyLoaderTest {
 	@Test
 	void loadTermsSimple() throws URISyntaxException, IOException {
 		File file = new File(this.getClass().getResource("/filetypes.ttl").toURI());
-		TaxonomyLoader loader = new TaxonomyLoader();
+		TaxonomyLoader loader = new TaxonomyLoader(site, user, pass);
 		List<Term> terms = loader.parse(file);
 		
 		assertEquals(2, terms.size());
@@ -64,16 +64,26 @@ public class TaxonomyLoaderTest {
 	@Test
 	void loadTermsTree() throws URISyntaxException, IOException {
 		File file = new File(this.getClass().getResource("/licenses.ttl").toURI());
-		TaxonomyLoader loader = new TaxonomyLoader();
+		TaxonomyLoader loader = new TaxonomyLoader(site, user, pass);
 		List<Term> terms = loader.parse(file);
 		
 		assertEquals(5, terms.size());
 	}
 
 	@Test
+	void postTermsTree() throws URISyntaxException, IOException {
+		File file = new File(this.getClass().getResource("/licenses.ttl").toURI());
+		TaxonomyLoader loader = new TaxonomyLoader(site, user, pass);
+		List<Term> terms = loader.parse(file);
+		for(Term t: terms) {
+			loader.postTerm("licenses", t);
+		}
+	}
+
+	@Test
 	void getTerm() throws IOException {
-		TaxonomyLoader loader = new TaxonomyLoader();
-		Term term = loader.getTerm(site, "file_types", Values.iri("http://data.gov.be/bin"));
+		TaxonomyLoader loader = new TaxonomyLoader(site, user, pass);
+		Term term = loader.getTerm("file_types", Values.iri("http://data.gov.be/bin"));
 
 		assertEquals(1, term.values().size());
 		assertEquals("BIN", term.values().get("und"));
@@ -81,8 +91,8 @@ public class TaxonomyLoaderTest {
 
 	@Test
 	void getAllTerms() throws IOException {
-		TaxonomyLoader loader = new TaxonomyLoader();
-		Set<Term> allTerms = loader.getAllTerms(site, "file_types");
+		TaxonomyLoader loader = new TaxonomyLoader(site, user, pass);
+		Set<Term> allTerms = loader.getAllTerms("file_types");
 		assertEquals(2, allTerms.size());
 	}
 }
