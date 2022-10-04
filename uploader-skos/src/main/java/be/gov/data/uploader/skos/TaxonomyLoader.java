@@ -38,8 +38,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -54,6 +56,7 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -257,30 +260,63 @@ public class TaxonomyLoader {
 	}
 
 	/**
+	 * Parse a single term
+	 * 
+	 * @param m full RDF model
+	 * @param subj subject IRI
+	 * @return term
+	 */
+	private Term parseTerm(Model m, Resource subj) {
+		Set<Value> values = m.filter(subj, SKOS.PREF_LABEL, null).objects();
+		Map<String, String> prefs = values.stream().map(Literal.class::cast)
+				.collect(Collectors.toMap(l -> l.getLanguage().orElse("und"), l -> l.getLabel()));
+		IRI parent = (IRI) m.filter(subj, SKOS.BROADER, null).objects().stream().findFirst().orElse(null);
+		return new Term((IRI) subj, prefs, parent, null);
+	}
+
+	/**
 	 * Parse the SKOS file into a set of taxonomy terms
 	 * 
 	 * @param file SKOS file
 	 * @return set of terms
 	 * @throws IOException 
 	 */
-	public Set<Term> parse(File file) throws IOException {
+	public List<Term> parse(File file) throws IOException {
 		LOG.info("Parsing file {}", file.toString());
 		Model m = loadSkos(file);
 		
-		Set<Resource> uris = m.filter(null, SKOS.HAS_TOP_CONCEPT, null).subjects();
-		LOG.info("Found {} root terms", uris.size());
-		
-		if (uris.isEmpty()) {
-			uris = m.filter(null, RDF.TYPE, SKOS.CONCEPT).subjects();
-			LOG.info("Assuming flat list, found {} terms", uris.size());
+		Set<Resource> uris = m.filter(null, RDF.TYPE, SKOS.CONCEPT).subjects();
+		LOG.info("Found {} terms", uris.size());
+
+		// add revers relations, so we can start at top and add narrower terms afterwards
+		for(Statement stmt: m.filter(null, SKOS.BROADER, null)) {
+			m.add((IRI) stmt.getObject(), SKOS.NARROWER, stmt.getSubject());
 		}
 		
-		return uris.stream().map(u -> {
-			Set<Value> values = m.filter(u, SKOS.PREF_LABEL, null).objects();
-			Map<String, String> prefs = values.stream().map(Literal.class::cast)
-				.collect(Collectors.toMap(l -> l.getLanguage().orElse("und"), l -> l.getLabel()));
-			return new Term((IRI) u, prefs, null, null);
-		}).collect(Collectors.toSet());
+		// get the top terms first, i.e all terms without a parent/broader relation
+		List<Term> terms = uris.stream()
+			.filter(u ->  m.filter(u, SKOS.BROADER, null).isEmpty())
+			.map(u -> parseTerm(m, u))
+			.collect(Collectors.toList());
+	
+		LOG.info("Found {} top terms", terms.size());
+
+		// if there are more terms than only top terms, it is a tree-like taxonomy with parents/children
+		if (uris.size() > terms.size()) {
+			List<Term> parents = new ArrayList<>(terms);
+			List<Term> children;
+		
+			do {	
+				children = parents.stream()
+					.flatMap(t -> m.filter(t.subject(), SKOS.NARROWER, null).stream())
+					.map(s -> parseTerm(m, (IRI) s.getObject()))
+					.collect(Collectors.toList());
+				terms.addAll(children);
+				parents = new ArrayList<>(children);
+			} while (!children.isEmpty());
+		}
+
+		return terms;
 	}
 
 	

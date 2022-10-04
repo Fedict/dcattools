@@ -27,7 +27,7 @@ package be.gov.data.uploader.skos;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -72,7 +72,7 @@ public class Main {
 		String taxo = line.getOptionValue("t");
 			
 		TaxonomyLoader loader = new TaxonomyLoader();
-		Set<Term> terms = loader.parse(new File(file));
+		List<Term> terms = loader.parse(new File(file));
 		for (Term t: terms) {
 			LOG.info("Loading term {}", t.subject());
 			loader.postTerm(host, taxo, user, pass, t);

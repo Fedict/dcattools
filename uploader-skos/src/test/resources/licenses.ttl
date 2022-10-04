@@ -1,0 +1,47 @@
+# Data for mapping licenses to EU list of file types
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.b/license/open>
+	a skos:Concept ;
+	skos:altLabel "Open" ;
+	skos:prefLabel "Open license"@en, 
+					"Licence ouverte"@fr,
+					"Open licentie"@nl,
+					"offene Lizenz"@de .
+
+<http://publications.europa.eu/resource/authority/licence/ODC_BL>
+	a skos:Concept ;
+	skos:broader <http://data.gov.b/license/open/cc> ;
+	skos:altLabel "ODBL" ;
+	skos:prefLabel "ODC Open Database License"@en, 
+					"ODC Open Database Licence"@fr,
+					"ODC Open Database Licentie"@nl,
+					"ODC Open Database Lizenz"@de .
+
+<http://data.gov.b/license/open/cc>
+	a skos:Concept ;
+	skos:broader <http://data.gov.b/license/open> ;
+	skos:altLabel "CC" ;
+	skos:prefLabel "Creative Commons"@en, 
+					"Creative Commons"@fr,
+					"Creative Commons"@nl,
+					"Creative Commons"@de .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BY_2_0>
+	a skos:Concept ;
+	skos:broader <http://data.gov.b/license/open/cc> ;
+	skos:altLabel "CC-BY" ;
+	skos:prefLabel "Creative Commons Attribution"@en, 
+					"Creative Commons Attribution"@fr,
+					"Creative Commons Naamsvermelding"@nl,
+					"Creative Commons Namensnennung"@de .
+
+<http://data.gov.b/license/closed>
+	a skos:Concept ;
+	skos:altLabel "Closed" ;
+	skos:prefLabel "Closed license"@en, 
+					"Licence fermée"@fr,
+					"Gesloten licentie"@nl,
+					"geschlossene Lizenz"@de .

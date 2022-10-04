@@ -28,9 +28,11 @@ package be.gov.data.uploader.skos;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Set;
 import org.eclipse.rdf4j.model.util.Values;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -38,21 +40,40 @@ import org.junit.jupiter.api.Test;
  * @author Bart.Hanssens
  */
 public class TaxonomyLoaderTest {
+	private static String site;
+	private static String user;
+	private static String pass;
+	
+	@BeforeAll
+    public static void setUp() {
+		site = System.getProperty("site", "");
+		System.err.println("site = " + site);
+		user = System.getProperty("user", "");
+		pass = System.getProperty("pass", "");		
+    }
+	
 	@Test
-	void loadTerms() throws URISyntaxException, IOException {
+	void loadTermsSimple() throws URISyntaxException, IOException {
 		File file = new File(this.getClass().getResource("/filetypes.ttl").toURI());
 		TaxonomyLoader loader = new TaxonomyLoader();
-		Set<Term> terms = loader.parse(file);
+		List<Term> terms = loader.parse(file);
 		
-		assertEquals(1, terms.size());
-		assertEquals("http://publications.europa.eu/resource/authority/file-type/CSV", 
-					terms.iterator().next().subject().toString());
+		assertEquals(2, terms.size());
+	}
+
+	@Test
+	void loadTermsTree() throws URISyntaxException, IOException {
+		File file = new File(this.getClass().getResource("/licenses.ttl").toURI());
+		TaxonomyLoader loader = new TaxonomyLoader();
+		List<Term> terms = loader.parse(file);
+		
+		assertEquals(5, terms.size());
 	}
 
 	@Test
 	void getTerm() throws IOException {
 		TaxonomyLoader loader = new TaxonomyLoader();
-		Term term = loader.getTerm("https://datagovbe.rovin.be", "file_types", Values.iri("http://data.gov.be/bin"));
+		Term term = loader.getTerm(site, "file_types", Values.iri("http://data.gov.be/bin"));
 
 		assertEquals(1, term.values().size());
 		assertEquals("BIN", term.values().get("und"));
@@ -61,7 +82,7 @@ public class TaxonomyLoaderTest {
 	@Test
 	void getAllTerms() throws IOException {
 		TaxonomyLoader loader = new TaxonomyLoader();
-		Set<Term> allTerms = loader.getAllTerms("https://datagovbe.rovin.be", "file_types");
+		Set<Term> allTerms = loader.getAllTerms(site, "file_types");
 		assertEquals(2, allTerms.size());
 	}
 }
