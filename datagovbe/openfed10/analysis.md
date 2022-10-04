@@ -196,9 +196,19 @@ Default contact form
 
 ## Views
 
+### Content view with data (backend)
+
+Paginated table of all content (only used/visible by site admin).
+With the possibility of searching on all these fields
+
+| NodeID | Title | Language | Content type | Author | Updated date |
+
+Ascending/descending ordering must be possible on Title or Updated date
+
+
 ### News per date
 
-Overview of the news, newest item first
+Paginated list of the news, newest item first
 
 - Filter
    - Content type is News
@@ -212,7 +222,7 @@ Overview of the news, newest item first
 
 ### Applications per date
 
-Overview of re-use of datasets, newest items first
+Paginated list/grid of re-use of datasets, newest items first.
 
 - Filter
    - Content type is Application
@@ -266,6 +276,7 @@ searching for Organization: federal should also return the results for FPS BOSA
 - News (link to latest news)
 - Info & FAQ (generic documentation)
 - Contact
+
 ### Bottom
 
 - Terms of use
