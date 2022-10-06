@@ -26,6 +26,7 @@ Enable
 - Serialization
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
+- Weight
 
 ### JSON:API
 
