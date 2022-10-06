@@ -125,7 +125,7 @@ Example of re-use of open data sets / services
 | Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
-| Description | Text field | yes | yes | no |
+| Body | Text field | yes | yes | no |
 | Image | Image | no | no | no |
 | Website | Link | yes | yes | no |
 | Category | Taxonomy: Data Categories | yes | -- | yes |
@@ -141,7 +141,7 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 | Field | Type | Required | Translatable | Multiple | Display |
 | --- | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no | text |
-| Description | Text field | yes | yes | no | text |
+| Body | Text field | yes | yes | no | text |
 | URI | Link | yes | no | no | hidden |
 | Update frequancy | Taxonomy: Update Frequencies | no | -- | no | text |
 | Last modified | Timestamp | no | no | no | date |
