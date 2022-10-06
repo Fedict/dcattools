@@ -141,7 +141,7 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 
 Last modified date is the last update of the dataset, this is different from the update date of the Drupal node.
 
-Author is not the drupal user creating the content.
+Author is not the Drupal user creating the content, but a person's / team's name or name of an organization.
 
 
 | Field | Type | Required | Translatable | Multiple | Display |
