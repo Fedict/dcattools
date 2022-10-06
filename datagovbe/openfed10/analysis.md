@@ -139,12 +139,17 @@ Metadata about an open dataset or service (note that the files themselves are ho
 
 URI is not visible in front-end, used for mapping with other sources / portals.
 
+Last modified date is the last update of the dataset, this is different from the update date of the Drupal node.
+
+Author is not the drupal user creating the content.
+
+
 | Field | Type | Required | Translatable | Multiple | Display |
 | --- | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no | text |
 | Body | Text field | yes | yes | no | text |
 | URI | Link | yes | no | no | hidden |
-| Update frequancy | Taxonomy: Update Frequencies | no | -- | no | text |
+| Update frequency | Taxonomy: Update Frequencies | no | -- | no | text |
 | Last modified | Timestamp | no | no | no | date |
 | From / till | Date range | no | no | no | date range |
 | Author | String | yes | yes | yes | text |
