@@ -26,6 +26,7 @@ Enable
 - Serialization
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
+- Weight
 
 ### JSON:API
 
@@ -125,7 +126,7 @@ Example of re-use of open data sets / services
 | Field | Type | Required | Translatable | Multiple |
 | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no |
-| Description | Text field | yes | yes | no |
+| Body | Text field | yes | yes | no |
 | Image | Image | no | no | no |
 | Website | Link | yes | yes | no |
 | Category | Taxonomy: Data Categories | yes | -- | yes |
@@ -138,12 +139,17 @@ Metadata about an open dataset or service (note that the files themselves are ho
 
 URI is not visible in front-end, used for mapping with other sources / portals.
 
+Last modified date is the last update of the dataset, this is different from the update date of the Drupal node.
+
+Author is not the Drupal user creating the content, but a person's / team's name or name of an organization.
+
+
 | Field | Type | Required | Translatable | Multiple | Display |
 | --- | --- | --- | --- | --- | --- |
 | Title | String | yes | yes | no | text |
-| Description | Text field | yes | yes | no | text |
+| Body | Text field | yes | yes | no | text |
 | URI | Link | yes | no | no | hidden |
-| Update frequancy | Taxonomy: Update Frequencies | no | -- | no | text |
+| Update frequency | Taxonomy: Update Frequencies | no | -- | no | text |
 | Last modified | Timestamp | no | no | no | date |
 | From / till | Date range | no | no | no | date range |
 | Author | String | yes | yes | yes | text |
@@ -154,9 +160,9 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 | Category | Taxonomy: Data Categories | yes | -- | yes | text |
 | License | Taxonomy: Licenses | yes | -- | yes | text |
 | Format | Taxonomy: File types | yes | -- | yes | text |
-| Web page | Link (external) | no | yes, no sync | yes | link |
-| Download URL | Link (external) | no | yes, no sync | yes | link |
-| Service URL | Link (external) | no | yes, no sync | yes | link |
+| Web page | Link (external) | yes | yes | yes | link |
+| Download URL | Link (external) | no | yesc | yes | link |
+| Service URL | Link (external) | no | yes | yes | link |
 | Keyword | String | no | yes, no sync | yes | hidden, only used in search |
 
 ### Content type: News
