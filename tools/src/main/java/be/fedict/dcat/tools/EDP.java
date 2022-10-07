@@ -54,7 +54,7 @@ import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
-import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.vocabulary.XSD;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -121,7 +121,7 @@ public class EDP {
 				w.writeAttribute("xml:lang", lang);
 			} else {
 				IRI dtype = ((Literal) val).getDatatype();
-				if ((dtype != null) && (dtype.equals(XMLSchema.DATE) || dtype.equals(XMLSchema.DATETIME))) {
+				if ((dtype != null) && (dtype.equals(XSD.DATE) || dtype.equals(XSD.DATETIME))) {
 					w.writeAttribute("rdf:datatype", dtype.toString());
 				}
 			}
@@ -247,6 +247,7 @@ public class EDP {
 					w.writeStartElement("dct:license");
 					w.writeStartElement("dct:LicenseDocument");
 					w.writeAttribute("rdf:about", license.toString());
+					writeReferences(w, con, license, DCTERMS.TYPE, "dct:type");
 					writeLiterals(w, con, license, RDFS.LABEL, "rdfs:label");
 					w.writeEndElement();
 					w.writeEndElement();
@@ -373,7 +374,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+//		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
 	}
 
@@ -526,7 +527,7 @@ public class EDP {
 			String scheme = concept.contains("geonames") 
 				? "http://sws.geonames.org"
 				: (concept.contains("belgif") 
-					? "http://org.belgif.be/id/cbe"
+					? "https://org.belgif.be/id/CbeRegisteredEntity"
 					: concept.substring(0, concept.lastIndexOf("/")));
 			schemes.add(scheme);
 			w.writeAttribute("rdf:resource", scheme);
@@ -584,7 +585,7 @@ public class EDP {
 		Serializer s = processor.newSerializer();
 		s.setOutputProperty(Property.METHOD, "xml");
 		s.setOutputProperty(Property.ENCODING, "utf-8");
-		s.setOutputProperty(Property.INDENT, "no");
+		//s.setOutputProperty(Property.INDENT, "no");
 		return s;
 	}
 

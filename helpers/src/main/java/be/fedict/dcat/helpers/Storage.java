@@ -159,7 +159,7 @@ public class Storage {
      * @param map
      * @param prop
      * @param lang
-     * @return 
+     * @return values or empty list
      */
     public static List<String> getMany(Map<Resource, ListMultimap<String, String>> map, 
                                                         IRI prop, String lang) {
@@ -183,8 +183,7 @@ public class Storage {
      * @param lang
      * @return 
      */
-    public static String getOne(Map<Resource, ListMultimap<String, String>> map, 
-                                                    IRI prop, String lang) {
+    public static String getOne(Map<Resource, ListMultimap<String, String>> map, IRI prop, String lang) {
         String res = "";
         
         ListMultimap<String, String> multi = map.get(prop);
@@ -525,4 +524,8 @@ public class Storage {
         mem.setPersist(false);
         repo = new SailRepository(mem);
     }
+
+	public void queryProperties(IRI iri, IRI LANGUAGE) {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	}
 }

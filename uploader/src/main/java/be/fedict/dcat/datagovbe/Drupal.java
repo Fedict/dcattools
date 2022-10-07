@@ -637,11 +637,6 @@ public class Drupal {
 		}
 		Map<Resource, ListMultimap<String, String>> linkmap = store.queryProperties(store.getURI(l));
 		List<String> langs = Storage.getMany(linkmap, DCTERMS.LANGUAGE, "");
-		if (!langs.isEmpty()) {
-			for (String s: langs) {
-				System.err.println(s);
-			}
-		}
 					
 		String link = l.replace(" ", "%20");
 		if (link.length() > Drupal.LEN_LINK) {
@@ -684,6 +679,8 @@ public class Drupal {
 				types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
 
 				builder.add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
+			} else {
+				logger.warn("No download or other info for {}", uri);
 			}
 		}
 
