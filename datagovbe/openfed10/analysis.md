@@ -160,9 +160,9 @@ Author is not the Drupal user creating the content, but a person's / team's name
 | Category | Taxonomy: Data Categories | yes | -- | yes | text |
 | License | Taxonomy: Licenses | yes | -- | yes | text |
 | Format | Taxonomy: File types | yes | -- | yes | text |
-| Web page | Link (external) | no | yes, no sync | yes | link |
-| Download URL | Link (external) | no | yes, no sync | yes | link |
-| Service URL | Link (external) | no | yes, no sync | yes | link |
+| Web page | Link (external) | no | yes | yes | link |
+| Download URL | Link (external) | no | yesc | yes | link |
+| Service URL | Link (external) | no | yes | yes | link |
 | Keyword | String | no | yes, no sync | yes | hidden, only used in search |
 
 ### Content type: News
