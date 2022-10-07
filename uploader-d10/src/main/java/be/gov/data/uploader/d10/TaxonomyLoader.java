@@ -23,8 +23,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.skos;
+package be.gov.data.uploader.d10;
 
+import be.gov.data.uploader.d10.dao.Term;
 import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
@@ -94,8 +95,9 @@ public class TaxonomyLoader {
 
 		return Json.createArrayBuilder(values.entrySet().stream()
 			.map(e -> Json.createObjectBuilder()
+				.add("value", e.getValue())
 				.add("langcode", e.getKey())
-				.add("value", e.getValue()).build())
+			.build())
 			.collect(Collectors.toSet()))
 			.build();
 	}
@@ -351,7 +353,6 @@ public class TaxonomyLoader {
 				parents = new ArrayList<>(children);
 			} while (!children.isEmpty());
 		}
-
 		return terms;
 	}
 

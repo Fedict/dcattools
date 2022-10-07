@@ -13,7 +13,7 @@
 
 <http://publications.europa.eu/resource/authority/licence/ODC_BL>
 	a skos:Concept ;
-	skos:broader <http://data.gov.b/license/open/cc> ;
+	skos:broader <http://data.gov.be/license/open/cc> ;
 	skos:altLabel "ODBL" ;
 	skos:prefLabel "ODC Open Database License"@en, 
 					"ODC Open Database Licence"@fr,

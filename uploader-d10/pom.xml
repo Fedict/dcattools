@@ -4,11 +4,11 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>2.23.0</version>
+        <version>2.24.0</version>
     </parent>
-    <artifactId>uploader-skos</artifactId>
+    <artifactId>uploader-d10</artifactId>
     <packaging>jar</packaging>
-	<description>Upload SKOS taxonomy to Drupal 9</description>
+	<description>Upload taxonomies and datasets to Drupal 9/10</description>
 	<url>https://data.gov.be</url>
 	<licenses>
 		<license>
@@ -117,5 +117,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <name>uploader-d10</name>
 </project>

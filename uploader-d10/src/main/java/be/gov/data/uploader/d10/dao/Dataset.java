@@ -23,8 +23,11 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.skos;
+package be.gov.data.uploader.d10.dao;
 
+import java.net.URL;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.eclipse.rdf4j.model.IRI;
@@ -33,4 +36,21 @@ import org.eclipse.rdf4j.model.IRI;
  *
  * @author Bart Hanssens
  */
-public record Term(IRI subject, Map<String,String> values, IRI parent, UUID drupalID) { }
+public record Dataset(IRI subject,
+	String id,
+	Map<String,String> title, 
+	Map<String,String> desc, 
+	Map<String,String> author,
+	Date created,
+	Date modified,
+	Date start,
+	Date end,
+	List<URL> pages,
+	UUID organization,
+	UUID geography,
+	UUID frequence,
+	List<UUID> themes,
+	Map<String,String> keywords,	
+	UUID license,
+	List<Distribution> dists,
+	UUID drupalID) { }

@@ -23,8 +23,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.skos;
+package be.gov.data.uploader.d10;
 
+import be.gov.data.uploader.d10.dao.Term;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
