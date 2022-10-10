@@ -39,9 +39,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +50,6 @@ import java.util.stream.Collectors;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
-import org.apache.http.entity.ContentType;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
@@ -70,14 +67,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author Bart.Hanssens
+ * Load and retrieve taxonomy terms to/from Drupal 9
+ * 
+ * @author Bart Hanssens
  */
-public class TaxonomyLoader {
-	private String website;
-	private String user;
-	private String pass;
-
+public class TaxonomyLoader extends AbstractLoader {
 	private final static Logger LOG = LoggerFactory.getLogger(TaxonomyLoader.class);
 	
 	/**
@@ -93,13 +87,15 @@ public class TaxonomyLoader {
 			return Json.createValue(term.values().get("und"));
 		}
 
+		return Json.createValue(term.values().get("en"));
+		/*
 		return Json.createArrayBuilder(values.entrySet().stream()
 			.map(e -> Json.createObjectBuilder()
 				.add("value", e.getValue())
 				.add("langcode", e.getKey())
 			.build())
 			.collect(Collectors.toSet()))
-			.build();
+			.build(); */
 	}
 
 	/**
@@ -184,16 +180,8 @@ public class TaxonomyLoader {
 	 */
 	public boolean postTerm(String taxonomy, Term term) throws IOException {
 		JsonObject obj = buildTerm(taxonomy, term);
-		LOG.info(obj.toString());
-				
-		String auth = Base64.getEncoder().encodeToString((user + ":" + pass).getBytes(StandardCharsets.ISO_8859_1));
-		Request req = Request.Post(website + "/en/jsonapi/taxonomy_term/" + taxonomy)
-			.setHeader(HttpHeaders.AUTHORIZATION, "Basic " + auth)
-			.bodyString(obj.toString(), ContentType.create("application/vnd.api+json"));
-
-		HttpResponse resp = req.execute().returnResponse();
-		LOG.info(resp.toString());
-
+		HttpResponse resp = postRequest("/en/jsonapi/taxonomy_term/" + taxonomy, obj);
+	
 		return resp.getStatusLine().getStatusCode() < 400;
 	}
 
@@ -223,7 +211,7 @@ public class TaxonomyLoader {
 	 * @throws IOException 
 	 */
 	public Term getTerm(String taxonomy, IRI iri) throws IOException {
-		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy 
+		Request req = Request.Get(getWebsite() + "/en/jsonapi/taxonomy_term/" + taxonomy 
 										+ "?filter[field_uri.uri]=" + iri.stringValue());
 		
 		HttpResponse resp = req.execute().returnResponse();
@@ -257,7 +245,7 @@ public class TaxonomyLoader {
 	 * @throws IOException 
 	 */
 	public Set<Term> getAllTerms(String taxonomy) throws IOException {
-		Request req = Request.Get(website + "/en/jsonapi/taxonomy_term/" + taxonomy)
+		Request req = Request.Get(getWebsite() + "/en/jsonapi/taxonomy_term/" + taxonomy)
 			.addHeader(HttpHeaders.ACCEPT, "application/vnd.api+json");
 		
 		HttpResponse resp = req.execute().returnResponse();
@@ -365,8 +353,6 @@ public class TaxonomyLoader {
 	 * @param pass password
 	 */
 	public TaxonomyLoader(String website, String user, String pass) {
-		this.website = website;
-		this.user = user;
-		this.pass = pass;
+		super(website, user, pass);
 	}
 }
