@@ -6,7 +6,7 @@
         <artifactId>dcattools</artifactId>
         <version>2.24.0</version>
     </parent>
-    <artifactId>uploader-d10</artifactId>
+    <artifactId>uploader-drupal</artifactId>
     <packaging>jar</packaging>
 	<description>Upload taxonomies and datasets to Drupal 9/10</description>
 	<url>https://data.gov.be</url>
@@ -117,5 +117,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <name>uploader-d10</name>
+    <name>uploader-drupal</name>
 </project>

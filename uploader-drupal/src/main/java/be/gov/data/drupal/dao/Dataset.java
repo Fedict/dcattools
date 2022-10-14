@@ -23,28 +23,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.d10;
+package be.gov.data.drupal.dao;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.net.URL;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import org.eclipse.rdf4j.model.IRI;
 
 /**
- *  Load and retrieve datasets to/from Drupal 9
- * 
+ *
  * @author Bart Hanssens
  */
-public class DatasetLoader extends AbstractLoader {
-	private final static Logger LOG = LoggerFactory.getLogger(DatasetLoader.class);
+public record Dataset(IRI subject,
+	String id,
+	Map<String,String> title, Map<String,String> desc, Map<String,String> author,
+	Date created, Date modified, Date start, Date end,
+	UUID organization, UUID geography, UUID frequency, UUID license,
+	List<UUID> themes, Map<String,String> keywords,	
+	List<URL> pages,
+	List<Distribution> dists,
 
-	/**
-	 * Constructor
-	 * 
-	 * @param website base url of the website
-	 * @param user user name
-	 * @param pass password
-	 */
-	public DatasetLoader(String website, String user, String pass) {
-		super(website, user, pass);
-	}
-}
+	UUID drupalID) { }

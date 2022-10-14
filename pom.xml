@@ -10,7 +10,7 @@
         <module>scrapers</module>
         <module>tools</module>
         <module>uploader</module>
-        <module>uploader-d10</module>
+        <module>uploader-drupal</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

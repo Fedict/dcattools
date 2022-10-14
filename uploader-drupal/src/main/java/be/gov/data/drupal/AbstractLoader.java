@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.d10;
+package be.gov.data.drupal;
 
 import jakarta.json.JsonObject;
 import java.io.IOException;

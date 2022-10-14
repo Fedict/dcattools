@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.d10.dao;
+package be.gov.data.drupal.dao;
 
 import java.util.Map;
 import java.util.UUID;

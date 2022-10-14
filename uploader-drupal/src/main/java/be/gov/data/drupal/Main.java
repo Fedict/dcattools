@@ -23,9 +23,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.uploader.d10;
+package be.gov.data.drupal;
 
-import be.gov.data.uploader.d10.dao.Term;
+import be.gov.data.drupal.dao.Term;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
