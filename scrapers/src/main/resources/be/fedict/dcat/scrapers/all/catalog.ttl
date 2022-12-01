@@ -11,7 +11,7 @@
 					<http://publications.europa.eu/resource/authority/language/FRA> ,
 					<http://publications.europa.eu/resource/authority/language/NLD> ;
 	dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
-	dcterms:spatial <http://sws.geonames.org/2802361/> ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
 	dcterms:publisher <http://org.belgif.be/id/cbe/org/0367_302_178> ;
 	dcat:themeTaxonomy <http://publications.europa.eu/resource/authority/data-theme> .
 

@@ -3,26 +3,26 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/46>
-	skos:exactMatch <http://sws.geonames.org/3337388/> ;
+	skos:exactMatch <https://sws.geonames.org/3337388/> ;
 	skos:prefLabel "Flanders"@en, "Vlaanderen"@nl, "Flandre"@fr, "Flandern"@de ;
 	skos:altLabel "Vlaanderen" .
 
 <http://data.gov.be/en/taxonomy/term/49>
-	skos:exactMatch <http://sws.geonames.org/2803139/> ;
+	skos:exactMatch <https://sws.geonames.org/2803139/> ;
 	skos:prefLabel "Antwerp"@en, "Antwerpen"@nl, "Anvers"@fr ;
 	skos:altLabel "Stad Antwerpen" .
 	
 <http://data.gov.be/en/taxonomy/term/50>
-	skos:exactMatch <http://sws.geonames.org/2797657/> ;
+	skos:exactMatch <https://sws.geonames.org/2797657/> ;
 	skos:prefLabel "Ghent"@en, "Gent"@nl, "Gand"@fr ;
 	skos:altLabel "Stad Gent" .
 
 <http://data.gov.be/en/taxonomy/term/61>
-	skos:exactMatch <http://sws.geonames.org/2794056/> ;
+	skos:exactMatch <https://sws.geonames.org/2794056/> ;
 	skos:prefLabel "Coutray"@en, "Kortrijk"@nl, "Courtrai"@fr ;
 	skos:altLabel "Stad Kortrijk" .
 
 <http://data.gov.be/en/taxonomy/term/348>
-	skos:exactMatch <http://sws.geonames.org/2791538/> ;
+	skos:exactMatch <https://sws.geonames.org/2791538/> ;
 	skos:prefLabel "Mechelen"@en, "Mechelen"@nl, "Malines"@fr ;
 	skos:altLabel "Stad Mechelen" .

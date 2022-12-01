@@ -6,7 +6,7 @@ PREFIX dgov: <http://data.gov.be#>
 
 DELETE { 	?dataset dcterms:spatial ?spatial }
 INSERT { 	?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/47> .
-			?dataset dcterms:spatial <http://sws.geonames.org/3337387/> }
+			?dataset dcterms:spatial <https://sws.geonames.org/3337387/> }
 WHERE	{	?dataset a dcat:Dataset .
 			OPTIONAL { ?dataset dcterms:spatial ?spatial }
 		}
