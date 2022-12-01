@@ -226,7 +226,7 @@
 <http://data.gov.be/en/taxonomy/term/171>
 	skos:prefLabel "DXF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dxf> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/DXF> ;
 	skos:altLabel "dxf", "DXF" .
 
 <http://data.gov.be/en/taxonomy/term/170>
@@ -271,7 +271,7 @@
 <http://data.gov.be/en/taxonomy/term/430>
 	skos:prefLabel "WAV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/vnd.wave> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/WAV> ;
 	skos:altLabel "WAV", "audio/x-wav", "audio/vnd.wave" .
 
 <http://data.gov.be/en/taxonomy/term/63>
