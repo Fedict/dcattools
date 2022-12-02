@@ -8,8 +8,9 @@ INSERT { ?s dcat:landingPage ?url }
 WHERE
 	{	?rec foaf:primaryTopic ?s .
 		?rec dcterms:identifier ?id .
-		?s a dcat:Dataset .
+		?s a ?class .
 		?s dcterms:title ?title .
+		VALUES ?class { dcat:Dataset dcat:DataService }
 		BIND (IRI(
 				CONCAT("https://www.vlaanderen.be/DataCatalogRecord/", ?id)
 			) as ?url)

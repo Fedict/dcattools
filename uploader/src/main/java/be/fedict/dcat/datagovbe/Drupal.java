@@ -805,29 +805,38 @@ public class Drupal {
 	}
 
 	/**
-	 * Update site
-	 *
-	 * @param skip skip number of datasets
-	 * @throws IOException
-	 * @throws RepositoryException
+	 * Update dataset / dataservices
+	 * 
+	 * @param res list of DCAT resource IRIs 
 	 */
-	public void update(int skip) throws IOException, RepositoryException {
-		List<IRI> datasets = store.query(DCAT.DATASET);
-
-		logger.info("Updating {} datasets...", Integer.toString(datasets.size()));
-
+	private void updateResources(List<IRI> res) throws IOException {
 		getCSRFToken();
 
 		int i = 0;
-		for (IRI d : datasets) {
-			if (i >= skip) {
-				add(d);
-			}
+		for (IRI d : res) {
+			add(d);
 			if (++i % 100 == 0) {
 				logger.info("Updated {}", Integer.toString(i));
 			}
 		}
+	}
+
+	/**
+	 * Update site
+	 *
+	 * @throws IOException
+	 * @throws RepositoryException
+	 */
+	public void update() throws IOException, RepositoryException {
+		List<IRI> datasets = store.query(DCAT.DATASET);
+		logger.info("Updating {} datasets...", Integer.toString(datasets.size()));
+		updateResources(datasets);
 		logger.info("Done updating datasets");
+
+		List<IRI> services = store.query(DCAT.DATA_SERVICE);
+		logger.info("Updating {} services...", Integer.toString(services.size()));
+		updateResources(services);
+		logger.info("Done updating dataservices");
 	}
 
 	/**

@@ -113,10 +113,8 @@ public class Main {
 
 	/**
 	 * Update Drupal site
-	 *
-	 * @param skip skip number of datasets
 	 */
-	public static void drupal(int skip) {
+	public static void drupal() {
 		String u = prop.getProperty(Drupal.PROP_PREFIX + ".drupal");
 		URL url = null;
 
@@ -140,13 +138,13 @@ public class Main {
 		d.setUserPassID(user, pass, userid);
 
 		try {
-			d.update(skip);
+			d.update();
 		} catch (IOException ex) {
 			logger.error("IO exception while updating", ex);
 			exit(-5);
 		} catch (RepositoryException ex) {
 			logger.error("Repository exception while updating", ex);
-			exit(-5);
+			exit(-6);
 		}
 	}
 
@@ -171,12 +169,8 @@ public class Main {
 			exit(-2);
 		}
 
-		int skip = (args.length == 2) ? Integer.valueOf(args[1]) : 0;
-
 		readRDF();
 
-		drupal(skip);
-
-		exit(0);
+		drupal();
 	}
 }

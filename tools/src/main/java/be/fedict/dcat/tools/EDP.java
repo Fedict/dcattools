@@ -314,8 +314,8 @@ public class EDP {
 	 * @param el element name
 	 * @throws XMLStreamException
 	 */
-	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con,
-		Resource uri, IRI pred, String el) throws XMLStreamException {
+	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con, Resource uri, IRI pred, 
+			String el) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
 				writeReference(w, el, res.next().getObject());
@@ -374,7 +374,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
-//		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
 	}
 
@@ -412,12 +412,13 @@ public class EDP {
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
+	 * @param cl class name (used for element tag)
 	 * @param uri URI of the dataset
 	 * @throws XMLStreamException
 	 */
-	private static void writeDataset(XMLStreamWriter w, RepositoryConnection con,
-		IRI uri) throws XMLStreamException {
-		w.writeStartElement("dcat:Dataset");
+	private static void writeResource(XMLStreamWriter w, RepositoryConnection con, String cl, IRI uri) 
+			throws XMLStreamException {
+		w.writeStartElement(cl);
 		w.writeAttribute("rdf:about", uri.stringValue());
 
 		writeGeneric(w, con, uri);
@@ -425,6 +426,9 @@ public class EDP {
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme", "skos:Concept", false);
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
+		writeLiterals(w, con, uri, DCAT.BBOX, "dcat:bbox");
+		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
+		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
@@ -456,11 +460,33 @@ public class EDP {
 			while (res.hasNext()) {
 				nr++;
 				w.writeStartElement("dcat:dataset");
-				writeDataset(w, con, (IRI) res.next().getObject());
+				writeResource(w, con, "dcat:Dataset", (IRI) res.next().getObject());
 				w.writeEndElement();
 			}
 		}
-		logger.info("Wrote {} dataset", nr);
+		logger.info("Wrote {} datasets", nr);
+	}
+
+	/**
+	 * Write DCAT dataservice
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @throws XMLStreamException
+	 */
+	private static void writeDataservices(XMLStreamWriter w, RepositoryConnection con)
+		throws XMLStreamException {
+		int nr = 0;
+
+		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_SERVICE, null)) {
+			while (res.hasNext()) {
+				nr++;
+				w.writeStartElement("dcat:service");
+				writeResource(w, con, "dcat:DataService", (IRI) res.next().getObject());
+				w.writeEndElement();
+			}
+		}
+		logger.info("Wrote {} services", nr);
 	}
 
 	/**
@@ -565,11 +591,11 @@ public class EDP {
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeLicenses(w, con, uri, DCTERMS.LICENSE);
 		writeDatasets(w, con);
+		writeDataservices(w, con);
 		w.writeEndElement();
 
 		writeOrgs(w, con);
 		writeConcepts(w);
-
 
 		w.writeEndElement();
 	}
@@ -585,7 +611,7 @@ public class EDP {
 		Serializer s = processor.newSerializer();
 		s.setOutputProperty(Property.METHOD, "xml");
 		s.setOutputProperty(Property.ENCODING, "utf-8");
-		//s.setOutputProperty(Property.INDENT, "no");
+		s.setOutputProperty(Property.INDENT, "yes");
 		return s;
 	}
 
