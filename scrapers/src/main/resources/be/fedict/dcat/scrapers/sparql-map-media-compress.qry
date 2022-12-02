@@ -1,4 +1,4 @@
-# Map file formats to an EU list of well known URIs and mimetypes
+# Map compression file formats to an EU list of well known URIs and mimetypes
 # Typically file formats are described as text instead of URIs, or use portal-specific URIs
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
@@ -10,17 +10,10 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE 
 	{	?dist ?prop ?label }
 INSERT 
-	{ 	?dist dgov:mediaType ?drupal .
-		?dist dcterms:format ?auth .
-		?dist dcat:mediaType ?mime .
-		?auth a dcterms:mediaType  .
-		?auth rdfs:label ?imt 
-	}
+	{ 	?dist dcat:mediaType ?mime }
 WHERE
 	{	?dist ?prop ?label .
 		?drupal skos:altLabel ?label .
-		?drupal skos:prefLabel ?imt .
 		?drupal skos:closeMatch ?mime .
-		?drupal skos:exactMatch ?auth .
 		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format }
 	}

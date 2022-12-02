@@ -12,6 +12,9 @@ biodiversity/sparql-default-contact.qry
 biodiversity/sparql-dist-downloadurl.qry
 data-media.ttl
 sparql-map-media.qry
+clear-skos.qry
+data-media-compress.ttl
+sparql-map-media-compress.qry
 data-license.ttl
 sparql-map-license.qry
 sparql-delete-label-license.qry

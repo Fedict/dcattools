@@ -209,7 +209,7 @@ public class EDP {
 
 				w.writeStartElement("dct:format");
 
-				w.writeEmptyElement("dct:MediaTypeOrExtent");
+				w.writeEmptyElement("dct:MediaType");
 				w.writeAttribute("rdf:about", fmt.toString());
 				CONCEPTS.add(fmt);
 				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
@@ -395,8 +395,10 @@ public class EDP {
 
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 
-		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaTypeOrExtent", true);
+		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaType", true);
 		writeFormats(w, con, uri, DCTERMS.FORMAT);
+		writeFormats(w, con, uri, DCAT.COMPRESS_FORMAT);
+		writeFormats(w, con, uri, DCAT.PACKAGE_FORMAT);
 
 		// write as anyURI string
 		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");

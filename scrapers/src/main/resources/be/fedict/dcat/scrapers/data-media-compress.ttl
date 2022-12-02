@@ -1,0 +1,10 @@
+# Data for mapping file types names to EU list of compression file types
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/150>
+	skos:prefLabel "ZIP" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/zip>; 
+	skos:altLabel "ZIP", "zip", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
+					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)" .
