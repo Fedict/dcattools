@@ -5,6 +5,7 @@ biodiversity/sparql-theme.qry
 biodiversity/data-geo.ttl
 sparql-map-geo-publisher.qry
 sparql-geo-belgium.qry
+clear-skos.qry
 biodiversity/data-org.ttl
 sparql-map-org.qry
 biodiversity/data-contact.ttl
