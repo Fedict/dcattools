@@ -276,6 +276,7 @@ public class EDP {
 					w.writeStartElement("vcard:Kind");
 					writeLiterals(w, con, contact, VCARD4.FN, "vcard:fn");
 					writeReferences(w, con, contact, VCARD4.HAS_EMAIL, "vcard:hasEmail");
+					writeReferences(w, con, contact, VCARD4.HAS_TELEPHONE, "vcard:hasTelephone");
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {

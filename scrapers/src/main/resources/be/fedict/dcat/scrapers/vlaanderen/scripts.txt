@@ -44,4 +44,5 @@ clear-skos.qry
 sparql-date-type.qry
 vlaanderen/sparql-accessurl.qry
 vlaanderen/sparql-fix-homepage.qry
+vlaanderen/sparql-fix-telephone.qry
 sparql-strip-html.qry
