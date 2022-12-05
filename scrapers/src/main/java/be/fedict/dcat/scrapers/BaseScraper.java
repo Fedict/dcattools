@@ -513,7 +513,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		this.cache = new Cache(new File(getRequiredProperty(prop, "cache")));
 
 		String delay = prop.getProperty(BaseScraper.PROP_PREFIX + ".http.delay", "500");
-		setDelay(Integer.valueOf(delay));
+		setDelay(Integer.parseInt(delay));
 		
 		store.startup();
 	}

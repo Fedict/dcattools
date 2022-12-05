@@ -5,10 +5,9 @@ vlaanderen/data-org.ttl
 sparql-map-org.qry
 vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-consolidate-address2.qry
-#vlaanderen/sparql-consolidate-contact.qry
-vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-bbox.qry
 vlaanderen/sparql-consolidate-date.qry
+vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-standards.qry
 vlaanderen/sparql-remove-empty-label.qry
 data-media.ttl
@@ -24,29 +23,19 @@ sparql-map-loc-lang.qry
 vlaanderen/sparql-default-language.qry
 vlaanderen/sparql-map-lexvo-lang.qry
 sparql-dist-lang.qry
-# sparql-remove-duplicates.qry
-# vlaanderen/sparql-map-language.qry
-# sparql-map-loc-lang.qry
 vlaanderen/sparql-language.qry
 vlaanderen/sparql-landingpage.qry
-# vlaanderen/sparql-access-to-downloadurl.qry
 sparql-dist-accessurl.qry
 vlaanderen/data-geo.ttl
 sparql-map-geo.qry
 vlaanderen/sparql-default-geo.qry
-# vlaanderen/sparql-fix-theme.qry
 vlaanderen/data-theme.ttl
-# sparql-map-theme.qry
 sparql-map-keyword-theme.qry
 vlaanderen/sparql-map-theme.qry
 vlaanderen/sparql-map-theme2.qry
-#vlaanderen/sparql-vcard-mailto.qry
-#vlaanderen/sparql-contactmbox.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 vlaanderen/sparql-fix-frequency.qry
-#vlaanderen/data-contact.ttl
-#vlaanderen/sparql-default-contact.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
 vlaanderen/sparql-default-license.qry
@@ -54,4 +43,5 @@ vlaanderen/sparql-remove-rights.qry
 clear-skos.qry
 sparql-date-type.qry
 vlaanderen/sparql-accessurl.qry
+vlaanderen/sparql-fix-homepage.qry
 sparql-strip-html.qry

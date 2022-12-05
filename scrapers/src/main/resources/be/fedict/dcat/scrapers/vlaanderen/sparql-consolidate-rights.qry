@@ -1,8 +1,7 @@
-# Consolidate rights statement
+# Consolidate standards statement
 # Use 1 URI instead of different blank nodes / genid
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
 	{	?s dcterms:rights ?genrights .
@@ -18,4 +17,5 @@ WHERE
 				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(?title))
 			)
 		AS ?rights)
+		FILTER (CONTAINS(STR(?genrights), ".well-known/genid"))
 	}

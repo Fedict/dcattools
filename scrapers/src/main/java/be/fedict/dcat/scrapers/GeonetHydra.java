@@ -68,8 +68,8 @@ public abstract class GeonetHydra extends Geonet {
 		String prevFrom = matchFrom.group(1);
 		String prevTo = matchTo.group(1);
 
-		int nextFrom = Integer.valueOf(prevTo)  + 1;
-		int nextTo = nextFrom + Integer.valueOf(prevTo) - Integer.valueOf(prevFrom);
+		int nextFrom = Integer.parseInt(prevTo)  + 1;
+		int nextTo = nextFrom + Integer.parseInt(prevTo) - Integer.parseInt(prevFrom);
 
 		str = str.replace("from=" + prevFrom, "from=" + nextFrom);
 		str = str.replace("to=" + prevTo, "to=" + nextTo);

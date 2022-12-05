@@ -2,7 +2,6 @@
 # Use 1 URI instead of different blank nodes / genid
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
 	{	?s dcterms:conformsTo ?genstd .
@@ -18,4 +17,5 @@ WHERE
 				CONCAT("http://data.gov.be/.well-known/genid/standard/", SHA1(?id))
 			)
 		AS ?std)
+		FILTER (CONTAINS(STR(?genstd), ".well-known/genid"))
 	}
