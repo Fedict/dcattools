@@ -16,12 +16,12 @@ INSERT
 WHERE
 	{ 	?s dcterms:spatial ?genspatial .
 		?genspatial ?p ?o .
-		?genspatial locn:geometry ?bbox
+		?genspatial locn:geometry|dcat:bbox ?bbox
 		BIND (
 			fn:simplifyPolygon(STR(?bbox))
 			as ?simple)
 		BIND (IRI(
-				CONCAT("http://data.gov.be/.well-known/genid/spatial/", SHA1(?simple))
+				CONCAT("http://data.gov.be/spatial/", SHA1(?simple))
 			)
 		AS ?spatial)
 		FILTER CONTAINS(STR(?bbox), "POLYGON((")
