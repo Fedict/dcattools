@@ -531,6 +531,39 @@ public class EDP {
 		logger.info("Wrote {} docs", nr);
 	}
 
+	/**
+	 * Write document (license, standard...) info
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @throws XMLStreamException
+	 */
+	private static void writeLocations(XMLStreamWriter w, RepositoryConnection con) throws XMLStreamException {
+		int nr = 0;
+
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCTERMS.LOCATION)) {
+			while (res.hasNext()) {
+				IRI iri = (IRI) res.next().getSubject();
+
+				Value bbox = null;
+				RepositoryResult<Statement> bboxes = con.getStatements(iri, DCAT.BBOX, null);
+				while (bboxes.hasNext()) {
+					Value val  = bboxes.next().getObject();
+					if (val.stringValue().startsWith("POLYGON")) {
+						bbox = val;
+					}
+				}
+				if (bbox != null) {
+					nr++;
+					w.writeStartElement("dcterms:Location");
+					w.writeAttribute("rdf:about", iri.toString());
+					writeLiteral(w, "dcat:bbox", bbox);
+					w.writeEndElement();
+				}
+			}
+		}
+		logger.info("Wrote {} locations", nr);
+	}
 
 	/**
 	 * Write FOAF organization
@@ -644,6 +677,7 @@ public class EDP {
 		
 		writeOrganizations(w, con);
 		writeConcepts(w);
+		writeLocations(w, con);
 
 		w.writeEndElement();
 	}
