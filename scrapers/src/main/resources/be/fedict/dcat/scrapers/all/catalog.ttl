@@ -6,16 +6,16 @@
 <http://data.gov.be/catalog> a dcat:Catalog ;
 	dcterms:description "Converted by FPS BOSA DG DT converter"@en ;
 	dcterms:title "DCAT-AP export data.gov.be"@en ;
-	foaf:homepage <http://data.gov.be> ;
+	foaf:homepage <https://data.gov.be> ;
 	dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> ,
 					<http://publications.europa.eu/resource/authority/language/FRA> ,
 					<http://publications.europa.eu/resource/authority/language/NLD> ;
 	dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
 	dcterms:spatial <https://sws.geonames.org/2802361/> ;
-	dcterms:publisher <http://org.belgif.be/id/cbe/org/0367_302_178> ;
+	dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0671516647> ;
 	dcat:themeTaxonomy <http://publications.europa.eu/resource/authority/data-theme> .
 
-<http://org.belgif.be/id/cbe/org/0367_302_178> a foaf:Organization ;
-	foaf:name "FOD BOSA DG DT"@nl, "SPF BOSA DG TD"@fr, "FPS BOSA DG DT"@en ;
-	foaf:homepage <https://bosa.belgium.be/en/dg-digital-transformation> ;
-	foaf:mbox <mailto:opendata@belgium.be> .
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647> a foaf:Organization ;
+	foaf:name "FOD BOSA DG"@nl, "SPF BOSA"@fr, "FPS BOSA"@en ;
+	foaf:homepage <https://bosa.belgium.be> ;
+	foaf:mbox <mailto:opendata@bosa.fgov.be> .
