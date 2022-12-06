@@ -403,7 +403,7 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaType", true);
-		writeFormats(w, con, uri, DCTERMS.FORMAT, "dcterms:format");
+		writeFormats(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeFormats(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
 		writeFormats(w, con, uri, DCAT.PACKAGE_FORMAT, "dcat:packageFormat");
 
@@ -412,7 +412,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCAT.ACCESS_SERVICE, "dcat:accessService");
 		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
 
-		writeReferences(w, con, uri, DCTERMS.LICENSE, "dcterms:license");
+		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
@@ -555,7 +555,7 @@ public class EDP {
 				}
 				if (bbox != null) {
 					nr++;
-					w.writeStartElement("dcterms:Location");
+					w.writeStartElement("dct:Location");
 					w.writeAttribute("rdf:about", iri.toString());
 					writeLiteral(w, "dcat:bbox", bbox);
 					w.writeEndElement();
