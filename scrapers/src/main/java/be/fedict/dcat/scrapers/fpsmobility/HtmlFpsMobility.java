@@ -38,6 +38,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
@@ -51,6 +53,7 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XSD;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
@@ -62,6 +65,8 @@ import org.eclipse.rdf4j.repository.RepositoryException;
 public class HtmlFpsMobility extends Html {
 
 	public final static String LANG_LINK = "language-link";
+	public final static String DOWNLOAD_LINK = "div.node__download a";
+	public final static Pattern P_TYPE = Pattern.compile("(\\D+); length=(\\d+)");
 
 	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
@@ -82,7 +87,7 @@ public class HtmlFpsMobility extends Html {
 
 		Elements lis = Jsoup.parse(front).getElementsByClass(HtmlFpsMobility.LANG_LINK);
 		for (Element li : lis) {
-			if (li.text().equals(lang)) {
+			if (li.text().toLowerCase().equals(lang)) {
 				String href = li.attr(Attribute.HREF.toString());
 				return new URL(base, href);
 			}
@@ -131,6 +136,39 @@ public class HtmlFpsMobility extends Html {
 	}
 
 	/**
+	 * Get URL and bytesize of the download file
+	 * 
+	 * @param store
+	 * @param dist
+	 * @param download
+	 * @throws MalformedURLException
+	 * @throws RepositoryException
+	 * @throws IOException 
+	 */
+	private void getDownload(Storage store, IRI dist, URL download) throws MalformedURLException, RepositoryException {
+		try {
+			String str = makeRequest(download);
+			
+			Element el = Jsoup.parse(str).selectFirst(HtmlFpsMobility.DOWNLOAD_LINK);
+			if (el != null) {
+				String href = el.attr(Attribute.HREF.toString());
+				store.add(dist, DCAT.DOWNLOAD_URL, makeAbsURL(href));
+				
+				String type = el.attr(Attribute.TYPE.toString());
+				Matcher m = P_TYPE.matcher(type);
+				if (m.matches() && m.groupCount() == 2) {
+					store.add(dist, DCAT.MEDIA_TYPE, m.group(1));
+					store.add(dist, DCAT.BYTE_SIZE, m.group(2), XSD.DECIMAL);
+				}
+			} else {
+				logger.error("Element not found for download {}", download);
+			}
+		} catch (IOException ex) {
+			logger.error("Can't get download for {}", download);
+		}
+	}
+		
+	/**
 	 * Generate DCAT distribution.
 	 *
 	 * @param store RDF store
@@ -142,8 +180,7 @@ public class HtmlFpsMobility extends Html {
 	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
-	private void generateDist(Storage store, IRI dataset, URL access,
-			Elements link, int i, String lang)
+	private void generateDist(Storage store, IRI dataset, URL access, Elements link, int i, String lang)
 			throws MalformedURLException, RepositoryException {
 		String href = link.first().attr(Attribute.HREF.toString());
 		URL download = makeAbsURL(href);
@@ -157,8 +194,8 @@ public class HtmlFpsMobility extends Html {
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
-		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, getFileExt(href));
+		
+		getDownload(store, dist, download);
 	}
 
 	/**
