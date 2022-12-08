@@ -75,7 +75,6 @@ import org.apache.http.ssl.SSLContexts;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Resource;
-import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -88,11 +87,11 @@ import org.slf4j.LoggerFactory;
 /**
  * Drupal REST service class.
  *
- * @author Bart Hanssens <bart.hanssens@fedict.be>
+ * @author Bart Hanssens <bart.hanssens@bosa.fgov.be>
  */
 public class Drupal {
 
-	private final static Logger logger = LoggerFactory.getLogger(Drupal.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(Drupal.class);
 
 	public final static String PROP_PREFIX = "be.fedict.datagovbe7";
 
@@ -142,13 +141,6 @@ public class Drupal {
 		= Pattern.compile("/([0-9]+)>; rel=\"shortlink\"");
 
 	public final static SimpleDateFormat ISODATE = new SimpleDateFormat("yyyy-MM-dd");
-
-	private final static Map<String,IRI> langMap = Map.of(
-		"nl", Values.iri("http://publications.europa.eu/resource/authority/language/NLD"),
-		"fr", Values.iri("http://publications.europa.eu/resource/authority/language/FRA"),
-		"de", Values.iri("http://publications.europa.eu/resource/authority/language/DEU"),
-		"en", Values.iri("http://publications.europa.eu/resource/authority/language/ENG")
-	);
 
 	public final static int LEN_TITLE = 128;
 	public final static int LEN_KEYWORDS = 255;
@@ -317,11 +309,11 @@ public class Drupal {
 				Matcher m = SHORTLINK.matcher(header.getValue());
 				if (m.find()) {
 					node = m.group(1);
-					logger.info("Dataset {} exists, node {}", id, node);
+					LOGGER.info("Dataset {} exists, node {}", id, node);
 				}
 			}
 		} catch (IOException ex) {
-			logger.error("Exception getting dataset {}", id);
+			LOGGER.error("Exception getting dataset {}", id);
 		}
 
 		return node;
@@ -435,7 +427,7 @@ public class Drupal {
 			try {
 				modif = Drupal.ISODATE.parse(m.substring(0, 10));
 			} catch (ParseException ex) {
-				logger.error("Exception parsing {} as date", m);
+				LOGGER.error("Exception parsing {} as date", m);
 			}
 		}
 		return modif;
@@ -568,7 +560,7 @@ public class Drupal {
 		String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
 		String title = stripTags(Storage.getOne(dataset, DCTERMS.TITLE, lang));
 		if (title.isEmpty()) {
-			logger.warn("Title for {} empty", id);
+			LOGGER.warn("Title for {} empty", id);
 		}
 		// Just copy the title if description is empty
 		String desc = Storage.getOne(dataset, DCTERMS.DESCRIPTION, lang);
@@ -576,7 +568,7 @@ public class Drupal {
 
 		// Max size for Drupal title
 		if (title.length() > Drupal.LEN_TITLE) {
-			logger.warn("Title {} for {} too long", title, id);
+			LOGGER.warn("Title {} for {} too long", title, id);
 			title = ellipsis(title, Drupal.LEN_TITLE);
 		}
 
@@ -585,7 +577,7 @@ public class Drupal {
 		String keywords = getKeywords(dataset, lang);
 		// Max size for Drupal keywords
 		if (keywords.length() > Drupal.LEN_KEYWORDS) {
-			logger.warn("Keywords {} too long", keywords);
+			LOGGER.warn("Keywords {} too long", keywords);
 			keywords = ellipsis(keywords, Drupal.LEN_KEYWORDS);
 		}
 
@@ -640,7 +632,7 @@ public class Drupal {
 					
 		String link = l.replace(" ", "%20");
 		if (link.length() > Drupal.LEN_LINK) {
-			logger.warn("Download URL too long ({}): {} ", l.length(), l);
+			LOGGER.warn("Download URL too long ({}): {} ", l.length(), l);
 		}
 		return link;
 	}
@@ -680,7 +672,7 @@ public class Drupal {
 
 				builder.add(Drupal.FLD_LICENSE, arrayTermsJson(dist, DATAGOVBE.LICENSE));
 			} else {
-				logger.warn("No download or other info for {}", uri);
+				LOGGER.warn("No download or other info for {}", uri);
 			}
 		}
 
@@ -717,7 +709,7 @@ public class Drupal {
 		Map<Resource, ListMultimap<String, String>> dataset = store.queryProperties(uri);
 
 		if (dataset.isEmpty()) {
-			logger.warn("Empty dataset for {}", uri.stringValue());
+			LOGGER.warn("Empty dataset for {}", uri.stringValue());
 			return;
 		}
 
@@ -742,7 +734,7 @@ public class Drupal {
 
 			// Build the JSON array
 			JsonObject obj = builder.build();
-			logger.debug(obj.toString());
+			LOGGER.debug(obj.toString());
 
 			Request r = node.isEmpty()
 				? prepare(Drupal.POST, Drupal.NODE)
@@ -752,9 +744,9 @@ public class Drupal {
 			try {
 				StatusLine status = exec.authPreemptive(host).execute(r)
 					.returnResponse().getStatusLine();
-				logger.info(status.toString());
+				LOGGER.info(status.toString());
 			} catch (IOException ex) {
-				logger.error("Could not update {}", uri.toString(), ex);
+				LOGGER.error("Could not update {}", uri.toString(), ex);
 			}
 		}
 	}
@@ -801,7 +793,7 @@ public class Drupal {
 		token = exec.authPreemptive(host)
 			.execute(r)
 			.returnContent().asString();
-		logger.debug("CSRF Token is {}", token);
+		LOGGER.debug("CSRF Token is {}", token);
 	}
 
 	/**
@@ -816,7 +808,7 @@ public class Drupal {
 		for (IRI d : res) {
 			add(d);
 			if (++i % 100 == 0) {
-				logger.info("Updated {}", Integer.toString(i));
+				LOGGER.info("Updated {}", Integer.toString(i));
 			}
 		}
 	}
@@ -827,16 +819,17 @@ public class Drupal {
 	 * @throws IOException
 	 * @throws RepositoryException
 	 */
-	public void update() throws IOException, RepositoryException {
-		List<IRI> datasets = store.query(DCAT.DATASET);
-		logger.info("Updating {} datasets...", Integer.toString(datasets.size()));
-		updateResources(datasets);
-		logger.info("Done updating datasets");
-
+	public void update() throws IOException, RepositoryException {		
 		List<IRI> services = store.query(DCAT.DATA_SERVICE);
-		logger.info("Updating {} services...", Integer.toString(services.size()));
+		LOGGER.info("Updating {} services...", Integer.toString(services.size()));
 		updateResources(services);
-		logger.info("Done updating dataservices");
+		LOGGER.info("Done updating dataservices");
+
+		List<IRI> datasets = store.query(DCAT.DATASET);
+		LOGGER.info("Updating {} datasets...", Integer.toString(datasets.size()));
+		updateResources(datasets);
+		LOGGER.info("Done updating datasets");
+
 	}
 
 	/**
@@ -866,9 +859,9 @@ public class Drupal {
 				.build();
 			e = Executor.newInstance(client);
 		} catch (NoSuchAlgorithmException ex) {
-			logger.error("Algo error", ex);
+			LOGGER.error("Algo error", ex);
 		} catch (KeyStoreException | KeyManagementException ex) {
-			logger.error("Store exception", ex);
+			LOGGER.error("Store exception", ex);
 		}
 		this.exec = e;
 	}

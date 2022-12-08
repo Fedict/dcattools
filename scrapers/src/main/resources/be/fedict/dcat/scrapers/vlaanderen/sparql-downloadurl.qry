@@ -11,4 +11,5 @@ INSERT
 WHERE
 	{ 	?dist a dcat:Distribution .
 		?dist dcat:accessURL ?download
+		FILTER NOT EXISTS { ?dist dcat:downloadURL ?download }
 	}

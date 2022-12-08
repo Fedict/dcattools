@@ -3,6 +3,7 @@ vlaanderen/sparql-remove-hydra.qry
 vlaanderen/sparql-default-contact.qry
 vlaanderen/data-org.ttl
 sparql-map-org.qry
+clear-skos.qry
 vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-consolidate-address2.qry
 vlaanderen/sparql-consolidate-bbox.qry
@@ -19,6 +20,7 @@ vlaanderen/sparql-format-mediatype.qry
 vlaanderen/sparql-remove-format-empty.qry
 sparql-map-media.qry
 sparql-map-media-drupal.qry
+clear-skos.qry
 sparql-map-loc-lang.qry
 vlaanderen/sparql-default-language.qry
 vlaanderen/sparql-map-lexvo-lang.qry
@@ -42,7 +44,7 @@ vlaanderen/sparql-default-license.qry
 vlaanderen/sparql-remove-rights.qry
 clear-skos.qry
 sparql-date-type.qry
-vlaanderen/sparql-accessurl.qry
+vlaanderen/sparql-downloadurl.qry
 vlaanderen/sparql-fix-homepage.qry
 vlaanderen/sparql-fix-telephone.qry
 sparql-strip-html.qry

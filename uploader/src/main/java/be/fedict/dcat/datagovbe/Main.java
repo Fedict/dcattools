@@ -51,7 +51,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Main {
 
-	private final static Logger logger = LoggerFactory.getLogger(Main.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
 	private final static Properties prop = new Properties();
 	private static Storage store = null;
@@ -66,10 +66,10 @@ public class Main {
 			try {
 				store.shutdown();
 			} catch (RepositoryException ex) {
-				logger.error("Error shutting down repository", ex);
+				LOGGER.error("Error shutting down repository", ex);
 			}
 		}
-		logger.info("-- STOP --");
+		LOGGER.info("-- STOP --");
 		System.exit(code);
 	}
 
@@ -81,7 +81,7 @@ public class Main {
 		try {
 			store.startup();
 		} catch (RepositoryException ex) {
-			logger.error("Error starting repository", ex);
+			LOGGER.error("Error starting repository", ex);
 			exit(-3);
 		}
 
@@ -90,10 +90,10 @@ public class Main {
 			= Files.newBufferedReader(Paths.get(rdfin), StandardCharsets.UTF_8)) {
 			store.read(r);
 		} catch (IOException ex) {
-			logger.error("Could not read from rdf file {}", rdfin, ex);
+			LOGGER.error("Could not read from rdf file {}", rdfin, ex);
 			exit(-4);
 		} catch (RepositoryException | RDFParseException ex) {
-			logger.error("Repository error", ex);
+			LOGGER.error("Repository error", ex);
 			exit(-4);
 		}
 	}
@@ -121,7 +121,7 @@ public class Main {
 		try {
 			url = new URL(u);
 		} catch (MalformedURLException ex) {
-			logger.error("Error setting Drupal home to {}", u, ex);
+			LOGGER.error("Error setting Drupal home to {}", u, ex);
 			exit(-5);
 		}
 
@@ -140,10 +140,10 @@ public class Main {
 		try {
 			d.update();
 		} catch (IOException ex) {
-			logger.error("IO exception while updating", ex);
+			LOGGER.error("IO exception while updating", ex);
 			exit(-5);
 		} catch (RepositoryException ex) {
-			logger.error("Repository exception while updating", ex);
+			LOGGER.error("Repository exception while updating", ex);
 			exit(-6);
 		}
 	}
@@ -154,18 +154,18 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		logger.info("-- START --");
+		LOGGER.info("-- START --");
 		if (args.length == 0) {
-			logger.error("No config file");
+			LOGGER.error("No config file");
 			exit(-1);
 		}
 
 		File config = new File(args[0]);
 		try {
-			logger.debug("Using config file " + config);
+			LOGGER.debug("Using config file " + config);
 			prop.load(new FileInputStream(config));
 		} catch (IOException ex) {
-			logger.error("I/O Exception while reading {}", config, ex);
+			LOGGER.error("I/O Exception while reading {}", config, ex);
 			exit(-2);
 		}
 

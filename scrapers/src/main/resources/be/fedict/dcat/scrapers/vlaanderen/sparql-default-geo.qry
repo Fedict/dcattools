@@ -8,6 +8,7 @@ INSERT
 	{ 	?dataset dcterms:spatial <https://sws.geonames.org/3337388/> .
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/46> }
 WHERE
-	{	?dataset a dcat:Dataset 
+	{	?dataset a ?res 
+		VALUES ?cl { dcat:Dataset dcat:DataService }
 		FILTER NOT EXISTS { ?dataset dgov:spatial ?o } 
 	}
