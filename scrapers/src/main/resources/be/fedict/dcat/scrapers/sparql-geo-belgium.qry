@@ -11,3 +11,4 @@ INSERT
 WHERE
 	{	?res a ?cl
 		VALUES ?cl { dcat:Dataset dcat:DataService }
+	}
