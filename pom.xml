@@ -18,7 +18,7 @@
         <maven.compiler.target>17</maven.compiler.target>
 		<rdf4j.version>4.2.1</rdf4j.version>
 		<slf4j.version>1.7.36</slf4j.version>
-		<hc.version>4.5.13</hc.version>
+		<hc.version>4.5.14</hc.version>
 		<json.version>1.1.4</json.version>
     </properties>
     <name>dcattools</name>
