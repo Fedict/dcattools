@@ -12,7 +12,7 @@ iweps/data-theme.ttl
 iweps/sparql-map-theme.qry
 clear-skos.qry
 #iweps/sparql-map-id.txt
-sparql-map-loc-lang.qry
+#sparql-map-loc-lang.qry
 sparql-map-geo.qry
 sparql-delete-mediatype.qry
 data-media.ttl
