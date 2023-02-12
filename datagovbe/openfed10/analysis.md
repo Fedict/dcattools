@@ -164,6 +164,7 @@ Author is not the Drupal user creating the content, but a person's / team's name
 | Download URL | Link (external) | no | yesc | yes | link |
 | Service URL | Link (external) | no | yes | yes | link |
 | Keyword | String | no | yes, no sync | yes | hidden, only used in search |
+| High Valu Dataset | boolean | yes | no | no | text |
 
 ### Content type: News
 
@@ -201,6 +202,10 @@ Default contact form
 | Agree policy | Boolean | yes | checkbox |
 
 ## Views
+
+### High value datasets
+
+Paginated list of all datasets with "high-value dataset" set to true.
 
 ### Content view with data (backend)
 
