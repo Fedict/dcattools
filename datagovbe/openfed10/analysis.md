@@ -210,6 +210,20 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 | Abbreviation | String | no | yes |
 | URI | Link | yes | no |
 
+Values:
+
+- Federal
+- Interfederal
+- Flemish Region
+- Brussels-Capital Region
+- Walloon Region
+- French Community
+- German-speaking community
+- Provinces
+- Municipalities
+- Universities
+- Companies and NPOs
+
 ### Taxonomy: Update Frequencies
 
 E.g. "Weekly"
@@ -224,7 +238,7 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 
 Values:
 
-- Continously
+- Continuously
 - Hourly
 - Daily
 - Weekly
