@@ -42,6 +42,15 @@ To be used in examples of reuse, e.g. "Blog post"
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
+Values:
+- API
+- application
+- article
+- blog post
+- dashboard
+- visualization
+- website
+
 ### Taxonomy: Contact Types
 
 To be used in default contact form, e.g. "General question"
@@ -50,6 +59,14 @@ To be used in default contact form, e.g. "General question"
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
 
+Values:
+- Complaint
+- Information / Dataset request
+- New application / Dataset reuse
+- Studies / dissertations
+- Harvesting / Register own dataset
+- Other
+
 ### Taxonomy: Data Categories
 
 E.g "Transport"
@@ -57,6 +74,23 @@ E.g "Transport"
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
 | Title | String | yes | yes |
+
+Values:
+- Agriculture and Fisheries
+- Culture and Sports
+- Economy and Finance
+- Education
+- Energy
+- Environment
+- Health
+- International
+- Justice
+- Population
+- Public Sector
+- Regional
+- Science and Technology
+- Transport
+
 
 ### Taxonomy: File Types
 
@@ -69,6 +103,58 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 | Title | String | yes |
 | URI | Link | yes |
 
+Values:
+- ARCGIS
+- ATOM
+- CSV
+- DBF
+- DOC
+- DOCX
+- DWC-A
+- HTML
+- GeoJSON
+- GeoPKG
+- GeoTIFF
+- GML
+- GTFS
+- JSON
+- JSON-LD
+- KML
+- MDB
+- ODS
+- PDF
+- RDF/XML
+- RSS
+- SHP
+- SLD
+- SQLite
+- TIFF
+- TSV
+- TTL
+- TXT
+- WCS
+- WFS
+- WMS
+- XLS
+- XLSX
+- XML
+
+### Taxonomy: Compression Types
+
+Language-independent, e.g. "ZIP"
+
+URI is not visible in front-end, used for mapping with other sources / portals.
+
+| Field | Type | Required |
+| --- | --- | --- |
+| Title | String | yes |
+| URI | Link | yes |
+
+Values
+- GZIP
+- ZIP
+
+
 ### Taxonomy: Geographies
 
 Tree-structure, e.g "Flanders > Ghent"
@@ -80,6 +166,25 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 | Title | String | yes  | yes |
 | Bounding box | Geofield (WKT) | yes | no |
 | URI | Link | yes | no |
+
+Values:
+
+- Belgium
+  - Flanders
+    - Antwerp
+    - Bruges
+    - Ghent
+    - Hasselt
+    - Kortrijk
+    - Leuven
+    - Ostend
+  - Brussels
+  - Wallonia
+    - Arlon
+    - Charleroi
+    - Liège
+    - Mons
+    - Namur
 
 ### Taxonomy: Licenses
 
@@ -117,6 +222,19 @@ URI is not visible in front-end, used for mapping with other sources / portals.
 | Abbreviation | String | no | yes |
 | URI | Link | yes | no |
 
+Values:
+
+- Continously
+- Hourly
+- Daily
+- Weekly
+- Monthly
+- Quarterly
+- Anually
+- Decennially
+- Irregurarly
+- Unknown
+- Not planned
 ## Content types
 
 ### Content type: Application
