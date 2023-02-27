@@ -1,0 +1,17 @@
+@startuml
+title "Product Breakdown Structure"
+
+@startwbs
+* Data.gov.be website
+** Back-end
+***[#LightBlue] Portal scrapers
+***[#LightBlue] SHACL validator
+***[#LightBlue] DCAT-AP export
+***[#LightBlue] REST uploader
+** Drupal frond-end
+***[#LightBlue] Content
+***[#LightBlue] Rest service
+***[#LightYellow] Configuration
+***[#LightYellow] CSS/Look'n'feel
+@endwbs
+@enduml
