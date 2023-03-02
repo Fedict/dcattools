@@ -1,0 +1,25 @@
+@startuml
+
+title Data.gov.be PFD
+
+rectangle "Portal scrapers" as PS
+rectangle "SHACL validator" as SHACL
+rectangle "DCAT-AP export" as export
+rectangle "Analysis" as A
+rectangle "Look'n'feel" as CSS
+rectangle "Website configuration" as config
+rectangle "Content" as content
+rectangle "REST upload service" as REST
+
+
+
+PS -down-> SHACL
+PS -down-> export
+export -> REST
+
+A -down-> CSS
+A -down-> config
+config -down-> REST
+config -down-> content
+
+@enduml
