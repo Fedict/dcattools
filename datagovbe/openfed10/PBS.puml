@@ -1,7 +1,6 @@
-@startuml
-title "Work Breakdown Structure"
-
 @startwbs
+title Data.gov.be WBS
+
 * New Data.gov.be portal
 ** Back-end
 *** Harvesters / portal scrapers
@@ -44,5 +43,14 @@ title "Work Breakdown Structure"
 ****[#LightYellow] Configure services
 ****[#LightBlue] Test automation of uploading
 ****[#LightBlue] Write documentation
+** Communication
+***[#LightBlue] Promote new portal
+
+legend top right
+Work done by:
+<back:LightBlue>   FPS BOSA   </back>
+
+<back:LightYellow>   Supplier  </back>
+end legend
+
 @endwbs
-@enduml
