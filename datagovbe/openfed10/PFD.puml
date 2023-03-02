@@ -1,5 +1,4 @@
 @startuml
-
 title Data.gov.be PFD
 
 rectangle "Portal scrapers" as PS
@@ -10,11 +9,10 @@ rectangle "Look'n'feel" as CSS
 rectangle "Website configuration" as config
 rectangle "Content" as content
 rectangle "REST upload service" as REST
-
-
+rectangle "Communication" as comm
 
 PS -down-> SHACL
-PS -down-> export
+PS --down-> export
 export -> REST
 
 A -down-> CSS
@@ -22,4 +20,5 @@ A -down-> config
 config -down-> REST
 config -down-> content
 
+content -right-> comm
 @enduml
