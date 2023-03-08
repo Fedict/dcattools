@@ -13,7 +13,7 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>geobe</exec.appArgs>
+                <exec.appArgs>pensionstat</exec.appArgs>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.mainClass>be.fedict.dcat.scrapers.Main</exec.mainClass>
             </properties>
@@ -32,7 +32,7 @@
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
                 <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>geobe</exec.appArgs>
+                <exec.appArgs>pensionstat</exec.appArgs>
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.mainClass>be.fedict.dcat.scrapers.Main</exec.mainClass>
             </properties>
@@ -50,7 +50,7 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>geobe</exec.appArgs>
+                <exec.appArgs>pensionstat</exec.appArgs>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.mainClass>be.fedict.dcat.scrapers.Main</exec.mainClass>
             </properties>

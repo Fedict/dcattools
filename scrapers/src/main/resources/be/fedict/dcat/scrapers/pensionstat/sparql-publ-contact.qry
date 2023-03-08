@@ -1,0 +1,10 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/sigedis/contact> .
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0880820673> }
+WHERE
+	{ 	?dataset a dcat:Dataset  }

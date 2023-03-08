@@ -54,6 +54,13 @@ public abstract class Html extends BaseScraper {
 		if (rel.startsWith("http:") || rel.startsWith("https:")) {
 			return new URL(rel);
 		}
+		// fix broken hrefs in HTML
+		if (rel.startsWith("//")) {
+			return new URL(getBase().getProtocol() + ":" + rel);
+		}
+		if (!rel.startsWith("/")) {
+			rel = "/" + rel;
+		}
 		return new URL(getBase().getProtocol(), getBase().getHost(), rel);
 	}
 

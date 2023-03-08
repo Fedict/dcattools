@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, FPS BOSA DG DT
+ * Copyright (c) 2023, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,12 +23,13 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.scrapers.infocenter;
+package be.fedict.dcat.scrapers.pensionstat;
 
 import be.fedict.dcat.scrapers.Cache;
 import be.fedict.dcat.scrapers.Page;
 import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.scrapers.Html;
+
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.IOException;
@@ -38,8 +39,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Pattern;
+
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Tag;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -47,46 +54,43 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 /**
- * Infocenter / federal statistics scraper.
+ * Scraper Sidegis PensionStat
  *
- * @see https://infocenter.belgium.be
+ * @see https://pensionstat.be/
  * @author Bart Hanssens
  */
-public class HtmlInfocenter extends Html {
+public class HtmlPensionstat extends Html {
 
-	public final static String LANG_LINK = "blgm_lSwitch";
-
-	private final static String HEADER = "h1 a[href]";
-	private final static String LINKS_DATASETS = "div.menu ul.no-style a[href]";
-	private final static String LINKS_SECOND = "div.nav-stats-wrapper ul.stats-second-menu li a";
+	private final static String LANG_LINK = "nav ul li div[aria-labelledby='dropdownLocales'] a";
+	private final static String LINKS_DATASETS = "nav div li.pl-4 a";
+	private final static String DOWNLOADS = "div.donwloads div.py-2"; //typo
+	private final static String DOWNLOAD_YEAR = "div";
+	private final static String DESC_PARA_H1 = "main div h1 + p";
+	private final static String DESC_PARA_H2 = "main div h2 + p";
+	private final static Pattern YEAR = Pattern.compile("20[0-9]{2}");
+	
 
 	/**
-	 * Get the URL of the page in another language
+	 * Switch to another language
 	 *
-	 * @param page
 	 * @param lang
-	 * @return URL of the page in another language
+	 * @return
 	 * @throws IOException
 	 */
 	private URL switchLanguage(String page, String lang) throws IOException {
-		Elements lis = Jsoup.parse(page).getElementsByClass(HtmlInfocenter.LANG_LINK);
+		Elements links = Jsoup.parse(page).select(LANG_LINK);
 
-		for (Element li : lis) {
-			if (li.text().equals(lang)) {
-				String href = li.attr(HTML.Attribute.HREF.toString());
-				if (href != null && !href.isEmpty()) {
-					return new URL(href);
-				}
+		for (Element link : links) {
+			String l = link.attr(HTML.Attribute.LANG.toString());
+			if (l != null && !l.isEmpty() && l.toLowerCase().equals(lang)) {
+				return makeAbsURL(link.attr(HTML.Attribute.HREF.toString()));
 			}
 		}
 		logger.warn("No {} translation for page {}", lang, page);
 		return null;
 	}
+
 
 	/**
 	 * Scrape dataset
@@ -131,7 +135,7 @@ public class HtmlInfocenter extends Html {
 
 		for (Element link : links) {
 			String href = link.attr(HTML.Attribute.HREF.toString());
-			urls.add(makeAbsURL(href.substring(0, href.lastIndexOf("/"))));
+			urls.add(makeAbsURL(href));
 		}
 		return urls;
 	}
@@ -147,19 +151,24 @@ public class HtmlInfocenter extends Html {
 	 * @throws MalformedUrlException
 	 * @throws RepositoryException
 	 */
-	private void generateDist(Storage store, IRI dataset, URL access, Element link,
+	private void generateDist(Storage store, IRI dataset, URL access, String prefix, Element link,
 			String lang) throws MalformedURLException, RepositoryException {
-		String href = link.attr(HTML.Attribute.HREF.toString());
+		String l = link.attr(HTML.Attribute.HREF.toString()).replace("../", "");
+		String href = makeAbsURL(l).toString();
 
 		String id = makeHashId(href);
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		logger.debug("Generating distribution {}", dist.toString());
+		
+		String format = link.ownText();
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-		store.add(dist, DCTERMS.TITLE, link.ownText(), lang);
+		store.add(dist, DCTERMS.TITLE, String.join(" ", prefix, format).strip(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
+		store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(href));
+		store.add(dist, DCTERMS.FORMAT, format);
 	}
 
 	/**
@@ -193,39 +202,48 @@ public class HtmlInfocenter extends Html {
 				logger.warn("No body element");
 				continue;
 			}
-			Element h = doc.getElementsByTag(Tag.H2.toString()).first();
+			Element h = doc.getElementsByTag(Tag.H1.toString()).first();
 			if (h == null) {
 				logger.warn("No H2 element");
 				continue;
 			}
 			String title = h.text();
 			// by default, also use the title as description
-			String desc = title;
+			String desc = "";
 
-			Elements navs = doc.select(LINKS_SECOND);
-			if (navs != null && !navs.isEmpty()) {
-				StringBuilder buf = new StringBuilder();
-				String h1 = doc.select(HEADER).text();
-				if (h1 != null) {
-					buf.append(h1).append(":").append('\n');
-				} else {
-					logger.warn("No H1 element");
-				}
-				for (Element nav : navs) {
-					buf.append("- ").append(nav.text()).append('\n');
-				}
-				desc = buf.toString();
-			} else {
-				logger.warn("No second menu element");
+			Elements paras1 = doc.select(DESC_PARA_H1);
+			if (paras1 != null && !paras1.isEmpty()) {
+				desc += paras1.text();
+			}
+			Elements paras2 = doc.select(DESC_PARA_H2);
+			if (paras2 != null && !paras2.isEmpty()) {
+				desc += "\n" + paras2.text();
+			}
+			if (desc.isEmpty()) {
+				logger.warn("No description");
+				desc = title;
 			}
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 			store.add(dataset, DCTERMS.TITLE, title, lang);
 			store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 
-			if (navs != null) {
-				for (Element nav : navs) {
-					generateDist(store, dataset, p.getUrl(), nav, lang);
+			Element download = doc.selectFirst(DOWNLOADS);
+			if (download != null) {
+				Elements years = download.select(DOWNLOAD_YEAR);
+				for (Element year : years) {
+					String prefix = year.ownText();
+					Elements files = download.select(Tag.A.toString());
+					for (Element file: files) {
+						generateDist(store, dataset, p.getUrl(), prefix, file, lang);
+					}
+				}
+				if (!years.isEmpty()) {
+					String first = years.first().ownText();
+					String last = years.last().ownText();
+					if (YEAR.matcher(first).matches() && YEAR.matcher(last).matches()) {
+						generateTemporal(store, dataset, last, first);
+					}
 				}
 			}
 		}
@@ -237,8 +255,8 @@ public class HtmlInfocenter extends Html {
 	 * @param prop
 	 * @throws IOException
 	 */
-	public HtmlInfocenter(Properties prop) throws IOException {
+	public HtmlPensionstat(Properties prop) throws IOException {
 		super(prop);
-		setName("infocenter");
+		setName("pensionstat");
 	}
 }

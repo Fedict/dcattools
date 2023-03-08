@@ -1,0 +1,6 @@
+# extra queries to be executed and data to be loaded
+sparql-license-cczero.qry
+sparql-geo-belgium.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry

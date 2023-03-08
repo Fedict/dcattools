@@ -1,0 +1,17 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0880820673>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/451> ;
+	foaf:name "Sigedis"@en, "Sigedis"@nl, "Sigedis"@fr ;
+	foaf:homepage <https://sigedis.be> .
+	
+<http://data.gov.be/org/sigedis/contact>
+	a vcard:Organization ;
+	vcard:fn "Sigedis"@en, "Sigedis"@nl, "Sigedis"@fr ;
+	vcard:hasUrl <http://sigedis.be> ;
+	vcard:hasEmail <mailto:pensionstat@sigedis.fgov.be> .
