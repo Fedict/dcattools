@@ -13,8 +13,8 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>C:\datagov</exec.workingdir>
-                <exec.appArgs>C:\Datagov\cfg\fpsfinance\datagovbe7-secret.properties</exec.appArgs>
-                <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-fpsfinances.log</exec.vmArgs>
+                <exec.appArgs>C:\Datagov\cfg\vlaanderen\datagovbe7-secret.properties</exec.appArgs>
+                <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-vlaanderen.log</exec.vmArgs>
                 <exec.mainClass>be.fedict.dcat.datagovbe.Main</exec.mainClass>
             </properties>
         </action>
@@ -32,8 +32,8 @@
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
                 <exec.workingdir>C:\datagov</exec.workingdir>
-                <exec.appArgs>C:\Datagov\cfg\fpsfinance\datagovbe7-secret.properties</exec.appArgs>
-                <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-fpsfinances.log -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.appArgs>C:\Datagov\cfg\vlaanderen\datagovbe7-secret.properties</exec.appArgs>
+                <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-vlaanderen.log -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.mainClass>be.fedict.dcat.datagovbe.Main</exec.mainClass>
             </properties>
         </action>
@@ -50,8 +50,8 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>C:\datagov</exec.workingdir>
-                <exec.appArgs>C:\Datagov\cfg\fpsfinance\datagovbe7-secret.properties</exec.appArgs>
-                <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-fpsfinances.log</exec.vmArgs>
+                <exec.appArgs>C:\Datagov\cfg\vlaanderen\datagovbe7-secret.properties</exec.appArgs>
+                <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-vlaanderen.log</exec.vmArgs>
                 <exec.mainClass>be.fedict.dcat.datagovbe.Main</exec.mainClass>
             </properties>
         </action>

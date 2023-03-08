@@ -34,11 +34,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
+import org.eclipse.rdf4j.rio.Rio;
 
 /**
  * Generic DCAT
@@ -60,6 +62,27 @@ public abstract class Dcat extends BaseScraper {
 	}
 
 	/**
+	 * Guess serialization based on either the file name or the content
+	 * 
+	 * @param name filename
+	 * @param data content
+	 * @return file format
+	 */
+	private RDFFormat guessFormat(String name, String data) {
+		if (name.endsWith(".rdf")) {
+			// unfortunately the RDF file extension is used for various serializations
+			if (data.startsWith("<?xml") || data.startsWith("<rdf")) {
+				return RDFFormat.RDFXML;
+			}
+			if (data.startsWith("@base") || data.startsWith("@prefix")) {
+				return RDFFormat.TURTLE;
+			}
+		}
+		Optional<RDFFormat> fmt = Rio.getParserFormatForFileName(name);
+		return fmt.orElse(RDFFormat.NTRIPLES);
+	}
+
+	/**
 	 * Generate DCAT file
 	 *
 	 * @param cache
@@ -70,11 +93,11 @@ public abstract class Dcat extends BaseScraper {
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
-		String ttl = map.get("all").getContent();
+		String data = map.get("all").getContent();
 
 		// Load RDF file into store
-		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-			store.add(in, getBase().toString().endsWith("xml") ? RDFFormat.RDFXML : RDFFormat.TURTLE);
+		try (InputStream in = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8))) {
+			store.add(in, guessFormat(getBase().toString(), data));
 		} catch (RDFParseException | IOException ex) {
 			throw new RepositoryException(ex);
 		}
