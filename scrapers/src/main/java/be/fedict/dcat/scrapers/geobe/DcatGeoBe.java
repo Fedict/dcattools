@@ -25,16 +25,9 @@
  */
 package be.fedict.dcat.scrapers.geobe;
 
-import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.scrapers.GeonetGmd;
+import be.fedict.dcat.scrapers.Dcat;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Properties;
-
-import org.dom4j.Node;
-
-import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.vocabulary.DCAT;
 
 /**
  * Scraper for the NGI Geo.be portal
@@ -42,23 +35,15 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
  * @see https://www.geo.be
  * @author Bart Hanssens
  */
-public class GeonetGeoBe extends GeonetGmd {
-	private final static String LANDING = "https://www.geo.be/#!/catalog/details/";
+public class DcatGeoBe extends Dcat {
 	
-	@Override
-	protected void generateDataset(IRI dataset, String id, Storage store, Node node) 
-												throws MalformedURLException {
-		super.generateDataset(dataset, id, store, node);
-		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(LANDING + id));
-	}
-
 	/**
 	 * Constructor
 	 * 
-	 * @param prop
+	 * @param prop 
 	 * @throws IOException 
 	 */
-	public GeonetGeoBe(Properties prop) throws IOException {
+	public DcatGeoBe(Properties prop) throws IOException {
 		super(prop);
 		setName("geobe");
 	}

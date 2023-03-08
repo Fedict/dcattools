@@ -1,5 +1,5 @@
 # extra queries to be executed and data to be loaded
-vlaanderen/sparql-remove-hydra.qry
+sparql-remove-hydra.qry
 vlaanderen/sparql-default-contact.qry
 vlaanderen/data-org.ttl
 sparql-map-org.qry
