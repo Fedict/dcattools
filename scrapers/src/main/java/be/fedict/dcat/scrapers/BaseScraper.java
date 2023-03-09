@@ -29,7 +29,6 @@ import be.fedict.dcat.helpers.Storage;
 import be.fedict.dcat.helpers.Fetcher;
 import be.fedict.dcat.vocab.DATAGOVBE;
 import be.fedict.dcat.vocab.MDR_LANG;
-import be.fedict.dcat.vocab.SCHEMA;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
@@ -349,34 +348,22 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 
 		// Assume start of year / end of year when only YYYY is given 
 		switch (s.length()) {
-			case 4:
-				s += "-01-01";
-				break;
-			case 6:
-				s = s.substring(0, 4) + "-" + s.substring(4) + "-01";
-				break;
-			default:
-				s = s.replace("/", "-");
+			case 4 -> s += "-01-01";
+			case 6 -> s = s.substring(0, 4) + "-" + s.substring(4) + "-01";
+			default -> s = s.replace("/", "-");
 		}
 
 		switch (e.length()) {
-			case 0:
-				e = TODAY;
-				break;
-			case 4:
-				e += "-12-31";
-				break;
-			case 6:
-				e = e.substring(0, 4) + "-" + e.substring(4);
-				break;
-			default:
-				e = e.replace("/", "-");
+			case 0 -> e = TODAY;
+			case 4 -> e += "-12-31";
+			case 6 -> e = e.substring(0, 4) + "-" + e.substring(4);
+			default -> e = e.replace("/", "-");
 		}
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
 		store.add(dataset, DCTERMS.TEMPORAL, u);
-		store.add(u, SCHEMA.START_DATE, s, (s.length() == 10) ? XSD.DATE : XSD.DATETIME);
-		store.add(u, SCHEMA.END_DATE, e, (e.length() == 10) ? XSD.DATE : XSD.DATETIME);
+		store.add(u, DCAT.START_DATE, s, (s.length() == 10) ? XSD.DATE : XSD.DATETIME);
+		store.add(u, DCAT.END_DATE, e, (e.length() == 10) ? XSD.DATE : XSD.DATETIME);
 	}
 
 	/**
