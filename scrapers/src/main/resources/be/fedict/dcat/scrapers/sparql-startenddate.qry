@@ -10,8 +10,8 @@ DELETE
 		?uri schema:endDate ?end }
 INSERT 
 	{ 	?s dcterms:temporal ?newuri .
-		?newuri schema:startDate ?start .
-		?newuri schema:endDate ?end }
+		?newuri dcat:startDate ?start .
+		?newuri dcat:endDate ?end }
 WHERE 
 	{	?s dcterms:temporal ?uri .
 		?uri schema:startDate ?start .
