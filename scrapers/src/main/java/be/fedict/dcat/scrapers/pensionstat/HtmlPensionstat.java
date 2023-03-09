@@ -65,7 +65,7 @@ public class HtmlPensionstat extends Html {
 	private final static String LANG_LINK = "nav ul li div[aria-labelledby='dropdownLocales'] a";
 	private final static String LINKS_DATASETS = "nav div li.pl-4 a";
 	private final static String DOWNLOADS = "div.donwloads div.py-2"; //typo
-	private final static String DOWNLOAD_YEAR = "div";
+	private final static String DOWNLOAD_YEAR = "div:first-child";
 	private final static String DESC_PARA_H1 = "main div h1 + p";
 	private final static String DESC_PARA_H2 = "main div h2 + p";
 	private final static Pattern YEAR = Pattern.compile("20[0-9]{2}");
@@ -230,7 +230,7 @@ public class HtmlPensionstat extends Html {
 
 			Element download = doc.selectFirst(DOWNLOADS);
 			if (download != null) {
-				Elements years = download.select(DOWNLOAD_YEAR);
+				Elements years = download.children().select(DOWNLOAD_YEAR);
 				for (Element year : years) {
 					String prefix = year.ownText();
 					Elements files = download.select(Tag.A.toString());
@@ -241,8 +241,9 @@ public class HtmlPensionstat extends Html {
 				if (!years.isEmpty()) {
 					String first = years.first().ownText();
 					String last = years.last().ownText();
+
 					if (YEAR.matcher(first).matches() && YEAR.matcher(last).matches()) {
-						generateTemporal(store, dataset, last, first);
+						generateTemporal(store, dataset, last + "-01-01", first + "-01-01");
 					}
 				}
 			}
