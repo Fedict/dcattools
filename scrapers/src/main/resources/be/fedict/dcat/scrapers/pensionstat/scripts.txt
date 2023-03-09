@@ -1,4 +1,6 @@
 # extra queries to be executed and data to be loaded
+pensionstat/data-publ-contact.ttl
+pensionstat/sparql-publ-contact.qry
 sparql-license-cczero.qry
 sparql-geo-belgium.qry
 data-media.ttl
