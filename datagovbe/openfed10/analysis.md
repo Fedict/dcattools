@@ -53,7 +53,7 @@ Values:
 
 ### Taxonomy: Contact Types
 
-To be used in default contact form, e.g. "General question"
+To be used in default contact form, e.g. "Other question"
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ Values:
 - New application / Dataset reuse
 - Studies / dissertations
 - Harvesting / Register own dataset
-- Other
+- Other question
 
 ### Taxonomy: Data Categories
 
