@@ -349,7 +349,7 @@ With the possibility of searching on all these fields
 Ascending/descending ordering must be possible on Title or Updated date
 
 
-### News per date
+### News ordered per date
 
 Paginated grid of news, newest item first
 
@@ -363,7 +363,7 @@ Paginated grid of news, newest item first
   - Mini: 10 items page
   - More link: yes
 
-### Applications per date
+### Applications ordered per date
 
 Paginated grid of re-use of datasets, newest items first.
 
