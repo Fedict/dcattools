@@ -296,7 +296,7 @@ Author is not the Drupal user creating the content, but a person's / team's name
 | Download URL | Link (external) | no | yesc | yes | link |
 | Service URL | Link (external) | no | yes | yes | link |
 | Keyword | String | no | yes, no sync | yes | hidden, only used in search |
-| High Valu Dataset | boolean | yes | no | no | text |
+| High Value Dataset | boolean | yes | no | no | text |
 
 ### Content type: News
 
@@ -351,7 +351,7 @@ Ascending/descending ordering must be possible on Title or Updated date
 
 ### News per date
 
-Paginated list of the news, newest item first
+Paginated grid of news, newest item first
 
 - Filter
    - Content type is News
@@ -365,7 +365,7 @@ Paginated list of the news, newest item first
 
 ### Applications per date
 
-Paginated list/grid of re-use of datasets, newest items first.
+Paginated grid of re-use of datasets, newest items first.
 
 - Filter
    - Content type is Application
