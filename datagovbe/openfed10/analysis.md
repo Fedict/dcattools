@@ -26,6 +26,7 @@ Enable
 - Serialization
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
+- Views
 - Weight
 
 ### JSON:API
@@ -334,6 +335,10 @@ Default contact form
 | Agree policy | Boolean | yes | checkbox |
 
 ## Views
+
+### RSS feed
+
+Paginated view of all the Datasets
 
 ### High value datasets
 
