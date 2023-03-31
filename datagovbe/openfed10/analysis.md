@@ -277,27 +277,29 @@ Last modified date is the last update of the dataset, this is different from the
 Author is not the Drupal user creating the content, but a person's / team's name or name of an organization.
 
 
-| Field | Type | Required | Translatable | Multiple | Display |
-| --- | --- | --- | --- | --- | --- |
-| Title | String | yes | yes | no | text |
-| Body | Text field | yes | yes | no | text |
-| URI | Link | yes | no | no | hidden |
-| Update frequency | Taxonomy: Update Frequencies | no | -- | no | text |
-| Last modified | Timestamp | no | no | no | date |
-| From / till | Date range | no | no | no | date range |
-| Author | String | yes | yes | yes | text |
-| Publisher | Taxonomy: Organizations | yes | -- | no | link |
-| Contact e-mail | E-mail | no | yes | no | link |
-| Contact form | Link (external) | no | yes | no | link |
-| Geography | Taxonomy: Geographies | yes | -- | yes | text |
-| Category | Taxonomy: Data Categories | yes | -- | yes | text |
-| License | Taxonomy: Licenses | yes | -- | yes | text |
-| Format | Taxonomy: File types | yes | -- | yes | text |
-| Web page | Link (external) | yes | yes | yes | link |
-| Download URL | Link (external) | no | yesc | yes | link |
-| Service URL | Link (external) | no | yes | yes | link |
-| Keyword | String | no | yes, no sync | yes | hidden, only used in search |
-| High Value Dataset | boolean | yes | no | no | text |
+| Field | Type | Required | Translatable | Multiple | Display | Search |
+| --- | --- | --- | --- | --- | --- | --- |
+| Title | String | yes | yes | no | text | full text search |
+| Body | Text field | yes | yes | no | text | full text search |
+| URI | Link | yes | no | no | hidden | no |
+| Update frequency | Taxonomy: Update Frequencies | no | -- | no | text | facet |
+| Last modified | Timestamp | no | no | no | date | no |
+| From / till | Date range | no | no | no | date range | facet |
+| Author | String | yes | yes | yes | text | no |
+| Publisher | Taxonomy: Organizations | yes | -- | no | link | facet |
+| Contact e-mail | E-mail | no | yes | no | link | no |
+| Contact form | Link (external) | no | yes | no | link | no |
+| Geography | Taxonomy: Geographies | yes | -- | yes | text | facet |
+| Category | Taxonomy: Data Categories | yes | -- | yes | text | facet |
+| License | Taxonomy: Licenses | yes | -- | yes | text | facet |
+| Format | Taxonomy: File types | yes | -- | yes | text | facet |
+| Web page | Link (external) | yes | yes | yes | link | no |
+| Download URL | Link (external) | no | yesc | yes | link | no |
+| Service URL | Link (external) | no | yes | yes | link | no |
+| Keyword | String | no | yes, no sync | yes | hidden | full text search |
+| High Value Dataset | boolean | yes | no | no | text | facet |
+| API| boolean | yes | no | no | text | facet |
+
 
 ### Content type: News
 
