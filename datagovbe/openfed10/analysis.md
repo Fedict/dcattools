@@ -276,6 +276,8 @@ Last modified date is the last update of the dataset, this is different from the
 
 Author is not the Drupal user creating the content, but a person's / team's name or name of an organization.
 
+Web page(s), download link(s) can sometimes be different in different languages.
+
 
 | Field | Type | Required | Translatable | Multiple | Display | Search |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -293,8 +295,8 @@ Author is not the Drupal user creating the content, but a person's / team's name
 | Category | Taxonomy: Data Categories | yes | -- | yes | text | facet |
 | License | Taxonomy: Licenses | yes | -- | yes | text | facet |
 | Format | Taxonomy: File types | yes | -- | yes | text | facet |
-| Web page | Link (external) | yes | yes | yes | link | no |
-| Download URL | Link (external) | no | yesc | yes | link | no |
+| Web page | Link (external) | yes | yes, no sync | yes | link | no |
+| Download URL | Link (external) | no | yes, no sync | yes | link | no |
 | Service URL | Link (external) | no | yes | yes | link | no |
 | Keyword | String | no | yes, no sync | yes | hidden | full text search |
 | High Value Dataset | boolean | yes | no | no | text | facet |
