@@ -299,8 +299,8 @@ Web page(s), download link(s) can sometimes be different in different languages.
 | Download URL | Link (external) | no | yes, no sync | yes | link | no |
 | Service URL | Link (external) | no | yes | yes | link | no |
 | Keyword | String | no | yes, no sync | yes | hidden | full text search |
-| High Value Dataset | boolean | yes | no | no | text | facet |
-| API| boolean | yes | no | no | text | facet |
+| High Value Dataset | boolean | no | no | no | text | facet |
+| API| boolean | no | no | no | text | facet |
 
 
 ### Content type: News
