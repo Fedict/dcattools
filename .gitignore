@@ -5,3 +5,6 @@
 /previewer/target/
 /tools/target/
 /classifier/target/uploader-d10/src/test/java/be/gov/data/uploader/d10/TaxonomyLoaderTest.java
+/uploader-d10/target/
+/uploader/target/
+/uploader-drupal/target/
