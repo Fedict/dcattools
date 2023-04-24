@@ -23,19 +23,19 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.scrapers.geobe;
+package be.fedict.dcat.scrapers.statbel;
 
 import be.fedict.dcat.scrapers.Dcat;
 import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Scraper for the NGI Geo.be portal
- * 
- * @see https://www.geo.be
+ * Statbel "publications" scraper.
+ *
+ * @see https://statbel.fgov.be/nl/open-data
  * @author Bart Hanssens
  */
-public class DcatGeoBe extends Dcat {
+public class DcatStatbelOpen extends Dcat {
 	
 	/**
 	 * Constructor
@@ -43,8 +43,8 @@ public class DcatGeoBe extends Dcat {
 	 * @param prop 
 	 * @throws IOException 
 	 */
-	public DcatGeoBe(Properties prop) throws IOException {
+	public DcatStatbelOpen(Properties prop) throws IOException {
 		super(prop);
-		setName("geobe");
+		setName("statbelopen");
 	}
 }

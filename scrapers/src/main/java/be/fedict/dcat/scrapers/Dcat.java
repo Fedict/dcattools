@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
+import org.eclipse.rdf4j.model.IRI;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -49,6 +50,11 @@ import org.eclipse.rdf4j.rio.Rio;
  */
 public abstract class Dcat extends BaseScraper {
 
+	@Override
+	public void generateCatalogInfo(Storage store, IRI catalog) throws RepositoryException {
+		// don't add extra metadata since the catalog itself needs to include this info
+	}
+	
 	/**
 	 * Scrape DCAT catalog.
 	 *
