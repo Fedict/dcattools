@@ -1,0 +1,19 @@
+@startwbs
+title Open data newsletter PBS
+
+* Open data newsletter
+** Content
+***[#LightBlue] News items
+***[#LightBlue] Layout
+** Newsletter service
+***[#LightYellow] (Un)Subscribe page
+***[#LightYellow] Mail system
+
+legend top right
+Product of:
+<back:LightBlue>   FPS BOSA   </back>
+
+<back:LightYellow>   Supplier  </back>
+end legend
+
+@endwbs

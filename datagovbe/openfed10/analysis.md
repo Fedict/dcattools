@@ -26,6 +26,7 @@ Enable
 - Serialization
 - Simple XML Sitemap
 - Simple XML Sitemap Search Engines
+- Views
 - Weight
 
 ### JSON:API
@@ -53,7 +54,7 @@ Values:
 
 ### Taxonomy: Contact Types
 
-To be used in default contact form, e.g. "General question"
+To be used in default contact form, e.g. "Other question"
 
 | Field | Type | Required | Translatable |
 | --- | --- | --- | --- |
@@ -65,7 +66,7 @@ Values:
 - New application / Dataset reuse
 - Studies / dissertations
 - Harvesting / Register own dataset
-- Other
+- Other question
 
 ### Taxonomy: Data Categories
 
@@ -275,28 +276,32 @@ Last modified date is the last update of the dataset, this is different from the
 
 Author is not the Drupal user creating the content, but a person's / team's name or name of an organization.
 
+Web page(s), download link(s) can sometimes be different in different languages.
 
-| Field | Type | Required | Translatable | Multiple | Display |
-| --- | --- | --- | --- | --- | --- |
-| Title | String | yes | yes | no | text |
-| Body | Text field | yes | yes | no | text |
-| URI | Link | yes | no | no | hidden |
-| Update frequency | Taxonomy: Update Frequencies | no | -- | no | text |
-| Last modified | Timestamp | no | no | no | date |
-| From / till | Date range | no | no | no | date range |
-| Author | String | yes | yes | yes | text |
-| Publisher | Taxonomy: Organizations | yes | -- | no | link |
-| Contact e-mail | E-mail | no | yes | no | link |
-| Contact form | Link (external) | no | yes | no | link |
-| Geography | Taxonomy: Geographies | yes | -- | yes | text |
-| Category | Taxonomy: Data Categories | yes | -- | yes | text |
-| License | Taxonomy: Licenses | yes | -- | yes | text |
-| Format | Taxonomy: File types | yes | -- | yes | text |
-| Web page | Link (external) | yes | yes | yes | link |
-| Download URL | Link (external) | no | yesc | yes | link |
-| Service URL | Link (external) | no | yes | yes | link |
-| Keyword | String | no | yes, no sync | yes | hidden, only used in search |
-| High Valu Dataset | boolean | yes | no | no | text |
+
+| Field | Type | Required | Translatable | Multiple | Display | Search |
+| --- | --- | --- | --- | --- | --- | --- |
+| Title | String | yes | yes | no | text | full text search |
+| Body | Text field | yes | yes | no | text | full text search |
+| URI | Link | yes | no | no | hidden | no |
+| Update frequency | Taxonomy: Update Frequencies | no | -- | no | text | facet |
+| Last modified | Timestamp | no | no | no | date | no |
+| From / till | Date range | no | no | no | date range | facet |
+| Author | String | yes | yes | yes | text | no |
+| Publisher | Taxonomy: Organizations | yes | -- | no | link | facet |
+| Contact e-mail | E-mail | no | yes | no | link | no |
+| Contact form | Link (external) | no | yes | no | link | no |
+| Geography | Taxonomy: Geographies | yes | -- | yes | text | facet |
+| Category | Taxonomy: Data Categories | yes | -- | yes | text | facet |
+| License | Taxonomy: Licenses | yes | -- | yes | text | facet |
+| Format | Taxonomy: File types | yes | -- | yes | text | facet |
+| Web page | Link (external) | yes | yes, no sync | yes | link | no |
+| Download URL | Link (external) | no | yes, no sync | yes | link | no |
+| Service URL | Link (external) | no | yes | yes | link | no |
+| Keyword | String | no | yes, no sync | yes | hidden | full text search |
+| High Value Dataset | boolean | no | no | no | text | facet |
+| API| boolean | no | no | no | text | facet |
+
 
 ### Content type: News
 
@@ -335,6 +340,10 @@ Default contact form
 
 ## Views
 
+### RSS feed
+
+Paginated view of all the Datasets
+
 ### High value datasets
 
 Paginated list of all datasets with "high-value dataset" set to true.
@@ -349,9 +358,9 @@ With the possibility of searching on all these fields
 Ascending/descending ordering must be possible on Title or Updated date
 
 
-### News per date
+### News ordered per date
 
-Paginated list of the news, newest item first
+Paginated grid of news, newest item first
 
 - Filter
    - Content type is News
@@ -363,9 +372,9 @@ Paginated list of the news, newest item first
   - Mini: 10 items page
   - More link: yes
 
-### Applications per date
+### Applications ordered per date
 
-Paginated list/grid of re-use of datasets, newest items first.
+Paginated grid of re-use of datasets, newest items first.
 
 - Filter
    - Content type is Application

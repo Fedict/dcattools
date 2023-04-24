@@ -1,53 +1,49 @@
 @startwbs
-title Data.gov.be WBS
+title Data.gov.be PBS
 
 * New Data.gov.be portal
 ** Back-end
 *** Harvesters / portal scrapers
-****[#LightBlue] Write scraping tools
-****[#LightBlue] Define additonal SKOS mappings
-****[#LightBlue] Write addional SPARQL scripts
-****[#LightBlue] Write and perform tests
-****[#LightBlue] Write documentation
-****[#LightBlue] Automate the process
+****[#LightBlue] Scraper tools
+****[#LightBlue] SKOS mappings
+****[#LightBlue] SPARQL scripts
+****[#LightBlue] Documentation
 *** SHACL validator
-****[#LightBlue] Define validation ruleset
-****[#LightBlue] Write and perform tests
-****[#LightBlue] Automate publishing of reports
-*** DCAT-AP export (to EDP)
-****[#LightBlue] Automate publishing of export
-****[#LightBlue] Write documentation
+****[#LightBlue] SHACL validation ruleset
+****[#LightBlue] Report publicatin tool
+*** DCAT-AP exporter (to EDP)
+****[#LightBlue] Export tool
+****[#LightBlue] Documentation
 *** REST uploader (to data.gov.be)
-****[#LightBlue] Automate uploading of datasets
-****[#LightBlue] Write documentation
+****[#LightBlue] Upload tool
+****[#LightBlue] Documentation
 ** Portal frond-end
 *** Analysis
-****[#LightBlue] Perform initial analysis
+****[#LightBlue] Analysis document
 *** Look'n'feel
-****[#LightYellow] Create wireframes
-****[#LightYellow] Create CSS / layout
-****[#LightYellow] Test accessibility
+****[#LightYellow] Wireframes
+****[#LightYellow] CSS / layout
+****[#LightYellow] Accessibility statement
 *** Website configuration
-****[#LightYellow] Configure modules
-****[#LightYellow] Configure menus
-****[#LightYellow] Configure views / lists
-****[#LightYellow] Configure faceted search
-****[#LightYellow] Configure content types
-****[#LightYellow] Configure statistics
+****[#LightYellow] Module configuration
+****[#LightYellow] Menu configuration
+****[#LightYellow] Views / lists configuration
+****[#LightYellow] Faceted search configuration
+****[#LightYellow] Content typee configuration
+****[#LightYellow] Statistics configuration
 *** Content
-****[#LightBlue] Add news items
-****[#LightBlue] Add user stories
-****[#LightBlue] Add additional info and FAQ
-****[#LightBlue] Check translations
+****[#LightBlue] News items
+****[#LightBlue] User stories
+****[#LightBlue] Additional info and FAQ
+****[#LightBlue] Translations
 *** REST upload service
-****[#LightYellow] Configure services
-****[#LightBlue] Test automation of uploading
-****[#LightBlue] Write documentation
+****[#LightYellow] Service configuration
+****[#LightBlue] Documentation
 ** Communication
-***[#LightBlue] Promote new portal
+***[#LightBlue] Press release
 
 legend top right
-Work done by:
+Product of:
 <back:LightBlue>   FPS BOSA   </back>
 
 <back:LightYellow>   Supplier  </back>

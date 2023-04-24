@@ -1,0 +1,14 @@
+@startuml
+title Open data newsletter PFD
+
+rectangle "News items" as news
+rectangle "Layout" as layout
+rectangle "(un)subscripe page" as page
+rectangle "Mail system" as service
+
+
+news -> layout
+layout -down-> service
+page -> service
+
+@enduml

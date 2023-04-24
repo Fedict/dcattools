@@ -1,0 +1,22 @@
+@startwbs
+title Open data newsletter WBS
+
+* Open data newsletter
+** Content
+***[#LightBlue] Write news items
+***[#LightBlue] Define layout
+** Newsletter service
+***[#LightYellow] Configure (Un)subscribe page
+***[#LightYellow] Configure mail system
+** Testing
+***[#LightBlue] Subscribe to newsletter
+***[#LightBlue] Send test newsletter
+
+legend top right
+Work done by:
+<back:LightBlue>   FPS BOSA   </back>
+
+<back:LightYellow>   Supplier  </back>
+end legend
+
+@endwbs
