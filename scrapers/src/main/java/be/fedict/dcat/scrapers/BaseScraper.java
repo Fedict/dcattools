@@ -34,6 +34,7 @@ import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,6 +43,8 @@ import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -74,9 +77,10 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	protected final static String PROP_PREFIX = "be.fedict.dcat.scrapers";
 	protected final static String PKG_PREFIX = "/be/fedict/dcat/scrapers";
 	
-	private Cache cache = null;
-	private Storage store = null;
-	private URL base = null;
+	private final String dataDir;
+	private final Cache cache;
+	private final Storage store;
+	private final URL base;
 
 	private String defLang = "";
 	private String[] allLangs = {};
@@ -103,15 +107,6 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 */
 	public URL getBase() {
 		return base;
-	}
-
-	/**
-	 * Set default language
-	 *
-	 * @param lang language code
-	 */
-	public void setDefaultLang(String lang) {
-		this.defLang = lang;
 	}
 
 	/**
@@ -477,9 +472,22 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	@Override
 	public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
 		store.write(out);
-
 	}
 
+	/**
+	 * Write DCAT to a local file
+	 * 
+	 * @throws IOException 
+	 */
+	public void writeDcat() throws IOException {
+		// output file
+		String outfile = String.join(File.separator, dataDir, getName() + ".nt");
+		logger.info("Writing end results to {}", outfile);
+		try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {
+			writeDcat(bw);
+		}
+	}
+	
 	@Override
 	public void close() {
 		cache.shutdown();
@@ -497,6 +505,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		this.store = new Storage();
 		this.defLang = getRequiredProperty(prop, "deflanguage");
 		this.allLangs = getRequiredProperty(prop, "languages").split(",");
+		this.dataDir = getRequiredProperty(prop, "datadir");
 		this.cache = new Cache(new File(getRequiredProperty(prop, "cache")));
 
 		String delay = prop.getProperty(BaseScraper.PROP_PREFIX + ".http.delay", "500");
