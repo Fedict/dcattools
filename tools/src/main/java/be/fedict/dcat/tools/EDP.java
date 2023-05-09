@@ -81,8 +81,6 @@ public class EDP {
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	private final static SimpleValueFactory F = SimpleValueFactory.getInstance();
-	private final static IRI STARTDATE = F.createIRI("http://schema.org/startDate");
-	private final static IRI ENDDATE = F.createIRI("http://schema.org/endDate");
 	private final static IRI ADMS_IDENTIFIER = F.createIRI("http://www.w3.org/ns/adms#identifier");
 
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
@@ -205,8 +203,8 @@ public class EDP {
 					IRI date = (IRI) v;
 					w.writeStartElement("dct:temporal");
 					w.writeStartElement("dct:PeriodOfTime");
-					writeLiterals(w, con, date, STARTDATE, "schema:startDate");
-					writeLiterals(w, con, date, ENDDATE, "schema:endDate");
+					writeLiterals(w, con, date, DCAT.START_DATE, "dcat:startDate");
+					writeLiterals(w, con, date, DCAT.END_DATE, "dcat:endDate");
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
@@ -383,8 +381,8 @@ public class EDP {
 		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo", "dct:Standard", false);
-	//	writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
-	//	writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
 	}
 
 	/**
