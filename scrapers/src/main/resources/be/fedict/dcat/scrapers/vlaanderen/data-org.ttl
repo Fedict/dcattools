@@ -247,3 +247,8 @@
 	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2143729494> ;
 	skos:altLabel "Agentschap Wegen en Verkeer"@nl, "AWV" .
+
+<http://data.gov.be/en/taxonomy/term/452>
+	skos:prefLabel "Blue mobility"@nl ;
+	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0832369965> ;
+	skos:altLabel "Blue-bike Company"@nl .
