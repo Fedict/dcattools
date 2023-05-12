@@ -521,7 +521,6 @@ public class Storage {
         logger.info("Opening RDF store");
         
         MemoryStore mem = new MemoryStore();
-        mem.setPersist(false);
         repo = new SailRepository(mem);
     }
 

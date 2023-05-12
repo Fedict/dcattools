@@ -8,6 +8,7 @@ DELETE
 	{	?dist dcterms:license ?lic }
 INSERT 
 	{ 	?dist dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> .
+		<http://creativecommons.org/publicdomain/zero/1.0/> a dcterms:LicenseDocument .
 		?dist dgov:license <http://data.gov.be/en/taxonomy/term/54> }
 WHERE
 	{	?dist a dcat:Distribution 

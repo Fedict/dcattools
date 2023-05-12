@@ -4,8 +4,11 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>2.25.0</version>
+        <version>2.26.0</version>
     </parent>
+	<name>tools</name>
+	<version>2.26.0</version>
+	<description>Misc tools for enhancing DCAT metadata</description>
     <artifactId>tools</artifactId>
     <packaging>jar</packaging>
     <properties>
@@ -89,7 +92,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<name>tools</name>
-	<version>2.25.0</version>
-	<description>Misc tools for enhancing DCAT metadata</description>
 </project>

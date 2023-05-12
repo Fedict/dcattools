@@ -20,9 +20,9 @@ WHERE
 	{	?dataset dcterms:publisher ?org .
 		?org ?rel ?label .
 		?org ?p ?o .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?neworg .
-		?drupal skos:prefLabel ?name 
+		?neworg skos:altLabel ?label .
+		?neworg skos:exactMatch ?drupal .
+		?neworg skos:prefLabel ?name 
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (?p != ?rel)
 	}

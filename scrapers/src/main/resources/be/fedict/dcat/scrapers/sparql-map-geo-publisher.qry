@@ -13,7 +13,7 @@ WHERE
 	{	?res a ?cl .
 		?res dcterms:publisher ?publisher .
 		?publisher foaf:name ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?spatial
+		?spatial skos:altLabel ?label .
+		?spatial skos:exactMatch ?drupal
 		VALUES ?cl { dcat:Dataset dcat:DataService }
 	}

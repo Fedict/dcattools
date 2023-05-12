@@ -25,6 +25,3 @@
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
 
-<http://publications.europa.eu/resource/authority/licence/CC0> a skos:Concept .
-<http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> a skos:Concept .
-<http://publications.europa.eu/resource/authority/licence/ETALAB_2_0> a skos:Concept .
