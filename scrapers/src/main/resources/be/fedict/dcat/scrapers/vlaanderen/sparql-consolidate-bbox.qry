@@ -3,13 +3,15 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX fn: <http://data.gov.be/sparql/function/>
 
 DELETE 
 	{	?s dcterms:spatial ?genspatial .
-		?genspatial ?p ?o }
+		?genspatial ?p ?o .
+		?genspatial dcat:bbox ?bbox }
 INSERT
 	{	?s dcterms:spatial ?spatial .
 		?spatial dcat:bbox ?simple }
@@ -18,7 +20,7 @@ WHERE
 		?genspatial ?p ?o .
 		?genspatial locn:geometry|dcat:bbox ?bbox
 		BIND (
-			fn:simplifyPolygon(STR(?bbox))
+			STRDT(fn:simplifyPolygon(STR(?bbox)), geo:wktLiteral)
 			as ?simple)
 		BIND (IRI(
 				CONCAT("http://data.gov.be/.well-known/genid/spatial/", SHA1(?simple))

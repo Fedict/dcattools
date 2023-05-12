@@ -1,0 +1,30 @@
+# Data for improving SHACL validation scores
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> .
+
+<https://www.iana.org/assignments/media-types/application/dwca> a dcterms:MediaType .
+<https://www.iana.org/assignments/media-types/application/zip> a dcterms:MediaType .
+
+<http://publications.europa.eu/resource/authority/file-type/CSV> 
+	a dcterms:MediaTypeOrExtent ;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> .
+
+<http://publications.europa.eu/resource/authority/file-type/XML>
+	a dcterms:MediaTypeOrExtent ;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> .
+
+<http://publications.europa.eu/resource/authority/language/ENG> 
+	a dcterms:LinguisticSystem;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
+
+<http://publications.europa.eu/resource/authority/licence/CC0> a skos:Concept .
+<http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> a skos:Concept .
+<http://publications.europa.eu/resource/authority/licence/ETALAB_2_0> a skos:Concept .

@@ -12,6 +12,6 @@ INSERT
 		?dist dgov:license ?drupal }
 WHERE
 	{	?dist dcterms:license ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?license
+		?license skos:altLabel ?label .
+		?license skos:exactMatch ?drupal
 	}

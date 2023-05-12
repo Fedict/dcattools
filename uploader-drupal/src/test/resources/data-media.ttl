@@ -1,5 +1,6 @@
 # Data for mapping file types names to EU list of file types
 
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.gov.be/en/taxonomy/term/433>
@@ -313,9 +314,9 @@
 	skos:prefLabel "XML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/xml>; 
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/XML> ;
-	skos:altLabel "application/xml", <https://www.iana.org/assignments/media-types/text/xml>,
+	skos:altLabel "application/xml",
 				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
-				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE" .
+				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX" .
 	
 <http://data.gov.be/en/taxonomy/term/150>
 	skos:prefLabel "ZIP" ;

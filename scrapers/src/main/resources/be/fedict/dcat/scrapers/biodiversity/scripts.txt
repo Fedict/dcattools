@@ -22,3 +22,4 @@ sparql-delete-label-license.qry
 sparql-title-to-desc.qry
 clear-skos.qry
 sparql-strip-html.qry
+data-shacl-support.ttl

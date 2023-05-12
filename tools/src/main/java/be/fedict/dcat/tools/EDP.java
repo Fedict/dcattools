@@ -691,7 +691,7 @@ public class EDP {
 		Serializer s = processor.newSerializer();
 		s.setOutputProperty(Property.METHOD, "xml");
 		s.setOutputProperty(Property.ENCODING, "utf-8");
-		s.setOutputProperty(Property.INDENT, "no");
+		s.setOutputProperty(Property.INDENT, "yes");
 		return s;
 	}
 

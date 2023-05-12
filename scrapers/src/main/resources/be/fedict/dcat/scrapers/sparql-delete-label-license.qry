@@ -1,4 +1,4 @@
-# Remove licenses that are literals when there already is another with a IRI
+# Remove licenses that are literals
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
@@ -6,6 +6,5 @@ DELETE
 	{	?dist dcterms:license ?label }
 WHERE
 	{	?dist dcterms:license ?label .
-		?dist dcterms:license ?iri .
-		FILTER (isLiteral(?label) && isIRI(?iri))
+		FILTER (isLiteral(?label))
 	}

@@ -321,7 +321,7 @@ public abstract class CkanJson extends Ckan {
 		if (!name.isEmpty() || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
-			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			store.add(vcard, RDF.TYPE, VCARD4.KIND);
 			if (!name.isEmpty()) {
 				store.add(vcard, VCARD4.FN, name);
 			}
