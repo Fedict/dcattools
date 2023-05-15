@@ -9,6 +9,8 @@
 	skos:altLabel "AIFF", "audio/x-aiff" .
 
 <http://publications.europa.eu/resource/authority/file-type/CSV> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "CSV" ;
 	skos:closeMatch  <https://www.iana.org/assignments/media-types/text/csv> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/1> ;
@@ -19,36 +21,48 @@
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
 <http://publications.europa.eu/resource/authority/file-type/TSV>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "TSV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/tab-separated-values> ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/429> ;
 	skos:altLabel "text/tab-separated-values" .
 
 <http://publications.europa.eu/resource/authority/file-type/DGN>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "DGN" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dgn> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/399> ;
 	skos:altLabel "DGN Microstation", "Bentley DGN", "DGN (Microstation)", "DGN Bentley", "Bentley DGN" .
 
 <http://publications.europa.eu/resource/authority/file-type/DBF>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "DBF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-dbase> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/442> ;
 	skos:altLabel "DBF", "dBase", "dBASE" .
 
 <http://publications.europa.eu/resource/authority/file-type/DOC>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "DOC" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/msword> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/148> ;
 	skos:altLabel "DOC", "doc", "application/msword" .
 
 <http://publications.europa.eu/resource/authority/file-type/DOCX>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "DOCX" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.wordprocessingml.document> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/149> ;
 	skos:altLabel "DOCX", "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" .
 
-<http://publications.europa.eu/resource/authority/file-type/DWCA> 
+<http://publications.europa.eu/resource/authority/file-type/DWCA>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "DWCA" ;
 	skos:note "draft" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/dwca> ;
@@ -56,18 +70,24 @@
 	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "DWC_ARCHIVE", "Darwin Core Archive (DwC-A)" .
 
 <http://publications.europa.eu/resource/authority/file-type/GDB>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "GDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/340> ;
 	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase" .
 
 <http://publications.europa.eu/resource/authority/file-type/GPKG>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "GPKG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/441> ;
 	skos:altLabel "Geopackage", "geopackage", "GPKG" .
 
 <http://publications.europa.eu/resource/authority/file-type/GML>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "GML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/gml+xml>;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/4> ;
@@ -78,12 +98,16 @@
 		<http://data.gov.be/.well-known/genid/fmt/gml> .
 
 <http://publications.europa.eu/resource/authority/file-type/GTFS>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "GTFS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/zip>;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/322> ;
 	skos:altLabel "GTFS", "gtfs" .
 
 <http://publications.europa.eu/resource/authority/file-type/HTML>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "HTML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/html>;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/69> ;
@@ -92,6 +116,8 @@
 				<http://data.gov.be/.well-known/genid/fmt/html> .
 
 <http://publications.europa.eu/resource/authority/file-type/JSON>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "JSON" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/json> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/9>;
@@ -99,24 +125,32 @@
 			"application/json", <http://publications.europa.eu/resource/authority/file-type/JSON> .
 
 <http://publications.europa.eu/resource/authority/file-type/JSON_LD>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "JSON-LD" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/ld+json> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/400> ;
 	skos:altLabel "jsonld" .
 
 <http://publications.europa.eu/resource/authority/file-type/GEOJSON>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "GeoJSON" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.geo+json> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/381> ;
 	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)", "GEOJSON" .
 
 <http://publications.europa.eu/resource/authority/file-type/KML> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "KML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/3> ;
 	skos:altLabel "KML", "kml", "KML(zip)", "KML\u00A0(zip)" .
 
 <http://publications.europa.eu/resource/authority/file-type/MDB> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "MDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-access> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/6> ;
@@ -124,84 +158,112 @@
 		"application/msaccess", "Access" .
 
 <http://publications.europa.eu/resource/authority/file-type/MPEG4>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "MPEG4" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/mp4> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/431> ;
 	skos:altLabel "MPEG4", "video/mp4" .
 
 <http://publications.europa.eu/resource/authority/file-type/MP3>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "MP3" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mpeg> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/446> ;
 	skos:altLabel "audio/mpeg".
 
 <http://data.gov.be/en/taxonomy/term/447>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "M4A" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mp4> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
 
 <http://data.gov.be/en/taxonomy/term/432>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "MOV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/quicktime> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "MOV", "Quicktime", "video/quicktime", "mov" .
 
 <http://data.gov.be/en/taxonomy/term/434>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "M4V" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/x-m4> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "M4V", "video/x-m4v" .
 
 <http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "N-Triples" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/n-triples> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/419> ;
 	skos:altLabel "nt" .
 
 <http://publications.europa.eu/resource/authority/file-type/N3>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "N3" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/n3> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/401> ;
 	skos:altLabel "n3" .
 
 <http://publications.europa.eu/resource/authority/file-type/ODS>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "ODS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.spreadsheet> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/7> ;
 	skos:altLabel "ODS", "ods", "application/vnd.oasis.opendocument.spreadsheet" .
 
 <http://data.gov.be/en/taxonomy/term/402>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "OV2" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "ov2" .
 
 <http://publications.europa.eu/resource/authority/file-type/PDF>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "PDF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/pdf> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/65> ;
 	skos:altLabel "PDF", "pdf" , <http://data.gov.be/.well-known/genid/fmt/pdf>, "application/pdf" .
 	
 <http://publications.europa.eu/resource/authority/file-type/PNG>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "PNG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/png> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/247> ;
 	skos:altLabel "PNG", "png", "image/png" .
 
 <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "TTL" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/turtle> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/382> ;
 	skos:altLabel "TTL", "ttl", "turtle".
 
 <http://publications.europa.eu/resource/authority/file-type/RDF_XML>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "RDF/XML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/10> ;
 	skos:altLabel "RDF", "rdf", "rdfxml" .
 
 <http://publications.europa.eu/resource/authority/file-type/RSS>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "RSS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/rss+xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/11> ;
@@ -214,6 +276,8 @@
 	skos:altLabel "sld" .
 
 <http://publications.europa.eu/resource/authority/file-type/SHP>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "SHP" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.shp> ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/66> ;
@@ -223,18 +287,24 @@
 			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)" .
 
 <http://publications.europa.eu/resource/authority/file-type/DXF>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "DXF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dxf> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/171> ;
 	skos:altLabel "dxf", "DXF" .
 
 <http://publications.europa.eu/resource/authority/file-type/JPEG>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "JPG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jpeg> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/170> ;
 	skos:altLabel "JPG", "JPEG2000", "jpg", "JPEG", "jpeg", "image/jpeg" .
 
 <http://publications.europa.eu/resource/authority/file-type/JPEG2000>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "JP2" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jp2> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/170> ;
@@ -247,12 +317,16 @@
 	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)" .
 
 <http://publications.europa.eu/resource/authority/file-type/TIFF>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "TIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/169> ;
 	skos:altLabel "TIFF", "tiff" .
 
 <http://publications.europa.eu/resource/authority/file-type/GEOTIFF>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "GeoTIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/440> ;
@@ -261,6 +335,8 @@
 		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
 <http://publications.europa.eu/resource/authority/file-type/TXT>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "TXT" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/plain> ;		
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/5> ;
@@ -268,24 +344,32 @@
 				"ASCII (XYZ triplet per line)", "application/php", "text/plain", "PostgreSQL" .
 
 <http://publications.europa.eu/resource/authority/file-type/WAV>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "WAV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/vnd.wave> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/430> ;
 	skos:altLabel "WAV", "audio/x-wav", "audio/vnd.wave" .
 
 <http://publications.europa.eu/resource/authority/file-type/WCS_SRVC>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "WCS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/63> ;
 	skos:altLabel "WCS", "wcs", "OGC:WCS-1.1.0-http-get-capabilities" .
 
 <http://publications.europa.eu/resource/authority/file-type/WFS_SRVC>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "WFS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/64> ;
 	skos:altLabel "WFS", "wfs", "OGC:WFS", "OGC:WFS-1.0.0-http-get-capabilities" .
 
 <http://publications.europa.eu/resource/authority/file-type/WMS_SRVC>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "WMS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/67>  ;
@@ -294,12 +378,16 @@
 		"OGC:WMS-2.0-http-get-capabilities", "WMS-service" .
 
 <http://publications.europa.eu/resource/authority/file-type/XLS>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "XLS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-excel> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/8> ;
 	skos:altLabel "XLS", "xls", "application/xls", "excel", "XLS (XLS)", "application/vnd.ms-excel" .
 
 <http://publications.europa.eu/resource/authority/file-type/XLSX>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> ; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/62> ;
@@ -310,6 +398,8 @@
 		"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" .
 
 <http://publications.europa.eu/resource/authority/file-type/XML>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "XML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/xml>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/2> ;
@@ -318,30 +408,40 @@
 				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE".
 
 <http://publications.europa.eu/resource/authority/file-type/ZIP>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "ZIP" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/zip>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/150> ;
 	skos:altLabel "ZIP", "zip" .
 
 <http://publications.europa.eu/resource/authority/file-type/NETCDF>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "NetCDF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-netcdf>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/395> ;
 	skos:altLabel "application/x-netcdf" .
 
 <http://publications.europa.eu/resource/authority/file-type/ATOM>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "Atom" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/atom+xml>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/396> ;
 	skos:altLabel "ATOM", "atom" .
 
-<http://publications.europa.eu/resource/authority/file-type/MAP_SRVC> 
+<http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "ArcGIS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/443> ;
 	skos:altLabel "ArcGIS GeoService" .
 
 <http://publications.europa.eu/resource/authority/file-type/MAP_PRVW>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
 	skos:prefLabel "ArcGIS Hub" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/html>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/444> ;

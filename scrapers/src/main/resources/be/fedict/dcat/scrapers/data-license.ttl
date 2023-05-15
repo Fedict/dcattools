@@ -90,16 +90,19 @@
 		"This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License." .
 
 <http://creativecommons.org/licenses/by-nc-nd/4.0/> 
+	a dcterms:LicenseDocument ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/445> ;
 	skos:prefLabel "CC-BY-NC-ND" ;
 	skos:altLabel "https://creativecommons.org/licenses/by-nc-nd/4.0/" .
 
 <https://opendatacommons.org/licenses/pddl/>
+	a dcterms:LicenseDocument ;
 	skos:closeMatch <http://data.gov.be/en/taxonomy/term/212> ;
 	skos:prefLabel "ODC PDDL" ;
 	skos:altLabel "odc-pddl".
 
 <https://opendatacommons.org/licenses/by/1.0/>
+	a dcterms:LicenseDocument ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/242> ;
 	skos:prefLabel "ODC BY" ;
 	skos:altLabel "https://opendatacommons.org/licenses/by/1.0/" . 

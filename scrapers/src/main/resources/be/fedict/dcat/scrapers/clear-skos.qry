@@ -19,10 +19,5 @@ WHERE {
 	{
 		?s ?p ?o .
 		?s a skos:ConceptScheme
-	}	
-	UNION
-	{
-		?s ?p ?o .
-		?s a skos:Concept
 	}
 }

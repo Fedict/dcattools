@@ -194,7 +194,10 @@ public abstract class GeonetGmd extends Geonet {
 		if (name != null || name2 != null || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
-			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			store.add(vcard, RDF.TYPE, VCARD4.KIND);
+			if (name != null) {
+				store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			}
 
 			boolean found = false;
 			for (String lang : getAllLangs()) {

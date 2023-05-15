@@ -11,14 +11,14 @@ WHERE
 	{
 		{
 			?dataset dcat:keyword ?label .
-			?drupal skos:altLabel ?label .
-			?drupal skos:exactMatch ?theme 
+			?theme skos:altLabel ?label .
+			?theme skos:exactMatch ?drupal 
 		}
 		UNION
 		{
 			?dataset dcat:theme ?label .
-			?drupal skos:closeMatch ?label .
-			?drupal skos:exactMatch ?theme 
+			?theme skos:closeMatch ?label .
+			?theme skos:exactMatch ?drupal 
 			FILTER (
 				!STRSTARTS(STR(?label), "http://publications.europa.eu")
 			)
