@@ -436,7 +436,7 @@ public abstract class CkanJson extends Ckan {
 
 			// License from dataset must be on the distribution
 			parseString(store, dist, json, CkanJson.LICENSE_ID, DCTERMS.LICENSE, null);
-			parseURI(store, dist, json, CkanJson.LICENSE_URL, DCTERMS.LICENSE);
+			parseURI(store, dist, json, CkanJson.LICENSE_URL, DCTERMS.RIGHTS);
 
 			store.add(dist, DCAT.ACCESS_URL, access);
 			store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));

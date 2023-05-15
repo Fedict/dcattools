@@ -15,6 +15,11 @@
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> .
 
+<http://publications.europa.eu/resource/authority/file-type/DWCA> 
+	a dcterms:MediaTypeOrExtent ;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> .
+
 <http://publications.europa.eu/resource/authority/file-type/XML>
 	a dcterms:MediaTypeOrExtent ;
 	a skos:Concept ;

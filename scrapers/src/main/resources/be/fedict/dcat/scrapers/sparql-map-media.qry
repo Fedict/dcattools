@@ -18,9 +18,9 @@ INSERT
 	}
 WHERE
 	{	?dist ?prop ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:prefLabel ?imt .
-		?drupal skos:closeMatch ?mime .
-		?drupal skos:exactMatch ?auth .
+		?auth skos:altLabel ?label .
+		?auth skos:prefLabel ?imt .
+		?auth skos:closeMatch ?mime .
+		?auth skos:exactMatch ?drupal .
 		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format }
 	}

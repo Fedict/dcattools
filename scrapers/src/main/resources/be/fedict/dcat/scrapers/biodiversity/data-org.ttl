@@ -2,6 +2,7 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829-biodiv> 
 	a foaf:Agent ;
@@ -50,7 +51,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/199> ;
 	skos:altLabel "universite-libre-de-bruxelles-ulb"@en .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2182928085> 
+<https://org.belgif.be/id/CbeRegisteredEntity/0807970507> 
 	a foaf:Agent ;
 	skos:prefLabel "Université de Liège"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/201> ;
@@ -84,7 +85,7 @@
 	a foaf:Agent ;
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
-	skos:altLabel "flanders-environment-agency"@en .
+	skos:altLabel "flanders-environment-agency"@en, "flanders-environment-agency-vmm"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0501968466>
 	a foaf:Agent ;
@@ -103,3 +104,17 @@
 	skos:prefLabel "SPW DGO3 DEMNA"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/373> ;
 	skos:altLabel "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0434366097>
+	a foaf:Agent ;
+	skos:prefLabel "Natagora"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/454> ;
+	skos:altLabel "natagora"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0410057701>
+	a foaf:Agent ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Instituut voor Tropische Geneeskunde"@nl, "Institut de Médecine Tropicale"@fr,
+		"Institute of Tropical Medicine"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/455> ;
+	skos:altLabel "institute-of-tropical-medicine-antwerp"@en .

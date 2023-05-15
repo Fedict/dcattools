@@ -3,15 +3,13 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
 	{ 	?dist dcat:compressFormat ?mime }
 WHERE
-	{	?dist ?prop ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:closeMatch ?mime .
+	{	?dist ?prop ?mime .
+		?mime skos:altLabel ?label .
 		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format }
 	}
