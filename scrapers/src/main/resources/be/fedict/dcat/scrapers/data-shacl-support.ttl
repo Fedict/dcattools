@@ -7,7 +7,14 @@
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> .
 
+<http://publications.europa.eu/resource/authority/data-theme/TECH> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> .
+
+<https://www.iana.org/assignments/media-types/text/csv> a dcterms:MediaType .
 <https://www.iana.org/assignments/media-types/application/dwca> a dcterms:MediaType .
+<https://www.iana.org/assignments/media-types/application/xml> a dcterms:MediaType .
+<https://www.iana.org/assignments/media-types/text/xml> a dcterms:MediaType .
 <https://www.iana.org/assignments/media-types/application/zip> a dcterms:MediaType .
 
 <http://publications.europa.eu/resource/authority/file-type/CSV> 
@@ -26,6 +33,21 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/file-type> .
 
 <http://publications.europa.eu/resource/authority/language/ENG> 
+	a dcterms:LinguisticSystem;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
+
+<http://publications.europa.eu/resource/authority/language/FRA> 
+	a dcterms:LinguisticSystem;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
+
+<http://publications.europa.eu/resource/authority/language/NLD> 
+	a dcterms:LinguisticSystem;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
+
+<http://publications.europa.eu/resource/authority/language/DEU> 
 	a dcterms:LinguisticSystem;
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> .

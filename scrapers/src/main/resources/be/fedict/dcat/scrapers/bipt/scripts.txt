@@ -7,3 +7,4 @@ sparql-geo-belgium.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+data-shacl-support.ttl

@@ -8,10 +8,10 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "AIFF", "audio/x-aiff" .
 
-<https://www.iana.org/assignments/media-types/text/csv>
+<http://publications.europa.eu/resource/authority/file-type/CSV> 
 	skos:prefLabel "CSV" ;
-	skos:closeMatch  <http://data.gov.be/en/taxonomy/term/1> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+	skos:closeMatch  <https://www.iana.org/assignments/media-types/text/csv> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/1> ;
 	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
 					<http://publications.europa.eu/resource/authority/file-type/CSV>,

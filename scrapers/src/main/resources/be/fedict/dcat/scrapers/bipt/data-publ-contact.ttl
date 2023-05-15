@@ -5,6 +5,7 @@
 @prefix dgov: <http://data.gov.be#> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0243405860>
+	a foaf:Agent;
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/392> ;
 	foaf:name "BIPT"@en, "BIPT"@nl, "IBPT"@fr ;
