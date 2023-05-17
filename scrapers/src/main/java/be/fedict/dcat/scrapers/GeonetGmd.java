@@ -118,6 +118,13 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_INDIVIDUAL = "gmd:individualName";
 	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 
+	public final static String XP_GEO = "gmd:extent/gmd:EX_Extent/gmd:geographicElement";
+	public final static String XP_BBOX = "gmd:EX_GeographicBoundingBox";
+	public final static String XP_BBOX_W = "gmd:westBoundLongitude/gco:Decimal";
+	public final static String XP_BBOX_E = "gmd:eastBoundLongitude/gco:Decimal";
+	public final static String XP_BBOX_S = "gmd:southBoundLatitude/gco:Decimal";
+	public final static String XP_BBOX_N = "gmd:northBoundLatitude/gco:Decimal";
+			
 	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement";
 	public final static String XP_TEMP_EXT = "gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/";
 	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
@@ -328,7 +335,7 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
-		store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + "dataset"));
+		//store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + "dataset"));
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 

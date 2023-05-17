@@ -2,72 +2,72 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/20>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/CONT> ;
+<http://publications.europa.eu/resource/authority/frequency/CONT> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/20>;
 	skos:prefLabel "Continuously"@en ;
 	skos:altLabel "continual", 
 		"http://publications.europa.eu/resource/authority/frequency/CONT" .
 
-<http://data.gov.be/en/taxonomy/term/22>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DAILY> ;
+<http://publications.europa.eu/resource/authority/frequency/DAILY>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/22> ;
 	skos:prefLabel "Daily"@en ;
 	skos:altLabel "daily", "R/P1D", "http://purl.org/cld/freq/daily", 
 		"http://publications.europa.eu/resource/authority/frequency/DAILY" .
 
-<http://data.gov.be/en/taxonomy/term/23>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/WEEKLY> ;
+<http://publications.europa.eu/resource/authority/frequency/WEEKLY>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/23> ;
 	skos:prefLabel "Weekly"@en ;
 	skos:altLabel "weekly", "W", 
 		"http://publications.europa.eu/resource/authority/frequency/WEEKLY" .
 
-<http://data.gov.be/en/taxonomy/term/405>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> ;
+<http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/405> ;
 	skos:prefLabel "Semiweekly"@en ;
 	skos:altLabel "R/P3.5D" .
-	
-<http://data.gov.be/en/taxonomy/term/25>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/MONTHLY> ;
+
+<http://publications.europa.eu/resource/authority/frequency/MONTHLY>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/25> ;
 	skos:prefLabel "Monthly"@en ;
 	skos:altLabel "monthly", "M", 
 		"http://publications.europa.eu/resource/authority/frequency/MONTHLY" .
 
-<http://data.gov.be/en/taxonomy/term/27>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/QUARTERLY> ;
+<http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/27> ;
 	skos:prefLabel "Quarterly"@en ;
 	skos:altLabel "5annually", "quarterly", 
 		"http://publications.europa.eu/resource/authority/frequency/QUARTERLY" .
 
-<http://data.gov.be/en/taxonomy/term/29>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2> ;
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/29> ;
 	skos:prefLabel "Semiannual"@en ;
 	skos:altLabel "biannually", "R/P6M", 
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL_2" .
 
-<http://data.gov.be/en/taxonomy/term/30>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/30> ;
 	skos:prefLabel "Annual"@en ;
 	skos:altLabel "annually", "Y", "jaarlijks", 
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL" .
 
-<http://data.gov.be/en/taxonomy/term/426>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/DECENNIAL> ;
+<http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/426> ;
 	skos:altLabel "R/P10Y" .
 
-<http://data.gov.be/en/taxonomy/term/192>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/IRREG> ;
+<http://publications.europa.eu/resource/authority/frequency/IRREG>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/192> ;
 	skos:prefLabel "Irregular"@en ;
 	skos:altLabel "asNeeded", "irregular", "http://purl.org/cld/freq/irregular", "Irregular",
 		"http://publications.europa.eu/resource/authority/frequency/IRREG",
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded> .
 
-<http://data.gov.be/en/taxonomy/term/391>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/UNKNOWN> ;
+<http://publications.europa.eu/resource/authority/frequency/UNKNOWN>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/391> ;
 	skos:prefLabel "Unknown"@en ;
 	skos:altLabel "unknown", 
 		"http://publications.europa.eu/resource/authority/frequency/UNKNOWN" .
 
-<http://data.gov.be/en/taxonomy/term/390>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+<http://publications.europa.eu/resource/authority/frequency/NEVER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/390> ;
 	skos:prefLabel "Never"@en ;
 	skos:altLabel "notPlanned", 
 		"http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned",

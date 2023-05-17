@@ -10,5 +10,5 @@ INSERT
 	}
 WHERE
 	{	?dist dcterms:accrualPeriodicity ?freq .
-		?drupal skos:exactMatch ?freq
+		?freq skos:exactMatch ?drupal
 	}

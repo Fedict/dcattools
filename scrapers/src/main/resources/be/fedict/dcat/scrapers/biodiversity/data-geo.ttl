@@ -7,10 +7,12 @@
 	a dcterms:Location;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/46> ;
 	skos:prefLabel "Flanders"@en, "Vlaanderen"@nl, "Flandre"@fr, "Flandern"@de ;
-	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en, "natuurpunt"@en, "flanders-environment-agency"@en  .
+	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en, "natuurpunt"@en, 
+		"flanders-environment-agency"@en  .
 
 <https://sws.geonames.org/3337387/>
 	a dcterms:Location;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/47> ;
 	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
-	skos:altLabel "natagriwal-asbl"@en, "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .
+	skos:altLabel "natagriwal-asbl"@en, 
+		"service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .

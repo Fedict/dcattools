@@ -9,7 +9,7 @@ INSERT {
 	?o skos:inScheme ?scheme .	
 }
 WHERE { 
-	?s dcat:theme|dcterms:format ?o .
+	?s dcat:theme|dcterms:format|dcterms:language ?o .
 	BIND(
 		IRI(
 			CONCAT("http://publications.europa.eu/resource/authority/",

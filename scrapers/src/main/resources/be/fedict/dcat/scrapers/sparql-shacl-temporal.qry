@@ -1,0 +1,8 @@
+# Explicit temporal class improving SHACL validation scores
+
+PREFIX dcterms:	<http://purl.org/dc/terms/>
+
+INSERT { ?time a dcterms:PeriodOfTime }
+WHERE { ?s dcterms:temporal ?time }
+
+

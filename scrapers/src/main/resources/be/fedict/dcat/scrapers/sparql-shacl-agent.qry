@@ -1,7 +1,7 @@
 # Explicit agent class improving SHACL validation scores
 
 PREFIX dcterms:	<http://purl.org/dc/terms/>
-PREFIX foaf: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 INSERT { ?org a foaf:Agent	}
 WHERE { ?s dcterms:publisher ?org }

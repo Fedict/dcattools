@@ -14,5 +14,5 @@ INSERT
 WHERE
 	{	?dataset a dcat:Dataset .
 		?dataset dcterms:accrualPeriodicity ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?freq }
+		?freq skos:altLabel ?label .
+		?freq skos:exactMatch ?drupal }
