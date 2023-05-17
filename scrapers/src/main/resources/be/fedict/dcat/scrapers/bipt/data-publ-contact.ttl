@@ -5,7 +5,6 @@
 @prefix dgov: <http://data.gov.be#> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0243405860>
-	a foaf:Agent;
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/392> ;
 	foaf:name "BIPT"@en, "BIPT"@nl, "IBPT"@fr ;
@@ -13,7 +12,6 @@
 	
 <http://data.gov.be/org/bipt/contact>
 	a vcard:Organization ;
-	a vcard:Kind ;
 	vcard:fn "BIPT"@en, "BIPT"@nl, "IBPT"@fr ;
 	vcard:hasUrl <https://bipt-data.be> ;
 	vcard:hasEmail <mailto:info@bipt.be> .

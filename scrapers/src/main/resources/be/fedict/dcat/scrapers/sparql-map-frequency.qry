@@ -9,6 +9,7 @@ DELETE
 	{ 	?dataset dcterms:accrualPeriodicity ?label }
 INSERT
 	{ 	?dataset dcterms:accrualPeriodicity ?freq .
+		?freq a dcterms:Frequency .
 		?dataset dgov:freq ?drupal }
 WHERE
 	{	?dataset a dcat:Dataset .

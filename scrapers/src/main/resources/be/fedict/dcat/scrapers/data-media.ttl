@@ -155,7 +155,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-access> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/6> ;
 	skos:altLabel "MDB", "MDB (ZIP)", "accdb (ZIP)", "ACCDB (ZIP)", "MDB Microsoft Access", "AccessDB", 
-		"application/msaccess", "Access" .
+		"application/msaccess", "Access", "Microsoft Access MDB" .
 
 <http://publications.europa.eu/resource/authority/file-type/MPEG4>
 	a skos:Concept ;

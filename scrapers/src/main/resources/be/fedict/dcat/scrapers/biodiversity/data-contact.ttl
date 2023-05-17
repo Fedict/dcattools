@@ -5,7 +5,6 @@
 
 <http://data.gov.be/org/biodiversity/belspo/contact>
 	a vcard:Organization ;
-	a vcard:Kind ;
 	vcard:fn "Belgian Biodiversity Platform"@en, "Plateforme belge biodiversité"@fr, "Belgisch Biodiversiteitsplatform"@nl ;
 	vcard:hasFN "Belgian Biodiversity Platform"@en, "Plateforme belge biodiversité"@fr, "Belgisch Biodiversiteitsplatform"@nl ;
 	vcard:organization-name "Belgian Biodiversity Platform"@en, "Plateforme belge biodiversité"@fr, "Belgisch Biodiversiteitsplatform"@nl ;

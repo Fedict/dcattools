@@ -8,7 +8,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
 	{ 	?res dgov:spatial ?drupal .
-		?res dcterms:spatial ?spatial }
+		?res dcterms:spatial ?spatial .
+		?spatial a dcterms:Location }
 WHERE
 	{	?res a ?cl .
 		?res dcterms:publisher ?publisher .

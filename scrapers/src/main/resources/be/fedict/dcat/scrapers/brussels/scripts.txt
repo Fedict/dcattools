@@ -24,7 +24,11 @@ data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
 brussels/sparql-accessurl.qry
-#brussels/sparql-clear-catalog.qry
-#brussels/sparql-contact.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-frequency.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-skos.qry
+sparql-shacl-vcard.qry

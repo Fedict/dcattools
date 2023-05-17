@@ -16,6 +16,6 @@ INSERT
 WHERE
 	{	?dataset dcat:contactPoint ?contact .
 		?contact vcard:fn ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:prefLabel ?name .
-		?drupal skos:exactMatch ?neworg }
+		?neworg skos:altLabel ?label .
+		?neworg skos:prefLabel ?name .
+		?neworg skos:exactMatch ?drupal }

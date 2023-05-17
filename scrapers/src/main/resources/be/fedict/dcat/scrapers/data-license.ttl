@@ -23,6 +23,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/154>;
 	skos:prefLabel "Etalab Licence Ouverte" ;
 	skos:altLabel "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+		<https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf> ,
 		<https://www.etalab.gouv.fr/licence-ouverte-open-licence>  .
 
 <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf>

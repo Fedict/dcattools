@@ -1,4 +1,4 @@
-# Data for improving SHACL validation scores
+# Explicit SKOS data for improving SHACL validation scores
 
 PREFIX dcat:	<http://www.w3.org/ns/dcat#>
 PREFIX dcterms:	<http://purl.org/dc/terms/>
