@@ -33,8 +33,6 @@ import java.util.Properties;
 import org.dom4j.Node;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
-import org.eclipse.rdf4j.model.vocabulary.FOAF;
-import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 /**
  * Geonet scraper for BMDC RBINS
@@ -49,9 +47,7 @@ public class GeonetBMDC extends GeonetGmd {
 	protected void generateDataset(IRI dataset, String id, Storage store, Node node)
 			throws MalformedURLException {
 		super.generateDataset(dataset, id, store, node);
-		IRI landing = store.getURI(LANDING + id);
-		store.add(dataset, DCAT.LANDING_PAGE, landing);
-		store.add(landing, RDF.TYPE, FOAF.DOCUMENT);
+		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(LANDING + id));
 	}
 
 	/**

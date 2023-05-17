@@ -8,7 +8,5 @@ all/sparql-dataservice.qry
 all/sparql-datestamp.qry
 all/sparql-clear-drupal.qry
 #all/clear-empty.txt
-all/sparql-landingpage.qry
-all/sparql-vcard-kind.qry
 all/sparql-spatial-location.qry
 clear-skos.qry

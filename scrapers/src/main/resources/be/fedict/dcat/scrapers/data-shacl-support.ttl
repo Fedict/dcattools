@@ -6,20 +6,24 @@
 <http://publications.europa.eu/resource/authority/language/ENG> 
 	a dcterms:LinguisticSystem;
 	a skos:Concept ;
+	skos:prefLabel "English"@en ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
 
 <http://publications.europa.eu/resource/authority/language/FRA> 
 	a dcterms:LinguisticSystem;
 	a skos:Concept ;
+	skos:prefLabel "French"@en ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
 
 <http://publications.europa.eu/resource/authority/language/NLD> 
 	a dcterms:LinguisticSystem;
 	a skos:Concept ;
+	skos:prefLabel "Dutch"@en ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
 
 <http://publications.europa.eu/resource/authority/language/DEU> 
 	a dcterms:LinguisticSystem;
 	a skos:Concept ;
+	skos:prefLabel "German"@en ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> .
 

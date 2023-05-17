@@ -24,3 +24,4 @@ sparql-title-to-desc.qry
 clear-skos.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
+sparql-shacl-support.qry
