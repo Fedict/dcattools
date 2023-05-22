@@ -19,11 +19,41 @@
 	a dcterms:LinguisticSystem;
 	skos:prefLabel "German"@en .
 
+<http://publications.europa.eu/resource/authority/data-theme/AGRI> 
+	skos:prefLabel "Agriculture"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON> 
+	skos:prefLabel "Economy"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC> 
+	skos:prefLabel "Education"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER> 
+	skos:prefLabel "Energy"@en .
+
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
 	skos:prefLabel "Environment"@en .
 
+<http://publications.europa.eu/resource/authority/data-theme/GOVE> 
+	skos:prefLabel "Government"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL> 
+	skos:prefLabel "Health"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/JUST> 
+	skos:prefLabel "Justice"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/REGI> 
+	skos:prefLabel "Regional"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI> 
+	skos:prefLabel "Population and Society"@en .
+
 <http://publications.europa.eu/resource/authority/data-theme/TECH> 
 	skos:prefLabel "Technology"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN> 
+	skos:prefLabel "Transport"@en .
 
 <http://purl.org/adms/publishertype/NationalAuthority> 
 	a skos:Concept ;
@@ -32,6 +62,14 @@
 <http://purl.org/adms/publishertype/RegionalAuthority>
 	a skos:Concept ;
 	skos:prefLabel "Regional Authority"@en .
+
+<http://purl.org/adms/publishertype/LocalAuthority>
+	a skos:Concept ;
+	skos:prefLabel "Local Authority"@en .
+
+<http://purl.org/adms/publishertype/Company>
+	a skos:Concept ;
+	skos:prefLabel "Local Authority"@en .
 
 <http://purl.org/adms/publishertype/NonProfitOrganisation>
 	a skos:Concept ;
