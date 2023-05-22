@@ -1,4 +1,4 @@
-# extra queries to be executed and data to be loaded 
+# extra queries to be executed and data to be loaded
 brussels/sparql-keyword-theme.qry
 brussels/sparql-theme-uri.qry
 brussels/data-theme.ttl
@@ -20,15 +20,19 @@ data-frequency.ttl
 sparql-map-frequency.qry
 data-media.ttl
 sparql-map-media.qry
+sparql-delete-label-format.qry
 data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
 brussels/sparql-accessurl.qry
+brussels/sparql-fix-downloadurl.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-agent.qry
 sparql-shacl-frequency.qry
 sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
 sparql-shacl-skos.qry
+sparql-shacl-temporal.qry
 sparql-shacl-vcard.qry

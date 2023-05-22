@@ -2,6 +2,7 @@
 
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496> 

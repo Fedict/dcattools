@@ -8,8 +8,8 @@
 		"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
 		"Bien-être animal", "Bodem" .
 
-<http://data.gov.be/en/taxonomy/term/59>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>;
 	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
 		"Education, culture and sport", "Éducation, culture et sport", 
 		"Onderwijs, cultuur en sport" .
@@ -34,7 +34,7 @@
 		"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
 		"Bruit", "Geluid", "Air", "Lucht", "Cleanliness", "eau", "Habitats and biotopes",
 		"Land cover", "Land use", "Land usage", "Usage des sols", "Bodemgebruik", "Sols", "Hydrografie",
-		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres"  .
+		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres", "Landgebruik"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
@@ -71,7 +71,7 @@
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
-				"BÃ¢timents",
+				"BÃ¢timents", "HÃ©bergement",
 				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
 				"Bevolking en samenleving", "Population et société", "Population and society",
 				"Emploi", "tewerkstelling", "Buildings", "Employment", "Hébergement", "chien" .
@@ -79,7 +79,8 @@
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
-			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration" .
+			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration",
+			"HÃ©bergement", "Hébergement" .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;

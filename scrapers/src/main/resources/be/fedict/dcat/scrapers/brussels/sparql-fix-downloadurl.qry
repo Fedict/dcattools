@@ -1,0 +1,18 @@
+# Fix incorrect encoding in URL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{ 	?s dcat:downloadURL ?o }
+INSERT
+	{ 	?s dcat:downloadURL ?url }
+WHERE
+	{ 	?s dcat:downloadURL ?o
+		FILTER ( CONTAINS(STR(?o), "%3p"))
+		BIND ( 
+			URI(
+				REPLACE(STR(?o), "%3p", "%3Ap")
+			)
+		as ?url)
+	}
+

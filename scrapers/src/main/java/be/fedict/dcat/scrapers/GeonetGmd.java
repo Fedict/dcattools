@@ -160,6 +160,23 @@ public abstract class GeonetGmd extends Geonet {
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
 	/**
+	 * Parse a bounding box and store it in the RDF store.
+	 *
+	 * @param store RDF store
+	 * @param uri RDF subject URI
+	 * @param node
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	protected void parseBBox(Storage store, IRI uri, Node node)
+		throws RepositoryException, MalformedURLException {
+		String w = node.valueOf(XP_BBOX_W);
+		String e = node.valueOf(XP_BBOX_E);
+		String s = node.valueOf(XP_BBOX_S);
+		String n = node.valueOf(XP_BBOX_N);
+	}
+
+	/**
 	 * Parse a temporal and store it in the RDF store.
 	 *
 	 * @param store RDF store
@@ -376,6 +393,14 @@ public abstract class GeonetGmd extends Geonet {
 			store.add(dataset, DCAT.THEME, topic.getText());
 		}
 
+		
+		// geo bounding box
+		Node geo = metadata.selectSingleNode(XP_GEO);
+		if (geo != null) {
+			parseBBox(store, dataset, geo
+			);
+		}
+	
 		// time range
 		Node range = metadata.selectSingleNode(XP_TEMPORAL);
 		if (range != null) {

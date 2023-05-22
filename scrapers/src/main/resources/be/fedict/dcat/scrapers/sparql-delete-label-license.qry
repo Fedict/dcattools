@@ -1,4 +1,4 @@
-# Remove licenses that are literals
+# Remove licenses that are literals (= unmapped)
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
