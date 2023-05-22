@@ -100,7 +100,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/188> ;
-	skos:prefLabel "parking.brussels"@en, "parking.brussels"@nl, "parking.brussels"@fr .
+	skos:altLabel "parking.brussels"@en, "parking.brussels"@nl, "parking.brussels"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381039/ibsa>
 	dcterms:type admsp:RegionalAuthority ;
@@ -125,6 +125,12 @@
 	skos:prefLabel "VisitBrussels"@fr, "VisitBrussels"@nl, "VisitBrussels"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/224> ;
 	skos:altLabel "visit.brussels"@fr, "visit.brussels"@nl, "visit.brussels"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0241570679>
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "DBDMH"@nl, "SIAMU"@fr, "SIAMU"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/461> ;
+	skos:altLabel "DBDMH"@nl, "SIAMU"@fr, "SIAMU"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0455555451> 
 	dcterms:type admsp:NonProfitOrganisation ;
@@ -224,6 +230,12 @@
 	skos:altLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
 				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Uccle"@fr, "Uccle"@en, "Ukkel"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/460> ;
+	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0249268719>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
@@ -291,7 +303,13 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/406> ;
-	skos:altLabel "VIVAQUA"@en, "VIVAQUA"@fr, "VIVAQUA"@nl .
+	skos:altLabel "VIVAQUA"@en, "VIVAQUA"@fr, "VIVAQUA"@nl, "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0239843188>
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/459> ;
+	skos:altLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0851360585>
 	dcterms:type admsp:RegionalAuthority ;
