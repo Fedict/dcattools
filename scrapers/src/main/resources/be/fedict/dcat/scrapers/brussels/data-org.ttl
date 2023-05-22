@@ -236,6 +236,12 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/460> ;
 	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207372637>
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/462> ;
+	skos:altLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0249268719>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
@@ -304,6 +310,13 @@
 	skos:prefLabel "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/406> ;
 	skos:altLabel "VIVAQUA"@en, "VIVAQUA"@fr, "VIVAQUA"@nl, "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0884649502>
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Hydria"@nl, "Hydria"@fr, "Hydria"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/463> ;
+	skos:altLabel "BMWB Brusselse Maatschappij voor Waterbeheer"@nl , 
+			"SBGE Société bruxelloise de Gestion de l'eau"@fr ,"Brussels Company for Water Management"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0239843188>
 	dcterms:type admsp:RegionalAuthority ;
