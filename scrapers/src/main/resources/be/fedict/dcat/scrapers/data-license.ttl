@@ -3,7 +3,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://www.elia.be/en/grid-data/elia-open-data-license>
-	skos:closeMatch <http://data.gov.be/en/taxonomy/term/427> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/427> ;
 	skos:prefLabel "Elia Open Data License";
 	skos:altLabel "Elia Open Data Licence" .
 

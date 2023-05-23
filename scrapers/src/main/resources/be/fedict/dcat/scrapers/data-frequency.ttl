@@ -5,19 +5,25 @@
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/20>;
 	skos:prefLabel "Continuously"@en ;
-	skos:altLabel "continual", 
+	skos:altLabel "continual", <http://data.gov.be/continuously>,
 		"http://publications.europa.eu/resource/authority/frequency/CONT" .
+
+<http://publications.europa.eu/resource/authority/frequency/HOURLY> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/21>;
+	skos:prefLabel "Hourly"@en ;
+	skos:altLabel "hourly", <http://data.gov.be/hourly>, <http://purl.org/cld/freq/hourly>,
+		"http://publications.europa.eu/resource/authority/frequency/HOURLY" .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/22> ;
 	skos:prefLabel "Daily"@en ;
-	skos:altLabel "daily", "R/P1D", "http://purl.org/cld/freq/daily", 
+	skos:altLabel "daily", "R/P1D", <http://purl.org/cld/freq/daily>, <http://data.gov.be/daily>,
 		"http://publications.europa.eu/resource/authority/frequency/DAILY" .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/23> ;
 	skos:prefLabel "Weekly"@en ;
-	skos:altLabel "weekly", "W", 
+	skos:altLabel "weekly", "W", <http://purl.org/cld/freq/weekly>,
 		"http://publications.europa.eu/resource/authority/frequency/WEEKLY" .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> 
@@ -28,13 +34,13 @@
 <http://publications.europa.eu/resource/authority/frequency/MONTHLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/25> ;
 	skos:prefLabel "Monthly"@en ;
-	skos:altLabel "monthly", "M", 
+	skos:altLabel "monthly", "M", <http://purl.org/cld/freq/monthly>,
 		"http://publications.europa.eu/resource/authority/frequency/MONTHLY" .
 
 <http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/27> ;
 	skos:prefLabel "Quarterly"@en ;
-	skos:altLabel "5annually", "quarterly", 
+	skos:altLabel "5annually", "quarterly", <http://purl.org/cld/freq/quarterly>,
 		"http://publications.europa.eu/resource/authority/frequency/QUARTERLY" .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
@@ -46,7 +52,7 @@
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/30> ;
 	skos:prefLabel "Annual"@en ;
-	skos:altLabel "annually", "Y", "jaarlijks", 
+	skos:altLabel "annually", "Y", "jaarlijks", <http://data.gov.be/yearly>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL" .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
@@ -56,7 +62,7 @@
 <http://publications.europa.eu/resource/authority/frequency/IRREG>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/192> ;
 	skos:prefLabel "Irregular"@en ;
-	skos:altLabel "asNeeded", "irregular", "http://purl.org/cld/freq/irregular", "Irregular",
+	skos:altLabel "asNeeded", "irregular", <http://purl.org/cld/freq/irregular>, "Irregular",
 		"http://publications.europa.eu/resource/authority/frequency/IRREG",
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded> .
 

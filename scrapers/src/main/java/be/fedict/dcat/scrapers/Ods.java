@@ -48,9 +48,9 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  */
 public abstract class Ods extends Dcat {
 	
-	public final static String API_DCAT = "/api/v2/catalog/exports/ttl?lang=";
+	public final static String API_DCAT = "/api/explore/v2.1/catalog/exports/dcat?lang=";
 	
-	// correction per language
+	// correction per language, required for ODS up to 2.1, since the language attribute by ODS is wrong
 	private final static String QRY_LANGUAGE = 
 		"PREFIX dcat: <http://www.w3.org/ns/dcat#> " +
 		"PREFIX dcterms: <http://purl.org/dc/terms/> " +
@@ -78,9 +78,9 @@ public abstract class Ods extends Dcat {
 
 		for (String lang: super.getAllLangs()) {
 			String ttl = map.get(lang).getContent();
-			// Load turtle file into store
+			// Load xml file into store
 			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-				store.add(in, RDFFormat.TURTLE);
+				store.add(in, RDFFormat.RDFXML);
 				store.queryUpdate(String.format(QRY_LANGUAGE, lang));
 			} catch (RDFParseException | IOException ex) {
 				throw new RepositoryException(ex);

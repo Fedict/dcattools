@@ -67,7 +67,7 @@
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@fr, 
 			"Gewestelijk agentschap voor netheid, Net Brussel"@nl  .
 
-<https://org.belgif.be/id/cbe/CbeEstablishmentUnit/2269796337>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2269796337>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, "Bruxelles Urbanisme et Patrimoine"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/187> ;
@@ -224,6 +224,13 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/464> ;
 	skos:altLabel "Sint-Agatha-Berchem"@nl, "Berchem Sainte-Agathe"@fr, 
 		"Berchem Sainte-Agathe/Sint-Agatha-Berchem"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207202193>
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, "Saint-Josse-ten-Noode"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/478> ;
+	skos:altLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr; 
+			"Saint-Josse-ten-Noode/Sint-Joost-ten-Node"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
 	dcterms:type admsp:LocalAuthority ;

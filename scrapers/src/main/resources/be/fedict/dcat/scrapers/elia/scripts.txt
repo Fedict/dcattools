@@ -8,6 +8,8 @@ data-license.ttl
 sparql-map-license.qry
 elia/sparql-theme.qry
 clear-skos.qry
+data-frequency.ttl
+sparql-map-frequency.qry
 elia/data-publ-contact.ttl
 elia/sparql-publ-contact.qry
 sparql-geo-belgium.qry
@@ -18,3 +20,10 @@ clear-skos.qry
 sparql-title-to-desc.qry
 #sparql-clear-bnodes.txt
 sparql-strip-html.qry
+elia/sparql-fix-foaf.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-vcard.qry
