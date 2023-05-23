@@ -79,7 +79,9 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/184> ;
-	skos:altLabel "STIB-MIVB"@en,  "STIB-MIVB"@nl, "STIB / MIVB"@fr, "MIVB"@nl, "STIB"@fr .
+	skos:altLabel "STIB-MIVB"@en,  "STIB-MIVB"@nl, "STIB / MIVB"@fr, "MIVB"@nl, "STIB"@fr,
+		"Maatschappij voor het Intercommunaal Vervoer te Brussel"@nl, 
+		"Société des Transports Intercommunaux de Bruxelles"@fr, "Brussels Intercommunal Transport Company"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0240678477> 
 	dcterms:type admsp:RegionalAuthority ;
@@ -200,9 +202,9 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367687> 
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Schaerbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
+	skos:prefLabel "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/424> ;
-	skos:altLabel "Schaerbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
+	skos:altLabel "Schaerbeek"@nl, "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366895>
 	dcterms:type admsp:LocalAuthority ;
@@ -216,16 +218,23 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/458> ;
 	skos:altLabel "Vorst"@nl, "Forest"@fr, "Forest"@en .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207541594>
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Sint-Agatha-Berchem"@nl, "Berchem Sainte-Agathe"@fr, "Sint-Agatha-Berchem"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/464> ;
+	skos:altLabel "Sint-Agatha-Berchem"@nl, "Berchem Sainte-Agathe"@fr, 
+		"Berchem Sainte-Agathe/Sint-Agatha-Berchem"@en .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Woluwé-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
+	skos:prefLabel "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/421> ;
-	skos:altLabel "Woluwé-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl .
+	skos:altLabel "Woluwé-Saint-Pierre"@fr, "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, 
+				"Sint-Pieters-Woluwe"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207389859>
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
-				"Sint-Lambrechts-Woluwe"@nl ;
+	skos:prefLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert"@en, "Sint-Lambrechts-Woluwe"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/457> ;
 	skos:altLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
 				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl .
@@ -282,22 +291,24 @@
 			"Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, 
 			"Mobigis"@en, "Bruxelles Mobilité / Brussel Mobiliteit"@en,
 			"Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, 
-			"Brussels-Capital Urban Development"@en .
+			"Brussels-Capital Urban Development"@en,
+			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0253777437> 
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "CESRBC"@en, "CESRBC"@fr, "ESRBHG"@nl ; 
+	skos:prefLabel "Brupartners"@en, "Brupartners"@fr, "Brupartners"@nl ; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/190> ;
 	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale"@en, 
 		"Conseil économique et social de la Région de Bruxelles-Capitale"@fr,
-		"Conseil économique et social de la Région de Bruxelles-Capitale"@nl .
+		"Conseil économique et social de la Région de Bruxelles-Capitale"@nl,
+		"Brupartners"@en, "Brupartners"@fr, "Brupartners"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0664820875>
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Perspective Brussels"@en, "Bureau bruxellois de la planification"@fr, 
-				"Brussels Planningsbureau"@nl ; 
+	skos:prefLabel "Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr ; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/403> ;
-	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr .
+	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr,
+		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555656283>
 	dcterms:type admsp:Company ;
