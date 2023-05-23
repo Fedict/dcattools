@@ -5,7 +5,8 @@
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/20>;
 	skos:prefLabel "Continuously"@en ;
-	skos:altLabel "continual", <http://data.gov.be/continuously>,
+	skos:altLabel "continual", <http://data.gov.be/continuously>, <http://data.gov.be/5%20minutes>, 
+		<http://data.gov.be/quarter%20hour>,
 		"http://publications.europa.eu/resource/authority/frequency/CONT" .
 
 <http://publications.europa.eu/resource/authority/frequency/HOURLY> 
@@ -13,6 +14,11 @@
 	skos:prefLabel "Hourly"@en ;
 	skos:altLabel "hourly", <http://data.gov.be/hourly>, <http://purl.org/cld/freq/hourly>,
 		"http://publications.europa.eu/resource/authority/frequency/HOURLY" .
+
+<http://publications.europa.eu/resource/authority/frequency/DAILY_2> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/31>;
+	skos:prefLabel "Twice per day"@en ;
+	skos:altLabel <http://data.gov.be/6%20hours> .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/22> ;

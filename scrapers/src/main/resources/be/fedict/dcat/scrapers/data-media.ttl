@@ -15,6 +15,7 @@
 	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
 					<http://publications.europa.eu/resource/authority/file-type/CSV>,
+					<https://www.iana.org/assignments/media-types/text/csv>,
 					"text/comma-separated-values",
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
@@ -96,6 +97,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/json> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/9>;
 	skos:altLabel "JSON", "jsonp", "json", "jsonl", "JSON(zip)", "JSON\u00A0", "JSON\u00A0(zip)", "haljson" , 
+			<https://www.iana.org/assignments/media-types/application/json> ,
 			"application/json", <http://publications.europa.eu/resource/authority/file-type/JSON> .
 
 <http://publications.europa.eu/resource/authority/file-type/JSON_LD>
