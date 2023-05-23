@@ -3,7 +3,7 @@ brussels/sparql-keyword-theme.qry
 brussels/sparql-theme-uri.qry
 brussels/data-theme.ttl
 sparql-map-theme.qry
-brussels/sparql-fix-theme.qry
+sparql-theme-subject.qry
 brussels/sparql-geo.qry
 data-media.ttl
 sparql-map-media.qry

@@ -4,8 +4,8 @@ sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 elia/sparql-language.qry
 #elia/sparql-dist-accessurl.qry
-data-license.ttl
-sparql-map-license.qry
+elia/sparql-license.qry
+sparql-theme-subject.qry
 elia/sparql-theme.qry
 clear-skos.qry
 data-frequency.ttl
