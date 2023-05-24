@@ -1,0 +1,13 @@
+# Set mediatype if link name contains "pdf"
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcat:mediaType ?label }
+INSERT
+	{	?dist dcat:mediaType ?mt }
+WHERE
+	{	?dist dcat:mediaType ?label .
+		FILTER (CONTAINS(LCASE(?label), "pdf"))
+	}

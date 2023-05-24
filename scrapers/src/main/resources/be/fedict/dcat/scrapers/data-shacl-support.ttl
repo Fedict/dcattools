@@ -40,6 +40,9 @@
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
 	skos:prefLabel "Health"@en .
 
+<http://publications.europa.eu/resource/authority/data-theme/INTR> 
+	skos:prefLabel "International"@en .
+
 <http://publications.europa.eu/resource/authority/data-theme/JUST> 
 	skos:prefLabel "Justice"@en .
 

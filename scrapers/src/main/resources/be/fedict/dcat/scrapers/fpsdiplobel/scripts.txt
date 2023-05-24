@@ -4,6 +4,13 @@ fpsdiplobel/sparql-publ-contact.qry
 sparql-license-cczero.qry
 fpsdiplobel/sparql-theme.qry
 sparql-geo-belgium.qry
+fpsdiplobel/sparql-media-label.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-vcard.qry
