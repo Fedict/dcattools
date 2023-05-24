@@ -2,6 +2,7 @@
 fpsmobility/data-publ-contact.ttl
 fpsmobility/sparql-publ-contact.qry
 sparql-license-cczero.qry
+sparql-access-public.qry
 fpsmobility/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl

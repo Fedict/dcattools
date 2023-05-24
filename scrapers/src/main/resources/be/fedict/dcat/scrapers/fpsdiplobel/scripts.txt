@@ -2,6 +2,7 @@
 fpsdiplobel/data-publ-contact.ttl
 fpsdiplobel/sparql-publ-contact.qry
 sparql-license-cczero.qry
+sparql-access-public.qry
 fpsdiplobel/sparql-theme.qry
 sparql-geo-belgium.qry
 fpsdiplobel/sparql-media-label.qry

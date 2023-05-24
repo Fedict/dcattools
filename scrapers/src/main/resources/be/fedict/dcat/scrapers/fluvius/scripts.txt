@@ -5,6 +5,7 @@ sparql-dist-lang.qry
 fluvius/sparql-language.qry
 #fluvius/sparql-dist-accessurl.qry
 fluvius/sparql-license.qry
+sparql-access-public.qry
 sparql-theme-subject.qry
 fluvius/sparql-theme.qry
 clear-skos.qry

@@ -5,6 +5,7 @@ sparql-map-org.qry
 btcctb/sparql-contact.qry
 data-license.ttl
 sparql-map-license.qry
+sparql-access-public.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry

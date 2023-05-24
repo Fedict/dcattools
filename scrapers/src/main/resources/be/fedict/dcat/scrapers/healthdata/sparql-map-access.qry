@@ -1,0 +1,11 @@
+# Set access rights to public
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:accessRights "public" }
+INSERT 
+	{ 	?dist dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> .
+		<http://publications.europa.eu/resource/authority/access-right/PUBLIC> a dcterms:RightsStatement }
+WHERE
+	{	?dist dcterms:accessRights "public" }

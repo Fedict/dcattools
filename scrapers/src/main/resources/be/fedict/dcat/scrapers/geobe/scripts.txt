@@ -8,7 +8,7 @@ geobe/sparql-fix-frequency.qry
 geobe/sparql-fix-language.qry
 geobe/sparql-fix-datatype.qry
 sparql-theme-subject.qry
-sparql-map-accessrights.qry
+sparql-access-public.qry
 data-media.ttl
 sparql-map-media.qry
 data-frequency.ttl

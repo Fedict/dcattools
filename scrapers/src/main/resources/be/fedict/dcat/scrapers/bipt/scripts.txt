@@ -2,6 +2,7 @@
 bipt/data-publ-contact.ttl
 bipt/sparql-publ-contact.qry
 sparql-license-cczero.qry
+sparql-access-public.qry
 bipt/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl

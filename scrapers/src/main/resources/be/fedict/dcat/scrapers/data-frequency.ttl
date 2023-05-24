@@ -40,7 +40,7 @@
 <http://publications.europa.eu/resource/authority/frequency/MONTHLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/25> ;
 	skos:prefLabel "Monthly"@en ;
-	skos:altLabel "monthly", "M", <http://purl.org/cld/freq/monthly>,
+	skos:altLabel "monthly", "M", "R/P1M", <http://purl.org/cld/freq/monthly>,
 		"http://publications.europa.eu/resource/authority/frequency/MONTHLY" .
 
 <http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
@@ -58,7 +58,7 @@
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/30> ;
 	skos:prefLabel "Annual"@en ;
-	skos:altLabel "annually", "Y", "jaarlijks", <http://data.gov.be/yearly>,
+	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL" .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>

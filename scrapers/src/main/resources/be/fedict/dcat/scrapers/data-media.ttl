@@ -16,7 +16,7 @@
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
 					<http://publications.europa.eu/resource/authority/file-type/CSV>,
 					<https://www.iana.org/assignments/media-types/text/csv>,
-					"text/comma-separated-values",
+					"text/comma-separated-values", "application/csv",
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
 <http://publications.europa.eu/resource/authority/file-type/TSV>
@@ -322,7 +322,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/xml>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/2> ;
 	skos:altLabel "application/xml", <https://www.iana.org/assignments/media-types/text/xml>,
-				<https://www.iana.org/assignments/media-types/application/xml>,
+				<https://www.iana.org/assignments/media-types/application/xml>, "text/xml",
 				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
 				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE".
 

@@ -5,6 +5,7 @@ sparql-dist-lang.qry
 elia/sparql-language.qry
 #elia/sparql-dist-accessurl.qry
 elia/sparql-license.qry
+sparql-access-public.qry
 sparql-theme-subject.qry
 elia/sparql-theme.qry
 clear-skos.qry
