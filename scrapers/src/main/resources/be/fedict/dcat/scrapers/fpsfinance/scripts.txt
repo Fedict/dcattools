@@ -9,6 +9,7 @@ fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
 fpsfinance/sparql-fix-authority.qry
 fpsfinance/sparql-fix-datatype.qry
+sparql-map-accessrights.qry
 data-frequency.ttl
 sparql-map-frequency-drupal.qry
 data-media.ttl

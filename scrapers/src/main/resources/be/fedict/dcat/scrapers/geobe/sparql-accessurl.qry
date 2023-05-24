@@ -1,0 +1,11 @@
+# Use English landing page  if the access URL is missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?s dcat:accessURL ?page }
+WHERE
+	{ 	?s dcat:landingPage ?page .
+		?page dcterms:language <http://publications.europa.eu/resource/authority/language/ENG>
+	}

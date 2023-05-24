@@ -1,3 +1,20 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-hydra.qry
+geobe/sparql-accessurl.qry
+geobe/sparql-fix-accessurl.qry
+geobe/sparql-fix-format.qry
+geobe/sparql-fix-frequency.qry
+sparql-theme-subject.qry
+sparql-map-accessrights.qry
+data-media.ttl
+sparql-map-media.qry
+data-frequency.ttl
+sparql-map-frequency-drupal.qry
+geobe/data-standards-support.ttl
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-vcard.qry

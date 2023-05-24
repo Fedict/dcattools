@@ -3,6 +3,10 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC>
+	a dcterms:RightsStatement;
+	skos:prefLabel "Public"@en  .
+
 <http://publications.europa.eu/resource/authority/language/ENG> 
 	a dcterms:LinguisticSystem;
 	skos:prefLabel "English"@en .

@@ -1,0 +1,23 @@
+# Re-add SHACL validation scores
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+
+<http://www.opengis.net/def/crs/EPSG/0/EPSG:3035>
+	a dcterms:Standard .
+
+<http://www.opengis.net/def/crs/EPSG/0/EPSG:3812>
+	a dcterms:Standard .
+
+<http://www.opengis.net/def/crs/EPSG/0/EPSG:4326>
+	a dcterms:Standard .
+
+<http://www.opengis.net/def/crs/EPSG/0/4326>
+	a dcterms:Standard .
+
+<http://www.opengis.net/def/crs/EPSG/0/3812>
+	a dcterms:Standard .
+
+<http://www.opengis.net/def/crs/EPSG/0/3035>
+	a dcterms:Standard .

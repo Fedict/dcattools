@@ -66,7 +66,8 @@
 	skos:prefLabel "GPKG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/441> ;
-	skos:altLabel "Geopackage", "geopackage", "GPKG" .
+	skos:altLabel "Geopackage", "geopackage", "GPKG",
+		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .
 
 <http://publications.europa.eu/resource/authority/file-type/GML>
 	skos:prefLabel "GML" ;
@@ -76,6 +77,7 @@
 		"Environmental Monitoring Facilities GML application schema", "Gml",
 		"Administrative units GML application schema", "OGC:GML", 
 		"application/gml+xml", "GML application schema",
+		<https://www.iana.org/assignments/media-types/application/gml+xml>,
 		<http://data.gov.be/.well-known/genid/fmt/gml> .
 
 <http://publications.europa.eu/resource/authority/file-type/GTFS>
@@ -223,7 +225,8 @@
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "Shape", "shape", "shapefile", "shape file", 
 			"shape fies", "shapefiile", "application/zipped-shapefile",
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
-			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)" .
+			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)",
+			<https://www.iana.org/assignments/media-types/application/vnd.shp> .
 
 <http://publications.europa.eu/resource/authority/file-type/DXF>
 	skos:prefLabel "DXF" ;
@@ -253,7 +256,8 @@
 	skos:prefLabel "TIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/169> ;
-	skos:altLabel "TIFF", "tiff" .
+	skos:altLabel "TIFF", "tiff",
+		<https://www.iana.org/assignments/media-types/image/tiff> .
 
 <http://publications.europa.eu/resource/authority/file-type/GEOTIFF>	
 	skos:prefLabel "GeoTIFF" ;
@@ -318,6 +322,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/xml>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/2> ;
 	skos:altLabel "application/xml", <https://www.iana.org/assignments/media-types/text/xml>,
+				<https://www.iana.org/assignments/media-types/application/xml>,
 				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
 				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE".
 
@@ -337,7 +342,8 @@
 	skos:prefLabel "Atom" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/atom+xml>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/396> ;
-	skos:altLabel "ATOM", "atom" .
+	skos:altLabel "ATOM", "atom",
+		<https://www.iana.org/assignments/media-types/application/atom+xml> .
 
 <http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
 	skos:prefLabel "ArcGIS" ;

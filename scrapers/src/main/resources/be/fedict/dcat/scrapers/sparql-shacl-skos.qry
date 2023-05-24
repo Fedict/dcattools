@@ -8,8 +8,8 @@ INSERT {
 	?o a skos:Concept .
 	?o skos:inScheme ?scheme .	
 }
-WHERE { 
-	?s dcat:theme|dcterms:format|dcterms:language|dcterms:accrualPeriodicity ?o .
+WHERE {
+	?s dcat:theme|dcterms:accessRights|dcterms:format|dcterms:language|dcterms:accrualPeriodicity ?o .
 	BIND(
 		IRI(
 			CONCAT("http://publications.europa.eu/resource/authority/",
