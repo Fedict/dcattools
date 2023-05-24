@@ -3,9 +3,16 @@ globe/sparql-theme.qry
 globe/data-org.ttl
 sparql-map-org.qry
 globe/sparql-contact.qry
-globe/data-license.ttl
+data-license.ttl
 sparql-map-license.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-title-to-desc.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-standard.qry
+sparql-shacl-vcard.qry
