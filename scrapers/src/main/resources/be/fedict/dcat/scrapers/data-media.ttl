@@ -201,7 +201,8 @@
 	skos:prefLabel "RDF/XML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/10> ;
-	skos:altLabel "RDF", "rdf", "rdfxml" .
+	skos:altLabel "RDF", "rdf", "rdfxml",
+		<https://www.iana.org/assignments/media-types/application/rdf+xml> .
 
 <http://publications.europa.eu/resource/authority/file-type/RSS>
 	skos:prefLabel "RSS" ;
@@ -309,6 +310,7 @@
 		"Excel XLSX",
 		"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
 		"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx>,
+		<https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet>,
 		"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" .
 
 <http://publications.europa.eu/resource/authority/file-type/XML>

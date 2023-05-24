@@ -1,13 +1,22 @@
 # extra queries to be executed and data to be loaded
 fpsfinance/data-publ-contact.ttl
 fpsfinance/sparql-publ-contact.qry
-sparql-license-cczero.qry
+fpsfinance/sparql-fix-license.qry
+data-license.ttl
+sparql-map-license.qry
 sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
+fpsfinance/sparql-fix-authority.qry
+fpsfinance/sparql-fix-datatype.qry
 data-frequency.ttl
 sparql-map-frequency-drupal.qry
 data-media.ttl
-sparql-map-media-drupal.qry
+sparql-map-media.qry
 clear-skos.qry
-fpsfinance/sparql-fix-datatype.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-vcard.qry

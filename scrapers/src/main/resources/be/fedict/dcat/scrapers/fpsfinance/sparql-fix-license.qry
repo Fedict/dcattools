@@ -1,0 +1,18 @@
+# Fix license from type
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:license ?doc .
+		?doc a dcterms:LicenseDocument .
+		?doc dcterms:type ?lic .
+		?doc dcterms:description ?desc 
+	}
+INSERT 
+	{	?s dcterms:license ?lic }
+WHERE 
+	{	?s dcterms:license ?doc .
+		?doc a dcterms:LicenseDocument .
+		?doc dcterms:type ?lic .
+		?doc dcterms:description ?desc 
+	}
