@@ -15,7 +15,7 @@ data-frequency.ttl
 sparql-map-frequency-drupal.qry
 geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
-geobe/sparql-consolidate-bbox.qry
+sparql-consolidate-bbox.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-agent.qry

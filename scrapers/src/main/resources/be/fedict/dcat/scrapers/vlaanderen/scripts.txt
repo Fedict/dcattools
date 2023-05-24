@@ -6,7 +6,7 @@ sparql-map-org.qry
 clear-skos.qry
 vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-consolidate-address2.qry
-vlaanderen/sparql-consolidate-bbox.qry
+sparql-consolidate-bbox.qry
 vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-standards.qry

@@ -18,7 +18,7 @@ INSERT
 WHERE
 	{ 	?s dcterms:spatial ?genspatial .
 		?genspatial ?p ?o .
-		?genspatial locn:geometry|dcat:bbox ?bbox
+		?genspatial dcat:bbox ?bbox
 		BIND (
 			STRDT(fn:simplifyPolygon(STR(?bbox)), geo:wktLiteral)
 			as ?simple)
