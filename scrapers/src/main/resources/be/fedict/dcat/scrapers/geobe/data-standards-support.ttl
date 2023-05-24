@@ -4,6 +4,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 
+<http://www.opengis.net/def/crs/EPSG/0/31370>
+	a dcterms:Standard .
+
 <http://www.opengis.net/def/crs/EPSG/0/EPSG:3035>
 	a dcterms:Standard .
 

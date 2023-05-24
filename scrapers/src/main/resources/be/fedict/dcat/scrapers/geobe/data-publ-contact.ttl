@@ -1,0 +1,14 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/157> ;
+	foaf:name "IGN"@fr, "NGI"@en, "NGI"@nl ;
+	foaf:homepage <https://www.ngi.be> .
