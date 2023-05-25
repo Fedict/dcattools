@@ -2,95 +2,95 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/84>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199299707>
 	skos:prefLabel "Studiedienst Vlaanderen"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199299707> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/84> ;
 	skos:altLabel "SVR" .
 
-<http://data.gov.be/en/taxonomy/term/86>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143716826>
 	skos:prefLabel "Departement LNE"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2143716826> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/86> ;
 	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "MercatorNet" .
-	
-<http://data.gov.be/en/taxonomy/term/88>
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0886689767>
 	skos:prefLabel "VREG"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0886689767> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/88> ;
 	skos:altLabel "VREG" .
 
-<http://data.gov.be/en/taxonomy/term/91>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199300596>
 	skos:prefLabel "Agentschap Binnenlands Bestuur"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199300596> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/91>;
 	skos:altLabel "ABB", "Agentschap Binnenlands Bestuur" .
 
-<http://data.gov.be/en/taxonomy/term/92>
+<https://org.belgif.be/id/CbeRegisteredEntity/0887290276>
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0887290276> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", "Vlaamse Milieumaatschappij", 
 	"Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", 
 	"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer", 
 	"Flanders Environment Agency", "VMM", "Flanders Environment Agency (VMM)" .
 
-<http://data.gov.be/en/taxonomy/term/93>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199322471>
 	skos:prefLabel "Departement CSJM"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/93> ;
 	skos:altLabel "Departement Cultuur, Jeugd en Media", "DCJM" .
 
-<http://data.gov.be/en/taxonomy/term/95>
+ <https://org.belgif.be/id/CbeRegisteredEntity/0225944375>
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0225944375> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/95>;
 	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
-	
-<http://data.gov.be/en/taxonomy/term/96>
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336923>
 	skos:prefLabel "Departement Ruimte Vlaanderen"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199336923> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/96> ;
 	skos:altLabel "Vlaamse overheid - Departement Ruimte Vlaanderen" .
-	
-<http://data.gov.be/en/taxonomy/term/98>
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", "Dienst Mobilteit", "Dienst mobiliteit",
 	"Departement Mobiliteit en Openbare Werken, afdeling Waterbouwkundig Laboratorium", "DMOW"@nl,
 	"Beleidsdomein Mobiliteit en Openbare Werken", "Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning", 
 	"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang" .
 
-<http://data.gov.be/en/taxonomy/term/448>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143719695>
 	skos:prefLabel "Databank Ondergrond Vlaanderen (DOV)"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2143719695>;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/448> ;
 	skos:altLabel "Databank Ondergrond Vlaanderen (DOV)"@nl .
 
-<http://data.gov.be/en/taxonomy/term/108>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199310989>
 	skos:prefLabel "Departement Onderwijs en Vorming"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199310989> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/108> ;
 	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming" .
 
-<http://data.gov.be/en/taxonomy/term/115>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199324550>
 	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199324550> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/115> ;
 	skos:altLabel "Departement Landbouw en Visserij" .
 
-<http://data.gov.be/en/taxonomy/term/116>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199338408>
 	skos:prefLabel "Agentschap Onroerend Erfgoed"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199338408> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/116> ;
 	skos:altLabel "Vlaamse Overheid - Agentschap Onroerend Erfgoed", "Agentschap Onroerend Erfgoed", "Onroerend Erfgoed" .
 
-<http://data.gov.be/en/taxonomy/term/118>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199323857>
 	skos:prefLabel "Departement WSE"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199323857> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/118> ;
 	skos:altLabel "DWSE" .
-	
-<http://data.gov.be/en/taxonomy/term/123>
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2256181002>
 	skos:prefLabel "Geopunt"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2256181002> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/123> ;
 	skos:altLabel "Geopunt" .
 
-<http://data.gov.be/en/taxonomy/term/124>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, "Province West Flanders"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207725696> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/124>  ;
 	skos:altLabel "Provincie West-Vlaanderen" .	
 	
-<http://data.gov.be/en/taxonomy/term/125>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207451227>
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207451227> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/125>  ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
 	
 <http://data.gov.be/en/taxonomy/term/128>

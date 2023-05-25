@@ -7,22 +7,23 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?dataset dcterms:publisher ?org .
+	{	?dataset ?prop ?org .
 		?org ?p ?o .
 		?org ?rel ?label }
 INSERT 
-	{ 	?dataset dcterms:publisher ?neworg .
+	{ 	?dataset ?prop ?neworg .
 		?neworg a foaf:Organization .
 		?neworg dgov:org ?drupal .
 		?neworg ?p ?o .
 		?neworg foaf:name ?name }
 WHERE
-	{	?dataset dcterms:publisher ?org .
+	{	?dataset ?prop ?org .
 		?org ?rel ?label .
 		?org ?p ?o .
 		?neworg skos:altLabel ?label .
 		?neworg skos:exactMatch ?drupal .
 		?neworg skos:prefLabel ?name 
+		VALUES ?prop { dcterms:publisher dcterms:creator }
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (?p != ?rel)
 	}

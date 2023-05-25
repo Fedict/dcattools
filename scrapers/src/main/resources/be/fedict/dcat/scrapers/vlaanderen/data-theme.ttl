@@ -2,8 +2,8 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/32>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:closeMatch <http://eurovoc.europa.eu/5463>,
 		<http://www.eionet.europa.eu/gemet/concept/1600> ,
 		<http://inspire.ec.europa.eu/theme/af>,
@@ -13,8 +13,8 @@
 		"bio"@nl, "landbouw"@nl, "akker"@nl, "AKKER"@nl, "AKKERBOUW"@nl, "agromilieumaatregelen"@nl, 
 		"bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl .
 
-<http://data.gov.be/en/taxonomy/term/59>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC-SPORT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Sport> ,
 		<http://ns.thedatatank.com/dcat/themes#Media> ,
 		<http://ns.thedatatank.com/dcat/themes#CulturalHeritage> ,
@@ -28,10 +28,19 @@
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ,
 		<https://data.stad.gent/id/theme/Evenementen%20%26%20Feesten> ;
 	skos:prefLabel "CULTURE AND SPORT"@en ;
-	skos:altLabel "Filmvoorstelling"@nl, "bioscopen"@nl, "cultuur - jeugdwerk"@nl , "media - geschreven_pers"@nl , "musea"@nl, "bibliotheken"@nl, "cultuur - letteren"@nl, "theater"@nl, "toerisme - overnachtingen"@nl, "film"@nl, "sport"@nl, "vrt"@nl, "cultuur - volksontwikkeling"@nl, "internationale_culturele_uitwisseling"@nl, "muziek"@nl, "sport - vorming"@nl, "cultuur - centra"@nl, "monument"@nl, "televisie"@nl, "radio"@nl, "BIB"@nl, "BIBLIOTHEKEN"@nl, "CULTUURCENTRUM"@nl, "Erfgoed"@nl, "Monumenten"@nl, "Onroerend Erfgoed"@nl, "Sport"@nl, "VRT"@nl, "activiteiten"@nl, "bibliotheek"@nl, "cinema"@nl, "clubhuizen"@nl, "cultuur"@nl, "erfgoed"@nl, "gentse feesten"@nl, "media"@nl, "nieuws"@nl, "nieuwsberichten"@nl, "omroep"@nl, "aanplakborden"@nl, "CULTUURHISTORISCHE"@nl, "archeologie"@nl, "Archeologie@nl", "basketbal"@nl, "BEGIJNHOVEN"@nl, "media cijfers mediagebruik SCV nieuws"@nl .
+	skos:altLabel "Filmvoorstelling"@nl, "bioscopen"@nl, "cultuur - jeugdwerk"@nl , 
+		"media - geschreven_pers"@nl , "musea"@nl, "bibliotheken"@nl, "cultuur - letteren"@nl, 
+		"theater"@nl, "toerisme - overnachtingen"@nl, "film"@nl, "sport"@nl, "vrt"@nl, 
+		"cultuur - volksontwikkeling"@nl, "internationale_culturele_uitwisseling"@nl, 
+		"muziek"@nl, "sport - vorming"@nl, "cultuur - centra"@nl, "monument"@nl, "televisie"@nl, 
+		"radio"@nl, "BIB"@nl, "BIBLIOTHEKEN"@nl, "CULTUURCENTRUM"@nl, "Erfgoed"@nl, "Monumenten"@nl, 
+		"Onroerend Erfgoed"@nl, "Sport"@nl, "VRT"@nl, "activiteiten"@nl, "bibliotheek"@nl, "cinema"@nl, 
+		"clubhuizen"@nl, "cultuur"@nl, "erfgoed"@nl, "gentse feesten"@nl, "media"@nl, "nieuws"@nl, 
+		"nieuwsberichten"@nl, "omroep"@nl, "aanplakborden"@nl, "CULTUURHISTORISCHE"@nl, "archeologie"@nl, 
+		"Archeologie@nl", "basketbal"@nl, "BEGIJNHOVEN"@nl, "media cijfers mediagebruik SCV nieuws"@nl .
 
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
 		<http://ns.thedatatank.com/dcat/themes#Economy> ,
 		<http://ns.thedatatank.com/dcat/themes#Work> ,
@@ -40,16 +49,17 @@
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "BED AND BREAKFAST"@nl, "bedrijf"@nl, "bedrijven"@nl, "arbeidsvraag"@nl, "toerisme"@nl, "overnachtingen"@nl, "zeehavens_economisch"@nl, "tewerkstelling"@nl, "economie"@nl, "buitenlandse_handel"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, "economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "tewerkstelling"@nl, "Kadastrale percelen"@nl, "Faciliteiten voor productie en industrie"@nl, "Arbeid"@nl, "BEDRIJF"@nl, "BEDRIJVEN"@nl, "BEDRIJVENTERREINEN"@nl, "Bedrijventerrein"@nl, "Budget"@nl, "ECONOMIE"@nl, "Financiën"@nl, "HOSTEL"@nl, "HOTEL"@nl, "Economie"@nl, "Havengebied"@nl, "Werk"@nl, "Winkelen"@nl, "arbeid"@nl, "arbeidsmarkt"@nl, "bedrijfslocatie"@nl, "bedrijfsgebouwen"@nl, "bedrijventerrein"@nl, "bedrijventerreinen"@nl, "bedrijfsvorm"@nl, "bedrijfspercelen"@nl, "economie"@nl, "haven"@nl, "hostels"@nl, "hotel"@nl, "hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, "economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, "economie en innovatie ondernemerschap"@nl .
 
-<http://data.gov.be/en/taxonomy/term/33>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Education> ,
 		<http://vocab.belgif.be/auth/datatheme/EDUC> ,
 		<https://data.stad.gent/id/theme/Onderwijs%20%26%20kinderopvang> ;
 	skos:prefLabel "EDUCATION"@en ;
-	skos:altLabel "onderwijs"@nl, "leerlingen"@nl, "vorming"@nl, "leerkrachten"@nl, "OPLEIDING"@nl, "Onderwijs"@nl, "School"@nl, "basisschool"@nl .
+	skos:altLabel "onderwijs"@nl, "leerlingen"@nl, "vorming"@nl, "leerkrachten"@nl, "OPLEIDING"@nl, 
+		"Onderwijs"@nl, "School"@nl, "basisschool"@nl .
 
-<http://data.gov.be/en/taxonomy/term/34>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Environment> ,
 		<http://vocab.belgif.be/auth/datatheme/ENVI> ,
 		<http://inspire.ec.europa.eu/theme/hy>,	<http://inspire.ec.europa.eu/theme/lu>,
@@ -80,9 +90,9 @@
 		"afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, 
 		"beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, 
 		"BEKEN"@nl, "Zwin en Zwinbosjes"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/35>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER>,
 		<http://inspire.ec.europa.eu/theme/er> ;
 	skos:prefLabel "ENERGY"@en ;
@@ -90,8 +100,8 @@
 		"Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl, "duurzame energie"@nl, "gas"@nl, 
 		"Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl .
 
-<http://data.gov.be/en/taxonomy/term/41>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Government> ,
 		<http://vocab.belgif.be/auth/datatheme/GOVE> ,
 		<http://inspire.ec.europa.eu/theme/cp> ,
@@ -114,8 +124,8 @@
 		"afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl,
 		"voorkooprecht"@nl, "landeigendom"@nl, "CRAB"@nl .
 
-<http://data.gov.be/en/taxonomy/term/40>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/HEAL>, <http://inspire.ec.europa.eu/theme/hh> ;
 	skos:prefLabel "HEALTH"@en ;
 	skos:altLabel "apothekers"@nl, "gezondheid"@nl, "morbiditeit"@nl, "vruchtbaarheid"@nl, 
@@ -124,23 +134,23 @@
 		"milieu gezondheid"@nl, "Menselijke gezondheid en veiligheid"@nl, "Gezondheid"@nl, 
 		"Gezondheidscentrum"@nl, "Overlijdens"@nl, "apotheek"@nl, "apotheker"@nl, "dokter"@nl, 
 		"gezondheid"@nl, "gezondheidszorg"@nl, "toegankelijkheid"@nl, "Zorgatlas"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/44>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/INTR>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/INTR> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
 	skos:altLabel "ontwikkelingssamenwerking buitenlands beleid ontwikkelingssamenwerking"@nl, "internationaal"@nl, "ontwikkelingssamenwerking"@nl, "buitenlandse_handel"@nl, "buitenlands_beleid"@nl, "internationale_culturele_uitwisseling"@nl, "Europa"@nl, "economie en innovatie buitenlandse handel"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/43>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#SafetyAndJustice> ,
 		<http://vocab.belgif.be/auth/datatheme/JUST> ,
 		<http://ns.thedatatank.com/dcat/themes#Law> ;
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
 	skos:altLabel "veiligheid"@nl, "criminaliteit"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Demography> ,
 		<http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare> ,
 		<http://vocab.belgif.be/auth/datatheme/SOCI> ,
@@ -164,8 +174,8 @@
 		"minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl,
 		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl .
 
-<http://data.gov.be/en/taxonomy/term/42>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
 		<http://vocab.belgif.be/auth/datatheme/REGI> ,
 		<http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional> ,
@@ -181,8 +191,8 @@
 		"hotel"@nl, "hotels"@nl, "jeugdverblijven"@nl, "kampeerautoterreinen"@nl, "kampeerlogies"@nl, 
 		"logies"@nl, "lokale besturen"@nl .
 
-<http://data.gov.be/en/taxonomy/term/36>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Mobility> ,
 		<http://vocab.belgif.be/auth/datatheme/TRAN> , <http://inspire.ec.europa.eu/theme/tn>,
 		<https://data.stad.gent/id/theme/Mobiliteit> ;
@@ -197,8 +207,8 @@
 		"voetgangers"@nl, "wandelroutes"@nl, "afrit"@nl, "afritten"@nl, "ANKERPLAATSEN"@nl, 
 		"autoweg"@nl, "autocar"@nl .
 
-<http://data.gov.be/en/taxonomy/term/37>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Research> ,
 		<http://vocab.belgif.be/auth/datatheme/TECH> ,
 		<http://inspire.ec.europa.eu/theme/ge> ,

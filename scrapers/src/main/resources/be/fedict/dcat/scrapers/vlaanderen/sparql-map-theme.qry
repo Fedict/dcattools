@@ -12,7 +12,7 @@ INSERT
 WHERE
 	{ 	
 		?dataset ?p ?theme .
-		?drupal skos:closeMatch ?theme .
-		?drupal skos:exactMatch ?uri .
+		?uri skos:closeMatch ?theme .
+		?uri skos:exactMatch ?drupal .
 		VALUES ?p { dcterms:subject vl:GEMET-concept }
 	}

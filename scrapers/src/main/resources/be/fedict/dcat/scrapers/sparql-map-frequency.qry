@@ -12,7 +12,6 @@ INSERT
 		?freq a dcterms:Frequency .
 		?dataset dgov:freq ?drupal }
 WHERE
-	{	?dataset a dcat:Dataset .
-		?dataset dcterms:accrualPeriodicity ?label .
+	{	?dataset dcterms:accrualPeriodicity ?label .
 		?freq skos:altLabel ?label .
 		?freq skos:exactMatch ?drupal }

@@ -470,7 +470,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 
 		
 	@Override
-	public void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
+	public final void writeDcat(Writer out) throws RepositoryException, MalformedURLException {
 		store.write(out);
 	}
 
