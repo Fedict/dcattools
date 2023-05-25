@@ -293,9 +293,9 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writeReference(XMLStreamWriter w, String el, Value uri) throws XMLStreamException {
-		if (uri instanceof IRI) {
+		if (uri instanceof IRI iri) {
 			w.writeEmptyElement(el);
-			w.writeAttribute("rdf:resource", ((IRI) uri).stringValue());
+			w.writeAttribute("rdf:resource", iri.stringValue());
 		} else {
 			logger.error("Not a reference IRI {}", uri.stringValue());
 		}
@@ -319,6 +319,7 @@ public class EDP {
 			}
 		}
 	}
+
 	/**
 	 * Write references and their wrapper class
 	 *
@@ -363,6 +364,23 @@ public class EDP {
 	}
 
 	/**
+	 * Write (additional) RDF type
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param type RDF type
+	 * @throws XMLStreamException
+	 */
+	private static void writeType(XMLStreamWriter w, RepositoryConnection con, IRI uri, IRI type) 
+		throws XMLStreamException {
+		if (con.hasStatement(uri, RDF.TYPE, type, true)) {
+			w.writeEmptyElement("rdf:type");
+			w.writeAttribute("rdf:resource", type.stringValue());
+		}
+	}
+
+	/**
 	 * Write generic metadata
 	 *
 	 * @param w XML writer
@@ -380,6 +398,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:publisher", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo", "dct:Standard", false);
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
@@ -436,7 +455,7 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
-		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme", "skos:Concept", false);
+		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
@@ -571,20 +590,18 @@ public class EDP {
 	 * @param iri iRI of the organization
 	 * @throws XMLStreamException
 	 */
-	private static void writeOrganization(XMLStreamWriter w, RepositoryConnection con, IRI iri) 
+	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, IRI iri) 
 			throws XMLStreamException {
-		if (iri.stringValue().startsWith(BELGIF_PREFIX)) {
-			addSkosConcept(iri);
-			w.writeStartElement("foaf:Organization");
-			w.writeAttribute("rdf:about", iri.stringValue());
+		w.writeStartElement("foaf:Agent");
+		w.writeAttribute("rdf:about", iri.stringValue());
+		writeType(w, con, iri, FOAF.ORGANIZATION);
+		writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
+		writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
+		writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
+		writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
+		writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
 
-			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
-			writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
-			
-			writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
-
-			w.writeEndElement();
-		}
+		w.writeEndElement();
 	}
 
 	/**
@@ -594,14 +611,14 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @throws XMLStreamException
 	 */
-	private static void writeOrganizations(XMLStreamWriter w, RepositoryConnection con)
+	private static void writeAgents(XMLStreamWriter w, RepositoryConnection con)
 		throws XMLStreamException {
 		int nr = 0;
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.ORGANIZATION)) {
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.AGENT)) {
 			while (res.hasNext()) {
 				nr++;
-				writeOrganization(w, con, (IRI) res.next().getSubject());
+				writeAgent(w, con, (IRI) res.next().getSubject());
 			}
 		}
 		logger.info("Wrote {} organizations", nr);
@@ -614,32 +631,20 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @throws XMLStreamException
 	 */
-	private static void writeConcepts(XMLStreamWriter w)
+	private static void writeConcepts(XMLStreamWriter w, RepositoryConnection con)
 		throws XMLStreamException {
 		int nr = 0;
 
-		Set<String> schemes = new HashSet<>(); 
 		for (IRI iri: CONCEPTS) {
 			w.writeStartElement("skos:Concept");
 			String concept = iri.toString();
 			w.writeAttribute("rdf:about", concept);
-			
-			w.writeEmptyElement("skos:inScheme");
-			String scheme = concept.contains("geonames") 
-				? "https://sws.geonames.org"
-				: (concept.contains("belgif") 
-					? "https://org.belgif.be/id/CbeRegisteredEntity"
-					: concept.substring(0, concept.lastIndexOf("/")));
-			schemes.add(scheme);
-			w.writeAttribute("rdf:resource", scheme);
-
+			writeReferences(w, con, iri, SKOS.IN_SCHEME, "skos:inScheme");
+			writeReferences(w, con, iri, SKOS.PREF_LABEL, "skos:prefLabel");
 			w.writeEndElement();
 			nr++;
 		}
-		for (String scheme: schemes) {
-			w.writeEmptyElement("skos:ConceptScheme");	
-			w.writeAttribute("rdf:about", scheme);
-		}
+
 		logger.info("Wrote {} concepts", nr);
 	}
 
@@ -669,12 +674,13 @@ public class EDP {
 		writeDataservices(w, con);
 		w.writeEndElement();
 
+		writeDocuments(w, con, DCTERMS.PROVENANCE_STATEMENT, "dct:ProvenanceStatement");
 		writeDocuments(w, con, DCTERMS.LICENSE_DOCUMENT, "dct:LicenseDocument");
 		writeDocuments(w, con, DCTERMS.RIGHTS_STATEMENT, "dct:RightsStatement");
 		writeDocuments(w, con, DCTERMS.STANDARD, "dct:Standard");
 		
-		writeOrganizations(w, con);
-		writeConcepts(w);
+		writeAgents(w, con);
+		writeConcepts(w, con);
 		writeLocations(w, con);
 
 		w.writeEndElement();
