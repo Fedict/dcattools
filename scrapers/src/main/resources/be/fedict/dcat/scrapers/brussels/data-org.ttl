@@ -229,7 +229,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, "Saint-Josse-ten-Noode"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/478> ;
-	skos:altLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr; 
+	skos:altLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, 
 			"Saint-Josse-ten-Noode/Sint-Joost-ten-Node"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
