@@ -97,7 +97,7 @@
 <http://publications.europa.eu/resource/authority/licence/ODC_PDDL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/212> ;
 	skos:prefLabel "ODC PDDL" ;
-	skos:altLabel "odc-pddl".
+	skos:altLabel "odc-pddl", <http://www.opendefinition.org/licenses/odc-pddl> .
 
 <https://opendatacommons.org/licenses/by/1.0/>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/242> ;
