@@ -24,16 +24,22 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+import be.gov.data.drupal10.Dataset;
 import be.gov.data.drupal10.Drupal;
+import jakarta.mail.internet.AddressException;
+import jakarta.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Properties;
+import java.util.Set;
 
-import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -42,7 +48,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Bart Hanssens
  */
-public class TaxonomyTest {
+public class DatasetTest {
 	public static Drupal d10;
 	
 	@BeforeAll
@@ -63,39 +69,51 @@ public class TaxonomyTest {
 		}
 	}
 
-	@Test
-	public void testCategory() throws IOException, InterruptedException {
-		Map taxo = d10.getTaxonomy("category");
-		Assertions.assertFalse(taxo.isEmpty());
+	public void createDataset() throws AddressException, InterruptedException {
+		DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
+		
+		Dataset d2 = new Dataset(
+				"id2", 
+				"Titel 2", 
+				"Beschrijving 2, dit kan een lange string zijn", 
+				"nl",
+				Set.of(36, 37), 
+				Set.of(URI.create("http://www.example.condition.nl")),
+				Set.of(new InternetAddress("info@example.be")),
+				Set.of(URI.create("http://www.example.access1.nl"), URI.create("http://www.example.access2.nl")),
+				Set.of(URI.create("http://www.example.download1.nl"), URI.create("http://www.example.download2.nl")),
+				Collections.EMPTY_SET,
+				Set.of(66, 2),
+				25,
+				333,
+				173,
+				"Contact 2 org nl",
+				76,
+				LocalDate.parse("2000-05-01", fmt),
+				LocalDate.parse("2005-10-03", fmt));
+
+		try {
+			d10.createDataset(d2);
+		} catch (IOException ioe) {
+			fail();
+		}
 	}
 
 	@Test
-	public void testLicense() throws IOException, InterruptedException {
-		Map taxo = d10.getTaxonomy("license");
-		Assertions.assertFalse(taxo.isEmpty());
+	public void getDataset() throws InterruptedException {
+		try {
+			Dataset did2 = d10.getDataset("id2", "nl");
+			System.err.println(did2);
+		} catch (IOException ioe) {
+			fail();
+		}
 	}
 
-	@Test
-	public void testFormat() throws IOException, InterruptedException {
-		Map taxo = d10.getTaxonomy("file_type");
-		Assertions.assertFalse(taxo.isEmpty());
-	}
-	
-	@Test
-	public void testFrequency() throws IOException, InterruptedException {
-		Map taxo = d10.getTaxonomy("frequency");
-		Assertions.assertFalse(taxo.isEmpty());
-	}
-
-	@Test
-	public void testGeo() throws IOException, InterruptedException {
-		Map taxo = d10.getTaxonomy("geo_coverage");
-		Assertions.assertFalse(taxo.isEmpty());
-	}
-
-	@Test
-	public void testOrganisation() throws IOException, InterruptedException {
-		Map taxo = d10.getTaxonomy("organisation");
-		Assertions.assertFalse(taxo.isEmpty());
+	public void deleteDataset() throws InterruptedException {
+		try {
+			d10.deleteDataset("id2");
+		} catch (IOException ioe) {
+			fail();
+		}
 	}
 }

@@ -25,7 +25,7 @@
  */
 package be.gov.data.drupal10;
 
-import jakarta.mail.Address;
+import jakarta.mail.internet.InternetAddress;
 
 import java.net.URI;
 import java.time.Instant;
@@ -50,7 +50,7 @@ public record Dataset(
 	String langcode,
 	Set<Integer> categories,
 	Set<URI> conditions,
-	Set<Address> contacts,
+	Set<InternetAddress> contacts,
 	Set<URI> accessURLS,
 	Set<URI> downloadURLS,
 	Set<String> keywords,
@@ -63,6 +63,8 @@ public record Dataset(
 	LocalDate from,
 	LocalDate till
 	) {
+
+	private static DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
 	
 	/**
 	 * Create a nested map containing the required values
@@ -70,9 +72,8 @@ public record Dataset(
 	 * @return map
 	 */
 	public Map<String,Object> toMap() {
-		Map<String,Object> map = new HashMap();
-		DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
-		
+		Map<String,Object> map = new HashMap<>();
+
 		map.put("langcode", List.of(Map.of("value", langcode)));
 		map.put("type", List.of(Map.of("target_id", "dataset")));
 		map.put("title", List.of(Map.of("value", title)));
@@ -122,5 +123,92 @@ public record Dataset(
 		map.put("field_upstamp", List.of(Map.of("value", Instant.now().truncatedTo(ChronoUnit.SECONDS))));
 
 		return map;
-	};
+	}
+
+	private static List getList(String field, Map<String,Object> map) {
+		if (map == null) {
+			return null;
+		}
+		Object obj = map.getOrDefault(field, null);
+		if (obj == null) {
+			return null;
+		}
+		List<Map<String,Object>> lst = (List) obj;
+		if (lst.isEmpty()) {
+			return null;
+		}
+		return lst;
+	}
+
+	/**
+	 * Get first value from the JSON map
+	 * 
+	 * @param field field name
+	 * @param obj JSON object as map
+	 * @param key value key
+	 * @return value or null
+	 */
+	private static Object getOneValue(String field, Map<String,Object> map, String key) {
+		List<Map<String,Object>> lst = getList(field, map);
+		if (lst == null) {
+			return null;
+		}
+		Map<String,Object> m = lst.get(0);
+		return m.getOrDefault(key, null);
+	}
+
+	private static LocalDate getOneDateValue(String field, Map<String,Object> map, String key) {
+		String str = (String) getOneValue(field, map, key);
+		if (str == null || str.isEmpty()) {
+			return null;
+		}
+		return LocalDate.parse(str, fmt);
+	}
+
+	private static <T> Set<T> getSet(String field, Map<String,Object> map, String key, Class<T> clazz) {
+		List<Map<String,Object>> lst = getList(field, map);
+		if (lst == null) {
+			return null;
+		}
+		
+		return lst.stream()
+			.map(m -> m.getOrDefault(key, null))
+			.filter(m -> m != null)
+			.map(m -> {
+					try {
+						return clazz.getConstructor(String.class).newInstance(m); 
+					} catch (Exception e) {
+						return null;
+					}
+				})
+			.collect(Collectors.toSet());
+	}
+
+	/**
+	 * Create a dataset map containing the required values
+	 * 
+	 * @return map
+	 */
+	public static Dataset fromMap(Map<String,Object> map) {
+		return new Dataset(
+			(String) getOneValue("field_id", map, "value"),
+			(String) getOneValue("title", map, "value"),
+			(String) getOneValue("body", map, "value"),
+			(String) getOneValue("langcode", map, "value"),
+			getSet("field_category", map, "target_id", Integer.class),
+			getSet("field_conditions", map, "uri", URI.class),
+			getSet("field_contact", map, "value", InternetAddress.class),
+			getSet("field_details", map, "uri", URI.class),
+			getSet("field_links", map, "uri", URI.class),
+			getSet("field_keywords", map, "value", String.class),
+			getSet("field_file_type", map, "target_id", Integer.class),
+			(Integer) getOneValue("field_frequency", map, "target_id"),
+			(Integer) getOneValue("field_geo_coverage", map, "target_id"),
+			(Integer) getOneValue("field_license", map, "target_id"),
+			(String) getOneValue("field_organisation", map, "value"),
+			(Integer) getOneValue("field_publisher", map, "target_id"),
+			getOneDateValue("field_date_range", map, "value"),
+			getOneDateValue("field_date_range", map, "end_value")
+		);
+	}
 }

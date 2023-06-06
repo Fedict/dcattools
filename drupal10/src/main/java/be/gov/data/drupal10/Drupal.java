@@ -139,11 +139,30 @@ public class Drupal {
 		HttpRequest request = getBuilder()
 				.header("Content-type", "application/json")
 				.POST(BodyPublishers.ofString(obj.toString()))
-				.uri(URI.create(baseURL + "/node?_format=json"))
+				.uri(URI.create(baseURL + "/node/dataset?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
 		return (response.statusCode() == 201);
+	}
+
+	/**
+	 * Get a dataset
+	 * 
+	 * @param id
+	 * @return dataset if successful
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public Dataset getDataset(String id, String langcode) throws IOException, InterruptedException {
+		HttpRequest request = getBuilder()
+				.GET()
+				.uri(URI.create(baseURL + "/" + langcode + "/node/dataset/" + id + "?_format=json"))
+				.build();
+		System.err.println(request);
+		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		JSONObject json = new JSONObject(response.body());
+		return Dataset.fromMap(json.toMap());
 	}
 
 	/**
@@ -156,7 +175,7 @@ public class Drupal {
 	 */
 	public boolean deleteDataset(String id) throws IOException, InterruptedException {
 		HttpRequest request = getBuilder().DELETE()
-				.uri(URI.create(baseURL + "/node/" + id + "?_format=json"))
+				.uri(URI.create(baseURL + "/node/dataset/" + id + "?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 
