@@ -90,6 +90,7 @@ public class Drupal {
 				.uri(URI.create(baseURL + "/user/login?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		System.err.println(response.body());
 		JSONObject obj = new JSONObject(response.body());
 		this.token = (String) obj.get("csrf_token");
 		
@@ -142,7 +143,26 @@ public class Drupal {
 				.uri(URI.create(baseURL + "/node/dataset?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		return (response.statusCode() == 201);
+	}
 
+	/**
+	 * Create a new dataset
+	 * 
+	 * @param d dataset
+	 * @return true if successful
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public boolean updateDataset(Dataset d, String lang) throws IOException, InterruptedException {
+		JSONObject obj = new JSONObject(d.toMap());
+
+		HttpRequest request = getBuilder()
+				.header("Content-type", "application/json")
+				.method("PATCH", BodyPublishers.ofString(obj.toString()))
+				.uri(URI.create(baseURL + "/node/dataset/" + d.id() + "?_format=json&_translation=" + lang))
+				.build();
+		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		return (response.statusCode() == 201);
 	}
 
@@ -150,16 +170,16 @@ public class Drupal {
 	 * Get a dataset
 	 * 
 	 * @param id
+	 * @param lang language code
 	 * @return dataset if successful
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public Dataset getDataset(String id, String langcode) throws IOException, InterruptedException {
+	public Dataset getDataset(String id, String lang) throws IOException, InterruptedException {
 		HttpRequest request = getBuilder()
 				.GET()
-				.uri(URI.create(baseURL + "/" + langcode + "/node/dataset/" + id + "?_format=json"))
+				.uri(URI.create(baseURL + "/" + lang + "/node/dataset/" + id + "?_format=json"))
 				.build();
-		System.err.println(request);
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		JSONObject json = new JSONObject(response.body());
 		return Dataset.fromMap(json.toMap());

@@ -100,6 +100,37 @@ public class DatasetTest {
 	}
 
 	@Test
+	public void updateDataset() throws AddressException, InterruptedException {
+		DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
+		
+		Dataset d2 = new Dataset(
+				"id2", 
+				"Titel 2 updated", 
+				"Beschrijving 2, dit kan een lange string zijn, updated", 
+				"nl",
+				Set.of(36), 
+				Set.of(URI.create("http://www.example.condition.nl")),
+				Set.of(new InternetAddress("info@example.updated.be")),
+				Set.of(URI.create("http://www.example.access1.nl"), URI.create("http://www.example.access2.nl")),
+				Set.of(URI.create("http://www.example.download1.nl"), URI.create("http://www.example.download2.nl")),
+				Collections.EMPTY_SET,
+				Set.of(66),
+				25,
+				333,
+				173,
+				"Contact 2 org nl updated",
+				76,
+				LocalDate.parse("2001-05-01", fmt),
+				LocalDate.parse("2005-10-03", fmt));
+
+		try {
+			d10.updateDataset(d2, "nl");
+		} catch (IOException ioe) {
+			fail();
+		}
+	}
+
+	@Test
 	public void getDataset() throws InterruptedException {
 		try {
 			Dataset did2 = d10.getDataset("id2", "nl");
