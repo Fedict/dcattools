@@ -8,3 +8,10 @@ infocenter/sparql-license.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-standard.qry
+sparql-shacl-vcard.qry
