@@ -14,7 +14,6 @@ healthdata/sparql-bytesize-type.qry
 healthdata/sparql-accessurl-hash.qry
 healthdata/sparql-remove-pages.qry
 healthdata/sparql-landingpage-hash.qry
-data-frequency.ttl
 sparql-map-frequency.qry
 data-license.ttl
 sparql-map-license.qry
