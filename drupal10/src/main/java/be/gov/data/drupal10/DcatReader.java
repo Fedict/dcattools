@@ -28,14 +28,13 @@ package be.gov.data.drupal10;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
-import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
@@ -57,20 +56,8 @@ public class DcatReader implements AutoCloseable {
 	public void close() throws Exception {
 		repo.shutDown();
 	}
-/*
-	public Map<IRI,Set<Value>> getValues(IRI subj) {
-		try (RepositoryConnection conn = repo.getConnection()) {
-			Model m = QueryResults.asModel(conn.getStatements(subj, null, null));
-			return m.stream()
-					.collect(
-						Collectors.groupingBy(Statement::getPredicate, 
-							Collectors.mapping(Statement::getObject, 
-								Collectors.toSet())));
-		}
-	}
-*/
-	
-	public Model getValues(IRI subj) {
+
+	private Model getValues(IRI subj) {
 		try (RepositoryConnection conn = repo.getConnection()) {
 			return QueryResults.asModel(conn.getStatements(subj, null, null));
 		}
@@ -85,31 +72,51 @@ public class DcatReader implements AutoCloseable {
 		}
 	}
 
-	public Function<Value,String> toString = v -> v.stringValue();
-	public Function<Value,URI> toURI = v -> URI.create(v.stringValue());
+	private URI toURI(IRI iri) {
+		try {
+			return new URI(iri.stringValue());
+		} catch (URISyntaxException ex) {
+			return null;
+		}
+	}
 
-	public <T> Set<T> getLiterals(Model m, IRI key, String lang, Function<Value,T> func) {
+	private Set<URI> getURIs(Model m, IRI key) {
+		return m.filter(null, key, null).objects()
+				.stream()
+				.filter(IRI.class::isInstance)
+				.map(IRI.class::cast)
+				.map(v -> toURI(v))
+				.filter(v -> v != null)
+				.collect(Collectors.toSet());
+	}
+
+	private Set<String> getLiterals(Model m, IRI key, String lang) {
 		return m.filter(null, key, null).objects()
 				.stream()
 				.filter(Literal.class::isInstance)
 				.map(Literal.class::cast)
 				.filter(v -> v.getLanguage().orElse("").equals(lang))
-				.map(func)
+				.map(Literal::stringValue)
+				.filter(v -> !v.isBlank())
 				.collect(Collectors.toSet());
 	}
 
-	public <T> T getLiteral(Model m, IRI key, String lang, Function<Value,T> func) {
-		return getLiterals(m, key, lang, func).stream().findFirst().orElse(null);
+	private String getLiteral(Model m, IRI key, String lang) {
+		return getLiterals(m, key, lang).stream().findFirst().orElse(null);
 	}
 
 	public void getDatasets() {
 		Set<IRI> ids = getIDs(DCAT.DATASET);
 		for(IRI id: ids) {
 			Model m = getValues(id);
-			getLiteral(m, DCTERMS.TITLE, null, toString);
-			getLiteral(m, DCTERMS.DESCRIPTION, null, toString);
-			getLiterals(m, DCAT.KEYWORD, null, toString);
-			getLiterals(m, DCAT.THEME, null, toURI);
+			getLiteral(m, DCTERMS.TITLE, null);
+			getLiteral(m, DCTERMS.DESCRIPTION, null);
+			getLiterals(m, DCAT.KEYWORD, null);
+			getURIs(m, DCAT.THEME);
+			getURIs(m, DCTERMS.CREATOR);
+			getURIs(m, DCTERMS.PUBLISHER);
+			
+			
 		}
 	}
 
