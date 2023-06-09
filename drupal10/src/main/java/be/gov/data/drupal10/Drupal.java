@@ -36,8 +36,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -90,7 +92,6 @@ public class Drupal {
 				.uri(URI.create(baseURL + "/user/login?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		System.err.println(response.body());
 		JSONObject obj = new JSONObject(response.body());
 		this.token = (String) obj.get("csrf_token");
 		
@@ -147,9 +148,10 @@ public class Drupal {
 	}
 
 	/**
-	 * Create a new dataset
+	 * Update a dataset in a specific language, or add a translation
 	 * 
 	 * @param d dataset
+	 * @param lang language code
 	 * @return true if successful
 	 * @throws IOException
 	 * @throws InterruptedException 
@@ -183,6 +185,35 @@ public class Drupal {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		JSONObject json = new JSONObject(response.body());
 		return Dataset.fromMap(json.toMap());
+	}
+
+	/**
+	 * Get all datasets
+	 * 
+	 * @param lang language code
+	 * @return dataset if successful
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public List<Dataset> getDatasets(String lang) throws IOException, InterruptedException {
+		List<Dataset> lst = new ArrayList<>();
+	
+		// paginated result set
+		for(int page = 1; ; page++) {
+			HttpRequest request = getBuilder().GET()
+				.uri(URI.create(baseURL + "/" + lang + "/api/v1/content/dataset?_format=json&page=" + page))
+				.build();
+
+			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			JSONArray datasets = new JSONArray(response.body());
+			if (datasets.isEmpty()) {
+				break;
+			}
+			for (Object obj: datasets) {
+				lst.add(Dataset.fromMap(((JSONObject) obj).toMap()));
+			}
+		}
+		return lst;
 	}
 
 	/**

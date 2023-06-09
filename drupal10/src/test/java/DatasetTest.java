@@ -37,6 +37,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
@@ -130,11 +131,49 @@ public class DatasetTest {
 		}
 	}
 
+	public void addDatasetTranslation() throws AddressException, InterruptedException {
+		DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
+		
+		Dataset d2 = new Dataset(
+				"id2", 
+				"Titre 2 fr", 
+				"Description numéro 2", 
+				"fr",
+				Set.of(36), 
+				Set.of(URI.create("http://www.example.condition.fr")),
+				Set.of(new InternetAddress("info@example.updated.fr")),
+				Set.of(URI.create("http://www.example.access1.fr"), URI.create("http://www.example.access2.fr")),
+				Set.of(URI.create("http://www.example.download1.fr"), URI.create("http://www.example.download2.fr")),
+				Collections.EMPTY_SET,
+				Set.of(66),
+				25,
+				333,
+				173,
+				"Organisation 2 org fr updated",
+				76,
+				LocalDate.parse("2001-05-01", fmt),
+				LocalDate.parse("2005-10-03", fmt));
+
+		try {
+			d10.updateDataset(d2, "fr");
+		} catch (IOException ioe) {
+			fail();
+		}
+	}
+
 	@Test
 	public void getDataset() throws InterruptedException {
 		try {
-			Dataset did2 = d10.getDataset("id2", "nl");
-			System.err.println(did2);
+			Dataset did2 = d10.getDataset("id2", "fr");
+			System.err.print(did2);
+		} catch (IOException ioe) {
+			fail();
+		}
+	}
+
+	public void getDatasets() throws InterruptedException {
+		try {
+			List<Dataset> lst = d10.getDatasets("nl");
 		} catch (IOException ioe) {
 			fail();
 		}
