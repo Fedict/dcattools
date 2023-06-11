@@ -1,19 +1,19 @@
 # Data for mapping keywords to an EU list of themes/categories
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-	
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/id/theme/Finances>, <https://opendata.infrabel.be/id/theme/Financi%C3%ABn> .
 
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/id/theme/Human%20resources>, <https://opendata.infrabel.be/id/theme/Ressources%20humaines>  .
 
-<http://data.gov.be/en/taxonomy/term/36>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:prefLabel "TRANSPORT"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/id/theme/Infrastructuur>, <https://opendata.infrabel.be/id/theme/Infrastructure>, 
 	<https://opendata.infrabel.be/id/theme/Traffic%20beheer>, <https://opendata.infrabel.be/id/theme/Gestion%20du%20trafic>, 
