@@ -4,8 +4,8 @@ sparql-remove-hydra.qry
 geobe/sparql-accessurl.qry
 geobe/sparql-fix-accessurl.qry
 geobe/sparql-fix-format.qry
-geobe/sparql-fix-frequency.qry
-geobe/sparql-fix-language.qry
+#geobe/sparql-fix-frequency.qry
+#geobe/sparql-fix-language.qry
 geobe/sparql-fix-datatype.qry
 sparql-theme-subject.qry
 sparql-access-public.qry
