@@ -1,47 +1,47 @@
 # Data for mapping keywords to an EU list of themes/categories
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-	
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38>  ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en .
 
-<http://data.gov.be/en/taxonomy/term/59>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59> ;
 	skos:prefLabel "CULTURE AND SPORT"@en .
 
-<http://data.gov.be/en/taxonomy/term/33>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:prefLabel "EDUCATION"@en .
 
-<http://data.gov.be/en/taxonomy/term/35>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
 	skos:prefLabel "ENERGY"@en .
 
-<http://data.gov.be/en/taxonomy/term/34>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:prefLabel "ENVIRONMENT"@en .
 
-<http://data.gov.be/en/taxonomy/term/41>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en .
 
-<http://data.gov.be/en/taxonomy/term/40>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
+<http://publications.europa.eu/resource/authority/data-theme/HEAL> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:prefLabel "HEALTH"@en .
 
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en .
 
-<http://data.gov.be/en/taxonomy/term/42>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:prefLabel "REGIONS, CITIES"@en .
 
-<http://data.gov.be/en/taxonomy/term/37>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+<http://publications.europa.eu/resource/authority/data-theme/TECH> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en .
 
-<http://data.gov.be/en/taxonomy/term/36>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:prefLabel "TRANSPORT"@en .

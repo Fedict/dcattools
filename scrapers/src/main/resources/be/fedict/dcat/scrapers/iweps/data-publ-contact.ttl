@@ -7,10 +7,10 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> 
 	a foaf:Organization ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/182> ; 
-	foaf:name "IWEPS"@fr .
+	foaf:name "IWEPS"@nl, "IWEPS"@fr, "IWEPS"@de  .
 
 <http://data.gov.be/org/iweps/contact>
 	a vcard:Organization ;
-	vcard:fn "IWEPS"@fr;
+	vcard:fn "IWEPS"@nl, "IWEPS"@fr, "IWEPS"@de ;
 	vcard:hasUrl <https://opendata.iweps.be> ;
 	vcard:hasEmail <mailto:info@iweps.be> .
