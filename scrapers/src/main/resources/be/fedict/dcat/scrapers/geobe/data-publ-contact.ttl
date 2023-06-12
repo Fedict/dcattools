@@ -8,7 +8,7 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 	a foaf:Organization ;
-	dcterms:type admsp:Company ;
+	dcterms:type admsp:NationalAuthority ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/157> ;
 	foaf:name "IGN"@fr, "NGI"@en, "NGI"@nl ;
 	foaf:homepage <https://www.ngi.be> .

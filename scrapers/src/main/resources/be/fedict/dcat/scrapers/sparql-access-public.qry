@@ -5,6 +5,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE 
 	{	?dist dcterms:accessRights ?r }
 INSERT 
-	{ 	?dist dcterms:accessRights <http://publications.europa.eu/resource/access-right/PUBLIC> }
+	{ 	?dist dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> }
 WHERE
 	{	?dist dcterms:accessRights ?r }

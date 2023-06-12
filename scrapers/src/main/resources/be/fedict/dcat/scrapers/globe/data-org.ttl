@@ -1,9 +1,13 @@
 # Data for mapping organizations
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308358149>
 	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/156> ;
 	skos:altLabel "be-dgd"@en .
