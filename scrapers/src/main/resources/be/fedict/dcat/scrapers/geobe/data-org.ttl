@@ -64,6 +64,29 @@
 					"FPS Finance - General Administration of Patrimonial Documentation (GAPD)"@en,
 					"FOD Finanzen - Generalverwaltung Vermögensdokumentation (GVVD)"@de .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357555>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/480> ;
+	skos:prefLabel "Ministry of Defence"@en, "Ministerie van Landsverdediging"@nl, 
+				"Ministère de la Défense"@fr, "Ministerium der Landesverteidigung"@de ;
+	skos:altLabel "Marinecomponent / Composante marine / Belgian Navy"@en,
+			"Defence Laboratories, Laboratory for Detection, Sampling and Sample Preparation"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0851764225>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/482> ;
+	skos:prefLabel "INSEE"@fr ;
+	skos:altLabel "INSEE"@fr.
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0833607112>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/481> ;
+	skos:prefLabel "EuroGeographics"@en, "EuroGeographics"@nl, "EuroGeographics"@fr, "EuroGeographics"@de ;
+	skos:altLabel "EuroGeographics"@en, "EuroGeographics"@nl, "EuroGeographics"@fr, "EuroGeographics"@de .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294624>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
@@ -163,3 +186,10 @@
 			"Provincie West-Vlaanderen"@nl, "Provinz Westflandern"@de ;
 	skos:altLabel "Province of West Flanders"@en, "Province de Flandre occidentale"@fr, 
 			"Provincie West-Vlaanderen"@nl, "Provinz Westflandern"@de .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "INBO"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194>  ;
+	skos:altLabel "Instituut voor Natuur- en Bosonderzoek / Research Institute for Nature and Forest (INBO)"@en .
