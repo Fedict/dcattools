@@ -10,7 +10,12 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/147> ;
 	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr ;
-	skos:altLabel "Royal Meteorological Institute of Belgium"@en .
+	skos:altLabel "Royal Meteorological Institute of Belgium"@en,
+		"Institut Royal Météorologique de Belgique"@fr,
+		"Koninklijk Meteorologisch Instituut van België"@nl,
+		"Königliche Meteorologische Institut"@de,
+		"CORDEX"@de, "CORDEX"@en , "CORDEX"@fr , "CORDEX"@nl .
+
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 	a foaf:Organization ;
@@ -18,14 +23,18 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/157>  ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
 	skos:altLabel "National Geographic Institute"@en, "Nationaal Geografisch Instituut"@nl, 
-	"Institut géographique national"@fr ,"Nationales geographisches Institut"@de .
+		"Institut géographique national"@fr ,"Nationales geographisches Institut"@de ,
+		"NGI"@en ,"NGI"@nl , "IGN"@fr, "Nationales Geographisches Institut"@de .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2138196041>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/325> ;
 	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
-	skos:altLabel "Belgian Interregional Environment Agency (IRCEL - CELINE)"@en .
+	skos:altLabel "Belgian Interregional Environment Agency (IRCEL - CELINE)"@en,
+		"Belgische Interregionale Umweltagentur (IRCEL - CELINE)"@de,
+		"Cellule Interrégionale de l'Environnement (CELINE)"@fr,
+		"Intergewestelijke Cel voor het Leefmilieu (IRCEL)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
@@ -33,7 +42,16 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr ;
 	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
-			"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl .
+		"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl,
+		"FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
+		"FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@de,
+		"FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@en,
+		"FOD Economie, K.M.O., Middenstand en Energie, AD Statistiek - Statistics Belgium"@nl ,
+		"FOD Economie, KMO, Middenstand en Energie, AD Kwaliteit en Veiligheid, Dienst Continentaal Plat"@nl,
+		"SPF Economie, P.M.E., Classes moyennes et Energie, DG Statistique - Statistics Belgium"@fr,
+		"SPF Economie, PME, Classes moyennes et Energie, DG Qualité et Sécurité, Service Plateau Continental"@fr,
+		"SPF Finances - Administration Générale de la Documentation Patrimoniale (AGDP)"@fr,
+		"FÖD Wirtschaft, K.M.B., Mittelstand und Energie, GD Statistik - Statistics Belgium"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
@@ -43,7 +61,8 @@
 	skos:altLabel 	"FOD Financien - Algemene Administratie van de Patrimoniumdocumentatie (AAPD)"@nl ,
 					"SPF Finances - Administration Générale de la Documentation Patrimoniale (AGDP)"@fr ,
 					"FOD Finanzen - Algemeine Verwaltung des Vermögens-documentation (AVVD)"@de,
-					 "FPS Finance - General Administration of Patrimonial Documentation (GAPD)"@en .
+					"FPS Finance - General Administration of Patrimonial Documentation (GAPD)"@en,
+					"FOD Finanzen - Generalverwaltung Vermögensdokumentation (GVVD)"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294624>
 	a foaf:Organization ;
@@ -51,21 +70,60 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/337> ;
 	skos:prefLabel "Royal Observatory of Belgium"@en, "Königliche Sternwarte von Belgien"@de,  
 					"Koninklijke Sterrenwacht van België"@nl, "Observatoire royal de Belgique"@fr ;
-	skos:altLabel "Royal Observatory of Belgium"@en .
+	skos:altLabel "Royal Observatory of Belgium"@en,
+		"Koninklijke Sterrenwacht van België"@nl ,
+		"Observatoire Royal de Belgique"@fr ,
+		"Königliche Sternwarte Belgiens"@de .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357852>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/77> ;
+	skos:prefLabel "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de ;
+	skos:altLabel "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/197> ;
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, "Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, "Königliches Belgisches Institut für Naturwissenschaften"@de ;
-	skos:altLabel "Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment, GeoCell"@en, 
-		"Royal Belgian Institute of Natural Sciences, Directorate Earth and History of life, Geological Survey of Belgium"@en, 
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Belgian Marine Data Centre (BMDC)"@en, 
+	skos:altLabel  "Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature)"@fr ,
+		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Belgian Marine Data Centre (BMDC)"@fr ,
+		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Ecosystems Physico-Chemistry (ECOCHEM)"@fr ,
+		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Ecosystems data processing and modelling (ECODAM)"@fr ,
+		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), GeoCell"@fr ,
+		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Marine Ecology and Management (MARECO)"@fr ,
+		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Service scientifique Unité de Gestion du Modèle Mathématique de la Mer du Nord (UGMM)"@fr ,
+		"Institut royal des Sciences naturelles de Belgique"@fr,
+		"Institut royal des Sciences naturelles de Belgique, Direction opérationnelle Milieux naturels, GeoCell"@fr ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur)"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Belgian Marine Data Centre (BMDC)"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Ecosystems Physico-Chemistry (ECOCHEM)"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Ecosystems data processing and modelling (ECODAM)"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), GeoCell"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Marine Ecology and Management (MARECO)"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Wetenschappelijke Dienst Beheerseenheid van het Mathematisch Model van de Noordzee (BMM)"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl ,
+		"Koninklijk Belgisch Instituut voor Natuurwetenschappen, Operationele Directie Natuurlijk Milieu, GeoCell"@nl,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur)"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Belgian Marine Data Centre (BMDC)"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Ecosystems Physico-Chemistry (ECOCHEM)"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Ecosystems data processing and modelling (ECODAM)"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), GeoCell"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Marine Ecology and Management (MARECO)"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Wissenschaftliche Dienst Managementeinheit für das mathematische Modell der Nordsee (MMM)"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften"@de ,
+		"Königliches Belgisches Institut für Naturwissenschaften, Operationelle Direktion Natürliche Umwelt, GeoCell"@de ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature)"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Belgian Marine Data Centre (BMDC)"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Ecosystems Physico-Chemistry (ECOCHEM)"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Ecosystems data processing and modelling (ECODAM)"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), GeoCell"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Management Unit of the North Sea Mathematical Models (MUMM)"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Marine Ecology and Management (MARECO)"@en ,
+		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Scientific Heritage"@en ,
 		"Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen, Operationele Directie Aarde en Geschiedenis van het Leven, Belgische Geologische Dienst (BGS)"@nl,
-		"Institut royal des Sciences naturelles de Belgique, Direction opérationnelle Terre et Histoire de la Vie, Service géologique de Belgique (SGB)"@fr,
-		"Königliches Belgisches Institut für Naturwissenschaften, Operationelle Direktion Erde und Geschichte des Lebens, Belgischer Geologischer Dienst (BGS)"@de,
-		"Royal Belgian Institute for Natural Sciences, Directorate Earth and History of life, Geological Survey of Belgium (GSB)"@en .
+		"Royal Belgian Institute of Natural Sciences"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
 	a foaf:Organization ;
@@ -75,14 +133,17 @@
 					"Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de, 
 					"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, 
 					"Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ;
-	skos:altLabel "Royal Belgian Institute for Space Aeronomy (IASB-BIRA)"@en .
+	skos:altLabel "Royal Belgian Institute for Space Aeronomy (IASB-BIRA)"@en,
+		"Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ,
+		"Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de,
+		"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/398> ;
 	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
-	skos:altLabel "bpost nv"@en .
+	skos:altLabel "bpost nv"@en , "bpost nv"@nl , "bpost sa"@de , "bpost sa"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0866518618>
 	a foaf:Organization ;
@@ -90,9 +151,9 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/182> ;
 	skos:prefLabel "IWEPS"@en, "IWEPS"@fr, "IWEPS"@nl, "IWEPS"@de ;
 	skos:altLabel "Waals Instituut voor Evaluatie, Prospectie en Statistiek (IWEPS)"@nl,
-		"Institut Wallon de l'Evaluation, de la Prospective et de la Statistique (IWEPS)"@fr ,
 		"Wallonisches Institut für Schätzung, Zukunftsforschung und Statistik (IWEPS)"@de,
-		"Walloon Institute for Evaluation, Foresight and Statistics (IWEPS)"@en .
+		"Walloon Institute for Evaluation, Foresight and Statistics (IWEPS)"@en,
+		"Institut Wallon de l'Evaluation, de la Prospective et de la Statistique (IWEPS)"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;

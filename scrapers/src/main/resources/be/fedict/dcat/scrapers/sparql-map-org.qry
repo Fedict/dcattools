@@ -26,4 +26,5 @@ WHERE
 		VALUES ?prop { dcterms:publisher dcterms:creator }
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (?p != ?rel)
+		FILTER (!CONTAINS(STR(?org), "belgif"))
 	}
