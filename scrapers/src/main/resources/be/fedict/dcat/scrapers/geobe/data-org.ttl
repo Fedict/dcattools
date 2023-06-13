@@ -9,13 +9,19 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/147> ;
-	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr ;
+	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr, "KMI"@de ;
 	skos:altLabel "Royal Meteorological Institute of Belgium"@en,
 		"Institut Royal Météorologique de Belgique"@fr,
 		"Koninklijk Meteorologisch Instituut van België"@nl,
 		"Königliche Meteorologische Institut"@de,
 		"CORDEX"@de, "CORDEX"@en , "CORDEX"@fr , "CORDEX"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0875396690>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/483>  ;
+	skos:prefLabel "Belnet"@fr, "Belnet"@nl, "Belnet"@de, "Belnet"@en ;
+	skos:altLabel "Belnet"@fr, "Belnet"@nl, "Belnet"@de, "Belnet"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 	a foaf:Organization ;
@@ -193,3 +199,34 @@
 	skos:prefLabel "INBO"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194>  ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek / Research Institute for Nature and Forest (INBO)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0267387230>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/237> ;
+	skos:prefLabel "Federal Agency for the Safety of the Food Chain"@en, 
+		"Federaal Agentschap voor de Veiligheid van de Voedselketen"@nl, 
+		"Agence Fédérale pour la Sécurité de la Chaîne Alimentaire"@fr, 
+		"Föderalagentur für die Sicherheit der Nahrungsmittelkette"@de ;
+	skos:altLabel "Federal Agency for the Safety of the Food Chain - Directorate Control Policy"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308356862>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/222> ;
+	skos:prefLabel "FPS Interior"@en, "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, "FÖD Inneres"@de ;
+	skos:altLabel "SPF Intérieur"@fr, "FOD Binnenlandse Zaken"@nl, "FPS Home Affairs"@en, "FÖD Inneres"@de .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/453> ;
+	skos:prefLabel "ILVO"@en, "ILVO"@nl, "ILVO"@fr, "ILVO"@de ;
+	skos:altLabel "Instituut voor Landbouw- en Visserijonderzoek - Visserij (ILVO)"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/115> ;
+	skos:altLabel "Rijksdienst voor Zeevisserij (RVZ)"@en .

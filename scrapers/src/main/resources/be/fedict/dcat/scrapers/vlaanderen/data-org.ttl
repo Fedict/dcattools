@@ -63,7 +63,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/108> ;
 	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming" .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2199324550>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
 	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/115> ;
 	skos:altLabel "Departement Landbouw en Visserij" .
