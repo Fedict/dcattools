@@ -10,7 +10,7 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/397> ;
 	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
-	skos:altLabel "Sciensano", "healthdata.be"  .
+	skos:altLabel "Sciensano"  .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
