@@ -10,11 +10,40 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/397> ;
 	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
-	skos:altLabel "Cancer Center (Sciensano)", "Cancer centre (Sciensano)", 
-		"Epidemiology of infectious diseases (Sciensano)",
-		"Health services research (Sciensano)",
-		"Healthcare-associated infections and antimicrobial resistance (Sciensano)",
-		"Lifestyle and chronic diseases (Sciensano)",
-		"Quality of laboratories (Sciensano)",
-		"Risk and health impact assessment (Sciensano)",
-		"healthdata.be (Sciensano)"  .
+	skos:altLabel "Sciensano", "healthdata.be"  .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:altLabel "Statistics Belgium" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0419052173>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
+					"Catholic University of Leuven"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/202> ;
+	skos:altLabel "KU Leuven" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/203> ;
+	skos:altLabel "Ghent University" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0257216482>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/437> ;
+	skos:altLabel "University of Antwerp" .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199322075>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/384> ;
+	skos:altLabel "Zorg en Gezondheid" .
