@@ -5,8 +5,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 
 DELETE { 
-	?res dcterms:spatial ?s .
-	?s ?p ?o
+	?res dcterms:spatial ?s 
 }
 INSERT {
 	?res dcterms:spatial <https://sws.geonames.org/2802361/> .
@@ -15,5 +14,5 @@ INSERT {
 }
 WHERE {	
 	?res dcterms:spatial ?s .
-	?s ?p ?o
+	FILTER (isLiteral(?s))
 }

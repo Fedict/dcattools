@@ -1,0 +1,20 @@
+# Data for mapping organizations
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/397> ;
+	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
+	skos:altLabel "Cancer Center (Sciensano)", "Cancer centre (Sciensano)", 
+		"Epidemiology of infectious diseases (Sciensano)",
+		"Health services research (Sciensano)",
+		"Healthcare-associated infections and antimicrobial resistance (Sciensano)",
+		"Lifestyle and chronic diseases (Sciensano)",
+		"Quality of laboratories (Sciensano)",
+		"Risk and health impact assessment (Sciensano)",
+		"healthdata.be (Sciensano)"  .

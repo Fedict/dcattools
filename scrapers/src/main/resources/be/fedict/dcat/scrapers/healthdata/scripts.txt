@@ -2,6 +2,8 @@
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+healthdata/data-org.ttl
+sparql-map-org.qry
 healthdata/sparql-geo-belgium.qry
 healthdata/sparql-indirect-classes.qry
 healthdata/sparql-indirect-props.qry

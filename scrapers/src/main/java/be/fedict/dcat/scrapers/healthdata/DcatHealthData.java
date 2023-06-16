@@ -48,6 +48,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.ORG;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
@@ -84,6 +85,8 @@ public class DcatHealthData extends Dcat {
 		CONTEXT.put("spatial", DCTERMS.SPATIAL.toString());
 		CONTEXT.put("publisher", DCTERMS.PUBLISHER.toString());
 		CONTEXT.put("fn", VCARD4.FN.toString());
+		CONTEXT.put("hasEmail", VCARD4.HAS_EMAIL.toString());		
+		CONTEXT.put("name", FOAF.NAME.toString());
 		CONTEXT.put("isPartOf", DCTERMS.IS_PART_OF.toString());
 		CONTEXT.put("contactPoint", DCAT.CONTACT_POINT.toString());
 		CONTEXT.put("distribution", DCAT.HAS_DISTRIBUTION.toString());
