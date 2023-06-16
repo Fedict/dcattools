@@ -11,6 +11,6 @@ INSERT
 	{ 	?dataset dgov:theme ?drupal .
 		?dataset dcat:theme ?uri }
 WHERE
-	{	?dataset dcat:theme ?uri .
+	{	?dataset dcat:theme ?theme .
 		?uri skos:closeMatch ?theme .
 		?uri skos:exactMatch ?drupal }

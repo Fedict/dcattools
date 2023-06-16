@@ -4,6 +4,7 @@ sparql-dist-lang.qry
 infrabel/sparql-downloadurl.qry
 data-license.ttl
 sparql-map-license.qry
+sparql-access-public.qry
 infrabel/data-publ-contact.ttl
 infrabel/sparql-publ-contact.qry
 clear-skos.qry
