@@ -5,6 +5,7 @@ infocenter/sparql-theme.qry
 sparql-geo-belgium.qry
 infocenter/sparql-dist-type.qry
 infocenter/sparql-license.qry
+sparql-access-public.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry

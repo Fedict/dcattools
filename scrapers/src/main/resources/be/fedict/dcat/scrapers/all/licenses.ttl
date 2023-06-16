@@ -2,6 +2,12 @@
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
+<https://infocenter.belgium.be/nl/copyright#license>
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
+	dcterms:title "Infocenter License" .
+
 <https://www.elia.be/en/grid-data/elia-open-data-license>
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
