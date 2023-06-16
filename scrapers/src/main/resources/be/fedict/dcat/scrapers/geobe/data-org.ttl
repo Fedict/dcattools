@@ -42,22 +42,27 @@
 		"Cellule Interrégionale de l'Environnement (CELINE)"@fr,
 		"Intergewestelijke Cel voor het Leefmilieu (IRCEL)"@nl .
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
+		"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl,
+		"FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
+		"FOD Economie, K.M.O., Middenstand en Energie, AD Statistiek - Statistics Belgium"@nl ,
+		"SPF Economie, P.M.E., Classes moyennes et Energie, DG Statistique - Statistics Belgium"@fr,
+		"FÖD Wirtschaft, K.M.B., Mittelstand und Energie, GD Statistik - Statistics Belgium"@de .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr ;
-	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
-		"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl,
-		"FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
-		"FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@de,
+	skos:altLabel "FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@de,
 		"FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@en,
-		"FOD Economie, K.M.O., Middenstand en Energie, AD Statistiek - Statistics Belgium"@nl ,
 		"FOD Economie, KMO, Middenstand en Energie, AD Kwaliteit en Veiligheid, Dienst Continentaal Plat"@nl,
-		"SPF Economie, P.M.E., Classes moyennes et Energie, DG Statistique - Statistics Belgium"@fr,
-		"SPF Economie, PME, Classes moyennes et Energie, DG Qualité et Sécurité, Service Plateau Continental"@fr,
-		"SPF Finances - Administration Générale de la Documentation Patrimoniale (AGDP)"@fr,
-		"FÖD Wirtschaft, K.M.B., Mittelstand und Energie, GD Statistik - Statistics Belgium"@de .
+		"SPF Economie, PME, Classes moyennes et Energie, DG Qualité et Sécurité, Service Plateau Continental"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
