@@ -18,7 +18,7 @@
 	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
 					"Catholic University of Leuven"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/202> ;
-	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven" .
+	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven", "Associatie KU Leuven" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
 	a foaf:Organization ;
@@ -31,14 +31,15 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, 
-			"Catholic University of Louvain"@en, "Université catholique de Louvain & European University Institute" ;
+			"Catholic University of Louvain"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/435>  ;
-	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain" .
+	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain",
+		"Université catholique de Louvain & European University Institute" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0875388475>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel"Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, "State Archives of Belgium"@en ;
+	skos:prefLabel "Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, "State Archives of Belgium"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/439> ;
 	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
 				"Belgian State Archives", "State Archives Belgium", "AGR" .
@@ -70,3 +71,10 @@
 	skos:prefLabel "Universiteit Bergen"@nl, "Université de Mons"@fr, "University of Mons"@en ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/204> ;
 	skos:altLabel "University of Mons (UMONS)" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0409530535>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Namen"@nl, "Université de Namur"@fr, "University of Namur"@en ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/372>  ;
+	skos:altLabel "Université de Namur" .

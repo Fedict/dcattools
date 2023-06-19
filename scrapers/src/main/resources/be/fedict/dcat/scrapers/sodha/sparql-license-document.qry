@@ -1,0 +1,19 @@
+# Move literal to LicenseDocument
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?dataset dcterms:license ?label }
+INSERT 
+	{ 	?dist dcterms:license ?license .
+		?license a dcterms:LicenseDocument .
+		?license dcterms:description ?label
+	}
+WHERE
+	{	?dataset dcterms:license ?label .
+		BIND (
+			IRI
+				(CONCAT("http://data.gov.be/.well-known/license/", SHA1(?label)))
+			as ?license)
+		FILTER (isLiteral(?label)) }

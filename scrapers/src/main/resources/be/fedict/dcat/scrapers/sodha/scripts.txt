@@ -9,8 +9,9 @@ clear-skos.qry
 sparql-date-type.qry
 data-license.ttl
 sodha/sparql-fix-license.qry
-sodha/sparql-license.qry
+sodha/sparql-license-dist.qry
 sodha/sparql-license-contains.qry
+sodha/sparql-license-document.qry
 sparql-map-license.qry
 sodha/sparql-default-theme.qry
 sodha/sparql-default-language.qry
