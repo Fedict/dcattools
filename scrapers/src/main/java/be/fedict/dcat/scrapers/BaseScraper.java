@@ -357,6 +357,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 
 		IRI u = store.getURI(makeTemporalURL(s, e).toString());
 		store.add(dataset, DCTERMS.TEMPORAL, u);
+		store.add(u,  RDF.TYPE, DCTERMS.PERIOD_OF_TIME);
 		store.add(u, DCAT.START_DATE, s, (s.length() == 10) ? XSD.DATE : XSD.DATETIME);
 		store.add(u, DCAT.END_DATE, e, (e.length() == 10) ? XSD.DATE : XSD.DATETIME);
 	}
