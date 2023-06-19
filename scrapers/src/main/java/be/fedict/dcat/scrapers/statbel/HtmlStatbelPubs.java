@@ -151,7 +151,9 @@ public class HtmlStatbelPubs extends Html {
 				logger.debug("Subsubtheme elements {} for {}", subs.size(), u);
 				for (Element sub : subs) {
 					String href = sub.attr(Attribute.HREF.toString());
-					urls.add(makeAbsURL(href));
+					if (!href.startsWith("https://indicators")) {
+						urls.add(makeAbsURL(href));
+					}
 				}
 			} else {
 				// Not the case, so only the title points to a dataset
@@ -159,7 +161,9 @@ public class HtmlStatbelPubs extends Html {
 				Element link = li.select(LINK_SUBTHEME).first();
 				if (link != null) {
 					String href = link.attr(Attribute.HREF.toString());
-					urls.add(makeAbsURL(href));
+					if (!href.startsWith("https://indicators")) {
+						urls.add(makeAbsURL(href));
+					}
 				} else {
 					logger.warn("No subthemes nor subsubthemes found {}", u);
 				}

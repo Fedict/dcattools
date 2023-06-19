@@ -2,6 +2,7 @@
 statbelpubs/data-publ-contact.ttl
 statbelpubs/sparql-publ-contact.qry
 statbelpubs/sparql-license.qry
+sparql-access-public.qry
 statbelpubs/data-theme.ttl
 sparql-map-theme.qry
 statbelpubs/sparql-theme.qry
