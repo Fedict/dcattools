@@ -4,6 +4,7 @@ sparql-dist-lang.qry
 iweps/sparql-downloadurl.qry
 iweps/sparql-landing-accessurl.qry
 data-license.ttl
+sparql-access-public.qry
 sparql-map-license.qry
 iweps/data-publ-contact.ttl
 iweps/sparql-publ-contact.qry
