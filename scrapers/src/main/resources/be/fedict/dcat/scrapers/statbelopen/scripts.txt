@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 data-media.ttl
+clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-agent.qry
 sparql-shacl-landingpage.qry
