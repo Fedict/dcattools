@@ -1,7 +1,10 @@
 # extra queries to be executed and data to be loaded
+sparql-map-loc-lang.qry
 infrabel/sparql-fix-language.qry
 sparql-dist-lang.qry
 infrabel/sparql-downloadurl.qry
+infrabel/sparql-delete-rights.qry
+infrabel/sparql-fix-license.qry
 data-license.ttl
 sparql-map-license.qry
 sparql-access-public.qry
@@ -12,6 +15,9 @@ infrabel/data-theme.ttl
 infrabel/sparql-map-theme.qry
 clear-skos.qry
 sparql-geo-belgium.qry
+data-media-compress.ttl
+sparql-map-media-compress.qry
+infrabel/sparql-fix-format.qry
 sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry

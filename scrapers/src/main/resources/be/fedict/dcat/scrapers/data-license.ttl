@@ -60,7 +60,7 @@
 <http://publications.europa.eu/resource/authority/licence/CC0>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/54> ;
 	skos:prefLabel "CC-Zero" ;
-	skos:altLabel "cc-zero", "CC 0", "CC-0", "CC 0 1.0", "other-pd" ,
+	skos:altLabel "cc-zero", "CC 0", "CC0", "CC-0", "CC 0 1.0", "other-pd" ,
 		<http://www.opendefinition.org/licenses/cc-zero>,
 		<http://creativecommons.org/licenses/zero/1.0/>,
 		<http://creativecommons.org/publicdomain/zero/1.0/>,
