@@ -1,36 +1,52 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
 
-<http://data.gov.be/en/taxonomy/term/74>
+<https://org.belgif.be/id/CbeRegisteredEntity/0220916609>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, "Franstalige Gemeenschap"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0220916609> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/74> ;
 	skos:altLabel "Fédération Wallonie-Bruxelles" .
 
-<http://data.gov.be/en/taxonomy/term/386>
+<https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
 	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0869763267> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/386> ;
 	skos:altLabel "Infrabel", "InfraBel", "Traffic Management & Services" .
-	
-<http://data.gov.be/en/taxonomy/term/104>
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0203430576>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
 	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0203430576> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/104> ;
 	skos:altLabel "sncb" .
 
-<http://data.gov.be/en/taxonomy/term/126>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207362739>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207362739> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/126> ;
 	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur", "SIRS" .
 
-<http://data.gov.be/en/taxonomy/term/133>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2204323119>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "DGO1 Routes"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2204323119> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/133> ;
 	skos:altLabel "wallonie-dgo1"@fr .
 	
 <http://data.gov.be/en/taxonomy/term/134>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "DGO2 Mobilité"@fr ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2204323515> ;
 	skos:altLabel "wallonie-dgo2"@fr .
 
 <http://data.gov.be/en/taxonomy/term/135>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "DGO5 Action sociale"@fr ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2204324406> ;
 	skos:altLabel "wallonie-dgo5"@fr .
