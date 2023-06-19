@@ -4,7 +4,7 @@ statbelpubs/sparql-publ-contact.qry
 statbelpubs/sparql-license.qry
 sparql-access-public.qry
 statbelpubs/data-theme.ttl
-sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 statbelpubs/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl
