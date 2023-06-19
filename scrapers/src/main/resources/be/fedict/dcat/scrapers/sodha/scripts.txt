@@ -23,3 +23,10 @@ sodha/sparql-default-contact.qry
 sodha/data-org.ttl
 sodha/sparql-map-org.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-agent.qry
+sparql-shacl-landingpage.qry
+sparql-shacl-license.qry
+sparql-shacl-skos.qry
+sparql-shacl-standard.qry
+sparql-shacl-vcard.qry
