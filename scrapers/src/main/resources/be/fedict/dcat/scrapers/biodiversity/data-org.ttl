@@ -6,6 +6,7 @@
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
+	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Belgian Biodiversity Platform"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/193> ;
@@ -14,18 +15,21 @@
 		"bccm-belgian-coordinated-collections-of-micro-organisms"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335141>
+	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Instituut voor Landbouw- en Visserijonderzoek"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/453> ;
 	skos:altLabel "flanders-research-institute-for-agriculture-fisheries-and-food-ilvo"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
+	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Instituut voor Natuur- en Bosonderzoek"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194> ;
 	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0306562560>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Koninklijk Museum voor Midden-Afrika"@nl, "Musée royal de l'Afrique centrale"@fr, 
 				"Royal Museum for Central Africa"@en, "Königliches Museum für Zentralafrika"@de ;
@@ -33,12 +37,14 @@
 	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0540708286>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Plantentuin Meise"@nl, "Jardin botanique Meise"@fr, "Botanic garden Meise"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/196> ;
 	skos:altLabel "botanical-garden-meise"@en, "meise-botanic-garden"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, 
 		"Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, 
@@ -47,72 +53,84 @@
 	skos:altLabel "royal-belgian-institute-of-natural-sciences"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université libre de Bruxelles"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/199> ;
 	skos:altLabel "universite-libre-de-bruxelles-ulb"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université de Liège"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/201> ;
 	skos:altLabel "university-of-liege"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/203> ;
 	skos:altLabel "marine-biology-section-ugent"@en, "ghent-university"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0259396509>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université de Mons"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/204> ;
 	skos:altLabel "university-of-mons-hainaut"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0409423736> 
+	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Natuurpunt"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/205> ;
 	skos:altLabel "natuurpunt"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
+	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Flanders Marine Institute"@en, "Vlaams Instituut voor Zee"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/370> ;
 	skos:altLabel "flanders-marine-institute"@en, "worms-editorial-board"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0887290276>
+	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
 	skos:altLabel "flanders-environment-agency"@en, "flanders-environment-agency-vmm"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0501968466>
+	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Natagriwal"@fr, "Natagriwal"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/371> ;
 	skos:altLabel "natagriwal-asbl"@en .
 	
 <https://org.belgif.be/id/CbeRegisteredEntity/0409530535>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université de Namur"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/372> ;
 	skos:altLabel "universite-de-namur-departement-de-biologie"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2225118335>
+	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW DGO3 DEMNA"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/373> ;
 	skos:altLabel "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0434366097>
+	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Natagora"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/454> ;
 	skos:altLabel "natagora"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0410057701>
+	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Instituut voor Tropische Geneeskunde"@nl, "Institut de Médecine Tropicale"@fr,
 		"Institute of Tropical Medicine"@en ;
