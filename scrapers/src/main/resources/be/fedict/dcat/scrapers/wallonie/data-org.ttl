@@ -36,24 +36,26 @@
 	skos:prefLabel "DGO1 Routes"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/133> ;
 	skos:altLabel "wallonie-dgo1"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/134>
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2204323515> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "DGO2 Mobilité"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2204323515> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/134> ;
 	skos:altLabel "wallonie-dgo2"@fr .
 
-<http://data.gov.be/en/taxonomy/term/135>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2204324406> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "DGO5 Action sociale"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2204324406> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/135> ;
 	skos:altLabel "wallonie-dgo5"@fr .
 
-<http://data.gov.be/en/taxonomy/term/136>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2204325790>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "DG06 Recherche"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2204325790> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/136>  ;
 	skos:altLabel "wallonie-dgo6"@fr .
 
 <http://data.gov.be/en/taxonomy/term/137>
