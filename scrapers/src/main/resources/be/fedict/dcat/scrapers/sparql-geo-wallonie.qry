@@ -1,0 +1,16 @@
+# Set default geographic area to Wallonia
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#>
+
+DELETE { ?res dcterms:spatial ?geo }
+INSERT 
+	{ 	?res dcterms:spatial <https://sws.geonames.org/3337387/> .
+		<https://sws.geonames.org/3337387/> a dcterms:Location .
+		?res dgov:spatial <http://data.gov.be/en/taxonomy/term/47> }
+WHERE
+	{	?res a ?cl .
+		OPTIONAL { ?res dcterms:spatial ?geo } 
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+	}

@@ -12,13 +12,10 @@ iweps/data-theme.ttl
 iweps/sparql-map-theme.qry
 clear-skos.qry
 #iweps/sparql-map-id.txt
-#sparql-map-loc-lang.qry
-sparql-map-geo.qry
+sparql-geo-wallonie.qry
 sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry
-#iweps/sparql-prefix-dataset.txt
-#iweps/sparql-prefix-dist.txt
 sparql-date-type.qry
 sparql-tag-language.qry
 clear-skos.qry
@@ -28,6 +25,7 @@ sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-agent.qry
 sparql-shacl-landingpage.qry
+sparql-shacl-page.qry
 sparql-shacl-license.qry
 sparql-shacl-skos.qry
 sparql-shacl-standard.qry
