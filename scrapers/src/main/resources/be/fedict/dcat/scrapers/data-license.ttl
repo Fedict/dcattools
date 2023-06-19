@@ -103,3 +103,8 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/242> ;
 	skos:prefLabel "ODC BY" ;
 	skos:altLabel "https://opendatacommons.org/licenses/by/1.0/" . 
+
+<http://publications.europa.eu/resource/authority/licence/MIT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/173> ;
+	skos:prefLabel "MIT License" ;
+	skos:altLabel "MIT License" .

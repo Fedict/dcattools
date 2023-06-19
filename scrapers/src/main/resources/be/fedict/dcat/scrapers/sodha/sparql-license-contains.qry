@@ -11,6 +11,7 @@ WHERE
 	{	?dist dcterms:license ?txt
 		VALUES ?str { 
 			"Creative Commons Attribution 4.0 International License"
+			"MIT License"
 		}
 		FILTER (CONTAINS(?txt, ?str)) 
 	}
