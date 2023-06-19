@@ -22,6 +22,7 @@ sodha/data-contact.ttl
 sodha/sparql-default-contact.qry
 sodha/data-org.ttl
 sodha/sparql-map-org.qry
+sparql-bytesize-type.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-agent.qry
