@@ -7,7 +7,7 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294822> 
 	a foaf:Organization ;
-	dcterms:type admsp:NationalAuthority ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/147> ;
 	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr, "KMI"@de ;
 	skos:altLabel "Royal Meteorological Institute of Belgium"@en,

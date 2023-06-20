@@ -104,7 +104,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069339> 
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "TEC"@fr ;eredEntity/0242069339>
+	skos:prefLabel "TEC"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/142> ;
 	skos:altLabel "TEC", "SRWT - Direction du Marketing de la Mobilité (SRWT - DMM - Mobilité) " .	
 

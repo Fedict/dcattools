@@ -65,6 +65,16 @@ public abstract class Ods extends Dcat {
 
 
 	/**
+	 * Method to allow filtering (if needed)
+	 * 
+	 * @param str
+	 * @return 
+	 */
+	protected String filter(String str) {
+		return str;
+	}
+
+	/**
 	 * Generate DCAT file
 	 *
 	 * @param cache
@@ -77,10 +87,11 @@ public abstract class Ods extends Dcat {
 		Map<String, Page> map = cache.retrievePage(getBase());
 
 		for (String lang: super.getAllLangs()) {
-			String ttl = map.get(lang).getContent();
-			// Load xml file into store
-			try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
-				store.add(in, RDFFormat.RDFXML);
+			String xml = filter(map.get(lang).getContent());
+			
+			// Load RDF file into store
+			try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+				store.add(in, RDFFormat.RDFXML);		
 				store.queryUpdate(String.format(QRY_LANGUAGE, lang));
 			} catch (RDFParseException | IOException ex) {
 				throw new RepositoryException(ex);

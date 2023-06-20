@@ -38,6 +38,12 @@ import java.util.Properties;
  */
 public class OdsWallonie extends Ods {
 	
+	@Override
+	protected String filter(String str) {
+		return str.replace("<dcterms:Frequency rdf:about=\"Annuel pour la création des événements, les modifications se font \"au fil de l'eau\"\">",
+			"<dcterms:Frequency rdf:about=\"annuel\">");
+	}
+
 	/**
 	 * Constructor
 	 *
