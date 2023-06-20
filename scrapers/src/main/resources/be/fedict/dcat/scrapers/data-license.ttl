@@ -33,7 +33,7 @@
 <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/53> ;
 	skos:prefLabel "CC-BY 4.0" ;
-	skos:altLabel "cc-by", "CC BY",
+	skos:altLabel "cc-by", "CC BY", "CC-BY",
 		<http://www.opendefinition.org/licenses/cc-by>,
 		<http://creativecommons.org/licenses/by/4.0/legalcode>,
 		<https://creativecommons.org/licenses/by/4.0/>, 
@@ -70,6 +70,7 @@
 		"https://creativecommons.org/publicdomain/zero/1.0/", 
 		<http://wiki.data.gouv.fr/wiki/Licence_Ouverte_/_Open_Licence>, 
 		"To the extent possible under law, the publisher has waived all rights to these data and has dedicated them to the Public Domain (CC0 1.0). Users may copy, modify, distribute and use the work, including for commercial purposes, without restriction.",
+		"Open%20licentie%20CC0%20-%20Universeel",
 		"Open licentie CC0 - Universeel", "CC0 - Universal open license"  .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYSA_4_0>

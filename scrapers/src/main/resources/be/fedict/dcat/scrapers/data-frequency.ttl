@@ -59,7 +59,8 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/30> ;
 	skos:prefLabel "Annual"@en ;
 	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
-		"http://publications.europa.eu/resource/authority/frequency/ANNUAL" .
+		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+		<http://purl.org/cld/freq/annual> .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/426> ;
