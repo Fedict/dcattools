@@ -4,6 +4,7 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dataset dcterms:spatial <http://sws.geonames.org/3337387/> .
+		<http://sws.geonames.org/3337387/> a dcterms:Location .
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/47> }
 WHERE
 	{	?dataset a dcat:Dataset 
