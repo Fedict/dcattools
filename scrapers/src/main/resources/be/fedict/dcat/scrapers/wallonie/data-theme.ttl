@@ -44,27 +44,19 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:closeMatch "déchet"@fr, "Environnement"@fr, "arbre"@fr ,
-		<https://www.odwb.be/id/theme/Environment>,
-		<https://www.odwb.be/id/theme/Environnement>, 
-		<https://www.odwb.be/id/theme/Territoire> .
+		<https://www.odwb.be/explore/?refine.theme=Environnement> .
 	
 <http://data.gov.be/en/taxonomy/term/41>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:closeMatch "vie-politique"@fr, "ma-commune"@fr, "commune"@fr, "Dette"@fr, "Dépense"@fr ,
-		<https://www.odwb.be/id/theme/Statistiques%20IWEPS>,
-		<https://www.odwb.be/id/theme/Administration>,
-		<https://www.odwb.be/id/theme/Administration%2C%20Gouvernement%2C%20Finances%20publiques%2C%20Citoyennet%C3%A9>,
-		<https://www.odwb.be/id/theme/Am%C3%A9nagement%20du%20territoire%2C%20Urbanisme%2C%20B%C3%A2timents%2C%20Equipements%2C%20Logement>,
-		<https://www.odwb.be/id/theme/Finances%2C%20Budgets>,
-		<https://www.odwb.be/id/theme/Territoire>,
-		<https://www.odwb.be/id/theme/Territoire%2C%20Urbanisme%2C%20Am%C3%A9nagement%20urbain%2C%20Voirie>  .
+		<https://www.odwb.be/explore/?refine.theme=Administration%2C+Gouvernement%2C+Finances+publiques%2C+Citoyennet%C3%A9>  .
 
 <http://data.gov.be/en/taxonomy/term/40>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
 	skos:prefLabel "HEALTH"@en ;
 	skos:closeMatch "santé"@fr, "Santé"@fr ,
-		<https://www.odwb.be/id/theme/Sant%C3%A9> .
+		<https://www.odwb.be/explore/?refine.theme=Sant%C3%A9> .
 	
 <http://data.gov.be/en/taxonomy/term/39>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
@@ -87,12 +79,7 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
 	skos:prefLabel "TRANSPORT"@en ;
 	skos:closeMatch "cycliste"@fr, "vélo"@fr, "Mobilité"@fr, "Parking"@fr, "circulation"@fr, "mobilité"@fr ,
-		<https://www.odwb.be/id/theme/Mobilit%C3%A9%2C%20Espace%20public>, 
-		<https://www.odwb.be/id/theme/Mobilit%C3%A9%2C%20espaces%20publics>, 
-		<https://www.odwb.be/id/theme/Gestion%20du%20trafic>, <https://www.odwb.be/id/theme/Voiries>, 
-		<https://www.odwb.be/id/theme/Mobilit%C3%A9>,
-		<https://www.odwb.be/id/theme/Transports%2C%20D%C3%A9placements>,
-		<https://www.odwb.be/id/theme/Transports%2CD%C3%A9placements>  .
+		<https://www.odwb.be/explore/?refine.theme=Transports%2C+D%C3%A9placements> .
 
 <http://data.gov.be/en/taxonomy/term/37>
 	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
