@@ -180,7 +180,7 @@ public class Drupal {
 	public Dataset getDataset(String id, String lang) throws IOException, InterruptedException {
 		HttpRequest request = getBuilder()
 				.GET()
-				.uri(URI.create(baseURL + "/" + lang + "/node/dataset/" + id + "?_format=json"))
+				.uri(URI.create(baseURL + "/en/node/dataset/" + id + "?_format=json&_translation=" + lang))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		JSONObject json = new JSONObject(response.body());
@@ -199,9 +199,9 @@ public class Drupal {
 		List<Dataset> lst = new ArrayList<>();
 	
 		// paginated result set
-		for(int page = 1; ; page++) {
+		for(int page = 0; ; page++) {
 			HttpRequest request = getBuilder().GET()
-				.uri(URI.create(baseURL + "/" + lang + "/api/v1/content/dataset?_format=json&page=" + page))
+				.uri(URI.create(baseURL + "/" + lang + "/api/v1/content/dataset/5868?_format=json&page=" + page))
 				.build();
 
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());

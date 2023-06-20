@@ -100,7 +100,6 @@ public class DatasetTest {
 		}
 	}
 
-	@Test
 	public void updateDataset() throws AddressException, InterruptedException {
 		DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
 		
@@ -130,7 +129,7 @@ public class DatasetTest {
 			fail();
 		}
 	}
-
+	
 	public void addDatasetTranslation() throws AddressException, InterruptedException {
 		DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
 		
@@ -162,18 +161,40 @@ public class DatasetTest {
 	}
 
 	@Test
-	public void getDataset() throws InterruptedException {
+	public void getDatasetNL() throws InterruptedException {
 		try {
-			Dataset did2 = d10.getDataset("id2", "fr");
-			System.err.print(did2);
+			Dataset did2 = d10.getDataset("id2", "nl");
+			System.err.println(did2);
 		} catch (IOException ioe) {
 			fail();
 		}
 	}
 
-	public void getDatasets() throws InterruptedException {
+	@Test
+	public void getDatasetFR() throws InterruptedException {
+		try {
+			Dataset did2 = d10.getDataset("id2", "fr");
+			System.err.println(did2);
+		} catch (IOException ioe) {
+			fail();
+		}
+	}
+
+	@Test
+	public void getDatasetsNL() throws InterruptedException {
 		try {
 			List<Dataset> lst = d10.getDatasets("nl");
+			System.err.println(lst);
+		} catch (IOException ioe) {
+			fail();
+		}
+	}
+
+	@Test
+	public void getDatasetsFR() throws InterruptedException {
+		try {
+			List<Dataset> lst = d10.getDatasets("fr");
+			System.err.println(lst);
 		} catch (IOException ioe) {
 			fail();
 		}

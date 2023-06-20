@@ -175,9 +175,13 @@ public record Dataset(
 			.map(m -> m.getOrDefault(key, null))
 			.filter(m -> m != null)
 			.map(m -> {
+					if (m instanceof Integer) {
+						return clazz.cast(m);
+					}
 					try {
 						return clazz.getConstructor(String.class).newInstance(m); 
 					} catch (Exception e) {
+						System.err.println(e.getMessage());
 						return null;
 					}
 				})
