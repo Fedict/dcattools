@@ -1,0 +1,18 @@
+# Fix shapefile format issues
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+	?s dcterms:format ?fmt .
+	?s dcat:mediaType ?mime }
+INSERT { 
+	?s dcat:compressFormat <https://www.iana.org/assignments/media-types/application/zip> .
+	<https://www.iana.org/assignments/media-types/application/zip> a dcterms:MediaType .
+	?s dcterms:format "shp" }  
+WHERE { 
+	?s a dcat:Distribution .
+	?s dcterms:format ?fmt .
+	?s dcat:mediaType ?mime 
+	FILTER (STRENDS(STR(?s), "shp")) 
+}

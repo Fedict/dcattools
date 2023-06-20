@@ -21,7 +21,7 @@ wallonie/sparql-map-geo.qry
 wallonie/sparql-default-geo.qry
 data-frequency.ttl
 sparql-map-frequency.qry
-sparql-delete-mediatype.qry
+wallonie/sparql-fix-format.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
