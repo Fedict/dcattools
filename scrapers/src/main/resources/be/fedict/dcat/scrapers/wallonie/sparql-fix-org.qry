@@ -1,0 +1,16 @@
+# Get name from URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?dataset ?val ?uri }
+INSERT 
+	{ 	?dataset ?val ?str }
+WHERE
+	{	?dataset ?val ?uri .
+		BIND(
+			STRAFTER(STR(?uri), "=") 
+		as ?str)
+		VALUES ?val { dcterms:publisher dcterms:creator dcterms:contributor }
+	}

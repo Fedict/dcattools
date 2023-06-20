@@ -12,16 +12,8 @@ INSERT
 		?dataset dgov:theme ?drupal }
 WHERE
 	{ 	
-		{
 		?dataset dcat:theme ?langlabel .
 		BIND(STR(?langlabel) AS ?label) .
 		?uri skos:altLabel ?label .
 		?uri skos:exactMatch ?drupal .
 	}
-		UNION
-	{
-		?dataset dcat:theme ?langlabel .
-		?uri skos:altLabel ?langlabel .
-		?uri skos:exactMatch ?drupal .
-	}
-}

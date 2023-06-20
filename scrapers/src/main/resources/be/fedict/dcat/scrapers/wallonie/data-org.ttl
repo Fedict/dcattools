@@ -29,7 +29,11 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/126> ;
-	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", "Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur", "SIRS" .
+	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
+		"Ville de Namur - Portail Statistiques", 
+		"Ville de Namur - Mobilité", "Ville de Namur - Finances", 
+		"Ville de Namur", 
+		"Eco-Visio", "Eco-Compteur", "SIRS" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204323119>
 	a foaf:Organization ;
@@ -113,7 +117,8 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Secrétariat général"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/143> ;
-	skos:altLabel " Service public de Wallonie (SPW) ", "Service public de Wallonie (SPW) " .
+	skos:altLabel "Service public de Wallonie (SPW)", " Service public de Wallonie (SPW)",
+		" Service public de Wallonie (SPW) " .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236363165>
 	a foaf:Organization ;
@@ -442,10 +447,10 @@
 	skos:prefLabel "Spa"@fr ;
 	skos:altLabel "commune-de-spa"@fr .
 
-<http://data.gov.be/en/taxonomy/term/335>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207656808>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207656808> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/335> ;
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "Ville de Mons" .
 
@@ -454,10 +459,10 @@
 	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
 	skos:altLabel "Parlement de Wallonie" .
 
-<http://data.gov.be/en/taxonomy/term/363>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207343933>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207343933> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/363> ;
 	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
 	skos:altLabel "Ville de Liège", "Ville de Liège " .
 
