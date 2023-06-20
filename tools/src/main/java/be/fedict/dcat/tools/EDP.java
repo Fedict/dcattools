@@ -398,7 +398,8 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
-		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:publisher", "foaf:Agent", false);
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
+		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo", "dct:Standard", false);
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
