@@ -115,59 +115,74 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/143> ;
 	skos:altLabel " Service public de Wallonie (SPW) ", "Service public de Wallonie (SPW) " .
 
-<http://data.gov.be/en/taxonomy/term/144>
+<https://org.belgif.be/id/CbeRegisteredEntity/0236363165>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "FOREM"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0236363165> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/144> ;
 	skos:altLabel "le-forem"@fr .
 
-<http://data.gov.be/en/taxonomy/term/146>
+ <https://org.belgif.be/id/CbeRegisteredEntity/0458487524>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Pro Velo"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0458487524> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/146> ;
 	skos:altLabel "pro-velo"@fr .	
-	
-<http://data.gov.be/en/taxonomy/term/147>
-	skos:prefLabel "IRM"@fr ;
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0349294822> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/147> ;
+	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr, "KMI"@de ;
 	skos:altLabel "meteo-nasa"@fr .	
 
-<http://data.gov.be/en/taxonomy/term/182>
+<https://org.belgif.be/id/CbeRegisteredEntity/0866518618>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IWEPS"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/182> ;
 	skos:altLabel "iweps"@fr .	
 
-<http://data.gov.be/en/taxonomy/term/76>
-	skos:prefLabel "FOD Economie"@nl, "FPS Economy"@en, "SPF Economie"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0314595348> ;
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
 	skos:altLabel "ins"@fr .
 
-<http://data.gov.be/en/taxonomy/term/238>
+<https://org.belgif.be/id/CbeRegisteredEntity/0555910067>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
 	skos:prefLabel "ThingsPlay"@fr, "ThingsPlay"@nl, "ThingsPlay"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0555910067> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/238> ;
 	skos:altLabel "thingsplay"@fr .
 
-<http://data.gov.be/en/taxonomy/term/240>
+<https://org.belgif.be/id/CbeRegisteredEntity/0832382635>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IDELUX-AIVE"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0832382635> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/240> ;
 	skos:altLabel "IDELUX-AIVE", "IDELUX" .
-	
-<http://data.gov.be/en/taxonomy/term/248>
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207330471>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Amay"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207330471> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/248> ;
 	skos:altLabel "amay"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/249>
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207306717>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Antoing"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207306717> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/249> ;
 	skos:altLabel "antoing"@fr .
 
-<http://data.gov.be/en/taxonomy/term/252>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207374617>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Berloz"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207374617> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/252>  ;
 	skos:altLabel "berloz"@fr .
 
 <http://data.gov.be/en/taxonomy/term/254>
