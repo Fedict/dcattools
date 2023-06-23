@@ -22,7 +22,7 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/104> ;
-	skos:altLabel "sncb" .
+	skos:altLabel "sncb", "NMBS-SNCB" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207362739>
 	a foaf:Organization ;
@@ -32,7 +32,7 @@
 	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
 		"Ville de Namur - Portail Statistiques", 
 		"Ville de Namur - Mobilité", "Ville de Namur - Finances", 
-		"Ville de Namur", 
+		"Ville de Namur", "Ville de Namur"@fr,
 		"Eco-Visio", "Eco-Compteur", "SIRS" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204323119>
@@ -75,14 +75,14 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agence du Numérique"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/138> ;
-	skos:altLabel "adn", "Agence du Numérique" .
+	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0219802592>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Bureau Economique Namur"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/139> ;
-	skos:altLabel "BEP" .
+	skos:altLabel "BEP" , "BEP - PNVH".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0888366085>
 	a foaf:Organization ;
@@ -146,14 +146,14 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IWEPS"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/182> ;
-	skos:altLabel "iweps"@fr .	
+	skos:altLabel "iweps"@fr, "Iweps", "IWEPS" .	
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
-	skos:altLabel "ins"@fr .
+	skos:altLabel "ins"@fr, "Statbel" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555910067>
 	a foaf:Organization ;
@@ -181,271 +181,14 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Antoing"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/249> ;
-	skos:altLabel "antoing"@fr .
+	skos:altLabel "antoing"@fr, "Ville d'Antoing" .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207374617>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Berloz"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/252>  ;
-	skos:altLabel "berloz"@fr .
-
-<http://data.gov.be/en/taxonomy/term/254>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Ath"@fr, "Aat"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207281476> ;
-	skos:altLabel "ath"@fr .
-
-<http://data.gov.be/en/taxonomy/term/256>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Braives"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207375310> ;
-	skos:altLabel "braives"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/258>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Braine-le-Château"@fr, "Kasteelbrakel"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207315229> ;
-	skos:altLabel "braine-le-chateau"@fr .
-
-<http://data.gov.be/en/taxonomy/term/260>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Chastre"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216689189> ;
-	skos:altLabel "chastre"@fr .
-
-<http://data.gov.be/en/taxonomy/term/262>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Léglise"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206567339> ;
-	skos:altLabel "communeleglise"@fr .
-
-<http://data.gov.be/en/taxonomy/term/264>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Couvin"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206626925> ;
-	skos:altLabel "couvin"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/266>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Doische"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207364818> ;
-	skos:altLabel "doische"@fr .
-
-<http://data.gov.be/en/taxonomy/term/268>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Enghien"@fr, "Edingen"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206667606> ;
-	skos:altLabel "enghien"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/270>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Ferrières"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207333837> ;
-	skos:altLabel "ferrieres"@fr .
-
-<http://data.gov.be/en/taxonomy/term/272>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Florennes"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206703040> ;
-	skos:altLabel "florennes"@fr .
-
-<http://data.gov.be/en/taxonomy/term/274>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Frameries"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207287713> ;
-	skos:altLabel "frameries"@fr .
-
-<http://data.gov.be/en/taxonomy/term/276>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Gembloux"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216697505> ;
-	skos:altLabel "gembloux"@fr .
-
-<http://data.gov.be/en/taxonomy/term/278>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Gouvy"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216695525> ;
-	skos:altLabel "gouvy"@fr .
-
-<http://data.gov.be/en/taxonomy/term/280>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Grez-Doiceau"@fr, "Graven"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207227731> ;
-	skos:altLabel "grez-doiceau"@fr .
-
-<http://data.gov.be/en/taxonomy/term/282>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Havelange"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207396490> ;
-	skos:altLabel "havelange"@fr .
-
-<http://data.gov.be/en/taxonomy/term/284>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Honnelles"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216691565> ;
-	skos:altLabel "honnelles"@fr .
-
-<http://data.gov.be/en/taxonomy/term/286>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Jalhay"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207402628> ;
-	skos:altLabel "jalhay"@fr .
-
-<http://data.gov.be/en/taxonomy/term/288>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "La Bruyère"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216697802> ;
-	skos:altLabel "labruyere"@fr .
-
-<http://data.gov.be/en/taxonomy/term/290>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Momignies"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207303054> ;
-	skos:altLabel "momignies"@fr .
-
-<http://data.gov.be/en/taxonomy/term/292>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Mont-Saint-Guibert"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206491917> ;
-	skos:altLabel "montstguibert"@fr .
-
-<http://data.gov.be/en/taxonomy/term/294>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Musson"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207391641> ;
-	skos:altLabel "musson"@fr .
-
-<http://data.gov.be/en/taxonomy/term/296>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Neufchâteau"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206543781> ;
-	skos:altLabel "neufchateau"@fr .
-
-<http://data.gov.be/en/taxonomy/term/298>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Oupeye"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207345418> ;
-	skos:altLabel "oupeye"@fr .
-
-<http://data.gov.be/en/taxonomy/term/300>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Perwez"@fr, "Perwijs"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206492610> ;
-	skos:altLabel "perwez"@fr .
-
-<http://data.gov.be/en/taxonomy/term/302>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Profondeville"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207372043> ;
-	skos:altLabel "profondeville"@fr .
-
-<http://data.gov.be/en/taxonomy/term/304>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Sambreville"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216697109> ;
-	skos:altLabel "sambreville"@fr .
-
-<http://data.gov.be/en/taxonomy/term/306>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Seneffe"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207283951> ;
-	skos:altLabel "seneffe"@fr .
-
-<http://data.gov.be/en/taxonomy/term/308>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Silly"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207410645> ;
-	skos:altLabel "silly"@fr .
-	
-<http://data.gov.be/en/taxonomy/term/310>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Theux"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207373627> ;
-	skos:altLabel "theux"@fr .
-
-<http://data.gov.be/en/taxonomy/term/312>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Thimister-Clermont"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0216695327> ;
-	skos:altLabel "thimister-clermont"@fr .
-
-<http://data.gov.be/en/taxonomy/term/314>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Trois-Ponts"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207690955> ;
-	skos:altLabel "troisponts"@fr .
-
-<http://data.gov.be/en/taxonomy/term/316>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Vielsalm"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207384812> ;
-	skos:altLabel "vielsalm"@fr .
-
-<http://data.gov.be/en/taxonomy/term/318>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Comines-Wareton"@fr, "Komen-Waasten"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207293651> ;
-	skos:altLabel "villedecomines-warneton"@fr .
-
-<http://data.gov.be/en/taxonomy/term/320>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Villers-la-Ville"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207275538> ;
-	skos:altLabel "villers-la-ville"@fr .
-
-<http://data.gov.be/en/taxonomy/term/327>
+<https://org.belgif.be/id/CbeRegisteredEntity/0206524876>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Arlon"@fr, "Aarlen"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206524876> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/327> ;
 	skos:altLabel "Arlon Centre-Ville asbl", "Ville d'Arlon" .
-
-<http://data.gov.be/en/taxonomy/term/328>
-	skos:prefLabel "Géoportail"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2224330061> ;
-	skos:altLabel "geoportail-de-la-wallonie"@fr .
-
-<http://data.gov.be/en/taxonomy/term/334>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0206768366> ;
-	skos:prefLabel "Spa"@fr ;
-	skos:altLabel "commune-de-spa"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207656808>
 	a foaf:Organization ;
@@ -454,36 +197,37 @@
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "Ville de Mons" .
 
-<http://data.gov.be/en/taxonomy/term/350>
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0931814167> ;
+<https://org.belgif.be/id/CbeRegisteredEntity/0931814167> 
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/350> ;
 	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
-	skos:altLabel "Parlement de Wallonie" .
+	skos:altLabel "Parlement de Wallonie", "Parlement de Wallonie"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207343933>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/363> ;
 	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
-	skos:altLabel "Ville de Liège", "Ville de Liège " .
+	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr .
 
-<http://data.gov.be/en/taxonomy/term/389>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207258514> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/389> ;
 	skos:prefLabel "Stad Andenne"@nl, "Ville d'Andenne"@fr, "City of Andenne"@en ;
 	skos:altLabel "Ville d'Andenne" .	
 
-<http://data.gov.be/en/taxonomy/term/201>
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2182928085> ;
-	skos:prefLabel "Geomatics Unit - Université Liège"@fr ;
-	skos:altLabel "Geomatics Unit - ULg ", "Geomatics Unit - ULg, NGI/IGN" .
-
-<http://data.gov.be/en/taxonomy/term/416>
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0546740696> ;
+<https://org.belgif.be/id/CbeRegisteredEntity/0546740696>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/416> ;
 	skos:prefLabel "ARES"@nl, "ARES"@fr, "ARES"@en ;
 	skos:altLabel "ARES" .
 
-<http://data.gov.be/en/taxonomy/term/418>
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207725401> ;
+<https://org.belgif.be/id/CbeRegisteredEntity/0207725401>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/418> ;
 	skos:prefLabel "Luxemburg"@nl, "Luxembourg"@fr, "Luxemburg"@en ;
 	skos:altLabel "Province de Luxembourg".
