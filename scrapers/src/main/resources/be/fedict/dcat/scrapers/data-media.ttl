@@ -145,10 +145,10 @@
 	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
 	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
 
-<http://data.gov.be/en/taxonomy/term/432>
+<http://publications.europa.eu/resource/authority/file-type/MOV>
 	skos:prefLabel "MOV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/quicktime> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/432> ;
 	skos:altLabel "MOV", "Quicktime", "video/quicktime", "mov" .
 
 <http://data.gov.be/en/taxonomy/term/434>
