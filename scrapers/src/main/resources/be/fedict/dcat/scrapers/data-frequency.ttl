@@ -24,7 +24,8 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/22> ;
 	skos:prefLabel "Daily"@en ;
 	skos:altLabel "daily", "R/P1D", <http://purl.org/cld/freq/daily>, <http://data.gov.be/daily>,
-		"http://publications.europa.eu/resource/authority/frequency/DAILY" .
+		"http://publications.europa.eu/resource/authority/frequency/DAILY",
+		<http://publications.europa.eu/resource/authority/frequency/DAILY> .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/23> ;
@@ -41,7 +42,8 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/25> ;
 	skos:prefLabel "Monthly"@en ;
 	skos:altLabel "monthly", "M", "R/P1M", <http://purl.org/cld/freq/monthly>,
-		"http://publications.europa.eu/resource/authority/frequency/MONTHLY" .
+		"http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+		<http://publications.europa.eu/resource/authority/frequency/MONTHLY> .
 
 <http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/27> ;
@@ -54,6 +56,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/29> ;
 	skos:prefLabel "Semiannual"@en ;
 	skos:altLabel "biannually", "R/P6M", 
+		<http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>, 
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL_2", "semestrielle" .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>
@@ -61,6 +64,7 @@
 	skos:prefLabel "Annual"@en ;
 	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+		<http://publications.europa.eu/resource/authority/frequency/ANNUAL>,
 		<http://purl.org/cld/freq/annual>, "Annuel", "annuel", "Chaque%20année,%20fin%20octobre",
 		"Annuelle%20:%20mise%20à%20jour%20le%201er%20novembre",
 		"à%20chaque%20nouvel%20appel%20à%20projet%20(tous%20les%20ans)" .
@@ -74,18 +78,21 @@
 	skos:prefLabel "Irregular"@en ;
 	skos:altLabel "asNeeded", "irregular", <http://purl.org/cld/freq/irregular>, "Irregular",
 		"http://publications.europa.eu/resource/authority/frequency/IRREG",
+		<http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded>,
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded> .
 
 <http://publications.europa.eu/resource/authority/frequency/UNKNOWN>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/391> ;
 	skos:prefLabel "Unknown"@en ;
 	skos:altLabel "unknown", 
-		"http://publications.europa.eu/resource/authority/frequency/UNKNOWN" .
+		"http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+		<http://publications.europa.eu/resource/authority/frequency/UNKNOWN> .
 
 <http://publications.europa.eu/resource/authority/frequency/NEVER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/390> ;
 	skos:prefLabel "Never"@en ;
 	skos:altLabel "notPlanned", 
 		"http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned",
+		<http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned>,
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned> .
 
