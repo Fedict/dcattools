@@ -1,0 +1,10 @@
+# Fix Dutch language URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?res dcterms:language <http://publications.europa.eu/resource/authority/language/DUT> }
+INSERT
+	{ 	?res dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> }
+WHERE
+	{ 	?res dcterms:language <http://publications.europa.eu/resource/authority/language/DUT> }
