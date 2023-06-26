@@ -12,7 +12,7 @@
 	skos:altLabel "mest"@nl, "visserij"@nl, "areaal"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, 
 		"bio"@nl, "landbouw"@nl, "akker"@nl, "AKKER"@nl, "AKKERBOUW"@nl, "agromilieumaatregelen"@nl, 
 		"bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl,
-		<http://vocab.belgif.be/auth/datatheme/AGRI> .
+		"http://vocab.belgif.be/auth/datatheme/AGRI" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC-SPORT>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>  ;
@@ -91,7 +91,7 @@
 		"afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, 
 		"beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, 
 		"BEKEN"@nl, "Zwin en Zwinbosjes"@nl,
-		<http://vocab.belgif.be/auth/datatheme/ENVI> .
+		"http://vocab.belgif.be/auth/datatheme/ENVI" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
@@ -125,7 +125,7 @@
 		"administratieve grens"@nl, "adres"@nl, "Adressen"@nl, "administratieve grenzen"@nl, 
 		"afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl,
 		"voorkooprecht"@nl, "landeigendom"@nl, "CRAB"@nl,
-		<http://vocab.belgif.be/auth/datatheme/GOVE> .
+		"http://vocab.belgif.be/auth/datatheme/GOVE" .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
@@ -176,7 +176,7 @@
 		"gezin"@nl, "gezinnen"@nl, "huishoudens"@nl, "kansarmoede"@nl, "kinderen"@nl, "migratie"@nl, 
 		"minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl,
 		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl,
-		<http://vocab.belgif.be/auth/datatheme/SOCI> .
+		"http://vocab.belgif.be/auth/datatheme/SOCI" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
@@ -226,4 +226,4 @@
 		"Hydrografie"@nl, "Orthobeeldvorming"@nl, "Geology"@nl, "Archeologie"@nl, "Biologie"@nl, 
 		"Onderzoek en Ontwikkeling"@nl, "ict"@nl, "geografie"@nl, "wetenschap"@nl, "archeologie"@nl, 
 		"Archeologie@nl",
-		<http://vocab.belgif.be/auth/datatheme/TECH> .
+		"http://vocab.belgif.be/auth/datatheme/TECH" .

@@ -13,7 +13,7 @@ vlaanderen/sparql-consolidate-standards.qry
 vlaanderen/sparql-remove-empty-label.qry
 data-media.ttl
 #vlaanderen/sparql-format-label.qry
-#vlaanderen/sparql-format-extension.qry
+vlaanderen/sparql-format-extension.qry
 #vlaanderen/sparql-format-title.qry
 #vlaanderen/sparql-format-conforms.qry
 #vlaanderen/sparql-format-mediatype.qry
@@ -34,8 +34,8 @@ sparql-map-geo.qry
 vlaanderen/sparql-default-geo.qry
 vlaanderen/data-theme.ttl
 sparql-map-keyword-theme.qry
+sparql-map-theme.qry
 vlaanderen/sparql-map-theme.qry
-#vlaanderen/sparql-map-theme2.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 #vlaanderen/sparql-fix-frequency.qry
