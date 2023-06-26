@@ -1,6 +1,8 @@
 # Data for mapping organizations
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199299707>
 	skos:prefLabel "Studiedienst Vlaanderen"@nl ;
@@ -99,9 +101,11 @@
 	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV",
 		"opendatabeheer" .
 
-<http://data.gov.be/en/taxonomy/term/130>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207494678> 
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207494678> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/130> ;
 	skos:altLabel "Stad Kortrijk" .
 	
 <http://data.gov.be/en/taxonomy/term/132>
@@ -119,19 +123,25 @@
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0215266160> ;
 	skos:altLabel "EANDIS cvba", "Fluvius", "FLUVIUS cvba" .
 
-<http://data.gov.be/en/taxonomy/term/194>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "INBO"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199335933> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194> ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Research Institute for Nature and Forest (INBO)" .
-	
-<http://data.gov.be/en/taxonomy/term/205>
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0434364713>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Natuurpunt"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0434364713> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/205> ;
 	skos:altLabel "Natuurpunt" .
-	
-<http://data.gov.be/en/taxonomy/term/213>
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/213> ;
 	skos:altLabel "agentschap Digitaal Vlaanderen"@nl .
 
 <http://data.gov.be/en/taxonomy/term/214>
@@ -158,10 +168,12 @@
 	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207499430> ;
 	skos:altLabel "Stad Mechelen" .
-	
-<http://data.gov.be/en/taxonomy/term/364>
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335339>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Omgeving"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199335339> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/364> ;
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", "Vlaamse overheid - Departement Omgeving",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Beleidsontwikkeling en Juridische Ondersteuning",
 	"Vlaamse Overheid - Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -projecten",
@@ -243,9 +255,11 @@
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199318909> ;
 	skos:altLabel "Agentschap Jongerenwelzijn" .
 
-<http://data.gov.be/en/taxonomy/term/393>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143729494>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2143729494> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/393> ;
 	skos:altLabel "Agentschap Wegen en Verkeer"@nl, "AWV" .
 
 <http://data.gov.be/en/taxonomy/term/452>
