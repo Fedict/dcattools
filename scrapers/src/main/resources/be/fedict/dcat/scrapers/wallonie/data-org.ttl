@@ -121,7 +121,15 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Les Sentiers de Grande Randonnée"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/141> ;
-	skos:altLabel "sentiers"@fr .	
+	skos:altLabel "sentiers"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0823228409>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "FuturoCité"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "FuturoCité", "FuturoCit%C3%A9" .
+
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069339> 
 	a foaf:Organization ;
@@ -207,6 +215,13 @@
 	skos:prefLabel "Tournai"@fr, "Doornik"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
 	skos:altLabel "Administration Communale de Tournai" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Chaudfontaine"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Commune de Chaudfontaine" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207310774>
 	a foaf:Organization ;
