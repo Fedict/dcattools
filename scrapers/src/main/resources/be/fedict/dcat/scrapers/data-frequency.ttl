@@ -18,7 +18,7 @@
 <http://publications.europa.eu/resource/authority/frequency/DAILY_2> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/31>;
 	skos:prefLabel "Twice per day"@en ;
-	skos:altLabel <http://data.gov.be/6%20hours> .
+	skos:altLabel <http://data.gov.be/6%20hours>, "DAILY_2" .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/22> ;
@@ -29,7 +29,7 @@
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/23> ;
 	skos:prefLabel "Weekly"@en ;
-	skos:altLabel "weekly", "W", <http://purl.org/cld/freq/weekly>,
+	skos:altLabel "weekly", "W", <http://purl.org/cld/freq/weekly>, "Toutes%20les%20semaines",
 		"http://publications.europa.eu/resource/authority/frequency/WEEKLY" .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> 
@@ -47,20 +47,23 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/27> ;
 	skos:prefLabel "Quarterly"@en ;
 	skos:altLabel "5annually", "R/P4Y", "quarterly", <http://purl.org/cld/freq/quarterly>,
-		"http://publications.europa.eu/resource/authority/frequency/QUARTERLY" .
+		"http://publications.europa.eu/resource/authority/frequency/QUARTERLY", "trimestriel",
+		"Plusieurs%20fois%20par%20an" .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/29> ;
 	skos:prefLabel "Semiannual"@en ;
 	skos:altLabel "biannually", "R/P6M", 
-		"http://publications.europa.eu/resource/authority/frequency/ANNUAL_2" .
+		"http://publications.europa.eu/resource/authority/frequency/ANNUAL_2", "semestrielle" .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/30> ;
 	skos:prefLabel "Annual"@en ;
 	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
-		<http://purl.org/cld/freq/annual> .
+		<http://purl.org/cld/freq/annual>, "Annuel", "annuel", "Chaque%20année,%20fin%20octobre",
+		"Annuelle%20:%20mise%20à%20jour%20le%201er%20novembre",
+		"à%20chaque%20nouvel%20appel%20à%20projet%20(tous%20les%20ans)" .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/426> ;

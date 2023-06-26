@@ -1,0 +1,19 @@
+# Fix frequency URLs, actually relative URLs without base
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+	?s dcterms:accrualPeriodicity ?freq }
+INSERT { 
+	?s dcterms:accrualPeriodicity ?str }  
+WHERE { 
+	?s dcterms:accrualPeriodicity ?freq .
+	BIND (
+		STRAFTER(
+			STR(?freq), "http://data.gov.be/") 
+		as ?str)
+	FILTER (
+		STRSTARTS(
+			STR(?freq), "http://data.gov.be/")
+	) 
+}

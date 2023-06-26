@@ -24,6 +24,14 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/104> ;
 	skos:altLabel "sncb", "NMBS-SNCB" .
 
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/157>  ;
+	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
+	skos:altLabel "National+Geographic+Institute+of+Belgium" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207362739>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
@@ -33,7 +41,7 @@
 		"Ville de Namur - Portail Statistiques", 
 		"Ville de Namur - Mobilité", "Ville de Namur - Finances", 
 		"Ville de Namur", "Ville de Namur"@fr,
-		"Eco-Visio", "Eco-Compteur", "SIRS" .
+		"Eco-Visio", "Eco-Compteur", "SIRS", "Ville+de+Namur+-+G%C3%A9omatique" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204323119>
 	a foaf:Organization ;
@@ -75,7 +83,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agence du Numérique"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/138> ;
-	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr .
+	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr, "Agence+du+Num%C3%A9rique" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0219802592>
 	a foaf:Organization ;
@@ -195,7 +203,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/335> ;
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
-	skos:altLabel "Ville de Mons" .
+	skos:altLabel "Ville de Mons", "Ville+de+Mons+" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0931814167> 
 	a foaf:Organization ;
@@ -209,7 +217,8 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/363> ;
 	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
-	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr .
+	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr,
+		"Ville+de+Li%C3%A8ge"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
