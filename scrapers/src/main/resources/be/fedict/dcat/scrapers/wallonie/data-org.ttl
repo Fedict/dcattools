@@ -17,7 +17,7 @@
 		"Ministère de la Communauté française"@fr,
 		"Ministerium der Französischen Gemeinschaft"@de ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/74> ;
-	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles" .
+	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles", "TBC", "Opendatasoft" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
@@ -58,33 +58,28 @@
 		"Ville de Namur", "Ville de Namur"@fr,
 		"Eco-Visio", "Eco-Compteur", "SIRS", "Ville+de+Namur+-+G%C3%A9omatique" .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2204323119>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2274368601>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "DGO1 Routes"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/133> ;
-	skos:altLabel "wallonie-dgo1"@fr .
-
-<https://org.belgif.be/id/CbeEstablishmentUnit/2204323515> 
-	a foaf:Organization ;
-	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "DGO2 Mobilité"@fr ;
+	skos:prefLabel "SPW-MI Mobilité et Infrastructures"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/134> ;
-	skos:altLabel "wallonie-dgo2"@fr .
+	skos:altLabel "wallonie-dgo1"@fr, "SPW-MI & Telraam" .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2204324406> 
+<https://org.belgif.be/id/CbeRegisteredEntity/0316381138>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "DGO5 Action sociale"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/135> ;
-	skos:altLabel "wallonie-dgo5"@fr .
+	skos:prefLabel "Waalse Overheidsdienst"@nl, "Service public de Wallonie"@fr, 
+		"Öffentlicher Dienst der Wallonie"@de ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Service public de Wallonie (SPW) ".
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204325790>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "DG06 Recherche"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/136>  ;
-	skos:altLabel "wallonie-dgo6"@fr .
+	skos:prefLabel "SPW-EER Economie, Emploi, Recherche"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/136> ;
+	skos:altLabel "Service Public de Wallonie - Ecomie, Emploi, Recherche", 
+		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0850260131> 
 	a foaf:Organization ;
