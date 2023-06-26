@@ -213,12 +213,19 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
 	skos:altLabel "Administration Communale de Tournai" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207310774>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Charleroi"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Ville de Charleroi" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0216697307>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Fernelmont"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
-	skos:altLabel "Commune+de+Fernelmont" .
+	skos:altLabel "Commune de Fernelmont" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206524876>
 	a foaf:Organization ;
