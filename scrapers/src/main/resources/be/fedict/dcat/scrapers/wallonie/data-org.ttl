@@ -10,6 +10,15 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/74> ;
 	skos:altLabel "Fédération Wallonie-Bruxelles" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0316380940>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Ministerie van de Franse Gemeenschap"@nl,
+		"Ministère de la Communauté française"@fr,
+		"Ministerium der Französischen Gemeinschaft"@de ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/74> ;
+	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -24,6 +33,12 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/104> ;
 	skos:altLabel "sncb", "NMBS-SNCB" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/397> ;
+	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
+	skos:altLabel "Sciensano"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 	a foaf:Organization ;
@@ -191,6 +206,20 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/249> ;
 	skos:altLabel "antoing"@fr, "Ville d'Antoing" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207354920>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Tournai"@fr, "Doornik"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Administration Communale de Tournai" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216697307>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Fernelmont"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Commune+de+Fernelmont" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0206524876>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
@@ -204,6 +233,20 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/335> ;
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "Ville de Mons", "Ville+de+Mons+" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206644741>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "Verviers"@fr ;
+	skos:altLabel "Ville de Verviers" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207347891>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "Marche-en-Famenne"@fr ;
+	skos:altLabel "Ville de Marche-en-Famenne" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0931814167> 
 	a foaf:Organization ;
@@ -220,12 +263,19 @@
 	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr,
 		"Ville+de+Li%C3%A8ge"  .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0871429489>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "La Louvière"@fr ;
+	skos:altLabel "Ville+de+La+Louvi%C3%A8re", "Ville de La Louvière"  .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/389> ;
 	skos:prefLabel "Stad Andenne"@nl, "Ville d'Andenne"@fr, "City of Andenne"@en ;
-	skos:altLabel "Ville d'Andenne" .	
+	skos:altLabel "Ville d'Andenne", "Ville+d%27Andenne" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0546740696>
 	a foaf:Organization ;
