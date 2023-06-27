@@ -1,0 +1,10 @@
+# Delete servedataset is no other about the dataset is available
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcat:servesDataset ?src }
+WHERE
+	{ 	?s dcat:servesDataset ?src .
+		FILTER NOT EXISTS { ?src ?p ?o }
+	}

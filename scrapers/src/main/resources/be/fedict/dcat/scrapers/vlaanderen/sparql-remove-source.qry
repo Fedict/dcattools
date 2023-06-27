@@ -1,0 +1,11 @@
+# Delete catalog source, since they appear to point to same record
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcterms:source ?src }
+WHERE
+	{ 	?s dcterms:source ?src .
+		?s a dcat:CatalogRecord .
+	}

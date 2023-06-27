@@ -60,6 +60,9 @@
 		"hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, 
 		"economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, 
 		"economie en innovatie ondernemerschap"@nl,
+		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme",
+		"https://data.stad.gent/id/theme/Werken%20%26%20ondernemen",
+		"http://vocab.belgif.be/auth/datatheme/ECON",
 		"http://ns.thedatatank.com/dcat/themes#Economy" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
@@ -106,7 +109,8 @@
 		"BEKEN"@nl, "Zwin en Zwinbosjes"@nl,
 		"http://eurovoc.europa.eu/5463",
 		"http://vocab.belgif.be/auth/datatheme/ENVI",
-		"http://ns.thedatatank.com/dcat/themes#Environment" .
+		"http://ns.thedatatank.com/dcat/themes#Environment",
+		"https://data.stad.gent/id/theme/Natuur%20%26%20milieu" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
@@ -159,7 +163,9 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/INTR> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
-	skos:altLabel "ontwikkelingssamenwerking buitenlands beleid ontwikkelingssamenwerking"@nl, "internationaal"@nl, "ontwikkelingssamenwerking"@nl, "buitenlandse_handel"@nl, "buitenlands_beleid"@nl, "internationale_culturele_uitwisseling"@nl, "Europa"@nl, "economie en innovatie buitenlandse handel"@nl .
+	skos:altLabel "ontwikkelingssamenwerking buitenlands beleid ontwikkelingssamenwerking"@nl, "internationaal"@nl, 
+		"ontwikkelingssamenwerking"@nl, "buitenlandse_handel"@nl, "buitenlands_beleid"@nl, 
+		"internationale_culturele_uitwisseling"@nl, "Europa"@nl, "economie en innovatie buitenlandse handel"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
@@ -194,6 +200,7 @@
 		"minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl,
 		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl,
 		"http://vocab.belgif.be/auth/datatheme/SOCI",
+		"https://data.stad.gent/id/theme/Burgerzaken",
 		"http://ns.thedatatank.com/dcat/themes#Demography",
 		"http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare" .
 
@@ -206,13 +213,14 @@
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ;
 	skos:prefLabel "REGIONS, CITIES"@en ;
 	skos:altLabel "BED AND BREAKFAST"@nl, "toerisme"@nl, "overnachtingen"@nl, "economie - 3regionaal"@nl,
-		"toerisme - vakantieparticipatie"@nl, "bestuur - lokaal_bestuur"@nl, 
+		"toerisme - vakantieparticipatie"@nl, 
 		"toerisme - tewerkstelling"@nl, "BED AND BREAKFAST"@nl, "CAMPING"@nl, "GASTENKAMER"@nl, 
-		"Gemeente"@nl, "HOSTEL"@nl, "HOTEL"@nl, "INFOKANTOOR"@nl, "INTERESSANTE PLAATS"@nl, 
+		"HOSTEL"@nl, "HOTEL"@nl, "INFOKANTOOR"@nl, "INTERESSANTE PLAATS"@nl, 
 		"KAMPEREN"@nl, "LOGIE"@nl, "LOKAAL BESTUUR"@nl, "Toerisme"@nl, "buurt"@nl, "camping"@nl, 
-		"campings"@nl, "diensten voor toerisme"@nl, "gemeente"@nl, "gastenkamers"@nl, "hostels"@nl, 
+		"campings"@nl, "diensten voor toerisme"@nl, "gastenkamers"@nl, "hostels"@nl, 
 		"hotel"@nl, "hotels"@nl, "jeugdverblijven"@nl, "kampeerautoterreinen"@nl, "kampeerlogies"@nl, 
-		"logies"@nl, "lokale besturen"@nl .
+		"logies"@nl, "lokale besturen"@nl,
+		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme" .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
