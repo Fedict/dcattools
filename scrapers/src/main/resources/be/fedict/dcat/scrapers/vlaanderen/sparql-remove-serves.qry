@@ -1,10 +1,12 @@
 # Delete servedataset is no other about the dataset is available
 
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
-	{	?s dcat:servesDataset ?src }
+	{	?s ?rel ?src }
 WHERE
-	{ 	?s dcat:servesDataset ?src .
+	{ 	?s ?rel ?src .
+		VALUES ?rel { dcat:servesDataset dcterms:relation dcat:accessService }
 		FILTER NOT EXISTS { ?src ?p ?o }
 	}

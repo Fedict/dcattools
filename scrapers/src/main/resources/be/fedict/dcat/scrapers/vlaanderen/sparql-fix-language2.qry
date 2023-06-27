@@ -1,0 +1,14 @@
+# Fix Dutch language linguistic system
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?res dcterms:language ?genid .
+		?genid ?p ?o  }
+INSERT
+	{ 	?res dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> }
+WHERE
+	{ 	?res dcterms:language ?genid .
+		?genid ?p ?o
+		FILTER (CONTAINS(STR(?genid), "genid")) 
+	}
