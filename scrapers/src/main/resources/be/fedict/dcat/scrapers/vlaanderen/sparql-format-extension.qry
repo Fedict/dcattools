@@ -20,8 +20,8 @@ WHERE
 			BIND (CONCAT(" ", LCASE(STR(?title))) as ?str)
 		}
 		VALUES ?ext { ".geojson" "-geojson" ".json" "-json" ".csv" "-csv" ".kml" ".xlsx" ".shp" "-shp" 
-					".xml" "-xml" "/jsonld" "/ttl" "/nt" ".powerbi" "/wms" ".zip" "=WFS" "KML " "WMS-" 
-					".jpg" ".jpeg" ".JPG" ".png" "/kml" "/wfs" "/excel" "=WMS" "=WCS" "Fjson" "=WMTS" }
+					".xml" "-xml" "/jsonld" "/ttl" "/nt" ".powerbi" "KML " ".jpg" ".jpeg" ".JPG" ".png" "/kml"  
+					"/excel" "Fjson" }
 		BIND (IF(CONTAINS(?str, ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
 		FILTER NOT EXISTS { ?dist dcterms:format ?fmt } 
 	}

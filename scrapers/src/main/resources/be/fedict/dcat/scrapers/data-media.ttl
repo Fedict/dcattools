@@ -326,12 +326,6 @@
 				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
 				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE".
 
-<http://publications.europa.eu/resource/authority/file-type/ZIP>
-	skos:prefLabel "ZIP" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/zip>; 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/150> ;
-	skos:altLabel "ZIP", "zip" .
-
 <http://publications.europa.eu/resource/authority/file-type/NETCDF>
 	skos:prefLabel "NetCDF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-netcdf>; 
