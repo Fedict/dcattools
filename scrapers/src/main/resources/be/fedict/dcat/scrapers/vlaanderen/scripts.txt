@@ -16,10 +16,11 @@ vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
 #vlaanderen/sparql-format-conforms.qry
 #vlaanderen/sparql-remove-format-empty.qry
-#vlaanderen/sparql-format-wms.qry
+vlaanderen/sparql-format-wms.qry
 data-media.ttl
 vlaanderen/sparql-format-mediatype.qry
 sparql-map-media.qry
+vlaanderen/sparql-format-jp2.qry
 clear-skos.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
@@ -48,7 +49,6 @@ vlaanderen/data-license.ttl
 sparql-map-license.qry
 #vlaanderen/sparql-default-license.qry
 #vlaanderen/sparql-remove-rights.qry
-sparql-shacl-accessservice.qry
 clear-skos.qry
 sparql-date-type.qry
 #vlaanderen/sparql-downloadurl.qry
@@ -60,9 +60,11 @@ sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-agent.qry
 #sparql-shacl-frequency.qry
+sparql-shacl-accessservice.qry
 sparql-shacl-format.qry
 sparql-shacl-landingpage.qry
 sparql-shacl-license.qry
+sparql-shacl-page.qry
 sparql-shacl-rights.qry
 sparql-shacl-serves.qry
 sparql-shacl-skos.qry

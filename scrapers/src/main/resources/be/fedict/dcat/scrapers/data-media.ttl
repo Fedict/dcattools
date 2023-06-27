@@ -238,13 +238,13 @@
 	skos:prefLabel "JPG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jpeg> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/170> ;
-	skos:altLabel "JPG", "JPEG2000", "jpg", "JPEG", "jpeg", "image/jpeg" .
+	skos:altLabel "JPG", "jpg", "JPEG", "jpeg", "image/jpeg" .
 
 <http://publications.europa.eu/resource/authority/file-type/JPEG2000>
 	skos:prefLabel "JP2" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jp2> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/170> ;
-	skos:altLabel "JPEG2000", "jpeg2000" .
+	skos:altLabel "JPEG2000", "jpeg2000", "jp2" .
 
 <http://data.gov.be/en/taxonomy/term/332>
 	skos:prefLabel "SQLITE" ;
