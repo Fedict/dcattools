@@ -48,7 +48,19 @@
 		<http://vocab.belgif.be/auth/datatheme/ECON> ,
 		<https://data.stad.gent/id/theme/Werken%20%26%20ondernemen> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
-	skos:altLabel "BED AND BREAKFAST"@nl, "bedrijf"@nl, "bedrijven"@nl, "arbeidsvraag"@nl, "toerisme"@nl, "overnachtingen"@nl, "zeehavens_economisch"@nl, "tewerkstelling"@nl, "economie"@nl, "buitenlandse_handel"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, "economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "tewerkstelling"@nl, "Kadastrale percelen"@nl, "Faciliteiten voor productie en industrie"@nl, "Arbeid"@nl, "BEDRIJF"@nl, "BEDRIJVEN"@nl, "BEDRIJVENTERREINEN"@nl, "Bedrijventerrein"@nl, "Budget"@nl, "ECONOMIE"@nl, "Financiën"@nl, "HOSTEL"@nl, "HOTEL"@nl, "Economie"@nl, "Havengebied"@nl, "Werk"@nl, "Winkelen"@nl, "arbeid"@nl, "arbeidsmarkt"@nl, "bedrijfslocatie"@nl, "bedrijfsgebouwen"@nl, "bedrijventerrein"@nl, "bedrijventerreinen"@nl, "bedrijfsvorm"@nl, "bedrijfspercelen"@nl, "economie"@nl, "haven"@nl, "hostels"@nl, "hotel"@nl, "hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, "economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, "economie en innovatie ondernemerschap"@nl .
+	skos:altLabel "BED AND BREAKFAST"@nl, "bedrijf"@nl, "bedrijven"@nl, "arbeidsvraag"@nl, "toerisme"@nl, 
+		"overnachtingen"@nl, "zeehavens_economisch"@nl, "tewerkstelling"@nl, "economie"@nl, 
+		"buitenlandse_handel"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, 
+		"economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "tewerkstelling"@nl, "Kadastrale percelen"@nl, 
+		"Faciliteiten voor productie en industrie"@nl, "Arbeid"@nl, "BEDRIJF"@nl, "BEDRIJVEN"@nl, 
+		"BEDRIJVENTERREINEN"@nl, "Bedrijventerrein"@nl, "Budget"@nl, "ECONOMIE"@nl, "Financiën"@nl, "HOSTEL"@nl, 
+		"HOTEL"@nl, "Economie"@nl, "Havengebied"@nl, "Werk"@nl, "Winkelen"@nl, "arbeid"@nl, "arbeidsmarkt"@nl, 
+		"bedrijfslocatie"@nl, "bedrijfsgebouwen"@nl, "bedrijventerrein"@nl, "bedrijventerreinen"@nl, 
+		"bedrijfsvorm"@nl, "bedrijfspercelen"@nl, "economie"@nl, "haven"@nl, "hostels"@nl, "hotel"@nl, 
+		"hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, 
+		"economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, 
+		"economie en innovatie ondernemerschap"@nl,
+		"http://ns.thedatatank.com/dcat/themes#Economy" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
@@ -74,6 +86,7 @@
 		<http://www.eionet.europa.eu/gemet/concept/827> ,
 		<http://www.eionet.europa.eu/gemet/concept/3780> ,
 		<http://www.eionet.europa.eu/gemet/concept/7983> ,
+		<http://eurovoc.europa.eu/5463>, 
 		<https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, 
@@ -91,7 +104,9 @@
 		"afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, 
 		"beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, 
 		"BEKEN"@nl, "Zwin en Zwinbosjes"@nl,
-		"http://vocab.belgif.be/auth/datatheme/ENVI" .
+		"http://eurovoc.europa.eu/5463",
+		"http://vocab.belgif.be/auth/datatheme/ENVI",
+		"http://ns.thedatatank.com/dcat/themes#Environment" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
@@ -125,7 +140,8 @@
 		"administratieve grens"@nl, "adres"@nl, "Adressen"@nl, "administratieve grenzen"@nl, 
 		"afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl,
 		"voorkooprecht"@nl, "landeigendom"@nl, "CRAB"@nl,
-		"http://vocab.belgif.be/auth/datatheme/GOVE" .
+		"http://vocab.belgif.be/auth/datatheme/GOVE",
+		"http://ns.thedatatank.com/dcat/themes#Environment" .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
@@ -136,7 +152,8 @@
 		"gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, 
 		"milieu gezondheid"@nl, "Menselijke gezondheid en veiligheid"@nl, "Gezondheid"@nl, 
 		"Gezondheidscentrum"@nl, "Overlijdens"@nl, "apotheek"@nl, "apotheker"@nl, "dokter"@nl, 
-		"gezondheid"@nl, "gezondheidszorg"@nl, "toegankelijkheid"@nl, "Zorgatlas"@nl .
+		"gezondheid"@nl, "gezondheidszorg"@nl, "toegankelijkheid"@nl, "Zorgatlas"@nl,
+		"http://vocab.belgif.be/auth/datatheme/HEAL" .
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
@@ -176,7 +193,9 @@
 		"gezin"@nl, "gezinnen"@nl, "huishoudens"@nl, "kansarmoede"@nl, "kinderen"@nl, "migratie"@nl, 
 		"minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl,
 		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl,
-		"http://vocab.belgif.be/auth/datatheme/SOCI" .
+		"http://vocab.belgif.be/auth/datatheme/SOCI",
+		"http://ns.thedatatank.com/dcat/themes#Demography",
+		"http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
@@ -209,7 +228,9 @@
 		"elektrische wagen"@nl, "duurzame mobiliteit"@nl, "file"@nl, "fileduur"@nl, "haven"@nl, 
 		"kanalen"@nl, "mobiliteit"@nl, "schelde"@nl, "sluis"@nl, "taxi"@nl, "traject"@nl, 
 		"voetgangers"@nl, "wandelroutes"@nl, "afrit"@nl, "afritten"@nl, "ANKERPLAATSEN"@nl, 
-		"autoweg"@nl, "autocar"@nl .
+		"autoweg"@nl, "autocar"@nl ,
+		"https://data.stad.gent/id/theme/Mobiliteit", "http://ns.thedatatank.com/dcat/themes#Mobility",
+		"http://vocab.belgif.be/auth/datatheme/TRAN".
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37>  ;

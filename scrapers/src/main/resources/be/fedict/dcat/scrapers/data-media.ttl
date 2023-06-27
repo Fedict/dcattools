@@ -304,14 +304,14 @@
 	skos:prefLabel "XLS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-excel> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/8> ;
-	skos:altLabel "XLS", "xls", "application/xls", "excel", "XLS (XLS)", "application/vnd.ms-excel" .
+	skos:altLabel "XLS", "xls", "application/xls", "XLS (XLS)", "application/vnd.ms-excel" .
 
 <http://publications.europa.eu/resource/authority/file-type/XLSX>	
 	skos:prefLabel "XLSX" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> ; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/62> ;
 	skos:altLabel "XLSX", "xlsx", "xslx", ".xlsx", ".xslx", "M XLSX", "F XLSX", 
-		"Excel XLSX",
+		"Excel XLSX", "excel",
 		"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
 		"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx>,
 		<https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet>,

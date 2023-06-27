@@ -23,6 +23,6 @@ WHERE
 					".xml" "-xml" "/jsonld" "/ttl" "/nt" ".powerbi" "KML " ".jpg" ".jpeg" ".JPG" ".png" "/kml"  
 					"/excel" "Fjson" }
 		BIND (IF(CONTAINS(?str, ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
-		FILTER NOT EXISTS { ?dist dcterms:format ?fmt } 
+		FILTER NOT EXISTS { ?dist dcterms:format ?f } 
 	}
 	
