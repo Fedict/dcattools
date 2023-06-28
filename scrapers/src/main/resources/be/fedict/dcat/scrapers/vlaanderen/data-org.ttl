@@ -225,7 +225,8 @@
 		"Vlaamse Overheid - Departement Omgeving via MercatorNet samenwerkingsverband beleidsdomein Omgeving"@nl,
 		"Vlaamse overheid, Departement Omgeving, Vlaams Planbureau voor Omgeving (VPO)"@nl,
 		"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving"@nl,
-		"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen"@nl .
+		"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen"@nl,
+		"Vlaams Planbureau voor Omgeving"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336131>
 	a foaf:Organization ;
@@ -277,6 +278,7 @@
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/375> ;
 	skos:altLabel "Agentschap Innoveren & Ondernemen"@nl, "VLAIO",
+		"Agentschap Innoveren en Ondernemen"@nl,
 		<https://data.vlaanderen.be/id/organisatie/OVO000039> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236506685>
@@ -285,6 +287,7 @@
 	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/376> ;
 	skos:altLabel "Vlaamse Landmaatschappij - afdeling Projectrealisatie", "Vlaamse Landmaatschappij",
+		"Vlaamse Landmaatschappij"@nl,
 		<https://data.vlaanderen.be/id/organisatie/OVO000094> .
 	
 <http://data.gov.be/en/taxonomy/term/377>

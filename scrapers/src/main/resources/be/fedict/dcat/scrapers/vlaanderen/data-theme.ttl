@@ -22,7 +22,7 @@
 		<http://ns.thedatatank.com/dcat/themes#CulturalEvents> ,
 		<http://vocab.belgif.be/auth/datatheme/CULT>, 
 		<http://vocab.belgif.be/auth/datatheme/EDUC>,
-		<http://www.eionet.europa.eu/gemet/concept/1917> ,
+		<http://www.eionet.europa.eu/gemet/concept/1917> ,e
 		<http://www.eionet.europa.eu/gemet/concept/10847> ,
 		<https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed>,
 		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,
@@ -38,7 +38,10 @@
 		"Onroerend Erfgoed"@nl, "Sport"@nl, "VRT"@nl, "activiteiten"@nl, "bibliotheek"@nl, "cinema"@nl, 
 		"clubhuizen"@nl, "cultuur"@nl, "erfgoed"@nl, "gentse feesten"@nl, "media"@nl, "nieuws"@nl, 
 		"nieuwsberichten"@nl, "omroep"@nl, "aanplakborden"@nl, "CULTUURHISTORISCHE"@nl, "archeologie"@nl, 
-		"Archeologie@nl", "basketbal"@nl, "BEGIJNHOVEN"@nl, "media cijfers mediagebruik SCV nieuws"@nl .
+		"Archeologie@nl", "basketbal"@nl, "BEGIJNHOVEN"@nl, "media cijfers mediagebruik SCV nieuws"@nl,
+		"https://data.stad.gent/id/theme/Evenementen%20%26%20Feesten", 
+		"https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd",
+		"https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
@@ -119,7 +122,8 @@
 	skos:prefLabel "ENERGY"@en ;
 	skos:altLabel "energie energieopwekking"@nl, "Energie"@nl, "energie"@nl, 
 		"Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl, "duurzame energie"@nl, "gas"@nl, 
-		"Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl .
+		"Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl,
+		"http://vocab.belgif.be/auth/datatheme/ENER" .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41>  ;
@@ -145,6 +149,7 @@
 		"afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl,
 		"voorkooprecht"@nl, "landeigendom"@nl, "CRAB"@nl,
 		"http://vocab.belgif.be/auth/datatheme/GOVE",
+		"http://ns.thedatatank.com/dcat/themes#Government",
 		"http://ns.thedatatank.com/dcat/themes#Environment" .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
