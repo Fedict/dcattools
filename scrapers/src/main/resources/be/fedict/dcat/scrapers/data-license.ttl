@@ -39,7 +39,9 @@
 		<https://creativecommons.org/licenses/by/4.0/>, 
 		"https://creativecommons.org/licenses/by/4.0/", 
 		"https://creativecommons.org/licenses/by/4.0/deed.fr",
+		"http://creativecommons.org/licenses/by/4.0/legalcode",
 		"https://creativecommons.org/licenses/by/4.0/legalcode",
+		<http://creativecommons.org/licenses/by/4.0/legalcode>,
 		"CC BY 4.0",
 		"Creative Commons Attribution 4.0 International License",
 		"This work is licensed under a         Creative Commons Attribution (CC-BY) 4.0 License         .",
@@ -88,6 +90,8 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/55> ;
 	skos:prefLabel "CC-BY-NC 4.0" ;
 	skos:altLabel "cc-nc",
+		"http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+		<http://creativecommons.org/licenses/by-nc/4.0/legalcode>,
 		"This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License." .
 
 <http://creativecommons.org/licenses/by-nc-nd/4.0/> 

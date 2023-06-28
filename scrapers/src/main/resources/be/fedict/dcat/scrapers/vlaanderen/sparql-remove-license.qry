@@ -1,0 +1,13 @@
+# Delete empty license
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s ?rel ?doc .
+		?doc a dcterms:LicenseDocument
+	}
+WHERE
+	{ 	?s ?rel ?doc .
+		?doc a dcterms:LicenseDocument .
+		FILTER NOT EXISTS { ?s dcterms:type ?o }
+	}
