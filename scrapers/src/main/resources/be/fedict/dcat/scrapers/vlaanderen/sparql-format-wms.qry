@@ -13,5 +13,6 @@ WHERE
 		VALUES ?ext { "/wms" "=WFS" "WMS-" "/wfs" "=WMS" "=WCS" "=WMTS" }
 		BIND (IF(CONTAINS(?str, ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
 		FILTER NOT EXISTS { ?dist dcterms:format ?f } 
+		FILTER NOT EXISTS { ?dist dcat:mediaType ?m }
 	}
 	

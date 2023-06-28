@@ -1,0 +1,15 @@
+# Delete empty agents
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s ?rel ?agent .
+		?agent a foaf:Agent .
+	}
+WHERE
+	{ 	?s ?rel ?agent .
+		?agent a foaf:Agent .
+		FILTER NOT EXISTS { ?agent foaf:name ?o }
+	}
