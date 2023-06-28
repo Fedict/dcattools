@@ -317,7 +317,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "VITO"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
-	skos:altLabel "Vlaamse Instelling voor Technologisch Onderzoek (VITO)"@nl . .
+	skos:altLabel "Vlaamse Instelling voor Technologisch Onderzoek (VITO)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0832369965>
 	a foaf:Organization ;
