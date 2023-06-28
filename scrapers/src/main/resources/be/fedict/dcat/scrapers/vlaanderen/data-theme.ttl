@@ -22,7 +22,7 @@
 		<http://ns.thedatatank.com/dcat/themes#CulturalEvents> ,
 		<http://vocab.belgif.be/auth/datatheme/CULT>, 
 		<http://vocab.belgif.be/auth/datatheme/EDUC>,
-		<http://www.eionet.europa.eu/gemet/concept/1917> ,e
+		<http://www.eionet.europa.eu/gemet/concept/1917> ,
 		<http://www.eionet.europa.eu/gemet/concept/10847> ,
 		<https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed>,
 		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,

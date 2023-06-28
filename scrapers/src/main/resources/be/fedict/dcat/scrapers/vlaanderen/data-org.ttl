@@ -348,7 +348,7 @@
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl ,
 		"Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, 
 		"Königliches Belgisches Institut für Naturwissenschaften"@de ;
-	skos:altLabel <http://data.gov.be/en/taxonomy/term/197> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/197> ;
 	skos:altLabel "Belgische Geologische Dienst"@nl, "Belgisch Geologische Dienst"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/nld/dinoloket>
