@@ -88,11 +88,10 @@ public abstract class Ods extends Dcat {
 
 		for (String lang: super.getAllLangs()) {
 			String xml = filter(map.get(lang).getContent());
-			
+			xml = xml.replaceAll("xml:lang=\"[a-z]{2}\"", "xml:lang=\"" + lang + "\"");
 			// Load RDF file into store
 			try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);		
-				store.queryUpdate(String.format(QRY_LANGUAGE, lang));
 			} catch (RDFParseException | IOException ex) {
 				throw new RepositoryException(ex);
 			}
