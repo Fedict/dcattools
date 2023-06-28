@@ -9,5 +9,6 @@ DELETE
 WHERE
 	{ 	?s ?rel ?doc .
 		?doc a dcterms:LicenseDocument .
+		FILTER (CONTAINS(STR(?doc), "genid"))
 		FILTER NOT EXISTS { ?s dcterms:type ?o }
 	}
