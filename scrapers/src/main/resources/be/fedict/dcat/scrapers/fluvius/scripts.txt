@@ -1,6 +1,6 @@
 # extra queries to be executed and data to be loaded
 fluvius/sparql-default-language.qry
-fluvius/sparql-remove-roles.qry
+sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 fluvius/sparql-language.qry

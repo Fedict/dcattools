@@ -102,6 +102,11 @@
 	skos:altLabel "https://creativecommons.org/licenses/by-nc-nd/4.0/" ,
 		"http://creativecommons.org/licenses/by-nc-nd/4.0/" .
 
+<http://publications.europa.eu/resource/authority/licence/CC_BYNCSA_3_0>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "CC-BY-NC-SA" ;
+	skos:altLabel <https://creativecommons.org/licenses/by-nc-sa/3.0/> .
+
 <http://publications.europa.eu/resource/authority/licence/ODC_PDDL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/212> ;
 	skos:prefLabel "ODC PDDL" ;

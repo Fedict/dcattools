@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 fpsfinance/data-publ-contact.ttl
+sparql-remove-roles.qry
 fpsfinance/sparql-publ-contact.qry
 fpsfinance/sparql-fix-license.qry
 data-license.ttl

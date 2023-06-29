@@ -1,4 +1,4 @@
-# Remove contributor and creator, since these are internal Fluvius departments
+# Remove contributor and creator, if they are departments
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 

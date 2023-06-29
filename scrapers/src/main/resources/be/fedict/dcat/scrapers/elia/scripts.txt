@@ -1,6 +1,6 @@
 # extra queries to be executed and data to be loaded
 elia/sparql-default-language.qry
-elia/sparql-remove-roles.qry
+sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 elia/sparql-language.qry
