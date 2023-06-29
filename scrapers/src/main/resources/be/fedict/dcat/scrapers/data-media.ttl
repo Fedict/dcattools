@@ -324,7 +324,7 @@
 	skos:altLabel "application/xml", <https://www.iana.org/assignments/media-types/text/xml>,
 				<https://www.iana.org/assignments/media-types/application/xml>, "text/xml",
 				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
-				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE".
+				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE", "EML".
 
 <http://publications.europa.eu/resource/authority/file-type/NETCDF>
 	skos:prefLabel "NetCDF" ;
