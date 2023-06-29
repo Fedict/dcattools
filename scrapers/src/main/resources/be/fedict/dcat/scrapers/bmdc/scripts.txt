@@ -12,6 +12,7 @@ data-media.ttl
 sparql-map-media.qry
 sparql-dist-accessurl.qry
 data-license.ttl
+bmdc/sparql-fix-cc-license.qry
 sparql-map-license.qry
 sparql-delete-label-license.qry
 bmdc/sparql-fix-language.qry

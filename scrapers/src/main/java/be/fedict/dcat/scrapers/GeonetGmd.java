@@ -101,7 +101,8 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
 	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
-
+	public final static String XP_LICENSE3 = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation";
+	
 	public final static String XP_TYPE = "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue";
 
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
@@ -433,15 +434,10 @@ public abstract class GeonetGmd extends Geonet {
 		}
 
 		// License / rights can be listed in different nodes
-		List<Node> lic = metadata.selectNodes(XP_LICENSE);
-		List<Node> lic2 = metadata.selectNodes(XP_LICENSE2);
-		if (lic.isEmpty()) {
-			lic = lic2;
-		} else {
-			if (!lic2.isEmpty()) {
-				lic.addAll(lic2);
-			}
-		}
+		List<Node> lic = new ArrayList<>();
+		lic.addAll(metadata.selectNodes(XP_LICENSE));
+		lic.addAll(metadata.selectNodes(XP_LICENSE2));
+		lic.addAll(metadata.selectNodes(XP_LICENSE3));
 
 		List<String> licenses = new ArrayList<>();
 		for (Node n : lic) {
