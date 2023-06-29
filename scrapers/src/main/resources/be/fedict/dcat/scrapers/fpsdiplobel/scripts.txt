@@ -5,7 +5,7 @@ sparql-license-cczero.qry
 sparql-access-public.qry
 fpsdiplobel/sparql-theme.qry
 sparql-geo-belgium.qry
-fpsdiplobel/sparql-media-label.qry
+fpsdiplobel/sparql-format-pdf.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry

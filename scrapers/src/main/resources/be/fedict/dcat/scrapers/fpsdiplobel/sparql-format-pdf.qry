@@ -4,10 +4,10 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{	?dist dcat:mediaType ?label }
+	{	?dist dcterms:format ?label }
 INSERT
-	{	?dist dcat:mediaType ?mt }
+	{	?dist dcterms:format "pdf" }
 WHERE
-	{	?dist dcat:mediaType ?label .
+	{	?dist dcterms:format ?label .
 		FILTER (CONTAINS(LCASE(?label), "pdf"))
 	}
