@@ -1,0 +1,10 @@
+# Remove contributor and creator, since these are internal Fluvius departments
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?s ?rel ?o }
+WHERE	
+	{	?s ?rel ?o
+		VALUES ?rel { dcterms:contributor dcterms:creator }
+	}
