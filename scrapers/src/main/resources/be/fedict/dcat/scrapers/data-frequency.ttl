@@ -5,21 +5,26 @@
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/20>;
 	skos:prefLabel "Continuously"@en ;
-	skos:altLabel "continual", <http://data.gov.be/continuously>, <http://data.gov.be/5%20minutes>, 
-		<http://data.gov.be/quarter%20hour>, "R/PT1S",
+	skos:altLabel "continual", <http://data.gov.be/continuously>, "R/PT1S", "Continuously",
 		"http://publications.europa.eu/resource/authority/frequency/CONT",
 		<http://publications.europa.eu/resource/authority/frequency/CONT> .
+
+<http://publications.europa.eu/resource/authority/frequency/TRIHOURLY>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/20>;
+	skos:prefLabel "Trihourly"@en ;
+	skos:altLabel "continual", <http://data.gov.be/continuously>, <http://data.gov.be/5%20minutes>, 
+		<http://data.gov.be/quarter%20hour>, "Quarter%20Hour", "5%20Minutes" .
 
 <http://publications.europa.eu/resource/authority/frequency/HOURLY> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/21>;
 	skos:prefLabel "Hourly"@en ;
 	skos:altLabel "hourly", <http://data.gov.be/hourly>, <http://purl.org/cld/freq/hourly>,
-		"http://publications.europa.eu/resource/authority/frequency/HOURLY" .
+		"http://publications.europa.eu/resource/authority/frequency/HOURLY", "Hourly" .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY_2> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/31>;
-	skos:prefLabel "Twice per day"@en ;
-	skos:altLabel <http://data.gov.be/6%20hours>, "DAILY_2" .
+	skos:prefLabel "Twice a day"@en ;
+	skos:altLabel <http://data.gov.be/6%20hours>, "DAILY_2", "6%20Hours" .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/22> ;
@@ -69,7 +74,7 @@
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
 		<http://publications.europa.eu/resource/authority/frequency/ANNUAL>,
 		<http://purl.org/cld/freq/annual>, "Annuel", "annuel", "Chaque%20année,%20fin%20octobre",
-		"Annuelle%20:%20mise%20à%20jour%20le%201er%20novembre",
+		"Annuelle%20:%20mise%20à%20jour%20le%201er%20novembre", "Yearly",
 		"à%20chaque%20nouvel%20appel%20à%20projet%20(tous%20les%20ans)" .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>

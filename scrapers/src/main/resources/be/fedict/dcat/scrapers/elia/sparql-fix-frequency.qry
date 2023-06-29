@@ -1,0 +1,15 @@
+# Use literal instead of relative URL
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?s dcterms:accrualPeriodicity ?url }
+INSERT	
+	{	?s dcterms:accrualPeriodicity ?freq }
+WHERE	
+	{	?s dcterms:accrualPeriodicity ?url  .
+		BIND (
+			STRAFTER(STR(?url), "http://data.gov.be/") 
+		as ?freq)
+		FILTER (STRSTARTS(STR(?url), "http://data.gov.be/"))
+	}
