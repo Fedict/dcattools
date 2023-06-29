@@ -104,7 +104,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/188> ;
 	skos:altLabel "parking.brussels"@en, "parking.brussels"@nl, "parking.brussels"@fr .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0316381039/ibsa>
+<https://org.belgif.be/id/CbeRegisteredEntity/0664820875/ibsa>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/191> ;

@@ -8,6 +8,8 @@ brussels/sparql-geo.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+brussels/sparql-fix-wms.qry
+sparql-delete-label-format.qry
 brussels/data-org.ttl
 brussels/sparql-map-org.qry
 brussels/sparql-contact-vcard.qry
@@ -20,9 +22,8 @@ sparql-delete-label-license.qry
 clear-skos.qry
 data-frequency.ttl
 sparql-map-frequency.qry
-data-media.ttl
-sparql-map-media.qry
-sparql-delete-label-format.qry
+#data-media.ttl
+#sparql-map-media.qry
 data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
