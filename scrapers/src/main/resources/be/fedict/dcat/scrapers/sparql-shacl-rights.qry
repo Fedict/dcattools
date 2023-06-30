@@ -1,8 +1,0 @@
-# Explicit rights class improving SHACL validation scores
-
-PREFIX dcterms:	<http://purl.org/dc/terms/>
-
-INSERT { ?r a dcterms:RightsStatement	}
-WHERE { ?s dcterms:rights ?r }
-
-

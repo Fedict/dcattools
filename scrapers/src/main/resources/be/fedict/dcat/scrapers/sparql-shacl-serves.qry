@@ -1,8 +1,0 @@
-# Explicit dataset class improving SHACL validation scores
-
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-INSERT { ?dataset a dcat:Dataset	}
-WHERE { ?s dcat:servesDataset ?dataset }
-
-

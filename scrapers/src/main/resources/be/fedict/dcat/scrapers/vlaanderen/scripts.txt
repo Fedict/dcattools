@@ -56,14 +56,5 @@ vlaanderen/sparql-remove-serves.qry
 vlaanderen/sparql-remove-source.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
-sparql-shacl-agent.qry
-sparql-shacl-accessservice.qry
-sparql-shacl-format.qry
-sparql-shacl-landingpage.qry
-sparql-shacl-license.qry
-sparql-shacl-page.qry
-sparql-shacl-rights.qry
-sparql-shacl-serves.qry
+sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-sparql-shacl-standard.qry
-sparql-shacl-vcard.qry

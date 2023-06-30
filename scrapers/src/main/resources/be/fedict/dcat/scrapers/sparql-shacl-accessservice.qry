@@ -1,6 +1,0 @@
-# Explicit document class to landing pages for SHACL validation purposes
-
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-INSERT	{ ?serv a dcat:DataService }
-WHERE	{ ?s dcat:accessService ?serv }

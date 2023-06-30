@@ -1,8 +1,0 @@
-# Explicit format class improving SHACL validation scores
-
-PREFIX dcterms:	<http://purl.org/dc/terms/>
-
-INSERT { ?fmt a dcterms:MediaTypeOrExtent }
-WHERE { ?s dcterms:format ?fmt }
-
-

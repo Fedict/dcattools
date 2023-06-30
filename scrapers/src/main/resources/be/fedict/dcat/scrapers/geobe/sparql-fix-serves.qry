@@ -1,0 +1,8 @@
+# Fix incorrect use of servesDataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{ 	?s dcat:servesDataset <https://publish4.geo.be/geodcat/collections/main/items/> }
+WHERE
+	{ 	?s dcat:servesDataset <https://publish4.geo.be/geodcat/collections/main/items/> }

@@ -1,8 +1,0 @@
-# Explicit frequency class improving SHACL validation scores
-
-PREFIX dcterms:	<http://purl.org/dc/terms/>
-
-INSERT { ?freq a dcterms:Frequency	}
-WHERE { ?s dcterms:accrualPeriodicity ?freq }
-
-

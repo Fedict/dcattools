@@ -1,8 +1,0 @@
-# Explicit license class improving SHACL validation scores
-
-PREFIX dcterms:	<http://purl.org/dc/terms/>
-
-INSERT { ?lic a dcterms:LicenseDocument	}
-WHERE { ?s dcterms:license ?lic }
-
-

@@ -10,8 +10,5 @@ data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 data-shacl-support.ttl
-sparql-shacl-agent.qry
-sparql-shacl-landingpage.qry
-sparql-shacl-license.qry
+sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-sparql-shacl-vcard.qry

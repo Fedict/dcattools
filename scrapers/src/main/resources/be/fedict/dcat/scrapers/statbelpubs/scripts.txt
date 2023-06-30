@@ -13,8 +13,5 @@ clear-skos.qry
 statbelpubs/sparql-empty-keywords.qry
 statbelpubs/sparql-clean-dataset.qry
 data-shacl-support.ttl
-sparql-shacl-agent.qry
-sparql-shacl-landingpage.qry
-sparql-shacl-license.qry
+sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-sparql-shacl-vcard.qry

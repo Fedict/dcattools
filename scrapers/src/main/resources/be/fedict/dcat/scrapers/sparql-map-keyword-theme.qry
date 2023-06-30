@@ -1,6 +1,7 @@
-# Map keyword or existing theme to a DCAT-AP theme
+# Map keyword or existing subject / theme to a DCAT-AP theme
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
@@ -16,11 +17,12 @@ WHERE
 		}
 		UNION
 		{
-			?dataset dcat:theme ?label .
-			?theme skos:closeMatch ?label .
+			?dataset ?rel ?uri .
+			?theme skos:closeMatch ?uri .
 			?theme skos:exactMatch ?drupal 
+			VALUES	?rel { dcat:theme dcterms:subject }
 			FILTER (
-				!STRSTARTS(STR(?label), "http://publications.europa.eu")
+				!STRSTARTS(STR(?uri), "http://publications.europa.eu")
 			)
 		}
 	}
