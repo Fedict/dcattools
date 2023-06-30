@@ -6,8 +6,14 @@ geobe/sparql-fix-accessurl.qry
 geobe/sparql-fix-format.qry
 geobe/sparql-fix-frequency.qry
 geobe/sparql-fix-datatype.qry
+geobe/data-theme.ttl
+sparql-map-keyword-theme.qry
 sparql-theme-subject.qry
 sparql-access-public.qry
+geobe/sparql-license-rights.qry
+geobe/sparql-license-links.qry
+data-license.ttl
+sparql-map-license.qry
 clear-skos.qry
 geobe/data-org.ttl
 sparql-map-org.qry

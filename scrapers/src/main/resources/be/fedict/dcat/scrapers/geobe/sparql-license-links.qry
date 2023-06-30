@@ -1,0 +1,14 @@
+# Extract link to license from rights
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?lic dcterms:title ?uri }
+INSERT 
+	{	?s dcterms:license ?uri }
+WHERE 
+	{	?s dcterms:rights ?lic .
+		?lic dcterms:title ?title
+		BIND(STR(?title) as ?uri)
+		FILTER (STRSTARTS(?title, "https"))
+	}
