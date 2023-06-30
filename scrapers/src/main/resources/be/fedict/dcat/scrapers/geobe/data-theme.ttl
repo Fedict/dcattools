@@ -16,12 +16,7 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
-	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
-		"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
-		"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
-		"Economische groei", "tewerkstelling", "Duurzame ontkwikkeling",	
-		"DÃ©veloppement Ã©conomique",
-		"Marchés publics", "Employment", "Development durable", "Restauration" .
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/economy> .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
@@ -29,6 +24,9 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/imageryBaseMapsEarthCover>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/climatologyMeteorologyAtmosphere>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans> ;
 	skos:altLabel "Earthquakes"@en, "Hydrography"@en, "hydrography"@en, "Atmospheric conditions"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
@@ -37,20 +35,8 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
-	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
-			"Administration", "Gouvernement", "Citoyenneté", "CitoyennetÃ©", "Marchés publics",
-			"Erkenningen en registraties", "Agréments et enregistrements",
-			"Government and public sector", "Overheid en publieke sector",
-			"Gouvernement et secteur public", "Overheidsopdrachten", "Nutsdiensten en overheidsdiensten", 
-			"Services d'utilité publique et services publics", "Unités statistiques", "Unités administratives",
-			"Addresses", "Administrative units", "Statistical units", "Administratieve eenheden", 
-			"Unités administratives", "Utility and governmental services", "Adresses", "Adressen",
-			"Area management/restriction/regulation zones and reporting units", "Statistische eenheden",
-			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
-			"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden",
-			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
-			"Finances et budget", "Financiëen en begroting", "Subsides", "Subsidies",
-			"intelligenceMilitary", "AmÃ©nagement du territoire" .
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/location>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/planningCadastre> .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
@@ -59,7 +45,8 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
-	skos:altLabel "Cross-border"@en .
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans> ;
+	skos:altLabel "Cross-border"@en .  
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
@@ -69,7 +56,8 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
-	skos:altLabel "POPULATION"@fr, "Population Density"@en  .
+	skos:altLabel <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/climatologyMeteorologyAtmosphere>,
+		 "POPULATION"@fr, "Population Density"@en  .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
