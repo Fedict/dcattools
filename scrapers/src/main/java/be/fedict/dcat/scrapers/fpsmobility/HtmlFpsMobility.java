@@ -55,11 +55,12 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.XSD;
 import org.eclipse.rdf4j.repository.RepositoryException;
+import org.jsoup.nodes.Document;
 
 /**
  * Scraper FPS Mobility
  *
- * @see https://mobilit.belgium.be/nl/publicaties/open_data
+ * @see https://mobilit.belgium.be/nl/documenten/open-data
  * @author Bart Hanssens
  */
 public class HtmlFpsMobility extends Html {
@@ -67,6 +68,7 @@ public class HtmlFpsMobility extends Html {
 	public final static String LANG_LINK = "language-link";
 	public final static String DOWNLOAD_LINK = "div.node__download a";
 	public final static Pattern P_TYPE = Pattern.compile("(\\D+); length=(\\d+)");
+	public final static String DATE_LINK = "div.node__date time";
 
 	@Override
 	protected List<URL> scrapeDatasetList() throws IOException {
@@ -148,12 +150,17 @@ public class HtmlFpsMobility extends Html {
 	private void getDownload(Storage store, IRI dist, URL download) throws MalformedURLException, RepositoryException {
 		try {
 			String str = makeRequest(download);
-			
-			Element el = Jsoup.parse(str).selectFirst(HtmlFpsMobility.DOWNLOAD_LINK);
+			Document doc = Jsoup.parse(str);
+			Element el = doc.selectFirst(DOWNLOAD_LINK);
 			if (el != null) {
 				String href = el.attr(Attribute.HREF.toString());
 				store.add(dist, DCAT.DOWNLOAD_URL, makeAbsURL(href));
 				
+				Element stamp = doc.selectFirst(DATE_LINK);
+				if (stamp != null) {
+					store.add(dist, DCTERMS.ISSUED, el.attr("datetime"));
+				}
+
 				String type = el.attr(Attribute.TYPE.toString());
 				Matcher m = P_TYPE.matcher(type);
 				if (m.matches() && m.groupCount() == 2) {
@@ -183,6 +190,7 @@ public class HtmlFpsMobility extends Html {
 	private void generateDist(Storage store, IRI dataset, URL access, Elements link, int i, String lang)
 			throws MalformedURLException, RepositoryException {
 		String href = link.first().attr(Attribute.HREF.toString());
+
 		URL download = makeAbsURL(href);
 
 		URL u = makeDistURL(i + "/" + lang);
@@ -194,7 +202,7 @@ public class HtmlFpsMobility extends Html {
 		store.add(dist, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
-		
+
 		getDownload(store, dist, download);
 	}
 
@@ -250,8 +258,11 @@ public class HtmlFpsMobility extends Html {
 
 			int i = 0;
 			for (Element row : rows) {
-				generateDataset(store, front, row, i, lang);
-				i++;
+				// ignore empty lines
+				if (row.text().length() > 10) {
+					generateDataset(store, front, row, i, lang);
+					i++;
+				}
 			}
 		}
 	}
