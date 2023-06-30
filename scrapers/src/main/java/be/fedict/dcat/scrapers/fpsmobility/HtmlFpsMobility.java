@@ -158,7 +158,7 @@ public class HtmlFpsMobility extends Html {
 				
 				Element stamp = doc.selectFirst(DATE_LINK);
 				if (stamp != null) {
-					store.add(dist, DCTERMS.ISSUED, el.attr("datetime"));
+					store.add(dist, DCTERMS.ISSUED, stamp.attr("datetime"), XSD.DATETIME);
 				}
 
 				String type = el.attr(Attribute.TYPE.toString());
