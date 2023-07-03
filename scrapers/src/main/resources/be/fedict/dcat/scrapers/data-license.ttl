@@ -42,6 +42,7 @@
 		"http://creativecommons.org/licenses/by/4.0/legalcode",
 		"https://creativecommons.org/licenses/by/4.0/legalcode",
 		<http://creativecommons.org/licenses/by/4.0/legalcode>,
+		<http://www.opendefinition.org/licenses/cc-by/>,
 		"CC BY 4.0",
 		"Creative Commons Attribution 4.0 International License",
 		"This work is licensed under a         Creative Commons Attribution (CC-BY) 4.0 License         .",

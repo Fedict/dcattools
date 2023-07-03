@@ -291,8 +291,22 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/389> ;
-	skos:prefLabel "Stad Andenne"@nl, "Ville d'Andenne"@fr, "City of Andenne"@en ;
+	skos:prefLabel "Andenne"@fr ;
 	skos:altLabel "Ville d'Andenne", "Ville+d%27Andenne" .	
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207312952>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "Braine-l'Alleud"@fr, "Eigenbrakel"@nl ;
+	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206642563>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "Nivelles"@fr, "Nijvel"@nl ;
+	skos:altLabel "Ville+de+Nivelles", "Ville de Nivelles" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0546740696>
 	a foaf:Organization ;
