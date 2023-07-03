@@ -5,7 +5,7 @@
 <http://data.gov.be/en/taxonomy/term/433>
 	skos:prefLabel "AIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/x-aiff> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/433> ;
 	skos:altLabel "AIFF", "audio/x-aiff" .
 
 <http://publications.europa.eu/resource/authority/file-type/CSV> 
@@ -142,7 +142,7 @@
 <http://data.gov.be/en/taxonomy/term/447>
 	skos:prefLabel "M4A" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mp4> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/447> ;
 	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
 
 <http://publications.europa.eu/resource/authority/file-type/MOV>

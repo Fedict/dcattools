@@ -8,11 +8,13 @@ sparql-map-media.qry
 clear-skos.qry
 sparql-date-type.qry
 data-license.ttl
+sodha/sparql-fix-identifier.qry
 sodha/sparql-fix-license.qry
-sodha/sparql-license-dist.qry
 sodha/sparql-license-contains.qry
-sodha/sparql-license-document.qry
+sodha/sparql-license-dist.qry
+#sodha/sparql-license-document.qry
 sparql-map-license.qry
+sparql-access-public.qry
 sodha/sparql-default-theme.qry
 sodha/sparql-default-language.qry
 sparql-tag-language.qry
