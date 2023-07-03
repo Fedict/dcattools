@@ -1,10 +1,13 @@
 # Set access rights to public
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
-	{	?dist dcterms:accessRights ?r }
+	{	?s dcterms:accessRights ?r }
 INSERT 
-	{ 	?dist dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> }
+	{ 	?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> }
 WHERE
-	{	?dist dcterms:accessRights ?r }
+	{	?s a ?cl
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		OPTIONAL { ?s dcterms:accessRights ?r } }

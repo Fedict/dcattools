@@ -25,6 +25,7 @@
 	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/imageryBaseMapsEarthCover>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/climatologyMeteorologyAtmosphere>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/environment>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/elevation>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/biota> ;
 	skos:altLabel "floods"@en, "Earthquakes"@en, "Hydrography"@en, "hydrography"@en, "Atmospheric conditions"@en .
