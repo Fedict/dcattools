@@ -299,7 +299,8 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
 	skos:prefLabel "Braine-l'Alleud"@fr, "Eigenbrakel"@nl ;
-	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud" .
+	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud",
+		"Commune de Braine-l'Alleud" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206642563>
 	a foaf:Organization ;
