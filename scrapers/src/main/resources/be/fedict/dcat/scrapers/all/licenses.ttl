@@ -17,7 +17,12 @@
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
 	dcterms:title "UrbIS Open Data License" .
-	
+
+<https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf>
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	dcterms:title "Statbel Open Data License" .
+
 <http://opendata.antwerpen.be/gratis-open-data-licentie> 
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
