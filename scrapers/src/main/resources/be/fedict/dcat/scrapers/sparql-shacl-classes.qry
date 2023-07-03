@@ -3,12 +3,15 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms:	<http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 INSERT 
 	{ ?o a ?class }
 WHERE 
-	{ ?s ?rel ?o
+	{
+		?s ?rel ?o .
+		FILTER NOT EXISTS { ?o a ?class }
 		VALUES (?rel ?class) { 
 			( dcterms:license dcterms:LicenseDocument )
 			( dcterms:publisher foaf:Agent )
@@ -21,10 +24,12 @@ WHERE
 			( dcterms:format dcterms:MediaTypeOrExtent )
 			( dcat:landingPage foaf:Document )
 			( foaf:page foaf:Document )
+			( foaf:homepage foaf:Document )
 			( dcat:servesDataset dcat:Dataset )
 			( dcterms:conformsTo dcterms:Standard )
 			( dcterms:temporal dcterms:PeriodOfTime )
 			( dcat:contactPoint vcard:Kind )
+			( dcat:themeTaxonomy skos:ConceptScheme )
 		}
 	}
 

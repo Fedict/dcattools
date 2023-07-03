@@ -16,8 +16,10 @@ geobe/sparql-license-links.qry
 data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
+sparql-delete-label-language.qry
 geobe/data-org.ttl
 sparql-map-org.qry
+geobe/sparql-default-publisher.qry
 data-media.ttl
 sparql-map-media.qry
 data-frequency.ttl

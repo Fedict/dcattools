@@ -25,8 +25,9 @@
 	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/imageryBaseMapsEarthCover>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/climatologyMeteorologyAtmosphere>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/elevation>,
 		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/biota> ;
-	skos:altLabel "Earthquakes"@en, "Hydrography"@en, "hydrography"@en, "Atmospheric conditions"@en .
+	skos:altLabel "floods"@en, "Earthquakes"@en, "Hydrography"@en, "hydrography"@en, "Atmospheric conditions"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
@@ -55,8 +56,8 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
-	skos:altLabel <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/climatologyMeteorologyAtmosphere>,
-		 "POPULATION"@fr, "Population Density"@en  .
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/society> ;
+	skos:altLabel  "POPULATION"@fr, "Population Density"@en  .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
@@ -70,5 +71,7 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
-	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/utilitiesCommunication> ;
+	skos:closeMatch 
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation>, 
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/utilitiesCommunication> ;
 	skos:altLabel "Atmospheric conditions"@en .
