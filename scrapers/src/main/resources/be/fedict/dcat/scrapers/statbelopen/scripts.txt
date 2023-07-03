@@ -1,6 +1,7 @@
 # extra queries to be executed and data to be loaded
 data-media.ttl
 clear-skos.qry
+sparql-geo-belgium.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
