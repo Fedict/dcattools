@@ -11,6 +11,7 @@ sparql-access-public.qry
 infrabel/data-publ-contact.ttl
 infrabel/sparql-publ-contact.qry
 clear-skos.qry
+sparql-remove-roles.qry
 infrabel/data-theme.ttl
 infrabel/sparql-map-theme.qry
 clear-skos.qry
