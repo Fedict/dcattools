@@ -1,0 +1,11 @@
+# Add biodiversity keyword
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?s dcat:keyword "pensions"@en, "pensioenen"@nl, "pensions"@fr }
+WHERE
+	{ 	?s a dcat:Dataset .
+		FILTER NOT EXISTS { ?s dcat:keyword ?o }
+	}
+
