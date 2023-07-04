@@ -309,6 +309,20 @@
 	skos:prefLabel "Nivelles"@fr, "Nijvel"@nl ;
 	skos:altLabel "Ville+de+Nivelles", "Ville de Nivelles" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207300678>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "Chimay"@fr ;
+	skos:altLabel "Ville de Chimay" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207376991>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "Hannut"@fr ;
+	skos:altLabel "Ville de Hannut" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0546740696>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
@@ -322,3 +336,10 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/418> ;
 	skos:prefLabel "Luxemburg"@nl, "Luxembourg"@fr, "Luxemburg"@en ;
 	skos:altLabel "Province de Luxembourg".
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:prefLabel "bPost"@nl, "bPost"@fr, "bPost"@en ;
+	skos:altLabel "bpost" .

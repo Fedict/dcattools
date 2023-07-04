@@ -14,6 +14,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "vie-economique"@fr, "economie"@fr, "commerces"@fr, "tourisme"@fr, "Dette"@fr, "Dépense"@fr ,
+		"Développement Economique"@fr,
 		"https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration",
 		"https://www.odwb.be/explore/?refine.theme=%C3%89conomie%2C+Business%2C+PME%2C+D%C3%A9veloppement+%C3%A9conomique%2C+Emploi" .
 
@@ -50,7 +51,7 @@
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "Population"@fr, "enfant"@fr ,
+	skos:altLabel "Population"@fr, "enfant"@fr , "Naissance"@fr , "Indvidu"@fr, "Ménage"@fr ,
 		"https://www.odwb.be/explore/?refine.theme=Services%2C+Social" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
