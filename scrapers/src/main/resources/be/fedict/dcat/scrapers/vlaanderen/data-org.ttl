@@ -40,8 +40,10 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", 
 		"Vlaamse Milieumaatschappij", 
+		"Vlaamse Overheid - Vlaamse Milieumaatschappij"@nl,
 		"Vlaamse Milieumaatschappij - afdeling Ecologisch Toezicht", 
 		"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer", 
+		"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer"@nl,
 		"Flanders Environment Agency", "VMM", "Flanders Environment Agency (VMM)",
 		"Vlaamse overheid - Vlaamse MilieuMaatschappij"@nl,
 		"Vlaamse Milieumaatschappij"@nl ,
@@ -112,7 +114,8 @@
 	skos:prefLabel "Agentschap Onroerend Erfgoed"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/116> ;
 	skos:altLabel "Vlaamse Overheid - Agentschap Onroerend Erfgoed", "Agentschap Onroerend Erfgoed",
-		"Onroerend Erfgoed", "Onroerend Erfgoed"@nl, "Agentschap Onroerend Erfgoed"@nl .
+		"Onroerend Erfgoed", "Onroerend Erfgoed"@nl, "Agentschap Onroerend Erfgoed"@nl,
+		""Onroerend Erfgoed"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199323857>
 	a foaf:Organization ;
@@ -171,7 +174,8 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000088> ;
 	skos:prefLabel "INBO"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194> ;
-	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Research Institute for Nature and Forest (INBO)" .
+	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Instituut voor Natuur- en Bosonderzoek"@nl, 
+		"Research Institute for Nature and Forest (INBO)" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0434364713>
 	a foaf:Organization ;
@@ -185,15 +189,15 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/213> ;
-	skos:altLabel "agentschap Digitaal Vlaanderen"@nl .
+	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0549874291>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "V-ICT-OR"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/214> ;
-	skos:altLabel "V-ICT-OR",  .
-	
+	skos:altLabel "V-ICT-OR"  .
+
 <http://data.gov.be/en/taxonomy/term/215>
 	skos:prefLabel "VRM"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0893159865> ;
@@ -229,6 +233,7 @@
 		"Vlaamse overheid, Departement Omgeving, Vlaams Planbureau voor Omgeving (VPO)"@nl,
 		"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving"@nl,
 		"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen"@nl,
+		"Ondersteunend Centrum Databank Ondergrond Vlaanderen"@en,
 		"Vlaams Planbureau voor Omgeving"@nl, "Vlaamse Overheid - Departement Omgeving"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336131>
@@ -244,6 +249,13 @@
 	skos:prefLabel "Agentschap MDK"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199336725> ;
 	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207725795>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr, "Province East Flanders"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/>  ;
+	skos:altLabel "Provincie Oost-Vlaanderen"@nl .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;
