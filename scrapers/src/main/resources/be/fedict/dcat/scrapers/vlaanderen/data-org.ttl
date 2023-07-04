@@ -122,7 +122,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement WSE"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/118> ;
-	skos:altLabel "DWSE" .
+	skos:altLabel "DWSE", "DWSE"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2256181002>
 	skos:prefLabel "Geopunt"@nl ;
@@ -346,8 +346,9 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000089> ;
 	skos:prefLabel "Agentschap voor Natuur en Bos"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/383> ;
-	skos:altLabel "Agentschap voor Natuur en Bos",
-		"Agentschap voor Natuur en Bos"@en, "Agentschap voor Natuur en Bos"@nl .
+	skos:altLabel "Agentschap voor Natuur en Bos", "Agency for Nature and Forests (Flemish Government)",
+		"Agentschap voor Natuur en Bos"@en, "Agentschap voor Natuur en Bos"@nl,
+		"Agentschap voor Natuur en Bos via MercatorNet Samenwerkingsverband beleidsdomein Omgeving"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322075>
 	a foaf:Organization ;
