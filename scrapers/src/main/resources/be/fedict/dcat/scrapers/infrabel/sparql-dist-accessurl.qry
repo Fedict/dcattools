@@ -15,5 +15,9 @@ WHERE {
 	?dataset dcterms:identifier ?id .
 	?dataset dcat:distribution ?dist .
 	?dist dcat:accessURL ?data  .
-	BIND(IRI(CONCAT("https://opendata.infrabel.be/explore/dataset/", ?id, "/information/")) as ?url) 
+	BIND(IRI
+			(CONCAT("https://opendata.infrabel.be/explore/dataset/",
+				REPLACE(?id, "@infrabel", ""), 
+			"/information/")) 
+	as ?url) 
 }
