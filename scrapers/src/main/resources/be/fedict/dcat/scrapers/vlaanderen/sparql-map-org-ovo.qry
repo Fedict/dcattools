@@ -1,4 +1,4 @@
-# Map publisher to semi-official Crossroad Bank Enterprises URI
+# Map publisher from Flanders URI to Crossroad Bank Enterprises URI
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
