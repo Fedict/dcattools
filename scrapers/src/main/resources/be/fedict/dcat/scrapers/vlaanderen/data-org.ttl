@@ -71,6 +71,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002961> ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", "Dienst Mobilteit", "Dienst mobiliteit",
@@ -168,6 +169,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000088> ;
 	skos:prefLabel "INBO"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194> ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Research Institute for Nature and Forest (INBO)" .
@@ -275,20 +277,20 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2251007239>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000039> ;
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/375> ;
 	skos:altLabel "Agentschap Innoveren & Ondernemen"@nl, "VLAIO",
-		"Agentschap Innoveren en Ondernemen"@nl,
-		<https://data.vlaanderen.be/id/organisatie/OVO000039> .
+		"Agentschap Innoveren en Ondernemen"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236506685>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000094> ;
 	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/376> ;
 	skos:altLabel "Vlaamse Landmaatschappij - afdeling Projectrealisatie", "Vlaamse Landmaatschappij",
-		"Vlaamse Landmaatschappij"@nl,
-		<https://data.vlaanderen.be/id/organisatie/OVO000094> .
+		"Vlaamse Landmaatschappij"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/377>
 	skos:prefLabel "OVAM"@nl ;
@@ -303,16 +305,19 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335537>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000089> ;
 	skos:prefLabel "Agentschap voor Natuur en Bos"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/383> ;
 	skos:altLabel "Agentschap voor Natuur en Bos",
 		"Agentschap voor Natuur en Bos"@en,
-		"Agentschap voor Natuur en Bos"@nl,
-		<https://data.vlaanderen.be/id/organisatie/OVO000089> .
+		"Agentschap voor Natuur en Bos"@nl .
 
-<http://data.gov.be/en/taxonomy/term/384>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199322075>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199322075> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000059> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/384> ;
 	skos:altLabel "Agentschap Zorg en Gezondheid" .
 	
 <http://data.gov.be/en/taxonomy/term/385>

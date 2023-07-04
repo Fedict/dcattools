@@ -7,6 +7,7 @@ vlaanderen/sparql-remove-spatial.qry
 vlaanderen/sparql-default-contact.qry
 vlaanderen/data-org.ttl
 sparql-map-org.qry
+vlaanderen/sparql-map-org-ovo.qry
 clear-skos.qry
 vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-consolidate-address2.qry
@@ -40,7 +41,7 @@ vlaanderen/sparql-default-geo.qry
 vlaanderen/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-map-theme.qry
-vlaanderen/sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 #vlaanderen/sparql-fix-frequency.qry

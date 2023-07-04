@@ -14,7 +14,7 @@
 		"bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl,
 		"http://vocab.belgif.be/auth/datatheme/AGRI" .
 
-<http://publications.europa.eu/resource/authority/data-theme/EDUC-SPORT>
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Sport> ,
 		<http://ns.thedatatank.com/dcat/themes#Media> ,
@@ -118,6 +118,12 @@
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER>,
+		<https://opendata.fluvius.be/id/theme/Netgebruikers%20en%20hun%20verbruik>,
+		<https://opendata.fluvius.be/id/theme/Fluvius%20als%20leverancier>,
+		<https://opendata.fluvius.be/id/theme/Energietransitie%3A%20adoptie%20van%20nieuwe%20technologie%C3%ABn>,
+		<https://opendata.fluvius.be/id/theme/Financieel%20Beheer>,
+		<https://opendata.fluvius.be/id/theme/Marktwerking>, 
+		<https://opendata.fluvius.be/id/theme/Services%20die%20Fluvius%20levert%20in%20opdracht%20van%20zijn%20DNB%27s>,
 		<http://inspire.ec.europa.eu/theme/er> ;
 	skos:prefLabel "ENERGY"@en ;
 	skos:altLabel "energie energieopwekking"@nl, "Energie"@nl, "energie"@nl, 
