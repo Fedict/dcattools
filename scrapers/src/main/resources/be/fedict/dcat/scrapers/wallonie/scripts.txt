@@ -15,7 +15,7 @@ sparql-map-org.qry
 clear-skos.qry
 wallonie/sparql-fix-theme.qry
 wallonie/data-theme.ttl
-sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 clear-skos.qry
 wallonie/data-contact.ttl
 wallonie/sparql-default-contact.qry

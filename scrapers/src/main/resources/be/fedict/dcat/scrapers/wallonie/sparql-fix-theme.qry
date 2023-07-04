@@ -2,5 +2,9 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
-DELETE { ?s dcat:theme <https://www.odwb.be/explore/?refine.theme=Statistiques> }
-WHERE { ?s dcat:theme <https://www.odwb.be/explore/?refine.theme=Statistiques> }
+DELETE { ?s dcat:theme ?theme }
+WHERE { ?s dcat:theme ?theme
+		VALUES ?theme 
+			{ <https://www.odwb.be/explore/?refine.theme=Statistiques>
+				<https://www.odwb.be/explore/?refine.theme=Actualit%C3%A9s> }
+		}

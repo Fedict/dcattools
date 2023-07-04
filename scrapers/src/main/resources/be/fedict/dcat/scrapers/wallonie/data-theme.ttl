@@ -4,71 +4,72 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Loisirs>,
+		<https://www.odwb.be/explore/?refine.theme=Culture%2C+Patrimoine>,
+		<https://www.odwb.be/explore/?refine.theme=Sport%2C+Loisirs> ;
 	skos:prefLabel "CULTURE AND SPORT"@en ;
-	skos:altLabel "loisirs"@fr, "culture"@fr, "sport"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Loisirs",
-		"https://www.odwb.be/explore/?refine.theme=Culture%2C+Patrimoine",
-		"https://www.odwb.be/explore/?refine.theme=Sport%2C+Loisirs" .
+	skos:altLabel "loisirs"@fr, "culture"@fr, "sport"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration>,
+		<https://www.odwb.be/explore/?refine.theme=%C3%89conomie%2C+Business%2C+PME%2C+D%C3%A9veloppement+%C3%A9conomique%2C+Emploi> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "vie-economique"@fr, "economie"@fr, "commerces"@fr, "tourisme"@fr, "Dette"@fr, "Dépense"@fr ,
-		"Développement Economique"@fr,
-		"https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration",
-		"https://www.odwb.be/explore/?refine.theme=%C3%89conomie%2C+Business%2C+PME%2C+D%C3%A9veloppement+%C3%A9conomique%2C+Emploi" .
+		"Développement Economique"@fr, "Entreprises"@fr, "Ressources humaines"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=%C3%89ducation%2C+Formation%2C+Recherche%2C+Enseignement> ;
 	skos:prefLabel "EDUCATION"@en ;
-	skos:altLabel "école"@fr, "éducation"@fr, "Education"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=%C3%89ducation%2C+Formation%2C+Recherche%2C+Enseignement" .
+	skos:altLabel "école"@fr, "éducation"@fr, "Education"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/35> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Energie> ;
 	skos:prefLabel "ENERGY"@en ;
-	skos:altLabel "Energie"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Energie" .
+	skos:altLabel "Energie"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Environnement> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
-	skos:altLabel "déchet"@fr, "Environnement"@fr, "arbre"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Environnement" .
+	skos:altLabel "déchet"@fr, "Environnement"@fr, "arbre"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
-	skos:altLabel "vie-politique"@fr, "ma-commune"@fr, "commune"@fr, "Dette"@fr, "Dépense"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Administration%2C+Gouvernement%2C+Finances+publiques%2C+Citoyennet%C3%A9" .
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Administration%2C+Gouvernement%2C+Finances+publiques%2C+Citoyennet%C3%A9> ;
+	skos:altLabel "vie-politique"@fr, "ma-commune"@fr, "commune"@fr, "Dette"@fr, "Dépense"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Sant%C3%A9> ;
 	skos:prefLabel "HEALTH"@en ;
-	skos:altLabel "santé"@fr, "Santé"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Sant%C3%A9" .
+	skos:altLabel "santé"@fr, "Santé"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Services%2C+Social> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "Population"@fr, "enfant"@fr , "Naissance"@fr , "Indvidu"@fr, "Ménage"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Services%2C+Social" .
+	skos:altLabel "Population"@fr, "enfant"@fr , "Naissance"@fr , "Indvidu"@fr, "Ménage"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Tourisme>,
+		<https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration>,
+		<https://www.odwb.be/explore/?refine.theme=Am%C3%A9nagement+du+territoire%2C+Urbanisme%2C+B%C3%A2timents%2C+%C3%89quipements%2C+Logement>;
 	skos:prefLabel "REGIONS, CITIES"@en ;
-	skos:altLabel "commune"@fr, "ma-commune"@fr, "Commune"@fr, "tourisme"@fr, "Batiment"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Tourisme",
-		"https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration",
-		"https://www.odwb.be/explore/?refine.theme=Am%C3%A9nagement+du+territoire%2C+Urbanisme%2C+B%C3%A2timents%2C+%C3%89quipements%2C+Logement"  .
+	skos:altLabel "commune"@fr, "ma-commune"@fr, "Commune"@fr, "tourisme"@fr, "Batiment"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
+	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Transports%2C+D%C3%A9placements> ;
 	skos:prefLabel "TRANSPORT"@en ;
-	skos:altLabel "cycliste"@fr, "vélo"@fr, "Mobilité"@fr, "Parking"@fr, "circulation"@fr, "mobilité"@fr ,
-		"https://www.odwb.be/explore/?refine.theme=Transports%2C+D%C3%A9placements" .
+	skos:altLabel "cycliste"@fr, "vélo"@fr, "Mobilité"@fr, "Parking"@fr, "circulation"@fr, "mobilité"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
+	skos:closeMatch <, "https://www.odwb.be/id/theme/Smart%20City> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
-	skos:altLabel "WiFi"@fr, "https://www.odwb.be/id/theme/Smart%20City" .
+	skos:altLabel "WiFi"@fr .
