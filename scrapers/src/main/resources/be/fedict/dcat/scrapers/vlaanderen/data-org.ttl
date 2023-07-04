@@ -115,7 +115,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/116> ;
 	skos:altLabel "Vlaamse Overheid - Agentschap Onroerend Erfgoed", "Agentschap Onroerend Erfgoed",
 		"Onroerend Erfgoed", "Onroerend Erfgoed"@nl, "Agentschap Onroerend Erfgoed"@nl,
-		""Onroerend Erfgoed"@en .
+		"Onroerend Erfgoed"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199323857>
 	a foaf:Organization ;
@@ -135,6 +135,13 @@
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/125>  ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207466964>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Hasselt"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/>  ;
+	skos:altLabel "Stad Hasselt" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207500123>
 	a foaf:Organization ;
