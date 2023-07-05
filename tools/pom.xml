@@ -11,6 +11,23 @@
 	<description>Misc tools for enhancing DCAT metadata</description>
     <artifactId>tools</artifactId>
     <packaging>jar</packaging>
+	<url>https://data.gov.be</url>
+	<licenses>
+		<license>
+			<name>BSD-2-Clause</name>
+			<url>https://opensource.org/licenses/BSD-2-Clause</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Bart Hanssens</name>
+			<email>opendata@bosa.fgov.be</email>
+			<organization>FPS BOSA DG DT</organization>
+			<organizationUrl>https://dt.bosa.be/</organizationUrl>
+			<timezone>Europe/Brussels</timezone>
+		</developer>
+	</developers>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
