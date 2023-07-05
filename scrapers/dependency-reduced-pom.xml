@@ -10,6 +10,23 @@
   <name>scrapers</name>
   <version>2.26.0</version>
   <description>Various scrapers for Belgian data portals</description>
+  <url>https://data.gov.be</url>
+  <developers>
+    <developer>
+      <name>Bart Hanssens</name>
+      <email>opendata@bosa.fgov.be</email>
+      <organization>FPS BOSA DG DT</organization>
+      <organizationUrl>https://dt.bosa.be/</organizationUrl>
+      <timezone>Europe/Brussels</timezone>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>BSD-2-Clause</name>
+      <url>https://opensource.org/licenses/BSD-2-Clause</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <build>
     <plugins>
       <plugin>
