@@ -31,6 +31,7 @@ import java.util.HashSet;
 import java.util.Optional;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -217,45 +218,6 @@ public class EDP {
 		}
 	}
 
-	/**
-	 * Write multiple file formats
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @param uri URI of the dataset
-	 * @param pred RDF predicate
-	 * @throws XMLStreamException
-	 */
-	private static void writeFormats(XMLStreamWriter w, RepositoryConnection con,
-		IRI uri, IRI pred, String classWrap) throws XMLStreamException {
-		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
-			if (!res.hasNext()) {
-				return;
-			}
-			Value v = res.next().getObject();
-			if (v instanceof IRI) {
-				IRI fmt = (IRI) v;
-				addSkosConcept(fmt);
-
-				w.writeStartElement(classWrap);
-				w.writeEmptyElement("dct:MediaType");
-				w.writeAttribute("rdf:about", fmt.toString());
-
-				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
-					if (lbl.hasNext()) {
-						Value val = lbl.next().getObject();
-						w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
-					} else {
-						LOG.error("No label for format {}", fmt);
-					}
-				}
-
-				w.writeEndElement();
-			} else {
-				LOG.error("Not a format IRI {}", v.stringValue());
-			}
-		}
-	}
 
 	/**
 	 * Write multiple contact points of a dcat:Dataset
@@ -404,8 +366,8 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
 		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
-		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo", "dct:Standard", false);
-		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
+		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
+		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
 //		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
@@ -427,15 +389,15 @@ public class EDP {
 		writeGeneric(w, con, uri);
 
 		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
-		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaType", true);
-		writeFormats(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeFormats(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
-		writeFormats(w, con, uri, DCAT.PACKAGE_FORMAT, "dcat:packageFormat");
+		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
+		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
+		writeReferences(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
+		writeReferences(w, con, uri, DCAT.PACKAGE_FORMAT, "dcat:packageFormat");
 
 		// write as anyURI string
-		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
+		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.ACCESS_SERVICE, "dcat:accessService");
-		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL", "foaf:Document", false);
 
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 
@@ -543,7 +505,45 @@ public class EDP {
 		}
 		LOG.info("Wrote {} services", nr);
 	}
+
+	/**
+	 * Write multiple file formats
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeConcepts(XMLStreamWriter w, RepositoryConnection con, IRI pred, String classWrap) 
+			throws XMLStreamException {
+		
+		Set<IRI> concepts;
 	
+		try (RepositoryResult<Statement> res = con.getStatements(null, pred, null)) {
+			concepts = res.stream()
+							.map(Statement::getObject)
+							.filter(IRI.class::isInstance)
+							.map(IRI.class::cast)
+							.collect(Collectors.toSet());		
+		}
+
+		if (concepts == null || concepts.isEmpty()) {
+			return;
+		}
+		for (IRI concept: concepts) {
+			w.writeStartElement(classWrap);
+			w.writeAttribute("rdf:about", concept.toString());
+			w.writeEmptyElement("rdf:type");
+			w.writeAttribute("rdf:resource", "skos:Concept");
+			writeLiterals(w, con, concept, SKOS.PREF_LABEL, "skos:prefLabel");
+			writeReferences(w, con, concept, SKOS.IN_SCHEME, "skos:inScheme");
+			w.writeEndElement();
+		}
+		LOG.info("Wrote {} {} concepts", concepts.size(), classWrap);
+		
+	}
+
 	/**
 	 * Write document (license, standard...) info
 	 *
@@ -551,22 +551,29 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @throws XMLStreamException
 	 */
-	private static void writeDocuments(XMLStreamWriter w, RepositoryConnection con, IRI obj, String classWrap) throws XMLStreamException {
-		int nr = 0;
+	private static void writeDocuments(XMLStreamWriter w, RepositoryConnection con, IRI pred, String classWrap) throws XMLStreamException {
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, obj)) {
-			while (res.hasNext()) {
-				IRI iri = (IRI) res.next().getSubject();
-				if (! iri.stringValue().contains(".well-known")) {
-					nr++;
-					w.writeStartElement(classWrap);
-					w.writeAttribute("rdf:about", iri.toString());
-					writeGenericInfo(w, con, iri);
-					w.writeEndElement();
-				}
-			}
+		Set<IRI> documents;
+	
+		try (RepositoryResult<Statement> res = con.getStatements(null, pred, null)) {
+			documents = res.stream()
+							.map(Statement::getObject)
+							.filter(IRI.class::isInstance)
+							.map(IRI.class::cast)
+							.collect(Collectors.toSet());		
 		}
-		LOG.info("Wrote {} docs", nr);
+
+		if (documents == null || documents.isEmpty()) {
+			return;
+		}
+
+		for (IRI document: documents) {
+			w.writeStartElement(classWrap);
+			w.writeAttribute("rdf:about", document.toString());
+			writeGenericInfo(w, con, document);
+			w.writeEndElement();
+		}
+		LOG.info("Wrote {} {} documents", documents.size(), classWrap);
 	}
 
 	/**
@@ -645,30 +652,6 @@ public class EDP {
 		LOG.info("Wrote {} organizations", nr);
 	}
 
-	/**
-	 * Write SKOS concepts
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @throws XMLStreamException
-	 */
-	private static void writeConcepts(XMLStreamWriter w, RepositoryConnection con)
-		throws XMLStreamException {
-		int nr = 0;
-
-		for (IRI iri: CONCEPTS) {
-			w.writeStartElement("skos:Concept");
-			String concept = iri.toString();
-			w.writeAttribute("rdf:about", concept);
-			writeReferences(w, con, iri, SKOS.IN_SCHEME, "skos:inScheme");
-			writeReferences(w, con, iri, SKOS.PREF_LABEL, "skos:prefLabel");
-			w.writeEndElement();
-			nr++;
-		}
-
-		LOG.info("Wrote {} concepts", nr);
-	}
-
 	
 	/**
 	 * Write DCAT catalog to XML.
@@ -695,13 +678,21 @@ public class EDP {
 		writeDataservices(w, con);
 		w.writeEndElement();
 
-		writeDocuments(w, con, DCTERMS.PROVENANCE_STATEMENT, "dct:ProvenanceStatement");
-		writeDocuments(w, con, DCTERMS.LICENSE_DOCUMENT, "dct:LicenseDocument");
-		writeDocuments(w, con, DCTERMS.RIGHTS_STATEMENT, "dct:RightsStatement");
-		writeDocuments(w, con, DCTERMS.STANDARD, "dct:Standard");
-		
 		writeAgents(w, con);
-		writeConcepts(w, con);
+
+		writeDocuments(w, con, DCTERMS.PROVENANCE, "dct:ProvenanceStatement");
+		writeDocuments(w, con, DCTERMS.LICENSE, "dct:LicenseDocument");
+		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
+		writeDocuments(w, con, DCTERMS.CONFORMS_TO, "dct:Standard");
+
+		writeConcepts(w, con, DCTERMS.ACCESS_RIGHTS, "dct:RightsStatement");
+		writeConcepts(w, con, DCTERMS.ACCRUAL_PERIODICITY, "dct:Frequency");
+		writeConcepts(w, con, DCTERMS.LANGUAGE, "dct:LinguisticSystem");
+		writeConcepts(w, con, DCTERMS.FORMAT, "dct:MediaTypeOrExtent");
+		writeConcepts(w, con, DCAT.MEDIA_TYPE, "dct:MediaType");
+		writeConcepts(w, con, DCAT.COMPRESS_FORMAT, "dct:MediaType");
+		writeConcepts(w, con, DCAT.THEME, "skos:Concept");
+
 		writeLocations(w, con);
 
 		w.writeEndElement();
