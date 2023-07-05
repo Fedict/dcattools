@@ -3,6 +3,10 @@ favv/data-publ-contact.ttl
 favv/sparql-publ-contact.qry
 favv/sparql-theme.qry
 sparql-geo-belgium.qry
+sparql-access-public.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

@@ -1,0 +1,12 @@
+# Set default publisher if not present
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0216755012> }
+WHERE
+	{ 	?dataset a ?cl
+		VALUES ?cl { dcat:Dataset dcat:DataService	}
+		FILTER NOT EXISTS { ?dataset dcterms:publisher ?o }
+	}

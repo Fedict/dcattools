@@ -1,0 +1,31 @@
+# Consolidate bounding boxes and move them from locn:geometry to dcat:bbox
+# Use 1 URI instead of different blank nodes / genid
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX fn: <http://data.gov.be/sparql/function/>
+
+DELETE 
+	{	?s dcterms:spatial ?genspatial .
+		?genspatial ?p ?o .
+		?genspatial locn:geometry ?bbox }
+INSERT
+	{	?s dcterms:spatial ?spatial .
+		?spatial a dcterms:Location .
+		?spatial dcat:bbox ?simple }
+WHERE
+	{ 	?s dcterms:spatial ?genspatial .
+		?genspatial ?p ?o .
+		?genspatial locn:geometry|dcat:bbox ?bbox
+		BIND (
+			STRDT(STR(?bbox), geo:wktLiteral)
+			as ?simple)
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/spatial/", SHA1(STR(?simple)))
+			)
+		AS ?spatial)
+		FILTER CONTAINS(STR(?bbox), "POLYGON((")
+	}

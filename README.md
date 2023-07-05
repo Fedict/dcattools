@@ -31,7 +31,7 @@ Internet connection is obviously required, although a proxy can be used.
 and websites, and turning the metadata into DCAT files
 * Also part of the scrapers are a series of [SPARQL scripts](README-ENHANCERS.md) to turn DCAT into DCAT-AP: 
 e.g. map site-specific themes, add missing properties and prepare the files for updating data.gov.be
-* Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (Drupal 7) website 
+* Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (currently Drupal 7) website 
 using the enhanced DCAT files
 * Some [tools](#tools): link checker, EDP converter tool
 

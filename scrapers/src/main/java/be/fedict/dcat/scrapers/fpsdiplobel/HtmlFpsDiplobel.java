@@ -162,7 +162,7 @@ public class HtmlFpsDiplobel extends Html {
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
-		store.add(dist, DCAT.MEDIA_TYPE, ftype.toLowerCase());
+		store.add(dist, DCTERMS.FORMAT, ftype.toLowerCase());
 	}
 
 	/**

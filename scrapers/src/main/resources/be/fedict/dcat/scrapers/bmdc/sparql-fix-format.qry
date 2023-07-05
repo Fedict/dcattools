@@ -1,0 +1,8 @@
+# Remove invalid format
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:format "order" }
+WHERE
+	{	?s dcterms:format "order" }

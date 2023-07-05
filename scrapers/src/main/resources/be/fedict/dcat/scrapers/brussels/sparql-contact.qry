@@ -1,4 +1,5 @@
-PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+# Add default contact if none is present
+
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT	{ ?dataset dcat:contactPoint <https://org.belgif.be/id/CbeRegisteredEntity/0240678477> }

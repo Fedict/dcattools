@@ -1,0 +1,11 @@
+# Fix incorrect use of compressFormat
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s dcat:compressFormat  ?fmt }
+INSERT
+	{ 	?s dcterms:format ?fmt }
+WHERE
+	{ 	?s dcat:compressFormat ?fmt }

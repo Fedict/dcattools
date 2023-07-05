@@ -1,0 +1,19 @@
+# Fix format issues
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s dcterms:format ?fmt }
+INSERT { ?s dcterms:format ?newfmt }  
+WHERE { 
+	{ ?s a dcat:Distribution .
+		?s dcterms:format ?fmt
+		FILTER (STRENDS(STR(?s), "shp")) 
+		BIND ("shp" as ?newfmt)
+	} UNION {
+		?s a dcat:Distribution .
+		?s dcterms:format ?fmt
+		FILTER (STRENDS(STR(?s), "geojson"))
+		BIND ("geojson" as ?newfmt)
+	}
+}

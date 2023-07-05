@@ -9,12 +9,11 @@ DELETE
 		?gencontact ?p ?o }
 INSERT
 	{	?dataset dcat:contactPoint ?contact .
-		?contact a vcard:Organization .
+		?contact a vcard:Kind .
 		?contact vcard:fn ?name .
 		?contact vcard:hasEmail ?email }
 WHERE
 	{ 	?dataset dcat:contactPoint ?gencontact .
-		?gencontact a vcard:Organization .
 		?gencontact vcard:fn ?name .
 		?gencontact vcard:hasEmail ?email .
 		BIND(IRI(

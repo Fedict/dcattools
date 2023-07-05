@@ -1,4 +1,4 @@
-# Clear all SKOS data related data (typically after a external dataset was loaded to do mappings)
+# Clear some SKOS data related data (typically after a external dataset was loaded to do mappings)
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -8,11 +8,9 @@ WHERE {
 	{
 		?s ?p ?o 
 		VALUES ?p {
-			skos:prefLabel
 			skos:altLabel
 			skos:exactMatch
 			skos:closeMatch
-			skos:inScheme
 			skos:topConceptOf
 		}
 	}
@@ -20,10 +18,5 @@ WHERE {
 	{
 		?s ?p ?o .
 		?s a skos:ConceptScheme
-	}	
-	UNION
-	{
-		?s ?p ?o .
-		?s a skos:Concept
 	}
 }

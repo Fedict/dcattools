@@ -2,22 +2,22 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/34>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:altLabel "open-data-milieu-natuur"@nl .
 
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:altLabel "open-data-werk-economie"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/41>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:altLabel "open-data-grondgebied"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:altLabel "open-data-bevolking"@nl .
 
-<http://data.gov.be/en/taxonomy/term/36>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+<http://publications.europa.eu/resource/authority/data-theme/TRAN> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:altLabel "open-data-mobiliteit"@nl .

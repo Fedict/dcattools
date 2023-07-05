@@ -6,9 +6,10 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dataset dcterms:spatial <https://sws.geonames.org/3337388/> .
+		<https://sws.geonames.org/3337388/> a dcterms:Location .
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/46> }
 WHERE
-	{	?dataset a ?res 
+	{	?dataset a ?cl 
 		VALUES ?cl { dcat:Dataset dcat:DataService }
 		FILTER NOT EXISTS { ?dataset dgov:spatial ?o } 
 	}

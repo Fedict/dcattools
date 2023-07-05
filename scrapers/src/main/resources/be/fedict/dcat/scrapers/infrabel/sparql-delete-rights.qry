@@ -1,0 +1,6 @@
+# Remove rights (since they are just a copy of license)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s dcterms:rights ?lic }
+WHERE { ?s dcterms:rights ?lic }

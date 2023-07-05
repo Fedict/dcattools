@@ -1,13 +1,18 @@
 # extra queries to be executed and data to be loaded
 fluvius/sparql-default-language.qry
+sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 fluvius/sparql-language.qry
-fluvius/sparql-dist-accessurl.qry
-data-license.ttl
-sparql-map-license.qry
+#fluvius/sparql-dist-accessurl.qry
+fluvius/sparql-fix-license.qry
+fluvius/sparql-license.qry
+sparql-access-public.qry
+sparql-theme-subject.qry
 fluvius/sparql-theme.qry
 clear-skos.qry
+data-frequency.ttl
+sparql-map-frequency.qry
 fluvius/data-publ-contact.ttl
 fluvius/sparql-publ-contact.qry
 sparql-geo-vlaanderen.qry
@@ -16,5 +21,7 @@ data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 sparql-title-to-desc.qry
-#sparql-clear-bnodes.txt
 sparql-strip-html.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

@@ -2,6 +2,7 @@
 brugge/data-publ-contact.ttl
 brugge/sparql-publ-contact.qry
 brugge/sparql-license.qry
+sparql-access-public.qry
 brugge/data-theme.ttl
 sparql-map-keyword-theme.qry
 brugge/sparql-geo.qry
@@ -10,3 +11,6 @@ sparql-map-media.qry
 brugge/sparql-desc-single.qry
 brugge/sparql-compression-format.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

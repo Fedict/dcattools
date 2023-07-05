@@ -2,47 +2,48 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/32>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:altLabel "farming", "Agriculture, pêche, sylviculture et alimentation",
 		"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
 		"Bien-être animal", "Bodem" .
 
-<http://data.gov.be/en/taxonomy/term/59>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>;
 	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
 		"Education, culture and sport", "Éducation, culture et sport", 
 		"Onderwijs, cultuur en sport" .
-	
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
 		"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
 		"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
 		"Economische groei", "tewerkstelling", "Duurzame ontkwikkeling",	
+		"DÃ©veloppement Ã©conomique",
 		"Marchés publics", "Employment", "Development durable", "Restauration" .
 
-<http://data.gov.be/en/taxonomy/term/33>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:altLabel "Education", "Recherche", "Formation", "Enseignement" .
 
-<http://data.gov.be/en/taxonomy/term/34>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
 	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
-		"Environnement", "Propreté", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
+		"Environnement", "Propreté", "PropretÃ©", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
 		"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
 		"Bruit", "Geluid", "Air", "Lucht", "Cleanliness", "eau", "Habitats and biotopes",
 		"Land cover", "Land use", "Land usage", "Usage des sols", "Bodemgebruik", "Sols", "Hydrografie",
-		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres"  .
-	
-<http://data.gov.be/en/taxonomy/term/35>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
+		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres", "Landgebruik"  .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
 	skos:altLabel "Energie", "Energy", "Énergie" .
 
-<http://data.gov.be/en/taxonomy/term/41>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
-			"Administration", "Gouvernement", "Citoyenneté", "Marchés publics",
+			"Administration", "Gouvernement", "Citoyenneté", "CitoyennetÃ©", "Marchés publics",
 			"Erkenningen en registraties", "Agréments et enregistrements",
 			"Government and public sector", "Overheid en publieke sector",
 			"Gouvernement et secteur public", "Overheidsopdrachten", "Nutsdiensten en overheidsdiensten", 
@@ -54,42 +55,41 @@
 			"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden",
 			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
 			"Finances et budget", "Financiëen en begroting", "Subsides", "Subsidies",
-		"intelligenceMilitary" .
+			"intelligenceMilitary", "AmÃ©nagement du territoire" .
 
-<http://data.gov.be/en/taxonomy/term/40>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
-	skos:altLabel "Santé", "Gezondheid", "Health", "Human health and safety", 
+<http://publications.europa.eu/resource/authority/data-theme/HEAL> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
+	skos:altLabel "Santé", "Gezondheid", "Health", "Human health and safety", "SantÃ©",
 				"Santé et sécurité des personnes", "Menselijke gezondheid en veiligheid" .
 
-<http://data.gov.be/en/taxonomy/term/44>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
-	skos:prefLabel "INTERNATIONAL ISSUES"@en .
-	
-<http://data.gov.be/en/taxonomy/term/43>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
 	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", "Sécurité",
 				"Justice, système juridique et sécurité publique", "Crime", "Police", "Justice",
-				"Justitie, rechtsstelsel en openbare veiligheid" .
-	
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+				"Justitie, rechtsstelsel en openbare veiligheid", "SÃ©curitÃ©" .
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
+				"BÃ¢timents", "HÃ©bergement",
 				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
 				"Bevolking en samenleving", "Population et société", "Population and society",
 				"Emploi", "tewerkstelling", "Buildings", "Employment", "Hébergement", "chien" .
 
-<http://data.gov.be/en/taxonomy/term/42>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
-			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration" .
+			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration",
+			"HÃ©bergement", "Hébergement" .
 
-<http://data.gov.be/en/taxonomy/term/36>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:altLabel "transportation", "Verplaatsingen", "Vervoer", "Transport", "Transports", "Mobilité",
+			"MobilitÃ©",
 			"Transport networks", "Réseaux de transport", "Vervoersnetwerken".
 
-<http://data.gov.be/en/taxonomy/term/37>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
 			"Internet", "TIC", "Installations industrielles", "Industriële installaties",
 			"Systemen voor verwijzing door middel van coördinaten", "Coordinate reference systems",

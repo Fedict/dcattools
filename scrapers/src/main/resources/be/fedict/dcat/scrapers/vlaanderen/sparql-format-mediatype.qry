@@ -11,8 +11,8 @@ INSERT
 WHERE
 	{
 		?dist dcat:mediaType ?mt .
-		?drupal skos:closeMatch ?mt .
-		?drupal skos:exactMatch ?fmt .
+		?fmt skos:closeMatch ?mt .
+		?fmt skos:exactMatch ?drupal .
 		FILTER NOT EXISTS { ?dist dcterms:format ?f }
 	}
 	

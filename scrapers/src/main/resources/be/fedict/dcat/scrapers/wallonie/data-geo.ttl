@@ -10,7 +10,8 @@
 <http://data.gov.be/en/taxonomy/term/47>
 	skos:exactMatch <https://sws.geonames.org/3337387/> ;
 	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
-	skos:altLabel "Wallonie", " Service public de Wallonie (SPW) ", "Service public de Wallonie (SPW) ", "Fédération Wallonie-Bruxelles", "Parlement de Wallonie" .
+	skos:altLabel "Wallonie", " Service public de Wallonie (SPW) ", 
+			"Service public de Wallonie (SPW) ", "Fédération Wallonie-Bruxelles", "Parlement de Wallonie" .
 
 <http://data.gov.be/en/taxonomy/term/48> 
 	skos:exactMatch <https://sws.geonames.org/2800867/> ;

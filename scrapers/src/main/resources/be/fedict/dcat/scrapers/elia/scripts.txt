@@ -1,13 +1,19 @@
 # extra queries to be executed and data to be loaded
 elia/sparql-default-language.qry
+sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 elia/sparql-language.qry
-elia/sparql-dist-accessurl.qry
-data-license.ttl
-sparql-map-license.qry
+#elia/sparql-dist-accessurl.qry
+elia/sparql-fix-license.qry
+elia/sparql-license.qry
+sparql-access-public.qry
+sparql-theme-subject.qry
 elia/sparql-theme.qry
 clear-skos.qry
+elia/sparql-fix-frequency.qry
+data-frequency.ttl
+sparql-map-frequency.qry
 elia/data-publ-contact.ttl
 elia/sparql-publ-contact.qry
 sparql-geo-belgium.qry
@@ -15,6 +21,7 @@ sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
-sparql-title-to-desc.qry
-#sparql-clear-bnodes.txt
 sparql-strip-html.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

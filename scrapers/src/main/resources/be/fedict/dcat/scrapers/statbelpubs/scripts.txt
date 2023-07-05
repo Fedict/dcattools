@@ -2,8 +2,9 @@
 statbelpubs/data-publ-contact.ttl
 statbelpubs/sparql-publ-contact.qry
 statbelpubs/sparql-license.qry
+sparql-access-public.qry
 statbelpubs/data-theme.ttl
-sparql-map-theme.qry
+sparql-map-keyword-theme.qry
 statbelpubs/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl
@@ -11,3 +12,6 @@ sparql-map-media.qry
 clear-skos.qry
 statbelpubs/sparql-empty-keywords.qry
 statbelpubs/sparql-clean-dataset.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

@@ -27,6 +27,8 @@ package be.fedict.dcat.scrapers.statbel;
 
 import be.fedict.dcat.scrapers.Page;
 import be.fedict.dcat.helpers.Storage;
+import be.fedict.dcat.scrapers.Cache;
+import be.fedict.dcat.scrapers.Html;
 import be.fedict.dcat.vocab.MDR_LANG;
 
 import java.io.IOException;
@@ -36,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTML.Attribute;
 import javax.swing.text.html.HTML.Tag;
 
@@ -55,7 +58,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  * @see https://statbel.fgov.be/
  * @author Bart Hanssens
  */
-public class HtmlStatbelPubs extends HtmlStatbel {
+public class HtmlStatbelPubs extends Html {
 
     public final static String LINK_THEME = "nav.block--menu--themes-doormat ul.nav h3 a";
     public final static String NAV_SUBTHEME = "nav.block--menu--themes-doormat ul.nav";
@@ -66,6 +69,58 @@ public class HtmlStatbelPubs extends HtmlStatbel {
     public final static String DIV_SUMMARY = "div.field--name-body";
     public final static String DIV_FILES = "div.field--name-field-document a";
     public final static String LI_THEMES = "ol.breadcrumb li a";
+
+	public final static String LANG_LINK = "nav.language-switcher-language-url ul li a";
+	
+	/**
+	 * Get the URL of the page in another language
+	 *
+	 * @param page
+	 * @param lang
+	 * @return URL of the page in another language
+	 * @throws IOException
+	 */
+	private URL switchLanguage(String page, String lang) throws IOException {
+		Elements hrefs = Jsoup.parse(page).select(LANG_LINK);
+
+		for (Element href : hrefs) {
+			if (href.text().trim().toLowerCase().equals(lang)) {
+				String link = href.attr(HTML.Attribute.HREF.toString());
+				if (link != null && !link.isEmpty()) {
+					return makeAbsURL(link);
+				}
+			}
+		}
+		logger.warn("No {} translation for page", lang);
+		return null;
+	}
+
+	/**
+	 * Scrape dataset
+	 *
+	 * @param u
+	 * @throws IOException
+	 */
+	@Override
+	protected void scrapeDataset(URL u) throws IOException {
+		Cache cache = getCache();
+		String deflang = getDefaultLang();
+		String html = makeRequest(u);
+
+		cache.storePage(u, deflang, new Page(u, html));
+
+		String[] langs = getAllLangs();
+		for (String lang : langs) {
+			if (!lang.equals(deflang)) {
+				URL url = switchLanguage(html, lang);
+				if (url != null) {
+					String body = makeRequest(url);
+					cache.storePage(u, lang, new Page(url, body));
+				}
+				sleep();
+			}
+		}
+	}
 
     /**
      * Scrape URLs from subthemes
@@ -96,7 +151,9 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 				logger.debug("Subsubtheme elements {} for {}", subs.size(), u);
 				for (Element sub : subs) {
 					String href = sub.attr(Attribute.HREF.toString());
-					urls.add(makeAbsURL(href));
+					if (!href.startsWith("https://indicators")) {
+						urls.add(makeAbsURL(href));
+					}
 				}
 			} else {
 				// Not the case, so only the title points to a dataset
@@ -104,7 +161,9 @@ public class HtmlStatbelPubs extends HtmlStatbel {
 				Element link = li.select(LINK_SUBTHEME).first();
 				if (link != null) {
 					String href = link.attr(Attribute.HREF.toString());
-					urls.add(makeAbsURL(href));
+					if (!href.startsWith("https://indicators")) {
+						urls.add(makeAbsURL(href));
+					}
 				} else {
 					logger.warn("No subthemes nor subsubthemes found {}", u);
 				}

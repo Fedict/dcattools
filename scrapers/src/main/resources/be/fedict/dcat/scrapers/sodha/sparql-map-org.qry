@@ -8,12 +8,14 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE 
 	{	?dataset dcterms:publisher ?label }
 INSERT 
-	{ 	?dataset dcterms:publisher ?neworg .
-		?neworg a foaf:Organization .
-		?neworg dgov:org ?drupal .
-		?neworg foaf:name ?name }
+	{ 	?dataset dcterms:publisher ?uri .
+		?uri a foaf:Organization .
+		?uri dcterms:type ?type .
+		?uri dgov:org ?drupal .
+		?uri foaf:name ?name }
 WHERE
 	{	?dataset dcterms:publisher ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?neworg .
-		?drupal skos:prefLabel ?name }
+		?uri dcterms:type ?type .
+		?uri skos:altLabel ?label .
+		?uri skos:exactMatch ?drupal .
+		?uri skos:prefLabel ?name }

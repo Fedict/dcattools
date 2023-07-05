@@ -7,10 +7,12 @@ bmdc/sparql-default-theme.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 sparql-geo-belgium.qry
+bmdc/sparql-fix-format.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-dist-accessurl.qry
 data-license.ttl
+bmdc/sparql-fix-cc-license.qry
 sparql-map-license.qry
 sparql-delete-label-license.qry
 bmdc/sparql-fix-language.qry
@@ -18,3 +20,6 @@ sparql-dist-lang.qry
 sparql-vcard-fn.qry
 bmdc/sparql-consolidate-contact.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

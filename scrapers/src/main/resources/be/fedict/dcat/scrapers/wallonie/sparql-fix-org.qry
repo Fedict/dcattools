@@ -1,0 +1,17 @@
+# Get name from URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT 
+	{ 	?uri foaf:name ?str .
+		?uri a foaf:Organization }
+WHERE
+	{	?dataset ?val ?uri .
+		VALUES ?val { dcterms:publisher dcterms:creator dcterms:contributor }
+		FILTER NOT EXISTS { ?uri foaf:name ?name }
+		BIND(
+			STRAFTER(STR(?uri), "=") 
+		as ?str)
+	}

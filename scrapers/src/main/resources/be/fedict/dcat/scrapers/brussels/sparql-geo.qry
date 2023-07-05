@@ -9,6 +9,7 @@ DELETE	{
 		?node ?p ?o }
 INSERT 
 	{ 	?dataset dcterms:spatial <https://sws.geonames.org/2800867/> .
+		<https://sws.geonames.org/2800867/> a dcterms:Location .
 		?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/48> }
 WHERE
 	{	?dataset a dcat:Dataset 

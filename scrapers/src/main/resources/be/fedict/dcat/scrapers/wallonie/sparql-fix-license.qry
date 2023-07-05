@@ -2,9 +2,17 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE {	?dist dcterms:license ?label }
+DELETE { ?dist dcterms:license ?uri .
+		?uri ?p ?o }
+INSERT { ?dist dcterms:license ?label }
 WHERE
 	{
-		?dist dcterms:license ?label .
-		FILTER ISLITERAL(?label)
+		?dist dcterms:license ?uri .
+		OPTIONAL { ?uri ?p ?o }
+		FILTER (STRSTARTS(STR(?uri), "http://data.gov.be/"))
+		BIND (
+			REPLACE(
+				STR(?uri), "http://data.gov.be/", ""
+			)
+		as ?label)
 	}

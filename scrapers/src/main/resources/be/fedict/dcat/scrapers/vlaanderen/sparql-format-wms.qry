@@ -1,0 +1,18 @@
+# Guess file format based on extension (from downloadURL or URI)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcterms:format ?fmt }
+WHERE
+	{	
+		?dist a dcat:Distribution .
+		?dist dcat:downloadURL|dcat:accessURL ?url
+		BIND (STR(?url) as ?str)
+		VALUES ?ext { "/wms" "=WFS" "WMS-" "/wfs" "=WMS" "=WCS" "=WMTS" }
+		BIND (IF(CONTAINS(?str, ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
+		FILTER NOT EXISTS { ?dist dcterms:format ?f } 
+		FILTER NOT EXISTS { ?dist dcat:mediaType ?m }
+	}
+	

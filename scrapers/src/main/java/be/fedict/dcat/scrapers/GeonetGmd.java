@@ -101,7 +101,8 @@ public abstract class GeonetGmd extends Geonet {
 	
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
 	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
-
+	public final static String XP_LICENSE3 = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation";
+	
 	public final static String XP_TYPE = "gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue";
 
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
@@ -118,6 +119,13 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_INDIVIDUAL = "gmd:individualName";
 	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 
+	public final static String XP_GEO = "gmd:extent/gmd:EX_Extent/gmd:geographicElement";
+	public final static String XP_BBOX = "gmd:EX_GeographicBoundingBox";
+	public final static String XP_BBOX_W = "gmd:westBoundLongitude/gco:Decimal";
+	public final static String XP_BBOX_E = "gmd:eastBoundLongitude/gco:Decimal";
+	public final static String XP_BBOX_S = "gmd:southBoundLatitude/gco:Decimal";
+	public final static String XP_BBOX_N = "gmd:northBoundLatitude/gco:Decimal";
+			
 	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement";
 	public final static String XP_TEMP_EXT = "gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/";
 	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
@@ -151,6 +159,23 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String INSPIRE_TYPE = "http://inspire.ec.europa.eu/metadatacodelist/ResourceType/";
 
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+	/**
+	 * Parse a bounding box and store it in the RDF store.
+	 *
+	 * @param store RDF store
+	 * @param uri RDF subject URI
+	 * @param node
+	 * @throws RepositoryException
+	 * @throws MalformedURLException
+	 */
+	protected void parseBBox(Storage store, IRI uri, Node node)
+		throws RepositoryException, MalformedURLException {
+		String w = node.valueOf(XP_BBOX_W);
+		String e = node.valueOf(XP_BBOX_E);
+		String s = node.valueOf(XP_BBOX_S);
+		String n = node.valueOf(XP_BBOX_N);
+	}
 
 	/**
 	 * Parse a temporal and store it in the RDF store.
@@ -194,7 +219,10 @@ public abstract class GeonetGmd extends Geonet {
 		if (name != null || name2 != null || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
-			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			store.add(vcard, RDF.TYPE, VCARD4.KIND);
+			if (name != null) {
+				store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			}
 
 			boolean found = false;
 			for (String lang : getAllLangs()) {
@@ -325,7 +353,7 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
-		store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + "dataset"));
+		//store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + "dataset"));
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
@@ -366,6 +394,14 @@ public abstract class GeonetGmd extends Geonet {
 			store.add(dataset, DCAT.THEME, topic.getText());
 		}
 
+		
+		// geo bounding box
+		Node geo = metadata.selectSingleNode(XP_GEO);
+		if (geo != null) {
+			parseBBox(store, dataset, geo
+			);
+		}
+	
 		// time range
 		Node range = metadata.selectSingleNode(XP_TEMPORAL);
 		if (range != null) {
@@ -398,15 +434,10 @@ public abstract class GeonetGmd extends Geonet {
 		}
 
 		// License / rights can be listed in different nodes
-		List<Node> lic = metadata.selectNodes(XP_LICENSE);
-		List<Node> lic2 = metadata.selectNodes(XP_LICENSE2);
-		if (lic.isEmpty()) {
-			lic = lic2;
-		} else {
-			if (!lic2.isEmpty()) {
-				lic.addAll(lic2);
-			}
-		}
+		List<Node> lic = new ArrayList<>();
+		lic.addAll(metadata.selectNodes(XP_LICENSE));
+		lic.addAll(metadata.selectNodes(XP_LICENSE2));
+		lic.addAll(metadata.selectNodes(XP_LICENSE3));
 
 		List<String> licenses = new ArrayList<>();
 		for (Node n : lic) {

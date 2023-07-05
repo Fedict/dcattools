@@ -1,1 +1,4 @@
 # No script to run, file is already in correct format
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

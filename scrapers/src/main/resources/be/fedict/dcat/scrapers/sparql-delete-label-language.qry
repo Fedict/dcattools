@@ -1,0 +1,10 @@
+# Remove languages that are literals (= unmapped)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?dist dcterms:language ?label }
+WHERE
+	{	?dist dcterms:language ?label .
+		FILTER (isLiteral(?label))
+	}

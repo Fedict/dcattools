@@ -1,6 +1,0 @@
-# Delete invalid data.gov.be themes
-
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-
-DELETE { ?dataset dcat:theme <http://data.gov.be/>	}
-WHERE { ?dataset dcat:theme <http://data.gov.be/> }

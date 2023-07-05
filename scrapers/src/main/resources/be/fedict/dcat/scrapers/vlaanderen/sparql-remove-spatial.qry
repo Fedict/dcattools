@@ -1,0 +1,10 @@
+# Delete spatial and bounding boxes
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:spatial ?spatial .
+		?spatial ?p ?o }
+WHERE
+	{ 	?s dcterms:spatial ?spatial .
+		?spatial ?p ?o }

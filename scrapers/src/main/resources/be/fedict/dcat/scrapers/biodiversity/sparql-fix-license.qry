@@ -1,0 +1,9 @@
+# Remove duplicate (possibly conflicting) license info
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s dcterms:rights ?r }
+WHERE
+	{ 	?s dcterms:license ?lic .
+		?s dcterms:rights ?r }

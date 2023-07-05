@@ -4,7 +4,8 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
-	{	?dist dcat:compressFormat <https://www.iana.org/assignments/media-types/application/zip> }
+	{	?dist dcat:compressFormat <https://www.iana.org/assignments/media-types/application/zip> .
+		<https://www.iana.org/assignments/media-types/application/zip> a dcterms:MediaType }
 WHERE
 	{	?dist dcterms:title ?title .
 		FILTER (CONTAINS(LCASE(?title), "(zip)"))

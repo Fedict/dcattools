@@ -64,7 +64,7 @@ public class DATAGOVBE {
 		SPATIAL = factory.createIRI(DATAGOVBE.NAMESPACE, "spatial");
 		THEME = factory.createIRI(DATAGOVBE.NAMESPACE, "theme");
 
-		LICENSE_CC0 = factory.createIRI("http://creativecommons.org/publicdomain/zero/1.0/");
-		LICENSE_CCBY = factory.createIRI("http://creativecommons.org/licenses/by/4.0/");
+		LICENSE_CC0 = factory.createIRI("http://publications.europa.eu/resource/authority/licence/CC0");
+		LICENSE_CCBY = factory.createIRI("http://publications.europa.eu/resource/authority/licence/CC_BY_4_0");
 	}
 }

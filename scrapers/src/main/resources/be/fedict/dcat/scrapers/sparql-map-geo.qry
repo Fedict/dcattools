@@ -9,5 +9,5 @@ INSERT
 WHERE
 	{	
 		?dataset dcterms:spatial ?spatial .
-		?drupal skos:exactMatch ?spatial
+		?spatial skos:exactMatch ?drupal
 	}

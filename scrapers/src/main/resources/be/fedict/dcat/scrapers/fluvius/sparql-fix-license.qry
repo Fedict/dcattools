@@ -1,0 +1,10 @@
+# Remove relative URL pointing to generic page
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?s ?rel <http://data.gov.be/Open%20data%20license%20-%20FLUVIUS>}
+WHERE	
+	{	?s ?rel <http://data.gov.be/Open%20data%20license%20-%20FLUVIUS>
+		VALUES ?rel { dcterms:rights dcterms:license }
+	}

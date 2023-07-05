@@ -1,10 +1,13 @@
-# Delete rights statements
+# Delete superfluous rights, on DCAT-AP there should only be 1 statement
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
 	{	?s dcterms:rights ?rights }
 WHERE
-	{ 	?s dcterms:rights ?rights
-		FILTER (ISLITERAL(?rights) && CONTAINS(?rights, "["))
-	}
+	{ 	?s dcterms:rights ?rights .
+		VALUES ?rights { 
+				<http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations>
+				<https://codex.vlaanderen.be/PrintDocument.ashx?id=1019561> 
+				<https://codex.vlaanderen.be/PrintDocument.ashx?id=1020931> }
+}

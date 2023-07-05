@@ -1,0 +1,13 @@
+# Move non-EU data portal themes to subject
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?dataset dcat:theme ?o }
+INSERT
+	{ 	?dataset dcterms:subject ?o }
+WHERE
+	{ 	?dataset dcat:theme ?o
+		FILTER ( !STRSTARTS(STR(?o), "http://publications.europa.eu/resource/authority/data-theme/"))
+	}

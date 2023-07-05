@@ -31,6 +31,7 @@ import java.util.HashSet;
 import java.util.Optional;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -50,6 +51,8 @@ import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.GEO;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
@@ -75,14 +78,14 @@ import org.slf4j.LoggerFactory;
  */
 public class EDP {
 
-	private final static Logger logger = LoggerFactory.getLogger(EDP.class);
+	private final static Logger LOG = LoggerFactory.getLogger(EDP.class);
 
-	private final static String BELGIF_PREFIX = "http://org.belgif.be";
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	private final static SimpleValueFactory F = SimpleValueFactory.getInstance();
 	private final static IRI ADMS_IDENTIFIER = F.createIRI("http://www.w3.org/ns/adms#identifier");
-
+	private final static IRI ADMS_SAMPLE = F.createIRI("http://www.w3.org/ns/adms#sample");
+	
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
 	/**
@@ -96,9 +99,10 @@ public class EDP {
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
+		w.writeNamespace("geo", GEO.NAMESPACE);
+		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
-		w.writeNamespace("schema", "http://schema.org/");
 		w.writeNamespace(SKOS.PREFIX, SKOS.NAMESPACE);
 		w.writeNamespace(VCARD4.PREFIX, VCARD4.NAMESPACE);
 		w.writeNamespace(XSD.PREFIX, XSD.NAMESPACE);
@@ -208,51 +212,12 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not a date IRI {}", v.stringValue());
+					LOG.error("Not a date IRI {}", v.stringValue());
 				}
 			}
 		}
 	}
 
-	/**
-	 * Write multiple file formats
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @param uri URI of the dataset
-	 * @param pred RDF predicate
-	 * @throws XMLStreamException
-	 */
-	private static void writeFormats(XMLStreamWriter w, RepositoryConnection con,
-		IRI uri, IRI pred, String classWrap) throws XMLStreamException {
-		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
-			if (!res.hasNext()) {
-				return;
-			}
-			Value v = res.next().getObject();
-			if (v instanceof IRI) {
-				IRI fmt = (IRI) v;
-				addSkosConcept(fmt);
-
-				w.writeStartElement(classWrap);
-				w.writeEmptyElement("dct:MediaType");
-				w.writeAttribute("rdf:about", fmt.toString());
-
-				try (RepositoryResult<Statement> lbl = con.getStatements(fmt, RDFS.LABEL, null)) {
-					if (lbl.hasNext()) {
-						Value val = lbl.next().getObject();
-						w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
-					} else {
-						logger.error("No label for format {}", fmt);
-					}
-				}
-
-				w.writeEndElement();
-			} else {
-				logger.error("Not a format IRI {}", v.stringValue());
-			}
-		}
-	}
 
 	/**
 	 * Write multiple contact points of a dcat:Dataset
@@ -278,7 +243,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not a contact IRI {}", v.stringValue());
+					LOG.error("Not a contact IRI {}", v.stringValue());
 				}
 			}
 		}
@@ -293,11 +258,11 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writeReference(XMLStreamWriter w, String el, Value uri) throws XMLStreamException {
-		if (uri instanceof IRI) {
+		if (uri instanceof IRI iri) {
 			w.writeEmptyElement(el);
-			w.writeAttribute("rdf:resource", ((IRI) uri).stringValue());
+			w.writeAttribute("rdf:resource", iri.stringValue());
 		} else {
-			logger.error("Not a reference IRI {}", uri.stringValue());
+			LOG.error("Not a reference IRI {}", uri.stringValue());
 		}
 	}
 
@@ -319,6 +284,7 @@ public class EDP {
 			}
 		}
 	}
+
 	/**
 	 * Write references and their wrapper class
 	 *
@@ -363,6 +329,23 @@ public class EDP {
 	}
 
 	/**
+	 * Write (additional) RDF type
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param type RDF type
+	 * @throws XMLStreamException
+	 */
+	private static void writeType(XMLStreamWriter w, RepositoryConnection con, IRI uri, IRI type) 
+		throws XMLStreamException {
+		if (con.hasStatement(uri, RDF.TYPE, type, true)) {
+			w.writeEmptyElement("rdf:type");
+			w.writeAttribute("rdf:resource", type.stringValue());
+		}
+	}
+
+	/**
 	 * Write generic metadata
 	 *
 	 * @param w XML writer
@@ -372,17 +355,22 @@ public class EDP {
 	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 		IRI uri) throws XMLStreamException {
-		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language", "dct:LinguisticSystem", true);
+		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
-		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
-		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo", "dct:Standard", false);
-		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+//		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
+		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
+		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
+		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
+		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
+//		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
+		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 	}
 
 	/**
@@ -400,15 +388,16 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
-		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaType", true);
-		writeFormats(w, con, uri, DCTERMS.FORMAT, "dct:format");
-		writeFormats(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
-		writeFormats(w, con, uri, DCAT.PACKAGE_FORMAT, "dcat:packageFormat");
+		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
+		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
+		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
+		writeReferences(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
+		writeReferences(w, con, uri, DCAT.PACKAGE_FORMAT, "dcat:packageFormat");
 
 		// write as anyURI string
-		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL");
+		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.ACCESS_SERVICE, "dcat:accessService");
-		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL");
+		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL", "foaf:Document", false);
 
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 
@@ -433,14 +422,27 @@ public class EDP {
 		w.writeStartElement(cl);
 		w.writeAttribute("rdf:about", uri.stringValue());
 
-		writeGeneric(w, con, uri);
+		writeGeneric(w, con, uri);;
 
+		writeLiterals(w, con, uri, OWL.VERSIONINFO, "owl:versionInfo");
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
-		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme", "skos:Concept", false);
+		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
+		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
+		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 
+		//samples (geo-dcat-ap)
+		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS_SAMPLE, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("adms:sample");
+				writeDist(w, con, (IRI) res.next().getObject());
+				w.writeEndElement();
+			}
+		}
+		// full distributions
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("dcat:distribution");
@@ -448,12 +450,12 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
+		
+
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
-		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
-		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
 		writeDates(w, con, uri);
 
@@ -479,7 +481,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		logger.info("Wrote {} datasets", nr);
+		LOG.info("Wrote {} datasets", nr);
 	}
 
 	/**
@@ -501,9 +503,47 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		logger.info("Wrote {} services", nr);
+		LOG.info("Wrote {} services", nr);
 	}
+
+	/**
+	 * Write multiple file formats
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeConcepts(XMLStreamWriter w, RepositoryConnection con, IRI pred, String classWrap) 
+			throws XMLStreamException {
+		
+		Set<IRI> concepts;
 	
+		try (RepositoryResult<Statement> res = con.getStatements(null, pred, null)) {
+			concepts = res.stream()
+							.map(Statement::getObject)
+							.filter(IRI.class::isInstance)
+							.map(IRI.class::cast)
+							.collect(Collectors.toSet());		
+		}
+
+		if (concepts == null || concepts.isEmpty()) {
+			return;
+		}
+		for (IRI concept: concepts) {
+			w.writeStartElement(classWrap);
+			w.writeAttribute("rdf:about", concept.toString());
+			w.writeEmptyElement("rdf:type");
+			w.writeAttribute("rdf:resource", "skos:Concept");
+			writeLiterals(w, con, concept, SKOS.PREF_LABEL, "skos:prefLabel");
+			writeReferences(w, con, concept, SKOS.IN_SCHEME, "skos:inScheme");
+			w.writeEndElement();
+		}
+		LOG.info("Wrote {} {} concepts", concepts.size(), classWrap);
+		
+	}
+
 	/**
 	 * Write document (license, standard...) info
 	 *
@@ -511,22 +551,29 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @throws XMLStreamException
 	 */
-	private static void writeDocuments(XMLStreamWriter w, RepositoryConnection con, IRI obj, String classWrap) throws XMLStreamException {
-		int nr = 0;
+	private static void writeDocuments(XMLStreamWriter w, RepositoryConnection con, IRI pred, String classWrap) throws XMLStreamException {
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, obj)) {
-			while (res.hasNext()) {
-				IRI iri = (IRI) res.next().getSubject();
-				if (! iri.stringValue().contains(".well-known")) {
-					nr++;
-					w.writeStartElement(classWrap);
-					w.writeAttribute("rdf:about", iri.toString());
-					writeGenericInfo(w, con, iri);
-					w.writeEndElement();
-				}
-			}
+		Set<IRI> documents;
+	
+		try (RepositoryResult<Statement> res = con.getStatements(null, pred, null)) {
+			documents = res.stream()
+							.map(Statement::getObject)
+							.filter(IRI.class::isInstance)
+							.map(IRI.class::cast)
+							.collect(Collectors.toSet());		
 		}
-		logger.info("Wrote {} docs", nr);
+
+		if (documents == null || documents.isEmpty()) {
+			return;
+		}
+
+		for (IRI document: documents) {
+			w.writeStartElement(classWrap);
+			w.writeAttribute("rdf:about", document.toString());
+			writeGenericInfo(w, con, document);
+			w.writeEndElement();
+		}
+		LOG.info("Wrote {} {} documents", documents.size(), classWrap);
 	}
 
 	/**
@@ -560,7 +607,7 @@ public class EDP {
 				}
 			}
 		}
-		logger.info("Wrote {} locations", nr);
+		LOG.info("Wrote {} locations", nr);
 	}
 
 	/**
@@ -571,20 +618,18 @@ public class EDP {
 	 * @param iri iRI of the organization
 	 * @throws XMLStreamException
 	 */
-	private static void writeOrganization(XMLStreamWriter w, RepositoryConnection con, IRI iri) 
+	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, IRI iri) 
 			throws XMLStreamException {
-		if (iri.stringValue().startsWith(BELGIF_PREFIX)) {
-			addSkosConcept(iri);
-			w.writeStartElement("foaf:Organization");
-			w.writeAttribute("rdf:about", iri.stringValue());
+		w.writeStartElement("foaf:Agent");
+		w.writeAttribute("rdf:about", iri.stringValue());
+		writeType(w, con, iri, FOAF.ORGANIZATION);
+		writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
+		writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
+		writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
+		writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
+		writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
 
-			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
-			writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
-			
-			writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
-
-			w.writeEndElement();
-		}
+		w.writeEndElement();
 	}
 
 	/**
@@ -594,53 +639,17 @@ public class EDP {
 	 * @param con RDF triple store connection
 	 * @throws XMLStreamException
 	 */
-	private static void writeOrganizations(XMLStreamWriter w, RepositoryConnection con)
+	private static void writeAgents(XMLStreamWriter w, RepositoryConnection con)
 		throws XMLStreamException {
 		int nr = 0;
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.ORGANIZATION)) {
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.AGENT)) {
 			while (res.hasNext()) {
 				nr++;
-				writeOrganization(w, con, (IRI) res.next().getSubject());
+				writeAgent(w, con, (IRI) res.next().getSubject());
 			}
 		}
-		logger.info("Wrote {} organizations", nr);
-	}
-
-	/**
-	 * Write SKOS concepts
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @throws XMLStreamException
-	 */
-	private static void writeConcepts(XMLStreamWriter w)
-		throws XMLStreamException {
-		int nr = 0;
-
-		Set<String> schemes = new HashSet<>(); 
-		for (IRI iri: CONCEPTS) {
-			w.writeStartElement("skos:Concept");
-			String concept = iri.toString();
-			w.writeAttribute("rdf:about", concept);
-			
-			w.writeEmptyElement("skos:inScheme");
-			String scheme = concept.contains("geonames") 
-				? "https://sws.geonames.org"
-				: (concept.contains("belgif") 
-					? "https://org.belgif.be/id/CbeRegisteredEntity"
-					: concept.substring(0, concept.lastIndexOf("/")));
-			schemes.add(scheme);
-			w.writeAttribute("rdf:resource", scheme);
-
-			w.writeEndElement();
-			nr++;
-		}
-		for (String scheme: schemes) {
-			w.writeEmptyElement("skos:ConceptScheme");	
-			w.writeAttribute("rdf:about", scheme);
-		}
-		logger.info("Wrote {} concepts", nr);
+		LOG.info("Wrote {} organizations", nr);
 	}
 
 	
@@ -669,13 +678,23 @@ public class EDP {
 		writeDataservices(w, con);
 		w.writeEndElement();
 
-		writeDocuments(w, con, DCTERMS.LICENSE_DOCUMENT, "dct:LicenseDocument");
-		writeDocuments(w, con, DCTERMS.RIGHTS_STATEMENT, "dct:RightsStatement");
-		writeDocuments(w, con, DCTERMS.STANDARD, "dct:Standard");
-		
-		writeOrganizations(w, con);
-		writeConcepts(w);
+		writeAgents(w, con);
+
 		writeLocations(w, con);
+	
+		writeDocuments(w, con, DCTERMS.PROVENANCE, "dct:ProvenanceStatement");
+		writeDocuments(w, con, DCTERMS.LICENSE, "dct:LicenseDocument");
+		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
+		writeDocuments(w, con, DCTERMS.CONFORMS_TO, "dct:Standard");
+
+		writeConcepts(w, con, DCTERMS.ACCESS_RIGHTS, "dct:RightsStatement");
+		writeConcepts(w, con, DCTERMS.ACCRUAL_PERIODICITY, "dct:Frequency");
+		writeConcepts(w, con, DCTERMS.LANGUAGE, "dct:LinguisticSystem");
+		writeConcepts(w, con, DCTERMS.FORMAT, "dct:MediaTypeOrExtent");
+		writeConcepts(w, con, DCTERMS.TYPE, "skos:Concept");
+		writeConcepts(w, con, DCAT.MEDIA_TYPE, "dct:MediaType");
+		writeConcepts(w, con, DCAT.COMPRESS_FORMAT, "dct:MediaType");
+		writeConcepts(w, con, DCAT.THEME, "skos:Concept");
 
 		w.writeEndElement();
 	}
@@ -691,7 +710,7 @@ public class EDP {
 		Serializer s = processor.newSerializer();
 		s.setOutputProperty(Property.METHOD, "xml");
 		s.setOutputProperty(Property.ENCODING, "utf-8");
-		s.setOutputProperty(Property.INDENT, "no");
+		s.setOutputProperty(Property.INDENT, "yes");
 		return s;
 	}
 
@@ -701,15 +720,15 @@ public class EDP {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		logger.info("-- START --");
+		LOG.info("-- START --");
 		if (args.length < 2) {
-			logger.error("No input or output file");
+			LOG.error("No input or output file");
 			System.exit(-1);
 		}
 
 		Optional<RDFFormat> fmtin = Rio.getParserFormatForFileName(args[0]);
 		if (!fmtin.isPresent()) {
-			logger.error("No parser for input {}", args[0]);
+			LOG.error("No parser for input {}", args[0]);
 			System.exit(-2);
 		}
 
@@ -730,7 +749,7 @@ public class EDP {
 
 			w.close();
 		} catch (IOException | XMLStreamException | SaxonApiException ex) {
-			logger.error("Error converting", ex);
+			LOG.error("Error converting", ex);
 			System.exit(-1);
 		} finally {
 			repo.shutDown();

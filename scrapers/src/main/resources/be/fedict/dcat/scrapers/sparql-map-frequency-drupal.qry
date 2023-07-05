@@ -7,8 +7,9 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT 
 	{ 	?dist dgov:freq ?drupal .
+		?freq a dcterms:Frequency .
 	}
 WHERE
 	{	?dist dcterms:accrualPeriodicity ?freq .
-		?drupal skos:exactMatch ?freq
+		?freq skos:exactMatch ?drupal
 	}

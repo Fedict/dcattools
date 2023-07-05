@@ -1,0 +1,8 @@
+# Fix license issues
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s dcterms:license ?lic }
+INSERT { ?s dcterms:license "CC0" }  
+WHERE { ?s dcterms:license <http://data.gov.be/CC0%20-%20Universal%20open%20license> .
+		?s dcterms:license ?lic }

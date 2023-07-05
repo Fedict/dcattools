@@ -2,57 +2,57 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/32>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> ;
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
 	skos:altLabel "G02", "G14" .
 
-<http://data.gov.be/en/taxonomy/term/38>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "G01", "G08", "G12" .
 
-<http://data.gov.be/en/taxonomy/term/33>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:prefLabel "EDUCATION"@en ;
 	skos:altLabel "G04" .
 
-<http://data.gov.be/en/taxonomy/term/34>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "G06", "G11", "G12", "G13", "G14", "G15" .
-	
-<http://data.gov.be/en/taxonomy/term/35>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
 	skos:prefLabel "ENERGY"@en ;
 	skos:altLabel "G07" .
 
-<http://data.gov.be/en/taxonomy/term/41>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:altLabel "G17" .
 
-<http://data.gov.be/en/taxonomy/term/40>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> ;
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:prefLabel "HEALTH"@en ;
 	skos:altLabel "G02", "G03" .
 
-<http://data.gov.be/en/taxonomy/term/44>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/INTR> ;
+<http://publications.europa.eu/resource/authority/data-theme/INTR>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
 	skos:altLabel "G17" .
-	
-<http://data.gov.be/en/taxonomy/term/43>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/JUST> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
 	skos:altLabel "G05", "G16" .
-	
-<http://data.gov.be/en/taxonomy/term/39>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:altLabel "G01", "G02", "G03", "G05", "G08", "G10" .
 
-<http://data.gov.be/en/taxonomy/term/37>
-	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
 	skos:altLabel "G09".

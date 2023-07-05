@@ -1,0 +1,13 @@
+# Fix identifier, should be a literal
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:identifier ?uri }
+INSERT
+	{	?dist dcterms:identifier ?str }
+WHERE
+	{	?dist dcterms:identifier ?uri
+		BIND (STR(?uri) as ?str)
+		FILTER ISIRI(?uri) 
+	}

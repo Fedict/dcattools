@@ -1,0 +1,78 @@
+# Data for mapping keywords to an EU list of themes/categories
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
+	skos:altLabel <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/farming> .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>;
+	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
+		"Education, culture and sport", "Éducation, culture et sport", 
+		"Onderwijs, cultuur en sport" .
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/economy> .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
+	skos:altLabel "Education", "Recherche", "Formation", "Enseignement" .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/imageryBaseMapsEarthCover>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/climatologyMeteorologyAtmosphere>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/environment>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/elevation>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/biota> ;
+	skos:altLabel "floods"@en, "Earthquakes"@en, "Hydrography"@en, "hydrography"@en, "Atmospheric conditions"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
+	skos:altLabel "Energie", "Energy", "Énergie" .
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/location>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/planningCadastre>,
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/boundaries>  .
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/health> .
+
+<http://publications.europa.eu/resource/authority/data-theme/INTR> 
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans> ;
+	skos:altLabel "Cross-border"@en .  
+
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
+	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", "Sécurité",
+				"Justice, système juridique et sécurité publique", "Crime", "Police", "Justice",
+				"Justitie, rechtsstelsel en openbare veiligheid", "SÃ©curitÃ©" .
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/society> ;
+	skos:altLabel  "POPULATION"@fr, "Population Density"@en  .
+
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
+	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
+			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration",
+			"HÃ©bergement", "Hébergement" .
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
+	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/transportation> .
+
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
+	skos:closeMatch 
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation>, 
+		<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/utilitiesCommunication> ;
+	skos:altLabel "Atmospheric conditions"@en .

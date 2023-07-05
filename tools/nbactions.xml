@@ -10,8 +10,11 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath be.fedict.dcat.tools.EDP C:\datagov\data\all\datagovbe.nt C:\datagov\data\all\datagovbe_edp.xml</exec.args>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
+                <exec.appArgs>C:\datagov\data\all\all.nt C:\datagov\data\all\datagovbe_edp.xml</exec.appArgs>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.mainClass>be.fedict.dcat.tools.EDP</exec.mainClass>
             </properties>
         </action>
         <action>
@@ -24,9 +27,12 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
-                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath be.fedict.dcat.tools.EDP C:\datagov\data\all\datagovbe.nt C:\datagov\data\all\datagovbe_edp.xml</exec.args>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
+                <exec.appArgs>C:\datagov\data\all\all.nt C:\datagov\data\all\datagovbe_edp.xml</exec.appArgs>
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.mainClass>be.fedict.dcat.tools.EDP</exec.mainClass>
             </properties>
         </action>
         <action>
@@ -39,8 +45,11 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath be.fedict.dcat.tools.EDP C:\datagov\data\all\datagovbe.nt C:\datagov\data\all\datagovbe_edp.xml</exec.args>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
+                <exec.appArgs>C:\datagov\data\all\all.nt C:\datagov\data\all\datagovbe_edp.xml</exec.appArgs>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.mainClass>be.fedict.dcat.tools.EDP</exec.mainClass>
             </properties>
         </action>
     </actions>

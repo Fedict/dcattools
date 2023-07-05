@@ -73,6 +73,7 @@ public abstract class CkanJson extends Ckan {
 	public final static String CREATED = "created";
 	public final static String FORMAT = "format";
 	public final static String LICENSE_ID = "license_id";
+	public final static String LICENSE_TITLE = "license_title";
 	public final static String LICENSE_URL = "license_url";
 	public final static String MAINT = "maintainer";
 	public final static String MAINT_EML = "maintainer_email";
@@ -321,7 +322,7 @@ public abstract class CkanJson extends Ckan {
 		if (!name.isEmpty() || !email.isEmpty()) {
 			IRI vcard = store.getURI(v);
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
-			store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
+			store.add(vcard, RDF.TYPE, VCARD4.KIND);
 			if (!name.isEmpty()) {
 				store.add(vcard, VCARD4.FN, name);
 			}

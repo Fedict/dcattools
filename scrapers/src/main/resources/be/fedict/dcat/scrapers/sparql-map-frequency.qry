@@ -9,9 +9,9 @@ DELETE
 	{ 	?dataset dcterms:accrualPeriodicity ?label }
 INSERT
 	{ 	?dataset dcterms:accrualPeriodicity ?freq .
+		?freq a dcterms:Frequency .
 		?dataset dgov:freq ?drupal }
 WHERE
-	{	?dataset a dcat:Dataset .
-		?dataset dcterms:accrualPeriodicity ?label .
-		?drupal skos:altLabel ?label .
-		?drupal skos:exactMatch ?freq }
+	{	?dataset dcterms:accrualPeriodicity ?label .
+		?freq skos:altLabel ?label .
+		?freq skos:exactMatch ?drupal }

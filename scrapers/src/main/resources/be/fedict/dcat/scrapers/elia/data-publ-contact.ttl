@@ -3,9 +3,12 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dgov: <http://data.gov.be#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0731852231>
 	a foaf:Organization ;
+	dcterms:type admsp:Company ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/428> ;
 	foaf:name "Elia"@fr, "Elia"@en, "Elia"@nl ;
 	foaf:homepage <https://www.elia.be/> .

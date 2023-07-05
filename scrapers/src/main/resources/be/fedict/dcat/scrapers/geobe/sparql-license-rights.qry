@@ -1,0 +1,17 @@
+# Move license to rights, since they mostly are statements on rights
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:license ?lic .
+		?lic a dcterms:LicenseDocument .
+		?lic dcterms:title ?title }
+INSERT 
+	{	?s dcterms:rights ?lic .
+		?lic a dcterms:RightsStatement .
+		?lic dcterms:title ?title }
+WHERE 
+	{	?s dcterms:license ?lic .
+		?lic a dcterms:LicenseDocument .
+		?lic dcterms:title ?title 
+	}

@@ -1,0 +1,18 @@
+# Set geographic area of a dataset or dataservice to Belgium
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+
+DELETE { 
+	?res dcterms:spatial ?s 
+}
+INSERT {
+	?res dcterms:spatial <https://sws.geonames.org/2802361/> .
+	<https://sws.geonames.org/2802361/> a dcterms:Location .
+	?res dgov:spatial <http://data.gov.be/en/taxonomy/term/45> 
+}
+WHERE {	
+	?res dcterms:spatial ?s .
+	FILTER (isLiteral(?s))
+}

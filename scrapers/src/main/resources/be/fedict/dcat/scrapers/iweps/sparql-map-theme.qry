@@ -9,4 +9,4 @@ INSERT
 	{ 	?dataset dgov:theme ?drupal }
 WHERE
 	{	?dataset dcat:theme ?uri .
-		?drupal skos:exactMatch ?uri }
+		?uri skos:exactMatch ?drupal }

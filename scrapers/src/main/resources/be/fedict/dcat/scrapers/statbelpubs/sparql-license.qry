@@ -5,6 +5,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/168> }
+	{	?dist dcterms:license <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf> .
+		?dist dgov:license <http://data.gov.be/en/taxonomy/term/168> }
 WHERE
-	{	?dist a dcat:Distribution }
+	{	?dataset a dcat:Distribution  }

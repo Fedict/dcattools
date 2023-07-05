@@ -1,6 +1,0 @@
-# Add organization class to vcard for SHACL validation purposes
-
-PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-
-INSERT	{ ?org a vcard:Kind }
-WHERE	{ ?org a vcard:Organization }

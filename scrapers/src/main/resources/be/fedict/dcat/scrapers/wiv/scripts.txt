@@ -3,8 +3,12 @@ wiv/data-publ-contact.ttl
 wiv/sparql-publ-contact.qry
 sparql-geo-belgium.qry
 sparql-license-cczero.qry
+sparql-access-public.qry
 wiv/sparql-keyword-theme.qry
 data-media.ttl
 wiv/sparql-format-extension.qry
 sparql-map-media.qry
 clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

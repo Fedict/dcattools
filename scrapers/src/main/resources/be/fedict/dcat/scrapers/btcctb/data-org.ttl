@@ -1,8 +1,11 @@
 # Data for mapping organizations
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
 
-<http://data.gov.be/en/taxonomy/term/211>
+ <https://org.belgif.be/id/CbeRegisteredEntity/0264814354>
+	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Enabel"@nl, "Enabel"@fr, "Enabel"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0264814354> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/211> ;
 	skos:altLabel "enabel"@en .

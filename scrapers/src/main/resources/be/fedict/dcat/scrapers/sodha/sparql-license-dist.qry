@@ -1,0 +1,12 @@
+# Move dataset license to distribution
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?dataset dcterms:license ?license }
+INSERT 
+	{ 	?dist dcterms:license ?license }
+WHERE
+	{	?dataset dcterms:license ?license .
+		?dataset dcat:distribution ?dist }

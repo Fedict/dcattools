@@ -1,0 +1,26 @@
+# Explicit SKOS data for improving SHACL validation scores
+
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+PREFIX dcterms:	<http://purl.org/dc/terms/>
+PREFIX skos:	<http://www.w3.org/2004/02/skos/core#>
+
+INSERT { 
+	?o a skos:Concept .
+	?o skos:inScheme ?scheme .	
+}
+WHERE {
+	?s dcat:theme|dcterms:accessRights|dcterms:format|dcterms:language|dcterms:accrualPeriodicity ?o .
+	BIND(
+		IRI(
+			CONCAT("http://publications.europa.eu/resource/authority/",
+				STRBEFORE(
+					STRAFTER(STR(?o), "http://publications.europa.eu/resource/authority/"),
+				"/")
+			)
+		) as ?scheme)
+	FILTER(
+		STRSTARTS(STR(?o), "http://publications.europa.eu/resource/authority/")
+	)
+}
+
+

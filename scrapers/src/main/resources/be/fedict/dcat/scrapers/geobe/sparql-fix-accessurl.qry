@@ -1,0 +1,11 @@
+# Fix prefix for accessURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s dcterms:accessURL ?page }
+INSERT
+	{ 	?s dcat:accessURL ?page }
+WHERE
+	{ 	?s dcterms:accessURL ?page }
