@@ -1,2 +1,5 @@
-DELETE { ?s ?p "" }
-WHERE {	?s ?p "" }
+# Delete empty labels and URIs
+
+DELETE { ?s ?p ?label }
+WHERE {	?s ?p ?label .
+		STR(?label) = "" }

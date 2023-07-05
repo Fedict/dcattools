@@ -1,12 +1,10 @@
 # extra queries to be executed and data to be loaded
 all/catalog.ttl
-all/licenses.ttl
-all/themes.ttl
+all/data-licenses.ttl
 all/sparql-remove-catalog.qry
 all/sparql-dataset.qry
 all/sparql-dataservice.qry
 all/sparql-datestamp.qry
 all/sparql-clear-drupal.qry
-#all/clear-empty.txt
-all/sparql-spatial-location.qry
+all/clear-empty.txt
 clear-skos.qry

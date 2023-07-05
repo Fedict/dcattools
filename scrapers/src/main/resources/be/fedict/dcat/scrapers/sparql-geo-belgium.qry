@@ -15,5 +15,7 @@ INSERT
 WHERE
 	{	?res a ?cl
 		VALUES ?cl { dcat:Dataset dcat:DataService }
-		OPTIONAL { ?res dcterms:spatial ?geo } 
+		OPTIONAL { 
+			?res dcterms:spatial ?geo 
+		}
 	}
