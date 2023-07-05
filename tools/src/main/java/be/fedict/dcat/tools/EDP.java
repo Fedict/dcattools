@@ -680,6 +680,8 @@ public class EDP {
 
 		writeAgents(w, con);
 
+		writeLocations(w, con);
+	
 		writeDocuments(w, con, DCTERMS.PROVENANCE, "dct:ProvenanceStatement");
 		writeDocuments(w, con, DCTERMS.LICENSE, "dct:LicenseDocument");
 		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
@@ -689,11 +691,10 @@ public class EDP {
 		writeConcepts(w, con, DCTERMS.ACCRUAL_PERIODICITY, "dct:Frequency");
 		writeConcepts(w, con, DCTERMS.LANGUAGE, "dct:LinguisticSystem");
 		writeConcepts(w, con, DCTERMS.FORMAT, "dct:MediaTypeOrExtent");
+		writeConcepts(w, con, DCTERMS.TYPE, "skos:Concept");
 		writeConcepts(w, con, DCAT.MEDIA_TYPE, "dct:MediaType");
 		writeConcepts(w, con, DCAT.COMPRESS_FORMAT, "dct:MediaType");
 		writeConcepts(w, con, DCAT.THEME, "skos:Concept");
-
-		writeLocations(w, con);
 
 		w.writeEndElement();
 	}
