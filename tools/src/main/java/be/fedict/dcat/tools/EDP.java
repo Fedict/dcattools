@@ -50,6 +50,8 @@ import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.GEO;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
@@ -75,14 +77,14 @@ import org.slf4j.LoggerFactory;
  */
 public class EDP {
 
-	private final static Logger logger = LoggerFactory.getLogger(EDP.class);
+	private final static Logger LOG = LoggerFactory.getLogger(EDP.class);
 
-	private final static String BELGIF_PREFIX = "http://org.belgif.be";
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	private final static SimpleValueFactory F = SimpleValueFactory.getInstance();
 	private final static IRI ADMS_IDENTIFIER = F.createIRI("http://www.w3.org/ns/adms#identifier");
-
+	private final static IRI ADMS_SAMPLE = F.createIRI("http://www.w3.org/ns/adms#sample");
+	
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
 	/**
@@ -96,9 +98,10 @@ public class EDP {
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
+		w.writeNamespace("geo", GEO.NAMESPACE);
+		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
-		w.writeNamespace("schema", "http://schema.org/");
 		w.writeNamespace(SKOS.PREFIX, SKOS.NAMESPACE);
 		w.writeNamespace(VCARD4.PREFIX, VCARD4.NAMESPACE);
 		w.writeNamespace(XSD.PREFIX, XSD.NAMESPACE);
@@ -208,7 +211,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not a date IRI {}", v.stringValue());
+					LOG.error("Not a date IRI {}", v.stringValue());
 				}
 			}
 		}
@@ -243,13 +246,13 @@ public class EDP {
 						Value val = lbl.next().getObject();
 						w.writeAttribute("rdfs:label", val.stringValue().toUpperCase());
 					} else {
-						logger.error("No label for format {}", fmt);
+						LOG.error("No label for format {}", fmt);
 					}
 				}
 
 				w.writeEndElement();
 			} else {
-				logger.error("Not a format IRI {}", v.stringValue());
+				LOG.error("Not a format IRI {}", v.stringValue());
 			}
 		}
 	}
@@ -278,7 +281,7 @@ public class EDP {
 					w.writeEndElement();
 					w.writeEndElement();
 				} else {
-					logger.error("Not a contact IRI {}", v.stringValue());
+					LOG.error("Not a contact IRI {}", v.stringValue());
 				}
 			}
 		}
@@ -297,7 +300,7 @@ public class EDP {
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", iri.stringValue());
 		} else {
-			logger.error("Not a reference IRI {}", uri.stringValue());
+			LOG.error("Not a reference IRI {}", uri.stringValue());
 		}
 	}
 
@@ -390,19 +393,22 @@ public class EDP {
 	 */
 	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
 		IRI uri) throws XMLStreamException {
-		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language", "dct:LinguisticSystem", true);
+		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
-		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher", "foaf:Agent", false);
-		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
-		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder", "foaf:Agent", false);
+//		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
+		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
+		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo", "dct:Standard", false);
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights", "dct:RightsStatement", false);
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+//		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
+		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 	}
 
 	/**
@@ -420,6 +426,7 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
+		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType", "dct:MediaType", true);
 		writeFormats(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeFormats(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
@@ -453,14 +460,27 @@ public class EDP {
 		w.writeStartElement(cl);
 		w.writeAttribute("rdf:about", uri.stringValue());
 
-		writeGeneric(w, con, uri);
+		writeGeneric(w, con, uri);;
 
+		writeLiterals(w, con, uri, OWL.VERSIONINFO, "owl:versionInfo");
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
+		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
+		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 
+		//samples (geo-dcat-ap)
+		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS_SAMPLE, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("adms:sample");
+				writeDist(w, con, (IRI) res.next().getObject());
+				w.writeEndElement();
+			}
+		}
+		// full distributions
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("dcat:distribution");
@@ -468,12 +488,12 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
+		
+
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
-		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
-		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
 		writeDates(w, con, uri);
 
@@ -499,7 +519,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		logger.info("Wrote {} datasets", nr);
+		LOG.info("Wrote {} datasets", nr);
 	}
 
 	/**
@@ -521,7 +541,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		logger.info("Wrote {} services", nr);
+		LOG.info("Wrote {} services", nr);
 	}
 	
 	/**
@@ -546,7 +566,7 @@ public class EDP {
 				}
 			}
 		}
-		logger.info("Wrote {} docs", nr);
+		LOG.info("Wrote {} docs", nr);
 	}
 
 	/**
@@ -580,7 +600,7 @@ public class EDP {
 				}
 			}
 		}
-		logger.info("Wrote {} locations", nr);
+		LOG.info("Wrote {} locations", nr);
 	}
 
 	/**
@@ -622,7 +642,7 @@ public class EDP {
 				writeAgent(w, con, (IRI) res.next().getSubject());
 			}
 		}
-		logger.info("Wrote {} organizations", nr);
+		LOG.info("Wrote {} organizations", nr);
 	}
 
 	/**
@@ -646,7 +666,7 @@ public class EDP {
 			nr++;
 		}
 
-		logger.info("Wrote {} concepts", nr);
+		LOG.info("Wrote {} concepts", nr);
 	}
 
 	
@@ -708,15 +728,15 @@ public class EDP {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		logger.info("-- START --");
+		LOG.info("-- START --");
 		if (args.length < 2) {
-			logger.error("No input or output file");
+			LOG.error("No input or output file");
 			System.exit(-1);
 		}
 
 		Optional<RDFFormat> fmtin = Rio.getParserFormatForFileName(args[0]);
 		if (!fmtin.isPresent()) {
-			logger.error("No parser for input {}", args[0]);
+			LOG.error("No parser for input {}", args[0]);
 			System.exit(-2);
 		}
 
@@ -737,7 +757,7 @@ public class EDP {
 
 			w.close();
 		} catch (IOException | XMLStreamException | SaxonApiException ex) {
-			logger.error("Error converting", ex);
+			LOG.error("Error converting", ex);
 			System.exit(-1);
 		} finally {
 			repo.shutDown();
