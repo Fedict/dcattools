@@ -17,7 +17,9 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement LNE"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/86> ;
-	skos:altLabel "Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "MercatorNet" .
+	skos:altLabel 
+		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid"@nl,
+		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "MercatorNet" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0886689767>
 	a foaf:Organization ;
@@ -31,11 +33,12 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Binnenlands Bestuur"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/91>;
-	skos:altLabel "ABB", "Agentschap Binnenlands Bestuur" .
+	skos:altLabel "ABB", "Agentschap Binnenlands Bestuur", "Agentschap Binnenlands Bestuur"@nl.
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0887290276>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000092> ;
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", 
@@ -46,8 +49,13 @@
 		"Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer"@nl,
 		"Flanders Environment Agency", "VMM", "Flanders Environment Agency (VMM)",
 		"Vlaamse overheid - Vlaamse MilieuMaatschappij"@nl,
-		"Vlaamse Milieumaatschappij"@nl ,
-		<https://data.vlaanderen.be/id/organisatie/OVO000092> .
+		"VLAAMSE MILIEUMAATSCHAPPIJ"@nl,
+		"Vlaamse Milieu Maatschappij"@nl ,
+		"Vlaamse Milieumaatschappij (VMM) - Afdeling Operationeel Waterbeheer"@nl ,
+		"Vlaamse Milieumaatschappij - Afdeling Lucht, milieu en Communicatie via MercatorNet samenwerkingsverband beleidsdomein Omgeving"@nl ,
+		"Vlaamse Milieumaatschappij - Afdeling Lucht, milieu en Communicatie"@nl ,
+		"Vlaamse Milieumaatschappij - Beheer en Investeringen Waterlopen"@nl ,
+		 "Vlaamse Milieumaatschappij"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471>
 	a foaf:Organization ;
@@ -55,7 +63,8 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000067> ;
 	skos:prefLabel "Departement CSJM"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/93> ;
-	skos:altLabel "Departement Cultuur, Jeugd en Media", "DCJM" .
+	skos:altLabel "Departement Cultuur, Jeugd en Media", "DCJM", "Departement CSJM"@nl,
+		"Departement Cultuur, Jeugd en Media"@nl .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0225944375>
 	a foaf:Organization ;
@@ -79,7 +88,16 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", "Dienst Mobilteit", "Dienst mobiliteit",
 		"Departement Mobiliteit en Openbare Werken, afdeling Waterbouwkundig Laboratorium", "DMOW"@nl,
-		"Beleidsdomein Mobiliteit en Openbare Werken", 
+		"Beleidsdomein Mobiliteit en Openbare Werken", "DMOV",
+		"Departement MOW- Waterbouwkundig Laboratorium – HIC"@nl,
+		"Departement Mobiliteit en Openbare Werken (MOW) - Afdeling Geotechniek"@nl ,
+		"Departement Mobiliteit en Openbare Werken"@nl ,
+		"Departement Mobiliteit en Openbare Werken, Afdeling Beleid"@nl ,
+		"Departement Mobiliteit en Openbare Werken, Afdeling Waterbouwkundig Laboratorium"@nl ,
+		"Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning"@nl ,
+		"Departement Mobiliteit en Openbare Werken, afdeling Beleid"@nl,
+		"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang"@nl ,
+		"Departement Mobiliteit en Openbare Werken, afdeling Technische Ondersteuning"@nl ,
 		"Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning", 
 		"Departement Mobiliteit en Openbare Werken, afdeling Technische Ondersteuning"@nl,
 		"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang" ,
@@ -97,9 +115,11 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199310989>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Departement Onderwijs en Vorming"@nl ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000049>, 
+			<https://data.vlaanderen.be/doc/organisatie/OVO000061> ;
+	skos:prefLabel "Departement Onderwijs en Vorming (Opgroeien)"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/108> ;
-	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming" .
+	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming", "Opgroeien"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
 	a foaf:Organization ;
@@ -168,7 +188,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "WestToer"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/151> ;
-	skos:altLabel "Westtoer" .
+	skos:altLabel "Westtoer", "WestToer"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/180>
 	skos:prefLabel "Fluvius"@nl ;
@@ -196,7 +216,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/213> ;
-	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen".
+	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0549874291>
 	a foaf:Organization ;
@@ -221,15 +241,18 @@
 	skos:prefLabel "Kind en Gezin"@nl ;
 	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0886886638> ;
 	skos:altLabel "Kind en Gezin" .
-	
-<http://data.gov.be/en/taxonomy/term/349>
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207499430>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0207499430> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/349> ;
 	skos:altLabel "Stad Mechelen" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335339>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003754> ;
 	skos:prefLabel "Departement Omgeving"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/364> ;
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", "Vlaamse overheid - Departement Omgeving",
@@ -237,6 +260,13 @@
 		"Vlaamse Overheid - Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -projecten",
 		"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving",
 		"Vlaamse Overheid - Departement Omgeving via MercatorNet samenwerkingsverband beleidsdomein Omgeving"@nl,
+		"Vlaamse Overheid - beleidsdomein Omgeving - Vlaams Energie- en Klimaatagentschap"@nl ,
+		"Vlaamse Overheid – Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -Projecten"@nl ,
+		"Vlaamse Overheid – Departement Omgeving - Beleidsontwikkeling en juridische ondersteuning"@nl ,
+		"Vlaamse Overheid – Departement Omgeving via MercatorNet samenwerkingsverband beleidsdomein Omgeving"@nl ,
+		"Departement Omgeving - Afdeling Gebiedsontwikkeling, Omgevingsplanning en -projecten"@en ,
+		"Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving"@en ,
+		"Departement Omgeving"@nl ,"Omgeving Vlaanderen"@en,
 		"Vlaamse overheid, Departement Omgeving, Vlaams Planbureau voor Omgeving (VPO)"@nl,
 		"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving"@nl,
 		"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen"@nl,
@@ -250,19 +280,23 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/361> ;
 	skos:altLabel "Vlaams Energieagentschap (VEA)", 
 		"LNE - Vlaams Energieagentschap", "Vlaams Energieagentschap",
-		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid"@nl .
-	
-<http://data.gov.be/en/taxonomy/term/365>
+		"Vlaamse Overheid - Vlaams Energie Agentschap via MercatorNet samenwerkingsverband beleiddomein Omgeving"@nl,
+		"Vlaamse Overheid - Vlaams Energie- en Klimaatagentschap via MercatorNet samenwerkingsverband beleiddomein Omgeving"@nl .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336725> 
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap MDK"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeEstablishmentUnit/2199336725> ;
-	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie" .
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/365> ;
+	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie",
+		"MOW - AMDK - Afdeling Kust - Team Infrastructuur Kust"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725795>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr, "Province East Flanders"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/>  ;
-	skos:altLabel "Provincie Oost-Vlaanderen"@nl .	
+	skos:altLabel "Provincie Oost-Vlaanderen"@nl, "Province East Flanders" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;
@@ -293,22 +327,35 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/368>  ;
 	skos:altLabel "Provincie Vlaams-Brabant"@nl .
 
-<http://data.gov.be/en/taxonomy/term/203>
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/203> ;
 	skos:altLabel "UG - Vakgroep Geografie", "Ghent University" .
 
-<http://data.gov.be/en/taxonomy/term/369>
+<https://org.belgif.be/id/CbeRegisteredEntity/0242069537>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
 	skos:prefLabel "Vlaamse Vervoersmaatschappij De Lijn"@nl ;
-	skos:exactMatch <https://org.belgif.be/id/CbeRegisteredEntity/0242069537> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000100> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/369> ;
 	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0405647664>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Sweco Belgium"@nl ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Grontmij Belgium"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199318612>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement WVG"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/374> ;
-	skos:altLabel "Afdeling Welzijn en Samenleving (Departement Welzijn, Volksgezondheid en Gezin)", "DWVG" .
+	skos:altLabel "Afdeling Welzijn en Samenleving (Departement Welzijn, Volksgezondheid en Gezin)", "DWVG",
+		"Departement Welzijn, Volksgezondheid en Gezin, Afdeling Welzijn en Samenleving"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2251007239>
 	a foaf:Organization ;
@@ -325,7 +372,7 @@
 	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/376> ;
 	skos:altLabel "Vlaamse Landmaatschappij - afdeling Projectrealisatie", "Vlaamse Landmaatschappij",
-		"Vlaamse Landmaatschappij"@nl .
+		"Vlaamse Landmaatschappij"@nl, "VLAAMSE LANDMAATSCHAPPIJ"@nl  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0842399963>
 	a foaf:Organization ;
@@ -333,7 +380,9 @@
 	skos:prefLabel "OVAM"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/377> ;
 	skos:altLabel "Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest",
-		"Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest"@nl .
+		"Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest"@nl,
+		"Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest via MercatorNet samenwerkingsverband beleidsdomein Omgeving"@nl,
+		"Openbare Vlaamse Afvalstoffenmaatschappij (OVAM)"@nl .
 
 <http://data.gov.be/en/taxonomy/term/380>
 	skos:prefLabel "De Vlaamse Waterweg NV"@nl ;
@@ -356,7 +405,7 @@
 	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000059> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/384> ;
-	skos:altLabel "Agentschap Zorg en Gezondheid" .
+	skos:altLabel "Agentschap Zorg en Gezondheid", "Agentschap Zorg en Gezondheid"@nl .
 	
 <http://data.gov.be/en/taxonomy/term/385>
 	skos:prefLabel "Agentschap Jongerenwelzijn"@nl ;
@@ -368,7 +417,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/393> ;
-	skos:altLabel "Agentschap Wegen en Verkeer"@nl, "AWV",
+	skos:altLabel "Agentschap Wegen en Verkeer"@nl, "AWV", "Agentschap Wegen en Verkeer VWT"@nl,
 		"Vlaamse Overheid - Agentschap Wegen en Verkeer - Afdeling Wegenbouwkunde"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0244195916>
@@ -394,9 +443,16 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/197> ;
 	skos:altLabel "Belgische Geologische Dienst"@nl, "Belgisch Geologische Dienst"@nl .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/nld/dinoloket>
+<https://opencorporates.com/id/companies/nl/27264794>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "DINOloket"@nl ;
+	skos:prefLabel "Geologische Dienst Nederland"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
 	skos:altLabel "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
+	skos:altLabel "Algemene Directie Statistiek - Statistics Belgium"@nl .

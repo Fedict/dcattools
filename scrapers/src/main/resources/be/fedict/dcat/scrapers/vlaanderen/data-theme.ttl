@@ -190,6 +190,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Demography> ,
 		<http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare> ,
+		<https://data.stad.gent/id/theme/Wonen%20%26%20%28ver%29bouwen>,
 		<http://vocab.belgif.be/auth/datatheme/SOCI> ,
 		<http://inspire.ec.europa.eu/theme/bu>, <http://inspire.ec.europa.eu/theme/pd>,
 		<https://data.stad.gent/id/theme/Burgerzaken> ;
