@@ -8,7 +8,6 @@ sparql-map-license.qry
 sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
-sparql-consolidate-bbox.qry
 fpsfinance/sparql-fix-authority.qry
 fpsfinance/sparql-fix-datatype.qry
 sparql-access-public.qry
