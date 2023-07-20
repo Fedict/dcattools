@@ -1,11 +1,16 @@
-# Fix access URL
+# Fix access URL and landing page
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE	{	?dist dcat:accessURL ?url }
+DELETE	
+	{	
+		?dataset dcat:landingPage ?url .	
+		?dist dcat:accessURL ?url }
 INSERT 
-	{ 	?dist dcat:accessURL ?page }
+	{ 	
+		?dataset dcat:landingPage ?page .
+		?dist dcat:accessURL ?page }
 WHERE
 	{	?dataset a dcat:Dataset .
 		?dataset dcat:landingPage ?url .
