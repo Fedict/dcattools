@@ -2,13 +2,16 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE
 	{	?dataset a dcat:Dataset .
-		?dataset ?p ?o 
+		?dataset ?p ?o .
+		?dataset dcat:contactPoint ?contact .
 		}
 WHERE
 	{ 	?dataset a dcat:Dataset .
-		?dataset ?p ?o 
-		FILTER NOT EXISTS { ?dataset dcat:downloadURL ?url }
+		?dataset ?p ?o .
+		?dataset dcat:contactPoint ?contact .
+		?contact vcard:hasEmail <mailto:datadelivery@minfin.fed.be> .
 	}
