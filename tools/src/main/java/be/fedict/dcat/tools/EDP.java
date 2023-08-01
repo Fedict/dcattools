@@ -65,7 +65,7 @@ import org.eclipse.rdf4j.repository.RepositoryResult;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
-import org.eclipse.rdf4j.rio.helpers.NTriplesParserSettings;
+import org.eclipse.rdf4j.rio.ntriples.NTriplesParserSettings;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;

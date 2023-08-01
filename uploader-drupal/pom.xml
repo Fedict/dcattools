@@ -4,7 +4,7 @@
     <parent>
         <groupId>be.fedict.dcat</groupId>
         <artifactId>dcattools</artifactId>
-        <version>2.25.0</version>
+        <version>2.27.0</version>
     </parent>
     <artifactId>uploader-drupal</artifactId>
     <packaging>jar</packaging>
@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.1.2</version>
             </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
