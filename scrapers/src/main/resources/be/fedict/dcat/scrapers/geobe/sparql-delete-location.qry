@@ -1,0 +1,14 @@
+# Remove locations not tied to anything
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?loc a dcterms:Location .
+		?loc ?p ?o 
+		}
+WHERE
+	{ 	?loc a dcterms:Location .
+		?loc ?p ?o 
+		FILTER NOT EXISTS { ?s ?rel ?loc }
+	}

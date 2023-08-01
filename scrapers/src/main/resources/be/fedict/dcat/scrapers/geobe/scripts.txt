@@ -1,4 +1,8 @@
 # extra queries to be executed and data to be loaded
+geobe/sparql-fix-download.qry
+geobe/sparql-delete-fodfin.qry
+#geobe/sparql-delete-fodfin2.qry
+geobe/sparql-delete-location.qry
 geobe/sparql-fix-serves.qry
 geobe/data-publ-contact.ttl
 sparql-remove-hydra.qry

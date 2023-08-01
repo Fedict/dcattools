@@ -1,0 +1,14 @@
+# Remove fodfin dataset since the 5000+ distributions make it hard to process for the EDP
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset a dcat:Dataset .
+		?dataset ?p ?o 
+		}
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset ?p ?o 
+		FILTER NOT EXISTS { ?dataset dcat:downloadURL ?url }
+	}

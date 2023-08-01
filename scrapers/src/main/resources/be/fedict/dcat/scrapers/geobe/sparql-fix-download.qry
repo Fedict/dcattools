@@ -1,0 +1,11 @@
+# Fix incorrect use of servesDataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s dcterms:downloadURL ?url }
+INSERT
+	{	?s dcat:downloadURL ?url }
+WHERE
+	{ 	?s dcterms:downloadURL ?url }
