@@ -20,6 +20,7 @@ sparql-map-media.qry
 sparql-date-type.qry
 sparql-tag-language.qry
 clear-skos.qry
+sparql-delete-label-empty.qry
 sparql-title-to-desc.qry
 iweps/sparql-fix-mailto.qry
 sparql-strip-html.qry

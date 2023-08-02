@@ -5,6 +5,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE 
 	{	?s ?p ?label }
 WHERE
-	{	?s ?p ?o ?label .
-		FILTER (isLiteral(?label) && (STRLEN(?label) = 0) )
+	{	?s ?p ?label .
+		FILTER (isLiteral(?label) && (STRLEN(STR(?label)) = 0) )
 	}

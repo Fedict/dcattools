@@ -32,6 +32,7 @@ geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
 sparql-consolidate-bbox.qry
 clear-skos.qry
+sparql-delete-label-empty.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

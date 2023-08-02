@@ -345,6 +345,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		switch (s.length()) {
 			case 4 -> s += "-01-01";
 			case 6 -> s = s.substring(0, 4) + "-" + s.substring(4) + "-01";
+			case 7 -> s += "-01";
 			default -> s = s.replace("/", "-");
 		}
 
@@ -352,6 +353,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 			case 0 -> e = TODAY;
 			case 4 -> e += "-12-31";
 			case 6 -> e = e.substring(0, 4) + "-" + e.substring(4);
+			case 7 -> e += "-28";
 			default -> e = e.replace("/", "-");
 		}
 
