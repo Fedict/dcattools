@@ -555,8 +555,8 @@ public class EDP {
 		for (IRI concept: concepts) {
 			w.writeStartElement(classWrap);
 			w.writeAttribute("rdf:about", concept.toString());
-			w.writeEmptyElement("rdf:type");
 			if(! classWrap.equals("skos:Concept")) {
+				w.writeEmptyElement("rdf:type");
 				w.writeAttribute("rdf:resource", SKOS.CONCEPT.stringValue());
 			}
 			writeLiterals(w, con, concept, SKOS.PREF_LABEL, "skos:prefLabel");
