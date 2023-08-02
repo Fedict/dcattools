@@ -1,0 +1,10 @@
+# Remove empty literals
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s ?p ?label }
+WHERE
+	{	?s ?p ?o ?label .
+		FILTER (isLiteral(?label) && (STRLEN(?label) = 0) )
+	}

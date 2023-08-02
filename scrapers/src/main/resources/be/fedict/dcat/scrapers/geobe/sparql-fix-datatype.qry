@@ -1,5 +1,6 @@
 # Fix datatype of various date properties
 
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -9,8 +10,12 @@ INSERT
 	{	?s ?prop ?newo }
 WHERE 
 	{	?s ?prop ?o
-		VALUES ?prop { dcterms:created dcterms:modified dcterms:issued }
+		VALUES ?prop { dcterms:created dcterms:modified dcterms:issued dcat:startDate dcat:endDate }
 		BIND (
-				IF(STRLEN(STR(?o)) > 0, STRDT(STR(?o), xsd:date), ?invalid)
+				IF(STRLEN(STR(?o)) > 0, 
+					IF(STRLEN(STR(?o)) > 10,
+						STRDT(STR(?o), xsd:dateTime),
+						STRDT(STR(?o), xsd:date)), 
+					?invalid)
 			as ?newo)
 	}

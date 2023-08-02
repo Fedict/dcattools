@@ -1,0 +1,13 @@
+# Move non-IRI subjects to keyword
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?dataset dcterms:subject ?o }
+INSERT
+	{ 	?dataset dcat:keyword ?o }
+WHERE
+	{ 	?dataset dcterms:subject ?o
+		FILTER ( !isIri(?o))
+	}
