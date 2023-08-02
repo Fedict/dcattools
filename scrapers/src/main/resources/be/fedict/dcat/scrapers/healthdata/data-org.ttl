@@ -22,8 +22,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0419052173>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
-					"Catholic University of Leuven"@en ;
+	skos:prefLabel "KU Leuven"@nl, "KU Leuven"@fr, "KU Leuven"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/202> ;
 	skos:altLabel "KU Leuven" .
 
