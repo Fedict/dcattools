@@ -9,12 +9,13 @@ INSERT
 	{	?s dcterms:modified ?newdt }
 WHERE
 	{	?s dcterms:modified ?dt .
-		FILTER ((STRLEN(?dt) = 22) && STRENDS(STR(?dt), "+01:00"))
+		FILTER ((STRLEN(?dt) = 22) && CONTAINS(STR(?dt), "+0"))
 		BIND (
 			STRDT(
 				CONCAT(
 					STRBEFORE(STR(?dt), "+"),
-					":00+01:00"),
+					":00+",
+					STRAFTER(STR(?dt), "+")),
 				xsd:dateTime)
 			as ?newdt)
 	}
