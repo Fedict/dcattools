@@ -27,6 +27,7 @@ data-media-compress.ttl
 sparql-map-media-compress.qry
 clear-skos.qry
 sparql-map-loc-lang.qry
+vlaanderen/sparql-fix-modified.qry
 vlaanderen/sparql-fix-language.qry
 vlaanderen/sparql-fix-language2.qry
 vlaanderen/sparql-default-language.qry

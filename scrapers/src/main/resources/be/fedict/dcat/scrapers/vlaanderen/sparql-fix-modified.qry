@@ -1,0 +1,20 @@
+# Fix datetime missing mandatory seconds
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE 
+	{	?s dcterms:modified ?dt }
+INSERT
+	{	?s dcterms:modified ?newdt }
+WHERE
+	{	?s dcterms:modified ?dt .
+		FILTER ((STRLEN(?dt) = 22) && STRENDS(STR(?dt), "+01:00"))
+		BIND (
+			STRDT(
+				CONCAT(
+					STRBEFORE(STR(?dt), "+"),
+					":00+01:00"),
+				xsd:dateTime)
+			as ?newdt)
+	}
