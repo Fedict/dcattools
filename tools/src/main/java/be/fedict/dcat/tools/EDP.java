@@ -249,6 +249,8 @@ public class EDP {
 					w.writeStartElement("dcat:contactPoint");
 					w.writeStartElement("vcard:Kind");
 					writeLiterals(w, con, contact, VCARD4.FN, "vcard:fn");
+					writeLiterals(w, con, contact, VCARD4.ORGANIZATION_NAME, "vcard:organization-name");					
+					writeReferences(w, con, contact, VCARD4.HAS_URL, "vcard:hasURL");
 					writeReferences(w, con, contact, VCARD4.HAS_EMAIL, "vcard:hasEmail");
 					writeReferences(w, con, contact, VCARD4.HAS_TELEPHONE, "vcard:hasTelephone");
 					w.writeEndElement();
