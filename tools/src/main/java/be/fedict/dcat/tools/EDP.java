@@ -27,6 +27,9 @@ package be.fedict.dcat.tools;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Optional;
 
@@ -46,7 +49,8 @@ import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.ValidatingValueFactory;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -63,8 +67,12 @@ import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryResult;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.rio.ParserConfig;
 import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.helpers.BasicParserSettings;
+import org.eclipse.rdf4j.rio.helpers.XMLParserSettings;
 import org.eclipse.rdf4j.rio.ntriples.NTriplesParserSettings;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
@@ -82,7 +90,9 @@ public class EDP {
 
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
-	private final static SimpleValueFactory F = SimpleValueFactory.getInstance();
+	private final static ValueFactory F = new ValidatingValueFactory();
+	private final static String BASE_URI = "http://base.data.gov.be";
+	
 	private final static IRI ADMS_IDENTIFIER = F.createIRI("http://www.w3.org/ns/adms#identifier");
 	private final static IRI ADMS_SAMPLE = F.createIRI("http://www.w3.org/ns/adms#sample");
 	
@@ -308,12 +318,18 @@ public class EDP {
 
 				if (refUri instanceof IRI) {
 					IRI iri = (IRI) refUri;
-					if( !refUri.toString().contains(".well-known")) {
-						w.writeEmptyElement(classWrap);
-						if (concept) {
-							addSkosConcept(iri);
+					String str = iri.stringValue();
+					if( !str.contains(".well-known")) {
+						if(str.startsWith("http:") || str.startsWith("https:") || str.startsWith("ftp:") || 
+								str.startsWith("mailto:") || str.startsWith("tel:")) {
+							w.writeEmptyElement(classWrap);
+							if (concept) {
+								addSkosConcept(iri);
+							}
+							w.writeAttribute("rdf:about", str);
+						} else {
+							LOG.error("Not a valid IRI {}", str);
 						}
-						w.writeAttribute("rdf:about", iri.stringValue());
 					} else {
 						w.writeStartElement(classWrap);
 						writeGenericInfo(w, con, iri);
@@ -525,6 +541,7 @@ public class EDP {
 							.map(Statement::getObject)
 							.filter(IRI.class::isInstance)
 							.map(IRI.class::cast)
+							.filter(i -> i.toString().startsWith("http"))
 							.collect(Collectors.toSet());		
 		}
 
@@ -560,6 +577,7 @@ public class EDP {
 							.map(Statement::getObject)
 							.filter(IRI.class::isInstance)
 							.map(IRI.class::cast)
+							.filter(i -> i.toString().startsWith("http"))
 							.collect(Collectors.toSet());		
 		}
 
@@ -738,10 +756,14 @@ public class EDP {
 		s.setOutputFile(new File(args[1]));
 
 		try (RepositoryConnection con = repo.getConnection()) {
-			con.getParserConfig().set(NTriplesParserSettings.FAIL_ON_INVALID_LINES, false);
-			con.add(new File(args[0]), "http://data.gov.be", fmtin.get());
+			ParserConfig cfg = new ParserConfig();
+			cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, true);
+			cfg.set(BasicParserSettings.VERIFY_RELATIVE_URIS, true);
+			cfg.set(NTriplesParserSettings.FAIL_ON_INVALID_LINES, true);
+	
+			con.setParserConfig(cfg);
+			con.add(new File(args[0]), BASE_URI, fmtin.get());
 			XMLStreamWriter w = s.getXMLStreamWriter();
-
 
 			w.writeStartDocument();
 			writeCatalog(w, con);
@@ -753,6 +775,26 @@ public class EDP {
 			System.exit(-1);
 		} finally {
 			repo.shutDown();
+		}
+		
+		// verify once more
+
+		RDFParser parser = Rio.createParser(RDFFormat.RDFXML);
+		ParserConfig cfg = new ParserConfig();
+		cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, true);
+		cfg.set(BasicParserSettings.VERIFY_RELATIVE_URIS, true);
+		cfg.set(XMLParserSettings.FAIL_ON_INVALID_QNAME, true);
+		cfg.set(XMLParserSettings.FAIL_ON_MISMATCHED_TAGS, true);
+		cfg.set(XMLParserSettings.FAIL_ON_NON_STANDARD_ATTRIBUTES, true);
+		cfg.set(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS, true);
+		parser.setParserConfig(cfg);
+		parser.setValueFactory(F);
+
+		try(Reader r = Files.newBufferedReader(Paths.get(args[1]))) {
+			parser.parse(r, BASE_URI);
+		} catch (IOException ex) {
+			LOG.error("Error validating", ex);
+			System.exit(-2);
 		}
 	}
 }
