@@ -249,10 +249,19 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/349> ;
 	skos:altLabel "Stad Mechelen" .
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199300992>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO001834> ;
+	skos:prefLabel "Agentschap Facilitair Bedrijf"@nl ;
+	skos:prefLabel "Departement Omgeving"@nl ;
+	skos:altLabel "Agentschap Facilitair Bedrijf"@nl .
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335339>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003754> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO050677> ;
 	skos:prefLabel "Departement Omgeving"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/364> ;
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", "Vlaamse overheid - Departement Omgeving",
@@ -286,6 +295,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336725> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO039562> ;
 	skos:prefLabel "Agentschap MDK"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/365> ;
 	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie",

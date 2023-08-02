@@ -52,7 +52,7 @@ sparql-map-license.qry
 #vlaanderen/sparql-default-license.qry
 clear-skos.qry
 sparql-date-type.qry
-vlaanderen/sparql-downloadurl.qry
+sparql-downloadurl.qry
 vlaanderen/sparql-fix-homepage.qry
 vlaanderen/sparql-fix-telephone.qry
 vlaanderen/sparql-remove-serves.qry
