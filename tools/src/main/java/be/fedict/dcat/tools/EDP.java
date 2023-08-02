@@ -179,6 +179,7 @@ public class EDP {
 		writeLiterals(w, con, iri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, iri, RDFS.LABEL, "rdfs:label");
 		writeLiterals(w, con, iri, SKOS.NOTATION, "skos:notation");
+		writeLiterals(w, con, iri, DCAT.BBOX, "dcat:bbox");
 	}
 	
 	/**
