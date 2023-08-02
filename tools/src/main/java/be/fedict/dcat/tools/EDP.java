@@ -556,7 +556,9 @@ public class EDP {
 			w.writeStartElement(classWrap);
 			w.writeAttribute("rdf:about", concept.toString());
 			w.writeEmptyElement("rdf:type");
-			w.writeAttribute("rdf:resource", "skos:Concept");
+			if(! classWrap.equals("skos:Concept")) {
+				w.writeAttribute("rdf:resource", SKOS.CONCEPT.stringValue());
+			}
 			writeLiterals(w, con, concept, SKOS.PREF_LABEL, "skos:prefLabel");
 			writeReferences(w, con, concept, SKOS.IN_SCHEME, "skos:inScheme");
 			w.writeEndElement();
