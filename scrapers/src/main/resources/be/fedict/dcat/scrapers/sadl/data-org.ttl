@@ -1,0 +1,13 @@
+# Data for mapping organizations
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0419052173>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "KU Leuven"@nl, "KU Leuven"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Spatial Applications Division Leuven, KU Leuven"@en .
