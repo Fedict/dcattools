@@ -31,6 +31,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
@@ -46,8 +47,9 @@ import org.eclipse.rdf4j.sail.Sail;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 /**
- *
- * @author Bart.Hanssens
+ * Read a dcat file
+ * 
+ * @author Bart Hanssens
  */
 public class DcatReader implements AutoCloseable {
 	private final Repository repo;
@@ -57,12 +59,24 @@ public class DcatReader implements AutoCloseable {
 		repo.shutDown();
 	}
 
+	/**
+	 * Get properties for a specific ID
+	 * 
+	 * @param subj
+	 * @return RDF model
+	 */
 	private Model getValues(IRI subj) {
 		try (RepositoryConnection conn = repo.getConnection()) {
 			return QueryResults.asModel(conn.getStatements(subj, null, null));
 		}
 	}
 
+	/**
+	 * Get all IDs with a specific RDF class
+	 * 
+	 * @param dtype RDF class
+	 * @return set of IRIs 
+	 */
 	private Set<IRI> getIDs(IRI dtype) {
 		try (RepositoryConnection conn = repo.getConnection()) {
 			return conn.getStatements(null, RDF.TYPE, dtype)
@@ -90,8 +104,16 @@ public class DcatReader implements AutoCloseable {
 				.collect(Collectors.toSet());
 	}
 
-	private Set<String> getLiterals(Model m, IRI key, String lang) {
-		return m.filter(null, key, null).objects()
+	/**
+	 * Get non-blank literals in a specific language
+	 *
+	 * @param m RDF model
+	 * @param prop property
+	 * @param lang language code
+	 * @return set of strings
+	 */
+	private Set<String> getLiterals(Model m, IRI prop, String lang) {
+		return m.filter(null, prop, null).objects()
 				.stream()
 				.filter(Literal.class::isInstance)
 				.map(Literal.class::cast)
@@ -101,10 +123,21 @@ public class DcatReader implements AutoCloseable {
 				.collect(Collectors.toSet());
 	}
 
-	private String getLiteral(Model m, IRI key, String lang) {
-		return getLiterals(m, key, lang).stream().findFirst().orElse(null);
+	/**
+	 * Get a non-blank literal in a specific language or null
+	 *
+	 * @param m RDF model
+	 * @param prop property
+	 * @param lang language code
+	 * @return set of strings
+	 */
+	private String getLiteral(Model m, IRI prop, String lang) {
+		return getLiterals(m, prop, lang).stream().findFirst().orElse(null);
 	}
 
+	/**
+	 * Get all datasets
+	 */
 	public void getDatasets() {
 		Set<IRI> ids = getIDs(DCAT.DATASET);
 		for(IRI id: ids) {
@@ -114,12 +147,16 @@ public class DcatReader implements AutoCloseable {
 			getLiterals(m, DCAT.KEYWORD, null);
 			getURIs(m, DCAT.THEME);
 			getURIs(m, DCTERMS.CREATOR);
-			getURIs(m, DCTERMS.PUBLISHER);
-			
-			
+			getURIs(m, DCTERMS.PUBLISHER);			
 		}
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param file RDF file
+	 * @throws IOException 
+	 */
 	public DcatReader(File file) throws IOException {
 		Sail mem = new MemoryStore();
 		repo = new SailRepository(mem);

@@ -157,6 +157,14 @@ public record Dataset(
 		return m.getOrDefault(key, null);
 	}
 
+	/**
+	 * Get first date or null
+	 * 
+	 * @param field
+	 * @param map
+	 * @param key
+	 * @return date or null
+	 */
 	private static LocalDate getOneDateValue(String field, Map<String,Object> map, String key) {
 		String str = (String) getOneValue(field, map, key);
 		if (str == null || str.isEmpty()) {

@@ -200,6 +200,16 @@ public class DatasetTest {
 		}
 	}
 
+	@Test
+	public void getDatasetsEN() throws InterruptedException {
+		try {
+			List<Dataset> lst = d10.getDatasets("en");
+			System.err.println(lst);
+		} catch (IOException ioe) {
+			fail();
+		}
+	}
+
 	public void deleteDataset() throws InterruptedException {
 		try {
 			d10.deleteDataset("id2");

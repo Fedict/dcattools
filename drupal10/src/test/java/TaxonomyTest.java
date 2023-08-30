@@ -66,12 +66,14 @@ public class TaxonomyTest {
 	@Test
 	public void testCategory() throws IOException, InterruptedException {
 		Map taxo = d10.getTaxonomy("category");
+		System.err.println(taxo);
 		Assertions.assertFalse(taxo.isEmpty());
 	}
 
 	@Test
 	public void testLicense() throws IOException, InterruptedException {
 		Map taxo = d10.getTaxonomy("license");
+		System.err.println(taxo);
 		Assertions.assertFalse(taxo.isEmpty());
 	}
 

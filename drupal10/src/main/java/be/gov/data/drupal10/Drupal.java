@@ -45,6 +45,8 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONPointer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Drupal REST client
@@ -52,13 +54,19 @@ import org.json.JSONPointer;
  * @author Bart.Hanssens
  */
 public class Drupal {
+	private final static Logger LOG  = LoggerFactory.getLogger(Drupal.class);
+
+	private final static JSONPointer JUID = new JSONPointer("/current_user/uid");
+	private final static JSONPointer JTID = new JSONPointer("/tid/0/value");
+	private final static JSONPointer JNAME = new JSONPointer("/name/0/value");
+	private final static JSONPointer JURI = new JSONPointer("/field_uri/0/uri");
+
 	private final HttpClient client;
 	private final String baseURL;
 	private final String baseAuth;
 	private String token;
-	
-	private final JSONPointer tid = new JSONPointer("/tid/0/value");
-	private final JSONPointer name = new JSONPointer("/name/0/value");
+	private String uid;
+
 
 	/**
 	 * Get an HTTP request builder with authorization headers
@@ -93,15 +101,19 @@ public class Drupal {
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		JSONObject obj = new JSONObject(response.body());
+
 		this.token = (String) obj.get("csrf_token");
-		
-		return (this.token != null);
+		this.uid = (String) JUID.queryFrom((JSONObject)obj);
+
+		LOG.info("Logged in as user {}", uid);
+
+		return (this.token != null && this.uid != null);
 	}
 
 	/**
 	 * Get taxonomy as a map
 	 * 
-	 * @param taxo name of the taxonomy
+	 * @param taxo JNAME of the taxonomy
 	 * @return map
 	 * @throws IOException
 	 * @throws InterruptedException 
@@ -114,16 +126,23 @@ public class Drupal {
 			HttpRequest request = getBuilder().GET()
 				.uri(URI.create(baseURL + "/en/api/v1/taxonomy/" + taxo + "?_format=json&page=" + page))
 				.build();
-
+			LOG.info("Requesting {}", request.uri());
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 			JSONArray terms = new JSONArray(response.body());
 			if (terms.isEmpty()) {
 				break;
 			}
+			String val = "";
 			for (Object obj: terms) {
-				map.put((int) tid.queryFrom((JSONObject) obj), (String) name.queryFrom((JSONObject)obj));
+				val = (String) JURI.queryFrom((JSONObject) obj);
+				if (val == null || val.isEmpty()) {
+					val = (String) JNAME.queryFrom((JSONObject) obj);
+				}
+				map.put((int) JTID.queryFrom((JSONObject) obj), val);
 			}
 		}
+		LOG.info("Got taxonomy {}, {} terms", taxo, map.size());
+
 		return map;
 	}
 
@@ -201,7 +220,7 @@ public class Drupal {
 		// paginated result set
 		for(int page = 0; ; page++) {
 			HttpRequest request = getBuilder().GET()
-				.uri(URI.create(baseURL + "/" + lang + "/api/v1/content/dataset/5868?_format=json&page=" + page))
+				.uri(URI.create(baseURL + "/" + lang + "/api/v1/content/dataset/" + uid + "?_format=json&page=" + page))
 				.build();
 
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
