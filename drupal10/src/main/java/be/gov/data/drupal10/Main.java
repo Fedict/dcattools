@@ -25,13 +25,88 @@
  */
 package be.gov.data.drupal10;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- *
- * @author Bart.Hanssens
+ * Processes DCAT-AP v2 file(s) to update data.gov.be open data portal.
+ * 
+ * @author Bart Hanssens
  */
 public class Main {
+	private final static Logger LOG = LoggerFactory.getLogger(Main.class);
+	
+	/**
+	 * Exit with error code
+	 * 
+	 * @param code
+	 * @param msg 
+	 */
+	private static void exit(int code, String msg) {
+		LOG.error(msg);
+		System.exit(code);
+	}
 
+	/**
+	 * Load properties from file
+	 * 
+	 * @param file
+	 * @return 
+	 */
+	private static Properties loadProperties(String file) {
+        Path p = Paths.get(file);
+		
+		Properties prop = new Properties();
+		try (InputStream is = Files.newInputStream(p.toAbsolutePath())) {
+			prop.load(is);
+		} catch (IOException ioe) {
+			exit(-2, ioe.getMessage());
+		}
+		return prop;
+	}
+
+	/**
+	 * Main
+	 * 
+	 * @param args 
+	 */
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+		LOG.info("Start");
+		
+		if (args.length == 0) {
+			exit(-1, "Missing property files");
+		}
+		Properties prop = loadProperties(args[0]);
+		
+		// user authentication
+		Drupal d10 = new Drupal(prop.getProperty("datagovbe.url"), prop.getProperty("datagovbe.auth"));
+		try {
+			d10.login(prop.getProperty("datagovbe.user"), prop.getProperty("datagovbe.pass"));
+			for(String lang: new String[] { "nl", "fr", "de", "en" }) {
+				List<Dataset> datasets = d10.getDatasets(lang);
+				System.err.println(datasets);
+			}
+		} catch (IOException | InterruptedException ioe) {
+			exit(-3, ioe.getMessage());
+		}
+		
+		try {
+			File f = new File(prop.getProperty("dcat.file"));
+			DcatReader r = new DcatReader(f);
+			r.getDatasets("nl");
+		} catch (IOException ioe) {
+			exit(-4, ioe.getMessage());
+		}
+	
+		LOG.info("Done");
     }
 }

@@ -25,10 +25,12 @@
  */
 package be.gov.data.drupal10;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -53,6 +55,8 @@ import org.eclipse.rdf4j.sail.memory.MemoryStore;
  */
 public class DcatReader implements AutoCloseable {
 	private final Repository repo;
+	private final Set<IRI> datasetIDs;
+	private final Set<IRI> serviceIDs;
 
 	@Override
 	public void close() throws Exception {
@@ -138,19 +142,44 @@ public class DcatReader implements AutoCloseable {
 	/**
 	 * Get all datasets
 	 */
-	public void getDatasets() {
-		Set<IRI> ids = getIDs(DCAT.DATASET);
-		for(IRI id: ids) {
+	public List<Dataset> getDatasets(String lang) {
+/**
+		String id,
+	String title,
+	String description,
+	String langcode,
+	Set<Integer> categories,
+	Set<URI> conditions,
+	Set<InternetAddress> contacts,
+	Set<URI> accessURLS,
+	Set<URI> downloadURLS,
+	Set<String> keywords,
+	Set<Integer> formats,
+	Integer frequency,
+	Integer geography,
+	Integer license,
+	String organisation,
+	Integer publisher,
+	LocalDate from,
+	LocalDate till
+**/
+		
+		for(IRI id: datasetIDs) {
 			Model m = getValues(id);
-			getLiteral(m, DCTERMS.TITLE, null);
-			getLiteral(m, DCTERMS.DESCRIPTION, null);
-			getLiterals(m, DCAT.KEYWORD, null);
+
+			getLiteral(m, DCTERMS.IDENTIFIER, null);
+			getLiteral(m, DCTERMS.TITLE, lang);
+			getLiteral(m, DCTERMS.DESCRIPTION, lang);
+			
+			getLiterals(m, DCAT.KEYWORD, lang);
 			getURIs(m, DCAT.THEME);
 			getURIs(m, DCTERMS.CREATOR);
 			getURIs(m, DCTERMS.PUBLISHER);			
 		}
+		return null;
 	}
 
+	
 	/**
 	 * Constructor
 	 * 
@@ -164,6 +193,9 @@ public class DcatReader implements AutoCloseable {
 		try (RepositoryConnection conn = repo.getConnection()) {
 			conn.add(file, (Resource) null);
 		}
+		datasetIDs = getIDs(DCAT.DATASET);
+		serviceIDs = getIDs(DCAT.DATA_SERVICE);
+
 	}
 
 }
