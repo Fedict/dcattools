@@ -1,2 +1,7 @@
 # extra queries to be executed and data to be loaded
-#
+statbelopen/data-publ-contact.ttl
+sparql-geo-belgium.qry
+statbelopen/data-theme.ttl
+statbelopen/sparql-drupal-theme.qry
+data-media.ttl
+statbelopen/sparql-drupal-media.qry

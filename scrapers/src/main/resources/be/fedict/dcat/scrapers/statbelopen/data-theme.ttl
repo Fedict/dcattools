@@ -1,0 +1,18 @@
+# Data for Drupal URI
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.gov.be/en/taxonomy/term/38>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> .
+
+<http://data.gov.be/en/taxonomy/term/34>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
+
+<http://data.gov.be/en/taxonomy/term/41>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> .
+
+<http://data.gov.be/en/taxonomy/term/39>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> .
+
+<http://data.gov.be/en/taxonomy/term/36>
+	skos:exactMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> .
