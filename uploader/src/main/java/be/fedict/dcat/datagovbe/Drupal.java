@@ -665,8 +665,10 @@ public class Drupal {
 				// not on distribution.
 				if (landings.isEmpty()) {
 					accesses.add(getLink(dist, DCAT.ACCESS_URL, store, lang));
+					accesses.add(getLink(dist, DCAT.ENDPOINT_DESCRIPTION, store, lang));
 				}
 				downloads.add(getLink(dist, DCAT.DOWNLOAD_URL, store, lang));
+				downloads.add(getLink(dist, DCAT.ENDPOINT_URL, store, lang));
 				rights.add(getLink(dist, DCTERMS.RIGHTS, store, lang));
 				types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
 
