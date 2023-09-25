@@ -638,15 +638,17 @@ public class Drupal {
 	}
 
 	/**
-	 * Add DCAT datasets
+	 * Add DCAT distributions
 	 *
 	 * @param builder
+	 * @param dataset parent dataset or dataservice
 	 * @param uris
 	 * @param lang
 	 * @param landings
 	 * @throws RepositoryException
 	 */
-	private void addDists(JsonObjectBuilder builder, List<String> uris, String lang, List<String> landings)
+	private void addDists(JsonObjectBuilder builder, Map<Resource, ListMultimap<String, String>> dataset, 
+									List<String> uris, String lang, List<String> landings)
 		throws RepositoryException {
 		HashSet<String> accesses = new HashSet<>();
 		HashSet<String> downloads = new HashSet<>();
@@ -665,10 +667,12 @@ public class Drupal {
 				// not on distribution.
 				if (landings.isEmpty()) {
 					accesses.add(getLink(dist, DCAT.ACCESS_URL, store, lang));
-					accesses.add(getLink(dist, DCAT.ENDPOINT_DESCRIPTION, store, lang));
 				}
 				downloads.add(getLink(dist, DCAT.DOWNLOAD_URL, store, lang));
-				downloads.add(getLink(dist, DCAT.ENDPOINT_URL, store, lang));
+				// add dataservice info
+				accesses.add(getLink(dataset, DCAT.ENDPOINT_DESCRIPTION, store, lang));
+				downloads.add(getLink(dataset, DCAT.ENDPOINT_URL, store, lang));
+
 				rights.add(getLink(dist, DCTERMS.RIGHTS, store, lang));
 				types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
 
@@ -728,7 +732,7 @@ public class Drupal {
 
 			// Get DCAT distributions
 			List<String> dists = Storage.getMany(dataset, DCAT.HAS_DISTRIBUTION, "");
-			addDists(builder, dists, lang, landingPages);
+			addDists(builder, dataset, dists, lang, landingPages);
 
 			// Add new or update existing dataset ?
 			String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
