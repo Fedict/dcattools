@@ -552,15 +552,17 @@ public class Drupal {
 	 * @param builder
 	 * @param dataset
 	 * @param lang
+	 * @return true if at least title was found
 	 * @throws RepositoryException
 	 */
-	private void addDataset(JsonObjectBuilder builder,
+	private boolean addDataset(JsonObjectBuilder builder,
 		Map<Resource, ListMultimap<String, String>> dataset, String lang)
-		throws RepositoryException {
+			throws RepositoryException {
 		String id = Storage.getOne(dataset, DCTERMS.IDENTIFIER, "");
 		String title = stripTags(Storage.getOne(dataset, DCTERMS.TITLE, lang));
 		if (title.isEmpty()) {
 			LOGGER.warn("Title for {} empty", id);
+			return false;
 		}
 		// Just copy the title if description is empty
 		String desc = Storage.getOne(dataset, DCTERMS.DESCRIPTION, lang);
@@ -609,6 +611,7 @@ public class Drupal {
 		} else {
 			builder.add(Drupal.FLD_TIME, fromtill);
 		}
+		return true;
 	}
 
 	/**
@@ -669,9 +672,6 @@ public class Drupal {
 					accesses.add(getLink(dist, DCAT.ACCESS_URL, store, lang));
 				}
 				downloads.add(getLink(dist, DCAT.DOWNLOAD_URL, store, lang));
-				// add dataservice info
-				accesses.add(getLink(dataset, DCAT.ENDPOINT_DESCRIPTION, store, lang));
-				downloads.add(getLink(dataset, DCAT.ENDPOINT_URL, store, lang));
 
 				rights.add(getLink(dist, DCTERMS.RIGHTS, store, lang));
 				types.add(Storage.getOne(dist, DATAGOVBE.MEDIA_TYPE, ""));
@@ -682,6 +682,10 @@ public class Drupal {
 			}
 		}
 
+		// add dataservice info
+		accesses.add(getLink(dataset, DCAT.ENDPOINT_DESCRIPTION, store, lang));
+		downloads.add(getLink(dataset, DCAT.ENDPOINT_URL, store, lang));
+				
 		// remove duplicate and empty links
 		downloads.removeAll(accesses);
 		downloads.remove("");
@@ -726,7 +730,9 @@ public class Drupal {
 
 			JsonObjectBuilder builder = Json.createObjectBuilder();
 
-			addDataset(builder, dataset, lang);
+			if (!addDataset(builder, dataset, lang)) {
+				continue;
+			}
 
 			List<String> landingPages = Storage.getMany(dataset, DCAT.LANDING_PAGE, "");
 
