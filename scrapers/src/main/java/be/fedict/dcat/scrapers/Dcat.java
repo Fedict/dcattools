@@ -75,14 +75,11 @@ public abstract class Dcat extends BaseScraper {
 	 * @return file format
 	 */
 	private RDFFormat guessFormat(String name, String data) {
-		if (name.endsWith(".rdf")) {
-			// unfortunately the RDF file extension is used for various serializations
-			if (data.startsWith("<?xml") || data.startsWith("<rdf")) {
-				return RDFFormat.RDFXML;
-			}
-			if (data.startsWith("@base") || data.startsWith("@prefix")) {
-				return RDFFormat.TURTLE;
-			}
+		if (data.startsWith("<?xml") || data.startsWith("<rdf")) {
+			return RDFFormat.RDFXML;
+		}
+		if (data.startsWith("@base") || data.startsWith("@prefix")) {
+			return RDFFormat.TURTLE;
 		}
 		Optional<RDFFormat> fmt = Rio.getParserFormatForFileName(name);
 		return fmt.orElse(RDFFormat.NTRIPLES);
@@ -103,7 +100,9 @@ public abstract class Dcat extends BaseScraper {
 
 		// Load RDF file into store
 		try (InputStream in = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8))) {
-			store.add(in, guessFormat(getBase().toString(), data));
+			RDFFormat fmt = guessFormat(getBase().toString(), data);
+			logger.info("Guessing format is {}", fmt.getName());
+			store.add(in, fmt);
 		} catch (RDFParseException | IOException ex) {
 			throw new RepositoryException(ex);
 		}
