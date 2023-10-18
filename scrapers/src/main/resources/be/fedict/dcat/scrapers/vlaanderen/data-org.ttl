@@ -209,7 +209,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/213> ;
 	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen" .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0549874291>
+<https://org.belgif.be/id/CbeRegisteredEntity/0479740422>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "V-ICT-OR"@nl ;
