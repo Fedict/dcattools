@@ -98,7 +98,7 @@
 		"Bruxelles Environnement"@en, "Bruxelles Environnement / Leefmilieu Brussel"@en, 
 		"Bruxelles Environnement"@fr, "Bruxelles Environnement / Leefmilieu Brussel"@fr .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0831050765>
+<https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/188> ;
