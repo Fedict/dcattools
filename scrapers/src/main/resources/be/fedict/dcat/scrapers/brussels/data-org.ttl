@@ -342,7 +342,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/459> ;
 	skos:altLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0851360585>
+<https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Talent Brussels"@en, "Talent Brussels"@fr, "Talent Brussels"@nl ; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/407> ;
