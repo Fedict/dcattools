@@ -76,7 +76,7 @@
 
 <http://purl.org/adms/publishertype/Company>
 	a skos:Concept ;
-	skos:prefLabel "Local Authority"@en .
+	skos:prefLabel "Company"@en .
 
 <http://purl.org/adms/publishertype/NonProfitOrganisation>
 	a skos:Concept ;

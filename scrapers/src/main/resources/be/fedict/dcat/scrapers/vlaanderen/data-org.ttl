@@ -5,10 +5,10 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2199299707>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199299410>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Studiedienst Vlaanderen"@nl ;
+	skos:prefLabel "Departement Kanselarij en Buitenlandse Zaken"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/84> ;
 	skos:altLabel "SVR" .
 
