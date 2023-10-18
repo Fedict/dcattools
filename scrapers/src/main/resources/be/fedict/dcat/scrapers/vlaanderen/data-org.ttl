@@ -12,15 +12,6 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/84> ;
 	skos:altLabel "SVR" .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2143716826>
-	a foaf:Organization ;
-	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Departement LNE"@nl ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/86> ;
-	skos:altLabel 
-		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid"@nl,
-		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "MercatorNet" .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0886689767>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -254,10 +245,9 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO001834> ;
 	skos:prefLabel "Agentschap Facilitair Bedrijf"@nl ;
-	skos:prefLabel "Departement Omgeving"@nl ;
 	skos:altLabel "Agentschap Facilitair Bedrijf"@nl .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2199335339>
+=<https://org.belgif.be/id/CbeEstablishmentUnit/2199336923>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003754> ;
@@ -280,7 +270,9 @@
 		"Vlaamse Overheid - Departement Omgeving - Afdeling Vlaams Planbureau voor Omgeving"@nl,
 		"Departement Omgeving", "Ondersteunend Centrum Databank Ondergrond Vlaanderen"@nl,
 		"Ondersteunend Centrum Databank Ondergrond Vlaanderen"@en,
-		"Vlaams Planbureau voor Omgeving"@nl, "Vlaamse Overheid - Departement Omgeving"@nl .
+		"Vlaams Planbureau voor Omgeving"@nl, "Vlaamse Overheid - Departement Omgeving"@nl, 
+		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid"@nl,
+		"Vlaamse Overheid - Departement LNE - Afdeling Milieu-, Natuur- en Energiebeleid", "MercatorNet" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336131>
 	a foaf:Organization ;
