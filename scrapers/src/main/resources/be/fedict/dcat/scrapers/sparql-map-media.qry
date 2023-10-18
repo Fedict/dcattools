@@ -19,7 +19,7 @@ INSERT
 	}
 WHERE
 	{	?dist ?prop ?label .
-		?auth skos:altLabel ?label .
+		?auth skos:altLabel|skos:closeMatch ?label .
 		?auth skos:prefLabel ?imt .
 		?auth skos:closeMatch ?mime .
 		?auth skos:exactMatch ?drupal .

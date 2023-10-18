@@ -2,11 +2,11 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/433>
-	skos:prefLabel "AIFF" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/x-aiff> ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/433> ;
-	skos:altLabel "AIFF", "audio/x-aiff" .
+<http://publications.europa.eu/resource/authority/file-type/BIN>
+	skos:prefLabel "BIN" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/484> ;
+	skos:altLabel "sld", "ov2", "M4V", "video/x-m4v", "AIFF", "audio/x-aiff", "fgb" .
 
 <http://publications.europa.eu/resource/authority/file-type/CSV> 
 	skos:prefLabel "CSV" ;
@@ -58,7 +58,7 @@
 
 <http://publications.europa.eu/resource/authority/file-type/GDB>
 	skos:prefLabel "GDB" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-filegdb> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/340> ;
 	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase" .
 
@@ -66,7 +66,8 @@
 	skos:prefLabel "GPKG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/441> ;
-	skos:altLabel "Geopackage", "geopackage", "GPKG",
+	skos:altLabel "Geopackage", "geopackage", "GPKG", 
+		"sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)",
 		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .
 
 <http://publications.europa.eu/resource/authority/file-type/GML>
@@ -151,12 +152,6 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/432> ;
 	skos:altLabel "MOV", "Quicktime", "video/quicktime", "mov" .
 
-<http://data.gov.be/en/taxonomy/term/434>
-	skos:prefLabel "M4V" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/video/x-m4> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "M4V", "video/x-m4v" .
-
 <http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES>	
 	skos:prefLabel "N-Triples" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/n-triples> ;
@@ -174,12 +169,6 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.spreadsheet> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/7> ;
 	skos:altLabel "ODS", "ods", "application/vnd.oasis.opendocument.spreadsheet" .
-
-<http://data.gov.be/en/taxonomy/term/402>
-	skos:prefLabel "OV2" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "ov2" .
 
 <http://publications.europa.eu/resource/authority/file-type/PDF>
 	skos:prefLabel "PDF" ;
@@ -211,12 +200,6 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/rss+xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/11> ;
 	skos:altLabel "RSS", "rss" .
-	
-<http://data.gov.be/en/taxonomy/term/235>
-	skos:prefLabel "SLD" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "sld" .
 
 <http://publications.europa.eu/resource/authority/file-type/SHP>
 	skos:prefLabel "SHP" ;
@@ -245,12 +228,6 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jp2> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/170> ;
 	skos:altLabel "JPEG2000", "jpeg2000", "jp2" .
-
-<http://data.gov.be/en/taxonomy/term/332>
-	skos:prefLabel "SQLITE" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.sqlite3> ; 
-	skos:exactMatch <http://publications.europa.eu/resource/authority/file-type/BIN> ;
-	skos:altLabel "sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)" .
 
 <http://publications.europa.eu/resource/authority/file-type/TIFF>
 	skos:prefLabel "TIFF" ;
@@ -322,8 +299,9 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/xml>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/2> ;
 	skos:altLabel "application/xml", <https://www.iana.org/assignments/media-types/text/xml>,
+				 <https://www.iana.org/assignments/media-types/application/gpx+xml>,
 				<https://www.iana.org/assignments/media-types/application/xml>, "text/xml",
-				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", 
+				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "gpx",
 				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE", "EML".
 
 <http://publications.europa.eu/resource/authority/file-type/NETCDF>
@@ -341,12 +319,12 @@
 
 <http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
 	skos:prefLabel "ArcGIS" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream>; 
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgis>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/443> ;
 	skos:altLabel "ArcGIS GeoService" .
 
 <http://publications.europa.eu/resource/authority/file-type/MAP_PRVW>
 	skos:prefLabel "ArcGIS Hub" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/text/html>; 
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgishub>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/444> ;
 	skos:altLabel "ArcGIS Hub Dataset" .
