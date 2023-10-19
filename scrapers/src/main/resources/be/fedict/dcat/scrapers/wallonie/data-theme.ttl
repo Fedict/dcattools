@@ -51,7 +51,7 @@
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Administration%2C+Gouvernement%2C+Finances+publiques%2C+Citoyennet%C3%A9>,
 		<https://www.odwb.be/explore/?refine.theme=Administration+et+Services+publics>,
-		<https://www.odwb.be/explore/?refine.theme=Urbanisme%2C+Patrimoine>, ;
+		<https://www.odwb.be/explore/?refine.theme=Urbanisme%2C+Patrimoine> ;
 	skos:altLabel "vie-politique"@fr, "ma-commune"@fr, "commune"@fr, "Dette"@fr, "Dépense"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
