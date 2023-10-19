@@ -9,4 +9,4 @@ INSERT
 	{	?dataset dgov:mediaType ?drupal }
 WHERE
 	{	?dataset dcterms:format ?fmt .
-		?drupal skos:exactMatch ?fmt }
+		?fmt skos:exactMatch ?drupal }
