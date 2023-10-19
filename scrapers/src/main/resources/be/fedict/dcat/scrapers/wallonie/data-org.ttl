@@ -343,3 +343,15 @@
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
 	skos:prefLabel "bPost"@nl, "bPost"@fr, "bPost"@en ;
 	skos:altLabel "bpost" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0433457663>
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/176> ;
+	skos:altLabel "Cambio" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0444436776>
+	dcterms:type admsp:Company ;
+	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/178>  ;
+	skos:altLabel "JC Decaux" .
