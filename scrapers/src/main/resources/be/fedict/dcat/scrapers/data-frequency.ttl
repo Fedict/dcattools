@@ -71,6 +71,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/30> ;
 	skos:prefLabel "Annual"@en ;
 	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
+		<http://data.gov.be/YEARLY>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
 		<http://publications.europa.eu/resource/authority/frequency/ANNUAL>,
 		<http://purl.org/cld/freq/annual>, "Annuel", "annuel", "Chaque%20année,%20fin%20octobre",
