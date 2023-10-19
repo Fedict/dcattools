@@ -247,7 +247,7 @@
 	skos:prefLabel "Agentschap Facilitair Bedrijf"@nl ;
 	skos:altLabel "Agentschap Facilitair Bedrijf"@nl .
 
-=<https://org.belgif.be/id/CbeEstablishmentUnit/2199336923>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336923>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003754> ;
