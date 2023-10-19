@@ -4,7 +4,7 @@ sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 elia/sparql-language.qry
-#elia/sparql-dist-accessurl.qry
+sparql-dist-accessurl-ods.qry
 elia/sparql-fix-license.qry
 elia/sparql-license.qry
 sparql-access-public.qry

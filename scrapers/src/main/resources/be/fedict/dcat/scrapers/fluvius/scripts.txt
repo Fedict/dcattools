@@ -4,7 +4,7 @@ sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 fluvius/sparql-language.qry
-#fluvius/sparql-dist-accessurl.qry
+sparql-dist-accessurl-ods.qry
 fluvius/sparql-fix-license.qry
 fluvius/sparql-license.qry
 sparql-access-public.qry

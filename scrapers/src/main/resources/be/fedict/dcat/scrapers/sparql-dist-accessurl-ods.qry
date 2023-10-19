@@ -1,4 +1,4 @@
-# Create access and download URLs
+# Fix access URLs for OpenDataSoft
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -8,16 +8,13 @@ DELETE {
 }
 INSERT {
 	?dist dcat:accessURL ?url .
-	?dist dcat:downloadURL ?data
 }
 WHERE { 
 	?dataset a dcat:Dataset .
 	?dataset dcterms:identifier ?id .
 	?dataset dcat:distribution ?dist .
 	?dist dcat:accessURL ?data  .
-	BIND(IRI
-			(CONCAT("https://opendata.infrabel.be/explore/dataset/",
-				REPLACE(?id, "@infrabel", ""), 
-			"/information/")) 
+	BIND(IRI(
+			CONCAT(?id, 'information/')) 
 	as ?url) 
 }

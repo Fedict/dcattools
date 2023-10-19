@@ -3,7 +3,7 @@ wallonie/sparql-default-language.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 wallonie/sparql-language.qry
-wallonie/sparql-dist-accessurl.qry
+sparql-dist-accessurl-ods.qry
 wallonie/sparql-remove-rights.qry
 wallonie/sparql-fix-license.qry
 data-license.ttl

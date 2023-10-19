@@ -2,7 +2,7 @@
 sparql-map-loc-lang.qry
 infrabel/sparql-fix-language.qry
 sparql-dist-lang.qry
-infrabel/sparql-dist-accessurl.qry
+sparql-dist-accessurl-ods.qry
 infrabel/sparql-delete-rights.qry
 infrabel/sparql-fix-license.qry
 data-license.ttl
