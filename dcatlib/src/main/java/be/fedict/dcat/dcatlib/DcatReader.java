@@ -166,14 +166,47 @@ public class DcatReader {
 		return (IRI) value;
 	}
 
-	private <T extends Value> Set<T> getValues(Resource subj, IRI pred, Class<T> clazz) {
-		Set<T> values = new HashSet<>();
+	/**
+	 * Get a set of IRIs
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return set of literals
+	 * @throws IOException when not IRIs
+	 */
+	private Set<IRI> getIRIs(Resource subj, IRI pred) throws IOException {
+		Set<IRI> values = new HashSet<>();
 		for(Statement s: m.getStatements(subj, pred, null)) {
-			values.add((T) s.getObject());
+			Value value = s.getObject();
+			if (! (value instanceof IRI)) {
+				throw new IOException("Not a IRI " + value);
+			}
+			values.add((IRI) value);
+		}
+		return values;
+	}
+	
+	/**
+	 * Get a set of literals
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return set of literals
+	 * @throws IOException when not literals
+	 */
+	private Set<Literal> getLiterals(Resource subj, IRI pred) throws IOException {
+		Set<Literal> values = new HashSet<>();
+		for(Statement s: m.getStatements(subj, pred, null)) {
+			Value value = s.getObject();
+			if (! (value instanceof Literal)) {
+				throw new IOException("Not a literal " + value);
+			}
+			values.add((Literal) value);
 		}
 		return values;
 	}
 
+	
 	/**
 	 * Get a single string per language
 	 * 
@@ -185,7 +218,7 @@ public class DcatReader {
 	private Map<String,String> getLangString(Resource subj, IRI pred) throws IOException {
 		Map<String,String> map = new HashMap<>();
 		
-		Set<Literal> values = getValues(subj, pred, Literal.class);
+		Set<Literal> values = getLiterals(subj, pred);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
 			if (!lang.isPresent()) {
@@ -210,7 +243,7 @@ public class DcatReader {
 	private Map<String,Set<String>> getLangStringList(Resource subj, IRI pred) throws IOException {
 		Map<String,Set<String>> map = new HashMap<>();
 
-		Set<Literal> values = getValues(subj, pred, Literal.class);
+		Set<Literal> values = getLiterals(subj, pred);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
 			if (!lang.isPresent()) {
@@ -238,9 +271,14 @@ public class DcatReader {
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
-
-		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
 		
+		d.setThemes(getIRIs(iri, DCAT.THEME));
+		d.setCreator(getIRI(iri, DCTERMS.CREATOR));
+		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
+		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
+		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
+		d.setLicense(getIRI(iri, DCTERMS.LICENSE));
+
 		d.setIssued(getDate(iri, DCTERMS.CREATED));
 		d.setModified(getDate(iri, DCTERMS.MODIFIED));
 		Resource res = getResource(iri, DCTERMS.TEMPORAL);
@@ -248,9 +286,7 @@ public class DcatReader {
 			d.setStartDate(getDate(res, DCAT.START_DATE));
 			d.setEndDate(getDate(res, DCAT.END_DATE));
 		}
-		
-		
-		
+
 		return d;
 	}
 	
