@@ -33,6 +33,9 @@ import be.fedict.dcat.dcatlib.model.Dataset;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -42,6 +45,7 @@ import java.util.Set;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -49,15 +53,19 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Read DCAT-AP v2 input into a simplified model for data.gov.be
+ * 
  * @author Bart Hanssens
  */
 public class DcatReader {
-	private static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
+	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
+	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat();
+	
 	private Model m;
 	
 	private <T extends Value> T getValue(IRI subj, IRI pred, Class<T> clazz) {
@@ -68,15 +76,97 @@ public class DcatReader {
 		return val;
 	}
 
-	private String getString(IRI subj, IRI pred) throws IOException {
+	/**
+	 * Get a single value
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return value or null
+	 * @throws IOException 
+	 */
+	private Value getValue(Resource subj, IRI pred) throws IOException {
 		Set<Value> objects = m.filter(subj, pred, null).objects();
-		if (objects.size() > 1) {
-			throw new IOException();
+		if (objects.isEmpty()) {
+			return null;
 		}
-		return "";
+		if (objects.size() > 1) {
+			throw new IOException("More than 1 value for " + subj + " " + pred);
+		}
+		return objects.iterator().next();
 	}
 
-	private <T extends Value> Set<T> getValues(IRI subj, IRI pred, Class<T> clazz) {
+	/**
+	 * Get a single date
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return date or null value
+	 * @throws IOException when there are multiple values 
+	 */
+	private Date getDate(Resource subj, IRI pred) throws IOException {
+		Value value = getValue(subj, pred);
+		if (value == null) {
+			return null;
+		}
+		try {
+			return DATE_FMT.parse(value.stringValue());
+		} catch(ParseException pe) {
+			throw new IOException(pe);
+		}
+	}
+
+	/**
+	 * Get a single string
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return string or null value
+	 * @throws IOException when there are multiple values
+	 */
+	private String getString(Resource subj, IRI pred) throws IOException {
+		Value value = getValue(subj, pred);
+		return (value != null) ? value.stringValue() : null;
+	}
+
+	/**
+	 * Get a single IRI or blank node
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return IRI/Bnode or null value
+	 * @throws IOException when there are multiple values
+	 */
+	private Resource getResource(Resource subj, IRI pred) throws IOException {
+		Value value = getValue(subj, pred);
+		if (value == null) {
+			return null;
+		}
+		if (! (value instanceof Resource)) {
+			throw new IOException("Not a resource " + value);
+		}
+		return (Resource) value;
+	}
+
+	/**
+	 * Get a single IRI
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return IRI or null value
+	 * @throws IOException when there are multiple values
+	 */
+	private IRI getIRI(Resource subj, IRI pred) throws IOException {
+		Value value = getValue(subj, pred);
+		if (value == null) {
+			return null;
+		}
+		if (! (value instanceof IRI)) {
+			throw new IOException("Not a IRI " + value);
+		}
+		return (IRI) value;
+	}
+
+	private <T extends Value> Set<T> getValues(Resource subj, IRI pred, Class<T> clazz) {
 		Set<T> values = new HashSet<>();
 		for(Statement s: m.getStatements(subj, pred, null)) {
 			values.add((T) s.getObject());
@@ -84,9 +174,18 @@ public class DcatReader {
 		return values;
 	}
 
-	private Map<String,String> getLangLiteral(IRI subj, IRI pred) throws IOException {
-		Set<Literal> values = getValues(subj, pred, Literal.class);
+	/**
+	 * Get a single string per language
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return map of strings per language
+	 * @throws IOException when language tag is missing or multiple values per language
+	 */
+	private Map<String,String> getLangString(Resource subj, IRI pred) throws IOException {
 		Map<String,String> map = new HashMap<>();
+		
+		Set<Literal> values = getValues(subj, pred, Literal.class);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
 			if (!lang.isPresent()) {
@@ -100,9 +199,18 @@ public class DcatReader {
 		return map;
 	}
 
-	private Map<String,Set<String>> getLangLiterals(IRI subj, IRI pred) throws IOException {
-		Set<Literal> values = getValues(subj, pred, Literal.class);
+	/**
+	 * Get a list of strings per language
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return map of lists of strings per language
+	 * @throws IOException when language tag is missing
+	 */
+	private Map<String,Set<String>> getLangStringList(Resource subj, IRI pred) throws IOException {
 		Map<String,Set<String>> map = new HashMap<>();
+
+		Set<Literal> values = getValues(subj, pred, Literal.class);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
 			if (!lang.isPresent()) {
@@ -110,7 +218,7 @@ public class DcatReader {
 			}
 			Set<String> list = map.get(lang.get());
 			if (list == null) {
-				map.put(lang.get(), new HashSet<String>());
+				map.put(lang.get(), new HashSet<>());
 				list = map.get(lang.get());
 			}
 			list.add(v.stringValue());
@@ -120,16 +228,29 @@ public class DcatReader {
 
 	private DataResource readResource(IRI iri) throws IOException {
 		String id = getString(iri, DCTERMS.IDENTIFIER);
-		if (id.isEmpty()) {
+		if (id == null || id.isEmpty()) {
 			throw new IOException("No identifier for " + iri);
 		}
 		DataResource d = new DataResource();
 
 		d.setId(id);
-		d.setTitle(getLangLiteral(iri, DCTERMS.TITLE));
-		d.setDescription(getLangLiteral(iri, DCTERMS.DESCRIPTION));
-		d.setKeywords(getLangLiterals(iri, DCAT.KEYWORD));
 
+		d.setTitle(getLangString(iri, DCTERMS.TITLE));
+		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
+		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
+
+		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
+		
+		d.setIssued(getDate(iri, DCTERMS.CREATED));
+		d.setModified(getDate(iri, DCTERMS.MODIFIED));
+		Resource res = getResource(iri, DCTERMS.TEMPORAL);
+		if (res != null) {
+			d.setStartDate(getDate(res, DCAT.START_DATE));
+			d.setEndDate(getDate(res, DCAT.END_DATE));
+		}
+		
+		
+		
 		return d;
 	}
 	
@@ -154,6 +275,13 @@ public class DcatReader {
 		}
 	}
 	
+	/**
+	 * Read from input
+	 * 
+	 * @param is inputstream
+	 * @return simplified DCAT catalog
+	 * @throws IOException 
+	 */
     public Catalog read(InputStream is) throws IOException {
 		m = Rio.parse(is, "http://example.com", RDFFormat.NTRIPLES);
 
