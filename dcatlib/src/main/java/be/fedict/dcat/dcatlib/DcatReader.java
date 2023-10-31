@@ -51,9 +51,11 @@ import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
 
@@ -61,7 +63,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Read DCAT-AP v2 input into a simplified model for data.gov.be
+ * Read DCAT-AP v2 data into a simplified model for data.gov.be
  * 
  * @author Bart Hanssens
  */
@@ -69,15 +71,14 @@ public class DcatReader {
 	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat();
 	
+	private final static Map<IRI,String> LANG_MAP = 
+		Map.of(Values.iri("http://publications.europa.eu/resource/authority/language/NLD"), "nl",
+				Values.iri("http://publications.europa.eu/resource/authority/language/FRA"), "fr",
+				Values.iri("http://publications.europa.eu/resource/authority/language/DEU"), "de",
+				Values.iri("http://publications.europa.eu/resource/authority/language/ENG"), "en"
+			);
+
 	private Model m;
-	
-	private <T extends Value> T getValue(IRI subj, IRI pred, Class<T> clazz) {
-		T val = null;
-		for(Statement s: m.getStatements(subj, pred, null)) {
-			val = (T) s.getObject();
-		}
-		return val;
-	}
 
 	/**
 	 * Get a single value
@@ -188,7 +189,40 @@ public class DcatReader {
 		}
 		return values;
 	}
-	
+
+	/**
+	 * Get a map with a single IRI per language
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return map of IRIs per language
+	 * @throws IOException when language tag is missing or multiple values per language
+	 */
+	private Map<String,IRI> getLangIRIs(Resource subj, IRI pred) throws IOException {
+		Map<String,IRI> map = new HashMap<>();
+		
+		Set<IRI> iris = getIRIs(subj, pred);
+		for (IRI iri: iris) {
+			IRI lang = getIRI(iri, DCTERMS.LANGUAGE);
+			if (lang != null) {
+				String code = LANG_MAP.get(lang);
+				if (code == null) {
+					throw new IOException("Language " + lang + " for " + subj + " not found");
+				}
+				if (map.containsKey(code)) {
+					throw new IOException("Language " + code + " for " + subj + " already present");
+				}
+				map.put(code, iri);
+			} else { 
+				if (map.containsKey("")) {
+					throw new IOException("Undefined language for " + subj + " already present");
+				}
+				map.put("", iri);
+			}
+		}
+		return map;
+	}
+
 	/**
 	 * Get a set of literals
 	 * 
@@ -208,10 +242,9 @@ public class DcatReader {
 		}
 		return values;
 	}
-
 	
 	/**
-	 * Get a single string per language
+	 * Get a map with a single string per language
 	 * 
 	 * @param subj subject
 	 * @param pred predicate
@@ -262,6 +295,13 @@ public class DcatReader {
 		return map;
 	}
 
+	/**
+	 * Read the common DCAT Resource part of a DCAT Dataset or Dataservice
+	 * 
+	 * @param iri 
+	 * @return DCAT resource
+	 * @throws IOException when mandatory ID is missing
+	 */
 	private DataResource readResource(IRI iri) throws IOException {
 		String id = getString(iri, DCTERMS.IDENTIFIER);
 		if (id == null || id.isEmpty()) {
@@ -285,15 +325,28 @@ public class DcatReader {
 
 		d.setIssued(getDate(iri, DCTERMS.CREATED));
 		d.setModified(getDate(iri, DCTERMS.MODIFIED));
-		Resource res = getResource(iri, DCTERMS.TEMPORAL);
-		if (res != null) {
-			d.setStartDate(getDate(res, DCAT.START_DATE));
-			d.setEndDate(getDate(res, DCAT.END_DATE));
+
+		Resource contact = getResource(iri, DCAT.CONTACT_POINT);
+		if (contact == null) {
+			throw new IOException("No contact for " + iri);
+		}
+		d.setContactName(getLangString(contact, VCARD4.FN));
+
+		Resource temp = getResource(iri, DCTERMS.TEMPORAL);
+		if (temp != null) {
+			d.setStartDate(getDate(temp, DCAT.START_DATE));
+			d.setEndDate(getDate(temp, DCAT.END_DATE));
 		}
 
 		return d;
 	}
 
+	/**
+	 * Read DCAT Distribution
+	 * 
+	 * @param dataset
+	 * @throws IOException 
+	 */
 	private void readDistributions(Dataset dataset) throws IOException {
 		List<Distribution> dists = new ArrayList<>();
 
@@ -309,32 +362,62 @@ public class DcatReader {
 		}
 		dataset.setDistributions(dists);
 	}
-	
-	private void readDatasets(Catalog catalog) throws IOException {
+
+	/**
+	 * Read DCAT Datasets and add them to the DCAT Catalog
+	 * 
+	 * @param catalog 
+	 */
+	private void readDatasets(Catalog catalog) {
+		LOG.info("Reading datasets");
+
+		int ok = 0;
+		int skip = 0;
+
 		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.DATASET)) {
 			IRI iri = (IRI) stmt.getSubject();
-			Dataset d = (Dataset) readResource(iri);
-			
-			catalog.addDataset(d.getId(), d);
+			try {
+				Dataset d = (Dataset) readResource(iri);
+				readDistributions(d);
+				catalog.addDataset(d.getId(), d);
+				ok++;
+			} catch (IOException ioe) {
+				LOG.error(ioe.getMessage());
+				skip++;
+			}
 		}
+		LOG.info("Read {} datasets, skipping {}", ok, skip);
 	}
 
+	/**
+	 * Read DCAT Dataservices and add them to the DCAT Catalog
+	 * 
+	 * @param catalog 
+	 */
 	private void readDataservices(Catalog catalog) throws IOException {
+		LOG.info("Reading dataservices");
+	
+		int ok = 0;
+		int skip = 0;
+
 		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
 			IRI iri = (IRI) stmt.getSubject();
-			Dataservice d = (Dataservice) readResource(iri);
-			if (d == null) {
-				continue;
+			try {
+				Dataservice d = (Dataservice) readResource(iri);
+				catalog.addDataservice(d.getId(), d);
+				ok++;
+			} catch (IOException ioe) {
+				LOG.error(ioe.getMessage());
+				skip++;
 			}
-
-			catalog.addDataservice(d.getId(), d);
 		}
+		LOG.info("Read {} dataservices, skipping {}", ok, skip);
 	}
 	
 	/**
 	 * Read from input
 	 * 
-	 * @param is inputstream
+	 * @param is input stream
 	 * @return simplified DCAT catalog
 	 * @throws IOException 
 	 */

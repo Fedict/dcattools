@@ -25,6 +25,7 @@
  */
 package be.fedict.dcat.dcatlib.model;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,9 +37,9 @@ public class Catalog {
 	private final Map<String,Dataset> datasets = new HashMap<>(10_000);
 	private final Map<String,Dataservice> dataservices = new HashMap<>(500);
 	
-	public void addDataset(String id, Dataset dataset) {
+	public void addDataset(String id, Dataset dataset) throws IOException {
 		if (datasets.containsKey(id)) {
-			throw new IllegalArgumentException("key " + id + " already present");
+			throw new IOException("Key " + id + " already present");
 		}
 		datasets.put(id, dataset);
 	}

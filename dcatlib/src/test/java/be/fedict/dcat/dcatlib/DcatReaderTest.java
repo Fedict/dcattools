@@ -23,76 +23,32 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.dcatlib.model;
+package be.fedict.dcat.dcatlib;
 
-import java.util.Map;
-import org.eclipse.rdf4j.model.IRI;
+import be.fedict.dcat.dcatlib.model.Catalog;
+import java.io.IOException;
+import java.io.InputStream;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
- * Simplified DCAT Distribution helper class
- * 
+ *
  * @author Bart Hanssens
  */
-public class Distribution {
-
-	private Map<String,String> title;
-	private IRI accessURL;
-	private IRI downloadURL;
-	private IRI format;
-
-	/**
-	 * @return the title
-	 */
-	public Map<String,String> getTitle() {
-		return title;
+public class DcatReaderTest {
+	private static Catalog catalog;
+	
+	@BeforeAll
+	public static void setUpClass() throws IOException {
+		DcatReader reader = new DcatReader();
+		try(InputStream is = ClassLoader.getSystemResourceAsStream("dcat-multilang.ttl")) {
+			catalog = reader.read(is);
+		}
 	}
-
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(Map<String,String> title) {
-		this.title = title;
+	
+	@Test
+	public static void testCatalog() {
 	}
+	
 
-	/**
-	 * @param downloadURL the downloadURL to set
-	 */
-	public void setDownloadURL(IRI downloadURL) {
-		this.downloadURL = downloadURL;
-	}
-
-	/**
-	 * @return the format
-	 */
-	public IRI getFormat() {
-		return format;
-	}
-
-	/**
-	 * @param format the format to set
-	 */
-	public void setFormat(IRI format) {
-		this.format = format;
-	}
-
-	/**
-	 * @return the accessURL
-	 */
-	public IRI getAccessURL() {
-		return accessURL;
-	}
-
-	/**
-	 * @param accessURL the accessURL to set
-	 */
-	public void setAccessURL(IRI accessURL) {
-		this.accessURL = accessURL;
-	}
-
-	/**
-	 * @return the downloadURL
-	 */
-	public IRI getDownloadURL() {
-		return downloadURL;
-	}
 }

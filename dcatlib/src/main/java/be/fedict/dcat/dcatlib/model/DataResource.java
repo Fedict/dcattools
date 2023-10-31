@@ -29,10 +29,12 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import java.util.Set;
+
 import org.eclipse.rdf4j.model.IRI;
 
 /**
- *
+ * Simplified DCAT Resource helper class
+ * 
  * @author Bart Hanssens
  */
 public class DataResource {
@@ -40,10 +42,13 @@ public class DataResource {
 
 	private String id;
 	
+	// multi-lingual values
 	private Map<String,String> title;
 	private Map<String,String> description;
 	private Map<String,Set<String>> keywords;
 	private Map<String,IRI> landingPage;
+	private Map<String,String> contactName;
+	private Map<String,IRI> contactAddr;	
 	
 	// references
 	private IRI creator;
@@ -129,7 +134,8 @@ public class DataResource {
 	}
 
 	/**
-	 * @param keywords the keywords to set
+	 * @param lang language code
+	 * @return the keywords
 	 */
 	public Set<String> getKeywords(String lang) {
 		return keywords.getOrDefault(lang, Collections.emptySet());
@@ -146,6 +152,34 @@ public class DataResource {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the contactName
+	 */
+	public Map<String,String> getContactName() {
+		return contactName;
+	}
+
+	/**
+	 * @param contactName the contactName to set
+	 */
+	public void setContactName(Map<String,String> contactName) {
+		this.contactName = contactName;
+	}
+
+	/**
+	 * @return the contactAddr
+	 */
+	public Map<String,IRI> getContactAddr() {
+		return contactAddr;
+	}
+
+	/**
+	 * @param contactAddr the contactAddr to set
+	 */
+	public void setContactAddr(Map<String,IRI> contactAddr) {
+		this.contactAddr = contactAddr;
 	}
 
 	/**
