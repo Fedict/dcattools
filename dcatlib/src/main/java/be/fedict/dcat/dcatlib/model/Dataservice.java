@@ -25,10 +25,42 @@
  */
 package be.fedict.dcat.dcatlib.model;
 
+import org.eclipse.rdf4j.model.IRI;
+
 /**
  *
  * @author Bart.Hanssens
  */
 public class Dataservice extends DataResource {
+	private IRI endPointURL;
+	private IRI endPointDescription;
 	
+	/**
+	 * @return the endPointURL
+	 */
+	public IRI getEndPointURL() {
+		return endPointURL;
+	}
+
+	/**
+	 * @param endPointURL the endPointURL to set
+	 */
+	public void setEndPointURL(IRI endPointURL) {
+		this.endPointURL = endPointURL;
+	}
+
+	/**
+	 * @return the endPointDescription
+	 */
+	public IRI getEndPointDescription() {
+		return endPointDescription;
+	}
+
+	/**
+	 * @param endPointDescription the endPointDescription to set
+	 */
+	public void setEndPointDescription(IRI endPointDescription) {
+		this.endPointDescription = endPointDescription;
+	}
+
 }

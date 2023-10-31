@@ -25,7 +25,7 @@
  */
 package be.fedict.dcat.dcatlib.model;
 
-import java.util.List;
+import java.util.Map;
 import org.eclipse.rdf4j.model.IRI;
 
 /**
@@ -33,7 +33,66 @@ import org.eclipse.rdf4j.model.IRI;
  * @author Bart.Hanssens
  */
 public class Distribution {
-	List<IRI> format;
-	IRI accessURL;
-	IRI downloadURL;
+
+	private Map<String,String> title;
+	private IRI accessURL;
+	private IRI downloadURL;
+	private IRI format;
+
+
+	/**
+	 * @return the title
+	 */
+	public Map<String,String> getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(Map<String,String> title) {
+		this.title = title;
+	}
+
+	/**
+	 * @param downloadURL the downloadURL to set
+	 */
+	public void setDownloadURL(IRI downloadURL) {
+		this.downloadURL = downloadURL;
+	}
+
+	/**
+	 * @return the format
+	 */
+	public IRI getFormat() {
+		return format;
+	}
+
+	/**
+	 * @param format the format to set
+	 */
+	public void setFormat(IRI format) {
+		this.format = format;
+	}
+
+	/**
+	 * @return the accessURL
+	 */
+	public IRI getAccessURL() {
+		return accessURL;
+	}
+
+	/**
+	 * @param accessURL the accessURL to set
+	 */
+	public void setAccessURL(IRI accessURL) {
+		this.accessURL = accessURL;
+	}
+
+	/**
+	 * @return the downloadURL
+	 */
+	public IRI getDownloadURL() {
+		return downloadURL;
+	}
 }

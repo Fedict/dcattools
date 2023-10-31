@@ -25,15 +25,61 @@
  */
 package be.fedict.dcat.dcatlib.model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import org.eclipse.rdf4j.model.IRI;
 
 /**
  *
- * @author Bart.Hanssens
+ * @author Bart Hanssens
  */
 public class Dataset extends DataResource {
 
-	List<Dataset> distributions;
+	private List<Distribution> distributions;
 
+	/**
+	 * @return the distributions
+	 */
+	public List<Distribution> getDistributions() {
+		return distributions;
+	}
+
+	/**
+	 * @param distributions the distributions to set
+	 */
+	public void setDistributions(List<Distribution> distributions) {
+		this.distributions = distributions;
+	}
+
+	public Set<IRI> getFormats() {
+		Set<IRI> formats = new HashSet<>();
 		
+		for(Distribution dist: distributions) {
+			formats.add(dist.getFormat());
+		}
+		formats.remove(null);
+		return formats;
+	}
+
+	public Set<IRI> getAccesURLs() {
+		Set<IRI> urls = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			urls.add(dist.getAccessURL());
+		}
+		urls.remove(null);
+		return urls;
+	}
+	
+	public Set<IRI> getDownloadURLs() {
+		Set<IRI> urls = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			urls.add(dist.getDownloadURL());
+		}
+		urls.remove(null);
+		return urls;
+	}
+
 }

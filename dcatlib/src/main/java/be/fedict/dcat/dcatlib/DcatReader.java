@@ -30,14 +30,17 @@ import be.fedict.dcat.dcatlib.model.Catalog;
 import be.fedict.dcat.dcatlib.model.DataResource;
 import be.fedict.dcat.dcatlib.model.Dataservice;
 import be.fedict.dcat.dcatlib.model.Dataset;
+import be.fedict.dcat.dcatlib.model.Distribution;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -265,7 +268,8 @@ public class DcatReader {
 			throw new IOException("No identifier for " + iri);
 		}
 		DataResource d = new DataResource();
-
+		d.setIRI(iri);
+		
 		d.setId(id);
 
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
@@ -288,6 +292,22 @@ public class DcatReader {
 		}
 
 		return d;
+	}
+
+	private void readDistributions(Dataset dataset) throws IOException {
+		List<Distribution> dists = new ArrayList<>();
+
+		for (Statement stmt: m.getStatements(dataset.getIRI(), DCAT.HAS_DISTRIBUTION, null)) {
+			IRI iri = (IRI) stmt.getObject();
+			
+			Distribution dist = new Distribution();
+			dist.setAccessURL(getIRI(iri, DCAT.ACCESS_URL));
+			dist.setDownloadURL(getIRI(iri, DCAT.DOWNLOAD_URL));
+			dist.setFormat(getIRI(iri, DCAT.MEDIA_TYPE));
+
+			dists.add(dist);
+		}
+		dataset.setDistributions(dists);
 	}
 	
 	private void readDatasets(Catalog catalog) throws IOException {

@@ -36,6 +36,7 @@ import org.eclipse.rdf4j.model.IRI;
  * @author Bart Hanssens
  */
 public class DataResource {
+	private IRI iri;
 
 	private String id;
 	
@@ -56,6 +57,20 @@ public class DataResource {
 	private Date modified;
 	private Date startDate;
 	private Date endDate;
+	
+	/**
+	 * @return the iri
+	 */
+	public IRI getIRI() {
+		return iri;
+	}
+
+	/**
+	 * @param iri the iri to set
+	 */
+	public void setIRI(IRI iri) {
+		this.iri = iri;
+	}
 
 	/**
 	 * @return the id
