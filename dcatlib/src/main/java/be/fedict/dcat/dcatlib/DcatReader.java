@@ -69,7 +69,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DcatReader {
 	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
-	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat();
+	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	
 	private final static Map<IRI,String> LANG_MAP = 
 		Map.of(Values.iri("http://publications.europa.eu/resource/authority/language/NLD"), "nl",
@@ -207,15 +207,15 @@ public class DcatReader {
 			if (lang != null) {
 				String code = LANG_MAP.get(lang);
 				if (code == null) {
-					throw new IOException("Language " + lang + " for " + subj + " not found");
+					throw new IOException("Language " + lang + " for " + subj + " " + pred + " not found");
 				}
 				if (map.containsKey(code)) {
-					throw new IOException("Language " + code + " for " + subj + " already present");
+					throw new IOException("Language " + code + " for " + subj + " " + pred + " already present");
 				}
 				map.put(code, iri);
 			} else { 
 				if (map.containsKey("")) {
-					throw new IOException("Undefined language for " + subj + " already present");
+					throw new IOException("Undefined language for " + subj + " " + pred + " already present");
 				}
 				map.put("", iri);
 			}
@@ -257,13 +257,18 @@ public class DcatReader {
 		Set<Literal> values = getLiterals(subj, pred);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
-			if (!lang.isPresent()) {
-				throw new IOException("No lang label " + subj + " " + pred);
+			if (lang.isPresent()) {
+				if (map.containsKey(lang.get())) {
+					throw new IOException("Existing value " + lang.get() + " " + subj + " " + pred);		
+				}
+				map.put(lang.get(), v.stringValue());
+			} else {
+				if (map.containsKey("")) {
+					throw new IOException("Undefined language for " + subj + " " + pred + " already present");
+				}
+				map.put("", v.stringValue());
 			}
-			String prev = map.put(lang.get(), v.stringValue());
-			if (prev != null) {
-				throw new IOException("Existing value " + lang.get() + " " + subj + " " + pred);		
-			}
+
 		}
 		return map;
 	}

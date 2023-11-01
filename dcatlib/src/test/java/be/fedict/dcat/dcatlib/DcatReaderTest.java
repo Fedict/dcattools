@@ -26,6 +26,7 @@
 package be.fedict.dcat.dcatlib;
 
 import be.fedict.dcat.dcatlib.model.Catalog;
+import be.fedict.dcat.dcatlib.model.Dataset;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,6 +54,13 @@ public class DcatReaderTest {
 	@Test
 	public void testCatalog() throws IOException {
 		assertEquals(1, catalog.getDatasets().size());
-	}	
+	}
+
+	@Test
+	public void testDatasetTitle() throws IOException {
+		Dataset d = catalog.getDatasets().get("c646365c4441f53426a72e2f1b14b9d6e63e0756");
+		assertEquals("BeSt adressen", d.getTitle().get("nl"));
+	}
+
 
 }
