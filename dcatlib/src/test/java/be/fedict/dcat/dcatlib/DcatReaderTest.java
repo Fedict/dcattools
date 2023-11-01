@@ -26,8 +26,12 @@
 package be.fedict.dcat.dcatlib;
 
 import be.fedict.dcat.dcatlib.model.Catalog;
+
 import java.io.IOException;
 import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -36,19 +40,19 @@ import org.junit.jupiter.api.Test;
  * @author Bart Hanssens
  */
 public class DcatReaderTest {
-	private static Catalog catalog;
+	static Catalog catalog;
 	
 	@BeforeAll
-	public static void setUpClass() throws IOException {
+	public static void setup() throws IOException {
 		DcatReader reader = new DcatReader();
-		try(InputStream is = ClassLoader.getSystemResourceAsStream("dcat-multilang.ttl")) {
-			catalog = reader.read(is);
+		try(InputStream is = ClassLoader.getSystemResourceAsStream("dcat-multilang.rdf")) {
+			catalog = reader.read(is, "application/rdf+xml");
 		}
 	}
 	
 	@Test
-	public static void testCatalog() {
-	}
-	
+	public void testCatalog() throws IOException {
+		assertEquals(catalog.getDatasets().size(), 1);
+	}	
 
 }

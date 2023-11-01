@@ -49,6 +49,7 @@ public class DataResource {
 	private Map<String,IRI> landingPage;
 	private Map<String,String> contactName;
 	private Map<String,IRI> contactAddr;	
+	private Map<String,IRI> contactSite;
 	
 	// references
 	private IRI creator;
@@ -182,6 +183,20 @@ public class DataResource {
 		this.contactAddr = contactAddr;
 	}
 
+	/**
+	 * @return the contactSite
+	 */
+	public Map<String,IRI> getContactSite() {
+		return contactSite;
+	}
+
+	/**
+	 * @param contactSite the contactSite to set
+	 */
+	public void setContactSite(Map<String,IRI> contactSite) {
+		this.contactSite = contactSite;
+	}
+	
 	/**
 	 * @return the issued
 	 */

@@ -198,7 +198,7 @@ public class DcatReader {
 	 * @return map of IRIs per language
 	 * @throws IOException when language tag is missing or multiple values per language
 	 */
-	private Map<String,IRI> getLangIRIs(Resource subj, IRI pred) throws IOException {
+	private Map<String,IRI> getLangIRI(Resource subj, IRI pred) throws IOException {
 		Map<String,IRI> map = new HashMap<>();
 		
 		Set<IRI> iris = getIRIs(subj, pred);
@@ -331,12 +331,15 @@ public class DcatReader {
 			throw new IOException("No contact for " + iri);
 		}
 		d.setContactName(getLangString(contact, VCARD4.FN));
+		d.setContactAddr(getLangIRI(contact, VCARD4.HAS_EMAIL));
+		d.setContactSite(getLangIRI(contact, VCARD4.HAS_URL));
 
 		Resource temp = getResource(iri, DCTERMS.TEMPORAL);
 		if (temp != null) {
 			d.setStartDate(getDate(temp, DCAT.START_DATE));
 			d.setEndDate(getDate(temp, DCAT.END_DATE));
 		}
+		d.setLandingPage(getLangIRI(iri, DCAT.LANDING_PAGE));
 
 		return d;
 	}
@@ -418,11 +421,16 @@ public class DcatReader {
 	 * Read from input
 	 * 
 	 * @param is input stream
+	 * @param mime mimetype
 	 * @return simplified DCAT catalog
 	 * @throws IOException 
 	 */
-    public Catalog read(InputStream is) throws IOException {
-		m = Rio.parse(is, "http://example.com", RDFFormat.NTRIPLES);
+    public Catalog read(InputStream is, String mime) throws IOException {
+		Optional<RDFFormat> fmt = Rio.getParserFormatForMIMEType(mime);
+		if (!fmt.isPresent()) {
+			throw new IOException("Format " + mime + " not supported");
+		}
+		m = Rio.parse(is, "http://example.com", fmt.get());
 
 		Catalog catalog = new Catalog();
 		

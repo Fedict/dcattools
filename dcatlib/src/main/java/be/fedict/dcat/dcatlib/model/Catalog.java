@@ -48,6 +48,10 @@ public class Catalog {
 		return datasets.get(id);
 	}
 
+	public Map<String,Dataset> getDatasets() {
+		return datasets;
+	}
+
 	public void addDataservice(String id, Dataservice dataservice) {
 		dataservices.put(id, dataservice);
 	}
@@ -55,4 +59,9 @@ public class Catalog {
 	public Dataservice getDataservice(String id) {
 		return dataservices.get(id);
 	}
+
+	public Map<String,Dataservice> getDataservices() {
+		return dataservices;
+	}
+
 }
