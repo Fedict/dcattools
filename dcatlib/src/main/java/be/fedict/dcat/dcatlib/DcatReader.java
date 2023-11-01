@@ -302,12 +302,11 @@ public class DcatReader {
 	 * @return DCAT resource
 	 * @throws IOException when mandatory ID is missing
 	 */
-	private DataResource readResource(IRI iri) throws IOException {
+	private DataResource readResource(IRI iri, DataResource d) throws IOException {
 		String id = getString(iri, DCTERMS.IDENTIFIER);
 		if (id == null || id.isEmpty()) {
 			throw new IOException("No identifier for " + iri);
 		}
-		DataResource d = new DataResource();
 		d.setIRI(iri);
 		
 		d.setId(id);
@@ -357,8 +356,8 @@ public class DcatReader {
 			IRI iri = (IRI) stmt.getObject();
 			
 			Distribution dist = new Distribution();
-			dist.setAccessURL(getIRI(iri, DCAT.ACCESS_URL));
-			dist.setDownloadURL(getIRI(iri, DCAT.DOWNLOAD_URL));
+			dist.setAccessURL(getLangIRI(iri, DCAT.ACCESS_URL));
+			dist.setDownloadURL(getLangIRI(iri, DCAT.DOWNLOAD_URL));
 			dist.setFormat(getIRI(iri, DCAT.MEDIA_TYPE));
 
 			dists.add(dist);
@@ -380,7 +379,7 @@ public class DcatReader {
 		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.DATASET)) {
 			IRI iri = (IRI) stmt.getSubject();
 			try {
-				Dataset d = (Dataset) readResource(iri);
+				Dataset d = (Dataset) readResource(iri, new Dataset());
 				readDistributions(d);
 				catalog.addDataset(d.getId(), d);
 				ok++;
@@ -406,7 +405,7 @@ public class DcatReader {
 		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
 			IRI iri = (IRI) stmt.getSubject();
 			try {
-				Dataservice d = (Dataservice) readResource(iri);
+				Dataservice d = (Dataservice) readResource(iri, new Dataservice());
 				catalog.addDataservice(d.getId(), d);
 				ok++;
 			} catch (IOException ioe) {

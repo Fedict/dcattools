@@ -63,21 +63,21 @@ public class Dataset extends DataResource {
 		return formats;
 	}
 
-	public Set<IRI> getAccesURLs() {
+	public Set<IRI> getAccesURLs(String lang) {
 		Set<IRI> urls = new HashSet<>();
 		
 		for(Distribution dist: distributions) {
-			urls.add(dist.getAccessURL());
+			urls.add(dist.getAccessURL(lang));
 		}
 		urls.remove(null);
 		return urls;
 	}
 	
-	public Set<IRI> getDownloadURLs() {
+	public Set<IRI> getDownloadURLs(String lang) {
 		Set<IRI> urls = new HashSet<>();
 		
 		for(Distribution dist: distributions) {
-			urls.add(dist.getDownloadURL());
+			urls.add(dist.getDownloadURL(lang));
 		}
 		urls.remove(null);
 		return urls;

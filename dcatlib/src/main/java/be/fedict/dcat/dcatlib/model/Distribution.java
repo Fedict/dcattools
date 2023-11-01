@@ -36,8 +36,8 @@ import org.eclipse.rdf4j.model.IRI;
 public class Distribution {
 
 	private Map<String,String> title;
-	private IRI accessURL;
-	private IRI downloadURL;
+	private Map<String,IRI> accessURL;
+	private Map<String,IRI> downloadURL;
 	private IRI format;
 
 	/**
@@ -52,13 +52,6 @@ public class Distribution {
 	 */
 	public void setTitle(Map<String,String> title) {
 		this.title = title;
-	}
-
-	/**
-	 * @param downloadURL the downloadURL to set
-	 */
-	public void setDownloadURL(IRI downloadURL) {
-		this.downloadURL = downloadURL;
 	}
 
 	/**
@@ -78,21 +71,43 @@ public class Distribution {
 	/**
 	 * @return the accessURL
 	 */
-	public IRI getAccessURL() {
+	public Map<String,IRI> getAccessURL() {
 		return accessURL;
+	}
+
+	/**
+	 * @return the accessURL
+	 */
+	public IRI getAccessURL(String lang) {
+		return accessURL.get(lang);
 	}
 
 	/**
 	 * @param accessURL the accessURL to set
 	 */
-	public void setAccessURL(IRI accessURL) {
+	public void setAccessURL(Map<String,IRI> accessURL) {
 		this.accessURL = accessURL;
 	}
 
 	/**
 	 * @return the downloadURL
 	 */
-	public IRI getDownloadURL() {
+	public Map<String,IRI> getDownloadURL() {
 		return downloadURL;
 	}
+	
+	/**
+	 * @return the downloadURL
+	 */
+	public IRI getDownloadURL(String lang) {
+		return downloadURL.get(lang);
+	}
+
+	/**
+	 * @param downloadURL the downloadURL to set
+	 */
+	public void setDownloadURL(Map<String,IRI> downloadURL) {
+		this.downloadURL = downloadURL;
+	}
+
 }

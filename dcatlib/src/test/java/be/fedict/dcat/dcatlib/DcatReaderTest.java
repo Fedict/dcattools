@@ -52,7 +52,7 @@ public class DcatReaderTest {
 	
 	@Test
 	public void testCatalog() throws IOException {
-		assertEquals(catalog.getDatasets().size(), 1);
+		assertEquals(1, catalog.getDatasets().size());
 	}	
 
 }
