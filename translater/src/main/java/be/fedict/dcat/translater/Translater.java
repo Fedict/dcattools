@@ -174,7 +174,7 @@ public class Translater {
 		}
 	}
 
-	public Translate(String baseURL, String user, String pass) {
+	public Translater(String baseURL, String user, String pass) {
 		this.client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 		this.baseURL = baseURL;
 		this.authHeader = "Basic " + Base64.getEncoder().encodeToString((user + ":'" + pass).getBytes());
