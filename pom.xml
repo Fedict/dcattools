@@ -28,12 +28,13 @@
         <module>tools</module>
         <module>uploader</module>
         <module>dcatlib</module>
+        <module>translater</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-		<rdf4j.version>4.3.3</rdf4j.version>
+		<rdf4j.version>4.3.8</rdf4j.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<hc.version>4.5.14</hc.version>
 		<json.version>1.1.4</json.version>
