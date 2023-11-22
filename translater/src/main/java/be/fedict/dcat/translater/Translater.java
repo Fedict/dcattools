@@ -61,7 +61,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Send and retrieve translations from and to the etranslation proxy 
+ * (which in turn will send request to the EU eTranslation service)
+ * 
  * @author Bart Hanssens
  */
 public class Translater {
@@ -72,9 +74,18 @@ public class Translater {
 	private final String authHeader;
 	
 	private int delay = 60;
-	private int retry = 5;
+	private int retry = 15;
 
-	private void sendTranslationRequest(String body, String source, String target) throws IOException, InterruptedException {
+	/**
+	 * Send a translation HTTP request
+	 * 
+	 * @param text text to translate
+	 * @param source source language code
+	 * @param target target language code
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	private void sendTranslationRequest(String text, String source, String target) throws IOException, InterruptedException {
 		URI uri = null;
 		try {
 			uri = new URI(baseURL + "/request/submit");
@@ -82,7 +93,7 @@ public class Translater {
 			throw new IOException(ue);
 		}
 		HttpRequest submit = HttpRequest.newBuilder()
-								.POST(BodyPublishers.ofString(body))
+								.POST(BodyPublishers.ofString(text))
 								.uri(uri)
 								.header("Authorization", authHeader)
 								.build();
@@ -92,8 +103,20 @@ public class Translater {
 		}
 	}
 
-	private String getTranslation(String body, String source, String target) throws IOException, InterruptedException {
-		String sha1 = DigestUtils.sha1Hex(body);
+	/**
+	 * Retrieve a translation from the proxy.
+	 * If a translation is not available, assume it hasn't been requested yet and submit it for translation,
+	 * then wait-and-retry a few times
+	 * 
+	 * @param text text to translate
+	 * @param source source language code
+	 * @param target target language code
+	 * @return translated text or null (when retry fails repeatedly)
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	private String getTranslation(String text, String source, String target) throws IOException, InterruptedException {
+		String sha1 = DigestUtils.sha1Hex(text);
 		
 		URI uri = null;
 		try {
@@ -108,64 +131,103 @@ public class Translater {
 								.build();
 		HttpResponse<String> resp = client.send(retrieve, BodyHandlers.ofString(StandardCharsets.UTF_8));
 		if (resp.statusCode() == 200) {
+			// text was found
 			return resp.body();
 		}
 
-		sendTranslationRequest(body, source, target);
-		for(int i = retry; i > 0; i--) {
-			TimeUnit.SECONDS.sleep(delay);
-			resp = client.send(retrieve, BodyHandlers.ofString(StandardCharsets.UTF_8));
-			if (resp.statusCode() == 200) {
-				return resp.body();
-			}
-		}
-		LOG.error("No translation for {} {}, retried {}", source, target, retry);
-		return null;
+		// text not found, assume it hasn't been requested yet
+		sendTranslationRequest(text, source, target);
+		return null;	
 	}
 
+	/**
+	 * Convert the literals into a map with language code as the key
+	 * 
+	 * @param literals literals (assumed to have a language tag)
+	 * @return map
+	 */
 	private Map<String,String> toLangMap(Set<Literal> literals) {
 		return literals.stream()
 			.filter(l -> l.getLanguage().isPresent())
 			.collect(Collectors.toMap(l -> l.getLanguage().get(), l -> l.stringValue()));
 	}
 	
+	/**
+	 * Get the alphabetically lowest language code of a series of literals
+	 * 
+	 * @param literals
+	 * @return language code
+	 */
 	private String firstLang(Map<String,String> literals) {
 		return literals.keySet().stream().sorted().findFirst().get();
 	}
 
-	public void translate(InputStream in, OutputStream out, List<String> langs) throws IOException {
-		List<IRI> preds = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
+	/**
+	 * Translate titles and descriptions
+	 * 
+	 * @param m RDF model
+	 * @param preds predicates to translate
+	 * @param langs languages to translate to
+	 * @throws IOException 
+	 */
+	private int translationRound(Model m, List<IRI> preds, List<String> langs) throws IOException {	
+		int missing = 0;
 
-		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
-		
 		for(Resource subj: m.subjects()) {
 			for (IRI pred: preds) {
-				List<String> missing = new ArrayList<>(langs);
+				List<String> wanted = new ArrayList<>(langs);
 				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
-				missing.removeAll(literals.keySet());
+				wanted.removeAll(literals.keySet());
 				
-				if (missing.isEmpty()) {
+				if (wanted.isEmpty()) {
 					LOG.debug("All languages present for {} {}", subj, pred);
 					continue;
 				}
 
+				// pick the lowest language tag as the source language
 				String source = firstLang(literals);
 				String body = literals.get(source);
 
-				for (String target: missing) {
-					LOG.debug("Get translation {} for {} {}", target, subj, pred);
+				for (String target: wanted) {
+					LOG.debug("Get translation for {} {} to {}", subj, pred, target);
 					try {
 						String translation = getTranslation(body, source, target);
 						if (translation != null) {
 							m.add(subj, pred, Values.literal(translation, target));
-							LOG.info("Translation added");
+							LOG.debug("Added");
+						} else {
+							missing++;
+							LOG.debug("Missing");
 						}
 					} catch (InterruptedException|IOException ioe) {
-						LOG.error("Failed to translate {} {} to", subj, pred, target);	
+						LOG.error("Failed to translate {} {} to: {}", subj, pred, target, ioe.getMessage());	
 					}
 				}
 			}
 		}
+		return missing;
+	}
+	
+	/**
+	 * Translate titles and descriptions
+	 * 
+	 * @param in input stream
+	 * @param out output streams
+	 * @param langs languages to translate to
+	 * @throws IOException 
+	 */
+	public void translate(InputStream in, OutputStream out, List<String> langs) throws IOException, InterruptedException {
+		List<IRI> preds = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
+		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
+	
+		int missing = 0;
+		do {
+			missing = translationRound(m, preds, langs);
+			if (missing > 0) {
+				LOG.info("Missing translations: {}", missing);
+				TimeUnit.SECONDS.sleep(delay);
+			}
+		} while (missing > 0);
 
 		try {
 			Rio.write(m, out, "http://data.gov.be", RDFFormat.NTRIPLES);
@@ -174,6 +236,13 @@ public class Translater {
 		}
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param baseURL URL of the proxy
+	 * @param user HTTP Basic user name
+	 * @param pass HTTP Basic password
+	 */
 	public Translater(String baseURL, String user, String pass) {
 		this.client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
 		this.baseURL = baseURL;
