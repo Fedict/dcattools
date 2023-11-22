@@ -28,6 +28,7 @@ package be.fedict.dcat.translater;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -101,8 +102,8 @@ public class Translater {
 								.header("Authorization", authHeader)
 								.build();
 		HttpResponse<String> resp = client.send(submit, BodyHandlers.ofString(StandardCharsets.UTF_8));
-		if (resp.statusCode() == 500) {
-			throw new IOException(resp.body());
+		if (resp.statusCode() != HttpURLConnection.HTTP_ACCEPTED) {
+			throw new IOException("Submit error " + resp.statusCode());
 		}
 	}
 
@@ -133,11 +134,13 @@ public class Translater {
 								.header("Authorization", authHeader)
 								.build();
 		HttpResponse<String> resp = client.send(retrieve, BodyHandlers.ofString(StandardCharsets.UTF_8));
-		if (resp.statusCode() == 200) {
+		if (resp.statusCode() == HttpURLConnection.HTTP_OK) {
 			// text was found
 			return resp.body();
 		}
-
+		if (resp.statusCode() != HttpURLConnection.HTTP_NOT_FOUND) {
+			throw new IOException("Submit error " + resp.statusCode());
+		}
 		// text not found, assume it hasn't been requested yet
 		sendTranslationRequest(text, source, target);
 		return null;	
@@ -204,6 +207,7 @@ public class Translater {
 							LOG.debug("Missing");
 						}
 					} catch (InterruptedException|IOException ioe) {
+						missing++;
 						LOG.error("Failed to translate {} {} to {}: {}", subj, pred, target, ioe.getMessage());	
 					}
 				}
