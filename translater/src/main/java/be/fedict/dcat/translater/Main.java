@@ -71,9 +71,9 @@ public class Main implements Callable<Integer> {
 		LOG.info("-- START --");
 	
 		Path inFile = Paths.get("data", name, name + ".nt");
-		Path outFile = Paths.get("data", name, "name-translated" + ".nt");
+		Path outFile = Paths.get("data", name, name + "-translated" + ".nt");
 
-		Translater t = new Translater(user, pass, url);
+		Translater t = new Translater(url, user, pass);
 		
 		try(InputStream is = Files.newInputStream(inFile);
 			OutputStream os = Files.newOutputStream(outFile)){

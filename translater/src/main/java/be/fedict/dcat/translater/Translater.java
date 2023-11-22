@@ -53,7 +53,9 @@ import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.util.Models;
 import org.eclipse.rdf4j.model.util.Values;
+import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFHandlerException;
 import org.eclipse.rdf4j.rio.Rio;
@@ -124,7 +126,7 @@ public class Translater {
 			uri = new URI(baseURL + "/request/retrieve?hash=" + sha1 + "&targetLang=" + target);
 		} catch(URISyntaxException ue) {
 			throw new IOException(ue);
-		}	
+		}
 		HttpRequest retrieve = HttpRequest.newBuilder()
 								.GET()
 								.uri(uri)
@@ -174,8 +176,9 @@ public class Translater {
 	private int translationRound(Model m, List<IRI> preds, List<String> langs) throws IOException {	
 		int missing = 0;
 
-		for(Resource subj: m.subjects()) {
+		for(Resource subj: m.filter(null, RDF.TYPE, DCAT.DATASET).subjects()) {
 			for (IRI pred: preds) {
+				LOG.debug("{} {}", subj, pred);
 				List<String> wanted = new ArrayList<>(langs);
 				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
 				wanted.removeAll(literals.keySet());
@@ -201,7 +204,7 @@ public class Translater {
 							LOG.debug("Missing");
 						}
 					} catch (InterruptedException|IOException ioe) {
-						LOG.error("Failed to translate {} {} to: {}", subj, pred, target, ioe.getMessage());	
+						LOG.error("Failed to translate {} {} to {}: {}", subj, pred, target, ioe.getMessage());	
 					}
 				}
 			}
