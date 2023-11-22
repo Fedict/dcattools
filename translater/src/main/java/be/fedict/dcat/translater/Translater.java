@@ -44,10 +44,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+
 import org.apache.commons.codec.digest.DigestUtils;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
-
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.util.Models;
@@ -57,6 +58,7 @@ import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFHandlerException;
 import org.eclipse.rdf4j.rio.Rio;
 import org.eclipse.rdf4j.rio.UnsupportedRDFormatException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,14 +69,13 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class Translater {
-	private final static Logger LOG = LoggerFactory.getLogger(Main.class);
+	private final static Logger LOG = LoggerFactory.getLogger(Translater.class);
 
 	private final HttpClient client;
 	private final String baseURL;
 	private final String authHeader;
 	
 	private int delay = 60;
-	private int retry = 15;
 
 	/**
 	 * Send a translation HTTP request
@@ -215,12 +216,13 @@ public class Translater {
 	 * @param out output streams
 	 * @param langs languages to translate to
 	 * @throws IOException 
+	 * @throws java.lang.InterruptedException 
 	 */
 	public void translate(InputStream in, OutputStream out, List<String> langs) throws IOException, InterruptedException {
 		List<IRI> preds = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
 		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
 	
-		int missing = 0;
+		int missing;
 		do {
 			missing = translationRound(m, preds, langs);
 			if (missing > 0) {

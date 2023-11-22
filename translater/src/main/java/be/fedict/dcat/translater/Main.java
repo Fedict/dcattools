@@ -50,19 +50,19 @@ import picocli.CommandLine.Option;
 public class Main implements Callable<Integer> {
 	private final static Logger LOG = LoggerFactory.getLogger(Main.class);
 
-	@Option(names={"-n, --name"}, description="source name", required=true)
+	@Option(names={"-n", "--name"}, description="source name", required=true)
 	private String name;
 
-	@Option(names={"-l, --language"}, description="target languages")
+	@Option(names={"-l", "--language"}, description="target languages")
 	private List<String> targets;
 
-	@Option(names={"-U, --url"}, description="etranslation URI", required=true)
+	@Option(names={"-U", "--url"}, description="etranslation URI", required=true)
 	private String url;
 
-	@Option(names={"-u, --user"}, description="etranslation user")
+	@Option(names={"-u", "--user"}, description="etranslation user")
 	private String user;
 
-	@Option(names={"-p, --pass"}, description="etranslation pass")
+	@Option(names={"-p", "--pass"}, description="etranslation pass")
 	private String pass;
 
 	
