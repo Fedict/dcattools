@@ -28,7 +28,9 @@ package be.fedict.dcat.translater;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.Authenticator;
 import java.net.HttpURLConnection;
+import java.net.PasswordAuthentication;
 import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -39,7 +41,6 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -76,7 +77,6 @@ public class Translater {
 
 	private final HttpClient client;
 	private final String baseURL;
-	private final String authHeader;
 	
 	private int delay = 60;
 
@@ -92,14 +92,13 @@ public class Translater {
 	private void sendTranslationRequest(String text, String source, String target) throws IOException, InterruptedException {
 		URI uri = null;
 		try {
-			uri = new URI(baseURL + "/request/submit");
+			uri = new URI(baseURL + "/request/submit?sourceLang=" + source + "&targetLang=" + target);
 		} catch(URISyntaxException ue) {
 			throw new IOException(ue);
 		}
 		HttpRequest submit = HttpRequest.newBuilder()
 								.POST(BodyPublishers.ofString(text))
 								.uri(uri)
-								.header("Authorization", authHeader)
 								.build();
 		HttpResponse<String> resp = client.send(submit, BodyHandlers.ofString(StandardCharsets.UTF_8));
 		if (resp.statusCode() != HttpURLConnection.HTTP_ACCEPTED) {
@@ -131,7 +130,6 @@ public class Translater {
 		HttpRequest retrieve = HttpRequest.newBuilder()
 								.GET()
 								.uri(uri)
-								.header("Authorization", authHeader)
 								.build();
 		HttpResponse<String> resp = client.send(retrieve, BodyHandlers.ofString(StandardCharsets.UTF_8));
 		if (resp.statusCode() == HttpURLConnection.HTTP_OK) {
@@ -253,8 +251,13 @@ public class Translater {
 	 * @param pass HTTP Basic password
 	 */
 	public Translater(String baseURL, String user, String pass) {
-		this.client = HttpClient.newBuilder().proxy(ProxySelector.getDefault()).build();
+		this.client = HttpClient.newBuilder()
+			.authenticator(new Authenticator() {
+				@Override
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(user, pass.toCharArray());
+			}})
+			.proxy(ProxySelector.getDefault()).build();
 		this.baseURL = baseURL;
-		this.authHeader = "Basic " + Base64.getEncoder().encodeToString((user + ":'" + pass).getBytes());
 	}
 }
