@@ -34,6 +34,7 @@ import java.net.PasswordAuthentication;
 import java.net.ProxySelector;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
@@ -92,12 +93,18 @@ public class Translater {
 	private void sendTranslationRequest(String text, String source, String target) throws IOException, InterruptedException {
 		URI uri = null;
 		try {
-			uri = new URI(baseURL + "/request/submit?sourceLang=" + source + "&targetLang=" + target);
+			uri = new URI(baseURL + "/request/submit");
 		} catch(URISyntaxException ue) {
 			throw new IOException(ue);
 		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("sourceLang=").append(source).append("&targetLang=").append(target).append("&text=");
+		sb.append(URLEncoder.encode(text, StandardCharsets.UTF_8));
+
 		HttpRequest submit = HttpRequest.newBuilder()
-								.POST(BodyPublishers.ofString(text))
+								.POST(BodyPublishers.ofString(sb.toString()))
+								.header("Content-Type", "application/x-www-form-urlencoded")
 								.uri(uri)
 								.build();
 		HttpResponse<String> resp = client.send(submit, BodyHandlers.ofString(StandardCharsets.UTF_8));
@@ -137,7 +144,7 @@ public class Translater {
 			return resp.body();
 		}
 		if (resp.statusCode() != HttpURLConnection.HTTP_NOT_FOUND) {
-			throw new IOException("Submit error " + resp.statusCode());
+			throw new IOException("Retrieve error " + resp.statusCode());
 		}
 		// text not found, assume it hasn't been requested yet
 		sendTranslationRequest(text, source, target);
