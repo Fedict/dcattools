@@ -160,7 +160,12 @@ public class Translater {
 	private Map<String,String> toLangMap(Set<Literal> literals) {
 		return literals.stream()
 			.filter(l -> l.getLanguage().isPresent())
-			.collect(Collectors.toMap(l -> l.getLanguage().get(), l -> l.stringValue()));
+			.collect(Collectors.toMap(l -> l.getLanguage().get(), l -> l.stringValue(), 
+				(v1, v2) -> { 
+					LOG.warn("Duplicate found {} {}", v1, v2); 
+					return v1;
+				} 
+			));
 	}
 	
 	/**
@@ -184,6 +189,8 @@ public class Translater {
 	private int translationRound(Model m, List<IRI> preds, List<String> langs) throws IOException {	
 		int missing = 0;
 
+		int count = 0;
+
 		for(Resource subj: m.filter(null, RDF.TYPE, DCAT.DATASET).subjects()) {
 			for (IRI pred: preds) {
 				LOG.debug("{} {}", subj, pred);
@@ -205,6 +212,7 @@ public class Translater {
 
 				for (String target: wanted) {
 					LOG.debug("Get translation for {} {} to {}", subj, pred, target);
+					count++;
 					try {
 						String translation = getTranslation(body, source, target);
 						if (translation != null) {
