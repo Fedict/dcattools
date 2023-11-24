@@ -49,6 +49,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
@@ -80,6 +81,23 @@ public class Translater {
 	private final String baseURL;
 	
 	private int delay = 300;
+	private int maxSize = 5000;
+
+	/**
+	 * e
+	 * @param delay 
+	 */
+	public void setDelay(int delay) {
+		this.delay = delay;
+	}
+
+	/**
+	 * 
+	 * @param maxSize 
+	 */
+	public void setMaxSize(int maxSize) {
+		this.maxSize = maxSize;
+	}
 
 	/**
 	 * Send a translation HTTP request
@@ -188,7 +206,6 @@ public class Translater {
 	 */
 	private int translationRound(Model m, List<IRI> preds, List<String> langs) throws IOException {	
 		int missing = 0;
-
 		int count = 0;
 
 		for(Resource subj: m.filter(null, RDF.TYPE, DCAT.DATASET).subjects()) {
@@ -209,18 +226,24 @@ public class Translater {
 				// pick the lowest language tag as the source language
 				String source = firstLang(literals);
 				String body = literals.get(source);
+				if (body.length() >= maxSize) {
+					LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
+					body = StringUtils.abbreviate(body, maxSize);
+				}
 
 				for (String target: wanted) {
 					LOG.debug("Get translation for {} {} to {}", subj, pred, target);
-					count++;
+
 					try {
 						String translation = getTranslation(body, source, target);
+						count++;
+						if (count % 200 == 0) {
+							LOG.info("{} translations requested", count);
+						}
 						if (translation != null) {
 							m.add(subj, pred, Values.literal(translation, target));
-							LOG.debug("Added");
 						} else {
 							missing++;
-							LOG.debug("Missing");
 						}
 					} catch (InterruptedException|IOException ioe) {
 						missing++;
@@ -229,6 +252,7 @@ public class Translater {
 				}
 			}
 		}
+		LOG.info("Round finished, {} translations requested", count);
 		return missing;
 	}
 	
