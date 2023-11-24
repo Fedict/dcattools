@@ -79,7 +79,7 @@ public class Translater {
 	private final HttpClient client;
 	private final String baseURL;
 	
-	private int delay = 60;
+	private int delay = 300;
 
 	/**
 	 * Send a translation HTTP request
@@ -195,7 +195,10 @@ public class Translater {
 					LOG.debug("All languages present for {} {}", subj, pred);
 					continue;
 				}
-
+				if (literals.isEmpty()) {
+					LOG.warn("No language literals for {} {}", subj, pred);
+					continue;
+				}
 				// pick the lowest language tag as the source language
 				String source = firstLang(literals);
 				String body = literals.get(source);
