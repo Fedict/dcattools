@@ -83,7 +83,7 @@ public class Translater {
 	private final HttpClient client;
 	private final String baseURL;
 	
-	private int delay = 300;
+	private int delay = 60;
 	private int maxSize = 5000;
 
 	/**
@@ -204,7 +204,7 @@ public class Translater {
 
 	private List<String> langTags(Map<String,String> literals) {
 		return literals.keySet().stream()
-								.map(t -> t.split(TRANSFORMED, 1)[0])
+								.map(t -> t.split(TRANSFORMED)[0])
 								.distinct().toList();
 	}
 
@@ -226,16 +226,16 @@ public class Translater {
 		for (IRI t: types) {
 			subjects.addAll(m.filter(null, RDF.TYPE, t).subjects());
 		}
-		
+		LOG.info("Statements {}", m.size());
 		for(Resource subj: subjects) {
 			for (IRI pred: preds) {
 				LOG.debug("{} {}", subj, pred);
 				List<String> wanted = new ArrayList<>(langs);
 				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
 				wanted.removeAll(langTags(literals));
-				
+	
 				if (wanted.isEmpty()) {
-					LOG.debug("All languages present for {} {}", subj, pred);
+					LOG.info("All languages present for {} {}", subj, pred);
 					continue;
 				}
 				if (literals.isEmpty()) {
