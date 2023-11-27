@@ -42,6 +42,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -208,18 +209,25 @@ public class Translater {
 	}
 
 	/**
-	 * Translate titles and descriptions
+	 * Translate the literals of a set of properties for one or more classes
 	 * 
 	 * @param m RDF model
+	 * @param types rdf types / classes
 	 * @param preds predicates to translate
 	 * @param langs languages to translate to
 	 * @throws IOException 
 	 */
-	private int translationRound(Model m, List<IRI> preds, List<String> langs) throws IOException {	
+	private int translationRound(Model m, List<IRI> types, List<IRI> preds, List<String> langs) throws IOException {	
 		int missing = 0;
 		int count = 0;
 
-		for(Resource subj: m.filter(null, RDF.TYPE, DCAT.DATASET).subjects()) {
+		// limit translations to these types
+		Set<Resource> subjects = new HashSet<>();
+		for (IRI t: types) {
+			subjects.addAll(m.filter(null, RDF.TYPE, t).subjects());
+		}
+		
+		for(Resource subj: subjects) {
 			for (IRI pred: preds) {
 				LOG.debug("{} {}", subj, pred);
 				List<String> wanted = new ArrayList<>(langs);
@@ -278,11 +286,12 @@ public class Translater {
 	 */
 	public void translate(InputStream in, OutputStream out, List<String> langs) throws IOException, InterruptedException {
 		List<IRI> preds = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
+		List<IRI> types = List.of(DCAT.DATASET, DCAT.DATA_SERVICE);
 		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
 	
 		int missing;
 		do {
-			missing = translationRound(m, preds, langs);
+			missing = translationRound(m, types, preds, langs);
 			if (missing > 0) {
 				LOG.info("Missing translations: {}", missing);
 				TimeUnit.SECONDS.sleep(delay);
