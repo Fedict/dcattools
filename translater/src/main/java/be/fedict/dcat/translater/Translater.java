@@ -251,8 +251,6 @@ public class Translater {
 				}
 
 				for (String target: wanted) {
-					LOG.debug("Get translation for {} {} to {}", subj, pred, target);
-
 					try {
 						String translation = getTranslation(body, source, target);
 						count++;
