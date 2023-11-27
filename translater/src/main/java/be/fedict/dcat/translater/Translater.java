@@ -77,6 +77,8 @@ import org.slf4j.LoggerFactory;
 public class Translater {
 	private final static Logger LOG = LoggerFactory.getLogger(Translater.class);
 
+	private final static String TRANSFORMED = "-t-";
+
 	private final HttpClient client;
 	private final String baseURL;
 	
@@ -193,7 +195,16 @@ public class Translater {
 	 * @return language code
 	 */
 	private String firstLang(Map<String,String> literals) {
-		return literals.keySet().stream().sorted().findFirst().get();
+		return literals.keySet().stream()
+								.filter(t -> !t.contains(TRANSFORMED))
+								.sorted()
+								.findFirst().get();
+	}
+
+	private List<String> langTags(Map<String,String> literals) {
+		return literals.keySet().stream()
+								.map(t -> t.split(TRANSFORMED, 1)[0])
+								.distinct().toList();
 	}
 
 	/**
@@ -213,7 +224,7 @@ public class Translater {
 				LOG.debug("{} {}", subj, pred);
 				List<String> wanted = new ArrayList<>(langs);
 				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
-				wanted.removeAll(literals.keySet());
+				wanted.removeAll(langTags(literals));
 				
 				if (wanted.isEmpty()) {
 					LOG.debug("All languages present for {} {}", subj, pred);
@@ -241,7 +252,7 @@ public class Translater {
 							LOG.info("{} translations requested", count);
 						}
 						if (translation != null) {
-							m.add(subj, pred, Values.literal(translation, target));
+							m.add(subj, pred, Values.literal(translation, target + TRANSFORMED + source));
 						} else {
 							missing++;
 						}
