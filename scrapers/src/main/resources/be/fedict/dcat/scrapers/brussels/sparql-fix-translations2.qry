@@ -1,0 +1,14 @@
+# Remove incorrect translations (placeholders)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?s ?rel ?desc }
+WHERE
+	{	
+		?s ?rel ?desc .
+		VALUES ?rel { dcterms:title dcterms:description }
+		FILTER(STRLEN(?desc) < 3 || STR(?desc) = 'N/A')
+	}
+	

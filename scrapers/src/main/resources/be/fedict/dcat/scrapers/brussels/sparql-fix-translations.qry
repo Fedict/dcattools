@@ -1,0 +1,19 @@
+# Remove incorrect translations to EN (copied from FR or NL)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	
+		?s dcterms:title ?ten .
+		?s dcterms:description ?den . }
+WHERE
+	{	?s a dcat:Dataset .
+		?s dcterms:title ?ten .
+		?s dcterms:title ?tfr .
+		?s dcterms:description ?den .
+		?s dcterms:description ?dfr .
+		FILTER (STR(?ten) = STR(?tfr) && LANG(?ten) = 'en' && (LANG(?tfr) = 'fr' || LANG(?tfr) = 'nl'))
+		FILTER (STR(?den) = STR(?dfr) && LANG(?den) = 'en' && (LANG(?dfr) = 'fr' || LANG(?dfr) = 'nl'))
+}
+	
