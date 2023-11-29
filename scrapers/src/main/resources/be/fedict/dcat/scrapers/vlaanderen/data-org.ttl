@@ -159,7 +159,8 @@
 	skos:prefLabel "INBO"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194> ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Instituut voor Natuur- en Bosonderzoek"@nl, 
-		"Research Institute for Nature and Forest (INBO)" .
+		"Research Institute for Nature and Forest (INBO)",
+		"Research Institute for Nature and Forest (INBO)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0434364713>
 	a foaf:Organization ;
@@ -384,3 +385,10 @@
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:altLabel "Algemene Directie Statistiek - Statistics Belgium"@nl .
+
+<https://opencorporates.com/id/companies/nl/27264794>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Geologische Dienst Nederland"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
