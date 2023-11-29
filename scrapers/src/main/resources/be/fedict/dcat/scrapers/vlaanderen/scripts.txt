@@ -36,7 +36,7 @@ vlaanderen/sparql-fix-language2.qry
 vlaanderen/sparql-default-language.qry
 vlaanderen/sparql-map-lexvo-lang.qry
 sparql-dist-lang.qry
-vlaanderen/sparql-language.qry
+sparql-tag-language.qry
 vlaanderen/sparql-landingpage.qry
 vlaanderen/sparql-fix-endpointurl.qry
 vlaanderen/data-geo.ttl
