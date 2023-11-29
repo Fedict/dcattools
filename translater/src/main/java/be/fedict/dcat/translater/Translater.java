@@ -235,7 +235,7 @@ public class Translater {
 				wanted.removeAll(langTags(literals));
 	
 				if (wanted.isEmpty()) {
-					LOG.info("All languages present for {} {}", subj, pred);
+					LOG.debug("All languages present for {} {}", subj, pred);
 					continue;
 				}
 				if (literals.isEmpty()) {
