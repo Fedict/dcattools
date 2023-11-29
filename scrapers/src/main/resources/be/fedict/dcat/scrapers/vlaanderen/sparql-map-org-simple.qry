@@ -1,4 +1,4 @@
-# Map publisher to semi-official Crossroad Bank Enterprises URI
+# Faster way to map publisher to semi-official Crossroad Bank Enterprises URI
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
@@ -9,18 +9,15 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
 	{	?dataset ?prop ?org .
-		?org ?p ?o .
 		?org ?rel ?label }
 INSERT 
 	{ 	?dataset ?prop ?neworg .
 		?neworg a foaf:Organization .
 		?neworg dgov:org ?drupal .
-		?neworg ?p ?o .
 		?neworg foaf:name ?name }
 WHERE
 	{	?dataset ?prop ?org .
 		?org ?rel ?label .
-		?org ?p ?o .
 		?neworg skos:altLabel ?label .
 		?neworg skos:exactMatch ?drupal .
 		?neworg skos:prefLabel ?name 

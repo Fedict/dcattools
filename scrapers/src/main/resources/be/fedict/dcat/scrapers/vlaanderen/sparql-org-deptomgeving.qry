@@ -1,0 +1,20 @@
+# Rename all various parts of "Departement Omgeving" for performance
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX geodcat: <http://data.europa.eu/930/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?org ?p ?label }
+INSERT 
+	{ 	?org ?p "Departement Omgeving"@nl }
+WHERE
+	{	?dataset ?prop ?org .
+		?org ?p ?label
+		VALUES ?prop { dcterms:publisher dcterms:contributor dcterms:creator dcterms:rightsHolder 
+					geodcat:custodian geodcat:distributor }
+		VALUES ?p { foaf:name vcard:fn }
+		FILTER (CONTAINS(STR(?label), "Departement Omgeving"))
+	}
