@@ -1,18 +1,20 @@
-# Add format based on mediatype (preview images)
+# Move format label based on blank node / skolem URI SKOS
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+DELETE
+	{	?dist dcterms:format ?bnode .
+		?bnode ?p ?o .
+		?bnode skos:prefLabel ?label }
 INSERT
-	{ 	?dist dcterms:format ?fmt .
-		?dist dgov:format ?drupal }
+	{ 	?dist dcterms:format ?label }
 WHERE
 	{
-		?dist dcat:mediaType ?mt .
-		?fmt skos:closeMatch ?mt .
-		?fmt skos:exactMatch ?drupal .
-		FILTER NOT EXISTS { ?dist dcterms:format ?f }
+		?dist dcterms:format ?bnode .
+		?bnode ?p ?o .
+		?bnode skos:prefLabel ?label .
+		FILTER (CONTAINS(STR(?bnode), ".well-known/genid"))
 	}
 	

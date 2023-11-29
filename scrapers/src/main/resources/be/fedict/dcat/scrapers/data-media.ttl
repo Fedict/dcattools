@@ -107,7 +107,7 @@
 	skos:prefLabel "JSON-LD" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/ld+json> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/400> ;
-	skos:altLabel "jsonld" .
+	skos:altLabel "jsonld", "ld+json" .
 
 <http://publications.europa.eu/resource/authority/file-type/GEOJSON>	
 	skos:prefLabel "GeoJSON" ;
@@ -192,7 +192,7 @@
 	skos:prefLabel "RDF/XML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/10> ;
-	skos:altLabel "RDF", "rdf", "rdfxml",
+	skos:altLabel "RDF", "rdf", "rdfxml", "rdf+xml",
 		<https://www.iana.org/assignments/media-types/application/rdf+xml> .
 
 <http://publications.europa.eu/resource/authority/file-type/RSS>
