@@ -8,17 +8,14 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?dataset ?prop ?org .
-		?org ?p ?o }
+	{	?dataset ?prop ?org }
 INSERT 
 	{ 	?dataset ?prop ?uri .
 		?uri a foaf:Organization .
 		?uri dgov:org ?drupal .
-		?uri ?p ?o .
 		?uri foaf:name ?name }
 WHERE
 	{	?dataset ?prop ?org .
-		?org ?p ?o .
 		?uri skos:closeMatch ?org .
 		?uri skos:exactMatch ?drupal .
 		?uri skos:prefLabel ?name 
