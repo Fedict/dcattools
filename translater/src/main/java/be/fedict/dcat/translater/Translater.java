@@ -181,6 +181,7 @@ public class Translater {
 	private Map<String,String> toLangMap(Set<Literal> literals) {
 		return literals.stream()
 			.filter(l -> l.getLanguage().isPresent())
+			.filter(l -> l.stringValue().trim().length() > 2)
 			.collect(Collectors.toMap(l -> l.getLanguage().get(), l -> l.stringValue(), 
 				(v1, v2) -> { 
 					LOG.warn("Duplicate found {} {}", v1, v2); 
@@ -235,16 +236,25 @@ public class Translater {
 				wanted.removeAll(langTags(literals));
 	
 				if (wanted.isEmpty()) {
-					LOG.debug("All languages present for {} {}", subj, pred);
+					LOG.debug("All languages present for {} {}, skipping", subj, pred);
 					continue;
 				}
 				if (literals.isEmpty()) {
-					LOG.warn("No language literals for {} {}", subj, pred);
+					LOG.warn("No language literals for {} {}, skipping", subj, pred);
 					continue;
 				}
 				// pick the lowest language tag as the source language
 				String source = firstLang(literals);
-				String body = literals.get(source);
+				String body = literals.get(source).trim();
+				if (body.length() < 3) {
+					LOG.warn("Text too short ({}) for {} {}, skipping", body.length(), subj, pred);
+					continue;
+				}
+
+				if (body.length() >= maxSize) {
+					LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
+					body = StringUtils.abbreviate(body, maxSize);
+				}
 				if (body.length() >= maxSize) {
 					LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
 					body = StringUtils.abbreviate(body, maxSize);
