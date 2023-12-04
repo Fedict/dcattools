@@ -255,14 +255,14 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0206644741>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/496> ;
 	skos:prefLabel "Verviers"@fr ;
 	skos:altLabel "Ville de Verviers" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207347891>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/497> ;
 	skos:prefLabel "Marche-en-Famenne"@fr ;
 	skos:altLabel "Ville de Marche-en-Famenne" .
 
@@ -284,7 +284,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0871429489>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/498> ;
 	skos:prefLabel "La Louvière"@fr ;
 	skos:altLabel "Ville+de+La+Louvi%C3%A8re", "Ville de La Louvière"  .
 
