@@ -70,7 +70,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Waalse Overheidsdienst"@nl, "Service public de Wallonie"@fr, 
 		"Öffentlicher Dienst der Wallonie"@de ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/490> ;
 	skos:altLabel "Service public de Wallonie (SPW) ".
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204325790>
@@ -78,7 +78,8 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW-EER Economie, Emploi, Recherche"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/136> ;
-	skos:altLabel "Service Public de Wallonie - Ecomie, Emploi, Recherche", 
+	skos:altLabel "Service Public de Wallonie - Ecomie, Emploi, Recherche",
+		"Service Public de Wallonie - Economie, Emploi, Recherche", 
 		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0850260131> 
@@ -127,7 +128,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "FuturoCité"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/491> ;
 	skos:altLabel "FuturoCité", "FuturoCit%C3%A9" .
 
 
@@ -213,28 +214,28 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Tournai"@fr, "Doornik"@nl ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/492> ;
 	skos:altLabel "Administration Communale de Tournai" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Chaudfontaine"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/493> ;
 	skos:altLabel "Commune de Chaudfontaine" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207310774>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Charleroi"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/494> ;
 	skos:altLabel "Ville de Charleroi" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216697307>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Fernelmont"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/495> ;
 	skos:altLabel "Commune de Fernelmont" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206524876>
