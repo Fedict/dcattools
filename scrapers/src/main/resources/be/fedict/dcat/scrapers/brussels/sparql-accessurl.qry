@@ -18,4 +18,4 @@ WHERE
 		OPTIONAL { ?dist dcat:accessURL ?url }
 		BIND (IRI(REPLACE
 			(STR(?url), '/geonetwork/srv/eng/catalog.search#/metadata/', '/web/data/dataset/')
-			) as ?page) }
+			) as ?page) }	
