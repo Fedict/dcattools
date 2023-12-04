@@ -298,7 +298,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207312952>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/499> ;
 	skos:prefLabel "Braine-l'Alleud"@fr, "Eigenbrakel"@nl ;
 	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud",
 		"Commune de Braine-l'Alleud" .
@@ -306,14 +306,14 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0206642563>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/500> ;
 	skos:prefLabel "Nivelles"@fr, "Nijvel"@nl ;
 	skos:altLabel "Ville+de+Nivelles", "Ville de Nivelles" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207300678>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/501> ;
 	skos:prefLabel "Chimay"@fr ;
 	skos:altLabel "Ville de Chimay" .
 
