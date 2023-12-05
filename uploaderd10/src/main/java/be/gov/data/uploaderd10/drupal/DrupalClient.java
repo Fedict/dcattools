@@ -134,6 +134,7 @@ public class DrupalClient {
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		LOG.debug(response.body());
 		this.token = null;
+		this.uid = null;
 	}
 	
 	/**
