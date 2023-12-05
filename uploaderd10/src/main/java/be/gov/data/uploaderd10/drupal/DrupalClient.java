@@ -36,7 +36,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -58,6 +60,7 @@ public class DrupalClient {
 	private final String baseURL;
 	private String token;
 	private String logout;
+	private String uid;
 
 	/**
 	 * Get HTTP builder with token
@@ -104,12 +107,14 @@ public class DrupalClient {
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		LOG.debug(response.body());
+
 		JSONObject obj = new JSONObject(response.body());
 		this.token = (String) obj.get("csrf_token");
-		this.logout = (String) obj.get("logout_token");
-		
+
 		if (this.token != null) {
 			LOG.info("Logged in");
+			this.logout = (String) obj.get("logout_token");
+			this.uid = (String) ((JSONObject) obj.getJSONObject("current_user")).get("uid");
 		} else {
 			LOG.error("Failed to get CSRF login token");
 		}
@@ -198,6 +203,36 @@ public class DrupalClient {
 	}
 
 	/**
+	 * Get all datasets
+	 * 
+	 * @param lang language code
+	 * @return dataset if successful
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public List<Dataset> getDatasets(String lang) throws IOException, InterruptedException {
+		List<Dataset> lst = new ArrayList<>();
+	
+		// paginated result set
+		for(int page = 0; ; page++) {
+			HttpRequest request = getHttpBuilder()
+				.GET()
+				.uri(URI.create(baseURL + "/" + lang + "/api/v1/content/dataset/" + uid + "?_format=json&page=" + page))
+				.build();
+
+			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			JSONArray datasets = new JSONArray(response.body());
+			if (datasets.isEmpty()) {
+				break;
+			}
+			for (Object obj: datasets) {
+//				lst.add(Dataset.fromMap(((JSONObject) obj).toMap()));
+			}
+		}
+		return lst;
+	}
+
+	/**
 	 * Constructor
 	 * 
 	 * @param baseURL 
@@ -213,5 +248,9 @@ public class DrupalClient {
 			.version(Version.HTTP_1_1)
 			.followRedirects(Redirect.NORMAL)
 			.build();
+	}
+
+	private Object getBuilder() {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 }
