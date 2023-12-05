@@ -3,7 +3,7 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 INSERT
-	{ 	?s dcat:keyword "biodiversity"@en }
+	{ 	?s dcat:keyword "biodiversity"@en, "biodiversiteit"@nl, "biodiversité"@fr, "Biodiversität"@de }
 WHERE
 	{ 	?s a dcat:Dataset .
 		FILTER NOT EXISTS { ?s dcat:keyword ?o }
