@@ -320,7 +320,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207376991>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/502> ;
 	skos:prefLabel "Hannut"@fr ;
 	skos:altLabel "Ville de Hannut" .
 
@@ -341,7 +341,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/398> ;
 	skos:prefLabel "bPost"@nl, "bPost"@fr, "bPost"@en ;
 	skos:altLabel "bpost" .
 
