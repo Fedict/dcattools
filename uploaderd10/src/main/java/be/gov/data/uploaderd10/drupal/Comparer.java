@@ -23,24 +23,35 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package be.gov.data.uploaderd10.drupal;
 
-package be.gov.data.uploaderd10;
-
-import be.gov.data.uploaderd10.drupal.Comparer;
-import be.gov.data.uploaderd10.drupal.DrupalClient;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  *
  * @author Bart.Hanssens
  */
-public class Main {
+public class Comparer {
+	private DrupalClient client;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        DrupalClient cl = new DrupalClient(args[0]);
-		cl.login(args[1], args[2]);
-		Comparer comparer = new Comparer(cl);
-		comparer.init();
-		cl.logout();
-    }
+	private Map categories;
+	private Map licenses;
+	private Map ftypes;
+	private Map frequencies;
+	private Map geos;
+	private Map organisations;
+
+	public void init() throws IOException, InterruptedException {
+		categories = client.getTaxonomy("category");
+		licenses = client.getTaxonomy("license");
+		ftypes = client.getTaxonomy("file_type");
+		frequencies = client.getTaxonomy("frequency");
+		geos = client.getTaxonomy("geo_coverage");
+		organisations = client.getTaxonomy("organisation");
+	}
+	
+	public Comparer(DrupalClient client) {
+		this.client = client;
+	}
 }

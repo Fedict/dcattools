@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Bart.Hanssens
+ * Copyright (c) 2023, FPS BOSA
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

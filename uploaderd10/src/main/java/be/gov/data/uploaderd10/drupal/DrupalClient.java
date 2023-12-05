@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Bart.Hanssens
+ * Copyright (c) 2023, FPS BOSA
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONPointer;
+import org.json.JSONPointerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,28 +57,7 @@ public class DrupalClient {
 	private final HttpClient client;
 	private final String baseURL;
 	private String token;
-
-	/**
-	 * Log in with username and password
-	 * 
-	 * @param user user name
-	 * @param pass password
-	 * @return CSRF token
-	 * @throws IOException
-	 * @throws InterruptedException 
-	 */
-	public String login(String user, String pass) throws IOException, InterruptedException {
-		String str = new JSONObject().put("name", user).put("pass", pass).toString();
-		HttpRequest request = HttpRequest.newBuilder()
-				.POST(BodyPublishers.ofString(str))
-				.uri(URI.create(baseURL + "/user/login?_format=json"))
-				.build();
-		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		LOG.debug(response.body());
-		JSONObject obj = new JSONObject(response.body());
-		this.token = (String) obj.get("csrf_token");
-		return this.token;
-	}
+	private String logout;
 
 	/**
 	 * Get HTTP builder with token
@@ -94,13 +74,61 @@ public class DrupalClient {
 	 * @param map map
 	 * @param arr JSON Array 
 	 */
-	private void termsToMap(Map map, JSONArray arr) {
+	private void termsToMap(Map<String,Integer> map, JSONArray arr) {
 		JSONPointer tid = new JSONPointer("/tid/0/value");
-		JSONPointer name = new JSONPointer("/name/0/value");
+		JSONPointer uri = new JSONPointer("/field_uri/0/uri");
 		for (Object obj: arr) {
-			map.put((int) tid.queryFrom((JSONObject) obj),
-					(String) name.queryFrom((JSONObject)obj));
+			try {
+				map.put(
+					(String) uri.queryFrom((JSONObject)obj),
+					(int) tid.queryFrom((JSONObject) obj));
+			} catch (JSONPointerException e) {
+				LOG.error("Error in JSON {}", obj.toString());
+			}
 		}
+	}
+
+	/**
+	 * Log in with username and password
+	 * 
+	 * @param user user name
+	 * @param pass password
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public void login(String user, String pass) throws IOException, InterruptedException {
+		String str = new JSONObject().put("name", user).put("pass", pass).toString();
+		HttpRequest request = HttpRequest.newBuilder()
+				.POST(BodyPublishers.ofString(str))
+				.uri(URI.create(baseURL + "/user/login?_format=json"))
+				.build();
+		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		LOG.debug(response.body());
+		JSONObject obj = new JSONObject(response.body());
+		this.token = (String) obj.get("csrf_token");
+		this.logout = (String) obj.get("logout_token");
+		
+		if (this.token != null) {
+			LOG.info("Logged in");
+		} else {
+			LOG.error("Failed to get CSRF login token");
+		}
+	}
+
+	/**
+	 * Log out of Drupal
+	 * 
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public void logout() throws IOException, InterruptedException {
+		HttpRequest request = getHttpBuilder()
+				.POST(BodyPublishers.ofString(""))
+				.uri(URI.create(baseURL + "/user/logout?_format=json&token=" + logout))
+				.build();
+		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		LOG.debug(response.body());
+		this.token = null;
 	}
 	
 	/**
@@ -111,10 +139,10 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public Map<Integer,String> getTaxonomy(String taxo) throws IOException, InterruptedException {
-		Map<Integer,String> map = new HashMap<>();
+	public Map<String,Integer> getTaxonomy(String taxo) throws IOException, InterruptedException {
+		Map<String,Integer> map = new HashMap<>();
 		
-		for(int page =1; ; page++) {
+		for(int page = 1; ; page++) {
 			HttpRequest request = getHttpBuilder()
 				.GET()
 				.uri(URI.create(baseURL + "/en/api/v1/taxonomy/" + taxo + "?_format=json&page=" + page))
@@ -126,6 +154,7 @@ public class DrupalClient {
 			}
 			termsToMap(map, obj);
 		}
+		LOG.info("{} {} {}", taxo, map.size(), map.toString());
 		return map;
 	}
 
