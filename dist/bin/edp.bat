@@ -1,1 +1,1 @@
-java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=edp.log -cp tools.jar  be.fedict.dcat.tools.EDP %1  %2
+java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=edp.log -cp tools.jar  be.gov.data.tools.EDP %1  %2

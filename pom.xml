@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>be.fedict.dcat</groupId>
+    <groupId>be.gov.data</groupId>
     <artifactId>dcattools</artifactId>
-    <version>2.27.0</version>
+    <version>3.0.0</version>
     <packaging>pom</packaging>
 	<url>https://data.gov.be</url>
 	<licenses>
@@ -29,16 +29,47 @@
         <module>uploader</module>
         <module>dcatlib</module>
         <module>translater</module>
-    </modules>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-		<rdf4j.version>4.3.8</rdf4j.version>
-		<slf4j.version>1.7.36</slf4j.version>
+		<module>uploaderd10</module>
+	</modules>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<slf4j.version>2.0.9</slf4j.version>
 		<hc.version>4.5.14</hc.version>
 		<json.version>1.1.4</json.version>
-    </properties>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.mapdb</groupId>
+				<artifactId>mapdb</artifactId>
+				<version>2.0-beta13</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jayway.jsonpath</groupId>
+				<artifactId>json-path</artifactId>
+				<version>2.8.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jayway.restassured</groupId>
+				<artifactId>json-path</artifactId>
+				<version>2.9.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish</groupId>
+				<artifactId>javax.json</artifactId>
+				<version>1.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rdf4j</groupId>
+				<artifactId>rdf4j-bom</artifactId>
+				<version>4.3.8</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>	
+		</dependencies>	
+	</dependencyManagement>
     <name>dcattools</name>
     <build>
         <plugins>

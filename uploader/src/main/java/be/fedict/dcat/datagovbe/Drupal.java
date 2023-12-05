@@ -23,12 +23,13 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.datagovbe;
+package be.gov.data.datagovbe;
 
-import be.fedict.dcat.helpers.Storage;
-import be.fedict.dcat.vocab.DATAGOVBE;
-import be.fedict.dcat.vocab.MDR_LANG;
-import be.fedict.dcat.vocab.SCHEMA;
+import be.gov.data.Storage;
+
+import be.gov.data.dcat.vocab.DATAGOVBE;
+import be.gov.data.dcat.vocab.MDR_LANG;
+import be.gov.data.dcat.vocab.SCHEMA;
 
 import com.google.common.collect.ListMultimap;
 

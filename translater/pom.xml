@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>be.fedict.dcat</groupId>
+		<groupId>be.gov.data</groupId>
 		<artifactId>dcattools</artifactId>
-		<version>2.27.0</version>
+		<version>3.0.0</version>
 	</parent>
-	<version>2.27.0</version>
+	<version>3.0.0</version>
 	<name>translater</name>
 	<description>Translation client to machine-translation service</description>
 	<artifactId>translater</artifactId>
@@ -36,29 +36,27 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.rdf4j</groupId>
 			<artifactId>rdf4j-rio-ntriples</artifactId>
-			<version>${rdf4j.version}</version>
-		 <exclusions>
-		  <exclusion>
-		   <groupId>com.github.jsonld-java</groupId>
-		   <artifactId>jsonld-java</artifactId>
-		  </exclusion>
-		 </exclusions>
+			<exclusions>
+				<exclusion>
+					<groupId>com.github.jsonld-java</groupId>
+					<artifactId>jsonld-java</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-	 <dependency>
-		 <groupId>info.picocli</groupId>
-		 <artifactId>picocli</artifactId>
-		 <version>4.7.4</version>
-	 </dependency>
-	 <dependency>
-		 <groupId>org.apache.commons</groupId>
-		 <artifactId>commons-lang3</artifactId>
-		 <version>3.13.0</version>
-	 </dependency>
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli</artifactId>
+			<version>4.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.14.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -86,7 +84,7 @@
 							<addHeader>false</addHeader>
 						</transformer>
 						<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-							<mainClass>be.fedict.dcat.translater.Main</mainClass>
+							<mainClass>be.gov.data.translater.Main</mainClass>
 						</transformer>
 						<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
 					</transformers>

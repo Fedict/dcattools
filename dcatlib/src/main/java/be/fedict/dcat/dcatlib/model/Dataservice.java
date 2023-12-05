@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.fedict.dcat.dcatlib.model;
+package be.gov.data.dcatlib.model;
 
 import org.eclipse.rdf4j.model.IRI;
 

@@ -37,7 +37,7 @@ Converts DCAT-AP export to the XML format used by the European Data Portal.
 
 Invoke with
 
-    java -jar tools.jar be.fedict.dcat.tools.EDP path/in/datagovbe.nt path/out/edp.xml
+    java -jar tools.jar be.gov.data.tools.EDP path/in/datagovbe.nt path/out/edp.xml
 
 
 ## Tools - Linkchecker
@@ -47,11 +47,11 @@ It uses HEAD HTTP requests and pauses between requests (to avoid overloading the
 
 Invoke with
 
-    java -jar tools.jar be.fedict.dcat.tools.LinkChecker location/of/config.properties
+    java -jar tools.jar be.gov.data.tools.LinkChecker location/of/config.properties
 
 
 Use -D to set logging level and save the log to a file
 
     java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
          -Dorg.slf4j.simpleLogger.logFile=linkchekcer.log
-         -jar tools.jar be.fedict.dcat.tools.LinkChecker location/of/config.properties
+         -jar tools.jar be.gov.data.tools.LinkChecker location/of/config.properties

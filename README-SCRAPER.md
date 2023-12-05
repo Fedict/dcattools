@@ -9,7 +9,7 @@ Currently, there are abstract Java classes available for scraping
  * HTML sites
 
 Adding a new one can be as simple as:
-- subclassing `be.fedict.dcat.scrapers.Scraper` in new separate package `be.fedict.dcat.scrapers.<datasource>`, 
+- subclassing `be.gov.data.scrapers.Scraper` in new separate package `be.gov.data.scrapers.<datasource>`, 
 - setting a new name
 - adding a `scraper.properties` configuration file (as a resource) in the package
 - adding a `script.txt` file (as a resource) listing additional data and queries to be used
@@ -35,13 +35,13 @@ Make sure that the (sub)directories exist before running the scraper.
 For example:
 
     # full class name of the scraper implementation
-    be.fedict.dcat.scrapers.classname=be.fedict.dcat.scrapers.wallonie.OdsWallonie
+    be.gov.data.scrapers.classname=be.gov.data.scrapers.wallonie.OdsWallonie
     # URL of the site/portal to scrape
-    be.fedict.dcat.scrapers.url=http://opendata.digitalwallonia.be
+    be.gov.data.scrapers.url=http://opendata.digitalwallonia.be
     # default language of the site/portal (nl, fr, de or en)
-    be.fedict.dcat.scrapers.deflanguage=fr
+    be.gov.data.scrapers.deflanguage=fr
     # comma-separated list of the languages on the site/portal (nl fr de en)
-    be.fedict.dcat.scrapers.languages=fr
+    be.gov.data.scrapers.languages=fr
 
 ## Proxy
 

@@ -24,13 +24,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package be.fedict.dcat.dcatlib;
+package be.gov.data.dcatlib;
 
-import be.fedict.dcat.dcatlib.model.Catalog;
-import be.fedict.dcat.dcatlib.model.DataResource;
-import be.fedict.dcat.dcatlib.model.Dataservice;
-import be.fedict.dcat.dcatlib.model.Dataset;
-import be.fedict.dcat.dcatlib.model.Distribution;
+import be.gov.data.dcatlib.model.Catalog;
+import be.gov.data.dcatlib.model.DataResource;
+import be.gov.data.dcatlib.model.Dataservice;
+import be.gov.data.dcatlib.model.Dataset;
+import be.gov.data.dcatlib.model.Distribution;
 
 import java.io.IOException;
 import java.io.InputStream;

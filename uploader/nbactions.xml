@@ -15,7 +15,7 @@
                 <exec.workingdir>C:\datagov</exec.workingdir>
                 <exec.appArgs>C:\Datagov\cfg\vlaanderen\datagovbe7-secret.properties</exec.appArgs>
                 <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-vlaanderen.log</exec.vmArgs>
-                <exec.mainClass>be.fedict.dcat.datagovbe.Main</exec.mainClass>
+                <exec.mainClass>be.gov.data.datagovbe.Main</exec.mainClass>
             </properties>
         </action>
         <action>
@@ -34,7 +34,7 @@
                 <exec.workingdir>C:\datagov</exec.workingdir>
                 <exec.appArgs>C:\Datagov\cfg\vlaanderen\datagovbe7-secret.properties</exec.appArgs>
                 <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-vlaanderen.log -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
-                <exec.mainClass>be.fedict.dcat.datagovbe.Main</exec.mainClass>
+                <exec.mainClass>be.gov.data.datagovbe.Main</exec.mainClass>
             </properties>
         </action>
         <action>
@@ -52,7 +52,7 @@
                 <exec.workingdir>C:\datagov</exec.workingdir>
                 <exec.appArgs>C:\Datagov\cfg\vlaanderen\datagovbe7-secret.properties</exec.appArgs>
                 <exec.vmArgs>-Dorg.slf4j.simpleLogger.defaultLogLevel=debug -Dorg.slf4j.simpleLogger.logFile=update-vlaanderen.log</exec.vmArgs>
-                <exec.mainClass>be.fedict.dcat.datagovbe.Main</exec.mainClass>
+                <exec.mainClass>be.gov.data.datagovbe.Main</exec.mainClass>
             </properties>
         </action>
     </actions>

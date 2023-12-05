@@ -5,7 +5,7 @@
 The scraper jar contains one scripts.txt file per scraper package / data source (stored as a resource).
 This file contains the list of additional data files to be loaded and/or additional SPARQL scripts to be run.
 
-E.g. scripts.txt in `be.fedict.dcat.scrapers.bipt`:
+E.g. scripts.txt in `be.gov.data.scrapers.bipt`:
 
 ```
 bipt/data-publ-contact.ttl
@@ -22,8 +22,8 @@ Data are loaded and scripts are executed in the order they appear in the file.
 Files ending with .ttl are considered to be data files, files ending with .qry are SPARQL query files.
 Lines starting with a `#` are comments, and are thus ignored.
 
-Files prefixed with `<datasource>/` are specific files located in the scraper package `be.fedict.dcat.scrapers.<datasource>`,
-generic queries / data are part of the `be.fedict.dcat.scrapers` package and are not prefixed.
+Files prefixed with `<datasource>/` are specific files located in the scraper package `be.gov.data.scrapers.<datasource>`,
+generic queries / data are part of the `be.gov.data.scrapers` package and are not prefixed.
 
 ## Note on mappings
 
