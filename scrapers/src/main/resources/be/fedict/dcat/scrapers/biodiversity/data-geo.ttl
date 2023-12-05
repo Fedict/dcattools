@@ -13,6 +13,6 @@
 <https://sws.geonames.org/3337387/>
 	a dcterms:Location;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/47> ;
-	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
+	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl, "Wallonie"@de ;
 	skos:altLabel "natagriwal-asbl"@en, 
 		"service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .

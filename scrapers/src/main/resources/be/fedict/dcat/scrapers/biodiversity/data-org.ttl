@@ -8,7 +8,10 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Belgian Biodiversity Platform"@en ;
+	skos:prefLabel "Belgian Biodiversity Platform"@en, 
+			"Plate-forme belge biodiversité"@fr, 
+			"Belgische Biodiversitätsplattform"@de,
+			"Belgisch Biodiversiteitsplatform"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/193> ;
 	skos:altLabel "belgium-biodiversity-platform"@en, 
 		"belgian-biodiversity-platform"@en,
@@ -31,15 +34,20 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0306562560>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Koninklijk Museum voor Midden-Afrika"@nl, "Musée royal de l'Afrique centrale"@fr, 
-				"Royal Museum for Central Africa"@en, "Königliches Museum für Zentralafrika"@de ;
+	skos:prefLabel "Koninklijk Museum voor Midden-Afrika"@nl, 
+				"Musée royal de l'Afrique centrale"@fr, 
+				"Royal Museum for Central Africa"@en, 
+				"Königliches Museum für Zentralafrika"@de ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/195> ;
 	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0540708286>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Plantentuin Meise"@nl, "Jardin botanique Meise"@fr, "Botanic garden Meise"@en ;
+	skos:prefLabel "Plantentuin Meise"@nl, 
+					"Jardin botanique Meise"@fr, 
+					"Bontanischer Garten"@de,
+					"Botanic garden Meise"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/196> ;
 	skos:altLabel "botanical-garden-meise"@en, "meise-botanic-garden"@en .
 
@@ -47,7 +55,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, 
-		"Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, 
+		"Institut royal des Sciences naturelles de Belgique"@fr, 
+		"Royal Belgian Institute of Natural Sciences"@en, 
 		"Königliches Belgisches Institut für Naturwissenschaften"@de ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/197>  ;
 	skos:altLabel "royal-belgian-institute-of-natural-sciences"@en .
@@ -132,7 +141,9 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0410057701>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Instituut voor Tropische Geneeskunde"@nl, "Institut de Médecine Tropicale"@fr,
-		"Institute of Tropical Medicine"@en ;
+	skos:prefLabel "Instituut voor Tropische Geneeskunde"@nl, 
+					"Institut de Médecine Tropicale"@fr,
+					"Institut für Tropenmedizin"@de,
+					"Institute of Tropical Medicine"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/455> ;
 	skos:altLabel "institute-of-tropical-medicine-antwerp"@en .
