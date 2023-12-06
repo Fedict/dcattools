@@ -28,19 +28,64 @@ package be.gov.data.uploaderd10;
 
 import be.gov.data.uploaderd10.drupal.Comparer;
 import be.gov.data.uploaderd10.drupal.DrupalClient;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.Callable;
+
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+import picocli.CommandLine.PropertiesDefaultProvider;
 
 /**
  *
- * @author Bart.Hanssens
+ * @author Bart Hanssens
  */
-public class Main {
+@Command(name = "uploader", mixinStandardHelpOptions = true, description = "Uploads DCAT data to Drupal 10.")
+public class Main implements Callable<Integer> {
+	@Option(names = {"-u", "--user"}, description = "User name")
+    private String user;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        DrupalClient cl = new DrupalClient(args[0]);
-		cl.login(args[1], args[2]);
-		Comparer comparer = new Comparer(cl);
-		comparer.init();
-		cl.logout();
-    }
+	@Option(names = {"-p", "--password"}, description = "Password")
+    private String pass;
+ 
+	@Option(names = {"-U", "--url"}, description = "Drupal site")
+    private String site;
+ 
+	@Option(names = {"-P", "--properties"}, description = "Property file")
+	private void setProperties(File f) {
+		if (f == null || !f.canRead()) {
+			return;
+		}
+        System.setProperty("picocli.defaults.uploader.path", f.toString());
+	}
+ 
+	@Override
+	public Integer call() throws Exception {
+		DrupalClient cl = new DrupalClient(site);
+		try {
+			cl.login(user, pass);
+			Comparer comparer = new Comparer(cl);
+			comparer.init();
+			return 0;
+		} finally {
+			cl.logout();
+		}
+	}
+
+	/**
+	 * Main
+	 * 
+	 * @param args
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public static void main(String[] args) throws IOException, InterruptedException {
+		CommandLine cl = new CommandLine(new Main());
+		cl.setDefaultValueProvider(new PropertiesDefaultProvider());
+		int exitCode = cl.execute(args);
+	    System.exit(exitCode);
+	}
+
 }
