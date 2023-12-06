@@ -45,6 +45,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONPointer;
 import org.json.JSONPointerException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -127,14 +128,22 @@ public class DrupalClient {
 	 * @throws InterruptedException 
 	 */
 	public void logout() throws IOException, InterruptedException {
+		if (logout == null) {
+			LOG.error("No logout token");
+			return;
+		}
 		HttpRequest request = getHttpBuilder()
 				.POST(BodyPublishers.ofString(""))
 				.uri(URI.create(baseURL + "/user/logout?_format=json&token=" + logout))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		LOG.debug(response.body());
+
 		this.token = null;
 		this.uid = null;
+		this.logout = null;
+		
+		LOG.info("Logged out");
 	}
 	
 	/**

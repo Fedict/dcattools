@@ -44,11 +44,13 @@ public class Comparer {
 
 	public void init() throws IOException, InterruptedException {
 		categories = client.getTaxonomy("category");
+		/**
 		licenses = client.getTaxonomy("license");
 		ftypes = client.getTaxonomy("file_type");
 		frequencies = client.getTaxonomy("frequency");
 		geos = client.getTaxonomy("geo_coverage");
 		organisations = client.getTaxonomy("organisation");
+		* **/
 	}
 	
 	public Comparer(DrupalClient client) {
