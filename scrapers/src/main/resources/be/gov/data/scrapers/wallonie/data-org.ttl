@@ -277,7 +277,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/363> ;
-	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en ;
+	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en, "Stadt Lüttich"@de ;
 	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr,
 		"Ville+de+Li%C3%A8ge"  .
 

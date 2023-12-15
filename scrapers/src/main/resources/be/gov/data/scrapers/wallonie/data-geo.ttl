@@ -37,7 +37,7 @@
 
 <http://data.gov.be/en/taxonomy/term/330>
 	skos:exactMatch <https://sws.geonames.org/2803073/> ;
-	skos:prefLabel "Arlon"@fr ;
+	skos:prefLabel "Arlon"@fr, "Aarlen"@nl, "Arel"@de ;
 	skos:altLabel "Arlon Centre-Ville asbl", "Ville d'Arlon" .
 	
 <http://data.gov.be/en/taxonomy/term/255>
@@ -232,5 +232,5 @@
 	
 <http://data.gov.be/en/taxonomy/term/362>
 	skos:exactMatch <https://sws.geonames.org/2792413/> ;
-	skos:prefLabel "Ville de Liège"@fr ;
+	skos:prefLabel "Liège"@fr, "Luik"@nl, "Lüttich"@de ;
 	skos:altLabel "Ville de Liège" .
