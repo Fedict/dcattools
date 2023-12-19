@@ -42,11 +42,14 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
 	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", 
 		"Vlaamse Milieumaatschappij", 
-		 "Vlaamse Milieumaatschappij"@nl .
+		"Vlaamse overheid - Vlaamse MilieuMaatschappij"@nl,
+		"Flanders Environment Agency (VMM)"@nl,
+		"Vlaamse Milieumaatschappij"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216173309>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO000112> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ; 
 	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
 	skos:altLabel "Vlaamse Waterweg NV"@nl  .
@@ -78,11 +81,17 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <http://data.vlaanderen.be/id/organisatie/OVO000096>,
+					<https://data.vlaanderen.be/id/organisatie/OVO000532>,
+					<https://data.vlaanderen.be/id/organisatie/OVO000538>,
 					<https://data.vlaanderen.be/id/organisatie/OVO002961>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000537> ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
+		"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang"@nl,
+		"Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning"@nl,
+		"Departement Mobiliteit en Openbare Werken, afdeling Technische Ondersteuning"@nl,
+		"Departement Mobiliteit en Openbare Werken, afdeling Beleid"@nl,
 		"Departement Mobiliteit en Openbare Werken"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143719695>
@@ -97,7 +106,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000049>, 
-			<https://data.vlaanderen.be/doc/organisatie/OVO000061> ;
+			<https://data.vlaanderen.be/id/organisatie/OVO000061> ;
 	skos:prefLabel "Departement Onderwijs en Vorming (Opgroeien)"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/108> ;
 	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming", "Opgroeien"@nl .
@@ -150,9 +159,11 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207500123>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002304> ;
 	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/128> ;
-	skos:altLabel "Stad Antwerpen", "Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV",
+	skos:altLabel "Stad Antwerpen", "Stad Antwerpen"@nl,
+		"Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV",
 		"opendatabeheer" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207494678> 
@@ -175,8 +186,10 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000088> ;
 	skos:prefLabel "INBO"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194> ;
-	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", "Instituut voor Natuur- en Bosonderzoek"@nl, 
+	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", 
+		"Instituut voor Natuur- en Bosonderzoek"@nl, 
 		"Research Institute for Nature and Forest (INBO)",
+		"Research Institute for Nature and Forest (INBO)"@nl,
 		"Research Institute for Nature and Forest (INBO)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0434364713>
@@ -184,11 +197,12 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Natuurpunt"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/205> ;
-	skos:altLabel "Natuurpunt" .
+	skos:altLabel "Natuurpunt", "Natuurpunt"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://metadata.vlaanderen.be/srv/resources/organizations/agentschap%20Digitaal%20Vlaanderen> ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/213> ;
 	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen" .
@@ -242,6 +256,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000090> ;
 	skos:altLabel "Vlaams Energieagentschap (VEA)", 
 		"LNE - Vlaams Energieagentschap", "Vlaams Energieagentschap",
+		"Vlaams Energie- en Klimaatagentschap"@nl,
 		"Vlaamse Overheid - Vlaams Energie Agentschap via MercatorNet samenwerkingsverband beleiddomein Omgeving"@nl,
 		"Vlaamse Overheid - Vlaams Energie- en Klimaatagentschap via MercatorNet samenwerkingsverband beleiddomein Omgeving"@nl .
 
@@ -408,4 +423,5 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Geologische Dienst Nederland"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
-	skos:altLabel "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
+	skos:altLabel "Geologische Dienst Nederland"@nl, 
+				 "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .

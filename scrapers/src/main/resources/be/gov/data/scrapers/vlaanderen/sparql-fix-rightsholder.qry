@@ -1,0 +1,6 @@
+# Remove empty rightsholders
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?dataset dcterms:rightsHolder <https://data.vlaanderen.be/id/organisatie/> }
+WHERE {	?dataset dcterms:rightsHolder <https://data.vlaanderen.be/id/organisatie/> }

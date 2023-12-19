@@ -6,6 +6,7 @@ vlaanderen/sparql-remove-rights.qry
 vlaanderen/sparql-remove-spatial.qry
 vlaanderen/sparql-default-contact.qry
 vlaanderen/sparql-fix-org.qry
+vlaanderen/sparql-fix-rightsholder.qry
 vlaanderen/data-org.ttl
 vlaanderen/sparql-org-deptomgeving.qry
 vlaanderen/sparql-map-org-ovo.qry
