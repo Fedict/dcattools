@@ -75,7 +75,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	protected final static String PROP_PREFIX = "be.gov.data.scrapers";
-	protected final static String PKG_PREFIX = "/be/fedict/dcat/scrapers";
+	protected final static String PKG_PREFIX = "/be/gov/data/scrapers";
 	
 	private final String dataDir;
 	private final Cache cache;
