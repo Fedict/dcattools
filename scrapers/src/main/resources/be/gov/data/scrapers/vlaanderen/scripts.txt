@@ -58,6 +58,7 @@ sparql-date-type.qry
 sparql-downloadurl.qry
 sparql-dist-accessurl.qry
 vlaanderen/sparql-fix-homepage.qry
+vlaanderen/sparql-fix-genid-theme.qry
 vlaanderen/sparql-fix-telephone.qry
 vlaanderen/sparql-remove-serves.qry
 vlaanderen/sparql-remove-source.qry

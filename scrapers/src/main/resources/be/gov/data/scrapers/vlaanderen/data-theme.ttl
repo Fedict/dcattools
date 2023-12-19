@@ -64,6 +64,7 @@
 		"hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, 
 		"economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, 
 		"economie en innovatie ondernemerschap"@nl,
+		"https://opendata.wse.vlaanderen.be/explore/?refine.theme=Loopbanen+en+competenties",
 		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme",
 		"https://data.stad.gent/id/theme/Werken%20%26%20ondernemen",
 		"http://vocab.belgif.be/auth/datatheme/ECON",
@@ -214,7 +215,7 @@
 		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl, "jeugd"@nl,
 		"http://vocab.belgif.be/auth/datatheme/SOCI",
 		"https://data.stad.gent/id/theme/Burgerzaken",
-		"http://ns.thedatatank.com/dcat/themes#Demography",
+		"http://ns.thedatatank.com/cat/themes#Demography",
 		"http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
