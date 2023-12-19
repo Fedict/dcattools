@@ -49,7 +49,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0216173309>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO000112> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000112> ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ; 
 	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
 	skos:altLabel "Vlaamse Waterweg NV"@nl  .
@@ -205,7 +205,8 @@
 	skos:closeMatch <https://metadata.vlaanderen.be/srv/resources/organizations/agentschap%20Digitaal%20Vlaanderen> ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/213> ;
-	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen" .
+	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen",
+		"agentschap Digitaal Vlaanderen"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0479740422>
 	a foaf:Organization ;
@@ -425,3 +426,10 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
 	skos:altLabel "Geologische Dienst Nederland"@nl, 
 				 "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207528035>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/243> ;
+	skos:altLabel "Stad Brugge"@nl .
