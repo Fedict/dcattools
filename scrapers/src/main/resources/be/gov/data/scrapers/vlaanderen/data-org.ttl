@@ -26,6 +26,14 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/91>;
 	skos:altLabel "ABB", "Agentschap Binnenlands Bestuur", "Agentschap Binnenlands Bestuur"@nl.
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199337616>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000106> ;
+	skos:prefLabel "Agentschap Wonen in Vlaanderen"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Wonen in Vlaanderen"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0887290276>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -36,11 +44,18 @@
 		"Vlaamse Milieumaatschappij", 
 		 "Vlaamse Milieumaatschappij"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0216173309>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ; 
+	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
+	skos:altLabel "Vlaamse Waterweg NV"@nl  .
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000067> ;
-	skos:prefLabel "Departement CSJM"@nl ;
+	skos:prefLabel "Departement Cultuur, Jeugd en Media"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/93> ;
 	skos:altLabel "Departement Cultuur, Jeugd en Media", "DCJM", "Departement CSJM"@nl,
 		"Departement Cultuur, Jeugd en Media"@nl .
@@ -62,7 +77,8 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002961>,
+	skos:closeMatch <http://data.vlaanderen.be/id/organisatie/OVO000096>,
+					<https://data.vlaanderen.be/id/organisatie/OVO002961>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000537> ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
@@ -105,7 +121,8 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199323857>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Departement WSE"@nl ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076> ;
+	skos:prefLabel "Departement Werk en Sociale Economie"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/118> ;
 	skos:altLabel "DWSE", "DWSE"@nl .
 
@@ -298,7 +315,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199318612>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Departement WVG"@nl ;
+	skos:prefLabel "Departement Welzijn, Volksgezondheid en Gezin"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/374> ;
 	skos:altLabel "Afdeling Welzijn en Samenleving (Departement Welzijn, Volksgezondheid en Gezin)", "DWVG",
 		"Departement Welzijn, Volksgezondheid en Gezin, Afdeling Welzijn en Samenleving"@nl .
