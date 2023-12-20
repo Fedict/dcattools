@@ -71,7 +71,7 @@
 	skos:prefLabel "Waalse Overheidsdienst"@nl, "Service public de Wallonie"@fr, 
 		"Öffentlicher Dienst der Wallonie"@de ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/490> ;
-	skos:altLabel "Service public de Wallonie (SPW) ".
+	skos:altLabel "Service public de Wallonie (SPW) ", "Service Public de Wallonie (SPW)".
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204325790>
 	a foaf:Organization ;
@@ -88,6 +88,13 @@
 	skos:prefLabel "CWAPE"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/137> ;
 	skos:altLabel "cwape"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0897436971> 
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "ORES"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/503> ;
+	skos:altLabel "ORES" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0568575002>
 	a foaf:Organization ;
@@ -142,7 +149,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204322327> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Secrétariat général"@fr ;
+	skos:prefLabel "SPW-SG Secrétariat général"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/143> ;
 	skos:altLabel "Service public de Wallonie (SPW)", " Service public de Wallonie (SPW)",
 		" Service public de Wallonie (SPW) " .
@@ -192,7 +199,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0832382635>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "IDELUX-AIVE"@fr ;
+	skos:prefLabel "IDELUX"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/240> ;
 	skos:altLabel "IDELUX-AIVE", "IDELUX" .
 
@@ -356,3 +363,16 @@
 	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/178>  ;
 	skos:altLabel "JC Decaux" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0697701204>
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Be WaPP"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/178>  ;
+	skos:altLabel "BeWaPP" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/1002794017>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "OpenStreetMap"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/177>  ;
+	skos:altLabel "OpenStreetMap" .
