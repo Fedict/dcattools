@@ -65,6 +65,13 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/134> ;
 	skos:altLabel "wallonie-dgo1"@fr, "SPW-MI & Telraam" .
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2225118335>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "SPW-ARNE Agriculture, RN et Environnement"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "SPW ARNE" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381138>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
