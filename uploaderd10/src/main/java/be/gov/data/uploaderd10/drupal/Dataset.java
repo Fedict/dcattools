@@ -78,17 +78,51 @@ public record Dataset(
 	 * @return hash as byte array
 	 * @throws NoSuchAlgorithmException 
 	 */
-	public byte[] hash() throws NoSuchAlgorithmException {
-		MessageDigest dg = MessageDigest.getInstance("SHA-1");
+	public byte[] hash() {
+		MessageDigest dg;
+		try { 
+			dg = MessageDigest.getInstance("SHA-1");
+		} catch (NoSuchAlgorithmException n) {
+			LOG.error(n.getMessage());
+			return null;
+		}
 		dg.update(title.getBytes(StandardCharsets.UTF_8));
 		dg.update(description.getBytes(StandardCharsets.UTF_8));
-		categories.stream().forEachOrdered(c -> dg.update(c.byteValue()));
-		conditions.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
-		contacts.stream().forEachOrdered(c -> dg.update(c.getBytes(StandardCharsets.UTF_8)));
-		accessURLS.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
-		downloadURLS.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
-		keywords.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));	
-		formats.stream().forEachOrdered(c -> dg.update(c.byteValue()));
+		if (categories != null) {
+			categories.stream().forEachOrdered(c -> dg.update(c.byteValue()));
+		} else {
+			dg.update(NULL);
+		}
+		if (conditions != null) {
+			conditions.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
+		} else {
+			dg.update(NULL);
+		}
+		if (contacts != null) {
+			contacts.stream().forEachOrdered(c -> dg.update(c.getBytes(StandardCharsets.UTF_8)));
+		} else {
+			dg.update(NULL);
+		}
+		if (accessURLS != null) {
+			accessURLS.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
+		} else {
+			dg.update(NULL);
+		}
+		if (downloadURLS != null) {
+			downloadURLS.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
+		} else {
+			dg.update(NULL);
+		}
+		if (keywords != null) {
+			keywords.stream().forEachOrdered(c -> dg.update(c.getBytes(StandardCharsets.UTF_8)));
+		} else {
+			dg.update(NULL);
+		}
+		if (formats != null) {
+			formats.stream().forEachOrdered(c -> dg.update(c.byteValue()));
+		} else {
+			dg.update(NULL);
+		}
 		dg.update(frequency != null ? frequency.byteValue() : NULL);
 		dg.update(geography != null ? geography.byteValue() : NULL);
 		dg.update(license != null ? license.byteValue() : NULL);
@@ -140,7 +174,7 @@ public record Dataset(
 	 * @param map
 	 * @return 
 	 */
-	private static List getList(String field, Map<String,Object> map) {
+	private static List<Map<String,Object>> getList(String field, Map<String,Object> map) {
 		if (map == null) {
 			return null;
 		}
@@ -184,7 +218,7 @@ public record Dataset(
 	 * @return 
 	 */
 	public Map<String,Object> toMap() {
-		Map<String,Object> map = new HashMap();
+		Map<String,Object> map = new HashMap<>();
 
 		map.put("langcode", List.of(Map.of("value", langcode)));
 		map.put("type", List.of(Map.of("target_id", "dataset")));
@@ -197,7 +231,7 @@ public record Dataset(
 									.map(c -> Map.of("uri", c))
 									.collect(Collectors.toList()));
 		map.put("field_contact", contacts.stream()
-									.map(c -> Map.of("value", c.toString()))
+									.map(c -> Map.of("value", c))
 									.collect(Collectors.toList()));
 		map.put("field_date_range", List.of(Map.of("value", fmt.format(from), "end_value", till)));
 		map.put("field_details", accessURLS.stream()

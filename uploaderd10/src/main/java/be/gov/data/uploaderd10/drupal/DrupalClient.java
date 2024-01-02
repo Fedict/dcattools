@@ -36,6 +36,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -157,7 +158,7 @@ public class DrupalClient {
 	public Map<String,Integer> getTaxonomy(String taxo) throws IOException, InterruptedException {
 		Map<String,Integer> map = new HashMap<>();
 		
-		for(int page = 1; ; page++) {
+		for(int page = 0; ; page++) {
 			HttpRequest request = getHttpBuilder()
 				.GET()
 				.uri(URI.create(baseURL + "/en/api/v1/taxonomy/" + taxo + "?_format=json&page=" + page))
@@ -169,7 +170,7 @@ public class DrupalClient {
 			}
 			termsToMap(map, obj);
 		}
-		LOG.info("{} {} {}", taxo, map.size(), map.toString());
+		LOG.info("{}: {} terms", taxo, map.size());
 		return map;
 	}
 
@@ -188,7 +189,27 @@ public class DrupalClient {
 		HttpRequest request = getHttpBuilder()
 				.header("Content-type", "application/json")
 				.POST(BodyPublishers.ofString(obj.toString()))
-				.uri(URI.create(baseURL + "/node?_format=json"))
+				.uri(URI.create(baseURL + "/node/dataset?_format=json"))
+				.build();
+		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		return (response.statusCode() == 201);
+	}
+
+	/**
+	 * Update a dataset in a specific language, or add a translation
+	 * 
+	 * @param d dataset
+	 * @param lang language code
+	 * @return true if successful
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public boolean updateDataset(Dataset d, String lang) throws IOException, InterruptedException {
+		JSONObject obj = new JSONObject(d.toMap());
+
+		HttpRequest request = getHttpBuilder()
+				.method("PATCH", BodyPublishers.ofString(obj.toString()))
+				.uri(URI.create(baseURL + "/node/dataset/" + d.id() + "?_format=json&_translation=" + lang))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		return (response.statusCode() == 201);
@@ -203,7 +224,7 @@ public class DrupalClient {
 	 * @throws InterruptedException 
 	 */
 	public boolean deleteDataset(String id) throws IOException, InterruptedException {
-			HttpRequest request = getHttpBuilder()
+		HttpRequest request = getHttpBuilder()
 				.DELETE()
 				.uri(URI.create(baseURL + "/node/" + id + "?_format=json"))
 				.build();
@@ -236,7 +257,7 @@ public class DrupalClient {
 				break;
 			}
 			for (Object obj: datasets) {
-//				lst.add(Dataset.fromMap(((JSONObject) obj).toMap()));
+				lst.add(Dataset.fromMap(((JSONObject) obj).toMap()));
 			}
 		}
 		return lst;

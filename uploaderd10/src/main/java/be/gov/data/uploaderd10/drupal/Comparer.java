@@ -26,13 +26,21 @@
 package be.gov.data.uploaderd10.drupal;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Bart.Hanssens
  */
 public class Comparer {
+	private static final Logger LOG = LoggerFactory.getLogger(Comparer.class);
+
 	private DrupalClient client;
 
 	private Map categories;
@@ -44,13 +52,21 @@ public class Comparer {
 
 	public void init() throws IOException, InterruptedException {
 		categories = client.getTaxonomy("category");
-		/**
 		licenses = client.getTaxonomy("license");
 		ftypes = client.getTaxonomy("file_type");
 		frequencies = client.getTaxonomy("frequency");
 		geos = client.getTaxonomy("geo_coverage");
 		organisations = client.getTaxonomy("organisation");
-		* **/
+	}
+	
+	public void compare(String[] langs) throws IOException, InterruptedException {
+		for (String lang: langs) {
+			LOG.info("Getting datasets in {}...", lang);
+			List<Dataset> datasets = client.getDatasets(lang);
+			LOG.info("... {} datasets", datasets.size());
+			Map<ByteBuffer, Dataset> onSite = datasets.stream()
+					.collect(Collectors.toMap(d -> ByteBuffer.wrap(d.hash()), d -> d));
+		}
 	}
 	
 	public Comparer(DrupalClient client) {

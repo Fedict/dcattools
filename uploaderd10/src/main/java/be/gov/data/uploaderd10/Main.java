@@ -31,6 +31,7 @@ import be.gov.data.uploaderd10.drupal.DrupalClient;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
 import picocli.CommandLine;
@@ -53,6 +54,9 @@ public class Main implements Callable<Integer> {
 	@Option(names = {"-U", "--url"}, description = "Drupal site")
     private String site;
  
+	@Option(names = {"-f", "--file"}, description = "RDF file")
+    private Path file;
+
 	@Option(names = {"-P", "--properties"}, description = "Property file")
 	private void setProperties(File f) {
 		if (f == null || !f.canRead()) {
@@ -67,7 +71,7 @@ public class Main implements Callable<Integer> {
 		try {
 			cl.login(user, pass);
 			Comparer comparer = new Comparer(cl);
-			comparer.init();
+			comparer.compare(new String[]{"nl", "fr", "de", "en"});
 			return 0;
 		} finally {
 			cl.logout();
