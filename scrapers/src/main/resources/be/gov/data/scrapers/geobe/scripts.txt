@@ -1,7 +1,5 @@
 # extra queries to be executed and data to be loaded
 geobe/sparql-fix-download.qry
-geobe/sparql-delete-fodfin.qry
-geobe/sparql-delete-fodfin2.qry
 geobe/sparql-delete-location.qry
 geobe/sparql-fix-serves.qry
 geobe/data-publ-contact.ttl
@@ -31,6 +29,7 @@ sparql-map-frequency-drupal.qry
 geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
 sparql-consolidate-bbox.qry
+geobe/sparql-delete-fodfin.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
 data-shacl-support.ttl

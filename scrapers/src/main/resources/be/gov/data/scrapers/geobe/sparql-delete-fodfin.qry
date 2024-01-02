@@ -1,4 +1,4 @@
-# Remove fodfin dataset since the 5000+ distributions make it hard to process for the EDP
+# Remove most of fodfin distributions since the 5000+ distributions make it hard to process for the EDP
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -10,8 +10,20 @@ DELETE
 		?dist ?p ?o 
 		}
 WHERE
-	{ 	?dataset dcat:distribution ?dist .
+	{ 
+		?dataset dcat:distribution ?dist .
 		?dist a dcat:Distribution .
 		?dist dcat:downloadURL ?url .
 		?dist ?p ?o 
-		FILTER (CONTAINS(STR(?url), "https://opendata.fin.belgium.be/")) }
+		{
+			SELECT ?dataset
+			WHERE {
+				?dataset a dcat:Dataset .
+				?dataset <http://data.europa.eu/930/custodian> <https://org.belgif.be/id/CbeRegisteredEntity/0308357159> .
+				?dataset dcat:distribution ?dist .
+			}
+			GROUP BY ?dataset
+			HAVING (COUNT(?dist) > 100) 
+		}
+		FILTER (!STRENDS(STR(?url), "_Belgium.zip"))
+	}
