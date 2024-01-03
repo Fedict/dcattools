@@ -23,8 +23,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.datagovbe.dao;
+package be.gov.data.uploader.dao;
 
+import java.util.List;
 import java.util.Map;
 import org.eclipse.rdf4j.model.IRI;
 
@@ -32,8 +33,17 @@ import org.eclipse.rdf4j.model.IRI;
  *
  * @author Bart.Hanssens
  */
-public record Distribution(
-	IRI id, 
-	Map<String,String> titles, 
+public record Dataset(
+	IRI uri,
+	String id, 
+	Map<String,String> titles,
 	Map<String,String> descriptions,
-	String format) {}
+	List<Distribution> distributions,
+	String publisher,
+	Organization contact,
+	List<String> themes,
+	Map<String,List<String>> keywords,
+	String license,
+	String spatial,
+	String temporal,
+	String frequency) {}

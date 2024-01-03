@@ -23,13 +23,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.datagovbe;
-
-import be.gov.data.Storage;
+package be.gov.data.uploader;
 
 import be.gov.data.dcat.vocab.DATAGOVBE;
 import be.gov.data.dcat.vocab.MDR_LANG;
 import be.gov.data.dcat.vocab.SCHEMA;
+import be.gov.data.helpers.Storage;
 
 import com.google.common.collect.ListMultimap;
 
