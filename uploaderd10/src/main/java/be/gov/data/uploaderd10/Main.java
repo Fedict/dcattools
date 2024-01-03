@@ -74,7 +74,8 @@ public class Main implements Callable<Integer> {
 		try {
 			client.login(user, pass);
 			Comparer comparer = new Comparer(client, reader);
-			comparer.compare(new String[]{"nl", "fr", "de", "en"});
+			comparer.compare(new String[]{"en"});
+			//comparer.compare(new String[]{"nl", "fr", "de", "en"});
 			return 0;
 		} finally {
 			client.logout();

@@ -370,7 +370,7 @@ public class DcatReader {
 			Distribution dist = new Distribution();
 			dist.setAccessURL(getLangIRI(iri, DCAT.ACCESS_URL));
 			dist.setDownloadURL(getLangIRI(iri, DCAT.DOWNLOAD_URL));
-			dist.setFormat(getIRI(iri, DCAT.MEDIA_TYPE));
+			dist.setFormat(getIRI(iri, DCTERMS.FORMAT));
 
 			dists.add(dist);
 		}

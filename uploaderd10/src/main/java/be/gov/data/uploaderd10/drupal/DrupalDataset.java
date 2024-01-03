@@ -86,8 +86,8 @@ public record DrupalDataset(
 			LOG.error("SHA-1 not found: {}", n.getMessage());
 			return null;
 		}
-		dg.update(title.getBytes(StandardCharsets.UTF_8));
-		dg.update(description.getBytes(StandardCharsets.UTF_8));
+		dg.update(title != null ? title.getBytes(StandardCharsets.UTF_8) : new byte[]{ NULL });
+		dg.update(description != null ?description.getBytes(StandardCharsets.UTF_8) : new byte[]{ NULL });
 		if (categories != null && !categories.isEmpty()) {
 			categories.stream().forEachOrdered(c -> dg.update(c.byteValue()));
 		} else {
