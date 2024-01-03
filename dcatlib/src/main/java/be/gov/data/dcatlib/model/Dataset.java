@@ -23,44 +23,81 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.dcatlib;
+package be.gov.data.dcatlib.model;
 
-import be.gov.data.dcatlib.model.Catalog;
-import be.gov.data.dcatlib.model.Dataset;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.eclipse.rdf4j.model.IRI;
 
 /**
  *
  * @author Bart Hanssens
  */
-public class DcatReaderTest {
-	static Catalog catalog;
-	
-	@BeforeAll
-	public static void setup() throws IOException {
-		DcatReader reader = new DcatReader();
-		try(InputStream is = ClassLoader.getSystemResourceAsStream("dcat-multilang.rdf")) {
-			catalog = reader.read(is, "application/rdf+xml");
+public class Dataset extends DataResource {
+
+	private List<Distribution> distributions;
+
+	/**
+	 * @return the distributions
+	 */
+	public List<Distribution> getDistributions() {
+		return distributions;
+	}
+
+	/**
+	 * @param distributions the distributions to set
+	 */
+	public void setDistributions(List<Distribution> distributions) {
+		this.distributions = distributions;
+	}
+
+	/**
+	 * Get file formats
+	 * 
+	 * @return set of IRIs
+	 */
+	public Set<IRI> getFormats() {
+		Set<IRI> formats = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			formats.add(dist.getFormat());
 		}
-	}
-	
-	@Test
-	public void testCatalog() throws IOException {
-		assertEquals(1, catalog.getDatasets().size());
+		formats.remove(null);
+		return formats;
 	}
 
-	@Test
-	public void testDatasetTitle() throws IOException {
-		Dataset d = catalog.getDatasets().get("c646365c4441f53426a72e2f1b14b9d6e63e0756");
-		assertEquals("BeSt adressen", d.getTitle().get("nl"));
+	/**
+	 * Get access URLS for a specific language
+	 * 
+	 * @param lang language code
+	 * @return set of IRIs
+	 */
+	public Set<IRI> getAccesURLs(String lang) {
+		Set<IRI> urls = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			urls.add(dist.getAccessURL(lang));
+		}
+		urls.remove(null);
+		return urls;
 	}
 
+	/**
+	 * Get download URLS for a specific language
+	 * 
+	 * @param lang language code
+	 * @return set of IRIs
+	 */	
+	public Set<IRI> getDownloadURLs(String lang) {
+		Set<IRI> urls = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			urls.add(dist.getDownloadURL(lang));
+		}
+		urls.remove(null);
+		return urls;
+	}
 
 }

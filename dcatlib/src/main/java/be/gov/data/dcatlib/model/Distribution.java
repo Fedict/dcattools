@@ -48,6 +48,14 @@ public class Distribution {
 	}
 
 	/**
+	 * @return the title
+	 */
+
+	public String getTitle(String lang) {
+		return title.get(lang);
+	}
+
+	/**
 	 * @param title the title to set
 	 */
 	public void setTitle(Map<String,String> title) {
@@ -76,13 +84,16 @@ public class Distribution {
 	}
 
 	/**
+	 * @param lang
 	 * @return the accessURL
 	 */
 	public IRI getAccessURL(String lang) {
-		return accessURL.get(lang);
+		return accessURL.getOrDefault(lang, accessURL.get(""));
 	}
 
 	/**
+	 * Get access URL for a specific language
+	 * 
 	 * @param accessURL the accessURL to set
 	 */
 	public void setAccessURL(Map<String,IRI> accessURL) {
@@ -97,10 +108,13 @@ public class Distribution {
 	}
 	
 	/**
+	 * Get download URL for a specific language
+	 * 
+	 * @param lang
 	 * @return the downloadURL
 	 */
 	public IRI getDownloadURL(String lang) {
-		return downloadURL.get(lang);
+		return downloadURL.getOrDefault(lang, downloadURL.get(""));
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, FPS BOSA
+ * Copyright (c) 2023, Bart.Hanssens
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,64 +23,20 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.dcatlib.model;
+package be.gov.data.dcatlib;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.eclipse.rdf4j.model.IRI;
+import be.gov.data.dcatlib.model.Catalog;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 /**
  *
- * @author Bart Hanssens
+ * @author Bart.Hanssens
  */
-public class Dataset extends DataResource {
-
-	private List<Distribution> distributions;
-
-	/**
-	 * @return the distributions
-	 */
-	public List<Distribution> getDistributions() {
-		return distributions;
-	}
-
-	/**
-	 * @param distributions the distributions to set
-	 */
-	public void setDistributions(List<Distribution> distributions) {
-		this.distributions = distributions;
-	}
-
-	public Set<IRI> getFormats() {
-		Set<IRI> formats = new HashSet<>();
-		
-		for(Distribution dist: distributions) {
-			formats.add(dist.getFormat());
-		}
-		formats.remove(null);
-		return formats;
-	}
-
-	public Set<IRI> getAccesURLs(String lang) {
-		Set<IRI> urls = new HashSet<>();
-		
-		for(Distribution dist: distributions) {
-			urls.add(dist.getAccessURL(lang));
-		}
-		urls.remove(null);
-		return urls;
-	}
+public class Main {
 	
-	public Set<IRI> getDownloadURLs(String lang) {
-		Set<IRI> urls = new HashSet<>();
-		
-		for(Distribution dist: distributions) {
-			urls.add(dist.getDownloadURL(lang));
-		}
-		urls.remove(null);
-		return urls;
+	public static void main(String[] args) throws IOException {
+		DcatReader reader = new DcatReader(Paths.get(args[0]));
+		Catalog catalog = reader.read();
 	}
-
 }

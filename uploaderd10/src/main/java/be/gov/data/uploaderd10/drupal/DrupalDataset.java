@@ -29,10 +29,11 @@ import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,11 +44,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Dataset DAO
+ * Dataset DAO, a somewhat simplified version of a DCAT Dataset (and Distribution) used by data.gov.be
  * 
  * @author Bart Hanssens
  */
-public record Dataset(
+public record DrupalDataset(
 	String id,
 	String title,
 	String description,
@@ -64,61 +65,60 @@ public record Dataset(
 	Integer license,
 	String organisation,
 	Integer publisher,
-	LocalDate from,
-	LocalDate till
+	Date from,
+	Date till
 	) {
 
-	private final static Logger LOG = LoggerFactory.getLogger(Dataset.class);
+	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
 	private final static byte NULL = '\0';
-	private final static DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
+	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	
 	/**
-	 * Calculate hash value of dataset for comparing drupal content with content from RDF file
+	 * Calculate hash value of dataset, used for comparing drupal content with content from RDF file
 	 * 
-	 * @return hash as byte array
-	 * @throws NoSuchAlgorithmException 
+	 * @return hash as byte array or null
 	 */
 	public byte[] hash() {
 		MessageDigest dg;
 		try { 
 			dg = MessageDigest.getInstance("SHA-1");
 		} catch (NoSuchAlgorithmException n) {
-			LOG.error(n.getMessage());
+			LOG.error("SHA-1 not found: {}", n.getMessage());
 			return null;
 		}
 		dg.update(title.getBytes(StandardCharsets.UTF_8));
 		dg.update(description.getBytes(StandardCharsets.UTF_8));
-		if (categories != null) {
+		if (categories != null && !categories.isEmpty()) {
 			categories.stream().forEachOrdered(c -> dg.update(c.byteValue()));
 		} else {
 			dg.update(NULL);
 		}
-		if (conditions != null) {
+		if (conditions != null && !conditions.isEmpty()) {
 			conditions.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
 		} else {
 			dg.update(NULL);
 		}
-		if (contacts != null) {
+		if (contacts != null && !contacts.isEmpty()) {
 			contacts.stream().forEachOrdered(c -> dg.update(c.getBytes(StandardCharsets.UTF_8)));
 		} else {
 			dg.update(NULL);
 		}
-		if (accessURLS != null) {
+		if (accessURLS != null && !accessURLS.isEmpty()) {
 			accessURLS.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
 		} else {
 			dg.update(NULL);
 		}
-		if (downloadURLS != null) {
+		if (downloadURLS != null && !downloadURLS.isEmpty()) {
 			downloadURLS.stream().forEachOrdered(c -> dg.update(c.toString().getBytes(StandardCharsets.UTF_8)));
 		} else {
 			dg.update(NULL);
 		}
-		if (keywords != null) {
+		if (keywords != null && !keywords.isEmpty()) {
 			keywords.stream().forEachOrdered(c -> dg.update(c.getBytes(StandardCharsets.UTF_8)));
 		} else {
 			dg.update(NULL);
 		}
-		if (formats != null) {
+		if (formats != null && !formats.isEmpty() ) {
 			formats.stream().forEachOrdered(c -> dg.update(c.byteValue()));
 		} else {
 			dg.update(NULL);
@@ -159,12 +159,17 @@ public record Dataset(
 	 * @param key
 	 * @return date or null
 	 */
-	private static LocalDate getOneDateValue(String field, Map<String,Object> map, String key) {
+	private static Date getOneDateValue(String field, Map<String,Object> map, String key) {
 		String str = (String) getOneValue(field, map, key);
 		if (str == null || str.isEmpty()) {
 			return null;
 		}
-		return LocalDate.parse(str, fmt);
+		try {
+			return DATE_FMT.parse(str);
+		} catch (ParseException ex) {
+			LOG.error("Could not parse date {}", str);
+			return null;
+		}
 	}
 
 	/**
@@ -189,6 +194,16 @@ public record Dataset(
 		return lst;
 	}
 
+	/**
+	 * Get a set of objects from a (JSON) structure
+	 * 
+	 * @param <T>
+	 * @param field (JSON) field name to use
+	 * @param map map containing the data
+	 * @param key key (within JSON object) to search for
+	 * @param clazz type of the objects
+	 * @return a set of objects of class clazz
+	 */
 	private static <T> Set<T> getSet(String field, Map<String,Object> map, String key, Class<T> clazz) {
 		List<Map<String,Object>> lst = getList(field, map);
 		if (lst == null) {
@@ -213,7 +228,7 @@ public record Dataset(
 	}
 
 	/**
-	 * Convert Dataset DAO to map
+	 * Convert DrupalDataset DAO to map
 	 * 
 	 * @return 
 	 */
@@ -233,7 +248,7 @@ public record Dataset(
 		map.put("field_contact", contacts.stream()
 									.map(c -> Map.of("value", c))
 									.collect(Collectors.toList()));
-		map.put("field_date_range", List.of(Map.of("value", fmt.format(from), "end_value", till)));
+		map.put("field_date_range", List.of(Map.of("value", DATE_FMT.format(from), "end_value", DATE_FMT.format(till))));
 		map.put("field_details", accessURLS.stream()
 									.map(c -> Map.of("uri", c))
 									.collect(Collectors.toList()));
@@ -259,8 +274,8 @@ public record Dataset(
 	 * 
 	 * @return map
 	 */
-	public static Dataset fromMap(Map<String,Object> map) {
-		return new Dataset(
+	public static DrupalDataset fromMap(Map<String,Object> map) {
+		return new DrupalDataset(
 			(String) getOneValue("field_id", map, "value"),
 			(String) getOneValue("title", map, "value"),
 			(String) getOneValue("body", map, "value"),

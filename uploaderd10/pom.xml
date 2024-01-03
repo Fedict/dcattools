@@ -27,16 +27,20 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-	 <dependency>
-	  <groupId>org.slf4j</groupId>
-	  <artifactId>slf4j-simple</artifactId>
-	  <version>1.7.36</version>
-	 </dependency>
-	 <dependency>
-	  <groupId>info.picocli</groupId>
-	  <artifactId>picocli</artifactId>
-	  <version>4.7.4</version>
-	 </dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.picocli</groupId>
+			<artifactId>picocli</artifactId>
+			<version>4.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>be.gov.data</groupId>
+			<artifactId>dcatlib</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

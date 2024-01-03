@@ -25,7 +25,6 @@
  */
 package be.gov.data.dcatlib.model;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import java.util.Set;
@@ -58,6 +57,8 @@ public class DataResource {
 	private IRI license;
 	private Set<IRI> themes;
 	private IRI accrualPeriodicity;
+
+	private IRI rights;
 
 	private Date issued;
 	private Date modified;
@@ -93,6 +94,13 @@ public class DataResource {
 	}
 
 	/**
+	 * @return the title
+	 */
+	public String getTitle(String lang) {
+		return title.get(lang);
+	}
+
+	/**
 	 * @param title the title to set
 	 */
 	public void setTitle(Map<String,String> title) {
@@ -104,6 +112,13 @@ public class DataResource {
 	 */
 	public Map<String,String> getDescription() {
 		return description;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription(String lang) {
+		return description.get(lang);
 	}
 
 	/**
@@ -121,6 +136,13 @@ public class DataResource {
 	}
 
 	/**
+	 * @return the landingPage
+	 */
+	public IRI getLandingPage(String lang) {
+		return landingPage.getOrDefault(lang, landingPage.get(""));
+	}
+
+	/**
 	 * @param landingPage the landingPage to set
 	 */
 	public void setLandingPage(Map<String,IRI> landingPage) {
@@ -135,11 +157,10 @@ public class DataResource {
 	}
 
 	/**
-	 * @param lang language code
 	 * @return the keywords
 	 */
 	public Set<String> getKeywords(String lang) {
-		return keywords.getOrDefault(lang, Collections.emptySet());
+		return keywords.get(lang);
 	}
 
 	/**
@@ -163,6 +184,13 @@ public class DataResource {
 	}
 
 	/**
+	 * @return the contactName
+	 */
+	public String getContactName(String lang) {
+		return contactName.getOrDefault(lang, contactName.get(""));
+	}
+
+	/**
 	 * @param contactName the contactName to set
 	 */
 	public void setContactName(Map<String,String> contactName) {
@@ -177,6 +205,13 @@ public class DataResource {
 	}
 
 	/**
+	 * @return the contactAddr
+	 */
+	public IRI getContactAddr(String lang) {
+		return contactAddr.getOrDefault(lang, contactAddr.get(""));
+	}
+
+	/**
 	 * @param contactAddr the contactAddr to set
 	 */
 	public void setContactAddr(Map<String,IRI> contactAddr) {
@@ -188,6 +223,13 @@ public class DataResource {
 	 */
 	public Map<String,IRI> getContactSite() {
 		return contactSite;
+	}
+	
+	/**
+	 * @return the contactSite
+	 */
+	public IRI getContactSite(String lang) {
+		return contactSite.getOrDefault(lang, contactSite.get(""));
 	}
 
 	/**

@@ -37,29 +37,69 @@ public class Catalog {
 	private final Map<String,Dataset> datasets = new HashMap<>(10_000);
 	private final Map<String,Dataservice> dataservices = new HashMap<>(500);
 	
+	/**
+	 * Add dataset with specific ID
+	 * 
+	 * @param id
+	 * @param dataset
+	 * @throws IOException when ID is already present (= duplicate)
+	 */
+
 	public void addDataset(String id, Dataset dataset) throws IOException {
 		if (datasets.containsKey(id)) {
 			throw new IOException("Key " + id + " already present");
 		}
 		datasets.put(id, dataset);
 	}
-	
+
+	/**
+	 * Get the dataset with the specific ID
+	 * 
+	 * @param id ID
+	 * @return dataset or null
+	 */
 	public Dataset getDataset(String id) {
 		return datasets.get(id);
 	}
 
+	/**
+	 * Get a map of all datasets, with ID as key
+	 * 
+	 * @return 
+	 */
 	public Map<String,Dataset> getDatasets() {
 		return datasets;
 	}
 
-	public void addDataservice(String id, Dataservice dataservice) {
+	/**
+	 * Add dataservice with specific ID
+	 * 
+	 * @param id
+	 * @param dataservice 
+	 * @throws IOException when ID is already present (= duplicate)
+	 */
+	public void addDataservice(String id, Dataservice dataservice) throws IOException {
+		if (dataservices.containsKey(id)) {
+			throw new IOException("Key " + id + " already present");
+		}
 		dataservices.put(id, dataservice);
 	}
-	
+
+	/**
+	 * Get the dataservice with specific ID
+	 * 
+	 * @param id
+	 * @return dataset or null
+	 */
 	public Dataservice getDataservice(String id) {
 		return dataservices.get(id);
 	}
 
+	/**
+	 * Get a map of all dataservices, with ID as key
+	 * 
+	 * @return 
+	 */
 	public Map<String,Dataservice> getDataservices() {
 		return dataservices;
 	}

@@ -26,6 +26,7 @@
 
 package be.gov.data.uploaderd10;
 
+import be.gov.data.dcatlib.DcatReader;
 import be.gov.data.uploaderd10.drupal.Comparer;
 import be.gov.data.uploaderd10.drupal.DrupalClient;
 
@@ -67,14 +68,16 @@ public class Main implements Callable<Integer> {
  
 	@Override
 	public Integer call() throws Exception {
-		DrupalClient cl = new DrupalClient(site);
+		DrupalClient client = new DrupalClient(site);
+		DcatReader reader = new DcatReader(file);
+		
 		try {
-			cl.login(user, pass);
-			Comparer comparer = new Comparer(cl);
+			client.login(user, pass);
+			Comparer comparer = new Comparer(client, reader);
 			comparer.compare(new String[]{"nl", "fr", "de", "en"});
 			return 0;
 		} finally {
-			cl.logout();
+			client.logout();
 		}
 	}
 

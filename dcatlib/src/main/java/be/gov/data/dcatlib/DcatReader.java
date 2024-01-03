@@ -31,9 +31,12 @@ import be.gov.data.dcatlib.model.DataResource;
 import be.gov.data.dcatlib.model.Dataservice;
 import be.gov.data.dcatlib.model.Dataset;
 import be.gov.data.dcatlib.model.Distribution;
+import java.io.BufferedReader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -68,6 +71,10 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class DcatReader {
+	private final Path file;
+	private final InputStream is;
+	private final RDFFormat fmt;
+
 	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	
@@ -326,7 +333,7 @@ public class DcatReader {
 		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
 		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
 		d.setLicense(getIRI(iri, DCTERMS.LICENSE));
-
+	
 		d.setIssued(getDate(iri, DCTERMS.CREATED));
 		d.setModified(getDate(iri, DCTERMS.MODIFIED));
 
@@ -424,18 +431,19 @@ public class DcatReader {
 	/**
 	 * Read from input
 	 * 
-	 * @param is input stream
-	 * @param mime mimetype
 	 * @return simplified DCAT catalog
 	 * @throws IOException 
 	 */
-    public Catalog read(InputStream is, String mime) throws IOException {
-		Optional<RDFFormat> fmt = Rio.getParserFormatForMIMEType(mime);
-		if (!fmt.isPresent()) {
-			throw new IOException("Format " + mime + " not supported");
+    public Catalog read() throws IOException {
+		if (file != null) {
+			try(BufferedReader r = Files.newBufferedReader(file)) {
+				m = Rio.parse(r, "http://example.com", fmt);
+			}
+		} else {
+			m = Rio.parse(is, fmt);
 		}
-		m = Rio.parse(is, "http://example.com", fmt.get());
-
+		
+		
 		Catalog catalog = new Catalog();
 		
 		readDatasets(catalog);
@@ -443,4 +451,37 @@ public class DcatReader {
 
 		return catalog;
     }
+
+	/**
+	 * Constructor
+	 * 
+	 * @param is input stream
+	 * @param mime mime type
+	 * @throws IOException 
+	 */
+	public DcatReader(InputStream is, String mime) throws IOException {
+		Optional<RDFFormat> rfmt = Rio.getParserFormatForMIMEType(mime);
+		if (!rfmt.isPresent()) {
+			throw new IOException("Mime " + mime + " not supported");
+		}
+		this.fmt = rfmt.get();
+		this.file = null;
+		this.is = is;
+	}
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param p
+	 * @throws IOException 
+	 */
+	public DcatReader(Path p) throws IOException {
+		Optional<RDFFormat> rfmt = Rio.getParserFormatForFileName(p.getFileName().toString());
+		if (!rfmt.isPresent()) {
+			throw new IOException("File format " + p.getFileName().toString() + " not supported");
+		}
+		this.fmt = rfmt.get();
+		this.file = p;
+		this.is = null;
+	}
 }

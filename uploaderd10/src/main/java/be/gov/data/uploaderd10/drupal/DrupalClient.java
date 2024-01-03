@@ -182,7 +182,7 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public boolean createDataset(Dataset d) throws IOException, InterruptedException {
+	public boolean createDataset(DrupalDataset d) throws IOException, InterruptedException {
 		JSONObject obj = new JSONObject(d.toMap());
 		LOG.debug(obj.toString());
 
@@ -204,7 +204,7 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public boolean updateDataset(Dataset d, String lang) throws IOException, InterruptedException {
+	public boolean updateDataset(DrupalDataset d, String lang) throws IOException, InterruptedException {
 		JSONObject obj = new JSONObject(d.toMap());
 
 		HttpRequest request = getHttpBuilder()
@@ -241,8 +241,8 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public List<Dataset> getDatasets(String lang) throws IOException, InterruptedException {
-		List<Dataset> lst = new ArrayList<>();
+	public List<DrupalDataset> getDatasets(String lang) throws IOException, InterruptedException {
+		List<DrupalDataset> lst = new ArrayList<>();
 	
 		// paginated result set
 		for(int page = 0; ; page++) {
@@ -257,7 +257,7 @@ public class DrupalClient {
 				break;
 			}
 			for (Object obj: datasets) {
-				lst.add(Dataset.fromMap(((JSONObject) obj).toMap()));
+				lst.add(DrupalDataset.fromMap(((JSONObject) obj).toMap()));
 			}
 		}
 		return lst;
