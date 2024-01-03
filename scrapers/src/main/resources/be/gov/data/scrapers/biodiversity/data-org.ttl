@@ -24,7 +24,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/453> ;
 	skos:altLabel "flanders-research-institute-for-agriculture-fisheries-and-food-ilvo"@en .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Instituut voor Natuur- en Bosonderzoek"@nl ;
