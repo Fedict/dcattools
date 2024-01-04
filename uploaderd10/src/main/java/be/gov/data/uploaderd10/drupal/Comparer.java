@@ -52,6 +52,7 @@ public class Comparer {
 
 	private final DrupalClient client;
 	private final DcatReader reader;
+	private final Hasher hasher;
 
 	private Map<String,Integer> categories;
 	private Map<String,Integer> licenses;
@@ -162,7 +163,7 @@ public class Comparer {
 				d.getStartDate(),
 				d.getEndDate()
 			);
-			map.put(ByteBuffer.wrap(drupal.hash()), drupal);
+			map.put(ByteBuffer.wrap(hasher.hash(drupal)), drupal);
 		}
 
 		return map;
@@ -187,7 +188,7 @@ public class Comparer {
 	
 			List<DrupalDataset> l = client.getDatasets(lang);
 			Map<ByteBuffer, DrupalDataset> onSite = l.stream()
-					.collect(Collectors.toMap(d -> ByteBuffer.wrap(d.hash()), d -> d));
+					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
 
 			LOG.info("Retrieved {} datasets in {}", onSite.size(), lang);
 			
@@ -202,5 +203,6 @@ public class Comparer {
 	public Comparer(DrupalClient client, DcatReader reader) {
 		this.client = client;
 		this.reader = reader;
+		this.hasher = new Hasher();
 	}
 }

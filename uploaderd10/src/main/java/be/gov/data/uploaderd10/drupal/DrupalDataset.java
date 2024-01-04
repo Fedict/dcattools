@@ -26,9 +26,6 @@
 package be.gov.data.uploaderd10.drupal;
 
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -70,85 +67,8 @@ public record DrupalDataset(
 	) {
 
 	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
-	private final static byte[] NULL = new byte[]{'\0'};
-	
+
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-
-	private byte[] getBytes(String s) {
-		return (s != null ? s.getBytes(StandardCharsets.UTF_8) : NULL);
-	}
-
-	private byte[] getBytes(Date d) {
-		return (d != null ? DATE_FMT.format(d).getBytes(StandardCharsets.UTF_8) : NULL);
-	}
-
-	private byte[] getBytes(Integer i) {
-		return (i != null ? i.toString().getBytes(StandardCharsets.UTF_8) : NULL);
-	}
-
-	private byte[] getBytes(Set<URI> uris) {
-		if (uris == null || uris.isEmpty()) {
-			return NULL;
-		}
-		return uris.stream().sorted()
-				.map(URI::toString)
-				.collect(Collectors.joining(","))
-				.getBytes(StandardCharsets.UTF_8);
-	}
-
-	private byte[] getBytesInt(Set<Integer> is) {
-		if (is == null || is.isEmpty()) {
-			return NULL;
-		}
-		return is.stream().sorted()
-				.map(c -> c.toString())
-				.collect(Collectors.joining(","))
-				.getBytes(StandardCharsets.UTF_8);
-	}
-
-	private byte[] getBytesStr(Set<String> s) {
-		if (s == null || s.isEmpty()) {
-			return NULL;
-		}
-		return s.stream()
-				.sorted()
-				.collect(Collectors.joining(","))
-				.getBytes(StandardCharsets.UTF_8);
-	}
-
-	/**
-	 * Calculate hash value of dataset, used for comparing drupal content with content from RDF file
-	 * 
-	 * @return hash as byte array or null
-	 */
-	public byte[] hash() {
-		MessageDigest dg;
-		try { 
-			dg = MessageDigest.getInstance("SHA-1");
-		} catch (NoSuchAlgorithmException n) {
-			LOG.error("SHA-1 not found: {}", n.getMessage());
-			return null;
-		}
-	
-		dg.update(getBytes(title));
-		dg.update(getBytes(description));
-		dg.update(getBytesInt(categories));
-		dg.update(getBytes(conditions));
-		dg.update(getBytesStr(contacts));
-		dg.update(getBytes(accessURLS));
-		dg.update(getBytes(downloadURLS));
-		dg.update(getBytesStr(keywords));
-		dg.update(getBytesInt(formats));	
-		dg.update(getBytes(frequency));
-		dg.update(getBytes(geography));
-		dg.update(getBytes(license));
-		dg.update(getBytes(organisation));
-		dg.update(getBytes(publisher));
-		dg.update(getBytes(from));
-		dg.update(getBytes(till));
-		
-		return dg.digest();
-	}
 
 	/**
 	 * Get first value from the JSON map

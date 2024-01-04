@@ -26,6 +26,10 @@
 package be.gov.data.uploaderd10.drupal;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.URI;
@@ -36,6 +40,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,6 +66,8 @@ public class DrupalClient {
 
 	private final HttpClient client;
 	private final String baseURL;
+
+	private Path cacheDir;
 	private String token;
 	private String logout;
 	private String uid;
@@ -146,7 +154,47 @@ public class DrupalClient {
 		
 		LOG.info("Logged out");
 	}
-	
+
+	private Map<String,Integer> loadCache(String taxo) {
+		if (cacheDir == null) {
+			LOG.debug("Cache directory not set");
+			return null;
+		}
+		Path cache = cacheDir.resolve(taxo);
+		if (! cache.toFile().exists()) {
+			LOG.warn("Cache file {} not found", cache);
+			return null;
+		}
+		try (InputStream is = Files.newInputStream(cache);
+			ObjectInputStream ois = new ObjectInputStream(is)) {
+			LOG.info("Reading {} from cache", taxo);
+			return (Map<String,Integer>) ois.readObject();
+		} catch(IOException|ClassNotFoundException e) {
+			LOG.error("Error reading cache {} : {}", cache, e.getMessage());
+			return null;
+		}
+	}
+
+	private void storeCache(String taxo, Map<String,Integer> map) {
+		if (cacheDir == null) {
+			LOG.debug("Cache directory not set");
+			return;
+		}
+		if (!cacheDir.toFile().exists() && !cacheDir.toFile().mkdirs()) {
+			LOG.error("Cache directory {} not found and could not be created", cacheDir);
+			return;
+		}
+
+		Path cache = cacheDir.resolve(taxo);
+		try (OutputStream os = Files.newOutputStream(cache);
+			ObjectOutputStream oos = new ObjectOutputStream(os)) {
+			LOG.info("Writing {} to cache", taxo);
+			oos.writeObject(map);
+		} catch(IOException e) {
+			LOG.error("Error writing cache {} : {}", cache, e.getMessage());
+		}
+	}
+
 	/**
 	 * Get a Drupal taxonomy as a map with ID as key and taxonomy term as value
 	 * 
@@ -156,7 +204,13 @@ public class DrupalClient {
 	 * @throws InterruptedException 
 	 */
 	public Map<String,Integer> getTaxonomy(String taxo) throws IOException, InterruptedException {
-		Map<String,Integer> map = new HashMap<>();
+		Map<String,Integer> map;
+		
+		map = loadCache(taxo);
+		if (map != null) {
+			return map;
+		}
+		map = new HashMap<>();
 		
 		for(int page = 0; ; page++) {
 			HttpRequest request = getHttpBuilder()
@@ -171,6 +225,8 @@ public class DrupalClient {
 			termsToMap(map, obj);
 		}
 		LOG.info("{}: {} terms", taxo, map.size());
+		storeCache(taxo, map);
+
 		return map;
 	}
 
@@ -268,8 +324,9 @@ public class DrupalClient {
 	 * 
 	 * @param baseURL 
 	 */
-	public DrupalClient(String baseURL) {
+	public DrupalClient(String baseURL, Path cacheDir) {
 		this.baseURL = baseURL;
+		this.cacheDir = cacheDir;
 
 		CookieManager cm = new CookieManager();
 		CookieHandler.setDefault(cm);
@@ -279,9 +336,5 @@ public class DrupalClient {
 			.version(Version.HTTP_1_1)
 			.followRedirects(Redirect.NORMAL)
 			.build();
-	}
-
-	private Object getBuilder() {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 }

@@ -46,17 +46,20 @@ import picocli.CommandLine.PropertiesDefaultProvider;
  */
 @Command(name = "uploader", mixinStandardHelpOptions = true, description = "Uploads DCAT data to Drupal 10.")
 public class Main implements Callable<Integer> {
-	@Option(names = {"-u", "--user"}, description = "User name")
+	@Option(names = {"-u", "--user"}, description = "User name", required = true)
     private String user;
 
-	@Option(names = {"-p", "--password"}, description = "Password")
+	@Option(names = {"-p", "--password"}, description = "Password", required = true)
     private String pass;
  
-	@Option(names = {"-U", "--url"}, description = "Drupal site")
+	@Option(names = {"-U", "--url"}, description = "Data.gov.be drupal site", required = true)
     private String site;
  
-	@Option(names = {"-f", "--file"}, description = "RDF file")
+	@Option(names = {"-f", "--file"}, description = "RDF input file", required = true)
     private Path file;
+
+	@Option(names = {"-c", "--cache"}, description = "Cache directory")
+    private Path cacheDir;
 
 	@Option(names = {"-P", "--properties"}, description = "Property file")
 	private void setProperties(File f) {
@@ -68,7 +71,7 @@ public class Main implements Callable<Integer> {
  
 	@Override
 	public Integer call() throws Exception {
-		DrupalClient client = new DrupalClient(site);
+		DrupalClient client = new DrupalClient(site, cacheDir);
 		DcatReader reader = new DcatReader(file);
 		
 		try {
