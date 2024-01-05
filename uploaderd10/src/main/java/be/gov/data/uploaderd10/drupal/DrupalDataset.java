@@ -219,7 +219,9 @@ public record DrupalDataset(
 		map.put("field_frequency", wrap("target_id", frequency));
 		map.put("field_geo_coverage", wrap("target_id", geography));
 		map.put("field_id", wrap("value", id));
-		map.put("field_keywords", wrap("value", "keyword1"));
+		map.put("field_keywords", keywords.stream()
+									.map(c -> Map.of("value", c))
+									.collect(Collectors.toList()));
 		map.put("field_license", wrap("target_id", license));
 		map.put("field_links", downloadURLS.stream()
 									.map(c -> Map.of("uri", c))

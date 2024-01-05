@@ -254,6 +254,7 @@ public class DrupalClient {
 	/**
 	 * Update a dataset in a specific language, or add a translation
 	 * 
+	 * @param id
 	 * @param d dataset
 	 * @param lang language code
 	 * @return true if successful
@@ -264,8 +265,9 @@ public class DrupalClient {
 		JSONObject obj = new JSONObject(d.toMap());
 
 		HttpRequest request = getHttpBuilder()
+				.header("Content-type", "application/json")
 				.method("PATCH", BodyPublishers.ofString(obj.toString()))
-				.uri(URI.create(baseURL + "/node/dataset/" + id.toString() + "?_format=json&_translation=" + lang))
+				.uri(URI.create(baseURL + "/node/" + id.toString() + "?_format=json&_translation=" + lang))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		return (response.statusCode() == 201);
