@@ -165,6 +165,28 @@ public record DrupalDataset(
 			.collect(Collectors.toSet());
 	}
 
+	private List<Map<String,String>> wrap(String name, String value) {
+		// note that Map.of() does not allow null values
+		Map<String,String> m = new HashMap<>();
+		m.put(name, value);
+		return List.of(m);
+	}
+
+	private List<Map<String,String>> wrap(String name, String value, String name2, String value2) {
+		// note that Map.of() does not allow null values
+		Map<String,String> m = new HashMap<>();
+		m.put(name, value);
+		m.put(name2, value2);
+		return List.of(m);
+	}
+
+	private List<Map<String,Integer>> wrap(String name, Integer value) {
+		// note that Map.of() does not allow null values
+		Map<String,Integer> m = new HashMap<>();
+		m.put(name, value);
+		return List.of(m);
+	}
+
 	/**
 	 * Convert DrupalDataset DAO to map
 	 * 
@@ -173,10 +195,10 @@ public record DrupalDataset(
 	public Map<String,Object> toMap() {
 		Map<String,Object> map = new HashMap<>();
 
-		map.put("langcode", List.of(Map.of("value", langcode)));
-		map.put("type", List.of(Map.of("target_id", "dataset")));
-		map.put("title", List.of(Map.of("value", title)));
-		map.put("body", List.of(Map.of("value", description, "format", "flexible_html")));
+		map.put("langcode", wrap("value", langcode));
+		map.put("type", wrap("target_id", "dataset"));
+		map.put("title", wrap("value", title));
+		map.put("body", wrap("value", description, "format", "flexible_html"));
 		map.put("field_category", categories.stream()
 									.map(c -> Map.of("target_id", c))
 									.collect(Collectors.toList())); 
@@ -186,24 +208,25 @@ public record DrupalDataset(
 		map.put("field_contact", contacts.stream()
 									.map(c -> Map.of("value", c))
 									.collect(Collectors.toList()));
-		map.put("field_date_range", List.of(Map.of("value", DATE_FMT.format(from), "end_value", DATE_FMT.format(till))));
+		map.put("field_date_range", wrap("value", from != null ? DATE_FMT.format(from) : null, 
+										"end_value", till != null ? DATE_FMT.format(till) : null));
 		map.put("field_details", accessURLS.stream()
 									.map(c -> Map.of("uri", c))
 									.collect(Collectors.toList()));
 		map.put("field_file_type", formats.stream()
 									.map(c -> Map.of("target_id", c))
 									.collect(Collectors.toList()));
-		map.put("field_frequency", List.of(Map.of("target_id", frequency)));
-		map.put("field_geo_coverage", List.of(Map.of("target_id", geography)));
-		map.put("field_id", List.of(Map.of("value", id)));
-		map.put("field_keywords", List.of(Map.of("value", "keyword1")));
-		map.put("field_license", List.of(Map.of("target_id", license)));
+		map.put("field_frequency", wrap("target_id", frequency));
+		map.put("field_geo_coverage", wrap("target_id", geography));
+		map.put("field_id", wrap("value", id));
+		map.put("field_keywords", wrap("value", "keyword1"));
+		map.put("field_license", wrap("target_id", license));
 		map.put("field_links", downloadURLS.stream()
 									.map(c -> Map.of("uri", c))
 									.collect(Collectors.toList()));
-		map.put("field_organisation", List.of(Map.of("value", organisation)));
-		map.put("field_publisher", List.of(Map.of("target_id", publisher)));
-		map.put("field_upstamp", List.of(Map.of("value", Instant.now().truncatedTo(ChronoUnit.SECONDS))));		
+		map.put("field_organisation", wrap("value", organisation));
+		map.put("field_publisher", wrap("target_id", publisher));
+		map.put("field_upstamp", wrap("value", Instant.now().truncatedTo(ChronoUnit.SECONDS).toString()));
 		return map;
 	}
 

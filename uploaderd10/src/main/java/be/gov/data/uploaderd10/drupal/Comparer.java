@@ -151,6 +151,13 @@ public class Comparer {
 		return uris;
 	}
 
+	private String stripMailto(String s) {
+		if (s == null) {
+			return null;
+		}
+		return s.startsWith("mailto:") ? s.substring(7) : s;
+	}
+
 	/**
 	 * Map a DCAT dataset to a Drupal dataset
 	 * 
@@ -171,14 +178,14 @@ public class Comparer {
 				lang,
 				mapTaxonomy(categories, d.getThemes()),
 				Set.of(),
-				Set.of(d.getContactAddr(lang).stringValue()),
+				Set.of(stripMailto(d.getContactAddr(lang).stringValue())),
 				toURI(d.getAccesURLs(lang)),
 				toURI(d.getDownloadURLs(lang)),
 				d.getKeywords(lang),
 				mapTaxonomy(ftypes, d.getFormats()),
 				mapTaxonomy(frequencies, d.getAccrualPeriodicity()),
 				mapTaxonomy(geos, d.getSpatial()),
-				mapTaxonomy(licenses, d.getLicense()),
+				mapTaxonomy(licenses, d.getLicenses().stream().findFirst().orElse(null)),
 				d.getContactName(lang),
 				mapTaxonomy(organisations, getFirst(d.getCreator(), d.getPublisher())),
 				d.getStartDate(),
@@ -223,7 +230,9 @@ public class Comparer {
 		
 		int count = 0;
 		for (DrupalDataset f: onFile.values()) {
-			if (same.contains(f.id())) {
+			if (same.contains(f.id()) && f.id().equals("ba44957f-3248-487c-aa80-0f125b38b35c")) {
+				LOG.info(f.toString());
+				LOG.info(onSite.get(f.id()).toString());
 				count++;
 				Integer nid = onSite.get(f.id()).nid();
 				try {
