@@ -39,6 +39,7 @@ public class Distribution {
 	private Map<String,IRI> accessURL;
 	private Map<String,IRI> downloadURL;
 	private IRI format;
+	private IRI license;
 
 	/**
 	 * @return the title
@@ -48,6 +49,7 @@ public class Distribution {
 	}
 
 	/**
+	 * @param lang
 	 * @return the title
 	 */
 
@@ -124,4 +126,17 @@ public class Distribution {
 		this.downloadURL = downloadURL;
 	}
 
+	/**
+	 * @return the license
+	 */
+	public IRI getLicense() {
+		return license;
+	}
+
+	/**
+	 * @param license the license to set
+	 */
+	public void setLicense(IRI license) {
+		this.license = license;
+	}
 }

@@ -69,6 +69,21 @@ public class Dataset extends DataResource {
 	}
 
 	/**
+	 * Get file formats
+	 * 
+	 * @return set of IRIs
+	 */
+	public Set<IRI> getLicenses() {
+		Set<IRI> licenses = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			licenses.add(dist.getLicense());
+		}
+		licenses.remove(null);
+		return licenses;
+	}
+
+	/**
 	 * Get access URLS for a specific language
 	 * 
 	 * @param lang language code
