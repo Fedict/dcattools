@@ -371,6 +371,7 @@ public class DcatReader {
 			dist.setAccessURL(getLangIRI(iri, DCAT.ACCESS_URL));
 			dist.setDownloadURL(getLangIRI(iri, DCAT.DOWNLOAD_URL));
 			dist.setFormat(getIRI(iri, DCTERMS.FORMAT));
+			dist.setLicense(getIRI(iri, DCTERMS.LICENSE));
 
 			dists.add(dist);
 		}
