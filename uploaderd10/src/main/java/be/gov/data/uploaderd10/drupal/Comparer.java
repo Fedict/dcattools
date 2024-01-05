@@ -115,6 +115,12 @@ public class Comparer {
 		return s;
 	}
 
+	/**
+	 * Get first non-NULL IRI
+	 * 
+	 * @param iris
+	 * @return 
+	 */
 	private IRI getFirst(IRI... iris) {
 		for(IRI iri: iris) {
 			if (iri != null) {
@@ -124,6 +130,12 @@ public class Comparer {
 		return null;
 	}
 
+	/**
+	 * Convert a set of (RDF) IRIs to (Java) URIs
+	 * 
+	 * @param iris
+	 * @return 
+	 */
 	private Set<URI> toURI(Set<IRI> iris) {
 		if (iris == null) {
 			return null;
@@ -139,11 +151,20 @@ public class Comparer {
 		return uris;
 	}
 
+	/**
+	 * Map a DCAT dataset to a Drupal dataset
+	 * 
+	 * @param datasets
+	 * @param lang
+	 * @return 
+	 */
 	private Map<ByteBuffer, DrupalDataset> mapToDrupal(Map<String, Dataset> datasets, String lang) {
 		Map<ByteBuffer, DrupalDataset> map = new HashMap<>();
 		
 		for(Dataset d: datasets.values()) {
 			DrupalDataset drupal = new DrupalDataset(
+				null,
+				null,
 				d.getId(),
 				d.getTitle(lang),
 				d.getDescription(lang),
@@ -168,7 +189,57 @@ public class Comparer {
 
 		return map;
 	}
+
 	
+	/**
+	 * Remove datasets that have not been changed (based on hash) from both file map and site map
+	 * 
+	 * @param onFile
+	 * @param onSite 
+	 */
+	private void removeUnchanged(Map<ByteBuffer,DrupalDataset> onFile, Map<ByteBuffer,DrupalDataset> onSite) {
+		Set<ByteBuffer> same = new HashSet<>(onSite.keySet());
+		same.retainAll(onFile.keySet());
+
+		onFile.keySet().removeAll(same);
+		LOG.info("{} on file but not on site", onFile.size());
+
+		onSite.keySet().removeAll(same);
+		LOG.info("{} on site but not on file", onSite.size());
+	}
+
+	/**
+	 * Update existing datasets (based on dcterms identifier)
+	 * 
+	 * @param onFile
+	 * @param onSite
+	 * @param lang 
+	 */
+	private void update(Map<String,DrupalDataset> onFile, Map<String,DrupalDataset> onSite, String lang) {
+		Set<String> same = new HashSet<>(onSite.keySet());
+		same.retainAll(onFile.keySet());
+	
+		LOG.info("{} to be updated", same.size());
+		
+		int count = 0;
+		for (DrupalDataset f: onFile.values()) {
+			if (same.contains(f.id())) {
+				count++;
+				Integer nid = onSite.get(f.id()).nid();
+				try {
+					client.updateDataset(nid, f, lang);
+					if (count % 100 == 0) {
+						LOG.info("Updated {}", count);
+					}
+				} catch (IOException|InterruptedException ex) {
+					LOG.error("Failed to update {} ({}) : {}", nid, f.title(), ex.getMessage());
+				}
+			}
+		}
+		LOG.info("Updated {}", count);
+
+	}
+
 	/**
 	 * Start comparing
 	 * 
@@ -181,16 +252,27 @@ public class Comparer {
 
 		Catalog catalog = reader.read();
 		Map<String, Dataset> datasets = catalog.getDatasets();
-	
-		for (String lang: langs) {
-			Map<ByteBuffer, DrupalDataset> onFile = mapToDrupal(datasets, lang);
-			LOG.info("Read {} datasets in {}", onFile.size(), lang);
-	
-			List<DrupalDataset> l = client.getDatasets(lang);
-			Map<ByteBuffer, DrupalDataset> onSite = l.stream()
-					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
 
-			LOG.info("Retrieved {} datasets in {}", onSite.size(), lang);
+		for (String lang: langs) {
+			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(datasets, lang);
+			LOG.info("Read {} {} datasets from file", onFileByHash.size(), lang);
+
+			List<DrupalDataset> l = client.getDatasets(lang);
+			Map<ByteBuffer, DrupalDataset> onSiteByHash = l.stream()
+					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
+			LOG.info("Retrieved {} {} datasets from site", onSiteByHash.size(), lang);
+	
+			removeUnchanged(onFileByHash, onSiteByHash);
+			
+			Map<String,DrupalDataset> onSiteById = onSiteByHash.entrySet().stream()
+				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
+			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
+				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
+			
+			update(onFileById, onSiteById, lang);
+			
+		//	Map<String,DrupalDataset> toCreate = onFileById.keySet().removeAll(onSiteById.keySet());
+		//	Map<String,DrupalDataset> toDelete = onSiteById.keySet().removeAll(onFileById.keySet());
 			
 		}
 	}

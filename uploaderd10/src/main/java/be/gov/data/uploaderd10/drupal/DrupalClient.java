@@ -260,12 +260,12 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public boolean updateDataset(DrupalDataset d, String lang) throws IOException, InterruptedException {
+	public boolean updateDataset(Integer id, DrupalDataset d, String lang) throws IOException, InterruptedException {
 		JSONObject obj = new JSONObject(d.toMap());
 
 		HttpRequest request = getHttpBuilder()
 				.method("PATCH", BodyPublishers.ofString(obj.toString()))
-				.uri(URI.create(baseURL + "/node/dataset/" + d.id() + "?_format=json&_translation=" + lang))
+				.uri(URI.create(baseURL + "/node/dataset/" + id.toString() + "?_format=json&_translation=" + lang))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		return (response.statusCode() == 201);
@@ -313,6 +313,7 @@ public class DrupalClient {
 				break;
 			}
 			for (Object obj: datasets) {
+				LOG.debug(obj.toString());
 				lst.add(DrupalDataset.fromMap(((JSONObject) obj).toMap()));
 			}
 		}

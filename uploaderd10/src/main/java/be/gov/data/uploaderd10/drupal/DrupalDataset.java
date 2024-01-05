@@ -46,6 +46,8 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public record DrupalDataset(
+	Integer nid,
+	String uuid,
 	String id,
 	String title,
 	String description,
@@ -212,6 +214,8 @@ public record DrupalDataset(
 	 */
 	public static DrupalDataset fromMap(Map<String,Object> map) {
 		return new DrupalDataset(
+			(Integer) getOneValue("nid", map, "value"),
+			(String) getOneValue("uuid", map, "value"),
 			(String) getOneValue("field_id", map, "value"),
 			(String) getOneValue("title", map, "value"),
 			(String) getOneValue("body", map, "value"),
