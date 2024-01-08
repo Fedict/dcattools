@@ -26,6 +26,8 @@
 package be.gov.data.dcatlib.model;
 
 import java.util.Map;
+import java.util.Set;
+
 import org.eclipse.rdf4j.model.IRI;
 
 /**
@@ -36,8 +38,8 @@ import org.eclipse.rdf4j.model.IRI;
 public class Distribution {
 
 	private Map<String,String> title;
-	private Map<String,IRI> accessURL;
-	private Map<String,IRI> downloadURL;
+	private Map<String,Set<IRI>> accessURLs;
+	private Map<String,Set<IRI>> downloadURLs;
 	private IRI format;
 	private IRI license;
 
@@ -79,34 +81,35 @@ public class Distribution {
 	}
 
 	/**
-	 * @return the accessURL
+	 * @return the accessURLs
 	 */
-	public Map<String,IRI> getAccessURL() {
-		return accessURL;
+	public Map<String,Set<IRI>> getAccessURLs() {
+		return accessURLs;
 	}
 
 	/**
 	 * @param lang
-	 * @return the accessURL
+	 * @return the accessURLs
 	 */
-	public IRI getAccessURL(String lang) {
-		return accessURL.getOrDefault(lang, accessURL.get(""));
+	public Set<IRI> getAccessURLs(String lang) {
+		return lang.equals("") ? accessURLs.get(lang)
+								: accessURLs.getOrDefault(lang, getAccessURLs(""));
 	}
 
 	/**
-	 * Get access URL for a specific language
+	 * Get access URLs for a specific language
 	 * 
-	 * @param accessURL the accessURL to set
+	 * @param accessURLs the accessURL to set
 	 */
-	public void setAccessURL(Map<String,IRI> accessURL) {
-		this.accessURL = accessURL;
+	public void setAccessURLs(Map<String,Set<IRI>> accessURLs) {
+		this.accessURLs = accessURLs;
 	}
 
 	/**
 	 * @return the downloadURL
 	 */
-	public Map<String,IRI> getDownloadURL() {
-		return downloadURL;
+	public Map<String,Set<IRI>> getDownloadURLs() {
+		return downloadURLs;
 	}
 	
 	/**
@@ -115,15 +118,16 @@ public class Distribution {
 	 * @param lang
 	 * @return the downloadURL
 	 */
-	public IRI getDownloadURL(String lang) {
-		return downloadURL.getOrDefault(lang, downloadURL.get(""));
+	public Set<IRI> getDownloadURLs(String lang) {
+		return lang.equals("") ? downloadURLs.get(lang)
+								: downloadURLs.getOrDefault(lang, getDownloadURLs(""));
 	}
 
 	/**
-	 * @param downloadURL the downloadURL to set
+	 * @param downloadURLs the downloadURL to set
 	 */
-	public void setDownloadURL(Map<String,IRI> downloadURL) {
-		this.downloadURL = downloadURL;
+	public void setDownloadURLs(Map<String,Set<IRI>> downloadURLs) {
+		this.downloadURLs = downloadURLs;
 	}
 
 	/**

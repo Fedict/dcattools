@@ -93,9 +93,11 @@ public class Dataset extends DataResource {
 		Set<IRI> urls = new HashSet<>();
 		
 		for(Distribution dist: distributions) {
-			urls.add(dist.getAccessURL(lang));
+			Set<IRI> s = dist.getAccessURLs(lang);
+			if (s != null) {
+				urls.addAll(s);
+			}
 		}
-		urls.remove(null);
 		return urls;
 	}
 
@@ -109,9 +111,11 @@ public class Dataset extends DataResource {
 		Set<IRI> urls = new HashSet<>();
 		
 		for(Distribution dist: distributions) {
-			urls.add(dist.getDownloadURL(lang));
+			Set<IRI> s = dist.getDownloadURLs(lang);
+			if (s != null) {
+				urls.addAll(s);
+			}
 		}
-		urls.remove(null);
 		return urls;
 	}
 

@@ -44,6 +44,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -231,6 +232,37 @@ public class DcatReader {
 	}
 
 	/**
+	 * Get a map with (possibly) multiple IRI per language
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return map of IRIs per language
+	 * @throws IOException
+	 */
+	private Map<String,Set<IRI>> getLangIRIs(Resource subj, IRI pred) throws IOException {
+		Map<String,Set<IRI>> map = new HashMap<>();
+
+		Set<IRI> iris = getIRIs(subj, pred);
+		for (IRI iri: iris) {
+			IRI lang = getIRI(iri, DCTERMS.LANGUAGE);
+			String code = "";
+			if (lang != null) {
+				code = LANG_MAP.get(lang);
+				if (code == null) {
+					throw new IOException("Language " + lang + " for " + subj + " " + pred + " not found");
+				}
+			}
+			Set<IRI> s = map.get(code);
+			if (s == null) {
+				s = new HashSet<>();
+				map.put(code, s);
+			}
+			s.add(iri);
+		}
+		return map;
+	}
+
+	/**
 	 * Get a set of literals
 	 * 
 	 * @param subj subject
@@ -251,7 +283,8 @@ public class DcatReader {
 	}
 	
 	/**
-	 * Get a map with a single string per language
+	 * Get a map with a single string per language.
+	 * The language tag will be lowercased, and "normalized" (only first 2 characters of the tag are used)
 	 * 
 	 * @param subj subject
 	 * @param pred predicate
@@ -265,10 +298,11 @@ public class DcatReader {
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
 			if (lang.isPresent()) {
-				if (map.containsKey(lang.get())) {
-					throw new IOException("Existing value " + lang.get() + " " + subj + " " + pred);		
+				String code = lang.get().substring(0, 2).toLowerCase(Locale.US);
+				if (map.containsKey(code)) {
+					throw new IOException("Existing value " + code + " " + subj + " " + pred);		
 				}
-				map.put(lang.get(), v.stringValue());
+				map.put(code, v.stringValue());
 			} else {
 				if (map.containsKey("")) {
 					throw new IOException("Undefined language for " + subj + " " + pred + " already present");
@@ -368,8 +402,8 @@ public class DcatReader {
 			IRI iri = (IRI) stmt.getObject();
 			
 			Distribution dist = new Distribution();
-			dist.setAccessURL(getLangIRI(iri, DCAT.ACCESS_URL));
-			dist.setDownloadURL(getLangIRI(iri, DCAT.DOWNLOAD_URL));
+			dist.setAccessURLs(getLangIRIs(iri, DCAT.ACCESS_URL));
+			dist.setDownloadURLs(getLangIRIs(iri, DCAT.DOWNLOAD_URL));
 			dist.setFormat(getIRI(iri, DCTERMS.FORMAT));
 			dist.setLicense(getIRI(iri, DCTERMS.LICENSE));
 
