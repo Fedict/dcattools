@@ -222,26 +222,24 @@ public class Comparer {
 	 * @param onSite
 	 * @param lang 
 	 */
-	private void update(Map<String,DrupalDataset> onFile, Map<String,DrupalDataset> onSite, String lang) {
-		Set<String> same = new HashSet<>(onSite.keySet());
+	private void update(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs, String lang) {
+		Set<String> same = new HashSet<>(nodeIDs.keySet());
 		same.retainAll(onFile.keySet());
 	
 		LOG.info("{} to be updated", same.size());
 		
 		int count = 0;
-		for (DrupalDataset f: onFile.values()) {
-			if (same.contains(f.id()) && f.id().equals("ba44957f-3248-487c-aa80-0f125b38b35c")) {
-				LOG.info(f.toString());
-				LOG.info(onSite.get(f.id()).toString());
+		for (DrupalDataset d: onFile.values()) {
+			if (same.contains(d.id())) {
 				count++;
-				Integer nid = onSite.get(f.id()).nid();
+				Integer nid = nodeIDs.get(d.id());
 				try {
-					client.updateDataset(nid, f, lang);
+					client.updateDataset(nid, d, lang);
 					if (count % 100 == 0) {
 						LOG.info("Updated {}", count);
 					}
 				} catch (IOException|InterruptedException ex) {
-					LOG.error("Failed to update {} ({}) : {}", nid, f.title(), ex.getMessage());
+					LOG.error("Failed to update {} ({}) : {}", nid, d.title(), ex.getMessage());
 				}
 			}
 		}
@@ -262,6 +260,9 @@ public class Comparer {
 		Catalog catalog = reader.read();
 		Map<String, Dataset> datasets = catalog.getDatasets();
 
+		// Drupal nodeIDs
+		Map<String, Integer> nodeIDs = null;
+		
 		for (String lang: langs) {
 			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(datasets, lang);
 			LOG.info("Read {} {} datasets from file", onFileByHash.size(), lang);
@@ -273,12 +274,16 @@ public class Comparer {
 	
 			removeUnchanged(onFileByHash, onSiteByHash);
 			
-			Map<String,DrupalDataset> onSiteById = onSiteByHash.entrySet().stream()
-				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
+			// first language is considered the "source" (always present)
+			// we need this to distinguish between adding a new dataset (CREATE) or just a new translation (PATCH)
+			if (nodeIDs == null) {
+				nodeIDs = onSiteByHash.entrySet().stream()
+								.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue().nid()));
+			}
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
 			
-			update(onFileById, onSiteById, lang);
+			update(onFileById, nodeIDs, lang);
 			
 		//	Map<String,DrupalDataset> toCreate = onFileById.keySet().removeAll(onSiteById.keySet());
 		//	Map<String,DrupalDataset> toDelete = onSiteById.keySet().removeAll(onFileById.keySet());

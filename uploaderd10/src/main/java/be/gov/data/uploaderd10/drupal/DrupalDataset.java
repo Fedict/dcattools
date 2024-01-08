@@ -165,25 +165,48 @@ public record DrupalDataset(
 			.collect(Collectors.toSet());
 	}
 
-	private List<Map<String,String>> wrap(String name, String value) {
+	/**
+	 * Wrap a string to a list with key-value pair
+	 * 
+	 * @param key
+	 * @param value
+	 * @return 
+	 */
+	private List<Map<String,String>> wrap(String key, String value) {
 		// note that Map.of() does not allow null values
 		Map<String,String> m = new HashMap<>();
-		m.put(name, value);
+		m.put(key, value);
 		return List.of(m);
 	}
 
-	private List<Map<String,String>> wrap(String name, String value, String name2, String value2) {
+	/**
+	 * Wrap two values in a list of key-value pairs
+	 * 
+	 * @param name
+	 * @param value
+	 * @param name2
+	 * @param value2
+	 * @return 
+	 */
+	private List<Map<String,String>> wrap(String key, String value, String key2, String value2) {
 		// note that Map.of() does not allow null values
 		Map<String,String> m = new HashMap<>();
-		m.put(name, value);
-		m.put(name2, value2);
+		m.put(key, value);
+		m.put(key2, value2);
 		return List.of(m);
 	}
 
-	private List<Map<String,Integer>> wrap(String name, Integer value) {
+	/**
+	 * Wrap an integer to a list with key-value pair
+	 * 
+	 * @param key 
+	 * @param value
+	 * @return 
+	 */
+	private List<Map<String,Integer>> wrap(String key, Integer value) {
 		// note that Map.of() does not allow null values
 		Map<String,Integer> m = new HashMap<>();
-		m.put(name, value);
+		m.put(key, value);
 		return List.of(m);
 	}
 
@@ -199,33 +222,47 @@ public record DrupalDataset(
 		map.put("type", wrap("target_id", "dataset"));
 		map.put("title", wrap("value", title));
 		map.put("body", wrap("value", description, "format", "flexible_html"));
-		map.put("field_category", categories.stream()
-									.map(c -> Map.of("target_id", c))
-									.collect(Collectors.toList())); 
-		map.put("field_conditions", conditions.stream()
-									.map(c -> Map.of("uri", c))
-									.collect(Collectors.toList()));
-		map.put("field_contact", contacts.stream()
-									.map(c -> Map.of("value", c))
-									.collect(Collectors.toList()));
+		map.put("field_category", categories != null
+									? categories.stream()
+										.map(c -> Map.of("target_id", c))
+										.collect(Collectors.toList())
+									: null); 
+		map.put("field_conditions", conditions != null 
+									? conditions.stream()
+										.map(c -> Map.of("uri", c))
+										.collect(Collectors.toList())
+									: null);
+		map.put("field_contact", contacts != null
+									? contacts.stream()
+										.map(c -> Map.of("value", c))
+										.collect(Collectors.toList())
+									: null);
 		map.put("field_date_range", wrap("value", from != null ? DATE_FMT.format(from) : null, 
 										"end_value", till != null ? DATE_FMT.format(till) : null));
-		map.put("field_details", accessURLS.stream()
-									.map(c -> Map.of("uri", c))
-									.collect(Collectors.toList()));
-		map.put("field_file_type", formats.stream()
-									.map(c -> Map.of("target_id", c))
-									.collect(Collectors.toList()));
+		map.put("field_file_type", formats != null
+									? formats.stream()
+										.map(c -> Map.of("target_id", c))
+										.collect(Collectors.toList())
+									: null);
 		map.put("field_frequency", wrap("target_id", frequency));
 		map.put("field_geo_coverage", wrap("target_id", geography));
 		map.put("field_id", wrap("value", id));
-		map.put("field_keywords", keywords.stream()
-									.map(c -> Map.of("value", c))
-									.collect(Collectors.toList()));
+		map.put("field_keywords", keywords != null
+									? keywords.stream()
+										.map(c -> Map.of("value", c))
+										.collect(Collectors.toList())
+									: null);
 		map.put("field_license", wrap("target_id", license));
-		map.put("field_links", downloadURLS.stream()
-									.map(c -> Map.of("uri", c))
-									.collect(Collectors.toList()));
+		map.put("field_details", accessURLS != null
+									? accessURLS.stream()
+										.map(c -> Map.of("uri", c))
+										.collect(Collectors.toList())
+									: null);
+		map.put("field_links", downloadURLS != null
+									? downloadURLS.stream()
+										.map(c -> Map.of("uri", c))
+										.collect(Collectors.toList())
+									: null);
 		map.put("field_organisation", wrap("value", organisation));
 		map.put("field_publisher", wrap("target_id", publisher));
 		map.put("field_upstamp", wrap("value", Instant.now().truncatedTo(ChronoUnit.SECONDS).toString()));
