@@ -238,17 +238,20 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public boolean createDataset(DrupalDataset d) throws IOException, InterruptedException {
+	public Integer createDataset(DrupalDataset d) throws IOException, InterruptedException {
 		JSONObject obj = new JSONObject(d.toMap());
-		LOG.debug(obj.toString());
-
 		HttpRequest request = getHttpBuilder()
 				.header("Content-type", "application/json")
 				.POST(BodyPublishers.ofString(obj.toString()))
 				.uri(URI.create(baseURL + "/node/dataset?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		return (response.statusCode() == 201);
+		if (response.statusCode() == 201) {
+			JSONObject o = new JSONObject(response.body());
+			DrupalDataset created = DrupalDataset.fromMap(o.toMap());
+			return created.nid();
+		}
+		return -1;
 	}
 
 	/**
@@ -281,13 +284,12 @@ public class DrupalClient {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public boolean deleteDataset(String id) throws IOException, InterruptedException {
+	public boolean deleteDataset(Integer id) throws IOException, InterruptedException {
 		HttpRequest request = getHttpBuilder()
 				.DELETE()
 				.uri(URI.create(baseURL + "/node/" + id + "?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		LOG.debug(response.body());
 		return (response.statusCode() == 204);
 	}
 

@@ -215,6 +215,30 @@ public class Comparer {
 		LOG.info("{} on site but not on file", onSite.size());
 	}
 
+	private void create(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs) {
+		Set<String> added = new HashSet<>(onFile.keySet());
+		added.removeAll(nodeIDs.keySet());
+	
+		LOG.info("{} to be added", added.size());
+
+		int count = 0;
+		for (String s: added) {
+			try {
+				Integer nodeID = client.createDataset(onFile.get(s));
+				if (nodeID < 0) {
+					throw new IOException("Failed to process create response");
+				}
+				nodeIDs.put(s, nodeID);
+				if (++count % 50 == 0) {
+					LOG.info("Added {}", count);
+				}
+			} catch (IOException|InterruptedException ex) {
+				LOG.error("Failed to add {} : {}", s, ex.getMessage());
+			}
+		}
+		LOG.info("Added {}", count);		
+	}
+
 	/**
 	 * Update existing datasets (based on dcterms identifier)
 	 * 
@@ -223,6 +247,9 @@ public class Comparer {
 	 * @param lang 
 	 */
 	private void update(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs, String lang) {
+		System.err.println(onFile.keySet());
+		System.err.println(nodeIDs.keySet());
+		
 		Set<String> same = new HashSet<>(nodeIDs.keySet());
 		same.retainAll(onFile.keySet());
 	
@@ -231,11 +258,10 @@ public class Comparer {
 		int count = 0;
 		for (DrupalDataset d: onFile.values()) {
 			if (same.contains(d.id())) {
-				count++;
 				Integer nid = nodeIDs.get(d.id());
 				try {
 					client.updateDataset(nid, d, lang);
-					if (count % 100 == 0) {
+					if (++count % 50 == 0) {
 						LOG.info("Updated {}", count);
 					}
 				} catch (IOException|InterruptedException ex) {
@@ -244,9 +270,35 @@ public class Comparer {
 			}
 		}
 		LOG.info("Updated {}", count);
-
 	}
 
+	/**
+	 * Delete datasets from the website that are not present (anymore) in the file
+	 * 
+	 * @param onFile
+	 * @param nodeIDs 
+	 */
+	private void delete(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs) {
+		Set<String> removed = new HashSet<>(nodeIDs.keySet());
+		removed.removeAll(onFile.keySet());
+	
+		LOG.info("{} to be deleted", removed.size());
+
+		int count = 0;
+		for (String s: removed) {
+			Integer nid = nodeIDs.get(s);
+			try {
+				client.deleteDataset(nid);
+				if (++count % 50 == 0) {
+					LOG.info("Deleted {}", count);
+				}
+			} catch (IOException|InterruptedException ex) {
+				LOG.error("Failed to delete {} : {}", nid, ex.getMessage());
+			}
+		}
+		LOG.info("Deleted {}", count);		
+	}
+	
 	/**
 	 * Start comparing
 	 * 
@@ -268,12 +320,10 @@ public class Comparer {
 			LOG.info("Read {} {} datasets from file", onFileByHash.size(), lang);
 
 			List<DrupalDataset> l = client.getDatasets(lang);
+			LOG.info("Retrieved {} {} datasets from site", l.size(), lang);
 			Map<ByteBuffer, DrupalDataset> onSiteByHash = l.stream()
 					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
-			LOG.info("Retrieved {} {} datasets from site", onSiteByHash.size(), lang);
-	
-			removeUnchanged(onFileByHash, onSiteByHash);
-			
+
 			// first language is considered the "source" (always present)
 			// we need this to distinguish between adding a new dataset (CREATE) or just a new translation (PATCH)
 			if (nodeIDs == null) {
@@ -282,9 +332,12 @@ public class Comparer {
 			}
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
-			
+					
+			removeUnchanged(onFileByHash, onSiteByHash);
+
+			create(onFileById, nodeIDs);	
 			update(onFileById, nodeIDs, lang);
-			
+			delete(onFileById, nodeIDs);
 		//	Map<String,DrupalDataset> toCreate = onFileById.keySet().removeAll(onSiteById.keySet());
 		//	Map<String,DrupalDataset> toDelete = onSiteById.keySet().removeAll(onFileById.keySet());
 			
