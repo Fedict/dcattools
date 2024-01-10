@@ -39,7 +39,8 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0875388475>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, "State Archives of Belgium"@en ;
+	skos:prefLabel "Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, 
+					"Belgisches Staatsarchiv"@de, "State Archives of Belgium"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/439> ;
 	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
 				"Belgian State Archives", "State Archives Belgium", "AGR" .
@@ -47,7 +48,7 @@
  <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@fr ;
+	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/438> ;
 	skos:altLabel "KBR" .
 

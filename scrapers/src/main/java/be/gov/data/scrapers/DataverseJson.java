@@ -50,7 +50,6 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 
-
 /**
  * Scraper for Dataverse portals.While dataverse offers several APIs / metadata export formats (e.g.
  * schema.org or dcterms), the "native" JSON exposes the most metadata fields
@@ -275,8 +274,12 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		List<URL> scrapeList = scrapeList();
 		for(URL url: scrapeList) {
 			sleep();
-			ReadContext ctx = scrapeDataset(url);
-			cache.storePage(url, lang, new Page(url, ctx.jsonString()));
+			try {
+				ReadContext ctx = scrapeDataset(url);
+				cache.storePage(url, lang, new Page(url, ctx.jsonString()));
+			} catch (IOException ioe) {
+				logger.error("Could not scrape {}: {}", url, ioe.getMessage());
+			}
 		}
 	}
 
