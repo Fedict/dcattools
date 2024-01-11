@@ -70,7 +70,8 @@ public record DrupalDataset(
 
 	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
 
-	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATE_FMT_FULL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
 
 	/**
 	 * Get first value from the JSON map

@@ -151,10 +151,11 @@ public class Comparer {
 		return uris;
 	}
 
-	private String stripMailto(String s) {
-		if (s == null) {
-			return null;
+	private String stripMailto(IRI mail) {
+		if (mail == null) {
+			return "";
 		}
+		String s = mail.stringValue();
 		return s.startsWith("mailto:") ? s.substring(7) : s;
 	}
 
@@ -178,7 +179,7 @@ public class Comparer {
 				lang,
 				mapTaxonomy(categories, d.getThemes()),
 				Set.of(),
-				Set.of(stripMailto(d.getContactAddr(lang).stringValue())),
+				Set.of(stripMailto(d.getContactAddr(lang))),
 				toURI(d.getAccesURLs(lang)),
 				toURI(d.getDownloadURLs(lang)),
 				d.getKeywords(lang),
@@ -209,12 +210,17 @@ public class Comparer {
 		same.retainAll(onFile.keySet());
 
 		onFile.keySet().removeAll(same);
-		LOG.info("{} on file but not on site", onFile.size());
+		LOG.info("{} on file but not on site (to be added)", onFile.size());
 
 		onSite.keySet().removeAll(same);
-		LOG.info("{} on site but not on file", onSite.size());
+		LOG.info("{} on site but not on file (to be deleted)", onSite.size());
 	}
 
+	/**
+	 * 
+	 * @param onFile
+	 * @param nodeIDs 
+	 */
 	private void create(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs) {
 		Set<String> added = new HashSet<>(onFile.keySet());
 		added.removeAll(nodeIDs.keySet());
@@ -236,7 +242,9 @@ public class Comparer {
 				LOG.error("Failed to add {} : {}", s, ex.getMessage());
 			}
 		}
-		LOG.info("Added {}", count);		
+		if (count > 0) {
+			LOG.info("Added {}", count);
+		}
 	}
 
 	/**
@@ -247,13 +255,10 @@ public class Comparer {
 	 * @param lang 
 	 */
 	private void update(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs, String lang) {
-		System.err.println(onFile.keySet());
-		System.err.println(nodeIDs.keySet());
-		
 		Set<String> same = new HashSet<>(nodeIDs.keySet());
 		same.retainAll(onFile.keySet());
 	
-		LOG.info("{} to be updated", same.size());
+		LOG.info("{} to be updated / translated", same.size());
 		
 		int count = 0;
 		for (DrupalDataset d: onFile.values()) {
@@ -262,14 +267,16 @@ public class Comparer {
 				try {
 					client.updateDataset(nid, d, lang);
 					if (++count % 50 == 0) {
-						LOG.info("Updated {}", count);
+						LOG.info("Updated / translated {}", count);
 					}
 				} catch (IOException|InterruptedException ex) {
-					LOG.error("Failed to update {} ({}) : {}", nid, d.title(), ex.getMessage());
+					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.title(), ex.getMessage());
 				}
 			}
 		}
-		LOG.info("Updated {}", count);
+		if (count > 0) {
+			LOG.info("Updated / translated {}", count);
+		}
 	}
 
 	/**
@@ -296,7 +303,9 @@ public class Comparer {
 				LOG.error("Failed to delete {} : {}", nid, ex.getMessage());
 			}
 		}
-		LOG.info("Deleted {}", count);		
+		if (count > 0) {
+			LOG.info("Deleted {}", count);
+		}
 	}
 	
 	/**
@@ -326,16 +335,17 @@ public class Comparer {
 
 			// first language is considered the "source" (always present)
 			// we need this to distinguish between adding a new dataset (CREATE) or just a new translation (PATCH)
+			removeUnchanged(onFileByHash, onSiteByHash);
+
 			if (nodeIDs == null) {
 				nodeIDs = onSiteByHash.entrySet().stream()
 								.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue().nid()));
 			}
+	
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
-					
-			removeUnchanged(onFileByHash, onSiteByHash);
-
-			create(onFileById, nodeIDs);	
+	
+			create(onFileById, nodeIDs);
 			update(onFileById, nodeIDs, lang);
 			delete(onFileById, nodeIDs);
 		//	Map<String,DrupalDataset> toCreate = onFileById.keySet().removeAll(onSiteById.keySet());

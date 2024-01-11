@@ -250,6 +250,8 @@ public class DrupalClient {
 			JSONObject o = new JSONObject(response.body());
 			DrupalDataset created = DrupalDataset.fromMap(o.toMap());
 			return created.nid();
+		} else {
+			LOG.error("Create failed, code {}", response.statusCode());
 		}
 		return -1;
 	}
