@@ -296,6 +296,7 @@ public class Comparer {
 			Integer nid = nodeIDs.get(s);
 			try {
 				client.deleteDataset(nid);
+				nodeIDs.remove(s);
 				if (++count % 50 == 0) {
 					LOG.info("Deleted {}", count);
 				}
