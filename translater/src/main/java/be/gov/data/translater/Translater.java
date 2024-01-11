@@ -255,10 +255,6 @@ public class Translater {
 					LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
 					body = StringUtils.abbreviate(body, maxSize);
 				}
-				if (body.length() >= maxSize) {
-					LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
-					body = StringUtils.abbreviate(body, maxSize);
-				}
 
 				for (String target: wanted) {
 					try {
@@ -283,6 +279,16 @@ public class Translater {
 		return missing;
 	}
 	
+	private boolean checkStuck(List<Integer> progress, int missing) {
+		progress.add(missing);
+		int size = progress.size();
+		if (size >= 5 && progress.get(size - 1).equals(progress.get(size - 5))) {
+			LOG.error("Stuck...");
+			return true;		
+		}
+		return false;
+	}
+	
 	/**
 	 * Translate titles and descriptions
 	 * 
@@ -297,14 +303,18 @@ public class Translater {
 		List<IRI> types = List.of(DCAT.DATASET, DCAT.DATA_SERVICE);
 		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
 	
+		List<Integer> progress = new ArrayList<>();
 		int missing;
+		boolean stuck = false;
+
 		do {
 			missing = translationRound(m, types, preds, langs);
 			if (missing > 0) {
 				LOG.info("Missing translations: {}", missing);
 				TimeUnit.SECONDS.sleep(delay);
+				stuck = checkStuck(progress, missing);
 			}
-		} while (missing > 0);
+		} while (missing > 0 && !stuck);
 
 		try {
 			Rio.write(m, out, "http://data.gov.be", RDFFormat.NTRIPLES);
