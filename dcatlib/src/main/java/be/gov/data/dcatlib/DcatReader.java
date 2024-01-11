@@ -77,7 +77,8 @@ public class DcatReader {
 	private final RDFFormat fmt;
 
 	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
-	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATE_FMT_FULL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
 	
 	private final static Map<IRI,String> LANG_MAP = 
 		Map.of(Values.iri("http://publications.europa.eu/resource/authority/language/NLD"), "nl",
@@ -121,9 +122,13 @@ public class DcatReader {
 			return null;
 		}
 		try {
-			return DATE_FMT.parse(value.stringValue());
+			return DATE_FMT_FULL.parse(value.stringValue());
 		} catch(ParseException pe) {
-			throw new IOException(pe);
+			try {
+				return DATE_FMT.parse(value.stringValue());
+			} catch(ParseException pe2) {
+				throw new IOException(pe2);
+			}
 		}
 	}
 
