@@ -239,19 +239,22 @@ public class DrupalClient {
 	 * @throws InterruptedException 
 	 */
 	public Integer createDataset(DrupalDataset d) throws IOException, InterruptedException {
-		JSONObject obj = new JSONObject(d.toMap());
+		JSONObject obj = new JSONObject(d.toMap());		
+		LOG.debug("{}", obj.toString());
+
 		HttpRequest request = getHttpBuilder()
 				.header("Content-type", "application/json")
 				.POST(BodyPublishers.ofString(obj.toString()))
 				.uri(URI.create(baseURL + "/node/dataset?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+
 		if (response.statusCode() == 201) {
 			JSONObject o = new JSONObject(response.body());
 			DrupalDataset created = DrupalDataset.fromMap(o.toMap());
 			return created.nid();
 		} else {
-			LOG.error("Create failed, code {}", response.statusCode());
+			LOG.error("Create failed, code {}, {}", response.statusCode(), obj.toString());
 		}
 		return -1;
 	}
@@ -268,6 +271,7 @@ public class DrupalClient {
 	 */
 	public boolean updateDataset(Integer id, DrupalDataset d, String lang) throws IOException, InterruptedException {
 		JSONObject obj = new JSONObject(d.toMap());
+		LOG.debug("{}", obj.toString());
 
 		HttpRequest request = getHttpBuilder()
 				.header("Content-type", "application/json")

@@ -143,7 +143,7 @@ public class Hasher {
 		dg.update(getBytesStr(ds.contacts()));
 		dg.update(getBytes(ds.accessURLS()));
 		dg.update(getBytes(ds.downloadURLS()));
-		dg.update(getBytesStr(ds.keywords()));
+//		dg.update(getBytesStr(ds.keywords()));
 		dg.update(getBytesInt(ds.formats()));	
 		dg.update(getBytes(ds.frequency()));
 		dg.update(getBytes(ds.geography()));

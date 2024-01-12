@@ -34,6 +34,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -151,18 +152,19 @@ public record DrupalDataset(
 		
 		return lst.stream()
 			.map(m -> m.getOrDefault(key, null))
-			.filter(m -> m != null)
+			.filter(Objects::nonNull)
 			.map(m -> {
 					if (m instanceof Integer) {
 						return clazz.cast(m);
 					}
 					try {
-						return clazz.getConstructor(String.class).newInstance(m); 
+						return clazz.getConstructor(String.class).newInstance(m);
 					} catch (Exception e) {
-						LOG.error(e.getMessage());
+						LOG.error("Could not invoke contructor for field {} key {} value {}", field, key, m);
 						return null;
 					}
 				})
+			.filter(Objects::nonNull)
 			.collect(Collectors.toSet());
 	}
 
@@ -195,6 +197,29 @@ public record DrupalDataset(
 		m.put(key, value);
 		m.put(key2, value2);
 		return List.of(m);
+	}
+
+	/**
+	 * Wrap a set of strings, limiting the length to 255 characters
+	 * 
+	 * @param key
+	 * @param values
+	 * @return 
+	 */
+	private Map<String,String> wrap(String key, Set<String> values) {
+		Map<String,String> m = new HashMap<>();
+		
+		String s = null;
+		
+		if (values != null) {
+			s = values.stream().collect(Collectors.joining(", "));
+			if (s.length() > 255) {
+				s = s.substring(0, 255);
+				s = s.substring(0, s.lastIndexOf(","));
+			}
+		}
+		m.put(key, s);
+		return m;
 	}
 
 	/**
@@ -248,11 +273,7 @@ public record DrupalDataset(
 		map.put("field_frequency", wrap("target_id", frequency));
 		map.put("field_geo_coverage", wrap("target_id", geography));
 		map.put("field_id", wrap("value", id));
-		map.put("field_keywords", keywords != null
-									? keywords.stream()
-										.map(c -> Map.of("value", c))
-										.collect(Collectors.toList())
-									: null);
+		map.put("field_keywords", wrap("value", keywords));
 		map.put("field_license", wrap("target_id", license));
 		map.put("field_details", accessURLS != null
 									? accessURLS.stream()

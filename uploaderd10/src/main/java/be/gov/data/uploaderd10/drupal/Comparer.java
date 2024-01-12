@@ -308,7 +308,41 @@ public class Comparer {
 			LOG.info("Deleted {}", count);
 		}
 	}
-	
+
+	/**
+	 * Get the node IDS of datasets with duplicate IDs on the Drupal site
+	 * 
+	 * @param onSiteByHash 
+	 */
+	private void deleteDuplicates(Map<ByteBuffer,DrupalDataset> onSiteByHash) {
+		Set<String> ids = new HashSet<>(onSiteByHash.size());
+
+		LOG.info("Deleting duplicates");
+
+		int count = 0;	
+		for(Map.Entry<ByteBuffer,DrupalDataset> e : onSiteByHash.entrySet()) {
+			String id = e.getValue().id();
+
+			if (ids.contains(id)) {
+				Integer nid = e.getValue().nid();
+				try {
+					client.deleteDataset(nid);
+					onSiteByHash.entrySet().remove(e);
+					if (++count % 50 == 0) {
+						LOG.info("Deleted {}", count);
+					}
+				} catch (IOException|InterruptedException ex) {
+					LOG.error("Failed to delete duplicate {} : {}", nid, ex.getMessage());
+				}
+			} else {
+				ids.add(id);
+			}
+		}
+		if (count > 0) {
+			LOG.info("Deleted {} duplicates", count);
+		}
+	}
+
 	/**
 	 * Start comparing
 	 * 
@@ -337,6 +371,8 @@ public class Comparer {
 			// first language is considered the "source" (always present)
 			// we need this to distinguish between adding a new dataset (CREATE) or just a new translation (PATCH)
 			removeUnchanged(onFileByHash, onSiteByHash);
+
+			deleteDuplicates(onSiteByHash);
 
 			if (nodeIDs == null) {
 				nodeIDs = onSiteByHash.entrySet().stream()
