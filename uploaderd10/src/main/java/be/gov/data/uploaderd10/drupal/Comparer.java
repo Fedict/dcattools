@@ -203,22 +203,6 @@ public class Comparer {
 	}
 
 	
-	/**
-	 * Remove datasets that have not been changed (based on hash) from both file map and site map
-	 * 
-	 * @param onFile
-	 * @param onSite 
-	 */
-	private void ignoreUnchanged(Map<ByteBuffer,DrupalDataset> onFile, Map<ByteBuffer,DrupalDataset> onSite) {
-		Set<ByteBuffer> same = new HashSet<>(onSite.keySet());
-		same.retainAll(onFile.keySet());
-
-		onFile.keySet().removeAll(same);
-		LOG.info("{} on file but not on site", onFile.size());
-
-		onSite.keySet().removeAll(same);
-		LOG.info("{} on site but not on file", onSite.size());
-	}
 
 	/**
 	 * Create missing datasets on Drupal using the ones read from input file.
@@ -227,7 +211,9 @@ public class Comparer {
 	 * @param onFile datasets on file
 	 * @param nodeIDs Drupal nodeIDs
 	 */
-	private void create(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs) {
+	private void create(Map<String,DrupalDataset> onFile,
+						Map<ByteBuffer, DrupalDataset> onSiteByHash, 
+						Map<String,Integer> nodeIDs) {
 		Set<String> added = new HashSet<>(onFile.keySet());
 		added.removeAll(nodeIDs.keySet());
 	
@@ -236,14 +222,16 @@ public class Comparer {
 		int count = 0;
 		for (String s: added) {
 			try {
-				Integer nodeID = client.createDataset(onFile.get(s));
+				DrupalDataset d = onFile.get(s);
+				Integer nodeID = client.createDataset(d);
 				if (nodeID < 0) {
 					throw new IOException("Failed to process create response");
 				}
 				nodeIDs.put(s, nodeID);
+				onSiteByHash.put(ByteBuffer.wrap(hasher.hash(d)), d);
 				if (++count % 50 == 0) {
 					LOG.info("Added {}", count);
-					LOG.debug(onFile.get(s).toMap().toString());
+					LOG.debug(d.toMap().toString());
 				}
 			} catch (IOException|InterruptedException ex) {
 				LOG.error("Failed to add {} : {}", s, ex.getMessage());
@@ -261,24 +249,28 @@ public class Comparer {
 	 * @param onSite
 	 * @param lang language code
 	 */
-	private void update(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs, String lang) {
-		Set<String> same = new HashSet<>(nodeIDs.keySet());
-		same.retainAll(onFile.keySet());
+	private void update(Map<ByteBuffer, DrupalDataset> onFileByHash, 
+						Map<ByteBuffer, DrupalDataset> onSiteByHash, 
+						Map<String,Integer> nodeIDs, String lang) {
+		Set<ByteBuffer> same = new HashSet<>(onFileByHash.keySet());
+		same.retainAll(onSiteByHash.keySet());
+		
+		int nrChanged = onFileByHash.size() + onSiteByHash.size() - (2 * same.size());
 	
-		LOG.info("{} to be updated / translated {}", same.size(), lang);
+		LOG.info("{} to be updated / translated {}", nrChanged , lang);
 		
 		int count = 0;
-		for (DrupalDataset d: onFile.values()) {
-			if (same.contains(d.id())) {
-				Integer nid = nodeIDs.get(d.id());
+		for (Map.Entry<ByteBuffer, DrupalDataset> d: onFileByHash.entrySet()) {
+			if (! same.contains(d.getKey())) {
+				Integer nid = nodeIDs.get(d.getValue().id());
 				try {
-					client.updateDataset(nid, d, lang);
+					client.updateDataset(nid, d.getValue(), lang);
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
-						LOG.debug(d.toMap().toString());
+						LOG.debug(d.getValue().toMap().toString());
 					}
 				} catch (IOException|InterruptedException ex) {
-					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.title(), ex.getMessage());
+					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.getValue().title(), ex.getMessage());
 				}
 			}
 		}
@@ -325,7 +317,9 @@ public class Comparer {
 	 */
 	private void removeIncomplete(Map<String, Dataset> datasets, String[] langs) {
 		int nrlangs = langs.length;
+
 		Iterator<Map.Entry<String, Dataset>> it = datasets.entrySet().iterator();
+
 		while(it.hasNext()) {
 			Map.Entry<String, Dataset> entry = it.next();
 			if (entry.getValue().getTitle().size() < nrlangs) {
@@ -333,18 +327,6 @@ public class Comparer {
 				it.remove();
 			}
 		}
-	}
-
-	/**
-	 * Get ID mapping between ID and Drupal nodeID
-	 * 
-	 * @param onSiteByHash
-	 * @return 
-	 */
-	private Map<String, Integer> getIdMapping(Map<ByteBuffer, DrupalDataset> onSiteByHash) {
-		return 	onSiteByHash.entrySet()
-					.stream()
-					.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue().nid()));
 	}
 
 	/**
@@ -372,33 +354,23 @@ public class Comparer {
 			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(datasets, lang);
 			LOG.info("Read {} {} datasets from file", onFileByHash.size(), lang);
 
-			List<DrupalDataset> l = client.getDatasets(lang);
-			LOG.info("Retrieved {} {} datasets from site", l.size(), lang);
+			List<DrupalDataset> ds = client.getDatasets(lang);
+			LOG.info("Retrieved {} {} datasets from site", ds.size(), lang);
 
-			Map<ByteBuffer, DrupalDataset> onSiteByHash = l.stream()
+			Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
 					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
 
-			if (lang.equals(sourceLang)) {
-				nodeIDs = getIdMapping(onSiteByHash);
-			} else {
-				Map<String, Integer> translated = getIdMapping(onSiteByHash);
-				translated.entrySet().removeAll(nodeIDs.entrySet());
-				LOG.info("{}", translated.size());
-			}
-
-			ignoreUnchanged(onFileByHash, onSiteByHash);
-			
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
-
-			update(onFileById, nodeIDs, lang);
-
+			
 			if (lang.equals(sourceLang)) {
-				create(onFileById, nodeIDs);
+				nodeIDs = ds.stream().collect(Collectors.toMap(d -> d.id(), d -> d.nid()));
+				create(onFileById, onSiteByHash, nodeIDs);
 			}
-				
+
+			update(onFileByHash, onSiteByHash, nodeIDs, lang);
+	
 			delete(onFileById, nodeIDs);
-			LOG.info("Nodes {}", nodeIDs.size());
 		}
 	}
 	

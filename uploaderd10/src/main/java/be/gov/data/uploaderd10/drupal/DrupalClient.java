@@ -334,6 +334,7 @@ public class DrupalClient {
 	 * Constructor
 	 * 
 	 * @param baseURL 
+	 * @param cacheDir 
 	 */
 	public DrupalClient(String baseURL, Path cacheDir) {
 		this.baseURL = baseURL;
