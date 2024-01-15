@@ -28,23 +28,27 @@ package be.gov.data.uploaderd10.drupal;
 import be.gov.data.dcatlib.DcatReader;
 import be.gov.data.dcatlib.model.Catalog;
 import be.gov.data.dcatlib.model.Dataset;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.eclipse.rdf4j.model.IRI;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Compare datasets from an input file with the datasets (for that user) on the data.gov.be portal
+ * 
  * @author Bart.Hanssens
  */
 public class Comparer {
@@ -205,21 +209,23 @@ public class Comparer {
 	 * @param onFile
 	 * @param onSite 
 	 */
-	private void removeUnchanged(Map<ByteBuffer,DrupalDataset> onFile, Map<ByteBuffer,DrupalDataset> onSite) {
+	private void ignoreUnchanged(Map<ByteBuffer,DrupalDataset> onFile, Map<ByteBuffer,DrupalDataset> onSite) {
 		Set<ByteBuffer> same = new HashSet<>(onSite.keySet());
 		same.retainAll(onFile.keySet());
 
 		onFile.keySet().removeAll(same);
-		LOG.info("{} on file but not on site (to be added)", onFile.size());
+		LOG.info("{} on file but not on site", onFile.size());
 
 		onSite.keySet().removeAll(same);
-		LOG.info("{} on site but not on file (to be deleted)", onSite.size());
+		LOG.info("{} on site but not on file", onSite.size());
 	}
 
 	/**
+	 * Create missing datasets on Drupal using the ones read from input file.
+	 * Add the nodeIDs of newly created Drupal nodes to the input map
 	 * 
-	 * @param onFile
-	 * @param nodeIDs 
+	 * @param onFile datasets on file
+	 * @param nodeIDs Drupal nodeIDs
 	 */
 	private void create(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs) {
 		Set<String> added = new HashSet<>(onFile.keySet());
@@ -237,6 +243,7 @@ public class Comparer {
 				nodeIDs.put(s, nodeID);
 				if (++count % 50 == 0) {
 					LOG.info("Added {}", count);
+					LOG.debug(onFile.get(s).toMap().toString());
 				}
 			} catch (IOException|InterruptedException ex) {
 				LOG.error("Failed to add {} : {}", s, ex.getMessage());
@@ -248,17 +255,17 @@ public class Comparer {
 	}
 
 	/**
-	 * Update existing datasets (based on dcterms identifier)
+	 * Update or translated existing datasets (datasets with same ID on file as on the website)
 	 * 
 	 * @param onFile
 	 * @param onSite
-	 * @param lang 
+	 * @param lang language code
 	 */
 	private void update(Map<String,DrupalDataset> onFile, Map<String,Integer> nodeIDs, String lang) {
 		Set<String> same = new HashSet<>(nodeIDs.keySet());
 		same.retainAll(onFile.keySet());
 	
-		LOG.info("{} to be updated / translated", same.size());
+		LOG.info("{} to be updated / translated {}", same.size(), lang);
 		
 		int count = 0;
 		for (DrupalDataset d: onFile.values()) {
@@ -268,6 +275,7 @@ public class Comparer {
 					client.updateDataset(nid, d, lang);
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
+						LOG.debug(d.toMap().toString());
 					}
 				} catch (IOException|InterruptedException ex) {
 					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.title(), ex.getMessage());
@@ -310,37 +318,33 @@ public class Comparer {
 	}
 
 	/**
-	 * Get the node IDS of datasets with duplicate IDs on the Drupal site
+	 * Remove incomplete (i.e. datasets with a title not available in all languages)
 	 * 
-	 * @param onSiteByHash 
+	 * @param datasets
+	 * @param langs 
 	 */
-	private void deleteDuplicates(Map<ByteBuffer,DrupalDataset> onSiteByHash) {
-		Set<String> ids = new HashSet<>(onSiteByHash.size());
-
-		LOG.info("Deleting duplicates");
-
-		int count = 0;	
-		for(Map.Entry<ByteBuffer,DrupalDataset> e : onSiteByHash.entrySet()) {
-			String id = e.getValue().id();
-
-			if (ids.contains(id)) {
-				Integer nid = e.getValue().nid();
-				try {
-					client.deleteDataset(nid);
-					onSiteByHash.entrySet().remove(e);
-					if (++count % 50 == 0) {
-						LOG.info("Deleted {}", count);
-					}
-				} catch (IOException|InterruptedException ex) {
-					LOG.error("Failed to delete duplicate {} : {}", nid, ex.getMessage());
-				}
-			} else {
-				ids.add(id);
+	private void removeIncomplete(Map<String, Dataset> datasets, String[] langs) {
+		int nrlangs = langs.length;
+		Iterator<Map.Entry<String, Dataset>> it = datasets.entrySet().iterator();
+		while(it.hasNext()) {
+			Map.Entry<String, Dataset> entry = it.next();
+			if (entry.getValue().getTitle().size() < nrlangs) {
+				LOG.warn("Title for {} not available in {} languages", entry.getKey(), nrlangs);
+				it.remove();
 			}
 		}
-		if (count > 0) {
-			LOG.info("Deleted {} duplicates", count);
-		}
+	}
+
+	/**
+	 * Get ID mapping between ID and Drupal nodeID
+	 * 
+	 * @param onSiteByHash
+	 * @return 
+	 */
+	private Map<String, Integer> getIdMapping(Map<ByteBuffer, DrupalDataset> onSiteByHash) {
+		return 	onSiteByHash.entrySet()
+					.stream()
+					.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue().nid()));
 	}
 
 	/**
@@ -355,39 +359,46 @@ public class Comparer {
 
 		Catalog catalog = reader.read();
 		Map<String, Dataset> datasets = catalog.getDatasets();
+		removeIncomplete(datasets, langs);
 
-		// Drupal nodeIDs
+		// Mapping of dataset IDs to Drupal nodeIDs
 		Map<String, Integer> nodeIDs = null;
-		
+
+		// first language is considered the "source" (always present)
+		// we need this to distinguish between adding a new dataset (CREATE) or just a new translation (PATCH)
+		String sourceLang = langs[0];
+
 		for (String lang: langs) {
 			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(datasets, lang);
 			LOG.info("Read {} {} datasets from file", onFileByHash.size(), lang);
 
 			List<DrupalDataset> l = client.getDatasets(lang);
 			LOG.info("Retrieved {} {} datasets from site", l.size(), lang);
+
 			Map<ByteBuffer, DrupalDataset> onSiteByHash = l.stream()
 					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
 
-			// first language is considered the "source" (always present)
-			// we need this to distinguish between adding a new dataset (CREATE) or just a new translation (PATCH)
-			removeUnchanged(onFileByHash, onSiteByHash);
-
-			deleteDuplicates(onSiteByHash);
-
-			if (nodeIDs == null) {
-				nodeIDs = onSiteByHash.entrySet().stream()
-								.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue().nid()));
+			if (lang.equals(sourceLang)) {
+				nodeIDs = getIdMapping(onSiteByHash);
+			} else {
+				Map<String, Integer> translated = getIdMapping(onSiteByHash);
+				translated.entrySet().removeAll(nodeIDs.entrySet());
+				LOG.info("{}", translated.size());
 			}
-	
+
+			ignoreUnchanged(onFileByHash, onSiteByHash);
+			
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
-	
-			create(onFileById, nodeIDs);
+
 			update(onFileById, nodeIDs, lang);
+
+			if (lang.equals(sourceLang)) {
+				create(onFileById, nodeIDs);
+			}
+				
 			delete(onFileById, nodeIDs);
-		//	Map<String,DrupalDataset> toCreate = onFileById.keySet().removeAll(onSiteById.keySet());
-		//	Map<String,DrupalDataset> toDelete = onSiteById.keySet().removeAll(onFileById.keySet());
-			
+			LOG.info("Nodes {}", nodeIDs.size());
 		}
 	}
 	
