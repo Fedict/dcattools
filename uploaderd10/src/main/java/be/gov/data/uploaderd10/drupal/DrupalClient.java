@@ -271,7 +271,6 @@ public class DrupalClient {
 	 */
 	public boolean updateDataset(Integer id, DrupalDataset d, String lang) throws IOException, InterruptedException {
 		JSONObject obj = new JSONObject(d.toMap());
-		LOG.debug("{}", obj.toString());
 
 		HttpRequest request = getHttpBuilder()
 				.header("Content-type", "application/json")
@@ -323,7 +322,6 @@ public class DrupalClient {
 				break;
 			}
 			for (Object obj: datasets) {
-				LOG.debug(obj.toString());
 				lst.add(DrupalDataset.fromMap(((JSONObject) obj).toMap()));
 			}
 		}

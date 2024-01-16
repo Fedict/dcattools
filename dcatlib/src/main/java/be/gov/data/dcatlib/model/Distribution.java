@@ -42,6 +42,7 @@ public class Distribution {
 	private Map<String,Set<IRI>> downloadURLs;
 	private IRI format;
 	private IRI license;
+	private IRI right;
 
 	/**
 	 * @return the title
@@ -142,5 +143,19 @@ public class Distribution {
 	 */
 	public void setLicense(IRI license) {
 		this.license = license;
+	}
+	
+	/**
+	 * @return the right
+	 */
+	public IRI getRight() {
+		return right;
+	}
+
+	/**
+	 * @param right the right to set
+	 */
+	public void setRight(IRI right) {
+		this.right = right;
 	}
 }

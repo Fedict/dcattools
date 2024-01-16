@@ -40,6 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.apache.commons.codec.binary.Hex;
 
 import org.eclipse.rdf4j.model.IRI;
 
@@ -155,12 +156,12 @@ public class Comparer {
 		return uris;
 	}
 
-	private String stripMailto(IRI mail) {
+	private Set<String> stripMailto(IRI mail) {
 		if (mail == null) {
-			return "";
+			return null;
 		}
 		String s = mail.stringValue();
-		return s.startsWith("mailto:") ? s.substring(7) : s;
+		return Set.of(s.startsWith("mailto:") ? s.substring(7) : s);
 	}
 
 	/**
@@ -182,8 +183,8 @@ public class Comparer {
 				d.getDescription(lang),
 				lang,
 				mapTaxonomy(categories, d.getThemes()),
-				Set.of(),
-				Set.of(stripMailto(d.getContactAddr(lang))),
+				toURI(d.getRights()),
+				stripMailto(d.getContactAddr(lang)),
 				toURI(d.getAccesURLs(lang)),
 				toURI(d.getDownloadURLs(lang)),
 				d.getKeywords(lang),
@@ -255,7 +256,7 @@ public class Comparer {
 		Set<ByteBuffer> same = new HashSet<>(onFileByHash.keySet());
 		same.retainAll(onSiteByHash.keySet());
 		
-		int nrChanged = onFileByHash.size() + onSiteByHash.size() - (2 * same.size());
+		int nrChanged = onFileByHash.size() - same.size();
 	
 		LOG.info("{} to be updated / translated {}", nrChanged , lang);
 		
@@ -265,9 +266,27 @@ public class Comparer {
 				Integer nid = nodeIDs.get(d.getValue().id());
 				try {
 					client.updateDataset(nid, d.getValue(), lang);
+
+						LOG.info( d.getValue().toString());
+
+						onSiteByHash.entrySet()
+							.forEach(e -> {
+								if (e.getValue().id().equals(d.getValue().id())) {
+									LOG.info(e.getValue().toString());
+									LOG.info(new String(Hex.encodeHex(e.getKey())));
+								}});
+
+						onFileByHash.entrySet()
+							.forEach(e -> {
+								if (e.getValue().id().equals(d.getValue().id())) {
+									LOG.info(e.getValue().toString());
+									LOG.info(new String(Hex.encodeHex(e.getKey())));
+								}});
+						
+	
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
-						LOG.debug(d.getValue().toMap().toString());
+
 					}
 				} catch (IOException|InterruptedException ex) {
 					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.getValue().title(), ex.getMessage());

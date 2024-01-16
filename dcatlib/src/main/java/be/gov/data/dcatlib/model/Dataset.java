@@ -69,7 +69,7 @@ public class Dataset extends DataResource {
 	}
 
 	/**
-	 * Get file formats
+	 * Get licenses
 	 * 
 	 * @return set of IRIs
 	 */
@@ -81,6 +81,21 @@ public class Dataset extends DataResource {
 		}
 		licenses.remove(null);
 		return licenses;
+	}
+
+	/**
+	 * Get rights
+	 * 
+	 * @return set of IRIs
+	 */
+	public Set<IRI> getRights() {
+		Set<IRI> rights = new HashSet<>();
+		
+		for(Distribution dist: distributions) {
+			rights.add(dist.getRight());
+		}
+		rights.remove(null);
+		return rights;
 	}
 
 	/**

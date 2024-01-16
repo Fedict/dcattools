@@ -154,16 +154,16 @@ public record DrupalDataset(
 			.map(m -> m.getOrDefault(key, null))
 			.filter(Objects::nonNull)
 			.map(m -> {
-					if (m instanceof Integer) {
-						return clazz.cast(m);
-					}
-					try {
-						return clazz.getConstructor(String.class).newInstance(m);
-					} catch (Exception e) {
-						LOG.error("Could not invoke contructor for field {} key {} value {}", field, key, m);
-						return null;
-					}
-				})
+				if (m instanceof Integer) {
+					return clazz.cast(m);
+				}
+				try {
+					return clazz.getConstructor(String.class).newInstance(m);
+				} catch (Exception e) {
+					LOG.error("Could not invoke contructor for field {} key {} value {}", field, key, m);
+					return null;
+				}
+			})
 			.filter(Objects::nonNull)
 			.collect(Collectors.toSet());
 	}
@@ -253,7 +253,7 @@ public record DrupalDataset(
 										.map(c -> Map.of("target_id", c))
 										.collect(Collectors.toList())
 									: null); 
-		map.put("field_conditions", conditions != null 
+		map.put("field_conditions", conditions != null
 									? conditions.stream()
 										.map(c -> Map.of("uri", c))
 										.collect(Collectors.toList())

@@ -55,10 +55,9 @@ public class DataResource {
 	private IRI publisher;
 	private IRI spatial;
 	private IRI license;
+	private IRI right;
 	private Set<IRI> themes;
 	private IRI accrualPeriodicity;
-
-	private IRI rights;
 
 	private Date issued;
 	private Date modified;
@@ -321,6 +320,20 @@ public class DataResource {
 	 */
 	public void setLicense(IRI license) {
 		this.license = license;
+	}
+
+	/**
+	 * @return the rights
+	 */
+	public IRI getRight() {
+		return right;
+	}
+
+	/**
+	 * @param rights the rights to set
+	 */
+	public void setRight(IRI right) {
+		this.right = right;
 	}
 
 	/**

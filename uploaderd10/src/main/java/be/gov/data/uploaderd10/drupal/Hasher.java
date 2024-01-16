@@ -123,8 +123,8 @@ public class Hasher {
 			return NULL;
 		}
 		return s.stream().sorted()
-				.collect(Collectors.joining(","))
-				.getBytes(StandardCharsets.UTF_8);
+			.collect(Collectors.joining(","))
+			.getBytes(StandardCharsets.UTF_8);
 	}
 
 	/**
