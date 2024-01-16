@@ -224,7 +224,7 @@ public class Comparer {
 			try {
 				DrupalDataset d = onFile.get(s);
 				Integer nodeID = client.createDataset(d);
-				if (nodeID < 0) {
+				if (nodeID < 0 || nodeID == null) {
 					throw new IOException("Failed to process create response");
 				}
 				nodeIDs.put(s, nodeID);
@@ -262,14 +262,17 @@ public class Comparer {
 		int count = 0;
 		for (Map.Entry<ByteBuffer, DrupalDataset> d: onFileByHash.entrySet()) {
 			if (! same.contains(d.getKey())) {
-				Integer nid = nodeIDs.get(d.getValue().id());
 				try {
+					Integer nid = nodeIDs.get(d.getValue().id());
+					if (nid == null) {
+						throw new IOException("NodeID not found");
+					}
 					client.updateDataset(nid, d.getValue(), lang);			
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
 					}
 				} catch (IOException|InterruptedException ex) {
-					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.getValue().title(), ex.getMessage());
+					LOG.error("Failed to update / translate {} : {}", d.getValue().id(), ex.getMessage());
 				}
 			}
 		}
