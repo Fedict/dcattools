@@ -246,7 +246,7 @@ public record DrupalDataset(
 
 		map.put("langcode", wrap("value", langcode));
 		map.put("type", wrap("target_id", "dataset"));
-		map.put("title", wrap("value", title));
+		map.put("title", wrap("value", title.length() < 255 ? title : title.substring(0, 255)));
 		map.put("body", wrap("value", description, "format", "flexible_html"));
 		map.put("field_category", categories != null
 									? categories.stream()

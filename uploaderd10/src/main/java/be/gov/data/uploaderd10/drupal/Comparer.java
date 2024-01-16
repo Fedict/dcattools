@@ -40,7 +40,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.apache.commons.codec.binary.Hex;
 
 import org.eclipse.rdf4j.model.IRI;
 
@@ -265,28 +264,9 @@ public class Comparer {
 			if (! same.contains(d.getKey())) {
 				Integer nid = nodeIDs.get(d.getValue().id());
 				try {
-					client.updateDataset(nid, d.getValue(), lang);
-
-						LOG.info( d.getValue().toString());
-
-						onSiteByHash.entrySet()
-							.forEach(e -> {
-								if (e.getValue().id().equals(d.getValue().id())) {
-									LOG.info(e.getValue().toString());
-									LOG.info(new String(Hex.encodeHex(e.getKey())));
-								}});
-
-						onFileByHash.entrySet()
-							.forEach(e -> {
-								if (e.getValue().id().equals(d.getValue().id())) {
-									LOG.info(e.getValue().toString());
-									LOG.info(new String(Hex.encodeHex(e.getKey())));
-								}});
-						
-	
+					client.updateDataset(nid, d.getValue(), lang);			
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
-
 					}
 				} catch (IOException|InterruptedException ex) {
 					LOG.error("Failed to update / translate {} ({}) : {}", nid, d.getValue().title(), ex.getMessage());
