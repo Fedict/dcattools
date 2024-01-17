@@ -278,7 +278,12 @@ public class DrupalClient {
 				.uri(URI.create(baseURL + "/node/" + id.toString() + "?_format=json&_translation=" + lang))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		return (response.statusCode() == 201);
+		if (response.statusCode() == 201) {
+			return true;
+		} else {
+			LOG.error("Update {} failed, code {}, {}", id, response.statusCode(), obj.toString());
+		}
+		return false;
 	}
 
 	/**
@@ -295,7 +300,12 @@ public class DrupalClient {
 				.uri(URI.create(baseURL + "/node/" + id + "?_format=json"))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		return (response.statusCode() == 204);
+		if (response.statusCode() == 204) {
+			return true;
+		} else {
+			LOG.error("Delete {} failed, code {}", id, response.statusCode());
+		}
+		return false;
 	}
 
 	/**

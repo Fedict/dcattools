@@ -152,7 +152,8 @@ public class Hasher {
 		dg.update(getBytes(ds.publisher()));
 		dg.update(getBytes(ds.from()));
 		dg.update(getBytes(ds.till()));
-		
+		dg.update(getBytes(ds.modified()));
+
 		return dg.digest();
 	}
 	

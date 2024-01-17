@@ -28,7 +28,6 @@ package be.gov.data.uploaderd10.drupal;
 import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
@@ -66,7 +65,8 @@ public record DrupalDataset(
 	String organisation,
 	Integer publisher,
 	Date from,
-	Date till
+	Date till,
+	Date modified
 	) {
 
 	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
@@ -287,7 +287,9 @@ public record DrupalDataset(
 									: null);
 		map.put("field_organisation", wrap("value", organisation));
 		map.put("field_publisher", wrap("target_id", publisher));
-		map.put("field_upstamp", wrap("value", Instant.now().truncatedTo(ChronoUnit.SECONDS).toString()));
+		map.put("field_upstamp", wrap("value", modified != null 
+												? modified.toInstant().truncatedTo(ChronoUnit.SECONDS).toString()
+												: null));
 		return map;
 	}
 
@@ -317,7 +319,8 @@ public record DrupalDataset(
 			(String) getOneValue("field_organisation", map, "value"),
 			(Integer) getOneValue("field_publisher", map, "target_id"),
 			getOneDateValue("field_date_range", map, "value"),
-			getOneDateValue("field_date_range", map, "end_value")
+			getOneDateValue("field_date_range", map, "end_value"),
+			getOneDateValue("field_upstamp", map, "value")
 		);
 	}
 }

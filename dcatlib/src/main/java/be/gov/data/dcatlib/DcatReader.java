@@ -103,6 +103,11 @@ public class DcatReader {
 			return null;
 		}
 		if (objects.size() > 1) {
+			System.out.println("Stack trace:");
+StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
+for (int i = 1; i < stackTraces.length; i++) {
+     System.out.println(stackTraces[i]);
+}
 			throw new IOException("More than 1 value for " + subj + " " + pred);
 		}
 		return objects.iterator().next();
@@ -213,24 +218,27 @@ public class DcatReader {
 	 */
 	private Map<String,IRI> getLangIRI(Resource subj, IRI pred) throws IOException {
 		Map<String,IRI> map = new HashMap<>();
-		
+
+		// we might have different IRIs per language, but also 1 IRI for multiple languages
 		Set<IRI> iris = getIRIs(subj, pred);
 		for (IRI iri: iris) {
-			IRI lang = getIRI(iri, DCTERMS.LANGUAGE);
-			if (lang != null) {
-				String code = LANG_MAP.get(lang);
-				if (code == null) {
-					throw new IOException("Language " + lang + " for " + subj + " " + pred + " not found");
-				}
-				if (map.containsKey(code)) {
-					throw new IOException("Language " + code + " for " + subj + " " + pred + " already present");
-				}
-				map.put(code, iri);
-			} else { 
+			Set<IRI> langs = getIRIs(iri, DCTERMS.LANGUAGE);
+			// no language defined, so valid for all languages
+			if (langs.isEmpty()) {
 				if (map.containsKey("")) {
 					throw new IOException("Undefined language for " + subj + " " + pred + " already present");
 				}
 				map.put("", iri);
+			} else {
+				for (IRI lang: langs) {
+					String code = LANG_MAP.get(lang);
+					if (code == null) {
+						throw new IOException("Language " + lang + " not found");
+					}
+					if (map.containsKey(code)) {
+						throw new IOException("Language " + code + " for " + subj + " " + pred + " already present");
+					}
+				}
 			}
 		}
 		return map;
@@ -302,19 +310,15 @@ public class DcatReader {
 		Set<Literal> values = getLiterals(subj, pred);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
+			String code = "";
 			if (lang.isPresent()) {
-				String code = lang.get().substring(0, 2).toLowerCase(Locale.US);
-				if (map.containsKey(code)) {
-					throw new IOException("Existing value " + code + " " + subj + " " + pred);		
-				}
-				map.put(code, v.stringValue());
-			} else {
-				if (map.containsKey("")) {
-					throw new IOException("Undefined language for " + subj + " " + pred + " already present");
-				}
-				map.put("", v.stringValue());
+				code = lang.get().substring(0, 2).toLowerCase(Locale.US);
 			}
-
+			if (map.containsKey(code)) {
+				LOG.warn("Existing {} value for {} {} {}", code, subj, pred);		
+			} else {
+				map.put(code, v.stringValue());
+			}
 		}
 		return map;
 	}
@@ -333,15 +337,13 @@ public class DcatReader {
 		Set<Literal> values = getLiterals(subj, pred);
 		for (Literal v: values) {
 			Optional<String> lang = v.getLanguage();
-			if (!lang.isPresent()) {
-				throw new IOException("No lang label " + subj + " " + pred);
+			String code = "";
+			if (lang.isPresent()) {
+				code = lang.get().substring(0, 2).toLowerCase(Locale.US);
+			} else {
+				LOG.warn("No language tag for {} {} {}", subj, pred, v);
 			}
-			Set<String> list = map.get(lang.get());
-			if (list == null) {
-				map.put(lang.get(), new HashSet<>());
-				list = map.get(lang.get());
-			}
-			list.add(v.stringValue());
+			map.computeIfAbsent(code, h -> new HashSet<String>()).add(v.stringValue());
 		}
 		return map;
 	}
@@ -405,7 +407,7 @@ public class DcatReader {
 
 		for (Statement stmt: m.getStatements(dataset.getIRI(), DCAT.HAS_DISTRIBUTION, null)) {
 			IRI iri = (IRI) stmt.getObject();
-			
+			System.err.println(iri.stringValue());
 			Distribution dist = new Distribution();
 			dist.setAccessURLs(getLangIRIs(iri, DCAT.ACCESS_URL));
 			dist.setDownloadURLs(getLangIRIs(iri, DCAT.DOWNLOAD_URL));

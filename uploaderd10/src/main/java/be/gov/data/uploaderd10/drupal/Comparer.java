@@ -194,7 +194,8 @@ public class Comparer {
 				d.getContactName(lang),
 				mapTaxonomy(organisations, getFirst(d.getCreator(), d.getPublisher())),
 				d.getStartDate(),
-				d.getEndDate()
+				d.getEndDate(),
+				d.getModified()
 			);
 			map.put(ByteBuffer.wrap(hasher.hash(drupal)), drupal);
 		}
@@ -332,6 +333,25 @@ public class Comparer {
 	}
 
 	/**
+	 * Provide fallback for landingpages, accessurls and downloads
+	 * 
+	 * @param langs 
+	 */
+	/*
+	private void provideFallbacks(Map<String, Dataset> datasets, String[] langs) {
+		Iterator<Map.Entry<String, Dataset>> it = datasets.entrySet().iterator();
+
+		while(it.hasNext()) {
+			Map.Entry<String, Dataset> entry = it.next();
+			if (entry.getValue().getDistributions())
+			if (entry.getValue().getTitle().size() < nrlangs) {
+				LOG.warn("Title for {} not available in {} languages", entry.getKey(), nrlangs);
+				it.remove();
+			}
+		}
+	}
+*/
+	/**
 	 * Start comparing
 	 * 
 	 * @param langs language codes
@@ -344,6 +364,7 @@ public class Comparer {
 		Catalog catalog = reader.read();
 		Map<String, Dataset> datasets = catalog.getDatasets();
 		removeIncomplete(datasets, langs);
+//		provideFallbacks(datasets, langs);
 
 		// Mapping of dataset IDs to Drupal nodeIDs
 		Map<String, Integer> nodeIDs = null;
