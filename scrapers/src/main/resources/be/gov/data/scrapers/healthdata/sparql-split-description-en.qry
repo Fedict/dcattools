@@ -1,0 +1,35 @@
+# Split descriptions containing === into EN, NL and FR
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:description ?ennlfr }
+INSERT
+	{ 	?s dcterms:description ?en .
+		?s dcterms:description ?nl .
+		?s dcterms:description ?fr }
+WHERE
+	{ 	?s ?p ?ennlfr .
+		BIND ( STRLANG(
+					REPLACE(
+						STRBEFORE(?ennlfr, "----------"), "\\n", ""), 
+				"en")
+			as ?en)
+		BIND ( STRLANG(
+					REPLACE(
+						STRBEFORE(
+							STRAFTER(?ennlfr, "----------"), "----------"
+						), 
+					"\\n+", ""),
+				"nl") 
+			as ?nl)
+		BIND ( STRLANG(
+					REPLACE(
+						STRAFTER(
+							STRAFTER(?ennlfr, "----------"), "----------"
+						), 
+					"\\n+", ""),
+				"fr") 
+			as ?fr)
+		FILTER (CONTAINS(?ennlfr, "----------"))
+	}

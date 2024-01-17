@@ -1,7 +1,5 @@
-# Set language tag to English
+# Set language tag of titles and descriptions to English if not present
 
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
@@ -15,4 +13,5 @@ WHERE
 			( dcterms:description )
 		}
 		BIND ( STRLANG(?o, "en") as ?literal)
+		FILTER (LANG(?o) = "")
 	}

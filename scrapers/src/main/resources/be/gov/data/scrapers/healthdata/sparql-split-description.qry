@@ -1,0 +1,23 @@
+# Split descriptions containing === into NL and FR
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:description ?nlfr }
+INSERT
+	{ 	?s dcterms:description ?nl .
+		?s dcterms:description ?fr }
+WHERE
+	{ 	?s ?p ?nlfr .
+		BIND ( STRLANG(
+					REPLACE(
+						STRBEFORE(?nlfr, "=========="), "\\n+", ""), 
+				"nl")
+			as ?nl)
+		BIND ( STRLANG(
+					REPLACE(
+						STRAFTER(?nlfr, "=========="), "\\n+", ""),
+				"fr") 
+			as ?fr)
+		FILTER (CONTAINS(?nlfr, "=========="))
+	}
