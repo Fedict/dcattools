@@ -1,4 +1,4 @@
-# VCARD email addresses should be mailto: URIs, not plain text
+# Fix invalid mailto: literal (URI not plain text)
 
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
@@ -8,6 +8,9 @@ INSERT
 	{ ?s vcard:hasEmail ?iri }
 WHERE 
 	{ ?s vcard:hasEmail ?val .
-		BIND (IRI(CONCAT("mailto:", ?val)) as ?iri)
+		BIND (
+			IRI(
+				CONCAT("mailto:", ?val)
+			) as ?iri)
 		FILTER ISLITERAL(?val) 
 	}
