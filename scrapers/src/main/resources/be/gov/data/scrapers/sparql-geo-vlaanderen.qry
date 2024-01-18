@@ -13,5 +13,5 @@ INSERT
 WHERE
 	{	?res a ?cl 
 		VALUES ?cl { dcat:Dataset dcat:DataService }
-		FILTER NOT EXISTS { ?dataset dgov:spatial ?o } 
+		FILTER NOT EXISTS { ?res dgov:spatial ?o } 
 	}

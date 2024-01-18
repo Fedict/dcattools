@@ -1,0 +1,16 @@
+# Set geographic area based on spatial area of organization
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s dcterms:spatial ?old }
+INSERT 
+	{ 	?s dcterms:spatial ?spatial }
+WHERE
+	{	?s dcterms:publisher ?publ .
+		?publ dcterms:spatial ?spatial
+		OPTIONAL { 
+			?s dcterms:spatial ?old
+		}
+	}
