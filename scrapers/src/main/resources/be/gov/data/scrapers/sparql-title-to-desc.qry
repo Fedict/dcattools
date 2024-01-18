@@ -8,6 +8,6 @@ WHERE {
 	?res a ?cl .
 	?res dcterms:title ?title 
 	VALUES ?cl { dcat:Dataset dcat:DataService }
-	FILTER NOT EXISTS { ?s dcterms:description ?desc }
+	FILTER NOT EXISTS { ?res dcterms:description ?desc }
 }
 
