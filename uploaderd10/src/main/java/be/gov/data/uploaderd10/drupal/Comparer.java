@@ -40,6 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 
 import org.eclipse.rdf4j.model.IRI;
 
@@ -155,6 +156,17 @@ public class Comparer {
 		return uris;
 	}
 
+	private Map<URI, String> toURIMap(Set<IRI> iris) {
+		Set<URI> uris = toURI(iris);
+		if (uris == null) {
+			return null;
+		}
+		return uris.stream()
+					.collect(Collectors.toMap(u -> u, 
+										u -> StringUtils.substringAfterLast(u.getPath(), "/")));
+	}
+
+	
 	private Set<String> stripMailto(IRI mail) {
 		if (mail == null) {
 			return null;
@@ -185,7 +197,7 @@ public class Comparer {
 				toURI(d.getRights()),
 				stripMailto(d.getContactAddr(lang)),
 				toURI(d.getAccesURLs(lang)),
-				toURI(d.getDownloadURLs(lang)),
+				toURIMap(d.getDownloadURLs(lang)),
 				d.getKeywords(lang),
 				mapTaxonomy(ftypes, d.getFormats()),
 				mapTaxonomy(frequencies, d.getAccrualPeriodicity()),
@@ -268,7 +280,12 @@ public class Comparer {
 					if (nid == null) {
 						throw new IOException("NodeID not found");
 					}
-					client.updateDataset(nid, d.getValue(), lang);			
+	/*				System.err.println(d.getValue());
+					onSiteByHash.entrySet().forEach(s -> {
+						if(s.getValue().id().equals(d.getValue().id())) {
+							System.err.println(s.getValue());
+						}}); */
+					client.updateDataset(nid, d.getValue(), lang);
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
 					}
@@ -325,8 +342,9 @@ public class Comparer {
 
 		while(it.hasNext()) {
 			Map.Entry<String, Dataset> entry = it.next();
+			
 			if (entry.getValue().getTitle().size() < nrlangs) {
-				LOG.warn("Title for {} not available in {} languages", entry.getKey(), nrlangs);
+				LOG.warn("Title for {} not available in {} languages, skipping", entry.getKey(), nrlangs);
 				it.remove();
 			}
 		}

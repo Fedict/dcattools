@@ -26,6 +26,7 @@
 package be.gov.data.uploaderd10.drupal;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
@@ -56,7 +57,7 @@ public record DrupalDataset(
 	Set<URI> conditions,
 	Set<String> contacts,
 	Set<URI> accessURLS,
-	Set<URI> downloadURLS,
+	Map<URI,String> downloadURLS,
 	Set<String> keywords,
 	Set<Integer> formats,
 	Integer frequency,
@@ -168,6 +169,37 @@ public record DrupalDataset(
 			.collect(Collectors.toSet());
 	}
 
+	
+	/**
+	 * Get a set of objects from a (JSON) structure
+	 * 
+	 * @param <T>
+	 * @param field (JSON) field name to use
+	 * @param map map containing the data
+	 * @param key key (within JSON object) to search for
+	 * @param clazz type of the objects
+	 * @return a set of objects of class clazz
+	 */
+	private static Map<URI,String> getURIMap(String field, Map<String,Object> map, String key, String value) {
+		List<Map<String,Object>> lst = getList(field, map);
+		if (lst == null) {
+			return null;
+		}
+		Map<URI,String> m = new HashMap<>();
+		for(Map<String,Object> l: lst) {
+			String k = (String) l.getOrDefault(key, null);
+			String v = (String) l.getOrDefault(value, null);
+			if (k != null) {
+				try {
+					m.put(new URI(k), v);
+				} catch (URISyntaxException ex) {
+					LOG.error("Could not create a URI from {}", k);
+				}
+			}
+		}
+		return m;
+	}
+	
 	/**
 	 * Wrap a string to a list with key-value pair
 	 * 
@@ -281,8 +313,9 @@ public record DrupalDataset(
 										.collect(Collectors.toList())
 									: null);
 		map.put("field_links", downloadURLS != null
-									? downloadURLS.stream()
-										.map(c -> Map.of("uri", c))
+									? downloadURLS.entrySet().stream()
+										.map(e -> Map.of("uri", e.getKey().toString(), 
+														"title", e.getValue()))
 										.collect(Collectors.toList())
 									: null);
 		map.put("field_organisation", wrap("value", organisation));
@@ -310,7 +343,7 @@ public record DrupalDataset(
 			getSet("field_conditions", map, "uri", URI.class),
 			getSet("field_contact", map, "value", String.class),
 			getSet("field_details", map, "uri", URI.class),
-			getSet("field_links", map, "uri", URI.class),
+			getURIMap("field_links", map, "uri", "title"),
 			getSet("field_keywords", map, "value", String.class),
 			getSet("field_file_type", map, "target_id", Integer.class),
 			(Integer) getOneValue("field_frequency", map, "target_id"),

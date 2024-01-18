@@ -31,6 +31,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -45,7 +46,7 @@ public class Hasher {
 	private final static Logger LOG = LoggerFactory.getLogger(Hasher.class);
 
 	private final static byte[] NULL = new byte[]{'\0'};	
-	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
 
 	private MessageDigest dg;
 
@@ -91,6 +92,22 @@ public class Hasher {
 			return NULL;
 		}
 		return uris.stream().sorted()
+				.map(URI::toString)
+				.collect(Collectors.joining(","))
+				.getBytes(StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * Get byte representation of a set of URIs/names (for hashing purposes)
+	 * 
+	 * @param uris
+	 * @return 
+	 */
+	private byte[] getBytes(Map<URI,String> uris) {
+		if (uris == null || uris.isEmpty()) {
+			return NULL;
+		}
+		return uris.keySet().stream().sorted()
 				.map(URI::toString)
 				.collect(Collectors.joining(","))
 				.getBytes(StandardCharsets.UTF_8);

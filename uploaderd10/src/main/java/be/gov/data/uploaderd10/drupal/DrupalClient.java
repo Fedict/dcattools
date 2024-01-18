@@ -278,7 +278,7 @@ public class DrupalClient {
 				.uri(URI.create(baseURL + "/node/" + id.toString() + "?_format=json&_translation=" + lang))
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-		if (response.statusCode() == 201) {
+		if (response.statusCode() == 200 || response.statusCode() == 201) {
 			return true;
 		} else {
 			LOG.error("Update {} failed, code {}, {}", id, response.statusCode(), obj.toString());
@@ -327,12 +327,18 @@ public class DrupalClient {
 				.build();
 
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			if (response.statusCode() != 200) {
+				throw new IOException("Failed to retrieve page " + page + " as JSON " + response.body());
+			}
 			JSONArray datasets = new JSONArray(response.body());
 			if (datasets.isEmpty()) {
 				break;
 			}
 			for (Object obj: datasets) {
 				lst.add(DrupalDataset.fromMap(((JSONObject) obj).toMap()));
+			}
+			if (lst.size() % 100 == 0) {
+				LOG.info("Retrieved {} datasets from site", lst.size());
 			}
 		}
 		return lst;
