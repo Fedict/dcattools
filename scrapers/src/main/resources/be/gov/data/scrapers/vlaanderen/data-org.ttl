@@ -192,7 +192,7 @@
 		"Research Institute for Nature and Forest (INBO)"@nl,
 		"Research Institute for Nature and Forest (INBO)"@en .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0434364713>
+<https://org.belgif.be/id/CbeRegisteredEntity/0409423736>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Natuurpunt"@nl ;

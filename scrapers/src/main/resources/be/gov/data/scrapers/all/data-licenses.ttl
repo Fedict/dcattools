@@ -68,6 +68,7 @@
 <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
 	dcterms:title "CC-BY-NC" .
 
 <http://publications.europa.eu/resource/authority/licence/CC0> 
