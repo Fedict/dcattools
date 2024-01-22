@@ -29,6 +29,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
@@ -74,7 +75,11 @@ public record DrupalDataset(
 
 	private final static SimpleDateFormat DATE_FMT_FULL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
+	private final static String NOW;
 
+	static {
+		NOW = DATE_FMT.format(Date.from(Instant.now()));
+	}
 	/**
 	 * Get first value from the JSON map
 	 * 
@@ -296,7 +301,8 @@ public record DrupalDataset(
 										.collect(Collectors.toList())
 									: null);
 		map.put("field_date_range", wrap("value", from != null ? DATE_FMT.format(from) : null, 
-										"end_value", till != null ? DATE_FMT.format(till) : null));
+										"end_value", till != null ? DATE_FMT.format(till)
+																: (from != null ? NOW : null) ));
 		map.put("field_file_type", formats != null
 									? formats.stream()
 										.map(c -> Map.of("target_id", c))
