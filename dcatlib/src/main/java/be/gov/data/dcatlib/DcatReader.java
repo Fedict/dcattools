@@ -103,14 +103,9 @@ public class DcatReader {
 			return null;
 		}
 		if (objects.size() > 1) {
-			System.out.println("Stack trace:");
-StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-for (int i = 1; i < stackTraces.length; i++) {
-     System.out.println(stackTraces[i]);
-}
-			throw new IOException("More than 1 value for " + subj + " " + pred);
+			LOG.warn("More than 1 value for " + subj + " " + pred);
 		}
-		return objects.iterator().next();
+		return objects.stream().findFirst().get();
 	}
 
 	/**
@@ -214,7 +209,7 @@ for (int i = 1; i < stackTraces.length; i++) {
 	 * @param subj subject
 	 * @param pred predicate
 	 * @return map of IRIs per language
-	 * @throws IOException when language tag is missing or multiple values per language
+	 * @throws IOException when language tag is invalid
 	 */
 	private Map<String,IRI> getLangIRI(Resource subj, IRI pred) throws IOException {
 		Map<String,IRI> map = new HashMap<>();
@@ -226,7 +221,8 @@ for (int i = 1; i < stackTraces.length; i++) {
 			// no language defined, so valid for all languages
 			if (langs.isEmpty()) {
 				if (map.containsKey("")) {
-					throw new IOException("Undefined language for " + subj + " " + pred + " already present");
+					LOG.warn("Undefined language for " + subj + " " + pred + " already present");
+					continue;
 				}
 				map.put("", iri);
 			} else {
@@ -236,7 +232,7 @@ for (int i = 1; i < stackTraces.length; i++) {
 						throw new IOException("Language " + lang + " not found");
 					}
 					if (map.containsKey(code)) {
-						throw new IOException("Language " + code + " for " + subj + " " + pred + " already present");
+						LOG.warn("Language " + code + " for " + subj + " " + pred + " already present");
 					}
 				}
 			}
@@ -407,7 +403,6 @@ for (int i = 1; i < stackTraces.length; i++) {
 
 		for (Statement stmt: m.getStatements(dataset.getIRI(), DCAT.HAS_DISTRIBUTION, null)) {
 			IRI iri = (IRI) stmt.getObject();
-			System.err.println(iri.stringValue());
 			Distribution dist = new Distribution();
 			dist.setAccessURLs(getLangIRIs(iri, DCAT.ACCESS_URL));
 			dist.setDownloadURLs(getLangIRIs(iri, DCAT.DOWNLOAD_URL));
