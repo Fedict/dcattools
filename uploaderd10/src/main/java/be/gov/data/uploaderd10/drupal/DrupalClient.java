@@ -96,7 +96,7 @@ public class DrupalClient {
 					(String) uri.queryFrom((JSONObject)obj),
 					(int) tid.queryFrom((JSONObject) obj));
 			} catch (JSONPointerException e) {
-				LOG.error("Error in JSON {}", obj.toString());
+				LOG.error("Error in JSON {} {}", e.getMessage(), obj.toString());
 			}
 		}
 	}
