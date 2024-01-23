@@ -363,14 +363,14 @@ public class DcatReader {
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
-		
+
 		d.setThemes(getIRIs(iri, DCAT.THEME));
 		d.setCreator(getIRI(iri, DCTERMS.CREATOR));
 		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
 		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
 		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
 		d.setLicense(getIRI(iri, DCTERMS.LICENSE));
-	
+		d.setLandingPage(getLangIRI(iri, DCAT.LANDING_PAGE));
 		d.setIssued(getDate(iri, DCTERMS.CREATED));
 		d.setModified(getDate(iri, DCTERMS.MODIFIED));
 

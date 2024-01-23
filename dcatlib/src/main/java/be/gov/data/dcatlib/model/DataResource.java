@@ -135,6 +135,7 @@ public class DataResource {
 	}
 
 	/**
+	 * @param lang
 	 * @return the landingPage
 	 */
 	public IRI getLandingPage(String lang) {
