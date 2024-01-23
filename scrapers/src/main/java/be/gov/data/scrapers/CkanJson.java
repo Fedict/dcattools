@@ -124,7 +124,7 @@ public abstract class CkanJson extends Ckan {
 	 */
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		List<URL> urls = cache.retrieveURLList();
@@ -163,7 +163,7 @@ public abstract class CkanJson extends Ckan {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		List<URL> urls = cache.retrieveURLList();
@@ -173,15 +173,15 @@ public abstract class CkanJson extends Ckan {
 		}
 		urls = cache.retrieveURLList();
 
-		logger.info("Found {} CKAN packages", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
+		LOG.info("Found {} CKAN packages", String.valueOf(urls.size()));
+		LOG.info("Start scraping (waiting between requests)");
 		int i = 0;
 		for (URL u : urls) {
 			Map<String, Page> page = cache.retrievePage(u);
 			if (page.isEmpty()) {
 				sleep();
 				if (++i % 100 == 0) {
-					logger.info("Package {}...", Integer.toString(i));
+					LOG.info("Package {}...", Integer.toString(i));
 				}
 				try {
 					String s = getPage(u);
@@ -189,11 +189,11 @@ public abstract class CkanJson extends Ckan {
 						cache.storePage(u, "", new Page(u, s));
 					}
 				} catch (IOException e) {
-					logger.warn("Failed to scrape {}", u);
+					LOG.warn("Failed to scrape {}", u);
 				}
 			}
 		}
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**
@@ -297,7 +297,7 @@ public abstract class CkanJson extends Ckan {
 			try {
 				store.add(uri, property, DATEFMT.parse(s));
 			} catch (ParseException ex) {
-				logger.warn("Could not parse date {}", s, ex);
+				LOG.warn("Could not parse date {}", s, ex);
 			}
 		}
 	}
@@ -316,7 +316,7 @@ public abstract class CkanJson extends Ckan {
 		try {
 			v = makeOrgURL(makeHashId(name + email)).toString();
 		} catch (MalformedURLException e) {
-			logger.error("Could not generate hash url", e);
+			LOG.error("Could not generate hash url", e);
 		}
 
 		if (!name.isEmpty() || !email.isEmpty()) {
@@ -414,15 +414,16 @@ public abstract class CkanJson extends Ckan {
 	protected void ckanResources(Storage store, IRI dataset, JsonObject json, String lang)
 		throws RepositoryException, MalformedURLException {
 
-		/* CKAN page / access page */
+		/* CKAN page / access and landing page */
 		URL access = ckanPageURL(json.getString(CkanJson.ID, ""));
+		store.add(dataset, DCAT.LANDING_PAGE, access);
 
 		JsonArray arr = json.getJsonArray(CkanJson.RESOURCES);
 
 		for (JsonObject obj : arr.getValuesAs(JsonObject.class)) {
 			String id = obj.getString(CkanJson.ID, "");
 			IRI dist = store.getURI(makeDistURL(id).toString());
-			logger.debug("Generating distribution {}", dist.toString());
+			LOG.debug("Generating distribution {}", dist.toString());
 
 			store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 			store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -503,12 +504,12 @@ public abstract class CkanJson extends Ckan {
 		try {
 			obj = reader.readObject();
 		} catch (JsonParsingException jpe) {
-			logger.error("Could not parse JSON page");
+			LOG.error("Could not parse JSON page");
 			return;
 		}
 		String ckanid = obj.getString(CkanJson.ID, "");
 		IRI dataset = store.getURI(makeDatasetURL(ckanid).toString());
-		logger.info("Generating dataset {}", dataset.toString());
+		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
