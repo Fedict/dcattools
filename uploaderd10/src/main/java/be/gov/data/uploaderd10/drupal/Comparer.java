@@ -135,6 +135,7 @@ public class Comparer {
 		return null;
 	}
 
+
 	/**
 	 * Convert a set of (RDF) IRIs to (Java) URIs
 	 * 
@@ -196,7 +197,7 @@ public class Comparer {
 				mapTaxonomy(categories, d.getThemes()),
 				toURI(d.getRights()),
 				stripMailto(d.getContactAddr(lang)),
-				toURI(d.getAccesURLs(lang)),
+				toURI(Set.of(d.getLandingPage(lang))),
 				toURIMap(d.getDownloadURLs(lang)),
 				d.getKeywords(lang),
 				mapTaxonomy(ftypes, d.getFormats()),
@@ -280,11 +281,11 @@ public class Comparer {
 					if (nid == null) {
 						throw new IOException("NodeID not found");
 					}
-	/*				System.err.println(d.getValue());
+					/* System.err.println(d.getValue());
 					onSiteByHash.entrySet().forEach(s -> {
 						if(s.getValue().id().equals(d.getValue().id())) {
 							System.err.println(s.getValue());
-						}}); */
+						}});  */
 					client.updateDataset(nid, d.getValue(), lang);
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
@@ -337,16 +338,20 @@ public class Comparer {
 	 */
 	private void removeIncomplete(Map<String, Dataset> datasets, String[] langs) {
 		int nrlangs = langs.length;
-
+		int skipped = 0;
+		
 		Iterator<Map.Entry<String, Dataset>> it = datasets.entrySet().iterator();
-
 		while(it.hasNext()) {
 			Map.Entry<String, Dataset> entry = it.next();
 			
 			if (entry.getValue().getTitle().size() < nrlangs) {
 				LOG.warn("Title for {} not available in {} languages, skipping", entry.getKey(), nrlangs);
 				it.remove();
+				skipped++;
 			}
+		}
+		if (skipped > 0) {
+			LOG.warn("Removed {} sets", skipped);
 		}
 	}
 
@@ -419,6 +424,7 @@ public class Comparer {
 	 * Constructor
 	 * 
 	 * @param client Drupal client 
+	 * @param reader dcat file reader
 	 */
 	public Comparer(DrupalClient client, DcatReader reader) {
 		this.client = client;
