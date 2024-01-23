@@ -419,17 +419,24 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:altLabel "Algemene Directie Statistiek - Statistics Belgium"@nl .
 
-<https://opencorporates.com/id/companies/nl/27264794>
-	a foaf:Organization ;
-	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Geologische Dienst Nederland"@nl ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
-	skos:altLabel "Geologische Dienst Nederland"@nl, 
-				 "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0207528035>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/243> ;
 	skos:altLabel "Stad Brugge"@nl .
+
+<https://opencorporates.com/id/companies/nl/27264794>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Geologische Dienst Nederland"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/a> ;
+	skos:altLabel "Geologische Dienst Nederland"@nl, 
+				 "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
+
+<https://opencorporates.com/id/companies/nl/17278718>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Provincie Noord-Brabant (Nederland)"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/b> ;
+	skos:altLabel "Provincie Noord-Brabant (Nederland)"@nl .

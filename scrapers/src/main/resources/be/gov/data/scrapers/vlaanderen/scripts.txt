@@ -65,7 +65,7 @@ vlaanderen/sparql-fix-telephone.qry
 vlaanderen/sparql-remove-serves.qry
 vlaanderen/sparql-remove-source.qry
 sparql-strip-html.qry
-sparql-delete-label-empty.qry
+#sparql-delete-label-empty.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
