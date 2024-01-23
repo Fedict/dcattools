@@ -63,7 +63,7 @@ public class GeonetVlaanderen extends GeonetHydra {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
 				if (ex.getMessage().contains("Premature end")) {
-					logger.warn("Premature end of file in {}", url);
+					LOG.warn("Premature end of file in {}", url);
 				} else {
 					throw new RepositoryException(ex);
 				}

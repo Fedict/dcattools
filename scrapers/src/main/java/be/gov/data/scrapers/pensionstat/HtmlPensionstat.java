@@ -87,7 +87,7 @@ public class HtmlPensionstat extends Html {
 				return makeAbsURL(link.attr(HTML.Attribute.HREF.toString()));
 			}
 		}
-		logger.warn("No {} translation for page {}", lang, page);
+		LOG.warn("No {} translation for page {}", lang, page);
 		return null;
 	}
 
@@ -158,7 +158,7 @@ public class HtmlPensionstat extends Html {
 
 		String id = makeHashId(href);
 		IRI dist = store.getURI(makeDistURL(id).toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 		
 		String format = link.ownText();
 
@@ -184,7 +184,7 @@ public class HtmlPensionstat extends Html {
 	public void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
-		logger.info("Generating dataset {}", dataset.toString());
+		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
@@ -192,19 +192,19 @@ public class HtmlPensionstat extends Html {
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
-				logger.warn("Page {} not available in {}", dataset.toString(), lang);
+				LOG.warn("Page {} not available in {}", dataset.toString(), lang);
 				continue;
 			}
 			String html = p.getContent();
 
 			Element doc = Jsoup.parse(html).body();
 			if (doc == null) {
-				logger.warn("No body element");
+				LOG.warn("No body element");
 				continue;
 			}
 			Element h = doc.getElementsByTag(Tag.H1.toString()).first();
 			if (h == null) {
-				logger.warn("No H2 element");
+				LOG.warn("No H2 element");
 				continue;
 			}
 			String title = h.text();
@@ -220,7 +220,7 @@ public class HtmlPensionstat extends Html {
 				desc += "\n" + paras2.text();
 			}
 			if (desc.isEmpty()) {
-				logger.warn("No description");
+				LOG.warn("No description");
 				desc = title;
 			}
 

@@ -75,10 +75,10 @@ public abstract class GeonetHydra extends Geonet {
 		str = str.replace("to=" + prevTo, "to=" + nextTo);
 		
 		try {
-			logger.info("Guessing next URL is " + str);
+			LOG.info("Guessing next URL is " + str);
 			return new URL(str);
 		} catch (MalformedURLException ex) {
-			logger.error("Could not guess new URL");
+			LOG.error("Could not guess new URL");
 			return null;
 		}
 	}
@@ -99,7 +99,7 @@ public abstract class GeonetHydra extends Geonet {
 				Node next = doc.selectSingleNode("//" + HYDRA_NEXT);
 				url = (next != null) ? new URL(next.getStringValue()) : null;
 			} catch (DocumentException ex) {
-				logger.error("Error parsing XML " + url);
+				LOG.error("Error parsing XML " + url);
 				// guess next URL to avoid endless loop
 				url = guessNext(url);
 			}
@@ -108,14 +108,14 @@ public abstract class GeonetHydra extends Geonet {
 
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Set<URL> urls = cache.retrievePageList();
 		if (urls.isEmpty()) {
 			scrapeCat(cache);
 		}
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**

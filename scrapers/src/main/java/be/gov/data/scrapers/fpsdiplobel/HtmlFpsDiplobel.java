@@ -112,7 +112,7 @@ public class HtmlFpsDiplobel extends Html {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Map<String, Page> front = cache.retrievePage(getBase());
@@ -125,9 +125,9 @@ public class HtmlFpsDiplobel extends Html {
 		String datasets = p.getContent();
 		// first row is a header
 		Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
-		logger.info("Found {} datasets on page", String.valueOf(rows.size() -1 ));
+		LOG.info("Found {} datasets on page", String.valueOf(rows.size() -1 ));
 
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class HtmlFpsDiplobel extends Html {
 		
 		URL u = makeDistURL(code + "/" + lang);
 		IRI dist = store.getURI(u.toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -179,14 +179,14 @@ public class HtmlFpsDiplobel extends Html {
 			throws MalformedURLException, RepositoryException {
 		Elements cells = row.getElementsByTag(Tag.TD.toString());
 		if (cells.size() < 2) {
-			logger.warn("Skipping empty / too short table row");
+			LOG.warn("Skipping empty / too short table row");
 			return;
 		}
 		String code = cells.get(2).text();
 		
 		URL u = makeDatasetURL(code);
 		IRI dataset = store.getURI(u.toString());
-		logger.debug("Generating dataset {}", dataset.toString());
+		LOG.debug("Generating dataset {}", dataset.toString());
 
 		String desc = cells.get(0).text();
 		String title = desc;
@@ -238,7 +238,7 @@ public class HtmlFpsDiplobel extends Html {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		Map<String, Page> page = cache.retrievePage(getBase());

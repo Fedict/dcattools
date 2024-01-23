@@ -67,7 +67,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		if (start > 0) {
 			url += "&start=" + start + "&per_page=" + results;
 		}
-		logger.info("Get {}", url);
+		LOG.info("Get {}", url);
 
 		try (InputStream pis = new URL(url).openStream()) {
 			return JsonPath.using(conf).parse(pis);
@@ -89,7 +89,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 					URL u = new URL(base + API_DATASET + e);
 					list.add(u);
 				} catch(MalformedURLException mue) {
-					logger.warn("Could not create URL for {}", e);
+					LOG.warn("Could not create URL for {}", e);
 				}
 			});
 		}
@@ -104,10 +104,10 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	private int getResultsTotal(ReadContext ctx) {
 		Integer count = ctx.read("$.data.total_count");
 		if (count != null && count <= 0) {
-			logger.warn("No results found");
+			LOG.warn("No results found");
 			return 0;
 		}
-		logger.info("Found {} results", count);
+		LOG.info("Found {} results", count);
 		return count;
 	}
 
@@ -120,10 +120,10 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	private int getResultsPage(ReadContext ctx) {
 		Integer count = ctx.read("$.data.count_in_response");
 		if (count != null && count <= 0) {
-			logger.warn("No results counter found");
+			LOG.warn("No results counter found");
 			return 0;
 		}
-		logger.info("Found {} results on page", count);
+		LOG.info("Found {} results on page", count);
 		return count;
 	}
 
@@ -159,7 +159,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @throws IOException 
 	 */
 	private ReadContext scrapeDataset(URL url) throws IOException {
-		logger.info("Get {}", url);
+		LOG.info("Get {}", url);
 		try (InputStream ins = url.openStream()) {
 			return JsonPath.using(conf).parse(ins);
 		}
@@ -202,7 +202,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				}
 			}
 			if (idPath == null) {
-				logger.warn("No dist ID for {}", node.jsonString());
+				LOG.warn("No dist ID for {}", node.jsonString());
 				break;
 			}
 			IRI distSubj = makeDistIRI(idPath);
@@ -278,7 +278,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				ReadContext ctx = scrapeDataset(url);
 				cache.storePage(url, lang, new Page(url, ctx.jsonString()));
 			} catch (IOException ioe) {
-				logger.error("Could not scrape {}: {}", url, ioe.getMessage());
+				LOG.error("Could not scrape {}: {}", url, ioe.getMessage());
 			}
 		}
 	}

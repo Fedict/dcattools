@@ -87,7 +87,7 @@ public class HtmlIndicators extends Html {
 				}
 			}
 		}
-		logger.warn("No {} translation for page {}", lang, page);
+		LOG.warn("No {} translation for page {}", lang, page);
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class HtmlIndicators extends Html {
                 sleep();
             }
         } else {
-            logger.error("No datasets {} found", LINK_DATASETS);
+            LOG.error("No datasets {} found", LINK_DATASETS);
         }
         return urls;
     }
@@ -162,21 +162,21 @@ public class HtmlIndicators extends Html {
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
-				logger.warn("Page not available in {}", lang);
+				LOG.warn("Page not available in {}", lang);
 				continue;
 			}
 			String html = p.getContent();
 
 			Element doc = Jsoup.parse(html).body();
 			if (doc == null) {
-				logger.warn("No body element");
+				LOG.warn("No body element");
 				continue;
 			}
 			String title = doc.select(TITLE).first().text();
 			String desc = doc.select(DESC).first().text();
 			
 			IRI dataset = store.getURI(makeDatasetURL(id).toString());
-			logger.info("Generating dataset {}", dataset.toString());
+			LOG.info("Generating dataset {}", dataset.toString());
 		
 			String link = p.getUrl().toString();
 			Matcher matcher = PATTERN.matcher(link);

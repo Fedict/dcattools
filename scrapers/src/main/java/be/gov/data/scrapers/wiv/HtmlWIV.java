@@ -98,7 +98,7 @@ public class HtmlWIV extends Html {
 
 			URL u = makeDistURL(makeHashId(title) + "/" + ftype);
 			IRI dist = store.getURI(u.toString());
-			logger.debug("Generating distribution {}", dist.toString());
+			LOG.debug("Generating distribution {}", dist.toString());
 
 			store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 			store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -131,11 +131,11 @@ public class HtmlWIV extends Html {
 		Element content = Jsoup.parse(html).body();
 
 		IRI dataset = store.getURI(makeDatasetURL(makeHashId(id)).toString());
-		logger.debug("Generating dataset {}", dataset.toString());
+		LOG.debug("Generating dataset {}", dataset.toString());
 
 		Element h2 = content.select(H_TITLE).first();
 		if (h2 == null) {
-			logger.warn("Empty title, skipping");
+			LOG.warn("Empty title, skipping");
 			return;
 		}
 		String title = h2.text().trim();
@@ -165,7 +165,7 @@ public class HtmlWIV extends Html {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		List<URL> urls = cache.retrieveURLList();

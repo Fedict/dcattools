@@ -87,7 +87,7 @@ public abstract class Html extends BaseScraper {
 	 */
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		List<URL> urls = cache.retrieveURLList();
@@ -126,7 +126,7 @@ public abstract class Html extends BaseScraper {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		List<URL> urls = cache.retrieveURLList();
@@ -135,8 +135,8 @@ public abstract class Html extends BaseScraper {
 			cache.storeURLList(urls);
 		}
 
-		logger.info("Found {} datasets on page", String.valueOf(urls.size()));
-		logger.info("Start scraping (waiting between requests)");
+		LOG.info("Found {} datasets on page", String.valueOf(urls.size()));
+		LOG.info("Start scraping (waiting between requests)");
 
 		int i = 0;
 		for (URL u : urls) {
@@ -144,16 +144,16 @@ public abstract class Html extends BaseScraper {
 			if (page.isEmpty()) {
 				sleep();
 				if (++i % 100 == 0) {
-					logger.info("Download {}...", Integer.toString(i));
+					LOG.info("Download {}...", Integer.toString(i));
 				}
 				try {
 					scrapeDataset(u);
 				} catch (IOException ex) {
-					logger.error("Failed to scrape {}", u);
+					LOG.error("Failed to scrape {}", u);
 				}
 			}
 		}
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**

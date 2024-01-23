@@ -96,7 +96,7 @@ public class HtmlPodMiis extends Html {
 				}
 			}
 		}
-		logger.warn("No {} translation for page {}", lang, page);
+		LOG.warn("No {} translation for page {}", lang, page);
 		return null;
 	}
 
@@ -147,7 +147,7 @@ public class HtmlPodMiis extends Html {
 				urls.add(makeAbsURL(item.attr(HTML.Attribute.HREF.toString())));
 			}
 		} else {
-			logger.error("Category {} not found", ITEM_SELECT);
+			LOG.error("Category {} not found", ITEM_SELECT);
 		} 
 		return urls;
 	}
@@ -172,7 +172,7 @@ public class HtmlPodMiis extends Html {
 		// important for EDP: does not like different datasets pointing to same distribution
 		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
 		IRI dist = store.getURI(makeDistURL(id).toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		String title = link.ownText().isEmpty() ? range : link.ownText();
 		
@@ -194,7 +194,7 @@ public class HtmlPodMiis extends Html {
 	 */
 	private String buildDesc(Element el, String title) {
 		if (el == null) {
-			logger.warn("No {} element", MODAL_BODY);
+			LOG.warn("No {} element", MODAL_BODY);
 			return title;
 		}
 		Elements paras = el.getElementsByTag(Tag.P.toString());
@@ -224,7 +224,7 @@ public class HtmlPodMiis extends Html {
 			throws MalformedURLException, RepositoryException {
 
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
-		logger.info("Generating dataset {}", dataset.toString());
+		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
@@ -232,19 +232,19 @@ public class HtmlPodMiis extends Html {
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
-				logger.warn("Page {} not available in {}", dataset.toString(), lang);
+				LOG.warn("Page {} not available in {}", dataset.toString(), lang);
 				continue;
 			}
 			String html = p.getContent();
 
 			Element doc = Jsoup.parse(html).body();
 			if (doc == null) {
-				logger.warn("No body element");
+				LOG.warn("No body element");
 				continue;
 			}
 			Element h = doc.getElementById(MODAL_LABEL);
 			if (h == null) {
-				logger.warn("No H1 element");
+				LOG.warn("No H1 element");
 				continue;
 			}
 			String title = h.text();
@@ -277,7 +277,7 @@ public class HtmlPodMiis extends Html {
 					generateDist(store, dataset, p.getUrl(), link, 
 												end.replace("-", ""), lang);
 				} else {
-					logger.warn("No distribution");
+					LOG.warn("No distribution");
 				}
 				store.add(dataset, DCTERMS.ACCRUAL_PERIODICITY, "M");	
 			}

@@ -25,28 +25,52 @@
  */
 package be.gov.data.scrapers;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
 
 /**
  * Executes a scraper, using the per-scraper properties file from resource jar
  * 
  * @author Bart Hanssens
  */
-public class Main {
-	private final static Logger logger = LoggerFactory.getLogger(Main.class);
+@Command(name = "scraper", mixinStandardHelpOptions = true, 
+					description = "Scrapes open data sources and turn metadata into DCAT-AP.")
+public class Main implements Callable<Integer> {
+	@Option(names = {"-d", "--dir"}, description = "Output directory", defaultValue=".")
+    private String dir;
 
-	/**
-	 * Exit cleanly
-	 *
-	 * @param code return code
-	 */
-	private static void exit(int code) {
-		logger.info("-- STOP --");
-		System.exit(code);
+	@Option(names = {"-n", "--name"}, description = "Name of datasource / scraper", required=true)
+    private String name;
+
+	@Option(names = {"-r", "--raw"}, description = "Raw output, don't apply scripts", defaultValue="false")
+    private Boolean raw;
+
+	private final static Logger LOG = LoggerFactory.getLogger(Main.class);
+
+
+	@Override
+	public Integer call() throws Exception {
+		// find and load specific scraper
+		String dataDir = Paths.get(dir, "data", name).toString();
+
+		try (BaseScraper scraper = BaseScraperFactory.getConfiguredScraper(name, dataDir)) {
+			scraper.setRawOutput(raw);
+			scraper.scrape();
+			scraper.generateDcat();
+			scraper.writeDcat();
+		} catch (IOException ex) {
+			LOG.error("Error while scraping", ex);
+			return -1;
+		}
+		return 0;
 	}
 
 	/**
@@ -55,25 +79,14 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		logger.info("-- START --");
-		if (args.length == 0) {
-			logger.warn("No scraper specified");
-			logger.info("Usage: name <data-directory>");
-			exit(-1);
-		}
+		LOG.info("-- START --");
+		
+		CommandLine cl = new CommandLine(new Main());
+		cl.setDefaultValueProvider(new CommandLine.PropertiesDefaultProvider());
+		int exitCode = cl.execute(args);
 
-		String name = args[0];
-		String dir = (args.length == 2) ? args[1] : ".";
-		String dataDir = String.join(File.separator, dir, "data", name);
+		LOG.info("-- STOP --");
 
-		// find and load specific scraper
-		try (BaseScraper scraper = BaseScraperFactory.getConfiguredScraper(name, dataDir)) {
-			scraper.scrape();
-			scraper.generateDcat();
-			scraper.writeDcat();
-		} catch (IOException ex) {
-			logger.error("Error while scraping", ex);
-			exit(-5);
-		}
+		System.exit(exitCode);
 	}
 }

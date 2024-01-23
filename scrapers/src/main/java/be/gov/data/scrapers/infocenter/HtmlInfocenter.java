@@ -84,7 +84,7 @@ public class HtmlInfocenter extends Html {
 				}
 			}
 		}
-		logger.warn("No {} translation for page {}", lang, page);
+		LOG.warn("No {} translation for page {}", lang, page);
 		return null;
 	}
 
@@ -153,7 +153,7 @@ public class HtmlInfocenter extends Html {
 
 		String id = makeHashId(href);
 		IRI dist = store.getURI(makeDistURL(id).toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -175,7 +175,7 @@ public class HtmlInfocenter extends Html {
 	public void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
 		IRI dataset = store.getURI(makeDatasetURL(id).toString());
-		logger.info("Generating dataset {}", dataset.toString());
+		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
@@ -183,19 +183,19 @@ public class HtmlInfocenter extends Html {
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
-				logger.warn("Page {} not available in {}", dataset.toString(), lang);
+				LOG.warn("Page {} not available in {}", dataset.toString(), lang);
 				continue;
 			}
 			String html = p.getContent();
 
 			Element doc = Jsoup.parse(html).body();
 			if (doc == null) {
-				logger.warn("No body element");
+				LOG.warn("No body element");
 				continue;
 			}
 			Element h = doc.getElementsByTag(Tag.H2.toString()).first();
 			if (h == null) {
-				logger.warn("No H2 element");
+				LOG.warn("No H2 element");
 				continue;
 			}
 			String title = h.text();
@@ -209,14 +209,14 @@ public class HtmlInfocenter extends Html {
 				if (h1 != null) {
 					buf.append(h1).append(":").append('\n');
 				} else {
-					logger.warn("No H1 element");
+					LOG.warn("No H1 element");
 				}
 				for (Element nav : navs) {
 					buf.append("- ").append(nav.text()).append('\n');
 				}
 				desc = buf.toString();
 			} else {
-				logger.warn("No second menu element");
+				LOG.warn("No second menu element");
 			}
 
 			store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));

@@ -36,6 +36,14 @@ import java.io.Writer;
 public interface Scraper {
 
 	/**
+	 * Set raw output mode
+	 * 
+	 * @param raw 
+	 */
+	public void setRawOutput(boolean raw);
+
+
+	/**
 	 * Fetch all metadata from repository / site into a cache
 	 *
 	 * @throws IOException

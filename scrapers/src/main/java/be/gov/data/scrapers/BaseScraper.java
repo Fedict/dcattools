@@ -72,7 +72,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public abstract class BaseScraper extends Fetcher implements Scraper, AutoCloseable {
-	protected final Logger logger = LoggerFactory.getLogger(getClass());
+	protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
 	protected final static String PROP_PREFIX = "be.gov.data.scrapers";
 	protected final static String PKG_PREFIX = "/be/gov/data/scrapers";
@@ -86,7 +86,8 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	private String[] allLangs = {};
 
 	private String name = "";
-
+	private boolean raw = false;
+	
 	private final static HashFunction HASHER = Hashing.sha1();
 
 	protected final static String TODAY = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -98,6 +99,15 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 */
 	protected Cache getCache() {
 		return cache;
+	}
+
+	/**
+	 * Set raw output mode
+	 * 
+	 * @param raw 
+	 */
+	public void setRawOutput(boolean raw) {
+		this.raw = raw;
 	}
 
 	/**
@@ -203,7 +213,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	protected final String getProperty(Properties prop, String name) {
 		String value = prop.getProperty(BaseScraper.PROP_PREFIX + "." + name);
 		if (value == null) {
-			logger.warn("No property {}", name);
+			LOG.warn("No property {}", name);
 		}
 		return value;
 	}
@@ -336,7 +346,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		String s = start.trim();
 
 		if (s.isEmpty()) {
-			logger.warn("Empty start date");
+			LOG.warn("Empty start date");
 			return;
 		}
 		String e = end.trim();
@@ -374,7 +384,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		List<String> scripts;
 
 		String fname = PKG_PREFIX + "/" + getName() + "/" + file;
-		logger.info("Load script list from {}", file);
+		LOG.info("Load script list from {}", file);
 		try(InputStream is = BaseScraper.class.getResourceAsStream(fname);
 			BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 			scripts = r.lines().filter(s -> !s.startsWith("#"))		// remove comments
@@ -382,7 +392,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 								.map(s -> PKG_PREFIX + "/" + s)			// add prefix
 								.collect(Collectors.toList());
 		}
-		logger.info("Found {} scripts", scripts.size());
+		LOG.info("Found {} scripts", scripts.size());
 
 		return scripts;
 	}
@@ -398,12 +408,12 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		
 		for (String script: scripts) {
 			if (script.endsWith("ttl")) {
-				logger.info("Loading data from {}", script);
+				LOG.info("Loading data from {}", script);
 				try(InputStream is = BaseScraper.class.getResourceAsStream(script)) {
 					store.add(is, RDFFormat.TURTLE);
 				}
 			} else if (script.endsWith("qry")) {
-				logger.info("Execute query {}", script);
+				LOG.info("Execute query {}", script);
 				try(InputStream is = BaseScraper.class.getResourceAsStream(script);
 					BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 					String sparql = r.lines().filter(s -> !s.startsWith("#"))
@@ -430,7 +440,9 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 */
 	protected void generateDcat() throws IOException {
 		generateDcat(cache, store);
-		enhance("scripts.txt");
+		if (raw == false) {
+			enhance("scripts.txt");
+		}
 	}
 
 	/**
@@ -485,7 +497,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	public void writeDcat() throws IOException {
 		// output file
 		String outfile = String.join(File.separator, dataDir, getName() + ".nt");
-		logger.info("Writing end results to {}", outfile);
+		LOG.info("Writing end results to {}", outfile);
 		try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {
 			writeDcat(bw);
 		}

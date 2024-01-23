@@ -213,7 +213,7 @@ public abstract class GeonetGmd extends Geonet {
 		try {
 			v = makeOrgURL(makeHashId(name + email)).toString();
 		} catch (MalformedURLException e) {
-			logger.error("Could not generate hash url", e);
+			LOG.error("Could not generate hash url", e);
 		}
 
 		if (name != null || name2 != null || !email.isEmpty()) {
@@ -290,13 +290,13 @@ public abstract class GeonetGmd extends Geonet {
 		throws MalformedURLException {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
-			logger.warn("No url for distribution");
+			LOG.warn("No url for distribution");
 			return;
 		}
 
 		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url);
 		IRI dist = store.getURI(makeDistURL(id).toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -312,7 +312,7 @@ public abstract class GeonetGmd extends Geonet {
 			IRI iri = store.getURI(url);
 			store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(url));
 		} catch (IllegalArgumentException e) {
-			logger.debug("Cannot create download URL for {}", url);
+			LOG.debug("Cannot create download URL for {}", url);
 		}
 
 		Node title = node.selectSingleNode(XP_DIST_NAME);
@@ -335,11 +335,11 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	protected void generateDataset(IRI dataset, String id, Storage store, Node node)
 		throws MalformedURLException {
-		logger.info("Generating dataset {}", dataset.toString());
+		LOG.info("Generating dataset {}", dataset.toString());
 
 		Node metadata = node.selectSingleNode(XP_META);
 		if (metadata == null) {
-			logger.warn("No metadata for {}", id);
+			LOG.warn("No metadata for {}", id);
 			return;
 		}
 
@@ -349,7 +349,7 @@ public abstract class GeonetGmd extends Geonet {
 			dtype = metadata.valueOf(XP_TYPE);
 		}
 		if (dtype != null && !dtype.isEmpty() && !dtype.equals("dataset")) {
-			logger.warn("Not a dataset: {} is {}", id, dtype);
+			LOG.warn("Not a dataset: {} is {}", id, dtype);
 			return;
 		}
 
@@ -362,7 +362,7 @@ public abstract class GeonetGmd extends Geonet {
 			try {
 				store.add(dataset, DCTERMS.MODIFIED, DATEFMT.parse(date));
 			} catch (ParseException ex) {
-				logger.warn("Could not parse date {}", date, ex);
+				LOG.warn("Could not parse date {}", date, ex);
 			}
 		}
 
@@ -424,12 +424,12 @@ public abstract class GeonetGmd extends Geonet {
 		List<Node> dists = node.selectNodes(XP_DISTS2 + XP_TRANSF2);
 		// check higher level if no distributions could be found
 		if (dists == null || dists.isEmpty()) {
-			logger.warn("Checking for dists on higher level");
+			LOG.warn("Checking for dists on higher level");
 			dists = node.selectNodes(XP_DISTS + XP_TRANSF);
 		}
 
 		if (dists == null || dists.isEmpty()) {
-			logger.warn("No dists for {}", id);
+			LOG.warn("No dists for {}", id);
 			return;
 		}
 
@@ -495,7 +495,7 @@ public abstract class GeonetGmd extends Geonet {
 				}
 			}
 		} catch (DocumentException ex) {
-			logger.error("Error parsing XML");
+			LOG.error("Error parsing XML");
 			throw new RepositoryException(ex);
 		}
 
@@ -512,7 +512,7 @@ public abstract class GeonetGmd extends Geonet {
 		Node rec = doc.selectSingleNode(NUM_REC);
 		if (rec != null) {
 			String n = rec.getText();
-			logger.info(n + " records found");
+			LOG.info(n + " records found");
 			return Integer.valueOf(n);
 		}
 		return MAX_RECORDS;
@@ -536,7 +536,7 @@ public abstract class GeonetGmd extends Geonet {
 				}
 				cache.storePage(url, "all", new Page(url, xml));
 			} catch (DocumentException ex) {
-				logger.error("Error parsing XML " + url);
+				LOG.error("Error parsing XML " + url);
 			}
 		}			
 	}
@@ -548,14 +548,14 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Set<URL> urls = cache.retrievePageList();
 		if (urls.isEmpty()) {
 			scrapeCat(cache);
 		}
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**

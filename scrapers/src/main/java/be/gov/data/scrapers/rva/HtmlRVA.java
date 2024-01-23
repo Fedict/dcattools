@@ -133,7 +133,7 @@ public class HtmlRVA extends Html {
 				urls.add(makeAbsURL(item.attr(HTML.Attribute.HREF.toString())));
 			}
 		} else {
-			logger.error("Category {} not found", ITEM_LIST);
+			LOG.error("Category {} not found", ITEM_LIST);
 		} 
 		return urls;
 	}
@@ -162,7 +162,7 @@ public class HtmlRVA extends Html {
 		
 		URL u = makeDistURL(code + "/" + lang);
 		IRI dist = store.getURI(u.toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);

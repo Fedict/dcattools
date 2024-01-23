@@ -67,7 +67,7 @@ public abstract class BasicScraperJson extends BaseScraper {
 		propMap.forEach((k,v) -> { 
 			Object obj = jsonObj.read((JsonPath) v);
 			if (obj == null) {
-				logger.warn("Null value for path " + ((JsonPath)v).getPath());
+				LOG.warn("Null value for path " + ((JsonPath)v).getPath());
 			} else if (obj instanceof String) {
 				add(store, subj, k, obj);
 			} else if (obj instanceof Integer) {
@@ -75,7 +75,7 @@ public abstract class BasicScraperJson extends BaseScraper {
 			} else if (obj instanceof JSONArray) {
 				((JSONArray) obj).forEach(p -> add(store, subj, k, p));
 			} else {
-				logger.warn("Unknown instance " + obj.getClass());
+				LOG.warn("Unknown instance " + obj.getClass());
 			}
 		});
 	}
@@ -90,7 +90,7 @@ public abstract class BasicScraperJson extends BaseScraper {
 	 */
 	protected void add(Storage store, IRI subj, IRI prop, Object obj) {
 		if (obj == null) {
-			logger.warn("Null value for {} {}", subj, prop);
+			LOG.warn("Null value for {} {}", subj, prop);
 			return;
 		}
 		Value val;

@@ -104,7 +104,7 @@ public class HtmlBIPT extends Html {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Map<String, Page> front = cache.retrievePage(getBase());
@@ -116,9 +116,9 @@ public class HtmlBIPT extends Html {
 		Page p = front.get(getDefaultLang());
 		String datasets = p.getContent();
 		Elements rows = Jsoup.parse(datasets).select(DIV_DATASET);
-		logger.info("Found {} datasets on page", String.valueOf(rows.size()));
+		LOG.info("Found {} datasets on page", String.valueOf(rows.size()));
 
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class HtmlBIPT extends Html {
 
 		URL u = makeDistURL(i + "/" + j + "/" + lang);
 		IRI dist = store.getURI(u.toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -167,7 +167,7 @@ public class HtmlBIPT extends Html {
 			throws MalformedURLException, RepositoryException {
 		URL u = makeDatasetURL(String.valueOf(i));
 		IRI dataset = store.getURI(u.toString());
-		logger.debug("Generating dataset {}", dataset.toString());
+		LOG.debug("Generating dataset {}", dataset.toString());
 
 		String title = row.select(TITLE).first().text();
 		String desc = row.select(DESC).text();
@@ -228,7 +228,7 @@ public class HtmlBIPT extends Html {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		Map<String, Page> page = cache.retrievePage(getBase());

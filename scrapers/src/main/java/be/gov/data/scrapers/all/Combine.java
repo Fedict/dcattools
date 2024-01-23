@@ -69,7 +69,7 @@ public class Combine extends BaseScraper {
 		}
 
 		for (File f: files) {
-			logger.info("Reading {}", f);
+			LOG.info("Reading {}", f);
 			// Load turtle file into store
 			try (InputStream in = new BufferedInputStream(new FileInputStream(f))) {
 				store.add(in, RDFFormat.NTRIPLES);

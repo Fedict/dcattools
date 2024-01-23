@@ -91,7 +91,7 @@ public class HtmlStatbelPubs extends Html {
 				}
 			}
 		}
-		logger.warn("No {} translation for page", lang);
+		LOG.warn("No {} translation for page", lang);
 		return null;
 	}
 
@@ -135,20 +135,20 @@ public class HtmlStatbelPubs extends Html {
 
         Elements nav = Jsoup.parse(subtheme).select(NAV_SUBTHEME);
         if (nav == null || nav.isEmpty()) {
-            logger.warn("No subtheme element found");
+            LOG.warn("No subtheme element found");
             return urls;
         }
 
 		Elements lis = nav.select(LI);
 		if (lis == null || lis.isEmpty()) {
-	        logger.warn("No subtheme links found");
+	        LOG.warn("No subtheme links found");
             return urls;
     	}
 		for (Element li: lis) {
 			// Check if there is a third level of themes
 			Elements subs = li.select(LINK_SUBSUBTHEME);
 			if (subs != null && !subs.isEmpty()) {
-				logger.debug("Subsubtheme elements {} for {}", subs.size(), u);
+				LOG.debug("Subsubtheme elements {} for {}", subs.size(), u);
 				for (Element sub : subs) {
 					String href = sub.attr(Attribute.HREF.toString());
 					if (!href.startsWith("https://indicators")) {
@@ -157,7 +157,7 @@ public class HtmlStatbelPubs extends Html {
 				}
 			} else {
 				// Not the case, so only the title points to a dataset
-				logger.info("No subsubtheme elements for {}", u);
+				LOG.info("No subsubtheme elements for {}", u);
 				Element link = li.select(LINK_SUBTHEME).first();
 				if (link != null) {
 					String href = link.attr(Attribute.HREF.toString());
@@ -165,7 +165,7 @@ public class HtmlStatbelPubs extends Html {
 						urls.add(makeAbsURL(href));
 					}
 				} else {
-					logger.warn("No subthemes nor subsubthemes found {}", u);
+					LOG.warn("No subthemes nor subsubthemes found {}", u);
 				}
 			}
 		}
@@ -195,7 +195,7 @@ public class HtmlStatbelPubs extends Html {
                 sleep();
             }
         } else {
-            logger.error("No themes {} found", LINK_THEME);
+            LOG.error("No themes {} found", LINK_THEME);
         }
         return urls;
     }
@@ -219,7 +219,7 @@ public class HtmlStatbelPubs extends Html {
         // important for EDP: does not like different datasets pointing to same distribution
         String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
         IRI dist = store.getURI(makeDistURL(id).toString() + "/" + lang);
-        logger.debug("Generating distribution {}", dist.toString());
+        LOG.debug("Generating distribution {}", dist.toString());
 
         store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
         store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -244,7 +244,7 @@ public class HtmlStatbelPubs extends Html {
             throws MalformedURLException, RepositoryException {
 
         IRI dataset = store.getURI(makeDatasetURL(id).toString());
-        logger.info("Generating dataset {}", dataset.toString());
+        LOG.info("Generating dataset {}", dataset.toString());
 
         store.add(dataset, RDF.TYPE, DCAT.DATASET);
         store.add(dataset, DCTERMS.IDENTIFIER, id);
@@ -252,19 +252,19 @@ public class HtmlStatbelPubs extends Html {
         for (String lang : getAllLangs()) {
             Page p = page.get(lang);
             if (p == null) {
-                logger.warn("Page {} not available in {}", dataset.toString(), lang);
+                LOG.warn("Page {} not available in {}", dataset.toString(), lang);
                 continue;
             }
             String html = p.getContent();
 
             Element doc = Jsoup.parse(html).body();
             if (doc == null) {
-                logger.warn("No body element");
+                LOG.warn("No body element");
                 continue;
             }
             Element h = doc.getElementsByTag(Tag.H1.toString()).first();
             if (h == null) {
-                logger.warn("No H1 element");
+                LOG.warn("No H1 element");
                 continue;
             }
             String title = h.text();
@@ -279,8 +279,8 @@ public class HtmlStatbelPubs extends Html {
                 if (divmain != null) {
                     desc = divmain.text();
                 } else {
-                    logger.warn("No description found");
-                    logger.warn(title);
+                    LOG.warn("No description found");
+                    LOG.warn(title);
                 }
             }
 
@@ -298,7 +298,7 @@ public class HtmlStatbelPubs extends Html {
                     store.add(dataset, DCAT.KEYWORD, theme.text().trim(), lang);
                 }
             } else {
-                logger.warn("No themes found {}", LI_THEMES);
+                LOG.warn("No themes found {}", LI_THEMES);
             }
 
             Elements links = doc.select(DIV_FILES);
@@ -307,7 +307,7 @@ public class HtmlStatbelPubs extends Html {
                     generateDist(store, dataset, p.getUrl(), link, lang);
                 }
             } else {
-                logger.warn("No downloads found {}", DIV_FILES);
+                LOG.warn("No downloads found {}", DIV_FILES);
             }
         }
     }

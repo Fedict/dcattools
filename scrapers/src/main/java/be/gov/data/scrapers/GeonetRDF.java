@@ -94,14 +94,14 @@ public abstract class GeonetRDF extends Geonet {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Map<String, Page> front = cache.retrievePage(getBase());
 		if (front.keySet().isEmpty()) {
 			scrapeCat(cache);
 		}
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**

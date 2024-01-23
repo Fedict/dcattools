@@ -115,7 +115,7 @@ public class HtmlBrugge extends Html {
 		}
 		URL u = makeDistURL(name + "/" + fmt);
 		IRI dist = store.getURI(u.toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -149,7 +149,7 @@ public class HtmlBrugge extends Html {
 		}
 		URL u = makeDatasetURL(name);
 		IRI dataset = store.getURI(u.toString());
-		logger.debug("Generating dataset {}", dataset);
+		LOG.debug("Generating dataset {}", dataset);
 
 		String desc = title;
 		Element sib = el.nextElementSibling();
@@ -220,7 +220,7 @@ public class HtmlBrugge extends Html {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		List<URL> urls = cache.retrieveURLList();

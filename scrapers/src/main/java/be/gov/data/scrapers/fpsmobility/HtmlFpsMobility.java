@@ -120,7 +120,7 @@ public class HtmlFpsMobility extends Html {
 	 */
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Map<String, Page> front = cache.retrievePage(getBase());
@@ -132,9 +132,9 @@ public class HtmlFpsMobility extends Html {
 		Page p = front.get(getDefaultLang());
 		String datasets = p.getContent();
 		Elements rows = Jsoup.parse(datasets).getElementsByTag(HTML.Tag.TR.toString());
-		logger.info("Found {} datasets on page", String.valueOf(rows.size()));
+		LOG.info("Found {} datasets on page", String.valueOf(rows.size()));
 
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**
@@ -168,10 +168,10 @@ public class HtmlFpsMobility extends Html {
 					store.add(dist, DCAT.BYTE_SIZE, m.group(2), XSD.DECIMAL);
 				}
 			} else {
-				logger.error("Element not found for download {}", download);
+				LOG.error("Element not found for download {}", download);
 			}
 		} catch (IOException ex) {
-			logger.error("Can't get download for {}", download);
+			LOG.error("Can't get download for {}", download);
 		}
 	}
 		
@@ -195,7 +195,7 @@ public class HtmlFpsMobility extends Html {
 
 		URL u = makeDistURL(i + "/" + lang);
 		IRI dist = store.getURI(u.toString());
-		logger.debug("Generating distribution {}", dist.toString());
+		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
 		store.add(dist, RDF.TYPE, DCAT.DISTRIBUTION);
@@ -221,7 +221,7 @@ public class HtmlFpsMobility extends Html {
 			throws MalformedURLException, RepositoryException {
 		URL u = makeDatasetURL(String.valueOf(i));
 		IRI dataset = store.getURI(u.toString());
-		logger.debug("Generating dataset {}", dataset.toString());
+		LOG.debug("Generating dataset {}", dataset.toString());
 
 		Elements cells = row.getElementsByTag(Tag.TD.toString());
 		String desc = cells.get(0).text();
@@ -278,7 +278,7 @@ public class HtmlFpsMobility extends Html {
 	@Override
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
-		logger.info("Generate DCAT");
+		LOG.info("Generate DCAT");
 
 		/* Get the list of all datasets */
 		Map<String, Page> page = cache.retrievePage(getBase());

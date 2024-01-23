@@ -101,7 +101,7 @@ public abstract class Dcat extends BaseScraper {
 		// Load RDF file into store
 		try (InputStream in = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8))) {
 			RDFFormat fmt = guessFormat(getBase().toString(), data);
-			logger.info("Guessing format is {}", fmt.getName());
+			LOG.info("Guessing format is {}", fmt.getName());
 			store.add(in, fmt);
 		} catch (RDFParseException | IOException ex) {
 			throw new RepositoryException(ex);
@@ -111,14 +111,14 @@ public abstract class Dcat extends BaseScraper {
 
 	@Override
 	public void scrape() throws IOException {
-		logger.info("Start scraping");
+		LOG.info("Start scraping");
 		Cache cache = getCache();
 
 		Map<String, Page> front = cache.retrievePage(getBase());
 		if (front.keySet().isEmpty()) {
 			scrapeCat(cache);
 		}
-		logger.info("Done scraping");
+		LOG.info("Done scraping");
 	}
 
 	/**
