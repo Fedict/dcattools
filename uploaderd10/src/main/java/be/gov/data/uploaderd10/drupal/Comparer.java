@@ -167,7 +167,11 @@ public class Comparer {
 										u -> StringUtils.substringAfterLast(u.getPath(), "/")));
 	}
 
-	
+	/**
+	 * 
+	 * @param mail
+	 * @return 
+	 */
 	private Set<String> stripMailto(IRI mail) {
 		if (mail == null) {
 			return null;
@@ -348,6 +352,25 @@ public class Comparer {
 				LOG.warn("Title for {} not available in {} languages, skipping", entry.getKey(), nrlangs);
 				it.remove();
 				skipped++;
+				continue;
+			}
+			if (entry.getValue().getContactAddr().isEmpty()) {
+				LOG.warn("Contact addr for {} not available, skipping", entry.getKey());
+				it.remove();
+				skipped++;
+				continue;
+			}
+			if (entry.getValue().getContactName().isEmpty()) {
+				LOG.warn("Contact name for {} not available, skipping", entry.getKey());
+				it.remove();
+				skipped++;
+				continue;
+			}
+			if (entry.getValue().getLandingPage().isEmpty()) {
+				LOG.warn("Landing Page for {} not available, skipping", entry.getKey());
+				it.remove();
+				skipped++;
+				continue;
 			}
 		}
 		if (skipped > 0) {
@@ -355,25 +378,39 @@ public class Comparer {
 		}
 	}
 
+	private <T> T firstFromMap(Map<String,T> map) {
+		return map.entrySet().stream().sorted(Map.Entry.comparingByKey())
+									.findFirst().get()
+									.getValue();
+	}
+	
 	/**
-	 * Provide fallback for landingpages, accessurls and downloads
+	 * Provide fallback for contacts, landingPages ...
 	 * 
 	 * @param langs 
 	 */
-	/*
 	private void provideFallbacks(Map<String, Dataset> datasets, String[] langs) {
-		Iterator<Map.Entry<String, Dataset>> it = datasets.entrySet().iterator();
-
-		while(it.hasNext()) {
-			Map.Entry<String, Dataset> entry = it.next();
-			if (entry.getValue().getDistributions())
-			if (entry.getValue().getTitle().size() < nrlangs) {
-				LOG.warn("Title for {} not available in {} languages", entry.getKey(), nrlangs);
-				it.remove();
+		for(Dataset d: datasets.values()) {
+			for (String lang: langs) {
+				if (d.getContactAddr(lang) == null) {
+					Map<String, IRI> m = d.getContactAddr();
+					m.put(lang, firstFromMap(d.getContactAddr()));
+					LOG.debug("Adding fallback {} contact address for {}", lang, d.getId());
+				}
+				if (d.getContactName(lang) == null) {
+					Map<String, String> m = d.getContactName();
+					m.put(lang, firstFromMap(d.getContactName()));
+					LOG.debug("Adding fallback {} contact name for {}", lang, d.getId());
+				}
+				if  (d.getLandingPage(lang) == null) {
+					Map<String, IRI> m = d.getLandingPage();
+					m.put(lang, firstFromMap(d.getLandingPage()));
+					LOG.debug("Adding fallback {} landing page for {}", lang, d.getId());
+				}
 			}
 		}
 	}
-*/
+	
 	/**
 	 * Start comparing
 	 * 
@@ -387,7 +424,7 @@ public class Comparer {
 		Catalog catalog = reader.read();
 		Map<String, Dataset> datasets = catalog.getDatasets();
 		removeIncomplete(datasets, langs);
-//		provideFallbacks(datasets, langs);
+		provideFallbacks(datasets, langs);
 
 		// Mapping of dataset IDs to Drupal nodeIDs
 		Map<String, Integer> nodeIDs = null;
