@@ -28,6 +28,7 @@ package be.gov.data.uploaderd10.drupal;
 import be.gov.data.dcatlib.DcatReader;
 import be.gov.data.dcatlib.model.Catalog;
 import be.gov.data.dcatlib.model.Dataset;
+import be.gov.data.dcatlib.model.Distribution;
 
 import java.io.IOException;
 import java.net.URI;
@@ -35,7 +36,6 @@ import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -139,8 +139,8 @@ public class Comparer {
 	/**
 	 * Convert a set of (RDF) IRIs to (Java) URIs
 	 * 
-	 * @param iris
-	 * @return 
+	 * @param iris set of RDF IRIs
+	 * @return set of Java URI
 	 */
 	private Set<URI> toURI(Set<IRI> iris) {
 		if (iris == null) {
@@ -157,6 +157,14 @@ public class Comparer {
 		return uris;
 	}
 
+	/**
+	 * Convert a set of (RDF) IRIs to a map of (Java) URIs with a string value (useful for titles in hyperlinks)
+	 * For now just use the last part of the URI as title.
+	 * 
+	 * @param iris
+	 * @return map of URI with their titles
+	 */
+
 	private Map<URI, String> toURIMap(Set<IRI> iris) {
 		Set<URI> uris = toURI(iris);
 		if (uris == null) {
@@ -168,9 +176,10 @@ public class Comparer {
 	}
 
 	/**
+	 * Remove mailto: from email address
 	 * 
-	 * @param mail
-	 * @return 
+	 * @param mail mail IRI
+	 * @return email address without mailto
 	 */
 	private Set<String> stripMailto(IRI mail) {
 		if (mail == null) {
@@ -342,42 +351,42 @@ public class Comparer {
 	 */
 	private void removeIncomplete(Map<String, Dataset> datasets, String[] langs) {
 		int nrlangs = langs.length;
-		int skipped = 0;
-		
-		Iterator<Map.Entry<String, Dataset>> it = datasets.entrySet().iterator();
-		while(it.hasNext()) {
-			Map.Entry<String, Dataset> entry = it.next();
-			
-			if (entry.getValue().getTitle().size() < nrlangs) {
-				LOG.warn("Title for {} not available in {} languages, skipping", entry.getKey(), nrlangs);
-				it.remove();
-				skipped++;
-				continue;
+	
+		Set<String> remove = new HashSet<>();
+
+		for(Map.Entry<String,Dataset> e: datasets.entrySet()) {
+			Dataset d = e.getValue();
+			String key = e.getKey();
+			if (d.getTitle().size() < nrlangs) {
+				LOG.warn("Title for {} not available in {} languages, skipping", key, nrlangs);
+				remove.add(key);
 			}
-			if (entry.getValue().getContactAddr().isEmpty()) {
-				LOG.warn("Contact addr for {} not available, skipping", entry.getKey());
-				it.remove();
-				skipped++;
-				continue;
+			if (d.getContactAddr().isEmpty()) {
+				LOG.warn("Contact addr for {} not available, skipping", key);
+				remove.add(key);
 			}
-			if (entry.getValue().getContactName().isEmpty()) {
-				LOG.warn("Contact name for {} not available, skipping", entry.getKey());
-				it.remove();
-				skipped++;
-				continue;
+			if (d.getContactName().isEmpty()) {
+				LOG.warn("Contact name for {} not available, skipping", key);
+				remove.add(key);
 			}
-			if (entry.getValue().getLandingPage().isEmpty()) {
-				LOG.warn("Landing Page for {} not available, skipping", entry.getKey());
-				it.remove();
-				skipped++;
-				continue;
+			if (d.getLandingPage().isEmpty()) {
+				LOG.warn("Landing Page for {} not available, skipping", key);
+				remove.add(key);
 			}
 		}
-		if (skipped > 0) {
-			LOG.warn("Removed {} sets", skipped);
+		if (!remove.isEmpty()) {
+			datasets.keySet().removeAll(remove);
+			LOG.warn("Removed {} datasets / services", remove.size());
 		}
 	}
 
+	/**
+	 * Get first element from map with key as language
+	 * 
+	 * @param <T>
+	 * @param map
+	 * @return 
+	 */
 	private <T> T firstFromMap(Map<String,T> map) {
 		return map.entrySet().stream().sorted(Map.Entry.comparingByKey())
 									.findFirst().get()
@@ -406,6 +415,13 @@ public class Comparer {
 					Map<String, IRI> m = d.getLandingPage();
 					m.put(lang, firstFromMap(d.getLandingPage()));
 					LOG.debug("Adding fallback {} landing page for {}", lang, d.getId());
+				}
+				for (Distribution dist: d.getDistributions()) {
+					if (dist.getDownloadURLs(lang) == null || dist.getDownloadURLs(lang).isEmpty()) {
+						Map<String, Set<IRI>> m = dist.getDownloadURLs();
+						m.put(lang, firstFromMap(dist.getDownloadURLs()));
+						LOG.debug("Adding fallback {} download URLS", lang);
+					}
 				}
 			}
 		}
