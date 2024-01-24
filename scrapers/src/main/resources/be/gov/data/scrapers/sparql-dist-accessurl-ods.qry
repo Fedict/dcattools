@@ -3,7 +3,8 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE { 
+DELETE {
+	?dataset dcat:landingPage ?lp .
 	?dist dcat:accessURL ?data 
 }
 INSERT {
@@ -12,6 +13,7 @@ INSERT {
 }
 WHERE { 
 	?dataset a dcat:Dataset .
+	?dataset dcat:landingPage ?lp .
 	?dataset dcterms:identifier ?id .
 	?dataset dcat:distribution ?dist .
 	?dist dcat:accessURL ?data  .
