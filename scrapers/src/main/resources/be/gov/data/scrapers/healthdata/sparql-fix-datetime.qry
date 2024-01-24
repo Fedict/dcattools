@@ -1,0 +1,15 @@
+# Fix non-ISO8601 datetime
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s ?rel ?olddt }
+INSERT
+	{ 	?s ?rel ?dt }
+WHERE
+	{ 	?s ?rel ?olddt .
+		VALUES ?rel { dcterms:issued dcterms:modified }
+		BIND (
+			REPLACE(STR(?olddt), " ([0-2][0-9]:[0-5][0-9]:[0-5][0-9]) Europe/Brussels", "T$1")
+		as ?dt)
+	}

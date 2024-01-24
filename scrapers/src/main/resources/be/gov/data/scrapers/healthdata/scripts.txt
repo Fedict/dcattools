@@ -16,7 +16,6 @@ healthdata/sparql-split-description.qry
 healthdata/sparql-split-description-en.qry
 healthdata/sparql-language-en.qry
 healthdata/sparql-language-tag.qry
-sparql-date-type.qry
 sparql-bytesize-type.qry
 healthdata/sparql-accessurl-hash.qry
 healthdata/sparql-remove-pages.qry
@@ -28,6 +27,8 @@ healthdata/sparql-map-access.qry
 healthdata/sparql-theme.qry
 healthdata/sparql-accessurl.qry
 healthdata/sparql-downloadurl.qry
+healthdata/sparql-fix-datetime.qry
+sparql-date-type.qry
 clear-skos.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
