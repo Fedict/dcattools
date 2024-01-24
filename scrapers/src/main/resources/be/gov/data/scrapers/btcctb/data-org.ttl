@@ -6,6 +6,6 @@
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0264814354>
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Enabel"@nl, "Enabel"@fr, "Enabel"@en ;
+	skos:prefLabel "Enabel"@nl, "Enabel"@fr, "Enabel"@en, "Enabel"@de ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/211> ;
-	skos:altLabel "enabel"@en .
+	skos:altLabel "enabel", "enabel"@en .

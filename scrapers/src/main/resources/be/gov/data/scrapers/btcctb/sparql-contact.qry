@@ -4,11 +4,11 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 INSERT
-	{ 	?org vcard:fn "Enabel"@en .
+	{ 	?org a vcard:Organization .
+		?org vcard:fn "Enabel"@en .
 		?org vcard:fn "Enabel"@fr .
 		?org vcard:fn "Enabel"@nl .
+		?org vcard:fn "Enabel"@de .
 		?org vcard:hasUrl <http://www.enabel.be>	}
 WHERE
-	{ 	?org a vcard:Organization 
-		FILTER NOT EXISTS { ?org vcard:fn ?name } 
-	}
+	{ 	?org a vcard:Kind }
