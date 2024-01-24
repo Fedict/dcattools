@@ -1,4 +1,4 @@
-# Fix access URLs for OpenDataSoft
+# Fix access URLs and landing page for OpenDataSoft
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -7,6 +7,7 @@ DELETE {
 	?dist dcat:accessURL ?data 
 }
 INSERT {
+	?dataset dcat:landingPage ?url .
 	?dist dcat:accessURL ?url .
 }
 WHERE { 
