@@ -5,6 +5,7 @@
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207373429>
+	dcterms:spatial <https://sws.geonames.org/3337389/>;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Stad Brussel"@nl, "Ville de Bruxelles"@fr, "City of Brussels"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/127> ;
@@ -153,72 +154,84 @@
 	skos:altLabel "Cyclo"@en, "Cyclo"@fr, "Cyclo"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206582284>
+	dcterms:spatial <https://sws.geonames.org/2803202/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Anderlecht"@fr, "Anderlecht"@en, "Anderlecht"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/456> ;
 	skos:altLabel "Anderlecht"@fr, "Anderlecht"@en, "Anderlecht"@nl  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207540408>
+	dcterms:spatial <https://sws.geonames.org/2802961/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/343> ;
 	skos:altLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207365709>
+	dcterms:spatial <https://sws.geonames.org/2798555/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Evere"@fr, "Evere"@en, "Evere"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/352> ;
 	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
+	dcterms:spatial <https://sws.geonames.org/2787415/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/354> ;
 	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl, "Saint-Gilles/Sint-Gillis"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366501>
+	dcterms:spatial <https://sws.geonames.org/2791019/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/409> ;
 	skos:altLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207372538> 
+	dcterms:spatial <https://sws.geonames.org/2794192/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/410> ;
 	skos:altLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207401341>
+	dcterms:spatial <https://sws.geonames.org/2795012/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Ixelles"@fr, "Ixelles"@en, "Elsene"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/413> ;
 	skos:altLabel "Ixelles"@fr, "Ixelles/Elsene"@en, "Elsene"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207401044>
+	dcterms:spatial <https://sws.geonames.org/2797845/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/414> ;
 	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367687> 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367687>
+	dcterms:spatial <https://sws.geonames.org/2787150/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/424> ;
 	skos:altLabel "Schaerbeek"@nl, "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366895>
+	dcterms:spatial <https://sws.geonames.org/2794915/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Jette"@nl, "Jette"@fr, "Jette"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/425> ;
 	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
+	dcterms:spatial <https://sws.geonames.org/2798142/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Vorst"@nl, "Forest"@fr, "Forest"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/458> ;
 	skos:altLabel "Vorst"@nl, "Forest"@fr, "Forest"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207541594>
+	dcterms:spatial <https://sws.geonames.org/2802248/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Sint-Agatha-Berchem"@nl, "Berchem Sainte-Agathe"@fr, "Sint-Agatha-Berchem"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/464> ;
@@ -226,6 +239,7 @@
 		"Berchem Sainte-Agathe/Sint-Agatha-Berchem"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207202193>
+	dcterms:spatial <https://sws.geonames.org/2787388/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, "Saint-Josse-ten-Noode"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/478> ;
@@ -233,6 +247,7 @@
 			"Saint-Josse-ten-Noode/Sint-Joost-ten-Node"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
+	dcterms:spatial <https://sws.geonames.org/2783475/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/421> ;
@@ -240,6 +255,7 @@
 				"Sint-Pieters-Woluwe"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207389859>
+	dcterms:spatial <https://sws.geonames.org/2783477/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert"@en, "Sint-Lambrechts-Woluwe"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/457> ;
@@ -247,12 +263,14 @@
 				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
+	dcterms:spatial <https://sws.geonames.org/2785124/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Uccle"@fr, "Uccle"@en, "Ukkel"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/460> ;
 	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207372637>
+	dcterms:spatial <https://sws.geonames.org/2783980/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/462> ;
@@ -282,9 +300,15 @@
 			"Brugel, De Brusselse regulator voor energie"@nl, 
 			"Brugel, Le régulateur bruxellois pour l'énergie"@fr, "Brugel, Brussels energy regulator"@en .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0443590797>
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en, "Easybrussels"@de  ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en, "Easybrussels"@de .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
+	skos:prefLabel "Diensten van de Regering van he;t Brussels Gewest"@nl, 
 					"Services du Gouvernement de la Région bruxelloise"@fr, 
 					"Regionaler öffentlicher Dienst Brüssel"@de ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/422> ;
@@ -299,6 +323,7 @@
 			"Mobigis"@en, "Bruxelles Mobilité / Brussel Mobiliteit"@en,
 			"Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, 
 			"Brussels-Capital Urban Development"@en,
+			"talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr ,
 			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0253777437> 
@@ -341,12 +366,6 @@
 	skos:prefLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/459> ;
 	skos:altLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
-	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Talent Brussels"@en, "Talent Brussels"@fr, "Talent Brussels"@nl ; 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/407> ;
-	skos:altLabel "talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0227581301> 
 	dcterms:type admsp:RegionalAuthority ;
