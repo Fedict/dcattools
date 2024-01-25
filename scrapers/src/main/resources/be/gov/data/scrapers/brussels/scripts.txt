@@ -13,7 +13,8 @@ brussels/sparql-fix-wms.qry
 sparql-delete-label-format.qry
 brussels/data-org.ttl
 brussels/sparql-map-org.qry
-brussels/sparql-contact-vcard.qry
+brussels/sparql-fix-vcard.qry
+brussels/sparql-fix-mailto.qry
 brussels/sparql-geo-brussels.qry
 sparql-geo-publisher.qry
 data-license.ttl
