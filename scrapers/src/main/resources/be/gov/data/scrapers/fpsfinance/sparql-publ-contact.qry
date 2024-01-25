@@ -10,4 +10,5 @@ INSERT
 		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0308357159> }
 WHERE
 	{ 	?dataset a dcat:Dataset .
-		?dataset dcat:contactPoint ?o }
+		OPTIONAL { ?dataset dcat:contactPoint ?o }
+	}
