@@ -44,6 +44,16 @@
         </dcat:contactPoint>
 
 		<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+		<dcat:landingPage>
+			<foaf:Document rdf:about="https://opendata.bosa.be/index.nl.html">
+				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			</foaf:Document>
+		</dcat:landingPage>
+		<dcat:landingPage>
+			<foaf:Document rdf:about="https://opendata.bosa.be/index.fr.html">
+				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+			</foaf:Document>
+		</dcat:landingPage>
 
         <dc:spatial>
 			<dc:Location rdf:about="http://sws.geonames.org/2802361/"/>

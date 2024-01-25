@@ -36,13 +36,21 @@ import org.eclipse.rdf4j.model.IRI;
  * @author Bart Hanssens
  */
 public class Distribution {
-
+	private IRI iri;
 	private Map<String,String> title;
 	private Map<String,Set<IRI>> accessURLs;
 	private Map<String,Set<IRI>> downloadURLs;
 	private IRI format;
 	private IRI license;
 	private IRI right;
+
+	public IRI getIRI() {
+		return this.iri;
+	}
+
+	public void setIRI(IRI iri) {
+		this.iri = iri;
+	}
 
 	/**
 	 * @return the title

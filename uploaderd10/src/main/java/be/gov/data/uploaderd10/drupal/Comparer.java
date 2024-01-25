@@ -40,6 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.apache.commons.lang3.StringUtils;
 
 import org.eclipse.rdf4j.model.IRI;
@@ -395,8 +396,10 @@ public class Comparer {
 	
 	/**
 	 * Provide fallback for contacts, landingPages ...
+	 * If the data is not available in a language, just use the data from another language.
 	 * 
-	 * @param langs 
+	 * @param datasets
+	 * @param langs languages
 	 */
 	private void provideFallbacks(Map<String, Dataset> datasets, String[] langs) {
 		for(Dataset d: datasets.values()) {
@@ -416,17 +419,24 @@ public class Comparer {
 					m.put(lang, firstFromMap(d.getLandingPage()));
 					LOG.debug("Adding fallback {} landing page for {}", lang, d.getId());
 				}
-				for (Distribution dist: d.getDistributions()) {
-					if (dist.getDownloadURLs(lang) == null || dist.getDownloadURLs(lang).isEmpty()) {
-						Map<String, Set<IRI>> m = dist.getDownloadURLs();
-						m.put(lang, firstFromMap(dist.getDownloadURLs()));
-						LOG.debug("Adding fallback {} download URLS", lang);
+			}
+
+			for (Distribution dist: d.getDistributions()) {
+				if (dist.getDownloadURLs() == null || dist.getDownloadURLs().isEmpty()) {
+					LOG.warn("No download URLs for {} {}", dist.getIRI());
+				} else {
+					for (String lang: langs) {
+						if (dist.getDownloadURLs(lang) == null || dist.getDownloadURLs(lang).isEmpty()) {
+							Map<String, Set<IRI>> m = dist.getDownloadURLs();
+							m.put(lang, firstFromMap(dist.getDownloadURLs()));
+							LOG.debug("Adding fallback {} download URLS", lang);
+						}
 					}
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * Start comparing
 	 * 
@@ -439,9 +449,10 @@ public class Comparer {
 
 		Catalog catalog = reader.read();
 		Map<String, Dataset> datasets = catalog.getDatasets();
+
 		removeIncomplete(datasets, langs);
 		provideFallbacks(datasets, langs);
-
+		
 		// Mapping of dataset IDs to Drupal nodeIDs
 		Map<String, Integer> nodeIDs = null;
 

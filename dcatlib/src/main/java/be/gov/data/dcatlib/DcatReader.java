@@ -234,6 +234,7 @@ public class DcatReader {
 					if (map.containsKey(code)) {
 						LOG.warn("Language " + code + " for " + subj + " " + pred + " already present");
 					}
+					map.put(code, iri);
 				}
 			}
 		}
@@ -370,7 +371,6 @@ public class DcatReader {
 		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
 		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
 		d.setLicense(getIRI(iri, DCTERMS.LICENSE));
-		d.setLandingPage(getLangIRI(iri, DCAT.LANDING_PAGE));
 		d.setIssued(getDate(iri, DCTERMS.CREATED));
 		d.setModified(getDate(iri, DCTERMS.MODIFIED));
 
@@ -404,6 +404,7 @@ public class DcatReader {
 		for (Statement stmt: m.getStatements(dataset.getIRI(), DCAT.HAS_DISTRIBUTION, null)) {
 			IRI iri = (IRI) stmt.getObject();
 			Distribution dist = new Distribution();
+			dist.setIRI(iri);
 			dist.setAccessURLs(getLangIRIs(iri, DCAT.ACCESS_URL));
 			dist.setDownloadURLs(getLangIRIs(iri, DCAT.DOWNLOAD_URL));
 			dist.setFormat(getIRI(iri, DCTERMS.FORMAT));

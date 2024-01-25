@@ -30,6 +30,8 @@ import be.gov.data.dcatlib.model.Dataset;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
+import org.eclipse.rdf4j.model.util.Values;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,5 +65,16 @@ public class DcatReaderTest {
 		assertEquals("BeSt adressen", d.getTitle().get("nl"));
 	}
 
+	@Test
+	public void testAccessURL() throws IOException {
+		Dataset d = catalog.getDatasets().get("c646365c4441f53426a72e2f1b14b9d6e63e0756");
+		assertEquals(Set.of(Values.iri("https://opendata.bosa.be/index.nl.html")), d.getAccesURLs("nl"));
+	}
+	
+	@Test
+	public void testLandingPage() throws IOException {
+		Dataset d = catalog.getDatasets().get("c646365c4441f53426a72e2f1b14b9d6e63e0756");
+		assertEquals(2, d.getLandingPage().size());
+	}
 
 }
