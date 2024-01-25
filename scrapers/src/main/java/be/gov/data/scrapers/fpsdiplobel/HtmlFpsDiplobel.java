@@ -162,6 +162,8 @@ public class HtmlFpsDiplobel extends Html {
 		store.add(dist, DCTERMS.TITLE, link.first().ownText(), lang);
 		store.add(dist, DCAT.ACCESS_URL, access);
 		store.add(dist, DCAT.DOWNLOAD_URL, download);
+		store.add(store.getURI(download.toString()), DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
+
 		store.add(dist, DCTERMS.FORMAT, ftype.toLowerCase());
 	}
 
@@ -196,6 +198,8 @@ public class HtmlFpsDiplobel extends Html {
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
 		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+		store.add(dataset, DCAT.LANDING_PAGE, front);
+		store.add(store.getURI(front.toString()), DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 
 		Elements link = cells.get(1).getElementsByTag(Tag.A.toString());
 		generateDist(store, dataset, front, link, code, lang);
