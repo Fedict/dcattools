@@ -113,10 +113,16 @@
 	skos:prefLabel "ODC PDDL" ;
 	skos:altLabel "odc-pddl", <http://www.opendefinition.org/licenses/odc-pddl> .
 
-<https://opendatacommons.org/licenses/by/1.0/>
+
+<http://publications.europa.eu/resource/authority/licence/ODC_BY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/242> ;
 	skos:prefLabel "ODC BY" ;
-	skos:altLabel "https://opendatacommons.org/licenses/by/1.0/" . 
+	skos:altLabel "https://opendatacommons.org/licenses/by/1.0/" .
+
+<http://publications.europa.eu/resource/authority/licence/ODC_BL>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/odc> ;
+	skos:prefLabel "ODbL" ;
+	skos:altLabel "https://opendatacommons.org/licenses/odbl/1.0/" .
 
 <http://publications.europa.eu/resource/authority/licence/MIT>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/173> ;

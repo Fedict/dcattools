@@ -1,0 +1,12 @@
+# Copy license from dataset to distributions
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{	?dist dcterms:license ?license }
+WHERE 
+	{	?dataset a dcat:Dataset .
+		?dataset dcterms:license ?license .
+		?dataset dcat:distribution ?dist
+ }
