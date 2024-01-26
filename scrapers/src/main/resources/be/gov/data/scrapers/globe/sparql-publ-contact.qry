@@ -1,0 +1,14 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcat:contactPoint ?o }
+INSERT
+	{ 	?dataset dcat:contactPoint <https://org.belgif.be/id/CbeRegisteredEntity/0308358149/openaid> .
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0308358149> }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		OPTIONAL { ?dataset dcat:contactPoint ?o }
+	}

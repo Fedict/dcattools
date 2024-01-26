@@ -1,8 +1,8 @@
 # extra queries to be executed and data to be loaded
 globe/sparql-theme.qry
-globe/data-org.ttl
+globe/data-publ-contact.ttl
 sparql-map-org.qry
-globe/sparql-contact.qry
+globe/sparql-publ-contact.qry
 data-license.ttl
 sparql-map-license.qry
 sparql-access-public.qry

@@ -1,7 +1,8 @@
-# Data for mapping organizations
+# Data for default publisher and contact info
 
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
@@ -11,3 +12,9 @@
 	skos:prefLabel "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/156> ;
 	skos:altLabel "be-dgd"@en .
+	
+<https://org.belgif.be/id/CbeRegisteredEntity/0308358149/openaid>
+	a vcard:Organization ;
+	vcard:fn "OpenAid.be"@en, "OpenAid.be"@fr, "OpenAid.be"@nl, "OpenAid.be"@de ;
+	vcard:hasEmail <mailto:contact@diplobel.fed.be> ;
+	vcard:hasURL <https://www.openaid.be> .
