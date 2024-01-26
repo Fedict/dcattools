@@ -19,6 +19,7 @@ data-license.ttl
 sparql-map-license.qry
 clear-skos.qry
 sparql-delete-label-language.qry
+geobe/sparql-org-rbins.qry
 geobe/data-org.ttl
 sparql-map-org.qry
 geobe/sparql-default-publisher.qry

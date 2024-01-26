@@ -120,44 +120,11 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/197> ;
-	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, "Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, "Königliches Belgisches Institut für Naturwissenschaften"@de ;
-	skos:altLabel  "Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature)"@fr ,
-		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Belgian Marine Data Centre (BMDC)"@fr ,
-		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Ecosystems Physico-Chemistry (ECOCHEM)"@fr ,
-		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Ecosystems data processing and modelling (ECODAM)"@fr ,
-		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), GeoCell"@fr ,
-		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Marine Ecology and Management (MARECO)"@fr ,
-		"Institut royal des Sciences naturelles de Belgique (IRSNB), Direction opérationnelle Milieux naturels (DO Nature), Service scientifique Unité de Gestion du Modèle Mathématique de la Mer du Nord (UGMM)"@fr ,
-		"Institut royal des Sciences naturelles de Belgique"@fr,
-		"Institut royal des Sciences naturelles de Belgique, Direction opérationnelle Milieux naturels, GeoCell"@fr ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur)"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Belgian Marine Data Centre (BMDC)"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Ecosystems Physico-Chemistry (ECOCHEM)"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Ecosystems data processing and modelling (ECODAM)"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), GeoCell"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Marine Ecology and Management (MARECO)"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN), Operationele Directie Natuurlijk Milieu (OD Natuur), Wetenschappelijke Dienst Beheerseenheid van het Mathematisch Model van de Noordzee (BMM)"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl ,
-		"Koninklijk Belgisch Instituut voor Natuurwetenschappen, Operationele Directie Natuurlijk Milieu, GeoCell"@nl,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur)"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Belgian Marine Data Centre (BMDC)"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Ecosystems Physico-Chemistry (ECOCHEM)"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Ecosystems data processing and modelling (ECODAM)"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), GeoCell"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Marine Ecology and Management (MARECO)"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften (KBIN), Operationelle Direktion Natürliche Umwelt (OD Natur), Wissenschaftliche Dienst Managementeinheit für das mathematische Modell der Nordsee (MMM)"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften"@de ,
-		"Königliches Belgisches Institut für Naturwissenschaften, Operationelle Direktion Natürliche Umwelt, GeoCell"@de ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature)"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Belgian Marine Data Centre (BMDC)"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Ecosystems Physico-Chemistry (ECOCHEM)"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Ecosystems data processing and modelling (ECODAM)"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), GeoCell"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Management Unit of the North Sea Mathematical Models (MUMM)"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Marine Ecology and Management (MARECO)"@en ,
-		"Royal Belgian Institute for Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Scientific Heritage"@en ,
-		"Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en ,
-		"Royal Belgian Institute of Natural Sciences"@en .
+	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, 
+					"Institut royal des Sciences naturelles de Belgique"@fr, 
+					"Royal Belgian Institute of Natural Sciences"@en, 
+					"Königliches Belgisches Institut für Naturwissenschaften"@de ;
+	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
 	a foaf:Organization ;
