@@ -1,4 +1,5 @@
-# Map file formats to an EU list of well known URIs and mimetypes
+# Map file formats to an EU list of well known URIs and mimetypes, 
+# ignoring WCMS/WFS/WTMS (since they produce duplicates for application/xml)
 # Typically file formats are described as text instead of URIs, or use portal-specific URIs
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
@@ -23,5 +24,8 @@ WHERE
 		?auth skos:prefLabel ?imt .
 		?auth skos:closeMatch ?mime .
 		?auth skos:exactMatch ?drupal .
-		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format }
+		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format } .
+		FILTER (!STRENDS(
+					STR(?auth), "SRVC")
+				)
 	}
