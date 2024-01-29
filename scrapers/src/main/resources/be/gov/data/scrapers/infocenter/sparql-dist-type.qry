@@ -13,6 +13,8 @@ DELETE
 		?dist dcat:accessURL ?url }
 INSERT 
 	{ 	?dataset dcat:distribution ?newdist .
+		?dataset dcat:landingPage ?url .
+		?url dcterms:language ?lang .
 		?newdist a dcat:Distribution .
 		?newdist dcterms:language ?lang .
 		?newdist dcterms:title ?title .
