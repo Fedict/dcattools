@@ -6,6 +6,8 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
 	{ 	?dataset dcat:distribution ?dist .
+		?dataset dcat:landingPage ?access .
+		?access dcterms:language ?lang .
 		?dist a dcat:Distribution .
 		?dist dcterms:title ?title .
 		?dist dcterms:language ?lang .
