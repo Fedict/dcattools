@@ -1,0 +1,15 @@
+# Set contact name from publisher if not set on contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT
+	{	?contact vcard:fn ?label }
+WHERE
+	{ 	?dataset dcat:contactPoint ?contact .
+		?dataset dcterms:publisher ?publ .
+		?publ skos:prefLabel ?label 
+		FILTER NOT EXISTS { ?contact vcard:fn ?name }
+	}

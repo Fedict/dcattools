@@ -23,13 +23,14 @@ geobe/sparql-org-rbins.qry
 geobe/data-org.ttl
 sparql-map-org.qry
 geobe/sparql-default-publisher.qry
+sparql-vcard-name.qry
 data-media.ttl
 sparql-map-media.qry
 data-frequency.ttl
 sparql-map-frequency-drupal.qry
 geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
-sparql-consolidate-bbox.qry
+#sparql-consolidate-bbox.qry
 geobe/sparql-delete-fodfin.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
