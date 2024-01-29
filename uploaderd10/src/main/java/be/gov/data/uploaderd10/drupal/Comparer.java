@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
+import java.time.Instant;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -295,12 +297,12 @@ public class Comparer {
 					if (nid == null) {
 						throw new IOException("NodeID not found");
 					}
-					/* System.err.println(d.getValue());
+			/*		System.err.println(d.getValue());
 					onSiteByHash.entrySet().forEach(s -> {
 						if(s.getValue().id().equals(d.getValue().id())) {
 							System.err.println(s.getValue());
-						}});  */
-					client.updateDataset(nid, d.getValue(), lang);
+						}});
+			*/		client.updateDataset(nid, d.getValue(), lang);
 					if (++count % 50 == 0) {
 						LOG.info("Updated / translated {}", count);
 					}
@@ -402,7 +404,13 @@ public class Comparer {
 	 * @param langs languages
 	 */
 	private void provideFallbacks(Map<String, Dataset> datasets, String[] langs) {
+		Date now = Date.from(Instant.now());
+
 		for(Dataset d: datasets.values()) {
+			if (d.getStartDate() != null && d.getEndDate() == null) {
+				d.setEndDate(now);
+			}
+			
 			for (String lang: langs) {
 				if (d.getContactAddr(lang) == null) {
 					Map<String, IRI> m = d.getContactAddr();
