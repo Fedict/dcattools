@@ -19,6 +19,7 @@ healthdata/sparql-language-tag.qry
 sparql-bytesize-type.qry
 healthdata/sparql-accessurl-hash.qry
 healthdata/sparql-remove-pages.qry
+sparql-geo-belgium.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 data-license.ttl

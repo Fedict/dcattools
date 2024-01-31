@@ -10,7 +10,7 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/397> ;
 	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
-	skos:altLabel "Sciensano"  .
+	skos:altLabel "Sciensano", "Cancer centre (Sciensano)" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
@@ -75,3 +75,10 @@
 	skos:prefLabel "FAGG"@nl, "AFMPS"@fr, "FAAGP"@de, "FAMHP"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/fagg> ;
 	skos:altLabel "Federal Agency for Medicines and Health Products" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0367303762>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FOD Volksgezondheid"@nl, "SPF Santé"@fr, "FÖD Volksgesundheit"@de, "FPS Health"@en ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/fodvg> ;
+	skos:altLabel "Federal Public Service Health, Food Chain Safety and Environment" .
