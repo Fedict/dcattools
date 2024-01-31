@@ -1,0 +1,11 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dgov: <http://data.gov.be#> .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/76> ;
+	foaf:name "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	foaf:homepage <https://statbel.fgov.be/> .
