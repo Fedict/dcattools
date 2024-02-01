@@ -4,6 +4,7 @@ statbelopen/sparql-drupal-media.qry
 sparql-geo-belgium.qry
 statbelopen/sparql-license.qry
 statbelopen/data-publ-contact.ttl
+statbelopen/sparql-vcard-fn.qry
 statbelopen/data-theme.ttl
 statbelopen/sparql-drupal-theme.qry
 clear-skos.qry

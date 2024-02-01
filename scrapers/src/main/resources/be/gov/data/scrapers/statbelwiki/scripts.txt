@@ -4,6 +4,7 @@ statbelwiki/sparql-drupal-media.qry
 sparql-geo-belgium.qry
 statbelwiki/sparql-license.qry
 statbelwiki/data-publ-contact.ttl
+statbelwiki/sparql-vcard-fn.qry
 statbelwiki/data-theme.ttl
 statbelwiki/sparql-drupal-theme.qry
 clear-skos.qry
