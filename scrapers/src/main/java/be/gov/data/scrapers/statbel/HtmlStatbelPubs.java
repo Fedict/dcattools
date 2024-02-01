@@ -287,6 +287,8 @@ public class HtmlStatbelPubs extends Html {
             store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
             store.add(dataset, DCTERMS.TITLE, title, lang);
             store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
+			store.add(dataset, DCAT.LANDING_PAGE, p.getUrl());
+			store.add(store.getURI(p.getUrl().toString()), DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 
             Elements themes = doc.select(LI_THEMES);
             if (themes != null && themes.size() > 2) {
