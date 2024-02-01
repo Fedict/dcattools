@@ -1,0 +1,9 @@
+# Add landingPage
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?s dcat:landingPage <https://www.go-peg.eu> }
+WHERE
+	{ 	?s a dcat:Dataset }
+

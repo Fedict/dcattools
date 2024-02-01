@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sadl/data-org.ttl
+sadl/sparql-landingpage.qry
 sparql-map-org.qry
 sadl/sparql-locn-bbox.qry
 data-shacl-support.ttl
