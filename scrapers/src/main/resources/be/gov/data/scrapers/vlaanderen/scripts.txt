@@ -25,6 +25,7 @@ vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
 #vlaanderen/sparql-format-mediatype.qry
 vlaanderen/sparql-format-skos.qry
+vlaanderen/sparql-format-darwin.qry
 data-media.ttl
 sparql-map-media.qry
 vlaanderen/sparql-format-wms.qry
