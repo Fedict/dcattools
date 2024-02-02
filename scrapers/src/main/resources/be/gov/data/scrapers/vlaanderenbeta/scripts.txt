@@ -1,0 +1,6 @@
+# extra queries to be executed and data to be loaded
+sparql-remove-hydra.qry
+clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry

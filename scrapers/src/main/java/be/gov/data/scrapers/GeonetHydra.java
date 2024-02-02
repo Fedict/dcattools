@@ -90,8 +90,10 @@ public abstract class GeonetHydra extends Geonet {
 	 * @throws IOException
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
+		int errors = 0;
+
 		URL url = getBase();
-		while (url != null) {
+		while (url != null && errors < 10) {
 			String xml = makeRequest(url);
 			try {
 				Document doc = sax.read(new StringReader(xml));
@@ -100,10 +102,16 @@ public abstract class GeonetHydra extends Geonet {
 				url = (next != null) ? new URL(next.getStringValue()) : null;
 			} catch (DocumentException ex) {
 				LOG.error("Error parsing XML " + url);
-				// guess next URL to avoid endless loop
+				// guess next URL and increase error counter to avoid endless loop
+				errors++;
+				sleep();
 				url = guessNext(url);
 			}
-		}			
+		}
+		
+		if (errors == 10) {
+			LOG.error("Too much errors, giving up");
+		}
 	}
 
 	@Override
