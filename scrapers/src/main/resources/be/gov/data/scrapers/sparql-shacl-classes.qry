@@ -20,6 +20,7 @@ WHERE
 			( dcterms:accrualPeriodicity dcterms:Frequency )
 			( dcterms:license dcterms:LicenseDocument )
 			( dcterms:rights dcterms:RightsStatement )
+			( dcterms:spatial dcterms:Location )
 			( dcat:accessService dcat:DataService )
 			( dcterms:format dcterms:MediaTypeOrExtent )
 			( dcat:landingPage foaf:Document )

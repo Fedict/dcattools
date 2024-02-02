@@ -1,16 +1,19 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-hydra.qry
+vlaanderen/sparql-remove-blanks.qry
 vlaanderen/sparql-remove-agent.qry
 vlaanderen/sparql-remove-license.qry
 vlaanderen/sparql-remove-rights.qry
 vlaanderen/sparql-remove-spatial.qry
 vlaanderen/sparql-default-contact.qry
-vlaanderen/sparql-fix-org.qry
+vlaanderen/sparql-remove-empty-org.qry
 vlaanderen/sparql-fix-rightsholder.qry
 vlaanderen/data-org.ttl
 vlaanderen/sparql-org-deptomgeving.qry
 vlaanderen/sparql-map-org-ovo.qry
 vlaanderen/sparql-map-org-simple.qry
+vlaanderen/sparql-map-org-antwerpen.qry
+vlaanderen/sparql-map-org-gent.qry
 clear-skos.qry
 vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-consolidate-address2.qry
@@ -20,11 +23,12 @@ vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-standards.qry
 vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
-vlaanderen/sparql-format-wms.qry
-data-media.ttl
-vlaanderen/sparql-format-mediatype.qry
+#vlaanderen/sparql-format-mediatype.qry
 vlaanderen/sparql-format-skos.qry
+data-media.ttl
 sparql-map-media.qry
+vlaanderen/sparql-format-wms.qry
+vlaanderen/sparql-format-wms-drupal.qry
 clear-skos.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
@@ -43,7 +47,7 @@ vlaanderen/sparql-default-language2.qry
 vlaanderen/sparql-landingpage.qry
 vlaanderen/sparql-fix-endpointurl.qry
 vlaanderen/data-geo.ttl
-sparql-map-geo.qry
+sparql-geo-publisher.qry
 vlaanderen/sparql-default-geo.qry
 vlaanderen/data-theme.ttl
 sparql-map-keyword-theme.qry

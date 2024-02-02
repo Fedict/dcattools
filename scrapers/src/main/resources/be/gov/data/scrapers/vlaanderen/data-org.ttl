@@ -145,6 +145,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207451227>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2797657/> ;
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/125>  ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
@@ -152,6 +153,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207466964>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2796492/> ;
 	skos:prefLabel "Hasselt"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/485>  ;
 	skos:altLabel "Stad Hasselt" .
@@ -159,6 +161,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207500123>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2803139/> ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002304> ;
 	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/128> ;
@@ -169,6 +172,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207494678> 
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2794056/> ;
 	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/130> ;
 	skos:altLabel "Stad Kortrijk" .
@@ -225,6 +229,8 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207499430>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2791538/> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002172> ;
 	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/349> ;
 	skos:altLabel "Stad Mechelen" .
@@ -422,6 +428,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207528035>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800935/> ;
 	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/243> ;
 	skos:altLabel "Stad Brugge"@nl .

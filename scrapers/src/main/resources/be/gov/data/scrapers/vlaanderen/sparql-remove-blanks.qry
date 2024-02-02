@@ -1,0 +1,8 @@
+# Remove blank nodes (that have been converted to base URI
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s ?p <http://data.gov.be/> }
+WHERE
+	{	?s ?p <http://data.gov.be/> }
