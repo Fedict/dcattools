@@ -447,3 +447,11 @@
 	skos:prefLabel "Provincie Noord-Brabant (Nederland)"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/b> ;
 	skos:altLabel "Provincie Noord-Brabant (Nederland)"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO004023> ;
+	skos:prefLabel "Vereniging van Vlaamse Provincies"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/vvp> ;
+	skos:altLabel "Vereniging van de Vlaamse Provincies"@nl .

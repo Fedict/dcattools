@@ -4,7 +4,8 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT 
-	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0207451227> }
+	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0207451227> .
+		?dataset dcat:contactPoint <http://data.gov.be/org/gent/contact> }
 WHERE
 	{	?dataset a dcat:Dataset
 		FILTER (STRSTARTS(STR(?dataset), "https://data.stad.gent"))

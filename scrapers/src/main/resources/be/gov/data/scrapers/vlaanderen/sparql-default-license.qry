@@ -6,7 +6,7 @@ PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/56> .
-		?dist dcterms:license <http://overheid.vlaanderen.be/hergebruik/licenties/v1-0/html/modellicentie-gratis-hergebruik> }
+		?dist dcterms:license <http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0> }
 WHERE
 	{	?dist a dcat:Distribution .
 		FILTER NOT EXISTS { ?dist dcterms:license ?lic }
