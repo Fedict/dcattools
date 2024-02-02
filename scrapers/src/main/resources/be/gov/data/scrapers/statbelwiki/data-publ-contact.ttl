@@ -9,3 +9,11 @@
 	dgov:org <http://data.gov.be/en/taxonomy/term/76> ;
 	foaf:name "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
 	foaf:homepage <https://statbel.fgov.be/> .
+
+<https://statbel.fgov.be#contactPoint> 
+	a vcard:Kind ;
+	vcard:hasEmail <mailto:statbel@economie.fgov.be> ;
+	vcard:fn "Statbel (Generaldirektion Statistik - Statistics Belgium)"@de ,
+			"Statbel (Directorate General Statistics - Statistics Belgium)"@en ,
+			"Statbel (Direction générale Statistique - Statistics Belgium)"@fr ,
+			"Statbel (Algemene Directie Statistiek - Statistics Belgium)"@nl .

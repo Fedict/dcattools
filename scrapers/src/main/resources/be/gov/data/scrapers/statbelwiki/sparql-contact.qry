@@ -1,0 +1,8 @@
+# Set contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <https://statbel.fgov.be#contactPoint> }
+WHERE
+	{ 	?dataset a dcat:Dataset }
