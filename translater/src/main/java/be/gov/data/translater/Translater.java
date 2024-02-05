@@ -42,6 +42,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -78,6 +79,12 @@ import org.slf4j.LoggerFactory;
 public class Translater {
 	private final static Logger LOG = LoggerFactory.getLogger(Translater.class);
 
+	// only translated specific properties of specific classes to reduce the workload
+	private final static List<IRI> PROPERTIES = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
+	private final static List<IRI> CLASSES = List.of(DCAT.DATASET, DCAT.DATA_SERVICE);
+
+	private final static Map<String,Map<String,String>> CACHE = new HashMap<>();
+
 	private final static String TRANSFORMED = "-t-";
 
 	private final HttpClient client;
@@ -85,22 +92,6 @@ public class Translater {
 	
 	private int delay = 60;
 	private int maxSize = 5000;
-
-	/**
-	 * e
-	 * @param delay 
-	 */
-	public void setDelay(int delay) {
-		this.delay = delay;
-	}
-
-	/**
-	 * 
-	 * @param maxSize 
-	 */
-	public void setMaxSize(int maxSize) {
-		this.maxSize = maxSize;
-	}
 
 	/**
 	 * Send a translation HTTP request
@@ -149,6 +140,15 @@ public class Translater {
 	private String getTranslation(String text, String source, String target) throws IOException, InterruptedException {
 		String sha1 = DigestUtils.sha1Hex(text);
 		
+		Map<String, String> inCache = CACHE.get(sha1);
+		if (inCache != null) {
+			String hit = inCache.get(source + TRANSFORMED + target);
+			if (hit != null) {
+				LOG.info("Cache hit for {} to {}", source, target);
+				return hit;
+			}
+		}
+		
 		URI uri = null;
 		try {
 			uri = new URI(baseURL + "/request/retrieve?hash=" + sha1 + "&targetLang=" + target);
@@ -173,7 +173,7 @@ public class Translater {
 	}
 
 	/**
-	 * Convert the literals into a map with language code as the key
+	 * Convert the non-blank literals into a map with language code as the key
 	 * 
 	 * @param literals literals (assumed to have a language tag)
 	 * @return map
@@ -191,7 +191,7 @@ public class Translater {
 	}
 	
 	/**
-	 * Get the alphabetically lowest language code of a series of literals
+	 * Get the alphabetically lowest, not-translated language code of a series of literals
 	 * 
 	 * @param literals
 	 * @return language code
@@ -203,6 +203,13 @@ public class Translater {
 								.findFirst().get();
 	}
 
+	/**
+	 * Get the list of language codes a literal is available in, 
+	 * without making a distinction between transformed (machine) or human translation
+	 * 
+	 * @param literals
+	 * @return 
+	 */
 	private List<String> langTags(Map<String,String> literals) {
 		return literals.keySet().stream()
 								.map(t -> t.split(TRANSFORMED)[0])
@@ -210,26 +217,60 @@ public class Translater {
 	}
 
 	/**
+	 * Get the list of subject IRIs, limited to specific classes
+	 * 
+	 * @param m
+	 * @return 
+	 */
+	private Set<Resource> getSubjects(Model m) {
+		// limit translations to these CLASSES
+		Set<Resource> subjects = new HashSet<>();
+		for (IRI t: CLASSES) {
+			subjects.addAll(m.filter(null, RDF.TYPE, t).subjects());
+		}
+		return subjects;
+	}
+
+	/**
+	 * Get trimmed and possibly abbreviated string
+	 * 
+	 * @param body
+	 * @param subj
+	 * @param pred
+	 * @return 
+	 */
+	private String getAbbrString(String body, Resource subj, IRI pred) {
+		String str = body.trim();
+		
+		if (str.length() < 3) {
+			LOG.warn("Text too short ({}) for {} {}, skipping", str.length(), subj, pred);
+			return null;
+		}
+
+		if (str.length() >= maxSize) {
+			LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
+			str = StringUtils.abbreviate(body, maxSize);
+		}
+		return str;
+	}
+
+	/**
 	 * Translate the literals of a set of properties for one or more classes
 	 * 
 	 * @param m RDF model
-	 * @param types rdf types / classes
-	 * @param preds predicates to translate
 	 * @param langs languages to translate to
 	 * @throws IOException 
 	 */
-	private int translationRound(Model m, List<IRI> types, List<IRI> preds, List<String> langs) throws IOException {	
+	private int translationRound(Model m, List<String> langs) throws IOException {	
 		int missing = 0;
 		int count = 0;
+		String translation;
 
-		// limit translations to these types
-		Set<Resource> subjects = new HashSet<>();
-		for (IRI t: types) {
-			subjects.addAll(m.filter(null, RDF.TYPE, t).subjects());
-		}
+		Set<Resource> subjects = getSubjects(m);
+
 		LOG.info("Statements {}", m.size());
 		for(Resource subj: subjects) {
-			for (IRI pred: preds) {
+			for (IRI pred: PROPERTIES) {
 				LOG.debug("{} {}", subj, pred);
 				List<String> wanted = new ArrayList<>(langs);
 				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
@@ -245,22 +286,16 @@ public class Translater {
 				}
 				// pick the lowest language tag as the source language
 				String source = firstLang(literals);
-				String body = literals.get(source).trim();
-				if (body.length() < 3) {
-					LOG.warn("Text too short ({}) for {} {}, skipping", body.length(), subj, pred);
+				
+				String str = getAbbrString(literals.get(source), subj, pred);
+				if (str == null) {
 					continue;
 				}
-
-				if (body.length() >= maxSize) {
-					LOG.warn("Text too long ({}, truncating) for {} {}", body.length(), subj, pred);
-					body = StringUtils.abbreviate(body, maxSize);
-				}
-
+				
 				for (String target: wanted) {
 					try {
-						String translation = getTranslation(body, source, target);
-						count++;
-						if (count % 200 == 0) {
+						translation = getTranslation(str, source, target);
+						if (++count % 200 == 0) {
 							LOG.info("{} translations requested", count);
 						}
 						if (translation != null) {
@@ -279,6 +314,13 @@ public class Translater {
 		return missing;
 	}
 	
+	/**
+	 * Check if translation is still progressing or is stuck (= number of items to translate is not going down)
+	 * 
+	 * @param progress
+	 * @param missing
+	 * @return 
+	 */
 	private boolean checkStuck(List<Integer> progress, int missing) {
 		progress.add(missing);
 		int size = progress.size();
@@ -288,7 +330,41 @@ public class Translater {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Use an existing file as cache
+	 * 
+	 * @param in
+	 * @throws IOException 
+	 */
+	public void cache(InputStream in) throws IOException {
+		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
+
+		Set<Resource> subjects = getSubjects(m);
+
+		for(Resource subj: subjects) {
+			for (IRI pred: PROPERTIES) {
+				LOG.debug("{} {}", subj, pred);
+				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
+				
+				if (literals.isEmpty()) {
+					LOG.warn("No language literals for {} {}, skipping", subj, pred);
+					continue;
+				}
+				// pick the lowest language tag as the source language
+				String source = firstLang(literals);
+				String body = getAbbrString(literals.get(source), subj, pred);
+				if (body == null) {
+					continue;
+				}
+		
+				String sha1 = DigestUtils.sha1Hex(body);
+				CACHE.put(sha1, literals);
+			}
+		}
+		LOG.info("Caching {}", CACHE.size());
+	}
+
 	/**
 	 * Translate titles and descriptions
 	 * 
@@ -299,8 +375,6 @@ public class Translater {
 	 * @throws java.lang.InterruptedException 
 	 */
 	public void translate(InputStream in, OutputStream out, List<String> langs) throws IOException, InterruptedException {
-		List<IRI> preds = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
-		List<IRI> types = List.of(DCAT.DATASET, DCAT.DATA_SERVICE);
 		Model m = Rio.parse(in, "http://data.gov.be", RDFFormat.NTRIPLES);
 	
 		List<Integer> progress = new ArrayList<>();
@@ -308,7 +382,7 @@ public class Translater {
 		boolean stuck = false;
 
 		do {
-			missing = translationRound(m, types, preds, langs);
+			missing = translationRound(m, langs);
 			if (missing > 0) {
 				LOG.info("Missing translations: {}", missing);
 				TimeUnit.SECONDS.sleep(delay);

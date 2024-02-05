@@ -65,7 +65,9 @@ public class Main implements Callable<Integer> {
 	@Option(names={"-p", "--pass"}, description="etranslation pass")
 	private String pass;
 
-	
+	@Option(names={"-c", "--cache"}, description="Use existing output file as cache")
+	private boolean cache;
+
 	@Override
 	public Integer call() throws Exception { 
 		LOG.info("-- START --");
@@ -74,6 +76,15 @@ public class Main implements Callable<Integer> {
 		Path outFile = Paths.get("data", name, name + "-translated" + ".nt");
 
 		Translater t = new Translater(url, user, pass);
+		
+		if (cache || outFile.toFile().exists()) {
+			LOG.info("Use previous file as cache");
+			try(InputStream is = Files.newInputStream(outFile)) {
+				t.cache(is);
+			} catch (IOException ioe) {
+				LOG.warn(ioe.getMessage());
+			}
+		}
 		
 		try(InputStream is = Files.newInputStream(inFile);
 			OutputStream os = Files.newOutputStream(outFile)){
@@ -94,5 +105,4 @@ public class Main implements Callable<Integer> {
 		int exitCode = new CommandLine(new Main()).execute(args);
         System.exit(exitCode);
 	}
-	
 }
