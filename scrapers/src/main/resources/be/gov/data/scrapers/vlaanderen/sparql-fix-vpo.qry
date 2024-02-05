@@ -1,0 +1,8 @@
+# Fix invalid mailbox literal
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s vcard:hasEmail <mailto:natuurlijkerijkdommenbrussel.omgeving@vlaanderen.be>  }
+WHERE 
+	{ ?s vcard:hasEmail <mailto:natuurlijkerijkdommenbrussel.omgeving@vlaanderen.be> }
