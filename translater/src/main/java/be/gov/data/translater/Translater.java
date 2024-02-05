@@ -141,8 +141,9 @@ public class Translater {
 		String sha1 = DigestUtils.sha1Hex(text);
 		
 		Map<String, String> inCache = CACHE.get(sha1);
+
 		if (inCache != null) {
-			String hit = inCache.get(source + TRANSFORMED + target);
+			String hit = inCache.get(target + TRANSFORMED + source);
 			if (hit != null) {
 				LOG.info("Cache hit for {} to {}", source, target);
 				return hit;
