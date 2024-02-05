@@ -145,7 +145,7 @@ public class Translater {
 		if (inCache != null) {
 			String hit = inCache.get(target + TRANSFORMED + source);
 			if (hit != null) {
-				LOG.info("Cache hit for {} to {}", source, target);
+				LOG.debug("Cache hit for {} to {}", source, target);
 				return hit;
 			}
 		}
@@ -269,7 +269,7 @@ public class Translater {
 
 		Set<Resource> subjects = getSubjects(m);
 
-		LOG.info("Statements {}", m.size());
+		LOG.info("Total nr of statements {}", m.size());
 		for(Resource subj: subjects) {
 			for (IRI pred: PROPERTIES) {
 				LOG.debug("{} {}", subj, pred);
