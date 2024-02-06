@@ -69,7 +69,8 @@ vlaanderen/sparql-fix-homepage.qry
 vlaanderen/sparql-fix-genid-theme.qry
 vlaanderen/sparql-fix-telephone.qry
 vlaanderen/sparql-fix-vmm.qry
-vlaanderen/sparql-fix-vpo.qry
+vlaanderen/sparql-mail-vpo.qry
+vlaanderen/sparql-mail-deptomgeving.qry
 vlaanderen/sparql-remove-serves.qry
 vlaanderen/sparql-remove-source.qry
 sparql-strip-html.qry

@@ -51,6 +51,10 @@
             <artifactId>jsoup</artifactId>
             <version>1.17.1</version>
         </dependency>
+		<dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+        </dependency>
         <dependency>
             <groupId>javax.json</groupId>
             <artifactId>javax.json-api</artifactId>

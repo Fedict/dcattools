@@ -1,0 +1,12 @@
+# Add default email to contactpoints of Omgeving Vlaanderen
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT 
+	{ 	?org vcard:hasEmail <mailto:omgeving@vlaanderen.be> }
+WHERE
+	{
+		?org vcard:fn ?label
+		FILTER (CONTAINS(?label, "Departement Omgeving"))
+		FILTER NOT EXISTS { ?org vcard:hasEmail ?email }
+	}

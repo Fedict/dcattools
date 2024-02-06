@@ -1,13 +1,12 @@
-# Map publisher for datasets from Ghent to Crossroad Bank Enterprises URI
+# Add contact for Fluvius
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT 
-	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0207451227> .
-		?dataset dcat:contactPoint <http://data.gov.be/org/gent/contact> }
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/fluvius/contact> }
 WHERE
 	{	?dataset a dcat:Dataset
-		FILTER (STRSTARTS(STR(?dataset), "https://data.stad.gent"))
-		FILTER NOT EXISTS { ?dataset dcterms:publisher ?publ }
+		FILTER (STRSTARTS(STR(?dataset), "https://opendata.fluvius.be"))
+		FILTER NOT EXISTS { ?dataset dcat:contactPoint  ?contact }
 	}

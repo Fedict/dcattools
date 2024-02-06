@@ -14,4 +14,5 @@ WHERE
 		BIND (IRI(
 				CONCAT("https://www.vlaanderen.be/DataCatalogRecord/", ?id)
 			) as ?url)
+		FILTER NOT EXISTS { ?s dcat:landingPage ?page }
 	}

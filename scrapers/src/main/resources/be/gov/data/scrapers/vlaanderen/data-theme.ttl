@@ -64,6 +64,7 @@
 		"hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, 
 		"economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, 
 		"economie en innovatie ondernemerschap"@nl,
+		"https://opendata.wse.vlaanderen.be/explore/?refine.theme=Activering",
 		"https://opendata.wse.vlaanderen.be/explore/?refine.theme=Loopbanen+en+competenties",
 		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme",
 		"https://data.stad.gent/id/theme/Werken%20%26%20ondernemen",
