@@ -3,12 +3,12 @@
   <parent>
     <artifactId>dcattools</artifactId>
     <groupId>be.gov.data</groupId>
-    <version>2.27.0</version>
+    <version>3.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tools</artifactId>
   <name>tools</name>
-  <version>2.27.0</version>
+  <version>3.0.0</version>
   <description>Misc tools for enhancing DCAT metadata</description>
   <url>https://data.gov.be</url>
   <developers>
@@ -43,7 +43,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>3.5.1</version>
         <executions>
           <execution>
             <phase>package</phase>
