@@ -282,7 +282,7 @@ public class Translater {
 					continue;
 				}
 				if (literals.isEmpty()) {
-					LOG.warn("No language literals for {} {}, skipping", subj, pred);
+					LOG.warn("No (or empty) language literals for {} {}, skipping", subj, pred);
 					continue;
 				}
 				// pick the lowest language tag as the source language
@@ -349,7 +349,7 @@ public class Translater {
 				Map<String,String> literals = toLangMap(Models.getPropertyLiterals(m, subj, pred));
 				
 				if (literals.isEmpty()) {
-					LOG.warn("No language literals for {} {}, skipping", subj, pred);
+					LOG.warn("No literals for {} {}, skipping", subj, pred);
 					continue;
 				}
 				// pick the lowest language tag as the source language
