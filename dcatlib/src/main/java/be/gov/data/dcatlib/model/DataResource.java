@@ -26,6 +26,7 @@
 package be.gov.data.dcatlib.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ import org.eclipse.rdf4j.model.IRI;
  * 
  * @author Bart Hanssens
  */
-public class DataResource {
+public abstract class DataResource {
 	private IRI iri;
 
 	private String id;
@@ -63,6 +64,34 @@ public class DataResource {
 	private Date modified;
 	private Date startDate;
 	private Date endDate;
+	
+	/**
+	 * Get formats from all distributions
+	 * 
+	 * @return 
+	 */
+	public abstract	Set<IRI> getFormats();
+	
+	/**
+	 * Get licenses from all datasets / distributions
+	 * 
+	 * @return 
+	 */
+	public abstract	Set<IRI> getLicenses();
+
+	/**
+	 * Get distributions
+	 * 
+	 * @return 
+	 */
+	public abstract List<Distribution> getDistributions();
+
+	/**
+	 * Get download URLs or endpoints
+	 * 
+	 * @return 
+	 */
+	public abstract Set<IRI> getDownloadURLs(String lang);
 	
 	/**
 	 * @return the iri

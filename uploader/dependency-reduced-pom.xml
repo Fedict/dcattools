@@ -3,12 +3,12 @@
   <parent>
     <artifactId>dcattools</artifactId>
     <groupId>be.gov.data</groupId>
-    <version>2.27.0</version>
+    <version>3.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>uploader</artifactId>
   <name>uploader</name>
-  <version>2.27.0</version>
+  <version>3.0.0</version>
   <description>Update tool for data.gov.be</description>
   <build>
     <plugins>

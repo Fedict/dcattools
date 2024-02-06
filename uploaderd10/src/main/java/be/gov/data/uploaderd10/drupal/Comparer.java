@@ -27,7 +27,7 @@ package be.gov.data.uploaderd10.drupal;
 
 import be.gov.data.dcatlib.DcatReader;
 import be.gov.data.dcatlib.model.Catalog;
-import be.gov.data.dcatlib.model.Dataset;
+import be.gov.data.dcatlib.model.DataResource;
 import be.gov.data.dcatlib.model.Distribution;
 
 import java.io.IOException;
@@ -199,10 +199,10 @@ public class Comparer {
 	 * @param lang
 	 * @return 
 	 */
-	private Map<ByteBuffer, DrupalDataset> mapToDrupal(Map<String, Dataset> datasets, String lang) {
+	private Map<ByteBuffer, DrupalDataset> mapToDrupal(Map<String, DataResource> datasets, String lang) {
 		Map<ByteBuffer, DrupalDataset> map = new HashMap<>();
 		
-		for(Dataset d: datasets.values()) {
+		for(DataResource d: datasets.values()) {
 			DrupalDataset drupal = new DrupalDataset(
 				null,
 				null,
@@ -211,7 +211,7 @@ public class Comparer {
 				d.getDescription(lang),
 				lang,
 				mapTaxonomy(categories, d.getThemes()),
-				toURI(d.getRights()),
+				null,
 				stripMailto(d.getContactAddr(lang)),
 				toURI(Set.of(d.getLandingPage(lang))),
 				toURIMap(d.getDownloadURLs(lang)),
@@ -231,8 +231,6 @@ public class Comparer {
 
 		return map;
 	}
-
-	
 
 	/**
 	 * Create missing datasets on Drupal using the ones read from input file.
@@ -352,13 +350,13 @@ public class Comparer {
 	 * @param datasets
 	 * @param langs 
 	 */
-	private void removeIncomplete(Map<String, Dataset> datasets, String[] langs) {
+	private void removeIncomplete(Map<String, DataResource> datasets, String[] langs) {
 		int nrlangs = langs.length;
 	
 		Set<String> remove = new HashSet<>();
 
-		for(Map.Entry<String,Dataset> e: datasets.entrySet()) {
-			Dataset d = e.getValue();
+		for(Map.Entry<String,DataResource> e: datasets.entrySet()) {
+			DataResource d = e.getValue();
 			String key = e.getKey();
 			if (d.getTitle().size() < nrlangs) {
 				LOG.warn("Title for {} not available in {} languages, skipping", key, nrlangs);
@@ -403,10 +401,10 @@ public class Comparer {
 	 * @param datasets
 	 * @param langs languages
 	 */
-	private void provideFallbacks(Map<String, Dataset> datasets, String[] langs) {
+	private void provideFallbacks(Map<String, DataResource> datasets, String[] langs) {
 		Date now = Date.from(Instant.now());
 
-		for(Dataset d: datasets.values()) {
+		for(DataResource d: datasets.values()) {
 			if (d.getStartDate() != null && d.getEndDate() == null) {
 				d.setEndDate(now);
 			}
@@ -456,12 +454,14 @@ public class Comparer {
 		getTaxonomies();
 
 		Catalog catalog = reader.read();
-		Map<String, Dataset> datasets = catalog.getDatasets();
+		Map<String, DataResource> resources = new HashMap<>();
+		resources.putAll(catalog.getDatasets());
+		resources.putAll(catalog.getDataservices());
 
-		removeIncomplete(datasets, langs);
-		provideFallbacks(datasets, langs);
+		removeIncomplete(resources, langs);
+		provideFallbacks(resources, langs);
 		
-		// Mapping of dataset IDs to Drupal nodeIDs
+		// Mapping of dataset / dataservice IDs to Drupal nodeIDs
 		Map<String, Integer> nodeIDs = null;
 
 		// first language is considered the "source" (always present)
@@ -469,11 +469,11 @@ public class Comparer {
 		String sourceLang = langs[0];
 
 		for (String lang: langs) {
-			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(datasets, lang);
-			LOG.info("Read {} {} datasets from file", onFileByHash.size(), lang);
+			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(resources, lang);
+			LOG.info("Read {} {} datasets/services from file", onFileByHash.size(), lang);
 
 			List<DrupalDataset> ds = client.getDatasets(lang);
-			LOG.info("Retrieved {} {} datasets from site", ds.size(), lang);
+			LOG.info("Retrieved {} {} datasets/services from site", ds.size(), lang);
 
 			Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
 					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));

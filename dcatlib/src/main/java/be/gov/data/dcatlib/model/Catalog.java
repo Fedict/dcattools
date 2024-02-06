@@ -28,6 +28,7 @@ package be.gov.data.dcatlib.model;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import org.eclipse.rdf4j.model.IRI;
 
 /**
  *
@@ -62,6 +63,21 @@ public class Catalog {
 		return datasets.get(id);
 	}
 
+	/**
+	 * Get the dataset with the specific IRI
+	 * 
+	 * @param iri iri
+	 * @return dataset or null
+	 */
+	public Dataset getDataset(IRI iri) {
+		for (Dataset d: datasets.values()) {
+			if (d.getIRI().equals(iri)) {
+				return d;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Get a map of all datasets, with ID as key
 	 * 

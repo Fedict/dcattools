@@ -25,6 +25,11 @@
  */
 package be.gov.data.dcatlib.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.eclipse.rdf4j.model.IRI;
 
 /**
@@ -34,7 +39,22 @@ import org.eclipse.rdf4j.model.IRI;
 public class Dataservice extends DataResource {
 	private IRI endPointURL;
 	private IRI endPointDescription;
-	
+	private List<Dataset> datasets;
+
+	/**
+	 * @return the datasets
+	 */
+	public List<Dataset> getDatasets() {
+		return datasets;
+	}
+
+	/**
+	 * @param datasets the datasets to set
+	 */
+	public void setDatasets(List<Dataset> datasets) {
+		this.datasets = datasets;
+	}
+
 	/**
 	 * @return the endPointURL
 	 */
@@ -56,6 +76,11 @@ public class Dataservice extends DataResource {
 		return endPointDescription;
 	}
 
+	@Override
+	public Set<IRI> getDownloadURLs(String lang) {
+		return (endPointURL != null) ? Set.of(endPointURL) : Collections.emptySet();
+	}
+
 	/**
 	 * @param endPointDescription the endPointDescription to set
 	 */
@@ -63,4 +88,35 @@ public class Dataservice extends DataResource {
 		this.endPointDescription = endPointDescription;
 	}
 
+	@Override
+	public Set<IRI> getFormats() {
+		Set<IRI> formats = new HashSet<>();
+		
+		for(Dataset d: datasets) {
+			formats.addAll(d.getLicenses());
+		}
+		formats.remove(null);
+		return formats;
+	}
+
+	@Override
+	public Set<IRI> getLicenses() {
+		Set<IRI> licenses = new HashSet<>();
+		
+		licenses.add(this.getLicense());
+		for(Dataset d: datasets) {
+			licenses.addAll(d.getLicenses());
+		}
+		licenses.remove(null);
+		return licenses;
+	}
+
+	@Override
+	public List<Distribution> getDistributions() {
+		List<Distribution> dists = new ArrayList<>();
+		for(Dataset d: datasets) {
+			dists.addAll(d.getDistributions());
+		}
+		return dists;
+	}
 }

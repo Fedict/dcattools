@@ -455,17 +455,41 @@ public class DcatReader {
 		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
 			IRI iri = (IRI) stmt.getSubject();
 			try {
-				Dataservice d = (Dataservice) readResource(iri, new Dataservice());
-				catalog.addDataservice(d.getId(), d);
+				Dataservice d = (Dataservice) readResource(iri, new Dataservice());				
+				catalog.addDataservice(d.getId(), d);		
 				ok++;
 			} catch (IOException ioe) {
 				LOG.error(ioe.getMessage());
 				skip++;
-			}
+			}			
 		}
 		LOG.info("Read {} dataservices, skipping {}", ok, skip);
 	}
-	
+
+	/**
+	 * Lookup datasets served by dataservices (if available)
+	 * 
+	 * @param catalog
+	 * @throws IOException 
+	 */
+	private void readServes(Catalog catalog) throws IOException {
+		for(Dataservice service: catalog.getDataservices().values()) {
+			IRI iri = service.getIRI();
+			List<Dataset> datasets = new ArrayList<>();
+			Set<IRI> refs = getIRIs(iri, DCAT.SERVES_DATASET);
+		
+			for (IRI ref: refs) {
+				Dataset d = catalog.getDataset(ref);
+				if (d != null) {
+					datasets.add(d);
+				} else {
+					LOG.warn("Dataset {} not present, served by {}", ref, iri);
+				}
+			}
+			service.setDatasets(datasets);
+		}
+	}
+
 	/**
 	 * Read from input
 	 * 
@@ -481,11 +505,11 @@ public class DcatReader {
 			m = Rio.parse(is, fmt);
 		}
 		
-		
 		Catalog catalog = new Catalog();
 		
 		readDatasets(catalog);
 		readDataservices(catalog);
+		readServes(catalog);
 
 		return catalog;
     }

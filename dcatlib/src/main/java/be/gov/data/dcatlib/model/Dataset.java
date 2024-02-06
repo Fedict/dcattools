@@ -42,6 +42,7 @@ public class Dataset extends DataResource {
 	/**
 	 * @return the distributions
 	 */
+	@Override
 	public List<Distribution> getDistributions() {
 		return distributions;
 	}
@@ -58,6 +59,7 @@ public class Dataset extends DataResource {
 	 * 
 	 * @return set of IRIs
 	 */
+	@Override
 	public Set<IRI> getFormats() {
 		Set<IRI> formats = new HashSet<>();
 		
@@ -73,9 +75,11 @@ public class Dataset extends DataResource {
 	 * 
 	 * @return set of IRIs
 	 */
+	@Override
 	public Set<IRI> getLicenses() {
 		Set<IRI> licenses = new HashSet<>();
 		
+		licenses.add(this.getLicense());
 		for(Distribution dist: distributions) {
 			licenses.add(dist.getLicense());
 		}
@@ -121,7 +125,8 @@ public class Dataset extends DataResource {
 	 * 
 	 * @param lang language code
 	 * @return set of IRIs
-	 */	
+	 */
+	@Override
 	public Set<IRI> getDownloadURLs(String lang) {
 		Set<IRI> urls = new HashSet<>();
 		
