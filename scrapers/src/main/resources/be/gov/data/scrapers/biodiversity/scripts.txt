@@ -2,12 +2,11 @@
 biodiversity/sparql-language.qry
 sparql-tag-language.qry
 biodiversity/sparql-theme.qry
-biodiversity/data-geo.ttl
-sparql-map-geo-publisher.qry
-sparql-geo-belgium.qry
 clear-skos.qry
 biodiversity/data-org.ttl
 sparql-map-org.qry
+sparql-geo-publisher.qry
+sparql-geo-belgium.qry
 biodiversity/data-contact.ttl
 biodiversity/sparql-default-contact.qry
 biodiversity/sparql-dist-downloadurl.qry
