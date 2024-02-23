@@ -172,6 +172,10 @@ public class HtmlIndicators extends Html {
 				LOG.warn("No body element");
 				continue;
 			}
+			if (doc.select(TITLE).first() == null) {
+				LOG.warn("No title element");
+				continue;
+			}
 			String title = doc.select(TITLE).first().text();
 			String desc = doc.select(DESC).first().text();
 			
