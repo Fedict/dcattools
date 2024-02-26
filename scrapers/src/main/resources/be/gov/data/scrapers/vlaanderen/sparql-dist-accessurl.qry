@@ -6,8 +6,8 @@ PREFIX adms: <http://www.w3.org/ns/adms#>
 INSERT
 	{ 	?dist dcat:accessURL ?url }
 WHERE
-	{ 	?dataset dcat:accessURL ?url .
-		?dataset ?p ?dist .
+	{ 	?dataset ?p ?dist .
+		?dataset dcat:accessURL ?url .
 		?dist a dcat:Distribution
 		VALUES ?p { adms:sample dcat:distribution }
 		FILTER NOT EXISTS { ?dist dcat:accessURL ?o }

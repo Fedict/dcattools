@@ -1,0 +1,17 @@
+# Fix accessRights for data from (usptream) City of Antwerp
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s dcterms:accessRights ?rights .
+		?rights ?p ?o 
+	}
+INSERT
+	{	?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> }
+WHERE 
+	{	
+		?s dcterms:accessRights ?rights .
+		?rights ?p ?o
+		FILTER STRSTARTS(STR(?s), "https://portaal-stadantwerpen.opendata.arcgis.com/")
+	}

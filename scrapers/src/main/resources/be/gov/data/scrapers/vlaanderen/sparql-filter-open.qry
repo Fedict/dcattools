@@ -1,4 +1,4 @@
-# Only use datasets / services tagged with "open"
+# Only use datasets / services tagged with "open", removing entries and data from catalog
 
 PREFIX adms:	<http://www.w3.org/ns/adms#>
 PREFIX dcat:	<http://www.w3.org/ns/dcat#>
@@ -9,6 +9,7 @@ PREFIX metavl:	<https://data.vlaanderen.be/ns/metadata-dcat#>
 
 DELETE {
 		?cat ?entry ?s .
+		?cat dcat:record ?rec .
 		?rec ?x ?y .
 		?s ?p ?o .
 		?dist ?a ?b
@@ -24,8 +25,8 @@ WHERE {
 			?s ?rel ?dist .
 			?dist ?a ?b
 			VALUES ?rel { adms:sample dcat:distribution }
+			FILTER CONTAINS(STR(?dist), "well-known/genid")
 		}
-		VALUES ?entry { dcat:dataset dcat:service }
 		VALUES (?cl ?key) { 
 			( dcat:Dataset <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA> )
 			( dcat:DataService <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE> ) }
