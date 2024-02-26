@@ -24,6 +24,7 @@ WHERE
 			( dcat:accessService dcat:DataService )
 			( dcterms:format dcterms:MediaTypeOrExtent )
 			( dcat:landingPage foaf:Document )
+			( dcat:mediaType dcterms:MediaType )
 			( foaf:page foaf:Document )
 			( foaf:homepage foaf:Document )
 			( dcat:servesDataset dcat:Dataset )
