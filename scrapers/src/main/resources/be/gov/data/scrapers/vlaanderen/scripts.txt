@@ -3,11 +3,17 @@ vlaanderen/sparql-fix-geotype.qry
 vlaanderen/sparql-filter-open.qry
 vlaanderen/sparql-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
+# Antwerp
 vlaanderen/sparql-accessrights-antwerp.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 clear-skos.qry
+# Gent, INBO, Fluvius
 sparql-map-loc-lang.qry
+# MobielVlaanderen
+vlaanderen/sparql-fix-lexvo-lang.qry
+# DCJM
+vlaanderen/sparql-fix-dut-lang.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
