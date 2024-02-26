@@ -27,7 +27,7 @@ package be.gov.data.scrapers.vlaanderen;
 
 import be.gov.data.helpers.Storage;
 import be.gov.data.scrapers.Cache;
-import be.gov.data.scrapers.GeonetHydra;
+import be.gov.data.scrapers.Dcat;
 import be.gov.data.scrapers.Page;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -47,31 +47,59 @@ import org.eclipse.rdf4j.rio.RDFParseException;
  * @see https://opendata.vlaanderen.be/
  * @author Bart Hanssens
  */
-public class GeonetVlaanderen extends GeonetHydra {
+public class GeonetVlaanderen extends Dcat {
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
 		Set<URL> urls = cache.retrievePageList();
 		for (URL url: urls) {
 			Page page = cache.retrievePage(url).get("all");
 			// fix buggy input
-			try (InputStream in = new ByteArrayInputStream(page.getContent()
-						//			.replaceAll(
-						//				"(?s)<dct:spatial([^>]*?)?>(?!\\s*<dct:Location(.*?)>)(.+?)</dct:spatial>", 
-						//				"<dct:spatial><dct:Location$2>$3</dct:Location></dct:spatial>")
-						//			.replaceAll("rdf:resoure", "rdf:resource")
-									.getBytes(StandardCharsets.UTF_8))) {
+			try (InputStream in = new ByteArrayInputStream(page.getContent().getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
 				if (ex.getMessage().contains("Premature end")) {
 					LOG.warn("Premature end of file in {}", url);
 				} else {
-					throw new RepositoryException(ex);
+					throw new RepositoryException(url.toString(), ex);
 				}
 			}
 		}
 		generateCatalog(store);
 	}
 
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @param cache
+	 * @throws IOException
+	 */
+	@Override
+	protected void scrapeCat(Cache cache) throws IOException {
+		int size = 20;
+
+		for(int start = 0; ;start += size) {
+			URL url = new URL(getBase().toString() + "?startindex=" + start + "&limit=" + size + "&f=dcat_ap_vl");
+			String xml = makeRequest(url);
+			if (!xml.contains("Dataset") && !xml.contains("DataService")) {
+				LOG.info("Last (empty) page");
+				break;
+			}
+			cache.storePage(url, "all", new Page(url, xml));
+		}
+	}
+
+	@Override
+	public void scrape() throws IOException {
+		LOG.info("Start scraping");
+		Cache cache = getCache();
+
+		Set<URL> urls = cache.retrievePageList();
+		if (urls.isEmpty()) {
+			scrapeCat(cache);
+		}
+		LOG.info("Done scraping");
+	}
+	
 	/**
 	 * Constructor.
 	 *

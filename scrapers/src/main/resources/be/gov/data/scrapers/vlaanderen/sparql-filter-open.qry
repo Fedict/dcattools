@@ -1,0 +1,36 @@
+# Only use datasets / services tagged with "open"
+
+PREFIX adms:	<http://www.w3.org/ns/adms#>
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf:	<http://xmlns.com/foaf/0.1/>
+PREFIX metavl:	<https://data.vlaanderen.be/ns/metadata-dcat#>
+
+
+DELETE {
+		?cat ?entry ?s .
+		?rec ?x ?y .
+		?s ?p ?o .
+		?dist ?a ?b
+}
+WHERE { 
+		?cat a dcat:Catalog .
+		?cat ?entry ?s .
+		?rec foaf:primaryTopic ?s .
+		?rec ?x ?y .
+		?s a ?cl .
+		?s ?p ?o .
+		OPTIONAL {
+			?s ?rel ?dist .
+			?dist ?a ?b
+			VALUES ?rel { adms:sample dcat:distribution }
+		}
+		VALUES ?entry { dcat:dataset dcat:service }
+		VALUES (?cl ?key) { 
+			( dcat:Dataset <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA> )
+			( dcat:DataService <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE> ) }
+		FILTER NOT EXISTS {
+			?s metavl:statuut ?key
+		}
+}
+
