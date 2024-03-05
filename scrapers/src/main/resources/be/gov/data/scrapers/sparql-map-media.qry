@@ -15,7 +15,7 @@ INSERT
 		?dist dcterms:format ?auth .
 		?dist dcat:mediaType ?mime .
 		?mime a dcterms:MediaType .
-		?auth a dcterms:MediaTypeOrExtent  .
+		?auth a dcterms:MediaTypeOrExtent .
 		?auth rdfs:label ?imt 
 	}
 WHERE

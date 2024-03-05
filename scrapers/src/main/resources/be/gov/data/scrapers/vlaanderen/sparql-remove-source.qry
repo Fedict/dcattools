@@ -1,0 +1,7 @@
+# Remove dcterms:source from CatalogRecord, seems to be used incorrectly
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?rec dcterms:source ?src }
+WHERE { ?rec dcterms:source ?src }
+

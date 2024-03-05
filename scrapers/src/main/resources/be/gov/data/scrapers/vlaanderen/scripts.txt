@@ -5,7 +5,11 @@ vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
-vlaanderen/sparql-format-ldjson.qry
+vlaanderen/sparql-remove-source.qry
+vlaanderen/sparql-remove-agent.qry
+vlaanderen/sparql-format-rdf.qry
+data-media.ttl
+sparql-date-type.qry
 # Antwerp
 vlaanderen/sparql-accessrights-antwerp.qry
 data-frequency.ttl

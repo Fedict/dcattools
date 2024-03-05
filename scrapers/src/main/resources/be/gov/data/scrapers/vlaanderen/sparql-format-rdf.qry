@@ -1,0 +1,25 @@
+# Map RDF formats
+
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos:	<http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?s dcterms:format ?fmt .
+		?fmt a skos:Concept .
+		?fmt a dcterms:MediaTypeOrExtent .
+		?fmt skos:prefLabel ?label }
+INSERT
+	{	?s dcterms:format ?format .
+		?s dcat:mediaType ?mediatype }
+WHERE
+	{	?s dcterms:format ?fmt .
+		?fmt a skos:Concept .
+		?fmt a dcterms:MediaTypeOrExtent .
+		?fmt skos:prefLabel ?label.
+		VALUES (?label ?format ?media) {
+			( "ld+json" <http://publications.europa.eu/resource/authority/file-type/JSON_LD> <https://www.iana.org/assignments/media-types/application/ld+json> )
+			( "turtle" <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> <https://www.iana.org/assignments/media-types/text/turtle>  )
+			( "rdf+xml" <http://publications.europa.eu/resource/authority/file-type/RDF_XML> <https://www.iana.org/assignments/media-types/application/rdf+xml> )
+		}
+}
