@@ -1,0 +1,15 @@
+# Remove served datasets from dataservice if title and other important data is missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+	?s dcat:servesDataset ?dataset .
+	?dataset ?p ?o 
+}
+WHERE { 
+	?s dcat:servesDataset ?dataset 
+	OPTIONAL { ?dataset ?p ?o }
+	FILTER NOT EXISTS { ?dataset dcterms:title ?title }
+}
+

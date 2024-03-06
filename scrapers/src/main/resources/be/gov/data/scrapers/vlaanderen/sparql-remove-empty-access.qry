@@ -1,0 +1,15 @@
+# Remove access dataservice if title and other important data is missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+	?s dcat:accessService ?service .
+	?service ?p ?o 
+}
+WHERE { 
+	?s dcat:accessService ?service 
+	OPTIONAL { ?service ?p ?o }
+	FILTER NOT EXISTS { ?service dcterms:title ?title }
+}
+

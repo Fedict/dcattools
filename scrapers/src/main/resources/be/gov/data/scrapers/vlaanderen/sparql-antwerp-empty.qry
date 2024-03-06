@@ -1,0 +1,21 @@
+# Fix empty classes (usptream) City of Antwerp
+
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+
+DELETE
+	{	?s ?rel ?genid .
+		?genid a ?cl
+	}
+WHERE 
+	{	
+		?s ?rel ?genid .
+		?genid a ?cl
+		VALUES ?rel { dcat:theme dcat:provenance }
+		FILTER CONTAINS(STR(?genid), "well-known/genid")
+		FILTER NOT EXISTS { ?genid ?p ?o .
+							VALUES ?p { dcterms:title skos:prefLabel} 
+		}
+	}

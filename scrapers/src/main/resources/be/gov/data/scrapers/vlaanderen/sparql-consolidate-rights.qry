@@ -8,7 +8,7 @@ DELETE
 		?genrights ?p ?o }
 INSERT
 	{	?s dcterms:rights ?rights .
-		?s a dcterms:RightsStatement .
+		?rights a dcterms:RightsStatement .
 		?rights ?p ?o }
 WHERE
 	{ 	?s dcterms:rights ?genrights .

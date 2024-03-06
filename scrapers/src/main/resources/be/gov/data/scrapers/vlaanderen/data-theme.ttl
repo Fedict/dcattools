@@ -1,0 +1,273 @@
+# Data for mapping keywords to an EU list of themes/categories
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
+	skos:closeMatch <http://eurovoc.europa.eu/5463>,
+		<http://www.eionet.europa.eu/gemet/concept/1600> ,
+		<http://inspire.ec.europa.eu/theme/af>,
+		<http://vocab.belgif.be/auth/datatheme/AGRI> ;
+	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
+	skos:altLabel "mest"@nl, "visserij"@nl, "areaal"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, 
+		"bio"@nl, "landbouw"@nl, "akker"@nl, "AKKER"@nl, "AKKERBOUW"@nl, "agromilieumaatregelen"@nl, 
+		"bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl,
+		"http://vocab.belgif.be/auth/datatheme/AGRI" .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>  ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Sport> ,
+		<http://ns.thedatatank.com/dcat/themes#Media> ,
+		<http://ns.thedatatank.com/dcat/themes#CulturalHeritage> ,
+		<http://ns.thedatatank.com/dcat/themes#CulturalEvents> ,
+		<http://vocab.belgif.be/auth/datatheme/CULT>, 
+		<http://vocab.belgif.be/auth/datatheme/EDUC>,
+		<http://www.eionet.europa.eu/gemet/concept/1917> ,
+		<http://www.eionet.europa.eu/gemet/concept/10847> ,
+		<https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed>,
+		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,
+		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ,
+		<https://data.stad.gent/id/theme/Evenementen%20%26%20Feesten> ;
+	skos:prefLabel "CULTURE AND SPORT"@en ;
+	skos:altLabel "Filmvoorstelling"@nl, "bioscopen"@nl, "cultuur - jeugdwerk"@nl , "museum"@nl,
+		"media - geschreven_pers"@nl , "musea"@nl, "bibliotheken"@nl, "cultuur - letteren"@nl, 
+		"theater"@nl, "toerisme - overnachtingen"@nl, "film"@nl, "sport"@nl, "vrt"@nl, "kunst"@nl,
+		"cultuur - volksontwikkeling"@nl, "internationale_culturele_uitwisseling"@nl, 
+		"muziek"@nl, "sport - vorming"@nl, "cultuur - centra"@nl, "monument"@nl, "televisie"@nl, 
+		"radio"@nl, "BIB"@nl, "BIBLIOTHEKEN"@nl, "CULTUURCENTRUM"@nl, "Erfgoed"@nl, "Monumenten"@nl, 
+		"Onroerend Erfgoed"@nl, "Sport"@nl, "VRT"@nl, "activiteiten"@nl, "bibliotheek"@nl, "cinema"@nl, 
+		"clubhuizen"@nl, "cultuur"@nl, "erfgoed"@nl, "gentse feesten"@nl, "media"@nl, "nieuws"@nl, 
+		"nieuwsberichten"@nl, "omroep"@nl, "aanplakborden"@nl, "CULTUURHISTORISCHE"@nl, "archeologie"@nl, 
+		"Archeologie@nl", "basketbal"@nl, "BEGIJNHOVEN"@nl, "media cijfers mediagebruik SCV nieuws"@nl,
+		"handel"@nl,
+		"https://data.stad.gent/id/theme/Evenementen%20%26%20Feesten", 
+		"https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd",
+		"https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed" .
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
+		<http://ns.thedatatank.com/dcat/themes#Economy> ,
+		<http://ns.thedatatank.com/dcat/themes#Work> ,
+		<http://vocab.belgif.be/auth/datatheme/ECON> ,
+		<https://data.stad.gent/id/theme/Werken%20%26%20ondernemen> ;
+	skos:prefLabel "ECONOMY AND FINANCE"@en ;
+	skos:altLabel "BED AND BREAKFAST"@nl, "bedrijf"@nl, "bedrijven"@nl, "arbeidsvraag"@nl, "toerisme"@nl, 
+		"overnachtingen"@nl, "zeehavens_economisch"@nl, "tewerkstelling"@nl, "economie"@nl, 
+		"buitenlandse_handel"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, 
+		"economie - 1structuur"@nl, "arbeidsmarkt - aanbod"@nl, "tewerkstelling"@nl, "Kadastrale percelen"@nl, 
+		"Faciliteiten voor productie en industrie"@nl, "Arbeid"@nl, "BEDRIJF"@nl, "BEDRIJVEN"@nl, 
+		"BEDRIJVENTERREINEN"@nl, "Bedrijventerrein"@nl, "Budget"@nl, "ECONOMIE"@nl, "Financiën"@nl, "HOSTEL"@nl, 
+		"HOTEL"@nl, "Economie"@nl, "Havengebied"@nl, "Werk"@nl, "Winkelen"@nl, "arbeid"@nl, "arbeidsmarkt"@nl, 
+		"bedrijfslocatie"@nl, "bedrijfsgebouwen"@nl, "bedrijventerrein"@nl, "bedrijventerreinen"@nl, 
+		"bedrijfsvorm"@nl, "bedrijfspercelen"@nl, "economie"@nl, "haven"@nl, "hostels"@nl, "hotel"@nl, 
+		"hotels"@nl, "vastgoeddatabank"@nl, "beheer van (natuurlijke) hulpbronnen"@nl, 
+		"economie en innovatie buitenlandse handel"@nl, "economie en innovatie structuur"@nl, 
+		"economie en innovatie ondernemerschap"@nl,
+		"https://opendata.wse.vlaanderen.be/explore/?refine.theme=Activering",
+		"https://opendata.wse.vlaanderen.be/explore/?refine.theme=Loopbanen+en+competenties",
+		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme",
+		"https://data.stad.gent/id/theme/Werken%20%26%20ondernemen",
+		"http://vocab.belgif.be/auth/datatheme/ECON",
+		"http://ns.thedatatank.com/dcat/themes#Economy" .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Education> ,
+		<http://vocab.belgif.be/auth/datatheme/EDUC> ,
+		<https://data.stad.gent/id/theme/Onderwijs%20%26%20kinderopvang> ;
+	skos:prefLabel "EDUCATION"@en ;
+	skos:altLabel "onderwijs"@nl, "leerlingen"@nl, "vorming"@nl, "leerkrachten"@nl, "OPLEIDING"@nl, 
+		"Onderwijs"@nl, "School"@nl, "basisschool"@nl .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Environment> ,
+		<http://vocab.belgif.be/auth/datatheme/ENVI> ,
+		<http://inspire.ec.europa.eu/theme/hy>,	<http://inspire.ec.europa.eu/theme/lu>,
+		<http://inspire.ec.europa.eu/theme/oi>, <http://inspire.ec.europa.eu/theme/ps> ,
+		<http://www.eionet.europa.eu/gemet/concept/8167> ,
+		<http://www.eionet.europa.eu/gemet/concept/6376> ,
+		<http://www.eionet.europa.eu/gemet/concept/7902> ,
+		<http://www.eionet.europa.eu/gemet/concept/2339> ,
+		<http://www.eionet.europa.eu/gemet/concept/3646> ,
+		<http://www.eionet.europa.eu/gemet/concept/901> ,
+		<http://www.eionet.europa.eu/gemet/concept/827> ,
+		<http://www.eionet.europa.eu/gemet/concept/3780> ,
+		<http://www.eionet.europa.eu/gemet/concept/7983> ,
+		<http://eurovoc.europa.eu/5463>, 
+		<https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
+	skos:prefLabel "ENVIRONMENT"@en ;
+	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, 
+		"bodem"@nl, "lucht"@nl, "water"@nl, "bodemgebruik"@nl, "Geologie"@nl, "hydrografie"@nl ,
+		"Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, 
+		"Beschermde gebieden"@nl, "Bodemgebruik"@nl, "Habitats en biotopen"@nl, "Bodem"@nl, 
+		"Landgebruik"@nl, "Milieubewakingsvoorzieningen"@nl, "Gebieden met natuurrisico's"@nl,
+		"bodembestemming"@nl, "Biologie"@nl, "Bodem"@nl, "Hondenpoep"@nl, "Herbruikbaar"@nl, 
+		"Hondentoiletten"@nl, "Huisvuil"@nl, "afvalkalender"@nl, "biodiversiteit"@nl, "boom"@nl, 
+		"bomen"@nl, "boomsoort"@nl, "duurzame energie"@nl, "duurzame mobiliteit"@nl, "groen"@nl, 
+		"klimaat"@nl, "vogel"@nl, "vogeltelling"@nl, "water"@nl, "waterpeil"@nl, "waterstand"@nl, 
+		"(milieu)beschermingsbeleid"@nl, "(rivier)oevervegetatie"@nl, "(zand)duin"@nl, 
+		"aardverschuiving"@nl, "afgrenzing van polder"@nl, "afgrenzing van watering"@nl, 
+		"afvalwater"@nl, "afvalwaterkwaliteit"@nl, "afvalwaterzuivering"@nl, "afzetting"@nl, 
+		"afzettingen"@nl, "agromilieumaatregelen"@nl, "bebossing"@nl, "BEBOST"@nl, 
+		"beheer van (natuurlijke) hulpbronnen"@nl, "behoud van (natuurlijke) hulpbronnen"@nl, 
+		"BEKEN"@nl, "Zwin en Zwinbosjes"@nl, "recyclagepark"@nl,
+		"http://eurovoc.europa.eu/5463",
+		"http://vocab.belgif.be/auth/datatheme/ENVI",
+		"http://ns.thedatatank.com/dcat/themes#Environment",
+		"https://data.stad.gent/id/theme/Natuur%20%26%20milieu" .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
+	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER>,
+		<https://opendata.fluvius.be/id/theme/Netgebruikers%20en%20hun%20verbruik>,
+		<https://opendata.fluvius.be/id/theme/Fluvius%20als%20leverancier>,
+		<https://opendata.fluvius.be/id/theme/Energietransitie%3A%20adoptie%20van%20nieuwe%20technologie%C3%ABn>,
+		<https://opendata.fluvius.be/id/theme/Financieel%20Beheer>,
+		<https://opendata.fluvius.be/id/theme/Marktwerking>, 
+		<https://opendata.fluvius.be/id/theme/Services%20die%20Fluvius%20levert%20in%20opdracht%20van%20zijn%20DNB%27s>,
+		<http://inspire.ec.europa.eu/theme/er> ;
+	skos:prefLabel "ENERGY"@en ;
+	skos:altLabel "energie energieopwekking"@nl, "Energie"@nl, "energie"@nl, 
+		"Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl, "duurzame energie"@nl, "gas"@nl, 
+		"Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl,
+		"http://vocab.belgif.be/auth/datatheme/ENER" .
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41>  ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Government> ,
+		<http://vocab.belgif.be/auth/datatheme/GOVE> ,
+		<http://inspire.ec.europa.eu/theme/cp> ,
+		<https://data.stad.gent/id/theme/Administration%2C%20Government%2C%20Public%20finances%2C%20Citizenship> ,
+		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ;
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
+	skos:altLabel "Dienstverlening"@nl, "publieke diensten"@nl, "begroting"@nl, "subsidiering"@nl, 
+		"wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 
+		"begroting - inkomsten"@nl, "ambtenaren"@nl, "lokaal_bestuur"@nl, "schuld"@nl, 
+		"Kadastrale percelen"@nl, "Administratieve eenheden"@nl, "Bodemgebruik"@nl, 
+		"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden"@nl, 
+		"Adressen"@nl, "Begroting"@nl, "Beleid"@nl, "Bestuur"@nl, "Budget"@nl, "Gemeente"@nl, 
+		"LOKAAL BESTUUR"@nl, "Overheid"@nl, "Overheidsopdrachten"@nl, "Departementen"@nl, 
+		"Ruimtelijke Ordening"@nl, "beleidsvelden"@nl, "besparing"@nl, "bestuur"@nl, "gemeente"@nl, 
+		"grond"@nl, "gronden"@nl, "grondgebied"@nl, "lokale besturen"@nl, "overheidsproducten"@nl, 
+		"productencatalogus"@nl, "ruimte"@nl, "ruimtelijke ordening"@nl, "Vlaams Parlement"@nl, 
+		"woonbeleid"@nl, "Vlaamse overheid"@nl, "Landgebruik"@nl, "aankoopplicht"@nl, 
+		"administratief perceel"@nl, "administratieve eenheid"@nl, "administratieve eenheden"@nl, 
+		"administratieve grens"@nl, "adres"@nl, "Adressen"@nl, "administratieve grenzen"@nl, 
+		"afbakeningslijn"@nl, "arrondissement"@nl, "arrondissementsgrens"@nl, "beheersplan"@nl,
+		"voorkooprecht"@nl, "landeigendom"@nl, "CRAB"@nl,
+		"http://vocab.belgif.be/auth/datatheme/GOVE",
+		"http://ns.thedatatank.com/dcat/themes#Government",
+		"http://ns.thedatatank.com/dcat/themes#Environment" .
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
+	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/HEAL>, <http://inspire.ec.europa.eu/theme/hh> ;
+	skos:prefLabel "HEALTH"@en ;
+	skos:altLabel "apothekers"@nl, "gezondheid"@nl, "morbiditeit"@nl, "vruchtbaarheid"@nl, 
+		"handicap"@nl, "ziektepreventie"@nl, "medische_en_paramedische_beroepen"@nl, 
+		"gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, 
+		"milieu gezondheid"@nl, "Menselijke gezondheid en veiligheid"@nl, "Gezondheid"@nl, 
+		"Gezondheidscentrum"@nl, "Overlijdens"@nl, "apotheek"@nl, "apotheker"@nl, "dokter"@nl, 
+		"gezondheid"@nl, "gezondheidszorg"@nl, "toegankelijkheid"@nl, "Zorgatlas"@nl,
+		"http://vocab.belgif.be/auth/datatheme/HEAL" .
+
+<http://publications.europa.eu/resource/authority/data-theme/INTR>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
+	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/INTR> ;
+	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
+	skos:altLabel "ontwikkelingssamenwerking buitenlands beleid ontwikkelingssamenwerking"@nl, "internationaal"@nl, 
+		"ontwikkelingssamenwerking"@nl, "buitenlandse_handel"@nl, "buitenlands_beleid"@nl, 
+		"internationale_culturele_uitwisseling"@nl, "Europa"@nl, "economie en innovatie buitenlandse handel"@nl .
+
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#SafetyAndJustice> ,
+		<http://vocab.belgif.be/auth/datatheme/JUST> ,
+		<http://ns.thedatatank.com/dcat/themes#Law> ;
+	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
+	skos:altLabel "veiligheid"@nl, "criminaliteit"@nl .
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Demography> ,
+		<http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare> ,
+		<https://data.stad.gent/id/theme/Wonen%20%26%20%28ver%29bouwen>,
+		<http://vocab.belgif.be/auth/datatheme/SOCI> ,
+		<http://inspire.ec.europa.eu/theme/bu>, <http://inspire.ec.europa.eu/theme/pd>,
+		<https://data.stad.gent/id/theme/Burgerzaken> ;
+	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
+	skos:altLabel "sociaal"@nl, "zorg"@nl, "gelijke kansen gender"@nl, "jeugdwerk"@nl , 
+		"gezondheid - nataliteit_en_mortaliteit"@nl , "vruchtbaarheid"@nl , "algemeen_welzijnswerk"@nl ,
+		"demografie - 3_loop_van_de_bevolking"@nl , "gezondheid - morbiditeit"@nl, "handicap"@nl, 
+		"samenlevingsvormen"@nl, "woonbeleid - steun_particulieren"@nl, "bevolkingsvooruitzichten"@nl, 
+		"minderheden"@nl, "woningmarkt"@nl, "demografie - 8_levensverwachting"@nl, 
+		"demografie - 5_huishoudens"@nl, "gelijke - algemeen"@nl, "woonbeleid - bewoners"@nl, 
+		"woonbeleid - sociale_huisvesting"@nl, "welzijn - vrijwilligers"@nl, "toegankelijkheid"@nl, 
+		"welzijn - algemeen"@nl, "woningkwaliteit"@nl, "huishoudens"@nl, "woonbeleid"@nl, "ouderen"@nl,
+		"demografie"@nl, "Arbeid"@nl, "Armoede"@nl, "Bevolking"@nl, "Bevolkingsgroei"@nl, 
+		"Bevolkingsindicatoren"@nl, "CRECHE"@nl, "Demografie"@nl, "Geboortes"@nl, "Huisdieren"@nl, 
+		"Huishoudens"@nl, "Jeugd"@nl, "KINDERDAGVERBLIJF"@nl, "Loop_van_de_bevolking"@nl, "OCMW"@nl, 
+		"ONTHAALMOEDER"@nl, "Overlijdens"@nl, "Werkloosheid"@nl, "Werkzoekenden"@nl, "arbeid"@nl, 
+		"arbeidsmarkt"@nl, "bevolking"@nl, "buurtcentrum"@nl, "demografie"@nl, "digitale kloof"@nl, 
+		"gezin"@nl, "gezinnen"@nl, "huishoudens"@nl, "kansarmoede"@nl, "kinderen"@nl, "migratie"@nl, 
+		"minderheden"@nl, "bejaarde"@nl, "toilet"@nl, "vastgoed"@nl, "vastgoeddatabank"@nl, "welzijn"@nl,
+		"woning"@nl, "wonen"@nl, "kind"@nl, "appartementen"@nl, "armoede"@nl, "jeugd"@nl,
+		"http://vocab.belgif.be/auth/datatheme/SOCI",
+		"https://data.stad.gent/id/theme/Burgerzaken",
+		"http://ns.thedatatank.com/cat/themes#Demography",
+		"http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare" .
+
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
+		<http://vocab.belgif.be/auth/datatheme/REGI> ,
+		<http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional> ,
+		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ,
+		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ;
+	skos:prefLabel "REGIONS, CITIES"@en ;
+	skos:altLabel "BED AND BREAKFAST"@nl, "toerisme"@nl, "overnachtingen"@nl, "economie - 3regionaal"@nl,
+		"toerisme - vakantieparticipatie"@nl, 
+		"toerisme - tewerkstelling"@nl, "BED AND BREAKFAST"@nl, "CAMPING"@nl, "GASTENKAMER"@nl, 
+		"HOSTEL"@nl, "HOTEL"@nl, "INFOKANTOOR"@nl, "INTERESSANTE PLAATS"@nl, 
+		"KAMPEREN"@nl, "LOGIE"@nl, "LOKAAL BESTUUR"@nl, "Toerisme"@nl, "buurt"@nl, "camping"@nl, 
+		"campings"@nl, "diensten voor toerisme"@nl, "gastenkamers"@nl, "hostels"@nl, 
+		"hotel"@nl, "hotels"@nl, "jeugdverblijven"@nl, "kampeerautoterreinen"@nl, "kampeerlogies"@nl, 
+		"logies"@nl, "lokale besturen"@nl,
+		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme" .
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Mobility> ,
+		<http://vocab.belgif.be/auth/datatheme/TRAN> , <http://inspire.ec.europa.eu/theme/tn>,
+		<https://data.stad.gent/id/theme/Mobiliteit> ;
+	skos:prefLabel "TRANSPORT"@en ;
+	skos:altLabel "mobiliteit"@nl, "vervoermiddelen"@nl, "zeehavens_economisch"@nl, 
+		"vervoersprestaties"@nl, "mobiliteit - bereikbaarheid"@nl, "verkeersveiligheid"@nl, 
+		"infrastructuur"@nl, "Vervoersnetwerken"@nl, "Auto"@nl, "Fiets"@nl, "Mobiliteit"@nl, 
+		"Havengebied"@nl, "Parkeren"@nl, "Station"@nl, "Wandelroute"@nl, "aanrijtijden"@nl, 
+		"autosnelweg"@nl, "autosnelwegen"@nl, "bevaarbaar"@nl, "duwbakken"@nl, "elektrische fiest"@nl, 
+		"elektrische wagen"@nl, "duurzame mobiliteit"@nl, "file"@nl, "fileduur"@nl, "haven"@nl, 
+		"kanalen"@nl, "mobiliteit"@nl, "schelde"@nl, "sluis"@nl, "taxi"@nl, "traject"@nl, 
+		"voetgangers"@nl, "wandelroutes"@nl, "afrit"@nl, "afritten"@nl, "ANKERPLAATSEN"@nl, 
+		"autoweg"@nl, "autocar"@nl , "Grachten"@nl, "weg"@nl,
+		"https://data.stad.gent/id/theme/Mobiliteit", "http://ns.thedatatank.com/dcat/themes#Mobility",
+		"http://vocab.belgif.be/auth/datatheme/TRAN".
+
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37>  ;
+	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Research> ,
+		<http://vocab.belgif.be/auth/datatheme/TECH> ,
+		<http://inspire.ec.europa.eu/theme/ge> ,
+		<http://www.eionet.europa.eu/gemet/concept/3650> ,
+		<http://www.eionet.europa.eu/gemet/concept/4108> ,
+		<http://www.eionet.europa.eu/gemet/concept/7168> ,
+		<http://eurovoc.europa.eu/2176> ;
+	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
+	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 
+		"wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, 
+		"Hydrografie"@nl, "Orthobeeldvorming"@nl, "Geology"@nl, "Archeologie"@nl, "Biologie"@nl, 
+		"Onderzoek en Ontwikkeling"@nl, "ict"@nl, "geografie"@nl, "wetenschap"@nl, "archeologie"@nl, 
+		"Archeologie@nl",
+		"http://vocab.belgif.be/auth/datatheme/TECH" .

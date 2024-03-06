@@ -3,24 +3,36 @@ vlaanderen/sparql-fix-geotype.qry
 vlaanderen/sparql-filter-open.qry
 vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-rights.qry
+vlaanderen/sparql-consolidate-standards.qry
 vlaanderen/sparql-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
 vlaanderen/sparql-remove-source.qry
 vlaanderen/sparql-remove-agent.qry
+vlaanderen/sparql-remove-empty-serves.qry
+vlaanderen/sparql-remove-empty-access.qry
 vlaanderen/sparql-format-rdf.qry
 data-media.ttl
 sparql-date-type.qry
-# Antwerp
-vlaanderen/sparql-accessrights-antwerp.qry
-data-frequency.ttl
-sparql-map-frequency.qry
-clear-skos.qry
 # Gent, INBO, Fluvius
 sparql-map-loc-lang.qry
 # MobielVlaanderen
 vlaanderen/sparql-fix-lexvo-lang.qry
 # DCJM
 vlaanderen/sparql-fix-dut-lang.qry
+# Antwerp
+vlaanderen/sparql-antwerp-accessrights.qry
+vlaanderen/sparql-antwerp-empty.qry
+data-frequency.ttl
+sparql-map-frequency.qry
+clear-skos.qry
+vlaanderen/data-theme.ttl
+sparql-map-keyword-theme.qry
+sparql-map-theme.qry
+clear-skos.qry
+vlaanderen/sparql-org-deptomgeving.qry
+vlaanderen/data-org.ttl
+vlaanderen/sparql-map-org-simple.qry
+clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
