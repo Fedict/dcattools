@@ -1,0 +1,10 @@
+# Fix incorrect casing of property
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE	
+	{ ?s dcat:endpointUrl ?url }
+INSERT	
+	{ ?s dcat:endpointURL ?url }
+WHERE 
+	{ ?s dcat:endpointUrl ?url }
