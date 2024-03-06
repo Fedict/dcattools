@@ -40,7 +40,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000092> ;
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/92> ;
-	skos:altLabel "Vlaamse Milieumaatschappij - afdeling Operationeel Waterbeheer", 
+	skos:altLabel "Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer"@nl, 
 		"Vlaamse Milieumaatschappij", 
 		"Vlaamse overheid - Vlaamse MilieuMaatschappij"@nl,
 		"Flanders Environment Agency (VMM)"@nl,
@@ -88,6 +88,7 @@
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
+		"Departement Mobiliteit en Openbare Werken (MOW) - Afdeling Geotechniek"@nl,
 		"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang"@nl,
 		"Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning"@nl,
 		"Departement Mobiliteit en Openbare Werken, afdeling Technische Ondersteuning"@nl,
@@ -253,7 +254,8 @@
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", 
 		"Vlaamse overheid - Departement Omgeving",
 		"Departement Omgeving"@nl ,"Omgeving Vlaanderen"@en,
-		"MercatorNet" .
+		"MercatorNet",
+		"MercatorNet"@nl.
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336131>
 	a foaf:Organization ;
@@ -279,6 +281,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725795>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2789733/> ;
 	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr, "Province East Flanders"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/487>  ;
 	skos:altLabel "Provincie Oost-Vlaanderen"@nl, "Province East Flanders" .	
@@ -286,6 +289,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2783770/> ;
 	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, "Province West Flanders"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/124>  ;
 	skos:altLabel "Provincie West-Vlaanderen"@nl .	
@@ -293,6 +297,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725203>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2792347/> ;
 	skos:prefLabel "Provincie Limburg"@nl, "Province de Limbourg"@fr, "Province of Limburg"@en ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/366> ;
 	skos:altLabel "Provincie Limburg"@nl .
@@ -447,6 +452,13 @@
 	skos:prefLabel "Provincie Noord-Brabant (Nederland)"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/b> ;
 	skos:altLabel "Provincie Noord-Brabant (Nederland)"@nl .
+
+<https://opencorporates.com/id/companies/nl/50052969>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Provincie Limburg (Nederland)"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/c> ;
+	skos:altLabel "Provincie Limburg (Nederland)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
 	a foaf:Organization ;

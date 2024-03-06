@@ -73,6 +73,7 @@ vlaanderen/sparql-mail-vpo.qry
 vlaanderen/sparql-mail-deptomgeving.qry
 vlaanderen/sparql-remove-serves.qry
 vlaanderen/sparql-remove-source.qry
+vlaanderen/spa
 sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

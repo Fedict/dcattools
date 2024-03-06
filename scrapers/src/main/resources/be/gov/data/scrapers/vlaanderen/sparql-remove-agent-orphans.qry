@@ -1,0 +1,13 @@
+# Delete empty agents not being used (due to mappings) anymore
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s a foaf:Agent .
+		?s ?p ?o
+	}
+WHERE
+	{ 	?s ?a foaf:Agent .
+		?s ?p ?o
+		FILTER NOT EXISTS { ?x ?rel ?s }
+	}

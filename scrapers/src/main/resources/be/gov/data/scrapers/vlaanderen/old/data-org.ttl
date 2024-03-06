@@ -448,6 +448,13 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/b> ;
 	skos:altLabel "Provincie Noord-Brabant (Nederland)"@nl .
 
+<https://opencorporates.com/id/companies/nl/50052969>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Provincie Limburg (Nederland)"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/c> ;
+	skos:altLabel "Provincie Limburg (Nederland)"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;

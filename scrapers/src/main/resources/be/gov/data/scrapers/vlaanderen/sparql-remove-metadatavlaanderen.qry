@@ -1,0 +1,9 @@
+# Remove creator "metadata Vlaanderen", since that's just a portal
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:creator <https://metadata.vlaanderen.be> }
+WHERE 
+	{	?s dcterms:creator <https://metadata.vlaanderen.be> }
+	
