@@ -9,7 +9,7 @@ INSERT
 	{	?s dcterms:modified ?newdt }
 WHERE
 	{	?s dcterms:modified ?dt .
-		FILTER ((STRLEN(?dt) = 22) && CONTAINS(STR(?dt), "+0"))
+		FILTER ((STRLEN(STR(?dt)) = 22) && CONTAINS(STR(?dt), "+0"))
 		BIND (
 			STRDT(
 				CONCAT(

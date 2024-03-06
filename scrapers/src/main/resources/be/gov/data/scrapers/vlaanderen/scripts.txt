@@ -14,15 +14,17 @@ vlaanderen/sparql-remove-empty-serves.qry
 vlaanderen/sparql-remove-empty-access.qry
 vlaanderen/sparql-format-rdf.qry
 data-media.ttl
-sparql-date-type.qry
+#sparql-map-media.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
+sparql-date-type.qry
 # INBO
 vlaanderen/sparql-fix-modified.qry
 # Gent, INBO, Fluvius
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-gent-contact.qry
 vlaanderen/sparql-fluvius-contact.qry
+vlaanderen/sparql-vmm-mailbox.qry
 sparql-map-loc-lang.qry
 # MobielVlaanderen
 vlaanderen/sparql-fix-lexvo-lang.qry
