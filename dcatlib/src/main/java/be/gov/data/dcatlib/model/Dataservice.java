@@ -93,7 +93,7 @@ public class Dataservice extends DataResource {
 		Set<IRI> formats = new HashSet<>();
 		
 		for(Dataset d: datasets) {
-			formats.addAll(d.getLicenses());
+			formats.addAll(d.getFormats());
 		}
 		formats.remove(null);
 		return formats;
