@@ -1,0 +1,10 @@
+# Add name to omgeving contact point
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT 
+	{ 	?s vcard:fn "Departement Omgeving"@nl }
+WHERE
+	{	?s vcard:hasURL <https://www.omgevingvlaanderen.be>
+		FILTER NOT EXISTS { ?s vcard:fn ?fn }
+	}

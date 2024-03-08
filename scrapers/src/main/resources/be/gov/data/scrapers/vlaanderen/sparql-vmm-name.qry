@@ -1,0 +1,9 @@
+# Insert missing contact name
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT { ?s vcard:fn "VMM" }
+WHERE { 
+		?s vcard:hasEmail <mailto:info@vmm.be> .
+		FILTER NOT EXISTS { ?s vcard:fn ?fn }
+	}

@@ -25,15 +25,16 @@ clear-skos.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
 sparql-date-type.qry
-vlaanderen/sparql-vcard-fn.qry
 # INBO
 vlaanderen/sparql-fix-modified.qry
 # Gent, INBO, Fluvius
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-gent-publ-contact.qry
 vlaanderen/sparql-fluvius-publ-contact.qry
-vlaanderen/sparql-vmm-mailbox.qry
 sparql-map-loc-lang.qry
+#VMM
+vlaanderen/sparql-vmm-mailbox.qry
+vlaanderen/sparql-vmm-name.qry
 # MobielVlaanderen
 vlaanderen/sparql-fix-lexvo-lang.qry
 # DCJM
@@ -41,6 +42,7 @@ vlaanderen/sparql-fix-dut-lang.qry
 # Antwerp
 vlaanderen/sparql-antwerp-accessrights.qry
 vlaanderen/sparql-antwerp-empty.qry
+vlaanderen/sparql-antwerp-mail.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 clear-skos.qry
@@ -48,7 +50,9 @@ vlaanderen/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-map-theme.qry
 clear-skos.qry
-vlaanderen/sparql-org-deptomgeving.qry
+# Departement Omgeving
+vlaanderen/sparql-deptomgeving-org.qry
+vlaanderen/sparql-deptomgeving-name.qry
 vlaanderen/data-org.ttl
 vlaanderen/sparql-map-org-simple.qry
 vlaanderen/sparql-map-org-ovo.qry
@@ -56,6 +60,7 @@ vlaanderen/sparql-remove-spatial.qry
 sparql-geo-publisher.qry
 sparql-geo-vlaanderen.qry
 vlaanderen/sparql-remove-agent-orphans.qry
+vlaanderen/sparql-vcard-fn.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

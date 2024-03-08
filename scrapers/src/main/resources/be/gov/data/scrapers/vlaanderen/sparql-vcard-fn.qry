@@ -1,4 +1,5 @@
 # Add vcard:fn based on organization-name
+
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 INSERT	{ ?s vcard:fn ?name }

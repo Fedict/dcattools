@@ -1,0 +1,11 @@
+# Add email contact and name to Antwerp open data contact
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE {	
+		<https://www.antwerpen.be/info/open-data-stad-antwerpen> vcard:fn ?oldname }
+INSERT	{ 
+		<https://www.antwerpen.be/info/open-data-stad-antwerpen> vcard:fn "Open Data Antwerpen" .
+		<https://www.antwerpen.be/info/open-data-stad-antwerpen> vcard:hasEmail <mailto:opendata@antwerpen.be> 
+	}
+WHERE	{ <https://www.antwerpen.be/info/open-data-stad-antwerpen> vcard:fn ?oldname }
