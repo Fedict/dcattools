@@ -2,6 +2,7 @@
 vlaanderen/sparql-fix-endpointurl.qry
 vlaanderen/sparql-remove-metadatavlaanderen.qry
 vlaanderen/sparql-remove-rights-unlimited.qry
+vlaanderen/sparql-remove-empty-license.qry
 vlaanderen/sparql-fix-geotype.qry
 vlaanderen/sparql-filter-open.qry
 vlaanderen/sparql-consolidate-date.qry
@@ -24,6 +25,7 @@ clear-skos.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
 sparql-date-type.qry
+vlaanderen/sparql-vcard-fn.qry
 # INBO
 vlaanderen/sparql-fix-modified.qry
 # Gent, INBO, Fluvius

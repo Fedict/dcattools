@@ -8,7 +8,6 @@
 			"http://creativecommons.org/publicdomain/zero/1.0/legalcode", "cc-zero",
 			<http://creativecommons.org/publicdomain/zero/1.0/legalcode>,
 			<https://data.vlaanderen.be/id/licentie/creative-commons-zero-verklaring/v1.0> .
-
 <http://data.vlaanderen.be/id/licentie/modellicentie-gratis-hergebruik/v1.0>
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;

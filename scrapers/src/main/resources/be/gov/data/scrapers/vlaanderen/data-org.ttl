@@ -89,6 +89,7 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/98> ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
 		"Departement Mobiliteit en Openbare Werken (MOW) - Afdeling Geotechniek"@nl,
+		"Departement Mobiliteit en Openbare Werken (MOW) - Afdeling Geotechniek",
 		"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang"@nl,
 		"Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning"@nl,
 		"Departement Mobiliteit en Openbare Werken, afdeling Technische Ondersteuning"@nl,
@@ -471,6 +472,6 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0477445084>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/449> ;
-	foaf:name "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
-	foaf:homepage <https://www.fluvius.be> .
+	skos:prefLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/449> ;
+	skos:altfLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl .
