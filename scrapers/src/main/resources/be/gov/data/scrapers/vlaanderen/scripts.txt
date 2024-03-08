@@ -8,13 +8,19 @@ vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-standards.qry
 vlaanderen/sparql-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
+vlaanderen/sparql-landingpage.qry
 vlaanderen/sparql-remove-source.qry
 vlaanderen/sparql-remove-agent.qry
 vlaanderen/sparql-remove-empty-serves.qry
 vlaanderen/sparql-remove-empty-access.qry
+vlaanderen/sparql-remove-rights-unlimited.qry
 vlaanderen/sparql-format-rdf.qry
 data-media.ttl
 #sparql-map-media.qry
+clear-skos.qry
+data-media-compress.ttl
+sparql-map-media-compress.qry
+clear-skos.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
 sparql-date-type.qry
@@ -22,7 +28,7 @@ sparql-date-type.qry
 vlaanderen/sparql-fix-modified.qry
 # Gent, INBO, Fluvius
 vlaanderen/data-contact.ttl
-vlaanderen/sparql-gent-contact.qry
+vlaanderen/sparql-gent-publ-contact.qry
 vlaanderen/sparql-fluvius-contact.qry
 vlaanderen/sparql-vmm-mailbox.qry
 sparql-map-loc-lang.qry

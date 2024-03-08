@@ -1,0 +1,12 @@
+# Remove INSPIRE "no limitation" rights, since that's already covered with accessRights PUBLIC
+# Mainly to improve DCAT-AP compliane score, since there can only be 1 rightsStatement
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:rights <http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitation> .
+		<http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitation> ?p ?o }
+WHERE 
+	{	?s dcterms:rights <http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitation> .
+		<http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitation> ?p ?o }
+	
