@@ -1,0 +1,15 @@
+# Set default language tag to Dutch
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s ?rel ?label }
+INSERT
+	{ 	?s ?rel ?newlabel }
+WHERE
+	{ 	?s ?rel ?label
+		VALUES ?cl { dcterms:title dcterms:description dcat:keyword }
+		BIND (STRLANG(?label, "nl") as ?newlabel)
+		FILTER (LANG(?label) = "")
+	}

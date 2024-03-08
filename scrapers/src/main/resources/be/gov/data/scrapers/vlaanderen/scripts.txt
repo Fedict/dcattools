@@ -43,6 +43,7 @@ vlaanderen/sparql-fix-dut-lang.qry
 vlaanderen/sparql-antwerp-accessrights.qry
 vlaanderen/sparql-antwerp-empty.qry
 vlaanderen/sparql-antwerp-mail.qry
+vlaanderen/sparql-default-lang-tag.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 clear-skos.qry

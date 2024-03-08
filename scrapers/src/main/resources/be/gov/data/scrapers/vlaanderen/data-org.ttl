@@ -120,6 +120,14 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/115> ;
 	skos:altLabel "Departement Landbouw en Visserij", "Departement Landbouw en Visserij"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://ror.org/0496vr396> ;
+	skos:prefLabel "Flanders Marine Institute"@en, "Vlaams Instituut voor Zee"@nl, "Institut Flamand de la Mer"@fr ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/370> ;
+	skos:altLabel "Vlaams Instituut voor Zee"@nl, "VLIZ"@nl .
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199338408>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
