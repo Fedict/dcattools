@@ -1,6 +1,7 @@
 # extra queries to be executed and data to be loaded
 vlaanderen/sparql-fix-endpointurl.qry
 vlaanderen/sparql-remove-metadatavlaanderen.qry
+vlaanderen/sparql-remove-rights-unlimited.qry
 vlaanderen/sparql-fix-geotype.qry
 vlaanderen/sparql-filter-open.qry
 vlaanderen/sparql-consolidate-date.qry
@@ -13,7 +14,6 @@ vlaanderen/sparql-remove-source.qry
 vlaanderen/sparql-remove-agent.qry
 vlaanderen/sparql-remove-empty-serves.qry
 vlaanderen/sparql-remove-empty-access.qry
-vlaanderen/sparql-remove-rights-unlimited.qry
 vlaanderen/sparql-format-rdf.qry
 data-media.ttl
 #sparql-map-media.qry
@@ -29,7 +29,7 @@ vlaanderen/sparql-fix-modified.qry
 # Gent, INBO, Fluvius
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-gent-publ-contact.qry
-vlaanderen/sparql-fluvius-contact.qry
+vlaanderen/sparql-fluvius-publ-contact.qry
 vlaanderen/sparql-vmm-mailbox.qry
 sparql-map-loc-lang.qry
 # MobielVlaanderen

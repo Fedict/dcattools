@@ -467,3 +467,10 @@
 	skos:prefLabel "Vereniging van Vlaamse Provincies"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/vvp> ;
 	skos:altLabel "Vereniging van de Vlaamse Provincies"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0477445084>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/449> ;
+	foaf:name "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
+	foaf:homepage <https://www.fluvius.be> .
