@@ -7,16 +7,18 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
 	{	?s dcterms:temporal ?uri .
-		?uri schema:startDate ?start .
-		?uri schema:endDate ?end }
+		?uri ?startdate ?start .
+		?uri ?enddate ?end }
 INSERT 
 	{ 	?s dcterms:temporal ?newuri .
 		?newuri dcat:startDate ?start .
 		?newuri dcat:endDate ?end }
 WHERE 
 	{	?s dcterms:temporal ?uri .
-		?uri schema:startDate ?start .
+		?uri ?startdate ?start .
 		OPTIONAL { ?uri schema:endDate ?end }
+		VALUES ?startdate { dcat:startDate schema:startDate }
+		VALUES ?enddate {  dcat:endDate schema:endDate }
 		BIND (
 			IRI(
 				CONCAT("https://data.gov.be/.well-known/genid/temporal/", 
