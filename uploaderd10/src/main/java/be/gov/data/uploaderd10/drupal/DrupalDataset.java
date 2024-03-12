@@ -252,7 +252,10 @@ public record DrupalDataset(
 			s = values.stream().collect(Collectors.joining(", "));
 			if (s.length() > 255) {
 				s = s.substring(0, 255);
-				s = s.substring(0, s.lastIndexOf(","));
+				int idx = s.lastIndexOf(",");
+				if (idx > 0) {
+					s = s.substring(0, idx);
+				}
 			}
 		}
 		m.put(key, s);

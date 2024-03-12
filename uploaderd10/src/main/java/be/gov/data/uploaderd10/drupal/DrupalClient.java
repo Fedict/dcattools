@@ -78,7 +78,9 @@ public class DrupalClient {
 	 * @return builder
 	 */
 	private HttpRequest.Builder getHttpBuilder() {
-		return HttpRequest.newBuilder().header("X-CSRF-Token", token);
+		return HttpRequest.newBuilder()
+			.header("X-CSRF-Token", token)
+			.header("User-Agent", "Drupal Updater");
 	}
 
 	/**
@@ -110,6 +112,11 @@ public class DrupalClient {
 	 * @throws InterruptedException 
 	 */
 	public void login(String user, String pass) throws IOException, InterruptedException {
+		HttpRequest re = HttpRequest.newBuilder()
+				.GET()
+				.uri(URI.create(baseURL))
+				.build();
+		HttpResponse<String> r = client.send(re, BodyHandlers.ofString());
 		String str = new JSONObject().put("name", user).put("pass", pass).toString();
 		HttpRequest request = HttpRequest.newBuilder()
 				.POST(BodyPublishers.ofString(str))
@@ -117,6 +124,10 @@ public class DrupalClient {
 				.build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		LOG.debug(response.body());
+		
+		if (response.statusCode() == 403) {
+			throw new IOException("Authentication denied :" + response.body());
+		}
 
 		JSONObject obj = new JSONObject(response.body());
 		this.token = (String) obj.get("csrf_token");

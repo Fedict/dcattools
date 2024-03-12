@@ -97,7 +97,7 @@ public class Comparer {
 		}
 		Integer value = taxonomy.get(iri.stringValue());
 		if (value == null) {
-			LOG.error("No Drupal value for IRI {}", iri.stringValue());
+			LOG.error("No Drupal value for IRI '{}'", iri);
 		}
 		return value;
 	}
@@ -444,13 +444,14 @@ public class Comparer {
 	}
 
 	/**
-	 * Start comparing
+	 * Read datasets / datservices from file and provide some fallbacks
 	 * 
-	 * @param langs language codes
+	 * @param langs
+	 * @return
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public void compare(String[] langs) throws IOException, InterruptedException {
+	private Map<String, DataResource> prepare(String[] langs) throws IOException, InterruptedException {
 		getTaxonomies();
 
 		Catalog catalog = reader.read();
@@ -458,9 +459,24 @@ public class Comparer {
 		resources.putAll(catalog.getDatasets());
 		resources.putAll(catalog.getDataservices());
 
+		LOG.info("Read {}", resources.size());
+	
 		removeIncomplete(resources, langs);
 		provideFallbacks(resources, langs);
-		
+
+		return resources;
+	}
+	
+	/**
+	 * Start comparing
+	 * 
+	 * @param langs language codes
+	 * @throws IOException
+	 * @throws InterruptedException 
+	 */
+	public void compare(String[] langs) throws IOException, InterruptedException {
+		Map<String, DataResource> resources = prepare(langs);
+
 		// Mapping of dataset / dataservice IDs to Drupal nodeIDs
 		Map<String, Integer> nodeIDs = null;
 
@@ -475,9 +491,21 @@ public class Comparer {
 			List<DrupalDataset> ds = client.getDatasets(lang);
 			LOG.info("Retrieved {} {} datasets/services from site", ds.size(), lang);
 
-			Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
-					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), d -> d));
+			Set<DrupalDataset> duplicates = new HashSet<>();
 
+			Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
+					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), 
+											d -> d,
+											(d1, d2) -> {
+												LOG.error("Node {} duplicate of node {}", d1.nid(), d2.nid());
+												duplicates.add(d1);
+												duplicates.add(d2);
+												return d1;
+											} ));
+			if (! duplicates.isEmpty()) {
+				LOG.error("{} duplicates on site", duplicates.size());
+			}
+			
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
 			
