@@ -17,6 +17,7 @@ vlaanderen/sparql-format-rdf.qry
 sparql-downloadurl.qry
 vlaanderen/sparql-dataset-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
+vlaanderen/sparql-landingpage.qry
 data-media.ttl
 #sparql-map-media.qry
 clear-skos.qry
