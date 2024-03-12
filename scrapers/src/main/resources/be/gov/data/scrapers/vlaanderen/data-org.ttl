@@ -99,6 +99,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143719695>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO027735> ;
 	skos:prefLabel "Databank Ondergrond Vlaanderen (DOV)"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/448> ;
 	skos:altLabel "Databank Ondergrond Vlaanderen (DOV)"@nl,

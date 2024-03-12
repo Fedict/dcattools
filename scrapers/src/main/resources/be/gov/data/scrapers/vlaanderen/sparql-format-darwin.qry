@@ -1,0 +1,16 @@
+# Guess DwC-A file format based on description
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcterms:format "DWCA" }
+WHERE
+	{	
+		?dist a dcat:Distribution .
+		?dist dcterms:description ?desc
+		FILTER CONTAINS(?desc, "Darwin Core Archive")
+		FILTER NOT EXISTS { ?dist dcterms:format ?f } 
+		FILTER NOT EXISTS { ?dist dcat:mediaType ?m }
+	}
+	

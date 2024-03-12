@@ -18,8 +18,13 @@ sparql-downloadurl.qry
 vlaanderen/sparql-dataset-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
 vlaanderen/sparql-landingpage.qry
+vlaanderen/sparql-format-extension.qry
+vlaanderen/sparql-format-title.qry
+vlaanderen/sparql-format-darwin.qry
 data-media.ttl
-#sparql-map-media.qry
+sparql-map-media.qry
+vlaanderen/sparql-format-wms.qry
+vlaanderen/sparql-format-wms-drupal.qry
 clear-skos.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
