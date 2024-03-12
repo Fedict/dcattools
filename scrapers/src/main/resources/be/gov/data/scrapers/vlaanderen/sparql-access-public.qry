@@ -1,0 +1,18 @@
+# Set accessrights public based on custom keyword
+
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX metavl:	<https://data.vlaanderen.be/ns/metadata-dcat#>
+
+INSERT {
+		?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> .
+		}
+WHERE { 
+		?cat a dcat:Catalog .
+		?cat ?entry ?s .
+		?s metavl:statuut ?key .
+		VALUES ?key { 
+			<https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA>
+			<https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE> 
+		}
+}

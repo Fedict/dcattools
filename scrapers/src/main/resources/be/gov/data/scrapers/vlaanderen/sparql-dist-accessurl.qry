@@ -1,14 +1,14 @@
-# Use accessURL of the dataset if the access URL of the distribution is missing
+# Use acessURL of the dataset if the access URL of the distribution is missing
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 
 INSERT
-	{ 	?dist dcat:accessURL ?url }
+	{ 	?dist dcat:accessURL ?page }
 WHERE
-	{ 	?dataset ?p ?dist .
-		?dataset dcat:accessURL ?url .
-		?dist a dcat:Distribution
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcat:accessURL ?page .
+		?dataset ?p ?dist 
 		VALUES ?p { adms:sample dcat:distribution }
-		FILTER NOT EXISTS { ?dist dcat:accessURL ?o }
+		FILTER NOT EXISTS { ?dist dcat:accessURL ?url }
 	}

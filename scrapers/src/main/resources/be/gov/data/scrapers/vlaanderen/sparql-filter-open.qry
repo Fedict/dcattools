@@ -4,14 +4,13 @@ PREFIX adms:	<http://www.w3.org/ns/adms#>
 PREFIX dcat:	<http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf:	<http://xmlns.com/foaf/0.1/>
-PREFIX metavl:	<https://data.vlaanderen.be/ns/metadata-dcat#>
-
 
 DELETE {
 		?cat ?entry ?s .
 		?cat dcat:record ?rec .
 		?rec ?x ?y .
 		?s ?p ?o .
+		?s ?rel ?dist .
 		?dist ?a ?b
 }
 WHERE { 
@@ -27,11 +26,9 @@ WHERE {
 			VALUES ?rel { adms:sample dcat:distribution }
 			FILTER CONTAINS(STR(?dist), "well-known/genid")
 		}
-		VALUES (?cl ?key) { 
-			( dcat:Dataset <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATA> )
-			( dcat:DataService <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/VLOPENDATASERVICE> ) }
 		FILTER NOT EXISTS {
-			?s metavl:statuut ?key
+			?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> 
 		}
 }
+
 
