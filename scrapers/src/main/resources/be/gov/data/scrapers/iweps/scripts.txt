@@ -17,6 +17,7 @@ sparql-geo-wallonie.qry
 sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry
+sparql-startenddate.qry
 sparql-date-type.qry
 sparql-tag-language.qry
 clear-skos.qry
