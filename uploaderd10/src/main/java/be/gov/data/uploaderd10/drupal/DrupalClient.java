@@ -338,6 +338,10 @@ public class DrupalClient {
 				.build();
 
 			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+			if (response.statusCode() == 503) {
+				LOG.warn("Backend fetch failed, retrying...");
+				response = client.send(request, BodyHandlers.ofString());
+			}
 			if (response.statusCode() != 200) {
 				throw new IOException("Failed to retrieve page " + page + " as JSON " + response.body());
 			}

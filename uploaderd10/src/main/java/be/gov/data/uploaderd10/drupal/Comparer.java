@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Compare datasets from an input file with the datasets (for that user) on the data.gov.be portal
  * 
- * @author Bart.Hanssens
+ * @author Bart Hanssens
  */
 public class Comparer {
 	private static final Logger LOG = LoggerFactory.getLogger(Comparer.class);
@@ -167,7 +167,6 @@ public class Comparer {
 	 * @param iris
 	 * @return map of URI with their titles
 	 */
-
 	private Map<URI, String> toURIMap(Set<IRI> iris) {
 		Set<URI> uris = toURI(iris);
 		if (uris == null) {
@@ -221,7 +220,7 @@ public class Comparer {
 				mapTaxonomy(geos, d.getSpatial()),
 				mapTaxonomy(licenses, d.getLicenses().stream().findFirst().orElse(null)),
 				d.getContactName(lang),
-				mapTaxonomy(organisations, getFirst(d.getCreator(), d.getPublisher())),
+				mapTaxonomy(organisations, d.getPublisher()),
 				d.getStartDate(),
 				d.getEndDate(),
 				d.getModified()
@@ -295,8 +294,7 @@ public class Comparer {
 					if (nid == null) {
 						throw new IOException("NodeID not found");
 					}
-			/*		System.err.println(d.getValue());
-					onSiteByHash.entrySet().forEach(s -> {
+					/*	onSiteByHash.entrySet().forEach(s -> {
 						if(s.getValue().id().equals(d.getValue().id())) {
 							System.err.println(s.getValue());
 						}});
