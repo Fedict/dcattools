@@ -11,6 +11,7 @@
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT> 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Loisirs>,
+		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Sport+et+Loisirs>,
 		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Loisirs>,
 		<https://www.odwb.be/explore/?refine.theme=Culture%2C+Patrimoine>,
 		<https://www.odwb.be/explore/?refine.theme=Sport%2C+Loisirs> ;
@@ -73,6 +74,7 @@
 		<https://www.odwb.be/explore/?refine.theme=Urbanisme%2C+Patrimoine>,
 		<https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration>,
 		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Loisirs>,
+		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Sport+et+Loisirs>,
 		<https://www.odwb.be/explore/?refine.theme=Am%C3%A9nagement+du+territoire%2C+Urbanisme%2C+B%C3%A2timents%2C+%C3%89quipements%2C+Logement>;
 	skos:prefLabel "REGIONS, CITIES"@en ;
 	skos:altLabel "commune"@fr, "ma-commune"@fr, "Commune"@fr, "tourisme"@fr, "Batiment"@fr .
