@@ -3,8 +3,7 @@
 		 xmlns:dcat="http://www.w3.org/ns/dcat#"
 		 xmlns:dc="http://purl.org/dc/terms/"
 		 xmlns:foaf="http://xmlns.com/foaf/0.1/"
-		 xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-		 xmlns:ns1="http://data.gov.be#">
+		 xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
 
 	<dcat:Catalog rdf:about="http://data.gov.be/catalog/fasfc">
 		<dcat:dataset>
@@ -14,12 +13,12 @@
 				<dc:title xml:lang="nl">Lijst Smileys</dc:title>
 				<dc:title xml:lang="fr">Liste Smileys</dc:title>
 				<dc:identifier>fasfc-smileys</dc:identifier>
-				<dc:publisher rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
+				<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
 				<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/WEEKLY"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
 				<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/HEAL"/>
-				<dcat:contactPoint rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0267387230/contact"/>
+				<dcat:contactPoint rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230/contact"/>
 				<dcat:landingPage rdf:resource="https://favv-afsca.be/nl/open-data"/>
 				<dcat:landingPage rdf:resource="https://favv-afsca.be/fr/open-data"/>
 				<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
@@ -46,12 +45,12 @@
 				<dc:title xml:lang="nl">Lijst operatoren</dc:title>
 				<dc:title xml:lang="fr">Liste opérateurs</dc:title>
 				<dc:identifier>fasfc-operators</dc:identifier>
-				<dc:publisher rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
+				<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
 				<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/WEEKLY"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
 				<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/HEAL"/>
-				<dcat:contactPoint rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0267387230/contact"/>
+				<dcat:contactPoint rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230/contact"/>
 				<dcat:landingPage rdf:resource="https://favv-afsca.be/nl/open-data"/>
 				<dcat:landingPage rdf:resource="https://favv-afsca.be/fr/open-data"/>
 				<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
@@ -78,11 +77,11 @@
 				<dc:title xml:lang="nl">Lijst operatoren</dc:title>
 				<dc:title xml:lang="fr">Liste opérateurs</dc:title>
 				<dc:identifier>fasfc-codelist</dc:identifier>
-				<dc:publisher rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
+				<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
 				<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/HEAL"/>
-				<dcat:contactPoint rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0267387230/contact"/>
+				<dcat:contactPoint rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230/contact"/>
 				<dcat:landingPage rdf:resource="https://favv-afsca.be/nl/open-data"/>
 				<dcat:landingPage rdf:resource="https://favv-afsca.be/fr/open-data"/>
 				<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
