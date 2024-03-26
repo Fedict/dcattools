@@ -13,9 +13,9 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>statbelopen</exec.appArgs>
+                <exec.appArgs>-n wallonie</exec.appArgs>
                 <exec.vmArgs></exec.vmArgs>
-                <exec.mainClass>be.fedict.dcat.scrapers.Main</exec.mainClass>
+                <exec.mainClass>be.gov.data.scrapers.Main</exec.mainClass>
             </properties>
         </action>
         <action>
@@ -32,9 +32,9 @@
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
                 <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>statbelopen</exec.appArgs>
+                <exec.appArgs>-n wallonie</exec.appArgs>
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
-                <exec.mainClass>be.fedict.dcat.scrapers.Main</exec.mainClass>
+                <exec.mainClass>be.gov.data.scrapers.Main</exec.mainClass>
             </properties>
         </action>
         <action>
@@ -50,9 +50,9 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>statbelopen</exec.appArgs>
+                <exec.appArgs>-n wallonie</exec.appArgs>
                 <exec.vmArgs></exec.vmArgs>
-                <exec.mainClass>be.fedict.dcat.scrapers.Main</exec.mainClass>
+                <exec.mainClass>be.gov.data.scrapers.Main</exec.mainClass>
             </properties>
         </action>
     </actions>
