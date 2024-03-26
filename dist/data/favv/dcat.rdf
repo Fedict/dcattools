@@ -74,8 +74,8 @@
 			<dcat:Dataset rdf:about="http://data.gov.be/dataset/fasfc/codelist">
 				<dc:description xml:lang="nl">De codelijst FAVV activiteiten geeft een lijst van de activiteitencodes die het FAVV gebruikt (PAP codes). Deze codes zijn ingedeeld volgens Plaats/Activiteit/Product, en vermelden eveneens de gelinkte erkenningscodes. Deze lijst is te gebruiken in combinatie met de lijst operatoren.</dc:description>
 				<dc:description xml:lang="fr">La liste des codes d’activités AFSCA reprend tous les codes d’activités utilisés par l’AFSCA (codes LAP). Ces codes sont classés par Lieu/Activité/Produit et mentionnent également les codes d'agrément liés. Cette liste doit être utilisée en combinaison avec la liste des opérateurs.</dc:description>
-				<dc:title xml:lang="nl">Lijst operatoren</dc:title>
-				<dc:title xml:lang="fr">Liste opérateurs</dc:title>
+				<dc:title xml:lang="nl">Codelijst FAVV activiteiten</dc:title>
+				<dc:title xml:lang="fr">Liste des codes d’activités AFSCA</dc:title>
 				<dc:identifier>fasfc-codelist</dc:identifier>
 				<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0267387230"/>
 				<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
