@@ -4,6 +4,6 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dist dgov:format <http://data.gov.be/en/taxonomy/term/1> }
+	{ 	?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/1>}
 WHERE
 	{	?dist a dcat:Distribution }
