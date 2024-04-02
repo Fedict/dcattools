@@ -96,6 +96,11 @@ public class EDP {
 	private final static IRI ADMS_IDENTIFIER = F.createIRI("http://www.w3.org/ns/adms#identifier");
 	private final static IRI ADMS_SAMPLE = F.createIRI("http://www.w3.org/ns/adms#sample");
 	
+	private final static IRI DCATAP_AVAILABILITY = F.createIRI("http://data.europa.eu/r5r/availability");
+	private final static IRI DCATAP_CONFORMS = F.createIRI("http://data.europa.eu/r5r/applicableLegislation");
+	private final static IRI DCATAP_HVDCAT = F.createIRI("http://data.europa.eu/r5r/hvdCategory");
+	private final static IRI ELI_RESOURCE = F.createIRI("http://data.europa.eu/eli/ontology#LegalResource");
+	
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
 	/**
@@ -107,7 +112,9 @@ public class EDP {
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
 		w.writeNamespace("adms", "http://www.w3.org/ns/adms#");
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
+		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
+		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace("geo", GEO.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
@@ -388,6 +395,9 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
+		writeReferences(w, con, uri, DCATAP_CONFORMS, "dcatap:applicableLegislation", "eli:LegalResource", false);
+		writeReferences(w, con, uri, DCATAP_HVDCAT, "dcatap:hvdCategory");
+		
 //		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
@@ -421,6 +431,7 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 
+		writeReferences(w, con, uri, DCATAP_AVAILABILITY, "dcatap:availability");
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
