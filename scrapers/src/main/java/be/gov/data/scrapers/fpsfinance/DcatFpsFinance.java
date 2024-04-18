@@ -34,9 +34,9 @@ import java.net.URL;
 import java.util.Properties;
 
 /**
- * DCAT file for BeST opendata
+ * DCAT file for AAPD opendata
  *
- * @see https://opendata.bosa.be/
+ * @see https://financien.belgium.be/nl/experten-partners/open-patrimoniumdata/datasets
  * @author Bart Hanssens
  */
 public class DcatFpsFinance extends Dcat {
