@@ -1,0 +1,6 @@
+# Delete empty literals
+
+DELETE 
+	{	?s ?p "" }
+WHERE
+	{ 	?s ?p "" }

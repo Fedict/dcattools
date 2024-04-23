@@ -1,5 +1,13 @@
 # extra queries to be executed and data to be loaded 
 sparql-access-public.qry
+data-frequency.ttl
+sparql-map-frequency.qry
+bira/sparql-language-en.qry
+data-media.ttl
+sparql-map-media.qry
+sparql-tag-language.qry
+sparql-remove-empty.qry
+bira/sparql-fix-dctype.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

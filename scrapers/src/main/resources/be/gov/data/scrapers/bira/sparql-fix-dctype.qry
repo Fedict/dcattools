@@ -1,0 +1,7 @@
+# Value of dcterms:type should be a URI instead of a literal
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s ?p "http://purl.org/dc/dcmitype/Dataset" }
+INSERT { ?s ?p <http://purl.org/dc/terms/type> }
+WHERE { ?s ?p "http://purl.org/dc/dcmitype/Dataset" }
