@@ -3,8 +3,6 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
-DELETE 
-	{	?s dcterms:accessRights ?r }
 INSERT 
 	{ 	?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> }
 WHERE
