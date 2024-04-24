@@ -87,6 +87,12 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/322> ;
 	skos:altLabel "GTFS", "gtfs" .
 
+<http://publications.europa.eu/resource/authority/file-type/HDF>
+	skos:prefLabel "HDF5" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-hdf>;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:altLabel ".hd5", ".h5" .
+
 <http://publications.europa.eu/resource/authority/file-type/HTML>
 	skos:prefLabel "HTML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/html>;
@@ -308,7 +314,7 @@
 	skos:prefLabel "NetCDF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-netcdf>; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/395> ;
-	skos:altLabel "application/x-netcdf" .
+	skos:altLabel "application/x-netcdf", "NetCDF" .
 
 <http://publications.europa.eu/resource/authority/file-type/ATOM>
 	skos:prefLabel "Atom" ;

@@ -2,6 +2,6 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE { ?s ?p "http://purl.org/dc/dcmitype/Dataset" }
-INSERT { ?s ?p <http://purl.org/dc/terms/type> }
-WHERE { ?s ?p "http://purl.org/dc/dcmitype/Dataset" }
+DELETE { ?s dcterms:type "http://purl.org/dc/dcmitype/Dataset" }
+INSERT { ?s dcterms:type <http://purl.org/dc/dcmitype/Dataset> }
+WHERE { ?s dcterms:type "http://purl.org/dc/dcmitype/Dataset" }
