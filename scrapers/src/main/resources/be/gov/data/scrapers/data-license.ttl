@@ -68,6 +68,7 @@
 		<http://creativecommons.org/licenses/zero/1.0/>,
 		<http://creativecommons.org/publicdomain/zero/1.0/>,
 		<https://creativecommons.org/publicdomain/zero/1.0/>,
+		<http://publications.europa.eu/resource/authority/licence/CC0>,
 		<http://purl.org/adms/licencetype/PublicDomain>,
 		"https://creativecommons.org/share-your-work/public-domain/cc0/",
 		"https://creativecommons.org/publicdomain/zero/1.0/", 
@@ -104,9 +105,14 @@
 		"http://creativecommons.org/licenses/by-nc-nd/4.0/" .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNCSA_3_0>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/s3> ;
 	skos:prefLabel "CC-BY-NC-SA" ;
 	skos:altLabel <https://creativecommons.org/licenses/by-nc-sa/3.0/> .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BYNCSA_4_0>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/s4> ;
+	skos:prefLabel "CC-BY-NC-SA" ;
+	skos:altLabel <https://creativecommons.org/licenses/by-nc-sa/4.0/> .
 
 <http://publications.europa.eu/resource/authority/licence/ODC_PDDL>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/212> ;

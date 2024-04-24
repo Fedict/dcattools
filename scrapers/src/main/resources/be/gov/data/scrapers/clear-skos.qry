@@ -19,4 +19,14 @@ WHERE {
 		?s ?p ?o .
 		?s a skos:ConceptScheme
 	}
+	UNION
+	{
+		?s ?p ?o .
+		VALUES ?p {
+			skos:prefLabel
+		}
+		FILTER NOT EXISTS {
+			?x ?rel ?s
+		}
+	}
 }

@@ -1,0 +1,20 @@
+# Set publisher and contactpoint
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s org:memberOf ?oldorg .
+		?oldorg a foaf:Agent .
+		?oldorg dcterms:identifier ?id .
+		?oldorg foaf:name "Royal Belgian Institute for Space Aeronomy" }
+INSERT
+	{ ?s org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0349010750> }
+WHERE
+	{ 	?s org:memberOf ?oldorg .
+		?oldorg a foaf:Agent .
+		?oldorg dcterms:identifier ?id .
+		?oldorg foaf:name "Royal Belgian Institute for Space Aeronomy"
+	}

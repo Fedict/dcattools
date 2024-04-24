@@ -1,15 +1,23 @@
-# extra queries to be executed and data to be loaded 
+# extra queries to be executed and data to be loaded
+bira/sparql-language-en.qry
+bira/data-org.ttl
+sparql-map-org.qry
+bira/sparql-fix-member.qry
+clear-skos.qry
 sparql-access-public.qry
 bira/sparql-theme.qry
 data-frequency.ttl
 sparql-map-frequency.qry
-bira/sparql-language-en.qry
+data-license.ttl
+sparql-map-license.qry
+data-media-compress.ttl
+sparql-map-media-compress.qry
+clear-skos.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-tag-language.qry
 sparql-remove-empty.qry
 bira/sparql-fix-dctype.qry
-bira/sparql-temporal-type.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
