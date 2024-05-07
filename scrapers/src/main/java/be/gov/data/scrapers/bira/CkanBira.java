@@ -33,7 +33,7 @@ import java.util.Properties;
 /**
  * CKAN BIRA-IASB 
  * 
- * @see https://data-test.aeronomie.be/
+ * @see https://data.aeronomie.be/
  *
  * @author Bart Hanssens
  */

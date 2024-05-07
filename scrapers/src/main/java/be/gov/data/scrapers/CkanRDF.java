@@ -67,7 +67,8 @@ public abstract class CkanRDF extends Ckan {
 			URL url = new URL(getBase() + Ckan.CATALOG + ".xml?page=" + i);
 			String content = makeRequest(url, charset);
 			cache.storePage(url, "all", new Page(url, content));
-			if (content.length() < 1500) {
+			// check if the page is actually empty
+			if (! (content.contains("dcat:Dataset") || content.contains("dcat:DataService"))) {
 				lastpage = i;
 			} else {
 				urls.add(url);

@@ -34,6 +34,7 @@ WHERE
 			( dcterms:conformsTo dcterms:Standard )
 			( dcat:contactPoint vcard:Kind )
 			( dcterms:type skos:Concept )
+			( dcat:theme skos:Concept )
 			( dcat:themeTaxonomy skos:ConceptScheme )
 			( adms:identifier adms:Identifier )
 		}

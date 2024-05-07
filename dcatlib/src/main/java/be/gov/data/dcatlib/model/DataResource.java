@@ -213,6 +213,8 @@ public abstract class DataResource {
 	}
 
 	/**
+         * @param lang language code
+         * 
 	 * @return the contactName
 	 */
 	public String getContactName(String lang) {
@@ -234,6 +236,8 @@ public abstract class DataResource {
 	}
 
 	/**
+         * @param lang language code
+         * 
 	 * @return the contactAddr
 	 */
 	public IRI getContactAddr(String lang) {
@@ -255,6 +259,8 @@ public abstract class DataResource {
 	}
 	
 	/**
+         * @param lang language code
+         * 
 	 * @return the contactSite
 	 */
 	public IRI getContactSite(String lang) {
