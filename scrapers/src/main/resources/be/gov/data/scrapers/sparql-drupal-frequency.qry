@@ -1,0 +1,11 @@
+# Add Drupal 7 URI, to be removed after upgrading
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dgov: <http://data.gov.be#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+INSERT 
+	{	?dataset dgov:freq ?drupal }
+WHERE
+	{	?dataset dcterms:accrualPeriodicity ?freq .
+		?freq skos:exactMatch ?drupal }

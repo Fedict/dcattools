@@ -11,6 +11,7 @@ WHERE {
 			skos:altLabel
 			skos:exactMatch
 			skos:closeMatch
+			skos:note
 			skos:topConceptOf
 		}
 	}
@@ -27,6 +28,7 @@ WHERE {
 		}
 		FILTER NOT EXISTS {
 			?x ?rel ?s
+			FILTER(?x != ?s)
 		}
 	}
 }

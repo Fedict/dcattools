@@ -1,7 +1,11 @@
 # extra queries to be executed and data to be loaded
-sparql-fix-frequency.qry
+fpsmobility/sparql-fix-frequency.qry
 data-frequency.ttl
+sparql-drupal-frequency.qry
+fpsmobility/sparql-drupal7-dataset.qry
+fpsmobility/sparql-drupal7-dist.qry
+data-media.ttl
+sparql-drupal-media.qry
 clear-skos.qry
-data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

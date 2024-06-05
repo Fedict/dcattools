@@ -7,4 +7,4 @@ DELETE
 INSERT
 	{	?s ?rel <http://publications.europa.eu/resource/authority/frequency/MONTHLY> }
 WHERE	
-	{	?s ?rel <http://publications.europa.eu/resource/authority/frequency/MONTHLY> }
+	{	?s ?rel <https://publications.europa.eu/resource/authority/frequency/MONTHLY> }

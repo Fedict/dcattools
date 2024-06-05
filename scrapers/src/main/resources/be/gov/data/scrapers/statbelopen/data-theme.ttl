@@ -1,4 +1,4 @@
-# Data for Drupal URI
+# Data for Drupal 7 URI, to be removed after upgrading
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
