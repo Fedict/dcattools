@@ -106,7 +106,6 @@ public abstract class Dcat extends BaseScraper {
 		} catch (RDFParseException | IOException ex) {
 			throw new RepositoryException(ex);
 		}
-		generateCatalog(store);
 	}
 
 	@Override

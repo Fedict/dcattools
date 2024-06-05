@@ -114,7 +114,6 @@ public abstract class CkanRDF extends Ckan {
 				LOG.error("Exception" + url, ex);
 			}
 		}
-		generateCatalog(store);
 	}
 
 	/**

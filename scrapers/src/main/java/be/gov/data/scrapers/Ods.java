@@ -96,7 +96,6 @@ public abstract class Ods extends Dcat {
 				throw new RepositoryException(ex);
 			}
 		}
-		generateCatalog(store);
 	}
 	
 	/**
