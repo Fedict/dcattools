@@ -1,13 +1,1 @@
 # extra queries to be executed and data to be loaded 
-fpsmobility/data-publ-contact.ttl
-fpsmobility/sparql-publ-contact.qry
-sparql-license-cczero.qry
-sparql-access-public.qry
-fpsmobility/sparql-theme.qry
-sparql-geo-belgium.qry
-data-media.ttl
-sparql-map-media.qry
-clear-skos.qry
-data-shacl-support.ttl
-sparql-shacl-classes.qry
-sparql-shacl-skos.qry
