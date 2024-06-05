@@ -1,0 +1,10 @@
+# URI for frequency starts with http instead of https
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	
+	{	?s ?rel <https://publications.europa.eu/resource/authority/frequency/MONTHLY> }
+INSERT
+	{	?s ?rel <http://publications.europa.eu/resource/authority/frequency/MONTHLY> }
+WHERE	
+	{	?s ?rel <http://publications.europa.eu/resource/authority/frequency/MONTHLY> }
