@@ -90,7 +90,7 @@ public class BaseScraperFactory {
 		Properties prop = loadProperties(name);
 		
 		prop.setProperty(BaseScraper.PROP_PREFIX + ".datadir", dataDir);
-		// set cache, note that the scraper will not use the site-to-be-scraped when the cache is not empty
+		// set cache, note that the scraper will not contact the site-to-be-scraped when the cache is not empty
 		String cache = String.join(File.separator, dataDir, "cache");
 		prop.setProperty(BaseScraper.PROP_PREFIX + ".cache", cache);
 		

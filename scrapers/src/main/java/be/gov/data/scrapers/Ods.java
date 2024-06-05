@@ -50,20 +50,6 @@ public abstract class Ods extends Dcat {
 	
 	public final static String API_DCAT = "/api/explore/v2.1/catalog/exports/dcat?lang=";
 	
-	// correction per language, required for ODS up to 2.1, since the language attribute by ODS is wrong
-	private final static String QRY_LANGUAGE = 
-		"PREFIX dcat: <http://www.w3.org/ns/dcat#> " +
-		"PREFIX dcterms: <http://purl.org/dc/terms/> " +
-		" " +
-		"DELETE { ?s ?p ?o } " +
-		"INSERT { ?s ?p ?literal } " +
-		"WHERE { ?s ?p ?o . " +
-			"FILTER ( isLiteral(?o) && langMatches(lang(?o), '')) " +
-			"VALUES ?p { dcterms:title dcterms:description dcat:keyword } " +
-			"BIND ( STRLANG(?o, '%s') as ?literal) " +
-		"}";
-
-
 	/**
 	 * Method to allow filtering (if needed)
 	 * 
@@ -88,6 +74,7 @@ public abstract class Ods extends Dcat {
 
 		for (String lang: super.getAllLangs()) {
 			String xml = filter(map.get(lang).getContent());
+			// correction per language, required for ODS up to 2.1, since the language attribute by ODS is wrong
 			xml = xml.replaceAll("xml:lang=\"[a-z]{2}\"", "xml:lang=\"" + lang + "\"");
 			// Load RDF file into store
 			try (InputStream in = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
