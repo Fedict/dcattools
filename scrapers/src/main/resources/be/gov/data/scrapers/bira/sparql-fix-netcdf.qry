@@ -1,0 +1,17 @@
+# Fix issues with NetCDF distributions
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+	?s dcat:accessURL ?url .
+	?s dcat:mediaType ?type }
+INSERT {
+	?s dcat:downloadURL ?url . 
+	?s dcat:mediaType "NetCDF" }
+WHERE {
+	?s a dcat:Distribution .
+	?s dcat:accessURL ?url .
+	?s dcat:mediaType ?type .
+	FILTER (STRENDS(STR(?url), ".nc")) 
+}

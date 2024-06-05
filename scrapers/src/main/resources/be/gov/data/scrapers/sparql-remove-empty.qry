@@ -1,6 +1,8 @@
 # Delete empty literals
 
 DELETE 
-	{	?s ?p "" }
+	{	?s ?p ?lit }
 WHERE
-	{ 	?s ?p "" }
+	{ 	?s ?p ?lit
+		VALUES ?lit { "" "-" " " }
+	}

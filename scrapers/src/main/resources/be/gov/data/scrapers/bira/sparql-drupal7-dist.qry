@@ -1,0 +1,7 @@
+# Add Drupal 7 URIs for license, to be removed when upgrading
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dgov: <http://data.gov.be#> 
+
+INSERT { ?s dgov:license <http://data.gov.be/en/taxonomy/term/53> }
+WHERE { ?s a dcat:Distribution }

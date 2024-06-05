@@ -1,0 +1,10 @@
+# Remove incorrect mediatypes
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?s dcat:mediaType ?type }
+WHERE {
+	?s dcat:mediaType ?type .
+	FILTER (STRSTARTS(STR(?type), "https://www.iana.org/assignments/media-types/https")) 
+}

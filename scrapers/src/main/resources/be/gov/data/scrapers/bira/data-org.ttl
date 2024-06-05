@@ -3,13 +3,14 @@
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dgov: <http://data.gov.be#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
 	a foaf:Organization ;
 	dcterms:identifier <https://ror.org/03vfw8w96> ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/338> ;
+	dgov:org <http://data.gov.be/en/taxonomy/term/338> ;
 	skos:prefLabel "Royal Belgian Institute for Space Aeronomy"@en, 
 					"Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de, 
 					"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, 
