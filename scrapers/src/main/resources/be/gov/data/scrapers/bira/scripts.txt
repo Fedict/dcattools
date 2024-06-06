@@ -1,9 +1,11 @@
 # extra queries to be executed and data to be loaded
-sparql-remove-hydra.qry
+#sparql-remove-hydra.qry
 bira/sparql-language-en.qry
 bira/data-org.ttl
 bira/sparql-theme.qry
 bira/sparql-fix-netcdf.qry
+bira/sparql-fix-temporal.qry
+bira/sparql-fix-dctype.qry
 bira/sparql-drupal7-dataset.qry
 bira/sparql-drupal7-dist.qry
 sparql-remove-empty.qry

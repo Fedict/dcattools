@@ -7,7 +7,7 @@ PREFIX dgov: <http://data.gov.be#>
 DELETE {
 	?s dcterms:publisher ?publ }
 INSERT { 
-	?s dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>  }
+	?s dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0349010750> }
 WHERE { 
 	?s a dcat:Dataset .
 	?s dcterms:publisher ?publ  

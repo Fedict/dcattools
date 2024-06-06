@@ -2,6 +2,11 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE { ?s dcterms:type "http://purl.org/dc/dcmitype/Dataset" }
-INSERT { ?s dcterms:type <http://purl.org/dc/dcmitype/Dataset> }
-WHERE { ?s dcterms:type "http://purl.org/dc/dcmitype/Dataset" }
+DELETE { 
+		?s dcterms:type ?val }
+INSERT { 
+		?s dcterms:type ?iri }
+WHERE { 
+		?s dcterms:type ?val .
+		FILTER isLiteral(?val)
+		BIND (IRI(?val) as ?iri) }

@@ -11,7 +11,7 @@
 	dcterms:identifier <https://ror.org/03vfw8w96> ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	dgov:org <http://data.gov.be/en/taxonomy/term/338> ;
-	skos:prefLabel "Royal Belgian Institute for Space Aeronomy"@en, 
+	foaf:name "Royal Belgian Institute for Space Aeronomy"@en, 
 					"Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de, 
 					"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, 
 					"Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ;

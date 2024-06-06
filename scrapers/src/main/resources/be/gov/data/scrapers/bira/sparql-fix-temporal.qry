@@ -1,0 +1,11 @@
+# Fix temporal resolution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE
+	{	?s dcat:temporalResolution "P1H"^^xsd:duration }
+INSERT
+	{	?s dcat:temporalResolution "PT1H"^^xsd:duration }
+WHERE
+	{ 	?s dcat:temporalResolution "P1H"^^xsd:duration }

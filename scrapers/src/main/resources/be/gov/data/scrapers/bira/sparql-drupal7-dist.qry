@@ -3,5 +3,6 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dgov: <http://data.gov.be#> 
 
-INSERT { ?s dgov:license <http://data.gov.be/en/taxonomy/term/53> }
+INSERT { ?s dgov:license <http://data.gov.be/en/taxonomy/term/53> .
+		?s dcat:accessURL <https://data.aeronomie.be/dataset/> }
 WHERE { ?s a dcat:Distribution }
