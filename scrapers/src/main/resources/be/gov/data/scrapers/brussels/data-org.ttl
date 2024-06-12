@@ -105,12 +105,6 @@
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/188> ;
 	skos:altLabel "parking.brussels"@en, "parking.brussels"@nl, "parking.brussels"@fr .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0664820875/ibsa>
-	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "IBSA-BISA"@en, "BISA"@nl, "IBSA"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/191> ;
-	skos:altLabel "IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0457783679>
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Brussels Jazz Marathon"@fr, "Brussels Jazz Marathon"@nl, "Brussels Jazz Marathon"@en ;
@@ -172,7 +166,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Evere"@fr, "Evere"@en, "Evere"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/352> ;
-	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl .
+	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl, "Gemeentebestuur van Evere"@nl  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
 	dcterms:spatial <https://sws.geonames.org/2787415/> ;
@@ -200,7 +194,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Ixelles"@fr, "Ixelles"@en, "Elsene"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/413> ;
-	skos:altLabel "Ixelles"@fr, "Ixelles/Elsene"@en, "Elsene"@nl .
+	skos:altLabel "Ixelles"@fr, "Ixelles/Elsene"@en, "Elsene"@nl, "Gemeente Elsene"@nl, "Commune d'Ixelles"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207401044>
 	dcterms:spatial <https://sws.geonames.org/2797845/> ;
@@ -300,12 +294,6 @@
 			"Brugel, De Brusselse regulator voor energie"@nl, 
 			"Brugel, Le régulateur bruxellois pour l'énergie"@fr, "Brugel, Brussels energy regulator"@en .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0443590797>
-	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en, "Easybrussels"@de  ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/> ;
-	skos:altLabel "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en, "Easybrussels"@de .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Diensten van de Regering van he;t Brussels Gewest"@nl, 
@@ -317,6 +305,8 @@
 			"Gewestelijke Overheidsdienst Brussel (GOB)"@nl, "Service public régional de Bruxelles (SPRB)"@fr,
 			"SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
 			"Bruxelles économie et emploi"@en,
+			"Brussel Economie en Werkgelegenheid"@nl,
+			"Bruxelles Économie et Emploi"@fr, "Brussels Economy and Employment"@en,
 			"Brussels International"@en, "Brussel International"@nl, "Bruxelles International"@fr,
 			"citydev.brussels"@en, "citydev.brussels"@fr, "citydev.brussels"@nl,
 			"Bruxelles Mobilité"@fr, "Brussel Mobiliteit"@nl, "Brussels Mobility"@en, 
@@ -340,7 +330,9 @@
 	skos:prefLabel "Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr ; 
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/403> ;
 	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr,
-		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr .
+		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr,
+		"Brussels Instituut voor statistiek en analyse"@nl, "Institut bruxellois de statistiques et d'analyse"@fr,
+		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555656283>
 	dcterms:type admsp:Company ;

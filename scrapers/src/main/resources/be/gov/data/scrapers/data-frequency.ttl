@@ -12,7 +12,7 @@
 <http://publications.europa.eu/resource/authority/frequency/TRIHOURLY>
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/20>;
 	skos:prefLabel "Trihourly"@en ;
-	skos:altLabel "continual", <http://data.gov.be/continuously>, <http://data.gov.be/5%20minutes>, 
+	skos:altLabel <http://data.gov.be/5%20minutes>, 
 		<http://data.gov.be/quarter%20hour>, "Quarter%20Hour", "5%20Minutes" .
 
 <http://publications.europa.eu/resource/authority/frequency/HOURLY> 
