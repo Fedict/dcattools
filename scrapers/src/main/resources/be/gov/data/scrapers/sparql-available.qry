@@ -1,0 +1,11 @@
+# Set DCAT-AP availability to available (= non-testing)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5/>
+
+INSERT 
+	{ 	?s dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> }
+WHERE
+	{	?s a dcat:Distribution
+		FILTER NOT EXISTS { ?s dcatap:availability ?o } 
+	}
