@@ -56,6 +56,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.GEO;
+import org.eclipse.rdf4j.model.vocabulary.ORG;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
@@ -117,6 +118,7 @@ public class EDP {
 		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace("geo", GEO.NAMESPACE);
+		w.writeNamespace(ORG.PREFIX, ORG.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
@@ -341,9 +343,13 @@ public class EDP {
 							LOG.error("Not a valid IRI {}", str);
 						}
 					} else {
-						w.writeStartElement(classWrap);
-						writeGenericInfo(w, con, iri);
-						w.writeEndElement();
+						if (classWrap.equals("foaf:Agent")) {
+							writeAgent(w, con, iri);
+						} else {
+							w.writeStartElement(classWrap);
+							writeGenericInfo(w, con, iri);
+							w.writeEndElement();
+						}
 					}
 				} else {
 					w.writeEmptyElement(classWrap);
@@ -388,9 +394,11 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-//		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
+		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
-		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
@@ -461,7 +469,6 @@ public class EDP {
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
 		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
-		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 
@@ -657,13 +664,22 @@ public class EDP {
 			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
 		w.writeAttribute("rdf:about", iri.stringValue());
-		writeType(w, con, iri, FOAF.ORGANIZATION);
-		writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
-		writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
-		writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
-		writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
-		writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
-
+		if (con.hasStatement(iri, RDF.TYPE, FOAF.PERSON, false)) {
+			writeType(w, con, iri, FOAF.PERSON);
+			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
+			writeLiterals(w, con, iri, FOAF.GIVEN_NAME, "foaf:givenName");
+			writeLiterals(w, con, iri, FOAF.FAMILY_NAME, "foaf:familyName");
+			// mainly ORCID for researchers
+			writeReferences(w, con, iri, DCTERMS.IDENTIFIER, "dct:identifier");
+			writeReferences(w, con, iri, ORG.MEMBER_OF, "org:memberOf");
+		} else {
+			writeType(w, con, iri, FOAF.ORGANIZATION);
+			writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
+			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
+			writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
+			writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
+			writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
+		}	
 		w.writeEndElement();
 	}
 
