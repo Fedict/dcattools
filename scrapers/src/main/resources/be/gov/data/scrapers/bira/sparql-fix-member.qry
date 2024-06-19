@@ -1,4 +1,4 @@
-# Set publisher and contactpoint
+# Change memberOf to use org.belgif URI
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -7,14 +7,16 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 DELETE
 	{	?s org:memberOf ?oldorg .
-		?oldorg a foaf:Agent .
-		?oldorg dcterms:identifier ?id .
-		?oldorg foaf:name "Royal Belgian Institute for Space Aeronomy" }
+		?oldorg a foaf:Organization .
+		?oldorg dcterms:identifier <https://ror.org/03vfw8w96> .
+		?oldorg foaf:name ?name }
 INSERT
-	{ ?s org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0349010750> }
+	{	?s org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0349010750> .
+		<https://org.belgif.be/id/CbeRegisteredEntity/0349010750> dcterms:identifier <https://ror.org/03vfw8w96> 
+	}
 WHERE
 	{ 	?s org:memberOf ?oldorg .
-		?oldorg a foaf:Agent .
-		?oldorg dcterms:identifier ?id .
-		?oldorg foaf:name "Royal Belgian Institute for Space Aeronomy"
+		?oldorg a foaf:Organization .
+		?oldorg dcterms:identifier <https://ror.org/03vfw8w96> .
+		?oldorg foaf:name ?name
 	}

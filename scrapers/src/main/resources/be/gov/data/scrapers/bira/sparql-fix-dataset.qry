@@ -1,0 +1,15 @@
+# Correct the URI for datasets
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?s dcat:dataset ?o }
+INSERT { 
+	?s dcat:dataset ?dataset }
+WHERE { 
+	?s dcat:dataset ?o
+	BIND (
+		IRI(
+			CONCAT(STR(?o), '#')
+		) as ?dataset)
+}

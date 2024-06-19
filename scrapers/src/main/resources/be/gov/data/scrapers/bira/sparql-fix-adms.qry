@@ -1,0 +1,19 @@
+# Make DOI absolute URI
+
+PREFIX adms: <https://www.w3.org/ns/adms#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s adms:identifier ?doi }
+INSERT
+	{	?s adms:identifier ?uri }
+WHERE
+	{ 	?s a dcat:Dataset .
+		?s adms:identifier ?doi .
+		BIND (
+			IRI(
+				CONCAT("https://doi.org/", ?doi)
+			) as ?uri
+		)
+		FILTER (isLiteral(?doi) && !STRSTARTS(?doi, "http"))
+	}

@@ -1,0 +1,20 @@
+# Use ORCID ID for URI of persons (authors)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?dataset dcterms:creator ?s .
+		?s a foaf:Person .
+		?s ?p ?o }
+INSERT
+	{	?dataset dcterms:creator ?orcid .
+		?orcid a foaf:Person .
+		?orcid ?p ?o 
+	}
+WHERE
+	{ 	?dataset dcterms:creator ?s .
+		?s a foaf:Person .
+		?s dcterms:identifier ?orcid .
+		?s ?p ?o
+	}
