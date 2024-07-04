@@ -10,6 +10,7 @@ bira/sparql-fix-dataset.qry
 bira/sparql-drupal7-dataset.qry
 bira/sparql-drupal7-dist.qry
 bira/sparql-fix-adms.qry
+bira/sparql-fix-member.qry
 bira/sparql-accessurl.qry
 bira/sparql-downloadurl.qry
 bira/sparql-foaf-orcid.qry
