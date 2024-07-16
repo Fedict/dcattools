@@ -459,7 +459,7 @@ public class EDP {
 	private static void writeResource(XMLStreamWriter w, RepositoryConnection con, String cl, IRI uri) 
 			throws XMLStreamException {
 		w.writeStartElement(cl);
-		w.writeAttribute("rdf:about", uri.stringValue());
+		w.writeAttribute("rdf:about", uri.toString());
 
 		writeGeneric(w, con, uri);;
 
