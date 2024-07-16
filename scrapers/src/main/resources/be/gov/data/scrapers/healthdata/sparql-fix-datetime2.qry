@@ -1,0 +1,11 @@
+# Fix datetime typo
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xds: <http://www.w3.org/2001/XMLSchema>
+
+DELETE
+	{	?s ?p "2023-21-22T00:00:00" }
+INSERT
+	{ 	?s ?p "2023-12-22T00:00:00"^^xsd:dateTime }
+WHERE
+	{	?s ?p "2023-21-22T00:00:00" }

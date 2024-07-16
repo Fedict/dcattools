@@ -1,5 +1,5 @@
 # Set language to English
-
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 INSERT
