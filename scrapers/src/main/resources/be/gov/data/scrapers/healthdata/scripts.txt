@@ -30,6 +30,7 @@ healthdata/sparql-theme.qry
 healthdata/sparql-accessurl.qry
 healthdata/sparql-downloadurl.qry
 healthdata/sparql-fix-datetime.qry
+healthdata/sparql-fix-datetime2.qry
 sparql-date-type.qry
 clear-skos.qry
 sparql-strip-html.qry
