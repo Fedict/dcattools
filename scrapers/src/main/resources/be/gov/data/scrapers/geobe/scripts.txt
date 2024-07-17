@@ -9,6 +9,7 @@ geobe/sparql-fix-accessurl.qry
 geobe/sparql-fix-format.qry
 geobe/sparql-fix-frequency.qry
 geobe/sparql-fix-datatype.qry
+geobe/sparql-fix-bira.qry
 geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-theme-subject.qry
