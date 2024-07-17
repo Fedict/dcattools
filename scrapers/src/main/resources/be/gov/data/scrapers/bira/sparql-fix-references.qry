@@ -1,0 +1,10 @@
+# Delete invalid isReferencedBy URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:isReferencedBy ?ref  }
+WHERE
+	{ 	?s dcterms:isReferencedBy ?ref .
+		FILTER (!STRSTARTS(STR(?ref), 'http') )
+	}
