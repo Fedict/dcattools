@@ -6,5 +6,7 @@ DELETE
 	{	?s ?p ?label }
 WHERE
 	{	?s ?p ?label .
-		FILTER (isLiteral(?label) && (STRLEN(STR(?label)) = 0) || STR(?label) = "" ||  STR(?label) = " " )
+		FILTER (isLiteral(?label) && (
+					(STRLEN(STR(?label)) = 0) || STR(?label) = "" || STR(?label) = " " || STR(?label) = "?" ) 
+		)
 	}

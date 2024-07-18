@@ -29,7 +29,6 @@ import be.gov.data.scrapers.Cache;
 import be.gov.data.scrapers.Page;
 import be.gov.data.helpers.Storage;
 import be.gov.data.scrapers.BasicScraperJson;
-import com.jayway.jsonpath.DocumentContext;
 
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.ReadContext;
@@ -38,14 +37,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
-
 import java.util.Map;
 import static java.util.Map.entry;
 import java.util.Properties;
 import java.util.Set;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.CookieSpecs;
@@ -59,6 +56,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 /**
@@ -140,13 +138,25 @@ public class HdaJson extends BasicScraperJson  {
 			entry(DCAT.KEYWORD, 
 				JsonPath.compile("$.datasetProperties.value.customProperties.Keyword")),
 			entry(DCTERMS.SUBJECT, 
-				JsonPath.compile("$.datasetProperties.value.customProperties.Data_Domain")),
+				List.of(
+					JsonPath.compile("$.datasetProperties.value.customProperties.Data_Domain"),
+					JsonPath.compile("$.datasetProperties.value.customProperties.['Health Category']"))
+				),
 			entry(DCAT.THEME, 
 				JsonPath.compile("$.datasetProperties.value.customProperties.Theme")),
 			entry(DCTERMS.ACCESS_RIGHTS, 
 				JsonPath.compile("$.datasetProperties.value.customProperties.['Access Rights']")),
 			entry(DCTERMS.PUBLISHER, 
-				JsonPath.compile("$.datasetProperties.value.customProperties.Publisher"))
+				JsonPath.compile("$.datasetProperties.value.customProperties.Publisher")),
+			entry(DCTERMS.CREATOR, 
+				JsonPath.compile("$.datasetProperties.value.customProperties.Creator")),
+			entry(DCAT.ACCESS_URL, 
+				JsonPath.compile("$.datasetProperties.value.customProperties.Page")),
+			entry(DCAT.LANDING_PAGE, 
+				JsonPath.compile("$.datasetProperties.value.customProperties.['Landing Page']")),
+			entry(OWL.VERSIONINFO,
+				JsonPath.compile("$.datasetProperties.value.customProperties.Version"))
+		
 		);
 
 		mapDataset(store, jsonObj, datasetIdPath, datasetMap);

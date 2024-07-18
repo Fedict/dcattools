@@ -1,1 +1,3 @@
 # extra queries to be executed and data to be loaded 
+sparql-delete-label-empty.qry
+sparql-date-type.qry
