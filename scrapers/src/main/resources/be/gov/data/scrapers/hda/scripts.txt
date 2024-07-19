@@ -1,3 +1,5 @@
 # extra queries to be executed and data to be loaded 
 sparql-delete-label-empty.qry
+data-frequency.ttl
+sparql-map-frequency.qry
 sparql-date-type.qry
