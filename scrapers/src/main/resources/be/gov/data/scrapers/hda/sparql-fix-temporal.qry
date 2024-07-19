@@ -1,0 +1,24 @@
+# Split temporal into startdate / enddate
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{ 	?s dcterms:temporal ?temp }
+INSERT
+	{ 	?s dcterms:temporal [ 
+			dcat:startDate ?start ;
+			dcat:endDate ?end ]
+	}
+WHERE
+	{ 	?s dcterms:temporal ?temp .
+		FILTER (REGEX(?temp, "^\\S+ - \\S+"))
+		BIND (
+			REPLACE(
+				STRBEFORE(?temp, " - "), "-\\D+$", "")
+			as ?start)
+		BIND (
+			REPLACE(
+				STRAFTER(?temp, " - "), " - \\?$", "")
+			 as ?end)
+	}

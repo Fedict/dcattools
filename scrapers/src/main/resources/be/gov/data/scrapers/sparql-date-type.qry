@@ -16,8 +16,12 @@ WHERE	{
 				dcterms:modified
 			} .
 			BIND(
-				STRDT(STR(?o), IF(STRLEN(STR(?o)) = 10, xsd:date, xsd:dateTime))
-				AS ?dtype
+				STRDT(STR(?o),
+					IF(STRLEN(STR(?o)) = 4, xsd:gYear,
+						IF(STRLEN(STR(?o)) = 10, xsd:date, 
+							xsd:dateTime)
+						)
+				) AS ?dtype
 			)
 			FILTER ( datatype(?o) = xsd:string )
 }

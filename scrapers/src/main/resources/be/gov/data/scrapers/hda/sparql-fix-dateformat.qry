@@ -1,0 +1,15 @@
+# Fix dateformat (EU date notation to ISO)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s ?prop ?date }
+INSERT
+	{	?s ?prop ?iso }
+WHERE
+	{ 	?s ?prop ?date .
+		VALUES ?prop { dcterms:modified dcat:startDate dcat:endDate }
+		FILTER (REGEX(?date, "^(\\d{1,2})[/-](\\d{1,2})[/-](\\d{4})$"))
+		BIND (REPLACE(?date, "^(\\d{1,2})[/-](\\d{1,2})[/-](\\d{4})$", "$3-$2-$1") as ?iso) 
+	}

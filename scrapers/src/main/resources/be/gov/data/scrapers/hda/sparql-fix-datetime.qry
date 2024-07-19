@@ -1,0 +1,12 @@
+# Remove non-date expressions in modified
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s ?prop ?label }
+WHERE
+	{ 	?s ?prop ?label .
+		VALUES ?prop { dcterms:modified dcat:startDate dcat:endDate }
+		FILTER (REGEX(?label, "^\\D+")) 
+	}
