@@ -1,3 +1,5 @@
+.gitlab-ci.yaml
+.gitlab-ci.yml
 /helpers/target/
 /datagovbe/target/
 /enhancers/target/
