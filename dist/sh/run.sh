@@ -1,28 +1,44 @@
 #!/bin/sh
 
-DATA=/tmp/scraper
-BIN=$HOME/bin
-SHACL=$HOME/shacl
+# Data.gov.be "glue" script to run different steps (scraping, validating...) in metadata collection.
+#
+# Bart Hanssens
 
-mkdirs() {
+# Directories
+BIN=$HOME
+SHACL=$HOME/shacl
+DATA=/mnt/datagovbe
+
+# Create directories (if not yet present)
+makedirs() {
 	mkdir -p $DATA/$1/data $DATA/$1/logs $DATA/$1/reports $DATA/$1/status
 }
 
+# record the step in the process being executed
+# Parameters: project code, name of the step 
 step() {
-	echo $2
+	echo $1 $2
 	echo $2 > $DATA/$1/status/step
 }
 
+# record exit status of the step that was executed
+# Parameters: project code, name of the step, exit code
 status() {
 	echo $3 > $DATA/$1/status/$2
 }
 
+# remove data from previous run
+# Parameter: project code
 clean() {
 	step $1 "clean"
 
-	find $DATA/$1 -type f -exec rm {} \;
+	rm $DATA/$1/data/$1.nt
+	rm $DATA/$1/logs/*
+	rm $DATA/$1/reports/*
 }
 
+# Scrape metadata from an external source and save it as triples
+# Parameter: project code
 scrape() {
 	step $1 "scrape"
 
@@ -35,6 +51,8 @@ scrape() {
 	status $1 "scrape" $2 $?
 }
 
+# Create SHACL validation reports
+# Parameter: project code
 validate() {
 	step $1 "validate"
 	
@@ -56,12 +74,27 @@ validate() {
 	status $1 "validate" $2 $?
 }
 
+# Create SHACL validation reports
+# Parameter: project code
+translate() {
+	step $1 "translate"
+ }
 
-if [ ! -d $DATA/$1 ]; then
-	mkdirs $1
-fi
+# Main
 
-clean $1
-scrape $1
-validate $1
+# Parameter: one or more project codes (separated by ',')
 
+IFS=',' 
+sources=()
+for i in "$1"; do sources+=($i); done
+
+for source in ${sources[@]}; do
+	if [ ! -d $DATA/$source ]; then
+		makedirs $source
+	fi
+
+	clean $source
+	scrape $source
+	validate $source
+	translate $source
+done
