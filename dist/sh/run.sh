@@ -46,7 +46,9 @@ scrape() {
 		-Dorg.eclipse.rdf4j.rio.fail_on_sax_non_fatal_errors=false \
 		-Dorg.eclipse.rdf4j.rio.fail_on_non_standard_attributes=false \
 		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/scrape.log \
-		-jar $BIN/scrapers.jar -n $1
+		-jar $BIN/scrapers.jar \
+		--dir=$DATA/$1 \
+		--name=$1
 	
 	status $1 "scrape" $2 $?
 }
@@ -56,7 +58,7 @@ scrape() {
 validate() {
 	step $1 "validate"
 	
-	java -Dorg.slf4j.simpleLogger.logFile=$BIN/$1/logs/validate.log \
+	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/data/$1.nt \
 		--shacl=file:///$SHACL/shapes.ttl \
