@@ -26,6 +26,7 @@
 package be.gov.data.helpers;
 
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -39,6 +40,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.conn.SystemDefaultRoutePlanner;
 import org.apache.http.util.EntityUtils;
 
 import org.slf4j.Logger;
@@ -53,8 +55,11 @@ public class Fetcher {
     private final static Logger logger = LoggerFactory.getLogger(Fetcher.class);
     private int delay = 1000;
 	
-	private final static CloseableHttpClient client = HttpClientBuilder.create().build();
-    
+	private final static CloseableHttpClient client = 
+		HttpClientBuilder.create()
+						.setRoutePlanner(new SystemDefaultRoutePlanner(ProxySelector.getDefault()))
+						.build();
+
     /**
      * Sleep (between HTTP requests)
      */
