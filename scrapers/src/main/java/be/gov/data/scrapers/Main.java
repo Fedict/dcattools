@@ -59,9 +59,7 @@ public class Main implements Callable<Integer> {
 	@Override
 	public Integer call() throws Exception {
 		// find and load specific scraper
-		String dataDir = Paths.get(dir, "data", name).toString();
-
-		try (BaseScraper scraper = BaseScraperFactory.getConfiguredScraper(name, dataDir)) {
+		try (BaseScraper scraper = BaseScraperFactory.getConfiguredScraper(name, dir)) {
 			scraper.setRawOutput(raw);
 			scraper.scrape();
 			scraper.generateDcat();
