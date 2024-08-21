@@ -24,7 +24,7 @@ step() {
 # record exit status of the step that was executed
 # Parameters: project code, name of the step, exit code
 status() {
-	echo $3 > $DATA/$1/status/$2
+	echo $(date -Iseconds) $2 $3 >> $DATA/$1/status/exit
 }
 
 # remove data from previous run
@@ -60,7 +60,7 @@ validate() {
 	
 	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
 		-jar $BIN/shaclvalidator.jar \
-		--data=file:///$DATA/$1/data/$1.nt \
+		--data=file:///$DATA/$1/$1.nt \
 		--shacl=file:///$SHACL/shapes.ttl \
 		--shacl=file:///$SHACL/shapes_recommended.ttl \
 		--shacl=file:///$SHACL/mdr-vocabularies.shape.ttl \
