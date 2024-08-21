@@ -11,7 +11,7 @@ DATA=/mnt/datagovbe
 
 # Create directories (if not yet present)
 makedirs() {
-	mkdir -p $DATA/$1/data $DATA/$1/logs $DATA/$1/reports $DATA/$1/status
+	mkdir -p $DATA/$1 $DATA/$1/logs $DATA/$1/reports $DATA/$1/status
 }
 
 # record the step in the process being executed
@@ -32,9 +32,10 @@ status() {
 clean() {
 	step $1 "clean"
 
-	rm $DATA/$1/data/$1.nt
+	rm $DATA/$1/$1.nt
 	rm $DATA/$1/logs/*
 	rm $DATA/$1/reports/*
+	rm $DATA/$1/status/*
 }
 
 # Scrape metadata from an external source and save it as triples
