@@ -80,6 +80,15 @@ public class Hasher {
 		return (i != null ? i.toString().getBytes(StandardCharsets.UTF_8) : NULL);
 	}
 
+/**
+	 * Get byte representation of boolean
+	 * 
+	 * @param b
+	 * @return 
+	 */
+	private byte[] getBytes(Boolean b) {
+		return (b != null ? b.toString().getBytes(StandardCharsets.UTF_8) : NULL);
+	}
 
 	/**
 	 * Get byte representation of a set of URIs (for hashing purposes)
@@ -170,7 +179,7 @@ public class Hasher {
 		dg.update(getBytes(ds.from()));
 		dg.update(getBytes(ds.till()));
 		dg.update(getBytes(ds.modified()));
-
+		dg.update(getBytes(ds.hvd()));
 		return dg.digest();
 	}
 	

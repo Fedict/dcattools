@@ -264,6 +264,19 @@ public record DrupalDataset(
 	}
 
 	/**
+	 * Wrap a boolean
+	 * 
+	 * @param key
+	 * @param value
+	 * @return 
+	 */
+	private Map<String,Boolean> wrap(String key, Boolean value) {
+		Map<String,Boolean> m = new HashMap<>();
+		m.put(key, (value != null) ? value : false);
+		return m;
+	}
+
+	/**
 	 * Wrap an integer to a list with key-value pair
 	 * 
 	 * @param key 
@@ -333,7 +346,7 @@ public record DrupalDataset(
 		map.put("field_upstamp", wrap("value", modified != null 
 												? modified.toInstant().truncatedTo(ChronoUnit.SECONDS).toString()
 												: null));
-		map.put("field_high_value_dataset", wrap("value", hvd.toString()));
+		map.put("field_high_value_dataset", wrap("value", hvd));
 
 		return map;
 	}
