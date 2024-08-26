@@ -58,6 +58,7 @@ public abstract class DataResource {
 	private IRI license;
 	private IRI right;
 	private Set<IRI> themes;
+	private Set<IRI> applicableLegislation;
 	private IRI accrualPeriodicity;
 
 	private Date issued;
@@ -366,7 +367,7 @@ public abstract class DataResource {
 	}
 
 	/**
-	 * @param rights the rights to set
+	 * @param right the rights to set
 	 */
 	public void setRight(IRI right) {
 		this.right = right;
@@ -384,6 +385,20 @@ public abstract class DataResource {
 	 */
 	public void setThemes(Set<IRI> themes) {
 		this.themes = themes;
+	}
+
+	/**
+	 * @return the applicable legislation
+	 */
+	public Set<IRI> getApplicableLegislation() {
+		return applicableLegislation;
+	}
+
+	/**
+	 * @param applicableLegislation the applicableLegislation to set
+	 */
+	public void setApplicableLegislation(Set<IRI> applicableLegislation) {
+		this.applicableLegislation = applicableLegislation ;
 	}
 
 	/**

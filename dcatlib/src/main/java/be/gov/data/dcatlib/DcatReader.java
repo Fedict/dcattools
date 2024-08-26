@@ -80,6 +80,8 @@ public class DcatReader {
 	private final static SimpleDateFormat DATE_FMT_FULL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
 	
+	private final static IRI DCATAP_LEGISLATION = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
+	
 	private final static Map<IRI,String> LANG_MAP = 
 		Map.of(Values.iri("http://publications.europa.eu/resource/authority/language/NLD"), "nl",
 				Values.iri("http://publications.europa.eu/resource/authority/language/FRA"), "fr",
@@ -368,6 +370,7 @@ public class DcatReader {
 		d.setThemes(getIRIs(iri, DCAT.THEME));
 		d.setCreator(getIRI(iri, DCTERMS.CREATOR));
 		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
+		d.setApplicableLegislation(getIRIs(iri, DCATAP_LEGISLATION));
 		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
 		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
 		d.setLicense(getIRI(iri, DCTERMS.LICENSE));

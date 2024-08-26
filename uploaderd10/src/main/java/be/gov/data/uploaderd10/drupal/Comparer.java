@@ -223,7 +223,8 @@ public class Comparer {
 				mapTaxonomy(organisations, d.getPublisher()),
 				d.getStartDate(),
 				d.getEndDate(),
-				d.getModified()
+				d.getModified(),
+				d.getApplicableLegislation() == null || d.getApplicableLegislation().isEmpty()
 			);
 			map.put(ByteBuffer.wrap(hasher.hash(drupal)), drupal);
 		}

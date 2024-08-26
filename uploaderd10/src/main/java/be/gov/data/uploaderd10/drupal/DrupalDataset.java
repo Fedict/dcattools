@@ -68,7 +68,8 @@ public record DrupalDataset(
 	Integer publisher,
 	Date from,
 	Date till,
-	Date modified
+	Date modified,
+	Boolean hvd
 	) {
 
 	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
@@ -332,6 +333,8 @@ public record DrupalDataset(
 		map.put("field_upstamp", wrap("value", modified != null 
 												? modified.toInstant().truncatedTo(ChronoUnit.SECONDS).toString()
 												: null));
+		map.put("field_high_value_dataset", wrap("value", hvd.toString()));
+
 		return map;
 	}
 
@@ -362,7 +365,8 @@ public record DrupalDataset(
 			(Integer) getOneValue("field_publisher", map, "target_id"),
 			getOneDateValue("field_date_range", map, "value"),
 			getOneDateValue("field_date_range", map, "end_value"),
-			getOneDateValue("field_upstamp", map, "value")
+			getOneDateValue("field_upstamp", map, "value"),
+			(Boolean) getOneValue("field_high_value_dataset", map, "value")
 		);
 	}
 }
