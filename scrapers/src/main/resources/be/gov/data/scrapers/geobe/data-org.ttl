@@ -54,6 +54,13 @@
 		"SPF Economie, P.M.E., Classes moyennes et Energie, DG Statistique - Statistics Belgium"@fr,
 		"FÖD Wirtschaft, K.M.B., Mittelstand und Energie, GD Statistik - Statistics Belgium"@de .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647>
+	a foaf:Organization;
+	dcterms:type admsp:NationalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/246> ;
+	skos:prefLabel "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr ;
+	skos:altLabel "FOD Beleid & Ondersteuning"@nl, "SPF Stratégie & Appui"@fr  .
+	
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
