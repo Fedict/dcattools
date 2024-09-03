@@ -86,10 +86,10 @@ translate() {
  		-jar translater.jar \
    		--file=$DATA/$1/$1.nt \
      		--cache \
-       		--translated=$DATA/$1/$1-translated.nt \ 
+       		--translated=$DATA/$1/$1-translated.nt \
 		--dir=$DATA/$1 \
      		--language=nl  --language=fr --language=de --language=en \
-     		--user=$ETRANSLATE_USER --pass=$ETRANSLATE_PASS \ 
+     		--user=$ETRANSLATE_USER --pass=$ETRANSLATE_PASS \
        		--url=$ETRANSLATE_URL
 
  	status $1 "translate" $2 $?
