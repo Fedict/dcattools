@@ -50,14 +50,11 @@ import picocli.CommandLine.Option;
 public class Main implements Callable<Integer> {
 	private final static Logger LOG = LoggerFactory.getLogger(Main.class);
 
-	@Option(names={"-n", "--name"}, description="source name", required=true)
-	private String name;
+	@Option(names = {"-f", "--file"}, description = "Input file", required = true)
+	private Path inFile;
 
-	@Option(names = {"-f", "--file"}, description = "Input file", required=true)
-    private Path inFile;
-
-	@Option(names = {"-t", "--translated"}, description = "Translated output file", required=true)
-    private Path outFile;
+	@Option(names = {"-t", "--translated"}, description = "Translated output file", required = true)
+	private Path outFile;
 
 	@Option(names={"-l", "--language"}, description="target languages")
 	private List<String> targets;
