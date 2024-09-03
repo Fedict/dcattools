@@ -74,7 +74,7 @@ validate() {
 		--countValues=dcterms:spatial --countValues=dcterms:publisher \
 		--countValues=dcterms:creator --countValues=dcterms:contributor \
 		--countValues=dcterms:rightsHolder
-	ir
+
 	status $1 "validate" $2 $?
 }
 
