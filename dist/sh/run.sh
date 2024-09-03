@@ -88,7 +88,6 @@ translate() {
    		--file=$DATA/$1/$1.nt \
      		--cache \
        		--translated=$DATA/$1/$1-translated.nt \
-		--dir=$DATA/$1 \
      		--language=nl  --language=fr --language=de --language=en \
      		--user=$ETRANSLATE_USER --pass=$ETRANSLATE_PASS \
        		--url=$ETRANSLATE_URL
