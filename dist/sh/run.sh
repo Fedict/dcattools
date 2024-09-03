@@ -73,7 +73,7 @@ validate() {
 		--countValues=dcterms:spatial --countValues=dcterms:publisher \
 		--countValues=dcterms:creator --countValues=dcterms:contributor \
 		--countValues=dcterms:rightsHolder
-	
+	ir
 	status $1 "validate" $2 $?
 }
 
@@ -81,6 +81,18 @@ validate() {
 # Parameter: project code
 translate() {
 	step $1 "translate"
+
+	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/translate.log \
+ 		-jar translater.jar \
+   		--file=$DATA/$1/$1.nt \
+     		--cache \
+       		--translated=$DATA/$1/$1-translated.nt \ 
+		--dir=$DATA/$1 \
+     		--language=nl  --language=fr --language=de --language=en \
+     		--user=$ETRANSLATE_USER --pass=$ETRANSLATE_PASS \ 
+       		--url=$ETRANSLATE_URL
+
+ 	status $1 "translate" $2 $?
  }
 
 # Main
