@@ -53,6 +53,12 @@ public class Main implements Callable<Integer> {
 	@Option(names={"-n", "--name"}, description="source name", required=true)
 	private String name;
 
+	@Option(names = {"-f", "--file"}, description = "Input file", required=true)
+    private Path inFile;
+
+	@Option(names = {"-t", "--translated"}, description = "Translated output file", required=true)
+    private Path outFile;
+
 	@Option(names={"-l", "--language"}, description="target languages")
 	private List<String> targets;
 
@@ -71,9 +77,6 @@ public class Main implements Callable<Integer> {
 	@Override
 	public Integer call() throws Exception { 
 		LOG.info("-- START --");
-	
-		Path inFile = Paths.get("data", name, name + ".nt");
-		Path outFile = Paths.get("data", name, name + "-translated" + ".nt");
 
 		Translater t = new Translater(url, user, pass);
 		
