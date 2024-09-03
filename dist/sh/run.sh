@@ -33,6 +33,7 @@ clean() {
 	step $1 "clean"
 
 	rm $DATA/$1/$1.nt
+ 	rm $DATA/$1/cache
 	rm $DATA/$1/logs/*
 	rm $DATA/$1/reports/*
 	rm $DATA/$1/status/*
