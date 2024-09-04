@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class Cache {
-    private static final Logger logger = LoggerFactory.getLogger(Cache.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Cache.class);
         
     private DB db = null;
     private static final String CACHE = "cache";
@@ -63,7 +63,7 @@ public class Cache {
     public void storeURLList(List<URL> urls)  {
         ConcurrentMap<String, List<URL>> map = db.hashMap(Cache.CACHE);
         map.put(Cache.URLS, urls);
-        db.commit();
+        //db.commit();
     }
     
     /**
@@ -84,12 +84,12 @@ public class Cache {
      * @param lang 
      */
     public void storePage(URL id, String lang, Page page) {
-        logger.debug("Storing page {} with lang {} to cache", id, lang);
+        LOG.debug("Storing page {} with lang {} to cache", id, lang);
         ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
         Map<String, Page> p = map.getOrDefault(id, new HashMap<>());
         p.put(lang, page);
         map.put(id, p);
-        db.commit();
+        //db.commit();
     }
     
     /**
@@ -99,7 +99,7 @@ public class Cache {
      * @return page object
      */
     public Map<String, Page> retrievePage(URL id) {
-        logger.debug("Retrieving page {} from cache", id);
+        LOG.debug("Retrieving page {} from cache", id);
         ConcurrentMap<URL, Map<String, Page>> map = db.hashMap(Cache.PAGES);
         return map.getOrDefault(id, Collections.emptyMap());
     }
@@ -123,7 +123,7 @@ public class Cache {
     public void storeMap(URL id, Map<String,String> map) {
         ConcurrentMap<URL, Map<String,String>> m = db.hashMap(Cache.PAGES);
         m.put(id, map);
-        db.commit();
+        //db.commit();
     }
     
     /**
@@ -141,8 +141,9 @@ public class Cache {
      * Close cache
      */
     public void shutdown() {
-        logger.info("Closing cache file");
+        LOG.info("Closing cache file ...");
         db.close();
+		LOG.info(" ... closed");
     }
     
 	/**
@@ -151,7 +152,8 @@ public class Cache {
 	 * @param f 
 	 */
     public Cache(File f) {
-        logger.info("Opening cache file {}", f.getAbsolutePath());
-        db = DBMaker.fileDB(f).make();
+        LOG.info("Opening cache file {}", f.getAbsolutePath());
+        db = DBMaker.fileDB(f).asyncWriteEnable().closeOnJvmShutdown().transactionDisable().make();
+		LOG.info(" ... opened");
     }
 }
