@@ -23,13 +23,10 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.scrapers.fpssoc;
+package be.gov.data.scrapers.fpssocsha;
 
-import be.gov.data.scrapers.Cache;
 import be.gov.data.scrapers.Dcat;
-import be.gov.data.scrapers.Page;
 import java.io.IOException;
-import java.net.URL;
 
 import java.util.Properties;
 
