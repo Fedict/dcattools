@@ -106,11 +106,14 @@ translate() {
 update() {
 	step $1 "update"
 
+	echo $SECRETS
+ 
  	USER_PASS=$(echo $SECRETS | grep ^$1)
   	D_USER=$(echo $USER_PASS | cut -d ':' -f 2)
   	D_PASS=$(echo $USER_PASS | cut -d ':' -f 3)
-   
-	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log \
+
+	java  -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
+ 		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log \
  		-jar uploaderd10.jar \
    		--user=$D_USER \
      		--password=$D_PASS \
