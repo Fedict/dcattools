@@ -110,11 +110,11 @@ update() {
   	D_USER=$(echo $USER_PASS | cut -d ':' -f 2)
   	D_PASS=$(echo $USER_PASS | cut -d ':' -f 3)
    
-	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log
- 		-jar uploaderd10.jar
-   		--user=$D_USER
-     		--password=$D_PASS
-   		--url=https://5377.f2w.bosa.be 
+	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log \
+ 		-jar uploaderd10.jar \
+   		--user=$D_USER \
+     		--password=$D_PASS \
+   		--url=https://5377.f2w.bosa.be \ 
      		--file=$DATA/$1/$1-translated.nt
 
  	status $1 "update" $2 $?
