@@ -42,11 +42,15 @@ RUN echo 'nonroot:x:1949000151:0:non-root user:/home/nonroot:/sbin/nologin' >> /
   chgrp -R 0 /home/nonroot && \
   chmod -R g=u /home/nonroot
 
-COPY --from=temp /home/dcattools/**/target/scrapers*.jar /home/nonroot/scrapers.jar
-COPY --from=temp /home/dcattools/**/target/tools*.jar /home/nonroot/tools.jar
-COPY --from=temp /home/dcattools/**/target/uploaderd10*.jar /home/nonroot/uploaderd10.jar
-COPY --from=temp /home/dcattools/**/target/shaclvalidator*.jar /home/nonroot/shaclvalidator.jar
-COPY --from=temp /home/dcattools/**/target/shaclvalidator*.jar /home/nonroot/translater.jar
+COPY --from=temp /home/datagovbe/dcattools/scrapers/target/scrapers*.jar /home/nonroot/scrapers.jar
+COPY --from=temp /home/datagovbe/dcattools/tools/target/tools*.jar /home/nonroot/tools.jar
+COPY --from=temp /home/dcattools/dcattools/uploaderd10/target/uploaderd10*.jar /home/nonroot/uploaderd10.jar
+COPY --from=temp /home/datagovbe/dcattools/translater/target/translater*.jar /home/nonroot/translater.jar
+
+COPY --from=temp /home/datagovbe/shaclvalidator/target/shaclvalidator*.jar /home/nonroot/shaclvalidator.jar
+
+COPY --from=temp /home/datagovbe/dcattools/dist/sh/*.sh /home/nonroot
+COPY --from=temp /home/datagovbe/dcattools/dist/shacl/*.ttl /home/nonroot/shacl
 
 COPY --from=temp /home/dcattools/dist/sh/*.sh /home/nonroot
 COPY --from=temp /home/dcattools/dist/shacl/*.ttl /home/nonroot/shacl
