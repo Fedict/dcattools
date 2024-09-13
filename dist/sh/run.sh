@@ -109,12 +109,8 @@ update() {
  	USER_PASS=$(echo $SECRETS | grep ^$1)
   	D_USER=$(echo $USER_PASS | cut -d ':' -f 2)
   	D_PASS=$(echo $USER_PASS | cut -d ':' -f 3)
-
-
-	echo $USER_PASS
- 	echo $D_USE
  
-	java  -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
+	java  -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
  		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log \
  		-jar uploaderd10.jar \
    		--user=$D_USER \
