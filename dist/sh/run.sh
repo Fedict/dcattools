@@ -83,7 +83,7 @@ validate() {
 	status $1 "validate" $2 $?
 }
 
-# Create SHACL validation reports
+# Translate the metadata using the eTranslation service
 # Parameter: project code
 translate() {
 	step $1 "translate"
@@ -100,6 +100,26 @@ translate() {
  	status $1 "translate" $2 $?
  }
 
+
+# Update the data.gov.be Drupal portal
+# Parameter: project code
+update() {
+	step $1 "update"
+
+ 	USER_PASS=$(echo $SECRETS | grep ^$1)
+  	D_USER=$(echo $USER_PASS | cut -d ':' -f 2)
+  	D_PASS=$(echo $USER_PASS | cut -d ':' -f 3)
+   
+	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log
+ 		-jar uploaderd10.jar
+   		--user=$D_USER
+     		--password=$D_PASS
+   		--url=https://5377.f2w.bosa.be 
+     		--file=$DATA/$1/$1-translated.nt
+
+ 	status $1 "update" $2 $?
+ }
+ 
 # Main
 
 # Parameter: one or more project codes (separated by ',')
@@ -117,4 +137,5 @@ for source in ${sources[@]}; do
 	scrape $source
 	validate $source
 	translate $source
+ 	update $source
 done
