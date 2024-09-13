@@ -153,7 +153,7 @@ public class Cache {
 	 */
     public Cache(File f) {
         LOG.info("Opening cache file {}", f.getAbsolutePath());
-        db = DBMaker.fileDB(f).asyncWriteEnable().closeOnJvmShutdown().transactionDisable().make();
+        db = DBMaker.fileDB(f).asyncWriteEnable().fileLockDisable().closeOnJvmShutdown().transactionDisable().make();
 		LOG.info(" ... opened");
     }
 }
