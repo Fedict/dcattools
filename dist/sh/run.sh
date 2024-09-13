@@ -114,7 +114,7 @@ update() {
  		-jar uploaderd10.jar \
    		--user=$D_USER \
      		--password=$D_PASS \
-   		--url=https://5377.f2w.bosa.be \ 
+   		--url=https://5377.f2w.bosa.be \
      		--file=$DATA/$1/$1-translated.nt
 
  	status $1 "update" $2 $?
