@@ -52,7 +52,7 @@ public abstract class DataResource {
 	private Map<String,IRI> contactSite;
 	
 	// references
-	private IRI creator;
+	private Map<String,Set<String>> creators;
 	private IRI publisher;
 	private IRI spatial;
 	private IRI license;
@@ -187,6 +187,7 @@ public abstract class DataResource {
 	}
 
 	/**
+	 * @param lang language code
 	 * @return the keywords
 	 */
 	public Set<String> getKeywords(String lang) {
@@ -304,19 +305,26 @@ public abstract class DataResource {
 	}
 
 	/**
-	 * @return the creator
+	 * @return the creators
 	 */
-	public IRI getCreator() {
-		return creator;
+	public Map<String,Set<String>> getCreators() {
+		return creators;
 	}
 
 	/**
-	 * @param creator the creator to set
+	 * @param creators the creators togset
 	 */
-	public void setCreator(IRI creator) {
-		this.creator = creator;
+	public Set<String> getCreators(String lang) {
+		return creators.get(lang);
 	}
 
+	/**
+	 * @param creators the creators to set
+	 */
+	public void setCreators(Map<String,Set<String>> creators) {
+		this.creators = creators;
+	}
+	
 	/**
 	 * @return the publisher
 	 */

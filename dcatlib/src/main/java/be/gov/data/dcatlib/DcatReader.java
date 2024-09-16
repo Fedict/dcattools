@@ -48,6 +48,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
@@ -58,6 +59,7 @@ import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -108,6 +110,17 @@ public class DcatReader {
 			LOG.warn("More than 1 value for " + subj + " " + pred);
 		}
 		return objects.stream().findFirst().get();
+	}
+
+	/**
+	 * Get a set of values
+	 * 
+	 * @param subj subject
+	 * @param pred predicate
+	 * @return values or null
+	 */
+	private Set<Value> getValues(Resource subj, IRI pred) {
+		return m.filter(subj, pred, null).objects();
 	}
 
 	/**
@@ -368,8 +381,19 @@ public class DcatReader {
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
 
 		d.setThemes(getIRIs(iri, DCAT.THEME));
-		d.setCreator(getIRI(iri, DCTERMS.CREATOR));
+		
 		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
+		
+		Set<Value> creators = getValues(iri, DCTERMS.CREATOR);
+		Map<String,Set<String>> names = new HashMap<>();
+		for(Value v: creators) {
+			Map<String,Set<String>> name = getLangStringList((Resource) v, FOAF.NAME);
+			for(String key: name.keySet()) {
+				names.merge(key, name.get(key), (s1, s2) -> {  s1.addAll(s2); return s1; }  );
+			}
+		}
+		d.setCreators(names);
+		
 		d.setApplicableLegislation(getIRIs(iri, DCATAP_LEGISLATION));
 		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
 		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
