@@ -412,18 +412,23 @@ public class Comparer {
 			for (String lang: langs) {
 				if (d.getContactAddr(lang) == null) {
 					Map<String, IRI> m = d.getContactAddr();
-					m.put(lang, firstFromMap(d.getContactAddr()));
+					m.put(lang, firstFromMap(m));
 					LOG.debug("Adding fallback {} contact address for {}", lang, d.getId());
 				}
 				if (d.getContactName(lang) == null) {
 					Map<String, String> m = d.getContactName();
-					m.put(lang, firstFromMap(d.getContactName()));
+					m.put(lang, firstFromMap(m));
 					LOG.debug("Adding fallback {} contact name for {}", lang, d.getId());
 				}
 				if  (d.getLandingPage(lang) == null) {
 					Map<String, IRI> m = d.getLandingPage();
-					m.put(lang, firstFromMap(d.getLandingPage()));
+					m.put(lang, firstFromMap(m));
 					LOG.debug("Adding fallback {} landing page for {}", lang, d.getId());
+				}
+				if (d.getCreators(lang) == null) {
+					Map<String,Set<String>> s = d.getCreators();
+					s.put(lang, firstFromMap(s));
+					LOG.debug("Adding fallback {} creators for {}", lang, d.getId());					
 				}
 			}
 

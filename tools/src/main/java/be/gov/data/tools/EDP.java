@@ -619,7 +619,7 @@ public class EDP {
 	}
 
 	/**
-	 * Write document (license, standard...) info
+	 * Write location info
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection

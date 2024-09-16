@@ -66,6 +66,7 @@ public record DrupalDataset(
 	Integer license,
 	String organisation,
 	Integer publisher,
+	Set<String> creators,
 	Date from,
 	Date till,
 	Date modified,
@@ -343,6 +344,11 @@ public record DrupalDataset(
 									: null);
 		map.put("field_organisation", wrap("value", organisation));
 		map.put("field_publisher", wrap("target_id", publisher));
+		map.put("field_creators", creators != null
+									? creators.stream()
+										.map(c -> Map.of("value", c))
+										.collect(Collectors.toList())
+									: null);
 		map.put("field_upstamp", wrap("value", modified != null 
 												? modified.toInstant().truncatedTo(ChronoUnit.SECONDS).toString()
 												: null));
@@ -376,6 +382,7 @@ public record DrupalDataset(
 			(Integer) getOneValue("field_license", map, "target_id"),
 			(String) getOneValue("field_organisation", map, "value"),
 			(Integer) getOneValue("field_publisher", map, "target_id"),
+			getSet("field_creators", map, "value", String.class),
 			getOneDateValue("field_date_range", map, "value"),
 			getOneDateValue("field_date_range", map, "end_value"),
 			getOneDateValue("field_upstamp", map, "value"),

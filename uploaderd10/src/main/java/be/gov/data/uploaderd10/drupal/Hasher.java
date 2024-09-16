@@ -176,6 +176,7 @@ public class Hasher {
 		dg.update(getBytes(ds.license()));
 		dg.update(getBytes(ds.organisation()));
 		dg.update(getBytes(ds.publisher()));
+		dg.update(getBytesStr(ds.creators()));
 		dg.update(getBytes(ds.from()));
 		dg.update(getBytes(ds.till()));
 		dg.update(getBytes(ds.modified()));
