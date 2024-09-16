@@ -55,7 +55,7 @@ public class GeonetMetawal extends Dcat {
 			Page page = cache.retrievePage(url).get("all");
 			// fix buggy input
 			String content = page.getContent();
-			content = content.replace(" xsi:type=\"xs:string\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\"", "");
+			content = content.replace("<csw:SearchStatus timestamp=", "<csw:SearchStatus csw:timestamp=");
 			try (InputStream in = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
@@ -77,12 +77,17 @@ public class GeonetMetawal extends Dcat {
 	 */
 	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
-		int size = 20;
+		int size = 10;
 
-		for(int start = 0; ;start += size) {
-			URL url = new URL(getBase().toString() + "?startindex=" + start + "&limit=" + size + "&f=dcat");
+		String prevhash = "";
+
+		for(int start = 1; ;start += size) {
+			URL url = new URL(getBase().toString() + "&startPosition=" + start);
 			String xml = makeRequest(url);
-			if (!xml.contains("Dataset") && !xml.contains("DataService")) {
+			
+			prevhash = detectLoop(prevhash, xml);
+			
+			if (!xml.contains("Dataset") && !xml.contains("DataService") && !xml.contains("DataSeries")) {
 				LOG.info("Last (empty) page");
 				break;
 			}
