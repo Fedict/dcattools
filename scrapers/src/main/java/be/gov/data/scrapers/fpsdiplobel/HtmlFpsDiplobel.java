@@ -197,7 +197,7 @@ public class HtmlFpsDiplobel extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+		store.add(dataset, DCTERMS.IDENTIFIER, hash(u.toString()));
 		store.add(dataset, DCAT.LANDING_PAGE, front);
 		store.add(store.getURI(front.toString()), DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 

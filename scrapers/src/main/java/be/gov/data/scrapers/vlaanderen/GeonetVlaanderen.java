@@ -79,9 +79,14 @@ public class GeonetVlaanderen extends Dcat {
 
 		boolean again = true;
 
+		String prevhash = "";
+
 		for(int start = 0; ;start += size) {
 			URL url = new URL(getBase().toString() + "?startindex=" + start + "&limit=" + size + "&f=dcat_ap_vl");
 			String xml = makeRequest(url);
+			
+			prevhash = detectLoop(prevhash, xml);
+						
 			if (!xml.contains("Dataset") && !xml.contains("DataService")) {
 				if (again) {
 					LOG.info("Might be last page, try next one");

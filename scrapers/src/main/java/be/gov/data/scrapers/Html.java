@@ -93,7 +93,7 @@ public abstract class Html extends BaseScraper {
 		List<URL> urls = cache.retrieveURLList();
 		for (URL u : urls) {
 			Map<String, Page> page = cache.retrievePage(u);
-			String id = makeHashId(u.toString());
+			String id = hash(u.toString());
 			generateDataset(store, id, page);
 		}
 		generateCatalog(store);

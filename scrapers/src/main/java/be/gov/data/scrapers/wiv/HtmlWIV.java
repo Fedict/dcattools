@@ -96,7 +96,7 @@ public class HtmlWIV extends Html {
 
 			String ftype = link.text().trim();
 
-			URL u = makeDistURL(makeHashId(title) + "/" + ftype);
+			URL u = makeDistURL(hash(title) + "/" + ftype);
 			IRI dist = store.getURI(u.toString());
 			LOG.debug("Generating distribution {}", dist.toString());
 
@@ -130,7 +130,7 @@ public class HtmlWIV extends Html {
 
 		Element content = Jsoup.parse(html).body();
 
-		IRI dataset = store.getURI(makeDatasetURL(makeHashId(id)).toString());
+		IRI dataset = store.getURI(makeDatasetURL(hash(id)).toString());
 		LOG.debug("Generating dataset {}", dataset.toString());
 
 		Element h2 = content.select(H_TITLE).first();
@@ -147,7 +147,7 @@ public class HtmlWIV extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(id));
+		store.add(dataset, DCTERMS.IDENTIFIER, hash(id));
 		store.add(dataset, DCAT.LANDING_PAGE, u);
 
 		Elements dist = content.select(DIST_ROW);

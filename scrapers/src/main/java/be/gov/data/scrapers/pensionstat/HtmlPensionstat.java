@@ -156,7 +156,7 @@ public class HtmlPensionstat extends Html {
 		String l = link.attr(HTML.Attribute.HREF.toString()).replace("../", "");
 		String href = makeAbsURL(l).toString();
 
-		String id = makeHashId(href);
+		String id = hash(href);
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		LOG.debug("Generating distribution {}", dist.toString());
 		

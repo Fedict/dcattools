@@ -151,7 +151,7 @@ public class HtmlInfocenter extends Html {
 			String lang) throws MalformedURLException, RepositoryException {
 		String href = link.attr(HTML.Attribute.HREF.toString());
 
-		String id = makeHashId(href);
+		String id = hash(href);
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		LOG.debug("Generating distribution {}", dist.toString());
 

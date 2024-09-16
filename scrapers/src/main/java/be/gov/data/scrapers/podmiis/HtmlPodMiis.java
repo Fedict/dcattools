@@ -170,7 +170,7 @@ public class HtmlPodMiis extends Html {
 		URL download = makeAbsURL(href);
 
 		// important for EDP: does not like different datasets pointing to same distribution
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(download.toString());
+		String id = hash(dataset.toString()) + "/" + hash(download.toString());
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		LOG.debug("Generating distribution {}", dist.toString());
 

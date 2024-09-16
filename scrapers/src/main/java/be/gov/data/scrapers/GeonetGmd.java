@@ -211,7 +211,7 @@ public abstract class GeonetGmd extends Geonet {
 		String email = contact.valueOf(XP_EMAIL);
 
 		try {
-			v = makeOrgURL(makeHashId(name + email)).toString();
+			v = makeOrgURL(hash(name + email)).toString();
 		} catch (MalformedURLException e) {
 			LOG.error("Could not generate hash url", e);
 		}
@@ -294,7 +294,7 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
-		String id = makeHashId(dataset.toString()) + "/" + makeHashId(url);
+		String id = hash(dataset.toString()) + "/" + hash(url);
 		IRI dist = store.getURI(makeDistURL(id).toString());
 		LOG.debug("Generating distribution {}", dist.toString());
 
@@ -525,9 +525,13 @@ public abstract class GeonetGmd extends Geonet {
 	 * @throws IOException
 	 */
 	protected void scrapeCat(Cache cache) throws IOException {
+		String prevhash = "";
+				
 		for (int pos = 1, recs = MAX_RECORDS; pos < recs; pos += MAX_RECORDS) {
 			URL url = new URL(getBase() + API_RECORDS + POSITION + pos);
 			String xml = makeRequest(url);
+			
+			prevhash = detectLoop(prevhash, xml);
 
 			try {
 				Document doc = sax.read(new StringReader(xml));

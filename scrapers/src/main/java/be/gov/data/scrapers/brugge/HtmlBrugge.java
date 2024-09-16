@@ -166,7 +166,7 @@ public class HtmlBrugge extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, makeHashId(u.toString()));
+		store.add(dataset, DCTERMS.IDENTIFIER, hash(u.toString()));
 		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
 		store.add(dataset, DCAT.KEYWORD, page.substring(page.lastIndexOf("/") + 1), lang);
 

@@ -95,7 +95,7 @@ public class HdaJson extends BasicScraperJson  {
 	 */
 	protected void mapDataset(Storage store, ReadContext jsonObj, 
 			JsonPath datasetIdPath, Map<IRI,Object> datasetMap) throws MalformedURLException {
-		String hashID = makeHashId(jsonObj.read(datasetIdPath).toString());
+		String hashID = hash(jsonObj.read(datasetIdPath).toString());
 		IRI datasetSubj =  makeDatasetIRI(hashID);
 
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);

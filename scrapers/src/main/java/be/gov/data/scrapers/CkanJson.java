@@ -314,7 +314,7 @@ public abstract class CkanJson extends Ckan {
 	protected void parseContact(Storage store, IRI uri, String name, String email) throws RepositoryException {
 		String v = "";
 		try {
-			v = makeOrgURL(makeHashId(name + email)).toString();
+			v = makeOrgURL(hash(name + email)).toString();
 		} catch (MalformedURLException e) {
 			LOG.error("Could not generate hash url", e);
 		}

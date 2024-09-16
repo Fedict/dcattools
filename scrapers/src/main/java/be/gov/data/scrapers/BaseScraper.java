@@ -219,13 +219,29 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
-	 * Make a hashed ID based upon a string.
+	 * Make a hash, mostly used for creating a hash ID based upon a string.
 	 *
 	 * @param s
 	 * @return
 	 */
-	protected String makeHashId(String s) {
+	protected String hash(String s) {
 		return HASHER.hashBytes(s.getBytes(StandardCharsets.UTF_8)).toString();
+	}
+
+	/**
+	 * Check if hash of new page equals text of previous page
+	 * 
+	 * @param prevhash previous hash
+	 * @param page text of the new page
+	 * @return hash of new page
+	 * @throws IOException when hashes are the same
+	 */
+	protected String detectLoop(String prevhash, String page) throws IOException {
+		String newhash = hash(page);
+		if (newhash.equals(prevhash)) {	
+			throw new IOException("Page loop detected");
+		}
+		return newhash;
 	}
 
 	/**
