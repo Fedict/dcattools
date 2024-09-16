@@ -221,6 +221,7 @@ public class Comparer {
 				mapTaxonomy(licenses, d.getLicenses().stream().findFirst().orElse(null)),
 				d.getContactName(lang),
 				mapTaxonomy(organisations, d.getPublisher()),
+				d.getCreators(lang),
 				d.getStartDate(),
 				d.getEndDate(),
 				d.getModified(),
@@ -467,13 +468,17 @@ public class Comparer {
 	}
 	
 	/**
-	 * Start comparing
+	 * Insert/update datasets on Drupal website (and delete datasets no longer present).
+	 *
+	 * To prevent accidental deletes, the sync will do nothing when the file is empty,
+	 * or when the number of datasets in the file is smaller than the current size times the threshold percentage 
 	 * 
 	 * @param langs language codes
+	 * @param threshold percent
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public void compare(String[] langs) throws IOException, InterruptedException {
+	public void sync(String[] langs, int threshold) throws IOException, InterruptedException {
 		Map<String, DataResource> resources = prepare(langs);
 
 		// Mapping of dataset / dataservice IDs to Drupal nodeIDs
@@ -486,10 +491,15 @@ public class Comparer {
 		for (String lang: langs) {
 			Map<ByteBuffer, DrupalDataset> onFileByHash = mapToDrupal(resources, lang);
 			LOG.info("Read {} {} datasets/services from file", onFileByHash.size(), lang);
+			if (onFileByHash.isEmpty()) {
+				throw new IOException("Zero datasets / services read, skipping");
+			}
 
 			List<DrupalDataset> ds = client.getDatasets(lang);
 			LOG.info("Retrieved {} {} datasets/services from site", ds.size(), lang);
-
+			if (onFileByHash.size() < (ds.size() * threshold / 100)) {
+				throw new IOException("Number below threshold");
+			}
 			Set<DrupalDataset> duplicates = new HashSet<>();
 
 			Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
@@ -519,6 +529,12 @@ public class Comparer {
 		}
 	}
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param client Drupal client 
+	 * @param reader dcat file reader
+	 */	
 	/**
 	 * Constructor
 	 * 

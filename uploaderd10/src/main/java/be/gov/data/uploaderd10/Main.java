@@ -58,6 +58,9 @@ public class Main implements Callable<Integer> {
 	@Option(names = {"-f", "--file"}, description = "RDF input file", required = true)
     private Path file;
 
+	@Option(names = {"-t", "--threshold"}, description = "Threshold percentage", defaultValue = "75")
+    private int threshold;
+
 	@Option(names = {"-c", "--cache"}, description = "Cache directory")
     private Path cacheDir;
 
@@ -77,7 +80,7 @@ public class Main implements Callable<Integer> {
 		try {
 			client.login(user, pass);
 			Comparer comparer = new Comparer(client, reader);
-			comparer.compare(new String[]{"en", "nl", "fr", "de"});
+			comparer.sync(new String[]{"en", "nl", "fr", "de"}, threshold);
 			return 0;
 		} finally {
 			client.logout();
