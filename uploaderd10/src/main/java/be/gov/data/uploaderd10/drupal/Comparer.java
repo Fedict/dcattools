@@ -428,7 +428,7 @@ public class Comparer {
 				}
 				if (d.getCreators(lang) == null) {
 					Map<String,Set<String>> s = d.getCreators();
-					if (s != null) {
+					if (s != null && ! s.isEmpty()) {
 						s.put(lang, firstFromMap(s));
 						LOG.debug("Adding fallback {} creators for {}", lang, d.getId());
 					}
