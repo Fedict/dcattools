@@ -361,6 +361,24 @@ public class DcatReader {
 	}
 
 	/**
+	 * Get the names of the creators (can be persons or companies)
+	 * 
+	 * @param iri
+	 * @return 
+	 */
+	private Map<String,Set<String>> getCreatorNames(Set<Value> creators) throws IOException {
+		Map<String,Set<String>> names = new HashMap<>();
+		
+		for(Value v: creators) {
+			Map<String,Set<String>> name = getLangStringList((Resource) v, FOAF.NAME);
+			for(String key: name.keySet()) {
+				names.merge(key, name.get(key), (s1, s2) -> {  s1.addAll(s2); return s1; }  );
+			}
+		}
+		return names;
+	}
+
+	/**
 	 * Read the common DCAT Resource part of a DCAT Dataset or Dataservice
 	 * 
 	 * @param iri 
@@ -385,16 +403,15 @@ public class DcatReader {
 		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
 		
 		Set<Value> creators = getValues(iri, DCTERMS.CREATOR);
-		Map<String,Set<String>> names = new HashMap<>();
-		for(Value v: creators) {
-			Map<String,Set<String>> name = getLangStringList((Resource) v, FOAF.NAME);
-			for(String key: name.keySet()) {
-				names.merge(key, name.get(key), (s1, s2) -> {  s1.addAll(s2); return s1; }  );
-			}
-		}
+		Map<String,Set<String>> names = getCreatorNames(creators);
 		d.setCreators(names);
 		
-		d.setApplicableLegislation(getIRIs(iri, DCATAP_LEGISLATION));
+		Set<IRI> legislation = getIRIs(iri, DCATAP_LEGISLATION);
+		legislation.addAll(getIRIs(iri, DCTERMS.CONFORMS_TO).stream()
+										.filter(i -> i.toString().contains("/eli/"))
+										.collect(Collectors.toSet()));		
+		d.setLegislation(legislation);
+
 		d.setAccrualPeriodicity(getIRI(iri, DCTERMS.ACCRUAL_PERIODICITY));
 		d.setSpatial(getIRI(iri, DCTERMS.SPATIAL));
 		d.setLicense(getIRI(iri, DCTERMS.LICENSE));

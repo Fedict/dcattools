@@ -70,7 +70,9 @@ public record DrupalDataset(
 	Date from,
 	Date till,
 	Date modified,
-	Boolean hvd
+	Boolean hvd,
+	Set<URI> legislation
+		
 	) {
 
 	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
@@ -245,7 +247,7 @@ public record DrupalDataset(
 	 * @param values
 	 * @return 
 	 */
-	private Map<String,String> wrap(String key, Set<String> values) {
+	private Map<String,String> wrapJoin(String key, Set<String> values) {
 		Map<String,String> m = new HashMap<>();
 		
 		String s = null;
@@ -290,6 +292,34 @@ public record DrupalDataset(
 		m.put(key, value);
 		return List.of(m);
 	}
+	
+	/**
+	 * Wrap a set of integers to a list with key-value pair
+	 * 
+	 * @param key
+	 * @param values
+	 * @return 
+	 */
+	private List<Map<String,Integer>> wrap(String key, Set<Integer> values) {
+		if (values == null) {
+			return null;
+		}
+		return values.stream().map(c -> Map.of(key, c)).collect(Collectors.toList());
+	}
+
+	/**
+	 * Wrap a set of URIs to a list with key-value pair
+	 * 
+	 * @param key
+	 * @param uris
+	 * @return 
+	 */
+	private List<Map<String,URI>> wrapURI(String key, Set<URI> uris) {
+		if (uris == null) {
+			return null;
+		}
+		return uris.stream().map(c -> Map.of("uri", c)).collect(Collectors.toList());
+	}
 
 	/**
 	 * Convert DrupalDataset DAO to map
@@ -303,16 +333,8 @@ public record DrupalDataset(
 		map.put("type", wrap("target_id", "dataset"));
 		map.put("title", wrap("value", title.length() < 255 ? title : title.substring(0, 255)));
 		map.put("body", wrap("value", description, "format", "flexible_html"));
-		map.put("field_category", categories != null
-									? categories.stream()
-										.map(c -> Map.of("target_id", c))
-										.collect(Collectors.toList())
-									: null); 
-		map.put("field_conditions", conditions != null
-									? conditions.stream()
-										.map(c -> Map.of("uri", c))
-										.collect(Collectors.toList())
-									: null);
+		map.put("field_category", wrap("target_id", categories));
+		map.put("field_conditions", wrapURI("uri", conditions));
 		map.put("field_contact", contacts != null
 									? contacts.stream()
 										.map(c -> Map.of("value", c))
@@ -321,21 +343,14 @@ public record DrupalDataset(
 		map.put("field_date_range", wrap("value", from != null ? DATE_FMT.format(from) : null, 
 										"end_value", till != null ? DATE_FMT.format(till)
 																: (from != null ? NOW : null) ));
-		map.put("field_file_type", formats != null
-									? formats.stream()
-										.map(c -> Map.of("target_id", c))
-										.collect(Collectors.toList())
-									: null);
+		map.put("field_file_type", wrap("target_id", formats));
 		map.put("field_frequency", wrap("target_id", frequency));
 		map.put("field_geo_coverage", wrap("target_id", geography));
 		map.put("field_id", wrap("value", id));
-		map.put("field_keywords", wrap("value", keywords));
+		map.put("field_keywords", wrapJoin("value", keywords));
 		map.put("field_license", wrap("target_id", license));
-		map.put("field_details", accessURLS != null
-									? accessURLS.stream()
-										.map(c -> Map.of("uri", c))
-										.collect(Collectors.toList())
-									: null);
+		map.put("field_details", wrapURI("uri", accessURLS));
+
 		map.put("field_links", downloadURLS != null
 									? downloadURLS.entrySet().stream()
 										.map(e -> Map.of("uri", e.getKey().toString(), 
@@ -353,6 +368,7 @@ public record DrupalDataset(
 												? modified.toInstant().truncatedTo(ChronoUnit.SECONDS).toString()
 												: null));
 		map.put("field_high_value_dataset", wrap("value", hvd));
+		map.put("field_legislation", wrapURI("uri", legislation));
 
 		return map;
 	}
@@ -386,7 +402,8 @@ public record DrupalDataset(
 			getOneDateValue("field_date_range", map, "value"),
 			getOneDateValue("field_date_range", map, "end_value"),
 			getOneDateValue("field_upstamp", map, "value"),
-			(Boolean) getOneValue("field_high_value_dataset", map, "value")
+			(Boolean) getOneValue("field_high_value_dataset", map, "value"),
+			getSet("field_legislation", map, "uri", URI.class)
 		);
 	}
 }

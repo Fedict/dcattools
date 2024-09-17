@@ -181,6 +181,7 @@ public class Hasher {
 		dg.update(getBytes(ds.till()));
 		dg.update(getBytes(ds.modified()));
 		dg.update(getBytes(ds.hvd()));
+		dg.update(getBytes(ds.legislation()));
 		return dg.digest();
 	}
 	

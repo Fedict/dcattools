@@ -225,7 +225,8 @@ public class Comparer {
 				d.getStartDate(),
 				d.getEndDate(),
 				d.getModified(),
-				d.getApplicableLegislation() != null && !d.getApplicableLegislation().isEmpty()
+				d.getLegislation() != null && !d.getLegislation().isEmpty(),
+				toURI(d.getLegislation())
 			);
 			map.put(ByteBuffer.wrap(hasher.hash(drupal)), drupal);
 		}
