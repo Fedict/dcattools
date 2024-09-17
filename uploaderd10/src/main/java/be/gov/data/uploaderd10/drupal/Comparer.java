@@ -428,8 +428,10 @@ public class Comparer {
 				}
 				if (d.getCreators(lang) == null) {
 					Map<String,Set<String>> s = d.getCreators();
-					s.put(lang, firstFromMap(s));
-					LOG.debug("Adding fallback {} creators for {}", lang, d.getId());					
+					if (s != null) {
+						s.put(lang, firstFromMap(s));
+						LOG.debug("Adding fallback {} creators for {}", lang, d.getId());
+					}
 				}
 			}
 
