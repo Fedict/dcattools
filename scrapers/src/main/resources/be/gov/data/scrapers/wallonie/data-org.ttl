@@ -166,7 +166,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "FOREM"@fr ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/144> ;
-	skos:altLabel "le-forem"@fr .
+	skos:altLabel "le-forem"@fr, "Le Forem" .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0458487524>
 	a foaf:Organization ;
@@ -187,7 +187,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IWEPS"@fr ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/182> ;
-	skos:altLabel "iweps"@fr, "Iweps", "IWEPS" .	
+	skos:altLabel "iweps"@fr, "Iweps", "IWEPS", "IWEPS WalStat" .	
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
@@ -229,7 +229,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Tournai"@fr, "Doornik"@nl ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/492> ;
-	skos:altLabel "Administration Communale de Tournai" .
+	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
@@ -295,6 +295,13 @@
 	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr,
 		"Ville+de+Li%C3%A8ge"  .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0454695220>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/363> ;
+	skos:prefLabel "Liège Métropole"@nl, "Liège Métropole"@fr, "Liège Métropole"@en, "Liège Métropole"@de ;
+	skos:altLabel "Liège Métropole" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0871429489>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
@@ -343,7 +350,7 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/416> ;
 	skos:prefLabel "ARES"@nl, "ARES"@fr, "ARES"@en ;
-	skos:altLabel "ARES" .
+	skos:altLabel "ARES", "Académie de recherche et d'enseignement supérieur (ARES)" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725401>
 	a foaf:Organization ;
