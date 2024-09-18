@@ -38,8 +38,8 @@ clean() {
 	step $1 "clean"
 
 	rm $DATA/$1/*.nt
-  rm $DATA/$1/*.xml
-  rm $DATA/$1/*.gz
+	rm $DATA/$1/*.xml
+	rm $DATA/$1/*.gz
 
  	rm $DATA/$1/cache
 	rm $DATA/$1/logs/*
@@ -89,39 +89,37 @@ validate() {
 # Convert to XML
 # Parameter: project code
 convert() {
-  step $1 "convert"
+	step $1 "convert"
 
-  mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
+	mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
 
-  java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
-    -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/edp.log \
-    -jar $BIN/tools.jar  \
-    $DATA/$1/datagovbe.nt \
-    $DATA/$1/datagovbe_edp.xml
+	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
+    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/edp.log \
+      		-jar $BIN/tools.jar  \
+		$DATA/$1/datagovbe.nt \
+		$DATA/$1/datagovbe_edp.xml
 
-  res=$?  
-  status $1 "convert" $2 $exit
-
-  return $res
+	res=$?
+ 	status $1 "convert" $2 $exit
+	return $res
 }
 
 # Compress files
 # Parameter: project code
 compress() {
-  step $1 "compress"
+	step $1 "compress"
 
-  gzip -9 $DATA/$1/datagovbe.nt
-  gzip -9 $DATA/$1/datagovbe_edp.xml
+	gzip -9 $DATA/$1/datagovbe.nt
+ 	gzip -9 $DATA/$1/datagovbe_edp.xml
   
-  status $1 "compress" $2 $?
+	status $1 "compress" $2 $?
 } 
 
 # Publish to github
 # Parameter: project code
 publish() {
-  step $1 "publish"
-
-  status $1 "publish" $2 $?
+	step $1 "publish"
+	status $1 "publish" $2 $?
 } 
 
 # Main
@@ -143,7 +141,7 @@ for source in ${sources[@]}; do
   convert $source
 
   if [ $? -eq 0 ]; then
-    compress $source
-    publish $source
+	compress $source
+ 	publish $source
   fi
 done
