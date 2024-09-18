@@ -9,11 +9,6 @@ BIN=$HOME
 SHACL=$HOME/shacl
 DATA=/mnt/datagovbe
 
-# e-translation
-E_USER=$ETRANSLATE_USER
-E_PASS=$ETRANSLATE_PASS
-E_URL=$ETRANSLATE_URL
-
 # Create directories (if not yet present)
 makedirs() {
 	mkdir -p $DATA/$1 $DATA/$1/logs $DATA/$1/reports $DATA/$1/status
