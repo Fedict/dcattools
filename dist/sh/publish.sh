@@ -119,24 +119,20 @@ publish() {
 
 # Main
 
-# Parameter: one or more project codes (separated by ',')
+# Parameter: one project code
 
-IFS=',' 
-sources=()
-for i in "$1"; do sources+=($i); done
+source=$1
 
-for source in ${sources[@]}; do
-	if [ ! -d $DATA/$source ]; then
-		makedirs $source
-	fi
+if [ ! -d $DATA/$source ]; then
+	makedirs $source
+fi
 
-	clean $source
-	scrape $source
-	validate $source
-  convert $source
+clean $source
+scrape $source
+validate $source
+convert $source
 
-  if [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then
 	compress $source
  	publish $source
-  fi
-done
+fi
