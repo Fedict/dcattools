@@ -1,4 +1,4 @@
-# Map publisher to semi-official Crossroad Bank Enterprises URI
+# Map publisher to official Crossroad Bank Enterprises URI
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dgov: <http://data.gov.be#>
@@ -20,7 +20,10 @@ INSERT
 WHERE
 	{	?dataset ?prop ?org .
 		?org ?rel ?label .
-		?org ?p ?o .
+		OPTIONAL { 
+			?org ?p ?o 
+			FILTER (?p != ?rel) 
+		} .
 		?neworg skos:altLabel ?label .
 		?neworg skos:exactMatch ?drupal .
 		?neworg skos:prefLabel ?name 

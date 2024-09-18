@@ -10,7 +10,7 @@ data-license.ttl
 sparql-map-license.qry
 sparql-delete-label-license.qry
 wallonie/sparql-contact-name.qry
-wallonie/sparql-fix-org.qry
+#wallonie/sparql-fix-org.qry
 wallonie/data-org.ttl
 sparql-map-org.qry
 clear-skos.qry
