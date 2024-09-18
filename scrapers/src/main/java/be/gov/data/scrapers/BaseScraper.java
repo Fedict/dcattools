@@ -102,6 +102,15 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
+	 * Get datadir
+	 *
+	 * @return data directory
+	 */
+	protected String getDataDir() {
+		return dataDir;
+	}
+
+	/**
 	 * Set raw output mode
 	 * 
 	 * @param raw 

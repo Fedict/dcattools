@@ -56,15 +56,15 @@ public class Combine extends BaseScraper {
 
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws IOException {
-		Path root = Paths.get(".");
+		Path root = Path.of(getDataDir()).getParent();
 
 		List<File> files;
 		try(Stream<Path> path = Files.walk(root)) {
 			files = path.map(Path::toFile)
 						.filter(File::isFile)
 						.filter(f -> f.toString().endsWith(".nt"))
-						.filter(f -> !f.toString().endsWith("enhanced.nt"))
 						.filter(f -> !f.getParentFile().toString().equals("all"))
+						.peek(f -> LOG.info("Adding {}", f))
 						.collect(Collectors.toList());
 		}
 
