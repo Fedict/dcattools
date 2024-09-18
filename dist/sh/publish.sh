@@ -95,7 +95,7 @@ convert() {
 		$DATA/$1/datagovbe_edp.xml
 
 	res=$?
- 	status $1 "convert" $2 $exit
+ 	status $1 "convert" $2 $res
 	return $res
 }
 
