@@ -90,7 +90,7 @@ convert() {
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
     		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/edp.log \
-      		-jar $BIN/tools.jar  \
+      		-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/datagovbe.nt \
 		$DATA/$1/datagovbe_edp.xml
 
