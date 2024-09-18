@@ -89,7 +89,7 @@ validate() {
 # Convert to XML
 # Parameter: project code
 convert() {
-	step $1 "convert"
+  step $1 "convert"
 
   mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
 
@@ -100,7 +100,7 @@ convert() {
     $DATA/$1/datagovbe_edp.xml
 
   res=$?  
-	status $1 "convert" $2 $exit
+  status $1 "convert" $2 $exit
 
   return $res
 }
