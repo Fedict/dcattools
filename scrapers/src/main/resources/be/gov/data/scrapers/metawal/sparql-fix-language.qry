@@ -1,0 +1,11 @@
+# Use "fr" instead of "fre"
+
+DELETE 
+	{	?s ?p ?oldfr }
+INSERT 
+	{ 	?s ?p ?newfr }
+WHERE
+	{	?s ?p ?oldfr 
+		FILTER (ISLITERAL(?oldfr) && LANG(?oldfr) = 'fre')
+		BIND (STRLANG(STR(?oldfr), 'fr') AS ?newfr)
+	}

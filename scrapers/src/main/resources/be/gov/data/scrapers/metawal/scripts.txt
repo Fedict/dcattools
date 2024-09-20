@@ -1,4 +1,8 @@
 # extra queries to be executed and data to be loaded
+sparql-theme-subject.qry
+metawal/sparql-fix-language.qry
+metawal/data-frequency.ttl
+sparql-map-frequency.qry
 sparql-strip-html.qry
 clear-skos.qry
 data-shacl-support.ttl

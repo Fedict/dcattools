@@ -53,9 +53,12 @@ public class GeonetMetawal extends Dcat {
 		Set<URL> urls = cache.retrievePageList();
 		for (URL url: urls) {
 			Page page = cache.retrievePage(url).get("all");
-			// fix buggy input
+			// fix missing default namespace
 			String content = page.getContent();
-			content = content.replace("<csw:SearchStatus timestamp=", "<csw:SearchStatus csw:timestamp=");
+			content = content.replaceAll("<csw:[^>]+>", "")
+							.replaceAll("</csw:[^>]+>", "")
+							.replaceAll("(?s)</rdf:RDF>.*<rdf:RDF [^>]+>", "");
+
 			try (InputStream in = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {

@@ -1,0 +1,11 @@
+# Data for mapping keywords to an EU list of update frequencies
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/frequency/IRREG>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/192> ;
+	skos:altLabel  <http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#asNeeded> .
+
+<http://publications.europa.eu/resource/authority/frequency/NEVER>
+	skos:exactMatch <http://data.gov.be/en/taxonomy/term/390> ;
+	skos:altLabel <http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#notPlanned> .
