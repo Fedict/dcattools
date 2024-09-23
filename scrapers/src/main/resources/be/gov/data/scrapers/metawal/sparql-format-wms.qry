@@ -1,0 +1,18 @@
+# Guess file format based on access URL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcterms:format ?fmt }
+WHERE
+	{	
+		?dist a dcat:Distribution .
+		?dist dcat:accessURL ?url
+		BIND (IF(
+				CONTAINS(STR(?url), "=WMS"), "WMS", ?unbound) 
+		as ?fmt)
+		FILTER NOT EXISTS { ?dist dcterms:format ?f } 
+		FILTER NOT EXISTS { ?dist dcat:mediaType ?m }
+	}
+	

@@ -1,0 +1,19 @@
+# Use foaf:logo for PNG logo instead of foaf:page
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s foaf:page ?page .
+		?page a foaf:Document .
+		?page dcterms:description ?desc }
+INSERT 
+	{ 	?s foaf:logo ?page .
+		?page a foaf:Image }
+WHERE
+	{	?s foaf:page ?page .
+		?page a foaf:Document .
+		?page dcterms:description ?desc .
+		FILTER (STRENDS(
+					STR(?page), "png"))
+	}

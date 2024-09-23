@@ -1,4 +1,9 @@
 # extra queries to be executed and data to be loaded
+data-media.ttl
+metawal/sparql-format-wms.qry
+sparql-map-media-srvc.qry
+clear-skos.qry
+metawal/sparql-fix-logo.qry
 sparql-theme-subject.qry
 metawal/sparql-fix-language.qry
 metawal/data-frequency.ttl
