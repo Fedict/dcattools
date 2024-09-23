@@ -1,0 +1,28 @@
+# Remove IWEPS to prevent duplicates (IWEPS source is more detailed)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE {
+	?cat dcat:dataset ?dataset .
+	?dataset ?p ?o .
+	?dataset a dcat:Dataset .
+	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> .
+	?dataset dcat:distribution ?dist .
+	?dist ?x ?y .
+	?dataset dcat:contactPoint ?point . 
+	?point vcard:fn ?name .
+	?point vcard:hasEmail ?email
+} WHERE {
+	?cat dcat:dataset ?dataset .
+	?dataset ?p ?o .
+	?dataset a dcat:Dataset .
+	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> .
+	?dataset dcat:distribution ?dist .
+	?dist ?x ?y .
+	OPTIONAL { 
+		?dataset dcat:contactPoint ?point . 
+		?point vcard:fn ?name .
+		?point vcard:hasEmail ?email }
+	}
