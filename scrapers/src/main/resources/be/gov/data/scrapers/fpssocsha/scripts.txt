@@ -1,1 +1,2 @@
 # extra queries to be executed and data to be loaded
+sparql-geo-belgium.qry
