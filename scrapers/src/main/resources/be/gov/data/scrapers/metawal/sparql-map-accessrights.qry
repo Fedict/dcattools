@@ -1,0 +1,13 @@
+# Use the URI of the EU Publication Office instead of INSPIRE URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:accessRights <http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations> .
+		?s a dcterms:RightsStatement }
+INSERT 
+	{ 	?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> }
+WHERE
+	{	?s dcterms:accessRights <http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations> .
+		?s a dcterms:RightsStatement }
+

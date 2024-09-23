@@ -3,6 +3,9 @@ sparql-theme-subject.qry
 metawal/sparql-fix-language.qry
 metawal/data-frequency.ttl
 sparql-map-frequency.qry
+sparql-geo-wallonie.qry
+sparql-available.qry
+metawal/sparql-map-accessrights.qry
 sparql-strip-html.qry
 clear-skos.qry
 data-shacl-support.ttl
