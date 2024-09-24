@@ -7,6 +7,12 @@
 	a dcterms:RightsStatement;
 	skos:prefLabel "Public"@en  .
 
+<http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE>
+	skos:prefLabel "available"@en .
+
+<http://publications.europa.eu/resource/authority/dataset-type/HVD>
+		skos:prefLabel "High-value dataset"@en .
+
 <http://publications.europa.eu/resource/authority/language/ENG> 
 	a dcterms:LinguisticSystem;
 	skos:prefLabel "English"@en .

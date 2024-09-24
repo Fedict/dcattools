@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded
+sparql-available.qry
 geobe/sparql-fix-download.qry
 geobe/sparql-delete-location.qry
 geobe/sparql-fix-serves.qry
@@ -34,6 +35,7 @@ geobe/sparql-delete-source.qry
 #sparql-consolidate-bbox.qry
 sparql-geo-belgium.qry
 geobe/sparql-delete-fodfin.qry
+geobe/sparql-hvd-fodfin.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
 data-shacl-support.ttl
