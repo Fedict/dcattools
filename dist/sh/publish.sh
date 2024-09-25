@@ -8,6 +8,13 @@
 BIN=$HOME
 SHACL=$HOME/shacl
 DATA=/mnt/datagovbe
+MIN_SIZE=24500100
+# Git
+USER=$GIT_USER
+TOKEN=$GIT_TOKEN
+NAME=$GIT_NAME
+EMAIL=$GIT_EMAIL
+LOCAL=dcat.git
 
 # Create directories (if not yet present)
 makedirs() {
@@ -114,7 +121,32 @@ compress() {
 # Parameter: project code
 publish() {
 	step $1 "publish"
-	status $1 "publish" $2 $?
+
+	F_SIZE=$(stat --format=%s $DATA/$1/datagovbe_edp.xml.gz)
+ 	if [[ $F_SIZE > $MIN_SIZE ]]; then
+  		rm -rf $LOCAL
+  
+    		git clone --depth=1 https://$TOKEN@github.com/Fedict/dcat.git
+		git config user.name "$NAME"
+		git config user.email "$EMAIL"
+  
+    		cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
+      		cp $DATA/$1/datagovbe_edp.xml.gz $LOCAL/all/datagovbe_edp.xml.gz
+
+      		cd $LOCAL
+    		git commit -sam "Updated export"
+      		git push
+
+    		res=$?
+
+      		cd -
+      		rm -rf $LOCAL
+      	else
+       		echo "ERROR $F_SIZE is too small" > /mnt/logs/$1/publish.log
+       		res=-1
+  	fi
+ 
+	status $1 "publish" $2 $res
 } 
 
 # Main
@@ -123,7 +155,7 @@ publish() {
 
 source=$1
 
-if [ ! -d $DATA/$source ]; then
+if [[ ! -d $DATA/$source ]]; then
 	makedirs $source
 fi
 
@@ -132,7 +164,7 @@ scrape $source
 validate $source
 convert $source
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
 	compress $source
  	publish $source
 fi
