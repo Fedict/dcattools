@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.util.Values;
 
 /**
  * Simplified DCAT Resource helper class
@@ -38,6 +39,8 @@ import org.eclipse.rdf4j.model.IRI;
  * @author Bart Hanssens
  */
 public abstract class DataResource {
+	private static final IRI ELI_HVD = Values.iri("http://data.europa.eu/eli/reg_impl/2023/138/oj");
+			
 	private IRI iri;
 
 	private String id;
@@ -90,6 +93,7 @@ public abstract class DataResource {
 	/**
 	 * Get download URLs or endpoints
 	 * 
+	 * @param lang
 	 * @return 
 	 */
 	public abstract Set<IRI> getDownloadURLs(String lang);
@@ -403,12 +407,18 @@ public abstract class DataResource {
 	}
 
 	/**
-	 * @param applicableLegislation the applicableLegislation to set
+	 * @param legislation the legislation to set
 	 */
-	public void setLegislation(Set<IRI> applicableLegislation) {
-		this.legislation = applicableLegislation ;
+	public void setLegislation(Set<IRI> legislation) {
+		this.legislation = legislation ;
 	}
 
+	public boolean isHvd() {
+		if (legislation == null) {
+			return false;
+		}
+		return legislation.contains(ELI_HVD);
+	}
 	/**
 	 * @return the accrualPeriodicity
 	 */
