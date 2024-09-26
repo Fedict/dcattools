@@ -46,7 +46,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
-	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr, "Statbel"@de ;
 	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
 		"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl,
 		"FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
@@ -65,7 +65,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
-	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr ;
+	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@de ;
 	skos:altLabel "FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@de,
 		"FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@en,
 		"FOD Economie, KMO, Middenstand en Energie, AD Kwaliteit en Veiligheid, Dienst Continentaal Plat"@nl,

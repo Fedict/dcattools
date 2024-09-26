@@ -24,6 +24,7 @@ sparql-delete-label-language.qry
 geobe/sparql-org-rbins.qry
 geobe/data-org.ttl
 sparql-map-org.qry
+geobe/sparql-vcard-org.qry
 geobe/sparql-default-publisher.qry
 sparql-vcard-name.qry
 data-media.ttl
