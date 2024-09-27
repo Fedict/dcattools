@@ -127,11 +127,15 @@ publish() {
  	if [[ $F_SIZE > $MIN_SIZE ]]; then
   		rm -rf $LOCAL
   
-    		git clone --depth=1 https://$TOKEN@github.com/Fedict/dcat.git
       		git config http.proxy $PROXY
 		git config user.name "$NAME"
 		git config user.email "$EMAIL"
-  
+    		git clone --depth=1 https://$TOKEN@github.com/Fedict/dcat.git
+
+		if [[ -x $LOCAL ]]; then
+			echo "Cloned github repository " > /mnt/logs/$1/publish.log
+  		fi
+    
     		cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
       		cp $DATA/$1/datagovbe_edp.xml.gz $LOCAL/all/datagovbe_edp.xml.gz
 
