@@ -8,12 +8,13 @@
 BIN=$HOME
 SHACL=$HOME/shacl
 DATA=/mnt/datagovbe
-MIN_SIZE=24500100
+MIN_SIZE=$EDP_MIN_SIZE
 # Git
 USER=$GIT_USER
 TOKEN=$GIT_TOKEN
 NAME=$GIT_NAME
 EMAIL=$GIT_EMAIL
+PROXY=$GIT_PROXY
 LOCAL=dcat.git
 
 # Create directories (if not yet present)
@@ -127,6 +128,7 @@ publish() {
   		rm -rf $LOCAL
   
     		git clone --depth=1 https://$TOKEN@github.com/Fedict/dcat.git
+      		git config http.proxy $PROXY
 		git config user.name "$NAME"
 		git config user.email "$EMAIL"
   
@@ -139,7 +141,7 @@ publish() {
 
     		res=$?
 
-      		cd -
+      		cd ..
       		rm -rf $LOCAL
       	else
        		echo "ERROR $F_SIZE is too small" > /mnt/logs/$1/publish.log
