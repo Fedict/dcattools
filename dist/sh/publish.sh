@@ -6,7 +6,6 @@
 
 # GitHub variables to be set
 #
-# GITHUB_USER
 # GITHUB_TOKEN
 # GITHUB_NAME
 # GITHUB_EMAIL
@@ -16,7 +15,7 @@
 #
 # MAIL_FROM
 # MAIL_TO
-# MAIL_HOST
+# MAIL_SERVER
 
 # EDP
 #
@@ -26,10 +25,6 @@
 BIN=$HOME
 SHACL=$HOME/shacl
 DATA=/mnt/datagovbe
-MIN_SIZE=$EDP_MIN_SIZE
-SMTP=$MAIL_SERVER
-
-
 
 LOCAL=dcat.git
 
@@ -168,7 +163,7 @@ publish() {
        		res=-1
   	fi
 
- 	echo $res | mailx -v -S smtp=$MAIL_HOST \
+ 	echo $res | mailx -v -S smtp=$MAIL_SERVER \
   		-r $MAIL_FROM \
     		-s "Publication to EDP" \
     		$MAIL_TO
