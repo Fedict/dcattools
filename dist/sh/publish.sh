@@ -149,7 +149,7 @@ publish() {
     		git clone --depth=1 https://$GITHUB_TOKEN@github.com/Fedict/dcat.git $LOCAL
 
 		if [[ -x $LOCAL ]]; then
-			echo "Cloned github repository " > /mnt/logs/$1/publish.log
+			echo "Cloned github repository " > $DATA/$1/logs/publish.log
   		fi
     
     		cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
@@ -164,11 +164,11 @@ publish() {
       		cd ..
       		rm -rf $LOCAL
       	else
-       		echo "ERROR $F_SIZE is too small" > /mnt/logs/$1/publish.log
+       		echo "ERROR $F_SIZE is too small" > $DATA/$1/logs/publish.log
        		res=-1
   	fi
 
- 	echo $res | mailx -S smtp=$MAIL_HOST \
+ 	echo $res | mailx -v -S smtp=$MAIL_HOST \
   		-r $MAIL_FROM \
     		-s "Publication to EDP" \
     		$MAIL_TO
