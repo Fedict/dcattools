@@ -143,9 +143,9 @@ publish() {
  	if [[ $F_SIZE > $EDP_MIN_SIZE ]]; then
   		rm -rf $LOCAL
   
-      		git config http.proxy $GITHUB_PROXY
-		git config user.name "$GITHUB_NAME"
-		git config user.email "$GITHUB_EMAIL"
+      		git config --global http.proxy $GITHUB_PROXY
+		git config --global user.name "$GITHUB_NAME"
+		git config --global user.email "$GITHUB_EMAIL"
     		git clone --depth=1 https://$GITHUB_TOKEN@github.com/Fedict/dcat.git $LOCAL
 
 		if [[ -x $LOCAL ]]; then
