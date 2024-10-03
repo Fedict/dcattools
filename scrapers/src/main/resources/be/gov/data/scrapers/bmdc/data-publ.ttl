@@ -1,14 +1,12 @@
 # Data for default publisher
 
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dgov: <http://data.gov.be#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496> 
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/197> ;
 	foaf:name "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl ,
 		"Institut royal des Sciences naturelles de Belgique"@fr, "Royal Belgian Institute of Natural Sciences"@en, 
 		"Königliches Belgisches Institut für Naturwissenschaften"@de .

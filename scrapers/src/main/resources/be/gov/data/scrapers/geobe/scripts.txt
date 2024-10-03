@@ -30,7 +30,6 @@ sparql-vcard-name.qry
 data-media.ttl
 sparql-map-media.qry
 data-frequency.ttl
-sparql-map-frequency-drupal.qry
 geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
 #sparql-consolidate-bbox.qry

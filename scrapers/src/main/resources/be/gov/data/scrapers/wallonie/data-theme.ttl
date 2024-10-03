@@ -3,13 +3,11 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Agriculture%2C+Environnement> ;
 	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
 	skos:altLabel "agriculture"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Loisirs>,
 		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Sport+et+Loisirs>,
 		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Loisirs>,
@@ -19,7 +17,6 @@
 	skos:altLabel "loisirs"@fr, "culture"@fr, "sport"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration>,
 		<https://www.odwb.be/explore/?refine.theme=%C3%89conomie>,
 		<https://www.odwb.be/explore/?refine.theme=Tourisme%2C+Culture%2C+Loisirs>,
@@ -29,7 +26,6 @@
 		"Développement Economique"@fr, "Entreprises"@fr, "Ressources humaines"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=%C3%89ducation%2C+Formation%2C+Recherche%2C+Enseignement>,
 		<https://www.odwb.be/explore/?refine.theme=%C3%89ducation%2C+Enseignement> ;
 	skos:prefLabel "EDUCATION"@en ;
@@ -42,13 +38,11 @@
 	skos:altLabel "Energie"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Environnement> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "déchet"@fr, "Environnement"@fr, "arbre"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Administration%2C+Gouvernement%2C+Finances+publiques%2C+Citoyennet%C3%A9>,
 		<https://www.odwb.be/explore/?refine.theme=Administration+et+Services+publics>,
@@ -56,20 +50,17 @@
 	skos:altLabel "vie-politique"@fr, "ma-commune"@fr, "commune"@fr, "Dette"@fr, "Dépense"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Sant%C3%A9> ;
 	skos:prefLabel "HEALTH"@en ;
 	skos:altLabel "santé"@fr, "Santé"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Services%2C+Social>,
 		<https://www.odwb.be/explore/?refine.theme=Qualit%C3%A9+de+Vie> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:altLabel "Population"@fr, "enfant"@fr , "Naissance"@fr , "Indvidu"@fr, "Ménage"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Tourisme>,
 		<https://www.odwb.be/explore/?refine.theme=Urbanisme%2C+Patrimoine>,
 		<https://www.odwb.be/explore/?refine.theme=H%C3%A9bergement%2C+Restauration>,
@@ -80,14 +71,12 @@
 	skos:altLabel "commune"@fr, "ma-commune"@fr, "Commune"@fr, "tourisme"@fr, "Batiment"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:closeMatch <https://www.odwb.be/explore/?refine.theme=Transports%2C+D%C3%A9placements>,
 		<https://www.odwb.be/explore/?refine.theme=Mobilit%C3%A9> ;
 	skos:prefLabel "TRANSPORT"@en ;
 	skos:altLabel "cycliste"@fr, "vélo"@fr, "Mobilité"@fr, "Parking"@fr, "circulation"@fr, "mobilité"@fr .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:closeMatch <https://www.odwb.be/id/theme/Smart%20City> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
 	skos:altLabel "WiFi"@fr .

@@ -10,7 +10,6 @@ iweps/data-publ-contact.ttl
 iweps/sparql-publ-contact.qry
 clear-skos.qry
 iweps/data-theme.ttl
-iweps/sparql-map-theme.qry
 clear-skos.qry
 #iweps/sparql-map-id.txt
 sparql-geo-wallonie.qry

@@ -8,14 +8,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/397> ;
 	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
 	skos:altLabel "Sciensano", "Cancer centre (Sciensano)" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
 	skos:altLabel "Statistics Belgium" .
 
@@ -23,7 +21,6 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "KU Leuven"@nl, "KU Leuven"@fr, "KU Leuven"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/202> ;
 	skos:altLabel "KU Leuven" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
@@ -37,21 +34,18 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/437> ;
 	skos:altLabel "University of Antwerp" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322075>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/384> ;
 	skos:altLabel "Zorg en Gezondheid" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206653946>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "RIZIV"@nl, "INAMI"@fr, "LIKIV"@de, "NIHDI"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/riziv> ;
 	skos:altLabel "National Institute for Health and Disability Insurance" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0874845671>
@@ -59,26 +53,22 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Stichting Kankerregister"@nl, "Fondation Registre du Cancer"@fr, 
 					"Stiftung Krebsregister"@de, "Belgian Cancer Registry"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/kanker> ;
 	skos:altLabel "Belgian Cancer Registry" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université de Liège"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/201> ;
 	skos:altLabel "University of Liège" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0884579424>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FAGG"@nl, "AFMPS"@fr, "FAAGP"@de, "FAMHP"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/fagg> ;
 	skos:altLabel "Federal Agency for Medicines and Health Products" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0367303762>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FOD Volksgezondheid"@nl, "SPF Santé"@fr, "FÖD Volksgesundheit"@de, "FPS Health"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/fodvg> ;
 	skos:altLabel "Federal Public Service Health, Food Chain Safety and Environment" .

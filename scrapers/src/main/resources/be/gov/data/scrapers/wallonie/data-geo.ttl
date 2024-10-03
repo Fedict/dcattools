@@ -2,235 +2,189 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.gov.be/en/taxonomy/term/45>
-	skos:exactMatch <https://sws.geonames.org/2802361/> ;
+<https://sws.geonames.org/2802361/> 
 	skos:prefLabel "Belgium"@en ;
 	skos:altLabel "Belgique" .
 
-<http://data.gov.be/en/taxonomy/term/47>
-	skos:exactMatch <https://sws.geonames.org/3337387/> ;
+<https://sws.geonames.org/3337387/> 
 	skos:prefLabel "Wallonia"@en, "Wallonie"@fr, "Wallonië"@nl ;
 	skos:altLabel "Wallonie", " Service public de Wallonie (SPW) ", 
 			"Service public de Wallonie (SPW) ", "Fédération Wallonie-Bruxelles", "Parlement de Wallonie" .
 
-<http://data.gov.be/en/taxonomy/term/48> 
-	skos:exactMatch <https://sws.geonames.org/2800867/> ;
+<https://sws.geonames.org/2800867/> 
 	skos:prefLabel "Brussels"@en, "Bruxelles"@fr, "Brussel"@nl ;
 	skos:altLabel "Fédération Wallonie-Bruxelles" .
 		
-<http://data.gov.be/en/taxonomy/term/51>
-	skos:exactMatch <https://sws.geonames.org/2790472/> ;
+<https://sws.geonames.org/2790472/>
 	skos:prefLabel "Namur"@fr, "Namen"@nl ;
 	skos:altLabel "BEP", "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
 			"Ville de Namur", "Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", 
 			"Ville de Namur - Finances", "Ville de Namur", "Eco-Visio", "Eco-Compteur" .	
 
-<http://data.gov.be/en/taxonomy/term/250>
-	skos:exactMatch <https://sws.geonames.org/2803247/> ;
+<https://sws.geonames.org/2803247/>
 	skos:prefLabel "Amay"@fr ;
 	skos:altLabel "amay"@fr .
 
-<http://data.gov.be/en/taxonomy/term/251>
-	skos:exactMatch <https://sws.geonames.org/2803145/> ;
+<https://sws.geonames.org/2803145/>
 	skos:prefLabel "Antoing"@fr ;
 	skos:altLabel "antoing"@fr .
 
-<http://data.gov.be/en/taxonomy/term/330>
-	skos:exactMatch <https://sws.geonames.org/2803073/> ;
+<https://sws.geonames.org/2803073/> 
 	skos:prefLabel "Arlon"@fr, "Aarlen"@nl, "Arel"@de ;
 	skos:altLabel "Arlon Centre-Ville asbl", "Ville d'Arlon" .
 	
-<http://data.gov.be/en/taxonomy/term/255>
-	skos:exactMatch <https://sws.geonames.org/2803011/> ;
+<https://sws.geonames.org/2803011/>
 	skos:prefLabel "Ath"@fr, "Aat"@nl ;
 	skos:altLabel "ath"@fr .
 
-<http://data.gov.be/en/taxonomy/term/253>
-	skos:exactMatch <https://sws.geonames.org/2802144/> ;
+<https://sws.geonames.org/2802144/>
 	skos:prefLabel "Berloz"@fr ;
 	skos:altLabel "berloz"@fr .
 
-<http://data.gov.be/en/taxonomy/term/259>
-	skos:exactMatch <https://sws.geonames.org/2801153/> ;
+<https://sws.geonames.org/2801153/>
 	skos:prefLabel "Braine le Château"@fr, "Kasteelbrakel"@nl ;
 	skos:altLabel "braine-le-chateau"@fr .	
 
-<http://data.gov.be/en/taxonomy/term/257>
-	skos:exactMatch <https://sws.geonames.org/2801148/> ;
+<https://sws.geonames.org/2801148/>
 	skos:prefLabel "Braives"@fr ;
 	skos:altLabel "braives"@fr .	
 
-<http://data.gov.be/en/taxonomy/term/261>
-	skos:exactMatch <https://sws.geonames.org/2800458/> ;
+<https://sws.geonames.org/2800458/> 
 	skos:prefLabel "Chastre"@fr ;
 	skos:altLabel "chastre"@fr .
 
-<http://data.gov.be/en/taxonomy/term/263>
-	skos:exactMatch <https://sws.geonames.org/2792986> ;
+<https://sws.geonames.org/2792986/> 
 	skos:prefLabel "Léglise"@fr ;
 	skos:altLabel "communeleglise"@fr .
 	
-<http://data.gov.be/en/taxonomy/term/265>
-	skos:exactMatch <https://sws.geonames.org/2800026/> ;
+<https://sws.geonames.org/2800026/>
 	skos:prefLabel "Couvin"@fr ;
 	skos:altLabel "couvin"@fr .
 		
-<http://data.gov.be/en/taxonomy/term/267>
-	skos:exactMatch <https://sws.geonames.org/2799329/> ;
+<https://sws.geonames.org/2799329/>
 	skos:prefLabel "Doische"@fr ;
 	skos:altLabel "doische"@fr .
 
-<http://data.gov.be/en/taxonomy/term/269>
-	skos:exactMatch <https://sws.geonames.org/2798748/> ;
+<https://sws.geonames.org/2798748/>
 	skos:prefLabel "Enghien"@fr, "Edingen"@nl ;
 	skos:altLabel "enghien"@fr .
 
-<http://data.gov.be/en/taxonomy/term/271>
-	skos:exactMatch <https://sws.geonames.org/2798367/> ;
+<https://sws.geonames.org/2798367/> ;
 	skos:prefLabel "Ferrières"@fr ;
 	skos:altLabel "ferrieres"@fr .
 
-<http://data.gov.be/en/taxonomy/term/273>
-	skos:exactMatch <https://sws.geonames.org/2798277/> ;
+<https://sws.geonames.org/2798277/>
 	skos:prefLabel "Florennes"@fr ;
 	skos:altLabel "florennes"@fr .
 	
-<http://data.gov.be/en/taxonomy/term/275>
-	skos:exactMatch <https://sws.geonames.org/2798024/> ;
+<https://sws.geonames.org/2798024/>
 	skos:prefLabel "Frameries"@fr ;
 	skos:altLabel "frameries"@fr .
 	
-<http://data.gov.be/en/taxonomy/term/277>
-	skos:exactMatch <https://sws.geonames.org/2797714/> ;
+<https://sws.geonames.org/2797714/>
 	skos:prefLabel "Gembloux"@fr ;
 	skos:altLabel "gembloux"@fr .
 
-<http://data.gov.be/en/taxonomy/term/279>
-	skos:exactMatch <https://sws.geonames.org/2792344/> ;
+<https://sws.geonames.org/2792344/>
 	skos:prefLabel "Gouvy"@fr ;
 	skos:altLabel "gouvy"@fr .
 
-<http://data.gov.be/en/taxonomy/term/281>
-	skos:exactMatch <https://sws.geonames.org/2797129/> ;
+<https://sws.geonames.org/2797129/>
 	skos:prefLabel "Grez-Doiceau"@fr, "Graven"@nl ;
 	skos:altLabel "grez-doiceau"@fr .
 
-<http://data.gov.be/en/taxonomy/term/283>
-	skos:exactMatch <https://sws.geonames.org/2796370/> ;
+<https://sws.geonames.org/2796370/> 
 	skos:prefLabel "Havelange"@fr ;
 	skos:altLabel "havelange"@fr .
 
-<http://data.gov.be/en/taxonomy/term/285>
-	skos:exactMatch <https://sws.geonames.org/2802909/> ;
+<https://sws.geonames.org/2802909/> 
 	skos:prefLabel "Honnelles"@fr ;
 	skos:altLabel "honnelles"@fr .
 
-<http://data.gov.be/en/taxonomy/term/287>
-	skos:exactMatch <https://sws.geonames.org/2794990/> ;
+<https://sws.geonames.org/2794990/>
 	skos:prefLabel "Jalhay"@fr ;
 	skos:altLabel "jalhay"@fr .
 
-<http://data.gov.be/en/taxonomy/term/289>
-	skos:exactMatch <https://sws.geonames.org/2788112/> ;
+<https://sws.geonames.org/2788112/> 
 	skos:prefLabel "La Bruyère"@fr ;
 	skos:altLabel "labruyere"@fr .
 	
-<http://data.gov.be/en/taxonomy/term/291>
-	skos:exactMatch <https://sws.geonames.org/2790907/> ;
+<https://sws.geonames.org/2790907/> 
 	skos:prefLabel "Momignies"@fr ;
 	skos:altLabel "momignies"@fr .
 
-<http://data.gov.be/en/taxonomy/term/293>
-	skos:exactMatch <https://sws.geonames.org/2790757/> ;
+<https://sws.geonames.org/2790757/>
 	skos:prefLabel "Mont-Saint-Guibert"@fr ;
 	skos:altLabel "montstguibert"@fr .
 
-<http://data.gov.be/en/taxonomy/term/295>
-	skos:exactMatch <https://sws.geonames.org/2790516/> ;
+<https://sws.geonames.org/2790516/> 
 	skos:prefLabel "Musson"@fr ;
 	skos:altLabel "musson"@fr .
 
-<http://data.gov.be/en/taxonomy/term/297>
-	skos:exactMatch <https://sws.geonames.org/2790288/> ;
+<https://sws.geonames.org/2790288/>
 	skos:prefLabel "Neufchâteau"@fr ;
 	skos:altLabel "neufchateau"@fr .
 
-<http://data.gov.be/en/taxonomy/term/299>
-	skos:exactMatch <https://sws.geonames.org/2789472/> ;
+<https://sws.geonames.org/2789472/>
 	skos:prefLabel "Oupeye"@fr ;
 	skos:altLabel "oupeye"@fr .
 
-<http://data.gov.be/en/taxonomy/term/301>
-	skos:exactMatch <https://sws.geonames.org/2789158/> ;
+ <https://sws.geonames.org/2789158/>
 	skos:prefLabel "Perwez"@fr, "Perwijs"@nl ;
 	skos:altLabel "perwez"@fr .
 
-<http://data.gov.be/en/taxonomy/term/303>
-	skos:exactMatch <https://sws.geonames.org/2788578/> ;
+<https://sws.geonames.org/2788578/> 
 	skos:prefLabel "Profondeville"@fr ;
 	skos:altLabel "profondeville"@fr .
 
-<http://data.gov.be/en/taxonomy/term/305>
-	skos:exactMatch <https://sws.geonames.org/2802903/> ;
+ <https://sws.geonames.org/2802903/>
 	skos:prefLabel "Sambreville"@fr ;
 	skos:altLabel "sambreville"@fr .
 
-<http://data.gov.be/en/taxonomy/term/307>
-	skos:exactMatch <https://sws.geonames.org/2786853/> ;
+<https://sws.geonames.org/2786853/>
 	skos:prefLabel "Seneffe"@fr ;
 	skos:altLabel "seneffe"@fr .
 
-<http://data.gov.be/en/taxonomy/term/309>
-	skos:exactMatch <https://sws.geonames.org/2786770/> ;
+<https://sws.geonames.org/2786770/>
 	skos:prefLabel "Silly"@fr ;
 	skos:altLabel "silly"@fr .
 
-<http://data.gov.be/en/taxonomy/term/311>
-	skos:exactMatch <https://sws.geonames.org/2785594/> ;
+<https://sws.geonames.org/2785594/> 
 	skos:prefLabel "Theux"@fr ;
 	skos:altLabel "theux"@fr .
 
-<http://data.gov.be/en/taxonomy/term/313>
-	skos:exactMatch <https://sws.geonames.org/2785563/> ;
+<https://sws.geonames.org/2785563/>
 	skos:prefLabel "Thimister-Clermont"@fr ;
 	skos:altLabel "thimister-clermont"@fr .
 
-<http://data.gov.be/en/taxonomy/term/315>
-	skos:exactMatch <https://sws.geonames.org/2784103/> ;
+<https://sws.geonames.org/2784103/> 
 	skos:prefLabel "Trois-Ponts"@fr ;
 	skos:altLabel "troisponts"@fr .
 
-<http://data.gov.be/en/taxonomy/term/317>
-	skos:exactMatch <https://sws.geonames.org/2784776/> ;
+<https://sws.geonames.org/2784776/> 
 	skos:prefLabel "Vielsalm"@fr ;
 	skos:altLabel "vielsalm"@fr .
 
-<http://data.gov.be/en/taxonomy/term/319>
-	skos:exactMatch <https://sws.geonames.org/2800196/> ;
+<https://sws.geonames.org/2800196/> 
 	skos:prefLabel "Comines-Wareton"@fr, "Komen-Waasten"@nl ;
 	skos:altLabel "villedecomines-warneton"@fr .
 
-<http://data.gov.be/en/taxonomy/term/321>
-	skos:exactMatch <https://sws.geonames.org/2784642/> ;
+<https://sws.geonames.org/2784642/>
 	skos:prefLabel "Villers-la-Ville"@fr ;
 	skos:altLabel "villers-la-ville"@fr .
 
-<http://data.gov.be/en/taxonomy/term/333>
-	skos:exactMatch <https://sws.geonames.org/2786318/> ;
+<https://sws.geonames.org/2786318/>
 	skos:prefLabel "Spa"@fr ;
 	skos:altLabel "commune-de-spa"@fr .
 
-<http://data.gov.be/en/taxonomy/term/336>
-	skos:exactMatch <https://sws.geonames.org/2790869/> ;
+<https://sws.geonames.org/2790869/>
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "Ville de Mons" .
 
-<http://data.gov.be/en/taxonomy/term/388>
-	skos:exactMatch <https://sws.geonames.org/2803204/> ;
+<https://sws.geonames.org/2803204/>
 	skos:prefLabel "Andenne"@fr ;
 	skos:altLabel "Ville d'Andenne" .
 	
-<http://data.gov.be/en/taxonomy/term/362>
-	skos:exactMatch <https://sws.geonames.org/2792413/> ;
+<https://sws.geonames.org/2792413/> 
 	skos:prefLabel "Liège"@fr, "Luik"@nl, "Lüttich"@de ;
 	skos:altLabel "Ville de Liège" .

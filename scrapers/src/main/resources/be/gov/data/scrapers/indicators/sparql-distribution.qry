@@ -1,7 +1,6 @@
 # Add distribution with all properties (note that download is actually XLSX despite the CSV label)
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
@@ -13,7 +12,6 @@ INSERT
 		?dist dcterms:language ?lang .
 		?dist dcat:accessURL ?access .
 		?dist dcat:downloadURL ?download .
-		?dist dgov:mediaType <http://data.gov.be/en/taxonomy/term/62> .
 		?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLSX>  .
 		?dist dcat:mediaType "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ; .
 		<http://data.gov.be/en/taxonomy/term/62> a dcterms:mediaTypeOrExtent  .

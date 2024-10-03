@@ -2,15 +2,14 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 DELETE { ?res dcterms:spatial ?geo }
 INSERT 
 	{ 	?res dcterms:spatial <https://sws.geonames.org/3337387/> .
 		<https://sws.geonames.org/3337387/> a dcterms:Location .
-		<https://sws.geonames.org/3337388/> dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral .
-		?res dgov:spatial <http://data.gov.be/en/taxonomy/term/47> }
+		<https://sws.geonames.org/3337388/> dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral 
+	}
 WHERE
 	{	?res a ?cl .
 		VALUES ?cl { dcat:Dataset dcat:DataService }

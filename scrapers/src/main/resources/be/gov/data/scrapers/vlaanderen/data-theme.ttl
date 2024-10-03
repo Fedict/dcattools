@@ -3,7 +3,6 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:closeMatch <http://eurovoc.europa.eu/5463>,
 		<http://www.eionet.europa.eu/gemet/concept/1600> ,
 		<http://inspire.ec.europa.eu/theme/af>,
@@ -15,7 +14,6 @@
 		"http://vocab.belgif.be/auth/datatheme/AGRI" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Sport> ,
 		<http://ns.thedatatank.com/dcat/themes#Media> ,
 		<http://ns.thedatatank.com/dcat/themes#CulturalHeritage> ,
@@ -45,7 +43,6 @@
 		"https://data.stad.gent/id/theme/Cultuur%20%26%20erfgoed" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
 		<http://ns.thedatatank.com/dcat/themes#Economy> ,
 		<http://ns.thedatatank.com/dcat/themes#Work> ,
@@ -72,7 +69,6 @@
 		"http://ns.thedatatank.com/dcat/themes#Economy" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Education> ,
 		<http://vocab.belgif.be/auth/datatheme/EDUC> ,
 		<https://data.stad.gent/id/theme/Onderwijs%20%26%20kinderopvang> ;
@@ -81,7 +77,6 @@
 		"Onderwijs"@nl, "School"@nl, "basisschool"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Environment> ,
 		<http://vocab.belgif.be/auth/datatheme/ENVI> ,
 		<http://inspire.ec.europa.eu/theme/hy>,	<http://inspire.ec.europa.eu/theme/lu>,
@@ -119,7 +114,6 @@
 		"https://data.stad.gent/id/theme/Natuur%20%26%20milieu" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35>;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER>,
 		<https://opendata.fluvius.be/id/theme/Netgebruikers%20en%20hun%20verbruik>,
 		<https://opendata.fluvius.be/id/theme/Fluvius%20als%20leverancier>,
@@ -135,7 +129,6 @@
 		"http://vocab.belgif.be/auth/datatheme/ENER" .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Government> ,
 		<http://vocab.belgif.be/auth/datatheme/GOVE> ,
 		<http://inspire.ec.europa.eu/theme/cp> ,
@@ -162,7 +155,6 @@
 		"http://ns.thedatatank.com/dcat/themes#Environment" .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/HEAL>, <http://inspire.ec.europa.eu/theme/hh> ;
 	skos:prefLabel "HEALTH"@en ;
 	skos:altLabel "apothekers"@nl, "gezondheid"@nl, "morbiditeit"@nl, "vruchtbaarheid"@nl, 
@@ -174,7 +166,6 @@
 		"http://vocab.belgif.be/auth/datatheme/HEAL" .
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/INTR> ;
 	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
 	skos:altLabel "ontwikkelingssamenwerking buitenlands beleid ontwikkelingssamenwerking"@nl, "internationaal"@nl, 
@@ -182,7 +173,6 @@
 		"internationale_culturele_uitwisseling"@nl, "Europa"@nl, "economie en innovatie buitenlandse handel"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#SafetyAndJustice> ,
 		<http://vocab.belgif.be/auth/datatheme/JUST> ,
 		<http://ns.thedatatank.com/dcat/themes#Law> ;
@@ -190,7 +180,6 @@
 	skos:altLabel "veiligheid"@nl, "criminaliteit"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Demography> ,
 		<http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare> ,
 		<https://data.stad.gent/id/theme/Wonen%20%26%20%28ver%29bouwen>,
@@ -220,7 +209,6 @@
 		"http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Tourism> ,
 		<http://vocab.belgif.be/auth/datatheme/REGI> ,
 		<http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional> ,
@@ -238,7 +226,6 @@
 		"https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme" .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Mobility> ,
 		<http://vocab.belgif.be/auth/datatheme/TRAN> , <http://inspire.ec.europa.eu/theme/tn>,
 		<https://data.stad.gent/id/theme/Mobiliteit> ;
@@ -256,7 +243,6 @@
 		"http://vocab.belgif.be/auth/datatheme/TRAN".
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37>  ;
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Research> ,
 		<http://vocab.belgif.be/auth/datatheme/TECH> ,
 		<http://inspire.ec.europa.eu/theme/ge> ,

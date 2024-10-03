@@ -3,21 +3,16 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:altLabel "open-data-milieu-natuur"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:altLabel "open-data-werk-economie"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:altLabel "open-data-grondgebied"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:altLabel "open-data-bevolking"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:altLabel "open-data-mobiliteit"@nl .

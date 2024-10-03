@@ -2,14 +2,13 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 DELETE 
 	{	?dist dcterms:license ?lic }
 INSERT 
 	{ 	?dist dcterms:license <http://publications.europa.eu/resource/authority/licence/CC0> .
-		<http://publications.europa.eu/resource/authority/licence/CC0> a dcterms:LicenseDocument .
-		?dist dgov:license <http://data.gov.be/en/taxonomy/term/54> }
+		<http://publications.europa.eu/resource/authority/licence/CC0> a dcterms:LicenseDocument
+	}
 WHERE
 	{	?dist a dcat:Distribution 
 		OPTIONAL { ?dist dcterms:license ?lic }

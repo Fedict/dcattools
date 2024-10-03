@@ -1,13 +1,11 @@
 # extra queries to be executed and data to be loaded
 data-media.ttl
-statbelwiki/sparql-drupal-media.qry
 sparql-geo-belgium.qry
 statbelwiki/sparql-license.qry
 statbelwiki/data-publ-contact.ttl
 statbelwiki/sparql-contact.qry
 statbelwiki/sparql-vcard-fn.qry
 statbelwiki/data-theme.ttl
-statbelwiki/sparql-drupal-theme.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

@@ -1,13 +1,11 @@
 # Set category / theme
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#>
 
 DELETE
 	{	?dataset dcat:theme "HEAL" }
 INSERT 
 	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/HEAL> .
-		?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/40> .
 	}
 WHERE
 	{	?dataset dcat:theme "HEAL"  }

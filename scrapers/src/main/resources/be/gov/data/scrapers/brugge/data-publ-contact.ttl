@@ -2,14 +2,12 @@
 
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dgov: <http://data.gov.be#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207528035>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/243> ;
 	foaf:name "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
 	foaf:homepage <https://www.brugge.be> .
 	

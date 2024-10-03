@@ -2,19 +2,16 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 DELETE 
 	{	?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML> .
 		?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/xml> .
-		?s dgov:mediaType <http://data.gov.be/en/taxonomy/term/2> .
 	}
 WHERE
 	{
 		?s dcterms:format ?fmt .
 		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML> .
 		?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/xml> .
-		?s dgov:mediaType <http://data.gov.be/en/taxonomy/term/2> 
 		VALUES ?fmt {
 			<http://publications.europa.eu/resource/authority/file-type/WMS_SRVC>
 			<http://publications.europa.eu/resource/authority/file-type/WFS_SRVC>

@@ -9,5 +9,4 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "KU Leuven"@nl, "KU Leuven"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/202> ;
 	skos:altLabel "Spatial Applications Division Leuven, KU Leuven"@en .

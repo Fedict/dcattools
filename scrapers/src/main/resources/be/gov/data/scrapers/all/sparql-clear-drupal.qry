@@ -1,5 +1,0 @@
-# Delete Drupal-specific data
-
-DELETE { ?s ?p ?o }
-WHERE {	?s ?p ?o .
-		FILTER(STRSTARTS(STR(?p), "http://data.gov.be#")) }

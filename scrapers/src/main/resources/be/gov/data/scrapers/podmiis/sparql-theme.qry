@@ -2,11 +2,9 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
 	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI> .
-		?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/39> .
 		?dataset dcat:keyword "Maatschappelijke integratie"@nl, "Intégration sociale"@fr, "Social Integration"@en }
 WHERE
 	{	?dataset a dcat:Dataset }

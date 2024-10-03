@@ -2,10 +2,8 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/427> .
-		?dist dcterms:license <https://www.elia.be/en/grid-data/elia-open-data-license> }
+	{ 	?dist dcterms:license <https://www.elia.be/en/grid-data/elia-open-data-license> }
 WHERE
 	{	?dist a dcat:Distribution }

@@ -8,7 +8,6 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294822> 
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/147> ;
 	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr, "KMI"@de ;
 	skos:altLabel "Royal Meteorological Institute of Belgium"@en,
 		"Institut Royal Météorologique de Belgique"@fr,
@@ -19,14 +18,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0875396690>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/483>  ;
 	skos:prefLabel "Belnet"@fr, "Belnet"@nl, "Belnet"@de, "Belnet"@en ;
 	skos:altLabel "Belnet"@fr, "Belnet"@nl, "Belnet"@de, "Belnet"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/157>  ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
 	skos:altLabel "National Geographic Institute"@en, "Nationaal Geografisch Instituut"@nl, 
 		"Institut géographique national"@fr ,"Nationales geographisches Institut"@de ,
@@ -35,7 +32,6 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2138196041>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/325> ;
 	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
 	skos:altLabel "Belgian Interregional Environment Agency (IRCEL - CELINE)"@en,
 		"Belgische Interregionale Umweltagentur (IRCEL - CELINE)"@de,
@@ -45,7 +41,6 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr, "Statbel"@de ;
 	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
 		"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl,
@@ -57,14 +52,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0671516647>
 	a foaf:Organization;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/246> ;
 	skos:prefLabel "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr ;
 	skos:altLabel "FOD Beleid & Ondersteuning"@nl, "SPF Stratégie & Appui"@fr  .
 	
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/76> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@de ;
 	skos:altLabel "FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@de,
 		"FPS Economy, SMEs, Self-employed and Energy, GD Quality and Safety, Service Continental Shelf"@en,
@@ -74,7 +67,6 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/162> ;
 	skos:prefLabel "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
 	skos:altLabel 	"FOD Financien - Algemene Administratie van de Patrimoniumdocumentatie (AAPD)"@nl ,
 					"SPF Finances - Administration Générale de la Documentation Patrimoniale (AGDP)"@fr ,
@@ -85,7 +77,6 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357555>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/480> ;
 	skos:prefLabel "Ministry of Defence"@en, "Ministerie van Landsverdediging"@nl, 
 				"Ministère de la Défense"@fr, "Ministerium der Landesverteidigung"@de ;
 	skos:altLabel "Marinecomponent / Composante marine / Belgian Navy"@en,
@@ -94,21 +85,18 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0851764225>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/482> ;
 	skos:prefLabel "INSEE"@fr ;
 	skos:altLabel "INSEE"@fr.
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0833607112>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/481> ;
 	skos:prefLabel "EuroGeographics"@en, "EuroGeographics"@nl, "EuroGeographics"@fr, "EuroGeographics"@de ;
 	skos:altLabel "EuroGeographics"@en, "EuroGeographics"@nl, "EuroGeographics"@fr, "EuroGeographics"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294624>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/337> ;
 	skos:prefLabel "Royal Observatory of Belgium"@en, "Königliche Sternwarte von Belgien"@de,  
 					"Koninklijke Sterrenwacht van België"@nl, "Observatoire royal de Belgique"@fr ;
 	skos:altLabel "Royal Observatory of Belgium"@en,
@@ -119,14 +107,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357852>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/77> ;
 	skos:prefLabel "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de ;
 	skos:altLabel "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/197> ;
 	skos:prefLabel "Koninklijk Belgisch Instituut voor Natuurwetenschappen"@nl, 
 					"Institut royal des Sciences naturelles de Belgique"@fr, 
 					"Royal Belgian Institute of Natural Sciences"@en, 
@@ -149,14 +135,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/398> ;
 	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
 	skos:altLabel "bpost nv"@en , "bpost nv"@nl , "bpost sa"@de , "bpost sa"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0866518618>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/182> ;
 	skos:prefLabel "IWEPS"@en, "IWEPS"@fr, "IWEPS"@nl, "IWEPS"@de ;
 	skos:altLabel "Waals Instituut voor Evaluatie, Prospectie en Statistiek (IWEPS)"@nl,
 		"Wallonisches Institut für Schätzung, Zukunftsforschung und Statistik (IWEPS)"@de,
@@ -166,7 +150,6 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/124> ;
 	skos:prefLabel "Province of West Flanders"@en, "Province de Flandre occidentale"@fr, 
 			"Provincie West-Vlaanderen"@nl, "Provinz Westflandern"@de ;
 	skos:altLabel "Province of West Flanders"@en, "Province de Flandre occidentale"@fr, 
@@ -176,13 +159,11 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "INBO"@nl ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/194>  ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek / Research Institute for Nature and Forest (INBO)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0267387230>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/237> ;
 	skos:prefLabel "Federal Agency for the Safety of the Food Chain"@en, 
 		"Federaal Agentschap voor de Veiligheid van de Voedselketen"@nl, 
 		"Agence Fédérale pour la Sécurité de la Chaîne Alimentaire"@fr, 
@@ -192,14 +173,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308356862>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/222> ;
 	skos:prefLabel "FPS Interior"@en, "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, "FÖD Inneres"@de ;
 	skos:altLabel "SPF Intérieur"@fr, "FOD Binnenlandse Zaken"@nl, "FPS Home Affairs"@en, "FÖD Inneres"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/453> ;
 	skos:prefLabel "ILVO"@en, "ILVO"@nl, "ILVO"@fr, "ILVO"@de ;
 	skos:altLabel "Instituut voor Landbouw- en Visserijonderzoek - Visserij (ILVO)"@en .
 
@@ -207,5 +186,4 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/115> ;
 	skos:altLabel "Rijksdienst voor Zeevisserij (RVZ)"@en .

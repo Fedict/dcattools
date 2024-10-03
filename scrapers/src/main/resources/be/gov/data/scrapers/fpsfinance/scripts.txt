@@ -12,7 +12,6 @@ fpsfinance/sparql-fix-authority.qry
 fpsfinance/sparql-fix-datatype.qry
 sparql-access-public.qry
 data-frequency.ttl
-sparql-map-frequency-drupal.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry

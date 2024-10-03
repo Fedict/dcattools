@@ -2,13 +2,11 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 DELETE
 	{	?dist ?prop ?o	}
 INSERT 
-	{ 	?dist dgov:license <http://data.gov.be/en/taxonomy/term/450> .
-		?dist dcterms:license <https://opendata.fluvius.be/p/licentieopendatafluvius/>  }
+	{ 	?dist dcterms:license <https://opendata.fluvius.be/p/licentieopendatafluvius/>  }
 WHERE
 	{	?dist a dcat:Distribution .
 		?dist ?prop ?o 

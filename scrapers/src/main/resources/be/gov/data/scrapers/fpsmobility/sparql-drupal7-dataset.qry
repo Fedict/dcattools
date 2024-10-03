@@ -1,9 +1,0 @@
-# Add Drupal 7 URIs for publisher and theme, to be removed when upgrading
-
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#> 
-
-INSERT { 
-	<https://org.belgif.be/id/CbeRegisteredEntity/0308357852> dgov:org <http://data.gov.be/en/taxonomy/term/77> .
-	?s dgov:theme <http://data.gov.be/en/taxonomy/term/36> }
-WHERE { ?s a dcat:Dataset }

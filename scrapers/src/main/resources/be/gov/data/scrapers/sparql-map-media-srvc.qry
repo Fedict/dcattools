@@ -2,15 +2,13 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
 	{	?dist dcterms:format ?label }
 INSERT 
-	{ 	?dist dgov:mediaType ?drupal .
-		?dist dcterms:format ?auth .
+	{ 	?dist dcterms:format ?auth .
 		?dist dcat:mediaType <https://www.iana.org/assignments/media-types/application/xml> .
 		<https://www.iana.org/assignments/media-types/application/xml> a dcterms:MediaType .
 		?auth a dcterms:MediaTypeOrExtent .
@@ -21,7 +19,6 @@ WHERE
 		?auth skos:altLabel ?label .
 		?auth skos:prefLabel ?imt .
 		?auth skos:closeMatch <https://www.iana.org/assignments/media-types/application/xml> .
-		?auth skos:exactMatch ?drupal .
 		FILTER (STRENDS(
 					STR(?auth), "SRVC")
 				)

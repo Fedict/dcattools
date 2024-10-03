@@ -3,27 +3,23 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/explore/?refine.theme=Environment>,
 		<https://opendata.infrabel.be/explore/?refine.theme=Environnement>, 
 		<https://opendata.infrabel.be/explore/?refine.theme=Milieu> .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/explore/?refine.theme=Finance>,
 		<https://opendata.infrabel.be/explore/?refine.theme=Finances>,
 		<https://opendata.infrabel.be/explore/?refine.theme=Financi%C3%ABn> .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/explore/?refine.theme=Human+resources>, 
 		<https://opendata.infrabel.be/explore/?refine.theme=Ressources+humaines> .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:prefLabel "TRANSPORT"@en ;
 	skos:closeMatch <https://opendata.infrabel.be/explore/?refine.theme=Infrastructure>, 
 		<https://opendata.infrabel.be/explore/?refine.theme=Infrastructuur>, 

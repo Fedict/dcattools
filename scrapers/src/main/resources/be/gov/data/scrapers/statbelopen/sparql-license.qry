@@ -2,14 +2,12 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 DELETE
 	{	?dataset dcterms:license ?lic .
 		?lic ?p ?o }
 INSERT 
-	{	?dist dcterms:license <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf> .
-		?dist dgov:license <http://data.gov.be/en/taxonomy/term/168> }
+	{	?dist dcterms:license <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf> }
 WHERE
 	{	?dataset a dcat:Dataset .
 		?dataset dcterms:license ?lic .

@@ -26,7 +26,6 @@
         <module>helpers</module>
         <module>scrapers</module>
         <module>tools</module>
-        <module>uploader</module>
         <module>dcatlib</module>
         <module>translater</module>
 		<module>uploaderd10</module>

@@ -1,10 +1,6 @@
 # extra queries to be executed and data to be loaded
 data-frequency.ttl
-sparql-drupal-frequency.qry
-fpsbosa/sparql-drupal7-dataset.qry
-fpsbosa/sparql-drupal7-dist.qry
 data-media.ttl
-sparql-drupal-media.qry
 clear-skos.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

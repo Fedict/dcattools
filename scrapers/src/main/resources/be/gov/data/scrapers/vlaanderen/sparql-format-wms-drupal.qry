@@ -1,7 +1,6 @@
 # Map WFS/WMS... to file format and Drupal
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dgov: <http://data.gov.be#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
@@ -9,13 +8,11 @@ DELETE
 	{	?dist dcterms:format ?fmt }
 INSERT
 	{ 	?dist dcterms:format ?uri .
-		?dist dcat:mediaType ?mime .
-		?dist dgov:mediaType ?drupal }
+		?dist dcat:mediaType ?mime }
 WHERE
 	{	
 		?dist dcterms:format ?fmt .
 		?uri skos:altLabel ?fmt .
-		?uri skos:exactMatch ?drupal .
 		?uri skos:closeMatch ?mime
 		FILTER (?fmt = 'WMS' || ?fmt = 'WFS' || ?fmt = 'WCS' || ?fmt = 'WMTS')
 	}

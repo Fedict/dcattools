@@ -2,12 +2,12 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 DELETE { 	?dataset dcterms:spatial ?spatial }
-INSERT { 	?dataset dgov:spatial <http://data.gov.be/en/taxonomy/term/47> .
+INSERT { 	
 			?dataset dcterms:spatial <https://sws.geonames.org/3337387/> .
 			<https://sws.geonames.org/3337387/> a dcterms:Location }
-WHERE	{	?dataset a dcat:Dataset .
+WHERE	{	
+			?dataset a dcat:Dataset .
 			OPTIONAL { ?dataset dcterms:spatial ?spatial }
 		}

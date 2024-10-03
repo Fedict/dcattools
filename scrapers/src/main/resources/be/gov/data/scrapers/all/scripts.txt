@@ -5,6 +5,5 @@ all/sparql-remove-catalog.qry
 all/sparql-dataset.qry
 all/sparql-dataservice.qry
 all/sparql-datestamp.qry
-all/sparql-clear-drupal.qry
 all/clear-empty.txt
 clear-skos.qry

@@ -2,11 +2,9 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/favv/contact> .
-		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0267387230> .
-		?dataset dgov:org <http://data.gov.be/en/taxonomy/term/237> }
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0267387230> }
 WHERE
 	{ 	?dataset a dcat:Dataset  }

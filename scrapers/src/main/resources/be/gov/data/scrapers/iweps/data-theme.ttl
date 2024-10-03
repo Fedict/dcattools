@@ -3,45 +3,34 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38>  ;
 	skos:prefLabel "ECONOMY AND FINANCE"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59> ;
 	skos:prefLabel "CULTURE AND SPORT"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:prefLabel "EDUCATION"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
 	skos:prefLabel "ENERGY"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:prefLabel "ENVIRONMENT"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:prefLabel "HEALTH"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:prefLabel "REGIONS, CITIES"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:prefLabel "TRANSPORT"@en .

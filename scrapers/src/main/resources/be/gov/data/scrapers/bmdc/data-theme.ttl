@@ -3,46 +3,35 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:altLabel "Bodemgebruik"@nl, "Relief"@nl, "Zeebodem"@nl, "Orthofoto"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:altLabel "planningCadastre", "economy" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34> ;
 	skos:altLabel  "temperature", "environment", "biota", "oceans" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
 	skos:altLabel "energy" .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:altLabel "intelligenceMilitary", "location"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:altLabel "Menselijke gezondheid en veiligheid"@nl, "luchtkwaliteit"@nl, "Human health and safety"@en  .
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/44> ;
 	skos:altLabel "intelligenceMilitary" .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:altLabel "bevolking"@nl, "society" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:altLabel "Geografische namen"@nl, "Gemeente"@nl, "Straatnamen"@nl, "stad"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:altLabel "transportation" .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:altLabel "geoscientificInformation", "utilitiesCommunication", "structure", "location" .
 	

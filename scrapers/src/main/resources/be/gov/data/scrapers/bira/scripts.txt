@@ -7,8 +7,6 @@ bira/sparql-fix-netcdf.qry
 bira/sparql-fix-temporal.qry
 bira/sparql-fix-dctype.qry
 bira/sparql-fix-dataset.qry
-bira/sparql-drupal7-dataset.qry
-bira/sparql-drupal7-dist.qry
 bira/sparql-fix-adms.qry
 bira/sparql-fix-member.qry
 bira/sparql-fix-references.qry

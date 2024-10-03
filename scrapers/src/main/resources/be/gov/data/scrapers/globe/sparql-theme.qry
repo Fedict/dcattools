@@ -2,12 +2,9 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dgov: <http://data.gov.be#>
 
 INSERT 
-	{ 	?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/41> .
-		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> .
-		?dataset dgov:theme <http://data.gov.be/en/taxonomy/term/44> .
+	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> .
 		?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/INTR> . }
 WHERE
 	{	?dataset a dcat:Dataset }

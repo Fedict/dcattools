@@ -9,7 +9,6 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Mediahuis"@nl, "Mediahuis"@fr, "Mediahuis"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/436> ;
 	skos:altLabel "Mediahuis" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0419052173>
@@ -17,14 +16,12 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
 					"Catholic University of Leuven"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/202> ;
 	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven", "Associatie KU Leuven" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/203> ;
 	skos:altLabel "Ghent University", "UGent", "IDLab - Ghent Unviersity" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0419052272>
@@ -32,7 +29,6 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, 
 			"Catholic University of Louvain"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/435>  ;
 	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain",
 		"Université catholique de Louvain & European University Institute" .
 
@@ -41,7 +37,6 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, 
 					"Belgisches Staatsarchiv"@de, "State Archives of Belgium"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/439> ;
 	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
 				"Belgian State Archives", "State Archives Belgium", "AGR" .
 
@@ -49,21 +44,18 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/438> ;
 	skos:altLabel "KBR" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0257216482>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/437> ;
 	skos:altLabel "Universiteit Antwerpen" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/200> ;
 	skos:altLabel "Vrije Universiteit Brussel" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0259396509>

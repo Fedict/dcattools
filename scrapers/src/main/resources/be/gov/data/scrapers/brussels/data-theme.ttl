@@ -3,19 +3,16 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/32> ;
 	skos:altLabel "farming", "Agriculture, pêche, sylviculture et alimentation",
 		"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
 		"Bien-être animal", "Bodem" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/59>;
 	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
 		"Education, culture and sport", "Éducation, culture et sport", 
 		"Onderwijs, cultuur en sport" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/38> ;
 	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
 		"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
 		"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
@@ -24,11 +21,9 @@
 		"Marchés publics", "Employment", "Development durable", "Restauration" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/33> ;
 	skos:altLabel "Education", "Recherche", "Formation", "Enseignement" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/34>  ;
 	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
 		"Environnement", "Propreté", "PropretÃ©", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
 		"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
@@ -37,11 +32,9 @@
 		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres", "Landgebruik"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/35> ;
 	skos:altLabel "Energie", "Energy", "Énergie" .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/41> ;
 	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
 			"Administration", "Gouvernement", "Citoyenneté", "CitoyennetÃ©", "Marchés publics",
 			"Erkenningen en registraties", "Agréments et enregistrements",
@@ -58,18 +51,15 @@
 			"intelligenceMilitary", "AmÃ©nagement du territoire" .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/40> ;
 	skos:altLabel "Santé", "Gezondheid", "Health", "Human health and safety", "SantÃ©",
 				"Santé et sécurité des personnes", "Menselijke gezondheid en veiligheid" .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/43> ;
 	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", "Sécurité",
 				"Justice, système juridique et sécurité publique", "Crime", "Police", "Justice",
 				"Justitie, rechtsstelsel en openbare veiligheid", "SÃ©curitÃ©" .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/39> ;
 	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
 				"BÃ¢timents", "HÃ©bergement",
 				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
@@ -77,19 +67,16 @@
 				"Emploi", "tewerkstelling", "Buildings", "Employment", "Hébergement", "chien" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/42> ;
 	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
 			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration",
 			"HÃ©bergement", "Hébergement" .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/36> ;
 	skos:altLabel "transportation", "Verplaatsingen", "Vervoer", "Transport", "Transports", "Mobilité",
 			"MobilitÃ©",
 			"Transport networks", "Réseaux de transport", "Vervoersnetwerken".
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/37> ;
 	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
 			"Internet", "TIC", "Installations industrielles", "Industriële installaties",
 			"Systemen voor verwijzing door middel van coördinaten", "Coordinate reference systems",

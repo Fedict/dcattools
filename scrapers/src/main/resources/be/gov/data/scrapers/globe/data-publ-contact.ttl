@@ -10,7 +10,6 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FPS Foreign Affairs"@en, "FOD Buitenlandse Zaken"@nl, "SPF Affaires étrangères"@fr ;
-	skos:exactMatch <http://data.gov.be/en/taxonomy/term/156> ;
 	skos:altLabel "be-dgd"@en .
 	
 <https://org.belgif.be/id/CbeRegisteredEntity/0308358149/openaid>
