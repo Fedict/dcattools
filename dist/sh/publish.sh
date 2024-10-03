@@ -4,16 +4,28 @@
 #
 # Bart Hanssens
 
+# GitHub variables to be set
+#
+# GITHUB_TOKEN
+# GITHUB_NAME
+# GITHUB_EMAIL
+# GITHUB_PROXY
+
+# Mail variables to be set
+#
+# MAIL_FROM
+# MAIL_TO
+# MAIL_SERVER
+
+# EDP
+#
+# EDP_MIN_SIZE
+
 # Directories
 BIN=$HOME
 SHACL=$HOME/shacl
 DATA=/mnt/datagovbe
-MIN_SIZE=24500100
-# Git
-USER=$GIT_USER
-TOKEN=$GIT_TOKEN
-NAME=$GIT_NAME
-EMAIL=$GIT_EMAIL
+
 LOCAL=dcat.git
 
 # Create directories (if not yet present)
@@ -123,13 +135,18 @@ publish() {
 	step $1 "publish"
 
 	F_SIZE=$(stat --format=%s $DATA/$1/datagovbe_edp.xml.gz)
- 	if [[ $F_SIZE > $MIN_SIZE ]]; then
+ 	if [[ $F_SIZE > $EDP_MIN_SIZE ]]; then
   		rm -rf $LOCAL
   
-    		git clone --depth=1 https://$TOKEN@github.com/Fedict/dcat.git
-		git config user.name "$NAME"
-		git config user.email "$EMAIL"
-  
+      		git config --global http.proxy $GITHUB_PROXY
+		git config --global user.name "$GITHUB_NAME"
+		git config --global user.email "$GITHUB_EMAIL"
+    		git clone --depth=1 https://$GITHUB_TOKEN@github.com/Fedict/dcat.git $LOCAL
+
+		if [[ -x $LOCAL ]]; then
+			echo "Cloned github repository " > $DATA/$1/logs/publish.log
+  		fi
+    
     		cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
       		cp $DATA/$1/datagovbe_edp.xml.gz $LOCAL/all/datagovbe_edp.xml.gz
 
@@ -139,13 +156,18 @@ publish() {
 
     		res=$?
 
-      		cd -
+      		cd ..
       		rm -rf $LOCAL
       	else
-       		echo "ERROR $F_SIZE is too small" > /mnt/logs/$1/publish.log
+       		echo "ERROR $F_SIZE is too small" > $DATA/$1/logs/publish.log
        		res=-1
   	fi
- 
+
+ 	echo $res | mailx -v -S smtp=$MAIL_SERVER \
+  		-r $MAIL_FROM \
+    		-s "Publication to EDP" \
+    		$MAIL_TO
+
 	status $1 "publish" $2 $res
 } 
 
