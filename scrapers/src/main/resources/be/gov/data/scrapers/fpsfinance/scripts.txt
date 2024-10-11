@@ -8,9 +8,9 @@ sparql-map-license.qry
 sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
-sparql-startenddate.qry
 fpsfinance/sparql-fix-authority.qry
 fpsfinance/sparql-fix-datatype.qry
+sparql-startenddate.qry
 sparql-access-public.qry
 data-frequency.ttl
 data-media.ttl
