@@ -24,6 +24,7 @@ vlaanderen/sparql-format-darwin.qry
 data-media.ttl
 sparql-map-media.qry
 vlaanderen/sparql-format-wms.qry
+vlaanderen/sparql-format-wms-fix.qry
 clear-skos.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
