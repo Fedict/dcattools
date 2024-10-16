@@ -107,8 +107,7 @@ public abstract class CkanJson extends Ckan {
      * @throws IOException 
      */
     public JsonObject makeJsonRequest(URL url) throws IOException {
-        Request request = Request.Get(url.toString());
-        String json = request.execute().returnContent().asString();
+		String json = makeRequest(url);
         JsonReader reader = Json.createReader(new StringReader(json));
 
 		return reader.readObject();
