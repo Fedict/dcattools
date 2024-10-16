@@ -77,7 +77,7 @@ public class GeonetVlaanderen extends Dcat {
 	protected void scrapeCat(Cache cache) throws IOException {
 		int size = 20;
 
-		boolean again = true;
+		boolean tryAgain = true;
 
 		String prevhash = "";
 
@@ -85,19 +85,20 @@ public class GeonetVlaanderen extends Dcat {
 			URL url = new URL(getBase().toString() + "?startindex=" + start + "&limit=" + size + "&f=dcat_ap_vl");
 			String xml = makeRequest(url);
 			
-			prevhash = detectLoop(prevhash, xml);
-						
+			if (!tryAgain) {
+				prevhash = detectLoop(prevhash, xml);
+			}
 			if (!xml.contains("Dataset") && !xml.contains("DataService")) {
-				if (again) {
+				if (tryAgain) {
 					LOG.info("Might be last page, try next one");
-					again = false;
+					tryAgain = false;
 					continue;
 				} else {
 					LOG.info("Last (empty) page");
 					break;
 				}
 			}
-			again = true;
+			tryAgain = true;
 			cache.storePage(url, "all", new Page(url, xml));
 		}
 	}
