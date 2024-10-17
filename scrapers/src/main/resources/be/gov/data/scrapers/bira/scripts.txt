@@ -2,6 +2,7 @@
 #sparql-remove-hydra.qry
 bira/sparql-language-en.qry
 bira/data-org.ttl
+bira/sparql-publisher.qry
 bira/sparql-theme.qry
 bira/sparql-fix-netcdf.qry
 bira/sparql-fix-temporal.qry

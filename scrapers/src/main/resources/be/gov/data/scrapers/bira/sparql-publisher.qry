@@ -1,0 +1,13 @@
+# Add URIs for publisher
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?s dcterms:publisher ?publ }
+INSERT { 
+	?s dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0349010750> }
+WHERE { 
+	?s a dcat:Dataset .
+	?s dcterms:publisher ?publ  
+}
