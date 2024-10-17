@@ -2,6 +2,8 @@
 #sparql-remove-hydra.qry
 sparql-access-public.qry
 sparql-available.qry
+data-frequency.ttl
+sparql-map-frequency.qry
 bira/sparql-language-en.qry
 bira/data-org.ttl
 bira/sparql-publisher.qry
@@ -11,9 +13,9 @@ bira/sparql-fix-date.qry
 bira/sparql-fix-temporal.qry
 bira/sparql-fix-dctype.qry
 bira/sparql-fix-dataset.qry
-bira/sparql-fix-adms.qry
 bira/sparql-fix-member.qry
-bira/sparql-fix-references.qry
+bira/sparql-fix-identifier.qry
+bira/sparql-remove-references.qry
 bira/sparql-fix-foafpage.qry
 bira/sparql-accessurl.qry
 bira/sparql-access-downloadurl.qry
@@ -24,6 +26,7 @@ data-media-compress.ttl
 sparql-map-media-compress.qry
 data-media.ttl
 sparql-map-media.qry
+bira/sparql-remove-literal.qry
 clear-skos.qry
 data-license.ttl
 sparql-map-license.qry

@@ -1,0 +1,12 @@
+# DCTerms identifiers should be literals, not IRIs
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:identifier ?id }
+INSERT
+	{	?s dcterms:identifier ?str }
+WHERE
+	{	?s dcterms:identifier ?id .
+		BIND (STR(?id) AS ?str)
+		FILTER isIRI(?id) }

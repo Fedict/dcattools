@@ -25,7 +25,7 @@
 <http://publications.europa.eu/resource/authority/frequency/DAILY>
 	skos:prefLabel "Daily"@en ;
 	skos:altLabel "daily", "R/P1D", <http://purl.org/cld/freq/daily>, <http://data.gov.be/daily>,
-		"http://publications.europa.eu/resource/authority/frequency/DAILY", "Daily", "DAILY",
+		"http://publications.europa.eu/resource/authority/frequency/DAILY", "Daily", "DAILY", "P1D",
 		<http://publications.europa.eu/resource/authority/frequency/DAILY> .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY>

@@ -1,0 +1,9 @@
+# Remove literal values in format
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:format ?val }
+WHERE
+	{	?s dcterms:format ?val .
+		FILTER isLiteral(?val) }
