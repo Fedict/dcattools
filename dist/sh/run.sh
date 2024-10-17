@@ -68,8 +68,7 @@ scrape() {
  
 	status $1 "scrape" $2 $res
 
- 	grep "scrape 0" $1/status/exit
-	if [[ $? -ne 0 ]]; then
+	if [[ $res -ne 0 ]]; then
  		mail "Scraping $1 failed" "Status $res"
       	fi;
 }
