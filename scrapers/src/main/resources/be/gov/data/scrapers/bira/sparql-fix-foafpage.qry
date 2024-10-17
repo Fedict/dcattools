@@ -1,0 +1,18 @@
+# Fix markdown markup in foaf:page
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s foaf:page ?page }
+INSERT
+	{	?s foaf:page ?url }
+WHERE
+	{ 	?s foaf:page ?page .
+		BIND (IRI(
+				REPLACE
+					(STR(?page), ".+\\((http.+)\\)$", "$1"))
+			as ?url)
+		FILTER (REGEX
+					(STR(?page), "^\\[.+\\]\\(http.+\\)$")
+		)
+	}

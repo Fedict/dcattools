@@ -1,16 +1,20 @@
 # extra queries to be executed and data to be loaded
 #sparql-remove-hydra.qry
+sparql-access-public.qry
+sparql-available.qry
 bira/sparql-language-en.qry
 bira/data-org.ttl
 bira/sparql-publisher.qry
 bira/sparql-theme.qry
 bira/sparql-fix-netcdf.qry
+bira/sparql-fix-date.qry
 bira/sparql-fix-temporal.qry
 bira/sparql-fix-dctype.qry
 bira/sparql-fix-dataset.qry
 bira/sparql-fix-adms.qry
 bira/sparql-fix-member.qry
 bira/sparql-fix-references.qry
+bira/sparql-fix-foafpage.qry
 bira/sparql-accessurl.qry
 bira/sparql-access-downloadurl.qry
 bira/sparql-foaf-orcid.qry

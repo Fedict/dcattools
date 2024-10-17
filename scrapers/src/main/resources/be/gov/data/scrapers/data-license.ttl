@@ -113,6 +113,14 @@
 	skos:altLabel "https://opendatacommons.org/licenses/odbl/1.0/", 
 					"http://opendatacommons.org/licenses/odbl/" .
 
+<http://publications.europa.eu/resource/authority/licence/GPL_3_0>
+	skos:prefLabel "GPLv3" ;
+	skos:altLabel <https://www.gnu.org/licenses/#GPL> .
+
+<http://publications.europa.eu/resource/authority/licence/BSD_3_CLAUSE>
+	skos:prefLabel "BSD 3-Clause" ;
+	skos:altLabel <https://joinup.ec.europa.eu/licence/bsd-3-clause-new-or-revised-license> .
+
 <http://publications.europa.eu/resource/authority/licence/MIT>
 	skos:prefLabel "MIT License" ;
 	skos:altLabel "MIT License" .

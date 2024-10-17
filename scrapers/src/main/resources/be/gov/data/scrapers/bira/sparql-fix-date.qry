@@ -1,0 +1,11 @@
+# Fix incorrect date
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE
+	{	?s dcat:endDate "2021-11-31"^^xsd:date }
+INSERT
+	{	?s dcat:endDate "2021-11-30"^^xsd:date }
+WHERE
+	{ 	?s dcat:endDate "2021-11-31"^^xsd:date }
