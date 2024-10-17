@@ -44,6 +44,14 @@ clean() {
 	rm $DATA/$1/status/*
 }
 
+# Parameter: title message
+mail() {
+	echo $2 | mailx -v -S smtp=$MAIL_SERVER \
+  			-r $MAIL_FROM \
+    			-s $1 \
+    			$MAIL_TO
+}
+
 # Scrape metadata from an external source and save it as triples
 # Parameter: project code
 scrape() {
@@ -56,8 +64,14 @@ scrape() {
 		-jar $BIN/scrapers.jar \
 		--dir=$DATA/$1 \
 		--name=$1
-	
-	status $1 "scrape" $2 $?
+	res=$?
+ 
+	status $1 "scrape" $2 $res
+
+ 	grep "scrape 0" $1/status/exit
+	if [[ $? -ne 0 ]]; then
+ 		mail "Scraping $1 failed" "Status $res"
+      	fi;
 }
 
 # Create SHACL validation reports
