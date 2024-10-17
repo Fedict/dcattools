@@ -38,10 +38,20 @@ clean() {
 	step $1 "clean"
 
 	rm $DATA/$1/$1.nt
+	rm $DATA/$1/$1.xml
  	rm $DATA/$1/cache
 	rm $DATA/$1/logs/*
 	rm $DATA/$1/reports/*
 	rm $DATA/$1/status/*
+}
+
+# Mail
+# Parameters: title message
+mail() {
+	echo $2 | mailx -v -S smtp=$MAIL_SERVER \
+  			-r $MAIL_FROM \
+    			-s $1 \
+    			$MAIL_TO
 }
 
 # Scrape metadata from an external source and save it as triples
@@ -56,8 +66,13 @@ scrape() {
 		-jar $BIN/scrapers.jar \
 		--dir=$DATA/$1 \
 		--name=$1
-	
-	status $1 "scrape" $2 $?
+	res=$?
+ 
+	status $1 "scrape" $2 $res
+
+	if [[ $res -ne 0 ]]; then
+ 		mail "Scraping $1 failed" "Status $res"
+      	fi;
 }
 
 # Create SHACL validation reports
@@ -81,6 +96,22 @@ validate() {
 		--countValues=dcterms:rightsHolder
 
 	status $1 "validate" $2 $?
+}
+
+# Convert to XML
+# Parameter: project code
+convert() {
+	step $1 "convert"
+
+	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
+    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
+      		-cp $BIN/tools.jar be.gov.data.tools.EDP \
+		$DATA/$1/$1.nt \
+		$DATA/$1/$1.xml
+
+	res=$?
+ 	status $1 "convert" $2 $res
+	return $res
 }
 
 # Translate the metadata using the eTranslation service
@@ -137,6 +168,7 @@ for source in ${sources[@]}; do
 	clean $source
 	scrape $source
 	validate $source
+ 	convert $source
 	translate $source
  	update $source
 done
