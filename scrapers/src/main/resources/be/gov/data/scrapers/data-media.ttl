@@ -5,7 +5,7 @@
 <http://publications.europa.eu/resource/authority/file-type/BIN>
 	skos:prefLabel "BIN" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
-	skos:altLabel "sld", "ov2", "M4V", "video/x-m4v", "AIFF", "audio/x-aiff", "fgb" .
+	skos:altLabel "sld", "ov2", "M4V", "video/x-m4v", "AIFF", "audio/x-aiff", "fgb", "mat" .
 
 <http://publications.europa.eu/resource/authority/file-type/CSV> 
 	skos:prefLabel "CSV" ;

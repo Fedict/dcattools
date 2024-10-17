@@ -81,6 +81,8 @@ public class DcatReader {
 	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
 	private final static SimpleDateFormat DATE_FMT_FULL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
+	private final static SimpleDateFormat YEARMONTH_FMT = new SimpleDateFormat("yyyy-MM");
+	private final static SimpleDateFormat YEAR_FMT = new SimpleDateFormat("yyyy");
 	
 	private final static IRI DCATAP_LEGISLATION = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
 	
@@ -136,14 +138,20 @@ public class DcatReader {
 		if (value == null) {
 			return null;
 		}
+		String date = value.stringValue();
 		try {
-			return DATE_FMT_FULL.parse(value.stringValue());
-		} catch(ParseException pe) {
-			try {
-				return DATE_FMT.parse(value.stringValue());
-			} catch(ParseException pe2) {
-				throw new IOException(pe2);
+			if (date.length() > 10) {
+				return DATE_FMT_FULL.parse(date);
 			}
+			if (date.length() > 7) {
+				return DATE_FMT.parse(date);
+			}
+			if (date.length() > 4) {
+				return YEARMONTH_FMT.parse(date);
+			}
+			return YEAR_FMT.parse(date);
+		} catch(ParseException pe) {
+			throw new IOException(pe);
 		}
 	}
 
