@@ -83,6 +83,24 @@ validate() {
 	status $1 "validate" $2 $?
 }
 
+# Convert to XML
+# Parameter: project code
+convert() {
+	step $1 "convert"
+
+	mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
+
+	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
+    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
+      		-cp $BIN/tools.jar be.gov.data.tools.EDP \
+		$DATA/$1/$1.nt \
+		$DATA/$1/$1.xml
+
+	res=$?
+ 	status $1 "convert" $2 $res
+	return $res
+}
+
 # Translate the metadata using the eTranslation service
 # Parameter: project code
 translate() {
@@ -137,6 +155,7 @@ for source in ${sources[@]}; do
 	clean $source
 	scrape $source
 	validate $source
+ 	convert $source
 	translate $source
  	update $source
 done
