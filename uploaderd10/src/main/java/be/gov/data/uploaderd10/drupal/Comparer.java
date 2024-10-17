@@ -467,6 +467,9 @@ public class Comparer {
 		resources.putAll(catalog.getDatasets());
 		resources.putAll(catalog.getDataservices());
 
+		if (resources.isEmpty()) {
+			throw new IOException("No valid datasets or dataservices");
+		}
 		LOG.info("Read {}", resources.size());
 	
 		removeIncomplete(resources, langs);

@@ -79,7 +79,8 @@ public class DcatReader {
 	private final RDFFormat fmt;
 
 	private final static Logger LOG = LoggerFactory.getLogger(DcatReader.class);
-	private final static SimpleDateFormat DATE_FMT_FULL = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATETIMEZ_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+	private final static SimpleDateFormat DATETIME_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	private final static SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");
 	private final static SimpleDateFormat YEARMONTH_FMT = new SimpleDateFormat("yyyy-MM");
 	private final static SimpleDateFormat YEAR_FMT = new SimpleDateFormat("yyyy");
@@ -141,7 +142,11 @@ public class DcatReader {
 		String date = value.stringValue();
 		try {
 			if (date.length() > 10) {
-				return DATE_FMT_FULL.parse(date);
+				if (date.contains("+")) {
+					return DATETIMEZ_FMT.parse(date);
+				} else {
+					return DATETIME_FMT.parse(date);	
+				}
 			}
 			if (date.length() > 7) {
 				return DATE_FMT.parse(date);
