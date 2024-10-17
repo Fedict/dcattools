@@ -120,8 +120,8 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0434366097>
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/3337387/> ;
 	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/3337387/> ;
 	skos:prefLabel "Natagora"@fr ;
 	skos:altLabel "natagora"@en .
 
@@ -133,3 +133,46 @@
 					"Institut für Tropenmedizin"@de,
 					"Institute of Tropical Medicine"@en ;
 	skos:altLabel "institute-of-tropical-medicine-antwerp"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207725795>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2789733/> ;
+	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr,
+					"Provinz Ostflandern"@de, "Province East Flanders"@en ;
+	skos:altLabel "province-east-flanders"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2783770/> ;
+	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, 
+					"Provinz Westflandern"@de, "Province West Flanders"@en ;
+	skos:altLabel "province-west-flanders"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/2789733/> ;
+	skos:prefLabel "RATO"@nl ;
+	skos:altLabel "rato-vzw"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335537>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/3337388/> ;
+	skos:prefLabel "Agentschap voor Natuur en Bos"@nl ;
+	skos:altLabel "agency-for-nature-and-forests-flemish-government"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0872191039>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/3337387/> ;
+	skos:prefLabel "Contrat de Rivière Senne"@fr ;
+	skos:altLabel "contrat-de-riviere-senne"@en .
+
+<https://org.belgif.be/id/undesco/obis>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "UNESCO OBIS"@nl, "UNESCO OBIS"@fr, "UNESCO OBIS"@de, "UNESCO OBIS"@en ;
+	skos:altLabel "obis-secretariat"@en, "OBIS Secretariat - Secretariat -" .
