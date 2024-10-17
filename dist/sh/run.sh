@@ -44,7 +44,8 @@ clean() {
 	rm $DATA/$1/status/*
 }
 
-# Parameter: title message
+# Mail
+# Parameters: title message
 mail() {
 	echo $2 | mailx -v -S smtp=$MAIL_SERVER \
   			-r $MAIL_FROM \
@@ -100,8 +101,6 @@ validate() {
 # Parameter: project code
 convert() {
 	step $1 "convert"
-
-	mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
     		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
