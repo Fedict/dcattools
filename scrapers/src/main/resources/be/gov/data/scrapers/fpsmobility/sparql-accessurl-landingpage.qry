@@ -1,0 +1,13 @@
+# Use the access URL of the distribution as landing page for the dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{	?s dcat:landingPage ?url }
+WHERE	
+	{	?s a dcat:Dataset .
+		?s dcat:distribution ?dist .
+		?dist dcat:accessUrl ?url
+		FILTER NOT EXISTS { ?s dcat:landingPage ?page }
+	}
