@@ -8,6 +8,6 @@ INSERT
 WHERE	
 	{	?s a dcat:Dataset .
 		?s dcat:distribution ?dist .
-		?dist dcat:accessUrl ?url
+		?dist dcat:accessURL ?url
 		FILTER NOT EXISTS { ?s dcat:landingPage ?page }
 	}
