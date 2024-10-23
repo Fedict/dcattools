@@ -110,6 +110,7 @@ public abstract class GeonetGmd extends Geonet {
 
 	public final static String XP_TITLE = "gmd:citation/gmd:CI_Citation/gmd:title";
 	public final static String XP_DESC = "gmd:abstract";
+	public final static String XP_LANG = "gmd:language/gmd:LanguageCode/@codeListValue";
 	public final static String XP_PURP = "gmd:purpose";
 	public final static String XP_ANCHOR = "gmx:Anchor";
 	public final static String XP_CHAR = "gco:CharacterString";
@@ -168,6 +169,53 @@ public abstract class GeonetGmd extends Geonet {
 	public final static DateFormat DATETIME_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	public final static DateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");		
 
+	
+	/**
+	 * Parse and store multilingual string
+	 *
+	 * @param store RDF store
+	 * @param uri IRI of the dataset
+	 * @param node multilingual DOM node
+	 * @param property RDF property
+	 * @throws RepositoryException
+	 */
+	protected void parseMulti(Storage store, IRI uri, Node node, IRI property) throws RepositoryException {
+		if (node == null) {
+			return;
+		}
+		String txt = node.valueOf(XP_STR);
+		store.add(uri, property, txt.strip(), "en");
+			
+		for (String lang : getAllLangs()) {
+			txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() + "']");
+			if (txt != null && !txt.isEmpty()) {
+				store.add(uri, property, txt.strip(), lang);
+			}
+		}
+	}
+
+	/**
+	 * Parse language of a dataset
+	 * 
+	 * @param store
+	 * @param iri
+	 * @param langs 
+	 */
+	protected void parseLanguage(Storage store, IRI iri, List<Node> langs) {
+		if (langs = null || langs.isEmpty()) {
+			LOG.warn("No language for dataset {}", iri);
+			return;
+		}
+		
+		for (Node lang: langs) {
+			IRI lc = MDR_LANG.MAP.get(lang.getStringValue().substring(0, 2));
+			if (lc != null) {
+				store.add(iri, DCTERMS.LANGUAGE, lc);
+			} else {
+				LOG.error("No IRI for language {}", lang.getStringValue());
+			}
+		}
+	}
 	
 	/**
 	 * Parse date or datetime stamp
@@ -240,27 +288,22 @@ public abstract class GeonetGmd extends Geonet {
 	 * @throws RepositoryException
 	 */
 	protected void parseContact(Storage store, IRI uri, Node contact) throws RepositoryException {
-		Node name = contact.selectSingleNode(XP_ORG_NAME);
-		Node name2 = contact.selectSingleNode(XP_INDIVIDUAL);
+		Node org = contact.selectSingleNode(XP_ORG_NAME);
+		Node person = contact.selectSingleNode(XP_INDIVIDUAL);
 
 		String email = contact.valueOf(XP_EMAIL);
 
-		if (name != null || name2 != null || !email.isEmpty()) {
-			IRI vcard = makeOrgIRI(hash(name + email));
+		if (org != null || person != null || !email.isEmpty()) {
+			IRI vcard = makeOrgIRI(hash(org + email));
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
 			store.add(vcard, RDF.TYPE, VCARD4.KIND);
-			if (name != null) {
+			if (org != null) {
 				store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
 			}
 
-			boolean found = false;
-			for (String lang : getAllLangs()) {
-				found |= parseMulti(store, vcard, name, VCARD4.FN, lang);
-			}
-			if (!found) {
-				for (String lang : getAllLangs()) {
-					parseMulti(store, vcard, name2, VCARD4.FN, lang);
-				}
+			parseMulti(store, vcard, org, VCARD4.FN);
+			if (org == null) {
+				parseMulti(store, vcard, person, VCARD4.FN);
 			}
 			if (!email.isEmpty()) {
 				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
@@ -308,52 +351,15 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	protected void parseAuthorOrgs(Storage store, IRI iri, List<Node> contacts) {
 		for(Node c: contacts) {
-			Node a = c.selectSingleNode(XP_CHAR);
-			if (a != null) {
-				String name = a.getText();
-				IRI bnode = makeOrgIRI(hash(name));
-				store.add(iri, DCTERMS.CREATOR, bnode);
-				store.add(bnode, RDF.TYPE, FOAF.ORGANIZATION);
-				store.add(bnode, FOAF.NAME, name);
+			Node node = c.selectSingleNode(XP_CHAR);
+			if (node != null) {
+				String name = node.getText();
+				IRI org = makeOrgIRI(hash(name));
+				store.add(iri, DCTERMS.CREATOR, org);
+				store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
+				parseMulti(store, org, node, FOAF.NAME);
 			}
 		}
-	}
-
-	/**
-	 * Map language code to geonet language string
-	 *
-	 * @param lang
-	 * @return
-	 */
-	protected String mapLanguage(String lang) {
-		return lang.toUpperCase();
-	}
-
-	/**
-	 * Parse and store multilingual string
-	 *
-	 * @param store RDF store
-	 * @param uri IRI of the dataset
-	 * @param node multilingual DOM node
-	 * @param property RDF property
-	 * @param lang language code
-	 * @return boolean
-	 * @throws RepositoryException
-	 */
-	protected boolean parseMulti(Storage store, IRI uri, Node node, IRI property, String lang)
-		throws RepositoryException {
-		if (node == null) {
-			return false;
-		}
-		String txten = node.valueOf(XP_STR);
-		String txt = node.valueOf(XP_STRLNG + "[@locale='#" + mapLanguage(lang) + "']");
-
-		if (txt == null || txt.isEmpty()) {
-			store.add(uri, property, txten.strip(), "en");
-			return true;
-		}
-		store.add(uri, property, txt.strip(), lang);
-		return true;
 	}
 
 	/**
@@ -397,10 +403,8 @@ public abstract class GeonetGmd extends Geonet {
 		Node title = node.selectSingleNode(XP_DIST_NAME);
 		Node desc = node.selectSingleNode(XP_DIST_DESC);
 
-		for (String lang : getAllLangs()) {
-			parseMulti(store, dist, title, DCTERMS.TITLE, lang);
-			parseMulti(store, dist, desc, DCTERMS.DESCRIPTION, lang);
-		}
+		parseMulti(store, dist, title, DCTERMS.TITLE);
+		parseMulti(store, dist, desc, DCTERMS.DESCRIPTION);
 	}
 
 	/**
@@ -439,24 +443,24 @@ public abstract class GeonetGmd extends Geonet {
 		parseStamp(store, dataset, node);
 
 		Node title = metadata.selectSingleNode(XP_TITLE);
+		parseMulti(store, dataset, title, DCTERMS.TITLE);
+		
 		Node desc = metadata.selectSingleNode(XP_DESC);
+		parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION);
 
+		List<Node> langs = metadata.selectNodes(XP_LANG);
+		parseLanguage(store, dataset, langs);
+		
 		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
-	
-		for (String lang : getAllLangs()) {
-			if (parseMulti(store, dataset, title, DCTERMS.TITLE, lang)) {
-				store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
-			}
-			parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, lang);
-			for (Node keyword : keywords) {
-				Node thesaurus = keyword.selectSingleNode(XP_THESAURUS);
-				if (thesaurus == null || !thesaurus.getText().equals("Theme")) {
-					// full text keyword
-					parseMulti(store, dataset, keyword, DCAT.KEYWORD, lang);					
-				} else {
-					// actually a theme
-					parseMulti(store, dataset, keyword, DCAT.THEME, lang);	
-				}
+		
+		for (Node keyword : keywords) {
+			Node thesaurus = keyword.selectSingleNode(XP_THESAURUS);
+			if (thesaurus == null || !thesaurus.getText().equals("Theme")) {
+				// full text keyword
+				parseMulti(store, dataset, keyword, DCAT.KEYWORD);					
+			} else {
+				// actually a theme
+				parseMulti(store, dataset, keyword, DCAT.THEME);	
 			}
 		}
 		

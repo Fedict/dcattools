@@ -51,7 +51,7 @@ public class MDR_LANG {
     public final static Map<String,IRI> MAP = new HashMap<>();
     
     static {
-	ValueFactory factory = SimpleValueFactory.getInstance();
+		ValueFactory factory = SimpleValueFactory.getInstance();
         
         DE = factory.createIRI(MDR_LANG.NAMESPACE, "DEU");
         EN = factory.createIRI(MDR_LANG.NAMESPACE, "ENG");
