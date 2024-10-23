@@ -107,8 +107,8 @@ convert() {
 
 	mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
 
-	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
-    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/edp.log \
+	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
+    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
       		-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/datagovbe.nt \
 		$DATA/$1/datagovbe_edp.xml
