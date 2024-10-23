@@ -320,6 +320,16 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
+	 * Make an IRI for a person
+	 *
+	 * @param id
+	 * @return IRI
+	 */
+	protected IRI makePersonIRI(String id){
+		return Values.iri(DATAGOVBE.PREFIX_URI_PERSON + "/" + getName() + "/" + id);
+	}
+
+	/**
 	 * Make an URL for a date
 	 *
 	 * @param start start date string

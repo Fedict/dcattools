@@ -183,14 +183,20 @@ public abstract class GeonetGmd extends Geonet {
 		if (node == null) {
 			return;
 		}
-		String txt = node.valueOf(XP_STR);
-		store.add(uri, property, txt.strip(), "en");
-			
+		
+		String txten = null;
 		for (String lang : getAllLangs()) {
-			txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() + "']");
+			String txt = node.valueOf(XP_STRLNG + "[@locale='#" + lang.toUpperCase() + "']");
 			if (txt != null && !txt.isEmpty()) {
+				if (lang.equals("en")) {
+					txten = txt;
+				}
 				store.add(uri, property, txt.strip(), lang);
 			}
+		}
+		String txt = node.valueOf(XP_STR);
+		if (txt != null && !txt.equals(txten)) {
+			store.add(uri, property, txt.strip());
 		}
 	}
 
@@ -320,23 +326,24 @@ public abstract class GeonetGmd extends Geonet {
 	 */
 	protected void parseAuthorPersons(Storage store, IRI iri, List<Node> contacts) {
 		for(Node c: contacts) {
-			Node a = c.selectSingleNode(XP_ANCHOR);
+			Node node = c.selectSingleNode(XP_ANCHOR);
 			String id = null;
 			
-			if (a == null) {
-				a = c.selectSingleNode(XP_CHAR);
+			if (node == null) {
+				node = c.selectSingleNode(XP_CHAR);
 			} else {
 				// check DOI handle
-				Node href = a.selectSingleNode(XP_HREF);
+				Node href = node.selectSingleNode(XP_HREF);
 				id = href.getStringValue();
 			}
-			if (a != null) {
-				BNode bnode = Values.bnode();
-				store.add(iri, DCTERMS.CREATOR, bnode);
-				store.add(bnode, RDF.TYPE, FOAF.PERSON);
-				store.add(bnode, FOAF.NAME, a.getText());
+			if (node != null) {
+				String name = node.getText();
+				IRI person = makePersonIRI(hash(name));
+				store.add(iri, DCTERMS.CREATOR, person);
+				store.add(person, RDF.TYPE, FOAF.PERSON);
+				store.add(person, FOAF.NAME, name);
 				if (id != null){
-					store.add(bnode, DCTERMS.IDENTIFIER, id);
+					store.add(person, DCTERMS.IDENTIFIER, id);
 				}
 			}
 		}
