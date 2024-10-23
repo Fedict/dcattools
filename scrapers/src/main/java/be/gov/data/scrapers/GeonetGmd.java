@@ -202,7 +202,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param langs 
 	 */
 	protected void parseLanguage(Storage store, IRI iri, List<Node> langs) {
-		if (langs = null || langs.isEmpty()) {
+		if (langs == null || langs.isEmpty()) {
 			LOG.warn("No language for dataset {}", iri);
 			return;
 		}
