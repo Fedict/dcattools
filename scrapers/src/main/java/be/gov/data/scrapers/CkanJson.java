@@ -311,15 +311,8 @@ public abstract class CkanJson extends Ckan {
 	 * @throws RepositoryException
 	 */
 	protected void parseContact(Storage store, IRI uri, String name, String email) throws RepositoryException {
-		String v = "";
-		try {
-			v = makeOrgURL(hash(name + email)).toString();
-		} catch (MalformedURLException e) {
-			LOG.error("Could not generate hash url", e);
-		}
-
 		if (!name.isEmpty() || !email.isEmpty()) {
-			IRI vcard = store.getURI(v);
+			IRI vcard = makeOrgIRI(hash(name + email));
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
 			store.add(vcard, RDF.TYPE, VCARD4.KIND);
 			if (!name.isEmpty()) {
@@ -461,7 +454,7 @@ public abstract class CkanJson extends Ckan {
 
 			if (obj.getBoolean(CkanJson.IS_ORG)) {
 				String s = obj.getString(CkanJson.ID, "");
-				IRI org = store.getURI(makeOrgURL(s).toString());
+				IRI org = makeOrgIRI(s);
 				store.add(uri, DCTERMS.PUBLISHER, org);
 				store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
 

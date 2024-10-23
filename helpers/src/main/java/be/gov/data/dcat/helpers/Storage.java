@@ -268,7 +268,7 @@ public class Storage {
      * @param value
      * @throws RepositoryException 
      */
-    public void add(IRI subj, IRI pred, String value) throws RepositoryException {
+    public void add(Resource subj, IRI pred, String value) throws RepositoryException {
 		if ((value != null) && !value.isEmpty()) {
 			conn.add(subj, pred, fac.createLiteral(value));
 		} else {

@@ -47,10 +47,13 @@ import org.dom4j.DocumentException;
 import org.dom4j.DocumentFactory;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+import org.eclipse.rdf4j.model.BNode;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -98,8 +101,7 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
 	public final static String XP_TOPIC = "gmd:topicCategory/gmd:MD_TopicCategoryCode";
 	public final static String XP_THESAURUS = "../gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString";
-	
-	
+		
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
 	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
 	public final static String XP_LICENSE3 = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation";
@@ -114,6 +116,9 @@ public abstract class GeonetGmd extends Geonet {
 
 	public final static String XP_STR = "gco:CharacterString";
 	public final static String XP_STRLNG = "gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
+
+	public final static String XP_AUTHOR = ".//gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode[@codeListValue='author']/../../gmd:individualName";
+	public final static String XP_AUTHOR_ORG = ".//gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode[@codeListValue='author']/../../gmd:organisationName";
 
 	public final static String XP_CONTACT = "gmd:contact/gmd:CI_ResponsibleParty";
 	public final static String XP_ORG_NAME = "gmd:organisationName";
@@ -155,12 +160,42 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_MAINT = "gmd:resourceMaintenance/gmd:MD_MaintenanceInformation";
 	public final static String XP_FREQ = XP_MAINT + "/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue";
 
+	public final static String XP_HREF = "./@xlink:href";
 	public final static String SERV_TYPE = "srv:serviceType/gco:LocalName";
 
 	public final static String INSPIRE_TYPE = "http://inspire.ec.europa.eu/metadatacodelist/ResourceType/";
 
 	public final static DateFormat DATETIME_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 	public final static DateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");		
+
+	
+	/**
+	 * Parse date or datetime stamp
+	 * 
+	 * @param store
+	 * @param node
+	 * @param iri
+	 * @throws RepositoryException 
+	 */
+	protected void parseStamp(Storage store, IRI iri, Node node) throws RepositoryException {	
+		String stamp = node.valueOf(XP_TSTAMP);
+		if (stamp != null && !stamp.isEmpty()) {
+			try {
+				store.add(iri, DCTERMS.MODIFIED, DATETIME_FMT.parse(stamp));
+			} catch (ParseException ex) {
+				LOG.warn("Could not parse datetime {}", stamp, ex);
+			}
+		} else {
+			stamp = node.valueOf(XP_DSTAMP);
+			if (stamp != null && !stamp.isEmpty()) {
+				try {
+					store.add(iri, DCTERMS.MODIFIED, DATE_FMT.parse(stamp));
+				} catch (ParseException ex) {
+					LOG.warn("Could not parse date {}", stamp, ex);
+				}
+			}
+		}
+	}
 
 	/**
 	 * Parse a bounding box and store it in the RDF store.
@@ -205,21 +240,13 @@ public abstract class GeonetGmd extends Geonet {
 	 * @throws RepositoryException
 	 */
 	protected void parseContact(Storage store, IRI uri, Node contact) throws RepositoryException {
-		String v = "";
-
 		Node name = contact.selectSingleNode(XP_ORG_NAME);
 		Node name2 = contact.selectSingleNode(XP_INDIVIDUAL);
 
 		String email = contact.valueOf(XP_EMAIL);
 
-		try {
-			v = makeOrgURL(hash(name + email)).toString();
-		} catch (MalformedURLException e) {
-			LOG.error("Could not generate hash url", e);
-		}
-
 		if (name != null || name2 != null || !email.isEmpty()) {
-			IRI vcard = store.getURI(v);
+			IRI vcard = makeOrgIRI(hash(name + email));
 			store.add(uri, DCAT.CONTACT_POINT, vcard);
 			store.add(vcard, RDF.TYPE, VCARD4.KIND);
 			if (name != null) {
@@ -237,6 +264,57 @@ public abstract class GeonetGmd extends Geonet {
 			}
 			if (!email.isEmpty()) {
 				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
+			}
+		}
+	}
+	
+	/**
+	 * Parse contacts to get individual authors
+	 * 
+	 * @param store
+	 * @param iri
+	 * @param contacts 
+	 */
+	protected void parseAuthorPersons(Storage store, IRI iri, List<Node> contacts) {
+		for(Node c: contacts) {
+			Node a = c.selectSingleNode(XP_ANCHOR);
+			String id = null;
+			
+			if (a == null) {
+				a = c.selectSingleNode(XP_CHAR);
+			} else {
+				// check DOI handle
+				Node href = a.selectSingleNode(XP_HREF);
+				id = href.getStringValue();
+			}
+			if (a != null) {
+				BNode bnode = Values.bnode();
+				store.add(iri, DCTERMS.CREATOR, bnode);
+				store.add(bnode, RDF.TYPE, FOAF.PERSON);
+				store.add(bnode, FOAF.NAME, a.getText());
+				if (id != null){
+					store.add(bnode, DCTERMS.IDENTIFIER, id);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Parse contacts to get organization authors
+	 * 
+	 * @param store
+	 * @param iri
+	 * @param contacts 
+	 */
+	protected void parseAuthorOrgs(Storage store, IRI iri, List<Node> contacts) {
+		for(Node c: contacts) {
+			Node a = c.selectSingleNode(XP_CHAR);
+			if (a != null) {
+				String name = a.getText();
+				IRI bnode = makeOrgIRI(hash(name));
+				store.add(iri, DCTERMS.CREATOR, bnode);
+				store.add(bnode, RDF.TYPE, FOAF.ORGANIZATION);
+				store.add(bnode, FOAF.NAME, name);
 			}
 		}
 	}
@@ -354,28 +432,12 @@ public abstract class GeonetGmd extends Geonet {
 			return;
 		}
 
-		//store.add(dataset, DCTERMS.TYPE, store.getURI(INSPIRE_TYPE + "dataset"));
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
-		String stamp = node.valueOf(XP_TSTAMP);
-		if (stamp != null && !stamp.isEmpty()) {
-			try {
-				store.add(dataset, DCTERMS.MODIFIED, DATETIME_FMT.parse(stamp));
-			} catch (ParseException ex) {
-				LOG.warn("Could not parse datetime {}", stamp, ex);
-			}
-		} else {
-			stamp = node.valueOf(XP_DSTAMP);
-			if (stamp != null && !stamp.isEmpty()) {
-				try {
-					store.add(dataset, DCTERMS.MODIFIED, DATE_FMT.parse(stamp));
-				} catch (ParseException ex) {
-					LOG.warn("Could not parse date {}", stamp, ex);
-				}
-			}
-		}
-		
+		// modified
+		parseStamp(store, dataset, node);
+
 		Node title = metadata.selectSingleNode(XP_TITLE);
 		Node desc = metadata.selectSingleNode(XP_DESC);
 
@@ -404,12 +466,10 @@ public abstract class GeonetGmd extends Geonet {
 			store.add(dataset, DCAT.THEME, topic.getText());
 		}
 
-		
 		// geo bounding box
 		Node geo = metadata.selectSingleNode(XP_GEO);
 		if (geo != null) {
-			parseBBox(store, dataset, geo
-			);
+			parseBBox(store, dataset, geo);
 		}
 	
 		// time range
@@ -428,6 +488,16 @@ public abstract class GeonetGmd extends Geonet {
 		Node contact = node.selectSingleNode(XP_CONTACT);
 		if (contact != null) {
 			parseContact(store, dataset, contact);
+		}
+		
+		// authors
+		List<Node> persons = node.selectNodes(XP_AUTHOR);
+		if (persons != null && !persons.isEmpty()) {
+			parseAuthorPersons(store, dataset, persons);
+		}
+		List<Node> orgs = node.selectNodes(XP_AUTHOR_ORG);
+		if (orgs != null && !orgs.isEmpty()) {
+			parseAuthorOrgs(store, dataset, orgs);
 		}
 
 		// Distributions can be defined on several (hierarchical) levels

@@ -310,14 +310,13 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	}
 
 	/**
-	 * Make an URL for an organization
+	 * Make an IRI for an organization
 	 *
 	 * @param id
-	 * @return URL
-	 * @throws java.net.MalformedURLException
+	 * @return IRI
 	 */
-	protected URL makeOrgURL(String id) throws MalformedURLException {
-		return new URL(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
+	protected IRI makeOrgIRI(String id){
+		return Values.iri(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
 	}
 
 	/**
