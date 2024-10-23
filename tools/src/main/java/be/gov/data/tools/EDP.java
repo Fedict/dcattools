@@ -826,7 +826,7 @@ public class EDP {
 
 		try(Reader r = Files.newBufferedReader(Paths.get(args[1]))) {
 			parser.parse(r, BASE_URI);
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			LOG.error("Error validating", ex);
 			System.exit(-2);
 		}
