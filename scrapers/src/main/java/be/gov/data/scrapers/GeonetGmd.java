@@ -92,6 +92,7 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_DATASETS = "//gmd:MD_Metadata";
 
 	public final static String XP_ID = "gmd:fileIdentifier/gco:CharacterString";
+	public final static String XP_DSTAMP = "gmd:dateStamp/gco:Date";
 	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
@@ -158,7 +159,8 @@ public abstract class GeonetGmd extends Geonet {
 
 	public final static String INSPIRE_TYPE = "http://inspire.ec.europa.eu/metadatacodelist/ResourceType/";
 
-	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	public final static DateFormat DATETIME_FMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	public final static DateFormat DATE_FMT = new SimpleDateFormat("yyyy-MM-dd");		
 
 	/**
 	 * Parse a bounding box and store it in the RDF store.
@@ -309,7 +311,6 @@ public abstract class GeonetGmd extends Geonet {
 			}
 		}
 		try {
-			IRI iri = store.getURI(url);
 			store.add(dist, DCAT.DOWNLOAD_URL, store.getURI(url));
 		} catch (IllegalArgumentException e) {
 			LOG.debug("Cannot create download URL for {}", url);
@@ -357,15 +358,24 @@ public abstract class GeonetGmd extends Geonet {
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
-		String date = node.valueOf(XP_TSTAMP);
-		if (date != null && !date.isEmpty()) {
+		String stamp = node.valueOf(XP_TSTAMP);
+		if (stamp != null && !stamp.isEmpty()) {
 			try {
-				store.add(dataset, DCTERMS.MODIFIED, DATEFMT.parse(date));
+				store.add(dataset, DCTERMS.MODIFIED, DATETIME_FMT.parse(stamp));
 			} catch (ParseException ex) {
-				LOG.warn("Could not parse date {}", date, ex);
+				LOG.warn("Could not parse datetime {}", stamp, ex);
+			}
+		} else {
+			stamp = node.valueOf(XP_DSTAMP);
+			if (stamp != null && !stamp.isEmpty()) {
+				try {
+					store.add(dataset, DCTERMS.MODIFIED, DATE_FMT.parse(stamp));
+				} catch (ParseException ex) {
+					LOG.warn("Could not parse date {}", stamp, ex);
+				}
 			}
 		}
-
+		
 		Node title = metadata.selectSingleNode(XP_TITLE);
 		Node desc = metadata.selectSingleNode(XP_DESC);
 
