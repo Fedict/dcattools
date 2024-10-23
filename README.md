@@ -4,10 +4,8 @@ Various DCAT tools for harvesting metadata from Belgian open data portals,
 converting metadata to DCAT-AP files and updating the Belgian 
 [data.gov.be](http://data.gov.be) portal.
 
-The portal itself is a Drupal 7 website, based on Fedict's 
-[Openfed](https://drupal.org/project/openfed) distribution plus two extra modules
-[RestWS](https://drupal.org/project/restws) and 
-[RestWS i18n](https://www.drupal.org/project/restws_i18n).
+The portal itself is a Drupal 9 website, based on Fedict's 
+[Openfed](https://drupal.org/project/openfed) distribution.
 
 ## Data
 
@@ -20,7 +18,7 @@ used to update data.gov.be can be found in the [dcat repository](https://github.
 
 ### Requirements
 
-These tools can be used with a Java runtime 11 or newer, on a headless machine, i.e. there is no fancy GUI.
+These tools can be used with a Java runtime 17 or newer, on a headless machine, i.e. there is no fancy GUI.
 
 Internet connection is obviously required, although a proxy can be used.
 
@@ -48,9 +46,5 @@ regardless if the metadata is to be published on data.gov.be or not.
   * Upload both the `datagovbe.nt` and `datagovbe_edp.xml` to [github](https://github.com/fedict/dcat)
   * This will be used as input for the European Data Portal (scheduled Thursday morning, every week)
 
-### Configuration
-
-All configuration is done using Java (plain text) properties files.
-Some examples can be found in [dist/cfg](dist/cfg)
 
 See also the [Notes](README-NOTES.md)
