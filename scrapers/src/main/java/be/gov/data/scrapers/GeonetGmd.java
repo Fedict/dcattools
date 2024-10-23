@@ -125,8 +125,7 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_INDIVIDUAL = "gmd:individualName";
 	public final static String XP_EMAIL = "gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString";
 
-	public final static String XP_GEO = "gmd:extent/gmd:EX_Extent/gmd:geographicElement";
-	public final static String XP_BBOX = "gmd:EX_GeographicBoundingBox";
+	public final static String XP_BBOX = "gmd:extent/gmd:EX_Extent/gmd:geographicElement/gmd:EX_GeographicBoundingBox";
 	public final static String XP_BBOX_W = "gmd:westBoundLongitude/gco:Decimal";
 	public final static String XP_BBOX_E = "gmd:eastBoundLongitude/gco:Decimal";
 	public final static String XP_BBOX_S = "gmd:southBoundLatitude/gco:Decimal";
@@ -258,14 +257,17 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param uri RDF subject URI
 	 * @param node
 	 * @throws RepositoryException
-	 * @throws MalformedURLException
 	 */
-	protected void parseBBox(Storage store, IRI uri, Node node)
-		throws RepositoryException, MalformedURLException {
+	protected void parseBBox(Storage store, IRI iri, Node node) throws RepositoryException {
 		String w = node.valueOf(XP_BBOX_W);
 		String e = node.valueOf(XP_BBOX_E);
 		String s = node.valueOf(XP_BBOX_S);
 		String n = node.valueOf(XP_BBOX_N);
+		
+		if(w != null && !w.isEmpty() && e != null && !e.isEmpty() &&
+			s != null && !s.isEmpty() && n != null && !n.isEmpty()) {
+			store.add(iri, DCTERMS.SPATIAL, s + " " + e + " " + n  + " " + w);
+		}
 	}
 
 	/**
@@ -480,7 +482,7 @@ public abstract class GeonetGmd extends Geonet {
 		}
 
 		// geo bounding box
-		Node geo = metadata.selectSingleNode(XP_GEO);
+		Node geo = metadata.selectSingleNode(XP_BBOX);
 		if (geo != null) {
 			parseBBox(store, dataset, geo);
 		}
