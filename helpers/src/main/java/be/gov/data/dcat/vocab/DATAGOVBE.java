@@ -43,6 +43,7 @@ public class DATAGOVBE {
 	public final static IRI LICENSE;
 	public final static IRI MEDIA_TYPE;
 	public final static IRI ORG;
+	public final static IRI PERSON;
 	public final static IRI SPATIAL;
 	public final static IRI THEME;
 	public final static IRI LICENSE_CC0;
@@ -53,6 +54,7 @@ public class DATAGOVBE {
 	public final static String PREFIX_URI_TEMPORAL = "http://data.gov.be/temporal";
 	public final static String PREFIX_URI_DIST = "http://data.gov.be/dist";
 	public final static String PREFIX_URI_ORG = "http://data.gov.be/org";
+	public final static String PREFIX_URI_PERSON = "http://data.gov.be/person";
 
 	static {
 		ValueFactory factory = SimpleValueFactory.getInstance();
@@ -61,6 +63,8 @@ public class DATAGOVBE {
 		MEDIA_TYPE = factory.createIRI(DATAGOVBE.NAMESPACE, "mediaType");
 		FREQ = factory.createIRI(DATAGOVBE.NAMESPACE, "freq");
 		ORG = factory.createIRI(DATAGOVBE.NAMESPACE, "org");
+		PERSON = factory.createIRI(DATAGOVBE.NAMESPACE, "person");
+		
 		SPATIAL = factory.createIRI(DATAGOVBE.NAMESPACE, "spatial");
 		THEME = factory.createIRI(DATAGOVBE.NAMESPACE, "theme");
 

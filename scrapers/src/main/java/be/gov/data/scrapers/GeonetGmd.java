@@ -47,10 +47,8 @@ import org.dom4j.DocumentException;
 import org.dom4j.DocumentFactory;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
-import org.eclipse.rdf4j.model.BNode;
 
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -85,6 +83,7 @@ public abstract class GeonetGmd extends Geonet {
 		NS.put("gmd", "http://www.isotc211.org/2005/gmd");
 		NS.put("gmx", "http://www.isotc211.org/2005/gmx");
 		NS.put("gml", "http://www.opengis.net/gml");
+		NS.put("gml32", "http://www.opengis.net/gml/3.2");
 		NS.put("gco", "http://www.isotc211.org/2005/gco");
 		NS.put("srv", "http://www.isotc211.org/2005/srv");
 		NS.put("xlink", "http://www.w3.org/1999/xlink");
@@ -133,11 +132,12 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_BBOX_S = "gmd:southBoundLatitude/gco:Decimal";
 	public final static String XP_BBOX_N = "gmd:northBoundLatitude/gco:Decimal";
 			
-	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement";
-	public final static String XP_TEMP_EXT = "gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/";
-	public final static String XP_TEMP_BEGIN = XP_TEMP_EXT + "gml:beginPosition";
-	public final static String XP_TEMP_END = XP_TEMP_EXT + "gml:endPosition";
-
+	public final static String XP_TEMPORAL = "gmd:extent/gmd:EX_Extent/gmd:temporalElement/gmd:EX_TemporalExtent/gmd:extent";
+	public final static String XP_TEMP_BEGIN = "gml:TimePeriod/gml:beginPosition";
+	public final static String XP_TEMP_END = "gml:TimePeriod/gml:endPosition";
+	public final static String XP_TEMP32_BEGIN = "gml32:TimePeriod/gml32:beginPosition";
+	public final static String XP_TEMP32_END = "gml32:TimePeriod/gml32:endPosition";
+	
 	public final static String XP_QUAL = "gmd:dataQualityInfo/gmd:DQ_DataQuality";
 	public final static String XP_QUAL_LIN = XP_QUAL + "/gmd:lineage/gmd:LI_Lineage/gmd:statement";
 	public final static String XP_QUAL_TYPE = XP_QUAL + "/gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue";
@@ -275,14 +275,17 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param uri RDF subject URI
 	 * @param node
 	 * @throws RepositoryException
-	 * @throws MalformedURLException
 	 */
-	protected void parseTemporal(Storage store, IRI uri, Node node)
-		throws RepositoryException, MalformedURLException {
+	protected void parseTemporal(Storage store, IRI uri, Node node) throws RepositoryException {
 		String start = node.valueOf(XP_TEMP_BEGIN);
+		if (start == null || start.isEmpty()) {
+			start = node.valueOf(XP_TEMP32_BEGIN);
+		}
 		String end = node.valueOf(XP_TEMP_END);
-
-		generateTemporal(store, uri, start, end);
+		if (end == null || end.isEmpty()) {
+			end = node.valueOf(XP_TEMP32_END);
+		}
+		parseTemporal(store, uri, start, end);
 	}
 
 	/**
@@ -333,8 +336,7 @@ public abstract class GeonetGmd extends Geonet {
 				node = c.selectSingleNode(XP_CHAR);
 			} else {
 				// check DOI handle
-				Node href = node.selectSingleNode(XP_HREF);
-				id = href.getStringValue();
+				id = node.valueOf(XP_HREF);
 			}
 			if (node != null) {
 				String name = node.getText();
@@ -342,7 +344,7 @@ public abstract class GeonetGmd extends Geonet {
 				store.add(iri, DCTERMS.CREATOR, person);
 				store.add(person, RDF.TYPE, FOAF.PERSON);
 				store.add(person, FOAF.NAME, name);
-				if (id != null){
+				if (id != null && !id.isEmpty()){
 					store.add(person, DCTERMS.IDENTIFIER, id);
 				}
 			}

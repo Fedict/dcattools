@@ -335,13 +335,12 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @param start start date string
 	 * @param end end date string
 	 * @return URL
-	 * @throws java.net.MalformedURLException
 	 */
-	protected URL makeTemporalURL(String start, String end) throws MalformedURLException {
+	protected IRI makeTemporalURL(String start, String end) {
 		String[] s = start.split("T");
 		String[] e = end.split("T");
 
-		return new URL(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
+		return Values.iri(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
 	}
 
 	/**
@@ -363,7 +362,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		String span = m.group(1);
 		String[] split = span.split(sep);
 
-		generateTemporal(store, dataset, split[0], split[1]);
+		parseTemporal(store, dataset, split[0], split[1]);
 	}
 
 	/**
@@ -373,10 +372,8 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @param dataset URI
 	 * @param start start date
 	 * @param end end date
-	 * @throws MalformedURLException
 	 */
-	protected void generateTemporal(Storage store, IRI dataset, String start, String end)
-		throws MalformedURLException {
+	protected void parseTemporal(Storage store, IRI dataset, String start, String end) {
 		String s = start.trim();
 
 		if (s.isEmpty()) {
