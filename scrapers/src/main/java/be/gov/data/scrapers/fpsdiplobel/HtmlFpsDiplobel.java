@@ -152,8 +152,7 @@ public class HtmlFpsDiplobel extends Html {
 		String txt = link.first().text();
 		String ftype = txt.replaceAll("(\\w+\\s*\\()(\\w+)\\)", "$2");
 		
-		URL u = makeDistURL(code + "/" + lang);
-		IRI dist = store.getURI(u.toString());
+		IRI dist = makeDistIRI(code + "/" + lang);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
@@ -186,8 +185,7 @@ public class HtmlFpsDiplobel extends Html {
 		}
 		String code = cells.get(2).text();
 		
-		URL u = makeDatasetURL(code);
-		IRI dataset = store.getURI(u.toString());
+		IRI dataset = makeDatasetIRI(code);
 		LOG.debug("Generating dataset {}", dataset.toString());
 
 		String desc = cells.get(0).text();
@@ -197,7 +195,7 @@ public class HtmlFpsDiplobel extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, hash(u.toString()));
+		store.add(dataset, DCTERMS.IDENTIFIER, hash(dataset.toString()));
 		store.add(dataset, DCAT.LANDING_PAGE, front);
 		store.add(store.getURI(front.toString()), DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 

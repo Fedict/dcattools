@@ -28,9 +28,10 @@ package be.gov.data.scrapers.bmdc;
 import be.gov.data.helpers.Storage;
 import be.gov.data.scrapers.GeonetGmd;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Properties;
+
 import org.dom4j.Node;
+
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 
@@ -44,8 +45,7 @@ public class GeonetBMDC extends GeonetGmd {
 	private final static String LANDING = "https://metadata.naturalsciences.be/geonetwork/srv/eng/catalog.search#/metadata/";
 	
 	@Override
-	protected void generateDataset(IRI dataset, String id, Storage store, Node node)
-			throws MalformedURLException {
+	protected void generateDataset(IRI dataset, String id, Storage store, Node node) {
 		super.generateDataset(dataset, id, store, node);
 		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(LANDING + id));
 	}

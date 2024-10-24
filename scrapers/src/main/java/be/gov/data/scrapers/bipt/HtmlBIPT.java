@@ -139,8 +139,7 @@ public class HtmlBIPT extends Html {
 		String href = link.attr(Attribute.HREF.toString());
 		URL download = makeAbsURL(href);
 
-		URL u = makeDistURL(i + "/" + j + "/" + lang);
-		IRI dist = store.getURI(u.toString());
+		IRI dist = makeDistIRI(i + "/" + j + "/" + lang);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
@@ -165,8 +164,7 @@ public class HtmlBIPT extends Html {
 	 */
 	private void generateDataset(Storage store, URL front, Element row, int i, String lang)
 			throws MalformedURLException, RepositoryException {
-		URL u = makeDatasetURL(String.valueOf(i));
-		IRI dataset = store.getURI(u.toString());
+		IRI dataset = makeDatasetIRI(String.valueOf(i));
 		LOG.debug("Generating dataset {}", dataset.toString());
 
 		String title = row.select(TITLE).first().text();
@@ -175,7 +173,7 @@ public class HtmlBIPT extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, hash(u.toString()));
+		store.add(dataset, DCTERMS.IDENTIFIER, hash(dataset.toString()));
 
 		Elements files = row.select(FILES);
 		int j = 0;

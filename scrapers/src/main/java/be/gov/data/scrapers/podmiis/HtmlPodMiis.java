@@ -171,7 +171,7 @@ public class HtmlPodMiis extends Html {
 
 		// important for EDP: does not like different datasets pointing to same distribution
 		String id = hash(dataset.toString()) + "/" + hash(download.toString());
-		IRI dist = store.getURI(makeDistURL(id).toString());
+		IRI dist = makeDistIRI(id);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		String title = link.ownText().isEmpty() ? range : link.ownText();
@@ -223,7 +223,7 @@ public class HtmlPodMiis extends Html {
 	public void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
 
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
+		IRI dataset = makeDatasetIRI(id);
 		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);

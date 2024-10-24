@@ -157,7 +157,7 @@ public class HtmlPensionstat extends Html {
 		String href = makeAbsURL(l).toString();
 
 		String id = hash(href);
-		IRI dist = store.getURI(makeDistURL(id).toString());
+		IRI dist = makeDistIRI(id);
 		LOG.debug("Generating distribution {}", dist.toString());
 		
 		String format = link.ownText();
@@ -183,7 +183,7 @@ public class HtmlPensionstat extends Html {
 	@Override
 	public void generateDataset(Storage store, String id, Map<String, Page> page)
 			throws MalformedURLException, RepositoryException {
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
+		IRI dataset = makeDatasetIRI(id);
 		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);

@@ -32,7 +32,6 @@ import be.gov.data.scrapers.Html;
 import be.gov.data.dcat.vocab.MDR_LANG;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -148,11 +147,11 @@ public class HtmlInfocenter extends Html {
 	 * @throws RepositoryException
 	 */
 	private void generateDist(Storage store, IRI dataset, URL access, Element link,
-			String lang) throws MalformedURLException, RepositoryException {
+			String lang) throws RepositoryException {
 		String href = link.attr(HTML.Attribute.HREF.toString());
 
 		String id = hash(href);
-		IRI dist = store.getURI(makeDistURL(id).toString());
+		IRI dist = makeDistIRI(id);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
@@ -168,13 +167,11 @@ public class HtmlInfocenter extends Html {
 	 * @param store RDF store
 	 * @param id
 	 * @param page
-	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
 	@Override
-	public void generateDataset(Storage store, String id, Map<String, Page> page)
-			throws MalformedURLException, RepositoryException {
-		IRI dataset = store.getURI(makeDatasetURL(id).toString());
+	public void generateDataset(Storage store, String id, Map<String, Page> page) throws RepositoryException {
+		IRI dataset = makeDatasetIRI(id);
 		LOG.info("Generating dataset {}", dataset.toString());
 
 		store.add(dataset, RDF.TYPE, DCAT.DATASET);

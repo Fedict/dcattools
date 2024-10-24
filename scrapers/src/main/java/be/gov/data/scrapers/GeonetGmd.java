@@ -381,10 +381,8 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param node
 	 * @param format
 	 * @param license
-	 * @throws MalformedURLException
 	 */
-	protected void generateDist(Storage store, IRI dataset, Node node, String format, List<String> license)
-		throws MalformedURLException {
+	protected void generateDist(Storage store, IRI dataset, Node node, String format, List<String> license) {
 		String url = node.valueOf(XP_DIST_URL);
 		if (url == null || url.isEmpty() || url.equals("undefined")) {
 			LOG.warn("No url for distribution");
@@ -392,7 +390,7 @@ public abstract class GeonetGmd extends Geonet {
 		}
 
 		String id = hash(dataset.toString()) + "/" + hash(url);
-		IRI dist = store.getURI(makeDistURL(id).toString());
+		IRI dist = makeDistIRI(id);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
@@ -425,10 +423,8 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param id
 	 * @param store
 	 * @param node
-	 * @throws MalformedURLException
 	 */
-	protected void generateDataset(IRI dataset, String id, Storage store, Node node)
-		throws MalformedURLException {
+	protected void generateDataset(IRI dataset, String id, Storage store, Node node) {
 		LOG.info("Generating dataset {}", dataset.toString());
 
 		Node metadata = node.selectSingleNode(XP_META);
@@ -585,7 +581,7 @@ public abstract class GeonetGmd extends Geonet {
 				List<Node> datasets = doc.selectNodes(XP_DATASETS);
 				for (Node dataset : datasets) {
 					String id = dataset.valueOf(XP_ID);
-					IRI iri = store.getURI(makeDatasetURL(id).toString());
+					IRI iri = makeDatasetIRI(id);
 					generateDataset(iri, id, store, dataset);
 				}
 			}

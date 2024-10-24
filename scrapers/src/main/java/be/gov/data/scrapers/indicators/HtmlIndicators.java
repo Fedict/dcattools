@@ -32,7 +32,6 @@ import be.gov.data.scrapers.Html;
 import be.gov.data.dcat.vocab.MDR_LANG;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -152,13 +151,10 @@ public class HtmlIndicators extends Html {
 	 * @param store RDF store
 	 * @param id
 	 * @param page
-	 * @throws MalformedURLException
 	 * @throws RepositoryException
 	 */
 	@Override
-	public void generateDataset(Storage store, String id, Map<String, Page> page)
-			throws MalformedURLException, RepositoryException {
-		
+	public void generateDataset(Storage store, String id, Map<String, Page> page) throws RepositoryException {
 		for (String lang : getAllLangs()) {
 			Page p = page.get(lang);
 			if (p == null) {
@@ -179,7 +175,7 @@ public class HtmlIndicators extends Html {
 			String title = doc.select(TITLE).first().text();
 			String desc = doc.select(DESC).first().text();
 			
-			IRI dataset = store.getURI(makeDatasetURL(id).toString());
+			IRI dataset = makeDatasetIRI(id);
 			LOG.info("Generating dataset {}", dataset.toString());
 		
 			String link = p.getUrl().toString();

@@ -160,8 +160,7 @@ public class HtmlRVA extends Html {
 		String txt = link.first().text();
 		String ftype = txt.replaceAll("(\\w+\\s*\\()(\\w+)\\)", "$2");
 		
-		URL u = makeDistURL(code + "/" + lang);
-		IRI dist = store.getURI(u.toString());
+		IRI dist = makeDistIRI(code + "/" + lang);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);

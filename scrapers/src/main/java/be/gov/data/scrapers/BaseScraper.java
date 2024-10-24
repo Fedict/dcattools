@@ -263,41 +263,19 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + getName());
 	}
 
-	/**
-	 * Make an URL for a DCAT Dataset
-	 *
-	 * @param id
-	 * @return URL
-	 * @throws MalformedURLException
-	 */
-	protected URL makeDatasetURL(String id) throws MalformedURLException {
-		return new URL(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
-			+ id.replace(".", "-").replace(":", "-"));
+	private IRI makeIRI(String prefix, String id) {
+		return Values.iri(prefix + "/" + getName() + "/" + id.replace(".", "-").replace(":", "-"));
 	}
-	
 	/**
 	 * Make an IRI for a DCAT Dataset
 	 *
 	 * @param id
 	 * @return URL
-	 * @throws MalformedURLException
 	 */
-	protected IRI makeDatasetIRI(String id) throws MalformedURLException {
-		return Values.iri(DATAGOVBE.PREFIX_URI_DATASET + "/" + getName() + "/"
-			+ id.replace(".", "-").replace(":", "-"));
+	protected IRI makeDatasetIRI(String id) {
+		return makeIRI(DATAGOVBE.PREFIX_URI_DATASET, id);
 	}
-	
-	/**
-	 * Make an URL for a DCAT Distribution
-	 *
-	 * @param id
-	 * @return URL
-	 * @throws java.net.MalformedURLException
-	 */
-	protected URL makeDistURL(String id) throws MalformedURLException {
-		return new URL(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
-			+ id.replace(".", "-").replace(":", "-"));
-	}
+
 	/**
 	 * Make an IRI for a DCAT Distribution
 	 *
@@ -305,8 +283,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @return URL
 	 */
 	protected IRI makeDistIRI(String id) {
-		return Values.iri(DATAGOVBE.PREFIX_URI_DIST + "/" + getName() + "/"
-			+ id.replace(".", "-").replace(":", "-"));
+		return makeIRI(DATAGOVBE.PREFIX_URI_DIST, id);
 	}
 
 	/**
@@ -316,7 +293,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @return IRI
 	 */
 	protected IRI makeOrgIRI(String id){
-		return Values.iri(DATAGOVBE.PREFIX_URI_ORG + "/" + getName() + "/" + id);
+		return makeIRI(DATAGOVBE.PREFIX_URI_ORG, id);
 	}
 
 	/**
@@ -326,11 +303,11 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @return IRI
 	 */
 	protected IRI makePersonIRI(String id){
-		return Values.iri(DATAGOVBE.PREFIX_URI_PERSON + "/" + getName() + "/" + id);
+		return makeIRI(DATAGOVBE.PREFIX_URI_PERSON, id);
 	}
 
 	/**
-	 * Make an URL for a date
+	 * Make an IRI for a date
 	 *
 	 * @param start start date string
 	 * @param end end date string

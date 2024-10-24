@@ -113,8 +113,7 @@ public class HtmlBrugge extends Html {
 		if (fmt.isEmpty()) {
 			return;
 		}
-		URL u = makeDistURL(name + "/" + fmt);
-		IRI dist = store.getURI(u.toString());
+		IRI dist = makeDistIRI(name + "/" + fmt);
 		LOG.debug("Generating distribution {}", dist.toString());
 
 		store.add(dataset, DCAT.HAS_DISTRIBUTION, dist);
@@ -147,8 +146,7 @@ public class HtmlBrugge extends Html {
 		if (name.isEmpty()) {
 			return;
 		}
-		URL u = makeDatasetURL(name);
-		IRI dataset = store.getURI(u.toString());
+		IRI dataset = makeDatasetIRI(name);
 		LOG.debug("Generating dataset {}", dataset);
 
 		String desc = title;
@@ -166,7 +164,7 @@ public class HtmlBrugge extends Html {
 		store.add(dataset, DCTERMS.LANGUAGE, MDR_LANG.MAP.get(lang));
 		store.add(dataset, DCTERMS.TITLE, title, lang);
 		store.add(dataset, DCTERMS.DESCRIPTION, desc, lang);
-		store.add(dataset, DCTERMS.IDENTIFIER, hash(u.toString()));
+		store.add(dataset, DCTERMS.IDENTIFIER, hash(dataset.toString()));
 		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(page + "#" + anchor));
 		store.add(dataset, DCAT.KEYWORD, page.substring(page.lastIndexOf("/") + 1), lang);
 
