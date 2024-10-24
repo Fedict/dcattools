@@ -49,6 +49,7 @@ import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -150,7 +151,8 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_FMT = "gmd:distributionFormat/gmd:MD_Format/gmd:name/*";
 	public final static String XP_FMT2 = "../../../../*/gmd:MD_Format/gmd:name/gco:CharacterString";
 	public final static String XP_MIME = "gmd:name/gmx:MimeFileType";
-
+	public final static String XP_BYTESIZE = "../../gmd:transferSize/gco:Real";
+	
 	public final static String XP_PROTO = "gmd:protocol/gco:CharacterString";
 
 	public final static String XP_DIST_URL = "gmd:linkage/gmd:URL";
@@ -398,6 +400,16 @@ public abstract class GeonetGmd extends Geonet {
 		if (format != null) {
 			store.add(dist, DCTERMS.FORMAT, format);
 		}
+		String size = node.valueOf(XP_BYTESIZE);
+		if (size != null && !size.isEmpty()) {
+			try {
+				Double bytes = Double.parseDouble(size)* 1_000_000;
+				store.add(dist, DCAT.BYTE_SIZE, Values.literal(bytes.longValue()));
+			} catch (NumberFormatException nfe) {
+				LOG.error("Could not convert {} to byte size", size);
+			}
+		}
+		
 		if (license != null) {
 			for (String l: license) {
 				store.add(dist, DCTERMS.LICENSE, l);
