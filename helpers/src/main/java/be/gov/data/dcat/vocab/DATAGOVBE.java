@@ -26,8 +26,7 @@
 package be.gov.data.dcat.vocab;
 
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.ValueFactory;
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.util.Values;
 
 /**
  *
@@ -39,36 +38,13 @@ public class DATAGOVBE {
 
 	public final static String PREFIX = "datagovbe";
 
-	public final static IRI FREQ;
-	public final static IRI LICENSE;
-	public final static IRI MEDIA_TYPE;
-	public final static IRI ORG;
-	public final static IRI PERSON;
-	public final static IRI SPATIAL;
-	public final static IRI THEME;
-	public final static IRI LICENSE_CC0;
-	public final static IRI LICENSE_CCBY;
+	public final static IRI LICENSE_CC0 = Values.iri("http://publications.europa.eu/resource/authority/licence/CC0");
 
 	public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
 	public final static String PREFIX_URI_DATASET = "http://data.gov.be/dataset";
 	public final static String PREFIX_URI_TEMPORAL = "http://data.gov.be/temporal";
 	public final static String PREFIX_URI_DIST = "http://data.gov.be/dist";
+	public final static String PREFIX_URI_GEO = "http://data.gov.be/geo";
 	public final static String PREFIX_URI_ORG = "http://data.gov.be/org";
 	public final static String PREFIX_URI_PERSON = "http://data.gov.be/person";
-
-	static {
-		ValueFactory factory = SimpleValueFactory.getInstance();
-
-		LICENSE = factory.createIRI(DATAGOVBE.NAMESPACE, "license");
-		MEDIA_TYPE = factory.createIRI(DATAGOVBE.NAMESPACE, "mediaType");
-		FREQ = factory.createIRI(DATAGOVBE.NAMESPACE, "freq");
-		ORG = factory.createIRI(DATAGOVBE.NAMESPACE, "org");
-		PERSON = factory.createIRI(DATAGOVBE.NAMESPACE, "person");
-		
-		SPATIAL = factory.createIRI(DATAGOVBE.NAMESPACE, "spatial");
-		THEME = factory.createIRI(DATAGOVBE.NAMESPACE, "theme");
-
-		LICENSE_CC0 = factory.createIRI("http://publications.europa.eu/resource/authority/licence/CC0");
-		LICENSE_CCBY = factory.createIRI("http://publications.europa.eu/resource/authority/licence/CC_BY_4_0");
-	}
 }

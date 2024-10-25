@@ -53,6 +53,7 @@ import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.GEO;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -256,19 +257,30 @@ public abstract class GeonetGmd extends Geonet {
 	 * Parse a bounding box and store it in the RDF store.
 	 *
 	 * @param store RDF store
-	 * @param uri RDF subject URI
+	 * @param iri RDF subject URI
 	 * @param node
 	 * @throws RepositoryException
 	 */
 	protected void parseBBox(Storage store, IRI iri, Node node) throws RepositoryException {
-		String w = node.valueOf(XP_BBOX_W);
-		String e = node.valueOf(XP_BBOX_E);
-		String s = node.valueOf(XP_BBOX_S);
 		String n = node.valueOf(XP_BBOX_N);
+		String w = node.valueOf(XP_BBOX_W);
+		String s = node.valueOf(XP_BBOX_S);
+		String e = node.valueOf(XP_BBOX_E);
 		
 		if(w != null && !w.isEmpty() && e != null && !e.isEmpty() &&
 			s != null && !s.isEmpty() && n != null && !n.isEmpty()) {
-			store.add(iri, DCTERMS.SPATIAL, s + " " + e + " " + n  + " " + w);
+			// round to two decimals
+			n = String.valueOf(Math.ceil(Double.parseDouble(n) * 100) / 100);
+			w = String.valueOf(Math.floor(Double.parseDouble(w) * 100) / 100);
+			s = String.valueOf(Math.floor(Double.parseDouble(s) * 100) / 100);
+			e = String.valueOf(Math.ceil(Double.parseDouble(e) * 100) / 100);
+			
+			String bbox = "POLYGON(" + w + " " + s + ", " + e + " " + s + ", " +
+										e + " " + n + ", " + w + " " + n + ", " +
+										w + " " + s + ")";
+			IRI spatial = makeBboxIRI(n, e, s, w);
+			store.add(iri, DCTERMS.SPATIAL, spatial);
+			store.add(spatial, DCAT.BBOX, bbox, GEO.WKT_LITERAL);
 		}
 	}
 

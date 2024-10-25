@@ -263,9 +263,17 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		return new URL(DATAGOVBE.PREFIX_URI_CAT + "/" + getName());
 	}
 
+	/**
+	 * Make IRI 
+	 * 
+	 * @param prefix
+	 * @param id
+	 * @return 
+	 */
 	private IRI makeIRI(String prefix, String id) {
 		return Values.iri(prefix + "/" + getName() + "/" + id.replace(".", "-").replace(":", "-"));
 	}
+
 	/**
 	 * Make an IRI for a DCAT Dataset
 	 *
@@ -274,6 +282,21 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 */
 	protected IRI makeDatasetIRI(String id) {
 		return makeIRI(DATAGOVBE.PREFIX_URI_DATASET, id);
+	}
+
+	/**
+	 * Make an IRI for a DCAT bounding box
+	 *
+	 * @param n
+	 * @param e
+	 * @param s
+	 * @param w
+	 * @return URL
+	 */
+	protected IRI makeBboxIRI(String n, String e, String s, String w) {
+		String id = n.replace(".", "_") + "-" + e.replace(".", "_") 
+			+ "-" + s.replace(".", "_") + "-" + w.replace(".", "_");
+		return makeIRI(DATAGOVBE.PREFIX_URI_GEO, id);
 	}
 
 	/**
