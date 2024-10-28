@@ -1,4 +1,7 @@
 # extra queries to be executed and data to be loaded 
+sparql-access-public.qry
+sparql-available.qry
+sparql-bytesize-type.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
 bmdc/data-theme.ttl
@@ -6,7 +9,7 @@ sparql-map-theme.qry
 bmdc/sparql-default-theme.qry
 data-frequency.ttl
 sparql-map-frequency.qry
-sparql-geo-belgium.qry
+#sparql-geo-belgium.qry
 bmdc/sparql-fix-format.qry
 data-media.ttl
 sparql-map-media.qry
