@@ -269,6 +269,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-netcdf>; 
 	skos:altLabel "application/x-netcdf", "NetCDF" .
 
+<http://publications.europa.eu/resource/authority/file-type/PARQUET>
+	skos:prefLabel "Parquet" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/parquet>; 
+	skos:altLabel "parquet" .
+
 <http://publications.europa.eu/resource/authority/file-type/ATOM>
 	skos:prefLabel "Atom" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/atom+xml>; 
