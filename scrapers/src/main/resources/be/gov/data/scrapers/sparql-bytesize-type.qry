@@ -9,5 +9,5 @@ INSERT 	{
 			?s dcat:byteSize ?dtype }
 WHERE	{
 			?s dcat:byteSize ?o .
-			BIND(STRDT(STR(?o), xsd:decimal) AS ?dtype)
+			BIND(STRDT(STR(?o), xsd:nonNegativeInteger) AS ?dtype)
 }
