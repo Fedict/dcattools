@@ -2,12 +2,10 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
-DELETE
-	{	?dist dcat:accessURL <https://data.aeronomie.be/dataset/> }
 INSERT
 	{	?dist dcat:accessURL ?page }
 WHERE
 	{ 	?dataset dcat:landingPage ?page .
 		?dataset dcat:distribution ?dist .
-		?dist dcat:accessURL <https://data.aeronomie.be/dataset/> .
+		FILTER NOT EXISTS { ?dist dcat:accessURL ?url }
 	}

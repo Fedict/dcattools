@@ -1,23 +1,21 @@
 # extra queries to be executed and data to be loaded
-#sparql-remove-hydra.qry
+sparql-remove-hydra.qry
+bira/sparql-fix-catalog.qry
 sparql-access-public.qry
 sparql-available.qry
 data-frequency.ttl
 sparql-map-frequency.qry
-bira/sparql-language-en.qry
 bira/data-org.ttl
 bira/sparql-publisher.qry
-bira/sparql-theme.qry
 bira/sparql-fix-netcdf.qry
-bira/sparql-fix-date.qry
 bira/sparql-fix-temporal.qry
 bira/sparql-fix-dctype.qry
-bira/sparql-fix-dataset.qry
 bira/sparql-fix-member.qry
 bira/sparql-remove-references.qry
 bira/sparql-fix-foafpage.qry
-bira/sparql-accessurl.qry
+bira/sparql-fix-theme.qry
 bira/sparql-access-downloadurl.qry
+bira/sparql-accessurl.qry
 bira/sparql-foaf-orcid.qry
 sparql-remove-empty.qry
 sparql-map-org.qry

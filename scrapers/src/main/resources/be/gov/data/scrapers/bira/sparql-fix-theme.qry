@@ -1,0 +1,11 @@
+# Set correct theme URI (http, not https)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcat:theme <https://publications.europa.eu/resource/authority/data-theme/TECH> }
+INSERT 
+	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> }
+WHERE
+	{	?dataset dcat:theme <https://publications.europa.eu/resource/authority/data-theme/TECH> }

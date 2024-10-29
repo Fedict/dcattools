@@ -1,0 +1,10 @@
+# Fix URI in catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { ?catalog dcat:dataset ?dataset }
+INSERT { ?catalog dcat:dataset ?uri }
+WHERE {
+	?catalog dcat:dataset ?dataset .
+	?uri a dcat:Dataset .
+}
