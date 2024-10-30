@@ -100,6 +100,8 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_DSTAMP = "gmd:dateStamp/gco:Date";
 	public final static String XP_TSTAMP = "gmd:dateStamp/gco:DateTime";
 	public final static String XP_META = "gmd:identificationInfo/gmd:MD_DataIdentification";
+	public final static String XP_META_SERV = "gmd:identificationInfo/srv:SV_ServiceIdentification";
+	
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
 	public final static String XP_TOPIC = "gmd:topicCategory/gmd:MD_TopicCategoryCode";
 	public final static String XP_THESAURUS = "../gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString";
@@ -453,14 +455,17 @@ public abstract class GeonetGmd extends Geonet {
 
 		Node metadata = node.selectSingleNode(XP_META);
 		if (metadata == null) {
-			LOG.warn("No metadata for {}", id);
+			metadata = node.selectSingleNode(XP_META_SERV);
+		}
+		if (metadata == null) {
+			LOG.error("No metadata for {}", id);
 			return;
 		}
 
-		// try to filter out non-datasets
+		// try to  determine type
 		String dtype = node.valueOf(XP_QUAL_TYPE);
 		if (dtype == null || dtype.isEmpty()) {
-			dtype = metadata.valueOf(XP_TYPE);
+			dtype = node.valueOf(XP_TYPE);
 		}
 		if (dtype == null || dtype.isEmpty()) {
 			LOG.warn("Empty type for {}, assuming dataset", id);
