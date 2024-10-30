@@ -507,9 +507,13 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		IRI catalog = store.getURI(makeCatalogURL().toString());
 		store.add(catalog, RDF.TYPE, DCAT.CATALOG);
 
-		List<IRI> uris = store.query(DCAT.DATASET);
-		for (IRI u : uris) {
+		List<IRI> datasets = store.query(DCAT.DATASET);
+		for (IRI u : datasets) {
 			store.add(catalog, DCAT.HAS_DATASET, u);
+		}
+		List<IRI> services = store.query(DCAT.DATA_SERVICE);
+		for (IRI u : services) {
+			store.add(catalog, DCAT.HAS_SERVICE, u);
 		}
 		generateCatalogInfo(store, catalog);
 	}
