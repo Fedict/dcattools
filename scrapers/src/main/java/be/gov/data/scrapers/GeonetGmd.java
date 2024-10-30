@@ -462,12 +462,17 @@ public abstract class GeonetGmd extends Geonet {
 		if (dtype == null || dtype.isEmpty()) {
 			dtype = metadata.valueOf(XP_TYPE);
 		}
-		if (dtype != null && !dtype.isEmpty() && !(dtype.equals("dataset") || dtype.equals("series"))) {
-			LOG.warn("Not a dataset / series: {} is {}", id, dtype);
+		if (dtype == null) {
+			LOG.warn("Empty type for {}", id);
 			return;
 		}
-
-		store.add(dataset, RDF.TYPE, DCAT.DATASET);
+		switch(dtype) {
+			case "dataset" -> store.add(dataset, RDF.TYPE, DCAT.DATASET);
+			case "series" -> store.add(dataset, RDF.TYPE, DCAT.DATASET); // fix thus
+			case "service" -> store.add(dataset, RDF.TYPE, DCAT.DATA_SERVICE);
+			default ->  {	LOG.warn("Unknown type: {} is {}", id, dtype); 
+								return; }
+		}
 		store.add(dataset, DCTERMS.IDENTIFIER, id);
 
 		// modified
