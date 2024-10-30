@@ -9,7 +9,7 @@ sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
 fpsfinance/sparql-fix-authority.qry
-fpsfinance/sparql-fix-datatype.qry
+sparql-data-type.qry
 sparql-startenddate.qry
 sparql-access-public.qry
 data-frequency.ttl

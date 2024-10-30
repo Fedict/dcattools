@@ -2,6 +2,7 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX schema: <http://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 DELETE	{	?s ?p ?o }
@@ -9,11 +10,9 @@ INSERT 	{	?s ?p ?dtype }
 WHERE	{
 			?s ?p ?o .
 			VALUES ?p {
-				dcat:startDate
-				dcat:endDate
-				dcterms:created
-				dcterms:issued
-				dcterms:modified
+				schema:startDate schema:endDate
+				dcat:startDate dcat:endDate
+				dcterms:created dcterms:issued dcterms:modified
 			} .
 			BIND(
 				STRDT(STR(?o),
