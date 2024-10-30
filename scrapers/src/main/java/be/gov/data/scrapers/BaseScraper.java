@@ -115,6 +115,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * 
 	 * @param raw 
 	 */
+	@Override
 	public void setRawOutput(boolean raw) {
 		this.raw = raw;
 	}
