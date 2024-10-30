@@ -1,0 +1,14 @@
+# Fix filesize when expressed in megabytes instead of bytes
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE 
+	{ 	?s dcat:byteSize ?mb }
+INSERT 
+	{ 	?s dcat:byteSize ?bytes }
+WHERE
+	{	?s dcat:byteSize ?mb .
+		BIND (xsd:nonNegativeInteger(ROUND(?mb * 1000000)) as ?bytes) 
+		FILTER (?mb < 50)
+	}

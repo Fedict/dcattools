@@ -11,6 +11,8 @@ sparql-map-media.qry
 clear-skos.qry
 brussels/sparql-fix-wms.qry
 sparql-delete-label-format.qry
+brussels/sparql-bytesize.qry
+sparql-bytesize-type.qry
 brussels/data-org.ttl
 brussels/sparql-map-org.qry
 brussels/sparql-fix-vcard.qry
