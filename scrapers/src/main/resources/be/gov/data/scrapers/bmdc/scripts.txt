@@ -1,6 +1,7 @@
 # extra queries to be executed and data to be loaded 
 sparql-access-public.qry
 sparql-available.qry
+bmdc/sparql-fix-bytesize.qry
 sparql-bytesize-type.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry

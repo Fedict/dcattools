@@ -56,6 +56,7 @@ import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.GEO;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
+import org.eclipse.rdf4j.model.vocabulary.XSD;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
@@ -415,8 +416,7 @@ public abstract class GeonetGmd extends Geonet {
 		String size = node.valueOf(XP_BYTESIZE);
 		if (size != null && !size.isEmpty()) {
 			try {
-				Double bytes = Double.parseDouble(size)* 1_000_000;
-				store.add(dist, DCAT.BYTE_SIZE, Values.literal(bytes.longValue()));
+				store.add(dist, DCAT.BYTE_SIZE, size, XSD.DOUBLE);
 			} catch (NumberFormatException nfe) {
 				LOG.error("Could not convert {} to byte size", size);
 			}
