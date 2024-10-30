@@ -22,6 +22,7 @@ sparql-map-license.qry
 sparql-delete-label-license.qry
 bmdc/sparql-fix-language.qry
 sparql-dist-lang.qry
+bmdc/sparql-default-lang.qry
 sparql-vcard-fn.qry
 bmdc/sparql-consolidate-contact.qry
 clear-skos.qry

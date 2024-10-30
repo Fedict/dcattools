@@ -1,0 +1,15 @@
+# Set default language to English
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s ?rel ?literal }
+INSERT
+	{ 	?s ?rel ?str }
+WHERE
+	{ 	?s ?rel ?literal .
+		VALUES ?rel { dcterms:title dcterms:description }
+		BIND (STRLANG(?literal, "en") as ?str)
+		FILTER (LANG(?literal) = "")
+	}
