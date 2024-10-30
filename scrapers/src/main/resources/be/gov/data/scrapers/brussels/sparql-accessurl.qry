@@ -7,10 +7,14 @@ INSERT
 	{ 	?dataset dcat:landingPage ?page .
 		?dist dcat:accessURL ?page }
 WHERE
-	{	?dataset a dcat:Dataset .
+	{	?dataset a ?cl .
 		?dataset dcterms:identifier ?id .
-		?dataset dcat:distribution ?dist .
+		OPTIONAL { ?dataset dcat:distribution ?dist }
+		VALUES (?cl ?base) { 
+			( dcat:Dataset "https://datastore.brussels/web/data/dataset/")
+			( dcat:DataService "https://datastore.brussels/web/data/service/")
+		}
 		BIND (IRI
-				(CONCAT('https://datastore.brussels/web/data/dataset/', ?id))
+				(CONCAT(?base, ?id))
 			 as ?page) 
 	}	

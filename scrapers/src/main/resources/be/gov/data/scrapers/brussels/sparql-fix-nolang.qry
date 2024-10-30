@@ -1,0 +1,12 @@
+# Remove (duplicate) titles, descriptions... without language tage
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?dataset ?rel ?literal }
+WHERE
+	{ 	?dataset ?rel ?literal
+		VALUES ?rel { dcterms:title dcterms:description dcterms:keyword }
+		FILTER (LANG(?literal) = "")
+	}
