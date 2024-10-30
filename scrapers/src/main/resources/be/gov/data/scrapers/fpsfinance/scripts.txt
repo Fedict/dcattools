@@ -9,9 +9,11 @@ sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
 fpsfinance/sparql-fix-authority.qry
+fpsfinance/sparql-remove-time.qry
 sparql-date-type.qry
 sparql-startenddate.qry
 sparql-access-public.qry
+sparql-delete-label-empty.qry
 data-frequency.ttl
 data-media.ttl
 sparql-map-media.qry
