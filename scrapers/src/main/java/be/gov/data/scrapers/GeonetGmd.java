@@ -462,8 +462,8 @@ public abstract class GeonetGmd extends Geonet {
 		if (dtype == null || dtype.isEmpty()) {
 			dtype = metadata.valueOf(XP_TYPE);
 		}
-		if (dtype != null && !dtype.isEmpty() && !dtype.equals("dataset")) {
-			LOG.warn("Not a dataset: {} is {}", id, dtype);
+		if (dtype != null && !dtype.isEmpty() && !(dtype.equals("dataset") || dtype.equals("series"))) {
+			LOG.warn("Not a dataset / series: {} is {}", id, dtype);
 			return;
 		}
 
