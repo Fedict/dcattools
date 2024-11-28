@@ -80,7 +80,7 @@ public class Translater {
 	private final static Logger LOG = LoggerFactory.getLogger(Translater.class);
 
 	// only translated specific properties of specific classes to reduce the workload
-	private final static List<IRI> PROPERTIES = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE);
+	private final static List<IRI> PROPERTIES = List.of(DCTERMS.DESCRIPTION, DCTERMS.TITLE, DCTERMS.ALTERNATIVE);
 	private final static List<IRI> CLASSES = List.of(DCAT.DATASET, DCAT.DATA_SERVICE);
 
 	private final static Map<String,Map<String,String>> CACHE = new HashMap<>();

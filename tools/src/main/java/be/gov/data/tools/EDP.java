@@ -223,8 +223,7 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCTERMS.TEMPORAL, null)) {
 			while (res.hasNext()) {
 				Value v = res.next().getObject();
-				if (v instanceof IRI) {
-					IRI date = (IRI) v;
+				if (v instanceof IRI date) {
 					w.writeStartElement("dct:temporal");
 					w.writeStartElement("dct:PeriodOfTime");
 					writeLiterals(w, con, date, DCAT.START_DATE, "dcat:startDate");
@@ -390,6 +389,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
+		writeLiterals(w, con, uri, DCTERMS.ALTERNATIVE, "dct:alternative");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
