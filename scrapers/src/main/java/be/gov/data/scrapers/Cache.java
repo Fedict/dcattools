@@ -142,7 +142,11 @@ public class Cache {
      */
     public void shutdown() {
         LOG.info("Closing cache file ...");
-        db.close();
+		try {
+			db.close();
+		} catch(Exception e) {
+			LOG.error(e.getMessage());
+		}
 		LOG.info(" ... closed");
     }
     

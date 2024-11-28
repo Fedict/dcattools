@@ -64,6 +64,7 @@ public class Main implements Callable<Integer> {
 			scraper.scrape();
 			scraper.generateDcat();
 			scraper.writeDcat();
+			LOG.info("Done writing");
 		} catch (IOException ex) {
 			LOG.error("Error while scraping", ex);
 			return -1;
