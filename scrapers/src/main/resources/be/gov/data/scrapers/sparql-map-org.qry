@@ -20,7 +20,6 @@ WHERE
 		?org ?rel ?label .
 		OPTIONAL { 
 			?org ?p ?o 
-			FILTER (?p != ?rel) 
 		} .
 		?neworg skos:altLabel ?label .
 		?neworg skos:prefLabel ?name 
