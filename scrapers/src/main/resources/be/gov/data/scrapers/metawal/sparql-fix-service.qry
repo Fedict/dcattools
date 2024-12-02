@@ -11,18 +11,15 @@ DELETE
 		?service a dcat:DataService .
 		?service dcterms:title ?title .
 		?service dcat:endpointURL ?endpoint .
-		?service dcterms:conformsTo <http://www.opengeospatial.org/standards/wms> }
+	}
 INSERT 
-	{ 	?s dcat:endpointURL ?endpoint .
-		?s dcterms:format "WMS" .
-		?s ?p ?o }
+	{ 	?s dcat:endpointURL ?endpoint }
 WHERE
-	{	?s a dcat:DataService .
-		?s dcat:distribution ?dist .
+	{	?s dcat:distribution ?dist .
 		?dist a dcat:Distribution .
 		?dist dcat:accessService ?service .
 		?service a dcat:DataService .
-		?service dcterms:title ?title .
 		?service dcat:endpointURL ?endpoint .
-		?service dcterms:conformsTo <http://www.opengeospatial.org/standards/wms>
+		OPTIONAL { ?service dcterms:title ?title }
+		OPTIONAL { ?service dcterms:conformsTo ?conforms }
 	}
