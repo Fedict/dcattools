@@ -1,0 +1,18 @@
+# Fix invalid URL / URI
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+
+DELETE 
+	{	?s foaf:page ?url .
+		?url ?p ?o }
+INSERT 
+	{ 	?s foaf:page ?newurl .
+		?newurl ?p ?o }
+WHERE
+	{	?s foaf:page ?url .
+		?url ?p ?o
+		BIND (IRI(
+					REPLACE(STR(?url), "\\[1\\]", "") 
+			) AS ?newurl)
+		FILTER(CONTAINS(STR(?url), "[1]"))
+	}
