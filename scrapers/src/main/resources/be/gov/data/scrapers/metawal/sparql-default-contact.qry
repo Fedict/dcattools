@@ -1,0 +1,11 @@
+# Add default contact point if none are set
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/wallonie/metawal/contact>  }
+WHERE
+	{ 	?dataset a ?cl .
+		VALUES ?cl { dcat:Dataset dcat:DataService dcat:DatasetSeries }
+		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } 
+	}

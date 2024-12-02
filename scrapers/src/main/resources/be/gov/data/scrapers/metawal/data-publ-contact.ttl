@@ -1,0 +1,20 @@
+# Data for default publisher and contact info
+
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://data.gov.be/org/wallonie/metawal/contact>
+	a vcard:Organization ;
+	vcard:fn "Géoportail de la Wallonie"@en, "Géoportail de la Wallonie"@fr, "Géoportail de la Wallonie"@nl ;
+	vcard:hasUrl <https://geoportail.wallonie.be> ;
+	vcard:hasEmail <helpdesk.carto@spw.wallonie.be> .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2204322327> 
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	foaf:name "SPW-SG Secrétariat général"@fr ;
+	foaf:homepage <https://spw.wallonie.be/administrations/service-public-de-wallonie/spw-secretariat-general> .
+	

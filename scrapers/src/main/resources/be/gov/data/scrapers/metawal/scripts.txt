@@ -1,4 +1,7 @@
 # extra queries to be executed and data to be loaded
+metawal/data-publ-contact.ttl
+metawal/sparql-default-contact.qry
+metawal/sparql-default-publisher.qry
 data-media.ttl
 metawal/sparql-format-wms.qry
 sparql-map-media-srvc.qry

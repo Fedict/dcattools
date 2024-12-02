@@ -1,8 +1,0 @@
-# Add default contact if none is present
-
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-INSERT	{ ?dataset dcat:contactPoint <https://org.belgif.be/id/CbeRegisteredEntity/0240678477> }
-WHERE	{ ?dataset a dcat:Dataset
-    		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?value }
-}
