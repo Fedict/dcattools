@@ -53,11 +53,11 @@ public class GeonetMetawal extends Dcat {
 		Set<URL> urls = cache.retrievePageList();
 		for (URL url: urls) {
 			Page page = cache.retrievePage(url).get("all");
-			// fix missing default namespace
+			// remove CSW service xml
 			String content = page.getContent();
 			content = content.replaceAll("<csw:[^>]+>", "")
 							.replaceAll("</csw:[^>]+>", "")
-							.replaceAll("(?s)</rdf:RDF>.*<rdf:RDF [^>]+>", "");
+							.replaceAll("</rdf:RDF>[^<]*<rdf:RDF [^>]+>", "");
 
 			try (InputStream in = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
