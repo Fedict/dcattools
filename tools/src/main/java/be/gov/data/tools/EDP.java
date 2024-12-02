@@ -103,6 +103,10 @@ public class EDP {
 	private final static IRI DCATAP_HVDCAT = F.createIRI("http://data.europa.eu/r5r/hvdCategory");
 	private final static IRI ELI_RESOURCE = F.createIRI("http://data.europa.eu/eli/ontology#LegalResource");
 	
+	private final static IRI GEO_CUSTODIAN = F.createIRI("http://data.europa.eu/930/custodian");
+	private final static IRI GEO_DISTRIBUTOR = F.createIRI("http://data.europa.eu/930/distributor");
+	private final static IRI GEO_ORIGINATOR = F.createIRI("http://data.europa.eu/930/originator");
+	
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
 	/**
@@ -119,6 +123,8 @@ public class EDP {
 		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(GEO.PREFIX, GEO.NAMESPACE);
+		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
+		w.writeNamespace("geodcatap", "http://data.europa.eu/930/");
 		w.writeNamespace(ORG.PREFIX, ORG.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(PROV.PREFIX, PROV.NAMESPACE);
@@ -273,7 +279,7 @@ public class EDP {
 	}
 
 	/**
-	 * Write qualified attributions of a dcat:Dataset
+	 * Write qualified roles of a dcat:Dataset
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
@@ -300,6 +306,27 @@ public class EDP {
 				}
 				
 				w.writeEndElement();
+				w.writeEndElement();
+			}
+		}
+	}
+
+	/**
+	 * Write geodcat roles of a dcat:Dataset
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeRole(XMLStreamWriter w, RepositoryConnection con,
+		IRI uri, IRI pred, String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				Resource agent = (Resource) res.next().getObject();
+				w.writeStartElement(el);
+				writeAgent(w, con, agent);
 				w.writeEndElement();
 			}
 		}
@@ -534,6 +561,10 @@ public class EDP {
 
 		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 
+		writeRole(w, con, uri, GEO_CUSTODIAN, "geodcatap:custodian");
+		writeRole(w, con, uri, GEO_DISTRIBUTOR, "geodcatap:distributor");
+		writeRole(w, con, uri, GEO_ORIGINATOR, "geodcatap:originator");
+		
 		w.writeEndElement();
 	}
 
