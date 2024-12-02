@@ -58,6 +58,7 @@ import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.GEO;
 import org.eclipse.rdf4j.model.vocabulary.ORG;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
+import org.eclipse.rdf4j.model.vocabulary.PROV;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
@@ -117,9 +118,10 @@ public class EDP {
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
 		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
-		w.writeNamespace("geo", GEO.NAMESPACE);
+		w.writeNamespace(GEO.PREFIX, GEO.NAMESPACE);
 		w.writeNamespace(ORG.PREFIX, ORG.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
+		w.writeNamespace(PROV.PREFIX, PROV.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
 		w.writeNamespace(SKOS.PREFIX, SKOS.NAMESPACE);
@@ -202,7 +204,7 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writeLiterals(XMLStreamWriter w, RepositoryConnection con,
-		IRI uri, IRI pred, String el) throws XMLStreamException {
+		Resource uri, IRI pred, String el) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
 				writeLiteral(w, el, res.next().getObject());
@@ -266,6 +268,39 @@ public class EDP {
 				} else {
 					LOG.error("Not a contact IRI {}", v.stringValue());
 				}
+			}
+		}
+	}
+
+	/**
+	 * Write qualified attributions of a dcat:Dataset
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeProvenances(XMLStreamWriter w, RepositoryConnection con,
+		IRI uri, IRI pred) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("prov:qualifiedAttribution");
+				w.writeStartElement("prov:Attribution");
+				
+				Resource attrib = (Resource) res.next().getObject();
+				try (RepositoryResult<Statement> res2 = con.getStatements(attrib, PROV.AGENT_PROP, null)) {
+					while(res2.hasNext()) {
+						w.writeStartElement("prov:agent");		
+						Resource agent = (Resource) res2.next().getObject();
+						writeAgent(w, con, agent);
+						w.writeEndElement();
+					}
+					writeReferences(w, con, attrib, DCAT.HAD_ROLE, "dcat:hadRole", "dcat:Role", false);
+				}
+				
+				w.writeEndElement();
+				w.writeEndElement();
 			}
 		}
 	}
@@ -368,9 +403,9 @@ public class EDP {
 	 * @param type RDF type
 	 * @throws XMLStreamException
 	 */
-	private static void writeType(XMLStreamWriter w, RepositoryConnection con, IRI uri, IRI type) 
+	private static void writeType(XMLStreamWriter w, RepositoryConnection con,  Resource iri, IRI type) 
 		throws XMLStreamException {
-		if (con.hasStatement(uri, RDF.TYPE, type, true)) {
+		if (con.hasStatement(iri, RDF.TYPE, type, true)) {
 			w.writeEmptyElement("rdf:type");
 			w.writeAttribute("rdf:resource", type.stringValue());
 		}
@@ -489,7 +524,6 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		
 
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
@@ -497,6 +531,8 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
 		writeDates(w, con, uri);
+
+		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 
 		w.writeEndElement();
 	}
@@ -661,7 +697,7 @@ public class EDP {
 	 * @param iri iRI of the organization
 	 * @throws XMLStreamException
 	 */
-	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, IRI iri) 
+	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, Resource iri) 
 			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
 		w.writeAttribute("rdf:about", iri.stringValue());
