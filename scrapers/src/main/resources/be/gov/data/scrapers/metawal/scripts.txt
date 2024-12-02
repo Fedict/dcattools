@@ -8,6 +8,8 @@ sparql-map-media-srvc.qry
 clear-skos.qry
 metawal/sparql-fix-logo.qry
 metawal/sparql-fix-percenturl.qry
+metawal/sparql-fix-service.qry
+metawal/sparql-fix-source.qry
 sparql-theme-subject.qry
 metawal/sparql-fix-language.qry
 metawal/data-frequency.ttl

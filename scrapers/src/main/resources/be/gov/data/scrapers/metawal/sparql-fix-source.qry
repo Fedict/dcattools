@@ -1,0 +1,17 @@
+# Fix incorrect usage of source pointing to CatalogRecord
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s dcterms:source ?source .
+		?source a dcat:CatalogRecord .
+		?source dcterms:conformsTo ?conforms }
+INSERT 
+	{ 	?s dcterms:conformsTo ?conforms }
+WHERE
+	{	?s dcterms:source ?source .
+		?source a dcat:CatalogRecord .
+		?source dcterms:conformsTo ?conforms
+	}
