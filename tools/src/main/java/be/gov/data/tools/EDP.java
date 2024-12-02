@@ -49,8 +49,8 @@ import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
-import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.ValidatingValueFactory;
+import org.eclipse.rdf4j.model.util.Values;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -92,20 +92,20 @@ public class EDP {
 
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
-	private final static ValueFactory F = new ValidatingValueFactory();
 	private final static String BASE_URI = "http://base.data.gov.be";
+
+	private final static IRI ADMS_IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
+	private final static IRI ADMS_SAMPLE = Values.iri("http://www.w3.org/ns/adms#sample");
+	private final static IRI ADMS_STATUS = Values.iri("http://www.w3.org/ns/adms#status");
 	
-	private final static IRI ADMS_IDENTIFIER = F.createIRI("http://www.w3.org/ns/adms#identifier");
-	private final static IRI ADMS_SAMPLE = F.createIRI("http://www.w3.org/ns/adms#sample");
+	private final static IRI DCATAP_AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
+	private final static IRI DCATAP_CONFORMS = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
+	private final static IRI DCATAP_HVDCAT = Values.iri("http://data.europa.eu/r5r/hvdCategory");
+	private final static IRI ELI_RESOURCE = Values.iri("http://data.europa.eu/eli/ontology#LegalResource");
 	
-	private final static IRI DCATAP_AVAILABILITY = F.createIRI("http://data.europa.eu/r5r/availability");
-	private final static IRI DCATAP_CONFORMS = F.createIRI("http://data.europa.eu/r5r/applicableLegislation");
-	private final static IRI DCATAP_HVDCAT = F.createIRI("http://data.europa.eu/r5r/hvdCategory");
-	private final static IRI ELI_RESOURCE = F.createIRI("http://data.europa.eu/eli/ontology#LegalResource");
-	
-	private final static IRI GEO_CUSTODIAN = F.createIRI("http://data.europa.eu/930/custodian");
-	private final static IRI GEO_DISTRIBUTOR = F.createIRI("http://data.europa.eu/930/distributor");
-	private final static IRI GEO_ORIGINATOR = F.createIRI("http://data.europa.eu/930/originator");
+	private final static IRI GEO_CUSTODIAN = Values.iri("http://data.europa.eu/930/custodian");
+	private final static IRI GEO_DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
+	private final static IRI GEO_ORIGINATOR = Values.iri("http://data.europa.eu/930/originator");
 	
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
@@ -457,6 +457,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, ADMS_STATUS, "adms:status");
 		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
@@ -889,7 +890,7 @@ public class EDP {
 		cfg.set(XMLParserSettings.FAIL_ON_NON_STANDARD_ATTRIBUTES, true);
 		cfg.set(XMLParserSettings.FAIL_ON_SAX_NON_FATAL_ERRORS, true);
 		parser.setParserConfig(cfg);
-		parser.setValueFactory(F);
+		parser.setValueFactory(new ValidatingValueFactory());
 
 		try(Reader r = Files.newBufferedReader(Paths.get(args[1]))) {
 			parser.parse(r, BASE_URI);
