@@ -2,20 +2,20 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 DELETE 
-	{	?s dcat:distribution ?dist .
-		?dist a dcat:Distribution .
+	{	?cat dcat:service ?service .
 		?dist dcat:accessService ?service .
 		?service a dcat:DataService .
 		?service dcterms:title ?title .
 		?service dcat:endpointURL ?endpoint .
+		?service dcterms:conformsTo ?conforms
 	}
 INSERT 
-	{ 	?s dcat:endpointURL ?endpoint }
+	{ 	?s dcterms:conformsTo ?conforms  }
 WHERE
-	{	?s dcat:distribution ?dist .
+	{	?cat dcat:service ?service .
+		?s dcat:distribution ?dist .
 		?dist a dcat:Distribution .
 		?dist dcat:accessService ?service .
 		?service a dcat:DataService .

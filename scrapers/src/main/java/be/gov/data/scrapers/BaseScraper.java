@@ -507,7 +507,6 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	public void generateCatalog(Storage store) throws RepositoryException, MalformedURLException {
 		IRI catalog = store.getURI(makeCatalogURL().toString());
 		store.add(catalog, RDF.TYPE, DCAT.CATALOG);
-
 		List<IRI> datasets = store.query(DCAT.DATASET);
 		for (IRI u : datasets) {
 			store.add(catalog, DCAT.HAS_DATASET, u);

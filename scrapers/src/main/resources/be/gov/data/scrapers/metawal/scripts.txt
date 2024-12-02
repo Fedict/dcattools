@@ -1,4 +1,6 @@
 # extra queries to be executed and data to be loaded
+metawal/sparql-fix-service.qry
+metawal/sparql-fix-source.qry
 metawal/data-publ-contact.ttl
 metawal/sparql-default-contact.qry
 metawal/sparql-default-publisher.qry
@@ -8,8 +10,6 @@ sparql-map-media-srvc.qry
 clear-skos.qry
 metawal/sparql-fix-logo.qry
 metawal/sparql-fix-percenturl.qry
-metawal/sparql-fix-service.qry
-metawal/sparql-fix-source.qry
 sparql-theme-subject.qry
 metawal/sparql-fix-language.qry
 metawal/data-frequency.ttl
