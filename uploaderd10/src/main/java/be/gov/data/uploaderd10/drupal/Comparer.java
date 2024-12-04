@@ -433,6 +433,10 @@ public class Comparer {
 						LOG.debug("Adding fallback {} creators for {}", lang, d.getId());
 					}
 				}
+				if (d.getDescription(lang) == null || d.getDescription(lang).isEmpty()) {
+					d.getDescription().put(lang, d.getTitle(lang));
+					LOG.debug("Adding fallback {} title for {}", lang, d.getId());
+				}
 			}
 
 			for (Distribution dist: d.getDistributions()) {
