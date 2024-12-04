@@ -9,7 +9,6 @@ WHERE
 	{
 		?dataset dcat:keyword ?str .
 		?theme skos:altLabel ?label .
-		?theme skos:exactMatch ?drupal 
 		BIND(SUBSTR(?str, 1, 3) as ?short)
 		FILTER(?label = ?short)
 	}
