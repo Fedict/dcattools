@@ -106,7 +106,7 @@ public class EDP {
 	private final static IRI GEO_CUSTODIAN = Values.iri("http://data.europa.eu/930/custodian");
 	private final static IRI GEO_DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
 	private final static IRI GEO_ORIGINATOR = Values.iri("http://data.europa.eu/930/originator");
-	
+	private final static IRI GEO_PROCESSOR = Values.iri("http://data.europa.eu/930/processor");	
 	private final static Set<IRI> CONCEPTS = new HashSet<>();
 
 	/**
@@ -565,6 +565,7 @@ public class EDP {
 		writeRole(w, con, uri, GEO_CUSTODIAN, "geodcatap:custodian");
 		writeRole(w, con, uri, GEO_DISTRIBUTOR, "geodcatap:distributor");
 		writeRole(w, con, uri, GEO_ORIGINATOR, "geodcatap:originator");
+		writeRole(w, con, uri, GEO_PROCESSOR, "geodcatap:processor");
 		
 		w.writeEndElement();
 	}
