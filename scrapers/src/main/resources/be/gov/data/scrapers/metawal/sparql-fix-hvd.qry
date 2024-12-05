@@ -1,0 +1,10 @@
+# Fix mising applicable legislation when HvD category is set
+
+PREFIXC dcatap: <http://data.europa.eu/r5r/>
+
+INSERT 
+	{ 	?s dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> }
+WHERE
+	{	?s dcatap:hvdCategory ?cat
+		FILTER NOT EXISTS { ?s dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> }
+	}
