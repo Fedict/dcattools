@@ -37,11 +37,11 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
 	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
-	skos:altLabel "G05", "G16" .
+	skos:altLabel "G05" .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
-	skos:altLabel "G01", "G02", "G03", "G05", "G08", "G10" .
+	skos:altLabel "G01", "G02", "G03", "G05", "G08", "G10", "G16"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
 	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
