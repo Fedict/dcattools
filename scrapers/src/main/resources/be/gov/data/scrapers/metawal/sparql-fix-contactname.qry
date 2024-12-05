@@ -1,0 +1,14 @@
+# Fix contact name
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE
+	{	?contact vcard:organisation-name ?name }
+INSERT
+	{ 	?contact vcard:fn ?name  }
+WHERE
+	{ 	?contact a vcard:Organization .
+		?contact vcard:org ?org .
+		?org vcard:organisation-name ?name
+	}
