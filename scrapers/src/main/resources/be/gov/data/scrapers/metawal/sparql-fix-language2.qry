@@ -1,0 +1,14 @@
+# Use correct URI for French
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s ?p <http://publications.europa.eu/resource/authority/language/FRE> .
+		<http://publications.europa.eu/resource/authority/language/FRE> a dcterms:LinguisticSystem }
+INSERT 
+	{ 	?s ?p <http://publications.europa.eu/resource/authority/language/FRA> .
+		<http://publications.europa.eu/resource/authority/language/FRA> a dcterms:LinguisticSystem }
+WHERE
+	{	?s ?p <http://publications.europa.eu/resource/authority/language/FRE> .
+		<http://publications.europa.eu/resource/authority/language/FRE> a dcterms:LinguisticSystem
+	}
