@@ -161,7 +161,9 @@ public class Hasher {
 	 */
 	public byte[] hash(DrupalDataset ds) {
 		dg.reset();
-
+		
+		dg.update(getBytesStr(ds.ids()));
+		dg.update(getBytes(ds.version()));
 		dg.update(getBytes(ds.title()));
 		dg.update(getBytes(ds.description()));
 		dg.update(getBytesInt(ds.categories()));

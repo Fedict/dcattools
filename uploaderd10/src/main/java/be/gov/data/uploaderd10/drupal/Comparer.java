@@ -206,6 +206,8 @@ public class Comparer {
 				null,
 				null,
 				d.getId(),
+				d.getIds(),
+				d.getVersion(),
 				d.getTitle(lang),
 				d.getDescription(lang),
 				lang,
@@ -230,7 +232,6 @@ public class Comparer {
 			);
 			map.put(ByteBuffer.wrap(hasher.hash(drupal)), drupal);
 		}
-
 		return map;
 	}
 

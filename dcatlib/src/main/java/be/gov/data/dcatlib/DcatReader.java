@@ -94,6 +94,8 @@ public class DcatReader {
 				Values.iri("http://publications.europa.eu/resource/authority/language/DEU"), "de",
 				Values.iri("http://publications.europa.eu/resource/authority/language/ENG"), "en"
 			);
+	
+	private final static IRI ADMS_IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
 
 	private Model m;
 
@@ -412,6 +414,12 @@ public class DcatReader {
 		
 		d.setId(id);
 
+		Set<String> ids = getIRIs(iri, ADMS_IDENTIFIER).stream()
+													.map(i -> i.stringValue())
+													.filter(s -> !s.contains("well-known/genid"))
+													.collect(Collectors.toSet());
+		d.setIds(ids);
+
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
@@ -425,6 +433,7 @@ public class DcatReader {
 		d.setCreators(names);
 		
 		Set<IRI> legislation = getIRIs(iri, DCATAP_LEGISLATION);
+		// also add legislation that is mentioned in conformsTo
 		legislation.addAll(getIRIs(iri, DCTERMS.CONFORMS_TO).stream()
 										.filter(i -> i.toString().contains("/eli/"))
 										.collect(Collectors.toSet()));		

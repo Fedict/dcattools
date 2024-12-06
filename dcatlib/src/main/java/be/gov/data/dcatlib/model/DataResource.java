@@ -44,7 +44,9 @@ public abstract class DataResource {
 	private IRI iri;
 
 	private String id;
-	
+	private Set<String> ids;
+	private String version;
+
 	// multi-lingual values
 	private Map<String,String> title;
 	private Map<String,String> description;
@@ -117,6 +119,41 @@ public abstract class DataResource {
 	 */
 	public String getId() {
 		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the ADMS ids
+	 */
+	public Set<String> getIds() {
+		return ids;
+	}
+	
+	/**
+	 * @param id the ADMS ids to set
+	 */
+	public void setIds(Set<String> ids) {
+		this.ids = ids;
+	}
+
+	/**
+	 * @return the version
+	 */
+	public String getVersion() {
+		return version;
+	}
+
+	/**
+	 * @param version the version to set
+	 */
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	/**
@@ -203,12 +240,6 @@ public abstract class DataResource {
 	 */
 	public void setKeywords(Map<String,Set<String>> keywords) {
 		this.keywords = keywords;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	/**

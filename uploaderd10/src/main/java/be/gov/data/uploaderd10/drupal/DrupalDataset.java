@@ -30,6 +30,7 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,6 +52,8 @@ public record DrupalDataset(
 	Integer nid,
 	String uuid,
 	String id,
+	Set<String> ids,
+	String version,
 	String title,
 	String description,
 	String langcode,
@@ -300,7 +303,21 @@ public record DrupalDataset(
 	 * @param values
 	 * @return 
 	 */
-	private List<Map<String,Integer>> wrap(String key, Set<Integer> values) {
+	private List<Map<String,Integer>> wrapInts(String key, Set<Integer> values) {
+		if (values == null) {
+			return null;
+		}
+		return values.stream().map(c -> Map.of(key, c)).collect(Collectors.toList());
+	}
+
+	/**
+	 * Wrap a set of strings to a list with key-value pair
+	 * 
+	 * @param key
+	 * @param values
+	 * @return 
+	 */
+	private List<Map<String,String>> wrapStrs(String key, Set<String> values) {
 		if (values == null) {
 			return null;
 		}
@@ -333,7 +350,7 @@ public record DrupalDataset(
 		map.put("type", wrap("target_id", "dataset"));
 		map.put("title", wrap("value", title.length() < 255 ? title : title.substring(0, 255)));
 		map.put("body", wrap("value", description, "format", "flexible_html"));
-		map.put("field_category", wrap("target_id", categories));
+		map.put("field_category", wrapInts("target_id", categories));
 		map.put("field_conditions", wrapURI("uri", conditions));
 		map.put("field_contact", contacts != null
 									? contacts.stream()
@@ -343,10 +360,12 @@ public record DrupalDataset(
 		map.put("field_date_range", wrap("value", from != null ? DATE_FMT.format(from) : null, 
 										"end_value", till != null ? DATE_FMT.format(till)
 																: (from != null ? NOW : null) ));
-		map.put("field_file_type", wrap("target_id", formats));
+		map.put("field_file_type", wrapInts("target_id", formats));
 		map.put("field_frequency", wrap("target_id", frequency));
 		map.put("field_geo_coverage", wrap("target_id", geography));
 		map.put("field_id", wrap("value", id));
+		map.put("field_identifiers", wrapStrs("value", ids));
+		map.put("field_version", wrap("value", version));
 		map.put("field_keywords", wrapJoin("value", keywords));
 		map.put("field_license", wrap("target_id", license));
 		map.put("field_details", wrapURI("uri", accessURLS));
@@ -383,6 +402,8 @@ public record DrupalDataset(
 			(Integer) getOneValue("nid", map, "value"),
 			(String) getOneValue("uuid", map, "value"),
 			(String) getOneValue("field_id", map, "value"),
+			getSet("field_identifiers", map, "value", String.class),
+			(String) getOneValue("field_version", map, "value"),
 			(String) getOneValue("title", map, "value"),
 			(String) getOneValue("body", map, "value"),
 			(String) getOneValue("langcode", map, "value"),
