@@ -60,6 +60,7 @@ import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -419,7 +420,7 @@ public class DcatReader {
 													.filter(s -> !s.contains("well-known/genid"))
 													.collect(Collectors.toSet());
 		d.setIds(ids);
-
+		d.setVersion(getString(iri, OWL.VERSIONINFO));
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
