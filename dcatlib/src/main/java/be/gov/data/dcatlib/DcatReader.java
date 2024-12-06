@@ -62,6 +62,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
@@ -386,17 +387,44 @@ public class DcatReader {
 	 * 
 	 * @param iri
 	 * @return 
+	 * @throws IOException
 	 */
 	private Map<String,Set<String>> getCreatorNames(Set<Value> creators) throws IOException {
 		Map<String,Set<String>> names = new HashMap<>();
 		
 		for(Value v: creators) {
 			Map<String,Set<String>> name = getLangStringList((Resource) v, FOAF.NAME);
-			for(String key: name.keySet()) {
-				names.merge(key, name.get(key), (s1, s2) -> {  s1.addAll(s2); return s1; }  );
+			for(Map.Entry<String,Set<String>> entry: name.entrySet()) {
+				names.merge(entry.getKey(), entry.getValue(), (s1, s2) -> {  s1.addAll(s2); return s1; }  );
 			}
 		}
 		return names;
+	}
+
+	/**
+	 * Get the ADMS IDs as string values
+	 * 
+	 * @param iri
+	 * @return
+	 * @throws IOException
+	 */
+	private Set<String> getAdmsIds(IRI iri) throws IOException {
+		Set<String> adms = new HashSet<>();
+
+		Set<IRI> objs = getIRIs(iri, ADMS_IDENTIFIER);
+		
+		for(IRI obj: objs) {
+			String s = obj.stringValue();
+			if (!s.contains("well-known/genid")) {
+				adms.add(s);
+			} else {
+				String notation = getString(obj, SKOS.NOTATION);
+				if (notation != null && !notation.isEmpty()) {
+					adms.add(notation);
+				}
+			}
+		}
+		return adms;
 	}
 
 	/**
@@ -415,10 +443,9 @@ public class DcatReader {
 		
 		d.setId(id);
 
-		Set<String> ids = getIRIs(iri, ADMS_IDENTIFIER).stream()
-													.map(i -> i.stringValue())
-													.filter(s -> !s.contains("well-known/genid"))
-													.collect(Collectors.toSet());
+		Set<String> ids = getAdmsIds(iri);				
+		ids.add(id);
+
 		d.setIds(ids);
 		d.setVersion(getString(iri, OWL.VERSIONINFO));
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
