@@ -260,21 +260,24 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2789733/> ;
-	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr, "Province East Flanders"@en ;
+	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr, 
+					"Province East Flanders"@en ;
 	skos:altLabel "Provincie Oost-Vlaanderen"@nl, "Province East Flanders" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2783770/> ;
-	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, "Province West Flanders"@en ;
+	skos:prefLabel "Provincie West-Vlaanderen"@nl, "Province de Flandre-Occidentale"@fr, 
+					"Provinz Westflandern"@de, "Province West Flanders"@en ;
 	skos:altLabel "Provincie West-Vlaanderen"@nl .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725203>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2792347/> ;
-	skos:prefLabel "Provincie Limburg"@nl, "Province de Limbourg"@fr, "Province of Limburg"@en ;
+	skos:prefLabel "Provincie Limburg"@nl, "Province de Limbourg"@fr, 
+					"Province of Limburg"@en ;
 	skos:altLabel "Provincie Limburg"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725597> 

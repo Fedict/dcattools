@@ -12,8 +12,8 @@
             <properties>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
-                <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>-n vlaanderen</exec.appArgs>
+                <exec.workingdir>c:\datagov\data\metawal</exec.workingdir>
+                <exec.appArgs>-n metawal</exec.appArgs>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.mainClass>be.gov.data.scrapers.Main</exec.mainClass>
             </properties>
@@ -31,8 +31,8 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
-                <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>-n vlaanderen</exec.appArgs>
+                <exec.workingdir>c:\datagov\data\metawal</exec.workingdir>
+                <exec.appArgs>-n metawal</exec.appArgs>
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.mainClass>be.gov.data.scrapers.Main</exec.mainClass>
             </properties>
@@ -49,8 +49,8 @@
             <properties>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
-                <exec.workingdir>c:\datagov</exec.workingdir>
-                <exec.appArgs>-n vlaanderen</exec.appArgs>
+                <exec.workingdir>c:\datagov\data\metawal</exec.workingdir>
+                <exec.appArgs>-n metawal</exec.appArgs>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.mainClass>be.gov.data.scrapers.Main</exec.mainClass>
             </properties>

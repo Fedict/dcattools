@@ -12,8 +12,8 @@
             <properties>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
-                <exec.appArgs>C:\datagov\data\bira\bira.nt C:\datagov\data\bira\bira.xml</exec.appArgs>
-                <exec.vmArgs></exec.vmArgs>
+                <exec.appArgs>C:\datagov\data\metawal\metawal.nt C:\datagov\data\metawal\metawal.xml</exec.appArgs>
+                <exec.vmArgs>-Dorg.eclipse.rdf4j.repository.debug=true</exec.vmArgs>
                 <exec.mainClass>be.gov.data.tools.EDP</exec.mainClass>
             </properties>
         </action>
@@ -30,8 +30,8 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
-                <exec.appArgs>C:\datagov\data\bira\bira.nt C:\datagov\data\bira\bira.xml</exec.appArgs>
-                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.appArgs>C:\datagov\data\metawal\metawal.nt C:\datagov\data\metawal\metawal.xml</exec.appArgs>
+                <exec.vmArgs>-Dorg.eclipse.rdf4j.repository.debug=true -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.mainClass>be.gov.data.tools.EDP</exec.mainClass>
             </properties>
         </action>
@@ -47,8 +47,8 @@
             <properties>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
-                <exec.appArgs>C:\datagov\data\bira\bira.nt C:\datagov\data\bira\bira.xml</exec.appArgs>
-                <exec.vmArgs></exec.vmArgs>
+                <exec.appArgs>C:\datagov\data\metawal\metawal.nt C:\datagov\data\metawal\metawal.xml</exec.appArgs>
+                <exec.vmArgs>-Dorg.eclipse.rdf4j.repository.debug=true</exec.vmArgs>
                 <exec.mainClass>be.gov.data.tools.EDP</exec.mainClass>
             </properties>
         </action>
