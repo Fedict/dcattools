@@ -1,0 +1,21 @@
+# Fix invalid URL resource (inserted without protocol, so ending up as relative URI)
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s vcard:hasURL ?relurl }
+INSERT
+	{	?s vcard:hasURL ?url }
+WHERE
+	{ 
+		?s vcard:hasURL ?relurl
+		BIND (IRI
+				(CONCAT("https://",
+					(STRAFTER
+						(STR(?relurl), "http://data.gov.be/")
+					)
+				)
+			)
+		 AS ?url)
+		FILTER (STRSTARTS(STR(?relurl), "http://data.gov.be/"))
+}

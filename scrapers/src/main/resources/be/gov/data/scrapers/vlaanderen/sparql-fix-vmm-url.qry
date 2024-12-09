@@ -4,22 +4,19 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?s vcard:hasURL ?url }
+	{	?s ?rel ?url }
 INSERT
-	{	?s vcard:hasURL <https://www.vmm.be> }
+	{	?s ?rel <https://www.vmm.be> }
 WHERE {
 	{ 
-		?s vcard:hasURL ?url
-		VALUES ?url { <https:%5C%5Cwww.vmm.be> <http://data.gov.be/www.vmm.be> <http://data.gov.be/www.vmm.vlaanderen.be> }
+		?s ?rel ?url
+		VALUES ?rel { vcard:hasURL }
+		VALUES ?url { <https:%5C%5Cwww.vmm.be> <http://data.gov.be/www.vmm.be> }
 	}
 	UNION
 	{ 
-		?s vcard:hasURL ?url
-		FILTER (STR(?url) = "https:\\\\www.vmm.be")
-	}
-	UNION
-	{ 
-		?s dcat:landingPage ?url
+		?s ?rel ?url
+		VALUES ?rel { dcat:landingPage vcard:hasURL }
 		FILTER (STR(?url) = "https:\\\\www.vmm.be")
 	}
 }
