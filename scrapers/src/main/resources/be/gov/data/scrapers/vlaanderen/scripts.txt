@@ -33,14 +33,15 @@ vlaanderen/data-license.ttl
 sparql-map-license.qry
 sparql-date-type.qry
 # INBO
-vlaanderen/sparql-fix-modified.qry
+#vlaanderen/sparql-fix-modified.qry
 # Gent, INBO, Fluvius
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-gent-publ-contact.qry
 vlaanderen/sparql-fluvius-publ-contact.qry
 sparql-map-loc-lang.qry
 #VMM
-vlaanderen/sparql-vmm-mailbox.qry
+vlaanderen/sparql-fix-vmm-mailbox.qry
+vlaanderen/sparql-fix-vmm-url.qry
 vlaanderen/sparql-vmm-name.qry
 # MobielVlaanderen
 vlaanderen/sparql-fix-lexvo-lang.qry
