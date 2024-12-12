@@ -34,6 +34,7 @@ sparql-map-license.qry
 sparql-date-type.qry
 # INBO
 sparql-datetime-seconds.qry
+sparql-vcard-phone.qry
 # Gent, INBO, Fluvius
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-gent-publ-contact.qry

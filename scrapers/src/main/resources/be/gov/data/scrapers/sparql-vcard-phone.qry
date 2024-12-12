@@ -1,0 +1,20 @@
+# Fix invalid phone: literal (spaces and international number)
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{ ?s vcard:hasTel ?val }
+INSERT 
+	{ ?s vcard:hasTel ?iri }
+WHERE 
+	{ ?s vcard:hasTel ?val .
+		BIND (
+			IRI(
+				CONCAT("tel:", 
+						REPLACE(
+							REPLACE(?val, " ", "")
+						, "^(+32)?0" ,"+32")
+					)
+			) as ?iri)
+		FILTER ISLITERAL(?val) 
+	}
