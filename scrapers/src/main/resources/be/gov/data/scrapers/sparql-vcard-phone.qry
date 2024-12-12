@@ -3,18 +3,18 @@
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{ ?s vcard:hasTel ?val }
+	{ ?s vcard:hasTelephone ?val }
 INSERT 
-	{ ?s vcard:hasTel ?iri }
+	{ ?s vcard:hasTelephone ?iri }
 WHERE 
-	{ ?s vcard:hasTel ?val .
+	{ ?s vcard:hasTelephone ?val .
 		BIND (
 			IRI(
 				CONCAT("tel:", 
 						REPLACE(
-							REPLACE(?val, " ", "")
-						, "^(+32)?0" ,"+32")
+							REPLACE(STR(?val), " ", "")
+						, "^(tel:)?(\\+)?(32)?0" ,"+32")
 					)
-			) as ?iri)
-		FILTER ISLITERAL(?val) 
+			) 
+		as ?iri)
 	}
