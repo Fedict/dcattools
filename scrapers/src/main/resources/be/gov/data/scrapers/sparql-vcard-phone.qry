@@ -10,11 +10,9 @@ WHERE
 	{ ?s vcard:hasTelephone ?val .
 		BIND (
 			IRI(
-				CONCAT("tel:", 
-						REPLACE(
-							REPLACE(STR(?val), " ", "")
-						, "^(tel:)?(\\+)?(32)?0" ,"+32")
-					)
+				REPLACE(
+					REPLACE(STR(?val), " ", ""),
+								"^(tel:)?[+]?(32)?0?" ,"tel:+32")
 			) 
 		as ?iri)
 	}
