@@ -40,7 +40,7 @@ vlaanderen/sparql-gent-publ-contact.qry
 vlaanderen/sparql-fluvius-publ-contact.qry
 sparql-map-loc-lang.qry
 #VMM
-vlaanderen/sparql-fix-vmm-mailbox.qry
+vlaanderen/sparql-fix-mailbox.qry
 vlaanderen/sparql-fix-vmm-url.qry
 vlaanderen/sparql-vmm-name.qry
 # MobielVlaanderen

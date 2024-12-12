@@ -1,0 +1,13 @@
+# Delete mailbox link to web form
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s ?rel ?page }
+WHERE 
+	{ 
+		?s ?rel ?page
+		FILTER (STRSTARTS(STR(?page), "mailto:http"))
+		VALUES ?rel { foaf:mbox vcard:hasEmail }
+	}
