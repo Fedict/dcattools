@@ -4,11 +4,12 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 DELETE 
-	{	?s dcterms:modified ?dt }
+	{	?s ?rel ?dt }
 INSERT
-	{	?s dcterms:modified ?newdt }
+	{	?s ?rel ?newdt }
 WHERE
-	{	?s dcterms:modified ?dt .
+	{	?s ?rel ?dt .
+		VALUES ?rel { dcterms:created dcterms:modified }
 		FILTER ((STRLEN(STR(?dt)) = 22) && CONTAINS(STR(?dt), "+0"))
 		BIND (
 			STRDT(
