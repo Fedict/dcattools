@@ -345,7 +345,7 @@ public class EDP {
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", iri.stringValue());
 		} else {
-			LOG.error("Not a reference IRI {}", uri.stringValue());
+			LOG.error("Element {}: not a reference IRI {}", el, uri.stringValue());
 		}
 	}
 
@@ -740,7 +740,7 @@ public class EDP {
 			writeLiterals(w, con, iri, FOAF.GIVEN_NAME, "foaf:givenName");
 			writeLiterals(w, con, iri, FOAF.FAMILY_NAME, "foaf:familyName");
 			// mainly ORCID for researchers
-			writeReferences(w, con, iri, DCTERMS.IDENTIFIER, "dct:identifier");
+			writeLiterals(w, con, iri, DCTERMS.IDENTIFIER, "dct:identifier");
 			writeReferences(w, con, iri, ORG.MEMBER_OF, "org:memberOf");
 		} else {
 			writeType(w, con, iri, FOAF.ORGANIZATION);
