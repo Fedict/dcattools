@@ -703,11 +703,12 @@ public class EDP {
 				IRI iri = (IRI) res.next().getSubject();
 
 				Value bbox = null;
-				RepositoryResult<Statement> bboxes = con.getStatements(iri, DCAT.BBOX, null);
-				while (bboxes.hasNext()) {
-					Value val  = bboxes.next().getObject();
-					if (val.stringValue().startsWith("POLYGON")) {
-						bbox = val;
+				try(RepositoryResult<Statement> bboxes = con.getStatements(iri, DCAT.BBOX, null)) {
+					while (bboxes.hasNext()) {
+						Value val  = bboxes.next().getObject();
+						if (val.stringValue().startsWith("POLYGON")) {
+							bbox = val;
+						}
 					}
 				}
 				if (bbox != null) {
