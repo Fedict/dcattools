@@ -1,0 +1,16 @@
+# Fix incorrect protocol in downloadURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE	
+	{ ?s dcat:downloadURL ?url }
+INSERT	
+	{ ?s dcat:downloadURL ?newurl }
+WHERE 
+	{	?s dcat:downloadURL ?url .
+		BIND (IRI(
+				CONCAT("h", STR(?url)))
+		as ?newurl)
+		FILTER (STRSTARTS(STR(?url}, "ttps")))
+	}
+	
