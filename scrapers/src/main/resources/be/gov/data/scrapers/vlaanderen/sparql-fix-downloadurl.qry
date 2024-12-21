@@ -7,10 +7,10 @@ DELETE
 INSERT	
 	{ ?s dcat:downloadURL ?newurl }
 WHERE 
-	{	?s dcat:downloadURL ?url .
+	{	?s dcat:downloadURL ?url
 		BIND (IRI(
-				CONCAT("h", STR(?url)))
-		as ?newurl)
-		FILTER (STRSTARTS(STR(?url}, "ttps")))
+				CONCAT("h", STR(?url))
+		) as ?newurl)
+		FILTER (STRSTARTS(STR(?url), "ttps"))
 	}
 	
