@@ -107,7 +107,9 @@ public class EDP {
 	private final static IRI GEO_DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
 	private final static IRI GEO_ORIGINATOR = Values.iri("http://data.europa.eu/930/originator");
 	private final static IRI GEO_PROCESSOR = Values.iri("http://data.europa.eu/930/processor");	
-	private final static Set<IRI> CONCEPTS = new HashSet<>();
+	private final static Set<IRI> CONCEPTS = new HashSet<>(250);
+
+	private final static Set<String> IDENTIFIERS = new HashSet<>(25000);
 
 	/**
 	 * Write XML namespace prefixes
@@ -571,6 +573,30 @@ public class EDP {
 	}
 
 	/**
+	 * Check uniqueness of dct:identifier
+	 * 
+	 * @param con
+	 * @param iri
+	 * @return 
+	 */
+	private static boolean isUnique(RepositoryConnection con, IRI iri) {
+		try (RepositoryResult<Statement> res = con.getStatements(iri, DCTERMS.IDENTIFIER, null)) {
+			while (res.hasNext()) {
+				String id = res.next().getObject().stringValue();
+				if (id.isBlank()) {
+					LOG.warn("Empty dct:identifier for {}", iri);
+				} else {
+					if (!IDENTIFIERS.add(id)) {
+						LOG.error("ID {} already present, skipping ...", id);
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Write DCAT datasets
 	 *
 	 * @param w XML writer
@@ -580,12 +606,16 @@ public class EDP {
 	private static void writeDatasets(XMLStreamWriter w, RepositoryConnection con)
 		throws XMLStreamException {
 		int nr = 0;
-
+	
 		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_DATASET, null)) {
 			while (res.hasNext()) {
+				IRI obj = (IRI) res.next().getObject();
+				if (!isUnique(con, obj)) {
+					continue;
+				}
 				nr++;
 				w.writeStartElement("dcat:dataset");
-				writeResource(w, con, "dcat:Dataset", (IRI) res.next().getObject());
+				writeResource(w, con, "dcat:Dataset", obj);
 				w.writeEndElement();
 			}
 		}
@@ -605,9 +635,13 @@ public class EDP {
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_SERVICE, null)) {
 			while (res.hasNext()) {
+				IRI obj = (IRI) res.next().getObject();
+				if (!isUnique(con, obj)) {
+					continue;
+				}
 				nr++;
 				w.writeStartElement("dcat:service");
-				writeResource(w, con, "dcat:DataService", (IRI) res.next().getObject());
+				writeResource(w, con, "dcat:DataService", obj);
 				w.writeEndElement();
 			}
 		}
@@ -634,7 +668,7 @@ public class EDP {
 							.filter(IRI.class::isInstance)
 							.map(IRI.class::cast)
 							.filter(i -> i.toString().startsWith("http"))
-							.collect(Collectors.toSet());		
+							.collect(Collectors.toSet());
 		}
 
 		if (concepts == null || concepts.isEmpty()) {
