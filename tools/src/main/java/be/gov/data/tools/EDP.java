@@ -871,6 +871,24 @@ public class EDP {
 	}
 
 	/**
+	 * Check circular references (object same as subject)
+	 * @param con 
+	 */
+	private static void checkCircular(RepositoryConnection con) {
+		try(RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, null)) {
+			while(res.hasNext()) {
+				Resource subj = res.next().getSubject();
+				try(RepositoryResult<Statement> res2 = con.getStatements(subj, null, subj)) {
+					while(res2.hasNext()) {
+						Resource obj = res2.next().getPredicate();
+						LOG.warn("Circular reference {} {}", subj, obj);
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * Main program
 	 *
 	 * @param args
@@ -901,6 +919,9 @@ public class EDP {
 	
 			con.setParserConfig(cfg);
 			con.add(new File(args[0]), BASE_URI, fmtin.get());
+			
+			checkCircular(con);
+
 			XMLStreamWriter w = s.getXMLStreamWriter();
 
 			w.writeStartDocument();
