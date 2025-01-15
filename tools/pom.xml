@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>be.gov.data</groupId>
 		<artifactId>dcattools</artifactId>
-		<version>4.0.1</version>
+		<version>4.0.2</version>
 	</parent>
 	<name>tools</name>
-	<version>4.0.1</version>
+	<version>4.0.2</version>
 	<description>Misc tools for enhancing DCAT metadata</description>
 	<artifactId>tools</artifactId>
 	<packaging>jar</packaging>

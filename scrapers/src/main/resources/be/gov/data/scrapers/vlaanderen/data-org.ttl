@@ -44,7 +44,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0216173309>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000112> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000112>, <https://data.vlaanderen.be/doc/organisatie/OVO000112> ;
 	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
 	skos:altLabel "Vlaamse Waterweg NV"@nl  .
 
@@ -126,7 +126,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199323857>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076>, <https://data.vlaanderen.be/id/organisatie/OVO053580> ;
 	skos:prefLabel "Departement Werk en Sociale Economie"@nl ;
 	skos:altLabel "DWSE", "DWSE"@nl .
 

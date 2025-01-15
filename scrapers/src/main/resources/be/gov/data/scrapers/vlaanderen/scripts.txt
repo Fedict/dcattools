@@ -63,6 +63,7 @@ clear-skos.qry
 # Departement Omgeving
 vlaanderen/sparql-deptomgeving-org.qry
 vlaanderen/sparql-deptomgeving-name.qry
+vlaanderen/sparql-contact-publisher.qry
 vlaanderen/data-org.ttl
 vlaanderen/sparql-map-org-simple.qry
 vlaanderen/sparql-map-org-ovo.qry

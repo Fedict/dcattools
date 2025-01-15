@@ -4,7 +4,7 @@ Various DCAT tools for harvesting metadata from Belgian open data portals,
 converting metadata to DCAT-AP files and updating the Belgian 
 [data.gov.be](http://data.gov.be) portal.
 
-The portal itself is a Drupal 9 website, based on Fedict's 
+The portal itself is a Drupal 9 website, based on Fedict's / BOSA's
 [Openfed](https://drupal.org/project/openfed) distribution.
 
 ## Data
