@@ -193,7 +193,8 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://metadata.vlaanderen.be/srv/resources/organizations/agentschap%20Digitaal%20Vlaanderen> ;
+	skos:closeMatch <https://metadata.vlaanderen.be/srv/resources/organizations/agentschap%20Digitaal%20Vlaanderen>,
+		<https://data.vlaanderen.be/id/organisatie/OVO002949> ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen",
 		"agentschap Digitaal Vlaanderen"@en .
