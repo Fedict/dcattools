@@ -587,7 +587,7 @@ public class EDP {
 					LOG.warn("Empty dct:identifier for {}", iri);
 				} else {
 					if (!IDENTIFIERS.add(id)) {
-						LOG.error("ID {} already present, skipping ...", id);
+						LOG.error("{} ID {} already present, skipping ...", iri, id);
 						return false;
 					}
 				}
@@ -606,11 +606,13 @@ public class EDP {
 	private static void writeDatasets(XMLStreamWriter w, RepositoryConnection con)
 		throws XMLStreamException {
 		int nr = 0;
-	
+		int duplicates = 0;
+
 		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_DATASET, null)) {
 			while (res.hasNext()) {
 				IRI obj = (IRI) res.next().getObject();
 				if (!isUnique(con, obj)) {
+					duplicates++;
 					continue;
 				}
 				nr++;
@@ -619,7 +621,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		LOG.info("Wrote {} datasets", nr);
+		LOG.info("Wrote {} datasets, {} duplicates", nr, duplicates);
 	}
 
 	/**
@@ -632,11 +634,13 @@ public class EDP {
 	private static void writeDataservices(XMLStreamWriter w, RepositoryConnection con)
 		throws XMLStreamException {
 		int nr = 0;
+		int duplicates = 0;
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_SERVICE, null)) {
 			while (res.hasNext()) {
 				IRI obj = (IRI) res.next().getObject();
 				if (!isUnique(con, obj)) {
+					duplicates++;
 					continue;
 				}
 				nr++;
@@ -645,7 +649,7 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		LOG.info("Wrote {} services", nr);
+		LOG.info("Wrote {} services, {} duplicates", nr, duplicates);
 	}
 
 	/**
@@ -875,6 +879,8 @@ public class EDP {
 	 * @param con 
 	 */
 	private static void checkCircular(RepositoryConnection con) {
+		int circulars = 0;
+		
 		try(RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, null)) {
 			while(res.hasNext()) {
 				Resource subj = res.next().getSubject();
@@ -882,10 +888,12 @@ public class EDP {
 					while(res2.hasNext()) {
 						Resource obj = res2.next().getPredicate();
 						LOG.warn("Circular reference {} {}", subj, obj);
+						circulars++;
 					}
 				}
 			}
 		}
+		LOG.info("Detected {} circulars", circulars);
 	}
 
 	/**
