@@ -608,16 +608,16 @@ public class EDP {
 		int nr = 0;
 		int duplicates = 0;
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_DATASET, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATASET)) {
 			while (res.hasNext()) {
-				IRI obj = (IRI) res.next().getObject();
-				if (!isUnique(con, obj)) {
+				IRI subj = (IRI) res.next().getObject();
+				if (!isUnique(con, subj)) {
 					duplicates++;
 					continue;
 				}
 				nr++;
 				w.writeStartElement("dcat:dataset");
-				writeResource(w, con, "dcat:Dataset", obj);
+				writeResource(w, con, "dcat:Dataset", subj);
 				w.writeEndElement();
 			}
 		}
@@ -636,16 +636,16 @@ public class EDP {
 		int nr = 0;
 		int duplicates = 0;
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, DCAT.HAS_SERVICE, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
 			while (res.hasNext()) {
-				IRI obj = (IRI) res.next().getObject();
-				if (!isUnique(con, obj)) {
+				IRI subj = (IRI) res.next().getSubject();
+				if (!isUnique(con, subj)) {
 					duplicates++;
 					continue;
 				}
 				nr++;
 				w.writeStartElement("dcat:service");
-				writeResource(w, con, "dcat:DataService", obj);
+				writeResource(w, con, "dcat:DataService", subj);
 				w.writeEndElement();
 			}
 		}
