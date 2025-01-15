@@ -526,7 +526,7 @@ public class EDP {
 		w.writeStartElement(cl);
 		w.writeAttribute("rdf:about", uri.toString());
 
-		writeGeneric(w, con, uri);;
+		writeGeneric(w, con, uri);
 
 		writeLiterals(w, con, uri, OWL.VERSIONINFO, "owl:versionInfo");
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
@@ -610,7 +610,7 @@ public class EDP {
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATASET)) {
 			while (res.hasNext()) {
-				IRI subj = (IRI) res.next().getObject();
+				IRI subj = (IRI) res.next().getSubject();
 				if (!isUnique(con, subj)) {
 					duplicates++;
 					continue;
