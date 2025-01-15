@@ -34,6 +34,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.concurrent.Callable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -46,6 +48,8 @@ import picocli.CommandLine.PropertiesDefaultProvider;
  */
 @Command(name = "uploader", mixinStandardHelpOptions = true, description = "Uploads DCAT data to Drupal 10.")
 public class Main implements Callable<Integer> {
+	private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+		
 	@Option(names = {"-u", "--user"}, description = "User name", required = true)
     private String user;
 
@@ -82,6 +86,9 @@ public class Main implements Callable<Integer> {
 			Comparer comparer = new Comparer(client, reader);
 			comparer.sync(new String[]{"en", "nl", "fr", "de"}, threshold);
 			return 0;
+		} catch (IOException e) {
+			LOG.error(e.getMessage());
+			return -1;
 		} finally {
 			client.logout();
 		}

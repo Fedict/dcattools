@@ -494,7 +494,7 @@ public class Comparer {
 	 * @throws IOException
 	 * @throws InterruptedException 
 	 */
-	public void sync(String[] langs, int threshold) throws IOException, InterruptedException {
+	public void sync(String[] langs, int threshold) throws IOException,InterruptedException {
 		Map<String, DataResource> resources = prepare(langs);
 
 		// Mapping of dataset / dataservice IDs to Drupal nodeIDs
