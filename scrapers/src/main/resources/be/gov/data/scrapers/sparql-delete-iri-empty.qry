@@ -1,0 +1,11 @@
+# Remove empty IRI (or rather, IRIs which are just the base URL)
+
+DELETE 
+	{	?s ?p <http://data.gov.be/> .
+		<http://data.gov.be/> ?a ?b }
+WHERE
+	{	?s ?p <http://data.gov.be/> .
+		OPTIONAL { 
+			<http://data.gov.be/> ?a ?b 
+		}
+	}
