@@ -1,0 +1,13 @@
+# Remove placeholder addresses that are basically unknown
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE { 
+	?s vcard:street-address "Adres onbekend" .
+	?s ?p ?o
+}
+WHERE { 
+	?s vcard:street-address "Adres onbekend" .
+	?s ?p ?o
+}
+

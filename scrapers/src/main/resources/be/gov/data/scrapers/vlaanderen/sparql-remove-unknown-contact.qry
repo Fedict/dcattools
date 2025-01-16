@@ -1,0 +1,15 @@
+# Remove placeholder contactpoints that are basically unknown
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE { 
+	?s dcat:contactPoint ?contact .
+	?contact ?p ?o 
+}
+WHERE { 
+	?s dcat:contactPoint ?contact .
+	?contact vcard:fn "Onbekend"@nl .
+	?contact ?p ?o 
+}
+
