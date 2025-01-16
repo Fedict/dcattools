@@ -40,7 +40,7 @@
         <dependency>
             <groupId>be.gov.data</groupId>
             <artifactId>dcatlib</artifactId>
-            <version>4.0.1</version>
+            <version>4.0.2</version>
         </dependency>
     </dependencies>
     <build>
