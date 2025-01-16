@@ -1,0 +1,13 @@
+# Remove placeholder locations that are basically unknown
+
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+DELETE { 
+	?s locn:fullAddress "Adres onbekend, België" .
+	?s ?p ?o
+}
+WHERE { 
+	?s locn:fullAddress "Adres onbekend, België" .
+	?s ?p ?o
+}
+

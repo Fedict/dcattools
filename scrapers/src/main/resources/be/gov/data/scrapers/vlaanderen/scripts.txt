@@ -7,6 +7,7 @@ vlaanderen/sparql-remove-rights-unlimited.qry
 vlaanderen/sparql-remove-empty-license.qry
 vlaanderen/sparql-remove-unknown-contact.qry
 vlaanderen/sparql-remove-unknown-address.qry
+vlaanderen/sparql-remove-unknown-location.qry
 vlaanderen/sparql-fix-geotype.qry
 vlaanderen/sparql-access-public.qry
 vlaanderen/sparql-filter-open.qry
