@@ -1,0 +1,18 @@
+# Remove 'circular' references
+
+PREFIX dcat:    <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?iri ?rel ?iri
+}
+INSERT {
+	?iri ?rel ?newiri
+}
+WHERE {
+	?iri ?rel ?iri 
+	BIND (IRI
+			(CONCAT(STR(?iri), "#")) 
+		as ?newiri)
+    VALUES ?rel { dcat:landingPage dcat:accessURL dcat:downloadURL }
+	FILTER (! CONTAINS(STR(?iri), '#'))
+}

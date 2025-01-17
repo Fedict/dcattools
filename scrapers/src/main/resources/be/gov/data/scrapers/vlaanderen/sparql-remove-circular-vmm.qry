@@ -1,0 +1,14 @@
+# Change URL to avoid circular references
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE { 
+		?s vcard:hasURL ?page
+	}
+INSERT	{ 
+		?s vcard:hasURL <https://vmm.vlaanderen.be> 
+	}
+WHERE	{ 
+		?s vcard:hasURL ?page
+		VALUES ?page { <https://vmm.vlaanderen.be/> <https://www.vmm.vlaanderen.be> }
+	}
