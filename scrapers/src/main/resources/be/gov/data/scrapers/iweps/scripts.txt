@@ -3,6 +3,7 @@ iweps/sparql-clear-catalog.qry
 sparql-dist-lang.qry
 iweps/sparql-downloadurl.qry
 iweps/sparql-landing-accessurl.qry
+sparql-remove-circular.qry
 data-license.ttl
 sparql-access-public.qry
 sparql-map-license.qry

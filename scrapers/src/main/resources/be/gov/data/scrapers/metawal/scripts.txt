@@ -20,6 +20,7 @@ sparql-map-frequency.qry
 sparql-geo-wallonie.qry
 sparql-available.qry
 sparql-map-access-inspire.qry
+sparql-remove-circular.qry
 sparql-strip-html.qry
 clear-skos.qry
 data-shacl-support.ttl
