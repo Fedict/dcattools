@@ -1,0 +1,10 @@
+# Remove invalid IRI
+
+DELETE { 
+	?s ?p ?iri
+}
+WHERE { 
+	?s ?p ?iri .
+	VALUES ?iri { <https://onbekend> <mailto:onbekend@onbekend.be> }
+}
+
