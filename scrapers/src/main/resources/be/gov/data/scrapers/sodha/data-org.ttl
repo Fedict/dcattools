@@ -18,11 +18,18 @@
 					"Catholic University of Leuven"@en ;
 	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven", "Associatie KU Leuven" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0208359859>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Hasselt"@nl, "Université de Hasselt"@fr, 
+					"Hasselt University"@en ;
+	skos:altLabel "Hasselt University" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:altLabel "Ghent University", "UGent", "IDLab - Ghent Unviersity" .
+	skos:altLabel "Ghent University", "UGent", "IDLab - Ghent Unviersity", "Universiteit Gent" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0419052272>
 	a foaf:Organization ;
@@ -56,7 +63,13 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
-	skos:altLabel "Vrije Universiteit Brussel" .
+	skos:altLabel "Vrije Universiteit Brussel", "imec-SMIT (Vrije Universiteit Brussel)" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Université libre de Bruxelles"@nl, "Université libre de Bruxelles"@fr, "Université libre de Bruxelles"@en ;
+	skos:altLabel "Université libre de Bruxelles (ULB)" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0259396509>
 	a foaf:Organization ;
