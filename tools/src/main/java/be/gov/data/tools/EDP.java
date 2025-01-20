@@ -871,6 +871,7 @@ public class EDP {
 		s.setOutputProperty(Property.METHOD, "xml");
 		s.setOutputProperty(Property.ENCODING, "utf-8");
 		s.setOutputProperty(Property.INDENT, "yes");
+		s.setOutputProperty(Property.ESCAPE_URI_ATTRIBUTES, "yes");
 		return s;
 	}
 
