@@ -348,7 +348,7 @@ public class EDP {
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", iri.stringValue());
 		} else {
-			LOG.error("Element {}: not a reference IRI {}", el, uri.stringValue());
+			LOG.error("Element {}: not a reference IRI {}, skipping", el, uri.stringValue());
 		}
 	}
 
@@ -915,34 +915,36 @@ public class EDP {
 	}
 
 	/**
-	 * Check if syntax of URLs / mailto IRI are valid
+	 * Check if syntax of URLs / mailto IRI are valid, remove the statement if this isn't the case
 	 * 
 	 * @param con 
 	 * @throws URISyntaxException
 	 */
-	private static void parseAllIRIs(RepositoryConnection con) throws URISyntaxException {
+	private static void checkAllIRIs(RepositoryConnection con) {
 		int invalid = 0;
 		
 		try(RepositoryResult<Statement> res = con.getStatements(null, null, null)) {
 			while(res.hasNext()) {
 				Statement stmt = res.next();
 				Resource subjRes = stmt.getSubject();
+				boolean remove = false;
 				if (subjRes instanceof IRI iri && !isValidIRI(iri)) {
-					LOG.error("Invalid or relative subject IRI {} ", stmt);
-					invalid++;
+					LOG.error("Invalid or relative subject IRI {}, removing ", stmt);
+					remove = true;
 				}
 				
 				Value objRes = stmt.getObject();
 				if (objRes instanceof IRI iri && !isValidIRI(iri)) {
-					LOG.error("Invalid or relative object IRI {}", stmt);
-					invalid++;
+					LOG.error("Invalid or relative object IRI {}, removing", stmt);
+					remove = true;
 				}
-				
+				if (remove) {
+					invalid++;
+					con.remove(stmt);
+				}
 			}
 		}
-		if (invalid > 0) {
-			throw new URISyntaxException("", "Detected invalid IRIs");
-		}
+		LOG.info("Detected {} invalid IRIs", invalid);
 	}
 
 	/**
@@ -979,7 +981,7 @@ public class EDP {
 			
 			checkCircular(con);
 			
-			parseAllIRIs(con);
+			checkAllIRIs(con);
 
 			XMLStreamWriter w = s.getXMLStreamWriter();
 
@@ -988,7 +990,7 @@ public class EDP {
 			w.writeEndDocument();
 
 			w.close();
-		} catch (IOException | XMLStreamException | SaxonApiException | URISyntaxException ex) {
+		} catch (IOException | XMLStreamException | SaxonApiException ex) {
 			LOG.error("Error converting", ex);
 			System.exit(-1);
 		} finally {
