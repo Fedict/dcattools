@@ -909,7 +909,7 @@ public class EDP {
 		}
 		
 		if (str.startsWith("tel:")) {
-			return str.length() > 13;
+			return str.length() > 5;
 		}
 		return false;
 	}
@@ -928,13 +928,13 @@ public class EDP {
 				Statement stmt = res.next();
 				Resource subjRes = stmt.getSubject();
 				if (subjRes instanceof IRI iri && !isValidIRI(iri)) {
-					LOG.error("Invalid subject IRI {}", subjRes);
+					LOG.error("Invalid or relative subject IRI {} ", stmt);
 					invalid++;
 				}
 				
 				Value objRes = stmt.getObject();
 				if (objRes instanceof IRI iri && !isValidIRI(iri)) {
-					LOG.error("Invalid object IRI {}", objRes);
+					LOG.error("Invalid or relative object IRI {}", stmt);
 					invalid++;
 				}
 				
