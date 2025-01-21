@@ -28,6 +28,7 @@ package be.gov.data.tools;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashSet;
@@ -897,6 +898,53 @@ public class EDP {
 		LOG.info("Detected {} circulars", circulars);
 	}
 
+	private static boolean isValidIRI(IRI iri) {
+		String str = iri.stringValue();
+		if (str.startsWith("https://") || str.startsWith("http://") || str.startsWith("ftp://")) {
+			return str.contains(".") && !str.contains(" ") && str.length() > 10;
+		}
+		
+		if (str.startsWith("mailto:")) {
+			return str.contains("@") && str.contains(".") && !str.contains(" ") && str.length() > 13;
+		}
+		
+		if (str.startsWith("tel:")) {
+			return str.length() > 13;
+		}
+		return false;
+	}
+
+	/**
+	 * Check if syntax of URLs / mailto IRI are valid
+	 * 
+	 * @param con 
+	 * @throws URISyntaxException
+	 */
+	private static void parseAllIRIs(RepositoryConnection con) throws URISyntaxException {
+		int invalid = 0;
+		
+		try(RepositoryResult<Statement> res = con.getStatements(null, null, null)) {
+			while(res.hasNext()) {
+				Statement stmt = res.next();
+				Resource subjRes = stmt.getSubject();
+				if (subjRes instanceof IRI iri && !isValidIRI(iri)) {
+					LOG.error("Invalid subject IRI {}", subjRes);
+					invalid++;
+				}
+				
+				Value objRes = stmt.getObject();
+				if (objRes instanceof IRI iri && !isValidIRI(iri)) {
+					LOG.error("Invalid object IRI {}", objRes);
+					invalid++;
+				}
+				
+			}
+		}
+		if (invalid > 0) {
+			throw new URISyntaxException("", "Detected invalid IRIs");
+		}
+	}
+
 	/**
 	 * Main program
 	 *
@@ -930,6 +978,8 @@ public class EDP {
 			con.add(new File(args[0]), BASE_URI, fmtin.get());
 			
 			checkCircular(con);
+			
+			parseAllIRIs(con);
 
 			XMLStreamWriter w = s.getXMLStreamWriter();
 
@@ -938,7 +988,7 @@ public class EDP {
 			w.writeEndDocument();
 
 			w.close();
-		} catch (IOException | XMLStreamException | SaxonApiException ex) {
+		} catch (IOException | XMLStreamException | SaxonApiException | URISyntaxException ex) {
 			LOG.error("Error converting", ex);
 			System.exit(-1);
 		} finally {
