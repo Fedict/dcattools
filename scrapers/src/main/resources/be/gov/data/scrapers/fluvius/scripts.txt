@@ -20,6 +20,7 @@ sparql-geo-vlaanderen.qry
 sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry
+sparql-expand-dctype.qry
 clear-skos.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry

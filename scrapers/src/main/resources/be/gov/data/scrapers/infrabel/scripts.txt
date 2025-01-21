@@ -14,6 +14,7 @@ clear-skos.qry
 sparql-remove-roles.qry
 infrabel/data-theme.ttl
 infrabel/sparql-map-theme.qry
+sparql-expand-dctype.qry
 clear-skos.qry
 sparql-geo-belgium.qry
 data-media-compress.ttl

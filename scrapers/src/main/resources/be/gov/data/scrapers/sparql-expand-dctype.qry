@@ -1,0 +1,11 @@
+# Expand dctype namespace to full IRI
+
+PREFIX dctype: <http://purl.org/dc/dcmitype/>
+
+DELETE 
+	{	?s a <dctype:Dataset> }
+INSERT
+	{ 	?s a dctype:Dataset }
+WHERE
+	{	?s a <dctype:Dataset> }
+
