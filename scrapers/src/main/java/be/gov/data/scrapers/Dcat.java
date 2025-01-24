@@ -78,7 +78,7 @@ public abstract class Dcat extends BaseScraper {
 		if (data.startsWith("<?xml") || data.startsWith("<rdf")) {
 			return RDFFormat.RDFXML;
 		}
-		if (data.startsWith("@base") || data.startsWith("@prefix")) {
+		if (data.startsWith("PREFIX") || data.startsWith("@base") || data.startsWith("@prefix")) {
 			return RDFFormat.TURTLE;
 		}
 		Optional<RDFFormat> fmt = Rio.getParserFormatForFileName(name);
