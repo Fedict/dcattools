@@ -54,6 +54,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.GEO;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.model.vocabulary.XSD;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -102,9 +103,12 @@ public abstract class GeonetGmd extends Geonet {
 	public final static String XP_META_SERV = "gmd:identificationInfo/srv:SV_ServiceIdentification";
 	
 	public final static String XP_KEYWORDS = "gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword";
+	public final static String XP_KEYWORD_URI = "gmx:Anchor/@xlink:href";
+	
 	public final static String XP_TOPIC = "gmd:topicCategory/gmd:MD_TopicCategoryCode";
 	public final static String XP_THESAURUS = "../gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString";
-		
+	public final static String XP_THESAURUS2 = "../gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString";
+	
 	public final static String XP_LICENSE = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints";
 	public final static String XP_LICENSE2 = "gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation";
 	public final static String XP_LICENSE3 = "gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation";
@@ -195,12 +199,18 @@ public abstract class GeonetGmd extends Geonet {
 				if (lang.equals("en")) {
 					txten = txt;
 				}
-				store.add(uri, property, txt.strip(), lang);
+				String[] words = txt.split(",");
+				for (String word: words) {
+					store.add(uri, property, word.strip(), lang);
+				}
 			}
 		}
 		String txt = node.valueOf(XP_STR);
 		if (txt != null && !txt.equals(txten)) {
-			store.add(uri, property, txt.strip());
+				String[] words = txt.split(",");
+				for (String word: words) {
+					store.add(uri, property, word.strip());
+				}
 		}
 	}
 
@@ -390,6 +400,29 @@ public abstract class GeonetGmd extends Geonet {
 	}
 
 	/**
+	 * Parse keyword from thesaurus to DCAT theme or subject
+	 * 
+	 * @param store
+	 * @param dataset
+	 * @param thesaurus
+	 * @param keywords 
+	 */
+	protected void parseTheme(Storage store, IRI dataset, Node thesaurus, Node keyword) {
+		if (thesaurus.getText().equals("Theme")) {
+			// assume it is a DCAT theme
+			parseMulti(store, dataset, keyword, DCAT.THEME);
+			return;
+		}
+		Node subj = keyword.selectSingleNode(XP_KEYWORD_URI);
+		if (subj != null && !subj.getStringValue().isBlank()) {
+			IRI skos = makeIRI(subj.getStringValue());
+			store.add(dataset, DCTERMS.SUBJECT, skos);
+			store.add(skos, RDF.TYPE, SKOS.CONCEPT);
+			parseMulti(store, skos, subj, SKOS.PREF_LABEL);
+		}
+	}
+
+	/**
 	 * Generate distribution
 	 *
 	 * @param store
@@ -491,17 +524,19 @@ public abstract class GeonetGmd extends Geonet {
 
 		List<Node> langs = metadata.selectNodes(XP_LANG);
 		parseLanguage(store, dataset, langs);
-		
+
 		List<Node> keywords = metadata.selectNodes(XP_KEYWORDS);
 		
 		for (Node keyword : keywords) {
 			Node thesaurus = keyword.selectSingleNode(XP_THESAURUS);
-			if (thesaurus == null || !thesaurus.getText().equals("Theme")) {
+			if (thesaurus == null) {
+				thesaurus = keyword.selectSingleNode(XP_THESAURUS2);
+			}
+			if (thesaurus == null) {
 				// full text keyword
-				parseMulti(store, dataset, keyword, DCAT.KEYWORD);					
+				parseMulti(store, dataset, keyword, DCAT.KEYWORD);
 			} else {
-				// actually a theme
-				parseMulti(store, dataset, keyword, DCAT.THEME);	
+				parseTheme(store, dataset, thesaurus, keyword);
 			}
 		}
 		

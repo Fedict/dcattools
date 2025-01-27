@@ -267,11 +267,21 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	/**
 	 * Make IRI 
 	 * 
+	 * @param id
+	 * @return 
+	 */
+	protected IRI makeIRI(String id) {
+		return Values.iri(id);
+	}
+	
+	/**
+	 * Make IRI 
+	 * 
 	 * @param prefix
 	 * @param id
 	 * @return 
 	 */
-	private IRI makeIRI(String prefix, String id) {
+	protected IRI makeIRI(String prefix, String id) {
 		return Values.iri(prefix + "/" + getName() + "/" + id.replace(".", "-").replace(":", "-"));
 	}
 
