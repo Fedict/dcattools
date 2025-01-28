@@ -41,6 +41,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -268,9 +269,10 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * Make IRI 
 	 * 
 	 * @param id
-	 * @return 
+	 * @return IRI
+	 * @throws IllegalArgumentException
 	 */
-	protected IRI makeIRI(String id) {
+	protected IRI makeIRI(String id) throws IllegalArgumentException {
 		return Values.iri(id);
 	}
 	

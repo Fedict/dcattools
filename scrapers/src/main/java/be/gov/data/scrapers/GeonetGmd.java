@@ -31,6 +31,7 @@ import be.gov.data.dcat.vocab.MDR_LANG;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -415,10 +416,14 @@ public abstract class GeonetGmd extends Geonet {
 		}
 		Node subj = keyword.selectSingleNode(XP_KEYWORD_URI);
 		if (subj != null && !subj.getStringValue().isBlank()) {
-			IRI skos = makeIRI(subj.getStringValue());
-			store.add(dataset, DCTERMS.SUBJECT, skos);
-			store.add(skos, RDF.TYPE, SKOS.CONCEPT);
-			parseMulti(store, skos, subj, SKOS.PREF_LABEL);
+			try {
+				IRI skos = makeIRI(subj.getStringValue());
+				store.add(dataset, DCTERMS.SUBJECT, skos);
+				store.add(skos, RDF.TYPE, SKOS.CONCEPT);
+				parseMulti(store, skos, subj, SKOS.PREF_LABEL);
+			} catch (IllegalArgumentException ioe){
+				LOG.warn("Invalid URI {}", subj.getStringValue());
+			}
 		}
 	}
 
