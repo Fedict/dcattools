@@ -1,0 +1,36 @@
+# Add HvD info to specific FOD FIN datasets / services
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
+
+INSERT
+	{	?dataset dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> .
+		?dataset dcatap:hvdCategory ?cat .
+		?dist dcatap:applicableLegislation <http://data.europa.eu/eli/reg_impl/2023/138/oj> .
+		}
+WHERE
+	{ 
+		?dataset a ?cl .
+		?dataset dcat:keyword ?keyword .
+		OPTIONAL { ?dataset dcat:distribution ?dist }
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		VALUES (?label ?cat) {
+			("HVD_cat_addresses" <http://data.europa.eu/bna/c_c3de25e4> )
+			("HVD_cat_administrative units" <http://data.europa.eu/bna/c_9427236f> )
+			("HVD_cat_area_management" <http://data.europa.eu/bna/c_af646f5b> )
+			("HVD_cat_restrictions" <http://data.europa.eu/bna/c_af646f5b> )
+			("HVD_cat_regulation_zones" <http://data.europa.eu/bna/c_af646f5b> )
+			("HVD_cat_reporting_units" <http://data.europa.eu/bna/c_af646f5b> )
+			("HVD_cat_buidings" <http://data.europa.eu/bna/c_60182062> )
+			("HVD_cat_buildings" <http://data.europa.eu/bna/c_60182062> )
+			("HVD_cat_elevation" <http://data.europa.eu/bna/c_315692ad> )
+			("HVD_cat_energy_resources" <http://data.europa.eu/bna/c_b7de66cd>)
+			("HVD_cat_hydrography" <http://data.europa.eu/bna/c_06b1eec4> )
+			("HVD_cat_land cover" <http://data.europa.eu/bna/c_b21e1296> )
+			("HVD_cat_land use" <http://data.europa.eu/bna/c_ad9ae929> )
+			("HVD_cat_orthoimagery" <http://data.europa.eu/bna/c_91185a85> )
+			("HVD_cat_transport networks" <http://data.europa.eu/bna/c_4b74ea13> )
+		}
+		FILTER (LANG(?keyword) = 'en' && CONTAINS(?keyword, ?label))
+	}
