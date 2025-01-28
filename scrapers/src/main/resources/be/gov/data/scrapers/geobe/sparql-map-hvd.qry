@@ -1,4 +1,4 @@
-# Add HvD info to specific FOD FIN datasets / services
+# Add HvD info to datasets with hvd_cat keyword
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
