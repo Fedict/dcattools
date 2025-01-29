@@ -45,8 +45,10 @@ import java.nio.file.Path;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -329,7 +331,8 @@ public class DrupalClient {
 	 */
 	public List<DrupalDataset> getDatasets(String lang) throws IOException, InterruptedException {
 		List<DrupalDataset> lst = new ArrayList<>();
-	
+		Set<Integer> ids = new HashSet<>();
+
 		// paginated result set
 		for(int page = 0; ; page++) {
 			HttpRequest request = getHttpBuilder()
@@ -350,7 +353,12 @@ public class DrupalClient {
 				break;
 			}
 			for (Object obj: datasets) {
-				lst.add(DrupalDataset.fromMap(((JSONObject) obj).toMap()));
+				DrupalDataset ds = DrupalDataset.fromMap(((JSONObject) obj).toMap());
+				if (ids.add(ds.nid())) {
+					lst.add(ds);
+				} else {
+					LOG.error("Dataset {} already in the list", ds.nid());
+				}
 			}
 			if (lst.size() % 100 == 0) {
 				LOG.info("Retrieved {} datasets from site", lst.size());
