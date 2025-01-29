@@ -28,7 +28,9 @@ WHERE
 			("HVD_cat_energy_resources" <http://data.europa.eu/bna/c_b7de66cd>)
 			("HVD_cat_hydrography" <http://data.europa.eu/bna/c_06b1eec4> )
 			("HVD_cat_land cover" <http://data.europa.eu/bna/c_b21e1296> )
+			("HVD_cat_land_cover" <http://data.europa.eu/bna/c_b21e1296> )
 			("HVD_cat_land use" <http://data.europa.eu/bna/c_ad9ae929> )
+			("HVD_cat_land_use" <http://data.europa.eu/bna/c_ad9ae929> )
 			("HVD_cat_orthoimagery" <http://data.europa.eu/bna/c_91185a85> )
 			("HVD_cat_transport networks" <http://data.europa.eu/bna/c_4b74ea13> )
 		}
