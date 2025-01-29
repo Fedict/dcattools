@@ -347,6 +347,22 @@ public class Comparer {
 	}
 
 	/**
+	 * Delete datasets from the website
+	 * 
+	 * @param nodeIDs 
+	 */
+	private void delete(Set<Integer> nodeIDs) {
+		for (Integer nid: nodeIDs) {
+			try {
+				client.deleteDataset(nid);
+				LOG.info("Deleted {}", nid);
+			} catch (IOException|InterruptedException ex) {
+				LOG.error("Failed to delete {} : {}", nid, ex.getMessage());
+			}
+		}
+	}
+
+	/**
 	 * Remove incomplete (i.e. datasets with a title not available in all languages)
 	 * 
 	 * @param datasets
@@ -482,7 +498,25 @@ public class Comparer {
 
 		return resources;
 	}
-	
+
+	private Map<ByteBuffer, DrupalDataset> getUniqueDatasets(List<DrupalDataset> ds) {
+		Set<Integer> duplicates = new HashSet<>();
+		Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
+								.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), 
+											d -> d,
+											(d1, d2) -> {
+												LOG.error("Node {} duplicate", d1.nid());
+												duplicates.add(d1.nid());
+												return d1;
+											} ));
+		if (! duplicates.isEmpty()) {
+			LOG.error("{} duplicates on site", duplicates.size());
+			delete(duplicates);
+			return null;
+		}
+		return onSiteByHash;
+	}
+
 	/**
 	 * Insert/update datasets on Drupal website (and delete datasets no longer present).
 	 *
@@ -518,17 +552,9 @@ public class Comparer {
 			}
 			Set<DrupalDataset> duplicates = new HashSet<>();
 
-			Map<ByteBuffer, DrupalDataset> onSiteByHash = ds.stream()
-					.collect(Collectors.toMap(d -> ByteBuffer.wrap(hasher.hash(d)), 
-											d -> d,
-											(d1, d2) -> {
-												LOG.error("Node {} duplicate of node {}", d1.nid(), d2.nid());
-												duplicates.add(d1);
-												duplicates.add(d2);
-												return d1;
-											} ));
-			if (! duplicates.isEmpty()) {
-				LOG.error("{} duplicates on site", duplicates.size());
+			Map<ByteBuffer, DrupalDataset> onSiteByHash = null;			
+			for (int i = 0; i < 10 && onSiteByHash == null; i++) {
+				onSiteByHash = getUniqueDatasets(ds);
 			}
 			
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
