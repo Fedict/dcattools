@@ -356,14 +356,15 @@ public class DrupalClient {
 				DrupalDataset ds = DrupalDataset.fromMap(((JSONObject) obj).toMap());
 				if (ids.add(ds.nid())) {
 					lst.add(ds);
+					if (lst.size() % 100 == 0) {
+						LOG.info("Retrieved {} datasets from site", lst.size());
+					}
 				} else {
 					LOG.error("Dataset {} already in the list", ds.nid());
 				}
 			}
-			if (lst.size() % 100 == 0) {
-				LOG.info("Retrieved {} datasets from site", lst.size());
-			}
 		}
+		LOG.info("Retrieved {} datasets from site", lst.size());
 		return lst;
 	}
 
