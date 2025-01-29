@@ -6,7 +6,6 @@
 
 # Directories
 BIN=$HOME
-SHACL=$HOME/shacl
 DATA=/mnt/datagovbe
 
 # record the step in the process being executed
