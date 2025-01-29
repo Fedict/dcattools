@@ -35,6 +35,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -545,18 +546,18 @@ public class Comparer {
 				throw new IOException("Zero datasets / services read, skipping");
 			}
 
-			List<DrupalDataset> ds = client.getDatasets(lang);
-			LOG.info("Retrieved {} {} datasets/services from site", ds.size(), lang);
-			if (onFileByHash.size() < (ds.size() * threshold / 100)) {
-				throw new IOException("Number below threshold");
-			}
-			Set<DrupalDataset> duplicates = new HashSet<>();
+			List<DrupalDataset> ds = new ArrayList<>();
+			Map<ByteBuffer, DrupalDataset> onSiteByHash = null;
 
-			Map<ByteBuffer, DrupalDataset> onSiteByHash = null;			
 			for (int i = 0; i < 10 && onSiteByHash == null; i++) {
+				ds = client.getDatasets(lang);
+				LOG.info("Retrieved {} {} datasets/services from site", ds.size(), lang);
+				if (onFileByHash.size() < (ds.size() * threshold / 100)) {
+					throw new IOException("Number below threshold");
+				}
 				onSiteByHash = getUniqueDatasets(ds);
 			}
-			
+
 			Map<String,DrupalDataset> onFileById = onFileByHash.entrySet().stream()
 				.collect(Collectors.toMap(e -> e.getValue().id(), e -> e.getValue()));
 			
