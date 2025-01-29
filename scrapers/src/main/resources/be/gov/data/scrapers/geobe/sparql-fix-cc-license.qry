@@ -1,0 +1,15 @@
+# Remove rights statement that is actually a CC licensen
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:rights ?rights .
+		?rights dcterms:title "https://creativecommons.org/licenses/by/4.0/"@en .
+		?rights ?p ?o }
+INSERT 
+	{	?s dcterms:license <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> }
+WHERE 
+	{	?s dcterms:rights ?rights .
+		?rights dcterms:title "https://creativecommons.org/licenses/by/4.0/"@en .
+		?rights ?p ?o .
+	}

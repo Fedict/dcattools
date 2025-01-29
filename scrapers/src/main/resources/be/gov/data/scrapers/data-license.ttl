@@ -33,6 +33,8 @@
 		<https://creativecommons.org/licenses/by/4.0/>, 
 		"https://creativecommons.org/licenses/by/4.0/", 
 		"https://creativecommons.org/licenses/by/4.0/deed.fr",
+		"https://creativecommons.org/licenses/by/4.0/deed.nl",
+		"https://creativecommons.org/licenses/by/4.0/deed.de",
 		"http://creativecommons.org/licenses/by/4.0/legalcode",
 		"https://creativecommons.org/licenses/by/4.0/legalcode",
 		<http://creativecommons.org/licenses/by/4.0/legalcode>,

@@ -20,6 +20,7 @@ geobe/sparql-license-rights.qry
 geobe/sparql-license-links.qry
 data-license.ttl
 sparql-map-license.qry
+geobe/sparql-fix-cc-license.qry
 clear-skos.qry
 sparql-delete-label-language.qry
 geobe/sparql-org-rbins.qry
@@ -38,7 +39,6 @@ sparql-geo-belgium.qry
 geobe/sparql-delete-fodfin.qry
 geobe/sparql-map-hvd.qry
 geobe/sparql-map-hvd-service.qry
-
 clear-skos.qry
 sparql-delete-label-empty.qry
 data-shacl-support.ttl
