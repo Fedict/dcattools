@@ -138,7 +138,7 @@ public abstract class DataResource {
 	}
 	
 	/**
-	 * @param id the ADMS ids to set
+	 * @param ids the ADMS ids to set
 	 */
 	public void setIds(Set<String> ids) {
 		this.ids = ids;
@@ -166,6 +166,7 @@ public abstract class DataResource {
 	}
 
 	/**
+	 * @param lang language code
 	 * @return the title
 	 */
 	public String getTitle(String lang) {
@@ -187,6 +188,7 @@ public abstract class DataResource {
 	}
 
 	/**
+	 * @param lang language code
 	 * @return the description
 	 */
 	public String getDescription(String lang) {

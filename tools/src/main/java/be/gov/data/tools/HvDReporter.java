@@ -30,6 +30,8 @@ import be.gov.data.dcatlib.model.Catalog;
 import be.gov.data.dcatlib.model.DataResource;
 import be.gov.data.dcatlib.model.Dataservice;
 import be.gov.data.dcatlib.model.Dataset;
+import be.gov.data.dcatlib.model.Organization;
+import be.gov.data.dcatlib.model.SkosTerm;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.CSVWriterBuilder;
@@ -39,6 +41,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.eclipse.rdf4j.model.IRI;
 
@@ -56,11 +59,12 @@ public class HvDReporter {
 	private final static String[] HEADER =
 		new String[]{ "Type","URI","Identifier","Category","CategoryName",
 			"TitleNL", "TitleFR", "TitleEN",
-			"PublisherID","PublisherName",
+			"PublisherID","PublisherNameNL", "PublisherNameFR",
 			"Download/Endpoint",
 			"Contact"};
 
-	private static <T extends DataResource> void writeLines(String type, Collection<T> resources, ICSVWriter writer) {
+	private static <T extends DataResource> void writeLines(String type, Collection<T> resources, 
+					Map<String,SkosTerm> terms, Map<String,Organization> orgs, ICSVWriter writer) {
 		int count = 0;
 
 		for(DataResource d: resources) {
@@ -68,10 +72,15 @@ public class HvDReporter {
 				count++;
 			}
 			writer.writeNext(
-				new String[]{type, "", d.getId(), 
+				new String[]{type, "", d.getId(),
 					d.getHvDCategories().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
+					d.getHvDCategories().stream().map(IRI::stringValue)
+						.map(t -> terms.get(t).getLabel("en"))
+						.collect(Collectors.joining("\n")),
 					d.getTitle("nl"), d.getTitle("fr"), d.getTitle("en"),
-					d.getPublisher().stringValue(), "",
+					d.getPublisher().stringValue(), 
+					orgs.get(d.getPublisher().stringValue()).getName("nl"),
+					orgs.get(d.getPublisher().stringValue()).getName("fr"),
 					d.getDownloadURLs("").stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getContactAddr("").stringValue()
 			});		
@@ -84,9 +93,9 @@ public class HvDReporter {
 			
 		try (writer) {	
 			writer.writeNext(HEADER);
-			writeLines("Dataset", cat.getDatasets().values(), writer);
+			writeLines("Dataset", cat.getDatasets().values(), cat.getTerms(), cat.getOrganizations(), writer);
 			writer.flush();
-			writeLines("Dataservice", cat.getDataservices().values(), writer);
+			writeLines("Dataservice", cat.getDataservices().values(), cat.getTerms(), cat.getOrganizations(), writer);
 			writer.flush();
 		}
 	}

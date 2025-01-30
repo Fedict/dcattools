@@ -35,8 +35,10 @@ import org.eclipse.rdf4j.model.IRI;
  * @author Bart Hanssens
  */
 public class Catalog {
-	private final Map<String,Dataset> datasets = new HashMap<>(10_000);
+	private final Map<String,Dataset> datasets = new HashMap<>(12_000);
 	private final Map<String,Dataservice> dataservices = new HashMap<>(500);
+	private final Map<String,SkosTerm> terms = new HashMap<>(250);
+	private final Map<String,Organization> orgs = new HashMap<>(250);
 	
 	/**
 	 * Add dataset with specific ID
@@ -120,4 +122,69 @@ public class Catalog {
 		return dataservices;
 	}
 
+	/**
+	 * Add term with specific ID
+	 * 
+	 * @param id
+	 * @param term 
+	 * @throws IOException when ID is already present (= duplicate)
+	 */
+	public void addTerm(String id, SkosTerm term) throws IOException {
+		if (terms.containsKey(id)) {
+			throw new IOException("Key " + id + " already present");
+		}
+		terms.put(id, term);
+	}
+
+	/**
+	 * Get the term with specific ID
+	 * 
+	 * @param id
+	 * @return dataset or null
+	 */
+	public SkosTerm getTerm(String id) {
+		return terms.get(id);
+	}
+
+	/**
+	 * Get the terms
+	 * 
+	 * @return 
+	 */
+	public Map<String,SkosTerm> getTerms() {
+		return terms;
+	}
+	
+	/**
+	 * Add organization with specific ID
+	 * 
+	 * @param id
+	 * @param org 
+	 * @throws IOException when ID is already present (= duplicate)
+	 */
+	public void addOrganization(String id, Organization org) throws IOException {
+		if (terms.containsKey(id)) {
+			throw new IOException("Key " + id + " already present");
+		}
+		orgs.put(id, org);
+	}
+
+	/**
+	 * Get the organization with specific ID
+	 * 
+	 * @param id
+	 * @return organization or null
+	 */
+	public Organization getOrganization(String id) {
+		return orgs.get(id);
+	}
+
+	/**
+	 * Get the organizations
+	 * 
+	 * @return 
+	 */
+	public Map<String,Organization> getOrganizations() {
+		return orgs;
+	}
 }

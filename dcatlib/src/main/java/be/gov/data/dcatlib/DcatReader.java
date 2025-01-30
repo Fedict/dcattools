@@ -31,6 +31,8 @@ import be.gov.data.dcatlib.model.DataResource;
 import be.gov.data.dcatlib.model.Dataservice;
 import be.gov.data.dcatlib.model.Dataset;
 import be.gov.data.dcatlib.model.Distribution;
+import be.gov.data.dcatlib.model.Organization;
+import be.gov.data.dcatlib.model.SkosTerm;
 import java.io.BufferedReader;
 
 import java.io.IOException;
@@ -591,6 +593,63 @@ public class DcatReader {
 			service.setDatasets(datasets);
 		}
 	}
+	
+	/**
+	 * Read SKOS terms
+	 * 
+	 * @param catalog
+	 * @throws IOException 
+	 */
+	private void readTerms(Catalog catalog) throws IOException {
+		LOG.info("Reading SKOS terms");
+	
+		int ok = 0;
+		int skip = 0;
+
+		for (Statement stmt: m.getStatements(null, RDF.TYPE, SKOS.CONCEPT)) {
+			IRI iri = (IRI) stmt.getSubject();
+			try {
+				SkosTerm term = new SkosTerm();
+				term.setLabel(getLangString(iri, SKOS.PREF_LABEL));
+				catalog.addTerm(iri.stringValue(), term);
+				ok++;
+			} catch (IOException ioe) {
+				LOG.error(ioe.getMessage());
+				skip++;
+			}			
+		}
+		LOG.info("Read {} terms, skipping {}", ok, skip);
+	}
+	
+	/**
+	 * Read SKOS terms
+	 * 
+	 * @param catalog
+	 * @throws IOException 
+	 */
+	private void readOrganizations(Catalog catalog) throws IOException {
+		LOG.info("Reading organizations");
+
+		int ok = 0;
+		int skip = 0;
+
+		for (Statement stmt: m.getStatements(null, RDF.TYPE, FOAF.ORGANIZATION)) {
+			IRI iri = (IRI) stmt.getSubject();
+			try {
+				Organization org = new Organization();
+				String id = iri.stringValue();
+				if (id.contains("org.belgif.be")) {
+					org.setName(getLangString(iri, FOAF.NAME));
+					catalog.addOrganization(id, org);
+					ok++;
+				}
+			} catch (IOException ioe) {
+				LOG.error(ioe.getMessage());
+				skip++;
+			}			
+		}
+		LOG.info("Read {} organizations, skipping {}", ok, skip);
+	}
 
 	/**
 	 * Read from input
@@ -612,6 +671,8 @@ public class DcatReader {
 		readDatasets(catalog);
 		readDataservices(catalog);
 		readServes(catalog);
+		readTerms(catalog);
+		readOrganizations(catalog);
 
 		return catalog;
     }
