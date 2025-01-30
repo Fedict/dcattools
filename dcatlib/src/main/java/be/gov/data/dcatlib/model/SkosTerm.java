@@ -47,7 +47,7 @@ public class SkosTerm {
 	 * @return the description in a language
 	 */
 	public String getLabel(String lang) {
-		return label.get(lang);
+		return label.getOrDefault(lang, "");
 	}
 
 	/**
