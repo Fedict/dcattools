@@ -114,6 +114,22 @@ convert() {
 	return $res
 }
 
+# Convert to XML
+# Parameter: project code
+hvdreport() {
+	step $1 "hvdreport"
+
+	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
+    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/hvdreport.log \
+      		-cp $BIN/tools.jar be.gov.data.tools.HvDReporter \
+		$DATA/$1/$1.nt \
+		$DATA/$1/$1-hvdreport.csv
+
+	res=$?
+ 	status $1 "hvdreport" $2 $res
+	return $res
+}
+
 # Translate the metadata using the eTranslation service
 # Parameter: project code
 translate() {
@@ -169,6 +185,7 @@ for source in ${sources[@]}; do
 	scrape $source
 	validate $source
  	convert $source
+	hvdreport $source
 	translate $source
  	update $source
 done
