@@ -47,7 +47,7 @@ public class Organization {
 	 * @return the name in a language
 	 */
 	public String getName(String lang) {
-		return name.getOrDefault(lang,"");
+		return (name != null) ? name.get(lang) : "";
 	}
 
 	/**
