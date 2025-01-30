@@ -33,7 +33,8 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0887290276>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000092> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000092>,
+		<https://www.gbif.org/publisher/ec5f9a9c-09b0-4da3-ae8e-22627620fff6#Organization> ;
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
 	skos:altLabel "Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer"@nl, 
 		"Vlaamse Milieumaatschappij", 
@@ -107,6 +108,12 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
 	skos:altLabel "Departement Landbouw en Visserij", "Departement Landbouw en Visserij"@nl .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://www.gbif.org/publisher/ac07bb5e-8a5c-493f-b183-9d7ad8d54cff#Organization> ;
+	skos:prefLabel "Instituut voor Landbouw-, Visserij- en Voedingsonderzoek"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
 	a foaf:Organization ;
@@ -410,6 +417,14 @@
 	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
 	skos:altLabel "Stad Brugge"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
+	a foaf:Organization ;
+	skos:closeMatch <https://www.gbif.org/publisher/d3769dd1-1fc5-42b7-86d6-f3393067666e#Organization> ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/2789733/> ;
+	skos:prefLabel "RATO"@nl ;
+	skos:altLabel "rato-vzw"@en .
+
 <https://opencorporates.com/id/companies/nl/27264794>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
@@ -437,10 +452,17 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357852>
 	a foaf:Organization ;
-	dcterms:type adms:NationalAuthority ;
+	dcterms:type admsp:NationalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO005451> ;
 	skos:prefLabel "FPS Mobility and Transport"@en, "FOD Mobiliteit en Vervoer"@nl, 
 				"SPF Mobilité et Transports"@fr, "FÖD Mobilität und Transportwesen"@de .
+
+ <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO011488> ;
+	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
+	skos:altLabel "KBR" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
 	a foaf:Organization ;
