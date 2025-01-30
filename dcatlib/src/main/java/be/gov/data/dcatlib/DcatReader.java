@@ -89,6 +89,7 @@ public class DcatReader {
 	private final static SimpleDateFormat YEAR_FMT = new SimpleDateFormat("yyyy");
 	
 	private final static IRI DCATAP_LEGISLATION = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
+	private final static IRI DCATAP_CATEGORIES = Values.iri("http://data.europa.eu/r5r/hvdCategory");
 	
 	private final static Map<IRI,String> LANG_MAP = 
 		Map.of(Values.iri("http://publications.europa.eu/resource/authority/language/NLD"), "nl",
@@ -452,8 +453,10 @@ public class DcatReader {
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
 
+		d.setSubjects(getIRIs(iri, DCTERMS.SUBJECT));
 		d.setThemes(getIRIs(iri, DCAT.THEME));
-		
+		d.setHvDCategories(getIRIs(iri, DCATAP_CATEGORIES));
+
 		d.setPublisher(getIRI(iri, DCTERMS.PUBLISHER));
 		
 		Set<Value> creators = getValues(iri, DCTERMS.CREATOR);

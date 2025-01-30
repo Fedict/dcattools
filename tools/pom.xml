@@ -56,6 +56,11 @@
 			<artifactId>Saxon-HE</artifactId>
 			<version>12.5</version>
 		</dependency>
+	 <dependency>
+	  <groupId>${project.groupId}</groupId>
+	  <artifactId>dcatlib</artifactId>
+	  <version>${project.version}</version>
+	 </dependency>
 	</dependencies>
 	<build>
 		<plugins>

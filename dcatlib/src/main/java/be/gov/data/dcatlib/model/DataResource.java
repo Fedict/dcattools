@@ -62,7 +62,9 @@ public abstract class DataResource {
 	private IRI spatial;
 	private IRI license;
 	private IRI right;
+	private Set<IRI> subjects;
 	private Set<IRI> themes;
+	private Set<IRI> hvdCategories;
 	private Set<IRI> legislation;
 	private IRI accrualPeriodicity;
 
@@ -417,6 +419,20 @@ public abstract class DataResource {
 	}
 
 	/**
+	 * @return the subjects
+	 */
+	public Set<IRI> getSubjects() {
+		return subjects;
+	}
+
+	/**
+	 * @param subjects the subjects to set
+	 */
+	public void setSubjects(Set<IRI> subjects) {
+		this.subjects = subjects;
+	}
+
+	/**
 	 * @return the themes
 	 */
 	public Set<IRI> getThemes() {
@@ -428,6 +444,20 @@ public abstract class DataResource {
 	 */
 	public void setThemes(Set<IRI> themes) {
 		this.themes = themes;
+	}
+
+	/**
+	 * @return the HvD categories
+	 */
+	public Set<IRI> getHvDCategories() {
+		return hvdCategories;
+	}
+
+	/**
+	 * @param hvdCategories the HvD categories to set
+	 */
+	public void setHvDCategories(Set<IRI> hvdCategories) {
+		this.hvdCategories = hvdCategories;
 	}
 
 	/**
