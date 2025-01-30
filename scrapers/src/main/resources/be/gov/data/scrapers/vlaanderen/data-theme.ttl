@@ -91,6 +91,7 @@
 		<http://www.eionet.europa.eu/gemet/concept/3780> ,
 		<http://www.eionet.europa.eu/gemet/concept/7983> ,
 		<http://eurovoc.europa.eu/5463>, 
+		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Duurzaam+werkgeverschap>,
 		<https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
 	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, 
@@ -184,6 +185,7 @@
 		<http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare> ,
 		<https://data.stad.gent/id/theme/Wonen%20%26%20%28ver%29bouwen>,
 		<http://vocab.belgif.be/auth/datatheme/SOCI> ,
+		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Duurzaam+werkgeverschap>,
 		<http://inspire.ec.europa.eu/theme/bu>, <http://inspire.ec.europa.eu/theme/pd>,
 		<https://data.stad.gent/id/theme/Burgerzaken> ;
 	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;

@@ -139,9 +139,17 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207451227>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002067> ;
 	dcterms:spatial <https://sws.geonames.org/2797657/> ;
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207521503>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002149> ;
+	dcterms:spatial <https://sws.geonames.org/2792483/> ;
+	skos:prefLabel "Leuven"@nl, "Louvain"@fr, "Leuven"@en.
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207466964>
 	a foaf:Organization ;
@@ -355,11 +363,11 @@
 		"Agentschap voor Natuur en Bos"@en, "Agentschap voor Natuur en Bos"@nl,
 		"Agentschap voor Natuur en Bos via MercatorNet Samenwerkingsverband beleidsdomein Omgeving"@nl .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2199322075>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143718509>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000059> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000056> ;
 	skos:altLabel "Agentschap Zorg en Gezondheid", "Agentschap Zorg en Gezondheid"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143729494>
@@ -420,6 +428,19 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Provincie Limburg (Nederland)"@nl ;
 	skos:altLabel "Provincie Limburg (Nederland)"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO025085> ;
+	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357852>
+	a foaf:Organization ;
+	dcterms:type adms:NationalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO005451> ;
+	skos:prefLabel "FPS Mobility and Transport"@en, "FOD Mobiliteit en Vervoer"@nl, 
+				"SPF Mobilité et Transports"@fr, "FÖD Mobilität und Transportwesen"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
 	a foaf:Organization ;
