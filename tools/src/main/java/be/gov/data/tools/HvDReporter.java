@@ -78,11 +78,12 @@ public class HvDReporter {
 						.map(t -> terms.get(t).getLabel("en"))
 						.collect(Collectors.joining("\n")),
 					d.getTitle("nl"), d.getTitle("fr"), d.getTitle("en"),
-					d.getPublisher().stringValue(), 
-					orgs.get(d.getPublisher().stringValue()).getName("nl"),
-					orgs.get(d.getPublisher().stringValue()).getName("fr"),
+					d.getPublisher().stringValue(), "", "",
+		//			orgs.get(d.getPublisher().stringValue()).getName("nl"),
+		//			orgs.get(d.getPublisher().stringValue()).getName("fr"),
 					d.getDownloadURLs("").stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
-					d.getContactAddr("").stringValue()
+//					d.getContactAddr("").stringValue(),
+					""
 			});		
 		}
 		LOG.info("HvD {}: {}", type, count);
