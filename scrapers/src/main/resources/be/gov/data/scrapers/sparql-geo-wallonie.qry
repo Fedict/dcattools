@@ -8,7 +8,7 @@ DELETE { ?res dcterms:spatial ?geo }
 INSERT 
 	{ 	?res dcterms:spatial <https://sws.geonames.org/3337387/> .
 		<https://sws.geonames.org/3337387/> a dcterms:Location .
-		<https://sws.geonames.org/3337388/> dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral 
+		<https://sws.geonames.org/3337387/> dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral 
 	}
 WHERE
 	{	?res a ?cl .
