@@ -39,6 +39,9 @@ brussels/sparql-fix-downloadurl.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry
 brussels/sparql-fix-translations2.qry
+sparql-map-hvd.qry
+sparql-map-hvd-service.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+data-hvdcat.ttl

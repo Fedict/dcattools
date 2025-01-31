@@ -37,10 +37,11 @@ geobe/sparql-delete-source.qry
 #sparql-consolidate-bbox.qry
 sparql-geo-belgium.qry
 geobe/sparql-delete-fodfin.qry
-geobe/sparql-map-hvd.qry
-geobe/sparql-map-hvd-service.qry
+sparql-map-hvd.qry
+sparql-map-hvd-service.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+data-hvdcat.ttl

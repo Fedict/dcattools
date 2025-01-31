@@ -19,6 +19,7 @@ WHERE
 			("HVD_cat_addresses" <http://data.europa.eu/bna/c_c3de25e4> )
 			("HVD_cat_administrative units" <http://data.europa.eu/bna/c_9427236f> )
 			("HVD_cat_area_management" <http://data.europa.eu/bna/c_af646f5b> )
+			("HVD_cat_cadastral parcels" <http://data.europa.eu/bna/c_6a3f6896> )
 			("HVD_cat_restrictions" <http://data.europa.eu/bna/c_af646f5b> )
 			("HVD_cat_regulation_zones" <http://data.europa.eu/bna/c_af646f5b> )
 			("HVD_cat_reporting_units" <http://data.europa.eu/bna/c_af646f5b> )

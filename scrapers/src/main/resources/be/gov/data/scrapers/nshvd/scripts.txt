@@ -4,3 +4,4 @@ data-media.ttl
 clear-skos.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+data-hvdcat.ttl
