@@ -7,7 +7,6 @@
 		<http://www.eionet.europa.eu/gemet/concept/1600> ,
 		<http://inspire.ec.europa.eu/theme/af>,
 		<http://vocab.belgif.be/auth/datatheme/AGRI> ;
-	skos:prefLabel "AGRICULTURE, FISHERIES, FORESTRY, FOOD"@en ;
 	skos:altLabel "mest"@nl, "visserij"@nl, "areaal"@nl, "Faciliteiten voor landbouw en aquacultuur"@nl, 
 		"bio"@nl, "landbouw"@nl, "akker"@nl, "AKKER"@nl, "AKKERBOUW"@nl, "agromilieumaatregelen"@nl, 
 		"bebossing"@nl, "BEBOST"@nl, "bosvitaliteit"@nl, "boom"@nl, "bomen"@nl, "boomsoort"@nl,
@@ -26,7 +25,6 @@
 		<https://data.stad.gent/id/theme/Sport%20%26%20vrije%20tijd> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ,
 		<https://data.stad.gent/id/theme/Evenementen%20%26%20Feesten> ;
-	skos:prefLabel "CULTURE AND SPORT"@en ;
 	skos:altLabel "Filmvoorstelling"@nl, "bioscopen"@nl, "cultuur - jeugdwerk"@nl , "museum"@nl,
 		"media - geschreven_pers"@nl , "musea"@nl, "bibliotheken"@nl, "cultuur - letteren"@nl, 
 		"theater"@nl, "toerisme - overnachtingen"@nl, "film"@nl, "sport"@nl, "vrt"@nl, "kunst"@nl,
@@ -48,7 +46,6 @@
 		<http://ns.thedatatank.com/dcat/themes#Work> ,
 		<http://vocab.belgif.be/auth/datatheme/ECON> ,
 		<https://data.stad.gent/id/theme/Werken%20%26%20ondernemen> ;
-	skos:prefLabel "ECONOMY AND FINANCE"@en ;
 	skos:altLabel "BED AND BREAKFAST"@nl, "bedrijf"@nl, "bedrijven"@nl, "arbeidsvraag"@nl, "toerisme"@nl, 
 		"overnachtingen"@nl, "zeehavens_economisch"@nl, "tewerkstelling"@nl, "economie"@nl, 
 		"buitenlandse_handel"@nl, "landbouw - inkomen"@nl, "ict - bedrijven"@nl, "economie - 2ondernemerschap"@nl, 
@@ -72,7 +69,6 @@
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Education> ,
 		<http://vocab.belgif.be/auth/datatheme/EDUC> ,
 		<https://data.stad.gent/id/theme/Onderwijs%20%26%20kinderopvang> ;
-	skos:prefLabel "EDUCATION"@en ;
 	skos:altLabel "onderwijs"@nl, "leerlingen"@nl, "vorming"@nl, "leerkrachten"@nl, "OPLEIDING"@nl, 
 		"Onderwijs"@nl, "School"@nl, "basisschool"@nl .
 
@@ -93,7 +89,6 @@
 		<http://eurovoc.europa.eu/5463>, 
 		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Duurzaam+werkgeverschap>,
 		<https://data.stad.gent/id/theme/Natuur%20%26%20milieu> ;
-	skos:prefLabel "ENVIRONMENT"@en ;
 	skos:altLabel "(diep) grondwater"@nl, "milieu"@nl, "mest"@nl, "bosvitaliteit"@nl, "natuur"@nl, "afval"@nl, 
 		"bodem"@nl, "lucht"@nl, "water"@nl, "bodemgebruik"@nl, "Geologie"@nl, "hydrografie"@nl ,
 		"Hydrografie"@nl, "Biogeografische gebieden"@nl, "Orthobeeldvorming"@nl, 
@@ -123,7 +118,6 @@
 		<https://opendata.fluvius.be/id/theme/Marktwerking>, 
 		<https://opendata.fluvius.be/id/theme/Services%20die%20Fluvius%20levert%20in%20opdracht%20van%20zijn%20DNB%27s>,
 		<http://inspire.ec.europa.eu/theme/er> ;
-	skos:prefLabel "ENERGY"@en ;
 	skos:altLabel "energie energieopwekking"@nl, "Energie"@nl, "energie"@nl, 
 		"Nutsdiensten en overheidsdiensten"@nl, "Energiebronnen"@nl, "duurzame energie"@nl, "gas"@nl, 
 		"Eandis"@nl, "Infrax"@nl, "elektriciteit"@nl,
@@ -135,7 +129,6 @@
 		<http://inspire.ec.europa.eu/theme/cp> ,
 		<https://data.stad.gent/id/theme/Administration%2C%20Government%2C%20Public%20finances%2C%20Citizenship> ,
 		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ;
-	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en ;
 	skos:altLabel "Dienstverlening"@nl, "publieke diensten"@nl, "begroting"@nl, "subsidiering"@nl, 
 		"wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 
 		"begroting - inkomsten"@nl, "ambtenaren"@nl, "lokaal_bestuur"@nl, "schuld"@nl, 
@@ -157,7 +150,6 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/HEAL>, <http://inspire.ec.europa.eu/theme/hh> ;
-	skos:prefLabel "HEALTH"@en ;
 	skos:altLabel "apothekers"@nl, "gezondheid"@nl, "morbiditeit"@nl, "vruchtbaarheid"@nl, 
 		"handicap"@nl, "ziektepreventie"@nl, "medische_en_paramedische_beroepen"@nl, 
 		"gezondheid - verzorgingsvoorzieningen"@nl, "gezondheid - algemeen"@nl, "welzijn - ouderen"@nl, 
@@ -168,7 +160,6 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR>
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/INTR> ;
-	skos:prefLabel "INTERNATIONAL ISSUES"@en ;
 	skos:altLabel "ontwikkelingssamenwerking buitenlands beleid ontwikkelingssamenwerking"@nl, "internationaal"@nl, 
 		"ontwikkelingssamenwerking"@nl, "buitenlandse_handel"@nl, "buitenlands_beleid"@nl, 
 		"internationale_culturele_uitwisseling"@nl, "Europa"@nl, "economie en innovatie buitenlandse handel"@nl .
@@ -177,7 +168,6 @@
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#SafetyAndJustice> ,
 		<http://vocab.belgif.be/auth/datatheme/JUST> ,
 		<http://ns.thedatatank.com/dcat/themes#Law> ;
-	skos:prefLabel "JUSTICE, LEGAL SYSTEM, PUBLIC SAFETY"@en ;
 	skos:altLabel "veiligheid"@nl, "criminaliteit"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
@@ -188,7 +178,6 @@
 		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Duurzaam+werkgeverschap>,
 		<http://inspire.ec.europa.eu/theme/bu>, <http://inspire.ec.europa.eu/theme/pd>,
 		<https://data.stad.gent/id/theme/Burgerzaken> ;
-	skos:prefLabel "POPULATION AND SOCIAL CONDITIONS"@en ;
 	skos:altLabel "sociaal"@nl, "zorg"@nl, "gelijke kansen gender"@nl, "jeugdwerk"@nl , 
 		"gezondheid - nataliteit_en_mortaliteit"@nl , "vruchtbaarheid"@nl , "algemeen_welzijnswerk"@nl ,
 		"demografie - 3_loop_van_de_bevolking"@nl , "gezondheid - morbiditeit"@nl, "handicap"@nl, 
@@ -216,7 +205,6 @@
 		<http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional> ,
 		<https://data.stad.gent/id/theme/Over%20Gent%20en%20het%20stadsbestuur> ,
 		<https://data.stad.gent/id/theme/Shoppen%20%26%20toerisme> ;
-	skos:prefLabel "REGIONS, CITIES"@en ;
 	skos:altLabel "BED AND BREAKFAST"@nl, "toerisme"@nl, "overnachtingen"@nl, "economie - 3regionaal"@nl,
 		"toerisme - vakantieparticipatie"@nl, 
 		"toerisme - tewerkstelling"@nl, "BED AND BREAKFAST"@nl, "CAMPING"@nl, "GASTENKAMER"@nl, 
@@ -231,7 +219,6 @@
 	skos:closeMatch <http://ns.thedatatank.com/dcat/themes#Mobility> ,
 		<http://vocab.belgif.be/auth/datatheme/TRAN> , <http://inspire.ec.europa.eu/theme/tn>,
 		<https://data.stad.gent/id/theme/Mobiliteit> ;
-	skos:prefLabel "TRANSPORT"@en ;
 	skos:altLabel "mobiliteit"@nl, "vervoermiddelen"@nl, "zeehavens_economisch"@nl, 
 		"vervoersprestaties"@nl, "mobiliteit - bereikbaarheid"@nl, "verkeersveiligheid"@nl, 
 		"infrastructuur"@nl, "Vervoersnetwerken"@nl, "Auto"@nl, "Fiets"@nl, "Mobiliteit"@nl, 
@@ -252,7 +239,6 @@
 		<http://www.eionet.europa.eu/gemet/concept/4108> ,
 		<http://www.eionet.europa.eu/gemet/concept/7168> ,
 		<http://eurovoc.europa.eu/2176> ;
-	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en ;
 	skos:altLabel "wetenschap - 1_overheidskredieten"@nl, "wetenschap - 2_bestedingen_(gerd)"@nl, 
 		"wetenschap - 5_wti-output"@nl, "wetenschap - 3_onderzoeksmandaten"@nl, "Geologie"@nl, 
 		"Hydrografie"@nl, "Orthobeeldvorming"@nl, "Geology"@nl, "Archeologie"@nl, "Biologie"@nl, 
