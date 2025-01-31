@@ -63,12 +63,6 @@
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
 	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2199336923>
-	a foaf:Organization ;
-	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Departement Ruimte Vlaanderen"@nl ;
-	skos:altLabel "Vlaamse overheid - Departement Ruimte Vlaanderen" .
-
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -248,6 +242,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO050677> ;
 	skos:prefLabel "Departement Omgeving"@nl ;
 	skos:altLabel "Vlaamse Overheid - Departement Omgeving", 
+		"Vlaamse overheid - Departement Ruimte Vlaanderen",
 		"Vlaamse overheid - Departement Omgeving",
 		"Departement Omgeving"@nl ,"Omgeving Vlaanderen"@en,
 		"MercatorNet",
