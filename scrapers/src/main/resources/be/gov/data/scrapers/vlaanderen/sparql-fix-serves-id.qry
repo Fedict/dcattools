@@ -1,0 +1,18 @@
+# Correct Identifiers with datasets served by dataservice (to avoid duplicate IDs)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+	?dataset dcterms:identifier ?servid
+}
+INSERT {
+	?dataset dcterms:identifier ?id
+}
+WHERE { 
+	?s dcat:servesDataset ?dataset .
+	?dataset dcterms:identifier ?servid
+	BIND (STRAFTER(?servid, "https://www.dov.vlaanderen.be/dataset/") AS ?id)
+	FILTER (SRSTARTS(?servid, "https://data.vlaanderen"))
+}
+
