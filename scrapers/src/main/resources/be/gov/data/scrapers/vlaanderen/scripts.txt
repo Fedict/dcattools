@@ -79,7 +79,8 @@ vlaanderen/sparql-fix-downloadurl.qry
 sparql-geo-publisher.qry
 sparql-geo-vlaanderen.qry
 vlaanderen/sparql-remove-agent-orphans.qry
-vlaanderen/sparql-vcard-fn.qry
+vlaanderen/sparql-vcard-fn-name.qry
+vlaanderen/sparql-vcard-fn-mailto.qry
 vlaanderen/sparql-remove-onbekend.qry
 vlaanderen/sparql-default-contact.qry
 sparql-remove-circular.qry

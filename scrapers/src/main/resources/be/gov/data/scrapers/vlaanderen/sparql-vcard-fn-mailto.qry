@@ -1,0 +1,9 @@
+# Add vcard:fn based on mailto
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT	{ ?s vcard:fn ?name }
+WHERE	{ ?s vcard:hasEmail ?mail
+		BIND(STRAFTER(STR(?mail), "@") AS ?name)
+		FILTER NOT EXISTS { ?s vcard:fn ?fn } 
+}
