@@ -28,6 +28,7 @@ package be.gov.data.dcatlib.model;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import org.eclipse.rdf4j.model.IRI;
 
 /**
@@ -37,6 +38,7 @@ import org.eclipse.rdf4j.model.IRI;
 public class Catalog {
 	private final Map<String,Dataset> datasets = new HashMap<>(12_000);
 	private final Map<String,Dataservice> dataservices = new HashMap<>(500);
+	private final Map<String,CatalogRecord> records = new HashMap<>(12000);
 	private final Map<String,SkosTerm> terms = new HashMap<>(250);
 	private final Map<String,Organization> orgs = new HashMap<>(250);
 	
@@ -140,7 +142,7 @@ public class Catalog {
 	 * Get the term with specific ID
 	 * 
 	 * @param id
-	 * @return dataset or null
+	 * @return term or null
 	 */
 	public SkosTerm getTerm(String id) {
 		return terms.get(id);
@@ -154,7 +156,40 @@ public class Catalog {
 	public Map<String,SkosTerm> getTerms() {
 		return terms;
 	}
-	
+
+	/**
+	 * Add catalog record with specific ID
+	 * 
+	 * @param id
+	 * @param record
+	 * @throws IOException when ID is already present (= duplicate)
+	 */
+	public void addRecord(String id, CatalogRecord record) throws IOException {
+		if (records.containsKey(id)) {
+			throw new IOException("Key " + id + " already present");
+		}
+		records.put(id, record);
+	}
+
+	/**
+	 * Get the catalog record with specific ID
+	 * 
+	 * @param id
+	 * @return record or null
+	 */
+	public CatalogRecord getCatalogRecord(String id) {
+		return records.get(id);
+	}
+
+	/**
+	 * Get the catalog records
+	 * 
+	 * @return 
+	 */
+	public Map<String,CatalogRecord> getCatalogRecords() {
+		return records;
+	}
+
 	/**
 	 * Add organization with specific ID
 	 * 

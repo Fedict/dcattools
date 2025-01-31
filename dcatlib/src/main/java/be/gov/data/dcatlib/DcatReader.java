@@ -27,6 +27,7 @@
 package be.gov.data.dcatlib;
 
 import be.gov.data.dcatlib.model.Catalog;
+import be.gov.data.dcatlib.model.CatalogRecord;
 import be.gov.data.dcatlib.model.DataResource;
 import be.gov.data.dcatlib.model.Dataservice;
 import be.gov.data.dcatlib.model.Dataset;
@@ -596,6 +597,35 @@ public class DcatReader {
 			service.setDatasets(datasets);
 		}
 	}
+
+	/**
+	 * Read CatalogRecords
+	 * 
+	 * @param catalog
+	 * @throws IOException 
+	 */
+	private void readRecords(Catalog catalog) throws IOException {
+		LOG.info("Reading Catalog records");
+	
+		int ok = 0;
+		int skip = 0;
+
+		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.CATALOG_RECORD)) {
+			IRI iri = (IRI) stmt.getSubject();
+			try {
+				CatalogRecord rec = new CatalogRecord();
+				rec.setTopics(getIRIs(iri, FOAF.IS_PRIMARY_TOPIC_OF).stream()
+														.map(IRI::stringValue)
+														.collect(Collectors.toSet()));
+				catalog.addRecord(iri.stringValue(), rec);
+				ok++;
+			} catch (IOException ioe) {
+				LOG.error(ioe.getMessage());
+				skip++;
+			}			
+		}
+		LOG.info("Read {} records, skipping {}", ok, skip);
+	}
 	
 	/**
 	 * Read SKOS terms
@@ -623,7 +653,7 @@ public class DcatReader {
 		}
 		LOG.info("Read {} terms, skipping {}", ok, skip);
 	}
-	
+
 	/**
 	 * Read SKOS terms
 	 * 
@@ -670,10 +700,11 @@ public class DcatReader {
 		}
 		
 		Catalog catalog = new Catalog();
-		
+
 		readDatasets(catalog);
 		readDataservices(catalog);
 		readServes(catalog);
+		readRecords(catalog);
 		readTerms(catalog);
 		readOrganizations(catalog);
 
