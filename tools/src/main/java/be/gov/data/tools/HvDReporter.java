@@ -80,11 +80,11 @@ public class HvDReporter {
 		int count = 0;
 
 		for(DataResource d: resources) {
-			if (d.isHvd()) {
-				count++;
+			if (!d.isHvd()) {
+				continue;
 			}
-			writer.writeNext(
-				new String[]{type, "", d.getId(),
+			count++;
+			writer.writeNext(new String[]{type, "", d.getId(),
 					d.getHvDCategories().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getHvDCategories().stream().map(IRI::stringValue)
 						.map(t -> (terms.get(t) != null) ? terms.get(t).getLabel("en") : "")
@@ -97,7 +97,7 @@ public class HvDReporter {
 					d.getLandingPage().values().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getDownloadURLs("").stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					(d.getContactAddr("") != null) ? d.getContactAddr("").stringValue() : null
-			});		
+			});	
 		}
 		LOG.info("HvD {}: {}", type, count);
 	}
