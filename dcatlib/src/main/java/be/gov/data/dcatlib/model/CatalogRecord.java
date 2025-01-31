@@ -34,7 +34,22 @@ import org.eclipse.rdf4j.model.IRI;
  * @author Bart.Hanssens
  */
 public class CatalogRecord {
+	private String id;
 	private Set<IRI> topics;
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 	
 	/**
 	 * @return the topics
