@@ -9,7 +9,7 @@ DELETE {
 WHERE { 
 	?s dcat:servesDataset ?dataset .
 	?dataset dcterms:identifier ?servid .
-	?dataset dctersm:identifier ?id
+	?dataset dcterms:identifier ?id
 	FILTER (?servid != ?id && CONTAINS(?servid, ?id))
 }
 
