@@ -51,6 +51,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.eclipse.rdf4j.model.BNode;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
@@ -218,7 +219,7 @@ public class DcatReader {
 			return null;
 		}
 		if (! (value instanceof IRI)) {
-			throw new IOException("Not a IRI " + value);
+			throw new IOException("Not a IRI  " + value + " for " + pred);
 		}
 		return (IRI) value;
 	}
@@ -236,7 +237,7 @@ public class DcatReader {
 		for(Statement s: m.getStatements(subj, pred, null)) {
 			Value value = s.getObject();
 			if (! (value instanceof IRI)) {
-				throw new IOException("Not a IRI " + value);
+				throw new IOException("Not a IRI " + value + " for " + pred);
 			}
 			values.add((IRI) value);
 		}
@@ -414,16 +415,18 @@ public class DcatReader {
 	private Set<String> getAdmsIds(IRI iri) throws IOException {
 		Set<String> adms = new HashSet<>();
 
-		Set<IRI> objs = getIRIs(iri, ADMS_IDENTIFIER);
+		Set<Value> objs = getValues(iri, ADMS_IDENTIFIER);
 		
-		for(IRI obj: objs) {
+		for(Value obj: objs) {
 			String s = obj.stringValue();
-			if (!s.contains("well-known/genid")) {
+			if (obj instanceof IRI && !s.contains("well-known/genid")) {
 				adms.add(s);
 			} else {
-				String notation = getString(obj, SKOS.NOTATION);
-				if (notation != null && !notation.isEmpty()) {
-					adms.add(notation);
+				if (obj instanceof BNode) {
+					String notation = getString((Resource) obj, SKOS.NOTATION);
+					if (notation != null && !notation.isEmpty()) {
+						adms.add(notation);
+					}
 				}
 			}
 		}
@@ -538,7 +541,7 @@ public class DcatReader {
 				catalog.addDataset(d.getId(), d);
 				ok++;
 			} catch (IOException ioe) {
-				LOG.error(ioe.getMessage());
+				LOG.error("Skipping dataset {} : {}", iri, ioe.getMessage());
 				skip++;
 			}
 		}
@@ -563,7 +566,7 @@ public class DcatReader {
 				catalog.addDataservice(d.getId(), d);		
 				ok++;
 			} catch (IOException ioe) {
-				LOG.error(ioe.getMessage());
+				LOG.error("Skipping dataservice {} : {}", iri, ioe.getMessage());
 				skip++;
 			}			
 		}
