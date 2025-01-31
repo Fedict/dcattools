@@ -57,55 +57,52 @@
 	skos:prefLabel "Orthoimagery"@en .
 
 <http://data.europa.eu/bna/c_9427236f> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Administrative units"@en .
 
 <http://data.europa.eu/bna/c_ac64a52d> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Geospatial"@en .
 
 <http://data.europa.eu/bna/c_ad9ae929> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Land use"@en .
 
 <http://data.europa.eu/bna/c_af646f5b> a skos:Concept ;
-	skos:prefLabel .
-
-<http://data.europa.eu/bna/c_b151a0ba> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Area management / restriction / regulation zones & reporting units"@en .
 
 <http://data.europa.eu/bna/c_b21e1296> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Land cover"@en .
 
 <http://data.europa.eu/bna/c_b40e6d46> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Oceanographic geographical features"@en .
 
 <http://data.europa.eu/bna/c_b79e35eb> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Mobility"@en .
 
 <http://data.europa.eu/bna/c_b7de66cd> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Energy resources"@en .
 
 <http://data.europa.eu/bna/c_b7f6a4f3> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Nature preservation and biodiversity"@en .
 
 <http://data.europa.eu/bna/c_c3919aec> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Habitats and biotopes"@en .
 
 <http://data.europa.eu/bna/c_c3de25e4> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Addresses"@en .
 
 <http://data.europa.eu/bna/c_c873f344> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Bio-geographical regions"@en .
 
 <http://data.europa.eu/bna/c_dd313021> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Earth observation and environment"@en .
 
-<http://data.europa.eu/bna/c_e3f55603 a skos:Concept ;
-	skos:prefLabel .
+<http://data.europa.eu/bna/c_e3f55603> a skos:Concept ;
+	skos:prefLabel "Geology"@en .
 
 <http://data.europa.eu/bna/c_e4358335> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Noise"@en .
 
 <http://data.europa.eu/bna/c_f399050e> a skos:Concept ;
-	skos:prefLabel .
+	skos:prefLabel "Sea regions"@en .
 
 
 
