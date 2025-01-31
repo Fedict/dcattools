@@ -87,7 +87,7 @@ public class HvDReporter {
 				new String[]{type, "", d.getId(),
 					d.getHvDCategories().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getHvDCategories().stream().map(IRI::stringValue)
-						.map(t -> terms.get(t).getLabel("en"))
+						.map(t -> (terms.get(t) != null) ? terms.get(t).getLabel("en") : "")
 						.collect(Collectors.joining("\n")),
 					d.getTitle("nl"), d.getTitle("fr"), d.getTitle("en"),
 					d.getPublisher().stringValue(),
