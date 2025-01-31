@@ -614,7 +614,7 @@ public class DcatReader {
 			IRI iri = (IRI) stmt.getSubject();
 			try {
 				CatalogRecord rec = new CatalogRecord();
-				rec.setTopics(getIRIs(iri, FOAF.IS_PRIMARY_TOPIC_OF).stream()
+				rec.setTopics(getIRIs(iri, FOAF.PRIMARY_TOPIC).stream()
 														.map(IRI::stringValue)
 														.collect(Collectors.toSet()));
 				catalog.addRecord(iri.stringValue(), rec);
