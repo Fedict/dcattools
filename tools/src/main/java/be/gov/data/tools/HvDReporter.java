@@ -93,7 +93,7 @@ public class HvDReporter {
 					d.getPublisher().stringValue(),
 					orgs.getOrDefault(d.getPublisher().stringValue(), new Organization()).getName("nl"),
 					orgs.getOrDefault(d.getPublisher().stringValue(), new Organization()).getName("fr"),
-					d.getLicense().stringValue(),
+					(d.getLicense() != null) ? d.getLicense().stringValue() : null,
 					d.getLandingPage().values().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getDownloadURLs("").stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					(d.getContactAddr("") != null) ? d.getContactAddr("").stringValue() : null
