@@ -60,9 +60,21 @@ public class HvDReporter {
 		new String[]{ "Type","URI","Identifier","Category","CategoryName",
 			"TitleNL", "TitleFR", "TitleEN",
 			"PublisherID","PublisherNameNL", "PublisherNameFR",
+			"LicenseID",
+			"LandingPage",
 			"Download/Endpoint",
 			"Contact"};
 
+	/**
+	 * Write one line of HvD
+	 * 
+	 * @param <T>
+	 * @param type dataset or services
+	 * @param resources list of dataset or dataservices
+	 * @param terms skos terms
+	 * @param orgs organizations
+	 * @param writer 
+	 */
 	private static <T extends DataResource> void writeLines(String type, Collection<T> resources, 
 					Map<String,SkosTerm> terms, Map<String,Organization> orgs, ICSVWriter writer) {
 		int count = 0;
@@ -81,6 +93,8 @@ public class HvDReporter {
 					d.getPublisher().stringValue(),
 					orgs.getOrDefault(d.getPublisher().stringValue(), new Organization()).getName("nl"),
 					orgs.getOrDefault(d.getPublisher().stringValue(), new Organization()).getName("fr"),
+					d.getLicense().stringValue(),
+					d.getLandingPage().values().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getDownloadURLs("").stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					(d.getContactAddr("") != null) ? d.getContactAddr("").stringValue() : null
 			});		
@@ -88,6 +102,13 @@ public class HvDReporter {
 		LOG.info("HvD {}: {}", type, count);
 	}
 
+	/**
+	 * Create CSV report
+	 * 
+	 * @param reader
+	 * @param writer
+	 * @throws IOException 
+	 */
 	private static void createReport(DcatReader reader, ICSVWriter writer) throws IOException {
 		Catalog cat = reader.read();
 			
