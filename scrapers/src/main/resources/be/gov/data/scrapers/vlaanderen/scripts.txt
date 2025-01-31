@@ -81,6 +81,7 @@ sparql-geo-vlaanderen.qry
 vlaanderen/sparql-remove-agent-orphans.qry
 vlaanderen/sparql-vcard-fn.qry
 vlaanderen/sparql-remove-onbekend.qry
+vlaanderen/sparql-default-contact.qry
 sparql-remove-circular.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 sparql-strip-html.qry
