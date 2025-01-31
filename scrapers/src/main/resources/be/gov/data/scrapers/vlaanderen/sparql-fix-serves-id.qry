@@ -6,13 +6,10 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE { 
 	?dataset dcterms:identifier ?servid
 }
-INSERT {
-	?dataset dcterms:identifier ?id
-}
 WHERE { 
 	?s dcat:servesDataset ?dataset .
-	?dataset dcterms:identifier ?servid
-	BIND (STRAFTER(?servid, "https://www.dov.vlaanderen.be/dataset/") AS ?id)
-	FILTER (STRSTARTS(?servid, "https://www.dov.vlaanderen.be/dataset/"))
+	?dataset dcterms:identifier ?servid .
+	?dataset dctersm:identifier ?id
+	FILTER (?servid != ?id && CONTAINS(?servid, ?id))
 }
 
