@@ -25,8 +25,8 @@
  */
 package be.gov.data.dcatlib.model;
 
-import java.util.Map;
 import java.util.Set;
+import org.eclipse.rdf4j.model.IRI;
 
 /**
  * Simple representation of a catalog record
@@ -34,19 +34,19 @@ import java.util.Set;
  * @author Bart.Hanssens
  */
 public class CatalogRecord {
-	private Set<String> topics;
+	private Set<IRI> topics;
 	
 	/**
 	 * @return the topics
 	 */
-	public Set<String> getTopics() {
+	public Set<IRI> getTopics() {
 		return topics;
 	}
 
 	/**
 	 * @param topics the topics to set
 	 */
-	public void setTopics(Set<String> topics) {
+	public void setTopics(Set<IRI> topics) {
 		this.topics = topics;
 	}
 }
