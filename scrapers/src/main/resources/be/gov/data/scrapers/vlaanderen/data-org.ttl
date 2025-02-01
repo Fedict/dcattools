@@ -352,7 +352,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0248399380>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003307>
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003307> ;
 	skos:prefLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0842399963>
