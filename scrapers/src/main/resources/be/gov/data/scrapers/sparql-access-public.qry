@@ -8,4 +8,7 @@ INSERT
 WHERE
 	{	?s a ?cl
 		VALUES ?cl { dcat:Dataset dcat:DataService }
-		OPTIONAL { ?s dcterms:accessRights ?r } }
+		FILTER NOT EXISTS { 
+			?s dcterms:accessRights ?rights
+		}
+	}
