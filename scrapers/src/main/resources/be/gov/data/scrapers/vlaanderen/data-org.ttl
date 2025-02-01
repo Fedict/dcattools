@@ -342,10 +342,18 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0236506685>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000094> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000094>,
+					<https://data.vlaanderen.be/id/organisatie/OVO000689>,
+					<https://data.vlaanderen.be/id/organisatie/OVO000688> ;
 	skos:prefLabel "Vlaamse Landmaatschappij"@nl ;
 	skos:altLabel "Vlaamse Landmaatschappij - afdeling Projectrealisatie", "Vlaamse Landmaatschappij",
 		"Vlaamse Landmaatschappij"@nl, "VLAAMSE LANDMAATSCHAPPIJ"@nl  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248399380>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003307>
+	skos:prefLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0842399963>
 	a foaf:Organization ;
@@ -455,7 +463,8 @@
  <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO011488> ;
+	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO011488>,
+					<https://data.vlaanderen.be/id/organisatie/OVO011488> ;
 	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
 	skos:altLabel "KBR" .
 
