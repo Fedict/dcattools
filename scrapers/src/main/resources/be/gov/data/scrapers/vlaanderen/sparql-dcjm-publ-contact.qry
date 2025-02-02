@@ -1,0 +1,16 @@
+# Map publisher for datasets from Dept Cultuur/Jongeren/Media to Crossroad Bank Enterprises URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dataset dcat:contactPoint ?point }
+INSERT 
+	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471> .
+		?dataset dcat:contactPoint <http://data.gov.be/org/dcjm/contact> }
+WHERE
+	{	?dataset a ?cl
+		VALUES ?cl { dcat:Dataset dcat:Dataservice }
+		FILTER (STRSTARTS(STR(?dataset), "https://metadata.dcjm.be"))
+		FILTER NOT EXISTS { ?dataset dcterms:publisher ?publ }
+	}

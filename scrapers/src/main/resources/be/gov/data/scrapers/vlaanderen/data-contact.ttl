@@ -12,6 +12,11 @@
 	vcard:fn "Datavindplaats Vlaanderen"@en, "Datavindplaats Vlaanderen"@fr, "Datavindplaats Vlaanderen"@nl ;
 	vcard:hasEmail <mailto:digitaal.vlaanderen@vlaanderen.be> .
 
+<http://data.gov.be/org/dcjm/contact>	
+	a vcard:Organization ;
+	vcard:fn "Departement Cultuur, Jongeren en Media"@nl ;
+	vcard:hasEmail <mailto:departement.cjm@vlaanderen.be> .
+
 <http://data.gov.be/org/gent/contact>	
 	a vcard:Organization ;
 	vcard:fn "Gent"@nl, "Gand"@fr, "Ghent"@en ;

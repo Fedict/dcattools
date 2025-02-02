@@ -73,6 +73,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0818285268>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
+	skos:closeMatch <https://geomobility.eu/id/dcat#contact> ;
 	skos:prefLabel "Localyse"@nl ;
 	skos:altLabel "GeoMobility"@nl .
 
@@ -81,7 +82,6 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000070> ;
 	skos:prefLabel "Sport Vlaanderen"@nl .
-
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
 	a foaf:Organization ;
@@ -200,6 +200,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0267388418>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://westtoer.be/id/contact> ;
 	skos:prefLabel "WestToer"@nl ;
 	skos:altLabel "Westtoer", "WestToer"@nl .
 
@@ -359,7 +360,8 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000039>,
 			<https://opendata.vlaanderen.be/organization/c4ea5c97-b350-4a65-b2a7-04d9a55acc67> ;
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
-	skos:altLabel "Agentschap Innoveren & Ondernemen"@nl, "VLAIO", "Agentschap Innoveren en Ondernemen"@nl .
+	skos:altLabel "Agentschap Innoveren & Ondernemen"@nl, "VLAIO", "VLAIO"@nl, 
+				"Agentschap Innoveren en Ondernemen"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236506685>
 	a foaf:Organization ;
