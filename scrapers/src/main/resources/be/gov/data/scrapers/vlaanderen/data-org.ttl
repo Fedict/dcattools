@@ -63,6 +63,12 @@
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
 	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO004060> ;
+	skos:prefLabel "Brussels Airport Company"@en .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
