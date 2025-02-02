@@ -63,10 +63,31 @@
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
 	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:closeMatch <https://telraam.net/id/dcat#contact> ;
+	skos:prefLabel "Rear Window"@nl, "Rear Window"@en;
+	skos:altLabel "Telraam"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0818285268>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Localyse"@nl ;
+	skos:altLabel "GeoMobility"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248142826>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000070> ;
+	skos:prefLabel "Sport Vlaanderen"@nl .
+
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <http://data.vlaanderen.be/id/organisatie/OVO000096>,
+					<https://data.vlaanderen.be/id/organisatie/OVO000096>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000532>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000538>,
 					<https://data.vlaanderen.be/id/organisatie/OVO002961>,
@@ -335,7 +356,8 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2251007239>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000039> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000039>,
+			<https://opendata.vlaanderen.be/organization/c4ea5c97-b350-4a65-b2a7-04d9a55acc67> ;
 	skos:prefLabel "Agentschap Innoveren en Ondernemen"@nl ;
 	skos:altLabel "Agentschap Innoveren & Ondernemen"@nl, "VLAIO", "Agentschap Innoveren en Ondernemen"@nl .
 

@@ -45,6 +45,7 @@
 		<http://ns.thedatatank.com/dcat/themes#Economy> ,
 		<http://ns.thedatatank.com/dcat/themes#Work> ,
 		<http://vocab.belgif.be/auth/datatheme/ECON> ,
+		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Sociale+economie>,
 		<https://data.stad.gent/id/theme/Werken%20%26%20ondernemen> ;
 	skos:altLabel "BED AND BREAKFAST"@nl, "bedrijf"@nl, "bedrijven"@nl, "arbeidsvraag"@nl, "toerisme"@nl, 
 		"overnachtingen"@nl, "zeehavens_economisch"@nl, "tewerkstelling"@nl, "economie"@nl, 
@@ -175,6 +176,7 @@
 		<http://ns.thedatatank.com/dcat/themes#LivingHealthWelfare> ,
 		<https://data.stad.gent/id/theme/Wonen%20%26%20%28ver%29bouwen>,
 		<http://vocab.belgif.be/auth/datatheme/SOCI> ,
+		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Sociale+economie>,
 		<https://opendata.wse.vlaanderen.be/explore/?refine.theme=Duurzaam+werkgeverschap>,
 		<http://inspire.ec.europa.eu/theme/bu>, <http://inspire.ec.europa.eu/theme/pd>,
 		<https://data.stad.gent/id/theme/Burgerzaken> ;
