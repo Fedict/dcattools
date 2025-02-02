@@ -349,7 +349,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0506891613>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "HERE"@nl ;
+	skos:altLabel "HERE"@nl ;
 	skos:prefLabel "HERE Global"@nl, "HERE Global"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2225118335>
