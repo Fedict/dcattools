@@ -346,6 +346,18 @@
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/369> ;
 	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0506891613>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "HERE"@nl ;
+	skos:prefLabel "HERE Global"@nl, "HERE Global"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2225118335>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "SPW-ARNE Agriculture, RN et Environnement"@fr ;
+	skos:altLabel "Service Public de Wallonie, Direction Générale de l'Agriculture, des Ressources Naturelles et de l'Environnement (DGO3), Département de l'Etude du Milieu Naturel et Agricole, Direction de la Coordination des Données, Cellule SIG"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0405647664>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
