@@ -10,11 +10,12 @@ metawal/sparql-format-wms.qry
 sparql-map-media-srvc.qry
 clear-skos.qry
 metawal/sparql-fix-logo.qry
-metawal/sparql-fix-percenturl.qry
+#metawal/sparql-fix-percenturl.qry
 sparql-theme-subject.qry
 metawal/sparql-fix-language.qry
 metawal/sparql-fix-language2.qry
 metawal/sparql-fix-hvd.qry
+metawal/sparql-remove-esri.qry
 metawal/data-frequency.ttl
 sparql-map-frequency.qry
 sparql-geo-wallonie.qry

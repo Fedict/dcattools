@@ -1,0 +1,10 @@
+# Remove invalid ESRI URL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcat:accessService ?esri }
+WHERE
+	{	?s dcat:accessService ?esri 
+		FILTER(STRSTARTS(STR(?esri), "trueESRI"))
+	}
