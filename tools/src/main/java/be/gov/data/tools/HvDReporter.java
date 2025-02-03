@@ -84,7 +84,7 @@ public class HvDReporter {
 				continue;
 			}
 			count++;
-			writer.writeNext(new String[]{type, "", d.getId(),
+			writer.writeNext(new String[]{type, d.getIRI().stringValue(), d.getId(),
 					d.getHvDCategories().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getHvDCategories().stream().map(IRI::stringValue)
 						.map(t -> (terms.get(t) != null) ? terms.get(t).getLabel("en") : "")
