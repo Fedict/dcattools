@@ -1,0 +1,23 @@
+# Contact points are often (incorrectly) pointing to organizations
+# (but with different names, emails.. causing the organizations to have way to many email addresses)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE	{ 
+	?s dcat:contactPoint ?contact .
+	?contact ?p ?o 
+}
+INSERT	{ 
+	?s dcat:contactPoint ?hash .
+	?hash ?p ?o 
+}
+WHERE	{
+	?s dcat:contactPoint ?contact .
+	?contact ?p ?o 
+	VALUES ?p { vcard:fn vcard:hasEmail vcard:hasURL }
+	BIND (CONCAT
+				("http://data.gov.be/.well_known/genid/", SHA1(STR(?contact)))
+		as ?hash)
+	FILTER (!STRSTARTS(STR(?contact), "http://data.gov.be/"))
+}

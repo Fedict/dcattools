@@ -85,6 +85,7 @@ vlaanderen/sparql-remove-agent-orphans.qry
 vlaanderen/sparql-remove-onbekend.qry
 vlaanderen/sparql-default-contact.qry
 vlaanderen/sparql-fix-serves-id.qry
+vlaanderen/sparql-detach-contacts.qry
 sparql-remove-circular.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 sparql-strip-html.qry

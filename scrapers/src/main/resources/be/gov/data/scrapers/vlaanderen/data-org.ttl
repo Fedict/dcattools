@@ -128,8 +128,9 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
-	skos:altLabel "Departement Landbouw en Visserij", "Departement Landbouw en Visserij"@nl .
+	skos:prefLabel "Agentschap Landbouw en Visserij"@nl ;
+	skos:altLabel "Departement Landbouw en Visserij", "Departement Landbouw en Visserij"@nl, 
+		"Agentschap Landbouw en Zeevisserij"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
 	a foaf:Organization ;
@@ -461,7 +462,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2800935/> ;
 	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
-	skos:altLabel "Stad Brugge"@nl .
+	skos:altLabel "Stad Brugge"@nl, "stad Brugge"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
 	a foaf:Organization ;
