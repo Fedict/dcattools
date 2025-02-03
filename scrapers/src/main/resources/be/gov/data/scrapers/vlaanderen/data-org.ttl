@@ -93,6 +93,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <http://data.vlaanderen.be/id/organisatie/OVO000096>,
+					<https://data.vlaanderen.be/id/organisatie/OVO000098>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000096>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000532>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000538>,

@@ -3,6 +3,4 @@
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 INSERT	{ ?s vcard:fn ?name }
-WHERE	{ ?s vcard:organization-name ?name
-		FILTER NOT EXISTS { ?s vcard:fn ?fn } 
-}
+WHERE	{ ?s vcard:organization-name ?name }
