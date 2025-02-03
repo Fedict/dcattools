@@ -57,14 +57,16 @@ public class GeonetMetawal extends Dcat {
 			String content = page.getContent();
 			content = content.replaceAll("<csw:[^>]+>", "")
 							.replaceAll("</csw:[^>]+>", "")
-							.replaceAll("</rdf:RDF>[^<]*<rdf:RDF [^>]+>", "");
-
+							.replaceAll("</rdf:RDF>[^<]*<rdf:RDF [^>]+>", "")
+							.replaceAll(">\\w[^>]+</foaf:Document>", "/>");
+			
 			try (InputStream in = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
 				store.add(in, RDFFormat.RDFXML);
 			} catch (RDFParseException | IOException ex) {
 				if (ex.getMessage().contains("Premature end")) {
 					LOG.warn("Premature end of file in {}", url);
 				} else {
+					System.err.println(content);
 					throw new RepositoryException(url.toString(), ex);
 				}
 			}
