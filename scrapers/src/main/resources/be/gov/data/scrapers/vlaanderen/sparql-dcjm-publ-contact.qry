@@ -6,7 +6,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE
 	{	?dataset dcat:contactPoint ?point }
 INSERT 
-	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471#> .
+	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471> .
 		?dataset dcat:contactPoint <http://data.gov.be/org/dcjm/contact> }
 WHERE
 	{	?dataset a ?cl
