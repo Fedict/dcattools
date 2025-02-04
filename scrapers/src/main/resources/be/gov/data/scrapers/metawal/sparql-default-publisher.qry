@@ -4,11 +4,12 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE
-	{	?dataset dcterms:publisher }
+	{	?dataset dcterms:publisher ?publ }
 INSERT
 	{	?dataset dcterms:publisher <https://org.belgif.be/id/CbeEstablishmentUnit/2204322327> }
 WHERE
 	{ 
 		?dataset a ?cl .
+		?dataset dcterms:publisher ?publ
 		VALUES ?cl { dcat:Dataset dcat:DataService dcat:DatasetSeries }
 }
