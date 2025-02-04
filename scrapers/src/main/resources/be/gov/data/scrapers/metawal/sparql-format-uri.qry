@@ -1,0 +1,17 @@
+# Use http URI instead of (incorrect) https for format
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:format ?https }
+INSERT
+	{ 	?dist dcterms:format ?http }
+WHERE
+	{	
+		?dist dcterms:format ?https
+		BIND (IRI(
+				CONCAT("http://", STRAFTER(STR(?https), "https://")))
+		as ?http)
+		FILTER (STRSTARTS(STR(?https), "https://publications.europa.eu/resource/authority/file-type/"))
+	}
+	

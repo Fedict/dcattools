@@ -7,6 +7,7 @@ metawal/sparql-default-contact.qry
 metawal/sparql-default-publisher.qry
 data-media.ttl
 metawal/sparql-format-wms.qry
+metawal/sparql-format-uri.qry
 sparql-map-media-srvc.qry
 clear-skos.qry
 metawal/sparql-fix-logo.qry
