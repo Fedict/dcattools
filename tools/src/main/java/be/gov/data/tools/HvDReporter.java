@@ -90,9 +90,9 @@ public class HvDReporter {
 						.map(t -> (terms.get(t) != null) ? terms.get(t).getLabel("en") : "")
 						.collect(Collectors.joining("\n")),
 					d.getTitle("nl"), d.getTitle("fr"), d.getTitle("en"),
-					d.getPublisher().stringValue(),
-					orgs.getOrDefault(d.getPublisher().stringValue(), new Organization()).getName("nl"),
-					orgs.getOrDefault(d.getPublisher().stringValue(), new Organization()).getName("fr"),
+					(d.getPublisher() != null) ? d.getPublisher().stringValue() : null,
+					orgs.getOrDefault((d.getPublisher() != null) ? d.getPublisher().stringValue() : null, new Organization()).getName("nl"),
+					orgs.getOrDefault((d.getPublisher() != null) ? d.getPublisher().stringValue() : null, new Organization()).getName("fr"),
 					(d.getLicenses() != null) ? d.getLicenses().stream().map(IRI::stringValue).collect(Collectors.joining("\n")) : null,
 					d.getLandingPage().values().stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
 					d.getDownloadURLs("").stream().map(IRI::stringValue).collect(Collectors.joining("\n")),
