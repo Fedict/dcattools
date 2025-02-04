@@ -6,6 +6,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE 
 	{	?s dcterms:format ?concept .
 		?concept a skos:Concept .
+		?concept a dcterms:MediaTypeOrExtent .
 		?concept skos:prefLabel ?label 
 	}
 INSERT
@@ -14,5 +15,6 @@ WHERE
 	{	?s dcterms:format ?concept .
 		?concept a skos:Concept .
 		?concept skos:prefLabel ?label 
-		FILTER (!STRSTARTS(STR(?concept), "http://data.gov.be"))
+		OPTIONAL { ?concept a dcterms:MediaTypeOrExtent }
+		FILTER (STRSTARTS(STR(?concept), "http://data.gov.be"))
 	}
