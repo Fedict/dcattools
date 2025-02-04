@@ -16,8 +16,9 @@ WHERE	{
 	?s dcat:contactPoint ?contact .
 	?contact ?p ?o 
 	VALUES ?p { vcard:fn vcard:hasEmail vcard:hasURL }
-	BIND (CONCAT
+	BIND (IRI
+			(CONCAT
 				("http://data.gov.be/.well_known/genid/", SHA1(STR(?contact)))
-		as ?hash)
+		) as ?hash)
 	FILTER (!STRSTARTS(STR(?contact), "http://data.gov.be/"))
 }
