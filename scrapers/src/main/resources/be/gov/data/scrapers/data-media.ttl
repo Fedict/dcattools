@@ -55,7 +55,7 @@
 <http://publications.europa.eu/resource/authority/file-type/GPKG>
 	skos:prefLabel "GPKG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
-	skos:altLabel "Geopackage", "geopackage", "GPKG", 
+	skos:altLabel "Geopackage", "geopackage", "GPKG",  "GeoPacakge",
 		"sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)",
 		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .
 
@@ -64,7 +64,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/gml+xml>;
 	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
 		"Environmental Monitoring Facilities GML application schema", "Gml",
-		"Administrative units GML application schema", "OGC:GML", 
+		"Administrative units GML application schema", "OGC:GML", "gml+xml",
 		"application/gml+xml", "GML application schema",
 		<https://www.iana.org/assignments/media-types/application/gml+xml>,
 		<http://data.gov.be/.well-known/genid/fmt/gml> .
@@ -129,6 +129,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mp4> ;
 	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
 
+<http://publications.europa.eu/resource/authority/file-type/JAR>
+	skos:prefLabel "JAR" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
+	skos:altLabel "java-archive" .
+
 <http://publications.europa.eu/resource/authority/file-type/MOV>
 	skos:prefLabel "MOV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/quicktime> ;
@@ -137,7 +142,7 @@
 <http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES>	
 	skos:prefLabel "N-Triples" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/n-triples> ;
-	skos:altLabel "nt" .
+	skos:altLabel "nt", "n-triples" .
 
 <http://publications.europa.eu/resource/authority/file-type/N3>
 	skos:prefLabel "N3" ;
