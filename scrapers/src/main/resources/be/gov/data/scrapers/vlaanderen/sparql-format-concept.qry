@@ -1,0 +1,18 @@
+# Use name of the format if a blank node with SKOS concept is given
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?s dcterms:format ?concept .
+		?concept a skos:Concept .
+		?concept skos:prefLabel ?label 
+	}
+INSERT
+	{ ?s dcterms:format ?label }
+WHERE 
+	{	?s dcterms:format ?concept .
+		?concept a skos:Concept .
+		?concept skos:prefLabel ?label 
+		FILTER (!STRSTARTS(STR(?concept), "http://data.gov.be"))
+	}

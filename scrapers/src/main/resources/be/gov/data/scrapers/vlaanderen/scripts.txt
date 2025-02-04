@@ -21,7 +21,6 @@ vlaanderen/sparql-remove-source.qry
 vlaanderen/sparql-remove-agent.qry
 vlaanderen/sparql-remove-empty-serves.qry
 vlaanderen/sparql-remove-empty-access.qry
-vlaanderen/sparql-format-rdf.qry
 sparql-downloadurl.qry
 vlaanderen/sparql-dataset-accessurl.qry
 vlaanderen/sparql-dist-accessurl.qry
@@ -29,6 +28,7 @@ vlaanderen/sparql-landingpage.qry
 vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-title.qry
 vlaanderen/sparql-format-darwin.qry
+vlaanderen/sparql-format-concept.qry
 data-media.ttl
 sparql-map-media.qry
 vlaanderen/sparql-format-wms.qry
