@@ -10,4 +10,5 @@ WHERE
 		FILTER NOT EXISTS {
 			?dataset dcterms:publisher ?publ
 		}
+		FILTER (STRSTARTS(STR(?publ), "https://data.vlaanderen.be/id/organisatie"))
 	}

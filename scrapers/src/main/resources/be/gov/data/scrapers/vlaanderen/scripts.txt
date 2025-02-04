@@ -7,6 +7,9 @@ vlaanderen/sparql-remove-metadatavlaanderen.qry
 vlaanderen/sparql-remove-rights-unlimited.qry
 vlaanderen/sparql-remove-empty-license.qry
 vlaanderen/sparql-remove-unknown-contact.qry
+vlaanderen/sparql-antwerp-mail.qry
+vlaanderen/sparql-detach-contacts.qry
+vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-remove-unknown-address.qry
 vlaanderen/sparql-remove-unknown-location.qry
 vlaanderen/sparql-fix-geotype.qry
@@ -58,7 +61,6 @@ vlaanderen/sparql-dcjm-publ-contact.qry
 # Antwerp
 vlaanderen/sparql-antwerp-accessrights.qry
 vlaanderen/sparql-antwerp-empty.qry
-vlaanderen/sparql-antwerp-mail.qry
 vlaanderen/sparql-default-lang-tag.qry
 data-frequency.ttl
 sparql-map-frequency.qry
@@ -85,7 +87,6 @@ vlaanderen/sparql-remove-agent-orphans.qry
 vlaanderen/sparql-remove-onbekend.qry
 vlaanderen/sparql-default-contact.qry
 vlaanderen/sparql-fix-serves-id.qry
-vlaanderen/sparql-detach-contacts.qry
 sparql-remove-circular.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 sparql-strip-html.qry
