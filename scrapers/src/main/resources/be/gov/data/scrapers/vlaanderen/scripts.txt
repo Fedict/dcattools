@@ -74,6 +74,7 @@ clear-skos.qry
 vlaanderen/sparql-deptomgeving-org.qry
 vlaanderen/sparql-deptomgeving-name.qry
 vlaanderen/sparql-contact-publisher.qry
+vlaanderen/sparql-contact-name-publisher.qry
 vlaanderen/sparql-vcard-fn-name.qry
 vlaanderen/sparql-vcard-fn-mailto.qry
 vlaanderen/data-org.ttl

@@ -1,0 +1,15 @@
+# Use name of contactpoint if publisher is missing
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT 
+	{ 	?dataset dcterms:publisher ?contact }
+WHERE
+	{	?dataset dcat:contactPoint ?contact .
+		?contact vcard:fn ?name 
+		FILTER NOT EXISTS {
+			?dataset dcterms:publisher ?publ
+		}
+	}
