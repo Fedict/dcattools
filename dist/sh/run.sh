@@ -181,7 +181,10 @@ for source in ${sources[@]}; do
 		makedirs $source
 	fi
 
-	clean $source
+	if [ ! -x ${NOCLEAN+x} ]; then
+		clean $source
+	fi
+
 	scrape $source
 	validate $source
  	convert $source
