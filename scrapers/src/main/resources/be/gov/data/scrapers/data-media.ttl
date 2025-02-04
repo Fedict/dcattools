@@ -252,6 +252,7 @@
 		"Excel XLSX", "excel",
 		"Cognos Rapport HTML, PDF, XML, Excel", "Cognos Rapport\nHTML, PDF, XML, Excel", 
 		"Excel", "excel", <http://data.gov.be/.well-known/genid/fmt/xlsx>,
+		"vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 		<https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet>,
 		"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" .
 
