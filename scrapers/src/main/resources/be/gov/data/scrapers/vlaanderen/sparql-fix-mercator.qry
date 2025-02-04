@@ -1,0 +1,9 @@
+# Incorrect label
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{ 	<https://data.vlaanderen.be/id/organisatie/OVO050677> foaf:name "Departement Cultuur, Jeugd en Media"@nl }
+WHERE
+	{ 	<https://data.vlaanderen.be/id/organisatie/OVO050677> foaf:name "Departement Cultuur, Jeugd en Media"@nl }
+
