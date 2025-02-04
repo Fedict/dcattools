@@ -47,7 +47,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000112>, <https://data.vlaanderen.be/doc/organisatie/OVO000112> ;
 	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
-	skos:altLabel "Vlaamse Waterweg NV"@nl  .
+	skos:altLabel "Vlaamse Waterweg NV"@nl, "De Vlaamse Waterweg nv"@nl  .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471>
 	a foaf:Organization ;
