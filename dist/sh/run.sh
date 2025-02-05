@@ -181,7 +181,7 @@ for source in ${sources[@]}; do
 		makedirs $source
 	fi
 
-	if [ ! -x ${NOCLEAN+x} ]; then
+	if [ -z ${NOCLEAN+x} ]; then
 		clean $source
 	fi
 
