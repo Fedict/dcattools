@@ -1,0 +1,13 @@
+# Insert missing dcterms identifier
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcterms:identifier ?uuid }
+WHERE
+	{ 	?dataset a ?cl .
+		VALUES ?cl { dcat:Dataset dcat:DataService dcat:DatasetSeries }
+		BIND (STR(?dataset) AS ?uuid)
+		FILTER NOT EXISTS { ?dataset dcterms:identifier ?id } 
+	}

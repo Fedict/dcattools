@@ -5,6 +5,7 @@ metawal/sparql-fix-contactname.qry
 metawal/data-publ-contact.ttl
 metawal/sparql-default-contact.qry
 metawal/sparql-default-publisher.qry
+metawal/sparql-id.qry
 data-media.ttl
 metawal/sparql-format-wms.qry
 metawal/sparql-format-uri.qry
