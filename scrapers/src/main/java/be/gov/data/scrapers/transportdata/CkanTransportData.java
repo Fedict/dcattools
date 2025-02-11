@@ -30,7 +30,7 @@ import be.gov.data.scrapers.CkanJson;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Properties;
-import javax.json.JsonObject;
+import jakarta.json.JsonObject;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
