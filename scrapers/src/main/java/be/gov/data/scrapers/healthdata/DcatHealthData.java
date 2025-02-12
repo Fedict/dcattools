@@ -38,10 +38,15 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -67,12 +72,11 @@ public class DcatHealthData extends Dcat {
 	private final static Map<String,String> CONTEXT = new HashMap<>();
 	
 	static {
+		CONTEXT.put("dcat", DCAT.NAMESPACE);
+		CONTEXT.put("org", ORG.NAMESPACE);
+		CONTEXT.put("vcard", VCARD4.NAMESPACE);	
 		CONTEXT.put("title", DCTERMS.TITLE.toString());
 		CONTEXT.put("identifier", DCTERMS.IDENTIFIER.toString());
-		CONTEXT.put("dcat:Dataset", DCAT.DATASET.toString());
-		CONTEXT.put("dcat:Distribution", DCAT.DISTRIBUTION.toString());
-		CONTEXT.put("org:Organization", ORG.ORGANIZATION.toString());
-		CONTEXT.put("vcard:Contact", VCARD4.CONTACT.toString());
 		CONTEXT.put("description", DCTERMS.DESCRIPTION.toString());
 		CONTEXT.put("accessLevel", DCTERMS.ACCESS_RIGHTS.toString());
 		CONTEXT.put("issued", DCTERMS.ISSUED.toString());
@@ -80,6 +84,7 @@ public class DcatHealthData extends Dcat {
 		CONTEXT.put("modified", DCTERMS.MODIFIED.toString());
 		CONTEXT.put("license", DCTERMS.LICENSE.toString());
 		CONTEXT.put("spatial", DCTERMS.SPATIAL.toString());
+		CONTEXT.put("temporal", DCTERMS.TEMPORAL.toString());
 		CONTEXT.put("publisher", DCTERMS.PUBLISHER.toString());
 		CONTEXT.put("fn", VCARD4.FN.toString());
 		CONTEXT.put("hasEmail", VCARD4.HAS_EMAIL.toString());		
@@ -91,6 +96,7 @@ public class DcatHealthData extends Dcat {
 		CONTEXT.put("mediaType", DCAT.MEDIA_TYPE.toString());
 		CONTEXT.put("downloadURL", DCAT.DOWNLOAD_URL.toString());
 		CONTEXT.put("keyword", DCAT.KEYWORD.toString());
+		CONTEXT.put("label", DCAT.KEYWORD.toString());
 		CONTEXT.put("theme", DCAT.THEME.toString());
 		CONTEXT.put("references", DCTERMS.REFERENCES.toString());
 		CONTEXT.put("data", RDFS.LABEL.toString());
@@ -99,11 +105,11 @@ public class DcatHealthData extends Dcat {
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
-		String ttl = map.get("all").getContent();
+		String json = map.get("all").getContent();
 
 		List<Map> datasets;
 		// Change JSON file to JSON-LD
-		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
+		try (InputStream in = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))) {
 			datasets = (List<Map>) JsonUtils.fromInputStream(in);
 		} catch (IOException ex) {
 			throw new RepositoryException(ex);
@@ -116,12 +122,13 @@ public class DcatHealthData extends Dcat {
 		String str = "";
 		try {
 			str = JsonUtils.toString(jsonld);
+			System.err.println(str);
 		} catch (IOException ex) {
 			throw new RepositoryException(ex);
 		}
 		
-		try (InputStream json = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8))) {
-			store.add(json, RDFFormat.JSONLD);
+		try (InputStream jsonis = new ByteArrayInputStream(str.getBytes(StandardCharsets.UTF_8))) {
+			store.add(jsonis, RDFFormat.JSONLD);
 		} catch (RDFParseException | IOException ex) {
 			throw new RepositoryException(ex);
 		}
