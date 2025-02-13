@@ -9,7 +9,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
-	skos:altLabel "Sciensano", "Cancer centre (Sciensano)" .
+	skos:altLabel "Sciensano", "Cancer centre (Sciensano)", "healthdata.be" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
