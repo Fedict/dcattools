@@ -4,9 +4,9 @@
 	<parent>
 		<groupId>be.gov.data</groupId>
 		<artifactId>dcattools</artifactId>
-		<version>4.0.3</version>
+		<version>4.0.4</version>
 	</parent>
-	<version>4.0.3</version>
+	<version>4.0.4</version>
 	<name>helpers</name>
 	<artifactId>helpers</artifactId>
 	<packaging>jar</packaging>
