@@ -1,15 +1,13 @@
-# Create accessURL and landingpage based on dataset identifier
+# Create landingpage based on dataset identifier
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT 
-	{	?dataset dcat:landingPage ?url .
-		?dist dcat:accessURL ?url }
+	{	?dataset dcat:landingPage ?url }
 WHERE 
 	{	?dataset a dcat:Dataset .
 		?dataset dcterms:identifier ?id .
-		?dataset dcat:distribution ?dist
 		BIND (
 			URI(
 				CONCAT('https://fair.healthdata.be/dataset/', ?id)) 

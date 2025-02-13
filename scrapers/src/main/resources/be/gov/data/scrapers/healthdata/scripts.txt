@@ -2,6 +2,7 @@
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
+sparql-remove-circular.qry
 healthdata/data-org.ttl
 sparql-map-org.qry
 sparql-vcard-mailto.qry
@@ -17,7 +18,6 @@ healthdata/sparql-split-description-en.qry
 healthdata/sparql-language-en.qry
 healthdata/sparql-language-tag.qry
 sparql-bytesize-type.qry
-healthdata/sparql-accessurl-hash.qry
 healthdata/sparql-remove-pages.qry
 sparql-geo-belgium.qry
 data-frequency.ttl
@@ -27,7 +27,8 @@ sparql-map-license.qry
 healthdata/sparql-dist-license.qry
 healthdata/sparql-map-access.qry
 healthdata/sparql-theme.qry
-healthdata/sparql-accessurl.qry
+healthdata/sparql-landingpage.qry
+sparql-dist-accessurl.qry
 healthdata/sparql-downloadurl.qry
 healthdata/sparql-fix-datetime.qry
 healthdata/sparql-fix-datetime2.qry
