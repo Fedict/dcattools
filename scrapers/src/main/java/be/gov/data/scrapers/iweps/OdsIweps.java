@@ -76,7 +76,7 @@ public class OdsIweps extends Ods {
 	public void generateDcat(Cache cache, Storage store)
 			throws RepositoryException, MalformedURLException {
 		Map<String, Page> map = cache.retrievePage(getBase());
-		String ttl = map.get("all").getContent();
+		String ttl = map.get("all").getContent().replaceAll("&navi", "&amp;");
 
 		// Load turtle file into store
 		try (InputStream in = new ByteArrayInputStream(ttl.getBytes(StandardCharsets.UTF_8))) {
