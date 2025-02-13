@@ -4,13 +4,12 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE { 
-	?res dcterms:spatial ?s 
+	?res dcterms:spatial "Belgium"
 }
 INSERT {
 	?res dcterms:spatial <https://sws.geonames.org/2802361/> .
 	<https://sws.geonames.org/2802361/> a dcterms:Location .
 }
 WHERE {	
-	?res dcterms:spatial ?s .
-	FILTER (isLiteral(?s))
+	?res dcterms:spatial "Belgium" 
 }

@@ -1,0 +1,20 @@
+# Temporal should be a class with startdate instead of a literal
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:temporal ?label }
+INSERT
+	{ 	?s dcterms:temporal ?uri .
+		?uri dcat:startDate ?label 
+	}
+WHERE
+	{ 	?s dcterms:temporal ?label .
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/temporal/", 
+					REPLACE(?label, ":", "")
+				))
+		as ?uri)
+		FILTER(!CONTAINS(?label, "/"))
+	}

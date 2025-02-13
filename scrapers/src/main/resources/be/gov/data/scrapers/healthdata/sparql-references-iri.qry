@@ -1,0 +1,13 @@
+# References should be a IRI, not a literal
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:references ?label }
+INSERT 
+	{	?s dcterms:references ?uri }
+WHERE 
+	{	?s dcterms:references ?label
+		BIND (IRI(?label) as ?uri)
+		FILTER(isLiteral(?label) && STRSTARTS(?label, "http"))
+ }
