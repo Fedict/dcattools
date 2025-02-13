@@ -2,6 +2,21 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<http://data.europa.eu/bna/c_f2b50efd> a skos:Concept ;
+	skos:prefLabel "Population"@en .
+
+<http://data.europa.eu/bna/c_a2c6dcd8> a skos:Concept ;
+	skos:prefLabel "Employment"@en .
+
+<http://data.europa.eu/bna/c_c0022235> a skos:Concept ;
+	skos:prefLabel "Harmonised Indices of consumer prices"@en .
+
+<http://data.europa.eu/bna/c_a8b937c4> a skos:Concept ;
+	skos:prefLabel "Inequality"@en .
+
+<http://data.europa.eu/bna/c_a49ec591> a skos:Concept ;
+	skos:prefLabel "Volume of sales by activity"@en .
+
 <http://data.europa.eu/bna/c_6a3f6896> a skos:Concept ;
 	skos:prefLabel "Cadastral parcels"@en .
 
@@ -107,5 +122,7 @@
 <http://data.europa.eu/bna/c_f399050e> a skos:Concept ;
 	skos:prefLabel "Sea regions"@en .
 
+<http://data.europa.eu/bna/c_e1da4e07> a skos:Concept ;
+	skos:prefLabel "Statistics"@en .
 
 
