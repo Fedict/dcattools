@@ -61,6 +61,7 @@
 	skos:altLabel "Gewestelijk agentschap voor netheid, Net Brussel"@en, 
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@nl, 
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@fr, 
+			"Agence régionale pour la propreté"@fr,
 			"Gewestelijk agentschap voor netheid, Net Brussel"@nl  .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2269796337>
@@ -87,7 +88,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr ;
 	skos:altLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement / Leefmilieu Brussel"@nl,
-		"Bruxelles Environnement"@en, "Bruxelles Environnement / Leefmilieu Brussel"@en, 
+		"Brussels Environment"@en, "Bruxelles Environnement / Leefmilieu Brussel"@en, 
 		"Bruxelles Environnement"@fr, "Bruxelles Environnement / Leefmilieu Brussel"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
@@ -146,7 +147,8 @@
 	dcterms:spatial <https://sws.geonames.org/2798555/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Evere"@fr, "Evere"@en, "Evere"@nl ;
-	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl, "Gemeentebestuur van Evere"@nl  .
+	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl, "Gemeentebestuur van Evere"@nl,
+		"Administration communale d'Evere"@fr  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
 	dcterms:spatial <https://sws.geonames.org/2787415/> ;
@@ -253,7 +255,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
 	skos:altLabel "Brussels energy regulator"@en, "Le régulateur bruxellois pour l'énergie"@fr, 
-			"De Brusselse regulator voor energie"@nl,
+			"De Brusselse regulator voor energie"@nl, "Brugel"@fr,
 			"Brugel, De Brusselse regulator voor energie"@nl, 
 			"Brugel, Le régulateur bruxellois pour l'énergie"@fr, "Brugel, Brussels energy regulator"@en .
 
@@ -336,3 +338,15 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en ;
 	skos:altLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:altLabel "AD Statistiek - Statistics Belgium"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
+	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr .
