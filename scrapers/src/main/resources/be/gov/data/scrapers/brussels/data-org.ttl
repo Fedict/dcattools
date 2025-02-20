@@ -350,3 +350,8 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
 	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0664962516>
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Safe Brussels"@en ;
+	skos:altLabel "Brussels Prevention et Security (BPS)"@en .
