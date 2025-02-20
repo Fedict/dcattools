@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, FPS BOSA DG DT
+ * Copyright (c) 2025, FPS BOSA DG DT
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,27 +23,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.scrapers.sodha;
+package be.gov.data.scrapers.kulrdr;
 
+import be.gov.data.scrapers.sodha.*;
 import be.gov.data.scrapers.DataverseJson;
 import java.io.IOException;
 import java.util.Properties;
 
 /**
- * SODHA (social sciences) scraper
+ * KUL RDR (research data) scraper
  * 
- * @see https://sodha.be/
+ * @see https://rdr.kuleuven.be/
  * @author Bart Hanssens
  */
-public class DataverseSodha extends DataverseJson {
+public class DataverseKulRdr extends DataverseJson {
 	/**
 	 * JSON scraper SODHA.be
 	 *
 	 * @param prop
 	 * @throws IOException
 	 */
-	public DataverseSodha(Properties prop) throws IOException {
+	public DataverseKulRdr(Properties prop) throws IOException {
 		super(prop);
-		setName("sodha");
+		setName("kulrdr");
 	}
 }

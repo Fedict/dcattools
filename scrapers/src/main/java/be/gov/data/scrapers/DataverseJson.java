@@ -266,11 +266,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		generateCatalog(store);
 	}
 
-	@Override
-	public void scrape() throws IOException {
+	protected void scrapeCat(Cache cache) throws IOException {
 		String lang = getDefaultLang();
-		Cache cache = getCache();
-
 		List<URL> scrapeList = scrapeList();
 		for(URL url: scrapeList) {
 			sleep();
@@ -291,6 +288,18 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			Page page = cache.retrievePage(url).get(lang);
 			generateDcat(store, parse(page.getContent()));
 		}
+	}
+
+	@Override
+	public void scrape() throws IOException {
+		LOG.info("Start scraping");
+		Cache cache = getCache();
+
+		Set<URL> urls = cache.retrievePageList();
+		if (urls.isEmpty()) {
+			scrapeCat(cache);
+		}
+		LOG.info("Done scraping");
 	}
 
 	/**

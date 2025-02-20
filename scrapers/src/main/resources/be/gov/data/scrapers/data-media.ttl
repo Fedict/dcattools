@@ -20,7 +20,7 @@
 <http://publications.europa.eu/resource/authority/file-type/TSV>
 	skos:prefLabel "TSV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/tab-separated-values> ;
-	skos:altLabel "text/tab-separated-values" .
+	skos:altLabel "text/tab-separated-values", "text/tsv" .
 
 <http://publications.europa.eu/resource/authority/file-type/DGN>
 	skos:prefLabel "DGN" ;
@@ -207,7 +207,7 @@
 <http://publications.europa.eu/resource/authority/file-type/TIFF>
 	skos:prefLabel "TIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
-	skos:altLabel "TIFF", "tiff",
+	skos:altLabel "TIFF", "tiff", "image/tiff",
 		<https://www.iana.org/assignments/media-types/image/tiff> .
 
 <http://publications.europa.eu/resource/authority/file-type/GEOTIFF>	
@@ -295,3 +295,13 @@
 	skos:prefLabel "ArcGIS Hub" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgishub>; 
 	skos:altLabel "ArcGIS Hub Dataset" .
+
+<http://publications.europa.eu/resource/authority/file-type/MATLAB_MAT>
+	skos:prefLabel "MATLAB" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/matlab-mat>; 
+	skos:altLabel "application/matlab-mat" .
+
+<http://publications.europa.eu/resource/authority/file-type/MARKDOWN>
+	skos:prefLabel "Markdown" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/text/markdown>; 
+	skos:altLabel "text/markdown" .
