@@ -1,4 +1,4 @@
-# Remove IWEPS to prevent duplicates (IWEPS source is more detailed)
+# Remove SPW,IWEPS datasets published elsewhere
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -8,7 +8,7 @@ DELETE {
 	?cat dcat:dataset ?dataset .
 	?dataset ?p ?o .
 	?dataset a dcat:Dataset .
-	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> .
+	?dataset dcterms:publisher ?publ .
 	?dataset dcat:distribution ?dist .
 	?dist ?x ?y .
 	?dataset dcat:contactPoint ?point . 
@@ -18,9 +18,11 @@ DELETE {
 	?cat dcat:dataset ?dataset .
 	?dataset ?p ?o .
 	?dataset a dcat:Dataset .
-	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> .
+	?dataset dcterms:publisher ?publ .
 	?dataset dcat:distribution ?dist .
 	?dist ?x ?y .
+	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0866518618>  
+					<https://org.belgif.be/id/CbeRegisteredEntity/0316381138> }
 	OPTIONAL { 
 		?dataset dcat:contactPoint ?point . 
 		?point vcard:fn ?name .
