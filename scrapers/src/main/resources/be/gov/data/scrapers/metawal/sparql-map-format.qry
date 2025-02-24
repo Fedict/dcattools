@@ -8,14 +8,14 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
-	{	?dist dcat:mediaType ?mt }
+	{	?dist dcterms:format ?fmt }
 INSERT 
-	{ 	?dist dcat:mediaType ?uri .
-		?uri a dcterms:MediaType .
+	{ 	?dist dcterms:format ?uri .
+		?uri a dcterms:MediaTypeOrExtent
 	}
 WHERE
-	{	?dist dcat:mediaType ?mt .
-		?mt rdfs:label ?mime .
-		?uri skos:altLabel ?mime 
-		FILTER (!CONTAINS(STR(?mt), "www.iana.org"))
+	{	?dist dcterms:format ?fmt .
+		?fmt rdfs:label ?label .
+		?uri skos:altLabel ?label 
+		FILTER (!CONTAINS(STR(?fmt), "publications.europa.eu"))
 	}
