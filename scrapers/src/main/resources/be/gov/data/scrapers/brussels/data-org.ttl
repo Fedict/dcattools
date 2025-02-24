@@ -58,7 +58,8 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0241347282>
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Bruxelles-Propreté"@nl, "Net Brussel"@nl, "ARP-GAN"@en ;
-	skos:altLabel "Gewestelijk agentschap voor netheid, Net Brussel"@en, 
+	skos:altLabel "Gewestelijk agentschap voor netheid, Net Brussel"@en,
+		"Gewestelijk agentschap voor netheid"@nl,
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@nl, 
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@fr, 
 			"Agence régionale pour la propreté"@fr,
@@ -69,6 +70,9 @@
 	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, "Bruxelles Urbanisme et Patrimoine"@fr ;
 	skos:altLabel "Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@nl, "Brussel Stedenbouw en Erfgoed"@nl,
 		"Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@en, "Brussels Planning and Heritage"@en,
+		"GGewestelijke Overheidsdienst Brussel Stedenbouw en Erfgoed"@nl,
+		"Gewestelijke Overheidsdienst Brussel Stedenbouw en Erfgoed"@nl,
+		"Gewestelijke Overheidsdienst Brussel Stedenbouw en ErfgoedUrban"@nl,
 		"Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@fr, "Bruxelles Urbanisme et Patrimoine"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0247499953>
@@ -82,7 +86,12 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en  ;
 	skos:altLabel "CIBG / CIRB"@en, "CIRB / CIBG"@en, "BRIC"@en, "CIBG"@nl, "CIRB"@fr, "IRISline"@en, 
-		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en .
+		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "IRISteam"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0696977167> 
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Iriscare"@nl, "Iriscare"@fr, "Iriscare"@en ;
+	skos:altLabel "Iriscare"@nl, "Iriscare"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236916956>
 	dcterms:type admsp:RegionalAuthority ;
@@ -190,7 +199,7 @@
 	dcterms:spatial <https://sws.geonames.org/2794915/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Jette"@nl, "Jette"@fr, "Jette"@en ;
-	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en, "Commune de Jette"@fr .
+	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en, "Commune de Jette"@fr, "Gemeente Jette"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
 	dcterms:spatial <https://sws.geonames.org/2798142/> ;
@@ -296,7 +305,7 @@
 	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr,
 		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr,
 		"Brussels Instituut voor statistiek en analyse"@nl, "Institut bruxellois de statistiques et d'analyse"@fr,
-		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr  .
+		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr, "IBSA / BISA"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555656283>
 	dcterms:type admsp:Company ;
@@ -353,7 +362,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
-	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, "Classes moyennes et Energie"@fr .
+	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, 
+		"Middenstand en Energie"@nl, "Classes moyennes et Energie"@fr, "K.M.O."@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0664962516>
 	dcterms:type admsp:RegionalAuthority ;
@@ -364,7 +374,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Gemeinsame Gemeinschaftskommission"@de, "Gemeenschappelijke Gemeenschapscommissie"@nl, 
 					"Commission communautaire commune"@fr  ;
-	skos:altLabel "COOCM"@fr .
+	skos:altLabel "COOCM"@fr, "Gemeenschappelijke Gemeenschapscommissie (GGC)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
@@ -372,3 +382,9 @@
 	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr ;
 	skos:altLabel "FOD Financien - Algemene Administratie van de Patrimoniumdocumentatie (AAPD)"@nl,
 				"FPS Finance - General Administration of Patrimonial Documentation (GAPD)"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
+	skos:altLabel "Institut géographique national"@fr, "Nationaal Geografisch Instituut"@nl .

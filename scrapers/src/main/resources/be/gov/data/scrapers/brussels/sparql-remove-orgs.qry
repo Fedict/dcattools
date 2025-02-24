@@ -25,6 +25,7 @@ DELETE {
 	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0316381138> 
 					<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+					<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 					<https://org.belgif.be/id/CbeRegisteredEntity/0314595348>}
 	OPTIONAL { 
 		?dataset dcat:contactPoint ?point . 
