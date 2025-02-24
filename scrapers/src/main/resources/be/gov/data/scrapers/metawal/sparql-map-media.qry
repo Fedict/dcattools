@@ -1,0 +1,21 @@
+# Map file formats to an EU list of well known URIs and mimetypes, 
+# ignoring WCMS/WFS/WTMS (since they produce duplicates for application/xml)
+# Typically file formats are described as text instead of URIs, or use portal-specific URIs
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dist dcat:mediaType ?o }
+INSERT 
+	{ 	?dist dcat:mediaType ?mime .
+		?mime a dcterms:MediaType .
+	}
+WHERE
+	{	?dist dcat:mediaType ?o .
+		?o rdfs:label ?label .
+		?uri skos:altLabel ?label .
+		?uri skos:closeMatch ?mime 
+	}

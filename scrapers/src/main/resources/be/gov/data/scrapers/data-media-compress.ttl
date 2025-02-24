@@ -6,5 +6,6 @@
 	skos:prefLabel "ZIP" ;
 	skos:altLabel "ZIP", "zip", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "application/zip",
+					"application/x-gmz",
 					<https://www.iana.org/assignments/media-types/application/zip>,
 					<https://www.iana.org/assignments/media-types/application/dwca> .

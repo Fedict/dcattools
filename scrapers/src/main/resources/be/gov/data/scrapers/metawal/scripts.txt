@@ -6,10 +6,14 @@ metawal/data-publ-contact.ttl
 metawal/sparql-default-contact.qry
 metawal/sparql-default-publisher.qry
 metawal/sparql-id.qry
+data-media-compress.ttl
+metawal/sparql-map-media-compress.qry
+clear-skos.qry
 data-media.ttl
 metawal/sparql-format-wms.qry
 metawal/sparql-format-uri.qry
-sparql-map-media-srvc.qry
+metawal/sparql-map-media.qry
+#sparql-map-media-srvc.qry
 clear-skos.qry
 metawal/sparql-fix-logo.qry
 metawal/sparql-fix-percenturl.qry

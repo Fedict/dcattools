@@ -6,14 +6,11 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-DELETE
-	{	?dist ?prop	?label	}
 INSERT 
 	{ 	?dist dcat:compressFormat ?mime .
 		?mime a dcterms:MediaType }
 WHERE
-	{	?dist ?prop ?label .
-		?mime ?p ?label .
-		VALUES ?p { skos:altLabel rdfs:label }
-		VALUES ?prop { dcterms:FileFormat dcat:mediaType dcterms:format }
+	{	?dist dcat:mediaType ?uri .
+		?uri rdfs:label ?label .
+		?mime skos:altLabel ?label
 	}

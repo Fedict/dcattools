@@ -45,7 +45,8 @@
 <http://publications.europa.eu/resource/authority/file-type/DWCA>
 	skos:prefLabel "DWCA" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/dwca> ;
-	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "DWC_ARCHIVE", "Darwin Core Archive (DwC-A)" .
+	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "DWC_ARCHIVE", "Darwin Core Archive (DwC-A)",
+			<https://www.iana.org/assignments/media-types/application/dwca> .
 
 <http://publications.europa.eu/resource/authority/file-type/GDB>
 	skos:prefLabel "GDB" ;
@@ -65,7 +66,7 @@
 	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
 		"Environmental Monitoring Facilities GML application schema", "Gml",
 		"Administrative units GML application schema", "OGC:GML", "gml+xml",
-		"application/gml+xml", "GML application schema",
+		"application/gml+xml", "GML application schema", "application/x-gmz",
 		<https://www.iana.org/assignments/media-types/application/gml+xml>,
 		<http://data.gov.be/.well-known/genid/fmt/gml> .
 
@@ -185,8 +186,9 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.shp> ;
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "Shape", "shape", "shapefile", "shape file", 
 			"shape fies", "shapefiile", "application/zipped-shapefile",
+			"application/x-shapefile",
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
-			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)",
+			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)", "application/vnd.shp",
 			<https://www.iana.org/assignments/media-types/application/vnd.shp> .
 
 <http://publications.europa.eu/resource/authority/file-type/DXF>
@@ -305,3 +307,9 @@
 	skos:prefLabel "Markdown" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/markdown>; 
 	skos:altLabel "text/markdown" .
+
+<http://publications.europa.eu/resource/authority/file-type/ZIP>
+	skos:prefLabel "ZIP" ;
+	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/zip> ;
+	skos:altLabel "ZIP", "zip", "application/zip",
+					<https://www.iana.org/assignments/media-types/application/zip> .
