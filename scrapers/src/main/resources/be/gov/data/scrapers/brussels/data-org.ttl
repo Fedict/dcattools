@@ -190,7 +190,7 @@
 	dcterms:spatial <https://sws.geonames.org/2794915/> ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Jette"@nl, "Jette"@fr, "Jette"@en ;
-	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en .
+	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en, "Commune de Jette"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
 	dcterms:spatial <https://sws.geonames.org/2798142/> ;
@@ -261,7 +261,7 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Diensten van de Regering van he;t Brussels Gewest"@nl, 
+	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
 					"Services du Gouvernement de la Région bruxelloise"@fr, 
 					"Regionaler öffentlicher Dienst Brüssel"@de ;
 	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, 
@@ -277,6 +277,8 @@
 			"Mobigis"@en, "Bruxelles Mobilité / Brussel Mobiliteit"@en,
 			"Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, 
 			"Brussels-Capital Urban Development"@en,
+			"Koninklijke Commissie voor Monumenten en Landschappen"@nl,
+			"Commission Royale des Monuments et Sites"@fr,
 			"talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr ,
 			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en  .
 
@@ -320,7 +322,9 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0227581301> 
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SLRB-BGHM"@en, "SLRB-BGHM"@fr, "SLRB-BGHM"@nl ; 
-	skos:altLabel "SLRB-BGHM"@en, "SLRB-BGHM"@nl, "SLRB-BGHM"@fr .
+	skos:altLabel "SLRB-BGHM"@en, "SLRB-BGHM"@nl, "SLRB-BGHM"@fr,
+			"Brusselse Gewestelijke Huisvestingsmaatschappij (BGHM)"@nl,
+			"Brussels-Capital Region Housing Company (SLRB)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0870532933>
 	dcterms:type admsp:RegionalAuthority ;
@@ -343,15 +347,28 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
-	skos:altLabel "AD Statistiek - Statistics Belgium"@nl .
+	skos:altLabel "AD Statistiek - Statistics Belgium"@nl, "DG Statistique - Statistics Belgium"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
-	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr .
+	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, "Classes moyennes et Energie"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0664962516>
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Safe Brussels"@en ;
-	skos:altLabel "Brussels Prevention et Security (BPS)"@en .
+	skos:prefLabel "Safe Brussels"@en, "Safe Brussels"@nl, "Safe Brussels"@fr  ;
+	skos:altLabel "Brussels Prevention et Security (BPS)"@en, "Bruxelles Prévention et Sécurité (BPS)"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0240682833>
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Gemeinsame Gemeinschaftskommission"@de, "Gemeenschappelijke Gemeenschapscommissie"@nl, 
+					"Commission communautaire commune"@fr  ;
+	skos:altLabel "COOCM"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr ;
+	skos:altLabel "FOD Financien - Algemene Administratie van de Patrimoniumdocumentatie (AAPD)"@nl,
+				"FPS Finance - General Administration of Patrimonial Documentation (GAPD)"@fr .
