@@ -356,7 +356,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
-	skos:altLabel "AD Statistiek - Statistics Belgium"@nl, "DG Statistique - Statistics Belgium"@fr .
+	skos:altLabel "AD Statistiek - Statistics Belgium"@nl, "DG Statistique - Statistics Belgium"@fr,
+		"Statistics Belgium"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
