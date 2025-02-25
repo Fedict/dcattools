@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded
+sparql-strip-html.qry
 brussels/sparql-fix-translations.qry
 brussels/sparql-keyword-theme.qry
 brussels/sparql-theme-uri.qry
@@ -38,7 +39,6 @@ clear-skos.qry
 brussels/sparql-accessurl.qry
 brussels/sparql-fix-downloadurl.qry
 sparql-title-to-desc.qry
-sparql-strip-html.qry
 brussels/sparql-fix-translations2.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry

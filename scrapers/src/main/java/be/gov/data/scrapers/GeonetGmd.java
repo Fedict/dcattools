@@ -188,7 +188,7 @@ public abstract class GeonetGmd extends Geonet {
 	 * @param property RDF property
 	 * @throws RepositoryException
 	 */
-	protected void parseMulti(Storage store, IRI uri, Node node, IRI property) throws RepositoryException {
+	protected void parseMulti(Storage store, IRI uri, Node node, IRI property, boolean split) throws RepositoryException {
 		if (node == null) {
 			return;
 		}
@@ -200,18 +200,26 @@ public abstract class GeonetGmd extends Geonet {
 				if (lang.equals("en")) {
 					txten = txt;
 				}
-				String[] words = txt.split(",");
-				for (String word: words) {
-					store.add(uri, property, word.strip(), lang);
+				if (split) {
+					String[] words = txt.split(",");
+					for (String word: words) {
+						store.add(uri, property, word.strip(), lang);
+					}
+				} else {
+					store.add(uri, property, txt.strip(), lang);
 				}
 			}
 		}
 		String txt = node.valueOf(XP_STR);
 		if (txt != null && !txt.equals(txten)) {
+			if (split) {
 				String[] words = txt.split(",");
 				for (String word: words) {
 					store.add(uri, property, word.strip());
 				}
+			} else {
+				store.add(uri, property, txt.strip());
+			}
 		}
 	}
 
@@ -339,9 +347,9 @@ public abstract class GeonetGmd extends Geonet {
 				store.add(vcard, RDF.TYPE, VCARD4.ORGANIZATION);
 			}
 
-			parseMulti(store, vcard, org, VCARD4.FN);
+			parseMulti(store, vcard, org, VCARD4.FN, false);
 			if (org == null) {
-				parseMulti(store, vcard, person, VCARD4.FN);
+				parseMulti(store, vcard, person, VCARD4.FN, false);
 			}
 			if (!email.isEmpty()) {
 				store.add(vcard, VCARD4.HAS_EMAIL, store.getURI("mailto:" + email));
@@ -395,7 +403,7 @@ public abstract class GeonetGmd extends Geonet {
 				IRI org = makeOrgIRI(hash(name));
 				store.add(iri, DCTERMS.CREATOR, org);
 				store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
-				parseMulti(store, org, node, FOAF.NAME);
+				parseMulti(store, org, node, FOAF.NAME, false);
 			}
 		}
 	}
@@ -411,7 +419,7 @@ public abstract class GeonetGmd extends Geonet {
 	protected void parseTheme(Storage store, IRI dataset, Node thesaurus, Node keyword) {
 		if (thesaurus.getText().equals("Theme")) {
 			// assume it is a DCAT theme
-			parseMulti(store, dataset, keyword, DCAT.THEME);
+			parseMulti(store, dataset, keyword, DCAT.THEME, true);
 			return;
 		}
 		Node subj = keyword.selectSingleNode(XP_KEYWORD_URI);
@@ -420,7 +428,7 @@ public abstract class GeonetGmd extends Geonet {
 				IRI skos = makeIRI(subj.getStringValue());
 				store.add(dataset, DCTERMS.SUBJECT, skos);
 				store.add(skos, RDF.TYPE, SKOS.CONCEPT);
-				parseMulti(store, skos, subj, SKOS.PREF_LABEL);
+				parseMulti(store, skos, subj, SKOS.PREF_LABEL, true);
 			} catch (IllegalArgumentException ioe){
 				LOG.warn("Invalid URI {}", subj.getStringValue());
 			}
@@ -475,8 +483,8 @@ public abstract class GeonetGmd extends Geonet {
 		Node title = node.selectSingleNode(XP_DIST_NAME);
 		Node desc = node.selectSingleNode(XP_DIST_DESC);
 
-		parseMulti(store, dist, title, DCTERMS.TITLE);
-		parseMulti(store, dist, desc, DCTERMS.DESCRIPTION);
+		parseMulti(store, dist, title, DCTERMS.TITLE, false);
+		parseMulti(store, dist, desc, DCTERMS.DESCRIPTION, false);
 	}
 
 	/**
@@ -522,10 +530,10 @@ public abstract class GeonetGmd extends Geonet {
 		parseStamp(store, dataset, node);
 
 		Node title = metadata.selectSingleNode(XP_TITLE);
-		parseMulti(store, dataset, title, DCTERMS.TITLE);
+		parseMulti(store, dataset, title, DCTERMS.TITLE, false);
 		
 		Node desc = metadata.selectSingleNode(XP_DESC);
-		parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION);
+		parseMulti(store, dataset, desc, DCTERMS.DESCRIPTION, false);
 
 		List<Node> langs = metadata.selectNodes(XP_LANG);
 		parseLanguage(store, dataset, langs);
@@ -539,7 +547,7 @@ public abstract class GeonetGmd extends Geonet {
 			}
 			if (thesaurus == null) {
 				// full text keyword
-				parseMulti(store, dataset, keyword, DCAT.KEYWORD);
+				parseMulti(store, dataset, keyword, DCAT.KEYWORD, true);
 			} else {
 				parseTheme(store, dataset, thesaurus, keyword);
 			}
