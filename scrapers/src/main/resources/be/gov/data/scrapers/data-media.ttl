@@ -308,6 +308,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/markdown>; 
 	skos:altLabel "text/markdown" .
 
+<http://publications.europa.eu/resource/authority/file-type/WORLD>
+	skos:prefLabel "World file" ;
+	skos:closeMatch	<http://inspire.ec.europa.eu/media-types/application/x-worldfile> ;
+	skos:altLabel "application/x-worldfile" .
+
 <http://publications.europa.eu/resource/authority/file-type/ZIP>
 	skos:prefLabel "ZIP" ;
 	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/zip> ;
