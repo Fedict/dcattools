@@ -51,7 +51,8 @@
 <http://publications.europa.eu/resource/authority/file-type/GDB>
 	skos:prefLabel "GDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-filegdb> ;
-	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase" .
+	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase",
+			"application/x-filegdb" .
 
 <http://publications.europa.eu/resource/authority/file-type/GPKG>
 	skos:prefLabel "GPKG" ;
