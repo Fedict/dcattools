@@ -1,5 +1,4 @@
 # extra queries to be executed and data to be loaded
-metawal/sparql-fix-service.qry
 metawal/sparql-fix-source.qry
 metawal/sparql-fix-contactname.qry
 metawal/data-publ-contact.ttl
