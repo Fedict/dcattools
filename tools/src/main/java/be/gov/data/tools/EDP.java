@@ -513,7 +513,7 @@ public class EDP {
 	}
 
 	/**
-	 * Write DCAT dataset
+	 * Write DCAT dataset or DataService
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
@@ -573,6 +573,17 @@ public class EDP {
 	}
 
 	/**
+	 * Check if dataset or dataservice has a title
+	 * 
+	 * @param con
+	 * @param iri
+	 * @return 
+	 */
+	private static boolean hasTitle(RepositoryConnection con, IRI iri) {
+		return con.hasStatement(iri, DCTERMS.TITLE, null, false);	
+	}
+
+	/**
 	 * Check uniqueness of dct:identifier
 	 * 
 	 * @param con
@@ -607,6 +618,7 @@ public class EDP {
 		throws XMLStreamException {
 		int nr = 0;
 		int duplicates = 0;
+		int incomplete = 0;
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATASET)) {
 			while (res.hasNext()) {
@@ -615,13 +627,17 @@ public class EDP {
 					duplicates++;
 					continue;
 				}
+				if (!hasTitle(con,subj)) {
+					incomplete++;
+					continue;
+				}
 				nr++;
 				w.writeStartElement("dcat:dataset");
 				writeResource(w, con, "dcat:Dataset", subj);
 				w.writeEndElement();
 			}
 		}
-		LOG.info("Wrote {} datasets, {} duplicates", nr, duplicates);
+		LOG.info("Wrote {} datasets, {} duplicates, {} incompletes", nr, duplicates, incomplete);
 	}
 
 	/**
@@ -635,6 +651,7 @@ public class EDP {
 		throws XMLStreamException {
 		int nr = 0;
 		int duplicates = 0;
+		int incomplete = 0;
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
 			while (res.hasNext()) {
@@ -643,13 +660,17 @@ public class EDP {
 					duplicates++;
 					continue;
 				}
+				if (!hasTitle(con,subj)) {
+					incomplete++;
+					continue;
+				}
 				nr++;
 				w.writeStartElement("dcat:service");
 				writeResource(w, con, "dcat:DataService", subj);
 				w.writeEndElement();
 			}
 		}
-		LOG.info("Wrote {} services, {} duplicates", nr, duplicates);
+		LOG.info("Wrote {} services, {} duplicates, {} incompletes", nr, duplicates, incomplete);
 	}
 
 	/**
