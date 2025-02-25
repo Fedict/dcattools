@@ -5,7 +5,6 @@ statbelopen/sparql-license.qry
 statbelopen/data-publ-contact.ttl
 statbelopen/sparql-vcard-fn.qry
 statbelopen/sparql-hvd.qry
-statbelopen/sparql-hvd-category.qry
 clear-skos.qry
 data-hvdcat.ttl
 data-shacl-support.ttl
