@@ -87,7 +87,7 @@ public class Main implements Callable<Integer> {
 			comparer.sync(new String[]{"en", "nl", "fr", "de"}, threshold);
 			return 0;
 		} catch (Exception e) {
-			LOG.error("Error: {}", e.getMessage());
+			LOG.error("Error: {}", e);
 			return -1;
 		} finally {
 			client.logout();
