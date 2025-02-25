@@ -68,8 +68,8 @@ public class DrupalClient {
 
 	private final HttpClient client;
 	private final String baseURL;
-
-	private Path cacheDir;
+	private final Path cacheDir;
+	
 	private String token;
 	private String logout;
 	private String uid;
