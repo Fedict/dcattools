@@ -533,7 +533,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
-		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
+		writeReferences(w, con, uri, FOAF.PAGE, "foaf:page", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 		writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
