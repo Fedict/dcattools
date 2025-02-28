@@ -491,7 +491,7 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
-		writeReferences(w, con, uri, FOAF.PAGE, "foaf:Page", "foaf:Document", false);
+		writeReferences(w, con, uri, FOAF.PAGE, "foaf:page", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.MEDIA_TYPE, "dcat:mediaType");
 		writeReferences(w, con, uri, DCTERMS.FORMAT, "dct:format");
 		writeReferences(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
