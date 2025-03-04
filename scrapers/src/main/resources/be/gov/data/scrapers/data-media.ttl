@@ -133,7 +133,7 @@
 
 <http://publications.europa.eu/resource/authority/file-type/JAR>
 	skos:prefLabel "JAR" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
+	skos:closeMatch <https://www.iana.org/assignments/media-type/application/java-archive> ;
 	skos:altLabel "java-archive" .
 
 <http://publications.europa.eu/resource/authority/file-type/MOV>
