@@ -1,0 +1,15 @@
+# Remove images that are icons (not previews)
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE { 
+	?s ?rel ?icon .
+	?icon a ?cl }
+WHERE {
+	?s ?rel ?icon 
+	VALUES ?rel { foaf:page foaf:logo }
+	OPTIONAL { ?icon a ?cl }
+	FILTER(
+		STRENDS(STR(?icon), "png") || STRENDS(STR(?icon), "PNG")
+	)
+}
