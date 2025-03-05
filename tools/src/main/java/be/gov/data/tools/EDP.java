@@ -102,7 +102,6 @@ public class EDP {
 	private final static IRI DCATAP_AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
 	private final static IRI DCATAP_CONFORMS = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
 	private final static IRI DCATAP_HVDCAT = Values.iri("http://data.europa.eu/r5r/hvdCategory");
-	private final static IRI ELI_RESOURCE = Values.iri("http://data.europa.eu/eli/ontology#LegalResource");
 	
 	private final static IRI GEO_CUSTODIAN = Values.iri("http://data.europa.eu/930/custodian");
 	private final static IRI GEO_DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
@@ -123,6 +122,7 @@ public class EDP {
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
 		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
+		w.writeNamespace("dqv", "http://www.w3.org/ns/dqv#");
 		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(GEO.PREFIX, GEO.NAMESPACE);
@@ -263,7 +263,7 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
 				Value v = res.next().getObject();
-				if (v instanceof IRI) {
+				if (v instanceof IRI && con.hasStatement(null, null, (IRI) v, false)) {
 					IRI contact = (IRI) v;
 					w.writeStartElement("dcat:contactPoint");
 					w.writeStartElement("vcard:Kind");
@@ -693,6 +693,7 @@ public class EDP {
 							.filter(IRI.class::isInstance)
 							.map(IRI.class::cast)
 							.filter(i -> i.toString().startsWith("http"))
+							.filter(i -> con.hasStatement(null, null, i, false))
 							.collect(Collectors.toSet());
 		}
 
@@ -731,6 +732,7 @@ public class EDP {
 							.filter(IRI.class::isInstance)
 							.map(IRI.class::cast)
 							.filter(i -> i.toString().startsWith("http"))
+							.filter(i -> con.hasStatement(null, null, i, false))
 							.collect(Collectors.toSet());		
 		}
 
@@ -759,23 +761,24 @@ public class EDP {
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCTERMS.LOCATION)) {
 			while (res.hasNext()) {
-				IRI iri = (IRI) res.next().getSubject();
-
-				Value bbox = null;
-				try(RepositoryResult<Statement> bboxes = con.getStatements(iri, DCAT.BBOX, null)) {
-					while (bboxes.hasNext()) {
-						Value val  = bboxes.next().getObject();
-						if (val.stringValue().startsWith("POLYGON")) {
-							bbox = val;
+				IRI location = (IRI) res.next().getSubject();
+				if (con.hasStatement(null, null, location, false)) {
+					Value bbox = null;
+					try(RepositoryResult<Statement> bboxes = con.getStatements(location, DCAT.BBOX, null)) {
+						while (bboxes.hasNext()) {
+							Value val  = bboxes.next().getObject();
+							if (val.stringValue().startsWith("POLYGON")) {
+								bbox = val;
+							}
 						}
 					}
-				}
-				if (bbox != null) {
-					nr++;
-					w.writeStartElement("dct:Location");
-					w.writeAttribute("rdf:about", iri.toString());
-					writeLiteral(w, "dcat:bbox", bbox);
-					w.writeEndElement();
+					if (bbox != null) {
+						nr++;
+						w.writeStartElement("dct:Location");
+						w.writeAttribute("rdf:about", location.toString());
+						writeLiteral(w, "dcat:bbox", bbox);
+						w.writeEndElement();
+					}
 				}
 			}
 		}
@@ -826,8 +829,11 @@ public class EDP {
 
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, FOAF.AGENT)) {
 			while (res.hasNext()) {
-				nr++;
-				writeAgent(w, con, (IRI) res.next().getSubject());
+				IRI agent = (IRI) res.next().getSubject();
+				if (con.hasStatement(null, null, agent, false)) {
+					nr++;
+					writeAgent(w, con, agent);
+				}
 			}
 		}
 		LOG.info("Wrote {} organizations", nr);
