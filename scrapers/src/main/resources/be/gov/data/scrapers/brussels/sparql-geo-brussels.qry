@@ -8,7 +8,9 @@ DELETE	{
 		?node ?p ?o }
 INSERT 
 	{ 	?dataset dcterms:spatial <https://sws.geonames.org/2800867/> .
-		<https://sws.geonames.org/2800867/> a dcterms:Location  }
+		<https://sws.geonames.org/2800867/> a dcterms:Location .
+		<https://sws.geonames.org/2800867/> dcat:bbox "POLYGON((4.24 50.92,4.48 50.92,4.48 50.76,4.24 50.76,4.24 50.92))"^^geo:wktLiteral
+	 }
 WHERE
 	{	?dataset a dcat:Dataset 
 		OPTIONAL { ?dataset dcterms:spatial ?node .
