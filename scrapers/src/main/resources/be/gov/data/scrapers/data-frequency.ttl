@@ -6,6 +6,7 @@
 	skos:prefLabel "continuous"@en ;
 	skos:altLabel "continual", <http://data.gov.be/continuously>, "R/PT1S", "Continuously", "Real time",
 		"http://publications.europa.eu/resource/authority/frequency/CONT",
+		<http://purl.org/cld/freq/continuous>,
 		<http://publications.europa.eu/resource/authority/frequency/CONT> .
 
 <http://publications.europa.eu/resource/authority/frequency/TRIHOURLY>
@@ -56,6 +57,7 @@
 	skos:altLabel "biannually", "R/P6M", 
 		<http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>, "6 months", 
 		"Twice-Yearly", "Semestrial",
+		<http://purl.org/cld/freq/semiannual>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL_2", "semestrielle" .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>

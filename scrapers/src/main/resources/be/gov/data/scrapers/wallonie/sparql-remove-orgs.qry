@@ -21,7 +21,9 @@ DELETE {
 	?dataset dcterms:publisher ?publ .
 	?dataset dcat:distribution ?dist .
 	?dist ?x ?y .
-	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0866518618>  
+	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0866518618> 
+					<https://org.belgif.be/id/CbeRegisteredEntity/0869763267> 
+					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 					<https://org.belgif.be/id/CbeRegisteredEntity/0316381138> }
 	OPTIONAL { 
 		?dataset dcat:contactPoint ?point . 

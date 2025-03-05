@@ -85,6 +85,7 @@
 	skos:altLabel "cc-nc",
 		"http://creativecommons.org/licenses/by-nc/4.0/legalcode",
 		<http://creativecommons.org/licenses/by-nc/4.0/legalcode>,
+		<https://creativecommons.org/licenses/by-nc/4.0/legalcode>,
 		"https://creativecommons.org/licenses/by-nc/4.0/",
 		"This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License." .
 

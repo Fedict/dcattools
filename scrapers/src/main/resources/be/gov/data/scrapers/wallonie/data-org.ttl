@@ -126,7 +126,6 @@
 	skos:prefLabel "FuturoCité"@fr ;
 	skos:altLabel "FuturoCité", "FuturoCit%C3%A9" .
 
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069339> 
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -144,7 +143,6 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "FOREM"@fr ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/144> ;
 	skos:altLabel "le-forem"@fr, "Le Forem" .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0458487524>
@@ -271,14 +269,12 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/389> ;
 	skos:prefLabel "Andenne"@fr ;
 	skos:altLabel "Ville d'Andenne", "Ville+d%27Andenne" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207312952>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/499> ;
 	skos:prefLabel "Braine-l'Alleud"@fr, "Eigenbrakel"@nl ;
 	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud",
 		"Commune de Braine-l'Alleud" .
@@ -286,21 +282,18 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0206642563>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/500> ;
 	skos:prefLabel "Nivelles"@fr, "Nijvel"@nl ;
 	skos:altLabel "Ville+de+Nivelles", "Ville de Nivelles" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207300678>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/501> ;
 	skos:prefLabel "Chimay"@fr ;
 	skos:altLabel "Ville de Chimay" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207376991>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/502> ;
 	skos:prefLabel "Hannut"@fr ;
 	skos:altLabel "Ville de Hannut" .
 
@@ -319,7 +312,6 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/398> ;
 	skos:prefLabel "bPost"@nl, "bPost"@fr, "bPost"@en ;
 	skos:altLabel "bpost" .
 
