@@ -26,6 +26,7 @@
 package be.gov.data.scrapers;
 
 
+import be.gov.data.dcat.vocab.ADMS;
 import be.gov.data.helpers.Storage;
 import static be.gov.data.scrapers.BasicScraperJson.conf;
 import com.jayway.jsonpath.JsonPath;
@@ -47,6 +48,7 @@ import net.minidev.json.JSONArray;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
@@ -177,16 +179,35 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @param distMap distribution property map
 	 * @param distIdPathAlt
 	 * @param distIdPath
+	 * @param authPath
+	 * @param authMap
 	 * @throws java.net.MalformedURLException
 	 */
 	protected void mapDataset(Storage store, ReadContext jsonObj, 
 			JsonPath datasetIdPath, Map<IRI,Object> datasetMap, 
-			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap) 
+			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap, 
+			JsonPath authPath, JsonPath authIdPath, Map<IRI,Object> authMap) 
 			throws MalformedURLException {
 		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(datasetIdPath).toString());
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, datasetMap);
 	
+		JSONArray authors = jsonObj.read(authPath);
+		for (Object a: authors) {
+			ReadContext node = JsonPath.using(conf).parse(a);
+			String idPath = null;
+			Object p = node.read(authIdPath);
+			if (p != null && !p.toString().isBlank()) {
+				idPath = p.toString();
+			}
+			if (idPath == null) {
+				LOG.warn("No auth name for {}", node.jsonString());
+				break;
+			}
+			IRI creatorSubj = makePersonIRI(hash(idPath));
+			store.add(datasetSubj, DCTERMS.CREATOR, creatorSubj);
+			add(store, creatorSubj, node, authMap);
+		}
 		JSONArray files = jsonObj.read(distPath);
 
 		// download files / distribution
@@ -232,8 +253,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='dsDescription')].value[*].dsDescriptionValue.value")),
 			entry(DCTERMS.CREATED, 
 				JsonPath.compile("$.data.latestVersion.createTime")),
-			entry(DCTERMS.CREATOR, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
+//			entry(DCTERMS.CREATOR, 
+//				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
 			entry(DCTERMS.CONTRIBUTOR, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='contributor')].value[*].contributorName.value")),
 			entry(DCTERMS.ISSUED, 
@@ -265,6 +286,16 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		JsonPath distIdPath = JsonPath.compile("$.dataFile.persistentId");
 		JsonPath distIdPathAlt = JsonPath.compile("$.dataFile.storageIdentifier");
 
+		JsonPath authPath = 
+			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*]");
+		JsonPath authIdPath = JsonPath.compile("$.authorName.value");
+		Map<IRI,Object> authMap = Map.of(
+			FOAF.NAME, JsonPath.compile("$.authorName.value"),
+			FOAF.MEMBER, JsonPath.compile("$.authorAffiliation.value"),
+			ADMS.IDENTIFIER, JsonPath.compile("$.authorIdentifier.value"),
+			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.authorIdentifierScheme.value")
+		);
+		
 		Map<IRI,Object> distMap = Map.of(
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
 			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
@@ -274,7 +305,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
 		);
 
-		mapDataset(store, jsonObj, datasetIdPath, datasetMap, distPath, distIdPath, distIdPathAlt, distMap);
+		mapDataset(store, jsonObj, datasetIdPath, datasetMap, 
+					distPath, distIdPath, distIdPathAlt, distMap, 
+					authPath, authIdPath, authMap);
 		
 		generateCatalog(store);
 	}

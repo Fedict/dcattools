@@ -29,7 +29,8 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.util.Values;
 
 /**
- *
+ * Some constants
+ * 
  * @author FPS BOSA DG DT
  */
 public class DATAGOVBE {

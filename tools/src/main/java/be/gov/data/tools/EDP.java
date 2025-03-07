@@ -25,6 +25,8 @@
  */
 package be.gov.data.tools;
 
+import be.gov.data.dcat.vocab.ADMS;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -95,10 +97,6 @@ public class EDP {
 
 	private final static String BASE_URI = "http://base.data.gov.be";
 
-	private final static IRI ADMS_IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
-	private final static IRI ADMS_SAMPLE = Values.iri("http://www.w3.org/ns/adms#sample");
-	private final static IRI ADMS_STATUS = Values.iri("http://www.w3.org/ns/adms#status");
-	
 	private final static IRI DCATAP_AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
 	private final static IRI DCATAP_CONFORMS = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
 	private final static IRI DCATAP_HVDCAT = Values.iri("http://data.europa.eu/r5r/hvdCategory");
@@ -459,8 +457,8 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
-		writeReferences(w, con, uri, ADMS_IDENTIFIER, "adms:identifier", "adms:Identifier", false);
-		writeReferences(w, con, uri, ADMS_STATUS, "adms:status");
+		writeReferences(w, con, uri, ADMS.IDENTIFIER, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
 		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
@@ -539,7 +537,7 @@ public class EDP {
 		writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
 
 		//samples (geo-dcat-ap)
-		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS_SAMPLE, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS.SAMPLE, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("adms:sample");
 				writeDist(w, con, (IRI) res.next().getObject());

@@ -1,0 +1,24 @@
+# Use ORCID as IRI instead of skolem IRI
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s dcterms:creator ?skolem .
+		?skolem adms:schemaAgency "ORCID" .
+		?skolem adms:identifier ?id .
+		?skolem ?p ?o
+	}
+INSERT 
+	{	?s dcterms:creator ?orcid .
+		?orcid ?p ?o
+	}
+WHERE
+	{	?s dcterms:creator ?skolem .
+		?skolem adms:schemaAgency "ORCID" .
+		?skolem adms:identifier ?id .
+		?skolem ?p ?o
+		BIND (IRI(CONCAT("https://orcid.org/", ?id)) as ?orcid)
+		FILTER (?p != adms:identifer && ?p != adms:schemaAgency)
+	}
