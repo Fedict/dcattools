@@ -30,7 +30,7 @@
 <http://publications.europa.eu/resource/authority/file-type/DBF>
 	skos:prefLabel "DBF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-dbase> ;
-	skos:altLabel "DBF", "dBase", "dBASE" .
+	skos:altLabel "DBF", "dBase", "dBASE", "application/dbf" .
 
 <http://publications.europa.eu/resource/authority/file-type/DOC>
 	skos:prefLabel "DOC" ;
@@ -166,6 +166,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/png> ;
 	skos:altLabel "PNG", "png", "image/png" .
 
+<http://publications.europa.eu/resource/authority/file-type/PPTX>
+	skos:prefLabel "PPTX" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.presentationml.presentation> ;
+	skos:altLabel "application/vnd.openxmlformats-officedocument.presentationml.presentation", "pptx" .
+
 <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE>
 	skos:prefLabel "TTL" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/turtle> ;
@@ -187,7 +192,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.shp> ;
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "Shape", "shape", "shapefile", "shape file", 
 			"shape fies", "shapefiile", "application/zipped-shapefile",
-			"application/x-shapefile",
+			"application/x-shapefile", "application/shp",
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
 			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)", "application/vnd.shp",
 			<https://www.iana.org/assignments/media-types/application/vnd.shp> .

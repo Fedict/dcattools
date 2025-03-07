@@ -17,6 +17,6 @@ WHERE {
 			"^\n *", ""),
 		"\n *$", "")
 	as ?clean)
-	VALUES ?p { dcterms:title dcterms:description }
+	VALUES ?p { dcterms:title dcterms:description dcterms:rights }
 	FILTER ISLITERAL(?o) 
 }

@@ -269,7 +269,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
 			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
 			DCTERMS.DESCRIPTION,JsonPath.compile("$.directoryLabel"),
-			DCTERMS.FILE_FORMAT, JsonPath.compile("$.dataFile.contentType"),
+			DCAT.MEDIA_TYPE, JsonPath.compile("$.dataFile.contentType"),
 			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
 			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
 		);
