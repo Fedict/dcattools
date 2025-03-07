@@ -47,6 +47,7 @@ import net.minidev.json.JSONArray;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 
@@ -231,16 +232,27 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='dsDescription')].value[*].dsDescriptionValue.value")),
 			entry(DCTERMS.CREATED, 
 				JsonPath.compile("$.data.latestVersion.createTime")),
+			entry(DCTERMS.CREATOR, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
+			entry(DCTERMS.CONTRIBUTOR, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='contributor')].value[*].contributorName.value")),
+			entry(DCTERMS.ISSUED, 
+				JsonPath.compile("$.data.latestVersion.releaseTime")),			
 			entry(DCTERMS.MODIFIED, 
 				JsonPath.compile("$.data.latestVersion.lastUpdateTime")),
+			entry(OWL.VERSIONINFO, 
+				JsonPath.compile("$.data.latestVersion.versionNumber")),
 			entry(DCTERMS.LICENSE, 
 				JsonPath.compile("$.data.latestVersion.license")),
 			entry(DCTERMS.RIGHTS, 
-				JsonPath.compile("$.data.latestVersion.termsOfUse")),
+				List.of(JsonPath.compile("$.data.latestVersion.termsOfAccess"), 
+						JsonPath.compile("$.data.latestVersion.termsOfUse"))),
 			entry(DCAT.THEME, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='subject')].value[*]")),
 			entry(DCAT.KEYWORD, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='keyword')].value[*].keywordValue.value")),
+			entry(DCTERMS.SUBJECT,
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='topicClassification')].value[*].topicClassValue.value")),
 			entry(DCTERMS.LANGUAGE, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='language')].value[*]")),
 			entry(DCTERMS.SPATIAL, 
@@ -256,6 +268,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		Map<IRI,Object> distMap = Map.of(
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
 			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
+			DCTERMS.DESCRIPTION,JsonPath.compile("$.directoryLabel"),
 			DCTERMS.FILE_FORMAT, JsonPath.compile("$.dataFile.contentType"),
 			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
 			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")

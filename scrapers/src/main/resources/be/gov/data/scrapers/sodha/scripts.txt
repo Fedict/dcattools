@@ -10,6 +10,7 @@ sparql-date-type.qry
 data-license.ttl
 sodha/sparql-fix-identifier.qry
 sodha/sparql-fix-license.qry
+sodha/sparql-fix-persons.qry
 sodha/sparql-license-contains.qry
 sodha/sparql-license-dist.qry
 #sodha/sparql-license-document.qry
