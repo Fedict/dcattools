@@ -230,7 +230,7 @@ public class DcatReader {
 	 * 
 	 * @param subj subject
 	 * @param pred predicate
-	 * @return set of literals
+	 * @return set of IRIs
 	 * @throws IOException when not IRIs
 	 */
 	private Set<IRI> getIRIs(Resource subj, IRI pred) throws IOException {
@@ -459,7 +459,7 @@ public class DcatReader {
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
 
-		d.setSubjects(getIRIs(iri, DCTERMS.SUBJECT));
+	//	d.setSubjects(getIRIs(iri, DCTERMS.SUBJECT));
 		d.setThemes(getIRIs(iri, DCAT.THEME));
 		d.setHvDCategories(getIRIs(iri, DCATAP_CATEGORIES));
 
