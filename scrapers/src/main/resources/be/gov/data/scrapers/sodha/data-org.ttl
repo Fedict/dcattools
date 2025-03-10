@@ -57,7 +57,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
-	skos:altLabel "Universiteit Antwerpen" .
+	skos:altLabel "Universiteit Antwerpen", "University of Antwerp" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
 	a foaf:Organization ;
@@ -69,7 +69,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université libre de Bruxelles"@nl, "Université libre de Bruxelles"@fr, "Université libre de Bruxelles"@en ;
-	skos:altLabel "Université libre de Bruxelles (ULB)" .
+	skos:altLabel "Université libre de Bruxelles (ULB)", "Université libre de Bruxelles", "ULB" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0259396509>
 	a foaf:Organization ;
