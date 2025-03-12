@@ -1,0 +1,14 @@
+# Add landingpage based on ID, if missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcat:landingPage ?page }
+WHERE
+	{ 	?dataset a ?cl 
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		BIND (IRI(
+					STRBEFORE(STR(?dataset), "#id")
+			) AS ?page)
+		FILTER NOT EXISTS  { ?dataset dcat:landingPage ?page }
+		}

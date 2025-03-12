@@ -7,5 +7,5 @@
 	a vcard:Organization ;
 	vcard:fn "Datashop"@nl, "Datashop"@fr, "Datashop"@en, "Datashop"@de;
 	vcard:hasUrl <https://www.nbb.be> ;
-	vcard:hasEmail <mailto:datashop@nbb.be> .
+	vcard:hasEmail <mailto:sxpublication@nbb.be> .
 

@@ -1,6 +1,8 @@
 # extra queries to be executed and data to be loaded
 nbb/data-contact.ttl
 nbb/sparql-contact.qry
+nbb/sparql-landingpage.qry
+nbb/sparql-hvd-legislation.qry
 data-frequency.ttl
 data-media.ttl
 clear-skos.qry
