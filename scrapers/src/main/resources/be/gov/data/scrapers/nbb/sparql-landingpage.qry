@@ -1,12 +1,15 @@
-# Add landingpage based on accessURL, if missing
+# Add landingpage based on ID, if missing
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
-	{ 	?dataset dcat:landingPage ?url }
+	{ 	?dataset dcat:landingPage ?page }
 WHERE
-	{ 	?dataset a ?cl .
-		?dataset dcat:accessURL ?url 
+	{ 	?dataset a ?cl 
 		VALUES ?cl { dcat:Dataset dcat:DataService }
+		BIND (IRI(
+					STRBEFORE(STR(?dataset, "#id"))) 
+			AS ?page)
 		FILTER NOT EXISTS  { ?dataset dcat:landingPage ?page }
 		}
