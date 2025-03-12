@@ -4,7 +4,8 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/nbb/contact> }
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/nbb/contact> .
+		?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0203201340> }
 WHERE
 	{ 	?dataset a ?cl 
 		VALUES ?cl { dcat:Dataset dcat:DataService }

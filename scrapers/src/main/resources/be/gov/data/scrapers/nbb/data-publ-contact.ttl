@@ -1,0 +1,24 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+
+<http://data.gov.be/org/nbb/contact>
+	a vcard:Organization ;
+	vcard:fn "Externe statistieken"@nl, "Statistiques extérieures"@fr, 
+				"External statistics"@en, "externe Statistiken"@de;
+	vcard:hasUrl <https://www.nbb.be> ;
+	vcard:hasEmail <mailto:sxpublication@nbb.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0203201340>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	foaf:name "Banque natiopnale de Belgique"@fr, "Belgische Nationalbank"@de, 
+			"Nationale Bank van België"@nl, 
+			"National Bank of Belgium"@en ;
+	foaf:homepage <https://www.nbb.be> .
+	
+
