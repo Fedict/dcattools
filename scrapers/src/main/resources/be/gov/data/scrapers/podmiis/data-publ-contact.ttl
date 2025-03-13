@@ -2,14 +2,12 @@
 
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dgov: <http://data.gov.be#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0864484487>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/159> ;
 	foaf:name "PPS Social Integration"@en, "POD Maatschappelijke Integratie"@nl, "SPP Intégration sociale"@fr ;
 	foaf:homepage <https://stat.mi-is.be> .
 	
