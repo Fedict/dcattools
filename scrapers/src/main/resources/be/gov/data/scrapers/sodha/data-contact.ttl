@@ -1,7 +1,6 @@
 # Data for default contact info
 
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix dgov: <http://data.gov.be#> .
 
 <http://data.gov.be/org/sodha/contact>
 	a vcard:Organization ;

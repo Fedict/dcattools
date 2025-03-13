@@ -1,13 +1,11 @@
 # Data for contact info
 
-@prefix dgov: <http://data.gov.be#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 <http://data.gov.be/org/vlaanderen/forum/contact>
 	org:unitOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
-	dgov:org <http://data.gov.be/en/taxonomy/term/72> ;
 	a vcard:Organization ;
 	vcard:fn "Datavindplaats Vlaanderen"@en, "Datavindplaats Vlaanderen"@fr, "Datavindplaats Vlaanderen"@nl ;
 	vcard:hasEmail <mailto:digitaal.vlaanderen@vlaanderen.be> .

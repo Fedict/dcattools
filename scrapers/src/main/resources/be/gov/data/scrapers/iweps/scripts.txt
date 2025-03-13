@@ -12,7 +12,6 @@ iweps/sparql-publ-contact.qry
 clear-skos.qry
 iweps/data-theme.ttl
 clear-skos.qry
-#iweps/sparql-map-id.txt
 sparql-geo-wallonie.qry
 sparql-delete-mediatype.qry
 data-media.ttl
