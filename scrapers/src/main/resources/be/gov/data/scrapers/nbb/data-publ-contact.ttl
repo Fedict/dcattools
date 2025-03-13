@@ -16,7 +16,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0203201340>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	foaf:name "Banque natiopnale de Belgique"@fr, "Belgische Nationalbank"@de, 
+	foaf:name "Banque nationale de Belgique"@fr, "Belgische Nationalbank"@de, 
 			"Nationale Bank van België"@nl, 
 			"National Bank of Belgium"@en ;
 	foaf:homepage <https://www.nbb.be> .
