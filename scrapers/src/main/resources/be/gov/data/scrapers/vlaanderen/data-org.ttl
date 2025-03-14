@@ -175,6 +175,13 @@
 	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207433312>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002177> ;
+	skos:prefLabel "Menen"@nl, "Menin"@fr, "Menen"@en ;
+	skos:altLabel "Stad Menen" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207521503>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
@@ -297,6 +304,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO039562> ;
 	skos:prefLabel "Agentschap MDK"@nl ;
 	skos:altLabel "MOW - AMDK - Afdeling Kust - Vlaamse Hydrografie",
+		"MDK - afdeling Kust"@nl,
 		"MOW - AMDK - Afdeling Kust - Team Infrastructuur Kust"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725795>
