@@ -18,6 +18,8 @@ sodha/sparql-license-dist.qry
 sparql-map-license.qry
 sparql-access-public.qry
 sodha/sparql-default-theme.qry
+sodha/sparql-nl-language.qry
+sodha/sparql-fr-language.qry
 sodha/sparql-default-language.qry
 sparql-tag-language.qry
 clear-skos.qry

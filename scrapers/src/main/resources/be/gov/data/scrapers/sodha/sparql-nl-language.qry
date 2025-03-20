@@ -1,0 +1,18 @@
+# Set language to French if title sounds Dutch
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:language ?lang .
+		?dist dcterms:language ?lang2 }
+INSERT
+	{ 	?s dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> }
+WHERE
+	{ 	?s a dcat:Dataset .
+		?s dcterms:title ?title .
+		?s dcat:distribution ?dist
+		OPTIONAL { ?s dcterms:language ?lang }
+		OPTIONAL { ?dist dcterms:language ?lang2 }
+		FILTER (CONTAINS(?title, "specifieke") || CONTAINS(?title, " van de "))
+	}
