@@ -13,9 +13,11 @@ WHERE
 		VALUES ?prop { dcterms:created dcterms:modified dcterms:issued dcat:startDate dcat:endDate }
 		BIND (
 				IF(STRLEN(STR(?o)) > 0, 
-					IF(STRLEN(STR(?o)) > 10,
-						STRDT(STR(?o), xsd:dateTime),
-						STRDT(STR(?o), xsd:date)), 
+					IF(STRLEN(STR(?o)) = 4, xsd:gYear,
+						IF(STRLEN(STR(?o)) > 10,
+							STRDT(STR(?o), xsd:dateTime), 
+								STRDT(STR(?o), xsd:date))
+					), 
 					?invalid)
 			as ?newo)
 	}
