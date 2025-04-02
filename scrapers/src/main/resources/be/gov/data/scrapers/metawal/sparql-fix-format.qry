@@ -1,0 +1,17 @@
+# Fix minor spelling issues in URIs
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:format ?wrong }
+INSERT
+	{ 	?dist dcterms:format ?uri }
+WHERE
+	{	
+		?dist dcterms:format ?wrong .
+		VALUES (?wrong ?uri) {
+			( <http://publications.europa.eu/resource/authority/file-type/XSLX> <http://publications.europa.eu/resource/authority/file-type/XLSX> )
+			( <http://publications.europa.eu/resource/authority/file-type/GeoTIFF> <http://publications.europa.eu/resource/authority/file-type/GEOTIFF> )
+		}
+	}
+	

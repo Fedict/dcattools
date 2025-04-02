@@ -11,6 +11,7 @@ clear-skos.qry
 data-media.ttl
 metawal/sparql-format-wms.qry
 metawal/sparql-format-uri.qry
+metawal/sparql-fix-format.qry
 metawal/sparql-map-media.qry
 metawal/sparql-map-format.qry
 #sparql-map-media-srvc.qry
