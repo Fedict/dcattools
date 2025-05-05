@@ -10,4 +10,11 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
 					"Catholic University of Leuven"@en ;
-	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven", "Associatie KU Leuven" .
+	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0478655012>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Associatie KU Leuven"@nl, "Association KU Leuven"@fr, 
+					"Association KU Leuven"@en ;
+	skos:altLabel "Associatie KU Leuven" .

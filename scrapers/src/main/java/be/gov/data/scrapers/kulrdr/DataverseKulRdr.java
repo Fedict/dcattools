@@ -25,7 +25,6 @@
  */
 package be.gov.data.scrapers.kulrdr;
 
-import be.gov.data.scrapers.sodha.*;
 import be.gov.data.scrapers.DataverseJson;
 import java.io.IOException;
 import java.util.Properties;

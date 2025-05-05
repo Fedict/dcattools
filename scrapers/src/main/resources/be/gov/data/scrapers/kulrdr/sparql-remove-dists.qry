@@ -1,0 +1,12 @@
+# Remove distributions (requested by KUL RDR)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?a dcat:distribution ?dist .
+		?dist ?p ?o
+	}
+WHERE
+	{	?a dcat:distribution ?dist .
+		?dist ?p ?o
+	}
