@@ -3,6 +3,8 @@ sparql-strip-html.qry
 sparql-date-type.qry
 data-license.ttl
 sparql-map-license.qry
+kulrdr/sparql-dataset-license.qry
+kulrdr/sparql-tag-language.qry
 kulrdr/sparql-remove-dists.qry
 kulrdr/sparql-fix-identifier.qry
 kulrdr/sparql-person-name.qry
