@@ -51,6 +51,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 
 /**
@@ -180,18 +181,37 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @param distIdPathAlt
 	 * @param distIdPath
 	 * @param authPath
+	 * @param authIdPath
 	 * @param authMap
 	 * @throws java.net.MalformedURLException
 	 */
 	protected void mapDataset(Storage store, ReadContext jsonObj, 
 			JsonPath datasetIdPath, Map<IRI,Object> datasetMap, 
 			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap, 
-			JsonPath authPath, JsonPath authIdPath, Map<IRI,Object> authMap) 
+			JsonPath authPath, JsonPath authIdPath, Map<IRI,Object> authMap,
+			JsonPath contactPath, JsonPath contactIdPath, Map<IRI,Object> contactMap) 
 			throws MalformedURLException {
 		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(datasetIdPath).toString());
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, datasetMap);
 	
+		JSONArray contacts = jsonObj.read(contactPath);
+		for (Object c: contacts) {
+			ReadContext node = JsonPath.using(conf).parse(c);
+			String idPath = null;
+			Object p = node.read(contactIdPath);
+			if (p != null && !p.toString().isBlank()) {
+				idPath = p.toString();
+			}
+			if (idPath == null) {
+				LOG.warn("No contact name for {}", node.jsonString());
+				break;
+			}
+			IRI contactSubj = makePersonIRI(hash(idPath));
+			store.add(datasetSubj, DCAT.CONTACT_POINT, contactSubj);
+			add(store, contactSubj, node, contactMap);
+		}
+
 		JSONArray authors = jsonObj.read(authPath);
 		for (Object a: authors) {
 			ReadContext node = JsonPath.using(conf).parse(a);
@@ -208,8 +228,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			store.add(datasetSubj, DCTERMS.CREATOR, creatorSubj);
 			add(store, creatorSubj, node, authMap);
 		}
-		JSONArray files = jsonObj.read(distPath);
 
+		JSONArray files = jsonObj.read(distPath);
 		// download files / distribution
 		for(Object f: files) {
 			ReadContext node = JsonPath.using(conf).parse(f);
@@ -264,7 +284,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			entry(OWL.VERSIONINFO, 
 				JsonPath.compile("$.data.latestVersion.versionNumber")),
 			entry(DCTERMS.LICENSE, 
-				JsonPath.compile("$.data.latestVersion.license")),
+				JsonPath.compile("$.data.latestVersion.license.uri")),
 			entry(DCTERMS.RIGHTS, 
 				JsonPath.compile("$.data.latestVersion.termsOfUse")),
 			entry(DCTERMS.ACCESS_RIGHTS,
@@ -280,9 +300,20 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			entry(DCTERMS.SPATIAL, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
 			entry(DCTERMS.PUBLISHER, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value"))
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value")),
+			entry(DCTERMS.BIBLIOGRAPHIC_CITATION, 
+				JsonPath.compile("$.data.latestVersion.citation"))
 		);
 
+		JsonPath contactPath =
+			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*]");
+		JsonPath contactIdPath = JsonPath.compile("$.datasetContactName.value");
+		Map<IRI,Object> contactMap = Map.of(
+			VCARD4.FN, JsonPath.compile("$.datasetContactName.value"),
+			VCARD4.HAS_ORGANIZATION_NAME,JsonPath.compile("$.datasetContactAffiliation.value"),
+			VCARD4.HAS_EMAIL , JsonPath.compile("$.datasetContactEmail.value")
+		);
+		
 		JsonPath distPath = JsonPath.compile("$.data.latestVersion.files[*]");
 		JsonPath distIdPath = JsonPath.compile("$.dataFile.persistentId");
 		JsonPath distIdPathAlt = JsonPath.compile("$.dataFile.storageIdentifier");
@@ -308,7 +339,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 
 		mapDataset(store, jsonObj, datasetIdPath, datasetMap, 
 					distPath, distIdPath, distIdPathAlt, distMap, 
-					authPath, authIdPath, authMap);
+					authPath, authIdPath, authMap,
+					contactPath, contactIdPath, contactMap);
 		
 		generateCatalog(store);
 	}
