@@ -281,7 +281,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				JsonPath.compile("$.data.latestVersion.releaseTime")),			
 			entry(DCTERMS.MODIFIED, 
 				JsonPath.compile("$.data.latestVersion.lastUpdateTime")),
-			entry(OWL.VERSIONINFO, 
+			entry(DCAT.VERSION, 
 				JsonPath.compile("$.data.latestVersion.versionNumber")),
 			entry(DCTERMS.LICENSE, 
 				JsonPath.compile("$.data.latestVersion.license.uri")),

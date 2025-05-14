@@ -154,7 +154,7 @@ public class HdaJson extends BasicScraperJson  {
 				JsonPath.compile("$.datasetProperties.value.customProperties.Page")),
 			entry(DCAT.LANDING_PAGE, 
 				JsonPath.compile("$.datasetProperties.value.customProperties.['Landing Page']")),
-			entry(OWL.VERSIONINFO,
+			entry(DCAT.VERSION,
 				JsonPath.compile("$.datasetProperties.value.customProperties.Version"))
 		
 		);

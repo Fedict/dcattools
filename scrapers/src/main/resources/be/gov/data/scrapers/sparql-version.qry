@@ -1,0 +1,11 @@
+# Move owl:versionInfo to DCAT-3 dcat:version
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE 
+	{ ?s owl:versionInfo ?version }
+INSERT 
+	{ ?s dcat:version ?version }
+WHERE 
+	{ ?s owl:versionInfo ?version }

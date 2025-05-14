@@ -92,6 +92,7 @@ vlaanderen/sparql-fix-serves-id.qry
 sparql-remove-circular.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 sparql-strip-html.qry
+sparql-version.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

@@ -267,7 +267,7 @@ public class DrupalClient {
 			DrupalDataset created = DrupalDataset.fromMap(o.toMap());
 			return created.nid();
 		} else {
-			LOG.error("Create failed, code {}, {}", response.statusCode(), obj.toString());
+			LOG.error("Create failed, code {}, {} {}", response.statusCode(), response.body(), obj.toString());
 		}
 		return -1;
 	}
@@ -294,7 +294,7 @@ public class DrupalClient {
 		if (response.statusCode() == 200 || response.statusCode() == 201) {
 			return true;
 		} else {
-			LOG.error("Update {} failed, code {}, {}", id, response.statusCode(), obj.toString());
+			LOG.error("Update {} failed, code {}, {} {}", id, response.statusCode(), response.body(), obj.toString());
 		}
 		return false;
 	}

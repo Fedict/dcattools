@@ -454,7 +454,9 @@ public class DcatReader {
 		ids.add(id);
 
 		d.setIds(ids);
+		// check borh OWL (legacy) and DCAT version
 		d.setVersion(getString(iri, OWL.VERSIONINFO));
+		d.setVersion(getString(iri, DCAT.VERSION));
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));

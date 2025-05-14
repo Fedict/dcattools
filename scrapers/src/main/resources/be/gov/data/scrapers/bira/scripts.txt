@@ -26,6 +26,7 @@ sparql-map-media.qry
 bira/sparql-fix-identifier.qry
 bira/sparql-fix-conformsto.qry
 bira/sparql-remove-literal.qry
+sparql-version.qry
 clear-skos.qry
 data-license.ttl
 sparql-map-license.qry

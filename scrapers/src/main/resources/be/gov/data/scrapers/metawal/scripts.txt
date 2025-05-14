@@ -31,6 +31,7 @@ sparql-available.qry
 sparql-map-access-inspire.qry
 sparql-remove-circular.qry
 sparql-strip-html.qry
+sparql-version.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

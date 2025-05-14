@@ -526,7 +526,7 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
-		writeLiterals(w, con, uri, OWL.VERSIONINFO, "owl:versionInfo");
+		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");		
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
 		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
