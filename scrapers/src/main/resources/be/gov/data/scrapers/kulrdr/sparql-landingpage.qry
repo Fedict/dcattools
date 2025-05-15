@@ -1,5 +1,7 @@
 # Add landing page based on DOI identifier
 
+# Add landing page based on DOI identifier
+
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
@@ -8,5 +10,8 @@ INSERT
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcterms:identifier ?id .
-		BIND(IRI(CONCAT("https://rdr.kuleuven.be/dataverse/rdr?persistentId=",STR(?id))) as ?page)
+		BIND (IRI(
+			REPLACE(?id, "doi:", "https://doi.org/")
+		) as ?page)
+		FILTER(CONTAINS(?id, "doi:"))
 	}

@@ -1,0 +1,8 @@
+# Remove spatial info (requested by KUL RDR)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:spatial ?o	}
+WHERE
+	{	?s dcterms:spatial ?o	}

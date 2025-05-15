@@ -8,5 +8,8 @@ INSERT
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		?dataset dcterms:identifier ?id .
-		BIND(IRI(CONCAT("https://www.sodha.be/dataset.xhtml?persistentId=",STR(?id))) as ?page)
+		BIND (IRI(
+			REPLACE(?id, "doi:", "https://doi.org/")
+		) as ?page)
+		FILTER(CONTAINS(?id, "doi:"))
 	}

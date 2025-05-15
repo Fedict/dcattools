@@ -6,10 +6,13 @@ sparql-map-license.qry
 kulrdr/sparql-dataset-license.qry
 kulrdr/sparql-tag-language.qry
 kulrdr/sparql-remove-dists.qry
+kulrdr/sparql-remove-spatial.qry
 kulrdr/sparql-fix-identifier.qry
+kulrdr/sparql-default-publisher.qry
 kulrdr/sparql-person-name.qry
 kulrdr/sparql-creator-orcid.qry
-#sparql-access-public.qry
+sparql-access-public.qry
+sparql-access-restricted.qry
 kulrdr/sparql-default-theme.qry
 sparql-tag-language.qry
 kulrdr/sparql-landingpage.qry
