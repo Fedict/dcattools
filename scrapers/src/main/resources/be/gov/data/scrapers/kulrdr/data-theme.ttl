@@ -15,15 +15,9 @@
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
 	skos:altLabel "Pedagogical and educational sciences", "Media and communications"   .
 
-<http://publications.europa.eu/resource/authority/data-theme/ENER>
-	skos:prefLabel "ENERGY"@en .
-
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
 	skos:altLabel "Biotechnology, bio-engineering and biosystems engineering",
 				"Environmental sciences", "Earth sciences", "Natural sciences"  .
-
-<http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
 	skos:altLabel "Medical and health sciences", "Clinical sciences", "Health sciences",
@@ -40,14 +34,10 @@
 					"Other humanities and the arts", "Civil and building engineering",
 					"Other social sciences", "Psychology and cognitive sciences"  .
 
-<http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:prefLabel "REGIONS, CITIES"@en .
-
 <http://publications.europa.eu/resource/authority/data-theme/TECH> 
 	skos:altLabel "Engineering and technology", "Materials engineering", "Chemical sciences",
 				"Basic sciences", "Computer engineering, information technology and mathematical engineering",
 				"Mechanical and manufacturing engineering", "(Bio)chemical engineering",
-				"Information and computing sciences", "Electrical and electronic engineering"  .
-
-<http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:prefLabel "TRANSPORT"@en .
+				"Information and computing sciences", "Electrical and electronic engineering",
+				"Other engineering and technology", "Physical sciences", "Biological sciences",
+				"Mathematical sciences"  .
