@@ -303,8 +303,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='timePeriodCovered')].value[*].timePeriodCoveredEnd.value")),
 			entry(DCTERMS.SPATIAL, 
 				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
-		//	entry(DCTERMS.PUBLISHER, 
-		//		JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value")),
+			entry(DCTERMS.PUBLISHER, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value")),
 			entry(DCTERMS.BIBLIOGRAPHIC_CITATION, 
 				JsonPath.compile("$.data.latestVersion.citation"))
 		);
