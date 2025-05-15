@@ -3,11 +3,7 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE { ?dataset dcat:theme ?o }
 INSERT 
-	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> .
-		?dataset dcat:keyword ?o }
+	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TECH> }
 WHERE
-	{	?dataset a dcat:Dataset
-		OPTIONAL { ?dataset dcat:theme ?o }
-	}
+	{	?dataset a dcat:Dataset }

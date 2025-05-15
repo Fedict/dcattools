@@ -1,0 +1,45 @@
+# Data for mapping keywords to an EU list of themes/categories
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:prefLabel "Agricultural, veterinary and food sciences",
+		"Agriculture, forestry, fisheries and allied sciences"  .
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:prefLabel "Social and economic geography" .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
+	skos:prefLabel "Arts" .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:prefLabel "Pedagogical and educational sciences", "Media and communications"   .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+	skos:prefLabel "ENERGY"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:prefLabel "Biotechnology, bio-engineering and biosystems engineering",
+				"Environmental sciences"  .
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL> 
+	skos:prefLabel "Medical and health sciences", "Clinical sciences", "Health sciences",
+					"(Bio)medical engineering", "Paramedical sciences", "Pharmaceutical sciences"  .
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:prefLabel "Philosophy, ethics and religious studies", "Humanities and the arts",
+					"Languages and literary studies", "History and archaeology",
+					"Social and economic geography", "Political sciences",
+					"Other social sciences"  .
+
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	skos:prefLabel "REGIONS, CITIES"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/TECH> 
+	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	skos:prefLabel "TRANSPORT"@en .

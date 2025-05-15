@@ -7,7 +7,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE
 	{	?dataset dcat:theme ?langlabel }
 INSERT
-	{ 	?dataset dcat:theme ?uri  }
+	{ 	?dataset dcat:theme ?uri .
+		?dataset dcterms:subject ?langlabel }
 WHERE
 	{ 	
 		?dataset dcat:theme ?langlabel .

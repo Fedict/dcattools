@@ -13,7 +13,10 @@ kulrdr/sparql-person-name.qry
 kulrdr/sparql-creator-orcid.qry
 sparql-access-public.qry
 sparql-access-restricted.qry
+kulrdr/data-theme.ttl
+sparql-map-theme.qry
 kulrdr/sparql-default-theme.qry
+clear-skos.qry
 sparql-tag-language.qry
 kulrdr/sparql-landingpage.qry
 kulrdr/data-contact.ttl
