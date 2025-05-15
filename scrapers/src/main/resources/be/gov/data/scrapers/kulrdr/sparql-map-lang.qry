@@ -1,0 +1,20 @@
+# Map language tag to URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?dist dcterms:language ?code }
+INSERT
+	{ 	?dist dcterms:language ?lang }
+WHERE
+	{
+		?dist dcterms:language ?code .
+		VALUES (?lang ?code) {	
+			( <http://publications.europa.eu/resource/authority/language/NLD> "Dutch" )
+			( <http://publications.europa.eu/resource/authority/language/FRA> "French" )
+			( <http://publications.europa.eu/resource/authority/language/ENG> "English" )
+			( <http://publications.europa.eu/resource/authority/language/JPN> "Japanese" )
+			( <http://publications.europa.eu/resource/authority/language/SPA> "Spanish, Castilian" )
+			( <http://publications.europa.eu/resource/authority/language/BUL> "Old Church Slavonic,Church Slavonic,Old Bulgarian" )
+		}
+	}
