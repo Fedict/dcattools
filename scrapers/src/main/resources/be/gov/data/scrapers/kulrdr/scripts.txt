@@ -16,6 +16,8 @@ sparql-access-restricted.qry
 kulrdr/sparql-default-theme.qry
 sparql-tag-language.qry
 kulrdr/sparql-landingpage.qry
+kulrdr/data-contact.ttl
+kulrdr/sparql-default-contact.qry
 kulrdr/data-org.ttl
 sparql-map-org.qry
 clear-skos.qry

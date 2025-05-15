@@ -1,0 +1,10 @@
+# Data for default contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://data.gov.be/org/kulrdr/contact>
+	a vcard:Organization ;
+	vcard:fn "RMD Helpdesk"@nl,"RMD Helpdesk"@fr, "RMD Helpdesk"@en, "RMD Helpdesk"@de  ;
+	vcard:hasFN "RMD Helpdesk"@nl,"RMD Helpdesk"@fr, "RMD Helpdesk"@en, "RMD Helpdesk"@de ;
+	vcard:hasUrl <https://rdr.kuleuven.be> ;
+	vcard:hasEmail <mailto:rdm@kuleuven.be> .

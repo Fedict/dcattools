@@ -5,7 +5,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 DELETE 
 	{	?dataset dcat:contactPoint ?o }
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/sodha/contact>  }
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/kulrdr/contact>  }
 WHERE
 	{ 	?dataset a dcat:Dataset .
 		OPTIONAL { ?dataset dcat:contactPoint ?o } }
