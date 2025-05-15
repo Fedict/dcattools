@@ -3,43 +3,51 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
-	skos:prefLabel "Agricultural, veterinary and food sciences",
+	skos:altLabel "Agricultural, veterinary and food sciences",
 		"Agriculture, forestry, fisheries and allied sciences"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:prefLabel "Social and economic geography" .
+	skos:altLabel "Social and economic geography", "Economics and business" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
-	skos:prefLabel "Arts" .
+	skos:altLabel "Arts" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
-	skos:prefLabel "Pedagogical and educational sciences", "Media and communications"   .
+	skos:altLabel "Pedagogical and educational sciences", "Media and communications"   .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:prefLabel "ENERGY"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:prefLabel "Biotechnology, bio-engineering and biosystems engineering",
-				"Environmental sciences"  .
+	skos:altLabel "Biotechnology, bio-engineering and biosystems engineering",
+				"Environmental sciences", "Earth sciences", "Natural sciences"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
 	skos:prefLabel "GOVERNMENT, PUBLIC SECTOR"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
-	skos:prefLabel "Medical and health sciences", "Clinical sciences", "Health sciences",
+	skos:altLabel "Medical and health sciences", "Clinical sciences", "Health sciences",
 					"(Bio)medical engineering", "Paramedical sciences", "Pharmaceutical sciences"  .
 
+<http://publications.europa.eu/resource/authority/data-theme/JUST> 
+	skos:altLabel "Law and legal studies" .
+
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:prefLabel "Philosophy, ethics and religious studies", "Humanities and the arts",
+	skos:altLabel "Philosophy, ethics and religious studies", "Humanities and the arts",
 					"Languages and literary studies", "History and archaeology",
 					"Social and economic geography", "Political sciences",
-					"Other social sciences"  .
+					"Social sciences", "Sociology and anthropology",
+					"Other humanities and the arts", "Civil and building engineering",
+					"Other social sciences", "Psychology and cognitive sciences"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:prefLabel "REGIONS, CITIES"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH> 
-	skos:prefLabel "SCIENCE AND TECHNOLOGY"@en .
+	skos:altLabel "Engineering and technology", "Materials engineering", "Chemical sciences",
+				"Basic sciences", "Computer engineering, information technology and mathematical engineering",
+				"Mechanical and manufacturing engineering", "(Bio)chemical engineering",
+				"Information and computing sciences", "Electrical and electronic engineering"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
 	skos:prefLabel "TRANSPORT"@en .
