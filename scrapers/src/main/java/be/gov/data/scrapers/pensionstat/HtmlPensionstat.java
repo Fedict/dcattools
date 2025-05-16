@@ -245,7 +245,7 @@ public class HtmlPensionstat extends Html {
 					String last = years.last().ownText();
 
 					if (YEAR.matcher(first).matches() && YEAR.matcher(last).matches()) {
-						parseTemporal(store, dataset, last + "-01-01", first + "-01-01");
+						generateTemporal(store, dataset, last + "-01-01", first + "-01-01");
 					}
 				}
 			}

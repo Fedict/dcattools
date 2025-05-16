@@ -322,7 +322,7 @@ public abstract class GeonetGmd extends Geonet {
 		if (end == null || end.isEmpty()) {
 			end = node.valueOf(XP_TEMP32_END);
 		}
-		parseTemporal(store, uri, start, end);
+		generateTemporal(store, uri, start, end);
 	}
 
 	/**

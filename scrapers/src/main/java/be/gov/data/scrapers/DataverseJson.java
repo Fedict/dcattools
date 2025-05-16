@@ -49,7 +49,6 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
-import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
@@ -64,6 +63,89 @@ import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 public abstract class DataverseJson extends BasicScraperJson implements ScraperPaginated<ReadContext>  {
 	private final static String API_LIST = "/api/search?q=*&type=dataset";
 	private final static String API_DATASET = "/api/datasets/:persistentId/?persistentId=";
+	
+	private final static JsonPath DATASET_ID_PATH = JsonPath.compile("$.data.latestVersion.datasetPersistentId");
+
+	private final static String CITATION = "$.data.latestVersion.metadataBlocks.citation";
+	private final static JsonPath START_PATH =
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='timePeriodCovered')].value[0].timePeriodCoveredStart.value");
+	private final static JsonPath END_PATH =
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='timePeriodCovered')].value[0].timePeriodCoveredEnd.value");
+
+	private final static JsonPath CONTACT_PATH =
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='datasetContact')].value[*]");
+	private final static JsonPath CONTACT_ID_PATH = JsonPath.compile("$.datasetContactName.value");
+	
+	private final static JsonPath DIST_PATH = JsonPath.compile("$.data.latestVersion.files[*]");
+	private final static JsonPath DIST_ID_PATH = JsonPath.compile("$.dataFile.persistentId");
+	private final static JsonPath DIST_ID_PATH2 = JsonPath.compile("$.dataFile.storageIdentifier");
+
+	private final static JsonPath AUTH_PATH = 
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='author')].value[*]");
+	private final static JsonPath AUTH_ID_PATH = JsonPath.compile("$.authorName.value");
+
+	private final static Map<IRI,Object> DATASET_MAP = Map.ofEntries(
+			entry(DCTERMS.IDENTIFIER, 
+				JsonPath.compile("$.data.latestVersion.datasetPersistentId")),
+			entry(DCTERMS.TITLE,
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='title')].value")),
+			entry(DCTERMS.DESCRIPTION, 
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='dsDescription')].value[0].dsDescriptionValue.value")),
+			entry(DCTERMS.CREATED, 
+				JsonPath.compile("$.data.latestVersion.createTime")),
+//			entry(DCTERMS.CREATOR, 
+//				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
+			entry(DCTERMS.CONTRIBUTOR, 
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='contributor')].value[*].contributorName.value")),
+			entry(DCTERMS.ISSUED, 
+				JsonPath.compile("$.data.latestVersion.releaseTime")),			
+			entry(DCTERMS.MODIFIED, 
+				JsonPath.compile("$.data.latestVersion.lastUpdateTime")),
+			entry(DCAT.VERSION, 
+				JsonPath.compile("$.data.latestVersion.versionNumber")),
+			entry(DCTERMS.LICENSE, 
+				JsonPath.compile("$.data.latestVersion.license.uri")),
+			entry(DCTERMS.RIGHTS, 
+				JsonPath.compile("$.data.latestVersion.termsOfUse")),
+			entry(DCTERMS.ACCESS_RIGHTS,
+				JsonPath.compile("$.data.latestVersion.termsOfAccess")),
+			entry(DCAT.THEME, 
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='subject')].value[*]")),
+			entry(DCAT.KEYWORD, 
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='keyword')].value[*].keywordValue.value")),
+			entry(DCTERMS.SUBJECT,
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='topicClassification')].value[*].topicClassValue.value")),
+			entry(DCTERMS.LANGUAGE, 
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='language')].value[*]")),
+			entry(DCTERMS.SPATIAL, 
+				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
+			entry(DCTERMS.PUBLISHER, 
+				JsonPath.compile(CITATION + ".fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value")),
+			entry(DCTERMS.BIBLIOGRAPHIC_CITATION, 
+				JsonPath.compile("$.data.latestVersion.citation"))
+		);
+
+	private final static Map<IRI,Object> AUTH_MAP = Map.of(
+			FOAF.NAME, JsonPath.compile("$.authorName.value"),
+			FOAF.MEMBER, JsonPath.compile("$.authorAffiliation.value"),
+			ADMS.IDENTIFIER, JsonPath.compile("$.authorIdentifier.value"),
+			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.authorIdentifierScheme.value")
+		);
+		
+	private final static Map<IRI,Object> DIST_MAP = Map.of(
+			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
+			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
+			DCTERMS.DESCRIPTION,JsonPath.compile("$.directoryLabel"),
+			DCAT.MEDIA_TYPE, JsonPath.compile("$.dataFile.contentType"),
+			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
+			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
+		);
+	
+	private final static Map<IRI,Object> CONTACT_MAP = Map.of(
+			VCARD4.FN, JsonPath.compile("$.datasetContactName.value"),
+			VCARD4.HAS_ORGANIZATION_NAME,JsonPath.compile("$.datasetContactAffiliation.value"),
+			VCARD4.HAS_EMAIL , JsonPath.compile("$.datasetContactEmail.value")
+		);
 
 	@Override
 	public ReadContext getPaginated(int start, int results) throws IOException {
@@ -174,32 +256,19 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * 
 	 * @param store
 	 * @param jsonObj JSON object
-	 * @param datasetIdPath
-	 * @param datasetMap datasetMap property map
-	 * @param distPath path to distribution
-	 * @param distMap distribution property map
-	 * @param distIdPathAlt
-	 * @param distIdPath
-	 * @param authPath
-	 * @param authIdPath
-	 * @param authMap
 	 * @throws java.net.MalformedURLException
 	 */
-	protected void mapDataset(Storage store, ReadContext jsonObj, 
-			JsonPath datasetIdPath, Map<IRI,Object> datasetMap, 
-			JsonPath distPath, JsonPath distIdPath, JsonPath distIdPathAlt, Map<IRI,Object> distMap, 
-			JsonPath authPath, JsonPath authIdPath, Map<IRI,Object> authMap,
-			JsonPath contactPath, JsonPath contactIdPath, Map<IRI,Object> contactMap) 
+	protected void mapDataset(Storage store, ReadContext jsonObj) 
 			throws MalformedURLException {
-		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(datasetIdPath).toString());
+		IRI datasetSubj =  makeDatasetIRI(jsonObj.read(DATASET_ID_PATH).toString());
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
-		add(store, datasetSubj, jsonObj, datasetMap);
+		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
-		JSONArray contacts = jsonObj.read(contactPath);
+		JSONArray contacts = jsonObj.read(CONTACT_PATH);
 		for (Object c: contacts) {
 			ReadContext node = JsonPath.using(conf).parse(c);
 			String idPath = null;
-			Object p = node.read(contactIdPath);
+			Object p = node.read(CONTACT_ID_PATH);
 			if (p != null && !p.toString().isBlank()) {
 				idPath = p.toString();
 			}
@@ -209,14 +278,14 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			}
 			IRI contactSubj = makePersonIRI(hash(idPath));
 			store.add(datasetSubj, DCAT.CONTACT_POINT, contactSubj);
-			add(store, contactSubj, node, contactMap);
+			add(store, contactSubj, node, CONTACT_MAP);
 		}
 
-		JSONArray authors = jsonObj.read(authPath);
+		JSONArray authors = jsonObj.read(AUTH_PATH);
 		for (Object a: authors) {
 			ReadContext node = JsonPath.using(conf).parse(a);
 			String idPath = null;
-			Object p = node.read(authIdPath);
+			Object p = node.read(AUTH_ID_PATH);
 			if (p != null && !p.toString().isBlank()) {
 				idPath = p.toString();
 			}
@@ -226,19 +295,27 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			}
 			IRI creatorSubj = makePersonIRI(hash(idPath));
 			store.add(datasetSubj, DCTERMS.CREATOR, creatorSubj);
-			add(store, creatorSubj, node, authMap);
+			add(store, creatorSubj, node, AUTH_MAP);
 		}
 
-		JSONArray files = jsonObj.read(distPath);
+		JSONArray s = jsonObj.read(START_PATH);
+		String startDate = (!s.isEmpty()) ? s.get(0).toString() : null;
+		JSONArray e = jsonObj.read(END_PATH);
+		String endDate = (!e.isEmpty()) ? e.get(0).toString() : null;
+		if (startDate != null && endDate != null) {
+			generateTemporal(store, datasetSubj, startDate, endDate);
+		}
+
+		JSONArray files = jsonObj.read(DIST_PATH);
 		// download files / distribution
 		for(Object f: files) {
 			ReadContext node = JsonPath.using(conf).parse(f);
 			String idPath = null;
-			Object p = node.read(distIdPath);
+			Object p = node.read(DIST_ID_PATH);
 			if (p != null && !p.toString().isBlank()) {
 				idPath = p.toString();
 			} else {
-				p = node.read(distIdPathAlt);
+				p = node.read(DIST_ID_PATH2);
 				if (p != null) {
 					idPath = p.toString().replace("file://", "");
 				}
@@ -250,7 +327,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			IRI distSubj = makeDistIRI(idPath);
 			store.add(datasetSubj, DCAT.HAS_DISTRIBUTION, distSubj);
 			store.add(distSubj, RDF.TYPE, DCAT.DISTRIBUTION);
-			add(store, distSubj, node, distMap);
+			add(store, distSubj, node, DIST_MAP);
 		}
 	}
 
@@ -262,90 +339,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @throws java.net.MalformedURLException
 	 */
 	public void generateDcat(Storage store, ReadContext jsonObj) throws MalformedURLException {
-		JsonPath datasetIdPath = JsonPath.compile("$.data.latestVersion.datasetPersistentId");
-		
-		Map<IRI,Object> datasetMap = Map.ofEntries(
-			entry(DCTERMS.IDENTIFIER, 
-				JsonPath.compile("$.data.latestVersion.datasetPersistentId")),
-			entry(DCTERMS.TITLE,
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='title')].value")),
-			entry(DCTERMS.DESCRIPTION, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='dsDescription')].value[0].dsDescriptionValue.value")),
-			entry(DCTERMS.CREATED, 
-				JsonPath.compile("$.data.latestVersion.createTime")),
-//			entry(DCTERMS.CREATOR, 
-//				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
-			entry(DCTERMS.CONTRIBUTOR, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='contributor')].value[*].contributorName.value")),
-			entry(DCTERMS.ISSUED, 
-				JsonPath.compile("$.data.latestVersion.releaseTime")),			
-			entry(DCTERMS.MODIFIED, 
-				JsonPath.compile("$.data.latestVersion.lastUpdateTime")),
-			entry(DCAT.VERSION, 
-				JsonPath.compile("$.data.latestVersion.versionNumber")),
-			entry(DCTERMS.LICENSE, 
-				JsonPath.compile("$.data.latestVersion.license.uri")),
-			entry(DCTERMS.RIGHTS, 
-				JsonPath.compile("$.data.latestVersion.termsOfUse")),
-			entry(DCTERMS.ACCESS_RIGHTS,
-				JsonPath.compile("$.data.latestVersion.termsOfAccess")),
-			entry(DCAT.THEME, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='subject')].value[*]")),
-			entry(DCAT.KEYWORD, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='keyword')].value[*].keywordValue.value")),
-			entry(DCTERMS.SUBJECT,
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='topicClassification')].value[*].topicClassValue.value")),
-			entry(DCTERMS.LANGUAGE, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='language')].value[*]")),
-			entry(DCAT.START_DATE, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='timePeriodCovered')].value[*].timePeriodCoveredStart.value")),
-			entry(DCAT.END_DATE, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='timePeriodCovered')].value[*].timePeriodCoveredEnd.value")),
-			entry(DCTERMS.SPATIAL, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
-			entry(DCTERMS.PUBLISHER, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value")),
-			entry(DCTERMS.BIBLIOGRAPHIC_CITATION, 
-				JsonPath.compile("$.data.latestVersion.citation"))
-		);
-
-		JsonPath contactPath =
-			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='datasetContact')].value[*]");
-		JsonPath contactIdPath = JsonPath.compile("$.datasetContactName.value");
-		Map<IRI,Object> contactMap = Map.of(
-			VCARD4.FN, JsonPath.compile("$.datasetContactName.value"),
-			VCARD4.HAS_ORGANIZATION_NAME,JsonPath.compile("$.datasetContactAffiliation.value"),
-			VCARD4.HAS_EMAIL , JsonPath.compile("$.datasetContactEmail.value")
-		);
-		
-		JsonPath distPath = JsonPath.compile("$.data.latestVersion.files[*]");
-		JsonPath distIdPath = JsonPath.compile("$.dataFile.persistentId");
-		JsonPath distIdPathAlt = JsonPath.compile("$.dataFile.storageIdentifier");
-
-		JsonPath authPath = 
-			JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*]");
-		JsonPath authIdPath = JsonPath.compile("$.authorName.value");
-		Map<IRI,Object> authMap = Map.of(
-			FOAF.NAME, JsonPath.compile("$.authorName.value"),
-			FOAF.MEMBER, JsonPath.compile("$.authorAffiliation.value"),
-			ADMS.IDENTIFIER, JsonPath.compile("$.authorIdentifier.value"),
-			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.authorIdentifierScheme.value")
-		);
-		
-		Map<IRI,Object> distMap = Map.of(
-			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
-			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
-			DCTERMS.DESCRIPTION,JsonPath.compile("$.directoryLabel"),
-			DCAT.MEDIA_TYPE, JsonPath.compile("$.dataFile.contentType"),
-			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
-			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
-		);
-
-		mapDataset(store, jsonObj, datasetIdPath, datasetMap, 
-					distPath, distIdPath, distIdPathAlt, distMap, 
-					authPath, authIdPath, authMap,
-					contactPath, contactIdPath, contactMap);
-		
+		mapDataset(store, jsonObj);		
 		generateCatalog(store);
 	}
 

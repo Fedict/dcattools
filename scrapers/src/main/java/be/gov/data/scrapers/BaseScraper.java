@@ -350,10 +350,15 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @return URL
 	 */
 	protected IRI makeTemporalURL(String start, String end) {
-		String[] s = start.split("T");
-		String[] e = end.split("T");
+		String[] s = (start != null) ? start.split("T") : new String[]{""};
+		String[] e = (end != null) ? end.split("T") : new String[]{""};
 
-		return Values.iri(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
+		try {
+			return Values.iri(DATAGOVBE.PREFIX_URI_TEMPORAL + "/" + s[0] + "_" + e[0]);
+		} catch (IllegalArgumentException ue) {
+			LOG.error(ue.getMessage());
+			return null;
+		}
 	}
 
 	/**
@@ -375,7 +380,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		String span = m.group(1);
 		String[] split = span.split(sep);
 
-		parseTemporal(store, dataset, split[0], split[1]);
+		generateTemporal(store, dataset, split[0], split[1]);
 	}
 
 	/**
@@ -386,7 +391,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 * @param start start date
 	 * @param end end date
 	 */
-	protected void parseTemporal(Storage store, IRI dataset, String start, String end) {
+	protected void generateTemporal(Storage store, IRI dataset, String start, String end) {
 		String s = start.trim();
 
 		if (s.isEmpty()) {
@@ -411,11 +416,15 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 			default -> e = e.replace("/", "-");
 		}
 
-		IRI u = store.getURI(makeTemporalURL(s, e).toString());
-		store.add(dataset, DCTERMS.TEMPORAL, u);
-		store.add(u,  RDF.TYPE, DCTERMS.PERIOD_OF_TIME);
-		store.add(u, DCAT.START_DATE, s, (s.length() == 10) ? XSD.DATE : XSD.DATETIME);
-		store.add(u, DCAT.END_DATE, e, (e.length() == 10) ? XSD.DATE : XSD.DATETIME);
+		IRI iri = makeTemporalURL(s, e);
+		if (iri == null) {
+			return;
+		}
+		//IRI iri = store.getURI(makeTemporalURL(s, e).toString());
+		store.add(dataset, DCTERMS.TEMPORAL, iri);
+		store.add(iri, RDF.TYPE, DCTERMS.PERIOD_OF_TIME);
+		store.add(iri, DCAT.START_DATE, s, (s.length() == 10) ? XSD.DATE : XSD.DATETIME);
+		store.add(iri, DCAT.END_DATE, e, (e.length() == 10) ? XSD.DATE : XSD.DATETIME);
 	}
 
 	/**

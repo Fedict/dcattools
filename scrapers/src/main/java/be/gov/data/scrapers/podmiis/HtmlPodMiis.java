@@ -274,7 +274,7 @@ public class HtmlPodMiis extends Html {
 					String start = split[0].replaceAll("\\\\/", "-");
 					String end = split[split.length-1].replaceAll("\\\\/", "-");
 					
-					parseTemporal(store, dataset, start, end);
+					generateTemporal(store, dataset, start, end);
 					generateDist(store, dataset, p.getUrl(), link, 
 												end.replace("-", ""), lang);
 				} else {
