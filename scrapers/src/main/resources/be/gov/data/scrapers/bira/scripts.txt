@@ -9,8 +9,10 @@ bira/data-org.ttl
 bira/sparql-publisher.qry
 bira/sparql-fix-netcdf.qry
 bira/sparql-fix-temporal.qry
+bira/sparql-fix-temporal2.qry
 bira/sparql-fix-dctype.qry
 bira/sparql-fix-member.qry
+bira/sparql-remove-res.qry
 bira/sparql-remove-references.qry
 bira/sparql-fix-foafpage.qry
 bira/sparql-fix-theme.qry

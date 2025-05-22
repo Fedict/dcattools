@@ -1,0 +1,11 @@
+# Remove spatial resolution when given in degrees instead of meters
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE 
+	{	?s dcat:temporalResolution "P1M, P1D"^^xsd:duration }
+INSERT 
+	{	?s dcat:temporalResolution "P1D"^^xsd:duration }
+WHERE
+	{	?s dcat:temporalResolution "P1M, P1D"^^xsd:duration }

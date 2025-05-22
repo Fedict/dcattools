@@ -1,0 +1,9 @@
+# Remove spatial resolution when given in degrees instead of meters
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcat:spatialResolutionInMeters ?val }
+WHERE
+	{	?s dcat:spatialResolutionInMeters ?val .
+		FILTER (CONTAINS(?val, "°") || CONTAINS(?val, "degrees")) }
