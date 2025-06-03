@@ -11,8 +11,8 @@ kulrdr/sparql-fix-identifier.qry
 kulrdr/sparql-default-publisher.qry
 kulrdr/sparql-person-name.qry
 kulrdr/sparql-creator-orcid.qry
+kulrdr/sparql-access-restricted.qry
 sparql-access-public.qry
-sparql-access-restricted.qry
 kulrdr/data-theme.ttl
 sparql-map-theme.qry
 kulrdr/sparql-default-theme.qry

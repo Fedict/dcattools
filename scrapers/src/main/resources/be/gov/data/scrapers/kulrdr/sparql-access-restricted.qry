@@ -13,9 +13,5 @@ INSERT
 WHERE
 	{	?s a ?cl
 		VALUES ?cl { dcat:Dataset dcat:DataService }
-		?s dcterms:accessRights ?rights
-		FILTER(ISLITERAL(?rights))
-		BIND (IRI(
-				CONCAT("http://data.gov.be/.well-known/genid/", SHA1(?rights))
-		) as ?node)
+		?s dcterms:accessRights ?rights 
 	}
