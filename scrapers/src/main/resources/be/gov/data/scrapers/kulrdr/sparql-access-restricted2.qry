@@ -1,0 +1,15 @@
+# Set access rights to restricted for custom licenses
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s dcterms:accessRights  ?rights }
+INSERT 
+	{ 	?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/RESTRICTED> }
+WHERE
+	{	?s a ?cl
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		?s dcterms:accessRights ?rights .
+		?s dcterms:license <https://www.kuleuven.be/rdm/en/rdr/custom-kuleuven>
+	}
