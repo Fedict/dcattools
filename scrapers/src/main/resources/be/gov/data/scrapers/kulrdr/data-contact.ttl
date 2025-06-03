@@ -4,7 +4,7 @@
 
 <http://data.gov.be/org/kulrdr/contact>
 	a vcard:Organization ;
-	vcard:fn "RDM Helpdesk"@nl,"RDM Helpdesk"@fr, "RDM Helpdesk"@en, "RDM Helpdesk"@de  ;
-	vcard:hasFN "RDM Helpdesk"@nl,"RDM Helpdesk"@fr, "RDM Helpdesk"@en, "RDM Helpdesk"@de ;
+	vcard:fn "KU Leuven RDR"@nl,"KU Leuven RDR"@fr, "KU Leuven RDR"@en, "KU Leuven RDR"@de  ;
+	vcard:hasFN "KU Leuven RDR"@nl, "KU Leuven RDR"@fr, "KU Leuven RDR"@en, "KU Leuven RDR"@de ;
 	vcard:hasUrl <https://rdr.kuleuven.be> ;
 	vcard:hasEmail <mailto:rdm@kuleuven.be> .
