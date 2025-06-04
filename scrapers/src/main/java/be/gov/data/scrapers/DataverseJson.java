@@ -84,6 +84,10 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='author')].value[*]");
 	private final static JsonPath AUTH_ID_PATH = JsonPath.compile("$.authorName.value");
 
+	private final static JsonPath CONTRIB_PATH = 
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='contributor')].value[*]");
+	private final static JsonPath CONTRIB_ID_PATH = JsonPath.compile("$.contributorName.value");
+				
 	private final static Map<IRI,Object> DATASET_MAP = Map.ofEntries(
 			entry(DCTERMS.IDENTIFIER, 
 				JsonPath.compile("$.data.latestVersion.datasetPersistentId")),
@@ -95,8 +99,6 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				JsonPath.compile("$.data.latestVersion.createTime")),
 //			entry(DCTERMS.CREATOR, 
 //				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
-			entry(DCTERMS.CONTRIBUTOR, 
-				JsonPath.compile(CITATION + ".fields[?(@.typeName=='contributor')].value[*].contributorName.value")),
 			entry(DCTERMS.ISSUED, 
 				JsonPath.compile("$.data.latestVersion.releaseTime")),			
 			entry(DCTERMS.MODIFIED, 
@@ -131,7 +133,14 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			ADMS.IDENTIFIER, JsonPath.compile("$.authorIdentifier.value"),
 			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.authorIdentifierScheme.value")
 		);
-		
+
+	private final static Map<IRI,Object> CONTRIB_MAP = Map.of(
+			FOAF.NAME, JsonPath.compile("$.contributorName.value"),
+			FOAF.MEMBER, JsonPath.compile("$.contributorAffiliation.value"),
+			ADMS.IDENTIFIER, JsonPath.compile("$.contributorIdentifier.value"),
+			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.contributorIdentifierScheme.value")
+		);
+
 	private final static Map<IRI,Object> DIST_MAP = Map.of(
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.dataFile.id"),
 			DCTERMS.TITLE, JsonPath.compile("$.dataFile.filename"),
@@ -252,6 +261,36 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	}
 
 	/**
+	 * Add persons (contacts, authors...)
+	 * @param store
+	 * @param jsonObj
+	 * @param path
+	 * @param pathId
+	 * @param subject
+	 * @param predicate
+	 * @param map 
+	 */
+	private void addPersons(Storage store, ReadContext jsonObj, JsonPath path, JsonPath pathId, 
+							IRI subject, IRI predicate, Map<IRI,Object> map) {
+		JSONArray contacts = jsonObj.read(path);
+		for (Object c: contacts) {
+			ReadContext node = JsonPath.using(conf).parse(c);
+			String idPath = null;
+			Object p = node.read(pathId);
+			if (p != null && !p.toString().isBlank()) {
+				idPath = p.toString();
+			}
+			if (idPath == null) {
+				LOG.warn("No contact name for {}", node.jsonString());
+				break;
+			}
+			IRI contactSubj = makePersonIRI(hash(idPath));
+			store.add(subject, predicate, contactSubj);
+			add(store, contactSubj, node, map);
+		}
+	}
+	
+	/**
 	 * Map JSON fields to DCAT properties
 	 * 
 	 * @param store
@@ -264,39 +303,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
-		JSONArray contacts = jsonObj.read(CONTACT_PATH);
-		for (Object c: contacts) {
-			ReadContext node = JsonPath.using(conf).parse(c);
-			String idPath = null;
-			Object p = node.read(CONTACT_ID_PATH);
-			if (p != null && !p.toString().isBlank()) {
-				idPath = p.toString();
-			}
-			if (idPath == null) {
-				LOG.warn("No contact name for {}", node.jsonString());
-				break;
-			}
-			IRI contactSubj = makePersonIRI(hash(idPath));
-			store.add(datasetSubj, DCAT.CONTACT_POINT, contactSubj);
-			add(store, contactSubj, node, CONTACT_MAP);
-		}
-
-		JSONArray authors = jsonObj.read(AUTH_PATH);
-		for (Object a: authors) {
-			ReadContext node = JsonPath.using(conf).parse(a);
-			String idPath = null;
-			Object p = node.read(AUTH_ID_PATH);
-			if (p != null && !p.toString().isBlank()) {
-				idPath = p.toString();
-			}
-			if (idPath == null) {
-				LOG.warn("No auth name for {}", node.jsonString());
-				break;
-			}
-			IRI creatorSubj = makePersonIRI(hash(idPath));
-			store.add(datasetSubj, DCTERMS.CREATOR, creatorSubj);
-			add(store, creatorSubj, node, AUTH_MAP);
-		}
+		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
+		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
+		addPersons(store, jsonObj, CONTRIB_PATH, CONTRIB_ID_PATH, datasetSubj, DCTERMS.CONTRIBUTOR, CONTRIB_MAP);
 
 		JSONArray s = jsonObj.read(START_PATH);
 		String startDate = (!s.isEmpty()) ? s.get(0).toString() : null;
