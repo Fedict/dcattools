@@ -333,6 +333,36 @@ public class EDP {
 		}
 	}
 
+	
+	/**
+	 * Write multiple references
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException
+	 */
+	private static void writeSubjects(XMLStreamWriter w, RepositoryConnection con, Resource uri, IRI pred, 
+			String el) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				Value val = res.next().getObject();
+				if (val instanceof IRI iri) {
+					w.writeEmptyElement(el);
+					w.writeAttribute("rdf:resource", iri.stringValue());
+				} else {
+					if (val != null) {
+						w.writeStartElement(el);
+						w.writeCharacters(val.stringValue());
+						w.writeEndElement();
+					}
+				}
+			}
+		}
+	}
+
 	/**
 	 * Write RDF reference
 	 *
@@ -528,7 +558,7 @@ public class EDP {
 
 		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");		
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
-		writeReferences(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
+		writeSubjects(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
 		writeReferences(w, con, uri, DCAT.LANDING_PAGE, "dcat:landingPage", "foaf:Document", false);
 		writeReferences(w, con, uri, FOAF.PAGE, "foaf:page", "foaf:Document", false);
@@ -1040,5 +1070,6 @@ public class EDP {
 			LOG.error("Error validating", ex);
 			System.exit(-2);
 		}
+		LOG.info("-- END --");
 	}
 }
