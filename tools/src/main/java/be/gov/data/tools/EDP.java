@@ -444,8 +444,7 @@ public class EDP {
 						}
 					}
 				} else {
-					w.writeEmptyElement(classWrap);
-					w.writeAttribute("rdf:value", refUri.stringValue());
+					LOG.error("Element {}: not a reference IRI {}, skipping", el, refUri.stringValue());
 				}
 				w.writeEndElement();
 			}
