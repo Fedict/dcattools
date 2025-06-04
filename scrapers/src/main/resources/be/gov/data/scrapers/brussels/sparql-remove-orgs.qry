@@ -5,7 +5,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
-	?cat dcat:dataset ?dataset .
+	?cat ?rel ?dataset .
 	?dataset ?p ?o .
 	?dataset a ?cl .
 	?dataset dcterms:publisher ?publ .
@@ -15,13 +15,14 @@ DELETE {
 	?point vcard:fn ?name .
 	?point vcard:hasEmail ?email
 } WHERE {
-	?cat dcat:dataset ?dataset .
+	?cat ?rel ?dataset .
 	?dataset ?p ?o .
 	?dataset a ?cl.
 	?dataset dcterms:publisher ?publ.
 	?dataset dcat:distribution ?dist .
 	?dist ?x ?y .
 	VALUES ?cl { dcat:Dataset dcat:DataService }
+	VALUES ?rel { dcat:dataset dcat:service }
 	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0316381138> 
 					<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>

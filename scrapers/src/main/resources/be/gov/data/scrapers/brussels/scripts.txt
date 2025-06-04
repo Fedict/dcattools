@@ -17,10 +17,10 @@ sparql-bytesize-type.qry
 brussels/sparql-fix-nolang.qry
 brussels/data-org.ttl
 brussels/sparql-map-org.qry
-brussels/sparql-remove-orgs.qry
 brussels/sparql-fix-vcard.qry
 brussels/sparql-fix-mailto.qry
 brussels/sparql-geo-brussels.qry
+brussels/sparql-remove-orgs.qry
 sparql-geo-publisher.qry
 data-license.ttl
 brussels/sparql-license-contains.qry
