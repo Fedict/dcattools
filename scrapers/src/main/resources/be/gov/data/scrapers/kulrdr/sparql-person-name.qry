@@ -3,19 +3,25 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
+DELETE
+	{	?person foaf:name ?name }
 INSERT
 	{	?person a foaf:Agent .
 		?person a foaf:Person .
+		?person foaf:name ?name2 .
 		?person foaf:givenName ?given .
 		?person foaf:familyName ?family
 	}
 WHERE
 	{	?s dcterms:creator ?person .
 		?person foaf:name ?name .
+		BIND (REPLACE(?name, " *, *", ", ") as ?name2)
 		BIND (IF(
-					CONTAINS(?name, ","), STRBEFORE(?name, ","), ?unbound) 
+					CONTAINS(?name, ","), REPLACE(STRBEFORE(?name, ","), "^ *([^ ]+) *$", "$1"),
+					?unbound)
 				as ?family)
 		BIND (IF(
-					CONTAINS(?name, ","), STRAFTER(?name, ", "), ?unbound)
+					CONTAINS(?name, ","), REPLACE(STRAFTER(?name, ","), "^ *([^ ]+) *$", "$1"),
+					?unbound)
 				 as ?given)
 	}

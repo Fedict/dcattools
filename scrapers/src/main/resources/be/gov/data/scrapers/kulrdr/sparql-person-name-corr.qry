@@ -1,0 +1,13 @@
+# Remove duplicates of names with slightly different spaces/commas
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	
+		?person foaf:name ?name
+	}
+WHERE
+	{	?person foaf:name ?name .
+		?person foaf:name ?comma .
+		FILTER(?name != ?comma && CONTAINS(?comma, ","))
+	}
