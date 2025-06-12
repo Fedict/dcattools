@@ -1,0 +1,8 @@
+# Remove unknownIPR value
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:type <http://purl.org/adms/licencetype/UnknownIPR> }
+WHERE
+	{	?s dcterms:type <http://purl.org/adms/licencetype/UnknownIPR> }

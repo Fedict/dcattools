@@ -1,7 +1,7 @@
 # Set DCAT-AP availability to available (= non-testing)
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcatap: <http://data.europa.eu/r5/>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
 
 INSERT 
 	{ 	?s dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> }

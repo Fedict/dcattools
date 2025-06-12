@@ -1,0 +1,13 @@
+# Replace vendor-specific mediatype for CSV by the standard one
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/x-comma-separated-values> 
+	}
+INSERT {
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> 
+	}
+WHERE {
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/x-comma-separated-values> 
+}

@@ -1,0 +1,11 @@
+# Fix duplicate mediatype, keep the more specific one
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { 
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/application/octet-stream> }
+WHERE {
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/application/octet-stream> .
+	?s dcat:mediaType ?other
+	FILTER (?other != <https://www.iana.org/assignments/media-types/application/octet-stream>)
+}

@@ -1,0 +1,25 @@
+# Extract DOI uri from literal
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s ?p ?literal }
+INSERT
+	{	?s ?p ?doi }
+WHERE
+	{	?s ?p ?literal .
+		VALUES ?p { dcterms:source dcterms:hasVersion }
+		BIND (STRAFTER(?literal, "https://") as ?tmp)
+		BIND (IRI(
+				CONCAT("https://", 
+					REPLACE(
+						IF(CONTAINS(?tmp, "\r"),
+							STRBEFORE(?tmp, "\r"),
+							?tmp),
+						" ", ""
+					)
+				)
+			)
+			as ?doi)
+		FILTER (ISLITERAL(?literal) && CONTAINS(?literal, "https://doi"))
+	}

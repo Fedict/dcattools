@@ -25,9 +25,13 @@ data-media-compress.ttl
 sparql-map-media-compress.qry
 data-media.ttl
 sparql-map-media.qry
+bira/sparql-mediatype-duplicate.qry
+bira/sparql-mediatype-csv.qry
 bira/sparql-fix-identifier.qry
+bira/sparql-extract-doi.qry
 bira/sparql-fix-conformsto.qry
 bira/sparql-remove-literal.qry
+bira/sparql-adms-notation.qry
 sparql-version.qry
 clear-skos.qry
 data-license.ttl

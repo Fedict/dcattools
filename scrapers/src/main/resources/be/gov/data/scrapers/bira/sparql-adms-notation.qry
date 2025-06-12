@@ -1,0 +1,13 @@
+# Set skos:notation for adms identifiers
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT
+	{	?id skos:notation ?str
+	}
+WHERE
+	{ 	?s adms:identifier ?id .
+		BIND (STR(?id) as ?str)
+		FILTER NOT EXISTS { ?id skos:notation ?notation }
+	}

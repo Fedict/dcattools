@@ -8,12 +8,15 @@
 	skos:prefLabel "Public"@en  .
 
 <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/planned-availability> ;
 	skos:prefLabel "available"@en .
 
 <http://publications.europa.eu/resource/authority/dataset-type/HVD>
-		skos:prefLabel "High-value dataset"@en .
+	a skos:Concept ;
+	skos:prefLabel "High-value dataset"@en .
 
-<http://publications.europa.eu/resource/authority/language/ENG> 
+<http://publications.europa.eu/resource/authority/language/ENG>
 	a dcterms:LinguisticSystem;
 	skos:prefLabel "English"@en .
 
@@ -30,42 +33,68 @@
 	skos:prefLabel "German"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Agriculture"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Economy"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Education"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Energy"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Environment"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Government"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Health"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "International"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Justice"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Regional"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Population and Society"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Technology"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN> 
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
 	skos:prefLabel "Transport"@en .
 
 <http://purl.org/adms/publishertype/NationalAuthority> 

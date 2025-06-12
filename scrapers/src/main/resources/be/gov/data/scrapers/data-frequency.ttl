@@ -54,7 +54,7 @@
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
 	skos:prefLabel "semiannual"@en ;
-	skos:altLabel "biannually", "R/P6M", 
+	skos:altLabel "biannually", "R/P6M", "ANNUAL_2",
 		<http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>, "6 months", 
 		"Twice-Yearly", "Semestrial",
 		<http://purl.org/cld/freq/semiannual>,
@@ -69,6 +69,10 @@
 		<http://purl.org/cld/freq/annual>, "Annuel", "annuel", "Chaque%20année,%20fin%20octobre",
 		"Annuelle%20:%20mise%20à%20jour%20le%201er%20novembre", "Yearly",
 		"à%20chaque%20nouvel%20appel%20à%20projet%20(tous%20les%20ans)" .
+
+<http://publications.europa.eu/resource/authority/frequency/BIENNIAL>
+	skos:prefLabel "biennial"@en ;
+	skos:altLabel "BIENNIAL" .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
 	skos:prefLabel "decennial"@en ;
@@ -95,7 +99,7 @@
 
 <http://publications.europa.eu/resource/authority/frequency/NEVER>
 	skos:prefLabel "never"@en ;
-	skos:altLabel "notPlanned", 
+	skos:altLabel "notPlanned", "NOT_PLANNED",
 		"http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned", "No more updated",
 		<http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned>,
 		<http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#notPlanned>,
