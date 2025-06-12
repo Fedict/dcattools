@@ -4,9 +4,9 @@
     <parent>
         <groupId>be.gov.data</groupId>
         <artifactId>dcattools</artifactId>
-        <version>4.0.5</version>
+        <version>4.0.6</version>
     </parent>
-    <version>4.0.5</version>
+    <version>4.0.6</version>
     <artifactId>uploaderd10</artifactId>
     <packaging>jar</packaging>
     <properties>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20250107</version>
+            <version>20250517</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -35,12 +35,12 @@
         <dependency>
             <groupId>info.picocli</groupId>
             <artifactId>picocli</artifactId>
-            <version>4.7.6</version>
+            <version>4.7.7</version>
         </dependency>
         <dependency>
             <groupId>be.gov.data</groupId>
             <artifactId>dcatlib</artifactId>
-            <version>4.0.5</version>
+            <version>4.0.6</version>
         </dependency>
     </dependencies>
     <build>

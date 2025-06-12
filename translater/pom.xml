@@ -4,9 +4,9 @@
     <parent>
         <groupId>be.gov.data</groupId>
         <artifactId>dcattools</artifactId>
-        <version>4.0.5</version>
+        <version>4.0.6</version>
     </parent>
-    <version>4.0.5</version>
+    <version>4.0.6</version>
     <name>translater</name>
     <description>Translation client to machine-translation service</description>
     <artifactId>translater</artifactId>
