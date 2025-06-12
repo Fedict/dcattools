@@ -488,12 +488,15 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, ADMS.IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
+		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
+		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");		
 		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
 		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
 		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
+		writeLiterals(w, con, uri, DCTERMS.BIBLIOGRAPHIC_CITATION, "dct:bibliographicCitation");
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
 		writeReferences(w, con, uri, DCATAP_CONFORMS, "dcatap:applicableLegislation", "eli:LegalResource", false);
