@@ -1,0 +1,10 @@
+# Remove foaf:page literals (should be URIs)
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s foaf:page ?literal }
+WHERE
+	{ 	?s foaf:page ?literal
+		FILTER (ISLITERAL(?literal))
+	}
