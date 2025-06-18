@@ -62,11 +62,11 @@ import org.eclipse.rdf4j.model.vocabulary.VCARD4;
  */
 public abstract class DataverseJson extends BasicScraperJson implements ScraperPaginated<ReadContext>  {
 	private final static String API_LIST = "/api/search?q=*&type=dataset";
-	private final static String API_DATASET = "/api/datasets/:persistentId/?persistentId=";
+	private final static String API_DATASET = "/api/datasets/export?exporter=dataverse_json&persistentId=";
 	
-	private final static JsonPath DATASET_ID_PATH = JsonPath.compile("$.data.latestVersion.datasetPersistentId");
+	private final static JsonPath DATASET_ID_PATH = JsonPath.compile("$.datasetVersion.datasetPersistentId");
 
-	private final static String CITATION = "$.data.latestVersion.metadataBlocks.citation";
+	private final static String CITATION = "$.datasetVersion.metadataBlocks.citation";
 	private final static JsonPath START_PATH =
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='timePeriodCovered')].value[0].timePeriodCoveredStart.value");
 	private final static JsonPath END_PATH =
@@ -76,7 +76,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='datasetContact')].value[*]");
 	private final static JsonPath CONTACT_ID_PATH = JsonPath.compile("$.datasetContactName.value");
 	
-	private final static JsonPath DIST_PATH = JsonPath.compile("$.data.latestVersion.files[*]");
+	private final static JsonPath DIST_PATH = JsonPath.compile("$.datasetVersion.files[*]");
 	private final static JsonPath DIST_ID_PATH = JsonPath.compile("$.dataFile.persistentId");
 	private final static JsonPath DIST_ID_PATH2 = JsonPath.compile("$.dataFile.storageIdentifier");
 
@@ -90,27 +90,27 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				
 	private final static Map<IRI,Object> DATASET_MAP = Map.ofEntries(
 			entry(DCTERMS.IDENTIFIER, 
-				JsonPath.compile("$.data.latestVersion.datasetPersistentId")),
+				JsonPath.compile("$.datasetVersion.datasetPersistentId")),
 			entry(DCTERMS.TITLE,
 				JsonPath.compile(CITATION + ".fields[?(@.typeName=='title')].value")),
 			entry(DCTERMS.DESCRIPTION, 
 				JsonPath.compile(CITATION + ".fields[?(@.typeName=='dsDescription')].value[0].dsDescriptionValue.value")),
 			entry(DCTERMS.CREATED, 
-				JsonPath.compile("$.data.latestVersion.createTime")),
+				JsonPath.compile("$.datasetVersion.createTime")),
 //			entry(DCTERMS.CREATOR, 
 //				JsonPath.compile("$.data.latestVersion.metadataBlocks.citation.fields[?(@.typeName=='author')].value[*].authorName.value")),
 			entry(DCTERMS.ISSUED, 
-				JsonPath.compile("$.data.latestVersion.releaseTime")),			
+				JsonPath.compile("$.datasetVersion.releaseTime")),			
 			entry(DCTERMS.MODIFIED, 
-				JsonPath.compile("$.data.latestVersion.lastUpdateTime")),
+				JsonPath.compile("$.datasetVersion.lastUpdateTime")),
 			entry(DCAT.VERSION, 
-				JsonPath.compile("$.data.latestVersion.versionNumber")),
+				JsonPath.compile("$.datasetVersion.versionNumber")),
 			entry(DCTERMS.LICENSE, 
-				JsonPath.compile("$.data.latestVersion.license.uri")),
+				JsonPath.compile("$.datasetVersion.license.uri")),
 			entry(DCTERMS.RIGHTS, 
-				JsonPath.compile("$.data.latestVersion.termsOfUse")),
+				JsonPath.compile("$.datasetVersion.termsOfUse")),
 			entry(DCTERMS.ACCESS_RIGHTS,
-				JsonPath.compile("$.data.latestVersion.termsOfAccess")),
+				JsonPath.compile("$.datasetVersion.termsOfAccess")),
 			entry(DCAT.THEME, 
 				JsonPath.compile(CITATION + ".fields[?(@.typeName=='subject')].value[*]")),
 			entry(DCAT.KEYWORD, 
@@ -120,11 +120,11 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			entry(DCTERMS.LANGUAGE, 
 				JsonPath.compile(CITATION + ".fields[?(@.typeName=='language')].value[*]")),
 			entry(DCTERMS.SPATIAL, 
-				JsonPath.compile("$.data.latestVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
+				JsonPath.compile("$.datasetVersion.metadataBlocks.geospatial.fields[?(@.typeName=='geographicCoverage')].value[*].*.value")),
 			entry(DCTERMS.PUBLISHER, 
 				JsonPath.compile(CITATION + ".fields[?(@.typeName=='datasetContact')].value[*].datasetContactAffiliation.value")),
 			entry(DCTERMS.BIBLIOGRAPHIC_CITATION, 
-				JsonPath.compile("$.data.latestVersion.citation"))
+				JsonPath.compile("$.datasetVersion.citation"))
 		);
 
 	private final static Map<IRI,Object> AUTH_MAP = Map.of(
@@ -289,7 +289,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			add(store, contactSubj, node, map);
 		}
 	}
-	
+
 	/**
 	 * Map JSON fields to DCAT properties
 	 * 
@@ -303,6 +303,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
+//		addCitation(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, datasetSubj);
+
 		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
 		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
 		addPersons(store, jsonObj, CONTRIB_PATH, CONTRIB_ID_PATH, datasetSubj, DCTERMS.CONTRIBUTOR, CONTRIB_MAP);
