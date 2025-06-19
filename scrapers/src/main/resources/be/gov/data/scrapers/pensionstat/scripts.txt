@@ -3,6 +3,7 @@ pensionstat/data-publ-contact.ttl
 pensionstat/sparql-publ-contact.qry
 sparql-license-cczero.qry
 sparql-access-public.qry
+sparql-available.qry
 pensionstat/sparql-theme.qry
 pensionstat/sparql-add-keyword.qry
 sparql-geo-belgium.qry

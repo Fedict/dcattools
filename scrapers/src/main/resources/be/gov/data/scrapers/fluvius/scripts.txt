@@ -8,6 +8,7 @@ sparql-dist-accessurl-ods.qry
 fluvius/sparql-fix-license.qry
 fluvius/sparql-license.qry
 sparql-access-public.qry
+sparql-available.qry
 sparql-remove-circular.qry
 sparql-theme-subject.qry
 fluvius/sparql-theme.qry

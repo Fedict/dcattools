@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded 
+sparql-available.qry
 hda/sparql-fix-temporal.qry
 sparql-delete-label-empty.qry
 data-frequency.ttl

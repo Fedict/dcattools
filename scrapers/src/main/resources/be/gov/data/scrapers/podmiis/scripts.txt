@@ -3,6 +3,7 @@ podmiis/data-publ-contact.ttl
 podmiis/sparql-publ-contact.qry
 sparql-license-cczero.qry
 sparql-access-public.qry
+sparql-available.qry
 podmiis/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl

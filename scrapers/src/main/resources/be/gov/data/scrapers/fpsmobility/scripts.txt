@@ -1,6 +1,8 @@
 # extra queries to be executed and data to be loaded
 fpsmobility/sparql-fix-frequency.qry
 fpsmobility/sparql-accessurl-landingpage.qry
+sparql-access-public.qry
+sparql-available.qry
 data-frequency.ttl
 data-media.ttl
 clear-skos.qry

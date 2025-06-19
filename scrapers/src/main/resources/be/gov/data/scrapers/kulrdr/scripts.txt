@@ -5,6 +5,7 @@ data-license.ttl
 sparql-map-license.qry
 kulrdr/sparql-dataset-license.qry
 sparql-access-public.qry
+sparql-available.qry
 kulrdr/sparql-access-restricted.qry
 kulrdr/sparql-tag-language.qry
 kulrdr/sparql-remove-dists.qry

@@ -27,6 +27,7 @@ metawal/sparql-remove-icons.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 sparql-geo-wallonie.qry
+sparql-access-public.qry
 sparql-available.qry
 sparql-map-access-inspire.qry
 sparql-remove-circular.qry

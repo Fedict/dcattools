@@ -31,6 +31,8 @@ data-frequency.ttl
 sparql-map-frequency.qry
 wallonie/sparql-fix-format.qry
 data-media.ttl
+sparql-access-public.qry
+sparql-available.qry
 sparql-map-media.qry
 sparql-expand-dctype.qry
 clear-skos.qry

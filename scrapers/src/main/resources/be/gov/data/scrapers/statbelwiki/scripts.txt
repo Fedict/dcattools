@@ -6,6 +6,8 @@ statbelwiki/data-publ-contact.ttl
 statbelwiki/sparql-contact.qry
 statbelwiki/sparql-vcard-fn.qry
 statbelwiki/data-theme.ttl
+sparql-access-public.qry
+sparql-available.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

@@ -1,8 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-hydra.qry
 bira/sparql-fix-catalog.qry
-sparql-access-public.qry
-sparql-available.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 bira/data-org.ttl
@@ -34,6 +32,8 @@ bira/sparql-fix-conformsto.qry
 bira/sparql-remove-literal.qry
 bira/sparql-adms-notation.qry
 sparql-version.qry
+sparql-access-public.qry
+sparql-available.qry
 clear-skos.qry
 data-license.ttl
 sparql-map-license.qry

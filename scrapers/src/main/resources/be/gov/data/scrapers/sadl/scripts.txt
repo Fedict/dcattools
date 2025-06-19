@@ -1,4 +1,6 @@
 # extra queries to be executed and data to be loaded
+sparql-access-public.qry
+sparql-available.qry
 sadl/data-org.ttl
 sadl/sparql-landingpage.qry
 sparql-map-org.qry

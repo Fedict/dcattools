@@ -21,6 +21,8 @@ sparql-geo-belgium.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
 infrabel/sparql-fix-format.qry
+sparql-access-public.qry
+sparql-available.qry
 sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry

@@ -2,6 +2,7 @@
 indicators/data-publ-contact.ttl
 indicators/sparql-publ-contact.qry
 sparql-access-public.qry
+sparql-available.qry
 indicators/sparql-distribution.qry
 sparql-license-cczero.qry
 indicators/data-theme.ttl

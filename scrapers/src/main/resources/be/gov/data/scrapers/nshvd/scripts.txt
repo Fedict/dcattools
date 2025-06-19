@@ -1,4 +1,6 @@
 # extra queries to be executed and data to be loaded
+sparql-access-public.qry
+sparql-available.qry
 data-frequency.ttl
 data-media.ttl
 clear-skos.qry

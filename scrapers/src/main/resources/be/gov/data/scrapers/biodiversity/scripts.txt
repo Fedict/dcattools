@@ -18,7 +18,6 @@ data-media-compress.ttl
 sparql-map-media-compress.qry
 biodiversity/sparql-fix-license.qry
 biodiversity/sparql-add-keyword.qry
-sparql-available.qry
 data-license.ttl
 sparql-map-license.qry
 sparql-access-public.qry

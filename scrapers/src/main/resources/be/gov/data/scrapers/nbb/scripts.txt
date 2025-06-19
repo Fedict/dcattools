@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-access-public.qry
+sparql-available.qry
 nbb/data-publ-contact.ttl
 nbb/sparql-publ-contact.qry
 nbb/sparql-landingpage.qry

@@ -35,6 +35,7 @@ healthdata/sparql-fix-datetime2.qry
 healthdata/sparql-startdate.qry
 healthdata/sparql-startdate-enddate.qry
 healthdata/sparql-references-iri.qry
+sparql-available.qry
 sparql-date-type.qry
 clear-skos.qry
 sparql-strip-html.qry

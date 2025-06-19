@@ -6,6 +6,7 @@ iweps/sparql-landing-accessurl.qry
 sparql-remove-circular.qry
 data-license.ttl
 sparql-access-public.qry
+sparql-available.qry
 sparql-map-license.qry
 iweps/data-publ-contact.ttl
 iweps/sparql-publ-contact.qry
