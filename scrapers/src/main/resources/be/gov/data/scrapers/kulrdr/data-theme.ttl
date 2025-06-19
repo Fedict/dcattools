@@ -21,6 +21,7 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
 	skos:altLabel "Medical and health sciences", "Clinical sciences", "Health sciences",
+				"Other medical and health sciences",
 					"(Bio)medical engineering", "Paramedical sciences", "Pharmaceutical sciences"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST> 
@@ -38,6 +39,7 @@
 	skos:altLabel "Engineering and technology", "Materials engineering", "Chemical sciences",
 				"Basic sciences", "Computer engineering, information technology and mathematical engineering",
 				"Mechanical and manufacturing engineering", "(Bio)chemical engineering",
+				"Veterinary sciences", "Other medical and health sciences",
 				"Information and computing sciences", "Electrical and electronic engineering",
 				"Other engineering and technology", "Physical sciences", "Biological sciences",
 				"Mathematical sciences"  .

@@ -366,7 +366,8 @@ public abstract class DataResource {
 	}
 
 	/**
-	 * @param creators the creators togset
+	 * @param lang the language of the creators to get
+	 * @return the creators
 	 */
 	public Set<String> getCreators(String lang) {
 		return creators.get(lang);

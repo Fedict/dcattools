@@ -425,7 +425,7 @@ public record DrupalDataset(
 			getOneDateValue("field_upstamp", map, "value"),
 			(Boolean) getOneValue("field_high_value_dataset", map, "value"),
 			getSet("field_legislation", map, "uri", URI.class),
-			(String) getOneValue("field_cite", map, "value")	
+			(String) getOneValue("field_cite", map, "value")
 		);
 	}
 }

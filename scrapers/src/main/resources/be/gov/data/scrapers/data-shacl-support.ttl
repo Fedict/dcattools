@@ -7,6 +7,10 @@
 	a dcterms:RightsStatement;
 	skos:prefLabel "Public"@en  .
 
+<http://publications.europa.eu/resource/authority/access-right/RESTRICTED>
+	a dcterms:RightsStatement;
+	skos:prefLabel "Restricted"@en  .
+
 <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE>
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/planned-availability> ;
