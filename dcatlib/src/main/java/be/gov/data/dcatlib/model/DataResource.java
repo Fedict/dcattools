@@ -46,6 +46,7 @@ public abstract class DataResource {
 	private String id;
 	private Set<String> ids;
 	private String version;
+	private String citation;
 
 	// multi-lingual values
 	private Map<String,String> title;
@@ -156,6 +157,20 @@ public abstract class DataResource {
 	 */
 	public void setVersion(String version) {
 		this.version = version;
+	}
+
+	/**
+	 * @return the citation
+	 */
+	public String getCitation() {
+		return citation;
+	}
+
+	/**
+	 * @param citation the citation to set
+	 */
+	public void setCitation(String citation) {
+		this.citation = citation;
 	}
 
 	/**

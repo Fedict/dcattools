@@ -229,7 +229,8 @@ public class Comparer {
 				d.getEndDate(),
 				d.getModified(),
 				d.isHvd(),
-				toURI(d.getLegislation())
+				toURI(d.getLegislation()),
+				d.getCitation()
 			);
 			map.put(ByteBuffer.wrap(hasher.hash(drupal)), drupal);
 		}

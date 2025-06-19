@@ -73,8 +73,8 @@ public record DrupalDataset(
 	Date till,
 	Date modified,
 	Boolean hvd,
-	Set<URI> legislation
-		
+	Set<URI> legislation,
+	String citation	
 	) {
 
 	private final static Logger LOG = LoggerFactory.getLogger(DrupalDataset.class);
@@ -423,7 +423,8 @@ public record DrupalDataset(
 			getOneDateValue("field_date_range", map, "end_value"),
 			getOneDateValue("field_upstamp", map, "value"),
 			(Boolean) getOneValue("field_high_value_dataset", map, "value"),
-			getSet("field_legislation", map, "uri", URI.class)
+			getSet("field_legislation", map, "uri", URI.class),
+			(String) getOneValue("field_cite", map, "value")	
 		);
 	}
 }

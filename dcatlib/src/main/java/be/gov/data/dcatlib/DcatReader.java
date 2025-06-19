@@ -459,6 +459,7 @@ public class DcatReader {
 		d.setVersion(getString(iri, DCAT.VERSION));
 		d.setTitle(getLangString(iri, DCTERMS.TITLE));
 		d.setDescription(getLangString(iri, DCTERMS.DESCRIPTION));
+		d.setCitation(getString(iri, DCTERMS.BIBLIOGRAPHIC_CITATION));
 		d.setKeywords(getLangStringList(iri, DCAT.KEYWORD));
 
 	//	d.setSubjects(getIRIs(iri, DCTERMS.SUBJECT));
