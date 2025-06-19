@@ -4,9 +4,9 @@
     <parent>
         <groupId>be.gov.data</groupId>
         <artifactId>dcattools</artifactId>
-        <version>4.0.6</version>
+        <version>4.1.0</version>
     </parent>
-    <version>4.0.6</version>
+    <version>4.1.0</version>
     <artifactId>uploaderd10</artifactId>
     <packaging>jar</packaging>
     <properties>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>be.gov.data</groupId>
             <artifactId>dcatlib</artifactId>
-            <version>4.0.6</version>
+            <version>4.1.0</version>
         </dependency>
     </dependencies>
     <build>
