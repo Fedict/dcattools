@@ -9,12 +9,12 @@
 
 <http://publications.europa.eu/resource/authority/file-type/CSV> 
 	skos:prefLabel "CSV" ;
-	skos:closeMatch  <https://www.iana.org/assignments/media-types/text/csv> ,
-					<https://www.iana.org/assignments/media-types/text/x-comma-separated-values> ;
+	skos:closeMatch  <https://www.iana.org/assignments/media-types/text/csv> ;
 	skos:altLabel "text/csv", "CSV", "csv", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "link (html/csv)", "lien (html/csv)", 
 					<http://publications.europa.eu/resource/authority/file-type/CSV>,
 					<https://www.iana.org/assignments/media-types/text/csv>,
+					<https://www.iana.org/assignments/media-types/text/x-comma-separated-values> ,
 					"text/comma-separated-values", "application/csv",
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
