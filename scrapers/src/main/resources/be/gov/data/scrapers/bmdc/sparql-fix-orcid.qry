@@ -15,8 +15,8 @@ WHERE
 		?skolem dcterms:identifier ?id .
 		BIND (
 			REPLACE(
-				REPLACE(?orcid, "http://orcid.org/http://orcid.org/", "http://orcid.org/"),
+				REPLACE(?id, "http://orcid\\.org/http://orcid\\.org/", "http://orcid.org/"),
 				"http://", "https://")
 		AS ?orcid)
-		FILTER (CONTAINS(STR(?id), "orcid.org"))
+		FILTER (CONTAINS(?id, "orcid"))
 	}

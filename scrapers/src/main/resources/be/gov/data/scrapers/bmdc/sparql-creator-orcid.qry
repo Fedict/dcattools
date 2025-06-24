@@ -6,7 +6,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 DELETE {
 		?s dcterms:creator ?skolem .
 		?skolem ?p ?o .
-		?skolem dcterms:identifier ?id .
+		?skolem dcterms:identifier ?orcid .
 	}
 INSERT 
 	{	?s dcterms:creator ?orcid .
@@ -17,5 +17,6 @@ WHERE
 	{	?s dcterms:creator ?skolem .
 		?skolem ?p ?o .
 		?skolem dcterms:identifier ?id .
-		FILTER (CONTAINS(STR(?id), "orcid.org"))
+		BIND (IRI(?id) as ?orcid)
+		FILTER (CONTAINS(?id, "orcid.org"))
 	}
