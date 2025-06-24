@@ -1,0 +1,21 @@
+# Use ORCID as IRI instead of skolem IRI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+		?s dcterms:creator ?skolem .
+		?skolem ?p ?o .
+		?skolem dcterms:identifier ?id .
+	}
+INSERT 
+	{	?s dcterms:creator ?orcid .
+		?orcid ?p ?o  .
+		?orcid dcterms:identifier ?id
+	}
+WHERE
+	{	?s dcterms:creator ?skolem .
+		?skolem ?p ?o .
+		?skolem dcterms:identifier ?id .
+		FILTER (CONTAINS(STR(?id), "orcid.org"))
+	}

@@ -1,0 +1,22 @@
+# Fix URL of ORCIDs
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?s dcterms:creator ?skolem .
+		?skolem dcterms:identifier ?id .
+	}
+INSERT 
+	{	?s dcterms:creator ?skolem .
+		?skolem dcterms:identifier ?orcid
+	}
+WHERE
+	{	?s dcterms:creator ?skolem .
+		?skolem dcterms:identifier ?id .
+		BIND (
+			REPLACE(
+				REPLACE(?orcid, "http://orcid.org/http://orcid.org/", http://orcid.org/"),
+				"http://", "https://")
+		AS ?orcid)
+		FILTER (CONTAINS(STR(?id), "orcid.org"))
+	}

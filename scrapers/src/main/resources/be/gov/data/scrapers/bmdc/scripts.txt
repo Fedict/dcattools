@@ -25,6 +25,8 @@ sparql-dist-lang.qry
 bmdc/sparql-default-lang.qry
 sparql-vcard-fn.qry
 bmdc/sparql-consolidate-contact.qry
+bmdc/sparql-fix-orcid.qry
+bmdc/sparql-creator-orcid.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
