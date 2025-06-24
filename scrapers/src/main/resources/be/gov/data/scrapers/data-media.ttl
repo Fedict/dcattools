@@ -245,7 +245,8 @@
 <http://publications.europa.eu/resource/authority/file-type/WFS_SRVC>
 	skos:prefLabel "WFS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/xml> ;
-	skos:altLabel "WFS", "wfs", "OGC:WFS", "OGC:WFS-1.0.0-http-get-capabilities" .
+	skos:altLabel "WFS", "wfs", "OGC:WFS", "OGC:WFS-1.0.0-http-get-capabilities",
+					"OGC:WFS-2.0.0-http-get-capabilities", "OGC:WFS-2.0.0" .
 
 <http://publications.europa.eu/resource/authority/file-type/WMS_SRVC>
 	skos:prefLabel "WMS" ;
@@ -293,7 +294,7 @@
 <http://publications.europa.eu/resource/authority/file-type/ATOM>
 	skos:prefLabel "Atom" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/atom+xml>; 
-	skos:altLabel "ATOM", "atom",
+	skos:altLabel "ATOM", "atom", "INSPIRE Atom",
 		<https://www.iana.org/assignments/media-types/application/atom+xml> .
 
 <http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
