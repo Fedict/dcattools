@@ -21,7 +21,7 @@
 <http://publications.europa.eu/resource/authority/file-type/TSV>
 	skos:prefLabel "TSV" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/tab-separated-values> ;
-	skos:altLabel "text/tab-separated-values", "text/tsv" .
+	skos:altLabel "text/tab-separated-values", "text/tsv", "tab-file met X,Y en lambda-waarde" .
 
 <http://publications.europa.eu/resource/authority/file-type/DGN>
 	skos:prefLabel "DGN" ;
@@ -223,13 +223,13 @@
 	skos:prefLabel "GeoTIFF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
 	skos:altLabel "geotiff", "geoTIFF", "GEOTIFF", "GeoTIFF", "GeoTiff", "GeoTIFFs",
-		"GeoTIFF, Surfer copyright binary grid.grd" ,
+		"GeoTIFF, Surfer copyright binary grid.grd" , "geoTif",
 		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
 <http://publications.europa.eu/resource/authority/file-type/TXT>
 	skos:prefLabel "TXT" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/plain> ;		
-	skos:altLabel "TXT", "txt", "ascii", "asci", "text", "iCal", "FlexStore ASCII file format", 
+	skos:altLabel "TXT", "txt", "ascii", "asci", "ASCII", "text", "iCal", "FlexStore ASCII file format", 
 				"ASCII (XYZ triplet per line)", "application/php", "text/plain", "PostgreSQL" .
 
 <http://publications.europa.eu/resource/authority/file-type/WAV>
