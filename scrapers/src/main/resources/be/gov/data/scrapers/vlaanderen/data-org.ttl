@@ -287,6 +287,13 @@
 		"MercatorNet",
 		"MercatorNet"@nl.
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0843383425>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Vlaams Energiebedrijf"@nl ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000733> ;
+	skos:altLabel "Vlaams Energiebedrijf" .
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336131>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -473,6 +480,14 @@
 	dcterms:spatial <https://sws.geonames.org/2800935/> ;
 	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
 	skos:altLabel "Stad Brugge"@nl, "stad Brugge"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308252043>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://www.geonames.org/2789530/> ;
+	skos:prefLabel "Stad Oudenaarde"@nl, "City of Oudenaarde"@en, "Ville d'Audenarde"@fr ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002203> ;
+	skos:altLabel "Stad Oudenaarde"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
 	a foaf:Organization ;
