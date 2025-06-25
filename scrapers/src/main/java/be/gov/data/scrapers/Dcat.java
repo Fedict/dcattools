@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
+import java.util.Set;
 import org.eclipse.rdf4j.model.IRI;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -95,16 +96,19 @@ public abstract class Dcat extends BaseScraper {
 	 */
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws RepositoryException, MalformedURLException {
-		Map<String, Page> map = cache.retrievePage(getBase());
-		String data = map.get("all").getContent();
+		Set<URL> urls = cache.retrievePageList();
+		for(URL url: urls ) {
+			Map<String, Page> map = cache.retrievePage(url);
+			String data = map.get("all").getContent();
 
-		// Load RDF file into store
-		try (InputStream in = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8))) {
-			RDFFormat fmt = guessFormat(getBase().toString(), data);
-			LOG.info("Guessing format is {}", fmt.getName());
-			store.add(in, fmt);
-		} catch (RDFParseException | IOException ex) {
-			throw new RepositoryException(ex);
+			// Load RDF file into store
+			try (InputStream in = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8))) {
+				RDFFormat fmt = guessFormat(getBase().toString(), data);
+				LOG.info("Guessing format is {}", fmt.getName());
+				store.add(in, fmt);
+			} catch (RDFParseException | IOException ex) {
+				throw new RepositoryException(ex);
+			}
 		}
 	}
 

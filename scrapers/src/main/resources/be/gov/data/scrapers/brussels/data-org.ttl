@@ -305,7 +305,7 @@
 	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr,
 		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr,
 		"Brussels Instituut voor statistiek en analyse"@nl, "Institut bruxellois de statistiques et d'analyse"@fr,
-		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr, "IBSA / BISA"@en  .
+		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr, "IBSA / BISA", "IBSA / BISA"@en  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555656283>
 	dcterms:type admsp:Company ;

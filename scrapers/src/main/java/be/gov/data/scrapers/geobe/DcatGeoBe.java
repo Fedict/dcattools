@@ -25,18 +25,71 @@
  */
 package be.gov.data.scrapers.geobe;
 
+import be.gov.data.scrapers.Cache;
 import be.gov.data.scrapers.Dcat;
+import be.gov.data.scrapers.Page;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 /**
- * Scraper for the NGI Geo.be portal
+ * Scraper for the NGI Geo.be portal "micro-service"
  * 
  * @see https://www.geo.be
  * @author Bart Hanssens
  */
 public class DcatGeoBe extends Dcat {
+	/**
+	 * Scrape DCAT catalog.
+	 *
+	 * @param cache
+	 * @throws IOException
+	 */
+	@Override
+	protected void scrapeCat(Cache cache) throws IOException {
+		int size = 1;
+
+		boolean tryAgain = true;
+
+		String prevhash = "";
+
+		for(int start = 0; ;start += size) {
+			URL url = new URL(getBase().toString() + "?f=dcat&startindex=" + start + "&limit=" + size);
+			String xml = makeRequest(url);
+			
+			if (!tryAgain) {
+				prevhash = detectLoop(prevhash, xml);
+			}
+			if (!xml.contains("Dataset") && !xml.contains("DataService")) {
+				if (tryAgain) {
+					LOG.info("Might be last page, try next one");
+					tryAgain = false;
+					continue;
+				} else {
+					LOG.info("Last (empty) page");
+					break;
+				}
+			}
+			tryAgain = true;
+			cache.storePage(url, "all", new Page(url, xml));
+			sleep();
+		}
+	}
 	
+	@Override
+	public void scrape() throws IOException {
+		LOG.info("Start scraping");
+		Cache cache = getCache();
+
+		Set<URL> urls = cache.retrievePageList();
+		if (urls.isEmpty()) {
+			scrapeCat(cache);
+		}
+		LOG.info("Done scraping");
+	}
+
 	/**
 	 * Constructor
 	 * 
