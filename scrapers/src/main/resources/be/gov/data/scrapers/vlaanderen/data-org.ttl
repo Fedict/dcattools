@@ -122,7 +122,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000049>, 
-			<https://data.vlaanderen.be/id/organisatie/OVO000061> ;
+			<https://data.vlaanderen.be/id/organisatie/OVO000061> ,
+			<https://onderwijs.vlaanderen.be/nl/over-onderwijs-en-vorming> ;
 	skos:prefLabel "Departement Onderwijs en Vorming (Opgroeien)"@nl ;
 	skos:altLabel "dov"@nl, "Vlaams Ministerie van Onderwijs en Vorming", "Opgroeien"@nl .
 
@@ -157,7 +158,8 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199323857>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076>, <https://data.vlaanderen.be/id/organisatie/OVO053580> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076>, 
+					<https://data.vlaanderen.be/id/organisatie/OVO053580> ;
 	skos:prefLabel "Departement Werk en Sociale Economie"@nl ;
 	skos:altLabel "DWSE", "DWSE"@nl .
 
