@@ -36,7 +36,7 @@
 	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
 	skos:altLabel "University of Antwerp" .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2199322075>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143718509>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
