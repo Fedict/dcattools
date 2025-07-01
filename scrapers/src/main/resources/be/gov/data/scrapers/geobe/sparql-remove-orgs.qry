@@ -1,4 +1,4 @@
-# Remove IWEPS to prevent duplicates (IWEPS source is more detailed)
+# Remove organizations to avoid duplicates
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>

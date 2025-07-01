@@ -29,7 +29,7 @@
 		"Institut géographique national"@fr ,"Nationales geographisches Institut"@de ,
 		"NGI"@en ,"NGI"@nl , "IGN"@fr, "Nationales Geographisches Institut"@de .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2138196041>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2287406587>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;

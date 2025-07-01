@@ -1,12 +1,14 @@
-# Set default publisher if not present
+# Set publisher from rightsholder if not present
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 INSERT
-	{	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0216755012> }
+	{	?dataset dcterms:publisher ?r }
 WHERE
-	{ 	?dataset a ?cl
+	{ 	?dataset a ?cl .
+		?dataset ?prop ?r .
+		VALUES ?prop { dcterms:publisher <http://data.europa.eu/930/custodian> }
 		VALUES ?cl { dcat:Dataset dcat:DataService	}
 		FILTER NOT EXISTS { ?dataset dcterms:publisher ?o }
 	}

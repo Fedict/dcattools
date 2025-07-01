@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-available.qry
+geobe/sparql-remove-catalog.qry
 geobe/sparql-fix-download.qry
 geobe/sparql-delete-location.qry
 geobe/sparql-fix-serves.qry
@@ -11,11 +12,11 @@ geobe/sparql-fix-format.qry
 geobe/sparql-fix-frequency.qry
 geobe/sparql-fix-datatype.qry
 geobe/sparql-fix-bira.qry
-geobe/sparql-remove-bmdc.qry
+geobe/sparql-remove-orgs.qry
 geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-theme-subject.qry
-sparql-access-public.qry
+sparql-map-access-inspire.qry
 geobe/sparql-license-rights.qry
 geobe/sparql-license-links.qry
 data-license.ttl
@@ -27,7 +28,7 @@ geobe/sparql-org-rbins.qry
 geobe/data-org.ttl
 sparql-map-org.qry
 geobe/sparql-vcard-org.qry
-geobe/sparql-default-publisher.qry
+geobe/sparql-rightsholder-publisher.qry
 sparql-vcard-name.qry
 data-media.ttl
 sparql-map-media.qry

@@ -1,0 +1,16 @@
+# Remove catalog information
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?geo dcterms:identifier "be.geo.data.catalog" .
+		?geo ?x ?y .
+		?geo dcterms:isPartOf ?dgov .
+		?dgov ?p ?o
+	}
+WHERE
+	{ 	?geo dcterms:identifier "be.geo.data.catalog" .
+		?geo ?x ?y .
+		?geo dcterms:isPartOf ?dgov .
+		?dgov ?p ?o
+	}
