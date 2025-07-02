@@ -8,7 +8,7 @@ INSERT
 WHERE
 	{ 	?dataset a ?cl .
 		?dataset ?prop ?r .
-		VALUES ?prop { dcterms:publisher <http://data.europa.eu/930/custodian> }
+		VALUES ?prop { <http://data.europa.eu/930/custodian> dcterms:rightsHolder }
 		VALUES ?cl { dcat:Dataset dcat:DataService	}
 		FILTER NOT EXISTS { ?dataset dcterms:publisher ?o }
 	}
