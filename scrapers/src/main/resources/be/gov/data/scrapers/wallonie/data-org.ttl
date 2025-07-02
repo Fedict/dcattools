@@ -96,6 +96,12 @@
 	skos:prefLabel "ORES"@fr ;
 	skos:altLabel "ORES" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0465471128>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Centropôle"@fr ;
+	skos:altLabel "Centropôle" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0568575002>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
