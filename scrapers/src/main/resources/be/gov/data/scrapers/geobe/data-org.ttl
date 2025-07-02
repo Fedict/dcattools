@@ -23,6 +23,12 @@
 	skos:altLabel "Belgian Climate Centre"@en, "Belgian Climate Centre"@nl,
 					"Belgian Climate Centre"@fr, "Belgian Climate Centre"@de .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
+	skos:altLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0875396690>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;

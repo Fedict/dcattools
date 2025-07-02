@@ -1,0 +1,11 @@
+# Clean orphan locations
+
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+DELETE
+	{	?loc ?p ?o }
+WHERE
+	{ 
+		?loc ?p ?o
+		FILTER NOT EXISTS { ?s ?rel ?loc }
+	}
