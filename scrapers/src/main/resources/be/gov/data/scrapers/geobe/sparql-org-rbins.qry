@@ -14,7 +14,7 @@ WHERE
 	{	?dataset ?prop ?org .
 		?org ?p ?label
 		VALUES ?prop { dcterms:publisher dcterms:contributor dcterms:creator dcterms:rightsHolder 
-					geodcat:custodian geodcat:distributor }
+					geodcat:custodian geodcat:distributor geodcat:originator }
 		VALUES ?p { foaf:name vcard:fn }
 		FILTER (CONTAINS(STR(?label), "Koninklijk Belgisch Instituut voor Natuurwetenschappen") ||
 				CONTAINS(STR(?label), "Royal Belgian Institute for Natural Sciences") )
