@@ -35,6 +35,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
@@ -94,13 +95,23 @@ public abstract class Ods extends Dcat {
 	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL front = getBase();
-		if (cache.retrievePageList().isEmpty()) {
-			for (String lang: super.getAllLangs()) {
-				URL url = new URL(getBase(), Ods.API_DCAT + lang);
-				String content = makeRequest(url);
-				cache.storePage(front, lang, new Page(url, content));
-			}
+		for (String lang: super.getAllLangs()) {
+			URL url = new URL(getBase(), Ods.API_DCAT + lang);
+			String content = makeRequest(url);
+			cache.storePage(front, lang, new Page(url, content));
 		}
+	}
+
+	@Override
+	public void scrape() throws IOException {
+		LOG.info("Start scraping");
+		Cache cache = getCache();
+
+		Set<URL> urls = cache.retrievePageList();
+		if (urls.isEmpty()) {
+			scrapeCat(cache);
+		}
+		LOG.info("Done scraping");
 	}
 
 	/**
