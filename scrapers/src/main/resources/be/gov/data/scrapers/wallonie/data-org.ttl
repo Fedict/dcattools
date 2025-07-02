@@ -17,6 +17,12 @@
 		"Ministerium der Französischen Gemeinschaft"@de ;
 	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles", "TBC", "Opendatasoft" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0201105843>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "IDEA"@fr, "IDEA"@nl, "IDEA"@de, "IDEA"@en ;
+	skos:altLabel "IDEA".
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -181,12 +187,6 @@
 	skos:prefLabel "IDELUX"@fr ;
 	skos:altLabel "IDELUX-AIVE", "IDELUX" .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207330471>
-	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Amay"@fr ;
-	skos:altLabel "amay"@fr .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0207306717>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
@@ -197,7 +197,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Tournai"@fr, "Doornik"@nl ;
-	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai" .
+	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai",  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
