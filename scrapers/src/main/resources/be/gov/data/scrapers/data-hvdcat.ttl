@@ -3,7 +3,7 @@
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<http://data.europa.eu/eli/reg_impl/2023/138/oj> a eli:LegalResource ;
+<http://data.europa.eu/eli/reg_impl/2023/138/oj> a eli:LegalResource .
 
 <http://data.europa.eu/bna/c_f2b50efd> a skos:Concept ;
 	skos:prefLabel "Population"@en .
