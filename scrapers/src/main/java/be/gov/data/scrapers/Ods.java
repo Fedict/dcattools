@@ -94,7 +94,7 @@ public abstract class Ods extends Dcat {
 	@Override
 	protected void scrapeCat(Cache cache) throws IOException {
 		URL front = getBase();
-		if (cache.retrievePage(front) == null) {
+		if (cache.retrievePageList().isEmpty()) {
 			for (String lang: super.getAllLangs()) {
 				URL url = new URL(getBase(), Ods.API_DCAT + lang);
 				String content = makeRequest(url);

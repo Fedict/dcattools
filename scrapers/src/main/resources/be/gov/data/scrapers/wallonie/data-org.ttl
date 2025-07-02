@@ -229,6 +229,12 @@
 	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
 	skos:altLabel "Ville de Mons", "Ville+de+Mons+" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207283951>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Seneffe"@fr ;
+	skos:altLabel "Commune de Seneffe" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0206644741>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
