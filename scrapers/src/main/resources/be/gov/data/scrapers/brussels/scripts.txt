@@ -7,7 +7,7 @@ brussels/data-theme.ttl
 sparql-map-theme.qry
 sparql-theme-subject.qry
 brussels/sparql-subject-keyword.qry
-brussels/sparql-vocab-theme.qry
+sparql-vocab-theme.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry

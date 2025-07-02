@@ -16,6 +16,7 @@ geobe/sparql-remove-orgs.qry
 geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-theme-subject.qry
+sparql-vocab-theme.qry
 sparql-map-access-inspire.qry
 geobe/sparql-license-rights.qry
 geobe/sparql-license-links.qry
@@ -35,9 +36,11 @@ sparql-map-media.qry
 data-frequency.ttl
 geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
+geobe/sparql-spatial-from-dist.qry
 sparql-geo-belgium.qry
 geobe/sparql-clean-location.qry
 geobe/sparql-delete-fodfin.qry
+sparql-remove-catalogrecord.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
 clear-skos.qry

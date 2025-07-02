@@ -1,11 +1,14 @@
 # Clean orphan locations
 
+PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX locn: <http://www.w3.org/ns/locn#>
 
 DELETE
-	{	?loc ?p ?o }
+	{	?loc a dcterms:Location .
+		?loc ?p ?o  }
 WHERE
 	{ 
-		?loc ?p ?o
+		?loc a dcterms:Location .
+		?loc ?p ?o 
 		FILTER NOT EXISTS { ?s ?rel ?loc }
 	}

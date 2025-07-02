@@ -1,0 +1,14 @@
+# Move spatial info from Distribution to Dataset
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?dist dcterms:spatial ?spatial }
+INSERT 
+	{	?s dcterms:spatial ?spatial }
+WHERE
+	{ 
+		?s dcat:distribution ?dist .
+		?dist dcterms:spatial ?spatial 
+	}

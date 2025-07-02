@@ -1,0 +1,12 @@
+# Remove catalogRecord info
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s a dcat:CatalogRecord .
+		?s ?p ?o 
+	}
+WHERE
+	{ 	?s a dcat:CatalogRecord .
+		?s ?p ?o .
+	}
