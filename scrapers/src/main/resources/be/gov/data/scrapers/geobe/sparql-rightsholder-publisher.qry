@@ -1,14 +1,15 @@
-# Set publisher from rightsholder if not present
+# Set publisher from rightsholder or other roles if publisher is not present
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcat: <http://data.europa.eu/930/>
 
 INSERT
 	{	?dataset dcterms:publisher ?r }
 WHERE
 	{ 	?dataset a ?cl .
 		?dataset ?prop ?r .
-		VALUES ?prop { <http://data.europa.eu/930/custodian> dcterms:rightsHolder }
+		VALUES ?prop { geodcat:custodian geodcat:originator dcterms:rightsHolder }
 		VALUES ?cl { dcat:Dataset dcat:DataService	}
 		FILTER NOT EXISTS { ?dataset dcterms:publisher ?o }
 	}

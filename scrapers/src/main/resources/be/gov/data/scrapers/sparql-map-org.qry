@@ -24,7 +24,7 @@ WHERE
 		?neworg skos:altLabel ?label .
 		?neworg skos:prefLabel ?name 
 		VALUES ?prop { dcterms:publisher dcterms:contributor dcterms:creator dcterms:rightsHolder 
-					geodcat:custodian geodcat:distributor }
+					geodcat:custodian geodcat:distributor geodcat:originator }
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (! STRSTARTS(STR(?org), "https://org.belgif"))
 	}
