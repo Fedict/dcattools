@@ -36,7 +36,7 @@ data-frequency.ttl
 geobe/data-standards-support.ttl
 geobe/sparql-delete-source.qry
 sparql-geo-belgium.qry
-geobe/sparql-clean-spatial.qry
+geobe/sparql-clean-location.qry
 geobe/sparql-delete-fodfin.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
