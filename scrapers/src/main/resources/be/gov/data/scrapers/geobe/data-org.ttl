@@ -15,6 +15,14 @@
 		"Königliche Meteorologische Institut"@de,
 		"CORDEX"@de, "CORDEX"@en , "CORDEX"@fr , "CORDEX"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0349294822#climate> 
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Belgian Climate Centre"@en , "Belgian Climate Centre"@nl,
+					"Belgian Climate Centre"@fr, "Belgian Climate Centre"@de ;
+	skos:altLabel "Belgian Climate Centre"@en, "Belgian Climate Centre"@nl,
+					"Belgian Climate Centre"@fr, "Belgian Climate Centre"@de .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0875396690>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
