@@ -41,6 +41,12 @@
 	skos:prefLabel "Tibi"@fr, "Tibi"@nl, "Tibi"@de, "Tibi"@en ; 
 	skos:altLabel "Tibi", "TIBI" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0451461655>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "UVCW"@fr ; 
+	skos:altLabel "Union des Villes et Communes de Wallonie" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -369,7 +375,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/1002794017>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
-	skos:prefLabel "OpenStreetMap"@fr, OpenStreetMap"@en, OpenStreetMap"@nl, OpenStreetMap"@de ;
+	skos:prefLabel "OpenStreetMap"@fr, "OpenStreetMap"@en, "OpenStreetMap"@nl, "OpenStreetMap"@de ;
 	skos:altLabel "OpenStreetMap" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0667613881>
@@ -382,7 +388,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Letsgocity"@fr ;
-	skos:altLabel "LETSGOCITY" .
+	skos:altLabel "Letsgocity" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0406729809>
 	a foaf:Organization ;
