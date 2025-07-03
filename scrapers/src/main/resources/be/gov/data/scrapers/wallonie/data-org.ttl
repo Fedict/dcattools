@@ -23,6 +23,12 @@
 	skos:prefLabel "IDEA"@fr, "IDEA"@nl, "IDEA"@de, "IDEA"@en ;
 	skos:altLabel "IDEA".
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0241098844>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "IDETA"@fr, "IDETA"@nl, "IDETA"@de, "IDETA"@en ;
+	skos:altLabel "IDETA".
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0200362210>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
