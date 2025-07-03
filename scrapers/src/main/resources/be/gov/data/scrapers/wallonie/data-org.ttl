@@ -23,6 +23,18 @@
 	skos:prefLabel "IDEA"@fr, "IDEA"@nl, "IDEA"@de, "IDEA"@en ;
 	skos:altLabel "IDEA".
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0200362210>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "in BW"@fr, "in BW"@nl, "in BW"@de, "in BW"@en ; 
+	skos:altLabel "INBW", "in BW" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0201543234>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Tibi"@fr, "Tibi"@nl, "Tibi"@de, "Tibi"@en ; 
+	skos:altLabel "Tibi", "TIBI" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -81,7 +93,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW-EER Economie, Emploi, Recherche"@fr ;
 	skos:altLabel "Service Public de Wallonie - Ecomie, Emploi, Recherche",
-		"Service Public de Wallonie - Economie, Emploi, Recherche", 
+		"Service Public de Wallonie - Economie, Emploi, Recherche", "SPW EER",
 		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0850260131> 
@@ -100,7 +112,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Centropôle"@fr ;
-	skos:altLabel "Centropôle" .
+	skos:altLabel "Centropôle", "Centropôle ASBL" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0568575002>
 	a foaf:Organization ;
