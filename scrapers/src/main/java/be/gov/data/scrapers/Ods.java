@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
@@ -98,7 +99,9 @@ public abstract class Ods extends Dcat {
 		for (String lang: super.getAllLangs()) {
 			URL url = new URL(getBase(), Ods.API_DCAT + lang);
 			String content = makeRequest(url);
+			LOG.info("Storing {} for {}", front, lang);
 			cache.storePage(front, lang, new Page(url, content));
+			sleep();
 		}
 	}
 
