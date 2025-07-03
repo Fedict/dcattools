@@ -359,3 +359,15 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "OpenStreetMap"@fr ;
 	skos:altLabel "OpenStreetMap" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0667613881>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "GAL Meuse@Campagnes"@fr ;
+	skos:altLabel "GAL MeuseCampagnes asbl" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0639912166>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Letsgocity"@fr ;
+	skos:altLabel "LETSGOCITY" .
