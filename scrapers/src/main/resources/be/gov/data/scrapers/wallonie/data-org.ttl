@@ -102,6 +102,12 @@
 		"Service Public de Wallonie - Economie, Emploi, Recherche", "SPW EER",
 		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0841470248> 
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "iMio"@fr ;
+	skos:altLabel "IMIO", "iMio" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0850260131> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -363,7 +369,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/1002794017>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
-	skos:prefLabel "OpenStreetMap"@fr ;
+	skos:prefLabel "OpenStreetMap"@fr, OpenStreetMap"@en, OpenStreetMap"@nl, OpenStreetMap"@de ;
 	skos:altLabel "OpenStreetMap" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0667613881>
@@ -377,3 +383,9 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Letsgocity"@fr ;
 	skos:altLabel "LETSGOCITY" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0406729809>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Croix-Rouge de Belgique"@fr, "Belgische Rode Kruis"@nl, "Belgisches Rotes Kreuz"@de  ;
+	skos:altLabel "Croix-rouge de Belgique - Service du sang" .
