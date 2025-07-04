@@ -108,6 +108,12 @@
 		"Service Public de Wallonie - Economie, Emploi, Recherche", "SPW EER",
 		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0262172984>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "SPW CRA-W Centre wallon de Recherches agronomiques"@fr ;
+	skos:altLabel "Agromet" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0841470248> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -228,6 +234,12 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Antoing"@fr ;
 	skos:altLabel "antoing"@fr, "Ville d'Antoing" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207380258>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Wasseiges"@fr ;
+	skos:altLabel "BiomMap" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207354920>
 	a foaf:Organization ;
@@ -393,5 +405,11 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0406729809>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
-	skos:prefLabel "Croix-Rouge de Belgique"@fr, "Belgische Rode Kruis"@nl, "Belgisches Rotes Kreuz"@de  ;
+	skos:prefLabel "Croix-Rouge de Belgique"@fr, "Belgische Rode Kruis"@nl, "Belgisches Rotes Kreuz"@de ;
 	skos:altLabel "Croix-rouge de Belgique - Service du sang" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0456561776>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
+	skos:altLabel "BEBAT" .
