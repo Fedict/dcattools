@@ -29,6 +29,12 @@
 	skos:prefLabel "IDETA"@fr, "IDETA"@nl, "IDETA"@de, "IDETA"@en ;
 	skos:altLabel "IDETA".
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0201741786>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "IGRETEC"@fr, "IGRETEC"@nl, "IGRETEC"@de, "IGRETEC"@en ;
+	skos:altLabel "IGRETEC".
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0200362210>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -413,3 +419,10 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
 	skos:altLabel "BEBAT" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:closeMatch <https://telraam.net/id/dcat#contact> ;
+	skos:prefLabel "Rear Window"@nl, "Rear Window"@en;
+	skos:altLabel "Telraam"@nl .
