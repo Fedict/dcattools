@@ -420,6 +420,12 @@
 	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
 	skos:altLabel "BEBAT" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
+	skos:altLabel "Code Postal.be" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
