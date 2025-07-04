@@ -429,6 +429,11 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:closeMatch <https://telraam.net/id/dcat#contact> ;
-	skos:prefLabel "Rear Window"@nl, "Rear Window"@en;
-	skos:altLabel "Telraam"@nl .
+	skos:prefLabel "Rear Window"@nl, "Rear Window"@en, "Rear Window"@fr ;
+	skos:altLabel "Telraam" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0744908035>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Batopin"@nl, "Batopin"@en, "Batopin"@fr;
+	skos:altLabel "Batopin" .
