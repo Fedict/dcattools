@@ -66,8 +66,10 @@
  <https://org.belgif.be/id/CbeRegisteredEntity/0887164275>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000060> ;
 	skos:prefLabel "Vlaams Agentschap voor Personen met een Handicap"@nl ;
-	skos:altLabel "Vlaams Agentschap voor Personen met een Handicap (VAPH)"@nl .
+	skos:altLabel "Vlaams Agentschap voor Personen met een Handicap (VAPH)"@nl,
+				"Vlaams Agentschap voor Personen met een Handicap (VAPH)" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
 	a foaf:Organization ;
@@ -105,6 +107,7 @@
 					<https://data.vlaanderen.be/id/organisatie/OVO000538>,
 					<https://data.vlaanderen.be/id/organisatie/OVO002960>,
 					<https://data.vlaanderen.be/id/organisatie/OVO002961>,
+					<https://data.vlaanderen.be/doc/organisatie/OVO000096>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000537> ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
@@ -139,7 +142,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Landbouw en Visserij"@nl ;
 	skos:altLabel "Departement Landbouw en Visserij", "Departement Landbouw en Visserij"@nl, 
-		"Agenstschap Landbouw en Zeevisserij"@nl, 
+		"Agenstschap Landbouw en Zeevisserij"@nl, "Agenstschap Landbouw en Zeevisserij",
 		"Agentschap Landbouw en Zeevisserij"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
@@ -426,8 +429,10 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003307> ;
-	skos:prefLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en,
+	skos:prefLabel "Haven van Antwerpen-Brugge"@nl, "Port of Antwerp-Bruges"@en ;
+	skos:altLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en,
 					"Haven van Antwerpen-Brugge"@nl,
+					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)",
 					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0842399963>
@@ -541,8 +546,9 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO005451> ;
 	skos:prefLabel "FPS Mobility and Transport"@en, "FOD Mobiliteit en Vervoer"@nl, 
-				"FOD Mobiliteit Dienst inschrijving Voertuigen"@nl, 
-				"SPF Mobilité et Transports"@fr, "FÖD Mobilität und Transportwesen"@de .
+					"SPF Mobilité et Transports"@fr, "FÖD Mobilität und Transportwesen"@de ;
+	skos:altLabel "FOD Mobiliteit Dienst inschrijving Voertuigen"@nl, 
+				"FOD Mobiliteit Dienst inschrijving Voertuigen" .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
 	a foaf:Organization ;
@@ -563,4 +569,4 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
-	skos:altfLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl .
+	skos:altfLabel "Fluvius"@nl, "Fluvius" .
