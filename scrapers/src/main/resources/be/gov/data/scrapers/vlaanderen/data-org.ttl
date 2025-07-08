@@ -295,7 +295,7 @@
 		"Vlaamse overheid - Departement Omgeving",
 		"Departement Omgeving"@nl ,"Omgeving Vlaanderen"@en,
 		"Vlaamse overheid, Departement Omgeving, Vlaams Planbureau voor Omgeving (VPO)"@nl,
-		""Vlaams Planbureau voor Omgeving"@nl,
+		"Vlaams Planbureau voor Omgeving"@nl,
 		"MercatorNet",
 		"MercatorNet"@nl.
 
