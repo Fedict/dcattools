@@ -9,7 +9,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Kanselarij en Buitenlandse Zaken"@nl ;
-	skos:altLabel "SVR" .
+	skos:altLabel "SVR", "Departement Kanselarij en Buitenlandse Zaken"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0886689767>
 	a foaf:Organization ;
@@ -63,6 +63,12 @@
 	skos:prefLabel "Toerisme Vlaanderen"@nl ;
 	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
 
+ <https://org.belgif.be/id/CbeRegisteredEntity/0887164275>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Vlaams Agentschap voor Personen met een Handicap"@nl ;
+	skos:altLabel "Vlaams Agentschap voor Personen met een Handicap (VAPH)"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -97,6 +103,7 @@
 					<https://data.vlaanderen.be/id/organisatie/OVO000096>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000532>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000538>,
+					<https://data.vlaanderen.be/id/organisatie/OVO002960>,
 					<https://data.vlaanderen.be/id/organisatie/OVO002961>,
 					<https://data.vlaanderen.be/id/organisatie/OVO000537> ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
@@ -132,6 +139,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Landbouw en Visserij"@nl ;
 	skos:altLabel "Departement Landbouw en Visserij", "Departement Landbouw en Visserij"@nl, 
+		"Agenstschap Landbouw en Zeevisserij"@nl, 
 		"Agentschap Landbouw en Zeevisserij"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
@@ -161,7 +169,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076>, 
 					<https://data.vlaanderen.be/id/organisatie/OVO053580> ;
 	skos:prefLabel "Departement Werk en Sociale Economie"@nl ;
-	skos:altLabel "DWSE", "DWSE"@nl .
+	skos:altLabel "DWSE", "DWSE"@nl, "WEWIS" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2256181002>
 	a foaf:Organization ;
@@ -246,7 +254,7 @@
 		<https://data.vlaanderen.be/id/organisatie/OVO002949> ;
 	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
 	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen",
-		"agentschap Digitaal Vlaanderen"@en .
+		"agentschap Digitaal Vlaanderen"@en, "Mijn Burgerprofiel"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0479740422>
 	a foaf:Organization ;
@@ -286,6 +294,8 @@
 		"Vlaamse overheid - Departement Ruimte Vlaanderen",
 		"Vlaamse overheid - Departement Omgeving",
 		"Departement Omgeving"@nl ,"Omgeving Vlaanderen"@en,
+		"Vlaamse overheid, Departement Omgeving, Vlaams Planbureau voor Omgeving (VPO)"@nl,
+		""Vlaams Planbureau voor Omgeving"@nl,
 		"MercatorNet",
 		"MercatorNet"@nl.
 
@@ -416,7 +426,9 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003307> ;
-	skos:prefLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en .
+	skos:prefLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en,
+					"Haven van Antwerpen-Brugge"@nl,
+					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0842399963>
 	a foaf:Organization ;
@@ -529,6 +541,7 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO005451> ;
 	skos:prefLabel "FPS Mobility and Transport"@en, "FOD Mobiliteit en Vervoer"@nl, 
+				"FOD Mobiliteit Dienst inschrijving Voertuigen"@nl, 
 				"SPF Mobilité et Transports"@fr, "FÖD Mobilität und Transportwesen"@de .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
