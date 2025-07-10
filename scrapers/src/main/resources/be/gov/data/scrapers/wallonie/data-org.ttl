@@ -7,7 +7,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, "Franstalige Gemeenschap"@nl ;
-	skos:altLabel "Fédération Wallonie-Bruxelles" .
+	skos:altLabel "Fédération Wallonie-Bruxelles",
+				"F%C3%A9d%C3%A9ration+Wallonie-Bruxelle" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316380940>
 	a foaf:Organization ;
@@ -401,6 +402,12 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "GAL Meuse@Campagnes"@fr ;
 	skos:altLabel "GAL MeuseCampagnes asbl" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0473923093>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Recupel"@fr, "Recupel"@en, "Recupel"@nl, "Recupel"@de ;
+	skos:altLabel "Recupel" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0639912166>
 	a foaf:Organization ;
