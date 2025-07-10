@@ -570,3 +570,35 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
 	skos:altfLabel "Fluvius"@nl, "Fluvius" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002306> ;
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, 
+					"Vrije Universiteit Brussel"@en ;
+	skos:altLabel "Vrije Universiteit Brussel" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0419052173>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002307> ;
+	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
+					"Catholic University of Leuven"@en ;
+	skos:altLabel "KU Leuven" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357555>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO025086> ;
+	skos:prefLabel "Ministry of Defence"@en, "Ministerie van Landsverdediging"@nl, 
+				"Ministère de la Défense"@fr, "Ministerium der Landesverteidigung"@de ;
+	skos:altLabel "Ministerie van Landsverdediging"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO027346> ;
+	skos prefLabel "POD Wetenschapsbeleid"@nl, "SPP Politique Scientifique"@fr,
+					FöP Wissenschaftspolitik"@de, "FPP Science Policy"@en ;
+	skos:altLabel "BELSPO" .
