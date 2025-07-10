@@ -149,7 +149,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agence du Numérique"@fr ;
-	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr, "Agence+du+Num%C3%A9rique" .
+	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr, 
+		"Agence+du+Num%C3%A9rique", "Opendatasoft" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0219802592>
 	a foaf:Organization ;
@@ -418,7 +419,8 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0406729809>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
-	skos:prefLabel "Croix-Rouge de Belgique"@fr, "Belgische Rode Kruis"@nl, "Belgisches Rotes Kreuz"@de ;
+	skos:prefLabel "Croix-Rouge de Belgique"@fr, "Belgische Rode Kruis"@nl, 
+					"Belgisches Rotes Kreuz"@de ;
 	skos:altLabel "Croix-rouge de Belgique - Service du sang" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0456561776>
