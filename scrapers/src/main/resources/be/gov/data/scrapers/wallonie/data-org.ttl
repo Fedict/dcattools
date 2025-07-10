@@ -6,8 +6,10 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0220916609>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, "Franstalige Gemeenschap"@nl ;
+	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, 
+				"Franstalige Gemeenschap"@nl ;
 	skos:altLabel "Fédération Wallonie-Bruxelles",
+					"Fédération Wallonie-Bruxelle",
 				"F%C3%A9d%C3%A9ration+Wallonie-Bruxelle" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316380940>
