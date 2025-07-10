@@ -75,7 +75,11 @@ public abstract class Ods extends Dcat {
 		Map<String, Page> map = cache.retrievePage(getBase());
 
 		for (String lang: super.getAllLangs()) {
-			String xml = filter(map.get(lang).getContent());
+			Page p = map.get(lang);
+			if (p == null) {
+				throw new RepositoryException("No page found for " + getBase());
+			}
+			String xml = p.getContent();
 			// correction per language, required for ODS up to 2.1, since the language attribute by ODS is wrong
 			xml = xml.replaceAll("xml:lang=\"[a-z]{2}\"", "xml:lang=\"" + lang + "\"");
 			// Load RDF file into store
