@@ -15,7 +15,7 @@
 	skos:prefLabel "Ministerie van de Franse Gemeenschap"@nl,
 		"Ministère de la Communauté française"@fr,
 		"Ministerium der Französischen Gemeinschaft"@de ;
-	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles", "TBC", "Opendatasoft" .
+	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0201105843>
 	a foaf:Organization ;
