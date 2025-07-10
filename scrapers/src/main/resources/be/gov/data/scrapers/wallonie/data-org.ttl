@@ -152,7 +152,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agence du Numérique"@fr ;
 	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr, 
-		"Agence+du+Num%C3%A9rique", "Opendatasoft" .
+		"Agence+du+Num%C3%A9rique", "Opendatasoft", "TBC" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0219802592>
 	a foaf:Organization ;
