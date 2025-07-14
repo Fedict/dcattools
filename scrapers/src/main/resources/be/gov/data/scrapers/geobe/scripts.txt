@@ -13,6 +13,7 @@ geobe/sparql-fix-frequency.qry
 geobe/sparql-fix-datatype.qry
 geobe/sparql-fix-bira.qry
 geobe/sparql-remove-orgs.qry
+sparql-remove-names.qry
 geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-theme-subject.qry

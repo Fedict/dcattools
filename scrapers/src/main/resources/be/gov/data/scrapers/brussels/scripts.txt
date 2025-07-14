@@ -22,6 +22,7 @@ brussels/sparql-fix-vcard.qry
 brussels/sparql-fix-mailto.qry
 brussels/sparql-geo-brussels.qry
 brussels/sparql-remove-orgs.qry
+sparql-remove-names.qry
 sparql-geo-publisher.qry
 data-license.ttl
 brussels/sparql-license-contains.qry

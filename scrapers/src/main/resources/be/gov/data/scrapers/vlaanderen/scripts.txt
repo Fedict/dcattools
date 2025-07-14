@@ -84,6 +84,7 @@ vlaanderen/sparql-map-org-ovo.qry
 vlaanderen/sparql-remove-spatial.qry
 vlaanderen/sparql-fix-vcard-url.qry
 vlaanderen/sparql-fix-downloadurl.qry
+sparql-remove-names.qry
 sparql-geo-publisher.qry
 sparql-geo-vlaanderen.qry
 vlaanderen/sparql-remove-agent-orphans.qry

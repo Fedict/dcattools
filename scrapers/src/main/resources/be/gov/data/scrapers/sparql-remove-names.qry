@@ -1,0 +1,13 @@
+# Remove superfluous names from original source to prevent multiple names
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE	
+	{	?s foaf:name ?name }
+WHERE	
+	{	?s a foaf:Organization .
+		?s foaf:name ?name
+		FILTER NOT EXISTS { ?s skos:prefLabel ?name }
+		FILTER (STRSTARTS(STR(?s), 'https://org.belgif.be'))
+	}

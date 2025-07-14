@@ -13,6 +13,7 @@ wallonie/sparql-contact-name.qry
 #wallonie/sparql-fix-org.qry
 wallonie/data-org.ttl
 sparql-map-org.qry
+sparql-remove-names.qry
 wallonie/sparql-remove-orgs.qry
 clear-skos.qry
 wallonie/sparql-fix-theme.qry

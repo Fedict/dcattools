@@ -7,7 +7,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207373429>
 	dcterms:spatial <https://sws.geonames.org/3337389/>;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Stad Brussel"@nl, "Ville de Bruxelles"@fr, "City of Brussels"@en ;
+	skos:prefLabel "Stad Brussel"@nl, "Ville de Bruxelles"@fr, "City of Brussels"@en, "Stadt Brüssel"@de ;
 	skos:altLabel "City of Brussels"@en, "City of Brussels/Archives"@en, 
 			"City of Brussels/Cleanliness"@en, "City of Brussels/Cleanliness Service"@en, 
 		"City of Brussels/Commerce"@en, "City of Brussels/Culture"@en, 
@@ -42,12 +42,12 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0828586767> 
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en ;
+	skos:prefLabel "Zen Car"@fr, "Zen Car"@nl, "Zen Car"@en, "Zen Car"@de ;
 	skos:altLabel "Zencar"@fr, "Zencar"@nl, "Zencar"@en, "ZenCar"@fr, "ZenCar"@nl, "ZenCar"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0433457663>
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
+	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en, "Cambio"@de ;
 	skos:altLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0444436776>
@@ -67,7 +67,8 @@
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2269796337>
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, "Bruxelles Urbanisme et Patrimoine"@fr ;
+	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, 
+				"Bruxelles Urbanisme et Patrimoine"@fr ;
 	skos:altLabel "Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@nl, "Brussel Stedenbouw en Erfgoed"@nl,
 		"Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@en, "Brussels Planning and Heritage"@en,
 		"GGewestelijke Overheidsdienst Brussel Stedenbouw en Erfgoed"@nl,
@@ -84,7 +85,7 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0240678477> 
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en  ;
+	skos:prefLabel "Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "Paradigm"@de  ;
 	skos:altLabel "CIBG / CIRB"@en, "CIRB / CIBG"@en, "BRIC"@en, "CIBG"@nl, "CIRB"@fr, "IRISline"@en, 
 		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "IRISteam"@en .
 
