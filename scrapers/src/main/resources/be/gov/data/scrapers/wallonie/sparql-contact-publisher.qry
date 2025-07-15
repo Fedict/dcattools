@@ -1,0 +1,20 @@
+# Add contact point based on publisher
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT
+	{ 	?dataset dcat:contactPoint ?newcontact }
+WHERE
+	{ 	?dataset dcterms:publisher ?agent .
+		BIND(IRI(
+				CONCAT(STR(?agent), "/data-contact")
+			) as ?newcontact)
+		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?contact}
+		FILTER EXISTS {
+			?newcontact vcard:fn ?name .
+			?newcontact vcard:hasEmail ?email .
+		}
+	}

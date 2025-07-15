@@ -3,8 +3,23 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 
-<http://data.gov.be/org/wallonie/adn/contact>
+<https://org.belgif.be/id/CbeRegisteredEntity/0568575002/data-contact>
 	a vcard:Organization ;
 	vcard:fn "Agence du Numérique"@en, "Agence du Numérique"@fr, "Agence du Numérique"@nl ;
-	vcard:hasUrl <https://www.odwb.be> ;
 	vcard:hasEmail <mailto:info@adn.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0220916609/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Fédération Wallonie-Bruxelles"@fr, "French community"@en, 
+				"Franse Gemeenschap"@nl, "Französische Gemeinschaft"@de ;
+	vcard:hasEmail <mailto:infos@cfwb.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207258514/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Smart-City Andenne"@fr, "Smart-City Andenne"@nl, "Smart-City Andenne"@en ;
+	vcard:hasEmail <mailto:smart.city@ac.andenne.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207656808/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Mons"@fr, "Bergen"@nl, "Bergen"@en, "Bergen"@de ;
+	vcard:hasEmail <mailto:gouvernance.donnee@ville.mons.be> .

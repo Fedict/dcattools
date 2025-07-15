@@ -7,7 +7,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Fédération Wallonie-Bruxelles"@fr, "French community"@en, 
-				"Franstalige Gemeenschap"@nl ;
+				"Franse Gemeenschap"@nl, "Französische Gemeinschaft"@de  ;
 	skos:altLabel "Fédération Wallonie-Bruxelles",
 					"Fédération Wallonie-Bruxelle",
 				"F%C3%A9d%C3%A9ration+Wallonie-Bruxelle" .
@@ -59,13 +59,13 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en ;
+	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en, "Infrabel"@de ;
 	skos:altLabel "Infrabel", "InfraBel", "Traffic Management & Services" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0203430576>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "NMBS"@nl, "SNCB"@fr ;
+	skos:prefLabel "NMBS"@nl, "SNCB"@fr, "SNCB"@de, "SNCB"@en ;
 	skos:altLabel "sncb", "NMBS-SNCB" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
@@ -83,7 +83,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207362739>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr ;
+	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr, "Stadt Namur"@de ;
 	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
 		"Ville de Namur - Portail Statistiques", 
 		"Ville de Namur - Mobilité", "Ville de Namur - Finances", 

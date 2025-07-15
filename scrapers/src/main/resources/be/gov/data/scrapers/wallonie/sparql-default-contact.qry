@@ -3,7 +3,7 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 INSERT
-	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/wallonie/adn/contact>  }
+	{ 	?dataset dcat:contactPoint <https://org.belgif.be/id/CbeRegisteredEntity/0568575002/data-contact>  }
 WHERE
 	{ 	?dataset a dcat:Dataset
 		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } 

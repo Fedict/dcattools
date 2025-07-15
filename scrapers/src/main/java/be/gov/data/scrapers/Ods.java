@@ -77,7 +77,7 @@ public abstract class Ods extends Dcat {
 		for (String lang: super.getAllLangs()) {
 			Page p = map.get(lang);
 			if (p == null) {
-				throw new RepositoryException("No page found for " + getBase());
+				throw new RepositoryException("No " + lang + " page found for " + getBase());
 			}
 			String xml = p.getContent();
 			// correction per language, required for ODS up to 2.1, since the language attribute by ODS is wrong
@@ -104,7 +104,7 @@ public abstract class Ods extends Dcat {
 			URL url = new URL(getBase(), Ods.API_DCAT + lang);
 			String content = makeRequest(url);
 			LOG.info("Storing {} for {}", front, lang);
-			cache.storePage(front, lang, new Page(url, content));
+			cache.storePage(front, lang, new Page(front, content));
 			sleep();
 		}
 	}
