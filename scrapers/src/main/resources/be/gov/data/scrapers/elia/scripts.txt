@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded
+sparql-remove-ods-serves.qry
 elia/sparql-default-language.qry
 sparql-remove-roles.qry
 sparql-map-loc-lang.qry

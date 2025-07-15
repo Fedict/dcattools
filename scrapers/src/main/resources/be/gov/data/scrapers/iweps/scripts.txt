@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 iweps/sparql-clear-catalog.qry
+sparql-remove-ods-serves.qry
 sparql-dist-lang.qry
 iweps/sparql-downloadurl.qry
 iweps/sparql-landing-accessurl.qry

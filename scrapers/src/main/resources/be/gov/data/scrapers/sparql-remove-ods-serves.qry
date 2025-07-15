@@ -1,0 +1,15 @@
+# Remove servesDataset from OpenDataSoft catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?cat dcat:service ?service .
+		?service ?p ?o .
+		?service dcat:servesDataset ?dataset 
+	}
+WHERE
+	{ 	?cat dcat:service ?service .
+		?service ?p ?o .
+		?service dcat:servesDataset ?dataset
+		FILTER (CONTAINS(STR(?service), "/api/explore"))
+	}
