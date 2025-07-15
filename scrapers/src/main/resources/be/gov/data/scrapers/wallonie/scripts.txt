@@ -21,6 +21,7 @@ sparql-map-keyword-theme.qry
 sparql-remove-circular.qry
 clear-skos.qry
 wallonie/data-contact.ttl
+wallonie/sparql-remove-name.qry
 wallonie/sparql-contact-name.qry
 wallonie/sparql-contact-publisher.qry
 wallonie/sparql-default-contact.qry
