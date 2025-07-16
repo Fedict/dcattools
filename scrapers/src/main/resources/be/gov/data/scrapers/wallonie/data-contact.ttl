@@ -14,6 +14,11 @@
 				"Franse Gemeenschap"@nl, "Französische Gemeinschaft"@de ;
 	vcard:hasEmail <mailto:infos@cfwb.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0841470248/data-contact> 
+	a vcard:Organization ;
+	vcard:fn "iMio"@fr ;
+	vcard:hasEmail <mailto:contact@imio.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514/data-contact>
 	a vcard:Organization ;
 	vcard:fn "Smart-City Andenne"@fr, "Smart-City Andenne"@nl, "Smart-City Andenne"@en ;
