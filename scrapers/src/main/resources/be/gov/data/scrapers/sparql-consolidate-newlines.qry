@@ -1,0 +1,13 @@
+# Reduce number of newlines
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s dcterms:description ?desc }
+INSERT { ?s dcterms:description ?clean }
+WHERE { 
+	?s dcterms:description ?desc .
+	BIND (
+			REPLACE(?desc, "\\n{3,}", "\\n\\n")
+		as ?clean)
+	FILTER CONTAINS(?desc, "\n")
+}

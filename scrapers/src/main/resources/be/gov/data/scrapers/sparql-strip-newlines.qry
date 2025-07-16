@@ -1,0 +1,13 @@
+# Remove mid-sentence CR/LF, caused by weird CDATA exports
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { ?s dcterms:description ?desc }
+INSERT { ?s dcterms:description ?clean }
+WHERE { 
+	?s dcterms:description ?desc .
+	BIND (
+		REPLACE(?desc, "(^.+[^.:;\\n])\\n+", "$1 ", "m")
+		as ?clean)
+	FILTER REGEX(?desc, "\n")
+}

@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-ods-serves.qry
+sparql-strip-newlines.qry
 wallonie/sparql-default-language.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
@@ -42,6 +43,7 @@ sparql-expand-dctype.qry
 clear-skos.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry
+#sparql-consolidate-newlines.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

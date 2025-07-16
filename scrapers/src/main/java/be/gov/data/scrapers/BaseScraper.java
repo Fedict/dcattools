@@ -442,6 +442,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 			BufferedReader r = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 			scripts = r.lines().filter(s -> !s.startsWith("#"))		// remove comments
 								.filter(s -> !s.isBlank())			// remove empty lines
+								.takeWhile(s -> !s.equals("BREAK"))
 								.map(s -> PKG_PREFIX + "/" + s)			// add prefix
 								.collect(Collectors.toList());
 		}
