@@ -36,7 +36,7 @@ data-frequency.ttl
 sparql-map-frequency.qry
 wallonie/sparql-fix-format.qry
 data-media.ttl
-wallonie/sparql-fix-email.qry
+wallonie/sparql-fix-emails.qry
 sparql-access-public.qry
 sparql-available.qry
 sparql-map-media.qry
