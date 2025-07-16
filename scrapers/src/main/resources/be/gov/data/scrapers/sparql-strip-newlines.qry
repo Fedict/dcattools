@@ -7,7 +7,7 @@ INSERT { ?s dcterms:description ?clean }
 WHERE { 
 	?s dcterms:description ?desc .
 	BIND (
-		REPLACE(?desc, "(^.+[^.:;\\n])\\n+", "$1 ", "m")
+		REPLACE(?desc, "(^.+[^.:;])\\n+", "$1 ", "m")
 		as ?clean)
-	FILTER REGEX(?desc, "\n")
+	FILTER CONTAINS(?desc, "\n")
 }
