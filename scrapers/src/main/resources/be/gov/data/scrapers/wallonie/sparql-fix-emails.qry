@@ -11,6 +11,5 @@ WHERE
 		VALUES (?email ?corr) {
 			( <mailto:info@batopin.be.> <mailto:info@batopin.be> )
 			( <mailto:dataculture.be>	<mailto:info@dataculture.be> )
-			( <mailto:pauvrete@cfwb.be%20>	<mailto:pauvrete@cfwb.be> )  
 		}
 	}

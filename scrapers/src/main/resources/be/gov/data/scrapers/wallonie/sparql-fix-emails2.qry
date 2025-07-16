@@ -1,0 +1,17 @@
+# Fix mails with ' ' at the end
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{ 	?s vcard:hasEmail ?oldmail }
+INSERT
+	{	?s vcard:hasEmail ?email }
+WHERE
+	{ 	?s vcard:hasEmail ?oldmail .
+		BIND ( 
+			IRI(
+				STRBEFORE(STR(?oldmail), " ")
+				)
+		as ?email)
+		FILTER (CONTAINS(STR(?oldmail), " "))
+	}
