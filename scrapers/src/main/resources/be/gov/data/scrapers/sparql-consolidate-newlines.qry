@@ -9,5 +9,5 @@ WHERE {
 	BIND (
 			REPLACE(?desc, "\\n{3,}", "\\n\\n")
 		as ?clean)
-	FILTER CONTAINS(?desc, "\\n")
+	FILTER CONTAINS(?desc, "\n")
 }
