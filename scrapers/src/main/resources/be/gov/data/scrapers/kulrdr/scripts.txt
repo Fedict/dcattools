@@ -20,7 +20,7 @@ sparql-map-theme.qry
 kulrdr/sparql-default-theme.qry
 clear-skos.qry
 sparql-tag-language.qry
-kulrdr/sparql-landingpage.qry
+kulrdr/sparql-doi-landingpage.qry
 kulrdr/data-contact.ttl
 kulrdr/sparql-default-contact.qry
 kulrdr/data-org.ttl

@@ -34,6 +34,7 @@ bira/sparql-adms-notation.qry
 sparql-version.qry
 sparql-access-public.qry
 sparql-available.qry
+bira/sparql-doi-landingpage.qry
 clear-skos.qry
 data-license.ttl
 sparql-map-license.qry
