@@ -599,6 +599,6 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO027346> ;
-	skos prefLabel "POD Wetenschapsbeleid"@nl, "SPP Politique Scientifique"@fr,
+	skos:prefLabel "POD Wetenschapsbeleid"@nl, "SPP Politique Scientifique"@fr,
 					"FöP Wissenschaftspolitik"@de, "FPP Science Policy"@en ;
 	skos:altLabel "BELSPO" .
