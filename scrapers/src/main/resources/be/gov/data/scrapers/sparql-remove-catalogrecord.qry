@@ -3,10 +3,12 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
-	{	?s a dcat:CatalogRecord .
-		?s ?p ?o 
+	{	?cat dcat:record ?rec .
+		?rec a dcat:CatalogRecord .
+		?rec ?p ?o 
 	}
 WHERE
-	{ 	?s a dcat:CatalogRecord .
-		?s ?p ?o .
+	{ 	?rec a dcat:CatalogRecord .
+		?rec ?p ?o .
+		OPTIONAL { ?cat dcat:record ?rec }
 	}
