@@ -1,0 +1,10 @@
+# Change the Belgian EDUC#SPORT team into the EU EDUC (which includes sports)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{ ?s dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT> }
+INSERT 
+	{ ?s dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC>  }
+WHERE
+	{ ?s dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>  }
