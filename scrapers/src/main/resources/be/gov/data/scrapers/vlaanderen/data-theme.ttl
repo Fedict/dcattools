@@ -45,6 +45,7 @@
 		<http://ns.thedatatank.com/dcat/themes#Economy> ,
 		<http://ns.thedatatank.com/dcat/themes#Work> ,
 		<http://vocab.belgif.be/auth/datatheme/ECON> ,
+		<https://opendata.wewis.vlaanderen.be/explore/?refine.theme=Loopbanen+en+competenties>,
 		<https://opendata.wewis.vlaanderen.be/explore/?refine.theme=Activering>,
 		<https://opendata.wewis.vlaanderen.be/explore/?refine.theme=Duurzaam+werkgeverschap>,
 		<https://opendata.wewis.vlaanderen.be/explore/?refine.theme=Sociale+economie>,
@@ -115,6 +116,7 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	skos:closeMatch  <http://vocab.belgif.be/auth/datatheme/ENER>,
+		<https://opendata.fluvius.be/id/theme/Energiedelen>,
 		<https://opendata.fluvius.be/id/theme/Netgebruikers%20en%20hun%20verbruik>,
 		<https://opendata.fluvius.be/id/theme/Fluvius%20als%20leverancier>,
 		<https://opendata.fluvius.be/id/theme/Energietransitie%3A%20adoptie%20van%20nieuwe%20technologie%C3%ABn>,
