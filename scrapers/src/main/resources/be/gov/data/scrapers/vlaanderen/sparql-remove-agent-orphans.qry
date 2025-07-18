@@ -1,13 +1,15 @@
 # Delete empty agents not being used (due to mappings) anymore
 
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?s a foaf:Agent .
+	{	?s a ?rel .
 		?s ?p ?o
 	}
 WHERE
-	{ 	?s ?a foaf:Agent .
+	{ 	?s ?a ?rel .
 		?s ?p ?o
-		FILTER NOT EXISTS { ?x ?rel ?s }
+		VALUES ?rel { foaf:Agent vcard:Organization }
+		FILTER NOT EXISTS { ?x ?y ?s }
 	}

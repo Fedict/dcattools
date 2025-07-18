@@ -11,6 +11,31 @@
 	skos:prefLabel "Departement Kanselarij en Buitenlandse Zaken"@nl ;
 	skos:altLabel "SVR", "Departement Kanselarij en Buitenlandse Zaken"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0239843188>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr ;
+	skos:altLabel "ACTIRIS"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0949383342>
+	a foaf:Organization ;
+	dcterms:type admsp:SupraNationalAuthority;
+	skos:prefLabel "Europese Commissie"@nl, "Commission européenne"@fr,
+			"Europäische Kommission"@de, "European Commission"@en ;
+	skos:altLabel "Europese Commissie"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0860139085>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Lantis"@nl ;
+	skos:altLabel "Lantis - Beheersmaatschappij Antwerpen Mobiel"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0414299866>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "AquaFlanders"@nl ;
+	skos:altLabel "AquaFlanders"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0886689767>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -38,6 +63,7 @@
 	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
 	skos:altLabel "Vlaamse overheid - Vlaamse MilieuMaatschappij - Afdeling Operationeel Waterbeheer"@nl, 
 		"Vlaamse Milieumaatschappij", 
+		"Vlaamse Overheid - Vlaamse Milieumaatschappij"@nl,
 		"Vlaamse overheid - Vlaamse MilieuMaatschappij"@nl,
 		"Flanders Environment Agency (VMM)"@nl,
 		"Vlaamse Milieumaatschappij"@nl .
@@ -111,6 +137,9 @@
 					<https://data.vlaanderen.be/id/organisatie/OVO000537> ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:altLabel "Departement Mobiliteit en Openbare Werken", 
+		"Departement MOW- Waterbouwkundig Laboratorium – HIC",
+		"Departement MOW- Waterbouwkundig Laboratorium – HIC"@nl,
+		"Departement Mobiliteit en Openbare Werken, Afdeling Toegepast Mobiliteitsbeleid"@nl,
 		"Departement Mobiliteit en Openbare Werken (MOW) - Afdeling Geotechniek"@nl,
 		"Departement Mobiliteit en Openbare Werken (MOW) - Afdeling Geotechniek",
 		"Departement Mobiliteit en Openbare Werken, afdeling Maritieme Toegang"@nl,
