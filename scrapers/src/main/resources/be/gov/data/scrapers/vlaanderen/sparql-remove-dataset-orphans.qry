@@ -1,0 +1,10 @@
+# Delete empty datasets nor beinf used (due to mappings) anymore
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcat:dataset ?dataset	}
+WHERE
+	{ 	?s dcat:dataset ?dataset .
+		FILTER NOT EXISTS { ?dataset ?p ?o }
+	}
