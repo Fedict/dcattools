@@ -19,13 +19,13 @@ Adding a new one can be as simple as:
 
 Invoke with
 
-    # java -jar scraper.jar name-of-datasource
+    # java -jar scrapers.jar --name=name-of-datasource
 
 Use -D to set logging level and save the log to a file
 
     # java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug 
            -Dorg.slf4j.simpleLogger.logFile=update.log
-           -jar scraper.jar name-of-datasource
+           -jar scrapers.jar --name=name-of-datasource
 
 ## Configuration
 
