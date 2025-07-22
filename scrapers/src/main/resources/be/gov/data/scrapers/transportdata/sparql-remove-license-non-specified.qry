@@ -1,0 +1,14 @@
+# Remove triple when literal value is "Not specified"
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { ?d dcterms:license ?nonspecified . }
+WHERE {
+    ?d a dcat:Distribution .
+	?d dcterms:license "Not specified" .
+    VALUES ?nonspecified {
+        "Not specified"
+        "notspecified"
+    }
+}

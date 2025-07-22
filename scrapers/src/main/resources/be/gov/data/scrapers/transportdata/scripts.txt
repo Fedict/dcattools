@@ -1,1 +1,2 @@
 # extra queries to be executed and data to be loaded
+transportdata/sparql-remove-license-non-specified.qry
