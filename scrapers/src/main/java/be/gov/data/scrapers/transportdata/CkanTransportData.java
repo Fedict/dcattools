@@ -45,9 +45,15 @@ public class CkanTransportData extends CkanJson {
 
 	private final static String NOTES_TRANSLATED = "notes_translated";
 
+	protected void parseMulti(Storage store, IRI uri, JsonObject json, String field, IRI property) throws RepositoryException {
+		for (String lang : getAllLangs()) {
+			parseString(store, uri, json.getJsonObject(field), lang, DCTERMS.DESCRIPTION, lang);
+		}
+	}
+
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
-		parseString(store, uri, json, CkanTransportData.NOTES_TRANSLATED, DCTERMS.DESCRIPTION, lang);
+		parseMulti(store, uri, json, CkanTransportData.NOTES_TRANSLATED, DCTERMS.DESCRIPTION);
 	}
 
 	/**
