@@ -109,3 +109,15 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Blue mobility"@nl ;
 	skos:altLabel "Blue-bike" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0862000792>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "CyCLO"@fr, "CyCLO"@en, "CyCLO"@nl ;
+	skos:altLabel "CyCLO" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Brussels Airport Company"@en ;
+	skos:altLabel "Brussels Airport" .
