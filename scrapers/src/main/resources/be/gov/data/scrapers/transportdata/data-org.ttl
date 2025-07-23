@@ -41,3 +41,35 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
 	skos:altLabel "NGI - IGN" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0242069339> 
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "TEC"@fr ;
+	skos:altLabel "TEC" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
+					"Services du Gouvernement de la Région bruxelloise"@fr, 
+					"Regionaler öffentlicher Dienst Brüssel"@de ;
+	skos:altLabel "Brussels Mobilité - Mobiliteit - Mobility " .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0242069537>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "De Lijn"@nl ;
+	skos:altLabel "De Lijn".
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2274368601>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "SPW-MI Mobilité et Infrastructures"@fr ;
+	skos:altLabel "Service public de Wallonie Mobilité et Infrastructures" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0433457663>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en, "Cambio"@de ;
+	skos:altLabel "cambio Belgium" .
