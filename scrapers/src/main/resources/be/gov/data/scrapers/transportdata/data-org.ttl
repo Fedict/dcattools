@@ -133,3 +133,9 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Be-Mobile"@en, "Be-Mobile"@nl ;
 	skos:altLabel "Be-Mobile" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0720798585>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "felyx Belgium"@en, "felyx Belgium"@nl ;
+	skos:altLabel "FELYX BELGIUM" .
