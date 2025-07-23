@@ -1,0 +1,7 @@
+# extra queries to be executed and data to be loaded
+sparql-available.qry
+clear-skos.qry
+data-shacl-support.ttl
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry
+

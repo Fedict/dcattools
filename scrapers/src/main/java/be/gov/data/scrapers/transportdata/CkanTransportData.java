@@ -25,15 +25,9 @@
  */
 package be.gov.data.scrapers.transportdata;
 
-import be.gov.data.helpers.Storage;
-import be.gov.data.scrapers.CkanJson;
+import be.gov.data.scrapers.CkanRDF;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Properties;
-import jakarta.json.JsonObject;
-import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
-import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
  * CKAN TransportData.be via DCAT-AP catalog.
@@ -41,15 +35,7 @@ import org.eclipse.rdf4j.repository.RepositoryException;
  * @see https://www.transportdata.be/
  * @author Bart Hanssens
  */
-public class CkanTransportData extends CkanJson {
-
-	private final static String NOTES_TRANSLATED = "notes_translated";
-
-	@Override
-	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang) throws RepositoryException, MalformedURLException {
-		parseString(store, uri, json, CkanTransportData.NOTES_TRANSLATED, DCTERMS.DESCRIPTION, lang);
-	}
-
+public class CkanTransportData extends CkanRDF {
 	/**
 	 * Constructor
 	 *
@@ -60,6 +46,4 @@ public class CkanTransportData extends CkanJson {
 		super(prop);
 		setName("transportdata");
 	}
-
-
 }
