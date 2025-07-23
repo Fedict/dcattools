@@ -73,3 +73,39 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en, "Cambio"@de ;
 	skos:altLabel "cambio Belgium" .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
+	skos:altLabel "Departement Mobiliteit en Openbare Werken" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207500123>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
+	skos:altLabel "Stad Antwerpen" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0887290276>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Vlaamse Milieu Maatschappij"@nl, "Flanders Environment Agency"@en;
+	skos:altLabel "Vlaamse Milieumaatschappij" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0782340830>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Donkey Republic"@en, "Donkey Republic"@nl ;
+	skos:altLabel "Donkey Republic" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0831920104>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Flibco"@nl, "Flibco"@en ;
+	skos:altLabel "flibco.com" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0832369965>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Blue mobility"@nl ;
+	skos:altLabel "Blue-bike" .
