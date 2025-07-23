@@ -121,3 +121,15 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Brussels Airport Company"@en ;
 	skos:altLabel "Brussels Airport" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0697709023>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "BattMobility"@en, "BattMobility"@nl ;
+	skos:altLabel "BattMobility" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0881959533>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Be-Mobile"@en, "Be-Mobile"@nl ;
+	skos:altLabel "Be-Mobile" .
