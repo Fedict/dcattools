@@ -1,8 +1,9 @@
-# Delete empty literals
+# Delete empty literals (with or without language tag)
 
 DELETE 
 	{	?s ?p ?lit }
 WHERE
 	{ 	?s ?p ?lit
-		VALUES ?lit { "" "-" " " }
+		VALUES ?lit { "" "-" " " ""@de ""@en ""@fr ""@nl }
+		FILTER (ISLITERAL(?lit))
 	}

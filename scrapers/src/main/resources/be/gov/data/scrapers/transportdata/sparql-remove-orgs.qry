@@ -1,0 +1,30 @@
+# Remove Infrabel, NGI, ... data published elsewhere
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE {
+	?cat dcat:dataset ?dataset .
+	?dataset ?p ?o .
+	?dataset a dcat:Dataset .
+	?dataset dcterms:publisher ?publ .
+	?dataset dcat:distribution ?dist .
+	?dist ?x ?y .
+	?dataset dcat:contactPoint ?point . 
+	?point vcard:fn ?name .
+	?point vcard:hasEmail ?email
+} WHERE {
+	?cat dcat:dataset ?dataset .
+	?dataset ?p ?o .
+	?dataset a dcat:Dataset .
+	?dataset dcterms:publisher ?publ .
+	?dataset dcat:distribution ?dist .
+	?dist ?x ?y .
+	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
+					<https://org.belgif.be/id/CbeRegisteredEntity/0216755012> }
+	OPTIONAL { 
+		?dataset dcat:contactPoint ?point . 
+		?point vcard:fn ?name .
+		?point vcard:hasEmail ?email }
+	}

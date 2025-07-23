@@ -1,0 +1,43 @@
+# Data for mapping organizations
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0203430576>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "NMBS"@nl, "SNCB"@fr, "SNCB"@de, "SNCB"@en ;
+	skos:altLabel "NMBS/SNCB " .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en, "Infrabel"@de ;
+	skos:altLabel "Infrabel" .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336725> 
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO039562> ;
+	skos:prefLabel "Agentschap MDK"@nl ;
+	skos:altLabel "Agentschap voor Maritieme Dienstverlening en Kust (MDK)" .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2143729494>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
+	skos:altLabel "Agentschap Wegen en Verkeer" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0247499953>
+	a foaf:Organization;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
+	skos:altLabel "STIB-MIVB" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
+	skos:altLabel "NGI - IGN" .

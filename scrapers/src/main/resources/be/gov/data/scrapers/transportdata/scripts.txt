@@ -1,4 +1,7 @@
 # extra queries to be executed and data to be loaded
+sparql-remove-empty.qry
+transportdata/data-org.ttl
+sparql-map-org.qry
 sparql-available.qry
 clear-skos.qry
 data-shacl-support.ttl
