@@ -97,6 +97,18 @@
 	skos:altLabel "Vlaams Agentschap voor Personen met een Handicap (VAPH)"@nl,
 				"Vlaams Agentschap voor Personen met een Handicap (VAPH)" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0543307391>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Agentschap Integratie en Inburgering"@nl ;
+	skos:altLabel "Agentschap Integratie en Inburgering"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
+	skos:altLabel "FOD Economie"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -404,7 +416,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069537>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Vlaamse Vervoersmaatschappij De Lijn"@nl ;
+	skos:prefLabel "De Lijn"@nl ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000100> ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/369> ;
 	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn" .
