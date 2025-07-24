@@ -113,7 +113,15 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr, "FPS Finance"@en, "FÖD Finanzen"@de ;
-	skos:altLabel "Federale Overheidsdienst Financiën"@nl .
+	skos:altLabel "Federale Overheidsdienst Financiën"@nl,
+				"FOD Financiën - Algemene Administratie van de PatrimoniumDocumentatie"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0203201340>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Banque nationale de Belgique"@fr, "Belgische Nationalbank"@de, 
+			"Nationale Bank van België"@nl, "National Bank of Belgium"@en ;
+	skos:altLabel "Nationale Bank van België"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236363165>
 	a foaf:Organization ;
@@ -225,7 +233,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076>, 
 					<https://data.vlaanderen.be/id/organisatie/OVO053580> ;
 	skos:prefLabel "Departement Werk en Sociale Economie"@nl ;
-	skos:altLabel "DWSE", "DWSE"@nl, "WEWIS" .
+	skos:altLabel "DWSE", "DWSE"@nl, "WEWIS", "Werk en Sociale Economie?(WSE)"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2256181002>
 	a foaf:Organization ;
@@ -602,6 +610,13 @@
 					"SPF Mobilité et Transports"@fr, "FÖD Mobilität und Transportwesen"@de ;
 	skos:altLabel "FOD Mobiliteit Dienst inschrijving Voertuigen"@nl, 
 				"FOD Mobiliteit Dienst inschrijving Voertuigen" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308356862>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FPS Interior"@en, "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, 
+					"FÖD Inneres"@de ;
+	skos:altLabel "Federale Overheidsdienst Binnenlandse Zaken"@nl .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
 	a foaf:Organization ;
