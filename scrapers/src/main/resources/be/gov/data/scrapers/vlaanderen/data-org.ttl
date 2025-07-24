@@ -115,6 +115,12 @@
 	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr, "FPS Finance"@en, "FÖD Finanzen"@de ;
 	skos:altLabel "Federale Overheidsdienst Financiën"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0236363165>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "FOREM"@fr ;
+	skos:altLabel "FOREM"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
