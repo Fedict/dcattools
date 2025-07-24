@@ -109,6 +109,12 @@
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
 	skos:altLabel "FOD Economie"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr, "FPS Finance"@en, "FÖD Finanzen"@de ;
+	skos:altLabel "Federale Overheidsdienst Financiën"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0890082292>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
