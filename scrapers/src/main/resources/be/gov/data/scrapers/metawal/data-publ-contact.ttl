@@ -8,7 +8,8 @@
 
 <http://data.gov.be/org/wallonie/metawal/contact>
 	a vcard:Organization ;
-	vcard:fn "Géoportail de la Wallonie"@en, "Géoportail de la Wallonie"@fr, "Géoportail de la Wallonie"@nl ;
+	vcard:fn "Géoportail de la Wallonie"@en, 
+			"Géoportail de la Wallonie"@fr, "Géoportail de la Wallonie"@nl ;
 	vcard:hasUrl <https://geoportail.wallonie.be> ;
 	vcard:hasEmail <mailto:helpdesk.carto@spw.wallonie.be> .
 

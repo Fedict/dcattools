@@ -8,7 +8,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	foaf:name "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
+	foaf:name "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr, "FÖD Finanzen"@de ;
 	foaf:homepage <https://finance.belgium.be> .
 	
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159/contact>

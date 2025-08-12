@@ -81,7 +81,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "FPS Finance"@en, "FOD Financiën"@nl, "SPF Finances"@fr ;
+	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr, "FPS Finance"@en, "FÖD Finanzen"@de ;
 	skos:altLabel 	"FOD Financien - Algemene Administratie van de Patrimoniumdocumentatie (AAPD)"@nl ,
 					"SPF Finances - Administration Générale de la Documentation Patrimoniale (AGDP)"@fr ,
 					"FOD Finanzen - Algemeine Verwaltung des Vermögens-documentation (AVVD)"@de,
