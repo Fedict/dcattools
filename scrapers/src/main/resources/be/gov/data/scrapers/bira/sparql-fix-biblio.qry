@@ -1,0 +1,15 @@
+# Remove <i> and literal amp; from citation
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:bibliographicCitation ?val }
+INSERT 
+	{	?s dcterms:bibliographicCitation ?corr }
+WHERE
+	{	?s dcterms:bibliographicCitation ?val .
+		BIND (
+			REPLACE(
+				REPLACE(?val, "&amp;", "&"), "</?i>", "")
+		as ?corr)
+	}
