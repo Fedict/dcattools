@@ -24,9 +24,19 @@
 	vcard:fn "Smart-City Andenne"@fr, "Smart-City Andenne"@nl, "Smart-City Andenne"@en ;
 	vcard:hasEmail <mailto:smart.city@ac.andenne.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207310774/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Charleroi"@fr ;
+	vcard:hasEmail <mailto:info@charleroi.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0697701204/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Be WaPP"@fr ;
+	vcard:hasEmail <mailto:info@bewapp.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207347891/data-contact>
 	a vcard:Organization ;
-	vcard:fn  "Marche-en-Famenne"@fr ;
+	vcard:fn "Marche-en-Famenne"@fr ;
 	vcard:hasEmail <mailto:secretariat@marche.be> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207656808/data-contact>

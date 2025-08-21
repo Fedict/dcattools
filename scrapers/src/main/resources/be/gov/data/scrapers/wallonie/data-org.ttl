@@ -380,6 +380,7 @@
 	skos:altLabel "bpost" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0433457663>
+	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
 	skos:altLabel "Cambio" .
@@ -390,7 +391,8 @@
 	skos:altLabel "JC Decaux" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0697701204>
-	dcterms:type admsp:Company ;
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Be WaPP"@fr ;
 	skos:altLabel "BeWaPP" .
 
