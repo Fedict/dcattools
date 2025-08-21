@@ -10,13 +10,13 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Kanselarij en Buitenlandse Zaken"@nl ;
 	skos:altLabel "SVR", "Departement Kanselarij en Buitenlandse Zaken"@nl,
-		 "Vlaamse Statistische Autoriteit"  .
+		 "Vlaamse Statistische Autoriteit"@nl  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0239843188>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr ;
-	skos:altLabel "ACTIRIS"@nl .
+	skos:altLabel "ACTIRIS"@nl, "ACTIRIS" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0949383342>
 	a foaf:Organization ;
@@ -76,7 +76,8 @@
 					<https://data.vlaanderen.be/doc/organisatie/OVO000112> ;
 	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
 	skos:altLabel "Vlaamse Waterweg NV"@nl, "De Vlaamse Waterweg nv"@nl,
-		"De Vlaamse Waterweg nv Projectbureau DBFM Beweegbare Kunstwerken"  .
+		"de Vlaamse Waterweg nv"@nl,
+		"De Vlaamse Waterweg nv Projectbureau DBFM Beweegbare Kunstwerken"@nl  .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471>
 	a foaf:Organization ;
@@ -117,21 +118,27 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO027170> ;
 	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr, "FPS Finance"@en, "FÖD Finanzen"@de ;
-	skos:altLabel "Federale Overheidsdienst Financiën"@nl,
+	skos:altLabel "Federale Overheidsdienst Financiën"@nl, "FOD Financiën"@nl,
 				"FOD Financiën - Algemene Administratie van de PatrimoniumDocumentatie"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0426682709>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Arcadis Belgium"@fr, "Arcadis Belgium"@de, "Arcadis Belgium"@nl, "Arcadis Belgium"@en ;
-	skos:altLabel "Arcadis Belgium" .
+	skos:altLabel "Arcadis Belgium"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0414321939>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Antea Belgium"@fr, "Antea Belgium"@de, "Antea Belgium"@nl, "Antea Belgium"@en ;
+	skos:altLabel "Antea Group"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2287406587>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO038241> ;
 	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
-	skos:altLabel "IRCEL-CELINE" .
+	skos:altLabel "Team IRCEL"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0203201340>
 	a foaf:Organization ;
@@ -250,7 +257,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000076>, 
 					<https://data.vlaanderen.be/id/organisatie/OVO053580> ;
 	skos:prefLabel "Departement Werk en Sociale Economie"@nl ;
-	skos:altLabel "DWSE", "DWSE"@nl, "WEWIS", "Werk en Sociale Economie?(WSE)" .
+	skos:altLabel "DWSE", "DWSE"@nl, "WEWIS", "Werk en Sociale Economie?(WSE)"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2256181002>
 	a foaf:Organization ;
@@ -392,7 +399,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Vlaams Energie- en Klimaat Agentschap"@nl, "Flemish Energy and Climate Agency"@en ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000090> ;
-	skos:altLabel "Vlaams Energieagentschap (VEA)", 
+	skos:altLabel "Vlaams Energieagentschap (VEA)", "VEKA"@nl,
 		"LNE - Vlaams Energieagentschap", "Vlaams Energieagentschap",
 		"Vlaams Energie- en Klimaatagentschap"@nl,
 		"Vlaamse Overheid - Vlaams Energie Agentschap via MercatorNet samenwerkingsverband beleiddomein Omgeving"@nl,
@@ -446,20 +453,13 @@
 	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, "Provice of Flemish Brabant"@en ;
 	skos:altLabel "Provincie Vlaams-Brabant"@nl .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
-	a foaf:Organization ;
-	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:altLabel "UG - Vakgroep Geografie", "Ghent University", 
-				"Universiteit Gent, Faculteit Wetenschappen, Vakgroep Geografie" .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069537>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "De Lijn"@nl ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000100> ;
 	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/369> ;
-	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn" .
+	skos:altLabel "Vlaamse Vervoersmaatschappij De Lijn"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0506891613>
 	a foaf:Organization ;
@@ -594,7 +594,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Gemeente Zandhoven"@nl, "Municipality Zandhoven"@en, "Commune de Zandhoven"@fr ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002281> ;
-	skos:altLabel "Zandhoven" .
+	skos:altLabel "Zandhoven"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
 	a foaf:Organization ;
@@ -638,6 +638,26 @@
 	skos:altLabel "FOD Mobiliteit Dienst inschrijving Voertuigen"@nl, 
 				"FOD Mobiliteit Dienst inschrijving Voertuigen" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647>
+	a foaf:Organization;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr ;
+	skos:altLabel "FOD Beleid en Ondersteuning (BOSA)"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0367303366>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "FPS Social Security"@en, "FOD Sociale Zekerheid"@nl, "SPF Securité Sociale"@fr,
+			"FÖD Soziale Sicherheit"@de ;
+	skos:altLabel "FOD Sociale Zekerheid"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0864484487>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "PPS Social Integration"@en, "POD Maatschappelijke Integratie"@nl, "SPP Intégration sociale"@fr,
+				"(ÖPD) Sozialeingliederung"@de ;
+	skos:altLabel "OCMW - POD Maatschappelijke Integratie"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0308356862>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
@@ -680,14 +700,17 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002307> ;
 	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
 					"Catholic University of Leuven"@en ;
-	skos:altLabel "KU Leuven", "Katholieke Universiteit te Leuven, Departement Aard- en Omgevingswetenschappen" .
+	skos:altLabel "KU Leuven", "Katholieke Universiteit te Leuven, Departement Aard- en Omgevingswetenschappen"@nl,
+				"KU Leuven"@nl, 
+				"Katholieke Universiteit te Leuven, Divisie Ruimtelijke Informatieverwerking (SADL: Spatial Applications Division Leuven)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO051815> ;
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:altLabel "Universiteit Gent" .
+	skos:altLabel "Universiteit Gent", "UG - Vakgroep Geografie", "Ghent University", 
+				"Universiteit Gent, Faculteit Wetenschappen, Vakgroep Geografie"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357555>
 	a foaf:Organization ;
