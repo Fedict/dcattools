@@ -242,7 +242,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207306717>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Antoing"@fr ;
+	skos:prefLabel "Ville d'Antoing"@fr, "Stad Antoing"@nl, "City of Antoing"@en, "Stadt Antoing"@de ;
 	skos:altLabel "antoing"@fr, "Ville d'Antoing" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207380258>
@@ -254,37 +254,39 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207354920>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Tournai"@fr, "Doornik"@nl ;
+	skos:prefLabel "Ville de Tournai"@fr, "Stad Doornik"@nl, "Stadt Tournai"@de, "City of Tournai"@en ;
 	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai",  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Chaudfontaine"@fr ;
+	skos:prefLabel "Commune de Chaudfontaine"@fr, "Gemeente Chaudfontaine"@nl, "Gemeinde Chaudfontaine"@de,
+					"Municipality of Chaudfontaine"@en ;
 	skos:altLabel "Commune de Chaudfontaine" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207310774>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Charleroi"@fr ;
+	skos:prefLabel "Ville de Charleroi"@fr, "Stad Charleroi"@nl, "Stadt Charleroi"@de, "City of Charleroi"@en ;
 	skos:altLabel "Ville de Charleroi" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216697307>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Fernelmont"@fr ;
+	skos:prefLabel "Commune de Fernelmont"@fr, "Gemeente Fernelmont"@nl, 
+					"Gemeinde Fernelmont"@de, "Community of Fernelmont"@en ;
 	skos:altLabel "Commune de Fernelmont" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206524876>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Arlon"@fr, "Aarlen"@nl, "Arel"@de, "Arlon"@en ;
+	skos:prefLabel "Ville d'Arlon"@fr, "Stad Aarlen"@nl, "Stadt Arel"@de, "City of Arlon"@en ;
 	skos:altLabel "Arlon Centre-Ville asbl", "Ville d'Arlon" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207656808>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Mons"@fr, "Bergen"@nl ;
+	skos:prefLabel "Ville de Mons"@fr, "Stad Bergen"@nl, "Stadt Mons"@de, "City of Mons"@en ;
 	skos:altLabel "Ville de Mons", "Ville+de+Mons+" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207283951>
@@ -307,7 +309,7 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0931814167> 
 	a foaf:Organization ;
-	dcterms:type admsp:LocalAuthority ;
+	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
 	skos:altLabel "Parlement de Wallonie", "Parlement de Wallonie"@fr .
 
@@ -333,13 +335,14 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Andenne"@fr ;
+	skos:prefLabel "Ville d'Andenne"@fr, "Stad Andenne"@nl, "Stadt Andenne"@de, "City of Andenne"@en ;
 	skos:altLabel "Ville d'Andenne", "Ville+d%27Andenne" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207312952>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Braine-l'Alleud"@fr, "Eigenbrakel"@nl ;
+	skos:prefLabel "Commune de Braine-l'Alleud"@fr, "Gemeente Eigenbrakel"@nl, "Gemeinde Braine-l'Alleud"@de,
+					"Municipality of Braine-l'Alleud"@en ;
 	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud",
 		"Commune de Braine-l'Alleud" .
 
