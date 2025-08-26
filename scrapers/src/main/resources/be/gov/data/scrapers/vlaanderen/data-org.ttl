@@ -270,14 +270,14 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002067> ;
 	dcterms:spatial <https://sws.geonames.org/2797657/> ;
-	skos:prefLabel "Gent"@nl, "Gand"@fr, "Ghent"@en ;
+	skos:prefLabel "Stad Gent"@nl, "Ville de Gand"@fr, "City of Ghent"@en, "Stadt Gent"@de ;
 	skos:altLabel "Stad Gent", "Mobiliteitsbedrijf Gent" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207433312>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002177> ;
-	skos:prefLabel "Menen"@nl, "Menin"@fr, "Menen"@en ;
+	skos:prefLabel "Stad Menen"@nl, "Ville de Menin"@fr, "City of Menen"@en, "Stadt Menen"@de ;
 	skos:altLabel "Stad Menen" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207521503>
@@ -285,13 +285,13 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002149> ;
 	dcterms:spatial <https://sws.geonames.org/2792483/> ;
-	skos:prefLabel "Leuven"@nl, "Louvain"@fr, "Leuven"@en.
+	skos:prefLabel "Stad Leuven"@nl, "Ville de Louvain"@fr, "City of Leuven"@en, "Stadt Löwen"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207466964>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2796492/> ;
-	skos:prefLabel "Hasselt"@nl ;
+	skos:prefLabel "Stad Hasselt"@nl, "Ville de Hasselt"@fr, "City of Hasselt"@en, "Stadt Hasselt"@de ;
 	skos:altLabel "Stad Hasselt" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207500123>
@@ -299,7 +299,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2803139/> ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002304> ;
-	skos:prefLabel "Antwerpen"@nl, "Anvers"@fr, "Antwerp"@en ;
+	skos:prefLabel "Stad Antwerpen"@nl, "Ville d'Anvers"@fr, "City of Antwerp"@en, "Stadt Antwerpen"@de ;
 	skos:altLabel "Stad Antwerpen", "Stad Antwerpen"@nl,
 		"Werk en Economie/Detailhandel en horeca", "Stad Anwerpen, ABO, DOV",
 		"opendatabeheer" .
@@ -308,7 +308,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2794056/> ;
-	skos:prefLabel "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
+	skos:prefLabel "Stad Kortrijk"@nl, "Ville de Courtrai"@fr, "City of Courtray"@en, "Stadt Kortrijk"@de ;
 	skos:altLabel "Stad Kortrijk" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0267388418>
@@ -583,44 +583,53 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr, "Statbel"@de ;
 	skos:altLabel "Algemene Directie Statistiek - Statistics Belgium"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207528035>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2800935/> ;
-	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr ;
+	skos:prefLabel "City of Bruges"@en, "Stad Brugge"@nl, "Ville de Bruges"@fr, "Stadt Brügge"@de ;
 	skos:altLabel "Stad Brugge"@nl, "stad Brugge"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308252043>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://www.geonames.org/2789530/> ;
-	skos:prefLabel "Stad Oudenaarde"@nl, "City of Oudenaarde"@en, "Ville d'Audenarde"@fr ;
+	skos:prefLabel "Stad Oudenaarde"@nl, "City of Oudenaarde"@en, "Ville d'Audenarde"@fr, "Stadt Oudenaarde"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002203> ;
 	skos:altLabel "Stad Oudenaarde"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207506160>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Gemeente Hemiksem"@nl, "Municipality of Hemiksem"@en, "Commune de Hemiksem"@fr ;
+	skos:prefLabel "Gemeente Hemiksem"@nl, "Municipality of Hemiksem"@en, "Commune de Hemiksem"@fr,
+					"Gemeinde Hemiksem"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002087> ;
 	skos:altLabel "Gemeente Hemiksem"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207430342>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Gemeente Kuurne"@nl, "Municipality of Kuurne"@en, "Commune de Kuurne"@fr ;
+	skos:prefLabel "Gemeente Kuurne"@nl, "Municipality of Kuurne"@en, "Commune de Kuurne"@fr, "Gemeinde Kuurne"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002137> ;
 	skos:altLabel "Gemeente Kuurne"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207502794>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Gemeente Lille"@nl, "Municipality of Lille"@en, "Commune de Lille"@fr, "Gemeinde Lille"@de;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002154> ;
+	skos:altLabel "Gemeente Lille"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207539220>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Gemeente Zandhoven"@nl, "Municipality of Zandhoven"@en, "Commune de Zandhoven"@fr ;
+	skos:prefLabel "Gemeente Zandhoven"@nl, "Municipality of Zandhoven"@en, "Commune de Zandhoven"@fr, 
+					"Gemeinde Zandhoven"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002281> ;
-	skos:altLabel "Zandhoven"@nl .
+	skos:altLabel "Gemeente Zandhoven"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
 	a foaf:Organization ;
@@ -673,7 +682,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0671516647>
 	a foaf:Organization;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr ;
+	skos:prefLabel "FPS BOSA"@en, "FOD BOSA"@nl, "SPF BOSA"@fr, "FÖD BOSA"@de ;
 	skos:altLabel "FOD Beleid en Ondersteuning (BOSA)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0367303366>
