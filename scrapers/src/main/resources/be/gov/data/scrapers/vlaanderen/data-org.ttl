@@ -516,6 +516,18 @@
 					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)",
 					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0218843678>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "North Sea Port Flanders"@en ;
+	skos:altLabel "North Sea Port Flanders"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0407695057>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Buildwise"@en ;
+	skos:altLabel "Buildwise"@nl, "Wetenschappelijk en Technisch Centrum voor het Bouwbedrijf (WTCB) - Afdeling Geotechniek"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0842399963>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -589,10 +601,24 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002203> ;
 	skos:altLabel "Stad Oudenaarde"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207506160>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Gemeente Hemiksem"@nl, "Municipality of Hemiksem"@en, "Commune de Hemiksem"@fr ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002087> ;
+	skos:altLabel "Gemeente Hemiksem"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207430342>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Gemeente Kuurne"@nl, "Municipality of Kuurne"@en, "Commune de Kuurne"@fr ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002137> ;
+	skos:altLabel "Gemeente Kuurne"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207539220>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Gemeente Zandhoven"@nl, "Municipality Zandhoven"@en, "Commune de Zandhoven"@fr ;
+	skos:prefLabel "Gemeente Zandhoven"@nl, "Municipality of Zandhoven"@en, "Commune de Zandhoven"@fr ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002281> ;
 	skos:altLabel "Zandhoven"@nl .
 
@@ -603,6 +629,12 @@
 	dcterms:spatial <https://sws.geonames.org/2789733/> ;
 	skos:prefLabel "RATO"@nl ;
 	skos:altLabel "rato-vzw"@en .
+
+<https://opencorporates.com/id/companies/nl/27294677>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Eco-Movement"@nl ;
+	skos:altLabel "Eco-Movement"@nl .
 
 <https://opencorporates.com/id/companies/nl/27264794>
 	a foaf:Organization ;

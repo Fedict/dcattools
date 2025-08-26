@@ -47,7 +47,6 @@ sparql-date-type.qry
 sparql-datetime-seconds.qry
 sparql-vcard-phone.qry
 # Gent, INBO, Fluvius
-vlaanderen/data-contact.ttl
 vlaanderen/sparql-gent-publ-contact.qry
 vlaanderen/sparql-fluvius-publ-contact.qry
 sparql-map-loc-lang.qry
@@ -95,6 +94,7 @@ sparql-remove-circular.qry
 sparql-remove-catalogrecord.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 vlaanderen/sparql-remove-dataset-orphans.qry
+vlaanderen/data-contact.ttl
 sparql-strip-html.qry
 sparql-version.qry
 clear-skos.qry
