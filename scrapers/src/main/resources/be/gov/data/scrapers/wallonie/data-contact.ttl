@@ -24,6 +24,11 @@
 	vcard:fn "Smart-City Andenne"@fr, "Smart-City Andenne"@nl, "Smart-City Andenne"@en ;
 	vcard:hasEmail <mailto:smart.city@ac.andenne.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0206524876/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Arlon"@fr, "Aarlen"@nl, "Arel"@de ;
+	vcard:hasEmail <mailto:administration@arlon.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207310774/data-contact>
 	a vcard:Organization ;
 	vcard:fn "Charleroi"@fr ;

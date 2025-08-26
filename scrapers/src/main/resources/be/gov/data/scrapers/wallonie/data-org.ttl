@@ -278,7 +278,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0206524876>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Arlon"@fr, "Aarlen"@nl ;
+	skos:prefLabel "Arlon"@fr, "Aarlen"@nl, "Arel"@de, "Arlon"@en ;
 	skos:altLabel "Arlon Centre-Ville asbl", "Ville d'Arlon" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207656808>
