@@ -99,7 +99,8 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2225118335>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "SPW-ARNE Agriculture, RN et Environnement"@fr ;
+	skos:prefLabel "SPW-ARNE Agriculture, RN et Environnement"@fr,
+					"ÖDW Landwirtschaft, Naturschätze und Umwelt"@de ;
 	skos:altLabel "SPW ARNE" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381138>
@@ -112,7 +113,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204325790>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "SPW-EER Economie, Emploi, Recherche"@fr ;
+	skos:prefLabel "SPW-EER Economie, Emploi, Recherche"@fr, "ÖDW Wirtschaft, Beschäftigung, Forschung"@de ;
 	skos:altLabel "Service Public de Wallonie - Ecomie, Emploi, Recherche",
 		"Service Public de Wallonie - Economie, Emploi, Recherche", "SPW EER",
 		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
@@ -193,7 +194,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2204322327> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "SPW-SG Secrétariat général"@fr ;
+	skos:prefLabel "SPW-SG Secrétariat général"@fr, "ÖDW Generalsekretariat"@de ;
 	skos:altLabel "Service public de Wallonie (SPW)", " Service public de Wallonie (SPW)",
 		" Service public de Wallonie (SPW) " .
 
@@ -355,7 +356,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207300678>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Chimay"@fr ;
+	skos:prefLabel "Ville de Chimay"@fr, "Stadt Chimay"@de, "City of Chimay"@en, "Stad Chimay"@nl ;
 	skos:altLabel "Ville de Chimay" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207376991>

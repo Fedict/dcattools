@@ -19,6 +19,16 @@
 	vcard:fn "iMio"@fr ;
 	vcard:hasEmail <mailto:contact@imio.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207339973/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Chaudfontaine"@de, "Chaudfontaine"@nl, "Chaudfontaine"@fr ;
+	vcard:hasEmail <mailto:commune@chaudfontaine.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207300678/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Chimay"@fr ;
+	vcard:hasEmail <mailto:officiel.vc-chimay@chimayville.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514/data-contact>
 	a vcard:Organization ;
 	vcard:fn "Smart-City Andenne"@fr, "Smart-City Andenne"@nl, "Smart-City Andenne"@en ;
