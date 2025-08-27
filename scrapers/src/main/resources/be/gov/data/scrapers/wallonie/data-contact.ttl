@@ -49,6 +49,16 @@
 	vcard:fn "Be WaPP"@fr ;
 	vcard:hasEmail <mailto:info@bewapp.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0433457663/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Cambio"@fr, "Cambio"@nl, "Cambio"@en ;
+	vcard:hasEmail <mailto:wallonie@cambio.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0465471128/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Centropôle"@fr ;
+	vcard:hasEmail <mailto:info@centropole.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207347891/data-contact>
 	a vcard:Organization ;
 	vcard:fn "Marche-en-Famenne"@fr ;
