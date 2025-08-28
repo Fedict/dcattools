@@ -15,4 +15,4 @@
 	a vcard:Organization ;
 	vcard:fn "Elia"@fr, "Elia"@en, "Elia"@nl ;
 	vcard:hasUrl <https://www.elia.be/> ;
-	vcard:hasEmail <mailto:info@elia.be> .
+	vcard:hasEmail <mailto:opendata@elia.be> .
