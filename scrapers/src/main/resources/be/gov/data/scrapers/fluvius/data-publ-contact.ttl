@@ -15,4 +15,4 @@
 	a vcard:Organization ;
 	vcard:fn "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
 	vcard:hasUrl <https://www.fluvius.be> ;
-	vcard:hasEmail <mailto:info@fluvius.be> .
+	vcard:hasEmail <mailto:datavragen@fluvius.be> .

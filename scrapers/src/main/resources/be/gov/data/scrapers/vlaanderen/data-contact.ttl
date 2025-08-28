@@ -29,15 +29,9 @@
 	a vcard:Organization ;	
 	vcard:fn "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
 	vcard:hasUrl <https://www.fluvius.be> ;
-	vcard:hasEmail <mailto:info@fluvius.be> .
+	vcard:hasEmail <mailto:datavragen@fluvius.be> .
 
 <http://data.gov.be/org/kortrijk/contact>	
 	a vcard:Organization ;
 	vcard:fn "Kortrijk"@nl, "Courtrai"@fr, "Courtray"@en ;
 	vcard:hasEmail <mailto:1777@kortrijk.be> .
-
-<http://data.gov.be/org/fluvius/contact>
-	a vcard:Organization ;
-	vcard:fn "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
-	vcard:hasUrl <https://www.fluvius.be> ;
-	vcard:hasEmail <mailto:info@fluvius.be> .
