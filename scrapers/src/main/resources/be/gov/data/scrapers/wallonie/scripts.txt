@@ -11,8 +11,8 @@ wallonie/sparql-fix-license.qry
 data-license.ttl
 sparql-map-license.qry
 sparql-delete-label-license.qry
-#wallonie/sparql-fix-org.qry
 wallonie/data-org.ttl
+wallonie/sparql-fix-org.qry
 sparql-map-org.qry
 sparql-remove-names.qry
 wallonie/sparql-remove-orgs.qry
@@ -30,6 +30,7 @@ wallonie/sparql-default-contact.qry
 #wallonie/data-geo.ttl
 #wallonie/sparql-map-geo.qry
 #wallonie/sparql-default-geo.qry
+
 sparql-geo-wallonie.qry
 wallonie/sparql-fix-freq.qry
 data-frequency.ttl

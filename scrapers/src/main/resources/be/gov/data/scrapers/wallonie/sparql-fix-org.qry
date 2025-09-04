@@ -8,10 +8,23 @@ INSERT
 	{ 	?uri foaf:name ?str .
 		?uri a foaf:Organization }
 WHERE
-	{	?dataset ?val ?uri .
-		VALUES ?val { dcterms:publisher dcterms:creator dcterms:contributor }
+	{	?dataset ?rel ?uri .
+		VALUES ?rel { dcterms:publisher dcterms:creator dcterms:contributor }
 		FILTER NOT EXISTS { ?uri foaf:name ?name }
 		BIND(
-			STRAFTER(STR(?uri), "=") 
+			STRLANG(
+			REPLACE(
+				REPLACE(
+					REPLACE(
+						REPLACE(
+							REPLACE(
+								REPLACE(
+									STRAFTER(STR(?uri), "="), 
+								"[+]", " "),
+							"%C3%A9", "é"),
+						"%C3%A8", "è"),
+					"%C3%A2", "â"),
+				"%C3%B4", "ô"),
+			"%27", "'"), "fr")
 		as ?str)
 	}
