@@ -62,7 +62,7 @@ public class Combine extends BaseScraper {
 		try(Stream<Path> path = Files.walk(root)) {
 			files = path.map(Path::toFile)
 						.filter(File::isFile)
-						.filter(f -> f.toString().endsWith(".nt"))
+						.filter(f -> f.toString().endsWith("-translated.nt"))
 						.filter(f -> !f.getParentFile().toString().equals("all"))
 						.peek(f -> LOG.info("Adding {}", f))
 						.collect(Collectors.toList());
