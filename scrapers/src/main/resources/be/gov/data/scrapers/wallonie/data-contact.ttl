@@ -68,3 +68,8 @@
 	a vcard:Organization ;
 	vcard:fn "Mons"@fr, "Bergen"@nl, "Bergen"@en, "Bergen"@de ;
 	vcard:hasEmail <mailto:gouvernance.donnee@ville.mons.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0216697307/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Fernelmont"@fr, "Fernelmont"@nl, "Fernelmont"@de, "Fernelmont"@en ;
+	vcard:hasEmail <mailto:info@fernelmont.be> .
