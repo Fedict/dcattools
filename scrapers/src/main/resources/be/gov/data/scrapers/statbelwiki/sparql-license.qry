@@ -7,7 +7,7 @@ DELETE
 	{	?dataset dcterms:license ?lic .
 		?lic ?p ?o }
 INSERT 
-	{	?dist dcterms:license <https://statbel.fgov.be/sites/default/files/files/opendata/Licence%20open%20data_NL.pdf>  }
+	{	?dist dcterms:license <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>  }
 WHERE
 	{	?dataset a dcat:Dataset .
 		?dataset dcterms:license ?lic .
