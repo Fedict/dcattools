@@ -73,3 +73,8 @@
 	a vcard:Organization ;
 	vcard:fn "Fernelmont"@fr, "Fernelmont"@nl, "Fernelmont"@de, "Fernelmont"@en ;
 	vcard:hasEmail <mailto:info@fernelmont.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0201741786/data-contact>
+	a vcard:Organization ;
+	vcard:fn "IGRETEC"@fr, "IGRETEC"@nl, "IGRETEC"@de, "IGRETEC"@en ;
+	vcard:hasEmail <mailto:igretec@igretec.com> .
