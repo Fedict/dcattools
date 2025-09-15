@@ -1,0 +1,21 @@
+# Split description containing French and German
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:description ?o }
+INSERT
+	{ 	?s dcterms:description ?fr .
+		?s dcterms:description ?de }
+WHERE
+	{ 	?s dcterms:description ?o .
+		BIND (
+			STRLANG(
+				STRBEFORE(STR(?o), "Traduction en allemand :"), "fr")
+		as ?fr)
+		BIND (
+			STRLANG(
+				STRAFTER(STR(?o), "Traduction en allemand :"), "de")
+		as ?de)
+		FILTER ( CONTAINS(?o, "Traduction en allemand :"))
+	}

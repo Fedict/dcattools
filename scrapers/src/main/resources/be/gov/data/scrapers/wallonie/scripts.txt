@@ -30,7 +30,6 @@ wallonie/sparql-default-contact.qry
 #wallonie/data-geo.ttl
 #wallonie/sparql-map-geo.qry
 #wallonie/sparql-default-geo.qry
-
 sparql-geo-wallonie.qry
 wallonie/sparql-fix-freq.qry
 data-frequency.ttl
@@ -43,6 +42,7 @@ sparql-map-media.qry
 sparql-expand-dctype.qry
 clear-skos.qry
 sparql-title-to-desc.qry
+wallonie/sparql-split-german.qry
 sparql-strip-html.qry
 sparql-consolidate-newlines.qry
 data-shacl-support.ttl
