@@ -95,6 +95,7 @@ sparql-remove-catalogrecord.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 vlaanderen/sparql-remove-dataset-orphans.qry
 vlaanderen/data-contact.ttl
+vlaanderen/sparql-default-email.qry
 sparql-strip-html.qry
 sparql-version.qry
 clear-skos.qry

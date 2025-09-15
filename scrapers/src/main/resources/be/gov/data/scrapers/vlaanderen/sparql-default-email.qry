@@ -1,0 +1,11 @@
+# Add default email for contact point if none is set
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT
+	{ 	?contact vcard:hasEmail <mailto:digitaal.vlaanderen@vlaanderen.be> }
+WHERE
+	{ 	?dataset dcat:contactPoint ?contact
+		FILTER NOT EXISTS { ?contact vcard:hasEmail ?o } 
+	}
