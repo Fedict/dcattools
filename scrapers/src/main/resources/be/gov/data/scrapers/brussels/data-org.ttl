@@ -101,7 +101,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0696977167> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Iriscare"@nl, "Iriscare"@fr, "Iriscare"@en ;
+	skos:prefLabel "Iriscare"@nl, "Iriscare"@fr, "Iriscare"@de, "Iriscare"@en ;
 	skos:altLabel "Iriscare"@nl, "Iriscare"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236916956>

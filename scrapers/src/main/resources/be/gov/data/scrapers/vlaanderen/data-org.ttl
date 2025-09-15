@@ -623,6 +623,14 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002154> ;
 	skos:altLabel "Gemeente Lille"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0206561993>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Gemeente Steenokkerzeel"@nl, "Municipality of Steenokkerzeel"@en, 
+				"Commune de Steenokkerzeel"@fr, "Gemeinde Steenokkerzeel"@de ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002243> ;
+	skos:altLabel "Gemeente Steenokkerzeel"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207539220>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
@@ -630,6 +638,29 @@
 					"Gemeinde Zandhoven"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002281> ;
 	skos:altLabel "Gemeente Zandhoven"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0696977167> 
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Iriscare"@nl, "Iriscare"@de, "Iriscare"@fr, "Iriscare"@en ;
+	skos:altLabel "IRISCARE"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0349294624>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO027348> ;
+	skos:prefLabel "Royal Observatory of Belgium"@en, "Königliche Sternwarte von Belgien"@de,  
+					"Koninklijke Sterrenwacht van België"@nl, "Observatoire royal de Belgique"@fr ;
+	skos:altLabel "Royal Observatory of Belgium"@en, "Koninklijke Sterrenwacht van België"@nl ,
+		"Observatoire Royal de Belgique"@fr , "Königliche Sternwarte Belgiens"@de .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0408598246>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/2800935/> ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO013371> ;
+	skos:prefLabel "Musea Brugge"@nl ;
+	skos:altLabel "Musea Brugge"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0463439967>
 	a foaf:Organization ;
