@@ -289,7 +289,7 @@
 <http://publications.europa.eu/resource/authority/file-type/PARQUET>
 	skos:prefLabel "Parquet" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/parquet>; 
-	skos:altLabel "parquet" .
+	skos:altLabel "parquet", "vnd.apache.parquet" .
 
 <http://publications.europa.eu/resource/authority/file-type/ATOM>
 	skos:prefLabel "Atom" ;
