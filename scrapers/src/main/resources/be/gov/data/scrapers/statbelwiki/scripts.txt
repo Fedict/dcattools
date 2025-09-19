@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded
+sparql-nbsp-to-space.qry
 data-media.ttl
 sparql-geo-belgium.qry
 statbelwiki/sparql-license.qry

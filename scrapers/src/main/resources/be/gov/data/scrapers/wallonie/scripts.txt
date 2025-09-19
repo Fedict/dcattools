@@ -41,9 +41,11 @@ sparql-available.qry
 sparql-map-media.qry
 sparql-expand-dctype.qry
 clear-skos.qry
-sparql-title-to-desc.qry
 wallonie/sparql-split-german.qry
 sparql-strip-html.qry
+sparql-delete-label-empty.qry
+sparql-nbsp-to-space.qry
+sparql-title-to-desc.qry
 sparql-consolidate-newlines.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

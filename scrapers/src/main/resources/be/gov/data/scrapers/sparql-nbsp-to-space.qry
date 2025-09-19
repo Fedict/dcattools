@@ -1,0 +1,13 @@
+# Replace NBSP with space
+
+DELETE 
+	{	?s ?p ?label }
+INSERT
+	{	?s ?p ?str }
+WHERE
+	{	?s ?p ?label .
+		BIND (
+			REPLACE(?label, "\u00A0", " ") 
+		AS ?str)
+		FILTER (isLiteral(?label) && CONTAINS(?label, "\u00A0" ))
+	}

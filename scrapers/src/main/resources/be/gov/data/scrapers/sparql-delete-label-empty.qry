@@ -1,13 +1,14 @@
 # Remove empty literals
 
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
 DELETE 
 	{	?s ?p ?label }
 WHERE
 	{	?s ?p ?label .
 		FILTER (isLiteral(?label) && (
-					(STRLEN(STR(?label)) = 0) || STR(?label) = "" || 
-						STR(?label) = " " || STR(?label) = "?" || STR(?label) = "\u00A0" ) 
+					(STRLEN(STR(?label)) = 0) || 
+						STR(?label) = "" || 
+						STR(?label) = " " || 
+						STR(?label) = "?" || 
+						STR(?label) = "\u00A0" ) 
 		)
 	}

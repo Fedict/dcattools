@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-strip-html.qry
+sparql-delete-label-empty.qry
 brussels/sparql-fix-translations.qry
 brussels/sparql-keyword-theme.qry
 brussels/sparql-theme-uri.qry
