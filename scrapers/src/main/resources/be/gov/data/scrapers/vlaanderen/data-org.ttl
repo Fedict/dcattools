@@ -325,6 +325,7 @@
 	skos:prefLabel "INBO"@nl ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", 
 		"Instituut voor Natuur- en Bosonderzoek"@nl, 
+		"Instituut voor Natuurbehoud"@nl, 
 		"Research Institute for Nature and Forest (INBO)",
 		"Research Institute for Nature and Forest (INBO)"@nl,
 		"Research Institute for Nature and Forest (INBO)"@en .
