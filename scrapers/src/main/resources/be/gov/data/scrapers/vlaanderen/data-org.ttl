@@ -668,7 +668,7 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	dcterms:spatial <https://sws.geonames.org/2789733/> ;
 	skos:prefLabel "RATO"@nl ;
-	skos:altLabel "rato-vzw"@en .
+	skos:altLabel "rato-vzw"@en, "rato-vzw"@nl .
 
 <https://opencorporates.com/id/companies/nl/27294677>
 	a foaf:Organization ;
@@ -752,6 +752,18 @@
 	skos:prefLabel "Vereniging van Vlaamse Provincies"@nl ;
 	skos:altLabel "Vereniging van de Vlaamse Provincies"@nl .
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2224224054>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Vlaamse Belastingdienst"@nl ;
+	skos:altLabel "Vlaamse Belastingdienst"@nl, "VLABEL"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0881629733>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Vlaamse Sociale Bescherming"@nl ;
+	skos:altLabel "Vlaamse Sociale Bescherming (VSB)"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0477445084>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -799,3 +811,21 @@
 	skos:prefLabel "POD Wetenschapsbeleid"@nl, "SPP Politique Scientifique"@fr,
 					"FöP Wissenschaftspolitik"@de, "FPP Science Policy"@en ;
 	skos:altLabel "BELSPO" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0462581716>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Regionaal Landschap Noord-Hageland"@nl ;
+	skos:altLabel "Regionaal Landschap Noord-Hageland"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/1011619136>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Demey INFRAbureau"@nl ;
+	skos:altLabel "Infrabureau Demey"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0820563481>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Intermut"@nl, "Intermut"@de, "Intermut"@fr, "Intermut"@en ;
+	skos:altLabel "Nationaal Intermutualistisch College (NIC)"@nl .
