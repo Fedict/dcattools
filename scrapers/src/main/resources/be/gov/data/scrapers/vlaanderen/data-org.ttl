@@ -538,6 +538,12 @@
 		"Openbare Afvalstoffenmaatschappij voor het Vlaamse Gewest via MercatorNet samenwerkingsverband beleidsdomein Omgeving"@nl,
 		"Openbare Vlaamse Afvalstoffenmaatschappij (OVAM)"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0205774810>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Interleuven"@nl ;
+	skos:altLabel "Interleuven"@nl .
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335537>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
@@ -553,6 +559,12 @@
 	skos:prefLabel "Departement Zorg"@nl ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000056> ;
 	skos:altLabel "Agentschap Zorg en Gezondheid", "Agentschap Zorg en Gezondheid"@nl .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199302180>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Departement Financiën en Begroting"@nl ;
+	skos:altLabel "Departement Financiën en Begroting"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143729494>
 	a foaf:Organization ;
@@ -751,7 +763,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO004023> ;
 	skos:prefLabel "Vereniging van Vlaamse Provincies"@nl ;
-	skos:altLabel "Vereniging van de Vlaamse Provincies"@nl .
+	skos:altLabel "Vereniging van de Vlaamse Provincies"@nl, "Interprovinciale werking Data & Analyse"@nl .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2224224054>
 	a foaf:Organization ;
