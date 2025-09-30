@@ -74,7 +74,22 @@
 	vcard:fn "Fernelmont"@fr, "Fernelmont"@nl, "Fernelmont"@de, "Fernelmont"@en ;
 	vcard:hasEmail <mailto:info@fernelmont.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207283951/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Seneffe"@fr ;
+	vcard:hasEmail <mailto:commune@seneffe.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0201741786/data-contact>
 	a vcard:Organization ;
 	vcard:fn "IGRETEC"@fr, "IGRETEC"@nl, "IGRETEC"@de, "IGRETEC"@en ;
 	vcard:hasEmail <mailto:igretec@igretec.com> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0201543234/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Tibi"@fr, "Tibi"@nl, "Tibi"@de, "Tibi"@en ; 
+	vcard:hasEmail <mailto:info@tibi.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0242069339/data-contact> 
+	a vcard:Organization ;
+	vcard:fn "TEC"@fr, "TEC"@de, "TEC"@nl, "TEC"@en ;
+	vcard:hasEmail <mailto:opendata@tec.be> .
