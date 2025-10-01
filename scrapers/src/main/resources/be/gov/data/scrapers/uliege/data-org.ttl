@@ -1,0 +1,86 @@
+# Data for mapping organizations
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0439849666>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Mediahuis"@nl, "Mediahuis"@fr, "Mediahuis"@en ;
+	skos:altLabel "Mediahuis" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0419052173>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Katholieke Universiteit Leuven"@nl, "Katholieke Universiteit Leuven"@fr, 
+					"Catholic University of Leuven"@en ;
+	skos:altLabel "KU Leuven", "Katholieke Universiteit Leuven", "Associatie KU Leuven" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0208359859>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Hasselt"@nl, "Université de Hasselt"@fr, 
+					"Hasselt University"@en ;
+	skos:altLabel "Hasselt University" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:altLabel "Ghent University", "UGent", "IDLab - Ghent Unviersity", "Universiteit Gent" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0419052272>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, 
+			"Catholic University of Louvain"@en ;
+	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain",
+		"Université catholique de Louvain & European University Institute" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0875388475>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Rijksarchief in België"@nl, "Archives de l'Etat en Belgique"@fr, 
+					"Belgisches Staatsarchiv"@de, "State Archives of Belgium"@en ;
+	skos:altLabel "State Archives of Belgium", "State Archives of Belgium - University of Antwerp", 
+				"Belgian State Archives", "State Archives Belgium", "AGR" .
+
+ <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
+	skos:altLabel "KBR" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0257216482>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
+	skos:altLabel "Universiteit Antwerpen", "University of Antwerp" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
+	skos:altLabel "Vrije Universiteit Brussel", "imec-SMIT (Vrije Universiteit Brussel)" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Université libre de Bruxelles"@nl, "Université libre de Bruxelles"@fr, "Université libre de Bruxelles"@en ;
+	skos:altLabel "Université libre de Bruxelles (ULB)", "Université libre de Bruxelles", "ULB" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0259396509>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Bergen"@nl, "Université de Mons"@fr, "University of Mons"@en ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/204> ;
+	skos:altLabel "University of Mons (UMONS)" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0409530535>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Namen"@nl, "Université de Namur"@fr, "University of Namur"@en ;
+	skos:exactMatch  <http://data.gov.be/en/taxonomy/term/372>  ;
+	skos:altLabel "Université de Namur" .

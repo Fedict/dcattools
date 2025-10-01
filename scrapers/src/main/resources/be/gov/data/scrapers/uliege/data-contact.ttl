@@ -1,0 +1,10 @@
+# Data for default contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://data.gov.be/org/sodha/contact>
+	a vcard:Organization ;
+	vcard:fn "SODHA"@nl,"SODHA"@fr, "SODHA"@en, "SODHA"@de ;
+	vcard:hasFN "SODHA"@nl,"SODHA"@fr, "SODHA"@en, "SODHA"@de  ;
+	vcard:hasUrl <https://www.sodha.be> ;
+	vcard:hasEmail <mailto:sodha@arch.be> .
