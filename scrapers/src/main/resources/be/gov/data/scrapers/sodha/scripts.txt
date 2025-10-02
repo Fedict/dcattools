@@ -32,6 +32,7 @@ sodha/sparql-default-contact.qry
 sodha/data-org.ttl
 sodha/sparql-map-org.qry
 sparql-bytesize-type.qry
+sparql-vcard-mailto.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

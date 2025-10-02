@@ -1,0 +1,19 @@
+# Delete distributions if there are more than 10 of them (to prevent issues with the EDP)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{ 	?dataset dcat:distribution ?dist .
+		?dist ?p ?o }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcat:distribution ?dist .
+		?dist ?p ?o .
+		{
+			SELECT ?dataset (COUNT(?d) AS ?count)
+			WHERE { ?dataset dcat:distribution ?d }
+			GROUP BY ?dataset
+		}
+		FILTER (?count > 10)
+	}
+

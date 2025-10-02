@@ -25,7 +25,8 @@ kulrdr/data-contact.ttl
 kulrdr/sparql-default-contact.qry
 kulrdr/data-org.ttl
 kulrdr/sparql-map-lang.qry
-sparql-map-org.qry
+sparql-map-org.
+sparql-vcard-mailto.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

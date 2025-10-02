@@ -1,4 +1,5 @@
 # extra queries to be executed and data to be loaded
+sparql-limit-dists.qry
 sparql-strip-html.qry
 sparql-geo-belgium.qry
 data-media.ttl
@@ -12,10 +13,11 @@ sparql-creator-orcid.qry
 sparql-map-license.qry
 sparql-access-public.qry
 sparql-available.qry
-sparql-tag-language.qry
+uliege/sparql-tag-language.qry
 clear-skos.qry
 sparql-doi-landingpage.qry
 sparql-bytesize-type.qry
+sparql-vcard-mailto.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

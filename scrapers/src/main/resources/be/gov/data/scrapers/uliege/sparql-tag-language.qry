@@ -1,0 +1,17 @@
+# Add "en" language tag on literals based
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s ?p ?o }
+INSERT
+	{ 	?s ?p ?literal }
+WHERE
+	{ 	?s ?p ?o .
+		VALUES ?p {
+			dcterms:title
+			dcterms:description
+		}
+		FILTER ( isLiteral(?o) && langMatches(lang(?o), ""))
+		BIND ( STRLANG(?o, "en") as ?literal)
+	}

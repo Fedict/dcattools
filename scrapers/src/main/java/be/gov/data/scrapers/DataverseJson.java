@@ -44,6 +44,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -270,7 +271,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @param predicate
 	 * @param map 
 	 */
-	private void addPersons(Storage store, ReadContext jsonObj, JsonPath path, JsonPath pathId, 
+	private void addPersons(Storage store, ReadContext jsonObj, JsonPath path, JsonPath pathId, String prefix,
 							IRI subject, IRI predicate, Map<IRI,Object> map) {
 		JSONArray contacts = jsonObj.read(path);
 		for (Object c: contacts) {
@@ -284,7 +285,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 				LOG.warn("No contact name for {}", node.jsonString());
 				break;
 			}
-			IRI contactSubj = makePersonIRI(hash(idPath));
+			IRI contactSubj = makePersonIRI(prefix + hash(idPath));
 			store.add(subject, predicate, contactSubj);
 			add(store, contactSubj, node, map);
 		}
@@ -305,9 +306,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	
 //		addCitation(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, datasetSubj);
 
-		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
-		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
-		addPersons(store, jsonObj, CONTRIB_PATH, CONTRIB_ID_PATH, datasetSubj, DCTERMS.CONTRIBUTOR, CONTRIB_MAP);
+		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, "contact/", datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
+		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, "", datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
+		addPersons(store, jsonObj, CONTRIB_PATH, CONTRIB_ID_PATH, "", datasetSubj, DCTERMS.CONTRIBUTOR, CONTRIB_MAP);
 
 		JSONArray s = jsonObj.read(START_PATH);
 		String startDate = (!s.isEmpty()) ? s.get(0).toString() : null;
