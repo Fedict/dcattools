@@ -10,7 +10,7 @@ WHERE
 	{ ?s vcard:hasEmail ?val .
 		BIND (
 			IRI(
-				CONCAT("mailto:", ?val)
+				CONCAT("mailto:", LCASE(?val))
 			) as ?iri)
 		FILTER ISLITERAL(?val) 
 	}

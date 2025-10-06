@@ -1,17 +1,23 @@
-# Add "en" language tag on literals based
+# Set language to Dutch or French
 
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE 
-	{ 	?s ?p ?o }
+DELETE
+	{	?s dcterms:language ?lang .
+		?dist dcterms:language ?lang }
 INSERT
-	{ 	?s ?p ?literal }
+	{ 	?s dcterms:language ?uri }
 WHERE
-	{ 	?s ?p ?o .
-		VALUES ?p {
-			dcterms:title
-			dcterms:description
+	{ 	?s a dcat:Dataset .
+		?s dcterms:title ?title .
+		?s dcterms:language ?lang .
+		?s dcat:distribution ?dist
+		OPTIONAL { ?dist dcterms:language ?lang }
+		VALUES (?uri ?lang) {
+			( <http://publications.europa.eu/resource/authority/language/NLD> "Dutch" )
+			( <http://publications.europa.eu/resource/authority/language/FRA> "French" )
+			( <http://publications.europa.eu/resource/authority/language/ENG> "English" )
+			( <http://publications.europa.eu/resource/authority/language/DEU> "German" )
 		}
-		FILTER ( isLiteral(?o) && langMatches(lang(?o), ""))
-		BIND ( STRLANG(?o, "en") as ?literal)
 	}

@@ -80,7 +80,7 @@
 <http://publications.europa.eu/resource/authority/file-type/HDF>
 	skos:prefLabel "HDF5" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-hdf>;
-	skos:altLabel ".hd5", ".h5" .
+	skos:altLabel ".hd5", ".h5", "application/x-hdf" .
 
 <http://publications.europa.eu/resource/authority/file-type/HTML>
 	skos:prefLabel "HTML" ;
@@ -327,3 +327,8 @@
 	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/zip> ;
 	skos:altLabel "ZIP", "zip", "application/zip",
 					<https://www.iana.org/assignments/media-types/application/zip> .
+
+<http://publications.europa.eu/resource/authority/file-type/SPSS_SAV>
+	skos:prefLabel "SPSS" ;
+	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/x-spss-sav> ;
+	skos:altLabel "application/x-spss-sav" .

@@ -13,7 +13,14 @@ sparql-creator-orcid.qry
 sparql-map-license.qry
 sparql-access-public.qry
 sparql-available.qry
+uliege/data-contact.ttl
+uliege/sparql-default-contact.qry
+uliege/data-theme.ttl
+sparql-map-theme.qry
+uliege/sparql-default-theme.qry
 uliege/sparql-tag-language.qry
+uliege/sparql-default-language.qry
+sparql-tag-language.qry
 clear-skos.qry
 sparql-doi-landingpage.qry
 sparql-bytesize-type.qry
