@@ -1,0 +1,14 @@
+# Add access URL and download URL based on DOI identifier
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dist dcat:accessURL ?access .
+		?dist dcat:downloadURL ?url }
+WHERE
+	{ 	?dist a dcat:Distribution .
+		?dist dcterms:identifier ?id .
+		BIND(IRI(CONCAT("https://dataverse.uliege.be/file.xhtml?fileId=", STR(?id))) as ?access)
+		BIND(IRI(CONCAT("https://dataverse.uliege.be/api/access/datafile/", STR(?id)) as ?url)
+	}

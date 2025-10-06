@@ -263,6 +263,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 
 	/**
 	 * Add persons (contacts, authors...)
+	 * 
 	 * @param store
 	 * @param jsonObj
 	 * @param path
