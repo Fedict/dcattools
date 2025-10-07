@@ -2,7 +2,7 @@
 
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
-<http://data.gov.be/org/dataverse/contact>
+<http://data.gov.be/org/uliege/contact>
 	a vcard:Organization ;
 	vcard:fn "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de ;
 	vcard:hasFN "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de ;
