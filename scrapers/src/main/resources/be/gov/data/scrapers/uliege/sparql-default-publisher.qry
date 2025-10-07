@@ -6,7 +6,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 DELETE
 	{	?dataset dcterms:publisher ?publ }
 INSERT
-	{	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0419052272 }
+	{	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0807970507> }
 WHERE
 	{ 
 		?dataset a ?cl .

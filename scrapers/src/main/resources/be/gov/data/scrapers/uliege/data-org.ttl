@@ -5,10 +5,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0419052272>
+<https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Université catholique de Louvain"@nl, "Université catholique de Louvain"@fr, 
-			"Catholic University of Louvain"@en ;
-	skos:altLabel "Université catholique de Louvain", "Universite catholique de Louvain",
-		"Université catholique de Louvain & European University Institute" .
+	skos:prefLabel "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de ;
+	skos:altLabel "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de .
