@@ -23,27 +23,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.scrapers.uliege;
+package be.gov.data.scrapers.ucl;
 
 import be.gov.data.scrapers.DataverseJson;
 import java.io.IOException;
 import java.util.Properties;
 
 /**
- * KUL RDR (research data) scraper
+ * UCLouvain (research data) scraper
  * 
- * @see https://rdr.kuleuven.be/
+ * @see https://dataverse.uclouvain.be/
  * @author Bart Hanssens
  */
-public class DataverseULiege extends DataverseJson {
+public class DataverseUCL extends DataverseJson {
 	/**
 	 * JSON scraper SODHA.be
 	 *
 	 * @param prop
 	 * @throws IOException
 	 */
-	public DataverseULiege(Properties prop) throws IOException {
+	public DataverseUCL(Properties prop) throws IOException {
 		super(prop);
-		setName("uliege");
+		setName("ucl");
 	}
 }
