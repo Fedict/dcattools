@@ -2,7 +2,11 @@
 sparql-limit-dists.qry
 sparql-strip-html.qry
 sparql-geo-belgium.qry
+data-media-compress.ttl
+sparql-map-media-compress.qry
+clear-skos.qry
 data-media.ttl
+uliege/sparql-format-extension.qry
 sparql-map-media.qry
 clear-skos.qry
 sparql-date-type.qry
@@ -10,6 +14,7 @@ data-license.ttl
 sparql-identifier-literal.qry
 sparql-person-name.qry
 sparql-creator-orcid.qry
+sparql-creator-scopus.qry
 sparql-map-license.qry
 sparql-access-restricted.qry
 sparql-access-public.qry

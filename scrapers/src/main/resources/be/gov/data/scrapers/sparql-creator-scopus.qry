@@ -1,0 +1,24 @@
+# Use ScopusID as IRI instead of skolem IRI
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s ?role ?skolem .
+		?skolem adms:schemaAgency "ScopusID" .
+		?skolem adms:identifier ?id .
+		?skolem ?p ?o
+	}
+INSERT 
+	{	?s ?role ?scopusid .
+		?scopusid ?p ?o
+	}
+WHERE
+	{	?s ?role ?skolem .
+		?skolem adms:schemaAgency "ScopusID" .
+		?skolem adms:identifier ?id .
+		?skolem ?p ?o
+		BIND (IRI(CONCAT("https://www.scopus.com/authid/detail.uri?authorId=", ?id)) as ?scopusid)
+		FILTER (?p != adms:identifer && ?p != adms:schemaAgency)
+	}

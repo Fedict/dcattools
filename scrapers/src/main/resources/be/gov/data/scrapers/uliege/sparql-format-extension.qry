@@ -1,0 +1,18 @@
+# Guess file format based on extension (from downloadURL)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?dist dcterms:format "application/octet-stream" }
+INSERT
+	{ 	?dist dcterms:format ?fmt }
+WHERE
+	{	
+		?dist a dcat:Distribution .
+		?dist dcat:downloadURL ?url .
+		?dist dcterms:format "application/octet-stream"
+		VALUES ?ext { "mp4" "wav" }
+		BIND (IF(CONTAINS(STR(?url), ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
+	}
+	

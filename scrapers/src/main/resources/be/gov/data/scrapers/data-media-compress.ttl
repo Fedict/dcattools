@@ -9,3 +9,11 @@
 					"application/x-gmz",
 					<https://www.iana.org/assignments/media-types/application/zip>,
 					<https://www.iana.org/assignments/media-types/application/dwca> .
+
+<https://www.iana.org/assignments/media-types/application/gzip>
+	skos:prefLabel "gzip" ;
+	skos:altLabel "application/gzip" .
+
+<https://www.iana.org/assignments/media-types/application/x-7z-compressed>
+	skos:prefLabel "7z" ;
+	skos:altLabel "7z", "application/x-compressed" .
