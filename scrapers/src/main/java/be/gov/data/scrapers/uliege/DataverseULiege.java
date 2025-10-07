@@ -30,9 +30,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * KUL RDR (research data) scraper
+ * ULiège (research data) scraper
  * 
- * @see https://rdr.kuleuven.be/
+ * @see https://dataverse.uliege.be/
  * @author Bart Hanssens
  */
 public class DataverseULiege extends DataverseJson {
