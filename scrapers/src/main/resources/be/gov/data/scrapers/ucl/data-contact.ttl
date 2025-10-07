@@ -1,0 +1,10 @@
+# Data for default contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://data.gov.be/org/ucl/contact>
+	a vcard:Organization ;
+	vcard:fn "UCLouvain"@nl,"UCLouvain"@fr, "UCLouvain"@en, "UCLouvain"@de ;
+	vcard:hasFN "UCLouvain"@nl,"UCLouvain"@fr, "UCLouvain"@en, "UCLouvain"@de ;
+	vcard:hasUrl <https://dataverse.uclouvain.be> ;
+	vcard:hasEmail <mailto:dataverse@uclouvain.be> .

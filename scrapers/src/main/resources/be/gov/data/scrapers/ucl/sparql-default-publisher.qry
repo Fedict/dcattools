@@ -1,0 +1,15 @@
+# Set default publisher to UCLouvain
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?dataset dcterms:publisher ?publ }
+INSERT
+	{	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0419052272> }
+WHERE
+	{ 
+		?dataset a ?cl .
+		OPTIONAL { ?dataset dcterms:publisher ?publ }
+		VALUES ?cl { dcat:Dataset dcat:DataService dcat:DatasetSeries }
+}
