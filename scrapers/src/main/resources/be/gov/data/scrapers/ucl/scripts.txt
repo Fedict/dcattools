@@ -1,7 +1,7 @@
 # extra queries to be executed and data to be loaded
 sparql-limit-dists.qry
 sparql-strip-html.qry
-sparql-geo-belgium.qry
+#sparql-geo-belgium.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
 clear-skos.qry

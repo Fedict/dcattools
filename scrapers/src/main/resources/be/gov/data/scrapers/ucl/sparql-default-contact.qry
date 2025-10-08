@@ -8,5 +8,6 @@ INSERT
 	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/ucl/contact>  }
 WHERE
 	{ 	?dataset a dcat:Dataset .
-		OPTIONAL { ?dataset dcat:contactPoint ?o } }
+		FILTER NOT EXISTS  { ?dataset dcat:contactPoint ?o } 
+	}
 
