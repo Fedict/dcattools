@@ -14,4 +14,4 @@
 	a vcard:Organization ;
 	vcard:fn "IWEPS"@nl, "IWEPS"@fr, "IWEPS"@de ;
 	vcard:hasUrl <https://opendata.iweps.be> ;
-	vcard:hasEmail <mailto:info@iweps.be> .
+	vcard:hasEmail <mailto:walstat@iweps.be> .
