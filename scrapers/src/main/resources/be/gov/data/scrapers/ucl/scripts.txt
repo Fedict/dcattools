@@ -11,11 +11,11 @@ sparql-map-media.qry
 clear-skos.qry
 sparql-date-type.qry
 data-license.ttl
+sparql-map-license.qry
 sparql-identifier-literal.qry
 sparql-person-name.qry
 sparql-creator-orcid.qry
 sparql-creator-scopus.qry
-sparql-map-license.qry
 sparql-access-restricted.qry
 sparql-access-public.qry
 sparql-available.qry
