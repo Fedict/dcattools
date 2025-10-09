@@ -1,0 +1,25 @@
+# Data for mapping keywords to an EU list of themes/categories
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:altLabel "Agricultural Sciences" .
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+	skos:altLabel "Business and Management" .
+
+<http://publications.europa.eu/resource/authority/data-theme/EDUC>
+	skos:altLabel "Arts and Humanities" .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+	skos:altLabel "Earth and Environmental Sciences" .
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+	skos:altLabel "Medicine, Health and Life Sciences" .
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:altLabel "Social Sciences"  .
+
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	skos:altLabel "Other", "Physics", "Chemistry", "Engineering", "Astronomy and Astrophysics",
+			"Computer and Information Science"  .

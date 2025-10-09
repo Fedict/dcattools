@@ -23,7 +23,7 @@ sparql-contact-creator.qry
 ucl/sparql-default-publisher.qry
 ucl/data-contact.ttl
 ucl/sparql-default-contact.qry
-#uliege/data-theme.ttl
+ucl/data-theme.ttl
 sparql-map-theme.qry
 ucl/sparql-default-theme.qry
 #uliege/sparql-tag-language.qry
