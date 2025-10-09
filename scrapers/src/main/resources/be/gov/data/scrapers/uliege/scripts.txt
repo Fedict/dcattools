@@ -20,6 +20,7 @@ sparql-access-restricted.qry
 sparql-access-public.qry
 sparql-available.qry
 sparql-contact-creator.qry
+uliege/sparql-default-publisher.qry
 uliege/data-contact.ttl
 uliege/sparql-default-contact.qry
 uliege/data-theme.ttl
