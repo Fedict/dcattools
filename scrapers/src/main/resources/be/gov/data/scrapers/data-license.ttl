@@ -63,6 +63,7 @@
 	skos:altLabel "cc-zero", "CC 0", "CC0", "CC-0", "CC 0 1.0", "other-pd" , "CC%200",
 		<http://www.opendefinition.org/licenses/cc-zero>,
 		<http://creativecommons.org/licenses/zero/1.0/>,
+		<http://creativecommons.org/publicdomain/zero/1.0>,
 		<http://creativecommons.org/publicdomain/zero/1.0/>,
 		<https://creativecommons.org/publicdomain/zero/1.0/>,
 		<http://publications.europa.eu/resource/authority/licence/CC0>,
