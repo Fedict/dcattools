@@ -91,6 +91,7 @@
 		"http://creativecommons.org/licenses/by-nc/4.0/legalcode",
 		<http://creativecommons.org/licenses/by-nc/4.0/legalcode>,
 		<https://creativecommons.org/licenses/by-nc/4.0/>,
+		<http://creativecommons.org/licenses/by/4.0>,
 		<https://creativecommons.org/licenses/by-nc/4.0/legalcode>,
 		"https://creativecommons.org/licenses/by-nc/4.0/",
 		"This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License." .
@@ -111,7 +112,8 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNCSA_4_0>
 	skos:prefLabel "CC-BY-NC-SA" ;
-	skos:altLabel <https://creativecommons.org/licenses/by-nc-sa/4.0/> .
+	skos:altLabel <https://creativecommons.org/licenses/by-nc-sa/4.0/>,
+					<http://creativecommons.org/licenses/by-nc-sa/4.0> .
 
 <http://publications.europa.eu/resource/authority/licence/ODC_PDDL>
 	skos:prefLabel "ODC PDDL" ;
