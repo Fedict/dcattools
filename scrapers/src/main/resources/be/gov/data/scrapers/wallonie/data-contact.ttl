@@ -14,6 +14,11 @@
 				"Franse Gemeenschap"@nl, "Französische Gemeinschaft"@de ;
 	vcard:hasEmail <mailto:infos@cfwb.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0931814167/data-contact> 
+	a vcard:Organization ;
+	vcard:fn "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
+	vcard:hasEmail <mailto:doc@parlement-wallonie.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0841470248/data-contact> 
 	a vcard:Organization ;
 	vcard:fn "iMio"@fr ;

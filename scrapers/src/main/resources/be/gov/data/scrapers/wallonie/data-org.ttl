@@ -153,7 +153,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agence du Numérique"@fr ;
 	skos:altLabel "adn", "Agence du Numérique", "Agence du Numérique"@fr, 
-		"Agence+du+Num%C3%A9rique", "Opendatasoft", "TBC" .
+		"Agence+du+Num%C3%A9rique", "Opendatasoft", "TBC", "Huwise" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0219802592>
 	a foaf:Organization ;
@@ -332,6 +332,12 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "La Louvière"@fr ;
 	skos:altLabel "Ville+de+La+Louvi%C3%A8re", "Ville de La Louvière"  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207148250>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Ville de Péruwelz"@fr ;
+	skos:altLabel "Ville+de+P%C3%A9ruwelz", .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
