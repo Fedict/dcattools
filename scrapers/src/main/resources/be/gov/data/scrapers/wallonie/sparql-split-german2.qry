@@ -1,0 +1,22 @@
+# Split description containing French and German (ORES with markup)
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ 	?s dcterms:description ?o }
+INSERT
+	{ 	?s dcterms:description ?fr .
+		?s dcterms:description ?de }
+WHERE
+	{ 	?s dcterms:description ?o .
+		BIND (
+			STRLANG(
+				STRBEFORE(STR(?o), '<span lang="DE"'), "fr")
+		as ?fr)
+		BIND (
+			STRLANG(
+				CONCAT('<span lang="DE"',
+					STRAFTER(STR(?o), '<span lang="DE"')), "de")
+		as ?de)
+		FILTER ( CONTAINS(?o, '<span lang="DE"'))
+	}
