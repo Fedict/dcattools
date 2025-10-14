@@ -4,6 +4,6 @@ DELETE
 	{	?s ?p ?lit }
 WHERE
 	{ 	?s ?p ?lit
-		VALUES ?lit { "" "-" " " ""@de ""@en ""@fr ""@nl "  " "   " }
+		VALUES ?lit { "" "-" " " ""@de ""@en ""@fr ""@nl "  " "   "@fr }
 		FILTER (ISLITERAL(?lit))
 	}
