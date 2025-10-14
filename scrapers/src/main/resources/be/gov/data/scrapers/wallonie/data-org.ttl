@@ -337,7 +337,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Ville de Péruwelz"@fr ;
-	skos:altLabel "Ville+de+P%C3%A9ruwelz", .
+	skos:altLabel "Ville+de+P%C3%A9ruwelz", "Ville de Péruwelz" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
