@@ -2,6 +2,10 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<http://publications.europa.eu/resource/authority/licence/OGL_3_0>
+	skos:prefLabel "Open Government Licence v3" ;
+	skos:altLabel <http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/> .
+
 <https://www.kuleuven.be/rdm/en/rdr/custom-kuleuven>
 	skos:prefLabel "KUL RDR custom license";
 	skos:altLabel <https://www.kuleuven.be/rdm/en/rdr/custom-kuleuven> .
