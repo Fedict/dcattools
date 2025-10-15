@@ -18,7 +18,7 @@ bira/sparql-access-downloadurl.qry
 bira/sparql-accessurl.qry
 bira/sparql-foaf-orcid.qry
 bira/sparql-foaf-literal.qry
-sparql-remove-empty.qry
+sparql-delete-label-empty.qry
 sparql-map-org.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry

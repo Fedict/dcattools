@@ -4,11 +4,8 @@ DELETE
 	{	?s ?p ?label }
 WHERE
 	{	?s ?p ?label .
-		FILTER (isLiteral(?label) && (
-					(STRLEN(STR(?label)) = 0) || 
-						STR(?label) = "" || 
-						STR(?label) = " " || 
-						STR(?label) = "?" || 
-						STR(?label) = "\u00A0" ) 
+		BIND (STR(?label) AS ?lit)
+		FILTER (isLiteral(?lit) && (
+					(STRLEN(?lit) = 0) || REGEX(?lit, "^[ ?-]*$") || ?lit = "\u00A0" ) 
 		)
 	}

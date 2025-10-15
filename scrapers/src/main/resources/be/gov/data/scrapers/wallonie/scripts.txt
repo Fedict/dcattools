@@ -44,8 +44,8 @@ clear-skos.qry
 wallonie/sparql-split-german.qry
 wallonie/sparql-split-german2.qry
 sparql-strip-html.qry
-sparql-delete-label-empty.qry
 sparql-nbsp-to-space.qry
+sparql-delete-label-empty.qry
 sparql-title-to-desc.qry
 sparql-consolidate-newlines.qry
 data-shacl-support.ttl
