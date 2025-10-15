@@ -36,10 +36,10 @@
 	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
 	skos:altLabel "University of Antwerp" .
 
-<https://org.belgif.be/id/CbeEstablishmentUnit/2143718509>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2354504160>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Agentschap Zorg en Gezondheid"@nl ;
+	skos:prefLabel "Departement Zorg"@nl ;
 	skos:altLabel "Zorg en Gezondheid" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206653946>
@@ -71,4 +71,11 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FOD Volksgezondheid"@nl, "SPF Santé"@fr, "FÖD Volksgesundheit"@de, "FPS Health"@en ;
-	skos:altLabel "Federal Public Service Health, Food Chain Safety and Environment" .
+	skos:altLabel "Federal Public Service Health, Food Chain Safety and Environment",
+				"Interfederal Committee Testing and Tracing" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0870354868>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Centrum voor Kankeropsporing"@nl ;
+	skos:altLabel "Centrum voor Kankeropsporing" .

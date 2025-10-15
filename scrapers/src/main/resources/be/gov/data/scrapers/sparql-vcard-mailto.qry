@@ -9,8 +9,10 @@ INSERT
 WHERE 
 	{ ?s vcard:hasEmail ?val .
 		BIND (
-			IRI(
-				CONCAT("mailto:", LCASE(?val))
-			) as ?iri)
+			IF(STRSTARTS(?val, "mailto:"),
+				IRI(LCASE(?val)),
+				IRI(CONCAT("mailto:", LCASE(?val)))
+			)	
+			as ?iri)
 		FILTER ISLITERAL(?val) 
 	}
