@@ -97,6 +97,11 @@ public class EDP {
 
 	private final static String BASE_URI = "http://base.data.gov.be";
 
+	private final static IRI BIBO_DOCUMENT = Values.iri("http://purl.org/ontology/bibo/Document");
+	private final static IRI BIBO_CITED_BY = Values.iri("http://purl.org/ontology/bibo/citedBy");
+	private final static IRI BIBO_DOI = Values.iri("http://purl.org/ontology/bibo/doi");
+	private final static IRI BIBO_URI = Values.iri("http://purl.org/ontology/bibo/uri");
+	
 	private final static IRI DCATAP_AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
 	private final static IRI DCATAP_CONFORMS = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
 	private final static IRI DCATAP_HVDCAT = Values.iri("http://data.europa.eu/r5r/hvdCategory");
@@ -117,6 +122,7 @@ public class EDP {
 	 */
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
 		w.writeNamespace("adms", "http://www.w3.org/ns/adms#");
+		w.writeNamespace("bibo", "http://purl.org/ontology/bibo/");
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
 		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
@@ -542,6 +548,24 @@ public class EDP {
 		
 		w.writeEndElement();
 	}
+	/**
+	 * Write bibliographic citation
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param cl class name (used for element tag)
+	 * @param uri URI of the dataset
+	 * @throws XMLStreamException
+	 */
+	private static void writeCited(XMLStreamWriter w, RepositoryConnection con, String cl, Resource uri) 
+			throws XMLStreamException {
+		w.writeStartElement(cl);
+		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");	
+		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
+		writeLiterals(w, con, uri, BIBO_DOI, "bibo:doi");
+		writeReferences(w, con, uri, BIBO_URI, "bibo:uri");
+		w.writeEndElement();
+	}
 
 	/**
 	 * Write DCAT dataset or DataService
@@ -569,7 +593,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 		writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
 
-		//samples (geo-dcat-ap)
+		// samples (geo-dcat-ap)
 		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS.SAMPLE, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("adms:sample");
@@ -577,6 +601,15 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
+		// citations
+		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO_CITED_BY , null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("bibo:citedBy");
+				writeCited(w, con, "bibo:Document", (Resource) res.next().getObject());
+				w.writeEndElement();
+			}
+		}
+		
 		// full distributions
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
 			while (res.hasNext()) {

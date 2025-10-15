@@ -44,6 +44,7 @@ public class DATAGOVBE {
 	public final static String PREFIX_URI_CAT = "http://data.gov.be/catalog";
 	public final static String PREFIX_URI_DATASET = "http://data.gov.be/.well-known/genid/dataset";
 	public final static String PREFIX_URI_TEMPORAL = "http://data.gov.be/.well-known/genid/temporal";
+	public final static String PREFIX_URI_CITED = "http://data.gov.be/.well-known/genid/cited";
 	public final static String PREFIX_URI_DIST = "http://data.gov.be/.well-known/genid/dist";
 	public final static String PREFIX_URI_GEO = "http://data.gov.be/.well-known/genid/geo";
 	public final static String PREFIX_URI_ORG = "http://data.gov.be/.well-known/genid/org";

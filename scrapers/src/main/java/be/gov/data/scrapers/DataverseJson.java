@@ -27,6 +27,7 @@ package be.gov.data.scrapers;
 
 
 import be.gov.data.dcat.vocab.ADMS;
+import be.gov.data.dcat.vocab.DATAGOVBE;
 import be.gov.data.helpers.Storage;
 import static be.gov.data.scrapers.BasicScraperJson.conf;
 import com.jayway.jsonpath.JsonPath;
@@ -47,6 +48,7 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -62,6 +64,9 @@ import org.eclipse.rdf4j.model.vocabulary.VCARD4;
  * @see https://guides.dataverse.org/en/latest/
  */
 public abstract class DataverseJson extends BasicScraperJson implements ScraperPaginated<ReadContext>  {
+	private final static IRI BIBO_CITED_BY = Values.iri("http://purl.org/ontology/bibo/citedBy");
+	private final static IRI BIBO_URI = Values.iri("http://purl.org/ontology/bibo/uri");
+		
 	private final static String API_LIST = "/api/search?q=*&type=dataset";
 	private final static String API_DATASET = "/api/datasets/export?exporter=dataverse_json&persistentId=";
 	
@@ -85,6 +90,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='author')].value[*]");
 	private final static JsonPath AUTH_ID_PATH = JsonPath.compile("$.authorName.value");
 
+	private final static JsonPath CITATION_PATH = 
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='publication')].value[*]");
+	
 	private final static JsonPath CONTRIB_PATH = 
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='contributor')].value[*]");
 	private final static JsonPath CONTRIB_ID_PATH = JsonPath.compile("$.contributorName.value");
@@ -150,10 +158,16 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			DCAT.BYTE_SIZE, JsonPath.compile("$.dataFile.filesize"),
 			DCTERMS.CREATED, JsonPath.compile("$.dataFile.creationDate")
 		);
+
+	private final static Map<IRI,Object> CITATION_MAP = Map.of(
+			DCTERMS.TITLE, JsonPath.compile("$.publicationCitation.value"),
+			DCTERMS.IDENTIFIER, JsonPath.compile("$.publicationIDNumber.value"),
+			BIBO_URI, JsonPath.compile("$.publicationURL.value")
+		);
 	
 	private final static Map<IRI,Object> CONTACT_MAP = Map.of(
 			VCARD4.FN, JsonPath.compile("$.datasetContactName.value"),
-			VCARD4.HAS_ORGANIZATION_NAME,JsonPath.compile("$.datasetContactAffiliation.value"),
+			VCARD4.HAS_ORGANIZATION_NAME, JsonPath.compile("$.datasetContactAffiliation.value"),
 			VCARD4.HAS_EMAIL , JsonPath.compile("$.datasetContactEmail.value")
 		);
 
@@ -291,7 +305,27 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			add(store, contactSubj, node, map);
 		}
 	}
-
+/**
+	 * Add persons (contacts, authors...)
+	 * 
+	 * @param store
+	 * @param jsonObj
+	 * @param path
+	 * @param subject
+	 * @param predicate
+	 * @param map 
+	 */
+	private void addCited(Storage store, ReadContext jsonObj, JsonPath path, IRI subject, IRI predicate, 
+																					Map<IRI,Object> map) {
+		JSONArray contacts = jsonObj.read(path);
+		for (Object c: contacts) {
+			ReadContext node = JsonPath.using(conf).parse(c);
+			IRI contactSubj = makeIRI(DATAGOVBE.PREFIX_URI_CITED + "/" + hash(node.jsonString()));
+			store.add(subject, predicate, contactSubj);
+			add(store, contactSubj, node, map);
+		}
+	}
+	
 	/**
 	 * Map JSON fields to DCAT properties
 	 * 
@@ -305,7 +339,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
-//		addCitation(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, datasetSubj);
+		addCited(store, jsonObj, CITATION_PATH, datasetSubj, BIBO_CITED_BY, CITATION_MAP);
 
 		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, "contact/", datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
 		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, "", datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
