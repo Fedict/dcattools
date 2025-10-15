@@ -32,7 +32,7 @@ import java.util.Map;
  * 
  * @author Bart.Hanssens
  */
-public class Organization {
+public class Contact {
 	private Map<String,String> name;
 	
 	/**
