@@ -491,7 +491,7 @@ public class EDP {
 		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
 		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
 		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");		
-		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
+		//writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
 		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
