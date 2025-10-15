@@ -8,7 +8,8 @@
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
 	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
 		"Education, culture and sport", "Éducation, culture et sport", 
-		"Onderwijs, cultuur en sport" .
+		"Onderwijs, cultuur en sport",
+		<http://publications.europa.eu/resource/authority/data-theme/CULT> .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
 	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/economy> .
