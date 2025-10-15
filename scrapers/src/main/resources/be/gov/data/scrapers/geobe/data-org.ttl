@@ -201,3 +201,9 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
 	skos:altLabel "Rijksdienst voor Zeevisserij (RVZ)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0691702941>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Proper Strand Lopers"@nl ;
+	skos:altLabel "Proper Strand Lopers"@en  .

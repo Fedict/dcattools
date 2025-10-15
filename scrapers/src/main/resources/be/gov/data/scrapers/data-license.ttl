@@ -117,7 +117,11 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNCSA_4_0>
 	skos:prefLabel "CC-BY-NC-SA" ;
-	skos:altLabel <https://creativecommons.org/licenses/by-nc-sa/4.0/>,
+	skos:altLabel "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr",
+				"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.nl",
+				"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de",
+				"https://creativecommons.org/licenses/by-nc-sa/4.0/",
+				<https://creativecommons.org/licenses/by-nc-sa/4.0/>,
 					<http://creativecommons.org/licenses/by-nc-sa/4.0> .
 
 <http://publications.europa.eu/resource/authority/licence/ODC_PDDL>
