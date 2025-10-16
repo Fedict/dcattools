@@ -335,6 +335,7 @@ public class EDP {
 
 				Resource measurement = (Resource) res.next().getObject();
 				writeLiterals(w, con, measurement, DQV.VALUE, "dqv:value");
+				writeReferences(w, con, measurement, DQV.IS_MEASUREMENT_OF, "dqv:isMeasurementOf");
 				writeReferences(w, con, measurement, SDMX.UNIT_MEASURE, "sdmx:unitMeasure");
 
 				w.writeEndElement();

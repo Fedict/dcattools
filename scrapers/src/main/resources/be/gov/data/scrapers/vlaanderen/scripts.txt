@@ -92,6 +92,7 @@ vlaanderen/sparql-default-contact.qry
 vlaanderen/sparql-fix-serves-id.qry
 sparql-remove-circular.qry
 sparql-remove-catalogrecord.qry
+vlaanderen/sparql-fix-dqv.qry
 vlaanderen/sparql-remove-circular-vmm.qry
 vlaanderen/sparql-remove-dataset-orphans.qry
 vlaanderen/data-contact.ttl

@@ -1,0 +1,15 @@
+# Delete 'INF' measurements
+
+PREFIX dqv: <http://www.w3.org/ns/dqv#>
+
+DELETE 
+	{	?s dqv:hasQualityMeasurement ?measure .
+		?measure ?p ?o .
+		?measure dqv:value ?val
+	}
+WHERE 
+	{	?s dqv:hasQualityMeasurement ?measure .
+		?measure ?p ?o .
+		?measure dqv:value ?val
+		FILTER (STR(?val) = "INF")
+	}
