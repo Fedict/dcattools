@@ -30,12 +30,14 @@ import org.eclipse.rdf4j.model.util.Values;
 
 /**
  *
- * @author Bart Hanssens
+ * @author Bart.Hanssens
  */
-public class ADMS {
-	public final static IRI SCHEMA_AGENCY = Values.iri("http://www.w3.org/ns/adms#schemaAgency");
-	public final static IRI IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
-	public final static IRI REPRESENTAION_TECH = Values.iri("http://www.w3.org/ns/adms#representationTechnique");
-	public final static IRI SAMPLE = Values.iri("http://www.w3.org/ns/adms#sample");
-	public final static IRI STATUS = Values.iri("http://www.w3.org/ns/adms#status");
+public class GEODCAT {
+	public final static IRI CUSTODIAN = Values.iri("http://data.europa.eu/930/custodian");
+	public final static IRI DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
+	public final static IRI ORIGINATOR = Values.iri("http://data.europa.eu/930/originator");
+	public final static IRI PROCESSOR = Values.iri("http://data.europa.eu/930/processor");
+	public final static IRI RESOURCE_PROVIDER = Values.iri("http://data.europa.eu/930/resourceProvider");
+	public final static IRI SPATIAL_RESOLUTION_AS_SCALE = Values.iri("http://data.europa.eu/930/spatialResolutionAsScale");
+
 }

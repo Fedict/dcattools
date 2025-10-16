@@ -26,6 +26,10 @@
 package be.gov.data.tools;
 
 import be.gov.data.dcat.vocab.ADMS;
+import be.gov.data.dcat.vocab.BIBO;
+import be.gov.data.dcat.vocab.DQV;
+import be.gov.data.dcat.vocab.GEODCAT;
+import be.gov.data.dcat.vocab.SDMX;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,19 +101,10 @@ public class EDP {
 
 	private final static String BASE_URI = "http://base.data.gov.be";
 
-	private final static IRI BIBO_DOCUMENT = Values.iri("http://purl.org/ontology/bibo/Document");
-	private final static IRI BIBO_CITED_BY = Values.iri("http://purl.org/ontology/bibo/citedBy");
-	private final static IRI BIBO_DOI = Values.iri("http://purl.org/ontology/bibo/doi");
-	private final static IRI BIBO_URI = Values.iri("http://purl.org/ontology/bibo/uri");
-	
 	private final static IRI DCATAP_AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
 	private final static IRI DCATAP_CONFORMS = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
 	private final static IRI DCATAP_HVDCAT = Values.iri("http://data.europa.eu/r5r/hvdCategory");
-	
-	private final static IRI GEO_CUSTODIAN = Values.iri("http://data.europa.eu/930/custodian");
-	private final static IRI GEO_DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
-	private final static IRI GEO_ORIGINATOR = Values.iri("http://data.europa.eu/930/originator");
-	private final static IRI GEO_PROCESSOR = Values.iri("http://data.europa.eu/930/processor");	
+
 	private final static Set<IRI> CONCEPTS = new HashSet<>(250);
 
 	private final static Set<String> IDENTIFIERS = new HashSet<>(25000);
@@ -137,6 +132,7 @@ public class EDP {
 		w.writeNamespace(PROV.PREFIX, PROV.NAMESPACE);
 		w.writeNamespace(RDF.PREFIX, RDF.NAMESPACE);
 		w.writeNamespace(RDFS.PREFIX, RDFS.NAMESPACE);
+		w.writeNamespace("sdmx", "http://purl.org/linked-data/sdmx/2009/attribute#");
 		w.writeNamespace(SKOS.PREFIX, SKOS.NAMESPACE);
 		w.writeNamespace(VCARD4.PREFIX, VCARD4.NAMESPACE);
 		w.writeNamespace(XSD.PREFIX, XSD.NAMESPACE);
@@ -313,6 +309,32 @@ public class EDP {
 					writeReferences(w, con, attrib, DCAT.HAD_ROLE, "dcat:hadRole", "dcat:Role", false);
 				}
 				
+				w.writeEndElement();
+				w.writeEndElement();
+			}
+		}
+	}
+
+	/**
+	 * Write quality measurements of a Dataset, Distribution...
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset / distribution
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeMeasurements(XMLStreamWriter w, RepositoryConnection con,
+		IRI uri, IRI pred) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("dqv:hasQualityMeasurement");
+				w.writeStartElement("dqv:QualityMeasurement");
+
+				Resource measurement = (Resource) res.next().getObject();
+				writeLiterals(w, con, measurement, DQV.VALUE, "dqv:value");
+				writeReferences(w, con, measurement, SDMX.UNIT_MEASURE, "sdmx:unitMeasure");
+
 				w.writeEndElement();
 				w.writeEndElement();
 			}
@@ -562,13 +584,13 @@ public class EDP {
 		w.writeStartElement(cl);
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");	
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
-		writeLiterals(w, con, uri, BIBO_DOI, "bibo:doi");
-		writeReferences(w, con, uri, BIBO_URI, "bibo:uri");
+		writeLiterals(w, con, uri, BIBO.DOI, "bibo:doi");
+		writeReferences(w, con, uri, BIBO.URI, "bibo:uri");
 		w.writeEndElement();
 	}
 
 	/**
-	 * Write DCAT dataset or DataService
+	 * Write DCAT Dataset or Dataservice
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
@@ -602,7 +624,7 @@ public class EDP {
 			}
 		}
 		// citations
-		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO_CITED_BY , null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO.CITED_BY , null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("bibo:citedBy");
 				writeCited(w, con, "bibo:Document", (Resource) res.next().getObject());
@@ -624,15 +646,20 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
+		
+		writeReferences(w, con, uri, ADMS.REPRESENTAION_TECH, "adms:representationTechnique", "skos:Concept", true);
 		writeDates(w, con, uri);
+		
+		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");
+		writeRole(w, con, uri, GEODCAT.DISTRIBUTOR, "geodcatap:distributor");
+		writeRole(w, con, uri, GEODCAT.ORIGINATOR, "geodcatap:originator");
+		writeRole(w, con, uri, GEODCAT.PROCESSOR, "geodcatap:processor");
+		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
 
 		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 
-		writeRole(w, con, uri, GEO_CUSTODIAN, "geodcatap:custodian");
-		writeRole(w, con, uri, GEO_DISTRIBUTOR, "geodcatap:distributor");
-		writeRole(w, con, uri, GEO_ORIGINATOR, "geodcatap:originator");
-		writeRole(w, con, uri, GEO_PROCESSOR, "geodcatap:processor");
-		
+		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
+
 		w.writeEndElement();
 	}
 

@@ -30,12 +30,8 @@ import org.eclipse.rdf4j.model.util.Values;
 
 /**
  *
- * @author Bart Hanssens
+ * @author Bart.Hanssens
  */
-public class ADMS {
-	public final static IRI SCHEMA_AGENCY = Values.iri("http://www.w3.org/ns/adms#schemaAgency");
-	public final static IRI IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
-	public final static IRI REPRESENTAION_TECH = Values.iri("http://www.w3.org/ns/adms#representationTechnique");
-	public final static IRI SAMPLE = Values.iri("http://www.w3.org/ns/adms#sample");
-	public final static IRI STATUS = Values.iri("http://www.w3.org/ns/adms#status");
+public class SDMX {
+	public final static IRI UNIT_MEASURE = Values.iri("http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure");
 }

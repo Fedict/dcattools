@@ -30,12 +30,11 @@ import org.eclipse.rdf4j.model.util.Values;
 
 /**
  *
- * @author Bart Hanssens
+ * @author Bart.Hanssens
  */
-public class ADMS {
-	public final static IRI SCHEMA_AGENCY = Values.iri("http://www.w3.org/ns/adms#schemaAgency");
-	public final static IRI IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
-	public final static IRI REPRESENTAION_TECH = Values.iri("http://www.w3.org/ns/adms#representationTechnique");
-	public final static IRI SAMPLE = Values.iri("http://www.w3.org/ns/adms#sample");
-	public final static IRI STATUS = Values.iri("http://www.w3.org/ns/adms#status");
+public class BIBO {
+	public final static IRI DOCUMENT = Values.iri("http://purl.org/ontology/bibo/Document");
+	public final static IRI CITED_BY = Values.iri("http://purl.org/ontology/bibo/citedBy");
+	public final static IRI DOI = Values.iri("http://purl.org/ontology/bibo/doi");
+	public final static IRI URI = Values.iri("http://purl.org/ontology/bibo/uri");
 }
