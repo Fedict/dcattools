@@ -27,6 +27,7 @@ package be.gov.data.tools;
 
 import be.gov.data.dcat.vocab.ADMS;
 import be.gov.data.dcat.vocab.BIBO;
+import be.gov.data.dcat.vocab.CONTENT;
 import be.gov.data.dcat.vocab.DQV;
 import be.gov.data.dcat.vocab.GEODCAT;
 import be.gov.data.dcat.vocab.SDMX;
@@ -118,6 +119,7 @@ public class EDP {
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
 		w.writeNamespace("adms", "http://www.w3.org/ns/adms#");
 		w.writeNamespace("bibo", "http://purl.org/ontology/bibo/");
+		w.writeNamespace("cnt", "http://www.w3.org/2011/content#");
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
 		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
@@ -517,6 +519,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, ADMS.IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
+		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");
 		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
 		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");		
 		//writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
@@ -565,6 +568,7 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCATAP_AVAILABILITY, "dcatap:availability");
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
+		writeLiterals(w, con, uri, CONTENT.CHARACTER_ENCODING, "cnt:characterEncoding");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 		
