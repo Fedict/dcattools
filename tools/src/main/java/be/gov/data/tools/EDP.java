@@ -27,6 +27,7 @@ package be.gov.data.tools;
 
 import be.gov.data.dcat.vocab.ADMS;
 import be.gov.data.dcat.vocab.BIBO;
+import be.gov.data.dcat.vocab.CITEDCAT;
 import be.gov.data.dcat.vocab.CONTENT;
 import be.gov.data.dcat.vocab.DQV;
 import be.gov.data.dcat.vocab.GEODCAT;
@@ -119,6 +120,7 @@ public class EDP {
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
 		w.writeNamespace("adms", "http://www.w3.org/ns/adms#");
 		w.writeNamespace("bibo", "http://purl.org/ontology/bibo/");
+		w.writeNamespace("citedcat", "https://w3id.org/citedcat-ap/");
 		w.writeNamespace("cnt", "http://www.w3.org/2011/content#");
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
 		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
@@ -575,6 +577,7 @@ public class EDP {
 		
 		w.writeEndElement();
 	}
+
 	/**
 	 * Write bibliographic citation
 	 *
@@ -591,6 +594,22 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 		writeLiterals(w, con, uri, BIBO.DOI, "bibo:doi");
 		writeReferences(w, con, uri, BIBO.URI, "bibo:uri");
+		w.writeEndElement();
+	}
+
+	/**
+	 * Write funding
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param cl class name (used for element tag)
+	 * @param uri URI of the dataset
+	 * @throws XMLStreamException
+	 */
+	private static void writeFunding(XMLStreamWriter w, RepositoryConnection con, String cl, Resource uri) 
+			throws XMLStreamException {
+		w.writeStartElement(cl);
+		writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
 		w.writeEndElement();
 	}
 
@@ -629,10 +648,21 @@ public class EDP {
 			}
 		}
 		// citations
-		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO.CITED_BY , null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO.CITED_BY, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("bibo:citedBy");
 				writeCited(w, con, "bibo:Document", (Resource) res.next().getObject());
+				w.writeEndElement();
+			}
+		}
+		writeReferences(w, con, uri, CITEDCAT.IS_COMPILED_BY, "citedcat:isCompiledBy");
+		writeReferences(w, con, uri, CITEDCAT.COMPILES, "citedcat:compiles");
+	
+		// funding
+		try (RepositoryResult<Statement> res = con.getStatements(uri, CITEDCAT.IS_FUNDED_BY, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("citedcat:isFundedBy");
+				writeFunding(w, con, "foaf:Project", (Resource) res.next().getObject());
 				w.writeEndElement();
 			}
 		}
@@ -652,7 +682,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
 		
-		writeReferences(w, con, uri, ADMS.REPRESENTAION_TECH, "adms:representationTechnique", "skos:Concept", true);
+		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECH, "adms:representationTechnique");
 		writeDates(w, con, uri);
 		
 		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");

@@ -27,6 +27,8 @@ package be.gov.data.scrapers;
 
 
 import be.gov.data.dcat.vocab.ADMS;
+import be.gov.data.dcat.vocab.BIBO;
+import be.gov.data.dcat.vocab.CITEDCAT;
 import be.gov.data.dcat.vocab.DATAGOVBE;
 import be.gov.data.helpers.Storage;
 import static be.gov.data.scrapers.BasicScraperJson.conf;
@@ -64,8 +66,6 @@ import org.eclipse.rdf4j.model.vocabulary.VCARD4;
  * @see https://guides.dataverse.org/en/latest/
  */
 public abstract class DataverseJson extends BasicScraperJson implements ScraperPaginated<ReadContext>  {
-	private final static IRI BIBO_CITED_BY = Values.iri("http://purl.org/ontology/bibo/citedBy");
-	private final static IRI BIBO_URI = Values.iri("http://purl.org/ontology/bibo/uri");
 		
 	private final static String API_LIST = "/api/search?q=*&type=dataset";
 	private final static String API_DATASET = "/api/datasets/export?exporter=dataverse_json&persistentId=";
@@ -92,6 +92,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 
 	private final static JsonPath CITATION_PATH = 
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='publication')].value[*]");
+
+	private final static JsonPath FUNDING_PATH = 
+			JsonPath.compile(CITATION + ".fields[?(@.typeName=='grantNumber')].value[*]");
 	
 	private final static JsonPath CONTRIB_PATH = 
 			JsonPath.compile(CITATION + ".fields[?(@.typeName=='contributor')].value[*]");
@@ -162,7 +165,11 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	private final static Map<IRI,Object> CITATION_MAP = Map.of(
 			DCTERMS.TITLE, JsonPath.compile("$.publicationCitation.value"),
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.publicationIDNumber.value"),
-			BIBO_URI, JsonPath.compile("$.publicationURL.value")
+			BIBO.URI, JsonPath.compile("$.publicationURL.value")
+		);
+
+	private final static Map<IRI,Object> FUNDING_MAP = Map.of(
+			CITEDCAT.IS_FUNDED_BY, JsonPath.compile("$.grantNumberAgency.value")
 		);
 	
 	private final static Map<IRI,Object> CONTACT_MAP = Map.of(
@@ -305,8 +312,9 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 			add(store, contactSubj, node, map);
 		}
 	}
-/**
-	 * Add persons (contacts, authors...)
+
+	/**
+	 * Add citations
 	 * 
 	 * @param store
 	 * @param jsonObj
@@ -317,15 +325,36 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 */
 	private void addCited(Storage store, ReadContext jsonObj, JsonPath path, IRI subject, IRI predicate, 
 																					Map<IRI,Object> map) {
-		JSONArray contacts = jsonObj.read(path);
-		for (Object c: contacts) {
+		JSONArray citations = jsonObj.read(path);
+		for (Object c: citations) {
 			ReadContext node = JsonPath.using(conf).parse(c);
-			IRI contactSubj = makeIRI(DATAGOVBE.PREFIX_URI_CITED + "/" + hash(node.jsonString()));
-			store.add(subject, predicate, contactSubj);
-			add(store, contactSubj, node, map);
+			IRI citationSubj = makeIRI(DATAGOVBE.PREFIX_URI_CITED + "/" + hash(node.jsonString()));
+			store.add(subject, predicate, citationSubj);
+			add(store, citationSubj, node, map);
 		}
 	}
-	
+
+	/**
+	 * Add project funding
+	 * 
+	 * @param store
+	 * @param jsonObj
+	 * @param path
+	 * @param subject
+	 * @param predicate
+	 * @param map 
+	 */
+	private void addFunding(Storage store, ReadContext jsonObj, JsonPath path, IRI subject, IRI predicate, 
+																					Map<IRI,Object> map) {
+		JSONArray fundings = jsonObj.read(path);
+		for (Object f: fundings) {
+			ReadContext node = JsonPath.using(conf).parse(f);
+			IRI fundingSubj = makeIRI(DATAGOVBE.PREFIX_URI_FUNDING + "/" + hash(node.jsonString()));
+			store.add(subject, predicate, fundingSubj);
+			add(store, fundingSubj, node, map);
+		}
+	}
+		
 	/**
 	 * Map JSON fields to DCAT properties
 	 * 
@@ -339,7 +368,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
-		addCited(store, jsonObj, CITATION_PATH, datasetSubj, BIBO_CITED_BY, CITATION_MAP);
+		addCited(store, jsonObj, CITATION_PATH, datasetSubj, BIBO.CITED_BY, CITATION_MAP);
+		addFunding(store, jsonObj, FUNDING_PATH, datasetSubj, CITEDCAT.IS_FUNDED_BY , FUNDING_MAP);
 
 		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, "contact/", datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
 		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, "", datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
