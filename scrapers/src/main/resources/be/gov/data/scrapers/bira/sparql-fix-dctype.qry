@@ -9,4 +9,5 @@ INSERT {
 WHERE { 
 		?s dcterms:type ?val .
 		FILTER isLiteral(?val)
-		BIND (IRI(?val) as ?iri) }
+		BIND (IRI(?val) as ?iri) 
+	}

@@ -1,0 +1,18 @@
+# CiteDCAT property isFundedBy should point to a foaf:project instead of a literal
+
+PREFIX citedcat: <https://w3id.org/citedcat-ap/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s citedcat:isFundedBy ?name }
+INSERT
+	{	?s citedcat:isFundedBy ?fund .
+		?fund a foaf:Project .
+		?fund foaf:name ?name }
+WHERE
+	{ 	?s citedcat:isFundedBy ?name
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/funder/", SHA1(?name))
+			) as ?fund)
+		FILTER (IsLiteral(?name))
+	}

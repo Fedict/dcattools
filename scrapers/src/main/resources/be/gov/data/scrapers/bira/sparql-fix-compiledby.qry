@@ -1,0 +1,14 @@
+# Extract valid URI from invalid isCompiledBy
+
+PREFIX citedcat: <https://w3id.org/citedcat-ap/>
+
+DELETE
+	{	?s citedcat:isCompiledBy ?o }
+INSERT
+	{	?s citedcat:isCompiledBy ?uri }
+WHERE
+	{ 	?s citedcat:isCompiledBy ?o
+		BIND (IRI(
+				REPLACE(STR(?o), "(.*)(https?://[^% ]+)(.*)", "$2")
+		) as ?uri)
+	}
