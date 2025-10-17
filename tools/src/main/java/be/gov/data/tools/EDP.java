@@ -682,7 +682,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
 		
-		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECH, "adms:representationTechnique");
+		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 		writeDates(w, con, uri);
 		
 		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");

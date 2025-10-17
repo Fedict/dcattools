@@ -35,7 +35,7 @@ import org.eclipse.rdf4j.model.util.Values;
 public class ADMS {
 	public final static IRI SCHEMA_AGENCY = Values.iri("http://www.w3.org/ns/adms#schemaAgency");
 	public final static IRI IDENTIFIER = Values.iri("http://www.w3.org/ns/adms#identifier");
-	public final static IRI REPRESENTAITON_TECH = Values.iri("http://www.w3.org/ns/adms#representationTechnique");
+	public final static IRI REPRESENTATION_TECHNIQUE = Values.iri("http://www.w3.org/ns/adms#representationTechnique");
 	public final static IRI SAMPLE = Values.iri("http://www.w3.org/ns/adms#sample");
 	public final static IRI STATUS = Values.iri("http://www.w3.org/ns/adms#status");
 	public final static IRI VERSION_NOTES = Values.iri("http://www.w3.org/ns/adms#versionNotes");
