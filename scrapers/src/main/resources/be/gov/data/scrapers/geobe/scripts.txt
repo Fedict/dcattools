@@ -5,6 +5,7 @@ geobe/sparql-fix-download.qry
 geobe/sparql-delete-location.qry
 geobe/sparql-fix-serves.qry
 geobe/data-publ-contact.ttl
+sparql-conforms-legislation.qry
 sparql-remove-hydra.qry
 geobe/sparql-accessurl.qry
 geobe/sparql-fix-accessurl.qry
