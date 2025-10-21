@@ -662,9 +662,14 @@ public class EDP {
 		// funding
 		try (RepositoryResult<Statement> res = con.getStatements(uri, CITEDCAT.IS_FUNDED_BY, null)) {
 			while (res.hasNext()) {
-				w.writeStartElement("citedcat:isFundedBy");
-				writeFunding(w, con, "foaf:Project", (Resource) res.next().getObject());
-				w.writeEndElement();
+				Statement stmt = res.next();
+				if (stmt.getObject() instanceof Resource) {
+					w.writeStartElement("citedcat:isFundedBy");
+					writeFunding(w, con, "foaf:Project", (Resource) stmt.getObject());
+					w.writeEndElement();
+				} else {
+					LOG.error("Not a funding resource, removing {}", stmt);
+				}
 			}
 		}
 		
