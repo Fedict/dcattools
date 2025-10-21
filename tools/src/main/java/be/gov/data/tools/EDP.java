@@ -637,6 +637,7 @@ public class EDP {
 		writeReferences(w, con, uri, FOAF.PAGE, "foaf:page", "foaf:Document", false);
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
+		writeReferences(w, con, uri, DCAT.IN_SERIES, "dcat:inSeries");
 		writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
 
 		// samples (geo-dcat-ap)
@@ -734,19 +735,22 @@ public class EDP {
 	}
 
 	/**
-	 * Write DCAT datasets
+	 * Write DCAT dataset / service / series
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
+	 * @param type RDF type
+	 * @param cl RDF class as string
+	 * @param prop wrapper property
 	 * @throws XMLStreamException
 	 */
-	private static void writeDatasets(XMLStreamWriter w, RepositoryConnection con)
+	private static void writeResources(XMLStreamWriter w, RepositoryConnection con, IRI type, String cl, String prop)
 		throws XMLStreamException {
 		int nr = 0;
 		int duplicates = 0;
 		int incomplete = 0;
 
-		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATASET)) {
+		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, type)) {
 			while (res.hasNext()) {
 				IRI subj = (IRI) res.next().getSubject();
 				if (!isUnique(con, subj)) {
@@ -758,45 +762,16 @@ public class EDP {
 					continue;
 				}
 				nr++;
-				w.writeStartElement("dcat:dataset");
-				writeResource(w, con, "dcat:Dataset", subj);
-				w.writeEndElement();
+				if (prop != null) {
+					w.writeStartElement(prop);
+					writeResource(w, con, cl, subj);
+					w.writeEndElement();
+				} else {
+					writeResource(w, con, cl, subj);
+				}
 			}
 		}
-		LOG.info("Wrote {} datasets, {} duplicates, {} incompletes", nr, duplicates, incomplete);
-	}
-
-	/**
-	 * Write DCAT dataservice
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @throws XMLStreamException
-	 */
-	private static void writeDataservices(XMLStreamWriter w, RepositoryConnection con)
-		throws XMLStreamException {
-		int nr = 0;
-		int duplicates = 0;
-		int incomplete = 0;
-
-		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
-			while (res.hasNext()) {
-				IRI subj = (IRI) res.next().getSubject();
-				if (!isUnique(con, subj)) {
-					duplicates++;
-					continue;
-				}
-				if (!hasTitle(con,subj)) {
-					incomplete++;
-					continue;
-				}
-				nr++;
-				w.writeStartElement("dcat:service");
-				writeResource(w, con, "dcat:DataService", subj);
-				w.writeEndElement();
-			}
-		}
-		LOG.info("Wrote {} services, {} duplicates, {} incompletes", nr, duplicates, incomplete);
+		LOG.info("Wrote {} {}, {} duplicates, {} incompletes", nr, cl, duplicates, incomplete);
 	}
 
 	/**
@@ -987,10 +962,13 @@ public class EDP {
 		writeGeneric(w, con, uri);
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
-		writeDatasets(w, con);
-		writeDataservices(w, con);
+		writeResources(w, con, DCAT.DATASET, "dcat:Dataset", "dcat:dataset");
+		writeResources(w, con, DCAT.DATA_SERVICE, "dcat:DataService", "dcat:service");
+
 		w.writeEndElement();
 
+		writeResources(w,con, DCAT.DATASET_SERIES, "dcat:DatasetSeries", null); // there's no dcat:datasetseries property in a catalog
+	
 		writeAgents(w, con);
 
 		writeLocations(w, con);

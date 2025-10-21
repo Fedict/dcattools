@@ -26,6 +26,7 @@ WHERE
 			( dcterms:rights dcterms:RightsStatement )
 			( dcterms:spatial dcterms:Location )
 			( dcat:accessService dcat:DataService )
+			( dcat:inSeries dcat:DatasetSeries )
 			( dcterms:format dcterms:MediaTypeOrExtent )
 			( dcat:landingPage foaf:Document )
 			( dcat:mediaType dcterms:MediaType )
