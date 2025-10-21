@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:dcatap="http://data.europa.eu/r5r/"
+         xmlns:eli="http://data.europa.eu/eli/ontology#"
+         xmlns:dc="http://purl.org/dc/terms/"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+
+  <dcat:Catalog rdf:about="http://data.gov.be/catalog/fpsbosa">
+    <dc:title xml:lang="en">Catalog of FPS BOSA</dc:title>
+    <dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0671516647"/>
+    <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+
+    <dcat:service>
+      <dcat:DataService rdf:about="http://data.gov.be/dataservice/fpsbosa/best/full">
+        <dc:description xml:lang="nl">FOD BOSA DG Vereenvoudiging en Digitalisering stelt een gratis webservice ter beschikking gebaseerd op de adresgegevens van de 3 Gewesten. Deze service bevat de officiële adressen (straatnamen + huisnummers en postcodes) met hun bijhorende geografische coördinaten, en de lijsten van straten en gemeentes.</dc:description>
+        <dc:description xml:lang="fr">SPF BOSA DG Simplification et Digitalisation met à disposition un service web gratuit basé sur les données d'adresses des 3 Régions. Ce service contient les adresses officielles (noms de rues + numéros de rues et codes postaux) avec leurs coordonnées géographiques correspondantes, et les listes des rues et des communes.</dc:description>
+        <dc:title xml:lang="nl">BeSt adressen, API</dc:title>
+        <dc:title xml:lang="fr">Adresses BeSt, API</dc:title>
+        <dc:identifier>fpsbosa-dis-best-full-service</dc:identifier>
+
+        <dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0671516647"/>
+        <dcat:contactPoint rdf:resource="http://opendata.bosa.be/contact"/>
+
+        <dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/WEEKLY"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+        <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+        <dcat:keyword xml:lang="nl">adressen</dcat:keyword>
+        <dcat:keyword xml:lang="fr">adresses</dcat:keyword>
+
+        <dc:type rdf:resource="http://publications.europa.eu/resource/authority/dataset-type/HVD"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/dir/2007/2/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_c3de25e4"/>
+
+        <foaf:page rdf:resource="https://digital.belgium.be/federated-api-marketplace/rest-api/s332-general-bestservices-info/details"/>
+
+        <dcat:landingPage rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+        <dcat:landingPage rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+        
+        <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+        <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+
+        <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON"/>
+        <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0"/>
+        <dcat:endpointURL rdf:resource="https://best.pr.fedservices.be/api/opendata/best/v1/belgianAddress/v2/"/>
+        <dcat:endpointDescription rdf:resource="https://best.pr.fedservices.be/api/opendata/best/v1/doc/swagger.json"/>
+        <dcat:servesDataset rdf:resource="http://data.gov.be/dataset/fpsbosa/best/full"/>
+
+      </dcat:DataService>
+    </dcat:service>
+
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/best/full">
+        <dc:description xml:lang="nl">FOD BOSA DG Vereenvoudiging en Digitalisering stelt een geconsolideerd bestand van de adresgegevens uit de 3 Gewesten ter beschikking als open data. Deze XML bestanden bevatten de officiële adressen (straatnamen + huisnummers en postcodes) met hun bijhorende geografische coördinaten, en de lijsten van straten en gemeentes.</dc:description>
+        <dc:description xml:lang="fr">SPF BOSA DG Simplification et Digitalisation met à disposition sous forme de données ouvertes un fichier consolidé des données d'adresses des 3 Régions. Ces fichiers XML contiennent les adresses officielles (noms de rues + numéros de rues et codes postaux) avec leurs coordonnées géographiques correspondantes, et les listes des rues et des communes.</dc:description>
+        <dc:title xml:lang="nl">BeSt adressen, full download XML</dc:title>
+        <dc:title xml:lang="fr">Adresses BeSt, full download XML</dc:title>
+        <dc:identifier>fpsbosa-dis-best-full</dc:identifier>
+	
+        <dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0671516647"/>
+        <dcat:contactPoint rdf:resource="http://opendata.bosa.be/contact"/>
+
+        <dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/WEEKLY"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+        <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+        <dcat:keyword xml:lang="nl">adressen</dcat:keyword>
+        <dcat:keyword xml:lang="fr">adresses</dcat:keyword>
+
+        <dc:type rdf:resource="http://publications.europa.eu/resource/authority/dataset-type/HVD"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/dir/2007/2/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_c3de25e4"/>
+
+        <foaf:page rdf:resource="https://digital.belgium.be/federated-api-marketplace/rest-api/s332-general-bestservices-info/details"/>
+
+        <dcat:landingPage rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+        <dcat:landingPage rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+        
+        <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+        <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+		
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/best/full/xml">
+            <dc:identifier>fpsbosa-dis-best-full-xml</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+            <dc:title xml:lang="nl">ZIP bestand (3 Gewesten)</dc:title>
+            <dc:title xml:lang="fr">Fichier ZIP (3 Régions)</dc:title>
+            <dc:description xml:lang="nl">ZIP bestand (3 Gewesten)</dc:description>
+            <dc:description xml:lang="fr">Fichier ZIP (3 Régions)</dc:description>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/xml"/>
+            <dcat:compressFormat rdf:resource="https://www.iana.org/assignments/media-types/application/zip"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XML"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+            <dcat:downloadURL rdf:resource="https://opendata.bosa.be/download/best/best-full-latest.zip"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/dir/2007/2/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+
+      </dcat:Dataset>
+    </dcat:dataset>
+
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/best/fd-deriv">
+        <dc:description xml:lang="nl">FOD BOSA DG Vereenvoudiging en Digitalisering stelt een geconsolideerd bestand van de adresgegevens uit de 3 Gewesten ter beschikking als open data. De CSV bestanden worden afgeleid van de XML-bestanden en bevatten de actuele officiële adressen (straatnamen + huisnummers en postcodes) met hun bijhorende geografische coördinaten, en de lijst van straten.</dc:description>
+        <dc:description xml:lang="fr">SPF BOSA DG Simplification et Digitalisation met à disposition sous forme de données ouvertes un fichier consolidé des données d'adresses des 3 Régions. Les fichiers CSV sont dérivés des fichiers XML et contiennent les adresses officielles actuelles (noms de rues + numéros de rues et codes postaux) avec leurs coordonnées géographiques correspondantes, et la liste des rues.</dc:description>
+        <dc:title xml:lang="nl">BeSt adressen, afgeleide CSV-bestanden</dc:title>
+        <dc:title xml:lang="fr">Adresses BeSt, fichiers csv dérivés</dc:title>
+        <dc:identifier>fpsbosa-dis-best-csv-deriv</dc:identifier>
+	
+        <dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0671516647"/>
+        <dcat:contactPoint rdf:resource="http://opendata.bosa.be/contact"/>
+
+        <dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/WEEKLY"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+
+        <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+        <dcat:keyword xml:lang="nl">adressen</dcat:keyword>
+        <dcat:keyword xml:lang="fr">adresses</dcat:keyword>
+
+        <dcat:landingPage rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+        <dcat:landingPage rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+        
+        <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+        <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+		
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/best/deriv/vla/csv">
+            <dc:identifier>fpsbosa-dis-best-deriv-vla-csv</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">CSV Vlaanderen</dc:title>
+            <dc:title xml:lang="fr">CSV Flandre</dc:title>
+            <dc:description xml:lang="nl">CSV Vlaanderen</dc:description>
+            <dc:description xml:lang="fr">CSV Flandre</dc:description>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+            <dcat:compressFormat rdf:resource="https://www.iana.org/assignments/media-types/application/zip"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+            <dcat:downloadURL rdf:resource="https://opendata.bosa.be/download/best/openaddress-bevlg.zip"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/best/deriv/bru/csv">
+            <dc:identifier>fpsbosa-dis-best-deriv-bru-csv</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">CSV Brussels Gewest</dc:title>
+            <dc:title xml:lang="fr">CSV Région de Bruxelles</dc:title>
+            <dc:description xml:lang="nl">CSV Brussels Gewest</dc:description>
+            <dc:description xml:lang="fr">CSV Region de Bruxelles</dc:description>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+            <dcat:compressFormat rdf:resource="https://www.iana.org/assignments/media-types/application/zip"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+            <dcat:downloadURL rdf:resource="https://opendata.bosa.be/download/best/openaddress-bebru.zip"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/best/deriv/wal/csv">
+            <dc:identifier>fpsbosa-dis-best-deriv-wal-csv</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+            <dc:title xml:lang="nl">CSV Wallonië</dc:title>
+            <dc:title xml:lang="fr">CSV Wallonie</dc:title>
+            <dc:description xml:lang="nl">CSV Wallonië</dc:description>
+            <dc:description xml:lang="fr">CSV Wallonie</dc:description>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+            <dcat:compressFormat rdf:resource="https://www.iana.org/assignments/media-types/application/zip"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.nl.html"/>
+            <dcat:accessURL rdf:resource="https://opendata.bosa.be/index.fr.html"/>
+            <dcat:downloadURL rdf:resource="https://opendata.bosa.be/download/best/openaddress-bewal.zip"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+
+      </dcat:Dataset>
+    </dcat:dataset>
+
+  </dcat:Catalog>
+
+  <vcard:Organization rdf:about="http://opendata.bosa.be/contact">
+    <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <vcard:fn xml:lang="en">Open Data FPS BOSA DG SD</vcard:fn>
+    <vcard:fn xml:lang="nl">Open Data FOD BOSA DG VD</vcard:fn>
+    <vcard:fn xml:lang="fr">Open Data SPF BOSA DG SD</vcard:fn>
+    <vcard:fn xml:lang="de">Open Data FÖD BOSA DG VD</vcard:fn>
+    <vcard:hasURL rdf:resource="https://opendata.bosa.be"/>
+    <vcard:hasEmail rdf:resource="mailto:opendata@bosa.belgium.be"/>
+  </vcard:Organization>
+
+  <skos:Concept rdf:about="https://sws.geonames.org/2802361/">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/Location"/>
+    <skos:prefLabel xml:lang="nl">België</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Belgique</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Belgium</skos:prefLabel>
+    <dcat:bbox rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))</dcat:bbox>
+  </skos:Concept>
+
+  <foaf:Agent rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0671516647">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/foaf/Organization"/>
+    <dc:type rdf:resource="http://purl.org/adms/publishertype/NationalAuthority"/>
+    <foaf:name xml:lang="en">FPS BOSA</foaf:name>
+    <foaf:name xml:lang="nl">FOD BOSA</foaf:name>
+    <foaf:name xml:lang="fr">SPF BOSA</foaf:name>
+    <foaf:name xml:lang="de">FÖD BOSA</foaf:name>
+  </foaf:Agent>
+
+  <foaf:Document rdf:about="https://digital.belgium.be/federated-api-marketplace/rest-api/s332-general-bestservices-info/details">
+     <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+     <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+  </foaf:Document>
+
+  <foaf:Document rdf:about="https://opendata.bosa.be/index.nl.html">
+     <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+  </foaf:Document>
+    
+  <foaf:Document rdf:about="https://opendata.bosa.be/index.fr.html">
+     <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+  </foaf:Document>
+
+  <eli:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj">
+    <eli:title xml:lang="en">Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use </eli:title>
+  </eli:LegalResource>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/dataset-type/HVD">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/dataset-type"/>
+    <skos:prefLabel xml:lang="en">High-value dataset</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/text/xml">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <skos:prefLabel>text/xml</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://www.iana.org/assignments/media-types/application/zip">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/MediaType"/>
+    <skos:prefLabel>application/zip</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+    <skos:prefLabel>CSV</skos:prefLabel>	
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/JSON">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+    <skos:prefLabel>JSON</skos:prefLabel>	
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XML">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+    <skos:prefLabel>XML</skos:prefLabel>	
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/WEEKLY">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+    <skos:prefLabel xml:lang="en">weekly</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/GOVE">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:prefLabel xml:lang="en">Government and public sector</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/FRA">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <skos:prefLabel xml:lang="en">French</skos:prefLabel>
+  </skos:Concept>
+ 
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/DEU">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+    <skos:prefLabel xml:lang="en">German</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/licence"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+    <dc:type rdf:resource="http://purl.org/adms/licencetype/Attribution"/>
+    <skos:prefLabel xml:lang="en">Creative Commons Attribution 4.0 International</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+    <skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://data.europa.eu/bna/c_ac64a52d">
+    <skos:prefLabel xml:lang="en">Geospatial</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+    <skos:prefLabel xml:lang="en">available</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <skos:prefLabel xml:lang="en">public</skos:prefLabel>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="http://purl.org/adms/publishertype/NationalAuthority">
+    <skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+    <skos:prefLabel xml:lang="en">National authority</skos:prefLabel>
+  </skos:Concept>
+    
+</rdf:RDF>

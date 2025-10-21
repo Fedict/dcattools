@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:dcat="http://www.w3.org/ns/dcat#"
+		xmlns:dcatap="http://data.europa.eu/r5r/"
+		xmlns:dc="http://purl.org/dc/terms/"
+		xmlns:eli="http://data.europa.eu/eli/ontology#"
+		xmlns:foaf="http://xmlns.com/foaf/0.1/"
+		xmlns:geo="http://www.opengis.net/ont/geosparql#"
+		xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+		xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<dcat:Catalog rdf:about="http://data.gov.be/catalog/fpseco/cbe">
+	<dc:title xml:lang="en">Catalog of FPS Economy (CBE)</dc:title>
+	<dc:description xml:lang="en">Catalog of the Federal Public Service Economy / Crossroad Bank Enterprises</dc:description>
+	<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0314595348"/>
+	<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+
+	<dcat:service>
+		<dcat:DataService rdf:about="http://data.gov.be/service/fpseco/cbefull">
+			<dc:identifier>fpseco-cbefull-api</dc:identifier>
+			<dc:title xml:lang="nl">Kruispuntbank van Ondernemingen - Webservice Public Search</dc:title>
+			<dc:title xml:lang="fr">Banque-Carrefour des Entreprises - Service web Public Search</dc:title>
+			<dc:title xml:lang="de">ZDU - Webservice Public Search</dc:title>
+			<dc:title xml:lang="en">CBE - Public Search web service</dc:title>
+			<dc:description xml:lang="nl">U vindt hier de publieke actieve gegevens van elke geregistreerde entiteit (hierna entiteit genoemd) en vestigingseenheid in de Kruispuntbank van Ondernemingen (KBO). De gegevens van stopgezette entiteiten die actief waren op het moment van stopzetting, zijn eveneens beschikbaar. De ingeschreven of aangepaste gegevens zijn de volgende dag beschikbaar. Gegevens die worden ingeschreven of aangepast op zaterdag of zondag, zijn de volgende dinsdag beschikbaar.</dc:description>
+			<dc:description xml:lang="fr">Vous trouvez ici les données publiques actives de toutes les entités enregistrées (ci-après entités) et unités d’établissement inscrites dans la BCE. Les données des entités arrêtées qui étaient actives au moment de l’arrêt de l’entité sont également disponibles. Les informations enregistrées ou adaptées sont disponibles le lendemain. Les renseignements enregistrés ou adaptés pendant le week-end sont disponibles le mardi suivant.</dc:description>	
+			<dc:description xml:lang="de">Hier finden Sie die öffentlichen aktiven Daten von jeden registrierten Einheiten (nachstehend Einheiten genannt) und jeder Niederlassungseinheit in der zentralen Datenbank der Unternehmen (ZDU).Die Daten stillgelegter Einheiten, die zum Beendigungstermin aktiv waren, sind gleichfalls verfügbar.Die eingetragenen oder geänderten Daten sind am nächsten Tag verfügbar. Daten, die am Samstag oder Sonntag eingetragen oder geändert werden, sind am nächsten Dienstag verfügbar.</dc:description>
+			<dc:description xml:lang="en">The Public Search web service contains the public active data for each registered entity (here further entity) and establishment unit registered in the Crossroads Bank for Enterprises (CBE). Data of discontinued entities that were active at the time of the discontinuation is also available.The registered or changed data is available the next day. Data registered or changed on Saturdays or Sundays becomes available the following Tuesday.</dc:description>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+			<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0314595348"/>
+			<dcat:contactPoint rdf:resource="https://economie.fgov.be/cbe/contact"/>
+
+			<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/DAILY"/>
+
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+			<dcat:keyword xml:lang="en">CBE</dcat:keyword>
+			<dcat:keyword xml:lang="en">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
+			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>	
+
+			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+			<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_56a1bf47"/>
+
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-webservice-public-search">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-public-search-web-service">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+				</foaf:Document>
+			</dcat:landingPage>
+		
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Catalogue-des-donnees-reutilisables-Service-web-Public-Search.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Catalogue des données Service web Public Search</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Gegevenscatalogus-herbruikbare-gegevens-webservice-Public-Search.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Gegevenscatalogus Webservice Public Search</dc:title>
+				</foaf:Document>
+			</foaf:page>		
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Cookbook%20BCE%20Public%20Search%20Webservice.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Cookbook</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/CBE/Cookbook-CBE-Public-Search-Webservice.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Cookbook</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Licence-services-web-public-search-conditions-d-utilisation.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Conditions d'utilisation</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Licentie-webservice-Public-Search-gebruiksvoorwaarden.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Gebruiksvoorwaarden</dc:title>
+				</foaf:Document>
+			</foaf:page>
+						
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/RESTRICTED"/>
+
+			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+			
+			<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-23</dc:modified>
+			<dc:temporal>
+				<dc:PeriodOfTime>
+					<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1923-01-01</dcat:startDate>
+				</dc:PeriodOfTime>
+			</dc:temporal>
+
+			<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XML"/>			
+			<dc:license rdf:resource="http://data.gov.be/license/cbe/webservice"/>
+
+			<dcat:endpointURL rdf:resource="https://kbopub.economie.fgov.be/kbopubws110000/services/wsKBOPub"/>
+			<dcat:endpointDescription rdf:resource="https://kbopub.economie.fgov.be/kbopubws110000/services/wsKBOPub?wsdl"/>
+			<dcat:servesDataset rdf:resource="http://data.gov.be/dataset/fpseco/cbefull"/>
+		</dcat:DataService>
+	</dcat:service>
+
+	<dcat:dataset>
+		<dcat:Dataset rdf:about="http://data.gov.be/dataset/fpseco/cbefull">
+			<dc:identifier>fpseco-cbefull-download</dc:identifier>
+			<dc:title xml:lang="nl">Kruispuntbank van Ondernemingen - Bestand van alle voor hergebruik beschikbare publieke gegevens</dc:title>
+			<dc:title xml:lang="fr">Banque-Carrefour des Entreprises - Fichier complet des données publiques réutilisables</dc:title>
+			<dc:title xml:lang="de">ZDU - Datei mit allen zwecks Wiederverwendung verfügbaren öffentlichen Daten</dc:title>
+			<dc:title xml:lang="en">CBE - File containing all the public data available for reuse</dc:title>
+
+			<dc:description xml:lang="nl">Er bestaan 2 soorten gegevensbestanden:
+het volledige bestand (full extract): dat bestand wordt maandelijks aangemaakt en bevat alle actieve en stopgezette gegevens van alle geregistreerde entiteiten en vestigingseenheden;
+het bestand met de wijzigingen: dat bestand wordt op dinsdag, woensdag, donderdag, vrijdag en zaterdag aangemaakt en bevat alle gewijzigde gegevens sinds de vorige levering.
+Deze bestanden blijven 5 werkdagen beschikbaar. Nadien worden ze gearchiveerd.</dc:description>
+			<dc:description xml:lang="fr">Il existe deux types de fichiers de données :
+le fichier complet (full extract) : il est mis à disposition mensuellement et contient toutes les données actives et arrêtées de toutes les entités enregistrées et unités d’établissement ;
+le fichier de modifications : il est disponible le mardi, mercredi, jeudi, vendredi et samedi et reprend toutes les données modifiées depuis la dernière livraison.
+Ces fichiers restent disponibles durant 5 jours ouvrables. Après ils sont archivés.</dc:description>
+			<dc:description xml:lang="de">Es gibt 2 Datentypen:
+die vollständige Datei (full extract): diese Datei wird monatlich erstellt und enthält alle aktiven und nicht mehr aktiven Daten aller Einheiten und Niederlassungseinheiten; 
+die Datei mit den Änderungen: diese Datei wird am Dienstag, Mittwoch, Donnerstag, Freitag und Samstag erstellt und enthält alle geänderten Daten seit der vorigen Lieferung.
+Diese Dateien bleiben 5 Werktage verfügbar. Danach werden sie archiviert.</dc:description>
+			<dc:description xml:lang="en">There are two types of data files:
+the full file (full extract):this file is created each month and contains all the active and discontinued data for all the registered entities and establishment units;
+the file containing the changes: this file is created on Tuesdays, Wednesdays, Thursdays, Fridays and Saturdays and contains all the data changes since the previous delivery.
+These files remain available for 5 working days and are then stored.</dc:description>
+
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+			<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0314595348"/>
+			<dcat:contactPoint rdf:resource="https://economie.fgov.be/cbe/contact"/>
+
+			<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/DAILY"/>
+
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+			<dcat:keyword xml:lang="en">CBE</dcat:keyword>
+			<dcat:keyword xml:lang="en">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
+			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>	
+
+			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+			<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_56a1bf47"/>
+			<dc:type rdf:resource="http://publications.europa.eu/resource/authority/dataset-type/HVD"/>
+
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-1">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des-1">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-datei-mit-allen-zwecks">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-file-containing-all-public">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+				</foaf:Document>
+			</dcat:landingPage>
+
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Catalogue-ensemble-de-donnees-reutilisables-BCE.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Catalogue reprenant l’ensemble des données réutilisables</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Gegevenscatalogus-KBO-herbruikbare-gegevens.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Gegevenscatalogus  van de voor hergebruik beschikbare gegevens </dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Technische-gebruikershandleiding-hergebruik-gegevens-KBO.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Technische gebruikershandleiding</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Manuel-technique-reutilisation-des-donnees-BCE.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Manuel technique d’utilisation</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Contrat-de-licence-BCE-reutilisation-de-donnees-commerciale.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Contrat de licence (commerciale)</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Contrat-de-licence-BCE-reutilisation-de-donnees-non-commerciale.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Contrat de licence (non-commerciale)</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Licentieovereenkomst-KBO-commercieel-hergebruik-van-gegevens.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Licentieovereenkomst (commercieel)</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Licentieovereenkomst-KBO-niet-commercieel-hergebruik-van-gegevens.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Licentieovereenkomst (niet-commercieel)</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/RESTRICTED"/>
+
+			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+			
+			<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-23</dc:modified>
+			<dc:temporal>
+				<dc:PeriodOfTime>
+					<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1923-01-01</dcat:startDate>
+				</dc:PeriodOfTime>
+			</dc:temporal>
+
+			<dcat:distribution>
+				<dcat:Distribution rdf:about="http://data.gov.be/dist/fpseco/cbe/full/xml">
+					<dc:title xml:lang="nl">volledig bestand</dc:title>
+					<dc:title xml:lang="fr">fichier complet</dc:title>
+					<dc:title xml:lang="de">vollständige Datei</dc:title>
+					<dc:title xml:lang="en">full file</dc:title>
+
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-1">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des-1">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-datei-mit-allen-zwecks">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-file-containing-all-public">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+						</foaf:Document>
+					</dcat:accessURL>
+
+					<dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/xml"/>
+					<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XML"/>
+	
+					<dc:license rdf:resource="http://data.gov.be/license/cbe/full"/>
+					<dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+					<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+					<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_56a1bf47"/>
+				</dcat:Distribution>
+			</dcat:distribution>
+
+			<dcat:distribution>
+				<dcat:Distribution rdf:about="http://data.gov.be/dist/fpseco/cbe/changes/xml">
+					<dc:title xml:lang="nl">bestand met wijzigingen</dc:title>
+					<dc:title xml:lang="fr">fichier de modifications</dc:title>
+					<dc:title xml:lang="de">Datei mit den Änderungen</dc:title>
+					<dc:title xml:lang="en">file containing the changes</dc:title>
+
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-1">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des-1">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-datei-mit-allen-zwecks">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-file-containing-all-public">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+						</foaf:Document>
+					</dcat:accessURL>
+
+					<dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/xml"/>
+					<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XML"/>
+	
+					<dc:license rdf:resource="http://data.gov.be/license/cbe/full"/>
+					<dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+					<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+					<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_56a1bf47"/>
+				</dcat:Distribution>
+			</dcat:distribution>
+	  </dcat:Dataset>
+	</dcat:dataset>
+
+	<dcat:dataset>
+		<dcat:Dataset rdf:about="http://data.gov.be/dataset/fpseco/cbeopen">
+			<dc:identifier>fpseco-cbeopen-download</dc:identifier>
+			<dc:source rdf:resource="http://data.gov.be/dataset/fpseco/cbefull"/>
+			<dc:title xml:lang="nl">Kruispuntbank van Ondernemingen - Open data</dc:title>
+			<dc:title xml:lang="fr">Banque-Carrefour des Entreprises - Open Data</dc:title>
+			<dc:title xml:lang="de">ZDU - Open Data</dc:title>
+			<dc:title xml:lang="en">CBE - Open data</dc:title>
+
+			<dc:description xml:lang="nl">Er zijn 2 bestanden beschikbaar:
+een volledig bestand:Het bevat alle actieve entiteiten en vestigingseenheden ingeschreven in de KBO op het moment van de creatie van het bestand; 
+een updatebestand: Het bevat alle wijzigingen tussen het laatste en voorlaatste volledige bestand.
+Nieuwe bestanden zijn beschikbaar elke eerste zondag van de maand..</dc:description>
+			<dc:description xml:lang="fr">Il existe deux types de fichiers de données :
+un fichier complet de toutes les entités et unités d’établissement actives figurant dans la BCE au moment de la création du fichier;
+un fichier de mise à jour contenant tous les changements entre le dernier et l’avant-dernier fichier complet.
+Les nouveaux fichiers sont disponibles chaque premier dimanche du mois.</dc:description>
+			<dc:description xml:lang="de">Es gibt 2 Datentypen:
+eine vollständige Datei: Diese Datei enthält alle aktiven Einheiten und Niederlassungseinheiten, die zum Zeitpunkt der Erstellung der Datei in der ZDU eingetragen sind;
+eine Update-Datei: Diese Datei enthält alle Änderungen zwischen der letzten und der vorletzten vollständigen Datei.
+Neue Dateien sind an jedem ersten Sonntag des Monats verfügbar.</dc:description>
+			<dc:description xml:lang="en">There are two types of data files:
+a complete file: this file contains all the active registered entities and business units registered in the CBE at the time of creation of the file;
+an update file: this file contains all the changes between the last and previous complete file.
+New files are available every first Sunday of the month.</dc:description>
+
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+			<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0314595348"/>
+			<dcat:contactPoint rdf:resource="https://economie.fgov.be/cbe/contact"/>
+
+			<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/MONTHLY"/>
+
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
+			<dcat:keyword xml:lang="en">CBE</dcat:keyword>
+			<dcat:keyword xml:lang="en">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
+			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>	
+
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-0">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des-0">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-open-data">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-open-data">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+				</foaf:Document>
+			</dcat:landingPage>
+
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Gegevenscatalogus-hebruikbare-gegevens-KBO-Open-Data.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Gegevenscatalogus "Open Data"</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Catalogue-des-donnees-reutilisables-BCE-opendata.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Catalogue des données "Open Data"</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/KBO/Licentie-KBO-Open-Data-gebruiksvoorwaarden.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+					<dc:title xml:lang="nl">Gebruiksvoorwaarden</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			<foaf:page>
+				<foaf:Document rdf:about="https://economie.fgov.be/sites/default/files/Files/Entreprises/BCE/Licence-BCE-Open-Data-Conditions-d-utilisation.pdf">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+					<dc:title xml:lang="fr">Conditions d'utilisation</dc:title>
+				</foaf:Document>
+			</foaf:page>
+			
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+			
+			<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-23</dc:modified>
+			<dc:temporal>
+				<dc:PeriodOfTime>
+					<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1923-01-01</dcat:startDate>
+				</dc:PeriodOfTime>
+			</dc:temporal>
+
+			<dcat:distribution>
+				<dcat:Distribution rdf:about="http://data.gov.be/dist/fpseco/cbeopen/full/csv">
+					<dc:title xml:lang="nl">volledig bestand</dc:title>
+					<dc:title xml:lang="fr">fichier complet</dc:title>
+					<dc:title xml:lang="de">vollständige Datei</dc:title>
+					<dc:title xml:lang="en">full file</dc:title>
+
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-0">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des-0">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-open-data">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-open-data">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+						</foaf:Document>
+					</dcat:accessURL>
+
+					<dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+					<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+	
+					<dc:license rdf:resource="http://data.gov.be/license/cbe/open"/>
+					<dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+				</dcat:Distribution>
+			</dcat:distribution>
+
+			<dcat:distribution>
+				<dcat:Distribution rdf:about="http://data.gov.be/dist/fpseco/cbeopen/changes/csv">
+					<dc:title xml:lang="nl">bestand met wijzigingen</dc:title>
+					<dc:title xml:lang="fr">fichier de modifications</dc:title>
+					<dc:title xml:lang="de">Datei mit den Änderungen</dc:title>
+					<dc:title xml:lang="en">file containing the changes</dc:title>
+
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-0">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/fr/themes/entreprises/banque-carrefour-des/services-pour-tous/reutilisation-de-donnees/banque-carrefour-des-0">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/de/themen/unternehmen/zentrale-datenbank-der/dienste-fuer-jedermann/wiederverwendung-oeffentlicher/zdu-open-data">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+						</foaf:Document>
+					</dcat:accessURL>
+					<dcat:accessURL>
+						<foaf:Document rdf:about="https://economie.fgov.be/en/themes/enterprises/crossroads-bank-enterprises/services-everyone/public-data-available-reuse/cbe-open-data">
+							<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+						</foaf:Document>
+					</dcat:accessURL>
+
+					<dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+					<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+	
+					<dc:license rdf:resource="http://data.gov.be/license/cbe/open"/>
+					<dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+				</dcat:Distribution>
+			</dcat:distribution>
+	  </dcat:Dataset>
+	</dcat:dataset>
+</dcat:Catalog>
+
+<vcard:Kind rdf:about="https://economie.fgov.be/cbe/contact">
+	<rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Organization"/>
+	<vcard:fn xml:lang="nl">KBO Helpdesk</vcard:fn>
+	<vcard:fn xml:lang="fr">Helpdesk de la BCE</vcard:fn>
+	<vcard:fn xml:lang="de">Helpdesk ZDU</vcard:fn>
+	<vcard:fn xml:lang="en">Helpdesk CBE</vcard:fn>
+	<vcard:hasEmail rdf:resource="mailto:helpdesk.bce@economie.fgov.be"/>
+</vcard:Kind>
+ 
+<foaf:Agent rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0314595348">
+	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+	<dc:type rdf:resource="http://purl.org/adms/publishertype/NationalAuthority"/>
+	<foaf:name xml:lang="en">FPS Economy</foaf:name>
+	<foaf:name xml:lang="nl">FOD Economie</foaf:name>
+	<foaf:name xml:lang="fr">SPF Economie</foaf:name>
+	<foaf:name xml:lang="de">FÖD Wirtschaft</foaf:name>
+</foaf:Agent>
+
+<dc:LicenseDocument rdf:about="http://data.gov.be/license/cbe/webservice">
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/Attribution"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/RoyaltiesRequired"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/OtherRestrictiveClauses"/>
+	<rdf:label xml:lang="nl">Deze diensten zijn betalend: per 2.000 aanvragen betaalt u 50 euro.</rdf:label>
+	<rdf:label xml:lang="fr">Ces services web sont payants : 50 euros pour 2.000 requêtes.</rdf:label>
+	<rdf:label xml:lang="de">Diese Dienste sind kostenpflichtig: für jeweils 2.000 Anfragen zahlen Sie 50 Euro.</rdf:label>
+	<rdf:label xml:lang="en">There is a charge for these web services: 50 euros for 2,000 requests.</rdf:label>
+</dc:LicenseDocument>
+
+<dc:LicenseDocument rdf:about="http://data.gov.be/license/cbe/full">
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/Attribution"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/RoyaltiesRequired"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/OtherRestrictiveClauses"/>
+	<rdf:label xml:lang="nl">De gegevens worden gratis beschikbaar gesteld als ze worden hergebruikt voor niet-commerciële doeleinden. De jaarlijkse vergoeding is vastgesteld op 30.000 euro als de gegevens voor commerciële doelen worden gebruikt.</rdf:label>
+	<rdf:label xml:lang="fr">Les données sont mises à disposition gratuitement en cas de réutilisation à des fins non-commerciales. Le montant de la redevance annuelle est fixé à 30.000 euros si les données sont utilisées à des fins commerciales.</rdf:label>
+	<rdf:label xml:lang="de">Für die nicht-kommerzielle Weiterverwendung werden die Daten kostenlos zur Verfügung gestellt. Für die kommerzielle Weiterverwendung der Daten beträgt die Jahresgebühr 30.000 Euro.</rdf:label>
+	<rdf:label xml:lang="en">The data are made available free of charge for non-commercial reuse. The annual fee is 30,000 Euro if the data is used for commercial purposes.</rdf:label>
+</dc:LicenseDocument>
+
+<dc:LicenseDocument rdf:about="http://data.gov.be/license/cbe/open">
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/Attribution"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/OtherRestrictiveClauses"/>
+</dc:LicenseDocument>
+
+<eli:LegalResource rdf:about="http://data.europa.eu/eli/reg_impl/2023/138/oj">
+	<eli:title xml:lang="en">Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use </eli:title>
+</eli:LegalResource>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/ECON">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+	<skos:prefLabel xml:lang="en">Economy and finance</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="https://sws.geonames.org/2802361/">
+ 	<rdf:type rdf:resource="http://purl.org/dc/terms/Location"/>
+	<skos:prefLabel xml:lang="nl">België</skos:prefLabel>
+	<skos:prefLabel xml:lang="fr">Belgique</skos:prefLabel>
+	<skos:prefLabel xml:lang="en">Belgium</skos:prefLabel>
+	<dcat:bbox rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))</dcat:bbox>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/FRA">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">French</skos:prefLabel>
+</skos:Concept>
+ 
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">English</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/DEU">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">German</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="https://www.iana.org/assignments/media-types/text/csv">
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaType"/>
+	<skos:prefLabel>text/csv</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="https://www.iana.org/assignments/media-types/application/xml">
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaType"/>
+	<skos:prefLabel>application/xml</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/CSV">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+	<skos:prefLabel>CSV</skos:prefLabel>	
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XML">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+	<skos:prefLabel>XML</skos:prefLabel>	
+</skos:Concept>
+ 
+<skos:Concept rdf:about="http://purl.org/adms/publishertype/NationalAuthority">
+	<skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+	<skos:prefLabel xml:lang="en">National authority</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+	<skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+	<skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/licencetype/NonCommercialUseOnly">
+	<skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+	<skos:prefLabel xml:lang="en">Non-commercial use only</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/licencetype/OtherRestrictiveClauses">
+	<skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+	<skos:prefLabel xml:lang="en">Other restrictive clauses</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/licencetype/RoyaltiesRequired">
+	<skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+	<skos:prefLabel xml:lang="en">Royalties required</skos:prefLabel>
+</skos:Concept>
+		
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/DAILY">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+	<skos:prefLabel xml:lang="en">daily</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/MONTHLY">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+	<skos:prefLabel xml:lang="en">monthly</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://data.europa.eu/bna/c_56a1bf47">
+	<skos:inScheme rdf:resource="http://data.europa.eu/bna/asd487ae75"/>
+	<skos:prefLabel xml:lang="en">Basic company information: key attributes</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+	<skos:prefLabel xml:lang="en">available</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/dataset-type/HVD">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/dataset-type"/>
+	<skos:prefLabel xml:lang="en">High-value dataset</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+	<skos:prefLabel xml:lang="en">publicly available</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+	<skos:prefLabel xml:lang="en">restricted</skos:prefLabel>
+</skos:Concept>
+</rdf:RDF>

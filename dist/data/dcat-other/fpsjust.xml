@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:dcat="http://www.w3.org/ns/dcat#"
+		xmlns:dcatap="http://data.europa.eu/r5r/"
+		xmlns:dc="http://purl.org/dc/terms/"
+		xmlns:eli="http://data.europa.eu/eli/ontology#"
+		xmlns:foaf="http://xmlns.com/foaf/0.1/"
+		xmlns:geo="http://www.opengis.net/ont/geosparql#"
+		xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+		xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+<dcat:Catalog rdf:about="http://data.gov.be/catalog/fpsjustice">
+	<dc:title xml:lang="en">Catalog of FPS Justice</dc:title>
+	<dc:description xml:lang="en">Initial version of catalog of FPS Justice</dc:description>
+	<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0308357753"/>
+	<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+
+	<dcat:dataset>
+		<dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsjustice/munabbrev">
+			<dc:identifier>fpsjust-munabbrev</dc:identifier>
+			<dc:title xml:lang="nl">Afkortingen steden en gemeenten</dc:title>
+			<dc:title xml:lang="fr">Abréviations villes et communes</dc:title>
+			<dc:description xml:lang="nl">De referentielijst in België voor alle unieke acroniemen (afkortingen) van alle Belgische steden en gemeenten. De lijst wordt beheerd door FOD Justitie. Deze mag gebruikt worden door alle overheidsinstellingen en de private sector.</dc:description>
+			<dc:description xml:lang="fr">La liste de référence en Belgique pour tous les acronymes uniques (abréviations) de toutes les villes et communes belges. La liste est gérée par le SPF Justice. Elle peut être utilisée par toutes les institutions publiques et le secteur privé.</dc:description>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+
+			<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0308357753"/>
+			<dcat:contactPoint rdf:resource="https://data.gov.be/contact/fpsjustice"/>
+
+			<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/AS_NEEDED"/>
+
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/JUST"/>
+			<dcat:keyword xml:lang="en">Justice</dcat:keyword>
+			<dcat:keyword xml:lang="fr">Justice</dcat:keyword>
+			<dcat:keyword xml:lang="nl">Justitie</dcat:keyword>	
+
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://github.com/belgif/thematic/tree/master/municipality-acronyms">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+				</foaf:Document>
+			</dcat:landingPage>
+		
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+			
+			<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-24</dc:modified>
+
+			<dcat:distribution>
+				<dcat:Distribution rdf:about="http://data.gov.be/dist/fpsjustice/munabbrev/xls">
+					<dc:title xml:lang="nl">Afkortingen steden en gemeentes</dc:title>
+					<dc:title xml:lang="fr">Abréviations villes et communes</dc:title>
+					
+					<dcat:accessURL rdf:resource="https://github.com/belgif/thematic/tree/master/municipality-acronyms"/>
+					<dcat:downloadURL rdf:resource="https://github.com/belgif/thematic/raw/refs/heads/master/municipality-acronyms/JustReference_StedenGemeentes_Acroniemen_IH_MASTER_19122024.xlsx"/>
+
+					<dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+					<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+	
+					<dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0"/>
+					<dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/EXPERIMENTAL"/>
+				</dcat:Distribution>
+			</dcat:distribution>
+	  </dcat:Dataset>
+	</dcat:dataset>
+
+	<dcat:service>
+		<dcat:DataService rdf:about="http://data.gov.be/dataset/fpsjustice/moniteur">
+			<dc:identifier>fpsjust-moniteur</dc:identifier>
+			<dc:title xml:lang="nl">Staatsblad</dc:title>
+			<dc:title xml:lang="fr">Moniteur belge</dc:title>
+			<dc:title xml:lang="de">Belgisches Staatsblatt</dc:title>
+			<dc:description xml:lang="nl">Het Belgisch Staatsblad produceert en verspreidt een brede waaier aan officiële en overheidspublicaties, en dat zowel via papier als elektronisch..</dc:description>
+			<dc:description xml:lang="fr">Le Moniteur belge assure la production et la diffusion d’un large éventail de publications officielles et publiques, tant via le canal papier qu’électronique (site web).</dc:description>
+			<dc:description xml:lang="de">Das belgische Staatsblatt verfasst und verbreitet eine große Auswahl amtlicher und staatlicher Veröffentlichungen, gedruckt sowie in elektronischer Form.</dc:description>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+			<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0308357753"/>
+			<dcat:contactPoint rdf:resource="https://data.gov.be/contact/moniteur"/>
+
+			<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/DAILY"/>
+
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/JUST"/>
+			<dcat:keyword xml:lang="en">Justice</dcat:keyword>
+			<dcat:keyword xml:lang="fr">Justice</dcat:keyword>
+			<dcat:keyword xml:lang="nl">Justitie</dcat:keyword>	
+
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://www.ejustice.just.fgov.be/cgi/welcome.pl?language=nl&amp;view_numac=">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://www.ejustice.just.fgov.be/cgi/welcome.pl?language=fr&amp;view_numac=">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://www.ejustice.just.fgov.be/cgi/welcome.pl?language=de&amp;view_numac=">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:endpointURL rdf:resource="https://www.ejustice.just.fgov.be/cgi/rech.pl"/>
+			
+			<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+			<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML"/>
+
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+			<dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+					
+			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+	
+			<dc:temporal>
+				<dc:PeriodOfTime>
+					<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1924-01-01</dcat:startDate>
+				</dc:PeriodOfTime>
+			</dc:temporal>
+	  </dcat:DataService>
+	</dcat:service>
+	
+	<dcat:service>
+		<dcat:DataService rdf:about="http://data.gov.be/dataset/fpsjustice/moniteur-annex">
+			<dc:identifier>fpsjust-moniteur-annex</dc:identifier>
+			<dc:title xml:lang="nl">Bijlage van de Rechtspersonen</dc:title>
+			<dc:title xml:lang="fr">Annexe Personnes morales</dc:title>
+			<dc:title xml:lang="de">Beilage der Rechtspersonen</dc:title>
+			<dc:description xml:lang="nl">Akten van rechtspersonen (verenigingen, ondernemingen, bijzondere vennootschapsvormen, e.d.) verschijnen sinds 1 juli 2003 samen in deze bijlage van het Belgisch Staatsblad. Door de invoering van de Kruispuntbank Ondernemingen (KBO) werd beslist om ze vanaf 1 juli 2003 samen te publiceren met de ondernemingen in één enkele bijlage. Deze publicaties hebben bijgevolg een officieel karakter.</dc:description>
+			<dc:description xml:lang="fr">Les actes des personnes morales (associations, entreprises, formes juridiques spéciales, etc.) paraissent ensemble dans cette annexe du Moniteur belge depuis le 1er juillet 2003. Avec la création de la Banque-Carrefour des Entreprises (BCE), il a été décidé de les publier ensemble avec les entreprises dans une seule annexe à partir du 1er juillet 2003. Ces publications ont donc un caractère officiel.</dc:description>
+			<dc:description xml:lang="de">Dokumente von Rechtspersonen (Vereine, Unternehmen, besondere Gesellschaftsformen usw.) erscheinen seit dem 1. Juli 2003 gemeinsam in diesem Anhang des Belgischen Staatsblatts. Durch die Einführung der Zentralen Datenbank der Unternehmen wurde beschlossen, sie ab dem 1. Juli 2003 zusammen mit den Unternehmen in einem einzigen Anhang zu veröffentlichen. Diese Veröffentlichungen haben daher einen offiziellen Charakter.</dc:description>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+			<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+
+			<dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0308357753"/>
+			<dcat:contactPoint rdf:resource="https://data.gov.be/contact/moniteur"/>
+
+			<dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/DAILY"/>
+
+			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/JUST"/>
+			<dcat:keyword xml:lang="en">legal persons</dcat:keyword>
+			<dcat:keyword xml:lang="fr">personnes morales</dcat:keyword>
+			<dcat:keyword xml:lang="nl">rechtspersonen</dcat:keyword>	
+
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://www.ejustice.just.fgov.be/cgi_tsv_pub/welcome.pl?language=nl&amp;view_numac=">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://www.ejustice.just.fgov.be/cgi_tsv_pub/welcome.pl?language=fr&amp;view_numac=">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:landingPage>
+				<foaf:Document rdf:about="https://www.ejustice.just.fgov.be/cgi_tsv_pub/welcome.pl?language=de&amp;view_numac=">
+					<dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+				</foaf:Document>
+			</dcat:landingPage>
+			<dcat:endpointURL rdf:resource="https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl"/>
+			
+			<dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+			<dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+					
+			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+	
+			<dc:temporal>
+				<dc:PeriodOfTime>
+					<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-01-01</dcat:startDate>
+				</dc:PeriodOfTime>
+			</dc:temporal>
+	  </dcat:DataService>
+	</dcat:service>
+</dcat:Catalog>
+
+<vcard:Kind rdf:about="https://data.gov.be/contact/fpsjustice">
+	<rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Organization"/>
+	<vcard:fn xml:lang="nl">FOD Justitie</vcard:fn>
+	<vcard:fn xml:lang="fr">SPF Justice</vcard:fn>
+	<vcard:hasEmail rdf:resource="mailto:info@just.fgov.be"/>
+</vcard:Kind>
+
+<vcard:Kind rdf:about="https://data.gov.be/contact/moniteur">
+	<rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Organization"/>
+	<vcard:fn xml:lang="nl">FOD Justitie - Staatsblad</vcard:fn>
+	<vcard:fn xml:lang="fr">SPF Justice - Moniteur belge</vcard:fn>
+	<vcard:fn xml:lang="de">SPF Justice - Belgisches Staatsblatt</vcard:fn>
+	<vcard:hasEmail rdf:resource="mailto:info.staatsblad@just.fgov.be"/>
+</vcard:Kind>
+
+<foaf:Agent rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0308357753">
+	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+	<dc:type rdf:resource="http://purl.org/adms/publishertype/NationalAuthority"/>
+	<foaf:name xml:lang="en">FPS Justice</foaf:name>
+	<foaf:name xml:lang="nl">FOD Justitie</foaf:name>
+	<foaf:name xml:lang="fr">SPF Justice</foaf:name>
+	<foaf:name xml:lang="de">FÖD Justiz</foaf:name>
+</foaf:Agent>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/JUST">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+	<skos:prefLabel xml:lang="en">Justice, legal system and public safety</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/GOVE">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+	<skos:prefLabel xml:lang="en">Government and public sector</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="https://sws.geonames.org/2802361/">
+ 	<rdf:type rdf:resource="http://purl.org/dc/terms/Location"/>
+	<skos:prefLabel xml:lang="nl">België</skos:prefLabel>
+	<skos:prefLabel xml:lang="fr">Belgique</skos:prefLabel>
+	<skos:prefLabel xml:lang="en">Belgium</skos:prefLabel>
+	<dcat:bbox rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral">POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))</dcat:bbox>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/FRA">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">French</skos:prefLabel>
+</skos:Concept>
+ 
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/NLD">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">Dutch</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/DEU">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">German</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/language/ENG">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/language"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LinguisticSystem"/>
+	<skos:prefLabel xml:lang="en">English</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaType"/>
+	<skos:prefLabel>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+	<skos:prefLabel>XLSX</skos:prefLabel>	
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/PDF">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+	<skos:prefLabel>PDF</skos:prefLabel>	
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/HTML">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
+	<skos:prefLabel>HTML</skos:prefLabel>	
+</skos:Concept>
+  
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/licence/CC_BY_4_0">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/licence"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/Attribution"/>
+	<skos:prefLabel xml:lang="en">Creative Commons Attribution 4.0 International</skos:prefLabel>
+</skos:Concept>
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/licence/CC0">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/licence"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+	<dc:type rdf:resource="http://purl.org/adms/licencetype/PublicDomain"/>
+	<skos:prefLabel xml:lang="en">Creative Commons Zero</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/publishertype/NationalAuthority">
+	<skos:inScheme rdf:resource="http://purl.org/adms/publishertype/1.0"/>
+	<skos:prefLabel xml:lang="en">National authority</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/licencetype/Attribution">
+	<skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+	<skos:prefLabel xml:lang="en">Attribution</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://purl.org/adms/licencetype/PublicDomain">
+	<skos:inScheme rdf:resource="http://purl.org/adms/licencetype/1.0"/>
+	<skos:prefLabel xml:lang="en">PublicDomain</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/DAILY">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+	<skos:prefLabel xml:lang="en">daily</skos:prefLabel>
+</skos:Concept>
+			
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/AS_NEEDED">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+	<skos:prefLabel xml:lang="en">as needed</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+	<skos:prefLabel xml:lang="en">available</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/planned-availability/EXPERIMENTAL">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/planned-availability"/>
+	<skos:prefLabel xml:lang="en">experimental</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+	<rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+	<skos:prefLabel xml:lang="en">publicly available</skos:prefLabel>
+</skos:Concept>
+
+</rdf:RDF>
