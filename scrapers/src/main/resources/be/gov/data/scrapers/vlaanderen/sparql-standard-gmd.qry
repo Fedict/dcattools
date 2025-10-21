@@ -1,0 +1,14 @@
+# Use URI for ISO TC 211 GM instead of URL to webservice
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:conformsTo ?uri }
+INSERT 
+	{ 	?s dcterms:conformsTo <http://www.isotc211.org/2005/gmd/> .
+		<http://www.isotc211.org/2005/gmd/> a dcterms:Standard .
+		<http://www.isotc211.org/2005/gmd/> dcterms:title "ISO TC 211 GMD" }
+WHERE 
+	{	?s dcterms:conformsTo ?uri
+		FILTER (CONTAINS(STR(?uri), "=http://www.isotc211.org/2005/gmd"))
+	}

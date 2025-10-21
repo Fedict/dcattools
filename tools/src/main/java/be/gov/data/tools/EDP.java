@@ -614,7 +614,7 @@ public class EDP {
 	}
 
 	/**
-	 * Write DCAT Dataset or Dataservice
+	 * Write DCAT Dataset / Dataservice / Series
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
