@@ -1,0 +1,16 @@
+# Fix incorrect use of the same ID for service and dataset
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?service dcterms:identifier ?id  }
+INSERT 
+	{ 	?service dcterms:identifier ?servid }
+WHERE 
+	{	?dataset a dcat:Dataset .
+		?dataset dcterms:identifier ?id .
+		?service dcterms:identifier ?id .
+		?service a dcat:DataService .
+		BIND (CONCAT("service/", ?id) AS ?servid)
+	}
