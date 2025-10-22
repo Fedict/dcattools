@@ -2,11 +2,13 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap:  <http://data.europa.eu/r5r/>
 
 DELETE
 	{	?s dcterms:accessRights ?rights }
 INSERT 
 	{ 	?s dcterms:accessRights <http://publications.europa.eu/resource/authority/access-right/RESTRICTED> .
+		?s dcatap:applicableLegislation <http://data.europa.eu/eli/reg/2022/868/oj> .
 		?s dcterms:rights ?node .
 		?node a dcterms:RightsStatement .
 		?node dcterms:description ?rights }
