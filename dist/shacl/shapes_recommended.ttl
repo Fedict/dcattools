@@ -334,4 +334,3 @@
     ] ;
     sh:targetClass dct:PeriodOfTime .
 
-
