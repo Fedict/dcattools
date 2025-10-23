@@ -449,9 +449,6 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
 				Value refUri = res.next().getObject();
-			//	if (refUri instanceof IRI && refUri.toString().contains("well-known")) {
-			//		break;
-			//	}
 				w.writeStartElement(el);
 
 				if (refUri instanceof IRI) {
@@ -687,6 +684,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
+		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 		
 		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 		writeDates(w, con, uri);
@@ -696,8 +694,6 @@ public class EDP {
 		writeRole(w, con, uri, GEODCAT.ORIGINATOR, "geodcatap:originator");
 		writeRole(w, con, uri, GEODCAT.PROCESSOR, "geodcatap:processor");
 		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
-
-		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 
 		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
 
@@ -902,7 +898,10 @@ public class EDP {
 	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, Resource iri) 
 			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
-		w.writeAttribute("rdf:about", iri.stringValue());
+		String str = iri.stringValue();
+		if (! str.contains(".well_known")) {
+			w.writeAttribute("rdf:about", str);
+		}
 		if (con.hasStatement(iri, RDF.TYPE, FOAF.PERSON, false)) {
 			writeType(w, con, iri, FOAF.PERSON);
 			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
