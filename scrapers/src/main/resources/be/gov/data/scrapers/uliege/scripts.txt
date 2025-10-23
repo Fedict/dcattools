@@ -19,6 +19,7 @@ sparql-creator-scopus.qry
 sparql-access-restricted.qry
 sparql-access-public.qry
 sparql-available.qry
+sparql-rights-statement.qry
 sparql-contact-creator.qry
 uliege/sparql-default-publisher.qry
 uliege/data-contact.ttl

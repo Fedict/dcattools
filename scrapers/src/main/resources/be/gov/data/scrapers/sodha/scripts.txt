@@ -20,6 +20,7 @@ sparql-access-restricted.qry
 sparql-conforms-dga.qry
 sparql-access-public.qry
 sparql-available.qry
+sparql-rights-statement.qry
 sparql-theme-subject.qry
 sodha/sparql-default-theme.qry
 sodha/sparql-nl-language.qry

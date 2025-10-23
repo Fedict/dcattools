@@ -1,0 +1,20 @@
+# Move rights literals to a rights statement
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s ?rel ?rights }
+INSERT 
+	{ 	?s ?rel ?node .
+		?node a dcterms:RightsStatement .
+		?node dcterms:description ?rights }
+WHERE
+	{	?s ?rel ?rights .
+		VALUES ?rel { dcterms:rights dcterms:accessRights }
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(STR(?rights)))
+			) 
+		as ?node)
+		FILTER (ISLITERAL(?rights))
+	}

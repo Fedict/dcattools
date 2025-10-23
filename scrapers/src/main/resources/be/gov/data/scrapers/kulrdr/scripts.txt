@@ -8,6 +8,7 @@ sparql-access-public.qry
 sparql-available.qry
 sparql-access-restricted.qry
 sparql-conforms-dga.qry
+sparql-rights-statement.qry
 kulrdr/sparql-tag-language.qry
 kulrdr/sparql-remove-dists.qry
 kulrdr/sparql-remove-spatial.qry
