@@ -830,6 +830,15 @@
 					"Zentrale Datenbank der sozialen Sicherheit"@de, "Crossroad Bank Social Security"@en ;
 	skos:altLabel "Kruispuntbank Sociale Zekerheid"@nl  .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0208044709>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Rijksinstituut voor de Sociale Verzekeringen der Zelfstandigen"@nl,
+					"Landesinstitut der Sozialversicherungen für Selbständige"@de ,
+					"National Institute for the Social Security of the Self-employed"@en ,
+					"Institut National d'Assurances Sociales pour Travailleurs Indépendants"@fr ;
+	skos:altLabel "Rijksinstituut voor de Sociale Verzekeringen der Zelfstandigen (RSVZ)"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
