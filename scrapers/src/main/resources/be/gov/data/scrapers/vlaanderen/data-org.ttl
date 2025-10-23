@@ -777,6 +777,12 @@
 	skos:prefLabel "Vlaamse Sociale Bescherming"@nl ;
 	skos:altLabel "Vlaamse Sociale Bescherming (VSB)"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0887010362>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "VDAB"@nl ;
+	skos:altLabel "Vlaamse Dienst voor Arbeidsbemiddeling en Beroepsopleiding (VDAB)"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0477445084>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
