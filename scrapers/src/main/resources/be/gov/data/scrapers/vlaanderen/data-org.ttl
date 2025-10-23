@@ -817,6 +817,13 @@
 				"Ministère de la Défense"@fr, "Ministerium der Landesverteidigung"@de ;
 	skos:altLabel "Ministerie van Landsverdediging"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0244640631>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Kruispuntbank Sociale Zekerheid"@nl, "Banque-Carrefour de la Sécurite Sociale"@fr,
+					"Zentrale Datenbank der sozialen Sicherheit"@de, "Crossroad Bank Social Security"@en ;
+	skos:altLabel "Kruispuntbank Sociale Zekerheid"@nl  .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
@@ -836,6 +843,18 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Demey INFRAbureau"@nl ;
 	skos:altLabel "Infrabureau Demey"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0422319093>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "GraydonCreditsafe"@en ;
+	skos:altLabel "Graydon"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0436779419>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "AquaTerra"@en ;
+	skos:altLabel "Aquaterra"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0820563481>
 	a foaf:Organization ;
