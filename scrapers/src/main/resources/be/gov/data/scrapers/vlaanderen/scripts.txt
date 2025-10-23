@@ -19,6 +19,7 @@ vlaanderen/sparql-remove-unknown-location.qry
 vlaanderen/sparql-fix-geotype.qry
 vlaanderen/sparql-access-public.qry
 sparql-available.qry
+sparql-conforms-dga.qry
 vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-rights.qry
 vlaanderen/sparql-consolidate-standards.qry

@@ -17,6 +17,7 @@ sodha/sparql-license-dist.qry
 #sodha/sparql-license-document.qry
 sparql-map-license.qry
 sparql-access-restricted.qry
+sparql-conforms-dga.qry
 sparql-access-public.qry
 sparql-available.qry
 sparql-theme-subject.qry
