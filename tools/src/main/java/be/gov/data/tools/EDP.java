@@ -99,6 +99,7 @@ public class EDP {
 
 	private final static Logger LOG = LoggerFactory.getLogger(EDP.class);
 
+	private final static String WELL_KNOWN = "/.well-known/genid";
 	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	private final static String BASE_URI = "http://base.data.gov.be";
@@ -148,7 +149,7 @@ public class EDP {
 	 * @param iri 
 	 */
 	private static void addSkosConcept(IRI iri) {
-		if (iri != null && !iri.stringValue().contains(".well-known")) {
+		if (iri != null && !iri.stringValue().contains(WELL_KNOWN)) {
 			CONCEPTS.add(iri);
 		}
 	}
@@ -454,7 +455,7 @@ public class EDP {
 				if (refUri instanceof IRI) {
 					IRI iri = (IRI) refUri;
 					String str = iri.stringValue();
-					if( !str.contains(".well-known")) {
+					if( !str.contains(WELL_KNOWN)) {
 						if(str.startsWith("http:") || str.startsWith("https:") || str.startsWith("ftp:") || 
 								str.startsWith("mailto:") || str.startsWith("tel:")) {
 							w.writeEmptyElement(classWrap);
@@ -899,7 +900,7 @@ public class EDP {
 			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
 		String str = iri.stringValue();
-		if (! str.contains(".well_known")) {
+		if (! str.contains(WELL_KNOWN)) {
 			w.writeAttribute("rdf:about", str);
 		}
 		if (con.hasStatement(iri, RDF.TYPE, FOAF.PERSON, false)) {
