@@ -895,3 +895,10 @@
 	skos:prefLabel "Rijksdienst voor Arbeidsvoorziening (RVA)"@nl, "Office National de l'Emploi"@fr,
 					"Landesamt für Arbeitsbeschaffung"@de ;
 	skos:altLabel "Rijksdienst voor Arbeidsvoorziening (RVA)"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206731645>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Rijksdienst voor Sociale Zekerheid"@nl, "Office National de Sécurité Sociale"@fr,
+					"Landesamt für soziale Sicherheit"@de ;
+	skos:altLabel "Rijksdienst voor Sociale Zekerheid"@nl .
