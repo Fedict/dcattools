@@ -876,3 +876,22 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Intermut"@nl, "Intermut"@de, "Intermut"@fr, "Intermut"@en ;
 	skos:altLabel "Nationaal Intermutualistisch College (NIC)"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0795547478>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Athumi"@nl, "Athumi"@en ;
+	skos:altLabel "Athumi"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0440691388>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Aquafin"@nl, "Aquafin"@fr, "Aquafin"@en, "Aquafin"@de ;
+	skos:altLabel "Aquafin"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206737484>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Rijksdienst voor Arbeidsvoorziening (RVA)"@nl, "Office National de l'Emploi"@fr,
+					"Landesamt für Arbeitsbeschaffung"@de ;
+	skos:altLabel "Rijksdienst voor Arbeidsvoorziening (RVA)"@nl .
