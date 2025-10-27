@@ -14,6 +14,8 @@ WHERE
 		?id dcterms:title ?title
 		VALUES (?val ?std ?name) {
 			( "Data Specification on Addresses" <https://inspire.ec.europa.eu/id/document/tg/ad> "INSPIRE Data Specification on Addresses – Technical Guidelines"@en )
+			( "Data Specification on Elevation" <https://inspire.ec.europa.eu/id/document/tg/el> "INSPIRE Data Specification on Elevation – Technical Guidelines"@en )
+			( "Data Specification on Environmental" <https://inspire.ec.europa.eu/id/document/tg/ef> "INSPIRE Data Specification on Environmental Monitoring Facilities - Technical Guidelines"@en )
 			( "Data Specification on Land Use" <https://inspire.ec.europa.eu/id/document/tg/lu> "INSPIRE Data Specification on Land Use – Technical Guidelines"@en )
 			( "Data Specification on Hydrography" <https://inspire.ec.europa.eu/id/document/tg/hy> "INSPIRE Data Specification on Hydrography – Technical Guidelines"@en )
 			( "Data Specification on Orthoimagery" <https://inspire.ec.europa.eu/id/document/tg/oi> "INSPIRE Data Specification on Orthoimagery – Technical Guidelines"@en )
