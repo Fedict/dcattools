@@ -1,0 +1,18 @@
+# Use URI for ISO TC 211 GMD / GFC instead of URL to webservice
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:conformsTo ?uri }
+INSERT 
+	{ 	?s dcterms:conformsTo ?std  .
+		?std a dcterms:Standard .
+		?std dcterms:title ?name }
+WHERE 
+	{	?s dcterms:conformsTo ?uri
+		VALUES (?val ?std ?name) {
+			( "=http://www.isotc211.org/2005/gmd" <http://www.isotc211.org/2005/gmd> "ISO TC 211 GMD"@en )
+			( "=http://www.isotc211.org/2005/gfc" <http://www.isotc211.org/2005/gfc> "ISO TC 211 GFC"@en )
+		}
+		FILTER (CONTAINS(STR(?uri), ?val))
+	}

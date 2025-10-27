@@ -3,7 +3,8 @@ sparql-delete-label-empty.qry
 sparql-delete-iri-empty.qry
 sparql-title-to-desc.qry
 vlaanderen/sparql-duplicate-id.qry
-vlaanderen/sparql-standard-gmd.qry
+vlaanderen/sparql-standard-211.qry
+vlaanderen/sparql-standard-inspire.qry
 sparql-conforms-legislation.qry
 vlaanderen/sparql-fix-mercator.qry
 vlaanderen/sparql-fix-endpointurl.qry

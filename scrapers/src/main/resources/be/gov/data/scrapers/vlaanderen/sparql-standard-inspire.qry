@@ -1,0 +1,27 @@
+# Use URI for INSPIRE standard instead of title
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:conformsTo ?id .
+		?id dcterms:title ?name }
+INSERT 
+	{ 	?s dcterms:conformsTo ?std  .
+		?std a dcterms:Standard .
+		?std dcterms:title ?name }
+WHERE 
+	{	?s dcterms:conformsTo ?id .
+		?id dcterms:title ?title
+		VALUES (?val ?std ?name) {
+			( "Data Specification on Addresses" <https://inspire.ec.europa.eu/id/document/tg/ad> "INSPIRE Data Specification on Addresses – Technical Guidelines"@en )
+			( "Data Specification on Land Use" <https://inspire.ec.europa.eu/id/document/tg/lu> "INSPIRE Data Specification on Land Use – Technical Guidelines"@en )
+			( "Data Specification on Hydrography" <https://inspire.ec.europa.eu/id/document/tg/hy> "INSPIRE Data Specification on Hydrography – Technical Guidelines"@en )
+			( "Data Specification on Orthoimagery" <https://inspire.ec.europa.eu/id/document/tg/oi> "INSPIRE Data Specification on Orthoimagery – Technical Guidelines"@en )
+			( "Data Specification on Transport Networks" <https://inspire.ec.europa.eu/id/document/tg/tn> "INSPIRE Data Specification on Transport Networks – Technical Guidelines"@en )
+			( "Data Specification on Buildings"	<https://inspire.ec.europa.eu/id/document/tg/bu> "INSPIRE Data Specification on Buildings – Technical Guidelines"@en )
+			( "Data Specification on Utility" <https://inspire.ec.europa.eu/id/document/tg/us> "INSPIRE Data Specification on Utility and Government Services – Technical Guidelines"@en )
+			( "INSPIRE Download Services" <http://inspire.ec.europa.eu/id/document/tg/sds> "Technical Guidance for the implementation of INSPIRE Download Services"@en ) 
+			( "INSPIRE View Services" <https://inspire.ec.europa.eu/id/document/tg/view-services> "Technical Guidance for the implementation of INSPIRE View Services"@en )
+		}
+		FILTER (CONTAINS(STR(?title), ?val))
+	}

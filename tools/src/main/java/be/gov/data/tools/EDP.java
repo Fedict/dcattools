@@ -204,7 +204,6 @@ public class EDP {
 		writeLiterals(w, con, iri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, iri, RDFS.LABEL, "rdfs:label");
 		writeLiterals(w, con, iri, SKOS.NOTATION, "skos:notation");
-		writeLiterals(w, con, iri, DCAT.BBOX, "dcat:bbox");
 	}
 	
 	/**
@@ -367,7 +366,6 @@ public class EDP {
 			}
 		}
 	}
-
 	
 	/**
 	 * Write multiple references
@@ -627,7 +625,8 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
-		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");		
+		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
+		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
 		writeSubjects(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
