@@ -14,6 +14,7 @@ WHERE
 		?id dcterms:title ?title
 		VALUES (?val ?std ?name) {
 			( "Data Specification on Addresses" <https://inspire.ec.europa.eu/id/document/tg/ad> "INSPIRE Data Specification on Addresses – Technical Guidelines"@en )
+			( "Data Specification on Area Management" <https://inspire.ec.europa.eu/id/document/tg/am> "INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units"@en )
 			( "Data Specification on Elevation" <https://inspire.ec.europa.eu/id/document/tg/el> "INSPIRE Data Specification on Elevation – Technical Guidelines"@en )
 			( "Data Specification on Environmental" <https://inspire.ec.europa.eu/id/document/tg/ef> "INSPIRE Data Specification on Environmental Monitoring Facilities - Technical Guidelines"@en )
 			( "Data Specification on Land Use" <https://inspire.ec.europa.eu/id/document/tg/lu> "INSPIRE Data Specification on Land Use – Technical Guidelines"@en )
@@ -23,6 +24,7 @@ WHERE
 			( "Data Specification on Buildings"	<https://inspire.ec.europa.eu/id/document/tg/bu> "INSPIRE Data Specification on Buildings – Technical Guidelines"@en )
 			( "Data Specification on Utility" <https://inspire.ec.europa.eu/id/document/tg/us> "INSPIRE Data Specification on Utility and Government Services – Technical Guidelines"@en )
 			( "INSPIRE Download Services" <http://inspire.ec.europa.eu/id/document/tg/sds> "Technical Guidance for the implementation of INSPIRE Download Services"@en ) 
+			( "INSPIRE Discovery Services" <https://inspire.ec.europa.eu/id/document/tg/view-services> "Technical Guidance for the implementation of INSPIRE Discovery Services"@en )
 			( "INSPIRE View Services" <https://inspire.ec.europa.eu/id/document/tg/view-services> "Technical Guidance for the implementation of INSPIRE View Services"@en )
 		}
 		FILTER (CONTAINS(STR(?title), ?val))

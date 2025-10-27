@@ -1,0 +1,19 @@
+# Use URI for ISO standard instead of type
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+DELETE 
+	{	?s dcterms:conformsTo ?id .
+		?id dcterms:type <https://www.iso.org/standard/39965.html> }
+INSERT 
+	{ 	?s dcterms:conformsTo <https://schemas.isotc211.org/19110>  .
+		<https://schemas.isotc211.org/19110> a dcterms:Standard .
+		<https://schemas.isotc211.org/19110> dcterms:title "ISO 19110:2005"@en .
+		?s adms:versionNotes ?note
+	}
+WHERE 
+	{	?s dcterms:conformsTo ?id .
+		?id dcterms:type <https://www.iso.org/standard/39965.html> .
+		OPTIONAL { ?id dcterms:title ?note }
+	}
