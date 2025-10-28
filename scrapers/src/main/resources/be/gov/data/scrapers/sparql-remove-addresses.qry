@@ -1,11 +1,13 @@
 # Remove physical addresses, we're not really interested in those
 
 PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?s locn:address ?genaddr .
-		?genaddr ?p ?o }
+	{	?s ?rel ?addr .
+		?addr ?p ?o }
 WHERE
-	{ 	?s locn:address ?genaddr .
-		?genaddr ?p ?o .
+	{ 	?s ?rel ?addr .
+		?addr ?p ?o .
+		VALUES ?rel { vcard:hasAddress locn:address }
 	}
