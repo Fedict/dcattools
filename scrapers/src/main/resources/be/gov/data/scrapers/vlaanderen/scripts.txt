@@ -25,7 +25,6 @@ sparql-available.qry
 sparql-conforms-dga.qry
 vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-rights.qry
-vlaanderen/sparql-consolidate-provenance.qry
 #vlaanderen/sparql-consolidate-standards.qry
 vlaanderen/sparql-remove-source.qry
 vlaanderen/sparql-remove-agent.qry
@@ -94,6 +93,7 @@ vlaanderen/sparql-fix-downloadurl.qry
 sparql-remove-names.qry
 sparql-geo-publisher.qry
 sparql-geo-vlaanderen.qry
+vlaanderen/sparql-consolidate-provenances.qry
 vlaanderen/sparql-remove-agent-orphans.qry
 vlaanderen/sparql-remove-onbekend.qry
 vlaanderen/sparql-default-contact.qry

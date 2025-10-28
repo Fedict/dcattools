@@ -1,5 +1,4 @@
-# Consolidate standards statement
-# Use 1 URI instead of different blank nodes / genid
+# Consolidate rights statement, use 1 URI instead of different blank nodes / genid
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
@@ -15,8 +14,8 @@ WHERE
 		?genrights ?p ?o .
 		?genrights dcterms:title ?title
 		BIND(IRI(
-				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(?title))
+				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(STR(?title)))
 			)
 		AS ?rights)
-		FILTER (CONTAINS(STR(?genrights), ".well-known/genid"))
+		FILTER (CONTAINS(STR(?genrights), ".well-known/genid/"))
 	}

@@ -2,6 +2,7 @@
 
 PREFIX dcat:	<http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 
@@ -13,9 +14,8 @@ WHERE
 	{	
 		?s ?rel ?genid .
 		?genid a ?cl
-		VALUES ?rel { dcat:theme dcat:provenance }
+		VALUES ?rel { dcat:theme dcterms:provenance dcat:provenance }
 		FILTER CONTAINS(STR(?genid), "well-known/genid")
 		FILTER NOT EXISTS { ?genid ?p ?o .
-							VALUES ?p { dcterms:title skos:prefLabel} 
-		}
+							FILTER (?p != rdf:type) } 
 	}

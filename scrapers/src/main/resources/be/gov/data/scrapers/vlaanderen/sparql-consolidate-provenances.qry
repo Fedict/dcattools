@@ -1,0 +1,21 @@
+# Consolidate provenance statement, use 1 URI instead of different blank nodes / genid
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:provenance ?genprov .
+		?genprov ?p ?o }
+INSERT
+	{	?s dcterms:provenance ?provenance .
+		?provenance a dcterms:ProvenanceStatement .
+		?provenance ?p ?o }
+WHERE
+	{ 	?s dcterms:provenance ?genprov .
+		?genprov ?p ?o .
+		?genprov dcterms:title ?title
+		BIND(IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/prov/", SHA1(STR(?title)))
+			)
+		AS ?provenance)
+		FILTER (!CONTAINS(STR(?genprov), ".well-known/genid/"))
+	}
