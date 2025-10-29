@@ -524,7 +524,7 @@ public class EDP {
 		//writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
-		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator", "foaf:Agent", false);
+		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
 		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
 		writeLiterals(w, con, uri, DCTERMS.BIBLIOGRAPHIC_CITATION, "dct:bibliographicCitation");
@@ -532,7 +532,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
 		writeReferences(w, con, uri, DCATAP_CONFORMS, "dcatap:applicableLegislation", "eli:LegalResource", false);
 		writeReferences(w, con, uri, DCATAP_HVDCAT, "dcatap:hvdCategory");
-		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights", "dct:RightsStatement", false);
+		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 	}
@@ -681,9 +681,9 @@ public class EDP {
 
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
-		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial", "dct:Location", true);
+		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
-		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance", "dct:ProvenanceStatement", false);
+		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance");
 		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 		
 		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
