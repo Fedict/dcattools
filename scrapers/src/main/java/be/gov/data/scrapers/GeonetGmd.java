@@ -400,10 +400,12 @@ public abstract class GeonetGmd extends Geonet {
 			Node node = c.selectSingleNode(XP_CHAR);
 			if (node != null) {
 				String name = node.getText();
-				IRI org = makeOrgIRI(hash(name));
-				store.add(iri, DCTERMS.CREATOR, org);
-				store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
-				parseMulti(store, org, node, FOAF.NAME, false);
+				if (name != null && !name.isBlank()) {
+					IRI org = makeOrgIRI(hash(name));
+					store.add(iri, DCTERMS.CREATOR, org);
+					store.add(org, RDF.TYPE, FOAF.ORGANIZATION);
+					parseMulti(store, org, node, FOAF.NAME, false);
+				}
 			}
 		}
 	}
