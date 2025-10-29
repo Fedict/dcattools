@@ -377,12 +377,14 @@ public abstract class GeonetGmd extends Geonet {
 			}
 			if (node != null) {
 				String name = node.getText();
-				IRI person = makePersonIRI(hash(name));
-				store.add(iri, DCTERMS.CREATOR, person);
-				store.add(person, RDF.TYPE, FOAF.PERSON);
-				store.add(person, FOAF.NAME, name);
-				if (id != null && !id.isEmpty()){
-					store.add(person, DCTERMS.IDENTIFIER, id);
+				if (name != null && !name.isBlank()) {
+					IRI person = makePersonIRI(hash(name));
+					store.add(iri, DCTERMS.CREATOR, person);
+					store.add(person, RDF.TYPE, FOAF.PERSON);
+					store.add(person, FOAF.NAME, name);
+					if (id != null && !id.isEmpty()){
+						store.add(person, DCTERMS.IDENTIFIER, id);
+					}
 				}
 			}
 		}
