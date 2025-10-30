@@ -200,3 +200,21 @@
 	skos:prefLabel "Belgian Climate Centre"@en , "Belgian Climate Centre"@nl,
 					"Belgian Climate Centre"@fr, "Belgian Climate Centre"@de ;
 	skos:altLabel "Federal Climate Change Service" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0403459919>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Interparking"@fr, "Interparking"@nl, "Interparking"@en, "Interparking"@de ;
+	skos:altLabel "NV Interparking" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0407693572>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "FEBIAC"@fr, "FEBIAC"@nl, "FEBIAC"@en, "FEBIAC"@de ;
+	skos:altLabel "FEBIAC" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0771852457>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Voi"@fr, "Voi"@nl, "Voi"@en, "Voi"@de ;
+	skos:altLabel "Voi" .

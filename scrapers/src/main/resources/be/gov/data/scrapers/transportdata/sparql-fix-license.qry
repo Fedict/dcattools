@@ -5,11 +5,13 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
 		?s dcterms:license ?lic .
-		?s dcterms:type ?uri
+		?lic dcterms:type ?uri .
+		?lic ?p ?o
 	}
 INSERT 
 	{	?s dcterms:license ?uri }
 WHERE {
 		?s dcterms:license ?lic .
-		?s dcterms:type ?uri
+		?lic dcterms:type ?uri .
+		OPTIONAL { ?lic ?p ?o }
 	}
