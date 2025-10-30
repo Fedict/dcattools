@@ -1,0 +1,15 @@
+# Fix incorrect use of dct:type on license
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE {
+		?s dcterms:license ?lic .
+		?s dcterms:type ?uri
+	}
+INSERT 
+	{	?s dcterms:license ?uri }
+WHERE {
+		?s dcterms:license ?lic .
+		?s dcterms:type ?uri
+	}

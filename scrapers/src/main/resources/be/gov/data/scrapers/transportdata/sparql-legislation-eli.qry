@@ -1,0 +1,17 @@
+ # Use applicable legislation URI/ELI instead of text
+
+PREFIX dcatap:  <http://data.europa.eu/r5r/>
+
+DELETE 
+	{	?s dcatap:applicableLegislation ?str }
+INSERT 
+	{ 	?s dcatap:applicableLegislation ?eli }
+WHERE 
+	{	?s dcatap:applicableLegislation ?str .
+		VALUES (?str ?eli)  {
+			( "MMTIS"  <http://data.europa.eu/eli/reg_del/2024/490/oj> )
+			( "RTTI" <http://data.europa.eu/eli/reg_del/2022/670/oj> )
+			( "SRTI" <http://data.europa.eu/eli/reg_del/2013/886/oj> )
+		}
+		FILTER (IsLiteral(?str))
+	}

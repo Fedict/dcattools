@@ -1,7 +1,10 @@
 # extra queries to be executed and data to be loaded
 sparql-delete-label-empty.qry
+sparql-remove-addresses.qry
 transportdata/data-org.ttl
 sparql-map-org.qry
+transportdata/sparql-legislation-eli.qry
+transportdata/sparql-fix-license.qry
 sparql-available.qry
 clear-skos.qry
 data-shacl-support.ttl

@@ -11,6 +11,12 @@
 	skos:prefLabel "NMBS"@nl, "SNCB"@fr, "SNCB"@de, "SNCB"@en ;
 	skos:altLabel "NMBS/SNCB " .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0225944375>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Toerisme Vlaanderen"@nl, "VisitFlanders"@en ;
+	skos:altLabel "Toerisme Vlaanderen"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0869763267>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -139,3 +145,58 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "felyx Belgium"@en, "felyx Belgium"@nl ;
 	skos:altLabel "FELYX BELGIUM" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0421220916>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Mpact vzw"@nl , "Mpact asbl"@fr ;
+	skos:altLabel "Mpact" .
+
+<https://opencorporates.com/id/companies/fr/800348146>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "INDIGO Group"@en, "INDIGO Group"@fr ;
+	skos:altLabel "Group INDIGO" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0793625591>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Uber B.V."@nl, "Uber B.V."@en ;
+	skos:altLabel "Uber B.V." .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0444436776>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
+	skos:altLabel "VILLO! SA JCDecaux Street Furniture Belgium", "Li Ba Vélo Namur SA JCDecaux Street Furniture Belgium" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207451227>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Stad Gent"@nl, "Ville de Gand"@fr, "City of Ghent"@en, "Stadt Gent"@de ;
+	skos:altLabel "Stad Gent" .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2287406587>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
+	skos:altLabel "IRCEL" .
+
+<https://opencorporates.com/id/companies/nl/27294677>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Eco-Movement"@nl ;
+	skos:altLabel "Eco-Movement" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
+	skos:altLabel "parking.brussels" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0349294822#climate> 
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Belgian Climate Centre"@en , "Belgian Climate Centre"@nl,
+					"Belgian Climate Centre"@fr, "Belgian Climate Centre"@de ;
+	skos:altLabel "Federal Climate Change Service" .

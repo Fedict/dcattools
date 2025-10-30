@@ -90,7 +90,7 @@
  <https://org.belgif.be/id/CbeRegisteredEntity/0225944375>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Toerisme Vlaanderen"@nl ;
+	skos:prefLabel "Toerisme Vlaanderen"@nl, "VisitFlanders"@en ;
 	skos:altLabel "Toerisme Vlaanderen"@nl, "Toerisme Vlaandeen", <https://www.toerismevlaanderen.be> .
 
  <https://org.belgif.be/id/CbeRegisteredEntity/0887164275>
