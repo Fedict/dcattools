@@ -1,0 +1,14 @@
+# Set language tag for title based on exact same description
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:title ?str }
+INSERT 
+	{	?s dcterms:title ?strlang }
+WHERE {
+		?s dcterms:title ?str .
+		?s dcterms:description ?desc
+		BIND (STRLANG(?str, LANG(?desc)) AS ?strlang)
+		FILTER (STR(?str) = STR(?desc))
+	}

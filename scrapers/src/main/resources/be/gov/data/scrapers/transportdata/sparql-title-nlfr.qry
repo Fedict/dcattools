@@ -1,0 +1,19 @@
+# Guess language tag for title based on language property
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:title ?str }
+INSERT 
+	{	?s dcterms:title ?strlang }
+WHERE {
+		?s dcterms:title ?str .
+		?s dcterms:language ?uri .
+		VALUES (?uri ?code) {
+			(<http://publications.europa.eu/resource/authority/language/NLD> "nl" )
+			(<http://publications.europa.eu/resource/authority/language/FRA> "fr" )
+		}
+		BIND (STRLANG(?str, ?code) AS ?strlang)
+		FILTER (LANG(?str) = "")
+		FILTER NOT EXISTS { ?s dcterms:language <http://publications.europa.eu/resource/authority/language/ENG> }
+	}

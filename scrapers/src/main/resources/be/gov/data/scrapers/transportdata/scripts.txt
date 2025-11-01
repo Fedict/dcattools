@@ -5,6 +5,9 @@ transportdata/data-org.ttl
 sparql-map-org.qry
 transportdata/sparql-legislation-eli.qry
 transportdata/sparql-fix-license.qry
+transportdata/sparql-title-desc.qry
+transportdata/sparql-title-nlfr.qry
+transportdata/sparql-title-tag.qry
 sparql-available.qry
 clear-skos.qry
 data-shacl-support.ttl
