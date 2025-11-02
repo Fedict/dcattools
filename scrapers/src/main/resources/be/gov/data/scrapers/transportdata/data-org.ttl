@@ -234,3 +234,21 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Lime"@nl, "Lime"@de, "Lime"@en, "Lime"@de  ;
 	skos:altLabel "Lime Network NV" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/1006157442>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "BRAXO"@nl, "BRAXO"@de, "BRAXO"@en, "BRAXO"@de  ;
+	skos:altLabel "De Waterbus" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0461950721>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Europarking"@de, "Europarking"@nl, "Europarking"@fr, "Europarking"@en ;
+	skos:altLabel "Europarking" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0759823764>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Share4Mobility"@de, "Share4Mobility"@nl, "Share4Mobility"@fr, "Share4Mobility"@en ;
+	skos:altLabel "Share4Mobility" .
