@@ -239,7 +239,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "BRAXO"@nl, "BRAXO"@de, "BRAXO"@en, "BRAXO"@de  ;
-	skos:altLabel "De Waterbus" .
+	skos:altLabel "DeWaterbus" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0461950721>
 	a foaf:Organization ;
@@ -265,3 +265,22 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Gireve"@fr, "Gireve"@en, "Gireve"@nl, "Gireve"@de ;
 	skos:altLabel "Gireve" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0431234779>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Tunnel Liefkenshoek"@fr, "Tunnel Liefkenshoek"@de , "Tunnel Liefkenshoek"@nl, 
+			"Tunnel Liefkenshoek"@en ; 
+	skos:altLabel "Tunnel Liefkenshoek" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0699723158>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Remorquable"@de , "Remorquable"@fr , "Remorquable"@nl , "Remorquable"@en ;
+	skos:altLabel "Remorquable" .
+
+<https://opencorporates.com/id/companies/de/F1103R_HRA50462>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "H2 Mobility"@en, "H2 Mobility"@nl, "H2 Mobility"@fr, "H2 Mobility"@de ;
+	skos:altLabel "h2mobility" .
