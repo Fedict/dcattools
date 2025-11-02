@@ -21,7 +21,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Infrabel"@fr, "Infrabel"@nl, "Infrabel"@en, "Infrabel"@de ;
-	skos:altLabel "Infrabel" .
+	skos:altLabel "Infrabel", "Infrabel Infrabel" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336725> 
 	a foaf:Organization ;
@@ -34,13 +34,13 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Agentschap Wegen en Verkeer"@nl ;
-	skos:altLabel "Agentschap Wegen en Verkeer" .
+	skos:altLabel "Agentschap Wegen en Verkeer", "Agentschap Wegen en Verkeer Agentschap Wegen en Verkeer"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0247499953>
 	a foaf:Organization;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
-	skos:altLabel "STIB-MIVB" .
+	skos:altLabel "STIB-MIVB", "STIB open-data STIB open-data" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
 	a foaf:Organization ;
@@ -66,7 +66,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "De Lijn"@nl ;
-	skos:altLabel "De Lijn".
+	skos:altLabel "De Lijn", "Data De Lijn Data De Lijn" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2274368601>
 	a foaf:Organization ;
@@ -138,7 +138,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Be-Mobile"@en, "Be-Mobile"@nl ;
-	skos:altLabel "Be-Mobile" .
+	skos:altLabel "Be-Mobile", "Be-Mobile Be-Mobile"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0720798585>
 	a foaf:Organization ;
@@ -150,37 +150,39 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Mpact vzw"@nl , "Mpact asbl"@fr ;
-	skos:altLabel "Mpact" .
+	skos:altLabel "Mpact", "Mpact VZW" .
 
 <https://opencorporates.com/id/companies/fr/800348146>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "INDIGO Group"@en, "INDIGO Group"@fr ;
-	skos:altLabel "Group INDIGO" .
+	skos:altLabel "Group INDIGO", "Indigo Indigo" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0793625591>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Uber B.V."@nl, "Uber B.V."@en ;
-	skos:altLabel "Uber B.V." .
+	skos:altLabel "Uber B.V.", "Uber B.V. Uber B.V." .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0444436776>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
-	skos:altLabel "VILLO! SA JCDecaux Street Furniture Belgium", "Li Ba Vélo Namur SA JCDecaux Street Furniture Belgium" .
+	skos:altLabel "VILLO! SA JCDecaux Street Furniture Belgium", "JCDecaux JCDecaux",
+				"Li Ba Vélo Namur SA JCDecaux Street Furniture Belgium" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207451227>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Stad Gent"@nl, "Ville de Gand"@fr, "City of Ghent"@en, "Stadt Gent"@de ;
-	skos:altLabel "Stad Gent" .
+	skos:altLabel "Stad Gent", "Data Stad Gent Data Stad Gent"  .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2287406587>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
-	skos:altLabel "IRCEL" .
+	skos:altLabel "IRCEL", 
+			"Intergewestelijke cel voor leefmilieu | Cellule interrégionale de l'’environnement Intergewestelijke cel voor leefmilieu | Cellule interrégionale de l'’environnement"  .
 
 <https://opencorporates.com/id/companies/nl/27294677>
 	a foaf:Organization ;
@@ -218,3 +220,17 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Voi"@fr, "Voi"@nl, "Voi"@en, "Voi"@de ;
 	skos:altLabel "Voi" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
+					"Services du Gouvernement de la Région bruxelloise"@fr, 
+					"Regionaler öffentlicher Dienst Brüssel"@de ;
+	skos:altLabel "Brussels Mobilité - Mobiliteit  - Mobility " .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0712698491>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Lime"@nl, "Lime"@de, "Lime"@en, "Lime"@de  ;
+	skos:altLabel "Lime Network NV" .
