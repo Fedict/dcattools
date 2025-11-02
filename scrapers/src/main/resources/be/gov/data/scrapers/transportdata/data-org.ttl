@@ -187,7 +187,7 @@
 <https://opencorporates.com/id/companies/nl/27294677>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Eco-Movement"@nl ;
+	skos:prefLabel "Eco-Movement"@nl, "Eco-Movement"@fr, "Eco-Movement"@de, "Eco-Movement"@en ;
 	skos:altLabel "Eco-Movement" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
@@ -252,3 +252,16 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Share4Mobility"@de, "Share4Mobility"@nl, "Share4Mobility"@fr, "Share4Mobility"@en ;
 	skos:altLabel "Share4Mobility" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0476952364>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Optimal Parking Control"@de, "Optimal Parking Control"@nl, "Optimal Parking Control"@fr ,
+				"Optimal Parking Control"@en ;
+	skos:altLabel "Optimal Parking Control" .
+
+<https://opencorporates.com/id/companies/fr/794519645>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Gireve"@fr, "Gireve"@en, "Gireve"@nl, "Gireve"@de ;
+	skos:altLabel "Gireve" .
