@@ -12,7 +12,7 @@ INSERT
 WHERE
 	{ 	?s citedcat:isFundedBy ?name
 		BIND (IRI(
-				CONCAT("http://data.gov.be/.well-known/genid/funder/", SHA1(?name))
+				CONCAT("http://data.gov.be/.well-known/genid/funder/", SHA1(STR(?name)))
 			) as ?fund)
 		FILTER (IsLiteral(?name))
 	}
