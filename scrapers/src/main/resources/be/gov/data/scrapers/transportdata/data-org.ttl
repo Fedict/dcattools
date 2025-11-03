@@ -284,3 +284,22 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "H2 Mobility"@en, "H2 Mobility"@nl, "H2 Mobility"@fr, "H2 Mobility"@de ;
 	skos:altLabel "h2mobility" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0409739975>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Nationale Groepering van Ondernemingen met Taxi- en Locatievoertuigen met Chauffeur"@nl,
+					"Groupement national des Entreprises deTaxis et des Services de Location de Voitures avec chauffeur"@fr ;
+	skos:altLabel "GTL-TAXI" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248399380>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Haven van Antwerpen-Brugge"@nl, "Port of Antwerp-Bruges"@en ;
+	skos:altLabel "De Fietsbus" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0840931701>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "City of Deinze"@en, "Stad Deinze"@nl, "Ville de Deinze"@fr, "Stadt Deinze"@de ;
+	skos:altLabel "Stad Deinze" .
