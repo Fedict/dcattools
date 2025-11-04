@@ -303,3 +303,24 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "City of Deinze"@en, "Stad Deinze"@nl, "Ville de Deinze"@fr, "Stadt Deinze"@de ;
 	skos:altLabel "Stad Deinze" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0824347372>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Delrue Rent Services"@nl, "Delrue Rent Services"@de, "Delrue Rent Services"@en,
+				"Delrue Rent Services"@fr ;
+	skos:altLabel "Delrue Rent Services" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0778892776>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Clean Hydrogen Joint Undertaking"@nl, "Clean Hydrogen Joint Undertaking"@fr,
+					"Clean Hydrogen Joint Undertaking"@en, "Clean Hydrogen Joint Undertaking"@de ; 
+	skos:altLabel "Clean Hydrogen Joint Undertaking" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0684493960>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "TomTom Global Content"@nl, "TomTom Global Content"@en, 
+					"TomTom Global Content"@fr, "TomTom Global Content"@de ;
+	skos:altLabel "TomTom Global Content B.V." .
