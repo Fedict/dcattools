@@ -344,3 +344,21 @@
 	skos:prefLabel "Renta"@de, "Renta"@en, "Renta"@fr, "Renta"@nl ;
 	skos:altLabel "Renta" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0767499434>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Movias"@de, "Movias"@fr, "Movias"@nl, "Movias"@de ;
+	skos:altLabel "Movias" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0400853488>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Brussels Airlines"@de, "Brussels Airlines"@en, "Brussels Airlines"@nl, 
+					"Brussels Airlines"@fr;
+	skos:altLabel "Brussels Airlines" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0402940473>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Gas.be"@en, "Gas.be"@nl, "Gas.be"@de, "Gas.be"@fr ;
+	skos:altLabel "Gas.be" .
