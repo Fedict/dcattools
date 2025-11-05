@@ -342,5 +342,5 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Renta"@de, "Renta"@en, "Renta"@fr, "Renta"@nl ;
-	skos:altLabel "Renta .
+	skos:altLabel "Renta" .
 
