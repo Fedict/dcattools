@@ -2,6 +2,7 @@
 sparql-delete-label-empty.qry
 sparql-remove-addresses.qry
 transportdata/data-org.ttl
+sparql-map-memberof.qry
 sparql-map-org.qry
 transportdata/sparql-legislation-eli.qry
 transportdata/sparql-fix-license.qry
