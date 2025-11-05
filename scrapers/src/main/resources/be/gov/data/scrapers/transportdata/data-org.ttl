@@ -324,3 +324,23 @@
 	skos:prefLabel "TomTom Global Content"@nl, "TomTom Global Content"@en, 
 					"TomTom Global Content"@fr, "TomTom Global Content"@de ;
 	skos:altLabel "TomTom Global Content B.V." .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0861741466>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "TUI Airlines Belgium"@de, "TUI Airlines Belgium"@nl,
+				"TUI Airlines Belgium"@fr, "TUI Airlines Belgium"@de ;
+	skos:altLabel "TUI Airlines Belgium" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0867305605>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Dégage"@de, "Dégage"@fr, "Dégage"@en, "Dégage"@nl ;
+	skos:altLabel "Dégage" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0894874587>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Renta"@de, "Renta"@en, "Renta"@fr, "Renta"@nl ;
+	skos:altLabel "Renta .
+
