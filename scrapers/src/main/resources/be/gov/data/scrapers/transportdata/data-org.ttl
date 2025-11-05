@@ -348,7 +348,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Movias"@de, "Movias"@fr, "Movias"@nl, "Movias"@de ;
-	skos:altLabel "Movias" .
+	skos:altLabel "Movias", "Gader" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0400853488>
 	a foaf:Organization ;
