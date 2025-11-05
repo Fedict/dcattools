@@ -898,15 +898,13 @@ public class EDP {
 	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, Resource iri) 
 			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
-		String str = iri.stringValue();
-		if (! str.contains(WELL_KNOWN)) {
-			w.writeAttribute("rdf:about", str);
-		}
+
 		if (con.hasStatement(iri, RDF.TYPE, FOAF.PERSON, false)) {
 			writeType(w, con, iri, FOAF.PERSON);
 			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
 			writeLiterals(w, con, iri, FOAF.GIVEN_NAME, "foaf:givenName");
 			writeLiterals(w, con, iri, FOAF.FAMILY_NAME, "foaf:familyName");
+			writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
 			// mainly ORCID for researchers
 			writeLiterals(w, con, iri, DCTERMS.IDENTIFIER, "dct:identifier");
 			writeReferences(w, con, iri, ORG.MEMBER_OF, "org:memberOf");
@@ -915,9 +913,10 @@ public class EDP {
 			writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
 			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
 			writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
-			writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
-			writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
-		}	
+		}
+
+		writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
+		writeReferences(w, con, iri, FOAF.PHONE, "foaf:phone");
 		w.writeEndElement();
 	}
 
