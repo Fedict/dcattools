@@ -4,6 +4,7 @@ PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms:	<http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -35,12 +36,12 @@ WHERE
 			( dcat:servesDataset dcat:Dataset )
 			( dcterms:conformsTo dcterms:Standard )
 			( dcterms:temporal dcterms:PeriodOfTime )
-			( dcterms:conformsTo dcterms:Standard )
 			( dcat:contactPoint vcard:Kind )
 			( dcterms:type skos:Concept )
 			( dcat:theme skos:Concept )
 			( dcat:themeTaxonomy skos:ConceptScheme )
 			( adms:identifier adms:Identifier )
+			( org:memberOf foaf:Agent )
 		}
 	}
 
