@@ -898,7 +898,8 @@ public class EDP {
 	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, Resource iri) 
 			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
-
+		w.writeAttribute("rdf:about", iri.stringValue());
+	
 		if (con.hasStatement(iri, RDF.TYPE, FOAF.PERSON, false)) {
 			writeType(w, con, iri, FOAF.PERSON);
 			writeLiterals(w, con, iri, FOAF.NAME, "foaf:name");
