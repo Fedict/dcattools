@@ -4,6 +4,7 @@ bira/sparql-fix-catalog.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 bira/data-org.ttl
+sparql-map-memberof.qry
 bira/sparql-publisher.qry
 bira/sparql-fix-netcdf.qry
 bira/sparql-fix-temporal.qry

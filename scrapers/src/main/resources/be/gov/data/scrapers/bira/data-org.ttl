@@ -14,3 +14,15 @@
 					"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, 
 					"Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ;
 	skos:altLabel "BIRA-IASB" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de ;
+	skos:altLabel "University of Liège" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Université libre de Bruxelles"@fr ;
+	skos:altLabel "Université Libre de Bruxelles" .
