@@ -389,4 +389,20 @@
 					"Aéroport d'Anvers"@fr, "Flughafen Antwerpen"@de;
 	skos:altLabel "LEM Antwerpen NV - Luchthaven Antwerpen" .
 
+<https://opencorporates.com/id/companies/dk/41668385>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Monta"@fr, "Monta"@en, "Monta"@nl, "Monta"@de ;
+	skos:altLabel "Monta" .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0681505370>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Poppy Mobility"@fr, "Poppy Mobility"@en, "Poppy Mobility"@nl, "Poppy Mobility"@de ;
+	skos:altLabel "Poppy" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0675918368>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Coopstroom"@fr, "Coopstroom"@en, "Coopstroom"@nl, "Coopstroom"@de ;
+	skos:altLabel "Coopstroom" .
