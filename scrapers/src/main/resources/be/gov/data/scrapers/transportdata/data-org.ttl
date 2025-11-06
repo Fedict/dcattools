@@ -361,7 +361,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Gas.be"@en, "Gas.be"@nl, "Gas.be"@de, "Gas.be"@fr ;
-	skos:altLabel "Gas.be" 
+	skos:altLabel "Gas.be" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0653736349>
 	a foaf:Organization ;
@@ -388,3 +388,5 @@
 	skos:prefLabel "Luchthaven Antwerpen"@nl, "Antwerp Airport"@en, 
 					"Aéroport d'Anvers"@fr, "Flughafen Antwerpen"@de;
 	skos:altLabel "LEM Antwerpen NV - Luchthaven Antwerpen" .
+
+
