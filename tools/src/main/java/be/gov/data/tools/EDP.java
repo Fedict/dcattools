@@ -721,7 +721,7 @@ public class EDP {
 		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
 
 		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
-		writeAnnotations(w, con, uri, DQV.HAS_QUALITY_ANNOTATION, "dqv:qualityMeasurement", "dqv:QualityMeasurement");
+		writeAnnotations(w, con, uri, DQV.HAS_QUALITY_ANNOTATION, "dqv:qualityAnnotation", "dqv:QualityAnnotation");
 		writeAnnotations(w, con, uri, MOBILITYDCAT.ASSESSMENT_RESULT, "mobilitydcatap:assessmentResult", "mobilitydcatap:Assessment");
 		
 		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
