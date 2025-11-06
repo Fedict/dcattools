@@ -32,6 +32,7 @@ import be.gov.data.dcat.vocab.CONTENT;
 import be.gov.data.dcat.vocab.DQV;
 import be.gov.data.dcat.vocab.GEODCAT;
 import be.gov.data.dcat.vocab.MOBILITYDCAT;
+import be.gov.data.dcat.vocab.OA;
 import be.gov.data.dcat.vocab.SDMX;
 
 import java.io.File;
@@ -349,6 +350,65 @@ public class EDP {
 	}
 
 	/**
+	 * Write quality annotations of a Dataset, Distribution...
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset / distribution
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeAnnotations(XMLStreamWriter w, RepositoryConnection con,
+		IRI uri, IRI pred, String property, String wrapper) throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement(property);
+				w.writeStartElement(wrapper);
+
+				Resource annotation = (Resource) res.next().getObject();
+				writeLiterals(w, con, annotation, OA.HAS_BODY, "oa:hasBody");
+				w.writeEndElement();
+				w.writeEndElement();
+			}
+		}
+	}
+
+	/**
+	 * Write bibliographic citation
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param cl class name (used for element tag)
+	 * @param uri URI of the dataset
+	 * @throws XMLStreamException
+	 */
+	private static void writeCited(XMLStreamWriter w, RepositoryConnection con, String cl, Resource uri) 
+			throws XMLStreamException {
+		w.writeStartElement(cl);
+		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");	
+		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
+		writeLiterals(w, con, uri, BIBO.DOI, "bibo:doi");
+		writeReferences(w, con, uri, BIBO.URI, "bibo:uri");
+		w.writeEndElement();
+	}
+
+	/**
+	 * Write funding
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param cl class name (used for element tag)
+	 * @param uri URI of the dataset
+	 * @throws XMLStreamException
+	 */
+	private static void writeFunding(XMLStreamWriter w, RepositoryConnection con, String cl, Resource uri) 
+			throws XMLStreamException {
+		w.writeStartElement(cl);
+		writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
+		w.writeEndElement();
+	}
+
+	/**
 	 * Write geodcat roles of a dcat:Dataset
 	 *
 	 * @param w XML writer
@@ -583,41 +643,6 @@ public class EDP {
 	}
 
 	/**
-	 * Write bibliographic citation
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @param cl class name (used for element tag)
-	 * @param uri URI of the dataset
-	 * @throws XMLStreamException
-	 */
-	private static void writeCited(XMLStreamWriter w, RepositoryConnection con, String cl, Resource uri) 
-			throws XMLStreamException {
-		w.writeStartElement(cl);
-		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");	
-		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
-		writeLiterals(w, con, uri, BIBO.DOI, "bibo:doi");
-		writeReferences(w, con, uri, BIBO.URI, "bibo:uri");
-		w.writeEndElement();
-	}
-
-	/**
-	 * Write funding
-	 *
-	 * @param w XML writer
-	 * @param con RDF triple store connection
-	 * @param cl class name (used for element tag)
-	 * @param uri URI of the dataset
-	 * @throws XMLStreamException
-	 */
-	private static void writeFunding(XMLStreamWriter w, RepositoryConnection con, String cl, Resource uri) 
-			throws XMLStreamException {
-		w.writeStartElement(cl);
-		writeLiterals(w, con, uri, FOAF.NAME, "foaf:name");
-		w.writeEndElement();
-	}
-
-	/**
 	 * Write DCAT Dataset / Dataservice / Series
 	 *
 	 * @param w XML writer
@@ -696,7 +721,9 @@ public class EDP {
 		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
 
 		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
-
+		writeAnnotations(w, con, uri, DQV.HAS_QUALITY_ANNOTATION, "dqv:qualityMeasurement", "dqv:QualityMeasurement");
+		writeAnnotations(w, con, uri, MOBILITYDCAT.ASSESSMENT_RESULT, "mobilitydcatap:assessmentResult", "mobilitydcatap:Assessment");
+		
 		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
 		writeReferences(w, con, uri, MOBILITYDCAT.MOBILITY_THEME, "mobilitydcatap:mobilityTheme");
 		writeReferences(w, con, uri, MOBILITYDCAT.NETWORK_COVERAGE, "mobilitydcatap:networkCoverage");

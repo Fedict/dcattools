@@ -30,18 +30,9 @@ import org.eclipse.rdf4j.model.util.Values;
 
 /**
  *
- * @author Bart.Hanssens
+ * @author Bart Hanssens
  */
-public class MOBILITYDCAT {
-	public final static IRI APPLICATION_LAYER_PROTOCOL = Values.iri("https://w3id.org/mobilitydcat-ap#applicationLayerProtocol");
-	public final static IRI ASSESSMENT = Values.iri("https://w3id.org/mobilitydcat-ap#Assessment");
-	public final static IRI ASSESSMENT_RESULT = Values.iri("https://w3id.org/mobilitydcat-ap#assessmentResult");
-	public final static IRI COMMUNICATION_METHOD = Values.iri("https://w3id.org/mobilitydcat-ap#communicationMethod");
-	public final static IRI DATA_FORMAT_NOTES = Values.iri("https://w3id.org/mobilitydcat-ap#dataFormatNotes");
-	public final static IRI GEOREFERENCING_METHOD = Values.iri("https://w3id.org/mobilitydcat-ap#georeferencingMethod");
-	public final static IRI GRAMMAR = Values.iri("https://w3id.org/mobilitydcat-ap#grammar");
-	public final static IRI HAS_MOBILITY_DATASET_STANDARD = Values.iri("https://w3id.org/mobilitydcat-ap#mobilityDataStandard");
-	public final static IRI MOBILITY_THEME = Values.iri("https://w3id.org/mobilitydcat-ap#mobilityTheme");
-	public final static IRI NETWORK_COVERAGE = Values.iri("https://w3id.org/mobilitydcat-ap#networkCoverage");
-	public final static IRI TRANSPORT_MODE = Values.iri("https://w3id.org/mobilitydcat-ap#transportMode");
+public class OA {
+	public final static IRI HAS_BODY = Values.iri("https://www.w3.org/ns/oa#hasBody");
+	public final static IRI TEXTUAL_BODY = Values.iri("https://www.w3.org/ns/oa#TextualBody");
 }

@@ -33,6 +33,7 @@ import org.eclipse.rdf4j.model.util.Values;
  * @author Bart.Hanssens
  */
 public class DQV {
+	public final static IRI HAS_QUALITY_ANNOTATION = Values.iri("http://www.w3.org/ns/dqv#hasQualityAnnotation");
 	public final static IRI HAS_QUALITY_MEASUREMENT = Values.iri("http://www.w3.org/ns/dqv#hasQualityMeasurement");
 	public final static IRI IS_MEASUREMENT_OF = Values.iri("http://www.w3.org/ns/dqv#isMeasurementOf");
 	public final static IRI QUALITY_MEASUREMENT = Values.iri("http://www.w3.org/ns/dqv#QualityMeasurement");
