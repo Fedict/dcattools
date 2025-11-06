@@ -574,7 +574,8 @@ public class EDP {
 		
 		writeReferences(w, con, uri, MOBILITYDCAT.APPLICATION_LAYER_PROTOCOL, "mobilitydcatap:applicationLayerProtocol");
 		writeReferences(w, con, uri, MOBILITYDCAT.COMMUNICATION_METHOD, "mobilitydcatap:communicationMethod");
-		writeReferences(w, con, uri, MOBILITYDCAT.DATA_FORMAT_NOTES, "mobilitydcatap:dataFormatNotes");
+		writeReferences(w, con, uri, MOBILITYDCAT.GRAMMAR, "mobilitydcatap:grammar");
+		writeLiterals(w, con, uri, MOBILITYDCAT.DATA_FORMAT_NOTES, "mobilitydcatap:dataFormatNotes");
 		
 		w.writeEndElement();
 	}
