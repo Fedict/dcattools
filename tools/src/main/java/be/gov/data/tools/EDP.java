@@ -515,6 +515,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.ALTERNATIVE, "dct:alternative");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
+		writeReferences(w, con, uri, DCTERMS.TYPE, "dct:type");
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
@@ -575,6 +576,7 @@ public class EDP {
 		writeReferences(w, con, uri, MOBILITYDCAT.APPLICATION_LAYER_PROTOCOL, "mobilitydcatap:applicationLayerProtocol");
 		writeReferences(w, con, uri, MOBILITYDCAT.COMMUNICATION_METHOD, "mobilitydcatap:communicationMethod");
 		writeReferences(w, con, uri, MOBILITYDCAT.GRAMMAR, "mobilitydcatap:grammar");
+		writeReferences(w, con, uri, MOBILITYDCAT.HAS_MOBILITY_DATASET_STANDARD, "mobilitydcatap:mobilityDataStandard");
 		writeLiterals(w, con, uri, MOBILITYDCAT.DATA_FORMAT_NOTES, "mobilitydcatap:dataFormatNotes");
 		
 		w.writeEndElement();

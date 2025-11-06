@@ -38,6 +38,7 @@ public class MOBILITYDCAT {
 	public final static IRI DATA_FORMAT_NOTES = Values.iri("https://w3id.org/mobilitydcat-ap#dataFormatNotes");
 	public final static IRI GEOREFERENCING_METHOD = Values.iri("https://w3id.org/mobilitydcat-ap#georeferencingMethod");
 	public final static IRI GRAMMAR = Values.iri("https://w3id.org/mobilitydcat-ap#grammar");
+	public final static IRI HAS_MOBILITY_DATASET_STANDARD = Values.iri("https://w3id.org/mobilitydcat-ap#mobilityDataStandard");
 	public final static IRI MOBILITY_THEME = Values.iri("https://w3id.org/mobilitydcat-ap#mobilityTheme");
 	public final static IRI NETWORK_COVERAGE = Values.iri("https://w3id.org/mobilitydcat-ap#networkCoverage");
 	public final static IRI TRANSPORT_MODE = Values.iri("https://w3id.org/mobilitydcat-ap#transportMode");
