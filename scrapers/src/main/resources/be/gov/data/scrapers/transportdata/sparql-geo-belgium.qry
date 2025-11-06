@@ -1,0 +1,36 @@
+# Set geographic area of a dataset or dataservice to Belgium
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+DELETE 
+	{ 	?res dcterms:spatial ?geo1 .
+		?geo1 dcterms:identifier <http://data.europa.eu/nuts/code/BE1> .
+		?res dcterms:spatial ?geo2 .
+		?geo2 dcterms:identifier <http://data.europa.eu/nuts/code/BE2> . 
+		?res dcterms:spatial ?geo3 .
+		?geo3 dcterms:identifier <http://data.europa.eu/nuts/code/BE3> .
+		?res dcterms:spatial ?geo4 .
+		?geo4 dcat:bbox ?o
+	}
+INSERT 
+	{
+		?res dcterms:spatial <https://sws.geonames.org/2802361/> .
+		<https://sws.geonames.org/2802361/> a dcterms:Location .
+		<https://sws.geonames.org/2802361/> dcat:bbox "POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))"^^geo:wktLiteral
+	}
+WHERE
+	{	?res a ?cl
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		?res dcterms:spatial ?geo1 .
+		?geo1 dcterms:identifier <http://data.europa.eu/nuts/code/BE1> .
+		?res dcterms:spatial ?geo2 .
+		?geo2 dcterms:identifier <http://data.europa.eu/nuts/code/BE2> . 
+		?res dcterms:spatial ?geo3 .
+		?geo3 dcterms:identifier <http://data.europa.eu/nuts/code/BE3> 
+		OPTIONAL {
+			?res dcterms:spatial ?geo4 .
+			?geo4 dcat:bbox ?o 
+		}
+	}

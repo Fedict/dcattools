@@ -406,3 +406,9 @@
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Coopstroom"@fr, "Coopstroom"@en, "Coopstroom"@nl, "Coopstroom"@de ;
 	skos:altLabel "Coopstroom" .
+
+<https://opencorporates.com/id/companies/fr/522816651>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Getaround"@fr, "Getaround"@en, "Getaround"@nl, "Getaround"@de ;
+	skos:altLabel "Getaround" .
