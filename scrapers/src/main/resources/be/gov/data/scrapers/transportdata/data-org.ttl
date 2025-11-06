@@ -378,8 +378,8 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0536614688>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Luchthaven Oostende"@nl, "Ostend Airport"@en, 
-					"Aéroport d'Ostende"@fr, "Flughafen Ostende"@de;
+	skos:prefLabel "Luchthaven Oostende-Brugge"@nl, "Ostend-Bruges Airport"@en, 
+					"Aéroport d'Ostende-Bruges"@fr, "Flughafen Ostende-Brügge"@de;
 	skos:altLabel "LEM Oostende NV - Luchthaven Oostende" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248211419>
