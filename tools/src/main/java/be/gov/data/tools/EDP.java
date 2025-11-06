@@ -31,6 +31,7 @@ import be.gov.data.dcat.vocab.CITEDCAT;
 import be.gov.data.dcat.vocab.CONTENT;
 import be.gov.data.dcat.vocab.DQV;
 import be.gov.data.dcat.vocab.GEODCAT;
+import be.gov.data.dcat.vocab.MOBILITYDCAT;
 import be.gov.data.dcat.vocab.SDMX;
 
 import java.io.File;
@@ -132,6 +133,7 @@ public class EDP {
 		w.writeNamespace(GEO.PREFIX, GEO.NAMESPACE);
 		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("geodcatap", "http://data.europa.eu/930/");
+		w.writeNamespace("mobilitydcatap", "https://w3id.org/mobilitydcat-ap#");
 		w.writeNamespace(ORG.PREFIX, ORG.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(PROV.PREFIX, PROV.NAMESPACE);
@@ -535,6 +537,11 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
+		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
+		writeReferences(w, con, uri, MOBILITYDCAT.MOBILITY_THEME, "mobilitydcatap:mobilityTheme");
+		writeReferences(w, con, uri, MOBILITYDCAT.NETWORK_COVERAGE, "mobilitydcatap:networkCoverage");
+		writeReferences(w, con, uri, MOBILITYDCAT.TRANSPORT_MODE, "mobilitydcatap:transportMode");
+		
 	}
 
 	/**
