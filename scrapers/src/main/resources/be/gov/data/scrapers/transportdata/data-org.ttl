@@ -361,4 +361,30 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Gas.be"@en, "Gas.be"@nl, "Gas.be"@de, "Gas.be"@fr ;
-	skos:altLabel "Gas.be" .
+	skos:altLabel "Gas.be" 
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0653736349>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Stapp In Belgium"@de, "Stapp In Belgium"@fr, "Stapp In Belgium"@nl, "Stapp In Belgium"@en ;
+	skos:altLabel "Stapp In Belgium" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0451857573>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "VVSG"@nl, "VVSG"@fr, "VVSG"@en, "VVSG"@de ;
+	skos:altLabel "Fietsberaad Vlaanderen" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0536614688>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Luchthaven Oostende"@nl, "Ostend Airport"@en, 
+					"Aéroport d'Ostende"@fr, "Flughafen Ostende"@de;
+	skos:altLabel "LEM Oostende NV - Luchthaven Oostende" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248211419>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Luchthaven Antwerpen"@nl, "Antwerp Airport"@en, 
+					"Aéroport d'Anvers"@fr, "Flughafen Antwerpen"@de;
+	skos:altLabel "LEM Antwerpen NV - Luchthaven Antwerpen" .
