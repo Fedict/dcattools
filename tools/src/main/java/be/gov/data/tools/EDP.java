@@ -529,7 +529,6 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
 		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
-		writeLiterals(w, con, uri, DCTERMS.BIBLIOGRAPHIC_CITATION, "dct:bibliographicCitation");
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
 		writeReferences(w, con, uri, DCATAP_CONFORMS, "dcatap:applicableLegislation", "eli:LegalResource", false);
@@ -537,11 +536,6 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
-		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
-		writeReferences(w, con, uri, MOBILITYDCAT.MOBILITY_THEME, "mobilitydcatap:mobilityTheme");
-		writeReferences(w, con, uri, MOBILITYDCAT.NETWORK_COVERAGE, "mobilitydcatap:networkCoverage");
-		writeReferences(w, con, uri, MOBILITYDCAT.TRANSPORT_MODE, "mobilitydcatap:transportMode");
-		
 	}
 
 	/**
@@ -577,6 +571,10 @@ public class EDP {
 		writeLiterals(w, con, uri, CONTENT.CHARACTER_ENCODING, "cnt:characterEncoding");
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
+		
+		writeReferences(w, con, uri, MOBILITYDCAT.APPLICATION_LAYER_PROTOCOL, "mobilitydcatap:applicationLayerProtocol");
+		writeReferences(w, con, uri, MOBILITYDCAT.COMMUNICATION_METHOD, "mobilitydcatap:communicationMethod");
+		writeReferences(w, con, uri, MOBILITYDCAT.DATA_FORMAT_NOTES, "mobilitydcatap:dataFormatNotes");
 		
 		w.writeEndElement();
 	}
@@ -653,6 +651,7 @@ public class EDP {
 			}
 		}
 		// citations
+		writeLiterals(w, con, uri, DCTERMS.BIBLIOGRAPHIC_CITATION, "dct:bibliographicCitation");
 		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO.CITED_BY, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("bibo:citedBy");
@@ -676,15 +675,6 @@ public class EDP {
 				}
 			}
 		}
-		
-		// full distributions
-		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
-			while (res.hasNext()) {
-				w.writeStartElement("dcat:distribution");
-				writeDist(w, con, (IRI) res.next().getObject());
-				w.writeEndElement();
-			}
-		}
 
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
@@ -703,6 +693,20 @@ public class EDP {
 		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
 
 		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
+
+		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
+		writeReferences(w, con, uri, MOBILITYDCAT.MOBILITY_THEME, "mobilitydcatap:mobilityTheme");
+		writeReferences(w, con, uri, MOBILITYDCAT.NETWORK_COVERAGE, "mobilitydcatap:networkCoverage");
+		writeReferences(w, con, uri, MOBILITYDCAT.TRANSPORT_MODE, "mobilitydcatap:transportMode");
+
+		// full distributions
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("dcat:distribution");
+				writeDist(w, con, (IRI) res.next().getObject());
+				w.writeEndElement();
+			}
+		}
 
 		w.writeEndElement();
 	}
