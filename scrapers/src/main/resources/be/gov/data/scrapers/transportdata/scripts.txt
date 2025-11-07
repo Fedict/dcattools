@@ -12,6 +12,7 @@ transportdata/sparql-title-tag.qry
 transportdata/sparql-geo-belgium.qry
 transportdata/sparql-geo-regions.qry
 transportdata/sparql-landingpage.qry
+transportdata/sparql-remove-orgs.qry
 sparql-available.qry
 clear-skos.qry
 data-shacl-support.ttl
