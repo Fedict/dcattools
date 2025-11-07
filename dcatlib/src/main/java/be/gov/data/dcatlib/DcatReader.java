@@ -27,7 +27,6 @@
 package be.gov.data.dcatlib;
 
 import be.gov.data.dcatlib.model.Catalog;
-import be.gov.data.dcatlib.model.CatalogRecord;
 import be.gov.data.dcatlib.model.DataResource;
 import be.gov.data.dcatlib.model.Dataservice;
 import be.gov.data.dcatlib.model.Dataset;
@@ -75,7 +74,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Read DCAT-AP v2 data into a simplified model for data.gov.be
+ * Read DCAT-AP v2 data into a simplified model for data.gov.be.
+ * This is not meant to be a complete DCAT-AP reader/writer.
  * 
  * @author Bart Hanssens
  */
@@ -600,35 +600,6 @@ public class DcatReader {
 			service.setDatasets(datasets);
 		}
 	}
-
-	/**
-	 * Read CatalogRecords
-	 * 
-	 * @param catalog
-	 * @throws IOException 
-	 */
-	private void readRecords(Catalog catalog) throws IOException {
-		LOG.info("Reading Catalog records");
-	
-		int ok = 0;
-		int skip = 0;
-
-		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.CATALOG_RECORD)) {
-			IRI iri = (IRI) stmt.getSubject();
-			try {
-				CatalogRecord rec = new CatalogRecord();
-				rec.setId(getValue(iri, DCTERMS.IDENTIFIER).stringValue());
-				rec.setTopics(getIRIs(iri, FOAF.PRIMARY_TOPIC).stream()
-														.collect(Collectors.toSet()));
-				catalog.addRecord(iri.stringValue(), rec);
-				ok++;
-			} catch (IOException ioe) {
-				LOG.error(ioe.getMessage());
-				skip++;
-			}			
-		}
-		LOG.info("Read {} records, skipping {}", ok, skip);
-	}
 	
 	/**
 	 * Read SKOS terms
@@ -707,7 +678,6 @@ public class DcatReader {
 		readDatasets(catalog);
 		readDataservices(catalog);
 		readServes(catalog);
-		readRecords(catalog);
 		readTerms(catalog);
 		readOrganizations(catalog);
 
