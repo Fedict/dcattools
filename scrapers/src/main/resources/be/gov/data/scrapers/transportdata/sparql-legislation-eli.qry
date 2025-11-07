@@ -9,9 +9,10 @@ INSERT
 WHERE 
 	{	?s dcatap:applicableLegislation ?str .
 		VALUES (?str ?eli)  {
-			( "MMTIS"  <http://data.europa.eu/eli/reg_del/2024/490/oj> )
-			( "RTTI" <http://data.europa.eu/eli/reg_del/2022/670/oj> )
-			( "SRTI" <http://data.europa.eu/eli/reg_del/2013/886/oj> )
+			( "MMTIS"	<http://data.europa.eu/eli/reg_del/2017/1926/oj> )
+			( "RTTI"	<http://data.europa.eu/eli/reg_del/2022/670/oj> )
+			( "SRTI"	<http://data.europa.eu/eli/reg_del/2013/886/oj> )
+			( "SSTP"	<http://data.europa.eu/eli/reg_del/2013/885/oj> )
 		}
 		FILTER (IsLiteral(?str))
 	}
