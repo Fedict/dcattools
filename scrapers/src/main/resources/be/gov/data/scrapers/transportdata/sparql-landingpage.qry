@@ -1,0 +1,13 @@
+# Add landingpage based on URI, if missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?dataset dcat:landingPage ?page }
+WHERE
+	{ 	?dataset a ?cl 
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		BIND (IRI(STR(?dataset), "#") AS ?page)
+		FILTER NOT EXISTS  { ?dataset dcat:landingPage ?page }
+	}

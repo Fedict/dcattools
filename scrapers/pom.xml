@@ -4,9 +4,9 @@
 	<parent>
 		<groupId>be.gov.data</groupId>
 		<artifactId>dcattools</artifactId>
-		<version>4.1.0</version>
+		<version>4.1.1</version>
 	</parent>
-	<version>4.1.0</version>
+	<version>4.1.1</version>
 	<name>scrapers</name>
 	<description>Various scrapers for Belgian data portals</description>
 	<artifactId>scrapers</artifactId>
