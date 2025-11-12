@@ -135,6 +135,7 @@ public class EDP {
 		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("geodcatap", "http://data.europa.eu/930/");
 		w.writeNamespace("mobilitydcatap", "https://w3id.org/mobilitydcat-ap#");
+		w.writeNamespace("oa", "http://www.w3.org/ns/oa#");
 		w.writeNamespace(ORG.PREFIX, ORG.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(PROV.PREFIX, PROV.NAMESPACE);
