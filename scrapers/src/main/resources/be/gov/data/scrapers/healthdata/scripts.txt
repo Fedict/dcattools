@@ -3,6 +3,7 @@ data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 sparql-remove-circular.qry
+healthdata/sparql-remove-subnode.qry
 healthdata/data-org.ttl
 sparql-map-org.qry
 sparql-vcard-mailto.qry

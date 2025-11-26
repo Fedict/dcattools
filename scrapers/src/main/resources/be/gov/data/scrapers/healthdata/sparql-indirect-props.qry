@@ -12,7 +12,7 @@ INSERT {
 WHERE { 
 	?s ?prop ?node .
 	?node rdfs:label ?label .
-	?node ?p ?o
+	OPTIONAL { ?node ?p ?o }
 	VALUES ?prop { dcat:keyword dcat:theme }
 }
 

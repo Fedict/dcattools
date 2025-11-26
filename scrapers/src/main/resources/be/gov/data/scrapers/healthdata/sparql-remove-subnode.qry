@@ -1,4 +1,4 @@
-# Replace indirect node and link directly to dataset
+# Remove duplicate subnode
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -8,19 +8,17 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE { 
 	?s ?prop ?node .
-	?node ?p ?o .
+	?subnode ?p ?o .
+	?subnode a ?class .
 	?node rdfs:label ?subnode }
-INSERT { 
-	?s ?prop ?subnode .
-	?subnode ?p ?o }
 WHERE { 
 	?s ?prop ?node .
 	?node rdfs:label ?subnode .
 	?subnode a ?class 
-	OPTIONAL { ?node ?p ?o }
+	OPTIONAL { ?subnode ?p ?o }
 	VALUES (?prop ?class) { 
-			(dcat:dataset dcat:Dataset)
-			(dcat:distribution dcat:Distribution) 
+			(dcat:contactPoint vcard:Contact)
+			(dcterms:publisher org:Organization)
 	}
 }
 

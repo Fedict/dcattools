@@ -27,4 +27,5 @@ WHERE
 					geodcat:custodian geodcat:distributor geodcat:originator }
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (! STRSTARTS(STR(?org), "https://org.belgif"))
+		FILTER (?p != ?rel)
 	}
