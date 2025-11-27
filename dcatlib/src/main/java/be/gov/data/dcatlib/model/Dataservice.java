@@ -39,6 +39,7 @@ import org.eclipse.rdf4j.model.IRI;
 public class Dataservice extends DataResource {
 	private IRI endPointURL;
 	private IRI endPointDescription;
+	private Set<IRI> formats;
 	private List<Dataset> datasets;
 
 	/**
@@ -88,15 +89,25 @@ public class Dataservice extends DataResource {
 		this.endPointDescription = endPointDescription;
 	}
 
+	/**
+	 * @param formats the formats to set
+	 */
+	public void setFormats(Set<IRI> formats) {
+		this.formats = formats;
+	}
+	
 	@Override
 	public Set<IRI> getFormats() {
-		Set<IRI> formats = new HashSet<>();
-		
-		for(Dataset d: datasets) {
-			formats.addAll(d.getFormats());
+		Set<IRI> fmts = new HashSet<>();
+		fmts.addAll(formats);
+
+		if (fmts.isEmpty()) {
+			for(Dataset d: datasets) {
+				fmts.addAll(d.getFormats());
+			}
 		}
-		formats.remove(null);
-		return formats;
+		fmts.remove(null);
+		return fmts;
 	}
 
 	@Override

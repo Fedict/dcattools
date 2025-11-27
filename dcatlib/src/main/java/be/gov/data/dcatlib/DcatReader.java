@@ -566,7 +566,8 @@ public class DcatReader {
 		for (Statement stmt: m.getStatements(null, RDF.TYPE, DCAT.DATA_SERVICE)) {
 			IRI iri = (IRI) stmt.getSubject();
 			try {
-				Dataservice d = (Dataservice) readResource(iri, new Dataservice());				
+				Dataservice d = (Dataservice) readResource(iri, new Dataservice());
+				d.setFormats(getIRIs(iri, DCTERMS.FORMAT));
 				catalog.addDataservice(d.getId(), d);		
 				ok++;
 			} catch (IOException ioe) {
