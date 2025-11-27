@@ -4,13 +4,15 @@ Various DCAT tools for harvesting metadata from Belgian open data portals,
 converting metadata to DCAT-AP files and updating the Belgian 
 [data.gov.be](http://data.gov.be) portal.
 
-The portal itself is a Drupal 9 website, based on Fedict's / BOSA's
+The portal itself is a Drupal 10 website, based on Fedict's / BOSA's
 [Openfed](https://drupal.org/project/openfed) distribution.
 
 ## Data
 
 Only interested in the result ? The N-Triples and XML files (DCAT-AP) 
-used to update data.gov.be can be found in the [dcat repository](https://github.com/fedict/dcat)
+used to update data.gov.be can be found in the [dcat repository](https://github.com/fedict/dcat).
+
+The DCAT-AP XML file is being used by the [European Data portal](https://data.europa.eu).
 
 ## Overview of the tools
 
@@ -29,7 +31,7 @@ Internet connection is obviously required, although a proxy can be used.
 and websites, and turning the metadata into DCAT files
 * Also part of the scrapers are a series of [SPARQL scripts](README-ENHANCERS.md) to turn DCAT into DCAT-AP: 
 e.g. map site-specific themes, add missing properties and prepare the files for updating data.gov.be
-* Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (currently Drupal 7) website 
+* Data.gov.be [updater](README-UPLOADER.md): update the data.gov.be (currently Drupal 10) website 
 using the enhanced DCAT files
 * Some [tools](#tools): link checker, EDP converter tool
 
