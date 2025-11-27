@@ -364,7 +364,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2791538/> ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002172> ;
-	skos:prefLabel "Mechelen"@nl, "Malines"@fr ;
+	skos:prefLabel "Stad Mechelen"@nl, "Ville de Malines"@fr, "City of Mechelen"@en, "Stadt Mechelen"@de ;
 	skos:altLabel "Stad Mechelen" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199300992>
@@ -446,6 +446,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725597> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2803136/> ;
 	skos:prefLabel "Provincie Antwerpen"@nl, "Province d'Anvers"@fr, "Provice of Antwerp"@en,
 				"Provinz Antwerpen"@de ;
 	skos:altLabel "Provincie Antwerpen"@nl .
@@ -453,6 +454,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0253973219>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/3333250/> ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000232> ;
 	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, 
 					"Province of Flemish Brabant"@en, "Provinz Flämisch-Brabant"@de ;
@@ -545,6 +547,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0205774810>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2792481/> ;
 	skos:prefLabel "Interleuven"@nl ;
 	skos:altLabel "Interleuven"@nl .
 
@@ -795,7 +798,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0477445084>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@nl ;
+	skos:prefLabel "Fluvius"@fr, "Fluvius"@en, "Fluvius"@de, "Fluvius"@nl ;
 	skos:altfLabel "Fluvius"@nl, "Fluvius" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
@@ -859,6 +862,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0462581716>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/2792481/> ;
 	skos:prefLabel "Regionaal Landschap Noord-Hageland"@nl ;
 	skos:altLabel "Regionaal Landschap Noord-Hageland"@nl .
 
