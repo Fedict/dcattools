@@ -276,6 +276,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207433312>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2791344/> ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002177> ;
 	skos:prefLabel "Stad Menen"@nl, "Ville de Menin"@fr, "City of Menen"@en, "Stadt Menen"@de ;
 	skos:altLabel "Stad Menen" .
@@ -314,6 +315,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0267388418>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2783770/> ;
 	skos:closeMatch <https://westtoer.be/id/contact> ;
 	skos:prefLabel "WestToer"@nl ;
 	skos:altLabel "Westtoer", "WestToer"@nl .
@@ -609,7 +611,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0308252043>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	dcterms:spatial <https://www.geonames.org/2789530/> ;
+	dcterms:spatial <https://sws.geonames.org/2789530/> ;
 	skos:prefLabel "Stad Oudenaarde"@nl, "City of Oudenaarde"@en, "Ville d'Audenarde"@fr, "Stadt Oudenaarde"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002203> ;
 	skos:altLabel "Stad Oudenaarde"@nl .
@@ -617,6 +619,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207506160>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2796086/> ;
 	skos:prefLabel "Gemeente Hemiksem"@nl, "Municipality of Hemiksem"@en, "Commune de Hemiksem"@fr,
 					"Gemeinde Hemiksem"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002087> ;
@@ -625,6 +628,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207430342>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2793858/>;
 	skos:prefLabel "Gemeente Kuurne"@nl, "Municipality of Kuurne"@en, "Commune de Kuurne"@fr, "Gemeinde Kuurne"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002137> ;
 	skos:altLabel "Gemeente Kuurne"@nl .
@@ -632,6 +636,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207502794>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2792361/> ;
 	skos:prefLabel "Gemeente Lille"@nl, "Municipality of Lille"@en, "Commune de Lille"@fr, "Gemeinde Lille"@de;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002154> ;
 	skos:altLabel "Gemeente Lille"@nl .
@@ -639,6 +644,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0206561993>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2786125/> ;
 	skos:prefLabel "Gemeente Steenokkerzeel"@nl, "Municipality of Steenokkerzeel"@en, 
 				"Commune de Steenokkerzeel"@fr, "Gemeinde Steenokkerzeel"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002243> ;
@@ -647,6 +653,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207539220>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2783348/> ;
 	skos:prefLabel "Gemeente Zandhoven"@nl, "Municipality of Zandhoven"@en, "Commune de Zandhoven"@fr, 
 					"Gemeinde Zandhoven"@de ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002281> ;
