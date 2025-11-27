@@ -424,7 +424,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2789733/> ;
 	skos:prefLabel "Provincie Oost-Vlaanderen"@nl, "Province de Flandre-Orientale"@fr, 
-					"Province East Flanders"@en ;
+					"Province East Flanders"@en, "Provinz Ostflandern"@de ;
 	skos:altLabel "Provincie Oost-Vlaanderen"@nl, "Province East Flanders" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
@@ -440,20 +440,22 @@
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2792347/> ;
 	skos:prefLabel "Provincie Limburg"@nl, "Province de Limbourg"@fr, 
-					"Province of Limburg"@en ;
+					"Province of Limburg"@en, "Provinz Luxemburg"@de ;
 	skos:altLabel "Provincie Limburg"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725597> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Provincie Antwerpen"@nl, "Province d'Anvers"@fr, "Provice of Antwerp"@en ;
+	skos:prefLabel "Provincie Antwerpen"@nl, "Province d'Anvers"@fr, "Provice of Antwerp"@en,
+				"Provinz Antwerpen"@de ;
 	skos:altLabel "Provincie Antwerpen"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0253973219>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000232> ;
-	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, "Provice of Flemish Brabant"@en ;
+	skos:prefLabel "Provincie Vlaams-Brabant"@nl, "Province de Brabant flamand"@fr, 
+					"Province of Flemish Brabant"@en, "Provinz Flämisch-Brabant"@de ;
 	skos:altLabel "Provincie Vlaams-Brabant"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069537>

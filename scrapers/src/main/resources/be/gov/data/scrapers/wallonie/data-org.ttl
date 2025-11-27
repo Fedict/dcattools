@@ -311,19 +311,23 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207283951>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2786853/> ;
 	skos:prefLabel "Commune de Seneffe"@fr, "Gemeente Seneffe"@nl, "Gemeinde Seneffe"@de, "Municipality of Seneffe"@en ;
 	skos:altLabel "Commune de Seneffe" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206644741>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Verviers"@fr ;
+	dcterms:spatial <https://sws.geonames.org/2792349/> ;
+	skos:prefLabel "Ville de Verviers"@fr, "Stad Verviers"@nl, "City of Verviers"@en, "Stadt Verviers"@de ;
 	skos:altLabel "Ville de Verviers" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207347891>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Marche-en-Famenne"@fr ;
+	dcterms:spatial <https://sws.geonames.org/2791745/> ;
+	skos:prefLabel "Ville de Marche-en-Famenne"@fr, "Stad Marche-en-Famenne"@nl, "City of Marche-en-Famenne"@en,
+					"Stadt Marche-en-Famenne" ;
 	skos:altLabel "Ville de Marche-en-Famenne" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0931814167> 
@@ -335,6 +339,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207343933>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2792414/> ;
 	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en, "Stadt Lüttich"@de ;
 	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr,
 		"Ville+de+Li%C3%A8ge"  .
@@ -342,13 +347,16 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0454695220>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2792412/> ;
 	skos:prefLabel "Liège Métropole"@nl, "Liège Métropole"@fr, "Liège Métropole"@en, "Liège Métropole"@de ;
 	skos:altLabel "Liège Métropole" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0871429489>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "La Louvière"@fr ;
+	dcterms:spatial <https://sws.geonames.org/2793509/> ;
+	skos:prefLabel "Ville de La Louvière"@fr, "City of La Louvière"@en, "Stadt La Louvière"@de,
+				"Stad La Louvière"@nl ;
 	skos:altLabel "Ville+de+La+Louvi%C3%A8re", "Ville de La Louvière"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207148250>
@@ -398,7 +406,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725401>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Luxemburg"@nl, "Luxembourg"@fr, "Luxemburg"@en ;
+	skos:prefLabel "Provincie Luxemburg"@nl, "Province de Luxembourg"@fr, "Luxemburg"@en ;
 	skos:altLabel "Province de Luxembourg".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
