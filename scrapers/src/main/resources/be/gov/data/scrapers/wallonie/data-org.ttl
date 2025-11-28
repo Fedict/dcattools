@@ -362,18 +362,21 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207148250>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Ville de Péruwelz"@fr ;
+	dcterms:spatial <https://sws.geonames.org/2789163/> ;
+	skos:prefLabel "Ville de Péruwelz"@fr, "Stadt Péruwelz"@de, "Stad Péruwelz"@nl, "City of Péruwelz"@en ;
 	skos:altLabel "Ville+de+P%C3%A9ruwelz", "Ville de Péruwelz" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207258514>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2803205/> ;
 	skos:prefLabel "Ville d'Andenne"@fr, "Stad Andenne"@nl, "Stadt Andenne"@de, "City of Andenne"@en ;
 	skos:altLabel "Ville d'Andenne", "Ville+d%27Andenne" .	
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207312952>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2801155/> ;
 	skos:prefLabel "Commune de Braine-l'Alleud"@fr, "Gemeente Eigenbrakel"@nl, "Gemeinde Braine-l'Alleud"@de,
 					"Municipality of Braine-l'Alleud"@en ;
 	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud",
@@ -382,19 +385,22 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0206642563>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Nivelles"@fr, "Nijvel"@nl ;
+	dcterms:spatial <https://sws.geonames.org/2790102/> ;
+	skos:prefLabel "Ville de Nivelles"@fr, "Stad Nijvel"@nl, "City of Nivelles"@en, "Stadt Nivelles"@de ;
 	skos:altLabel "Ville+de+Nivelles", "Ville de Nivelles" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207300678>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800326/> ;
 	skos:prefLabel "Ville de Chimay"@fr, "Stadt Chimay"@de, "City of Chimay"@en, "Stad Chimay"@nl ;
 	skos:altLabel "Ville de Chimay" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207376991>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Hannut"@fr ;
+	dcterms:spatial <https://sws.geonames.org/2796584/> ;
+	skos:prefLabel "Ville de Hannut"@fr, "Stad Hannut"@nl, "Stadt Hannut"@de, "City of Hannut"@de ;
 	skos:altLabel "Ville de Hannut" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0546740696>
@@ -406,14 +412,15 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725401>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2791993/> ;
 	skos:prefLabel "Provincie Luxemburg"@nl, "Province de Luxembourg"@fr, "Luxemburg"@en ;
 	skos:altLabel "Province de Luxembourg".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
-	skos:prefLabel "bPost"@nl, "bPost"@fr, "bPost"@en ;
-	skos:altLabel "bpost" .
+	skos:prefLabel "bPost"@nl, "bPost"@fr, "bPost"@en, "bPost"@de ;
+	skos:altLabel "bpost", "Code Postal.be" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0433457663>
 	a foaf:Organization ;
@@ -468,12 +475,6 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
 	skos:altLabel "BEBAT" .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
-	a foaf:Organization ;
-	dcterms:type admsp:Company ;
-	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
-	skos:altLabel "Code Postal.be" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
 	a foaf:Organization ;
