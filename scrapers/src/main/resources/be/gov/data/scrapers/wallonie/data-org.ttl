@@ -18,7 +18,8 @@
 	skos:prefLabel "Ministerie van de Franse Gemeenschap"@nl,
 		"Ministère de la Communauté française"@fr,
 		"Ministerium der Französischen Gemeinschaft"@de ;
-	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles".
+	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles",
+				"Ministère de la Fédération Wallonie-Bruxelles"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0201105843>
 	a foaf:Organization ;
@@ -107,7 +108,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW-ARNE Agriculture, RN et Environnement"@fr,
 					"ÖDW Landwirtschaft, Naturschätze und Umwelt"@de ;
-	skos:altLabel "SPW ARNE" .
+	skos:altLabel "SPW ARNE", "SPW ARNE"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381138>
 	a foaf:Organization ;
@@ -134,7 +135,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "iMio"@fr ;
-	skos:altLabel "IMIO", "iMio" .
+	skos:altLabel "IMIO", "iMio"@fr.
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0850260131> 
 	a foaf:Organization ;
@@ -153,7 +154,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2796741/> ;
 	skos:prefLabel "Centropôle"@fr ;
-	skos:altLabel "Centropôle", "Centropôle ASBL" .
+	skos:altLabel "Centropôle", "Centropôle ASBL", "Centrop%C3%B4le+ASBL" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0568575002>
 	a foaf:Organization ;
@@ -191,7 +192,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "FuturoCité"@fr ;
-	skos:altLabel "FuturoCité", "FuturoCit%C3%A9" .
+	skos:altLabel "FuturoCité" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0242069339> 
 	a foaf:Organization ;
@@ -269,7 +270,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2785342/> ;
 	skos:prefLabel "Ville de Tournai"@fr, "Stad Doornik"@nl, "Stadt Tournai"@de, "City of Tournai"@en ;
-	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai",  .
+	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai", "Ville de Tournai"@fr  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
@@ -306,7 +307,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2790871/> ;
 	skos:prefLabel "Ville de Mons"@fr, "Stad Bergen"@nl, "Stadt Mons"@de, "City of Mons"@en ;
-	skos:altLabel "Ville de Mons", "Ville+de+Mons+" .
+	skos:altLabel "Ville de Mons", "Ville de Mons"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207283951>
 	a foaf:Organization ;
@@ -320,7 +321,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2792349/> ;
 	skos:prefLabel "Ville de Verviers"@fr, "Stad Verviers"@nl, "City of Verviers"@en, "Stadt Verviers"@de ;
-	skos:altLabel "Ville de Verviers" .
+	skos:altLabel "Ville de Verviers", "Ville de Verviers"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207347891>
 	a foaf:Organization ;
@@ -357,7 +358,7 @@
 	dcterms:spatial <https://sws.geonames.org/2793509/> ;
 	skos:prefLabel "Ville de La Louvière"@fr, "City of La Louvière"@en, "Stadt La Louvière"@de,
 				"Stad La Louvière"@nl ;
-	skos:altLabel "Ville+de+La+Louvi%C3%A8re", "Ville de La Louvière"  .
+	skos:altLabel "Ville de La Louvière"@fr, "Ville de La Louvière"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207148250>
 	a foaf:Organization ;

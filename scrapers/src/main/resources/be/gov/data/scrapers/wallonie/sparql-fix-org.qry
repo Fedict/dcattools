@@ -12,7 +12,6 @@ WHERE
 		VALUES ?rel { dcterms:publisher dcterms:creator dcterms:contributor }
 		FILTER NOT EXISTS { ?uri foaf:name ?name }
 		BIND(
-			STRLANG(
 			REPLACE(
 				REPLACE(
 					REPLACE(
@@ -25,6 +24,6 @@ WHERE
 						"%C3%A8", "è"),
 					"%C3%A2", "â"),
 				"%C3%B4", "ô"),
-			"%27", "'"), "fr")
+			"%27", "'")
 		as ?str)
 	}
