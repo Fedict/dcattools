@@ -76,7 +76,7 @@
 					<https://data.vlaanderen.be/doc/organisatie/OVO000112> ;
 	skos:prefLabel "Vlaamse Waterweg NV"@nl ;
 	skos:altLabel "Vlaamse Waterweg NV"@nl, "De Vlaamse Waterweg nv"@nl,
-		"de Vlaamse Waterweg nv"@nl,
+		"de Vlaamse Waterweg nv"@nl, "DE VLAAMSE WATERWEG"@nl,
 		"De Vlaamse Waterweg nv Projectbureau DBFM Beweegbare Kunstwerken"@nl  .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199322471>
@@ -120,6 +120,19 @@
 	skos:prefLabel "FOD Financiën"@nl, "SPF Finances"@fr, "FPS Finance"@en, "FÖD Finanzen"@de ;
 	skos:altLabel "Federale Overheidsdienst Financiën"@nl, "FOD Financiën"@nl,
 				"FOD Financiën - Algemene Administratie van de PatrimoniumDocumentatie"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206738078>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Federale Pensioendienst"@nl, "Service fédéral des Pensions"@fr, "Föderaler Pensionsdienst"@de ;
+	skos:altLabel "Federale Pensioendienst"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206734318>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Federaal agentschap voor beroepsrisico's"@nl, "Agence fédérale des risques professionnels"@fr, 
+			"Föderalagentur für berufsrisiken"@de, "Federal agency for occupational risks"@en ;
+	skos:altLabel "FEDRIS"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0426682709>
 	a foaf:Organization ;
@@ -519,7 +532,7 @@
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO003307> ;
 	skos:prefLabel "Haven van Antwerpen-Brugge"@nl, "Port of Antwerp-Bruges"@en ;
 	skos:altLabel "Haven Antwerpen - Brugge"@nl, "Port of Antwerp - Bruges"@en,
-					"Haven van Antwerpen-Brugge"@nl,
+					"Haven van Antwerpen-Brugge"@nl, "Haven van Antwerpen - Brugge"@nl,
 					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)",
 					"Haven van Antwerpen - Brugge (Port of Antwerp - Bruges)"@nl .
 
@@ -840,7 +853,7 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Kruispuntbank Sociale Zekerheid"@nl, "Banque-Carrefour de la Sécurite Sociale"@fr,
 					"Zentrale Datenbank der sozialen Sicherheit"@de, "Crossroad Bank Social Security"@en ;
-	skos:altLabel "Kruispuntbank Sociale Zekerheid"@nl  .
+	skos:altLabel "Kruispuntbank Sociale Zekerheid"@nl, "Kruispuntbank sociale Zekerheid"@nl   .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0208044709>
 	a foaf:Organization ;
@@ -893,6 +906,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0795547478>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO051320> ;
 	skos:prefLabel "Athumi"@nl, "Athumi"@en ;
 	skos:altLabel "Athumi"@nl .
 
