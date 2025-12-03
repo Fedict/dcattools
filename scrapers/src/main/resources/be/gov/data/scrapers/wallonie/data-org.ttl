@@ -19,7 +19,7 @@
 		"Ministère de la Communauté française"@fr,
 		"Ministerium der Französischen Gemeinschaft"@de ;
 	skos:altLabel "Minist%C3%A8re+de+la+F%C3%A9d%C3%A9ration+Wallonie-Bruxelles",
-				"Ministère de la Fédération Wallonie-Bruxelles"@fr .
+				"Ministère de la Fédération Wallonie-Bruxelles" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0201105843>
 	a foaf:Organization ;
@@ -84,7 +84,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
-	skos:altLabel "National+Geographic+Institute+of+Belgium" .
+	skos:altLabel "National Geographic Institute of Belgium" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207362739>
 	a foaf:Organization ;
@@ -92,10 +92,8 @@
 	dcterms:spatial <https://sws.geonames.org/2790472> ;
 	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr, "Stadt Namur"@de ;
 	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
-		"Ville de Namur - Portail Statistiques", 
-		"Ville de Namur - Mobilité", "Ville de Namur - Finances", 
-		"Ville de Namur", "Ville de Namur"@fr,
-		"Eco-Visio", "Eco-Compteur", "SIRS", "Ville+de+Namur+-+G%C3%A9omatique" .
+		"Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", 
+		"Ville de Namur", "Ville de Namur"@fr, "Eco-Visio", "Eco-Compteur", "SIRS", "Ville de Namur - Géomatique" .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2274368601>
 	a foaf:Organization ;
@@ -123,19 +121,19 @@
 	skos:prefLabel "SPW-EER Economie, Emploi, Recherche"@fr, "ÖDW Wirtschaft, Beschäftigung, Forschung"@de ;
 	skos:altLabel "Service Public de Wallonie - Ecomie, Emploi, Recherche",
 		"Service Public de Wallonie - Economie, Emploi, Recherche", "SPW EER",
-		"Service+Public+de+Wallonie+-+Ecomie%2C+Emploi%2C+Recherche" .
+		"Service Public de Wallonie - Ecomie%2C Emploi%2C Recherche" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0262172984>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW CRA-W Centre wallon de Recherches agronomiques"@fr ;
-	skos:altLabel "Agromet" .
+	skos:altLabel "Agromet",  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0841470248> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "iMio"@fr ;
-	skos:altLabel "IMIO", "iMio"@fr.
+	skos:altLabel "IMIO", "iMio".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0850260131> 
 	a foaf:Organization ;
@@ -205,7 +203,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW-SG Secrétariat général"@fr, "ÖDW Generalsekretariat"@de ;
 	skos:altLabel "Service public de Wallonie (SPW)", " Service public de Wallonie (SPW)",
-		" Service public de Wallonie (SPW) " .
+		" Service public de Wallonie (SPW) ", "Service Public de Wallonie (SPW)", "SPW".
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236363165>
 	a foaf:Organization ;
@@ -270,7 +268,8 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2785342/> ;
 	skos:prefLabel "Ville de Tournai"@fr, "Stad Doornik"@nl, "Stadt Tournai"@de, "City of Tournai"@en ;
-	skos:altLabel "Administration Communale de Tournai", "Ville de Tournai", "Ville de Tournai"@fr  .
+	skos:altLabel "Administration Communale de Tournai", 
+				"Administration communale de Tournai", "Ville de Tournai"  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
@@ -307,7 +306,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2790871/> ;
 	skos:prefLabel "Ville de Mons"@fr, "Stad Bergen"@nl, "Stadt Mons"@de, "City of Mons"@en ;
-	skos:altLabel "Ville de Mons", "Ville de Mons"@fr .
+	skos:altLabel "Ville de Mons", "Ville de Mons " .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207283951>
 	a foaf:Organization ;
@@ -342,8 +341,14 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2792414/> ;
 	skos:prefLabel "Stad Luik"@nl, "Ville de Liège"@fr, "City of Liège"@en, "Stadt Lüttich"@de ;
-	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr,
-		"Ville+de+Li%C3%A8ge"  .
+	skos:altLabel "Ville de Liège", "Ville de Liège ", "Ville de Liège"@fr, "Ville+de+Li%C3%A8ge"  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0204259135>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://www.geonames.org/2792411/> ;
+	skos:prefLabel "Spi"@fr, "Spi"@nl, "Spi"@de, "Spi"@en ; 
+	skos:altLabel "Spi" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0454695220>
 	a foaf:Organization ;
@@ -380,7 +385,7 @@
 	dcterms:spatial <https://sws.geonames.org/2801155/> ;
 	skos:prefLabel "Commune de Braine-l'Alleud"@fr, "Gemeente Eigenbrakel"@nl, "Gemeinde Braine-l'Alleud"@de,
 					"Municipality of Braine-l'Alleud"@en ;
-	skos:altLabel "Administration+communale+de+Braine-l%27Alleud", "Commune+de+Braine-l%27Alleud",
+	skos:altLabel "Administration communale de Braine-l'Alleud", "Commune+de+Braine-l%27Alleud",
 		"Commune de Braine-l'Alleud" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0206642563>
@@ -475,7 +480,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
-	skos:altLabel "BEBAT" .
+	skos:altLabel "BEBAT", "bebat" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
 	a foaf:Organization ;
