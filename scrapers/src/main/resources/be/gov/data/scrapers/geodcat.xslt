@@ -229,7 +229,7 @@
   <xsl:param name="CoupledResourceLookUp">
     <xsl:choose>
       <xsl:when test="$profile = $extended">
-        <xsl:text>enabled</xsl:text>
+        <xsl:text>disabled</xsl:text>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>disabled</xsl:text>
@@ -437,7 +437,7 @@
       <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString">
         <xsl:choose>
           <!-- Try to find English locale first -->
-          <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#locale-en']">
+          <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#EN']">
             <xsl:value-of select="normalize-space($element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#locale-en'][1])"/>
           </xsl:when>
           <!-- Otherwise use the first available LocalisedCharacterString -->
@@ -539,7 +539,7 @@
 <!-- Metadata language: corresponding Alpha-2 codes -->
 
     <xsl:param name="ormlang">
-      <xsl:choose>
+	  <xsl:choose>
         <xsl:when test="gmd:language/gmd:LanguageCode/@codeListValue != ''">
           <xsl:value-of select="translate(gmd:language/gmd:LanguageCode/@codeListValue,$uppercase,$lowercase)"/>
         </xsl:when>
@@ -636,14 +636,14 @@
 
     <xsl:param name="orrlang">
       <xsl:choose>
-        <xsl:when test="gmd:identificationInfo/*/gmd:language/gmd:LanguageCode/@codeListValue != ''">
-          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language/gmd:LanguageCode/@codeListValue,$uppercase,$lowercase)"/>
+        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode/@codeListValue != ''">
+          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode/@codeListValue,$uppercase,$lowercase)"/>
         </xsl:when>
-        <xsl:when test="gmd:identificationInfo/*/gmd:language/gmd:LanguageCode != ''">
-          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language/gmd:LanguageCode,$uppercase,$lowercase)"/>
+        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode != ''">
+          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode,$uppercase,$lowercase)"/>
         </xsl:when>
-        <xsl:when test="gmd:identificationInfo/*/gmd:language/gco:CharacterString != ''">
-          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language/gco:CharacterString,$uppercase,$lowercase)"/>
+        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gco:CharacterString != ''">
+          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language[1]/gco:CharacterString,$uppercase,$lowercase)"/>
         </xsl:when>
       </xsl:choose>
     </xsl:param>
@@ -1279,9 +1279,9 @@
         <xsl:choose>
           <xsl:when test="$orrlang">
 			<xsl:for-each select="$orrlang">
-              <dct:language>
-                <dct:LinguisticSystem rdf:about="{concat($oplang,translate(.,$lowercase,$uppercase))}"/>
-              </dct:language>
+            <dct:language>
+              <dct:LinguisticSystem rdf:about="{concat($oplang,translate(.,$lowercase,$uppercase))}"/>
+            </dct:language>
 			</xsl:for-each>
           </xsl:when>
           <xsl:otherwise>
@@ -2198,7 +2198,7 @@
 
 <!-- Coupled resource -->
 
-  <xsl:template name="CoupledResource" match="gmd:identificationInfo[1]/*/srv:operatesOn">
+  <xsl:template name="CoupledResource" match="gmd:identificationInfo/*/srv:operatesOn">
     <xsl:param name="href" select="@xlink:href"/>
     <xsl:param name="code">
       <xsl:choose>
@@ -4157,7 +4157,7 @@
       <xsl:variable name="value" select="normalize-space(.)"/>
       <xsl:variable name="langs">
         <xsl:call-template name="Alpha3-to-Alpha2">
-          <xsl:with-param name="lang" select="substring-after(translate(translate(@locale, $uppercase, $lowercase), '#', ''), 'locale-')"/>
+          <xsl:with-param name="lang" select="translate(translate(@locale, $uppercase, $lowercase), '#', '')"/>
         </xsl:call-template>
       </xsl:variable>
       <xsl:if test="$value != ''">

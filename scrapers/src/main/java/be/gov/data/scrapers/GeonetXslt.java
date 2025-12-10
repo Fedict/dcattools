@@ -218,7 +218,12 @@ public abstract class GeonetXslt extends Geonet {
 		TransformerFactory tfFactory = TransformerFactory.newInstance();
 		tfFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
 		tfFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
-
+		try {
+			tfFactory.setFeature("http://saxon.sf.net/feature/eagerEvaluation", Boolean.TRUE);
+		} catch (TransformerConfigurationException ex) {
+			System.getLogger(GeonetXslt.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+		}
+		
 		Source xslt;
 
 		String fname = PKG_PREFIX + "/geodcat.xslt";
