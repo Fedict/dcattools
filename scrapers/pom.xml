@@ -96,6 +96,12 @@
 			<artifactId>picocli</artifactId>
 			<version>4.7.7</version>
 		</dependency>
+	 <dependency>
+	  <groupId>net.sf.saxon</groupId>
+	  <artifactId>Saxon-HE</artifactId>
+	  <version>12.9</version>
+	  <scope>runtime</scope>
+	 </dependency>
 	</dependencies>
 	<build>
 		<plugins>

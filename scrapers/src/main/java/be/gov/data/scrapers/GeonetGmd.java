@@ -31,7 +31,6 @@ import be.gov.data.dcat.vocab.MDR_LANG;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -209,7 +209,20 @@ public class Storage {
             throws RepositoryException, RDFParseException, IOException {
         conn.add(in, DATAGOVBE, format, (Resource) null);
     }
-    
+    /**
+     * Add to the repository
+     * 
+     * @param in
+     * @param format
+     * @throws RepositoryException 
+     * @throws RDFParseException 
+     * @throws IOException 
+     */
+    public void add(Reader in, RDFFormat format) 
+            throws RepositoryException, RDFParseException, IOException {
+        conn.add(in, DATAGOVBE, format, (Resource) null);
+    }
+        
     /**
      * Add an IRI property to the repository.
      * 
