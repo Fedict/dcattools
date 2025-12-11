@@ -28,6 +28,10 @@
 -->
 
 <!--
+	Modified by Bart Hanssens to work on Belgian GeoNetwork installations
+-->
+
+<!--
 
   PURPOSE AND USAGE
 
@@ -84,6 +88,7 @@
     xmlns:vcard  = "http://www.w3.org/2006/vcard/ns#"
     xmlns:wdrs   = "http://www.w3.org/2007/05/powder-s#"
     xmlns:xlink  = "http://www.w3.org/1999/xlink"
+	xmlns:xs	 = "http://www.w3.org/2001/XMLSchema"
     xmlns:xsi    = "http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsl    = "http://www.w3.org/1999/XSL/Transform"
     exclude-result-prefixes="earl gco gmd gml gmx i i-gp srv xlink xsi xsl wdrs"
@@ -634,16 +639,22 @@
 
 <!-- Resource language: corresponding Alpha-2 codes -->
 
-    <xsl:param name="orrlang">
+    <xsl:param name="orrlang" as="xs:string*">
       <xsl:choose>
-        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode/@codeListValue != ''">
-          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode/@codeListValue,$uppercase,$lowercase)"/>
+        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode/@codeListValue">
+			<xsl:for-each select="gmd:identificationInfo/*/gmd:language/gmd:LanguageCode/@codeListValue">
+          <xsl:sequence select="translate(.,$uppercase,$lowercase)"/>
+			</xsl:for-each>
         </xsl:when>
-        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode != ''">
-          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode,$uppercase,$lowercase)"/>
+        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gmd:LanguageCode">
+			<xsl:for-each select="gmd:identificationInfo/*/gmd:language/gmd:LanguageCode">
+          <xsl:sequence select="translate(.,$uppercase,$lowercase)"/>
+			</xsl:for-each>
         </xsl:when>
-        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gco:CharacterString != ''">
-          <xsl:value-of select="translate(gmd:identificationInfo/*/gmd:language[1]/gco:CharacterString,$uppercase,$lowercase)"/>
+        <xsl:when test="gmd:identificationInfo/*/gmd:language[1]/gco:CharacterString">
+			<xsl:for-each select="gmd:identificationInfo/*/gmd:language/gco:CharacterString">
+          <xsl:sequence select="translate(.,$uppercase,$lowercase)"/>
+			</xsl:for-each>
         </xsl:when>
       </xsl:choose>
     </xsl:param>
@@ -1277,7 +1288,7 @@
 <!-- Resource Language -->
       <xsl:if test="$ResourceType = 'dataset' or $ResourceType = 'series'">
         <xsl:choose>
-          <xsl:when test="$orrlang">
+          <xsl:when test="$orrlang[1]">
 			<xsl:for-each select="$orrlang">
             <dct:language>
               <dct:LinguisticSystem rdf:about="{concat($oplang,translate(.,$lowercase,$uppercase))}"/>
