@@ -11,6 +11,6 @@ WHERE
 	{	?dist dcat:downloadURL ?path .
 		?dist dcterms:format ?fmt
 		BIND (IRI(
-			CONCAT("https://belgianfoodtruckfederation.org/fr/open-data/dwnld/csv/", ?fmt))
+			CONCAT("https://belgianfoodtruckfederation.org/fr/open-data/dwnld/", ?fmt, "/"))
 		as ?uri)
 	}
