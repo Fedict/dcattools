@@ -35,7 +35,7 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> 
 	skos:prefLabel "CC-BY 4.0" ;
-	skos:altLabel "cc-by", "CC BY", "CC-BY", "CC%20BY%204.0",
+	skos:altLabel "cc-by", "CC BY", "CC-BY", "CC%20BY%204.0", "CC-BY-4.0",
 		<http://www.opendefinition.org/licenses/cc-by>,
 		<http://creativecommons.org/licenses/by/4.0/legalcode>,
 		<https://creativecommons.org/licenses/by/4.0/>, 
