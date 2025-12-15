@@ -3,6 +3,7 @@ foodtruck/data-publ-contact.ttl
 foodtruck/sparql-publ-contact.qry
 sparql-access-public.qry
 sparql-date-type.qry
+sparql-map-lang.qry
 foodtruck/sparql-theme.qry
 data-license.ttl
 sparql-map-license.qry
