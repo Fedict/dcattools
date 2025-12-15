@@ -25,8 +25,6 @@
  */
 package be.gov.data.scrapers.foodtruck;
 
-import be.gov.data.helpers.Storage;
-import be.gov.data.scrapers.Cache;
 import be.gov.data.scrapers.DatapackageJson;
 import java.io.IOException;
 import java.util.Properties;

@@ -33,6 +33,7 @@ import com.jayway.jsonpath.ReadContext;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -87,6 +88,17 @@ public abstract class BasicScraperJson extends BaseScraper {
 			add(store, subj, pred, String.valueOf(obj));
 		} else if (obj instanceof JSONArray arr) {
 			arr.forEach(p -> add(store, subj, pred, p));
+		} else if (obj instanceof LinkedHashMap lhm) {
+			// multi-language structure
+			lhm.forEach((k,v) -> {
+				if (v instanceof Collection c) {
+					c.forEach(v2 ->
+						add(store, subj, pred, v2.toString(), k.toString()));
+				}
+				else if (v instanceof String) {
+					add(store, subj, pred, v.toString(), k.toString());
+				} 
+			});
 		} else {
 			LOG.warn("Unknown instance " + obj.getClass());
 		}
@@ -103,6 +115,7 @@ public abstract class BasicScraperJson extends BaseScraper {
 	protected void add(Storage store, IRI subj, ReadContext jsonObj, Map<IRI,Object> propMap) {
 		propMap.forEach((k,v) -> {
 			if (v instanceof Collection c) {
+				System.err.println("Collect " + v);
 				c.forEach(j -> {
 					JsonPath jp = (JsonPath) j;
 					Object obj = jsonObj.read(jp);
@@ -131,10 +144,11 @@ public abstract class BasicScraperJson extends BaseScraper {
 			return;
 		}
 		Value val;
+		String s = obj.toString();
 		try {
-			val = Values.iri(obj.toString());
+			val = Values.iri(s);
 		} catch (IllegalArgumentException iae) {
-			val = Values.literal(obj.toString());
+			val = Values.literal(s);
 		}
 		store.add(subj, prop, val);
 	}

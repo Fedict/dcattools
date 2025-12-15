@@ -39,7 +39,6 @@ import java.net.URL;
 import java.util.Map;
 import static java.util.Map.entry;
 import java.util.Properties;
-import java.util.Set;
 import net.minidev.json.JSONArray;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
