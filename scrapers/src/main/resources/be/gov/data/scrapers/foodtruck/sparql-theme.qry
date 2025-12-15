@@ -1,0 +1,9 @@
+# Set theme/category
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{ 	?dataset dcat:theme <http://publications.europa.eu/resource/authority/data-theme/ECON> }
+WHERE
+	{	?dataset a dcat:Dataset }

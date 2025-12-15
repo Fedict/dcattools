@@ -1,0 +1,18 @@
+# Data for default publisher and contact info
+
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0689677423>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	foaf:name "Belgian Food Truck Federation"@en ;
+	foaf:homepage <https://belgianfoodtruckfederation.org> .
+	
+<http://data.gov.be/org/foodtruck/contact>
+	a vcard:Organization ;
+	vcard:fn "Belgian Food Truck Federation"@en  ;
+	vcard:hasUrl <https://belgianfoodtruckfederation.org> ;
+	vcard:hasEmail <support@bftfed.be> .

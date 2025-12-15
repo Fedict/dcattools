@@ -1,4 +1,14 @@
 # extra queries to be executed and data to be loaded
+foodtruck/data-publ-contact.ttl
+foodtruck/sparql-publ-contact.qry
+sparql-access-public.qry
+sparql-date-type.qry
+foodtruck/sparql-theme.qry
+data-license.ttl
+sparql-map-license.qry
+data-media.ttl
+sparql-map-media.qry
+clear-skos.qry
+data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-data-hvdcat.ttl
