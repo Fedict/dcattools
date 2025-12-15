@@ -1,0 +1,14 @@
+# Add landingpage
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{ 	?dataset dcat:landingPage <https://belgianfoodtruckfederation.org/fr/open-data/> .
+		<https://belgianfoodtruckfederation.org/fr/open-data/> dcterms:language <http://publications.europa.eu/resource/authority/language/FRA> .
+?dataset dcat:landingPage <https://belgianfoodtruckfederation.org/nl/open-data/> .
+		<https://belgianfoodtruckfederation.org/nl/open-data/> dcterms:language <http://publications.europa.eu/resource/authority/language/NLD> .
+
+	}
+WHERE
+	{	?dataset a dcat:Dataset }

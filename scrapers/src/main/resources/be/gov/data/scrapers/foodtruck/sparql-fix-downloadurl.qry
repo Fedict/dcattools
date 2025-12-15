@@ -1,0 +1,16 @@
+# Convert relative path to absolute IRI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcat:downloadURL ?path }
+INSERT 
+	{ 	?dist dcat:downloadURL ?uri }
+WHERE
+	{	?dist dcat:downloadURL ?path
+		BIND (IRI(
+			CONCAT("https://raw.githubusercontent.com/bftfed-team/foodtruck-cuisine-classification/refs/heads/main/", ?path))
+		as ?uri)
+		FILTER(!STRSTARTS(STR(?path), "http")) 
+	}

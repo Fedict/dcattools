@@ -1,0 +1,11 @@
+# Copy landingPage to accessURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{ 	?dist dcat:accessURL ?page }
+WHERE
+	{	?dataset a dcat:Dataset .
+		?dataset dcat:landingPage ?page .
+		?dataset dcat:distribution ?dist }
