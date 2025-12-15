@@ -1,8 +1,10 @@
-# Copy license from dataset to distributions
+# Move license from dataset to distributions
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
+DELETE
+	{	?dataset dcterms:license ?license }
 INSERT 
 	{	?dist dcterms:license ?license }
 WHERE 

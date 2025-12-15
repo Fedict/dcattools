@@ -90,7 +90,7 @@ public abstract class DatapackageJson extends BasicScraperJson  {
 	private final static Map<IRI,Object> AUTH_MAP = Map.of(
 			FOAF.GIVEN_NAME, JsonPath.compile("$.given-names"),
 			FOAF.FAMILY_NAME, JsonPath.compile("$.family-names"),
-			FOAF.MEMBER, JsonPath.compile("$.affilitaion")
+			FOAF.MEMBER, JsonPath.compile("$.affiliation")
 		);
 
 	private final static Map<IRI,Object> DIST_MAP = Map.of(

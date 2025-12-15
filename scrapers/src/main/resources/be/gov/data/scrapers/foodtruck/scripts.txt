@@ -5,6 +5,8 @@ sparql-access-public.qry
 sparql-date-type.qry
 sparql-map-lang.qry
 foodtruck/sparql-theme.qry
+sparql-identifier-literal.qry
+sparql-dist-license.qry
 data-license.ttl
 sparql-map-license.qry
 foodtruck/sparql-fix-downloadurl.qry
