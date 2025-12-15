@@ -6,12 +6,12 @@ sparql-date-type.qry
 foodtruck/sparql-theme.qry
 data-license.ttl
 sparql-map-license.qry
+foodtruck/sparql-fix-downloadurl.qry
 data-media.ttl
 sparql-map-media.qry
 clear-skos.qry
 foodtruck/sparql-landingpage.qry
 foodtruck/sparql-landing-access.qry
-foodtruck/sparql-fix-downloadurl.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

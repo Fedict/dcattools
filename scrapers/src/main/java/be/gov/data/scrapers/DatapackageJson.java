@@ -95,6 +95,7 @@ public abstract class DatapackageJson extends BasicScraperJson  {
 	private final static Map<IRI,Object> DIST_MAP = Map.of(
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.name"),
 			DCTERMS.TITLE, JsonPath.compile("$.title"),
+			DCTERMS.FORMAT, JsonPath.compile("$.format"),
 			DCAT.MEDIA_TYPE, JsonPath.compile("$.mediatype"),
 			DCAT.DOWNLOAD_URL, JsonPath.compile("$.path")
 		);

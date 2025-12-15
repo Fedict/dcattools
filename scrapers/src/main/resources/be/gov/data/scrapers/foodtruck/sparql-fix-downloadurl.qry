@@ -8,9 +8,9 @@ DELETE
 INSERT 
 	{ 	?dist dcat:downloadURL ?uri }
 WHERE
-	{	?dist dcat:downloadURL ?path
+	{	?dist dcat:downloadURL ?path .
+		?dist dcterms:format ?fmt
 		BIND (IRI(
-			CONCAT("https://raw.githubusercontent.com/bftfed-team/foodtruck-cuisine-classification/refs/heads/main/", ?path))
+			CONCAT("https://belgianfoodtruckfederation.org/fr/open-data/dwnld/csv/", ?fmt))
 		as ?uri)
-		FILTER(!STRSTARTS(STR(?path), "http")) 
 	}
