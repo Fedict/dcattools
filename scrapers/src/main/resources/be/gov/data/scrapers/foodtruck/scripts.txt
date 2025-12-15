@@ -14,5 +14,6 @@ clear-skos.qry
 foodtruck/sparql-landingpage.qry
 foodtruck/sparql-landing-access.qry
 data-shacl-support.ttl
+sparql-shacl-foaf.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

@@ -1,0 +1,19 @@
+# Explicit classes improving SHACL validation scores
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms:	<http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?agent a foaf:Organization }
+INSERT 
+	{	?agent a foaf:Agent .
+		?agent a foaf:Person }
+WHERE 
+	{
+		?s ?p ?agent .
+		?agent foaf:givenName ?name
+		OPTIONAL { ?agent a foaf:Organization }
+	}
+
+

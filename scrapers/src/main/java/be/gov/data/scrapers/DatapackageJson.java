@@ -62,6 +62,7 @@ public abstract class DatapackageJson extends BasicScraperJson  {
 	private final static JsonPath DIST_ID_PATH = JsonPath.compile("$.name");
 
 	private final static JsonPath AUTH_PATH = JsonPath.compile("$.author[*]");
+	private final static JsonPath AUTH_ID_PATH = JsonPath.compile("$.given-names");
 
 	private final static Map<IRI,Object> DATASET_MAP = Map.ofEntries(
 			entry(DCTERMS.IDENTIFIER, 
@@ -77,7 +78,7 @@ public abstract class DatapackageJson extends BasicScraperJson  {
 			entry(DCAT.VERSION, 
 				JsonPath.compile("$.version")),
 			entry(DCTERMS.LICENSE, 
-				JsonPath.compile("$.licenses[0].path")),
+				JsonPath.compile("$.licenses[0].name")),
 			entry(DCAT.KEYWORD, 
 				JsonPath.compile("$.keywords")),
 			entry(DCTERMS.LANGUAGE, 
@@ -98,15 +99,7 @@ public abstract class DatapackageJson extends BasicScraperJson  {
 			DCTERMS.FORMAT, JsonPath.compile("$.format"),
 			DCAT.MEDIA_TYPE, JsonPath.compile("$.mediatype"),
 			DCAT.DOWNLOAD_URL, JsonPath.compile("$.path")
-		);
-
-	private final static Map<IRI,Object> CONTACT_MAP = Map.of(
-			VCARD4.GIVEN_NAME, JsonPath.compile("$.given-names"),
-			VCARD4.FAMILY_NAME, JsonPath.compile("$.family-names"),
-			VCARD4.HAS_ORGANIZATION_NAME, JsonPath.compile("$.affiliation"),
-			VCARD4.HAS_EMAIL , JsonPath.compile("$.datasetContactEmail.value")
-		);
-	
+		);	
 
 	/**
 	 * Add persons (contacts, authors...)
@@ -153,7 +146,7 @@ public abstract class DatapackageJson extends BasicScraperJson  {
 		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
 	//	addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, "contact/", datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
-	//	addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, "", datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
+		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, "", datasetSubj, DCTERMS.CREATOR, AUTH_MAP);
 
 
 		JSONArray files = jsonObj.read(DIST_PATH);
