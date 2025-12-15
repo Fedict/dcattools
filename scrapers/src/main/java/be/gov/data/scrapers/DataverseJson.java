@@ -47,10 +47,8 @@ import java.util.Properties;
 import java.util.Set;
 
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -59,7 +57,9 @@ import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 
 
 /**
- * Scraper for Dataverse portals.While dataverse offers several APIs / metadata export formats (e.g.
+ * Scraper for Dataverse portals.
+ * 
+ * While dataverse offers several APIs / metadata export formats (e.g.
  * schema.org or dcterms), the "native" JSON exposes the most metadata fields
  * 
  * @author Bart Hanssens
@@ -415,7 +415,7 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	 * @param jsonObj 
 	 * @throws java.net.MalformedURLException
 	 */
-	public void generateDcat(Storage store, ReadContext jsonObj) throws MalformedURLException {
+	protected void generateDcat(Storage store, ReadContext jsonObj) throws MalformedURLException {
 		mapDataset(store, jsonObj);		
 		generateCatalog(store);
 	}

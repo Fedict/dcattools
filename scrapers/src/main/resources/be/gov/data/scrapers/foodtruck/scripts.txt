@@ -1,0 +1,4 @@
+# extra queries to be executed and data to be loaded
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry
+data-hvdcat.ttl
