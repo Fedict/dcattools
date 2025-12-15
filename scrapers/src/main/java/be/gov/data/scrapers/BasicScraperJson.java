@@ -115,7 +115,6 @@ public abstract class BasicScraperJson extends BaseScraper {
 	protected void add(Storage store, IRI subj, ReadContext jsonObj, Map<IRI,Object> propMap) {
 		propMap.forEach((k,v) -> {
 			if (v instanceof Collection c) {
-				System.err.println("Collect " + v);
 				c.forEach(j -> {
 					JsonPath jp = (JsonPath) j;
 					Object obj = jsonObj.read(jp);
