@@ -15,4 +15,4 @@
 	a vcard:Organization ;
 	vcard:fn "Belgian Food Truck Federation"@en  ;
 	vcard:hasUrl <https://belgianfoodtruckfederation.org> ;
-	vcard:hasEmail <support@bftfed.be> .
+	vcard:hasEmail <mailto:support@bftfed.be> .
