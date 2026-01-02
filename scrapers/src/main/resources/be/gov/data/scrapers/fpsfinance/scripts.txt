@@ -3,6 +3,7 @@ fpsfinance/data-publ-contact.ttl
 fpsfinance/sparql-publ-contact.qry
 fpsfinance/sparql-identifier.qry
 data-license.ttl
+fpsfinance/sparql-fix-date.qry
 sparql-map-license.qry
 sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry

@@ -1,0 +1,8 @@
+# Fix invalid date
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcat:startDate "NaT"	}
+WHERE 
+	{	?s dcat:startDate "NaT" }
