@@ -1,0 +1,10 @@
+# Add default landing page
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT 
+	{	?s dcat:landingPage <https://opendata-portal.minfin.fgov.be> }
+WHERE 
+	{	?s a dcat:Dataset .
+		FILTER NOT EXISTS { ?s dcat:landingPage ?o }
+	}

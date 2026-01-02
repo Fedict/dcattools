@@ -8,6 +8,8 @@ sparql-dist-lang.qry
 fpsfinance/sparql-theme.qry
 sparql-geo-belgium.qry
 fpsfinance/sparql-fix-available.qry
+fpsfinance/sparql-default-landingpage.qry
+sparql-dist-accessurl.qry
 sparql-access-public.qry
 data-frequency.ttl
 data-media.ttl
