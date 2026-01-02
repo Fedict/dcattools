@@ -71,6 +71,7 @@
 		<http://creativecommons.org/publicdomain/zero/1.0/>,
 		<https://creativecommons.org/publicdomain/zero/1.0/>,
 		<http://publications.europa.eu/resource/authority/licence/CC0>,
+		<https://publications.europa.eu/resource/authority/licence/CC0>,
 		<http://purl.org/adms/licencetype/PublicDomain>,
 		"https://creativecommons.org/share-your-work/public-domain/cc0/",
 		"https://creativecommons.org/publicdomain/zero/1.0/", 
