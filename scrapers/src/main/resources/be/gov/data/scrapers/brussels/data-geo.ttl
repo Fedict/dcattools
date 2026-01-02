@@ -1,0 +1,54 @@
+# Data for mapping locations
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://sws.geonames.org/2800867/> a dcterms:Location ;
+	rdfs:label "Brussels-Capital Region"@en ;
+	dcat:bbox "POLYGON((4.24 50.92,4.48 50.92,4.48 50.76,4.24 50.76,4.24 50.92))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/3337389/> a dcterms:Location ;
+	rdfs:label "Brussels"@en ;
+	dcat:bbox "POLYGON ((4.31 50.91, 4.44 50.91, 4.44 50.8, 4.31 50.8, 4.31 50.91))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2803202/> a dcterms:Location ;
+	rdfs:label "Anderlecht"@en ;
+	dcat:bbox "POLYGON ((4.24 50.85, 4.34 50.85, 4.34 50.81, 4.24 50.81, 4.24 50.85))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2802961/> a dcterms:Location ;
+	rdfs:label "Auderghem"@en ;
+	dcat:bbox "POLYGON ((4.39 50.83, 4.48 50.83, 4.48 50.79, 4.39 50.79, 4.39 50.83))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2798555/> a dcterms:Location ;
+	rdfs:label "Evere"@en ;
+	dcat:bbox "POLYGON ((4.39 50.89, 4.43 50.89, 4.43 50.85, 4.39 50.85, 4.39 50.89))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2787415/> a dcterms:Location ;
+	rdfs:label "Saint-Gilles"@en ;
+	dcat:bbox "POLYGON ((4.33 50.84, 4.36 50.84, 4.36 50.82, 4.33 50.82, 4.33 50.84))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2791019/> a dcterms:Location ;
+	rdfs:label "Sint-Jans-Molenbeek"@en ;
+	dcat:bbox "POLYGON ((4.28 50.87, 4.35 50.87, 4.35 50.84, 4.28 50.84, 4.28 50.87))"^^geo:wktLiteral .
+
+ <https://sws.geonames.org/2794192/> a dcterms:Location ;
+	rdfs:label "Koekelberg"@en ;
+	dcat:bbox "POLYGON ((4.31 50.87, 4.34 50.87, 4.34 50.86, 4.31 50.86, 4.31 50.87))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2795012/> a dcterms:Location ;
+	rdfs:label "Ixelles"@en ;
+	dcat:bbox "POLYGON ((4.35 50.84, 4.4 50.84, 4.4 50.8, 4.35 50.8, 4.35 50.84))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2797845/> a dcterms:Location ;
+	rdfs:label "Ganshoren"@en ;
+	dcat:bbox "POLYGON ((4.29 50.88, 4.33 50.88, 4.33 50.87, 4.29 50.87, 4.29 50.88))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2787150/> a dcterms:Location ;
+	rdfs:label "Schaarbeek"@en ;
+	dcat:bbox "POLYGON ((4.36 50.88, 4.41 50.88, 4.41 50.84, 4.36 50.84, 4.36 50.88))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2794915/> a dcterms:Location ;
+	rdfs:label "Jette"@en ;
+	dcat:bbox "POLYGON ((4.29 50.89, 4.34 50.89, 4.34 50.86, 4.29 50.86, 4.29 50.89))"^^geo:wktLiteral .

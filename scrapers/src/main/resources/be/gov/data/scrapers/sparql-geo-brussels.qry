@@ -3,10 +3,12 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT 
 	{ 	?dataset dcterms:spatial <https://sws.geonames.org/2800867/> .
 		<https://sws.geonames.org/2800867/> a dcterms:Location .
+		<https://sws.geonames.org/2800867/> rdfs:label "Brussels-Capital Region"@en .
 		<https://sws.geonames.org/2800867/> dcat:bbox "POLYGON((4.24 50.92,4.48 50.92,4.48 50.76,4.24 50.76,4.24 50.92))"^^geo:wktLiteral
 		}
 WHERE

@@ -3,10 +3,12 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT 
 	{ 	?res dcterms:spatial <https://sws.geonames.org/3337388/> .
 		<https://sws.geonames.org/3337388/> a dcterms:Location .
+		<https://sws.geonames.org/3337388/> rdfs:label "Flanders"@en .
 		<https://sws.geonames.org/3337388/> dcat:bbox "POLYGON((2.54 51.51,5.92 51.51,5.92 50.67,2.54 50.67,2.54 51.51))"^^geo:wktLiteral
 	}
 WHERE

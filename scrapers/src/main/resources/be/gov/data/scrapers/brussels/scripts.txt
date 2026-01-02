@@ -24,6 +24,7 @@ brussels/sparql-fix-mailto.qry
 brussels/sparql-geo-brussels.qry
 brussels/sparql-remove-orgs.qry
 sparql-remove-names.qry
+brussels/data-geo.ttl
 sparql-geo-publisher.qry
 data-license.ttl
 brussels/sparql-license-contains.qry
