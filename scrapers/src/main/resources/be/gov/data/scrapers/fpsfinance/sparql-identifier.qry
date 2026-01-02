@@ -1,0 +1,15 @@
+# Fix value of availability
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{	?s dcterms:identifier ?id }
+WHERE 
+	{	?s a ?cl .
+		VALUES ?cl { dcat:Dataset dcat:Distribution }
+		BIND (
+			STRAFTER(STR(?s), "/datasets/")
+		as ?id )
+		FILTER NOT EXISTS { ?s dcterms:identifier ?o }
+	}
