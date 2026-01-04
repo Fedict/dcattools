@@ -3,6 +3,7 @@ biodiversity/sparql-language.qry
 sparql-tag-language.qry
 biodiversity/sparql-theme.qry
 clear-skos.qry
+biodiversity/data-geo.ttl
 biodiversity/data-org.ttl
 sparql-map-org.qry
 biodiversity/sparql-remove-orgs.qry

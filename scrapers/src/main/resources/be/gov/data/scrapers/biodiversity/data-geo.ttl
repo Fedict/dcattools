@@ -6,11 +6,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <https://sws.geonames.org/2783770/> a dcterms:Location ;
-	rdfs:label "West Flanders Province"@en ;
+	rdfs:label "Province of West Flanders"@en ;
 	dcat:bbox "POLYGON((2.54 51.37, 3.52 51.37, 3.52 50.71, 2.54 50.71, 2.54 51.37)"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2789733/> a dcterms:Location ;
-	rdfs:label "East Flanders Province"@en ;
+	rdfs:label "Province of East Flanders"@en ;
 	dcat:bbox "POLYGON((3.33 51.35, 4.36 51.35, 4.36 50.72, 3.33 50.72, 3.33 51.35))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/3337387/> a dcterms:Location ;
