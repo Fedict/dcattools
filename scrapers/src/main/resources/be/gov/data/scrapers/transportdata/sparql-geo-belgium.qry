@@ -3,6 +3,7 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 DELETE 
 	{ 	?res dcterms:spatial ?geo1 .
@@ -18,6 +19,7 @@ INSERT
 	{
 		?res dcterms:spatial <https://sws.geonames.org/2802361/> .
 		<https://sws.geonames.org/2802361/> a dcterms:Location .
+		<https://sws.geonames.org/2802361/> rdfs:label "Belgium"@en .
 		<https://sws.geonames.org/2802361/> dcat:bbox "POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))"^^geo:wktLiteral
 	}
 WHERE

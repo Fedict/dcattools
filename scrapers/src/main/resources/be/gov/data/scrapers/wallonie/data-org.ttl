@@ -346,7 +346,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0204259135>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	dcterms:spatial <https://www.geonames.org/2792411/> ;
+	dcterms:spatial <https://sws.geonames.org/2792411/> ;
 	skos:prefLabel "Spi"@fr, "Spi"@nl, "Spi"@de, "Spi"@en ; 
 	skos:altLabel "Spi" .
 

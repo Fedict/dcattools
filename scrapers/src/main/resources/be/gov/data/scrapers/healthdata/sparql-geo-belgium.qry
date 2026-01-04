@@ -2,12 +2,14 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 DELETE { 
 	?res dcterms:spatial "Belgium"
 }
 INSERT {
 	?res dcterms:spatial <https://sws.geonames.org/2802361/> .
+	<https://sws.geonames.org/2802361/> rdfs:label "Belgium"@en .
 	<https://sws.geonames.org/2802361/> a dcterms:Location .
 }
 WHERE {	
