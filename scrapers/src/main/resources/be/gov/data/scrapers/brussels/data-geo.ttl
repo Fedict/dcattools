@@ -52,3 +52,31 @@
 <https://sws.geonames.org/2794915/> a dcterms:Location ;
 	rdfs:label "Jette"@en ;
 	dcat:bbox "POLYGON ((4.29 50.89, 4.34 50.89, 4.34 50.86, 4.29 50.86, 4.29 50.89))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2798142/> a dcterms:Location ;
+	rdfs:label "Forest"@en ;
+	dcat:bbox "POLYGON ((4.3 50.83, 4.35 50.83, 4.35 50.8, 4.3 50.8, 4.3 50.83))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2802248/> a dcterms:Location ;
+	rdfs:label "Sint-Agatha-Berchem"@en ;
+	dcat:bbox "POLYGON ((4.28 50.88, 4.31 50.88, 4.31 50.86, 4.28 50.86, 4.28 50.88))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2787388/> a dcterms:Location ;
+	rdfs:label "Saint-Josse-ten-Noode"@en ;
+	dcat:bbox "POLYGON ((4.36 50.86, 4.38 50.86, 4.38 50.85, 4.36 50.85, 4.36 50.86))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2783475/> a dcterms:Location ;
+	rdfs:label "Sint-Pieters-Woluwe"@en ;
+	dcat:bbox "POLYGON ((4.4 50.85, 4.48 50.85, 4.48 50.82, 4.4 50.82, 4.4 50.85))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2783477/> a dcterms:Location ;
+	rdfs:label "Woluwe-Saint-Lambert"@en ;
+	dcat:bbox "POLYGON ((4.4 50.86, 4.46 50.86, 4.46 50.83, 4.4 50.83, 4.4 50.86))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2785124/> a dcterms:Location ;
+	rdfs:label "Uccle"@en ;
+	dcat:bbox "POLYGON ((4.31 50.82, 4.41 50.82, 4.41 50.76, 4.31 50.76, 4.31 50.82))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2783980/> a dcterms:Location ;
+	rdfs:label "Watermael-Boitsfort"@en ;
+	dcat:bbox "POLYGON ((4.39 50.82, 4.47 50.82, 4.47 50.77, 4.39 50.77, 4.39 50.82))"^^geo:wktLiteral .
