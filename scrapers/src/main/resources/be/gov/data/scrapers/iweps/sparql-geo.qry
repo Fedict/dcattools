@@ -2,10 +2,12 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 DELETE { 	?dataset dcterms:spatial ?spatial }
 INSERT { 	
 			?dataset dcterms:spatial <https://sws.geonames.org/3337387/> .
+			<https://sws.geonames.org/3337387/> rdfs:label "Wallonia"@en .
 			<https://sws.geonames.org/3337387/> a dcterms:Location }
 WHERE	{	
 			?dataset a dcat:Dataset .

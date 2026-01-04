@@ -1,0 +1,22 @@
+# Data for mapping locations
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://sws.geonames.org/2802361/> a dcterms:Location .
+	rdfs:label "Belgium"@en ;
+	dcat:bbox "POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2800867/> a dcterms:Location ;
+	rdfs:label "Brussels-Capital Region"@en ;
+	dcat:bbox "POLYGON((4.24 50.92,4.48 50.92,4.48 50.76,4.24 50.76,4.24 50.92))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/3337387/> a dcterms:Location ;
+	rdfs:label "Wallonia"@en ;
+	dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/3337388/> a dcterms:Location ;
+	rdfs:label "Flanders"@en ;
+	dcat:bbox "POLYGON((2.54 51.51,5.92 51.51,5.92 50.67,2.54 50.67,2.54 51.51))"^^geo:wktLiteral .

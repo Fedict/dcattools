@@ -9,6 +9,7 @@ transportdata/sparql-fix-license.qry
 transportdata/sparql-title-desc.qry
 transportdata/sparql-title-nlfr.qry
 transportdata/sparql-title-tag.qry
+transportdata/data-geo.ttl
 transportdata/sparql-geo-belgium.qry
 transportdata/sparql-geo-regions.qry
 transportdata/sparql-landingpage.qry
