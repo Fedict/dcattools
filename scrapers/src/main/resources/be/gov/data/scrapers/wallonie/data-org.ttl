@@ -327,13 +327,14 @@
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2791745/> ;
 	skos:prefLabel "Ville de Marche-en-Famenne"@fr, "Stad Marche-en-Famenne"@nl, "City of Marche-en-Famenne"@en,
-					"Stadt Marche-en-Famenne" ;
+					"Stadt Marche-en-Famenne"@de ;
 	skos:altLabel "Ville de Marche-en-Famenne" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0931814167> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en ;
+	skos:prefLabel "Parlement de Wallonie"@fr, "Waals parlement"@nl, "Walloon Parliament"@en,
+					"Wallonisches Parlament"@de ;
 	skos:altLabel "Parlement de Wallonie", "Parlement de Wallonie"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207343933>
