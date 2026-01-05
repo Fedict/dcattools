@@ -27,6 +27,7 @@ wallonie/sparql-remove-name.qry
 wallonie/sparql-contact-name.qry
 wallonie/sparql-contact-publisher.qry
 wallonie/sparql-default-contact.qry
+wallonie/data-geo.ttl
 sparql-geo-publisher.qry
 sparql-geo-wallonie.qry
 wallonie/sparql-fix-freq.qry

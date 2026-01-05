@@ -1,0 +1,35 @@
+# Data for mapping locations
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://sws.geonames.org/3337387/> a dcterms:Location ;
+	rdfs:label "Wallonia"@en ;
+	dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2796741/> a dcterms:Location ;
+	rdfs:label "Province of Hainaut"@en ;
+	dcat:bbox "POLYGON ((2.84 50.81, 4.62 50.81, 4.62 49.94, 2.84 49.94, 2.84 50.81))"^^geo:wktLiteral .
+
+ <https://sws.geonames.org/3333251/> a dcterms:Location ;
+	rdfs:label "Province of Walloon Brabant"@en ;
+	dcat:bbox "POLYGON ((4.09 50.81, 5.02 50.81, 5.02 50.53, 4.09 50.53, 4.09 50.81))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2800480/> a dcterms:Location ;
+	rdfs:label "Arrondissement of Charleroi"@en ;
+	dcat:bbox "POLYGON ((4.26 50.56, 4.62 50.56, 4.62 50.31, 4.26 50.31, 4.26 50.56))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2790472> a dcterms:Location ;
+	rdfs:label "Namur"@en ;
+	dcat:bbox "POLYGON ((4.72 50.53, 4.98 50.53, 4.98 50.39, 4.72 50.39, 4.72 50.53))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2790469/> a dcterms:Location ;
+	rdfs:label "Province of Namur"@en ;
+	dcat:bbox "POLYGON ((4.29 50.65, 5.4 50.65, 5.4 49.79, 4.29 49.79, 4.29 50.65))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2791993/> a dcterms:Location ;
+	rdfs:label "Province of Luxembourg"@en ;
+	dcat:bbox "POLYGON ((4.97 50.43, 6.03 50.43, 6.03 49.5, 4.97 49.5, 4.97 50.43))"^^geo:wktLiteral .
+
