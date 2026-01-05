@@ -52,3 +52,23 @@
 <https://sws.geonames.org/2800482/> a dcterms:Location ;
 	rdfs:label "Charleroi"@en ;
 	dcat:bbox "POLYGON ((4.35 50.49, 4.51 50.49, 4.51 50.35, 4.35 50.35, 4.35 50.49))"^^geo:wktLiteral . 
+
+<https://sws.geonames.org/2788742/> a dcterms:Location ;
+	rdfs:label "Fernelmont"@en ;
+	dcat:bbox "POLYGON ((4.92 50.62, 5.05 50.62, 5.05 50.5, 4.92 50.5, 4.92 50.62))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2803074/> a dcterms:Location ;
+	rdfs:label "Arlon"@en ;
+	dcat:bbox "POLYGON ((5.68 49.73, 5.91 49.73, 5.91 49.62, 5.68 49.62, 5.68 49.73))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2790871/> a dcterms:Location ;
+	rdfs:label "Mons"@en ;
+	dcat:bbox "POLYGON ((3.85 50.51, 4.09 50.51, 4.09 50.38, 3.85 50.38, 3.85 50.51))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2786853/> a dcterms:Location ;
+	rdfs:label "Seneffe"@en ;
+	dcat:bbox "POLYGON ((4.19 50.6, 4.34 50.6, 4.34 50.5, 4.19 50.5, 4.19 50.6))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2792349/> a dcterms:Location ;
+	rdfs:label "Verviers"@en ;
+	dcat:bbox "POLYGON ((5.81 50.63, 5.93 50.63, 5.93 50.55, 5.81 50.55, 5.81 50.63))"^^geo:wktLiteral .
