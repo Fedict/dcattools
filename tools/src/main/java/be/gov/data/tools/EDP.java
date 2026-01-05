@@ -920,6 +920,7 @@ public class EDP {
 						nr++;
 						w.writeStartElement("dct:Location");
 						w.writeAttribute("rdf:about", location.toString());
+						writeLiterals(w, con, location, RDFS.LABEL, "rdfs:label");
 						writeLiteral(w, "dcat:bbox", bbox);
 						w.writeEndElement();
 					}
