@@ -10,7 +10,7 @@ sparql-access-public.qry
 sparql-available.qry
 sparql-map-license.qry
 iweps/data-publ-contact.ttl
-iweps/sparql-publ-contact.qry
+iweps/sparql-publisher.qry
 clear-skos.qry
 iweps/data-theme.ttl
 clear-skos.qry
