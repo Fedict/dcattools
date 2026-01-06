@@ -88,3 +88,20 @@
 <https://sws.geonames.org/2792412/> a dcterms:Location ;
 	rdfs:label "Arrondissement of Liège"@en ;
 	dcat:bbox "POLYGON ((5.35 50.81, 5.82 50.81, 5.82 50.4, 5.35 50.4, 5.35 50.81))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2793509/> a dcterms:Location ;
+	rdfs:label "La Louvière"@en ;
+	dcat:bbox "POLYGON ((4.07 50.52, 4.23 50.52, 4.23 50.43, 4.07 50.43, 4.07 50.52))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2789163/> a dcterms:Location ;
+	rdfs:label "Péruwelz"@en ;
+	dcat:bbox "POLYGON ((3.5 50.58, 3.63 50.58, 3.63 50.49, 3.5 50.49, 3.5 50.58))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2803205/> a dcterms:Location ;
+	rdfs:label "Andenne"@en ;
+	dcat:bbox "POLYGON ((4.96 50.53, 5.16 50.53, 5.16 50.45, 4.96 50.45, 4.96 50.53))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2801155/> a dcterms:Location ;
+	rdfs:label "Braine-l'Alleud"@en ;
+	dcat:bbox "POLYGON ((4.3 50.73, 4.41 50.73, 4.41 50.63, 4.3 50.63, 4.3 50.73))"^^geo:wktLiteral .
+
