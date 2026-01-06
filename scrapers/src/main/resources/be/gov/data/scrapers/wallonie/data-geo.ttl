@@ -105,3 +105,14 @@
 	rdfs:label "Braine-l'Alleud"@en ;
 	dcat:bbox "POLYGON ((4.3 50.73, 4.41 50.73, 4.41 50.63, 4.3 50.63, 4.3 50.73))"^^geo:wktLiteral .
 
+<https://sws.geonames.org/2790102/> a dcterms:Location ;
+	rdfs:label "Nivelles"@en ;
+	dcat:bbox "POLYGON ((4.25 50.64, 4.41 50.64, 4.41 50.54, 4.25 50.54, 4.25 50.64))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2800326/> a dcterms:Location ;
+	rdfs:label "Chimay"@en ;
+	dcat:bbox "POLYGON ((4.2 50.13, 4.45 50.13, 4.45 49.94, 4.2 49.94, 4.2 50.13))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2796584/> a dcterms:Location ;
+	rdfs:label "Hannut"@en ;
+	dcat:bbox "POLYGON ((4.99 50.72, 5.16 50.72, 5.16 50.6, 4.99 50.6, 4.99 50.72))"^^geo:wktLiteral .

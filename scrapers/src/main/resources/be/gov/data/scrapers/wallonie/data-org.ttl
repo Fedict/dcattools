@@ -407,7 +407,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2796584/> ;
-	skos:prefLabel "Ville de Hannut"@fr, "Stad Hannut"@nl, "Stadt Hannut"@de, "City of Hannut"@de ;
+	skos:prefLabel "Ville de Hannut"@fr, "Stad Hannuit"@nl, "Stadt Hannut"@de, "City of Hannut"@de ;
 	skos:altLabel "Ville de Hannut" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0546740696>
