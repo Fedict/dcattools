@@ -1,0 +1,11 @@
+# Fix invalid date
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE 
+	{	?s dcterms:modified "2025-02-29"^^xsd:date }
+INSERT 
+	{	?s dcterms:modified "2025-02-28"^^xsd:date }
+WHERE 
+	{	?s dcterms:modified "2025-02-29"^^xsd:date }
