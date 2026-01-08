@@ -1108,10 +1108,10 @@
       <xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution">
 <!-- Encoding -->
         <xsl:variable name="Encoding">
-          <xsl:apply-templates select="gmd:distributionFormat/gmd:MD_Format/gmd:name/*"/>
+          <xsl:apply-templates select="(gmd:distributionFormat | gmd:distributorFormat)/gmd:MD_Format/gmd:name/*"/>
         </xsl:variable>
 <!-- Resource locators (access / download URLs) -->
-        <xsl:for-each select="gmd:transferOptions/*/gmd:onLine/*">
+        <xsl:for-each select="(gmd:transferOptions | gmd:distributor/gmd:MD_Distributor/gmd:distributorTransferOptions)/*/gmd:onLine/*">
 
           <xsl:variable name="url" select="gmd:linkage/gmd:URL"/>
 
