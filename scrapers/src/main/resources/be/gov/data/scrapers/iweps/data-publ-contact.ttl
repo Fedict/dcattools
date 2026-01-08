@@ -9,3 +9,9 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	foaf:name "IWEPS"@nl, "IWEPS"@fr, "IWEPS"@de, "IWEPS"@en  .
+
+<http://data.gov.be/org/iweps/contact>
+	a vcard:Organization ;
+	vcard:fn "IWEPS"@nl, "IWEPS"@fr, "IWEPS"@de, "IWEPS"@en  ;
+	vcard:hasUrl <https://opendata.iweps.be> ;
+	vcard:hasEmail <mailto:walstat@iweps.be> .

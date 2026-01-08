@@ -1,0 +1,10 @@
+# Add default contact point if none are set
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT
+	{ 	?dataset dcat:contactPoint <http://data.gov.be/org/iweps/contact>  }
+WHERE
+	{ 	?dataset a dcat:Dataset
+		FILTER NOT EXISTS { ?dataset dcat:contactPoint ?o } 
+	}

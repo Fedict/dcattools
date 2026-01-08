@@ -11,6 +11,7 @@ sparql-available.qry
 sparql-map-license.qry
 iweps/data-publ-contact.ttl
 iweps/sparql-publisher.qry
+iweps/sparql-default-contact.qry
 clear-skos.qry
 iweps/data-theme.ttl
 clear-skos.qry
