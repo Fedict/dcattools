@@ -1,7 +1,11 @@
+# Data for mapping names to URIs of licenses
 
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/licence/CC0>
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/PublicDomain> ;
 	skos:prefLabel "CC0" ;
 	skos:altLabel "CC0", "http://creativecommons.org/publicdomain/zero/1.0/", 
 			"https://creativecommons.org/publicdomain/zero/1.0/",
@@ -46,6 +50,7 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
 	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	skos:prefLabel "CC BY NC" ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ,
+				<http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
+	skos:prefLabel "CC BY NC 4.0" ;
 	skos:altLabel <http://creativecommons.org/licenses/by-nc/4.0/legalcode> .
