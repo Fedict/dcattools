@@ -1,0 +1,25 @@
+# Replace skolem IRI by URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+		?s a ?class .
+		?s dcterms:identifier ?id .
+		?s ?p ?o }
+INSERT 
+	{	?uri a ?class .
+		?uri dcterms:identifier ?id .
+		?uri ?p ?o }
+WHERE
+	{	?s a ?class .
+		?s dcterms:identifier ?id .
+		?s ?p ?o
+		BIND (IRI(
+				CONCAT("http://metadata.naturalsciences.be/", 
+					REPLACE(STR(?id), "http://metadata.naturalsciences.be/", ""))
+			) as ?uri)
+		VALUES ?class { dcat:Dataset dcat:DataService }
+		FILTER (CONTAINS(STR(?s), "well-known/genid") || CONTAINS(STR(?s), "doi.org"))
+		FILTER (!CONTAINS(STR(?id), "doi"))
+	}

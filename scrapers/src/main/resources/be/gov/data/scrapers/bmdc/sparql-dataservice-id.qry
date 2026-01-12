@@ -1,0 +1,21 @@
+# Fix mising '/' in URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { 
+		?s a dcat:DataService .
+		?s ?p ?o }
+INSERT 
+	{	?uri a dcat:DataService .
+		?uri ?p ?o }
+WHERE
+	{	?s a dcat:DataService .
+		?s ?p ?o
+		BIND (IRI(
+				REPLACE(
+					CONCAT("http://metadata.naturalsciences.be/",
+						STRAFTER(STR(?s), "http://metadata.naturalsciences.be")
+					), "//", "/")
+			) as ?uri)
+		FILTER (CONTAINS(STR(?s), "http://metadata.naturalsciences.be"))
+	}

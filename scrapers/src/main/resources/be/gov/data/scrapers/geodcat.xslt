@@ -199,7 +199,7 @@
 
 <!-- Uncomment to include deprecated mappings from the output -->
 
-  <xsl:param name="include-deprecated">yes</xsl:param>
+  <xsl:param name="include-deprecated">no</xsl:param>
 
 <!-- Uncomment to exclude deprecated mappings from the output -->
 <!--

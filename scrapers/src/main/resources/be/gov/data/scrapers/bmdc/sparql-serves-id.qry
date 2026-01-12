@@ -1,0 +1,24 @@
+# Replace skolem IRI by URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+		?s dcat:servesDataset ?dataset .
+		?dataset dcterms:identifier ?id .
+		?dataset ?p ?o }
+INSERT 
+	{	?s dcat:servesDataset ?uri .
+		?uri dcterms:identifier ?id .
+		?uri ?p ?o }
+WHERE
+	{	?s a dcat:DataService .
+		?s dcat:servesDataset ?dataset .
+		?dataset dcterms:identifier ?id .
+		?dataset ?p ?o .
+		BIND (IRI(
+				CONCAT("http://metadata.naturalsciences.be/", 
+					REPLACE(STR(?id), "http://metadata.naturalsciences.be/", ""))
+			) as ?uri)
+		FILTER (!CONTAINS(STR(?id), "doi"))
+	}
