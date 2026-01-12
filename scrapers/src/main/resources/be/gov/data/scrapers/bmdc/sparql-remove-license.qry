@@ -1,0 +1,14 @@
+# Remove rights already covered by license
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+	?s dcterms:license ?lic 
+}
+WHERE {
+	?s dcterms:license ?lic
+	VALUES ?lic { 
+		<http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply>
+		<http://inspire.ec.europa.eu/metadata-codelist/%20ConditionsApplyingToAccessAndUse/noConditionsApply> 
+	}
+}

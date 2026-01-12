@@ -1,0 +1,19 @@
+# Remove rights already covered by license
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?s dcterms:rights ?rights .
+	?rights a dcterms:RightsStatement .
+	?rights dcterms:description ?desc 
+}
+WHERE {
+	?s dcterms:rights ?rights .
+	?rights a dcterms:RightsStatement .
+	?rights dcterms:description ?desc
+	VALUES ?desc {
+		"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License."@en 
+		"This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License."@en
+		"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License ."@en }
+}
