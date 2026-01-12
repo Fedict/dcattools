@@ -715,6 +715,7 @@ public class EDP {
 		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 		writeDates(w, con, uri);
 		
+		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
 		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");
 		writeRole(w, con, uri, GEODCAT.DISTRIBUTOR, "geodcatap:distributor");
 		writeRole(w, con, uri, GEODCAT.ORIGINATOR, "geodcatap:originator");
