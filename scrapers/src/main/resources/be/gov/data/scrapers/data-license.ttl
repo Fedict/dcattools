@@ -1,5 +1,6 @@
 # Data for mapping names to URIs of licenses
 
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/licence/OGL_3_0>
