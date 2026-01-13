@@ -19,9 +19,10 @@ INSERT
 WHERE
 	{ 	?s dcterms:spatial ?genspatial .
 		?genspatial ?p ?o .
-		?genspatial locn:geometry|dcat:bbox ?bbox
+		?genspatial ?rel ?bbox
+		VALUES ?rel { locn:geometry dcat:bbox }
 		BIND (
-			STRDT(STR(?bbox), geo:wktLiteral)
+			STRDT(fn:simplifyPolygon(STR(?bbox)), geo:wktLiteral)
 			as ?simple)
 		BIND (IRI(
 				CONCAT("http://data.gov.be/.well-known/genid/spatial/", SHA1(STR(?simple)))

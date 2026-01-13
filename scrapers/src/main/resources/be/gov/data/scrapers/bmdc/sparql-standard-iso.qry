@@ -1,0 +1,20 @@
+# Use URI for ISO standard instead of generated ID
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+DELETE 
+	{	?c dcterms:conformsTo ?s .
+		?s ?p ?o .
+		?s owl:versionInfo "ISO 19115:2003/19139"@en 
+	}
+INSERT
+	{	?c dcterms:conformsTo <https://schemas.isotc211.org/19139>  .
+		<https://schemas.isotc211.org/19139> a dcterms:Standard .
+		<https://schemas.isotc211.org/19139> dcterms:title "ISO 19139"@en 
+	}
+WHERE
+	{ 	?c dcterms:conformsTo ?s .
+		?s ?p ?o .
+		?s owl:versionInfo "ISO 19115:2003/19139"@en 
+	}

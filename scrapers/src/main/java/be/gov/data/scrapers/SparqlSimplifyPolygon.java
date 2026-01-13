@@ -44,7 +44,7 @@ import org.eclipse.rdf4j.query.algebra.evaluation.function.Function;
 public class SparqlSimplifyPolygon implements Function {
 	public static final String NAMESPACE = "http://data.gov.be/sparql/function/";
 	private static final Pattern P = 
-		Pattern.compile("POLYGON\\(\\((\\d+.\\d+) (\\d+.\\d+),(\\d+.\\d+) (\\d+.\\d+),(\\d+.\\d+) (\\d+.\\d+),(\\d+.\\d+) (\\d+.\\d+),(\\d+.\\d+) (\\d+.\\d+)\\)\\)");
+		Pattern.compile("POLYGON\\(\\((-?\\d+.\\d+) (-?\\d+.\\d+),(-?\\d+.\\d+) (-?\\d+.\\d+),(-?\\d+.\\d+) (-?\\d+.\\d+),(-?\\d+.\\d+) (-?\\d+.\\d+),(-?\\d+.\\d+) (-?\\d+.\\d+)\\)\\)");
 			
 
 	@Override
@@ -53,7 +53,7 @@ public class SparqlSimplifyPolygon implements Function {
 	}
 
 	private static double[] round(Matcher m) {
-		double coord[] = new double[m.groupCount()];
+		double[] coord = new double[m.groupCount()];
 		
 		for (int i = 1; i <= m.groupCount(); i++) {
 			coord[i-1] = Math.round(Double.parseDouble(m.group(i)) * 50) / 50f;

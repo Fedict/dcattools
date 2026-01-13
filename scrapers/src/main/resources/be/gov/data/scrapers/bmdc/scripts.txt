@@ -24,6 +24,9 @@ bmdc/sparql-consolidate-contact.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 bmdc/sparql-empty-creator.qry
+bmdc/sparql-standard-iso.qry
+sparql-startenddate.qry
+sparql-consolidate-bbox.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
