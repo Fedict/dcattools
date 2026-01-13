@@ -39,6 +39,7 @@ public class GEODCAT {
 	public final static IRI PROCESSOR = Values.iri("http://data.europa.eu/930/processor");
 	public final static IRI REFERENCE_SYSTEM = Values.iri("http://data.europa.eu/930/referenceSystem");
 	public final static IRI RESOURCE_PROVIDER = Values.iri("http://data.europa.eu/930/resourceProvider");
+	public final static IRI RESOURCE_TYPE = Values.iri("http://data.europa.eu/930/resourceType");
 	public final static IRI SPATIAL_RESOLUTION_AS_SCALE = Values.iri("http://data.europa.eu/930/spatialResolutionAsScale");
 
 }

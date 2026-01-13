@@ -1,0 +1,31 @@
+# Map file formats to an EU list of well known URIs and mimetypes, 
+# ignoring WCMS/WFS/WTMS (since they produce duplicates for application/xml)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dist dcterms:format ?uri .
+		?uri rdfs:label ?label .
+		?uri a ?cl 
+	}
+INSERT 
+	{ 	?dist dcterms:format ?auth .
+		?dist dcat:mediaType ?mime .
+		?mime a dcterms:MediaType .
+		?auth a dcterms:MediaTypeOrExtent .
+		?auth rdfs:label ?imt 
+	}
+WHERE
+	{	?dist dcterms:format ?uri .
+		?uri rdfs:label ?label .
+		?auth skos:altLabel ?label .
+		?auth skos:prefLabel ?imt .
+		?auth skos:closeMatch ?mime .
+		OPTIONAL { ?uri a ?cl }
+		FILTER (!STRENDS(
+					STR(?auth), "SRVC")
+				)
+	}

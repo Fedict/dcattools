@@ -4,15 +4,19 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE { 
+		?cat dcat:dataset ?s .
 		?s dcat:servesDataset ?dataset .
 		?dataset dcterms:identifier ?id .
 		?dataset ?p ?o }
 INSERT 
-	{	?s dcat:servesDataset ?uri .
+	{	
+		?cat dcat:dataset ?uri .
+		?s dcat:servesDataset ?uri .
 		?uri dcterms:identifier ?id .
 		?uri ?p ?o }
 WHERE
-	{	?s a dcat:DataService .
+	{	?cat dcat:dataset ?s .
+		?s a dcat:DataService .
 		?s dcat:servesDataset ?dataset .
 		?dataset dcterms:identifier ?id .
 		?dataset ?p ?o .

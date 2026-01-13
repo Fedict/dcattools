@@ -1,0 +1,15 @@
+# Remove generic XML if a more specific format is already specified
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML> .
+		?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/xml> 
+	}
+WHERE
+	{	?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML> .
+		?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/xml> .
+		?s dcterms:format ?other 
+		FILTER (?other !=  <http://publications.europa.eu/resource/authority/file-type/XML> )
+	}

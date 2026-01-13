@@ -6,13 +6,16 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 DELETE {
 	?s dcterms:rights ?rights .
 	?rights a dcterms:RightsStatement .
-	?rights dcterms:description ?desc 
+	?rights dcterms:description ?desc .
+	?rights ?p ?o 
 }
 WHERE {
 	?s dcterms:rights ?rights .
 	?rights a dcterms:RightsStatement .
 	?rights dcterms:description ?desc
+	OPTIONAL { ?rights ?p ?o }
 	VALUES ?desc {
+		"No limitations on public access."@en
 		"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License."@en 
 		"This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License."@en
 		"This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License ."@en }

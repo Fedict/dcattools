@@ -4,22 +4,23 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE { 
-		?s a ?class .
+		?cat ?rel ?s .
 		?s dcterms:identifier ?id .
 		?s ?p ?o }
 INSERT 
-	{	?uri a ?class .
+	{	?cat ?rel ?uri .
 		?uri dcterms:identifier ?id .
 		?uri ?p ?o }
 WHERE
-	{	?s a ?class .
+	{	?cat a dcat:Catalog .
+		?cat ?rel ?s .
 		?s dcterms:identifier ?id .
 		?s ?p ?o
 		BIND (IRI(
 				CONCAT("http://metadata.naturalsciences.be/", 
 					REPLACE(STR(?id), "http://metadata.naturalsciences.be/", ""))
 			) as ?uri)
-		VALUES ?class { dcat:Dataset dcat:DataService }
+		VALUES ?rel { dcat:dataset dcat:service }
 		FILTER (CONTAINS(STR(?s), "well-known/genid") || CONTAINS(STR(?s), "doi.org"))
 		FILTER (!CONTAINS(STR(?id), "doi"))
 	}

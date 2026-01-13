@@ -1,0 +1,13 @@
+# Remove HTML as format, since the "real" format is also mentioned
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/HTML> .
+		?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/html> 
+	}
+WHERE
+	{	?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/HTML> .
+		?s dcat:mediaType <https://www.iana.org/assignments/media-types/text/html> 
+	}

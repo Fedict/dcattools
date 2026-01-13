@@ -1,4 +1,6 @@
 # extra queries to be executed and data to be loaded 
+sparql-remove-catalogrecord.qry
+sparql-remove-accessservice.qry
 bmdc/sparql-fix-doi.qry
 bmdc/sparql-serves-id.qry
 bmdc/sparql-dataservice-id.qry
@@ -11,6 +13,11 @@ sparql-theme-keyword.qry
 sparql-theme-subject.qry
 bmdc/sparql-fix-bytesize.qry
 sparql-bytesize-type.qry
+data-media.ttl
+sparql-map-media-class.qry
+clear-skos.qry
+bmdc/sparql-remove-html.qry
+bmdc/sparql-media-specific.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
 #bmdc/data-theme.ttl
