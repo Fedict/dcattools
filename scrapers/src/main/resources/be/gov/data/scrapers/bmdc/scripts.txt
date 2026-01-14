@@ -16,8 +16,8 @@ sparql-bytesize-type.qry
 data-media.ttl
 sparql-map-media-class.qry
 clear-skos.qry
-bmdc/sparql-remove-html.qry
-bmdc/sparql-media-specific.qry
+#bmdc/sparql-remove-html.qry
+#bmdc/sparql-media-specific.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
 #bmdc/data-theme.ttl

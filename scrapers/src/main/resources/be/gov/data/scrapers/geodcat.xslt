@@ -1107,12 +1107,29 @@
 
       <xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution">
 <!-- Encoding -->
-        <xsl:variable name="Encoding">
-          <xsl:apply-templates select="(gmd:distributionFormat | gmd:distributorFormat)/gmd:MD_Format/gmd:name/*"/>
+        <xsl:variable name="DistributionFormat">
+          <xsl:apply-templates select="gmd:distributionFormat/gmd:MD_Format/gmd:name/*"/>
         </xsl:variable>
 <!-- Resource locators (access / download URLs) -->
         <xsl:for-each select="(gmd:transferOptions | gmd:distributor/gmd:MD_Distributor/gmd:distributorTransferOptions)/*/gmd:onLine/*">
 
+	    <xsl:variable name="DistributorFormat">
+			<xsl:if test="../../../../gmd:distributorFormat">
+				<xsl:apply-templates select="../../../../gmd:distributorFormat/gmd:MD_Format/gmd:name/*"/>
+			</xsl:if>
+        </xsl:variable>
+		
+		<xsl:variable name="Encoding">
+			<xsl:choose>
+				<xsl:when test="$DistributorFormat != ''">
+					<xsl:copy-of select="$DistributorFormat"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:copy-of select="$DistributionFormat"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		
           <xsl:variable name="url" select="gmd:linkage/gmd:URL"/>
 
           <xsl:variable name="protocol" select="gmd:protocol/*"/>
@@ -1163,6 +1180,14 @@
               </xsl:otherwise>
             </xsl:choose>
           </xsl:variable>
+
+          <xsl:variable name="FileSize">
+		    <xsl:choose>
+			  <xsl:when test="../../gmd:transferSize/gco:Real != ''">
+			    <dcat:byteSize rdf:datatype="{$xsd}nonNegativeInteger"><xsl:value-of select="format-number(round(../../gmd:transferSize/gco:Real * 1000000), '#')"/></dcat:byteSize>
+			  </xsl:when>
+			</xsl:choose>
+		  </xsl:variable>
 
           <xsl:choose>
 <!-- Mapping added to the core profile for compliance with DCAT-AP 2 -->
@@ -1228,6 +1253,8 @@
                       <xsl:if test="$profile = $extended">
                         <xsl:copy-of select="$SpatialRepresentationType"/>
                       </xsl:if>
+<!-- File size -->
+					  <xsl:copy-of select="$FileSize"/>
 <!-- Encoding -->
                       <xsl:copy-of select="$Encoding"/>
 <!-- Resource character encoding -->
@@ -2869,7 +2896,7 @@
 
 <!-- Encoding -->
 
-  <xsl:template name="Encoding" match="gmd:distributionFormat/gmd:MD_Format/gmd:name/*">
+  <xsl:template name="Encoding" match="(gmd:distributionFormat|gmd:distributorFormat)/gmd:MD_Format/gmd:name/*">
     <xsl:param name="format-label">
       <xsl:value-of select="normalize-space(.)"/>
     </xsl:param>
@@ -3784,7 +3811,7 @@
       </geodcatap:serviceProtocol>
     </xsl:if>
   </xsl:template>
-
+	  
   <xsl:template name="service-endpoint">
     <xsl:param name="function"/>
     <xsl:param name="protocol"/>
