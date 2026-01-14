@@ -8,7 +8,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0864484487>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	foaf:name "PPS Social Integration"@en, "POD Maatschappelijke Integratie"@nl, "SPP Intégration sociale"@fr", 
+	foaf:name "PPS Social Integration"@en, "POD Maatschappelijke Integratie"@nl, "SPP Intégration sociale"@fr, 
 			"(ÖPD) Sozialeingliederung"@de  ;
 	foaf:homepage <https://stat.mi-is.be> .
 	
