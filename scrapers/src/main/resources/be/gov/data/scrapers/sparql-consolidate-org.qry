@@ -1,0 +1,28 @@
+# Consolidate organizations, use 1 URI instead of different blank nodes / genid
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s ?rel ?org .
+		?org foaf:name ?name .
+		?org foaf:mbox ?mbox .
+		?org ?p ?o }
+INSERT
+	{	?s ?rel ?uri .
+		?uri foaf:name ?name .
+		?uri foaf:mbox ?mbox .
+		?uri ?p ?o }
+WHERE
+	{ 	?s ?rel ?org .
+		?org foaf:name ?name .
+		OPTIONAL { ?org foaf:mbox ?mbox }
+		OPTIONAL { ?org ?p ?o }
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/org/", 
+					SHA1(
+						CONCAT(STR(?name), STR(?mbox)))
+				)
+			) AS ?uri )
+		FILTER (LANG(?name) = "en")
+		FILTER (CONTAINS(STR(?org), "well-known/genid/") && !CONTAINS(STR(?org), "well-known/genid/org/"))
+	}

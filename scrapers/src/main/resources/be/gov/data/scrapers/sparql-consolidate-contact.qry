@@ -1,0 +1,28 @@
+# Consolidate contacts, use 1 URI instead of different blank nodes / genid
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s ?rel ?contact .
+		?contact vcard:fn ?name .
+		?contact vcard:hasEmail ?mbox .
+		?contact ?p ?o }
+INSERT
+	{	?s ?rel ?uri .
+		?uri vcard:fn ?name .
+		?uri vcard:hasEmail ?mbox .
+		?uri ?p ?o }
+WHERE
+	{ 	?s ?rel ?contact .
+		?contact vcard:fn ?name .
+		?contact vcard:hasEmail ?mbox .
+		OPTIONAL { ?contact ?p ?o }
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/contact/", 
+					SHA1(
+						CONCAT(STR(?name), STR(?mbox)))
+				)
+			) AS ?uri )
+		FILTER (LANG(?name) = "en")
+		FILTER (CONTAINS(STR(?contact), "well-known/genid/") && !CONTAINS(STR(?contact), "well-known/genid/contact/"))
+	}

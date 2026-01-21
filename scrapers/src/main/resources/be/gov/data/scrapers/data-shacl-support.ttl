@@ -125,3 +125,35 @@
 	a skos:Concept ;
 	skos:prefLabel "Academia / ScientificOrganisation"@en .
 
+<http://publications.europa.eu/resource/authority/licence/CC0>
+	a skos:Concept ;
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/PublicDomain> ;
+	skos:prefLabel "CC0" .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BY_2_0>
+	a skos:Concept ;
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	skos:prefLabel "CC BY 2.0" .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
+	a skos:Concept ;
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
+	skos:prefLabel "CC BY-NC 4.0" .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BYNCND_4_0>
+	a skos:Concept ;
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
+	dcterms:type <http://purl.org/adms/licencetype/NoDerivativeWork> ;
+	skos:prefLabel "CC BY-NC 4.0" .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>
+	a skos:Concept ;
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	skos:prefLabel "CC BY 4.0" .
