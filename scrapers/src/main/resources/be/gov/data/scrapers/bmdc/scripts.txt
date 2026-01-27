@@ -1,9 +1,14 @@
 # extra queries to be executed and data to be loaded 
-sparql-remove-catalogrecord.qry
-sparql-remove-accessservice.qry
 sparql-remove-addresses.qry
+sparql-remove-catalogrecord.qry
+sparql-remove-orphans.qry
+sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
+sparql-remove-orphans.qry
+sparql-remove-accessservice.qry
+sparql-delete-label-empty.qry
+sparql-conforms-eli.qry
 bmdc/sparql-fix-doi.qry
 bmdc/sparql-serves-id.qry
 bmdc/sparql-dataservice-id.qry
@@ -13,13 +18,11 @@ sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl
 sparql-map-theme-inspire.qry
+sparql-theme-hvd.qry
 sparql-theme-keyword.qry
-#sparql-theme-subject.qry
 data-media.ttl
 sparql-map-media-class.qry
 clear-skos.qry
-#bmdc/sparql-remove-html.qry
-#bmdc/sparql-media-specific.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
 #bmdc/data-theme.ttl
@@ -33,7 +36,6 @@ bmdc/sparql-creator-orcid.qry
 bmdc/sparql-empty-creator.qry
 bmdc/sparql-standard-iso.qry
 sparql-startenddate.qry
-sparql-consolidate-bbox.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

@@ -192,15 +192,29 @@
     </xsl:choose>
   </xsl:variable>
 
+<!-- Parameter $locale-prefix -->
+<!--
+  This parameter specifies the prefix (can be empty) used in ISO 19139 language tags 
+-->
+
+  <xsl:param name="locale-prefix"></xsl:param>
+
+<!-- Parameter $locale-default-lang -->
+<!--
+  This parameter specifies the default language tag used in ISO 19139 language tags 
+-->
+
+  <xsl:param name="locale-default-lang">EN</xsl:param>
+
+
 <!-- Parameter $include-deprecated -->
 <!--
   This parameter specifies whether deprecated mappings must ("yes") or must not
   ("no") be included in the output.
 -->
-
 <!-- Uncomment to include deprecated mappings from the output -->
 
-  <xsl:param name="include-deprecated">yes</xsl:param>
+  <xsl:param name="include-deprecated">no</xsl:param>
 
 <!-- Uncomment to exclude deprecated mappings from the output -->
 <!--
@@ -230,7 +244,7 @@
   <xsl:param name="CoupledResourceLookUp">
     <xsl:choose>
       <xsl:when test="$profile = $extended">
-        <xsl:text>enabled</xsl:text>
+        <xsl:text>disabled</xsl:text>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>disabled</xsl:text>
@@ -438,8 +452,8 @@
       <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString">
         <xsl:choose>
           <!-- Try to find English locale first -->
-          <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#locale-en']">
-            <xsl:value-of select="normalize-space($element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#locale-en'][1])"/>
+	  <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#{$locale-prefix}{$locale-default-lang}']">
+	    <xsl:value-of select="normalize-space($element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#${locale-prefix}{$locale-default-lang}'][1])"/>
           </xsl:when>
           <!-- Otherwise use the first available LocalisedCharacterString -->
           <xsl:otherwise>
@@ -4175,7 +4189,7 @@
       <xsl:variable name="value" select="normalize-space(.)"/>
       <xsl:variable name="langs">
         <xsl:call-template name="Alpha3-to-Alpha2">
-          <xsl:with-param name="lang" select="substring-after(translate(translate(@locale, $uppercase, $lowercase), '#', ''), 'locale-')"/>
+          <xsl:with-param name="lang" select="substring-after(translate(translate(@locale, $uppercase, $lowercase), '#', ''), $locale-prefix)"/>
         </xsl:call-template>
       </xsl:variable>
       <xsl:if test="$value != ''">

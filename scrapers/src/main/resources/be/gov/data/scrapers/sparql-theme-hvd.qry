@@ -1,0 +1,13 @@
+# Move HvD theme to specific property
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
+
+DELETE 
+	{ 	?s dcat:theme ?o }
+INSERT
+	{ 	?s dcatap:hvdCategory ?hvd }
+WHERE
+	{ 	?s dcat:theme ?hvd
+		FILTER (CONTAINS(STR(?hvd), "data.europa.eu/bna/"))
+	}
