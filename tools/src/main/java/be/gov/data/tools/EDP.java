@@ -716,6 +716,11 @@ public class EDP {
 		writeDates(w, con, uri);
 		
 		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
+		writeReferences(w, con, uri, GEODCAT.RESOURCE_TYPE, "geodcatap:resourceType");
+		writeReferences(w, con, uri, GEODCAT.SERVICE_PROTOCOL, "geodcatap:serviceProtocol");
+		writeReferences(w, con, uri, GEODCAT.SERVICE_TYPE, "geodcatap:serviceType");
+		writeReferences(w, con, uri, GEODCAT.TOPIC_CATEGORY, "geodcatap:topicCategory");
+		
 		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");
 		writeRole(w, con, uri, GEODCAT.DISTRIBUTOR, "geodcatap:distributor");
 		writeRole(w, con, uri, GEODCAT.ORIGINATOR, "geodcatap:originator");
