@@ -28,8 +28,8 @@ sparql-map-media-class.qry
 clear-skos.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
-#bmdc/data-theme.ttl
-#sparql-map-theme.qry
+bmdc/data-theme.ttl
+sparql-map-theme.qry
 bmdc/sparql-remove-license.qry
 bmdc/sparql-remove-rights.qry
 data-license.ttl

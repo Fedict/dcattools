@@ -4,7 +4,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcatap: <http://data.europa.eu/r5r/>
 
 DELETE 
-	{ 	?s dcat:theme ?o }
+	{ 	?s dcat:theme ?hvd }
 INSERT
 	{ 	?s dcatap:hvdCategory ?hvd }
 WHERE

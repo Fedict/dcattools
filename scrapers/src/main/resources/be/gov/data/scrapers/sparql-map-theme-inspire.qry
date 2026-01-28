@@ -1,16 +1,16 @@
-# Map an INSPIRE theme to one or more DCAT-AP themes
+# Map an INSPIRE or GEMET theme to one or more DCAT-AP themes
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE
-	{	?dataset dcat:theme ?inspire }
+	{	?s dcat:theme ?uri }
 INSERT
-	{ 	?dataset dcat:theme ?theme .
-		?dataset dcterms:subject ?inspire }
+	{ 	?s dcat:theme ?theme .
+		?s dcterms:subject ?uri }
 WHERE
 	{ 	
-		?dataset dcat:theme ?inspire .
-		?inspire skos:broadMatch ?theme .
+		?s dcat:theme ?uri .
+		?theme skos:narrowMatch ?uri .
 	}
