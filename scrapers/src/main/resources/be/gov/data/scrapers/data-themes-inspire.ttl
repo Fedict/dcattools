@@ -1,113 +1,66 @@
 # Data for mapping INSPIRE themes to DCAT-AP themes
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix inspire: <http://inspire.ec.europa.eu/theme/> .
 
-<http://inspire.ec.europa.eu/theme/ad> a skos:Concept ;
-    skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> .
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+    skos:narrowMatch inspire:ad,      # Addresses
+                     inspire:rs,      # Statistical units
+                     inspire:gg,      # Geographical grids
+                     inspire:cp,      # Cadastral parcels
+                     inspire:gn,      # Geographical names
+                     inspire:el,      # Elevation
+                     inspire:ge,      # Geology
+                     inspire:oi,      # Orthoimagery
+                     inspire:bu .     # Buildings
 
-<http://inspire.ec.europa.eu/theme/au> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> .
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+    skos:narrowMatch inspire:au,      # Administrative units
+                     inspire:us .     # Area management
 
-<http://inspire.ec.europa.eu/theme/rs> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> .
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+    skos:narrowMatch inspire:hy,      # Hydrography
+                     inspire:ps,      # Protected sites
+                     inspire:lc,      # Land cover
+                     inspire:am,      # Area management/restriction/regulation zones...
+                     inspire:ac,      # Atmospheric conditions
+                     inspire:br,      # Bio-geographical regions
+                     inspire:ef,      # Environmental monitoring facilities
+                     inspire:hb,      # Habitats and biotopes
+                     inspire:lu,      # Land use
+                     inspire:mr,      # Mineral resources
+                     inspire:nz,      # Natural risk zones
+                     inspire:of,      # Oceanographic geographical features
+                     inspire:sr,      # Sea regions
+                     inspire:so,      # Soil
+                     inspire:sd,      # Species distribution
+                     inspire:mf .     # Meteorological geographical features
 
-<http://inspire.ec.europa.eu/theme/gg> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> .
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+    skos:narrowMatch inspire:cp,      # Cadastral parcels
+                     inspire:lu,      # Land use
+                     inspire:mr,      # Mineral resources
+                     inspire:pf .     # Production and industrial facilities
 
-<http://inspire.ec.europa.eu/theme/cp> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> .
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+    skos:narrowMatch inspire:tn .     # Transport networks
 
-<http://inspire.ec.europa.eu/theme/gn> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> .
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+    skos:narrowMatch inspire:af .     # Agricultural and aquaculture facilities
 
-<http://inspire.ec.europa.eu/theme/hy> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+    skos:narrowMatch inspire:hy,      # Hydrography
+                     inspire:ge,      # Geology
+                     inspire:oi,      # Orthoimagery
+                     inspire:mf .     # Meteorological geographical features
 
-<http://inspire.ec.europa.eu/theme/ps> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+    skos:narrowMatch inspire:er,      # Energy resources
+                     inspire:mr .     # Mineral resources
 
-<http://inspire.ec.europa.eu/theme/tn> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/TRAN> .
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+    skos:narrowMatch inspire:hh .     # Human health and safety
 
-<http://inspire.ec.europa.eu/theme/el> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> .
-
-<http://inspire.ec.europa.eu/theme/ge> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .
-
-<http://inspire.ec.europa.eu/theme/lc> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/oi> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .
-
-<http://inspire.ec.europa.eu/theme/af> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/AGRI> .
-
-<http://inspire.ec.europa.eu/theme/am> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/ac> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/br> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/bu> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/REGI> .
-
-<http://inspire.ec.europa.eu/theme/er> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> .
-
-<http://inspire.ec.europa.eu/theme/ef> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/hb> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/hh> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/HEAL> .
-
-<http://inspire.ec.europa.eu/theme/lu> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/mr> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENER> .
-
-<http://inspire.ec.europa.eu/theme/nz> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/of> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/pd> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> .
-
-<http://inspire.ec.europa.eu/theme/pf> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ECON> .
-
-<http://inspire.ec.europa.eu/theme/sr> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/so> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/sd> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> .
-
-<http://inspire.ec.europa.eu/theme/su> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/SOCI> .
-
-<http://inspire.ec.europa.eu/theme/us> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/GOVE> .
-
-<http://inspire.ec.europa.eu/theme/mf> a skos:Concept ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
-	skos:broadMatch <http://publications.europa.eu/resource/authority/data-theme/TECH> .
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+    skos:narrowMatch inspire:pd,      # Population distribution – demography
+                     inspire:su .     # Statistical units

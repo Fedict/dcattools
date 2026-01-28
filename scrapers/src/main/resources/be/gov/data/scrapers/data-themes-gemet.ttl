@@ -1,4 +1,4 @@
-# Data for mapping GEMET to  EU Data Portal Themes
+# Data for mapping GEMET to EU Data Portal Themes
 
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
 @prefix gemet: <http://www.eionet.europa.eu/gemet/concept/> .
@@ -38,13 +38,16 @@
                      gemet:5049,    # marine protected area
                      gemet:7497,    # marine sediment
                      gemet:7498,    # marine species
-                     gemet:8683 .   # water quality monitoring
+                     gemet:8683,    # water quality monitoring
                      gemet:420,     # animal ecology
                      gemet:5029,    # marine conservation area
                      gemet:5030,    # marine ecology
                      gemet:5044,    # marine pollution
+					 gemet:5648,	# noise monitoring
                      gemet:505,     # aquatic ecosystem
                      gemet:625,     # atmospheric emission
+					 gemet:861,		# biological monitoring
+					 gemet:6469,	# pollution monitoring
                      gemet:7423,    # sand extraction
                      gemet:775,     # benthos
                      gemet:9062,    # waste disposal
@@ -57,14 +60,14 @@
                      gemet:9331,    # windmill
                      gemet:9336 .   # wind power station
 
-<http://publications.europa.eu/resource/authority/data-theme/GOVE>;
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
     skos:narrowMatch gemet:2160 .   # development planning
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
 	skos:narrowMatch gemet:5253 .   # military zone
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:narrowMatch gemet:7003 .     # recreational area
+	skos:narrowMatch gemet:7003 .   # recreational area
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
     skos:narrowMatch gemet:12390,   # wreck

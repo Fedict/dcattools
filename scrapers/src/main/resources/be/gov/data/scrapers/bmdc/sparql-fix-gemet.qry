@@ -1,0 +1,17 @@
+# Fix URI for GEMET
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s dcat:theme ?theme }
+INSERT 
+	{ 	?s dcat:theme ?gemet }
+WHERE
+	{	?s dcat:theme ?theme .
+		BIND (IRI(
+				REPLACE(
+					STR(?theme), 
+					"https://www.eionet.europa.eu/gemet/en/concept/", "http://www.eionet.europa.eu/gemet/concept/")
+			) as ?gemet )
+		FILTER (STRSTARTS(STR(?theme), "https://www.eionet.europa.eu/gemet/en/concept/"))
+	}

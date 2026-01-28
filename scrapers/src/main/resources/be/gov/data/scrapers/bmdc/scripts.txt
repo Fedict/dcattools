@@ -20,7 +20,10 @@ bmdc/sparql-doi-adms.qry
 sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl
+bmdc/sparql-fix-gemet.qry
+data-themes-gemet.ttl
 sparql-map-theme-inspire.qry
+clear-skos.qry
 sparql-theme-hvd.qry
 sparql-theme-keyword.qry
 data-media.ttl
@@ -28,8 +31,6 @@ sparql-map-media-class.qry
 clear-skos.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
-bmdc/data-theme.ttl
-sparql-map-theme.qry
 bmdc/sparql-remove-license.qry
 bmdc/sparql-remove-rights.qry
 data-license.ttl
