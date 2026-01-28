@@ -2,17 +2,23 @@
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcatap:  <http://data.europa.eu/r5r/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 
 DELETE 
-	{	?s dcterms:conformsTo ?uri .
+	{	?s ?rel ?uri .
 		?eli a dcterms:Standard }
 INSERT 
-	{ 	?s dcatap:applicableLegislation ?eli }
+	{ 	?s ?newrel ?eli }
 WHERE 
-	{	?s dcterms:conformsTo ?uri .
+	{	?s ?rel ?uri .
+		VALUES (?rel ?newrel) { 
+				( dcterms:conformsTo  dcatap:applicableLegislation )
+				( prov:wasDerivedFrom prov:wasDerivedFrom ) 
+			}
 		OPTIONAL { ?uri a dcterms:Standard }
-		BIND (REPLACE(
-				STR(?uri), "https?://eur-lex.europa", "http://data.europa"
+		BIND (IRI
+				(REPLACE(
+					STR(?uri), "https://eur-lex.europa", "http://data.europa")
 			) AS ?eli)
 		FILTER (CONTAINS(STR(?uri), "eur-lex.europa.eu/eli"))
 	}

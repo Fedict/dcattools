@@ -1,6 +1,9 @@
 # extra queries to be executed and data to be loaded 
 sparql-remove-addresses.qry
 sparql-remove-catalogrecord.qry
+bmdc/data-org.ttl
+sparql-map-org.qry
+sparql-map-memberof.qry
 sparql-remove-orphans.qry
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
@@ -33,7 +36,7 @@ data-license.ttl
 sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
-bmdc/sparql-empty-creator.qry
+#bmdc/sparql-empty-creator.qry
 bmdc/sparql-standard-iso.qry
 sparql-startenddate.qry
 clear-skos.qry

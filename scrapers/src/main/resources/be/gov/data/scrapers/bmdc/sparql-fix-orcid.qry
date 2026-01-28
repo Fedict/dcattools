@@ -1,22 +1,24 @@
-# Fix URL of ORCIDs
+# Fix URI of ORCID
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
-		?s dcterms:creator ?skolem .
-		?skolem dcterms:identifier ?id .
+		?s ?p  <http://orcid.org/http://orcid.org/0000-0003-2692-8651> .
+		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a vcard:Individual .
+		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a foaf:Person .
+		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> ?x ?y
 	}
 INSERT 
-	{	?s dcterms:creator ?skolem .
-		?skolem dcterms:identifier ?orcid
+	{	?s ?p  <https://orcid.org/0000-0003-2692-8651> .
+		<https://orcid.org/0000-0003-2692-8651> a vcard:Organization .
+		<https://orcid.org/0000-0003-2692-8651> a foaf:Organization .
+		<https://orcid.org/0000-0003-2692-8651> ?x ?y
 	}
 WHERE
-	{	?s dcterms:creator ?skolem .
-		?skolem dcterms:identifier ?id .
-		BIND (
-			REPLACE(
-				REPLACE(?id, "http://orcid\\.org/http://orcid\\.org/", "http://orcid.org/"),
-				"http://", "https://")
-		AS ?orcid)
-		FILTER (CONTAINS(?id, "orcid"))
+	{	?s ?p  <http://orcid.org/http://orcid.org/0000-0003-2692-8651> .
+		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a vcard:Individual .
+		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a foaf:Person .
+		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> ?x ?y
 	}
