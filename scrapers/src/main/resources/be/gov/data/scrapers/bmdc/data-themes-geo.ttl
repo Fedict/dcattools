@@ -1,0 +1,17 @@
+# Data for mapping geo.be to EU Data Portal Themes
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+    skos:narrowMatch
+        <https://www.geo.be/thesaurus/gpr.xml> ,  # Geology and physical relief
+        <https://www.geo.be/thesaurus/lcu.xml> .  # Land cover and land use
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+    skos:narrowMatch
+        <https://www.geo.be/thesaurus/end.xml> .  # Economy and development
+
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+    skos:narrowMatch
+        <https://www.geo.be/thesaurus/end.xml> ,  # Economy and development (regional aspects)
+        <https://www.geo.be/thesaurus/lcu.xml> .  # Land cover and land use (spatial planning / regional context)

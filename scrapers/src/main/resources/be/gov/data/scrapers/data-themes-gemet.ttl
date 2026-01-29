@@ -32,6 +32,7 @@
                      gemet:2882,    # environmental monitoring
                      gemet:4857,    # litter
                      gemet:15228,   # Marine Strategy Framework Directive
+					 gemet:5033,	# marine environment
                      gemet:5038,    # marine geology
                      gemet:5042,    # marine monitoring
                      gemet:5044,    # marine pollution
@@ -44,6 +45,8 @@
                      gemet:5030,    # marine ecology
                      gemet:5044,    # marine pollution
 					 gemet:5648,	# noise monitoring
+					 gemet:5651,	# noise pollution
+					 gemet:5763,	# nutrient
                      gemet:505,     # aquatic ecosystem
                      gemet:625,     # atmospheric emission
 					 gemet:861,		# biological monitoring
@@ -80,6 +83,7 @@
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
     skos:narrowMatch gemet:11148,   # scientific research
                      gemet:15124,   # earth observation
+                     gemet:5038,    # marine geology
                      gemet:5346,    # monitoring
                      gemet:5349,    # monitoring equipment
                      gemet:5352,    # monitoring station
