@@ -22,7 +22,7 @@ sparql-available.qry
 data-themes-inspire.ttl
 bmdc/sparql-fix-gemet.qry
 data-themes-gemet.ttl
-bmdc/data-themes-nerc.qry
+bmdc/data-themes-nerc.ttl
 sparql-map-theme-belgif.qry
 sparql-map-theme-inspire.qry
 bmdc/sparql-inspire-priority.qry
