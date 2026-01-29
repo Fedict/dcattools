@@ -5,12 +5,19 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcatap: <http://data.europa.eu/r5r/>
 
 DELETE
-	{	?s dcat:theme <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56> }
+	{	?s dcat:theme ?prior }
 INSERT
-	{	?s dcatap:applicableLegislation <http://data.europa.eu/eli/dir/2008/56/oj> .
-		?s dcterms:subject <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56> }
+	{	?s dcatap:applicableLegislation ?eli .
+		?s dcterms:subject ?prior> }
 WHERE
 	{ 
-		?s dcat:theme <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56>
+		?s dcat:theme ?prior
+		VALUES (?prior ?eli) { 
+			( <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56> <http://data.europa.eu/eli/dir/2008/56/oj> )
+			( <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/HabitatTypesRange-dir-1992-43> <http://eur-lex.europa.eu/eli/dir/1992/43/oj> )
+			( <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/HabitatTypesDistribution-dir-1992-43> <http://eur-lex.europa.eu/eli/dir/1992/43/oj> )
+			( <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/MSFDReportingUnits-dir-2008-56> <http://eur-lex.europa.eu/eli/dir/2008/56/oj> )
+			( <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/MonitoringStations-dir-2000-60> <http://eur-lex.europa.eu/eli/dir/2000/60/oj> )
+		}
 	}
 
