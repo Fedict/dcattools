@@ -8,7 +8,7 @@ DELETE
 	{	?s dcat:theme ?prior }
 INSERT
 	{	?s dcatap:applicableLegislation ?eli .
-		?s dcterms:subject ?prior> }
+		?s dcterms:subject ?prior }
 WHERE
 	{ 
 		?s dcat:theme ?prior

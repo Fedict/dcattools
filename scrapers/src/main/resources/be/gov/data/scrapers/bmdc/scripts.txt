@@ -32,6 +32,7 @@ bmdc/sparql-inspire-priority.qry
 clear-skos.qry
 sparql-theme-hvd.qry
 sparql-theme-keyword.qry
+sparql-theme-subject.qry
 data-media.ttl
 sparql-map-media-class.qry
 clear-skos.qry
