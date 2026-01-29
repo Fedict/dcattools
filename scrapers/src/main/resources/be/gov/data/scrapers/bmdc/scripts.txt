@@ -21,6 +21,7 @@ sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl
 bmdc/sparql-fix-gemet.qry
+bmdc/sparql-fix-marine.qry
 data-themes-gemet.ttl
 bmdc/data-themes-geo.ttl
 bmdc/data-themes-nerc.ttl

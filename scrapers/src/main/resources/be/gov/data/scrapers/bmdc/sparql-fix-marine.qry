@@ -1,0 +1,14 @@
+# Move marine regions from theme to spatial
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+
+DELETE
+	{	?s dcat:theme ?marine }
+INSERT 
+	{ 	?s dcterms:spatial ?marine }
+WHERE
+	{	?s dcat:theme ?marine .
+		FILTER (CONTAINS(STR(?marine), "marineregions.org/"))
+	}

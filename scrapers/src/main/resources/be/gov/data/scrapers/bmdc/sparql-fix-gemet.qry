@@ -11,7 +11,7 @@ WHERE
 		BIND (IRI(
 				REPLACE(
 					STR(?theme), 
-					"https://www.eionet.europa.eu/gemet/en/concept/", "http://www.eionet.europa.eu/gemet/concept/")
+					"https?://www.eionet.europa.eu/gemet/en/concept/", "http://www.eionet.europa.eu/gemet/concept/")
 			) as ?gemet )
-		FILTER (STRSTARTS(STR(?theme), "https://www.eionet.europa.eu/gemet/en/concept/"))
+		FILTER (CONTAINS(STR(?theme), "www.eionet.europa.eu/gemet/en/concept/"))
 	}

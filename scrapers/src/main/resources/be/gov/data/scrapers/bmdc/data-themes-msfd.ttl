@@ -16,7 +16,9 @@
         <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D6C2> ,      # Extent of temporary / reversible physical disturbance to seabed
         <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D6C5> ,      # Benthic habitats: adverse effects on structure & functions
         <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D7C1> ,      # Spatial extent & distribution of permanent / significant hydrographical alterations
-        <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D8C2> ,      # Adverse effects of contaminants at individual / population / community level
+        <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D8C1> ,
+        <https://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D8C1>,		# Contaminant in environment
+	    <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D8C2> ,      # Adverse effects of contaminants at individual / population / community level
         <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D8C3> ,      # Occurrence & spatial/temporal extent of significant acute pollution events
         <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D8C4> ,      # Adverse effects from significant acute pollution events
         <http://cdr.eionet.europa.eu/help/msfd/Schemas/MSFDCommon_2018.xsd#D10C1> ,     # Characteristics (composition, quantity) & spatial/temporal distribution of litter (excl. micro-litter)
