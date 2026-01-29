@@ -2,7 +2,9 @@
 
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
 PREFIX dcterms:	<http://purl.org/dc/terms/>
+PREFIX eli:  <http://data.europa.eu/eli/ontology#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX mobilitydcatap: <https://w3id.org/mobilitydcat-ap#>
 PREFIX org: <http://www.w3.org/ns/org#>
@@ -44,6 +46,7 @@ WHERE
 			( adms:identifier adms:Identifier )
 			( org:memberOf foaf:Agent )
 			( mobilitydcatap:mobilityDataStandard mobilitydcatap:MobilityDataStandard )
+			( dcatap:applicableLegislation eli:LegalResource )
 		}
 	}
 
