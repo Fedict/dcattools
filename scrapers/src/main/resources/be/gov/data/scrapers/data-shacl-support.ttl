@@ -157,3 +157,20 @@
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
 	skos:prefLabel "CC BY 4.0" .
+
+<http://purl.org/adms/licencetype/PublicDomain>
+	a skos:Concept ;
+	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
+
+<http://purl.org/adms/licencetype/Attribution>
+	a skos:Concept ;
+	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
+
+<http://purl.org/adms/licencetype/NoDerivativeWork> 
+	a skos:Concept ;
+	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
+
+<http://purl.org/adms/licencetype/NonCommercialUseOnly>
+	a skos:Concept ;
+	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
+
