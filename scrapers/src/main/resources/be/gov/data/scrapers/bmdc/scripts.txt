@@ -22,7 +22,10 @@ sparql-available.qry
 data-themes-inspire.ttl
 bmdc/sparql-fix-gemet.qry
 data-themes-gemet.ttl
+bmdc/data-themes-nerc.qry
+sparql-map-theme-belgif.qry
 sparql-map-theme-inspire.qry
+bmdc/sparql-inspire-priority.qry
 clear-skos.qry
 sparql-theme-hvd.qry
 sparql-theme-keyword.qry
@@ -37,8 +40,6 @@ data-license.ttl
 sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
-#bmdc/sparql-empty-creator.qry
-bmdc/sparql-standard-iso.qry
 sparql-startenddate.qry
 clear-skos.qry
 data-shacl-support.ttl

@@ -1,0 +1,29 @@
+# Data for mapping NERC UK to EU Data Portal Themes
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+    skos:narrowMatch
+        <http://vocab.nerc.ac.uk/collection/C45/current/D1> ,      # Biological diversity is maintained
+        <http://vocab.nerc.ac.uk/collection/C45/current/D2> ,      # Non-indigenous species do not adversely alter ecosystems
+        <http://vocab.nerc.ac.uk/collection/C45/current/D4> ,      # Marine food webs occur at normal abundance/diversity
+        <http://vocab.nerc.ac.uk/collection/C45/current/D5> ,      # Human-induced eutrophication minimised
+        <http://vocab.nerc.ac.uk/collection/C45/current/D6> ,      # Sea-floor integrity safeguarded
+        <http://vocab.nerc.ac.uk/collection/C45/current/D7> ,      # Hydrographical conditions not adversely altered
+        <http://vocab.nerc.ac.uk/collection/C45/current/D8> ,      # Contaminants at non-polluting levels
+        <http://vocab.nerc.ac.uk/collection/C45/current/D10> ,     # Marine litter does not cause harm
+        <http://vocab.nerc.ac.uk/collection/C45/current/D11> ,     # Energy/noise introduction at non-harmful levels
+        <http://vocab.nerc.ac.uk/collection/C36/current/LEGL0020/> ,  # MARPOL Convention (pollution from ships)
+        <http://vocab.nerc.ac.uk/collection/P02/current/R410/> ,   # Ocean colour & water-leaving radiance
+        <http://vocab.nerc.ac.uk/collection/P02/current/SPGS/> ,   # Suspended particulate matter grain size / composition
+        <http://vocab.nerc.ac.uk/collection/P02/current/TSED/> ,   # Total sediment / settled particulates
+        <http://vocab.nerc.ac.uk/collection/P01/current/MDGSISXX/> ,  # Mass conc. suspended particulate matter (gravimetry)
+        <http://vocab.nerc.ac.uk/collection/P01/current/OPTCPS01/> ,  # Optical backscatter coefficient (turbidity proxy)
+        <http://vocab.nerc.ac.uk/collection/GS3/current/> ,        # General subject grouping (tentative)
+        <http://vocab.nerc.ac.uk/collection/L05/current/LAB27/> ,  # Lab/analysis device or method category (tentative)
+        <http://vocab.nerc.ac.uk/collection/M17/current/SAMP_CORR/> ,  # Sampling correction/calibration procedures (tentative)
+        <https://vocab.nerc.ac.uk/collection/S04/current/S0458/> . # Composite/aggregated parameter (tentative)
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+    skos:narrowMatch
+        <http://vocab.nerc.ac.uk/collection/C45/current/D9> .      # Contaminants in fish/seafood do not exceed safe levels

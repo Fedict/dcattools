@@ -1,0 +1,16 @@
+# Add applicableLegislation when theme is set to INSPIRE Priority Dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
+
+DELETE
+	{	?s dcat:theme <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56> }
+INSERT
+	{	?s dcatap:applicableLegislation <http://data.europa.eu/eli/dir/2008/56/oj> .
+		?s dcterms:subject <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56> }
+WHERE
+	{ 
+		?s dcat:theme <http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/dir-2008-56>
+	}
+
