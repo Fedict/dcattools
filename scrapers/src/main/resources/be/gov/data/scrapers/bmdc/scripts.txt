@@ -1,5 +1,9 @@
 # extra queries to be executed and data to be loaded 
+sparql-delete-label-empty.qry
 sparql-remove-addresses.qry
+bmdc/sparql-remove-label.qry
+bmdc/sparql-id-record.qry
+sparql-title-to-desc.qry
 sparql-remove-catalogrecord.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
@@ -10,7 +14,6 @@ sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
 sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
-sparql-delete-label-empty.qry
 sparql-conforms-eli.qry
 bmdc/sparql-fix-doi.qry
 bmdc/sparql-serves-id.qry
