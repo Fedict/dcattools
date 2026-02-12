@@ -4,10 +4,9 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {
 		?s dcterms:identifier ?id }
-INSERT {
-		?s dcterms:identifier ?doi }
 WHERE
 	{	?s dcterms:identifier ?doi .
 		?s dcterms:identifier ?id .
-		FILTER (STRSTARTS(?doi, "doi:") && (?doi != ?id))
+		FILTER (STRSTARTS(STR(?doi), "doi:"))
+		FILTER (STR(?doi) != STR(?id))
 	}

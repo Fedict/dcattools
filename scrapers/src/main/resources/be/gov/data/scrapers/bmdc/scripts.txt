@@ -14,8 +14,8 @@ sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
 sparql-conforms-eli.qry
 bmdc/sparql-doi-prefix.qry
-#bmdc/sparql-serves-id.qry
-bmdc/sparql-dataservice-id.qry
+bmdc/sparql-serves-id.qry
+#bmdc/sparql-dataservice-id.qry
 #bmdc/sparql-resource-id.qry
 bmdc/sparql-doi-prefer.qry
 #bmdc/sparql-doi-adms.qry
