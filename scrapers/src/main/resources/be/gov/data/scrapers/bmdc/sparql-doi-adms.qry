@@ -1,12 +1,9 @@
-# Move DOI to ADMS Identifier
+# Copy DOI to ADMS Identifier
 
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-DELETE {
-		?s dcterms:identifier ?doi .
-	}
 INSERT {
 		?s dcterms:identifier ?str .
 		?s adms:identifier ?uri .

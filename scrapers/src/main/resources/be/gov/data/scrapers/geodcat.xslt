@@ -1653,15 +1653,21 @@
     <xsl:param name="code">
       <xsl:value-of select="gmd:code/gco:CharacterString"/>
     </xsl:param>
+    <xsl:param name="anchor">
+      <xsl:value-of select="gmd:code/gmx:Anchor"/>
+    </xsl:param>
     <xsl:param name="id">
       <xsl:choose>
+        <xsl:when test="$anchor != ''">
+		  <xsl:value-of select="$anchor"/>	  
+		</xsl:when>
         <xsl:when test="$ns != ''">
           <xsl:choose>
             <xsl:when test="substring($ns,string-length($ns),1) = '/'">
-          <xsl:value-of select="concat($ns,$code)"/>
+              <xsl:value-of select="concat($ns,$code)"/>
             </xsl:when>
             <xsl:otherwise>
-          <xsl:value-of select="concat($ns,'/',$code)"/>
+              <xsl:value-of select="concat($ns,'/',$code)"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:when>
