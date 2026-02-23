@@ -11,6 +11,9 @@ bmdc/data-regions.ttl
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
+bmdc/sparql-remove-license.qry
+bmdc/sparql-rights-to-license.qry
+sparql-consolidate-rights.qry
 sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
 sparql-conforms-eli.qry
@@ -41,8 +44,6 @@ sparql-map-media-class.qry
 clear-skos.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
-bmdc/sparql-remove-license.qry
-bmdc/sparql-remove-rights.qry
 data-license.ttl
 sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry

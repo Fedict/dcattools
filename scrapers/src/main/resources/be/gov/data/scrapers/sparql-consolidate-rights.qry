@@ -1,0 +1,26 @@
+# Consolidate rightsStatement to 1 URI instead of different blank nodes / genid
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX fn: <http://data.gov.be/sparql/function/>
+
+DELETE 
+	{	?s dcterms:rights ?genrights .
+		?genrights a dcterms:RightStatement .
+		?genrights dcterms:description ?desc  }
+INSERT
+	{	?s dcterms:rights ?rights .
+		?rights a dcterms:RightStatement .
+		?rights dcterms:description ?desc }
+WHERE
+	{ 	?s dcterms:rights ?genrights .
+		?genrights dcterms:description ?desc
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(STR(?desc)))
+			)
+		AS ?rights)
+		FILTER CONTAINS(STR(?genrights), "well-known/genid")
+	}
