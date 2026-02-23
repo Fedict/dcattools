@@ -32,16 +32,8 @@ import org.eclipse.rdf4j.model.util.Values;
  *
  * @author Bart.Hanssens
  */
-public class GEODCAT {
-	public final static IRI CUSTODIAN = Values.iri("http://data.europa.eu/930/custodian");
-	public final static IRI DISTRIBUTOR = Values.iri("http://data.europa.eu/930/distributor");
-	public final static IRI ORIGINATOR = Values.iri("http://data.europa.eu/930/originator");
-	public final static IRI PROCESSOR = Values.iri("http://data.europa.eu/930/processor");
-	public final static IRI PURPOSE = Values.iri("http://data.europa.eu/930/purpose");
-	public final static IRI REFERENCE_SYSTEM = Values.iri("http://data.europa.eu/930/referenceSystem");
-	public final static IRI RESOURCE_PROVIDER = Values.iri("http://data.europa.eu/930/resourceProvider");
-	public final static IRI RESOURCE_TYPE = Values.iri("http://data.europa.eu/930/resourceType");
-	public final static IRI SPATIAL_RESOLUTION_AS_SCALE = Values.iri("http://data.europa.eu/930/spatialResolutionAsScale");
-	public final static IRI TOPIC_CATEGORY = Values.iri("http://data.europa.eu/930/topicCategory");
-
+public class DCATAP {
+	public final static IRI AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
+	public final static IRI APPLICABLE_LEGISLATION = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
+	public final static IRI HVD_CATEGORY = Values.iri("http://data.europa.eu/r5r/hvdCategory");
 }
