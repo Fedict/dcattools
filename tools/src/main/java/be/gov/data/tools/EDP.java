@@ -307,7 +307,12 @@ public class EDP {
 					while(res2.hasNext()) {
 						w.writeStartElement("prov:agent");		
 						Resource agent = (Resource) res2.next().getObject();
-						writeAgent(w, con, agent);
+						if (agent.stringValue().contains(WELL_KNOWN)) {
+							writeAgent(w, con, agent);
+						} else {
+							w.writeEmptyElement("foaf:Agent");
+							w.writeAttribute("rdf:resource", agent.stringValue());
+						}
 						w.writeEndElement();
 					}
 					writeReferences(w, con, attrib, DCAT.HAD_ROLE, "dcat:hadRole", "dcat:Role", false);
@@ -946,7 +951,7 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, Resource iri) 
-			throws XMLStreamException {
+			throws XMLStreamException {;
 		w.writeStartElement("foaf:Agent");
 		w.writeAttribute("rdf:about", iri.stringValue());
 	

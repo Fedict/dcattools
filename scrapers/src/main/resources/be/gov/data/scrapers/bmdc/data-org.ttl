@@ -21,4 +21,5 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Flanders Marine Institute"@en, "Vlaams Instituut voor Zee"@nl, 
 				"Institut Flamand de la Mer"@fr ;
-	skos:altLabel "Vlaams Instituut voor de Zee / Flanders Marine Institute (VLIZ)"@en .
+	skos:altLabel "Instituut voor Landbouw- en Visserijonderzoek - Visserij (ILVO)"@en,
+	 "Vlaams Instituut voor de Zee / Flanders Marine Institute (VLIZ)"@en .
