@@ -803,6 +803,17 @@
       </xsl:for-each>
     </xsl:param>
 
+	<xsl:param name="ResourceCitationDetails">
+      <xsl:for-each select="gmd:identificationInfo[1]/*/gmd:citation/gmd:CI_Citation/gmd:otherCitationDetails">
+        <dct:abstract xml:lang="{$MetadataLanguage}">
+          <xsl:value-of select="gco:CharacterString"/>
+        </dct:abstract>
+        <xsl:call-template name="LocalisedString">
+          <xsl:with-param name="term">dct:abstract</xsl:with-param>
+        </xsl:call-template>
+      </xsl:for-each>
+    </xsl:param>
+
     <xsl:param name="ResourcePurpose">
       <xsl:for-each select="gmd:identificationInfo[1]/*/gmd:purpose">
         <geodcatap:purpose xml:lang="{$MetadataLanguage}">
@@ -1244,7 +1255,8 @@
       </dct:description>
 -->
       <xsl:copy-of select="$ResourceAbstract"/>
-      <xsl:copy-of select="$ResourcePurpose"/>
+      <xsl:copy-of select="$ResourceCitationDetails"/>
+	  <xsl:copy-of select="$ResourcePurpose"/>
 <!-- Maintenance information (tentative) -->
       <xsl:for-each select="gmd:identificationInfo/*/gmd:resourceMaintenance">
         <xsl:apply-templates select="gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode"/>

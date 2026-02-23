@@ -29,6 +29,7 @@ import be.gov.data.dcat.vocab.ADMS;
 import be.gov.data.dcat.vocab.BIBO;
 import be.gov.data.dcat.vocab.CITEDCAT;
 import be.gov.data.dcat.vocab.CONTENT;
+import be.gov.data.dcat.vocab.DCATAP;
 import be.gov.data.dcat.vocab.DQV;
 import be.gov.data.dcat.vocab.GEODCAT;
 import be.gov.data.dcat.vocab.MOBILITYDCAT;
@@ -106,10 +107,6 @@ public class EDP {
 
 	private final static String BASE_URI = "http://base.data.gov.be";
 
-	private final static IRI DCATAP_AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
-	private final static IRI DCATAP_CONFORMS = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
-	private final static IRI DCATAP_HVDCAT = Values.iri("http://data.europa.eu/r5r/hvdCategory");
-
 	private final static Set<IRI> CONCEPTS = new HashSet<>(250);
 
 	private final static Set<String> IDENTIFIERS = new HashSet<>(25000);
@@ -132,7 +129,6 @@ public class EDP {
 		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(GEO.PREFIX, GEO.NAMESPACE);
-		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
 		w.writeNamespace("geodcatap", "http://data.europa.eu/930/");
 		w.writeNamespace("mobilitydcatap", "https://w3id.org/mobilitydcat-ap#");
 		w.writeNamespace("oa", "http://www.w3.org/ns/oa#");
@@ -573,31 +569,38 @@ public class EDP {
 		IRI uri) throws XMLStreamException {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
+
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.ALTERNATIVE, "dct:alternative");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ABSTRACT, "dct:abstract");
-		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcat:purpose");
 		writeReferences(w, con, uri, DCTERMS.TYPE, "dct:type");
+
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 		writeReferences(w, con, uri, ADMS.IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
+
+		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
 		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");
 		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
 		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");		
 		//writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
+
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
 		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
 		writeReferences(w, con, uri, DCTERMS.CONTRIBUTOR, "dct:contributor");
 		writeReferences(w, con, uri, DCTERMS.RIGHTS_HOLDER, "dct:rightsHolder");
+
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
-		writeReferences(w, con, uri, DCATAP_CONFORMS, "dcatap:applicableLegislation", "eli:LegalResource", false);
-		writeReferences(w, con, uri, DCATAP_HVDCAT, "dcatap:hvdCategory");
+		writeReferences(w, con, uri, DCATAP.APPLICABLE_LEGISLATION, "dcatap:applicableLegislation", "eli:LegalResource", false);
+		writeReferences(w, con, uri, DCATAP.HVD_CATEGORY, "dcatap:hvdCategory");
+
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
+
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 	}
@@ -630,11 +633,9 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 
-		writeReferences(w, con, uri, DCATAP_AVAILABILITY, "dcatap:availability");
+		writeReferences(w, con, uri, DCATAP.AVAILABILITY, "dcatap:availability");
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 		writeLiterals(w, con, uri, CONTENT.CHARACTER_ENCODING, "cnt:characterEncoding");
-		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
-		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 		
 		writeReferences(w, con, uri, MOBILITYDCAT.APPLICATION_LAYER_PROTOCOL, "mobilitydcatap:applicationLayerProtocol");
 		writeReferences(w, con, uri, MOBILITYDCAT.COMMUNICATION_METHOD, "mobilitydcatap:communicationMethod");
@@ -661,8 +662,6 @@ public class EDP {
 
 		writeGeneric(w, con, uri);
 
-		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
-		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");
 		writeLiterals(w, con, uri, DCAT.KEYWORD, "dcat:keyword");
 		writeSubjects(w, con, uri, DCTERMS.SUBJECT, "dct:subject");
 		writeReferences(w, con, uri, DCAT.THEME, "dcat:theme");
@@ -716,9 +715,12 @@ public class EDP {
 		
 		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 		writeDates(w, con, uri);
-		
+
+		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcat:purpose");
+	
 		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
 		writeReferences(w, con, uri, GEODCAT.RESOURCE_TYPE, "geodcatap:resourceType");
+		writeReferences(w, con, uri, GEODCAT.TOPIC_CATEGORY, "geodcatap:topicCategory");	
 		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");
 		writeRole(w, con, uri, GEODCAT.DISTRIBUTOR, "geodcatap:distributor");
 		writeRole(w, con, uri, GEODCAT.ORIGINATOR, "geodcatap:originator");
@@ -727,6 +729,7 @@ public class EDP {
 
 		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
 		writeAnnotations(w, con, uri, DQV.HAS_QUALITY_ANNOTATION, "dqv:qualityAnnotation", "dqv:QualityAnnotation");
+
 		writeAnnotations(w, con, uri, MOBILITYDCAT.ASSESSMENT_RESULT, "mobilitydcatap:assessmentResult", "mobilitydcatap:Assessment");
 		
 		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
