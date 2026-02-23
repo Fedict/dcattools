@@ -1,0 +1,93 @@
+# Data for marine regions
+
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://marineregions.org/mrgid/17441>
+	rdfs:label "Central North Sea"@en .
+
+<http://marineregions.org/mrgid/1912>
+	rdfs:label "North Atlantic Ocean"@en ;
+	dcat:bbox "POLYGON((-98.05 -0.94, 12.01 -0.94, 12.01 68.64, -98.05 68.64, -98.05 -0.94))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/22253>
+	rdfs:label "Southern North Sea"@en .
+
+<http://marineregions.org/mrgid/2350>
+	rdfs:label "North Sea"@en ;
+	dcat:bbox "POLYGON((-4.45 51.00, 12.01 51.00, 12.01 61.02, -4.45 61.02, -4.45 51.00))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/2351>
+	rdfs:label "Celtic Sea"@en ;
+	dcat:bbox "POLYGON((-11.50 46.50, -4.14 46.50, -4.14 52.40, -11.50 52.40, -11.50 46.50))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/2352>
+	rdfs:label "Iceland Sea"@en ;
+	dcat:bbox "POLYGON((-33.01 62.34, -4.90 62.34, -4.90 74.74, -33.01 74.74, -33.01 62.34))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/2357>
+	rdfs:label "Irish Sea and St. George's Channel"@en ;
+	dcat:bbox "POLYGON((-6.57 51.90, -2.64 51.90, -2.64 55.00, -6.57 55.00, -6.57 51.90))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/2389>
+	rdfs:label "English Channel"@en ;
+	dcat:bbox "POLYGON((-5.71 48.50, 1.93 48.50, 1.93 51.17, -5.71 51.17, -5.71 48.50))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/2399>
+	rdfs:label "Southern Bight"@en .
+
+<http://marineregions.org/mrgid/2419>
+	rdfs:label "Hinder Banks"@en .
+
+<http://marineregions.org/mrgid/2421>
+	rdfs:label "Flemish Banks"@en .
+
+<http://marineregions.org/mrgid/2438>
+	rdfs:label "Thornton Bank"@en ;
+	dcat:bbox "POLYGON((2.76 51.48, 3.04 51.48, 3.04 51.59, 2.76 51.59, 2.76 51.48))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/25234>
+	rdfs:label "French part of the North Sea"@en ;
+	dcat:bbox "POLYGON((1.55 50.94, 2.54 50.94, 2.54 51.56, 1.55 51.56, 1.55 50.94))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/25235>
+	rdfs:label "British part of the North Sea"@en ;
+	dcat:bbox "POLYGON((-4.43 51.04, 3.40 51.04, 3.40 61.00, -4.43 61.00, -4.43 51.04))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/2550>
+	rdfs:label "Belgian Coast"@en ;
+	dcat:bbox "POLYGON((2.54 51.09, 3.37 51.09, 3.37 51.37, 2.54 51.37, 2.54 51.09))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/26567>
+	rdfs:label "Belgian part of the North Sea"@en .
+
+<http://marineregions.org/mrgid/3141>
+	rdfs:label "Bristol Channel"@en ;
+	dcat:bbox "POLYGON((-4.92 50.99, -2.35 50.99, -2.35 51.82, -4.92 51.82, -4.92 50.99))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/3208>
+	rdfs:label "East Riding of Yorkshire"@en ;
+	dcat:bbox "POLYGON((-1.11 53.57, 0.15 53.57, 0.15 54.18, -1.11 54.18, -1.11 53.57))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/3293>
+	rdfs:label "Belgian Exclusive Economic Zone"@en ;
+	dcat:bbox "POLYGON((2.24 51.04, 4.40 51.04, 4.40 51.88, 2.24 51.88, 2.24 51.04))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/4690>
+	rdfs:label "Western Coastal Banks"@en .
+
+<http://marineregions.org/mrgid/4752>
+	rdfs:label "Westerschelde"@en ;
+	dcat:bbox "POLYGON((3.52 51.33, 4.24 51.33, 4.24 51.46, 3.52 51.46, 3.52 51.33))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/4812>
+	rdfs:label "Scheldt Estuary"@en ;
+	dcat:bbox "POLYGON((3.42 51.20, 4.41 51.20, 4.41 51.69, 3.42 51.69, 3.42 51.20))"^^geo:wktLiteral .
+
+<http://marineregions.org/mrgid/50155>
+	rdfs:label "Greater North Sea, incl. the Kattegat and the English Channel"@en .
+
+<http://marineregions.org/mrgid/5668>
+	rdfs:label "Dutch Exclusive Economic Zone"@en ;
+	dcat:bbox "POLYGON((2.54 51.33, 7.21 51.33, 7.21 55.77, 2.54 55.77, 2.54 51.33))"^^geo:wktLiteral .

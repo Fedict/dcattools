@@ -1,12 +1,13 @@
 # extra queries to be executed and data to be loaded 
 sparql-remove-addresses.qry
 bmdc/sparql-remove-label.qry
-sparql-title-to-desc.qry
+bmdc/sparql-abstract-to-desc.qry
 sparql-remove-catalogrecord.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-map-memberof.qry
 sparql-remove-orphans.qry
+bmdc/data-regions.ttl
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry

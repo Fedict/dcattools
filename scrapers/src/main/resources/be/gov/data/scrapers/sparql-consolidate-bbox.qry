@@ -28,5 +28,5 @@ WHERE
 				CONCAT("http://data.gov.be/.well-known/genid/spatial/", SHA1(STR(?simple)))
 			)
 		AS ?spatial)
-		FILTER CONTAINS(STR(?bbox), "POLYGON((")
+		FILTER (CONTAINS(STR(?bbox), "POLYGON((") && CONTAINS(STR(?genspatial), "well-known/genid"))
 	}
