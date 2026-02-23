@@ -576,6 +576,8 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, uri, DCTERMS.ALTERNATIVE, "dct:alternative");
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
+		writeLiterals(w, con, uri, DCTERMS.ABSTRACT, "dct:abstract");
+		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcat:purpose");
 		writeReferences(w, con, uri, DCTERMS.TYPE, "dct:type");
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
