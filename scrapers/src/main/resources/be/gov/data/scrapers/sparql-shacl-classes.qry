@@ -49,7 +49,9 @@ WHERE
 			( org:memberOf foaf:Agent )
 			( prov:agent foaf:Agent )
 			( geodcatap:custodian foaf:Agent )
+			( geodcatap:distributor foaf:Agent )
 			( geodcatap:originator foaf:Agent )
+			( geodcatap:processor foaf:Agent )
 			( mobilitydcatap:mobilityDataStandard mobilitydcatap:MobilityDataStandard )
 			( dcatap:applicableLegislation eli:LegalResource )
 		}
