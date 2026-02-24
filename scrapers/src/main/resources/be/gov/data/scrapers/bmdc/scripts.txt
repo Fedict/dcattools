@@ -11,6 +11,8 @@ bmdc/data-regions.ttl
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
+sparql-consolidate-provenance.qry
+sparql-consolidate-standards.qry
 bmdc/sparql-remove-license.qry
 bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
