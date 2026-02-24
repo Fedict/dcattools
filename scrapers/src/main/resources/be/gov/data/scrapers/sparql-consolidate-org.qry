@@ -20,7 +20,8 @@ WHERE
 		BIND (IRI(
 				CONCAT("http://data.gov.be/.well-known/genid/org/", 
 					SHA1(
-						CONCAT(STR(?name), STR(?mbox)))
+						IF( BOUND(?mbox), CONCAT(STR(?name), STR(?mbox)), STR(?name))
+					)
 				)
 			) AS ?uri )
 		FILTER (LANG(?name) = "en")
