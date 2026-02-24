@@ -4,12 +4,11 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
 	{	?s dcterms:provenance ?genprov .
-		?genprov a dcterms:ProvenanceStatement .
 		?genprov dcterms:description ?desc .
 		?genprov ?p ?o }
 INSERT
 	{	?s dcterms:provenance ?prov .
-		?prov a dcterms:Standard .
+		?prov a dcterms:ProvenanceStatement .
 		?prov dcterms:description ?desc .
 		?prov ?p ?o }
 WHERE

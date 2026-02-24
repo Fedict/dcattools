@@ -4,17 +4,20 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 DELETE 
 	{	?s ?rel ?org .
+		?org a foaf:Organization .
 		?org foaf:name ?name .
 		?org foaf:mbox ?mbox .
 		?org ?p ?o }
 INSERT
 	{	?s ?rel ?uri .
 		?s a foaf:Agent .
+		?s a foaf:Organization .
 		?uri foaf:name ?name .
 		?uri foaf:mbox ?mbox .
 		?uri ?p ?o }
 WHERE
 	{ 	?s ?rel ?org .
+		?org a foaf:Organization .
 		?org foaf:name ?name .
 		OPTIONAL { ?org foaf:mbox ?mbox }
 		OPTIONAL { ?org ?p ?o }

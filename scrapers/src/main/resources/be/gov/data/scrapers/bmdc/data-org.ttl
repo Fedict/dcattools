@@ -5,6 +5,19 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
+	skos:altLabel  "Sciensano"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0262171402>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Centrum voor Onderzoek in Diergeneeskunde en Agrochemie"@nl,
+					"Centre d'Etudes et de Recherches Vétérinaires et Agrochimiques"@fr,
+					"Studien- und Forschungszentrum für Veterinärmedizin und Agrochemie"@de ;
+	skos:altLabel "Veterinary and Agrochemical Research Centre (CODA-CERVA)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0249569716>
 	a foaf:Organization ;
