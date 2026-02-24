@@ -10,8 +10,8 @@ DELETE
 		?org ?p ?o }
 INSERT
 	{	?s ?rel ?uri .
-		?s a foaf:Agent .
-		?s a foaf:Organization .
+		?uri a foaf:Agent .
+		?uri a foaf:Organization .
 		?uri foaf:name ?name .
 		?uri foaf:mbox ?mbox .
 		?uri ?p ?o }
