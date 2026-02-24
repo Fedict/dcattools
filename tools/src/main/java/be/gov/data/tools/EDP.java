@@ -307,12 +307,8 @@ public class EDP {
 					while(res2.hasNext()) {
 						w.writeStartElement("prov:agent");		
 						Resource agent = (Resource) res2.next().getObject();
-						if (agent.stringValue().contains(WELL_KNOWN)) {
-							writeAgent(w, con, agent);
-						} else {
-							w.writeEmptyElement("foaf:Agent");
-							w.writeAttribute("rdf:resource", agent.stringValue());
-						}
+						w.writeEmptyElement("prov:Agent");
+						w.writeAttribute("rdf:resource", agent.stringValue());
 						w.writeEndElement();
 					}
 					writeReferences(w, con, attrib, DCAT.HAD_ROLE, "dcat:hadRole", "dcat:Role", false);
