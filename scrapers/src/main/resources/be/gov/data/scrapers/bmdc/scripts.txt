@@ -2,6 +2,7 @@
 sparql-remove-addresses.qry
 bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
+bmdc/sparql-fix-org.qry
 sparql-remove-catalogrecord.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
