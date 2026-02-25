@@ -725,7 +725,7 @@ public class EDP {
 		writeReferences(w, con, uri, GEODCAT.RESOURCE_TYPE, "geodcatap:resourceType");
 		writeReferences(w, con, uri, GEODCAT.TOPIC_CATEGORY, "geodcatap:topicCategory");
 		
-		if (cl.equals("dcat:Dataservice")) {
+		if (cl.equals("dcat:DataService")) {
 			writeReferences(w, con, uri, GEODCAT.SERVICE_CATEGORY, "geodcatap:serviceCategory");
 			writeReferences(w, con, uri, GEODCAT.SERVICE_PROTOCOL, "geodcatap:serviceProtocol");
 			writeReferences(w, con, uri, GEODCAT.SERVICE_TYPE, "geodcatap:serviceType");
