@@ -1,0 +1,21 @@
+# Use http as identifier to prevent "circular" references when landingPage uses same URI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { 
+		?cat dcat:dataset ?s .
+		?s a dcat:Dataset .
+		?s ?p ?o }
+INSERT 
+	{	?cat dcat:dataset ?http .
+		?http a dcat:Dataset .
+		?http ?p ?o }
+WHERE
+	{	?cat dcat:dataset ?s .
+		?s a dcat:Dataset .
+		?s ?p ?o
+		BIND (IRI(
+				REPLACE(STR(?s), "https://", "http://")
+			) as ?http)
+		FILTER (STRSTARTS(STR(?s), "https://"))
+	}

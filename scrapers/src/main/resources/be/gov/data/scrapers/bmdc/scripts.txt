@@ -4,6 +4,7 @@ bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
 bmdc/sparql-fix-org.qry
 sparql-remove-catalogrecord.qry
+bmdc/sparql-dataset-id.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-map-memberof.qry
@@ -23,9 +24,7 @@ sparql-conforms-eli.qry
 bmdc/sparql-doi-prefix.qry
 bmdc/sparql-serves-id.qry
 #bmdc/sparql-dataservice-id.qry
-#bmdc/sparql-resource-id.qry
 bmdc/sparql-doi-prefer.qry
-#bmdc/sparql-doi-adms.qry
 sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl

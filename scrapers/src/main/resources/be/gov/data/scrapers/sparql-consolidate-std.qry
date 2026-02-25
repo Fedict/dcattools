@@ -23,6 +23,6 @@ WHERE
 		FILTER (CONTAINS(STR(?genstd), "well-known/genid") || !CONTAINS(STR(?genstd), "well-known/genid/std/"))
 		FILTER NOT EXISTS {
 			?genstd dcterms:title ?x .
-			FILTER (STR(LANG(?x)) < STR(?lang))
+			FILTER (LANG(?x) < ?lang)
 		}
 	}

@@ -24,6 +24,6 @@ WHERE
 		FILTER (CONTAINS(STR(?genrights), "well-known/genid") || !CONTAINS(STR(?genrights), "well-known/genid/rights/"))
 		FILTER NOT EXISTS {
 			?genrights dcterms:description ?x .
-			FILTER (STR(LANG(?x)) < STR(?lang))
+			FILTER (LANG(?x) < ?lang)
 		}
 	}

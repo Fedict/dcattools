@@ -23,6 +23,6 @@ WHERE
 		FILTER (CONTAINS(STR(?genprov), "well-known/genid") || !CONTAINS(STR(?genprov), "well-known/genid/prov/"))
 		FILTER NOT EXISTS {
 			?genprov dcterms:description ?x .
-			FILTER (STR(LANG(?x)) < STR(?lang))
+			FILTER (LANG(?x) < ?lang)
 		}
 	}
