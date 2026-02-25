@@ -1034,6 +1034,7 @@ public class EDP {
 		writeDocuments(w, con, DCTERMS.LICENSE, "dct:LicenseDocument");
 		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
 		writeDocuments(w, con, DCTERMS.CONFORMS_TO, "dct:Standard");
+		writeDocuments(w, con, FOAF.PAGE, "foaf:Document");
 
 		writeConcepts(w, con, DCTERMS.ACCESS_RIGHTS, "dct:RightsStatement");
 		writeConcepts(w, con, DCTERMS.ACCRUAL_PERIODICITY, "dct:Frequency");
