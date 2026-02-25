@@ -337,7 +337,8 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000088> ;
-	skos:prefLabel "INBO"@nl ;
+	skos:prefLabel "Instituut voor Natuur- en Bosonderzoek (INBO)"@nl, 
+					"Research Institute for Nature and Forest (INBO)"@en  ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek", 
 		"Instituut voor Natuur- en Bosonderzoek"@nl, 
 		"Instituut voor Natuurbehoud"@nl, 

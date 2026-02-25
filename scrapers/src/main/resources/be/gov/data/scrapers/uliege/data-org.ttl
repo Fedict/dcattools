@@ -8,5 +8,5 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de ;
+	skos:prefLabel "Université de Liège"@nl,"Université de Liège"@fr, "Université de Liège"@en, "Université de Liège"@de ;
 	skos:altLabel "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de .
