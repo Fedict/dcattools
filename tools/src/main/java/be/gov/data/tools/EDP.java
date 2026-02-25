@@ -421,7 +421,8 @@ public class EDP {
 			while (res.hasNext()) {
 				Resource agent = (Resource) res.next().getObject();
 				w.writeStartElement(el);
-				writeAgent(w, con, agent);
+				w.writeEmptyElement("foaf:Agent");
+				w.writeAttribute("rdf:resource", agent.stringValue());
 				w.writeEndElement();
 			}
 		}
@@ -526,7 +527,8 @@ public class EDP {
 						}
 					} else {
 						if (classWrap.equals("foaf:Agent")) {
-							writeAgent(w, con, iri);
+							w.writeEmptyElement("foaf:Agent");
+							w.writeAttribute("rdf:resource", iri.stringValue());
 						} else {
 							w.writeStartElement(classWrap);
 							writeGenericInfo(w, con, iri);
@@ -959,7 +961,6 @@ public class EDP {
 			writeReferences(w, con, iri, FOAF.WORKPLACE_HOMEPAGE, "foaf:workPlaceHomepage", "foaf:Document", false);
 			// mainly ORCID for researchers
 			writeLiterals(w, con, iri, DCTERMS.IDENTIFIER, "dct:identifier");
-			writeReferences(w, con, iri, ORG.MEMBER_OF, "org:memberOf");
 		} else {
 			writeType(w, con, iri, FOAF.ORGANIZATION);
 			writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
@@ -967,6 +968,7 @@ public class EDP {
 			writeReferences(w, con, iri, FOAF.HOMEPAGE, "foaf:homepage", "foaf:Document", false);
 		}
 
+		writeReferences(w, con, iri, ORG.MEMBER_OF, "org:memberOf");
 		writeReferences(w, con, iri, FOAF.MBOX, "foaf:mbox");
 		writeReferences(w, con, iri, FOAF.PHONE, "foaf:phone");
 		w.writeEndElement();
