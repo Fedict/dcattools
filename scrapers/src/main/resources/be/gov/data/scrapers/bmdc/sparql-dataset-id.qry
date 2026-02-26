@@ -4,16 +4,19 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE { 
 		?cat dcat:dataset ?s .
+		?serve dcat:servesDataset ?s .
 		?s a dcat:Dataset .
 		?s ?p ?o }
 INSERT 
 	{	?cat dcat:dataset ?http .
+		?serve dcat:servesDataset ?http .
 		?http a dcat:Dataset .
 		?http ?p ?o }
 WHERE
 	{	?cat dcat:dataset ?s .
 		?s a dcat:Dataset .
 		?s ?p ?o
+		OPTIONAL { ?serve dcat:servesDataset ?s }
 		BIND (IRI(
 				REPLACE(STR(?s), "https://", "http://")
 			) as ?http)

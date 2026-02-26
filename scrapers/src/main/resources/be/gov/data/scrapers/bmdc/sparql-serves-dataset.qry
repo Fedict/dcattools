@@ -1,0 +1,23 @@
+# Use URI of the full dataset with same ID for servesDataset, instead of a new blank node
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+		?cat dcat:dataset ?node .
+		?s dcat:servesDataset ?node .
+		?node dcterms:identifier ?id .
+		?node ?p ?o
+	} 
+INSERT 
+	{	?s dcat:servesDataset ?dataset }
+WHERE
+	{	?s a dcat:DataService .
+		?s dcat:servesDataset ?node .
+		?node dcterms:identifier ?id .
+		?node ?p ?o .
+		?dataset dcterms:identifier ?val .
+		?dataset dcterms:title ?title
+		OPTIONAL { ?cat dcat:dataset ?node }
+		FILTER (STRENDS(STR(?val), STR(?id)))
+	}
