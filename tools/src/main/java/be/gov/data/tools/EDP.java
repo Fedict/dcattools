@@ -521,7 +521,7 @@ public class EDP {
 							if (concept) {
 								addSkosConcept(iri);
 							}
-							w.writeAttribute("rdf:about", str);
+							w.writeAttribute("rdf:resource", str);
 						} else {
 							LOG.error("Not a valid IRI {}", str);
 						}
@@ -956,7 +956,7 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writeAgent(XMLStreamWriter w, RepositoryConnection con, Resource iri) 
-			throws XMLStreamException {;
+			throws XMLStreamException {
 		w.writeStartElement("foaf:Agent");
 		w.writeAttribute("rdf:about", iri.stringValue());
 	
