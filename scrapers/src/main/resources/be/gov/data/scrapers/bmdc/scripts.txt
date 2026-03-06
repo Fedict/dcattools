@@ -23,7 +23,7 @@ sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
 sparql-conforms-eli.qry
 bmdc/sparql-doi-prefix.qry
-bmdc/sparql-serves-dataset.qry
+#bmdc/sparql-serves-dataset.qry
 bmdc/sparql-dataservice-id.qry
 bmdc/sparql-doi-prefer.qry
 sparql-map-access-inspire.qry

@@ -20,4 +20,5 @@ WHERE
 		?dataset dcterms:title ?title
 		OPTIONAL { ?cat dcat:dataset ?node }
 		FILTER (STRENDS(STR(?val), STR(?id)))
+		FILTER (?node != ?dataset)
 	}

@@ -18,7 +18,7 @@ WHERE
 				REPLACE(
 					CONCAT("http://metadata.naturalsciences.be/",
 						STRAFTER(STR(?s), "http://metadata.naturalsciences.be")
-					), "//", "/")
+					), "be//", "be/")
 			) as ?uri)
 		FILTER (CONTAINS(STR(?s), "http://metadata.naturalsciences.be"))
 	}
