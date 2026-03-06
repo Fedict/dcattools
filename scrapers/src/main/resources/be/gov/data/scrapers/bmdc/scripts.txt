@@ -2,6 +2,7 @@
 sparql-remove-addresses.qry
 bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
+sparql-title-to-desc.qry
 bmdc/sparql-fix-org.qry
 sparql-remove-catalogrecord.qry
 bmdc/sparql-dataset-id.qry
@@ -23,7 +24,7 @@ sparql-remove-accessservice.qry
 sparql-conforms-eli.qry
 bmdc/sparql-doi-prefix.qry
 bmdc/sparql-serves-dataset.qry
-#bmdc/sparql-dataservice-id.qry
+bmdc/sparql-dataservice-id.qry
 bmdc/sparql-doi-prefer.qry
 sparql-map-access-inspire.qry
 sparql-available.qry

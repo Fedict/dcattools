@@ -3,14 +3,17 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE { 
+		?cat dcat:service ?s .
 		?s a dcat:DataService .
 		?s ?p ?o }
 INSERT 
-	{	?uri a dcat:DataService .
+	{	?cat dcat:service ?uri .
+		?uri a dcat:DataService .
 		?uri ?p ?o }
 WHERE
 	{	?s a dcat:DataService .
 		?s ?p ?o
+		OPTIONAL { ?cat dcat:service ?s }
 		BIND (IRI(
 				REPLACE(
 					CONCAT("http://metadata.naturalsciences.be/",

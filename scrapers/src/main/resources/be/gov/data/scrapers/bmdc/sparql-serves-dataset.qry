@@ -5,15 +5,15 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE { 
 		?cat dcat:dataset ?node .
-		?s dcat:servesDataset ?node .
+		?service dcat:servesDataset ?node .
 		?node dcterms:identifier ?id .
 		?node ?p ?o
 	} 
 INSERT 
-	{	?s dcat:servesDataset ?dataset }
+	{	?service dcat:servesDataset ?dataset }
 WHERE
-	{	?s a dcat:DataService .
-		?s dcat:servesDataset ?node .
+	{	?service a dcat:DataService .
+		?service dcat:servesDataset ?node .
 		?node dcterms:identifier ?id .
 		?node ?p ?o .
 		?dataset dcterms:identifier ?val .

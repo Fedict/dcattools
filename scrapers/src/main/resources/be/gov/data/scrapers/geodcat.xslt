@@ -768,7 +768,9 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-
+    <xsl:param name="ServiceCategory">
+      <xsl:value-of select="gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword/gmx:Anchor[starts-with(@xlink:href, $SpatialDataServiceCategoryCodelistUri)]/@xlink:href"/>
+    </xsl:param>
     <xsl:param name="ServiceType">
       <xsl:value-of select="gmd:identificationInfo/*/srv:serviceType/gco:LocalName"/>
     </xsl:param>
@@ -1271,7 +1273,6 @@
       <xsl:apply-templates select="gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords">
         <xsl:with-param name="MetadataLanguage" select="$MetadataLanguage"/>
         <xsl:with-param name="ResourceType" select="$ResourceType"/>
-        <xsl:with-param name="ServiceType" select="$ServiceType"/>
       </xsl:apply-templates>
 <!-- Identifier, 0..1 -->
 <!--
@@ -1325,7 +1326,10 @@
           <xsl:with-param name="MetadataLanguage" select="$MetadataLanguage"/>
         </xsl:apply-templates>
 -->
-        <geodcatap:serviceType rdf:resource="{$SpatialDataServiceTypeCodelistUri}/{$ServiceType}"/>
+          <xsl:if test="$ServiceCategory != ''">
+			<geodcatap:serviceCategory rdf:resource="{$ServiceCategory}"/>
+		  </xsl:if>
+		  <geodcatap:serviceType rdf:resource="{$SpatialDataServiceTypeCodelistUri}/{$ServiceType}"/>
       </xsl:if>
 <!-- Spatial extent -->
 <!--
@@ -3045,7 +3049,6 @@
   <xsl:template name="Keyword" match="gmd:identificationInfo/*/gmd:descriptiveKeywords/gmd:MD_Keywords">
     <xsl:param name="MetadataLanguage"/>
     <xsl:param name="ResourceType"/>
-    <xsl:param name="ServiceType"/>
     <xsl:param name="OriginatingControlledVocabularyURI" select="normalize-space(gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href)"/>
     <xsl:param name="OriginatingControlledVocabulary">
 <!--
@@ -3161,7 +3164,7 @@
 <!-- Mapping added for compliance with DCAT-AP 2 -->
                   <dcat:theme rdf:parseType="Resource">
                     <rdf:type rdf:resource="{$skos}Concept"/>
-                    <skos:prefLabel xml:lang="{$MetadataLanguage}">
+                    <skos:prefLabel xml:lang="{$MetadataLanguage}" xml:vocab="{$OriginatingControlledVocabulary}">
                       <xsl:value-of select="normalize-space(gco:CharacterString)"/>
                     </skos:prefLabel>
                     <xsl:call-template name="LocalisedString">
@@ -3217,7 +3220,9 @@
 
                 <!-- Regular dcat:theme -->
                 <xsl:otherwise>
-                  <dcat:theme rdf:resource="{gmx:Anchor/@xlink:href}"/>
+				  <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
+                    <dcat:theme rdf:resource="{gmx:Anchor/@xlink:href}"/>
+				  </xsl:if>
                 </xsl:otherwise>
               </xsl:choose>
               

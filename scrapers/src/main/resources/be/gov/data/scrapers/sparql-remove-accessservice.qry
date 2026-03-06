@@ -4,11 +4,13 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
-	{	?dist dcat:accessService ?s .
+	{	?cat dcat:service ?s .
+		?dist dcat:accessService ?s .
 		?s ?p ?o
 	}
 WHERE
 	{ 	?dist dcat:accessService ?s .
-		?s ?p ?o	
+		?s ?p ?o
+		OPTIONAL { ?cat dcat:service ?s }
 		FILTER NOT EXISTS { ?o ?rel ?y } 
 	}
