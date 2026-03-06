@@ -1,0 +1,16 @@
+# Remove accessService data
+# Not well supported by the EU Data portal, and often points to services without much metadata
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?cat dcat:service ?s .
+		?dist dcat:accessService ?s .
+		?s ?p ?o
+	}
+WHERE
+	{ 	?dist dcat:accessService ?s .
+		?s ?p ?o
+		OPTIONAL { ?cat dcat:service ?s }
+		FILTER NOT EXISTS { ?o ?rel ?y } 
+	}

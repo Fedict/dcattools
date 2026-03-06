@@ -1,0 +1,97 @@
+# Data for mapping organizations
+
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0691702941>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Proper Strand Lopers"@nl ;
+	skos:altLabel "Proper Strand Lopers"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:altLabel "Rijksuniversiteit Gent RUG"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Université libre de Bruxelles"@nl, "Université libre de Bruxelles"@fr, "Université libre de Bruxelles"@en ;
+	skos:altLabel "Université Libre de Bruxelles (ULB)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Université de Liège"@nl,"Université de Liège"@fr, "Université de Liège"@en, "Université de Liège"@de ;
+	skos:altLabel "Université de Liège (ULg)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
+	skos:altLabel "Vlaamse Universiteit Brussel (VUB)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Sciensano"@en, "Sciensano"@nl, "Sciensano"@fr, "Sciensano"@de ;
+	skos:altLabel "Sciensano"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0206499637>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Station de Phytopharmacie de l'Etat"@fr,
+					"Rijksstation voor Fytofarmacie"@nl ;
+	skos:altLabel "Station de Phytopharmacie de l'Etat"@en,
+					"Station de Phytopharmacie de l'Etat, Ministère de lAgriculture"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0474372065>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Avia-GIS"@en ;
+	skos:altLabel "Avia-GIS"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000088> ;
+	skos:prefLabel "Instituut voor Natuur- en Bosonderzoek (INBO)"@nl, 
+					"Research Institute for Nature and Forest (INBO)"@en  ;
+	skos:altLabel "Instituut voor Natuur- en Bosonderzoek / Research Institute for Nature and Forest (INBO)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0262171402>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Centrum voor Onderzoek in Diergeneeskunde en Agrochemie"@nl,
+					"Centre d'Etudes et de Recherches Vétérinaires et Agrochimiques"@fr,
+					"Studien- und Forschungszentrum für Veterinärmedizin und Agrochemie"@de ;
+	skos:altLabel "Veterinary and Agrochemical Research Centre (CODA-CERVA)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0249569716>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Institut de Recherches Chimiques"@fr, "Instituut voor Scheikundig Onderzoek"@nl;
+	skos:altLabel "Institut de Recherches Chimiques / Instituut voor Scheikundig Onderzoek, Ministerie van Landbouw, Tervuren (IRC/ISO)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Royal Belgian Institute of Natural Sciences (RBINS)"@en, 
+			 "Institut royal des Sciences naturelles de Belgique (IRSNB)"@fr,
+			"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN)"@nl,
+			"Königliches Belgisches Institut für Naturwissenschaften (KBIN)"@de ;
+	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en, 
+				"Royal Belgian Institute of Natural Sciences (RBINS)"@en,
+				"RBINS"@en, "Royal Belgian Institute for Natural Sciences (RBINS/KBIN/IRSNB)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Flanders Marine Institute"@en, "Vlaams Instituut voor Zee"@nl, 
+				"Institut Flamand de la Mer"@fr ;
+	skos:altLabel "Instituut voor Landbouw- en Visserijonderzoek - Visserij (ILVO)"@en,
+	 "Vlaams Instituut voor de Zee / Flanders Marine Institute (VLIZ)"@en .

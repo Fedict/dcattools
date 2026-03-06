@@ -1,0 +1,17 @@
+# Map a Belgif theme to a DCAT-AP theme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcat:theme ?belgif }
+INSERT
+	{ 	?s dcat:theme ?theme }
+WHERE
+	{ 	
+		?s dcat:theme ?belgif .
+		BIND (IRI(
+				REPLACE(STR(?belgif), "http://vocab.belgif.be/auth/datatheme/", "http://publications.europa.eu/resource/authority/data-theme/")
+			) as ?theme)
+		FILTER (STRSTARTS(STR(?belgif), "http://vocab.belgif.be"))
+	}

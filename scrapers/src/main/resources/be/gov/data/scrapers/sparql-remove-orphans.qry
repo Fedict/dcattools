@@ -1,0 +1,18 @@
+# Remove orphan entities (due to removed catalog records etc)
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s a ?class .
+		?s ?p ?o
+	}
+WHERE
+	{ 	?s a ?class .
+		?s ?p ?o
+		VALUES ?class { dcterms:Standard foaf:Agent foaf:Organization prov:Agent prov:Attribution vcard:Organization }
+		FILTER NOT EXISTS { ?x ?rel ?s }
+	}

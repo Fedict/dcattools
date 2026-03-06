@@ -56,7 +56,6 @@ import org.dom4j.DocumentFactory;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
-import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 
@@ -68,7 +67,6 @@ import org.eclipse.rdf4j.rio.RDFFormat;
  * @author Bart Hanssens
  */
 public abstract class GeonetXslt extends Geonet {
-
 	private final SAXReader sax;
 	private final Transformer transformer;
 	
@@ -205,7 +203,6 @@ public abstract class GeonetXslt extends Geonet {
 	 *
 	 * @param prop
 	 * @throws IOException
-	 * @throws TransformerConfigurationException
 	 */
 	protected GeonetXslt(Properties prop) throws IOException {
 		super(prop);
@@ -221,7 +218,7 @@ public abstract class GeonetXslt extends Geonet {
 		try {
 			tfFactory.setFeature("http://saxon.sf.net/feature/eagerEvaluation", Boolean.TRUE);
 		} catch (TransformerConfigurationException ex) {
-			System.getLogger(GeonetXslt.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+			throw new IOException(ex);
 		}
 		
 		Source xslt;

@@ -57,6 +57,7 @@
 <http://publications.europa.eu/resource/authority/licence/CC_BY_2_0>
 	skos:prefLabel "CC-BY 2.0" ;
 	skos:altLabel "https://creativecommons.org/licenses/by/2.0/" ,
+				<https://creativecommons.org/licenses/by/2.0/> ,
 				<http://creativecommons.org/licenses/by/2.0/>.
 
 <http://publications.europa.eu/resource/authority/licence/CC_BY_1_0>

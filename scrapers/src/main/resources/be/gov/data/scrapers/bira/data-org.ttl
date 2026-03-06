@@ -9,7 +9,7 @@
 	a foaf:Organization ;
 	dcterms:identifier <https://ror.org/03vfw8w96> ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	foaf:name "Royal Belgian Institute for Space Aeronomy"@en, 
+	foaf:name "Royal Belgian Institute for Space Aeronomy (IASB-BIRA)"@en, 
 					"Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de, 
 					"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, 
 					"Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ;

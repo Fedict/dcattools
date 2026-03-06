@@ -1,0 +1,29 @@
+# Consolidate rightsStatement to 1 URI instead of different blank nodes / genid, based on one language
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:rights ?genrights .
+		?genrights a dcterms:RightStatement .
+		?genrights dcterms:description ?desc .
+		?genrights ?p ?o }
+INSERT
+	{	?s dcterms:rights ?rights .
+		?rights a dcterms:RightStatement .
+		?rights dcterms:description ?desc .
+		?rights ?p ?o }
+WHERE
+	{ 	?s dcterms:rights ?genrights .
+		?genrights dcterms:description ?desc
+		OPTIONAL { ?genrights ?p ?o }
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/rights/", SHA1(STR(?desc)))
+			)
+		AS ?rights)
+		BIND (LANG(?desc) as ?lang)
+		FILTER (CONTAINS(STR(?genrights), "well-known/genid") || !CONTAINS(STR(?genrights), "well-known/genid/rights/"))
+		FILTER NOT EXISTS {
+			?genrights dcterms:description ?x .
+			FILTER (LANG(?x) < ?lang)
+		}
+	}

@@ -1,0 +1,12 @@
+# Fix for Centre incorrectly classified as a person
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{	?s a foaf:Person }
+INSERT 
+	{ 	?s a foaf:Organization }
+WHERE
+	{	?s a foaf:Person .
+		?s foaf:name "Marine Forecasting Centre"@en
+	}

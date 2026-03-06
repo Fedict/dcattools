@@ -3,6 +3,7 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX geodcat: <http://data.europa.eu/930/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
@@ -24,7 +25,7 @@ WHERE
 		?neworg skos:altLabel ?label .
 		?neworg skos:prefLabel ?name 
 		VALUES ?prop { dcterms:publisher dcterms:contributor dcterms:creator dcterms:rightsHolder 
-					geodcat:custodian geodcat:distributor geodcat:originator }
+					geodcat:custodian geodcat:distributor geodcat:originator prov:agent }
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (! STRSTARTS(STR(?org), "https://org.belgif"))
 		FILTER (?p != ?rel)

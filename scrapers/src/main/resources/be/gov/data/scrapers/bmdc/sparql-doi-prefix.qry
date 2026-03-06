@@ -1,0 +1,17 @@
+# Check for DOI ID and add a prefix (or replace namespace) if needed
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?s dcterms:identifier ?id }
+INSERT {
+		?s dcterms:identifier ?doi }
+WHERE
+	{	?s dcterms:identifier ?id .
+		BIND (
+				CONCAT("doi:", 
+					REPLACE(STR(?id), "https://doi.org/", ""))
+			AS ?doi)
+		FILTER (STRSTARTS(STR(?id), "10.24417") || 
+				STRSTARTS(STR(?id), "https://doi.org" ))
+	}

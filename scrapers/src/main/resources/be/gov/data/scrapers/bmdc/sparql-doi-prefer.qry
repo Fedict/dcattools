@@ -1,0 +1,12 @@
+# Prefer DOI if present
+
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+
+DELETE {
+		?s dcterms:identifier ?id }
+WHERE
+	{	?s dcterms:identifier ?doi .
+		?s dcterms:identifier ?id .
+		FILTER (STRSTARTS(STR(?doi), "doi:"))
+		FILTER (STR(?doi) != STR(?id))
+	}

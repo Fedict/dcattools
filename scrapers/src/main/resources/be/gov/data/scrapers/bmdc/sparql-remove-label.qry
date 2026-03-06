@@ -1,0 +1,14 @@
+# Copy identifier from CatalogRecord if there's no identifier on the Dataset / Dataservice
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?s ?rel ?label 
+	}
+WHERE
+	{	?s ?rel ?label .
+		VALUES (?rel ?label) {
+			(dcterms:title "Digital Object Identifier (DOI)"@en )
+			(dcterms:description "No abstract has been provided for this dataset."@en )
+		}
+	}

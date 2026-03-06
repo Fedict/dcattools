@@ -1,0 +1,66 @@
+# Data for mapping INSPIRE themes to DCAT-AP themes
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix inspire: <http://inspire.ec.europa.eu/theme/> .
+
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+    skos:narrowMatch inspire:ad,      # Addresses
+                     inspire:rs,      # Statistical units
+                     inspire:gg,      # Geographical grids
+                     inspire:cp,      # Cadastral parcels
+                     inspire:gn,      # Geographical names
+                     inspire:el,      # Elevation
+                     inspire:ge,      # Geology
+                     inspire:oi,      # Orthoimagery
+                     inspire:bu .     # Buildings
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+    skos:narrowMatch inspire:au,      # Administrative units
+                     inspire:us .     # Area management
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+    skos:narrowMatch inspire:hy,      # Hydrography
+                     inspire:ps,      # Protected sites
+                     inspire:lc,      # Land cover
+                     inspire:am,      # Area management/restriction/regulation zones...
+                     inspire:ac,      # Atmospheric conditions
+                     inspire:br,      # Bio-geographical regions
+                     inspire:ef,      # Environmental monitoring facilities
+                     inspire:hb,      # Habitats and biotopes
+                     inspire:lu,      # Land use
+                     inspire:mr,      # Mineral resources
+                     inspire:nz,      # Natural risk zones
+                     inspire:of,      # Oceanographic geographical features
+                     inspire:sr,      # Sea regions
+                     inspire:so,      # Soil
+                     inspire:sd,      # Species distribution
+                     inspire:mf .     # Meteorological geographical features
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON>
+    skos:narrowMatch inspire:cp,      # Cadastral parcels
+                     inspire:lu,      # Land use
+                     inspire:mr,      # Mineral resources
+                     inspire:pf .     # Production and industrial facilities
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+    skos:narrowMatch inspire:tn .     # Transport networks
+
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+    skos:narrowMatch inspire:af .     # Agricultural and aquaculture facilities
+
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+    skos:narrowMatch inspire:hy,      # Hydrography
+                     inspire:ge,      # Geology
+                     inspire:oi,      # Orthoimagery
+                     inspire:mf .     # Meteorological geographical features
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+    skos:narrowMatch inspire:er,      # Energy resources
+                     inspire:mr .     # Mineral resources
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+    skos:narrowMatch inspire:hh .     # Human health and safety
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+    skos:narrowMatch inspire:pd,      # Population distribution – demography
+                     inspire:su .     # Statistical units

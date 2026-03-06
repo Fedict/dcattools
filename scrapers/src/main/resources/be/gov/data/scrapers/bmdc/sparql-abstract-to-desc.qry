@@ -1,0 +1,16 @@
+# Use the abstract as default description if the description is missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{ ?res dcterms:abstract ?abstract }
+INSERT 
+	{ ?res dcterms:description ?abstract }
+WHERE {
+	?res a ?cl .
+	?res dcterms:abstract ?abstract 
+	VALUES ?cl { dcat:Dataset dcat:DataService }
+	FILTER NOT EXISTS { ?res dcterms:description ?desc }
+}
+

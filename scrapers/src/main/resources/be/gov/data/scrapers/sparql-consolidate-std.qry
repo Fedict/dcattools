@@ -1,0 +1,28 @@
+# Consolidate standards to 1 URI instead of different blank nodes / genid, based on one language
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:conformsTo ?genstd .
+		?genstd dcterms:title ?desc .
+		?genstd ?p ?o }
+INSERT
+	{	?s dcterms:conformsTo ?std .
+		?std a dcterms:Standard .
+		?std dcterms:title ?desc .
+		?std ?p ?o }
+WHERE
+	{ 	?s dcterms:conformsTo ?genstd .
+		?genstd dcterms:title ?desc
+		OPTIONAL { ?genstd ?p ?o }
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/std/", SHA1(STR(?desc)))
+			)
+		AS ?std)
+		BIND (LANG(?desc) as ?lang)
+		FILTER (CONTAINS(STR(?genstd), "well-known/genid") || !CONTAINS(STR(?genstd), "well-known/genid/std/"))
+		FILTER NOT EXISTS {
+			?genstd dcterms:title ?x .
+			FILTER (LANG(?x) < ?lang)
+		}
+	}

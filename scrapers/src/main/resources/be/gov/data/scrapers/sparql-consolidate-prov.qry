@@ -1,0 +1,28 @@
+# Consolidate provenanceStatement to 1 URI instead of different blank nodes / genid, based on one language
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:provenance ?genprov .
+		?genprov dcterms:description ?desc .
+		?genprov ?p ?o }
+INSERT
+	{	?s dcterms:provenance ?prov .
+		?prov a dcterms:ProvenanceStatement .
+		?prov dcterms:description ?desc .
+		?prov ?p ?o }
+WHERE
+	{ 	?s dcterms:provenance ?genprov .
+		?genprov dcterms:description ?desc
+		OPTIONAL { ?genprov ?p ?o }
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/prov/", SHA1(STR(?desc)))
+			)
+		AS ?prov)
+		BIND (LANG(?desc) as ?lang)
+		FILTER (CONTAINS(STR(?genprov), "well-known/genid") || !CONTAINS(STR(?genprov), "well-known/genid/prov/"))
+		FILTER NOT EXISTS {
+			?genprov dcterms:description ?x .
+			FILTER (LANG(?x) < ?lang)
+		}
+	}

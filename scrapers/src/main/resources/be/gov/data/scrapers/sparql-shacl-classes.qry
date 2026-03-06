@@ -2,10 +2,14 @@
 
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
 PREFIX dcterms:	<http://purl.org/dc/terms/>
+PREFIX eli:  <http://data.europa.eu/eli/ontology#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
 PREFIX mobilitydcatap: <https://w3id.org/mobilitydcat-ap#>
 PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
@@ -43,7 +47,13 @@ WHERE
 			( dcat:themeTaxonomy skos:ConceptScheme )
 			( adms:identifier adms:Identifier )
 			( org:memberOf foaf:Agent )
+			( prov:agent foaf:Agent )
+			( geodcatap:custodian foaf:Agent )
+			( geodcatap:distributor foaf:Agent )
+			( geodcatap:originator foaf:Agent )
+			( geodcatap:processor foaf:Agent )
 			( mobilitydcatap:mobilityDataStandard mobilitydcatap:MobilityDataStandard )
+			( dcatap:applicableLegislation eli:LegalResource )
 		}
 	}
 

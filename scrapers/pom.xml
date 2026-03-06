@@ -4,9 +4,9 @@
 	<parent>
 		<groupId>be.gov.data</groupId>
 		<artifactId>dcattools</artifactId>
-		<version>4.1.1</version>
+		<version>4.2.0</version>
 	</parent>
-	<version>4.1.1</version>
+	<version>4.2.0</version>
 	<name>scrapers</name>
 	<description>Various scrapers for Belgian data portals</description>
 	<artifactId>scrapers</artifactId>
@@ -49,7 +49,7 @@
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.20.1</version>
+			<version>1.22.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapdb</groupId>
@@ -96,19 +96,19 @@
 			<artifactId>picocli</artifactId>
 			<version>4.7.7</version>
 		</dependency>
-	 <dependency>
-	  <groupId>net.sf.saxon</groupId>
-	  <artifactId>Saxon-HE</artifactId>
-	  <version>12.9</version>
-	  <scope>runtime</scope>
-	 </dependency>
+		<dependency>
+			<groupId>net.sf.saxon</groupId>
+			<artifactId>Saxon-HE</artifactId>
+			<version>12.9</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.4.2</version>
+				<version>3.5.0</version>
 				<configuration>
 					<archive>
 						<manifest>

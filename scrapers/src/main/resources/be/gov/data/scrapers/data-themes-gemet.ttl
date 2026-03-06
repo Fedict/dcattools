@@ -1,0 +1,92 @@
+# Data for mapping GEMET to EU Data Portal Themes
+
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix gemet: <http://www.eionet.europa.eu/gemet/concept/> .
+
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
+	skos:narrowMatch gemet:13211,   # fishing ground
+                     gemet:3246,    # fishery policy
+                     gemet:15228,   # Marine Strategy Framework Directive
+                     gemet:501,     # aquaculture
+                     gemet:5035 .   # marine fishery
+
+<http://publications.europa.eu/resource/authority/data-theme/ECON> 
+	skos:narrowMatch gemet:15095,   # circular economy
+                     gemet:2497,    # economic planning
+                     gemet:4253,    # industrial planning
+                     gemet:8563 .   # trade (services)
+
+<http://publications.europa.eu/resource/authority/data-theme/ENVI> 
+	skos:narrowMatch gemet:12687,   # flood protection
+                     gemet:15051,   # albedo
+                     gemet:15379,   # nature-based solution
+                     gemet:2259,    # dissolved organic carbon
+                     gemet:2889,    # environmental planning
+                     gemet:3465,    # fouling growth
+                     gemet:3739,    # gravel extraction
+                     gemet:10421,   # marine mammal
+                     gemet:10539,   # animal population
+                     gemet:10660,   # introduction of animal species
+                     gemet:1391,    # chlorophyll
+                     gemet:1517,    # coastal environment
+                     gemet:2882,    # environmental monitoring
+                     gemet:4857,    # litter
+                     gemet:15228,   # Marine Strategy Framework Directive
+					 gemet:5033,	# marine environment
+                     gemet:5038,    # marine geology
+                     gemet:5042,    # marine monitoring
+                     gemet:5044,    # marine pollution
+                     gemet:5049,    # marine protected area
+                     gemet:7497,    # marine sediment
+                     gemet:7498,    # marine species
+                     gemet:8683,    # water quality monitoring
+                     gemet:420,     # animal ecology
+                     gemet:5029,    # marine conservation area
+                     gemet:5030,    # marine ecology
+                     gemet:5044,    # marine pollution
+					 gemet:5648,	# noise monitoring
+					 gemet:5651,	# noise pollution
+					 gemet:5763,	# nutrient
+                     gemet:505,     # aquatic ecosystem
+                     gemet:625,     # atmospheric emission
+					 gemet:861,		# biological monitoring
+					 gemet:6469,	# pollution monitoring
+                     gemet:7423,    # sand extraction
+                     gemet:775,     # benthos
+                     gemet:9062,    # waste disposal
+                     gemet:9196 .   # water monitoring 
+
+<http://publications.europa.eu/resource/authority/data-theme/ENER>
+    skos:narrowMatch gemet:15271,   # renewable energy
+                     gemet:2599,    # electric line
+                     gemet:6270,    # pipeline
+                     gemet:9331,    # windmill
+                     gemet:9336 .   # wind power station
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
+    skos:narrowMatch gemet:2160 .   # development planning
+
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	skos:narrowMatch gemet:5253 .   # military zone
+
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	skos:narrowMatch gemet:7003 .   # recreational area
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+    skos:narrowMatch gemet:12390,   # wreck
+                     gemet:2327,    # dredging
+                     gemet:3834,    # harbour
+                     gemet:5052,    # maritime navigation
+                     gemet:5055,    # maritime transport
+                     gemet:755 .    # beaching
+
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+    skos:narrowMatch gemet:11148,   # scientific research
+                     gemet:15124,   # earth observation
+                     gemet:5038,    # marine geology
+                     gemet:5346,    # monitoring
+                     gemet:5349,    # monitoring equipment
+                     gemet:5352,    # monitoring station
+                     gemet:4109,    # hydrography 
+                     gemet:6883 .   # radar
+	

@@ -1,0 +1,22 @@
+# Replace rightsStatement with license URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+	?s dcterms:rights ?rights .
+	?rights a dcterms:RightsStatement .
+	?rights dcterms:description ?desc }
+INSERT {
+	?s dcterms:license ?lic }
+WHERE {
+	?s dcterms:rights ?rights .
+	?rights dcterms:description ?desc
+	OPTIONAL { ?rights a dcterms:RightsStatement }
+	VALUES (?desc ?lic)  {
+		("This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License."@en <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> )
+		("This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License"@en <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> )
+		("This work is licensed under a Creative Commons Attribution (CC-BY) 4.0 License ."@en <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0> )
+		("This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License"@en <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0> )
+		("This work is licensed under a Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License."@en <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0> )
+	}
+}
