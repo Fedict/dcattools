@@ -521,7 +521,7 @@ public class EDP {
 							if (concept) {
 								addSkosConcept(iri);
 							}
-							w.writeAttribute("rdf:resource", str);
+							w.writeAttribute("rdf:about", str);
 						} else {
 							LOG.error("Not a valid IRI {}", str);
 						}
@@ -673,7 +673,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCAT.ENDPOINT_URL, "dcat:endpointURL");
 		writeReferences(w, con, uri, DCAT.SERVES_DATASET, "dcat:servesDataset");
 		writeReferences(w, con, uri, DCAT.IN_SERIES, "dcat:inSeries");
-		writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
+		// writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
 
 		// samples (geo-dcat-ap)
 		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS.SAMPLE, null)) {
