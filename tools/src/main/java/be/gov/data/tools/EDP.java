@@ -308,7 +308,7 @@ public class EDP {
 						w.writeStartElement("prov:agent");		
 						Resource agent = (Resource) res2.next().getObject();
 						w.writeEmptyElement("prov:Agent");
-						w.writeAttribute("rdf:resource", agent.stringValue());
+						w.writeAttribute("rdf:about", agent.stringValue());
 						w.writeEndElement();
 					}
 					writeReferences(w, con, attrib, DCAT.HAD_ROLE, "dcat:hadRole", "dcat:Role", false);
