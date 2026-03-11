@@ -422,7 +422,7 @@ public class EDP {
 				Resource agent = (Resource) res.next().getObject();
 				w.writeStartElement(el);
 				w.writeEmptyElement("foaf:Agent");
-				w.writeAttribute("rdf:resource", agent.stringValue());
+				w.writeAttribute("rdf:about", agent.stringValue());
 				w.writeEndElement();
 			}
 		}
