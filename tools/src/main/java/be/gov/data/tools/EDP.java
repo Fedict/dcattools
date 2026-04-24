@@ -719,7 +719,7 @@ public class EDP {
 		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 		writeDates(w, con, uri);
 
-		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcat:purpose");
+		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcatap:purpose");
 	
 		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
 		writeReferences(w, con, uri, GEODCAT.RESOURCE_TYPE, "geodcatap:resourceType");
