@@ -1430,9 +1430,10 @@
 
           <xsl:variable name="Title">
             <xsl:for-each select="gmd:name">
+				<!--
               <dct:title xml:lang="{$MetadataLanguage}">
                 <xsl:value-of select="normalize-space(*)"/>
-              </dct:title>
+              </dct:title> -->
               <xsl:call-template name="LocalisedString">
                 <xsl:with-param name="term">dct:title</xsl:with-param>
               </xsl:call-template>
@@ -1442,7 +1443,7 @@
           <xsl:variable name="Description">
             <xsl:for-each select="gmd:description">
               <dct:description xml:lang="{$MetadataLanguage}">
-                <xsl:value-of select="*"/>
+     <!--           <xsl:value-of select="*"/> -->
               </dct:description>
               <xsl:call-template name="LocalisedString">
                 <xsl:with-param name="term">dct:description</xsl:with-param>
@@ -1512,7 +1513,7 @@
               </xsl:variable>
               <xsl:choose>
                 <xsl:when test="$points-to-service = 'yes' or $function = 'download' or $function = 'offlineAccess' or $function = 'order'">
-                  <dcat:distribution>
+                   <dcat:distribution>
                     <dcat:Distribution>
 <!-- Title and description -->
                       <xsl:copy-of select="$TitleAndDescription"/>
@@ -3164,7 +3165,7 @@
 <!-- Mapping added for compliance with DCAT-AP 2 -->
                   <dcat:theme rdf:parseType="Resource">
                     <rdf:type rdf:resource="{$skos}Concept"/>
-                    <skos:prefLabel xml:lang="{$MetadataLanguage}" xml:vocab="{$OriginatingControlledVocabulary}">
+                    <skos:prefLabel xml:lang="{$MetadataLanguage}">
                       <xsl:value-of select="normalize-space(gco:CharacterString)"/>
                     </skos:prefLabel>
                     <xsl:call-template name="LocalisedString">
@@ -4082,7 +4083,7 @@
                     </dct:title>
                   </skos:ConceptScheme>
                 </skos:inScheme>
-    <xsl:copy-of select="$version-statement"/>
+                <xsl:copy-of select="$version-statement"/>
               </rdf:Description>
             </geodcatap:referenceSystem>
           </xsl:when>

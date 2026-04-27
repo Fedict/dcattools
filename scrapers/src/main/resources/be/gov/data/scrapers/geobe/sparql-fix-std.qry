@@ -1,0 +1,17 @@
+# Remove incorrect reference system 
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s geodcatap:referenceSystem ?sys .
+		?sys dcterms:title ?val .
+		?sys ?p ?o }
+WHERE
+	{ 	?s geodcatap:referenceSystem ?sys .
+		?sys dcterms:title ?val .
+		OPTIONAL { ?sys ?p ?o }
+		FILTER (STRSTARTS(?val, "Belgian administrative units") || 
+				STRSTARTS(?val, "The second database contains various items"))
+
+	}

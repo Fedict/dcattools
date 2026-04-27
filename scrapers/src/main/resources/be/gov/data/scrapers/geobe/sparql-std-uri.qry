@@ -1,0 +1,27 @@
+# Consolidate standards to URI instead of label
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s geodcatap:referenceSystem ?genstd .
+		?genstd dcterms:title ?desc .
+		?genstd ?p ?o }
+INSERT
+	{	?s geodcatap:referenceSystem ?std .
+		?std a dcterms:Standard .
+		?std ?p ?o .
+		?std dcterms:title ?desc }
+WHERE
+	{ 	?s geodcatap:referenceSystem ?genstd .
+		?genstd dcterms:title ?desc
+		OPTIONAL { ?genstd ?p ?o }
+		BIND (IRI(
+				CONCAT("http://www.opengis.net/def/crs/EPSG/0/", ?code))
+			AS ?std)
+		BIND (REPLACE(
+				STRAFTER(?desc, "EPSG:"), "\D", "") 
+			AS ?code)
+		FILTER (CONTAINS(STR(?genstd), "well-known/genid"))
+		FILTER (STRSTARTS(?desc, "EPSG:"))
+	}
