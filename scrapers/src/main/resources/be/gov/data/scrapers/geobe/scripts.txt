@@ -1,8 +1,15 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-addresses.qry
+sparql-map-access-inspire.qry
 sparql-available.qry
 geobe/data-org.ttl
 sparql-map-org.qry
+data-themes-inspire.ttl
+data-themes-gemet.ttl
+sparql-map-theme-inspire.qry
+#clear-skos.qry
+data-media-compress.ttl
+sparql-map-media-compress.qry
 #geobe/sparql-fix-download.qry
 #geobe/sparql-delete-location.qry
 #geobe/sparql-fix-serves.qry
@@ -43,12 +50,11 @@ geobe/sparql-fix-std.qry
 #geobe/sparql-spatial-from-dist.qry
 #sparql-geo-belgium.qry
 #geobe/sparql-clean-location.qry
-#sparql-remove-addresses.qry
 #geobe/sparql-delete-fodfin.qry
 #sparql-remove-catalogrecord.qry
-#sparql-map-hvd.qry
-#sparql-map-hvd-service.qry
-clear-skos.qry
+sparql-map-hvd.qry
+sparql-map-hvd-service.qry
+#clear-skos.qry
 sparql-delete-label-empty.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

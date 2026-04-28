@@ -20,7 +20,7 @@ WHERE
 				CONCAT("http://www.opengis.net/def/crs/EPSG/0/", ?code))
 			AS ?std)
 		BIND (REPLACE(
-				STRAFTER(?desc, "EPSG:"), "\D", "") 
+				STRAFTER(?desc, "EPSG:"), "\\D", "") 
 			AS ?code)
 		FILTER (CONTAINS(STR(?genstd), "well-known/genid"))
 		FILTER (STRSTARTS(?desc, "EPSG:"))

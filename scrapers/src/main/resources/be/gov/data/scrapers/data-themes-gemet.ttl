@@ -13,6 +13,7 @@
 <http://publications.europa.eu/resource/authority/data-theme/ECON> 
 	skos:narrowMatch gemet:15095,   # circular economy
                      gemet:2497,    # economic planning
+                     gemet:14859,   # internet provider
                      gemet:4253,    # industrial planning
                      gemet:8563 .   # trade (services)
 
@@ -54,6 +55,12 @@
                      gemet:7423,    # sand extraction
                      gemet:775,     # benthos
                      gemet:9062,    # waste disposal
+					 gemet:7232,	# rising sea level
+					 gemet:10176,	# relief (land)
+					 gemet:9127,	# waste water
+					 gemet:10140,	# altitude
+					 gemet:2944,	# environment
+					 gemet:4599,	# land
                      gemet:9196 .   # water monitoring 
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
@@ -64,13 +71,27 @@
                      gemet:9336 .   # wind power station
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-    skos:narrowMatch gemet:2160 .   # development planning
+    skos:narrowMatch gemet:3144,    # federal government
+                     gemet:14931,	# sub-national boundaries
+					 gemet:14930,	# national boundaries
+					 gemet:1837,	# county
+					 gemet:14931,	# local authority
+                     gemet:2160 .   # development planning
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+	skos:narrowMatch gemet:3865,	# health
+                     gemet:6798,	# public health
+					 gemet:2232,	# disease
+					 gemet:2949,	# epidemiology
+                     gemet:4051 .	# human health
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
-	skos:narrowMatch gemet:5253 .   # military zone
+	skos:narrowMatch gemet:11583,	# justice
+                     gemet:5253 .   # military zone
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:narrowMatch gemet:7003 .   # recreational area
+	skos:narrowMatch gemet:8797,    # urban area
+                     gemet:7003 .   # recreational area
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
     skos:narrowMatch gemet:12390,   # wreck
@@ -83,10 +104,13 @@
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
     skos:narrowMatch gemet:11148,   # scientific research
                      gemet:15124,   # earth observation
+					 gemet:11146,	# applied research
+					 gemet:14859,	# internet provider
                      gemet:5038,    # marine geology
                      gemet:5346,    # monitoring
                      gemet:5349,    # monitoring equipment
                      gemet:5352,    # monitoring station
-                     gemet:4109,    # hydrography 
+                     gemet:4109,    # hydrography
+					 gemet:3638,	# geodesy
                      gemet:6883 .   # radar
 	

@@ -84,7 +84,7 @@
     xmlns:vcard  = "http://www.w3.org/2006/vcard/ns#"
     xmlns:wdrs   = "http://www.w3.org/2007/05/powder-s#"
     xmlns:xlink  = "http://www.w3.org/1999/xlink"
-    xmlns:xs	   = "http://www.w3.org/2001/XMLSchema"
+    xmlns:xs     = "http://www.w3.org/2001/XMLSchema"
     xmlns:xsi    = "http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsl    = "http://www.w3.org/1999/XSL/Transform"
     exclude-result-prefixes="earl gco gmd gml gmx i i-gp srv xlink xsi xsl wdrs"
@@ -452,8 +452,8 @@
       <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString">
         <xsl:choose>
           <!-- Try to find English locale first -->
-	  <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#{$locale-prefix}{$locale-default-lang}']">
-	    <xsl:value-of select="normalize-space($element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#${locale-prefix}{$locale-default-lang}'][1])"/>
+          <xsl:when test="$element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#{$locale-prefix}{$locale-default-lang}']">
+            <xsl:value-of select="normalize-space($element/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString[@locale='#${locale-prefix}{$locale-default-lang}'][1])"/>
           </xsl:when>
           <!-- Otherwise use the first available LocalisedCharacterString -->
           <xsl:otherwise>
@@ -1258,7 +1258,7 @@
 -->
       <xsl:copy-of select="$ResourceAbstract"/>
       <xsl:copy-of select="$ResourceCitationDetails"/>
-	  <xsl:copy-of select="$ResourcePurpose"/>
+      <xsl:copy-of select="$ResourcePurpose"/>
 <!-- Maintenance information (tentative) -->
       <xsl:for-each select="gmd:identificationInfo/*/gmd:resourceMaintenance">
         <xsl:apply-templates select="gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode"/>
@@ -1326,10 +1326,10 @@
           <xsl:with-param name="MetadataLanguage" select="$MetadataLanguage"/>
         </xsl:apply-templates>
 -->
-          <xsl:if test="$ServiceCategory != ''">
-			<geodcatap:serviceCategory rdf:resource="{$ServiceCategory}"/>
-		  </xsl:if>
-		  <geodcatap:serviceType rdf:resource="{$SpatialDataServiceTypeCodelistUri}/{$ServiceType}"/>
+        <xsl:if test="$ServiceCategory != ''">
+           <geodcatap:serviceCategory rdf:resource="{$ServiceCategory}"/>
+        </xsl:if>
+        <geodcatap:serviceType rdf:resource="{$SpatialDataServiceTypeCodelistUri}/{$ServiceType}"/>
       </xsl:if>
 <!-- Spatial extent -->
 <!--
@@ -1430,10 +1430,9 @@
 
           <xsl:variable name="Title">
             <xsl:for-each select="gmd:name">
-				<!--
               <dct:title xml:lang="{$MetadataLanguage}">
-                <xsl:value-of select="normalize-space(*)"/>
-              </dct:title> -->
+                <xsl:value-of select="normalize-space(gco:CharacterString)"/>
+              </dct:title>
               <xsl:call-template name="LocalisedString">
                 <xsl:with-param name="term">dct:title</xsl:with-param>
               </xsl:call-template>
@@ -1443,7 +1442,7 @@
           <xsl:variable name="Description">
             <xsl:for-each select="gmd:description">
               <dct:description xml:lang="{$MetadataLanguage}">
-     <!--           <xsl:value-of select="*"/> -->
+                <xsl:value-of select="normalize-space(gco:CharacterString)"/>
               </dct:description>
               <xsl:call-template name="LocalisedString">
                 <xsl:with-param name="term">dct:description</xsl:with-param>
@@ -1466,11 +1465,11 @@
 
           <xsl:variable name="TitleOrDescriptionOrPlaceholder">
             <xsl:choose>
-              <xsl:when test="normalize-space(gmd:name/*) != ''">
-                <xsl:value-of select="normalize-space(gmd:name/*)"/>
+              <xsl:when test="normalize-space(gmd:name/*[1]) != ''">
+                <xsl:value-of select="normalize-space(gmd:name/*[1])"/>
               </xsl:when>
-              <xsl:when test="normalize-space(gmd:description/*) != ''">
-                <xsl:value-of select="normalize-space(gmd:description)"/>
+              <xsl:when test="normalize-space(gmd:description/*[1]) != ''">
+                <xsl:value-of select="normalize-space(gmd:description/*[1])"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:text>N/A</xsl:text>
@@ -1513,7 +1512,7 @@
               </xsl:variable>
               <xsl:choose>
                 <xsl:when test="$points-to-service = 'yes' or $function = 'download' or $function = 'offlineAccess' or $function = 'order'">
-                   <dcat:distribution>
+                  <dcat:distribution>
                     <dcat:Distribution>
 <!-- Title and description -->
                       <xsl:copy-of select="$TitleAndDescription"/>
@@ -1676,15 +1675,15 @@
     <xsl:param name="id">
       <xsl:choose>
         <xsl:when test="$anchor != ''">
-		  <xsl:value-of select="$anchor"/>	  
-		</xsl:when>
+          <xsl:value-of select="$anchor"/>
+        </xsl:when>
         <xsl:when test="$ns != ''">
           <xsl:choose>
             <xsl:when test="substring($ns,string-length($ns),1) = '/'">
-              <xsl:value-of select="concat($ns,$code)"/>
+          <xsl:value-of select="concat($ns,$code)"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:value-of select="concat($ns,'/',$code)"/>
+          <xsl:value-of select="concat($ns,'/',$code)"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:when>
@@ -3213,17 +3212,17 @@
                 <xsl:when test="gmx:Anchor/@xlink:href = 'http://data.europa.eu/eli/reg_impl/2023/138/oj'">
                   <dcatap:applicableLegislation rdf:resource="{gmx:Anchor/@xlink:href}"/>
                 </xsl:when>
-                
+
                 <!-- HVD Category -->
                 <xsl:when test="../gmd:thesaurusName/gmd:CI_Citation/gmd:title/gmx:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75'">
                   <dcatap:hvdCategory rdf:resource="{gmx:Anchor/@xlink:href}"/>
                 </xsl:when>
 
                 <!-- Regular dcat:theme -->
-                <xsl:otherwise>
-				  <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
-                    <dcat:theme rdf:resource="{gmx:Anchor/@xlink:href}"/>
-				  </xsl:if>
+		<xsl:otherwise>
+                    <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
+                      <dcat:theme rdf:resource="{gmx:Anchor/@xlink:href}"/>
+                    </xsl:if>
                 </xsl:otherwise>
               </xsl:choose>
               
@@ -3233,7 +3232,9 @@
                 <xsl:if test="$profile = $extended">
 <!-- DEPRECATED: Mapping kept for backward compatibility with GeoDCAT-AP v1.* -->
                   <xsl:if test="$include-deprecated = 'yes'">
-                    <dct:subject rdf:resource="{gmx:Anchor/@xlink:href}"/>
+	                <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
+                      <dct:subject rdf:resource="{gmx:Anchor/@xlink:href}"/>
+		            </xsl:if>
                   </xsl:if>
                 </xsl:if>
               </xsl:if>
@@ -4083,7 +4084,7 @@
                     </dct:title>
                   </skos:ConceptScheme>
                 </skos:inScheme>
-                <xsl:copy-of select="$version-statement"/>
+    <xsl:copy-of select="$version-statement"/>
               </rdf:Description>
             </geodcatap:referenceSystem>
           </xsl:when>
