@@ -131,7 +131,8 @@
 					"Institut royal des Sciences naturelles de Belgique"@fr, 
 					"Royal Belgian Institute of Natural Sciences"@en, 
 					"Königliches Belgisches Institut für Naturwissenschaften"@de ;
-	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en .
+	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en,
+				"Royal Belgian Institute of Natural Sciences (RBINS)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
 	a foaf:Organization ;

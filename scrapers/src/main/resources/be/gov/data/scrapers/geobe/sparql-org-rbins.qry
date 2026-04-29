@@ -7,15 +7,16 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?org ?p ?label }
+	{	?dataset ?prop ?org .
+		?org ?p "Royal Belgian Institute of Natural Sciences (RBINS)"@en .
+		?org ?p ?o }
 INSERT 
-	{ 	?org ?p "Royal Belgian Institute of Natural Sciences"@en }
+	{ 	?dataset ?prop <https://org.belgif.be/id/CbeRegisteredEntity/0353070496> }
 WHERE
 	{	?dataset ?prop ?org .
-		?org ?p ?label
+		?org ?p "Royal Belgian Institute of Natural Sciences (RBINS)"@en .
+		?org ?p ?o .
 		VALUES ?prop { dcterms:publisher dcterms:contributor dcterms:creator dcterms:rightsHolder 
 					geodcat:custodian geodcat:distributor geodcat:originator }
 		VALUES ?p { foaf:name vcard:fn }
-		FILTER (CONTAINS(STR(?label), "Koninklijk Belgisch Instituut voor Natuurwetenschappen") ||
-				CONTAINS(STR(?label), "Royal Belgian Institute for Natural Sciences") )
 	}

@@ -10,11 +10,21 @@
                      gemet:501,     # aquaculture
                      gemet:5035 .   # marine fishery
 
+<http://publications.europa.eu/resource/authority/data-theme/CULT> 
+	skos:narrowMatch gemet:1911,    # cultural facility
+                     gemet:2551,	# educational institution
+					 gemet:8608,	# training center
+					 gemet:8014,	# sports facilities
+                     gemet:5444,	# museum
+                     gemet:9422 .   # zoological garden
+
 <http://publications.europa.eu/resource/authority/data-theme/ECON> 
 	skos:narrowMatch gemet:15095,   # circular economy
                      gemet:2497,    # economic planning
                      gemet:14859,   # internet provider
+                     gemet:4015,    # household
                      gemet:4253,    # industrial planning
+					 gemet:8608,	# training center
                      gemet:8563 .   # trade (services)
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
@@ -61,6 +71,8 @@
 					 gemet:10140,	# altitude
 					 gemet:2944,	# environment
 					 gemet:4599,	# land
+					 gemet:4612,	# land cover
+					 gemet:6790,	# public domain
                      gemet:9196 .   # water monitoring 
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
@@ -81,16 +93,25 @@
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
 	skos:narrowMatch gemet:3865,	# health
                      gemet:6798,	# public health
+					 gemet:3871,	# health facility
 					 gemet:2232,	# disease
+					 gemet:2352,	# drug abuse
+					 gemet:2947,	# epidemic
 					 gemet:2949,	# epidemiology
+					 gemet:4046,	# human disease
                      gemet:4051 .	# human health
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
 	skos:narrowMatch gemet:11583,	# justice
+                     gemet:3226,    # fire service
+					 gemet:6367,	# police
+					 gemet:1436,	# civilian protection
                      gemet:5253 .   # military zone
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
 	skos:narrowMatch gemet:8797,    # urban area
+                     gemet:4015,    # household
+					 gemet:2352,	# drug abuse
                      gemet:7003 .   # recreational area
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
@@ -105,7 +126,9 @@
     skos:narrowMatch gemet:11148,   # scientific research
                      gemet:15124,   # earth observation
 					 gemet:11146,	# applied research
+					 gemet:496,		# applied science
 					 gemet:14859,	# internet provider
+					 gemet:14919,	# point
                      gemet:5038,    # marine geology
                      gemet:5346,    # monitoring
                      gemet:5349,    # monitoring equipment
