@@ -1,9 +1,14 @@
-# Remove empty language
+# Fix incorrect language URIs
 
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{ 	?s dcterms:language "" }
+	{ 	?s dcterms:language ?lang }
 WHERE
-	{ 	?s dcterms:language "" }
+	{ 	?s dcterms:language ?oldlang 
+		VALUES (?oldlang ?lang) {
+			( <http://publications.europa.eu/resource/authority/language/DUT> <http://publications.europa.eu/resource/authority/language/NLD> )
+			( <http://publications.europa.eu/resource/authority/language/FRE> <http://publications.europa.eu/resource/authority/language/FRA> )
+			( <http://publications.europa.eu/resource/authority/language/GER> <http://publications.europa.eu/resource/authority/language/DEU> )
+		}
+	}

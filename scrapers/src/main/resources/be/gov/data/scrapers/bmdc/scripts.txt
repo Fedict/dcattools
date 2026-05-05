@@ -51,6 +51,7 @@ data-license.ttl
 sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
+sparql-downloadurl.qry
 sparql-startenddate.qry
 clear-skos.qry
 data-shacl-support.ttl

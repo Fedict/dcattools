@@ -1,9 +1,0 @@
-# Remove empty frequency
-
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-DELETE
-	{ 	?s dcterms:accrualPeriodicity "" }
-WHERE
-	{ 	?s dcterms:accrualPeriodicity "" }
