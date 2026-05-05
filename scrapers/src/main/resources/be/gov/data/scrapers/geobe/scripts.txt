@@ -13,6 +13,7 @@ data-themes-gemet.ttl
 sparql-map-theme-inspire.qry
 clear-skos.qry
 sparql-consolidate-bbox.qry
+sparql-consolidate-std.qry
 data-media-compress.ttl
 geobe/sparql-document-title.qry
 sparql-downloadurl.qry
@@ -21,6 +22,7 @@ geobe/sparql-zip-compress.qry
 #geobe/sparql-fix-serves.qry
 #geobe/data-publ-contact.ttl
 sparql-conforms-legislation.qry
+geobe/sparql-conforms-legislation.qry
 #geobe/sparql-accessurl.qry
 #geobe/sparql-fix-format.qry
 #geobe/sparql-fix-datatype.qry
@@ -34,7 +36,7 @@ geobe/sparql-fix-std.qry
 #sparql-vocab-theme.qry
 #sparql-map-access-inspire.qry
 #geobe/sparql-license-rights.qry
-#geobe/sparql-license-links.qry
+geobe/sparql-license-links.qry
 data-license.ttl
 sparql-map-license.qry
 geobe/sparql-fix-cc-license.qry

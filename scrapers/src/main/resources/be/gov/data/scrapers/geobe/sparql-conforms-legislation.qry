@@ -1,0 +1,18 @@
+# Use applicable legislation property instead of conforms to INSPIRE
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcatap:  <http://data.europa.eu/r5r/>
+
+DELETE 
+	{	?s dcterms:conformsTo ?uri .
+		?uri a dcterms:Standard }
+INSERT 
+	{ 	?s dcatap:applicableLegislation ?eli }
+WHERE 
+	{	?s dcterms:conformsTo ?uri .
+		OPTIONAL { ?uri a dcterms:Standard }
+		VALUES (?uri ?eli)  {
+			( <http://data.europa.eu/eli/reg/2009/976> <http://data.europa.eu/eli/reg/2009/976/oj> )
+			( <http://data.europa.eu/eli/reg/2010/1089> <http://data.europa.eu/eli/reg/2010/1089/oj> )
+		}
+	}
