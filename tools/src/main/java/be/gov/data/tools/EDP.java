@@ -582,11 +582,14 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
+
 		writeReferences(w, con, uri, ADMS.IDENTIFIER, "adms:identifier", "adms:Identifier", false);
 		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
+		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 
+		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");		
 		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
-		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");
+		
 		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
 		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");		
 		//writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
@@ -604,8 +607,12 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
 
-		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
+		
+		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
+		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
+
+		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
 	}
 
 	/**
@@ -639,7 +646,7 @@ public class EDP {
 		writeReferences(w, con, uri, DCATAP.AVAILABILITY, "dcatap:availability");
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 		writeLiterals(w, con, uri, CONTENT.CHARACTER_ENCODING, "cnt:characterEncoding");
-		
+	
 		writeReferences(w, con, uri, MOBILITYDCAT.APPLICATION_LAYER_PROTOCOL, "mobilitydcatap:applicationLayerProtocol");
 		writeReferences(w, con, uri, MOBILITYDCAT.COMMUNICATION_METHOD, "mobilitydcatap:communicationMethod");
 		writeReferences(w, con, uri, MOBILITYDCAT.GRAMMAR, "mobilitydcatap:grammar");
@@ -721,7 +728,6 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance");
 		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 		
-		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
 		writeDates(w, con, uri);
 
 		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcatap:purpose");
@@ -742,7 +748,6 @@ public class EDP {
 		writeRole(w, con, uri, GEODCAT.PROCESSOR, "geodcatap:processor");
 		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
 
-		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
 		writeAnnotations(w, con, uri, DQV.HAS_QUALITY_ANNOTATION, "dqv:qualityAnnotation", "dqv:QualityAnnotation");
 
 		writeAnnotations(w, con, uri, MOBILITYDCAT.ASSESSMENT_RESULT, "mobilitydcatap:assessmentResult", "mobilitydcatap:Assessment");
