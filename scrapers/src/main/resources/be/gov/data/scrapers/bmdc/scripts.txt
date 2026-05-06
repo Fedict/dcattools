@@ -42,7 +42,6 @@ clear-skos.qry
 sparql-theme-hvd.qry
 sparql-theme-keyword.qry
 sparql-theme-subject.qry
-data-media.ttl
 sparql-map-media-class.qry
 clear-skos.qry
 bmdc/data-publ.ttl
@@ -53,6 +52,10 @@ bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 sparql-delete-label-empty.qry
 sparql-downloadurl.qry
+data-media.ttl
+bmdc/sparql-downloadurl-fmt.qry
+sparql-map-media-srvc.qry
+clear-skos.qry
 sparql-startenddate.qry
 clear-skos.qry
 bmdc/sparql-fix-epsg.qry
