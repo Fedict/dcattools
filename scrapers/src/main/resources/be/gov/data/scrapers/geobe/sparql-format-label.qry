@@ -1,0 +1,22 @@
+# Move format label
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE 
+	{	?dist dcterms:format ?genid .
+		?genid rdfs:label ?label .
+		?genid ?p ?o }
+INSERT
+	{	?dist dcterms:format ?lbl }
+WHERE
+	{ 	?dist a dcat:Distribution .
+		?dist dcterms:format ?genid .
+		?genid rdfs:label ?label .
+		BIND (IF(
+				CONTAINS(?label, " "), STRBEFORE(?label, " "), ?label) 
+			AS ?lbl)
+		OPTIONAL { ?genid ?p ?o } .
+		FILTER (CONTAINS(STR(?genid), "well-known/genid"))
+	}

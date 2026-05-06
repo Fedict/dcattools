@@ -18,10 +18,13 @@ geobe/sparql-document-title.qry
 data-media-compress.ttl
 sparql-downloadurl.qry
 geobe/sparql-zip-compress.qry
+data-media.ttl
+geobe/sparql-format-label.qry
+sparql-map-media.qry
 geobe/sparql-remove-format.qry
 geobe/sparql-downloadurl-fmt.qry
-data-media.ttl
 sparql-map-media.qry
+sparql-map-media-srvc.qry
 clear-skos.qry
 #geobe/sparql-delete-location.qry
 #geobe/sparql-fix-serves.qry
@@ -51,7 +54,6 @@ geobe/sparql-fix-language.qry
 #geobe/sparql-rightsholder-publisher.qry
 #sparql-vcard-name.qry
 data-frequency.ttl
-#geobe/data-standards-support.ttl
 #geobe/sparql-spatial-from-dist.qry
 #sparql-geo-belgium.qry
 #geobe/sparql-clean-location.qry
@@ -60,6 +62,7 @@ sparql-map-hvd.qry
 sparql-map-hvd-service.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
+data-standards-support.ttl
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-remove-orphans.qry

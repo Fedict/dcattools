@@ -1,13 +1,18 @@
-# Add format based on downloadURL
+# Override format based on downloadURL
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
+DELETE
+	{	?dist dcterms:format ?f .
+		?dist dcat:mediaType ?mt }
 INSERT 
 	{	?dist dcterms:format ?fmt }
 WHERE
 	{ 	?dist a dcat:Distribution .
 		?dist dcat:downloadURL ?url .
+		OPTIONAL { ?dist dcterms:format ?f }
+		OPTIONAL { ?dist dcat:mediaType ?mt }
 		VALUES (?str ?name) {
 			("geopackage" "geopackage" )
 			("sqlite" "sqlite" )
@@ -18,9 +23,11 @@ WHERE
 			("gml" "gml" )
 			("ATOM" "atom")
 			("tiff" "tiff" )
+			("service=wms" "wms")
+			("service=WMS" "wms")
+			("service=wfs" "wfs")
 		}
 		BIND (IF(
 					CONTAINS(STR(?url), ?str), ?name,  ?unbound) 
 			as ?fmt)
-		FILTER NOT EXISTS { ?dist dcterms:format ?f }
 	}
