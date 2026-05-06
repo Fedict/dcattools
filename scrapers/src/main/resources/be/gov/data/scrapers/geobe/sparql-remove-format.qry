@@ -1,0 +1,17 @@
+# Remove multiple (incorrect) formats from distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+
+DELETE 
+	{	?dist dcat:mediaType ?mt .
+		?dist dcterms:format ?fmt1 .
+		?dist dcterms:format ?fmt2 }
+WHERE
+	{ 	?dist a dcat:Distribution .
+		?dist dcterms:format ?fmt1 .
+		?dist dcterms:format ?fmt2 .
+		OPTIONAL { ?dist dcat:mediaType ?mt . }
+		FILTER (?fmt1 != ?fmt2)
+	}

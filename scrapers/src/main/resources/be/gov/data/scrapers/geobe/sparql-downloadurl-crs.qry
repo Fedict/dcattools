@@ -1,0 +1,20 @@
+# Add reference system based on downloadURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+INSERT 
+	{	?dist geodcatap:referenceSystem ?crs }
+WHERE
+	{ 	?dist dcat:downloadURL ?url .
+		VALUES (?str ?sys) {
+			("3035" <http://www.opengis.net/def/crs/EPSG/0/3035> )
+			("3812" <http://www.opengis.net/def/crs/EPSG/0/3812> )
+			("4326" <http://www.opengis.net/def/crs/EPSG/0/4326> )
+			("31370" <http://www.opengis.net/def/crs/EPSG/0/31370> )
+		}
+		BIND (IF(
+					CONTAINS(STR(?url), ?str), ?sys,  ?unbound) 
+			as ?crs)
+	}

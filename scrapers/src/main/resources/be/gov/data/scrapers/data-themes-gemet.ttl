@@ -22,6 +22,7 @@
 	skos:narrowMatch gemet:15095,   # circular economy
                      gemet:2497,    # economic planning
                      gemet:14859,   # internet provider
+                     gemet:997,		# brewing industry
                      gemet:4015,    # household
                      gemet:4253,    # industrial planning
 					 gemet:8608,	# training center
@@ -58,6 +59,7 @@
 					 gemet:5648,	# noise monitoring
 					 gemet:5651,	# noise pollution
 					 gemet:5763,	# nutrient
+                     gemet:7720,	# slag
                      gemet:505,     # aquatic ecosystem
                      gemet:625,     # atmospheric emission
 					 gemet:861,		# biological monitoring
@@ -78,7 +80,9 @@
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
     skos:narrowMatch gemet:15271,   # renewable energy
                      gemet:2599,    # electric line
+                     gemet:1784,	# cooling tower
                      gemet:6270,    # pipeline
+                     gemet:4910,	# solar power station
                      gemet:9331,    # windmill
                      gemet:9336 .   # wind power station
 
@@ -126,7 +130,9 @@
     skos:narrowMatch gemet:11148,   # scientific research
                      gemet:15124,   # earth observation
 					 gemet:11146,	# applied research
+                     gemet:8347,	# telecommunication
 					 gemet:496,		# applied science
+                     gemet:1784,	# cooling tower
 					 gemet:14859,	# internet provider
 					 gemet:14919,	# point
                      gemet:5038,    # marine geology
@@ -135,5 +141,6 @@
                      gemet:5352,    # monitoring station
                      gemet:4109,    # hydrography
 					 gemet:3638,	# geodesy
+                     gemet:997,		# brewing industry
                      gemet:6883 .   # radar
 	

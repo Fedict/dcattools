@@ -1,4 +1,4 @@
-# Remove incorrect reference system 
+# Delete incorrect reference systems
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX geodcatap: <http://data.europa.eu/930/>
