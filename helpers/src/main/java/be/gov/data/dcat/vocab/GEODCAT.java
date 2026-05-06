@@ -44,7 +44,7 @@ public class GEODCAT {
 	public final static IRI SERVICE_CATEGORY = Values.iri("http://data.europa.eu/930/serviceCategory");
 	public final static IRI SERVICE_PROTOCOL = Values.iri("http://data.europa.eu/930/serviceProtocol");
 	public final static IRI SERVICE_TYPE = Values.iri("http://data.europa.eu/930/serviceType");
-	public final static IRI SPATIAL_RESOLUTION_AS_SCALE = Values.iri("http://data.europa.eu/930/spatialResolutionAsScale");
+	public final static IRI SPATIAL_RESOLUTION_AS_TEXT = Values.iri("http://data.europa.eu/930/spatialResolutionAsText");
 	public final static IRI TOPIC_CATEGORY = Values.iri("http://data.europa.eu/930/topicCategory");
 
 }
