@@ -1,0 +1,15 @@
+# Copy contact point from catalog record to dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+INSERT 
+	{ 	?s dcat:contactPoint ?contact .
+		?contact a vcard:Organization  }
+WHERE
+	{	?rec a dcat:CatalogRecord .
+		?rec dcat:contactPoint ?contact .
+		?rec foaf:primaryTopic ?s .
+		FILTER NOT EXISTS { ?s dcat:contactPoint ?c }
+	}

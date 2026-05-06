@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded 
 sparql-remove-addresses.qry
+bmdc/sparql-record-contact.qry
 bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
 sparql-title-to-desc.qry
