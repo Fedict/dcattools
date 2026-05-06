@@ -1,0 +1,26 @@
+# Add format based on downloadURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{	?dist dcterms:format ?fmt }
+WHERE
+	{ 	?dist a dcat:Distribution .
+		?dist dcat:downloadURL ?url .
+		VALUES (?str ?name) {
+			("geopackage" "geopackage" )
+			("sqlite" "sqlite" )
+			("x-shapefile" "shapefile" )
+			(".shp" "shapefile" )
+			("geojson" "geojson" )
+			("_csv" "csv" )
+			("gml" "gml" )
+			("ATOM" "atom")
+			("tiff" "tiff" )
+		}
+		BIND (IF(
+					CONTAINS(STR(?url), ?str), ?name,  ?unbound) 
+			as ?fmt)
+		FILTER NOT EXISTS { ?dist dcterms:format ?f }
+	}

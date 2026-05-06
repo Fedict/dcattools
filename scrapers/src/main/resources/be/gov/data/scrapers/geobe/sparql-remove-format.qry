@@ -5,9 +5,9 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 
 
 DELETE 
-	{	?dist dcat:mediaType ?mt .
-		?dist dcterms:format ?fmt1 .
-		?dist dcterms:format ?fmt2 }
+	{	?dist dcterms:format ?fmt1 .
+		?dist dcterms:format ?fmt2 .
+		?dist dcat:mediaType ?mt }
 WHERE
 	{ 	?dist a dcat:Distribution .
 		?dist dcterms:format ?fmt1 .
