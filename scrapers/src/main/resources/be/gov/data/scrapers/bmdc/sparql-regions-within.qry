@@ -1,0 +1,15 @@
+# Remove regions that are within another region
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+
+DELETE
+	{	?s dcterms:spatial ?small }
+WHERE
+	{	?s dcterms:spatial ?small .
+		?small dcat:bbox ?a .
+		?s dcterms:spatial ?large .
+		?large dcat:bbox ?b .
+		FILTER (?small != ?large && geof:sfWithin(?a, ?b))
+	}

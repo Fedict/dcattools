@@ -1,0 +1,10 @@
+# Map old region to new (preferred) region
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:spatial <http://marineregions.org/mrgid/26567> }
+INSERT 
+	{ 	?s dcterms:spatial <http://marineregions.org/mrgid/3293> }
+WHERE
+	{	?s dcterms:spatial <http://marineregions.org/mrgid/26567> }

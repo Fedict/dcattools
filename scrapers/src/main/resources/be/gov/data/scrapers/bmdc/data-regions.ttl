@@ -59,9 +59,6 @@
 	rdfs:label "Belgian Coast"@en ;
 	dcat:bbox "POLYGON((2.54 51.09, 3.37 51.09, 3.37 51.37, 2.54 51.37, 2.54 51.09))"^^geo:wktLiteral .
 
-<http://marineregions.org/mrgid/26567>
-	rdfs:label "Belgian part of the North Sea"@en .
-
 <http://marineregions.org/mrgid/3141>
 	rdfs:label "Bristol Channel"@en ;
 	dcat:bbox "POLYGON((-4.92 50.99, -2.35 50.99, -2.35 51.82, -4.92 51.82, -4.92 50.99))"^^geo:wktLiteral .
@@ -72,7 +69,7 @@
 
 <http://marineregions.org/mrgid/3293>
 	rdfs:label "Belgian Exclusive Economic Zone"@en ;
-	dcat:bbox "POLYGON((2.24 51.04, 4.40 51.04, 4.40 51.88, 2.24 51.88, 2.24 51.04))"^^geo:wktLiteral .
+	dcat:bbox "POLYGON((2.24 51.04, 4.40 51.04, 4.40 51.88, 2.24 51.88, 2.24 51.04))"^^geo:wktLiteral . 
 
 <http://marineregions.org/mrgid/4690>
 	rdfs:label "Western Coastal Banks"@en .

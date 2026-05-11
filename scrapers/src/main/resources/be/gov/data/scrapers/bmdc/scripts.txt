@@ -11,12 +11,15 @@ bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-map-memberof.qry
 sparql-remove-orphans.qry
-bmdc/data-regions.ttl
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
 sparql-consolidate-prov.qry
 sparql-consolidate-std.qry
+bmdc/sparql-theme-region.qry
+bmdc/sparql-map-regions.qry
+bmdc/data-regions.ttl
+bmdc/sparql-regions-within.qry
 bmdc/sparql-remove-license.qry
 bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
@@ -31,7 +34,6 @@ sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl
 bmdc/sparql-fix-gemet.qry
-bmdc/sparql-fix-marine.qry
 data-themes-gemet.ttl
 bmdc/data-themes-geo.ttl
 bmdc/data-themes-nerc.ttl

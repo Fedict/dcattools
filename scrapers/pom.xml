@@ -64,6 +64,10 @@
 			<artifactId>rdf4j-rio-jsonld</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-queryalgebra-geosparql</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.xmlbeam</groupId>
 			<artifactId>xmlprojector</artifactId>
 			<version>1.4.26</version>
