@@ -20,7 +20,6 @@ bmdc/sparql-theme-region.qry
 bmdc/sparql-map-regions.qry
 bmdc/data-regions.ttl
 bmdc/sparql-regions-within.qry
-bmdc/sparql-remove-license.qry
 bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
 sparql-remove-orphans.qry
@@ -52,6 +51,7 @@ bmdc/data-publ.ttl
 bmdc/sparql-org.qry
 data-license.ttl
 sparql-map-license.qry
+bmdc/sparql-remove-rights.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 sparql-startenddate.qry

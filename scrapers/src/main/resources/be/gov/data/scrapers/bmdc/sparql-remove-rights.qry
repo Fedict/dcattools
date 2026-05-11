@@ -9,6 +9,6 @@ WHERE {
 	?s dcterms:license ?lic
 	VALUES ?lic { 
 		<http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply>
-		<http://inspire.ec.europa.eu/metadata-codelist/%20ConditionsApplyingToAccessAndUse/noConditionsApply> 
+		<http://inspire.ec.europa.eu/metadata-codelist/%20ConditionsApplyingToAccessAndUse/noConditionsApply>
 	}
 }
