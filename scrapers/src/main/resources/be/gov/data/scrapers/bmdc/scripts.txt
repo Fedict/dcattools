@@ -51,10 +51,10 @@ bmdc/data-publ.ttl
 bmdc/sparql-org.qry
 data-license.ttl
 sparql-map-license.qry
-bmdc/sparql-remove-rights.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 sparql-startenddate.qry
+bmdc/sparql-remove-rights.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
