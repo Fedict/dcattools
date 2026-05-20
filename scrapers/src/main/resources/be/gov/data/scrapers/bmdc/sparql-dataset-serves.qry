@@ -3,20 +3,19 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-DELETE { 
+DELETE {
 		?cat dcat:dataset ?s .
-		?s a dcat:Dataset .
-		?s dcterms:identifier ?id .
-		?s ?p ?o }
+		?service dcat:servesDataset ?d .
+		?d dcterms:identifier ?id .
+		?d ?p ?o }
 INSERT 
-	{	?cat dcat:dataset ?uri .
-		?uri a dcat:Dataset .
-		?uri dcterms:identifier ?id .
-		?uri ?p ?o }
+	{	?service dcat:servesDataset ?uri }
 WHERE
 	{	?s a dcat:Dataset .
 		?s dcterms:identifier ?id .
-		?s ?p ?o
+		?service dcat:servesDataset ?d .
+		?d dcterms:identifier ?id .
+		?d ?p ?o
 		OPTIONAL { ?cat dcat:dataset ?s }
 		BIND (IRI(
 				CONCAT("http://data.gov.be/.well-known/genid/dataset/bmdc/", ?id) 

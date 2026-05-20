@@ -6,11 +6,13 @@ bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
 sparql-title-to-desc.qry
 bmdc/sparql-fix-org.qry
+bmdc/sparql-dataset-localid.qry
+bmdc/sparql-dataset-serves.qry
+bmdc/sparql-dataset-id.qry
+bmdc/sparql-dataservice-id.qry
 bmdc/sparql-doi-prefix.qry
 sparql-doi-prefix.qry
 bmdc/sparql-doi-prefer.qry
-bmdc/sparql-dataset-id.qry
-bmdc/sparql-dataservice-id.qry
 bmdc/sparql-landingpage.qry
 sparql-doi-landingpage.qry
 sparql-remove-catalogrecord.qry

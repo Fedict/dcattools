@@ -1,0 +1,17 @@
+# Use plain literal local ID instead of anyURI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+		?s dcterms:identifier ?uri }
+INSERT 
+	{	?s dcterms:identifier ?id }
+WHERE
+	{	?s a dcat:Dataset .
+		?s dcterms:identifier ?uri .
+		BIND (STRAFTER(
+				STR(?uri), "http://metadata.naturalsciences.be/"
+			) as ?id)
+		FILTER (STRSTARTS(STR(?uri), "http://metadata.naturalsciences.be/"))
+	}
