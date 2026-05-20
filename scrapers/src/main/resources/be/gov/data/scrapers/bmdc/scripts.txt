@@ -31,8 +31,9 @@ bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
 sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
+sparql-access-to-download.qry
+sparql-dist-accessurl.qry
 sparql-conforms-eli.qry
-#bmdc/sparql-serves-dataset.qry
 sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl

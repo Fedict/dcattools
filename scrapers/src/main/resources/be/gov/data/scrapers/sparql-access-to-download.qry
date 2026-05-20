@@ -1,0 +1,14 @@
+# Use downloadURL instead of accessURL when URL ends on file extension
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE
+	{	?s dcat:accessURL ?url }
+INSERT 
+	{ 	?s dcat:downloadURL ?url }
+WHERE
+	{	?s dcat:accessURL ?url
+		VALUES ?ext { "xlsx" "xls" "XLSX" "csv" "gml" "zip" }
+		FILTER (STRENDS(STR(?url), ?ext))
+	}
