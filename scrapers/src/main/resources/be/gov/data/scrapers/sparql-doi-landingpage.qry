@@ -2,12 +2,17 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
+DELETE
+	{	?s dcat:landingPage ?o }
 INSERT
-	{ 	?dataset dcat:landingPage ?page }
+	{ 	?s dcat:landingPage ?page .
+		?s foaf:page ?o }
 WHERE
-	{ 	?dataset a dcat:Dataset .
-		?dataset dcterms:identifier ?id .
+	{ 	?s a dcat:Dataset .
+		?s dcterms:identifier ?id .
+		OPTIONAL { ?s dcat:landingPage ?o }
 		BIND (IRI(
 			REPLACE(?id, "doi:", "https://doi.org/")
 		) as ?page)

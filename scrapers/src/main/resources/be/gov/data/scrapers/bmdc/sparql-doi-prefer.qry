@@ -1,12 +1,25 @@
-# Prefer DOI if present
+# Prefer DOI as identifier instead of platform-specific ID
 
+PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE {
 		?s dcterms:identifier ?id }
+INSERT {
+		?s adms:identifier ?adms .
+		?adms a adms:Identifier .
+		?adms skos:notation ?id .
+		?adms adms:schemaAgencey "BMDC" }
 WHERE
 	{	?s dcterms:identifier ?doi .
 		?s dcterms:identifier ?id .
-		FILTER (STRSTARTS(STR(?doi), "doi:"))
-		FILTER (STR(?doi) != STR(?id))
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/adms/bmdc/", 
+					REPLACE(
+						STR(?id), "https://metadata.naturalsciences.be/", ""
+					)
+				)
+			) as ?adms)
+		FILTER (STRSTARTS(?doi, "doi:") && (?doi != STR(?id)))
 	}

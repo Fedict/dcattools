@@ -1,24 +1,20 @@
-# Fix mising '/' in URI
+# Use generated IRI as DataService IRI
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE { 
-		?cat dcat:service ?s .
 		?s a dcat:DataService .
 		?s ?p ?o }
 INSERT 
-	{	?cat dcat:service ?uri .
-		?uri a dcat:DataService .
+	{	?uri a dcat:DataService .
 		?uri ?p ?o }
 WHERE
 	{	?s a dcat:DataService .
 		?s ?p ?o
-		OPTIONAL { ?cat dcat:service ?s }
 		BIND (IRI(
-				REPLACE(
-					CONCAT("http://metadata.naturalsciences.be/",
-						STRAFTER(STR(?s), "http://metadata.naturalsciences.be")
-					), "be//", "be/")
+				CONCAT("http://data.gov.be/.well-known/genid/dataservice/bmdc/",
+					STRAFTER(STR(?s), "http://metadata.naturalsciences.be")
+				)
 			) as ?uri)
 		FILTER (CONTAINS(STR(?s), "http://metadata.naturalsciences.be"))
 	}

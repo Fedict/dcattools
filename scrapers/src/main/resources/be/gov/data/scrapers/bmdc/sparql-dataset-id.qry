@@ -1,24 +1,25 @@
-# Use http as identifier to prevent "circular" references when landingPage uses same URI
+# Use generated IRI as Dataset IRI
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE { 
-		?cat dcat:dataset ?s .
-		?servicee dcat:servesDataset ?s .
+		?service dcat:servesDataset ?s .
 		?s a dcat:Dataset .
+		?s dcterms:identifier ?id .
 		?s ?p ?o }
 INSERT 
-	{	?cat dcat:dataset ?http .
-		?service dcat:servesDataset ?http .
-		?http a dcat:Dataset .
-		?http ?p ?o }
+	{	?service dcat:servesDataset ?uri .
+		?uri a dcat:Dataset .
+		?uri dcterms:identifier ?id .
+		?uri ?p ?o }
 WHERE
-	{	?cat dcat:dataset ?s .
-		?s a dcat:Dataset .
+	{	?s a dcat:Dataset .
+		?s dcterms:identifier ?id .
 		?s ?p ?o
 		OPTIONAL { ?service dcat:servesDataset ?s }
 		BIND (IRI(
-				REPLACE(STR(?s), "https://", "http://")
-			) as ?http)
-		FILTER (STRSTARTS(STR(?s), "https://"))
+				CONCAT("http://data.gov.be/.well-known/genid/dataset/bmdc/", ?id) 
+			) as ?uri)
+		FILTER (isLiteral(?id))
 	}

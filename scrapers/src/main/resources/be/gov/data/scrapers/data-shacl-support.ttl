@@ -160,17 +160,20 @@
 
 <http://purl.org/adms/licencetype/PublicDomain>
 	a skos:Concept ;
+	skos:prefLabel "Public Domain" ;
 	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
 
 <http://purl.org/adms/licencetype/Attribution>
 	a skos:Concept ;
+	skos:prefLabel "Attribution" ;
 	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
 
 <http://purl.org/adms/licencetype/NoDerivativeWork> 
 	a skos:Concept ;
+	skos:prefLabel "No Derivate Work" ;
 	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
 
 <http://purl.org/adms/licencetype/NonCommercialUseOnly>
 	a skos:Concept ;
+	skos:prefLabel "Non-Commercial Use Only" ;
 	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
-

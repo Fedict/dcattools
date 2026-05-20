@@ -1,0 +1,17 @@
+# Add landingpage based on catalog record (file) identifier
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT 
+	{	?s dcat:landingPage ?page }
+WHERE
+	{	?cat a dcat:CatalogRecord .
+		?s foaf:isPrimaryTopicOf ?cat .
+		?cat dcterms:identifier ?id .
+		BIND (IRI(
+				CONCAT("https://metadata.naturalsciences.be/geonetwork/srv/eng/catalog.search#/metadata/", ?id)
+			) as ?page)
+		FILTER NOT EXISTS { ?s dcat:landingPage ?o }
+	}

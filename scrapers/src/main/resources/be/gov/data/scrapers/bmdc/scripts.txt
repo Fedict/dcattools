@@ -1,12 +1,19 @@
 # extra queries to be executed and data to be loaded 
 sparql-remove-addresses.qry
+sparql-delete-label-empty.qry
 bmdc/sparql-record-contact.qry
 bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
 sparql-title-to-desc.qry
 bmdc/sparql-fix-org.qry
-sparql-remove-catalogrecord.qry
+bmdc/sparql-doi-prefix.qry
+sparql-doi-prefix.qry
+bmdc/sparql-doi-prefer.qry
 bmdc/sparql-dataset-id.qry
+bmdc/sparql-dataservice-id.qry
+bmdc/sparql-landingpage.qry
+sparql-doi-landingpage.qry
+sparql-remove-catalogrecord.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-map-memberof.qry
@@ -25,10 +32,7 @@ sparql-consolidate-rights.qry
 sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
 sparql-conforms-eli.qry
-bmdc/sparql-doi-prefix.qry
-bmdc/sparql-dataservice-id.qry
-bmdc/sparql-serves-dataset.qry
-bmdc/sparql-doi-prefer.qry
+#bmdc/sparql-serves-dataset.qry
 sparql-map-access-inspire.qry
 sparql-available.qry
 data-themes-inspire.ttl
