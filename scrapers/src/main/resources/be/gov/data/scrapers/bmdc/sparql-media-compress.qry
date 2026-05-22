@@ -1,0 +1,10 @@
+# Add compress format for ZIP downloads
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+INSERT 
+	{	?s dcat:compressFormat <https://www.iana.org/assignments/media-types/application/zip> }
+WHERE
+	{	?s dcat:downloadURL ?url
+		FILTER (STRENDS(STR(?url), ".zip"))
+	}

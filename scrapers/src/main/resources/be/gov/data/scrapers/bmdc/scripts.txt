@@ -5,6 +5,7 @@ bmdc/sparql-record-contact.qry
 bmdc/sparql-remove-label.qry
 bmdc/sparql-abstract-to-desc.qry
 sparql-title-to-desc.qry
+bmdc/sparql-dist-title.qry
 bmdc/sparql-fix-org.qry
 bmdc/sparql-dataset-localid.qry
 bmdc/sparql-dataset-serves.qry
@@ -34,6 +35,7 @@ sparql-consolidate-rights.qry
 sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
 sparql-access-to-download.qry
+bmdc/sparql-media-compress.qry
 sparql-dist-accessurl.qry
 sparql-conforms-eli.qry
 sparql-map-access-inspire.qry

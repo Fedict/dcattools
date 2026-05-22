@@ -1,0 +1,14 @@
+# Move Distribution description to title if missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:description ?o }
+INSERT 
+	{	?s dcterms:title ?o }
+WHERE
+	{	?s a dcat:Distribution .
+		?s dcterms:description ?o
+		FILTER NOT EXISTS { ?s dcterms:title ?t }
+	}
