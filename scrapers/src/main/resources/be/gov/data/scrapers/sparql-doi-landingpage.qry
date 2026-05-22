@@ -16,5 +16,5 @@ WHERE
 		BIND (IRI(
 			REPLACE(?id, "doi:", "https://doi.org/")
 		) as ?page)
-		FILTER(CONTAINS(?id, "doi:"))
+		FILTER(CONTAINS(?id, "doi:") && (?page != ?o))
 	}
