@@ -1,0 +1,23 @@
+# Use stable (more or less...) generated IRI based on identifier as Distribution IRI
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s a dcat:Dataset .
+		?s dcterms:identifier ?id .
+		?s dcterms:distribution ?dist .
+		?dist ?p ?o }
+INSERT 
+	{	?s dcterms:distribution ?uri .
+		?uri ?p ?o }
+WHERE
+	{	?s a dcat:Dataset .
+		?s dcterms:identifier ?id .
+		?s dcterms:distribution ?dist .
+		?dist ?p ?o
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/dist/bmdc/", ?id) 
+			) as ?uri)
+		FILTER (isLiteral(?id))
+	}

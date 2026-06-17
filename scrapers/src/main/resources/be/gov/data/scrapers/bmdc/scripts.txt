@@ -64,6 +64,7 @@ bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 sparql-startenddate.qry
 bmdc/sparql-remove-rights.qry
+bmdc/sparql-fix-date.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

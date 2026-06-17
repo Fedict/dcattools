@@ -1,4 +1,4 @@
-# Use generated IRI as Dataset IRI
+# Use stable (more or less...) generated IRI based on identifier as Dataset IRI
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
