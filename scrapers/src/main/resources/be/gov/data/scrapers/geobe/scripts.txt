@@ -46,6 +46,7 @@ geobe/sparql-delete-fodfin.qry
 sparql-remove-catalogrecord.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
+geobe/sparql-fix-date.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
 data-shacl-support.ttl
