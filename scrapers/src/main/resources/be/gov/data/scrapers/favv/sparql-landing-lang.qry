@@ -1,0 +1,20 @@
+# Add language info to landing page
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{	?page dcterms:language ?code }
+WHERE
+	{	?s dcat:landingPage ?page .
+		VALUES (?l ?lang) {
+			( "/nl/" <http://publications.europa.eu/resource/authority/language/NLD> )
+			( "/fr/" <http://publications.europa.eu/resource/authority/language/FRA> )
+			( "/de/" <http://publications.europa.eu/resource/authority/language/DEU> )
+			( "/en/" <http://publications.europa.eu/resource/authority/language/ENG> )
+		}
+		BIND (IF(
+				CONTAINS(STR(?page), ?l), 
+					?lang, ?undef) 
+			AS ?code)
+	}
