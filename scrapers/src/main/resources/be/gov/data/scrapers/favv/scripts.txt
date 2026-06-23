@@ -1,8 +1,10 @@
 # extra queries to be executed and data to be loaded 
 favv/data-org.ttl
 favv/sparql-publisher.qry
+favv/sparql-vcard-fn.qry
 sparql-remove-addresses.qry
 favv/sparql-remove-spatial.qry
+sparql-map-theme-belgif.qry
 sparql-available.qry
 sparql-geo-belgium.qry
 favv/sparql-dist-id.qry
