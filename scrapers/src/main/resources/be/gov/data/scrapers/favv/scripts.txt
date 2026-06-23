@@ -1,8 +1,13 @@
 # extra queries to be executed and data to be loaded 
+favv/data-org.ttl
+favv/sparql-publisher.qry
+sparql-remove-addresses.qry
 sparql-available.qry
-sparql-access-public.qry
-favv/sparql-publ-contact.qry
+sparql-geo-belgium.qry
+favv/sparql-dist-id.qry
+favv/sparql-license.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+sparql-remove-orphans.qry

@@ -79,6 +79,9 @@ public abstract class Dcat extends BaseScraper {
 		if (data.startsWith("<?xml") || data.startsWith("<rdf")) {
 			return RDFFormat.RDFXML;
 		}
+		if (data.startsWith("{")) {
+			return RDFFormat.JSONLD;
+		}
 		if (data.startsWith("PREFIX") || data.startsWith("@base") || data.startsWith("@prefix")) {
 			return RDFFormat.TURTLE;
 		}

@@ -4,20 +4,20 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
-	{	?s a dcat:Dataset .
-		?s dcterms:identifier ?id .
-		?s dcterms:distribution ?dist .
+	{	?s dcat:distribution ?dist .
+		?dist dcat:downloadURL ?url .
 		?dist ?p ?o }
 INSERT 
-	{	?s dcterms:distribution ?uri .
+	{	?s dcat:distribution ?uri .
+		?uri dcat:downloadURL ?url .
 		?uri ?p ?o }
 WHERE
 	{	?s a dcat:Dataset .
 		?s dcterms:identifier ?id .
-		?s dcterms:distribution ?dist .
+		?s dcat:distribution ?dist .
+		?dist dcat:downloadURL ?url .
 		?dist ?p ?o
 		BIND (IRI(
-				CONCAT("http://data.gov.be/.well-known/genid/dist/bmdc/", ?id) 
+				CONCAT("http://data.gov.be/.well-known/genid/dist/favv/", ?id, "/", SHA1(STR(?url))) 
 			) as ?uri)
-		FILTER (isLiteral(?id))
 	}

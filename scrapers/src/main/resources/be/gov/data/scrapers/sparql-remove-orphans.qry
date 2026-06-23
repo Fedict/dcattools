@@ -13,6 +13,6 @@ DELETE
 WHERE
 	{ 	?s a ?class .
 		?s ?p ?o
-		VALUES ?class { dcterms:Standard foaf:Agent foaf:Organization prov:Agent prov:Attribution vcard:Organization }
+		VALUES ?class { dcterms:Standard dcterms:Location dcterms:LicenseDocument foaf:Agent foaf:Organization prov:Agent prov:Attribution vcard:Organization }
 		FILTER NOT EXISTS { ?x ?rel ?s }
 	}

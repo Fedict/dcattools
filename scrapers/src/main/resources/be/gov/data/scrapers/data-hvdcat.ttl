@@ -128,4 +128,3 @@
 <http://data.europa.eu/bna/c_e1da4e07> a skos:Concept ;
 	skos:prefLabel "Statistics"@en .
 
-
