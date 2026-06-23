@@ -1,0 +1,12 @@
+# Remove spatial from Distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?dist dcterms:spatial ?s .
+		?s ?p ?o }
+WHERE
+	{	?dist a dcat:Distribution .
+		?dist dcterms:spatial ?s .
+		?s ?p ?o }

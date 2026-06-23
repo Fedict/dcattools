@@ -1,6 +1,5 @@
 # Data for mapping organizations
 
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
@@ -8,8 +7,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0267387230>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Federal Agency for the Safety of the Food Chain"@en, 
+	foaf:name "Federal Agency for the Safety of the Food Chain"@en, 
 		"Federaal Agentschap voor de Veiligheid van de Voedselketen"@nl, 
 		"Agence Fédérale pour la Sécurité de la Chaîne Alimentaire"@fr, 
-		"Föderalagentur für die Sicherheit der Nahrungsmittelkette"@de ;
-	skos:altLabel "Federal Agency for the Safety of the Food Chain - Directorate Control Policy"@en .
+		"Föderalagentur für die Sicherheit der Nahrungsmittelkette"@de .

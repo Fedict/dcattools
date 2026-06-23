@@ -2,6 +2,7 @@
 favv/data-org.ttl
 favv/sparql-publisher.qry
 sparql-remove-addresses.qry
+favv/sparql-remove-spatial.qry
 sparql-available.qry
 sparql-geo-belgium.qry
 favv/sparql-dist-id.qry

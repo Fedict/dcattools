@@ -46,6 +46,7 @@ WHERE
 			( dcat:theme skos:Concept )
 			( dcat:themeTaxonomy skos:ConceptScheme )
 			( adms:identifier adms:Identifier )
+			( adms:status skos:Concept )
 			( org:memberOf foaf:Agent )
 			( prov:agent foaf:Agent )
 			( geodcatap:custodian foaf:Agent )
