@@ -4,8 +4,13 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 DELETE 
-	{	?s dcat:startDate "2010-06-15T18:00:00"^^xsd:date }
+	{	?s dcat:startDate ?time}
 INSERT 
-	{	?s dcat:startDate "2010-06-15T18:00:00"^^xsd:dateTime }
+	{	?s dcat:startDate ?datetime }
 WHERE
-	{	?s dcat:startDate "2010-06-15T18:00:00"^^xsd:date }
+	{	?s dcat:startDate ?time .
+		BIND(STRDT(STR(?time), xsd:dateTime) 
+			AS ?datetime)
+		FILTER ( datatype(?time) = xsd:date && (STRLEN(STR(?time)) > 10) )
+	}
+		
