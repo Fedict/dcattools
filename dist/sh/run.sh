@@ -63,6 +63,7 @@ scrape() {
 		-Dorg.eclipse.rdf4j.rio.fail_on_sax_non_fatal_errors=false \
 		-Dorg.eclipse.rdf4j.rio.fail_on_non_standard_attributes=false \
 		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/scrape.log \
+		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/scrapers.jar \
 		--dir=$DATA/$1 \
 		--name=$1
@@ -81,6 +82,7 @@ validate() {
 	step $1 "validate"
 	
 	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
 		--shacl=file:///$SHACL/shapes.ttl \
@@ -105,6 +107,7 @@ convert() {
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
     		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
+			-XX:+UseCompactObjectHeaders \
       		-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/$1.nt \
 		$DATA/$1/$1.xml
@@ -120,6 +123,7 @@ translate() {
 	step $1 "translate"
 
 	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/translate.log \
+		-XX:+UseCompactObjectHeaders \
  		-jar translater.jar \
    		--file=$DATA/$1/$1.nt \
      		--cache \
@@ -137,6 +141,7 @@ hvdreport() {
 	step $1 "hvdreport"
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
+			-XX:+UseCompactObjectHeaders \
     		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/hvdreport.log \
       		-cp $BIN/tools.jar be.gov.data.tools.HvDReporter \
 		$DATA/$1/$1-translated.nt \
@@ -159,6 +164,7 @@ update() {
  
 	java  -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
  		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log \
+		-XX:+UseCompactObjectHeaders \
  		-jar uploaderd10.jar \
    		--user=$D_USER \
      		--password=$D_PASS \
