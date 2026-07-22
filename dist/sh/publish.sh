@@ -68,6 +68,7 @@ scrape() {
 
 	java -Xmx3G -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
 		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-Djdk.xml.totalEntitySizeLimit=0 \
 		-Dorg.eclipse.rdf4j.rio.fail_on_sax_non_fatal_errors=false \
 		-Dorg.eclipse.rdf4j.rio.fail_on_non_standard_attributes=false \
 		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/scrape.log \
@@ -86,6 +87,7 @@ validate() {
 	
 	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
 		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-Djdk.xml.totalEntitySizeLimit=0 \
 		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
@@ -113,6 +115,7 @@ convert() {
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
 		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-Djdk.xml.totalEntitySizeLimit=0 \
     	-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
 		-XX:+UseCompactObjectHeaders \
       	-cp $BIN/tools.jar be.gov.data.tools.EDP \
