@@ -32,11 +32,12 @@ update() {
  
 	java  -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
  		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/update.log \
+		-XX:+UseCompactObjectHeaders \
  		-jar uploaderd10.jar \
    		--user=$D_USER \
-     		--password=$D_PASS \
+     	--password=$D_PASS \
    		--url=https://5377.f2w.bosa.be \
-     		--file=$DATA/$1/$1-translated.nt
+     	--file=$DATA/$1/$1-translated.nt
 
  	status $1 "update" $2 $?
  }
