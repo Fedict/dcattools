@@ -67,9 +67,11 @@ scrape() {
 	step $1 "scrape"
 
 	java -Xmx3G -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
 		-Dorg.eclipse.rdf4j.rio.fail_on_sax_non_fatal_errors=false \
 		-Dorg.eclipse.rdf4j.rio.fail_on_non_standard_attributes=false \
 		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/scrape.log \
+		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/scrapers.jar \
 		--dir=$DATA/$1 \
 		--name=$1
@@ -83,6 +85,8 @@ validate() {
 	step $1 "validate"
 	
 	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
 		--shacl=file:///$SHACL/shapes.ttl \
@@ -108,8 +112,10 @@ convert() {
 	mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
-    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
-      		-cp $BIN/tools.jar be.gov.data.tools.EDP \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+    	-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
+		-XX:+UseCompactObjectHeaders \
+      	-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/datagovbe.nt \
 		$DATA/$1/datagovbe_edp.xml
 
@@ -138,35 +144,35 @@ publish() {
  	if [[ $F_SIZE > $EDP_MIN_SIZE ]]; then
   		rm -rf $LOCAL
   
-      		git config --global http.proxy $GITHUB_PROXY
+      	git config --global http.proxy $GITHUB_PROXY
 		git config --global user.name "$GITHUB_NAME"
 		git config --global user.email "$GITHUB_EMAIL"
-    		git clone --depth=1 https://$GITHUB_TOKEN@github.com/Fedict/dcat.git $LOCAL
+    	git clone --depth=1 https://$GITHUB_TOKEN@github.com/Fedict/dcat.git $LOCAL
 
 		if [[ -x $LOCAL ]]; then
 			echo "Cloned github repository " > $DATA/$1/logs/publish.log
   		fi
     
-    		cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
-      		cp $DATA/$1/datagovbe_edp.xml.gz $LOCAL/all/datagovbe_edp.xml.gz
+    	cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
+      	cp $DATA/$1/datagovbe_edp.xml.gz $LOCAL/all/datagovbe_edp.xml.gz
 
-      		cd $LOCAL
-    		git commit -sam "Updated export"
-      		git push
+      	cd $LOCAL
+    	git commit -sam "Updated export"
+      	git push
 
-    		res=$?
+    	res=$?
 
-      		cd ..
-      		rm -rf $LOCAL
-      	else
-       		echo "ERROR $F_SIZE is too small" > $DATA/$1/logs/publish.log
-       		res=-1
+     	cd ..
+      	rm -rf $LOCAL
+	else
+       	echo "ERROR $F_SIZE is too small" > $DATA/$1/logs/publish.log
+       	res=-1
   	fi
 
  	echo $res | mailx -v -S smtp=$MAIL_SERVER \
-  		-r $MAIL_FROM \
-    		-s "Publication to EDP" \
-    		$MAIL_TO
+		  		-r $MAIL_FROM \
+    			-s "Publication to EDP" \
+    			$MAIL_TO
 
 	status $1 "publish" $2 $res
 } 
