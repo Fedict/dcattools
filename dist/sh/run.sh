@@ -63,6 +63,7 @@ scrape() {
 		-Dorg.eclipse.rdf4j.rio.fail_on_sax_non_fatal_errors=false \
 		-Dorg.eclipse.rdf4j.rio.fail_on_non_standard_attributes=false \
 		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/scrape.log \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
 		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/scrapers.jar \
 		--dir=$DATA/$1 \
@@ -82,6 +83,7 @@ validate() {
 	step $1 "validate"
 	
 	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
 		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
@@ -106,9 +108,10 @@ convert() {
 	step $1 "convert"
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=debug \
-    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
-			-XX:+UseCompactObjectHeaders \
-      		-cp $BIN/tools.jar be.gov.data.tools.EDP \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+    	-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
+		-XX:+UseCompactObjectHeaders \
+      	-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/$1.nt \
 		$DATA/$1/$1.xml
 
@@ -123,6 +126,7 @@ translate() {
 	step $1 "translate"
 
 	java  -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/translate.log \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
 		-XX:+UseCompactObjectHeaders \
  		-jar translater.jar \
    		--file=$DATA/$1/$1.nt \
@@ -141,9 +145,10 @@ hvdreport() {
 	step $1 "hvdreport"
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
-			-XX:+UseCompactObjectHeaders \
-    		-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/hvdreport.log \
-      		-cp $BIN/tools.jar be.gov.data.tools.HvDReporter \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-XX:+UseCompactObjectHeaders \
+    	-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/hvdreport.log \
+      	-cp $BIN/tools.jar be.gov.data.tools.HvDReporter \
 		$DATA/$1/$1-translated.nt \
 		$DATA/$1/$1-hvdreport.csv
 
