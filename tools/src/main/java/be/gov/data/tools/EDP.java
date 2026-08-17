@@ -25,15 +25,9 @@
  */
 package be.gov.data.tools;
 
-import be.gov.data.dcat.vocab.ADMS;
-import be.gov.data.dcat.vocab.BIBO;
-import be.gov.data.dcat.vocab.CITEDCAT;
+
 import be.gov.data.dcat.vocab.CONTENT;
 import be.gov.data.dcat.vocab.DCATAP;
-import be.gov.data.dcat.vocab.DQV;
-import be.gov.data.dcat.vocab.GEODCAT;
-import be.gov.data.dcat.vocab.MOBILITYDCAT;
-import be.gov.data.dcat.vocab.OA;
 import be.gov.data.dcat.vocab.SDMX;
 
 import java.io.File;
@@ -62,7 +56,6 @@ import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.impl.ValidatingValueFactory;
-import org.eclipse.rdf4j.model.util.Values;
 
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -76,6 +69,15 @@ import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.model.vocabulary.XSD;
+import org.eclipse.rdf4j.model.vocabulary.annotation.DQV;
+import org.eclipse.rdf4j.model.vocabulary.annotation.OA;
+import org.eclipse.rdf4j.model.vocabulary.biblio.BIBO;
+import org.eclipse.rdf4j.model.vocabulary.eu.ADMS;
+import org.eclipse.rdf4j.model.vocabulary.eu.CiteDCATAP;
+import org.eclipse.rdf4j.model.vocabulary.eu.DCATAPHVD;
+import org.eclipse.rdf4j.model.vocabulary.eu.ELI;
+import org.eclipse.rdf4j.model.vocabulary.eu.GeoDCATAP;
+import org.eclipse.rdf4j.model.vocabulary.eu.MobilityDCATAP;
 
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -118,20 +120,20 @@ public class EDP {
 	 * @throws XMLStreamException
 	 */
 	private static void writePrefixes(XMLStreamWriter w) throws XMLStreamException {
-		w.writeNamespace("adms", "http://www.w3.org/ns/adms#");
-		w.writeNamespace("bibo", "http://purl.org/ontology/bibo/");
-		w.writeNamespace("citedcat", "https://w3id.org/citedcat-ap/");
+		w.writeNamespace(ADMS.PREFIX, ADMS.NAMESPACE);
+		w.writeNamespace(BIBO.PREFIX, BIBO.NAMESPACE);
+		w.writeNamespace(CiteDCATAP.PREFIX, CiteDCATAP.NAMESPACE);
 		w.writeNamespace("cnt", "http://www.w3.org/2011/content#");
 		w.writeNamespace(DCAT.PREFIX, DCAT.NAMESPACE);
-		w.writeNamespace("dcatap", "http://data.europa.eu/r5r/");
+		w.writeNamespace(DCATAPHVD.PREFIX, DCATAPHVD.NAMESPACE);
 		w.writeNamespace("dct", DCTERMS.NAMESPACE);
-		w.writeNamespace("dqv", "http://www.w3.org/ns/dqv#");
-		w.writeNamespace("eli", "http://data.europa.eu/eli/ontology#");
+		w.writeNamespace(DQV.PREFIX, DQV.NAMESPACE);
+		w.writeNamespace(ELI.PREFIX, ELI.NAMESPACE);
 		w.writeNamespace(FOAF.PREFIX, FOAF.NAMESPACE);
 		w.writeNamespace(GEO.PREFIX, GEO.NAMESPACE);
-		w.writeNamespace("geodcatap", "http://data.europa.eu/930/");
-		w.writeNamespace("mobilitydcatap", "https://w3id.org/mobilitydcat-ap#");
-		w.writeNamespace("oa", "http://www.w3.org/ns/oa#");
+		w.writeNamespace(GeoDCATAP.PREFIX, GeoDCATAP.NAMESPACE);
+		w.writeNamespace(MobilityDCATAP.PREFIX, MobilityDCATAP.NAMESPACE);
+		w.writeNamespace(OA.PREFIX, OA.NAMESPACE);
 		w.writeNamespace(ORG.PREFIX, ORG.NAMESPACE);
 		w.writeNamespace(OWL.PREFIX, OWL.NAMESPACE);
 		w.writeNamespace(PROV.PREFIX, PROV.NAMESPACE);
@@ -337,8 +339,8 @@ public class EDP {
 				w.writeStartElement("dqv:QualityMeasurement");
 
 				Resource measurement = (Resource) res.next().getObject();
-				writeLiterals(w, con, measurement, DQV.VALUE, "dqv:value");
-				writeReferences(w, con, measurement, DQV.IS_MEASUREMENT_OF, "dqv:isMeasurementOf");
+				writeLiterals(w, con, measurement, DQV.value, "dqv:value");
+				writeReferences(w, con, measurement, DQV.isMeasurementOf, "dqv:isMeasurementOf");
 				writeReferences(w, con, measurement, SDMX.UNIT_MEASURE, "sdmx:unitMeasure");
 
 				w.writeEndElement();
@@ -364,7 +366,7 @@ public class EDP {
 				w.writeStartElement(wrapper);
 
 				Resource annotation = (Resource) res.next().getObject();
-				writeLiterals(w, con, annotation, OA.HAS_BODY, "oa:hasBody");
+				writeLiterals(w, con, annotation, OA.hasBody, "oa:hasBody");
 				w.writeEndElement();
 				w.writeEndElement();
 			}
@@ -385,8 +387,8 @@ public class EDP {
 		w.writeStartElement(cl);
 		writeLiterals(w, con, uri, DCTERMS.TITLE, "dct:title");	
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
-		writeLiterals(w, con, uri, BIBO.DOI, "bibo:doi");
-		writeReferences(w, con, uri, BIBO.URI, "bibo:uri");
+		writeLiterals(w, con, uri, BIBO.doi, "bibo:doi");
+		writeReferences(w, con, uri, BIBO.uri, "bibo:uri");
 		w.writeEndElement();
 	}
 
@@ -583,11 +585,11 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
 
-		writeReferences(w, con, uri, ADMS.IDENTIFIER, "adms:identifier", "adms:Identifier", false);
-		writeReferences(w, con, uri, ADMS.STATUS, "adms:status");
-		writeReferences(w, con, uri, ADMS.REPRESENTATION_TECHNIQUE, "adms:representationTechnique");
+		writeReferences(w, con, uri, ADMS.identifier, "adms:identifier", "adms:Identifier", false);
+		writeReferences(w, con, uri, ADMS.status, "adms:status");
+		writeReferences(w, con, uri, ADMS.representationTechnique, "adms:representationTechnique");
 
-		writeLiterals(w, con, uri, ADMS.VERSION_NOTES, "adms:versionNotes");		
+		writeLiterals(w, con, uri, ADMS.versionNotes, "adms:versionNotes");		
 		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
 		
 		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
@@ -602,17 +604,17 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
-		writeReferences(w, con, uri, DCATAP.APPLICABLE_LEGISLATION, "dcatap:applicableLegislation", "eli:LegalResource", false);
-		writeReferences(w, con, uri, DCATAP.HVD_CATEGORY, "dcatap:hvdCategory");
+		writeReferences(w, con, uri, DCATAPHVD.applicableLegislation, "dcatap:applicableLegislation", "eli:LegalResource", false);
+		writeReferences(w, con, uri, DCATAPHVD.hvdCategory, "dcatap:hvdCategory");
 
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
 
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 		
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
-		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
+		writeReferences(w, con, uri, GeoDCATAP.referenceSystem, "geodcatap:referenceSystem");
 
-		writeMeasurements(w, con, uri, DQV.HAS_QUALITY_MEASUREMENT);
+		writeMeasurements(w, con, uri, DQV.hasQualityMeasurement);
 	}
 
 	/**
@@ -647,11 +649,11 @@ public class EDP {
 		writeLiterals(w, con, uri, DCAT.BYTE_SIZE, "dcat:byteSize");
 		writeLiterals(w, con, uri, CONTENT.CHARACTER_ENCODING, "cnt:characterEncoding");
 	
-		writeReferences(w, con, uri, MOBILITYDCAT.APPLICATION_LAYER_PROTOCOL, "mobilitydcatap:applicationLayerProtocol");
-		writeReferences(w, con, uri, MOBILITYDCAT.COMMUNICATION_METHOD, "mobilitydcatap:communicationMethod");
-		writeReferences(w, con, uri, MOBILITYDCAT.GRAMMAR, "mobilitydcatap:grammar");
-		writeReferences(w, con, uri, MOBILITYDCAT.HAS_MOBILITY_DATASET_STANDARD, "mobilitydcatap:mobilityDataStandard");
-		writeLiterals(w, con, uri, MOBILITYDCAT.DATA_FORMAT_NOTES, "mobilitydcatap:dataFormatNotes");
+		writeReferences(w, con, uri, MobilityDCATAP.applicationLayerProtocol, "mobilitydcatap:applicationLayerProtocol");
+		writeReferences(w, con, uri, MobilityDCATAP.communicationMethod, "mobilitydcatap:communicationMethod");
+		writeReferences(w, con, uri, MobilityDCATAP.grammar, "mobilitydcatap:grammar");
+		writeReferences(w, con, uri, MobilityDCATAP.mobilityDataStandard, "mobilitydcatap:mobilityDataStandard");
+		writeLiterals(w, con, uri, MobilityDCATAP.dataFormatNotes, "mobilitydcatap:dataFormatNotes");
 		
 		w.writeEndElement();
 	}
@@ -688,7 +690,7 @@ public class EDP {
 		// writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
 
 		// samples (geo-dcat-ap)
-		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS.SAMPLE, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS.sample, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("adms:sample");
 				writeDist(w, con, (IRI) res.next().getObject());
@@ -697,18 +699,18 @@ public class EDP {
 		}
 		// citations
 		writeLiterals(w, con, uri, DCTERMS.BIBLIOGRAPHIC_CITATION, "dct:bibliographicCitation");
-		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO.CITED_BY, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, BIBO.citedBy, null)) {
 			while (res.hasNext()) {
 				w.writeStartElement("bibo:citedBy");
 				writeCited(w, con, "bibo:Document", (Resource) res.next().getObject());
 				w.writeEndElement();
 			}
 		}
-		writeReferences(w, con, uri, CITEDCAT.IS_COMPILED_BY, "citedcat:isCompiledBy");
-		writeReferences(w, con, uri, CITEDCAT.COMPILES, "citedcat:compiles");
+		writeReferences(w, con, uri, CiteDCATAP.isCompiledBy, "citedcat:isCompiledBy");
+		writeReferences(w, con, uri, CiteDCATAP.compiles, "citedcat:compiles");
 	
 		// funding
-		try (RepositoryResult<Statement> res = con.getStatements(uri, CITEDCAT.IS_FUNDED_BY, null)) {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, CiteDCATAP.isFundedBy, null)) {
 			while (res.hasNext()) {
 				Statement stmt = res.next();
 				if (stmt.getObject() instanceof Resource) {
@@ -730,32 +732,32 @@ public class EDP {
 		
 		writeDates(w, con, uri);
 
-		writeLiterals(w, con, uri, GEODCAT.PURPOSE, "geodcatap:purpose");
+		writeLiterals(w, con, uri, GeoDCATAP.purpose, "geodcatap:purpose");
 	
-		writeReferences(w, con, uri, GEODCAT.REFERENCE_SYSTEM, "geodcatap:referenceSystem");
-		writeReferences(w, con, uri, GEODCAT.RESOURCE_TYPE, "geodcatap:resourceType");
-		writeReferences(w, con, uri, GEODCAT.TOPIC_CATEGORY, "geodcatap:topicCategory");
+		writeReferences(w, con, uri, GeoDCATAP.referenceSystem, "geodcatap:referenceSystem");
+		writeReferences(w, con, uri, GeoDCATAP.resourceType, "geodcatap:resourceType");
+		writeReferences(w, con, uri, GeoDCATAP.topicCategory, "geodcatap:topicCategory");
 		
 		if (cl.equals("dcat:DataService")) {
-			writeReferences(w, con, uri, GEODCAT.SERVICE_CATEGORY, "geodcatap:serviceCategory");
-			writeReferences(w, con, uri, GEODCAT.SERVICE_PROTOCOL, "geodcatap:serviceProtocol");
-			writeReferences(w, con, uri, GEODCAT.SERVICE_TYPE, "geodcatap:serviceType");
+			writeReferences(w, con, uri, GeoDCATAP.serviceCategory, "geodcatap:serviceCategory");
+			writeReferences(w, con, uri, GeoDCATAP.serviceProtocol, "geodcatap:serviceProtocol");
+			writeReferences(w, con, uri, GeoDCATAP.serviceType, "geodcatap:serviceType");
 		}
 		
-		writeRole(w, con, uri, GEODCAT.CUSTODIAN, "geodcatap:custodian");
-		writeRole(w, con, uri, GEODCAT.DISTRIBUTOR, "geodcatap:distributor");
-		writeRole(w, con, uri, GEODCAT.ORIGINATOR, "geodcatap:originator");
-		writeRole(w, con, uri, GEODCAT.PROCESSOR, "geodcatap:processor");
-		writeRole(w, con, uri, GEODCAT.RESOURCE_PROVIDER, "geodcatap:resourceProvider");
+		writeRole(w, con, uri, GeoDCATAP.custodian, "geodcatap:custodian");
+		writeRole(w, con, uri, GeoDCATAP.distributor, "geodcatap:distributor");
+		writeRole(w, con, uri, GeoDCATAP.originator, "geodcatap:originator");
+		writeRole(w, con, uri, GeoDCATAP.processor, "geodcatap:processor");
+		writeRole(w, con, uri, GeoDCATAP.resourceProvider, "geodcatap:resourceProvider");
 
-		writeAnnotations(w, con, uri, DQV.HAS_QUALITY_ANNOTATION, "dqv:qualityAnnotation", "dqv:QualityAnnotation");
+		writeAnnotations(w, con, uri, DQV.hasQualityAnnotation, "dqv:qualityAnnotation", "dqv:QualityAnnotation");
 
-		writeAnnotations(w, con, uri, MOBILITYDCAT.ASSESSMENT_RESULT, "mobilitydcatap:assessmentResult", "mobilitydcatap:Assessment");
+		writeAnnotations(w, con, uri, MobilityDCATAP.assessmentResult, "mobilitydcatap:assessmentResult", "mobilitydcatap:Assessment");
 		
-		writeReferences(w, con, uri, MOBILITYDCAT.GEOREFERENCING_METHOD, "mobilitydcatap:georeferencingMethod");
-		writeReferences(w, con, uri, MOBILITYDCAT.MOBILITY_THEME, "mobilitydcatap:mobilityTheme");
-		writeReferences(w, con, uri, MOBILITYDCAT.NETWORK_COVERAGE, "mobilitydcatap:networkCoverage");
-		writeReferences(w, con, uri, MOBILITYDCAT.TRANSPORT_MODE, "mobilitydcatap:transportMode");
+		writeReferences(w, con, uri, MobilityDCATAP.georeferencingMethod, "mobilitydcatap:georeferencingMethod");
+		writeReferences(w, con, uri, MobilityDCATAP.mobilityTheme, "mobilitydcatap:mobilityTheme");
+		writeReferences(w, con, uri, MobilityDCATAP.networkCoverage, "mobilitydcatap:networkCoverage");
+		writeReferences(w, con, uri, MobilityDCATAP.transportMode, "mobilitydcatap:transportMode");
 
 		// full distributions
 		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.HAS_DISTRIBUTION, null)) {

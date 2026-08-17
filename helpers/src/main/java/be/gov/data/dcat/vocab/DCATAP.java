@@ -34,6 +34,4 @@ import org.eclipse.rdf4j.model.util.Values;
  */
 public class DCATAP {
 	public final static IRI AVAILABILITY = Values.iri("http://data.europa.eu/r5r/availability");
-	public final static IRI APPLICABLE_LEGISLATION = Values.iri("http://data.europa.eu/r5r/applicableLegislation");
-	public final static IRI HVD_CATEGORY = Values.iri("http://data.europa.eu/r5r/hvdCategory");
 }

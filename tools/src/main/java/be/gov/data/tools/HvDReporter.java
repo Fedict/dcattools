@@ -28,12 +28,9 @@ package be.gov.data.tools;
 import be.gov.data.dcatlib.DcatReader;
 import be.gov.data.dcatlib.model.Catalog;
 import be.gov.data.dcatlib.model.DataResource;
-import be.gov.data.dcatlib.model.Dataservice;
-import be.gov.data.dcatlib.model.Dataset;
 import be.gov.data.dcatlib.model.Organization;
 import be.gov.data.dcatlib.model.SkosTerm;
 
-import com.opencsv.CSVWriter;
 import com.opencsv.CSVWriterBuilder;
 import com.opencsv.ICSVWriter;
 

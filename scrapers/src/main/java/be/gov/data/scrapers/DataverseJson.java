@@ -25,11 +25,8 @@
  */
 package be.gov.data.scrapers;
 
-
-import be.gov.data.dcat.vocab.ADMS;
-import be.gov.data.dcat.vocab.BIBO;
-import be.gov.data.dcat.vocab.CITEDCAT;
 import be.gov.data.dcat.vocab.DATAGOVBE;
+
 import be.gov.data.helpers.Storage;
 import static be.gov.data.scrapers.BasicScraperJson.conf;
 import com.jayway.jsonpath.JsonPath;
@@ -54,6 +51,9 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
+import org.eclipse.rdf4j.model.vocabulary.biblio.BIBO;
+import org.eclipse.rdf4j.model.vocabulary.eu.ADMS;
+import org.eclipse.rdf4j.model.vocabulary.eu.CiteDCATAP;
 
 
 /**
@@ -142,15 +142,15 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	private final static Map<IRI,Object> AUTH_MAP = Map.of(
 			FOAF.NAME, JsonPath.compile("$.authorName.value"),
 			FOAF.MEMBER, JsonPath.compile("$.authorAffiliation.value"),
-			ADMS.IDENTIFIER, JsonPath.compile("$.authorIdentifier.value"),
-			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.authorIdentifierScheme.value")
+			ADMS.identifier, JsonPath.compile("$.authorIdentifier.value"),
+			ADMS.schemaAgency, JsonPath.compile("$.authorIdentifierScheme.value")
 		);
 
 	private final static Map<IRI,Object> CONTRIB_MAP = Map.of(
 			FOAF.NAME, JsonPath.compile("$.contributorName.value"),
 			FOAF.MEMBER, JsonPath.compile("$.contributorAffiliation.value"),
-			ADMS.IDENTIFIER, JsonPath.compile("$.contributorIdentifier.value"),
-			ADMS.SCHEMA_AGENCY, JsonPath.compile("$.contributorIdentifierScheme.value")
+			ADMS.identifier, JsonPath.compile("$.contributorIdentifier.value"),
+			ADMS.schemaAgency, JsonPath.compile("$.contributorIdentifierScheme.value")
 		);
 
 	private final static Map<IRI,Object> DIST_MAP = Map.of(
@@ -165,11 +165,11 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 	private final static Map<IRI,Object> CITATION_MAP = Map.of(
 			DCTERMS.TITLE, JsonPath.compile("$.publicationCitation.value"),
 			DCTERMS.IDENTIFIER, JsonPath.compile("$.publicationIDNumber.value"),
-			BIBO.URI, JsonPath.compile("$.publicationURL.value")
+			BIBO.uri, JsonPath.compile("$.publicationURL.value")
 		);
 
 	private final static Map<IRI,Object> FUNDING_MAP = Map.of(
-			CITEDCAT.IS_FUNDED_BY, JsonPath.compile("$.grantNumberAgency.value")
+			CiteDCATAP.isFundedBy, JsonPath.compile("$.grantNumberAgency.value")
 		);
 	
 	private final static Map<IRI,Object> CONTACT_MAP = Map.of(
@@ -368,8 +368,8 @@ public abstract class DataverseJson extends BasicScraperJson implements ScraperP
 		store.add(datasetSubj, RDF.TYPE, DCAT.DATASET);
 		add(store, datasetSubj, jsonObj, DATASET_MAP);
 	
-		addCited(store, jsonObj, CITATION_PATH, datasetSubj, BIBO.CITED_BY, CITATION_MAP);
-		addFunding(store, jsonObj, FUNDING_PATH, datasetSubj, CITEDCAT.IS_FUNDED_BY , FUNDING_MAP);
+		addCited(store, jsonObj, CITATION_PATH, datasetSubj, BIBO.citedBy, CITATION_MAP);
+		addFunding(store, jsonObj, FUNDING_PATH, datasetSubj, CiteDCATAP.isFundedBy, FUNDING_MAP);
 
 		addPersons(store, jsonObj, CONTACT_PATH, CONTACT_ID_PATH, "contact/", datasetSubj, DCAT.CONTACT_POINT, CONTACT_MAP);
 		addPersons(store, jsonObj, AUTH_PATH, AUTH_ID_PATH, "", datasetSubj, DCTERMS.CREATOR, AUTH_MAP);

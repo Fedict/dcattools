@@ -29,8 +29,7 @@
 		</developer>
 	</developers>
 	<properties>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+	 <maven.compiler.release>21</maven.compiler.release>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -49,7 +48,7 @@
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.22.1</version>
+			<version>1.22.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapdb</groupId>
@@ -93,8 +92,22 @@
 		<dependency>
 			<groupId>net.minidev</groupId>
 			<artifactId>json-smart</artifactId>
-			<version>2.6.0</version>
 		</dependency>
+<dependency>
+            <groupId>org.eclipse.rdf4j</groupId>
+            <artifactId>rdf4j-model-vocabulary-eu</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.rdf4j</groupId>
+            <artifactId>rdf4j-model-vocabulary-biblio</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.rdf4j</groupId>
+            <artifactId>rdf4j-model-vocabulary-annotation</artifactId>
+            <version>6.0.0</version>
+        </dependency>
 		<dependency>
 			<groupId>info.picocli</groupId>
 			<artifactId>picocli</artifactId>
@@ -103,7 +116,7 @@
 		<dependency>
 			<groupId>net.sf.saxon</groupId>
 			<artifactId>Saxon-HE</artifactId>
-			<version>12.9</version>
+			<version>13.0</version>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
@@ -125,7 +138,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.6.2</version>
 				<configuration>
 					<transformers>
 						<transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
