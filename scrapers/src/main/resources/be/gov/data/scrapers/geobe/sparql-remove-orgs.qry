@@ -7,6 +7,9 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
 	?cat dcat:dataset ?dataset .
+	?cat dcat:service ?service .
+	?service dcat:servesDataset ?dataset .
+	?service ?d ?e .
 	?dataset ?p ?o .
 	?dataset a dcat:Dataset .
 	?dataset dcterms:identifier <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
@@ -33,5 +36,11 @@ DELETE {
 	OPTIONAL { 
 		?dataset dcat:contactPoint ?point . 
 		?point vcard:fn ?name .
-		?point vcard:hasEmail ?email }
+		?point vcard:hasEmail ?email
 	}
+	OPTIONAL {
+		?cat dcat:service ?service .
+		?service dcat:servesDataset ?dataset .
+		?service ?d ?e 
+	}
+}
