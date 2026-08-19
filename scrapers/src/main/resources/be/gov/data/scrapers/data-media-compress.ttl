@@ -11,9 +11,13 @@
 					<https://www.iana.org/assignments/media-types/application/dwca> .
 
 <https://www.iana.org/assignments/media-types/application/gzip>
-	skos:prefLabel "gzip" ;
+	skos:prefLabel "GZIP" ;
 	skos:altLabel "application/gzip" .
 
 <https://www.iana.org/assignments/media-types/application/x-7z-compressed>
-	skos:prefLabel "7z" ;
-	skos:altLabel "7z", "application/x-compressed" .
+	skos:prefLabel "7Z" ;
+	skos:altLabel "7z", "application/x-compressed", "application/x-7z-compressed" .
+
+<https://www.iana.org/assignments/media-types/application/vnd.rar>
+	skos:prefLabel "RAR" ;
+	skos:altLabel "application/vnd.rar", "application/x-rar-compressed" .
