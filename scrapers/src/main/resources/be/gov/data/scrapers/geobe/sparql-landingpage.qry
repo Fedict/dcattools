@@ -1,0 +1,20 @@
+# Add landing page if not present
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{ 	?s dcat:landingPage ?url }
+INSERT
+	{ 	?s dcat:landingPage ?page }
+WHERE
+	{ 	?s a dcat:Dataset .
+		?s dcterms:identifier ?id .
+		BIND(
+			IRI(
+				CONCAT("https://www.geo.be/catalog/details/", 
+					IF(CONTAINS(?id, "/"), STRAFTER(?id, "/"), ?id)
+				)
+			) AS ?page)
+		OPTIONAL { ?s dcat:landingPage ?url }
+	}

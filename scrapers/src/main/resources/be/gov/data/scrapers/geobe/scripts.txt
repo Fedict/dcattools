@@ -31,7 +31,8 @@ clear-skos.qry
 geobe/data-publ-contact.ttl
 sparql-conforms-legislation.qry
 geobe/sparql-conforms-legislation.qry
-#geobe/sparql-accessurl.qry
+geobe/sparql-landingpage.qry
+sparql-dist-accessurl.qry
 geobe/sparql-downloadurl-crs.qry
 #geobe/sparql-fix-datatype.qry
 #geobe/sparql-fix-bira.qry
@@ -40,8 +41,8 @@ geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
 geobe/sparql-std-uri.qry
 geobe/sparql-fix-crs.qry
-#sparql-theme-subject.qry
-#sparql-vocab-theme.qry
+sparql-theme-subject.qry
+sparql-vocab-theme.qry
 #sparql-map-access-inspire.qry
 #geobe/sparql-license-rights.qry
 geobe/sparql-license-links.qry

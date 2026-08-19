@@ -1,4 +1,4 @@
-# Remove rights statement that is actually a CC licensen
+# Remove rights statement that is actually a CC license
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
