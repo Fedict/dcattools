@@ -1,0 +1,16 @@
+# Add geodcatap resourcetype based on dcat class
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+INSERT {
+		?s geodcatap:resourceType ?type }
+WHERE {
+		?s a ?cl .
+		VALUES (?cl ?type) {
+			(dcat:Dataset <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			(dcat:DataService <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+			(dcat:DatasetSeries <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/series> )
+		}
+		FILTER NOT EXISTS { ?s geodcatap:resourceType ?o }
+	}

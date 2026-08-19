@@ -28,9 +28,9 @@
 			<timezone>Europe/Brussels</timezone>
 		</developer>
 	</developers>
-	<properties>
-	 <maven.compiler.release>21</maven.compiler.release>
-	</properties>
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+    </properties>
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -93,17 +93,17 @@
 			<groupId>net.minidev</groupId>
 			<artifactId>json-smart</artifactId>
 		</dependency>
-<dependency>
-            <groupId>org.eclipse.rdf4j</groupId>
-            <artifactId>rdf4j-model-vocabulary-eu</artifactId>
-            <version>6.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.rdf4j</groupId>
-            <artifactId>rdf4j-model-vocabulary-biblio</artifactId>
-            <version>6.0.0</version>
-        </dependency>
-        <dependency>
+		<dependency>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-model-vocabulary-eu</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-model-vocabulary-biblio</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+		<dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model-vocabulary-annotation</artifactId>
             <version>6.0.0</version>

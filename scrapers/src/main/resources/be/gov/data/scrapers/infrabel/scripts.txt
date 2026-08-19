@@ -28,6 +28,7 @@ sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-tag-language.qry
+sparql-geotype-format.qry
 clear-skos.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry

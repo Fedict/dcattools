@@ -49,6 +49,7 @@ sparql-map-hvd-service.qry
 geobe/sparql-fix-date.qry
 clear-skos.qry
 sparql-delete-label-empty.qry
+sparql-geotype-class.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

@@ -107,6 +107,7 @@ vlaanderen/data-contact.ttl
 vlaanderen/sparql-default-email.qry
 sparql-strip-html.qry
 sparql-version.qry
+sparql-geotype-format.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

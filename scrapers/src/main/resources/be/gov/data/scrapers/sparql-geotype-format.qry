@@ -1,0 +1,37 @@
+# Add geodcatap resourcetype based on format
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+INSERT {
+		?s geodcatap:resourceType ?type }
+WHERE {
+		{
+			?s a dcat:Dataset .
+			?s dcat:distribution ?dist .
+			?dist dcterms:format ?fmt
+		}
+		UNION
+		{
+			?s a dcat:DataService .
+			?s dcterms:format ?fmt
+		}
+		VALUES (?fmt ?type) {
+			( <http://publications.europa.eu/resource/authority/file-type/GDB> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/GPKG> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/GML> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/GEOJSON> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/KML> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/SHP> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/GEOTIFF> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/WORLD> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( <http://publications.europa.eu/resource/authority/file-type/WCS_SRVC> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+			( <http://publications.europa.eu/resource/authority/file-type/WFS_SRVC> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+			( <http://publications.europa.eu/resource/authority/file-type/WMS_SRVC> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+			( <http://publications.europa.eu/resource/authority/file-type/WMTS_SRVC> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+			( <http://publications.europa.eu/resource/authority/file-type/MAP_SRVC> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+			( <http://publications.europa.eu/resource/authority/file-type/MAP_PRVW> <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+		}
+		FILTER NOT EXISTS { ?s geodcatap:resourceType ?o }
+	}

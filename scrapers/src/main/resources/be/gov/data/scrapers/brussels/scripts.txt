@@ -47,6 +47,7 @@ sparql-title-to-desc.qry
 brussels/sparql-fix-translations2.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
+sparql-geotype-format.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
