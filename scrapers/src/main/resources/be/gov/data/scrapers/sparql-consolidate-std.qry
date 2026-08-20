@@ -20,7 +20,7 @@ WHERE
 			)
 		AS ?std)
 		BIND (LANG(?desc) as ?lang)
-		FILTER (CONTAINS(STR(?genstd), "well-known/genid") || !CONTAINS(STR(?genstd), "well-known/genid/std/"))
+		FILTER (CONTAINS(STR(?genstd), "well-known/genid") && !CONTAINS(STR(?genstd), "well-known/genid/std/"))
 		FILTER NOT EXISTS {
 			?genstd dcterms:title ?x .
 			FILTER (LANG(?x) < ?lang)
