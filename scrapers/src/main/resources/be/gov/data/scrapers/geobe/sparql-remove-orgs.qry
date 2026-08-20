@@ -7,7 +7,6 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
 	?cat dcat:dataset ?dataset .
-	?cat dcat:service ?service .
 	?service dcat:servesDataset ?dataset .
 	?service ?d ?e .
 	?dataset ?p ?o .
@@ -39,7 +38,6 @@ DELETE {
 		?point vcard:hasEmail ?email
 	}
 	OPTIONAL {
-		?cat dcat:service ?service .
 		?service dcat:servesDataset ?dataset .
 		?service ?d ?e 
 	}

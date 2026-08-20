@@ -132,6 +132,7 @@
 					"Royal Belgian Institute of Natural Sciences"@en, 
 					"Königliches Belgisches Institut für Naturwissenschaften"@de ;
 	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en,
+				"Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en ,
 				"Royal Belgian Institute of Natural Sciences (RBINS)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
