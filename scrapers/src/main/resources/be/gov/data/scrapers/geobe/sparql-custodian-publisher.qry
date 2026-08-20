@@ -1,0 +1,13 @@
+# Add reference system based on downloadURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+INSERT 
+	{	?s dcat:publisher ?publ }
+WHERE
+	{ 	?s geodcat:custodian ?cust .
+		?cust foaf:memberOf ?publ
+		FILTER NOT EXISTS { ?s dcat:publisher ?o }
+	}

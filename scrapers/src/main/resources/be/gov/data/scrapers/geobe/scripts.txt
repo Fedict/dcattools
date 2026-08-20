@@ -6,6 +6,7 @@ geobe/data-org.ttl
 sparql-map-memberof.qry
 geobe/sparql-org-rbins.qry
 sparql-map-org.qry
+geobe/sparql-custodian-publisher.qry
 geobe/sparql-remove-orgs.qry
 clear-skos.qry
 data-themes-inspire.ttl
@@ -43,7 +44,6 @@ geobe/sparql-std-uri.qry
 geobe/sparql-fix-crs.qry
 sparql-theme-subject.qry
 sparql-vocab-theme.qry
-#sparql-map-access-inspire.qry
 #geobe/sparql-license-rights.qry
 geobe/sparql-license-links.qry
 data-license.ttl
