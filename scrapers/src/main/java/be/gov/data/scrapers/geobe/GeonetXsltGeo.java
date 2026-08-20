@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, FPS BOSA DG DT
+ * Copyright (c) 2026, FPS BOSA
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,32 +23,19 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.scrapers.bmdc;
+package be.gov.data.scrapers.geobe;
 
-import be.gov.data.helpers.Storage;
-import be.gov.data.scrapers.GeonetGmd;
+import be.gov.data.scrapers.GeonetXslt;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.dom4j.Node;
-
-import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.vocabulary.DCAT;
-
 /**
- * Geonet scraper for BMDC RBINS
+ * Geonet scraper for NGI Geo.be
  * 
- * @see http://geonetwork.bmdc.be
+ * @see https://www.geo.be
  * @author Bart Hanssens
  */
-public class GeonetBMDC extends GeonetGmd {
-	private final static String LANDING = "https://metadata.naturalsciences.be/geonetwork/srv/eng/catalog.search#/metadata/";
-	
-	@Override
-	protected void generateDataset(IRI dataset, String id, Storage store, Node node) {
-		super.generateDataset(dataset, id, store, node);
-		store.add(dataset, DCAT.LANDING_PAGE, store.getURI(LANDING + id));
-	}
+public class GeonetXsltGeo extends GeonetXslt {
 
 	/**
 	 * Constructor
@@ -56,8 +43,8 @@ public class GeonetBMDC extends GeonetGmd {
 	 * @param prop
 	 * @throws IOException 
 	 */
-	public GeonetBMDC(Properties prop) throws IOException {
+	public GeonetXsltGeo(Properties prop) throws IOException {
 		super(prop);
-		setName("bmdc");
+		setName("geobe");
 	}
 }

@@ -2,15 +2,20 @@
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
 	?cat dcat:dataset ?dataset .
+	?service dcat:servesDataset ?dataset .
+	?service ?d ?e .
 	?dataset ?p ?o .
 	?dataset a dcat:Dataset .
 	?dataset dcterms:identifier <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
 	?dataset dcat:distribution ?dist .
 	?dist ?x ?y .
+	?dataset prov:qualifiedAttribution ?qa .
+	?qa ?b ?c .
 	?dataset dcat:contactPoint ?point . 
 	?point vcard:fn ?name .
 	?point vcard:hasEmail ?email
@@ -19,10 +24,21 @@ DELETE {
 	?dataset ?p ?o .
 	?dataset a dcat:Dataset .
 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
-	?dataset dcat:distribution ?dist .
-	?dist ?x ?y .
+	OPTIONAL {
+		?dataset dcat:distribution ?dist .
+		?dist ?x ?y 
+	}
+	OPTIONAL {
+		?dataset prov:qualifiedAttribution ?qa .
+		?qa ?b ?c
+	}
 	OPTIONAL { 
 		?dataset dcat:contactPoint ?point . 
 		?point vcard:fn ?name .
-		?point vcard:hasEmail ?email }
+		?point vcard:hasEmail ?email
 	}
+	OPTIONAL {
+		?service dcat:servesDataset ?dataset .
+		?service ?d ?e 
+	}
+}

@@ -3,12 +3,12 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
-	{	?lic dcterms:title ?uri }
+	{	?s dcterms:rights ?lic . 
+		?lic dcterms:description ?url }
 INSERT 
-	{	?s dcterms:license ?uri }
+	{	?s dcterms:license ?url }
 WHERE 
 	{	?s dcterms:rights ?lic .
-		?lic dcterms:title ?title
-		BIND(STR(?title) as ?uri)
-		FILTER (STRSTARTS(?title, "https"))
+		?lic dcterms:description ?url
+		FILTER (STRSTARTS(?url, "https"))
 	}

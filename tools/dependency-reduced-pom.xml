@@ -3,12 +3,12 @@
   <parent>
     <artifactId>dcattools</artifactId>
     <groupId>be.gov.data</groupId>
-    <version>4.0.1</version>
+    <version>4.2.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tools</artifactId>
   <name>tools</name>
-  <version>4.0.1</version>
+  <version>4.2.0</version>
   <description>Misc tools for enhancing DCAT metadata</description>
   <url>https://data.gov.be</url>
   <developers>
@@ -31,7 +31,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.4.2</version>
+        <version>3.5.0</version>
         <configuration>
           <archive>
             <manifest>
@@ -43,7 +43,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.6.2</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -74,7 +74,6 @@
     </plugins>
   </build>
   <properties>
-    <maven.compiler.target>17</maven.compiler.target>
-    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.release>21</maven.compiler.release>
   </properties>
 </project>

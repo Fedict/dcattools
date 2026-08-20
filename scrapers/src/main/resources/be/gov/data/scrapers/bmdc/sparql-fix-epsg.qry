@@ -1,0 +1,10 @@
+# Map vocab.nerc URI to opengis EPSG uri
+
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE
+	{	?s geodcatap:referenceSystem <http://vocab.nerc.ac.uk/collection/L10/current/4326> }
+INSERT 
+	{ 	?s geodcatap:referenceSystem <http://www.opengis.net/def/crs/EPSG/0/4326> }
+WHERE
+	{	?s geodcatap:referenceSystem <http://vocab.nerc.ac.uk/collection/L10/current/4326> }

@@ -34,6 +34,7 @@ WHERE
 			( dcat:accessService dcat:DataService )
 			( dcat:inSeries dcat:DatasetSeries )
 			( dcterms:format dcterms:MediaTypeOrExtent )
+			( dcat:compressFormat dcterms:MediaType )
 			( dcat:landingPage foaf:Document )
 			( dcat:mediaType dcterms:MediaType )
 			( foaf:page foaf:Document )

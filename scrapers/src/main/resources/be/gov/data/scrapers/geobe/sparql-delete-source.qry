@@ -1,8 +1,0 @@
-# Remove incorrect use of source
-
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-DELETE
-	{ 	?s dcterms:source ?src }
-WHERE
-	{ 	?s dcterms:source ?src }

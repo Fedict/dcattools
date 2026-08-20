@@ -10,10 +10,22 @@
                      gemet:501,     # aquaculture
                      gemet:5035 .   # marine fishery
 
+<http://publications.europa.eu/resource/authority/data-theme/CULT> 
+	skos:narrowMatch gemet:1911,    # cultural facility
+                     gemet:2551,	# educational institution
+					 gemet:8608,	# training center
+					 gemet:8014,	# sports facilities
+                     gemet:5444,	# museum
+                     gemet:9422 .   # zoological garden
+
 <http://publications.europa.eu/resource/authority/data-theme/ECON> 
 	skos:narrowMatch gemet:15095,   # circular economy
                      gemet:2497,    # economic planning
+                     gemet:14859,   # internet provider
+                     gemet:997,		# brewing industry
+                     gemet:4015,    # household
                      gemet:4253,    # industrial planning
+					 gemet:8608,	# training center
                      gemet:8563 .   # trade (services)
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
@@ -47,6 +59,7 @@
 					 gemet:5648,	# noise monitoring
 					 gemet:5651,	# noise pollution
 					 gemet:5763,	# nutrient
+                     gemet:7720,	# slag
                      gemet:505,     # aquatic ecosystem
                      gemet:625,     # atmospheric emission
 					 gemet:861,		# biological monitoring
@@ -54,23 +67,56 @@
                      gemet:7423,    # sand extraction
                      gemet:775,     # benthos
                      gemet:9062,    # waste disposal
+					 gemet:7232,	# rising sea level
+					 gemet:10176,	# relief (land)
+					 gemet:9127,	# waste water
+					 gemet:10140,	# altitude
+					 gemet:2944,	# environment
+					 gemet:4599,	# land
+					 gemet:4612,	# land cover
+					 gemet:6790,	# public domain
                      gemet:9196 .   # water monitoring 
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
     skos:narrowMatch gemet:15271,   # renewable energy
                      gemet:2599,    # electric line
+                     gemet:1784,	# cooling tower
                      gemet:6270,    # pipeline
+                     gemet:4910,	# solar power station
                      gemet:9331,    # windmill
                      gemet:9336 .   # wind power station
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-    skos:narrowMatch gemet:2160 .   # development planning
+    skos:narrowMatch gemet:3144,    # federal government
+                     gemet:14931,	# sub-national boundaries
+					 gemet:14930,	# national boundaries
+					 gemet:1837,	# county
+					 gemet:14931,	# local authority
+                     gemet:2160 .   # development planning
+
+<http://publications.europa.eu/resource/authority/data-theme/HEAL>
+	skos:narrowMatch gemet:3865,	# health
+                     gemet:6798,	# public health
+					 gemet:3871,	# health facility
+					 gemet:2232,	# disease
+					 gemet:2352,	# drug abuse
+					 gemet:2947,	# epidemic
+					 gemet:2949,	# epidemiology
+					 gemet:4046,	# human disease
+                     gemet:4051 .	# human health
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
-	skos:narrowMatch gemet:5253 .   # military zone
+	skos:narrowMatch gemet:11583,	# justice
+                     gemet:3226,    # fire service
+					 gemet:6367,	# police
+					 gemet:1436,	# civilian protection
+                     gemet:5253 .   # military zone
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:narrowMatch gemet:7003 .   # recreational area
+	skos:narrowMatch gemet:8797,    # urban area
+                     gemet:4015,    # household
+					 gemet:2352,	# drug abuse
+                     gemet:7003 .   # recreational area
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
     skos:narrowMatch gemet:12390,   # wreck
@@ -83,10 +129,18 @@
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
     skos:narrowMatch gemet:11148,   # scientific research
                      gemet:15124,   # earth observation
+					 gemet:11146,	# applied research
+                     gemet:8347,	# telecommunication
+					 gemet:496,		# applied science
+                     gemet:1784,	# cooling tower
+					 gemet:14859,	# internet provider
+					 gemet:14919,	# point
                      gemet:5038,    # marine geology
                      gemet:5346,    # monitoring
                      gemet:5349,    # monitoring equipment
                      gemet:5352,    # monitoring station
-                     gemet:4109,    # hydrography 
+                     gemet:4109,    # hydrography
+					 gemet:3638,	# geodesy
+                     gemet:997,		# brewing industry
                      gemet:6883 .   # radar
 	

@@ -1,0 +1,17 @@
+# Move description to more accurate title for foaf:Documents
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf:	<http://xmlns.com/foaf/0.1/>
+
+DELETE
+	{ 	?s dcterms:title ?t .
+		?s dcterms:description ?desc }
+INSERT
+	{	?s dcterms:title ?desc }
+WHERE
+	{ 	?s a foaf:Document .
+		?s dcterms:description ?desc .
+		OPTIONAL { 
+			?s dcterms:title ?t 
+		}
+	}

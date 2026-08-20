@@ -12,5 +12,5 @@ INSERT
 WHERE
 	{ 	
 		?s dcat:theme ?theme .
-		?edp skos:narrowMatch ?theme .
+		?edp skos:narrowMatch ?theme
 	}
