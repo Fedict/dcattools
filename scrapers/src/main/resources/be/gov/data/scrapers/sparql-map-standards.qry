@@ -1,0 +1,17 @@
+# Map a titles to the URI of a standard
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?s dcterms:conformsTo ?std .
+		?std a dcterms:Standard .
+		?std dcterms:title ?title }
+INSERT
+	{ 	?s dcterms:conformsTo ?uri }
+WHERE
+	{ 	?s dcterms:conformsTo ?std .
+		?std a dcterms:Standard .
+		?std dcterms:title ?title .
+		?uri skos:altLabel ?title
+	}

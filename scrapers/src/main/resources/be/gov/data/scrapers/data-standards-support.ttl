@@ -27,3 +27,93 @@
 	a dcterms:Standard ;
 	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
 	dcterms:title "EPSG 3035 (LAEA Europe)" .
+
+<https://inspire.ec.europa.eu/id/document/tg/ad>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Addresses – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/am>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/bu>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Buildings – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/el>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Elevation – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/er>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Energy Resources – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/ge>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Geology – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/gn>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Geographical Names – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/hy>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Hydrography – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/lc>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Land Cover – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/lu>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Land Use – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/nz>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/oi>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Orthoimagery – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/pf>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/ps>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Protected Sites – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/sd>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Species Distribution – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/so>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Soil – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/tn>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Transport Networks – Technical Guidelines"@en .
+
+<https://inspire.ec.europa.eu/id/document/tg/us>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Utility and Government Services – Technical Guidelines"@en .

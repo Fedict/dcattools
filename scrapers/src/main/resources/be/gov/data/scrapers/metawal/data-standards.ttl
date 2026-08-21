@@ -1,0 +1,39 @@
+# Data for mapping INSPIRE technical guidelines
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://inspire.ec.europa.eu/id/document/tg/am>
+	skos:altLabel "INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units - Guidelines v 3.0.0"@fr,
+		"INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines"@fr .
+	
+<https://inspire.ec.europa.eu/id/document/tg/bu>
+	skos:altLabel "INSPIRE Data Specification on Buildings - Guidelines v 3.0.0"@fr,
+					"INSPIRE Data Specification on Buildings – Technical Guidelines 3.0"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/ef>
+	skos:altLabel "INSPIRE Data Specification on Environmental Monitoring Facilities - Guidelines v 3.0.0"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/ge>
+	skos:altLabel "INSPIRE Data Specification on Geology – Technical Guidelines 3.1"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/gn>
+	skos:altLabel "INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/hy>
+	skos:altLabel "INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/lu>
+	skos:altLabel "INSPIRE Data Specification on Land Use – Technical Guidelines"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/ps>
+	skos:altLabel "INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/so>
+	skos:altLabel "INSPIRE Data Specification on Soil – Technical Guidelines"@fr,
+					"INSPIRE Data Specification on Soil - Guidelines v 3.0.0"@fr .
+
+<https://inspire.ec.europa.eu/id/document/tg/tn>
+	skos:altLabel "INSPIRE Data Specification on Transport Networks - Guidelines v 3.1.0"@fr .
+
+<http://data.europa.eu/eli/reg/2009/976/oj>
+	skos:altLabel "Règlement (CE) n o 976/2009 de la Commission du 19 octobre 2009 portant modalités d’application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne les services en réseau"@fr .

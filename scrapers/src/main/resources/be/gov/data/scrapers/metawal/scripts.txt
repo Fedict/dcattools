@@ -36,8 +36,12 @@ sparql-version.qry
 sparql-geotype-class.qry
 sparql-std-title.qry
 sparql-consolidate-std.qry
+metawal/data-standards.ttl
+sparql-map-standards.qry
 clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+data-standards-support.ttl
 data-hvdcat.ttl
+sparql-remove-orphans.qry
