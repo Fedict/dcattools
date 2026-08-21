@@ -36,6 +36,7 @@ sparql-version.qry
 sparql-geotype-class.qry
 sparql-std-title.qry
 sparql-consolidate-std.qry
+metawal/sparql-page-legislation.qry
 metawal/data-standards.ttl
 sparql-map-standards.qry
 clear-skos.qry

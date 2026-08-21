@@ -10,6 +10,6 @@ WHERE {
 	VALUES ?rel { foaf:page foaf:logo }
 	OPTIONAL { ?icon a ?cl }
 	FILTER(
-		STRENDS(STR(?icon), "png") || STRENDS(STR(?icon), "PNG")
+		STRENDS(STR(?icon), "png") || STRENDS(STR(?icon), "PNG") || STRENDS(STR(?icon), "jpg")
 	)
 }

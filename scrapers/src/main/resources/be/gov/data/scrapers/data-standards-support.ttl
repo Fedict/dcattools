@@ -63,6 +63,11 @@
 	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
 	dcterms:title "INSPIRE Data Specification on Geographical Names – Technical Guidelines"@en .
 
+<https://inspire.ec.europa.eu/id/document/tg/hh>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
+	dcterms:title "INSPIRE Data Specification on Human Health – Technical Guidelines"@en .
+
 <https://inspire.ec.europa.eu/id/document/tg/hy>
 	a dcterms:Standard ;
 	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
