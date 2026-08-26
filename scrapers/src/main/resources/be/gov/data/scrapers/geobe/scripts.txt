@@ -61,6 +61,7 @@ data-frequency.ttl
 #sparql-geo-belgium.qry
 #geobe/sparql-clean-location.qry
 #geobe/sparql-delete-fodfin.qry
+sparql-remove-catalogrecord.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
 geobe/sparql-fix-date.qry
