@@ -10,3 +10,9 @@
 	dcterms:type admsp:NationalAuthority ;
 	foaf:name "IGN"@fr, "NGI"@en, "NGI"@nl ;
 	foaf:homepage <https://www.ngi.be> .
+
+<http://data.gov.be/org/ngi/contact>
+	a vcard:Organization ;
+	vcard:fn "IGN"@fr, "NGI"@en, "NGI"@nl ;
+	vcard:hasUrl <https://www.geo.be> ;
+	vcard:hasEmail <mailto:products@ngi.be> .

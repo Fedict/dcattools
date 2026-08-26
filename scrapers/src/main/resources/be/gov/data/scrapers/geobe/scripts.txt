@@ -32,6 +32,7 @@ clear-skos.qry
 #geobe/sparql-delete-location.qry
 sparql-fix-serves.qry
 geobe/data-publ-contact.ttl
+geobe/sparql-default-contact.qry
 sparql-conforms-legislation.qry
 geobe/sparql-conforms-legislation.qry
 geobe/sparql-landingpage.qry
