@@ -1,13 +1,23 @@
-# Add reference system based on downloadURL
+# Use the organization of the custodian as publisher when publisher is missing
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX geodcatap: <http://data.europa.eu/930/>
 
 INSERT 
-	{	?s dcat:publisher ?publ }
+	{	?s dcterms:publisher ?publ }
 WHERE
-	{ 	?s geodcat:custodian ?cust .
-		?cust foaf:memberOf ?publ
-		FILTER NOT EXISTS { ?s dcat:publisher ?o }
+	{ 	 
+		?s a ?cl .
+		{	?s geodcatap:custodian ?cust .
+			?cust org:memberOf ?publ
+		}
+		UNION
+		{	?s geodcatap:custodian ?publ .
+			FILTER STRSTARTS(STR(?publ), "https://org.belgif.be/")
+			FILTER NOT EXISTS { ?cust org:memberOf ?publ }
+		}
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		FILTER NOT EXISTS { ?s dcterms:publisher ?o }
 	}
