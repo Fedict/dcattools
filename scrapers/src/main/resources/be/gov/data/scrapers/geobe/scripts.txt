@@ -39,7 +39,7 @@ geobe/sparql-landingpage.qry
 sparql-dist-accessurl.qry
 sparql-remove-accessservice.qry
 geobe/sparql-downloadurl-crs.qry
-#geobe/sparql-fix-datatype.qry
+geobe/sparql-fix-datatype.qry
 geobe/sparql-fix-bira.qry
 #sparql-remove-names.qry
 geobe/data-theme.ttl
