@@ -122,7 +122,9 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de ;
-	skos:altLabel "FPS Mobility"@en, "FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de .
+	skos:altLabel "FPS Mobility"@en, 
+				"FPS Mobility and Transport"@en,
+				"FOD Mobiliteit"@nl, "SPF Mobilité"@fr, "FÖD Mobilität"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
 	a foaf:Organization ;
@@ -133,6 +135,7 @@
 					"Königliches Belgisches Institut für Naturwissenschaften"@de ;
 	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en,
 				"Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en ,
+				"Royal Belgian Institute for Natural Sciences (RBINS)"@en ,
 				"Royal Belgian Institute of Natural Sciences (RBINS)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
@@ -162,6 +165,12 @@
 		"Wallonisches Institut für Schätzung, Zukunftsforschung und Statistik (IWEPS)"@de,
 		"Walloon Institute for Evaluation, Foresight and Statistics (IWEPS)"@en,
 		"Institut Wallon de l'Evaluation, de la Prospective et de la Statistique (IWEPS)"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Vereniging Vlaamse Provincies"@nl ;
+	skos:altLabel "Vereniging Vlaamse Provincies"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725696>
 	a foaf:Organization ;

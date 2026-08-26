@@ -1,0 +1,20 @@
+# Fix Provincie in Cijfers, which is an organization not a person
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE
+	{ 	?s ?p ?uri .
+		?uri foaf:name "provincies.in.cijfers"@en .
+		?uri ?x ?y }
+INSERT
+	{ 	?s ?p <https://org.belgif.be/id/CbeRegisteredEntity/0445212083#cijfers> .
+		<https://org.belgif.be/id/CbeRegisteredEntity/0445212083#cijfers> a foaf:Agent .
+		<https://org.belgif.be/id/CbeRegisteredEntity/0445212083#cijfers> a foaf:Organisation .
+		<https://org.belgif.be/id/CbeRegisteredEntity/0445212083#cijfers> foaf:name "Provincies in Cijfers"@nl .
+		<https://org.belgif.be/id/CbeRegisteredEntity/0445212083#cijfers> org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0445212083#cijfers> }
+WHERE
+	{ 	?s ?p ?uri .
+		?uri foaf:name "provincies.in.cijfers"@en .
+		?uri ?x ?y }

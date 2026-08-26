@@ -6,6 +6,7 @@ geobe/data-org.ttl
 sparql-map-memberof.qry
 geobe/sparql-org-rbins.qry
 sparql-map-org.qry
+geobe/sparql-fix-provincies.qry
 geobe/sparql-custodian-publisher.qry
 geobe/sparql-remove-orgs.qry
 clear-skos.qry
