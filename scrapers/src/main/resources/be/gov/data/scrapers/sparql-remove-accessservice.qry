@@ -2,15 +2,18 @@
 # Not well supported by the EU Data portal, and often points to services without much metadata
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE 
 	{	?cat dcat:service ?s .
 		?dist dcat:accessService ?s .
+		?s a dcat:DataService .
 		?s ?p ?o
 	}
 WHERE
-	{ 	?dist dcat:accessService ?s .
+	{ 	?s a dcat:DataService .
 		?s ?p ?o
+		OPTIONAL { ?dist dcat:accessService ?s }
 		OPTIONAL { ?cat dcat:service ?s }
-		FILTER NOT EXISTS { ?o ?rel ?y } 
+		FILTER NOT EXISTS { ?s dcterms:description ?desc } 
 	}

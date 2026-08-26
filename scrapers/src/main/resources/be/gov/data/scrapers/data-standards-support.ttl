@@ -13,6 +13,11 @@
 	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
 	dcterms:title "EPSG 4258 (ETRS89)" .
 
+<http://www.opengis.net/def/crs/EPSG/0/3857>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
+	dcterms:title "EPSG 3857 (WGS 84 / Pseudo-Mercator)" .
+
 <http://www.opengis.net/def/crs/EPSG/0/4326>
 	a dcterms:Standard ;
 	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
@@ -27,6 +32,16 @@
 	a dcterms:Standard ;
 	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
 	dcterms:title "EPSG 3035 (LAEA Europe)" .
+
+<http://www.opengis.net/def/crs/EPSG/0/25831>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
+	dcterms:title "EPSG 25831 (ETRS89 / UTM zone 31N)" .
+
+<http://www.opengis.net/def/crs/EPSG/0/25832>
+	a dcterms:Standard ;
+	dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> ;
+	dcterms:title "EPSG 25832 (ETRS89 / UTM zone 32N)" .
 
 <https://inspire.ec.europa.eu/id/document/tg/ad>
 	a dcterms:Standard ;

@@ -1,0 +1,25 @@
+# Fix reference systems
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s geodcatap:referenceSystem ?sys .
+		?sys dcterms:title ?val .
+		?sys ?p ?o }
+INSERT
+	{	?s geodcatap:referenceSystem ?uri }
+WHERE
+	{ 	?s geodcatap:referenceSystem ?sys .
+		?sys dcterms:title ?val
+		BIND(
+			IRI(
+				CONCAT("http://www.opengis.net/def/crs/EPSG/0/", 
+					IF(CONTAINS(STR(?val), "EPSG:"), 
+							STRBEFORE(STRAFTER(STR(?val), "EPSG:"), ")") , 
+							STR(?val))
+				)
+			)
+		as ?uri)
+		FILTER (! STRSTARTS(STR(?sys), "http://www.opengis.net"))
+	}
