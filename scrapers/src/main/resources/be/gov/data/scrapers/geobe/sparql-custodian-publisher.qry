@@ -14,7 +14,7 @@ WHERE
 			?cust org:memberOf ?publ
 		}
 		UNION
-		{	?s geodcatap:custodian|geodcatap:originator ?publ .
+		{	?s geodcatap:custodian|geodcatap:originator ?cust .
 			FILTER STRSTARTS(STR(?publ), "https://org.belgif.be/")
 			FILTER NOT EXISTS { ?cust org:memberOf ?publ }
 		}
