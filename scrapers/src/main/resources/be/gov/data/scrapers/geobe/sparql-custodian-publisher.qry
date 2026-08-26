@@ -1,4 +1,4 @@
-# Use the organization of the custodian as publisher when publisher is missing
+# Use the organization of the custodian or originator as publisher when publisher is missing
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -10,11 +10,11 @@ INSERT
 WHERE
 	{ 	 
 		?s a ?cl .
-		{	?s geodcatap:custodian ?cust .
+		{	?s geodcatap:custodian|geodcatap:originator ?cust .
 			?cust org:memberOf ?publ
 		}
 		UNION
-		{	?s geodcatap:custodian ?publ .
+		{	?s geodcatap:custodian|geodcatap:originator ?publ .
 			FILTER STRSTARTS(STR(?publ), "https://org.belgif.be/")
 			FILTER NOT EXISTS { ?cust org:memberOf ?publ }
 		}
