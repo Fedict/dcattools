@@ -134,6 +134,7 @@
 					"Royal Belgian Institute of Natural Sciences"@en, 
 					"Königliches Belgisches Institut für Naturwissenschaften"@de ;
 	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en,
+				"Royal Belgian Institute of Natural Sciences (RBINS), Directorate Natural Environment (OD Nature), Belgian Marine Data Centre (BMDC)"@en,
 				"Royal Belgian Institute for Natural Sciences, Directorate Natural Environment, GeoCell"@en ,
 				"Royal Belgian Institute for Natural Sciences (RBINS)"@en ,
 				"Royal Belgian Institute of Natural Sciences (RBINS)"@en .
@@ -218,3 +219,12 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Proper Strand Lopers"@nl ;
 	skos:altLabel "Proper Strand Lopers"@en  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0850737411>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Conseil Régional Hauts de France"@fr ;
+	skos:altLabel "Conseil Régional Hauts de France"@fr, 
+					"Conseil régional Hauts-de-France"@fr,
+				"Région Hauts-de-France"@fr  .
+
