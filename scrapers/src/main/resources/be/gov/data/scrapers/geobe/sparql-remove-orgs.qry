@@ -11,6 +11,8 @@ DELETE {
 	?s dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
 	?dist ?a ?b .
 	?qa ?c ?d .
+	?cat dcat:dataset ?d2 .
+	?d2 ?x ?y .
 	?point ?e ?f
 } WHERE {
 	?cat ?rel ?s .
@@ -20,6 +22,11 @@ DELETE {
 	OPTIONAL {
 		?s dcat:distribution ?dist .
 		?dist ?a ?b 
+	}
+	OPTIONAL {
+		?cat dcat:dataset ?d2 .
+		?s dcat:servesDataset ?d2 .
+		?d2 ?x ?y 
 	}
 	OPTIONAL {
 		?s prov:qualifiedAttribution ?qa .
