@@ -1,4 +1,4 @@
-# Remove organizations to avoid duplicates
+# Remove daatsets and servicess to avoid duplicates from other sources
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -6,39 +6,27 @@ PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
-	?cat dcat:dataset ?dataset .
-	?service dcat:servesDataset ?dataset .
-	?service ?d ?e .
-	?dataset ?p ?o .
-	?dataset a dcat:Dataset .
-	?dataset dcterms:identifier <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
-	?dataset dcat:distribution ?dist .
-	?dist ?x ?y .
-	?dataset prov:qualifiedAttribution ?qa .
-	?qa ?b ?c .
-	?dataset dcat:contactPoint ?point . 
-	?point vcard:fn ?name .
-	?point vcard:hasEmail ?email
+	?cat ?rel ?s .
+	?s ?p ?o .
+	?s dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
+	?dist ?a ?b .
+	?qa ?c ?d .
+	?point ?e ?f
 } WHERE {
-	?cat dcat:dataset ?dataset .
-	?dataset ?p ?o .
-	?dataset a dcat:Dataset .
-	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
+	?cat ?rel ?s .
+	?s ?p ?o .
+	?s dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>  .
+	VALUES ?rel { dcat:dataset dcat:service }
 	OPTIONAL {
-		?dataset dcat:distribution ?dist .
-		?dist ?x ?y 
+		?s dcat:distribution ?dist .
+		?dist ?a ?b 
 	}
 	OPTIONAL {
-		?dataset prov:qualifiedAttribution ?qa .
-		?qa ?b ?c
+		?s prov:qualifiedAttribution ?qa .
+		?qa ?c ?d
 	}
 	OPTIONAL { 
-		?dataset dcat:contactPoint ?point . 
-		?point vcard:fn ?name .
-		?point vcard:hasEmail ?email
-	}
-	OPTIONAL {
-		?service dcat:servesDataset ?dataset .
-		?service ?d ?e 
+		?s dcat:contactPoint ?point . 
+		?point ?e ?f
 	}
 }
