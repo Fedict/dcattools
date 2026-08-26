@@ -1,4 +1,4 @@
- Use generated IRI as Dataset IRI
+## Connect dataservices to the full dataset metadata, instead of the stub
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -13,12 +13,11 @@ INSERT
 WHERE
 	{	?s a dcat:Dataset .
 		?s dcterms:identifier ?id .
+		?s dcterms:description ?desc .
 		?service dcat:servesDataset ?d .
 		?d dcterms:identifier ?id .
 		?d ?p ?o
 		OPTIONAL { ?cat dcat:dataset ?s }
-		BIND (IRI(
-				CONCAT("http://data.gov.be/.well-known/genid/dataset/bmdc/", ?id) 
-			) as ?uri)
+		FILTER NOT EXISTS (?d dcterms:description ?desc)
 		FILTER (isLiteral(?id))
 	}

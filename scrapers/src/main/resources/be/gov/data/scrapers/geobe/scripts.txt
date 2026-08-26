@@ -4,7 +4,7 @@ sparql-map-access-inspire.qry
 sparql-available.qry
 geobe/data-org.ttl
 sparql-map-memberof.qry
-geobe/sparql-org-rbins.qry
+#geobe/sparql-org-rbins.qry
 sparql-map-org.qry
 geobe/sparql-fix-provincies.qry
 geobe/sparql-custodian-publisher.qry
@@ -30,7 +30,7 @@ sparql-map-media.qry
 sparql-map-media-srvc.qry
 clear-skos.qry
 #geobe/sparql-delete-location.qry
-#geobe/sparql-fix-serves.qry
+sparql-fix-serves.qry
 geobe/data-publ-contact.ttl
 sparql-conforms-legislation.qry
 geobe/sparql-conforms-legislation.qry
