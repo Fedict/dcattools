@@ -63,6 +63,7 @@ bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 sparql-delete-label-empty.qry
 sparql-downloadurl.qry
+bmdc/sparql-format-extension.qry
 data-media.ttl
 bmdc/sparql-downloadurl-fmt.qry
 sparql-map-media-srvc.qry
@@ -70,6 +71,7 @@ clear-skos.qry
 sparql-startenddate.qry
 bmdc/sparql-remove-rights.qry
 bmdc/sparql-fix-date.qry
+sparql-vcard-fn.qry
 clear-skos.qry
 bmdc/sparql-fix-epsg.qry
 data-standards-support.ttl

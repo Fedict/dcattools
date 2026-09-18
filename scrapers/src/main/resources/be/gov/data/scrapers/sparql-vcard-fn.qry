@@ -1,7 +1,11 @@
-# Use vcard:fn instead of hasFN, both are correct, but DCAT-AP suggests to use fn
+# Use vcard:fn instead of hasFN or organizationName, both are correct, but DCAT-AP suggests to use fn
 
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
-DELETE	{ ?s vcard:hasFN ?name }
+DELETE	{ ?s ?rel ?name }
 INSERT	{ ?s vcard:fn ?name }
-WHERE	{ ?s vcard:hasFN ?name }
+WHERE	{
+		?s ?rel ?name 
+		VALUES ?rel { vcard:hasFN vcard:hasOrganizationName }
+		FILTER NOT EXISTS { ?s vcard:fn ?n }
+	}
