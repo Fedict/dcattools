@@ -11,8 +11,5 @@ WHERE
 		?dist dcat:downloadURL ?url .
 		VALUES ?ext { ".gml" ".xlsx" ".xls" ".XLS" ".csv" "/json" "/xml" }
 		BIND (IF(CONTAINS(STR(?url), ?ext), SUBSTR(?ext, 2), ?unbound) as ?fmt)
-		FILTER NOT EXISTS { 
-				?dist dcterms:format ?f 
-				?f ?x ?y }
 	}
 	
