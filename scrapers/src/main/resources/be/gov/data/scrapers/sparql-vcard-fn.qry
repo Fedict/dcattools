@@ -6,6 +6,6 @@ DELETE	{ ?s ?rel ?name }
 INSERT	{ ?s vcard:fn ?name }
 WHERE	{
 		?s ?rel ?name 
-		VALUES ?rel { vcard:hasFN vcard:hasOrganizationName }
+		VALUES ?rel { vcard:hasFN vcard:hasOrganizationName vcard:organization-name }
 		FILTER NOT EXISTS { ?s vcard:fn ?n }
 	}
