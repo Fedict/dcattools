@@ -137,3 +137,11 @@
 	a dcterms:Standard ;
 	dcterms:type <http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification> ;
 	dcterms:title "INSPIRE Data Specification on Utility and Government Services – Technical Guidelines"@en .
+
+<https://standards.isotc211.org/19115/-1>
+	a dcterms:Standard ;
+	dcterms:title "ISO 19115:2003" .
+
+<https://standards.isotc211.org/19139>
+	a dcterms:Standard ;
+	dcterms:title "ISO 19139" .

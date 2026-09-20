@@ -1,0 +1,19 @@
+# Use URI for ISO standard
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl:	<http://www.w3.org/2002/07/owl#>
+
+DELETE 
+	{	?s dcterms:conformsTo ?std .
+		?std ?p ?o .
+		?std ?rel "ISO 19115:2003/19139"@en }
+INSERT
+	{	?s dcterms:conformsTo <https://standards.isotc211.org/19139> }
+WHERE
+	{	?s dcterms:conformsTo ?std .
+		?std ?p ?o .
+		?std ?rel "ISO 19115:2003/19139"@en 
+		VALUES ?rel { owl:versionInfo dcterms:title } 
+		FILTER (STRSTARTS(STR(?std), "http://data.gov.be"))
+	}
+	

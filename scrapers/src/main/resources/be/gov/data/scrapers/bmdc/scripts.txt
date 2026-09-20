@@ -21,7 +21,6 @@ sparql-remove-catalogrecord.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-map-memberof.qry
-sparql-remove-orphans.qry
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
@@ -33,7 +32,6 @@ bmdc/data-regions.ttl
 bmdc/sparql-regions-within.qry
 bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
-sparql-remove-orphans.qry
 sparql-remove-accessservice.qry
 sparql-access-to-download.qry
 bmdc/sparql-media-compress.qry
@@ -63,10 +61,9 @@ sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry
 bmdc/sparql-creator-orcid.qry
 sparql-delete-label-empty.qry
-sparql-downloadurl.qry
-bmdc/sparql-format-extension.qry
 data-media.ttl
-bmdc/sparql-downloadurl-fmt.qry
+sparql-map-media-skos.qry
+#bmdc/sparql-downloadurl-fmt.qry
 sparql-map-media-srvc.qry
 clear-skos.qry
 sparql-startenddate.qry
@@ -75,7 +72,9 @@ bmdc/sparql-fix-date.qry
 sparql-vcard-fn.qry
 clear-skos.qry
 bmdc/sparql-fix-epsg.qry
-data-standards-support.ttl
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+data-hvdcat.ttl
+data-standards-support.ttl
+sparql-remove-orphans.qry
