@@ -8,7 +8,7 @@ statbelopen/sparql-hvd.qry
 sparql-access-public.qry
 sparql-available.qry
 sparql-geotype-format.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-hvdcat.ttl
 data-shacl-support.ttl
 sparql-shacl-classes.qry

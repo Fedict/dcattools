@@ -12,12 +12,12 @@ sparql-map-license.qry
 sparql-access-public.qry
 infrabel/data-publ-contact.ttl
 infrabel/sparql-publ-contact.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-remove-roles.qry
 infrabel/data-theme.ttl
 infrabel/sparql-map-theme.qry
 sparql-expand-dctype.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-geo-belgium.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
@@ -29,7 +29,7 @@ data-media.ttl
 sparql-map-media.qry
 sparql-tag-language.qry
 sparql-geotype-format.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry
 data-shacl-support.ttl

@@ -10,7 +10,7 @@ statbelpubs/sparql-theme.qry
 sparql-geo-belgium.qry
 data-media.ttl
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 statbelpubs/sparql-empty-keywords.qry
 statbelpubs/sparql-clean-dataset.qry
 data-shacl-support.ttl

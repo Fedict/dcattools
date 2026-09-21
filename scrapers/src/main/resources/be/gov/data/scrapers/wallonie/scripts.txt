@@ -16,12 +16,12 @@ wallonie/sparql-fix-org.qry
 sparql-map-org.qry
 sparql-remove-names.qry
 wallonie/sparql-remove-orgs.qry
-clear-skos.qry
+sparql-clear-skos.qry
 wallonie/sparql-fix-theme.qry
 wallonie/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-remove-circular.qry
-clear-skos.qry
+sparql-clear-skos.qry
 wallonie/data-contact.ttl
 wallonie/sparql-remove-name.qry
 wallonie/sparql-contact-name.qry
@@ -39,7 +39,7 @@ sparql-access-public.qry
 sparql-available.qry
 sparql-map-media.qry
 sparql-expand-dctype.qry
-clear-skos.qry
+sparql-clear-skos.qry
 wallonie/sparql-split-german.qry
 wallonie/sparql-split-german2.qry
 sparql-strip-html.qry

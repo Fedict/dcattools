@@ -5,6 +5,6 @@ sparql-access-public.qry
 sparql-available.qry
 data-frequency.ttl
 data-media.ttl
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

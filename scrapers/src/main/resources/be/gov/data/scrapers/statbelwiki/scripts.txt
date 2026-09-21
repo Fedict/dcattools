@@ -9,7 +9,7 @@ statbelwiki/sparql-vcard-fn.qry
 statbelwiki/data-theme.ttl
 sparql-access-public.qry
 sparql-available.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

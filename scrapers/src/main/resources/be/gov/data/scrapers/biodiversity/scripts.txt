@@ -2,7 +2,7 @@
 biodiversity/sparql-language.qry
 sparql-tag-language.qry
 biodiversity/sparql-theme.qry
-clear-skos.qry
+sparql-clear-skos.qry
 biodiversity/data-geo.ttl
 biodiversity/data-org.ttl
 sparql-map-org.qry
@@ -14,7 +14,7 @@ biodiversity/sparql-default-contact.qry
 biodiversity/sparql-dist-downloadurl.qry
 data-media.ttl
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
 biodiversity/sparql-fix-license.qry
@@ -25,7 +25,7 @@ sparql-access-public.qry
 sparql-available.qry
 sparql-delete-label-license.qry
 sparql-title-to-desc.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

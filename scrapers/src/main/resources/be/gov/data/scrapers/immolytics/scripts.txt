@@ -1,9 +1,11 @@
 # extra queries to be executed and data to be loaded
+immolytics/data-publ.ttl
+immolytics/sparql-publisher.qry
+data-license.ttl
+sparql-map-license.qry
 sparql-access-public.qry
-sparql-available.qry
-data-frequency.ttl
-data-media.ttl
+sparql-geo-belgium.qry
 sparql-clear-skos.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-data-hvdcat.ttl
+sparql-remove-orphans.qry

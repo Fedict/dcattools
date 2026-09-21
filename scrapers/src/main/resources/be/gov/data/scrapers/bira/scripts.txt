@@ -39,10 +39,10 @@ sparql-access-public.qry
 sparql-available.qry
 bira/sparql-doi-landingpage.qry
 bira/sparql-fix-biblio.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-license.ttl
 sparql-map-license.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

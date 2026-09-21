@@ -7,7 +7,7 @@ metawal/sparql-default-publisher.qry
 metawal/sparql-id.qry
 data-media-compress.ttl
 metawal/sparql-map-media-compress.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-media.ttl
 metawal/sparql-format-wms.qry
 metawal/sparql-format-uri.qry
@@ -15,7 +15,7 @@ metawal/sparql-fix-format.qry
 metawal/sparql-map-media.qry
 metawal/sparql-map-format.qry
 #sparql-map-media-srvc.qry
-clear-skos.qry
+sparql-clear-skos.qry
 metawal/sparql-fix-percenturl.qry
 sparql-theme-subject.qry
 metawal/sparql-fix-language.qry
@@ -39,7 +39,7 @@ sparql-consolidate-std.qry
 metawal/sparql-page-legislation.qry
 metawal/data-standards.ttl
 sparql-map-standards.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

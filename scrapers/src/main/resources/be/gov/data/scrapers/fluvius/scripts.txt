@@ -13,7 +13,7 @@ sparql-available.qry
 sparql-remove-circular.qry
 sparql-theme-subject.qry
 fluvius/sparql-theme.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 fluvius/data-publ-contact.ttl
@@ -23,7 +23,7 @@ sparql-delete-mediatype.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-expand-dctype.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-title-to-desc.qry
 sparql-strip-html.qry
 data-shacl-support.ttl

@@ -5,7 +5,7 @@ sparql-geo-belgium.qry
 data-media.ttl
 sodha/sparql-format-extension.qry
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-date-type.qry
 data-license.ttl
 sparql-identifier-literal.qry
@@ -27,7 +27,7 @@ sodha/sparql-nl-language.qry
 sodha/sparql-fr-language.qry
 sodha/sparql-default-language.qry
 sparql-tag-language.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-doi-landingpage.qry
 sodha/sparql-accessurl.qry
 sodha/data-contact.ttl
@@ -36,7 +36,7 @@ sodha/data-org.ttl
 sodha/sparql-map-org.qry
 sparql-bytesize-type.qry
 sparql-vcard-mailto.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

@@ -11,7 +11,7 @@ brussels/sparql-subject-keyword.qry
 sparql-vocab-theme.qry
 data-media.ttl
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 brussels/sparql-fix-wms.qry
 sparql-delete-label-format.qry
 brussels/sparql-bytesize.qry
@@ -32,7 +32,7 @@ brussels/sparql-license-bxlcity.qry
 sparql-access-public.qry
 sparql-map-license.qry
 sparql-delete-label-license.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-frequency.ttl
 sparql-map-frequency.qry
 sparql-available.qry
@@ -40,7 +40,7 @@ sparql-available.qry
 #sparql-map-media.qry
 data-license.ttl
 sparql-map-license.qry
-clear-skos.qry
+sparql-clear-skos.qry
 brussels/sparql-accessurl.qry
 brussels/sparql-fix-downloadurl.qry
 sparql-title-to-desc.qry

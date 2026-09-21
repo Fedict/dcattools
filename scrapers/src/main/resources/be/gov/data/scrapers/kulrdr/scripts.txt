@@ -20,7 +20,7 @@ kulrdr/sparql-person-name-corr.qry
 kulrdr/data-theme.ttl
 sparql-map-theme.qry
 kulrdr/sparql-default-theme.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-tag-language.qry
 sparql-doi-landingpage.qry
 kulrdr/data-contact.ttl
@@ -29,7 +29,7 @@ kulrdr/data-org.ttl
 kulrdr/sparql-map-lang.qry
 sparql-map-org.
 sparql-vcard-mailto.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

@@ -10,7 +10,7 @@ sparql-geo-belgium.qry
 favv/sparql-dist-id.qry
 favv/sparql-license.qry
 favv/sparql-landing-lang.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

@@ -1,7 +1,7 @@
 # extra queries to be executed and data to be loaded 
 data-media.ttl
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-remove-circular.qry
 healthdata/sparql-remove-subnode.qry
 healthdata/data-org.ttl
@@ -38,7 +38,7 @@ healthdata/sparql-startdate-enddate.qry
 healthdata/sparql-references-iri.qry
 sparql-available.qry
 sparql-date-type.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

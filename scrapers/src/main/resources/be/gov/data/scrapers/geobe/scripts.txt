@@ -10,11 +10,11 @@ geobe/sparql-fix-provincies.qry
 geobe/sparql-custodian-publisher.qry
 geobe/sparql-remove-orgs.qry
 sparql-consolidate-persons.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-themes-inspire.ttl
 data-themes-gemet.ttl
 sparql-map-theme-inspire.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-consolidate-bbox.qry
 sparql-consolidate-std.qry
 geobe/sparql-document-title.qry
@@ -28,7 +28,7 @@ geobe/sparql-remove-format.qry
 geobe/sparql-downloadurl-fmt.qry
 sparql-map-media.qry
 sparql-map-media-srvc.qry
-clear-skos.qry
+sparql-clear-skos.qry
 #geobe/sparql-delete-location.qry
 sparql-fix-serves.qry
 geobe/data-publ-contact.ttl
@@ -54,7 +54,7 @@ geobe/sparql-license-links.qry
 data-license.ttl
 sparql-map-license.qry
 geobe/sparql-fix-cc-license.qry
-clear-skos.qry
+sparql-clear-skos.qry
 geobe/sparql-fix-language.qry
 #geobe/sparql-vcard-org.qry
 #sparql-vcard-name.qry
@@ -66,7 +66,7 @@ sparql-remove-catalogrecord.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
 geobe/sparql-fix-date.qry
-clear-skos.qry
+sparql-clear-skos.qry
 sparql-delete-label-empty.qry
 sparql-geotype-class.qry
 data-standards-support.ttl

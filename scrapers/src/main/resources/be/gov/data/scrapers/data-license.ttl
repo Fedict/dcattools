@@ -39,6 +39,7 @@
 	skos:altLabel "cc-by", "CC BY", "CC-BY", "CC%20BY%204.0", "CC-BY-4.0",
 		<http://www.opendefinition.org/licenses/cc-by>,
 		<http://creativecommons.org/licenses/by/4.0/legalcode>,
+		<http://creativecommons.org/licenses/by/4.0/>,
 		<https://creativecommons.org/licenses/by/4.0/>, 
 		"https://creativecommons.org/licenses/by/4.0/", 
 		"https://creativecommons.org/licenses/by/4.0/deed.fr",

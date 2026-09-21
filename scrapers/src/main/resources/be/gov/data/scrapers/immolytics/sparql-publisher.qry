@@ -1,0 +1,12 @@
+# Set publisher
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?dataset dcterms:publisher ?publ .
+		?publ ?p ?o }
+INSERT 
+	{ 	?dataset dcterms:publisher <https://org.belgif.be/id/CbeRegisteredEntity/0787224383#immolytics> }
+WHERE
+	{	?dataset dcterms:publisher ?publ .
+		?publ ?p ?o }

@@ -9,7 +9,7 @@ pensionstat/sparql-add-keyword.qry
 sparql-geo-belgium.qry
 data-media.ttl
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

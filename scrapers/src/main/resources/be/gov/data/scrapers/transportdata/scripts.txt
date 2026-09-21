@@ -16,7 +16,7 @@ transportdata/sparql-landingpage.qry
 transportdata/sparql-remove-orgs.qry
 sparql-available.qry
 sparql-geotype-format.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

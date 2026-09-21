@@ -43,10 +43,10 @@ sparql-map-media.qry
 vlaanderen/sparql-format-wms.qry
 vlaanderen/sparql-format-wms-fix.qry
 vlaanderen/sparql-format-dtd.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
-clear-skos.qry
+sparql-clear-skos.qry
 vlaanderen/data-license.ttl
 sparql-map-license.qry
 sparql-date-type.qry
@@ -72,11 +72,11 @@ vlaanderen/sparql-antwerp-empty.qry
 vlaanderen/sparql-default-lang-tag.qry
 data-frequency.ttl
 sparql-map-frequency.qry
-clear-skos.qry
+sparql-clear-skos.qry
 vlaanderen/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-map-theme.qry
-clear-skos.qry
+sparql-clear-skos.qry
 # Departement Omgeving
 vlaanderen/sparql-deptomgeving-org.qry
 vlaanderen/sparql-deptomgeving-name.qry
@@ -108,7 +108,7 @@ vlaanderen/sparql-default-email.qry
 sparql-strip-html.qry
 sparql-version.qry
 sparql-geotype-format.qry
-clear-skos.qry
+sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

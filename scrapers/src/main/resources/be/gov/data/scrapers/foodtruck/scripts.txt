@@ -12,7 +12,7 @@ sparql-map-license.qry
 foodtruck/sparql-fix-downloadurl.qry
 data-media.ttl
 sparql-map-media.qry
-clear-skos.qry
+sparql-clear-skos.qry
 foodtruck/sparql-landingpage.qry
 foodtruck/sparql-landing-access.qry
 data-shacl-support.ttl
