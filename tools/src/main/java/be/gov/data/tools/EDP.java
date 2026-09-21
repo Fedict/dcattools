@@ -1063,6 +1063,10 @@ public class EDP {
 		writeConcepts(w, con, DCAT.MEDIA_TYPE, "dct:MediaType");
 		writeConcepts(w, con, DCAT.COMPRESS_FORMAT, "dct:MediaType");
 		writeConcepts(w, con, DCAT.THEME, "skos:Concept");
+		writeConcepts(w, con, DCTERMS.SUBJECT, "skos:Concept");		
+		writeConcepts(w, con, DCATAPHVD.hvdCategory, "skos:Concept");
+		writeConcepts(w, con, GeoDCATAP.topicCategory, "skos:Concept");
+		writeConcepts(w, con, MobilityDCATAP.mobilityTheme, "skos:Concept");
 
 		w.writeEndElement();
 	}

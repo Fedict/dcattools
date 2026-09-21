@@ -128,3 +128,5 @@
 <http://data.europa.eu/bna/c_e1da4e07> a skos:Concept ;
 	skos:prefLabel "Statistics"@en .
 
+<http://data.europa.eu/bna/c_793164b6> a skos:Concept ;
+	skos:prefLabel "Species distribution"@en .
