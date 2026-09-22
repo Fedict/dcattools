@@ -3,57 +3,57 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
-	skos:prefLabel "continuous"@en ;
+	skos:prefLabel "continuous"@en, "continuel"@fr, "voortdurend"@nl, "kontinuierlich"@de ;
 	skos:altLabel "continual", <http://data.gov.be/continuously>, "R/PT1S", "Continuously", "Real time",
 		"http://publications.europa.eu/resource/authority/frequency/CONT",
 		<http://purl.org/cld/freq/continuous>,
 		<http://publications.europa.eu/resource/authority/frequency/CONT> .
 
 <http://publications.europa.eu/resource/authority/frequency/TRIHOURLY>
-	skos:prefLabel "trihourly"@en ;
+	skos:prefLabel "trihourly"@en, "toutes les trois heures"@fr, "om de drie uur"@nl, "alle drei Stunden"@de ;
 	skos:altLabel <http://data.gov.be/5%20minutes>, 
 		<http://data.gov.be/quarter%20hour>, "Quarter%20Hour", "5%20Minutes" .
 
 <http://publications.europa.eu/resource/authority/frequency/HOURLY> 
-	skos:prefLabel "hourly"@en ;
+	skos:prefLabel "hourly"@en, "toutes les heures"@fr, "om het uur"@nl, "stündlich"@de ;
 	skos:altLabel "hourly", <http://data.gov.be/hourly>, <http://purl.org/cld/freq/hourly>,
 		"http://publications.europa.eu/resource/authority/frequency/HOURLY", "Hourly" .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY_2> 
-	skos:prefLabel "twice a day"@en ;
+	skos:prefLabel "twice a day"@en, "deux fois par jour"@fr, "tweemaal per dag"@nl, "zweimal täglich"@de ;
 	skos:altLabel <http://data.gov.be/6%20hours>, "DAILY_2", "6%20Hours" .
 
 <http://publications.europa.eu/resource/authority/frequency/DAILY>
-	skos:prefLabel "daily"@en ;
+	skos:prefLabel "daily"@en, "quotidien"@fr, "dagelijks"@nl, "täglich"@de ;
 	skos:altLabel "daily", "R/P1D", <http://purl.org/cld/freq/daily>, <http://data.gov.be/daily>,
 		"http://publications.europa.eu/resource/authority/frequency/DAILY", "Daily", "DAILY", "P1D",
 		<http://publications.europa.eu/resource/authority/frequency/DAILY> .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY>
-	skos:prefLabel "weekly"@en ;
+	skos:prefLabel "weekly"@en, "hebdomadaire"@fr, "wekelijks"@nl, "wöchentlich"@de ;
 	skos:altLabel "weekly", "W", <http://purl.org/cld/freq/weekly>, "Toutes%20les%20semaines",
 		"http://publications.europa.eu/resource/authority/frequency/WEEKLY", "Weekly",
 		<http://publications.europa.eu/resource/authority/frequency/WEEKLY> .
 
 <http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> 
-	skos:prefLabel "semiweekly"@en ;
+	skos:prefLabel "semiweekly"@en, "bihebdomadaire"@fr, "twee keer per week"@nl, "zweimal pro Woche"@de ;
 	skos:altLabel "R/P3.5D" .
 
 <http://publications.europa.eu/resource/authority/frequency/MONTHLY>
-	skos:prefLabel "monthly"@en ;
+	skos:prefLabel "monthly"@en, "mensuel"@fr, "maandelijks"@nl, "monatlich"@de ;
 	skos:altLabel "monthly", "M", "R/P1M", <http://purl.org/cld/freq/monthly>,
 		"http://publications.europa.eu/resource/authority/frequency/MONTHLY",
 		<http://publications.europa.eu/resource/authority/frequency/MONTHLY> .
 
 <http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
-	skos:prefLabel "quarterly"@en ;
+	skos:prefLabel "quarterly"@en, "trimestriel"@fr, "driemaandelijks"@nl, "vierteljährlich"@de ;
 	skos:altLabel "5annually", "R/P4Y", "quarterly", <http://purl.org/cld/freq/quarterly>,
 		"http://publications.europa.eu/resource/authority/frequency/QUARTERLY", "trimestriel",
 		"Plusieurs%20fois%20par%20an",
 		<http://publications.europa.eu/resource/authority/frequency/QUARTERLY> .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
-	skos:prefLabel "semiannual"@en ;
+	skos:prefLabel "semiannual"@en, "semestriel"@fr, "halfjaarlijks"@nl, "halbjährlich"@de ;
 	skos:altLabel "biannually", "R/P6M", "ANNUAL_2",
 		<http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>, "6 months", 
 		"Twice-Yearly", "Semestrial",
@@ -61,7 +61,7 @@
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL_2", "semestrielle" .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>
-	skos:prefLabel "annual"@en ;
+	skos:prefLabel "annual"@en, "annuel"@fr, "jaarlijks"@nl, "jährlich"@de ;
 	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
 		<http://data.gov.be/YEARLY>,
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
@@ -71,15 +71,15 @@
 		"à%20chaque%20nouvel%20appel%20à%20projet%20(tous%20les%20ans)" .
 
 <http://publications.europa.eu/resource/authority/frequency/BIENNIAL>
-	skos:prefLabel "biennial"@en ;
+	skos:prefLabel "biennial"@en, "biennal"@fr, "tweejaarlijks"@nl, "zweijährlich"@de ;
 	skos:altLabel "BIENNIAL" .
 
 <http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
-	skos:prefLabel "decennial"@en ;
+	skos:prefLabel "decennial"@en, "tous les dix ans"@fr, "om de tien jaar"@nl, "alle zehn Jahre"@de ;
 	skos:altLabel "R/P10Y" .
 
 <http://publications.europa.eu/resource/authority/frequency/IRREG>
-	skos:prefLabel "irregular"@en ;
+	skos:prefLabel "irregular"@en, "irrégulier"@fr, "onregelmatig"@nl, "unregelmäßig"@de ;
 	skos:altLabel "asNeeded", "irregular", <http://purl.org/cld/freq/irregular>, "Irregular", "Ad-hoc",
 		"http://publications.europa.eu/resource/authority/frequency/IRREG", "Ad hoc", "discontinuous",
 		"Discontinuous",
@@ -88,17 +88,17 @@
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded> .
 
 <http://publications.europa.eu/resource/authority/frequency/UNKNOWN>
-	skos:prefLabel "unknown"@en ;
+	skos:prefLabel "unknown"@en, "inconnu"@fr, "onbekend"@nl, "unbekannt"@de ;
 	skos:altLabel "unknown", 
 		"http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
 		<http://publications.europa.eu/resource/authority/frequency/UNKNOWN> .
 
 <http://publications.europa.eu/resource/authority/frequency/OTHER>
-	skos:prefLabel "other"@en ;
+	skos:prefLabel "other"@en, "autre"@fr, "overige"@nl, "anderer"@de ;
 	skos:altLabel <http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#periodic> .
 
 <http://publications.europa.eu/resource/authority/frequency/NEVER>
-	skos:prefLabel "never"@en ;
+	skos:prefLabel "never"@en, "jamais"@fr, "nooit"@nl, "niemals"@de ;
 	skos:altLabel "notPlanned", "NOT_PLANNED",
 		"http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned", "No more updated",
 		<http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/notPlanned>,

@@ -3,13 +3,101 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+
+<http://publications.europa.eu/resource/authority/frequency/CONT> 
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "continuous"@en, "continuel"@fr, "voortdurend"@nl, "kontinuierlich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/TRIHOURLY>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "trihourly"@en, "toutes les trois heures"@fr, "om de drie uur"@nl, "alle drei Stunden"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/HOURLY> 
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "hourly"@en, "toutes les heures"@fr, "om het uur"@nl, "stündlich"@de  .
+
+<http://publications.europa.eu/resource/authority/frequency/DAILY_2> 
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "twice a day"@en, "deux fois par jour"@fr, "tweemaal per dag"@nl, "zweimal täglich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/DAILY>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "daily"@en, "quotidien"@fr, "dagelijks"@nl, "täglich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/WEEKLY>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "weekly"@en, "hebdomadaire"@fr, "wekelijks"@nl, "wöchentlich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/WEEKLY_2> 
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "semiweekly"@en, "bihebdomadaire"@fr, "twee keer per week"@nl, "zweimal pro Woche"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/MONTHLY>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "monthly"@en, "mensuel"@fr, "maandelijks"@nl, "monatlich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "quarterly"@en, "trimestriel"@fr, "driemaandelijks"@nl, "vierteljährlich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "semiannual"@en, "semestriel"@fr, "halfjaarlijks"@nl, "halbjährlich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "annual"@en, "annuel"@fr, "jaarlijks"@nl, "jährlich"@de  .
+
+<http://publications.europa.eu/resource/authority/frequency/BIENNIAL>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "biennial"@en, "biennal"@fr, "tweejaarlijks"@nl, "zweijährlich"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/DECENNIAL>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "decennial"@en, "tous les dix ans"@fr, "om de tien jaar"@nl, "alle zehn Jahre"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/IRREG>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "irregular"@en, "irrégulier"@fr, "onregelmatig"@nl, "unregelmäßig"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/UNKNOWN>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "unknown"@en, "inconnu"@fr, "onbekend"@nl, "unbekannt"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/OTHER>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "other"@en, "autre"@fr, "overige"@nl, "anderer"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/NEVER>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "never"@en, "jamais"@fr, "nooit"@nl, "niemals"@de .
+
 <http://publications.europa.eu/resource/authority/access-right/PUBLIC>
 	a dcterms:RightsStatement;
-	skos:prefLabel "Public"@en  .
+	skos:inScheme <http://publications.europa.eu/resource/authority/access-right> ;
+	skos:prefLabel "public"@en  .
 
 <http://publications.europa.eu/resource/authority/access-right/RESTRICTED>
 	a dcterms:RightsStatement;
-	skos:prefLabel "Restricted"@en  .
+	skos:inScheme <http://publications.europa.eu/resource/authority/access-right> ;
+	skos:prefLabel "restricted"@en  .
 
 <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE>
 	a skos:Concept ;
@@ -18,88 +106,106 @@
 
 <http://publications.europa.eu/resource/authority/dataset-type/HVD>
 	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
 	skos:prefLabel "High-value dataset"@en .
 
 <http://publications.europa.eu/resource/authority/language/ENG>
 	a dcterms:LinguisticSystem;
-	skos:prefLabel "English"@en .
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+	skos:prefLabel "English"@en, "anglais"@fr, "Engels"@nl, "Englisch"@de .
 
 <http://publications.europa.eu/resource/authority/language/FRA> 
 	a dcterms:LinguisticSystem;
-	skos:prefLabel "French"@en .
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+	skos:prefLabel "French"@en, "français"@fr, "Frans"@nl, "Französisch"@de .
 
 <http://publications.europa.eu/resource/authority/language/NLD> 
 	a dcterms:LinguisticSystem;
-	skos:prefLabel "Dutch"@en .
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+	skos:prefLabel "Dutch"@en, "néerlandais"@fr, "Nederlands"@nl, "Niederländisch"@de .
 
 <http://publications.europa.eu/resource/authority/language/DEU> 
 	a dcterms:LinguisticSystem;
-	skos:prefLabel "German"@en .
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+	skos:prefLabel "German"@en, "allemand"@fr, "Duits"@nl, "Deutsch"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Agriculture"@en .
+	skos:prefLabel "Agriculture, fisheries, forestry and food"@en, 
+				"Agriculture, pêche, sylviculture et alimentation"@fr, 
+				"Landbouw, visserij, bosbouw en voeding"@nl, 
+				"Landwirtschaft, Fischerei, Forstwirtschaft und Nahrungsmittel"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Economy"@en .
+	skos:prefLabel "Economy and finance"@en, "Économie et finances"@fr, 
+					"Economie en financiën"@nl, "Wirtschaft und Finanzen"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Education"@en .
+	skos:prefLabel "Education, culture and sport"@en, "Éducation, culture et sport"@fr, 
+					"Onderwijs, cultuur en sport"@nl, "Bildung, Kultur und Sport"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Energy"@en .
+	skos:prefLabel "Energy"@en, "Énergie"@fr, "Energie"@nl, "Energie"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Environment"@en .
+	skos:prefLabel "Environment"@en, "Environnement"@fr, "Milieu"@nl, "Umwelt"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Government"@en .
+	skos:prefLabel "Government"@en, "Gouvernement et secteur public"@fr, 
+					"Overheid en publieke sector"@nl, "Regierung und öffentlicher Sektor"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Health"@en .
+	skos:prefLabel "Health"@en, "Santé"@fr, "Gezondheid"@nl, "Gesundheit"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/INTR> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "International"@en .
+	skos:prefLabel "International issues"@en, "Questions internationales"@fr, 
+					"Internationale vraagstukken"@nl, "Internationale Themen"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Justice"@en .
+	skos:prefLabel "Justice, legal system and public safety"@en, 
+					"Justice, système juridique et sécurité publique"@fr, 
+					"Justitie, rechtsstelsel en openbare veiligheid"@nl, 
+					"Justiz, Rechtssystem und öffentliche Sicherheit"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Regional"@en .
+	skos:prefLabel "Regions and cities"@en, "Régions et villes"@fr, 
+					"Regio's en steden"@nl, "Regionen und Städte"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Population and Society"@en .
+	skos:prefLabel "Population and society"@en, "Population et société"@fr, 
+					"Bevolking en samenleving"@nl, "Bevölkerung und Gesellschaft"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Technology"@en .
+	skos:prefLabel "Science and technology"@en, "Science et technologie"@fr, 
+					"Wetenschap en technologie"@nl, "Wissenschaft und Technologie"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN> 
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-	skos:prefLabel "Transport"@en .
+	skos:prefLabel "Transport"@en, "Transports"@fr, "Vervoer"@nl, "Verkehr"@de .
 
 <http://purl.org/adms/publishertype/NationalAuthority> 
 	a skos:Concept ;
@@ -129,20 +235,23 @@
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/PublicDomain> ;
-	skos:prefLabel "CC0" .
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons CC0 1.0 Universal"@en .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BY_2_0>
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	skos:prefLabel "CC BY 2.0" .
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution 2.0 Generic"@en .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
 	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
-	skos:prefLabel "CC BY-NC 4.0" .
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution–NonCommercial 4.0 International"@en .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNCND_4_0>
 	a skos:Concept ;
@@ -150,13 +259,15 @@
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
 	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
 	dcterms:type <http://purl.org/adms/licencetype/NoDerivativeWork> ;
-	skos:prefLabel "CC BY-NC 4.0" .
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution–NonCommercial–NoDerivs 4.0 International"@en .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	skos:prefLabel "CC BY 4.0" .
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution 4.0 International"@en .
 
 <http://purl.org/adms/licencetype/PublicDomain>
 	a skos:Concept ;

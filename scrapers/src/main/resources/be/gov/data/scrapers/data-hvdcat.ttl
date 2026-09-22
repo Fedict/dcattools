@@ -6,127 +6,154 @@
 <http://data.europa.eu/eli/reg_impl/2023/138/oj> a eli:LegalResource .
 
 <http://data.europa.eu/bna/c_f2b50efd> a skos:Concept ;
-	skos:prefLabel "Population"@en .
+	skos:prefLabel "Population"@en, "Population"@fr, "Bevolking"@nl, "Bevölkerung"@de .
 
 <http://data.europa.eu/bna/c_a2c6dcd8> a skos:Concept ;
-	skos:prefLabel "Employment"@en .
+	skos:prefLabel "Employment"@en, "Emploi"@fr, "Werkgelegenheid"@nl, "Erwerbstätigkeit"@de .
 
 <http://data.europa.eu/bna/c_c0022235> a skos:Concept ;
-	skos:prefLabel "Harmonised Indices of consumer prices"@en .
+	skos:prefLabel "Harmonised Indices of consumer prices"@en, 
+					"Indices des prix à la consommation harmonisés"@fr, 
+					"Geharmoniseerde indexcijfers van de consumptieprijzen"@nl, 
+					"Harmonisierte Verbraucherpreisindizes"@de .
 
 <http://data.europa.eu/bna/c_a8b937c4> a skos:Concept ;
-	skos:prefLabel "Inequality"@en .
+	skos:prefLabel "Inequality"@en, "Inégalité"@fr, "Ongelijkheid"@nl, "Ungleichheit"@de .
 
 <http://data.europa.eu/bna/c_a49ec591> a skos:Concept ;
-	skos:prefLabel "Volume of sales by activity"@en .
+	skos:prefLabel "Volume of sales by activity"@en, "Volume des ventes par activité"@fr, 
+					"Omvang van de verkoop per activiteit"@nl, "Verkaufsmengen nach Tätigkeit"@de .
 
 <http://data.europa.eu/bna/c_6a3f6896> a skos:Concept ;
-	skos:prefLabel "Cadastral parcels"@en .
+	skos:prefLabel "Cadastral parcels"@en, "Parcelles cadastrales"@fr, "Kadastrale percelen"@nl, 
+					"Flurstücke/Grundstücke (Katasterparzellen)"@de .
 
 <http://data.europa.eu/bna/c_06b1eec4> a skos:Concept ;
-	skos:prefLabel "Hydrography"@en .
+	skos:prefLabel "Hydrography"@en, "Hydrographie"@fr, "Hydrografie"@nl, "Gewässernetz"@de .
 
 <http://data.europa.eu/bna/c_164e0bf5> a skos:Concept ;
-	skos:prefLabel "Meteorological"@en .
+	skos:prefLabel "Meteorological"@en, "Météorologiques"@fr, "Meteorologische data"@nl, "Meteorologie"@de .
 
 <http://data.europa.eu/bna/c_315692ad> a skos:Concept ;
-	skos:prefLabel "Elevation"@en .
+	skos:prefLabel "Elevation"@en, "Altitude"@fr, "Hoogte"@nl, "Höhe"@de .
 
 <http://data.europa.eu/bna/c_38933a65> a skos:Concept ;
-	skos:prefLabel "Waste"@en .
+	skos:prefLabel "Waste"@en, "Déchets"@fr, "Afval"@nl, "Abfall"@de .
 
 <http://data.europa.eu/bna/c_3af3368c> a skos:Concept ;
-	skos:prefLabel "Observations data measured by weather stations"@en .
+	skos:prefLabel "Observations data measured by weather stations"@en, 
+					"Données d’observation mesurées par les stations météorologiques"@fr, 
+					"Observatiegegevens gemeten door weerstations"@nl, 
+					"Beobachtungsmessdaten von Wetterstationen"@de .
 
 <http://data.europa.eu/bna/c_43f88346> a skos:Concept ;
-	skos:prefLabel "Water"@en .
+	skos:prefLabel "Water"@en, "Eau"@fr, "Water"@nl, "Wasser"@de .
 
 <http://data.europa.eu/bna/c_4b74ea13> a skos:Concept ;
-	skos:prefLabel "Transport networks"@en .
+	skos:prefLabel "Transport networks"@en, "Réseaux de transport"@fr, 
+					"Vervoersnetwerken"@nl, "Verkehrsnetze"@de .
 
 <http://data.europa.eu/bna/c_4ba9548e> a skos:Concept ;
-	skos:prefLabel "Emissions"@en .
+	skos:prefLabel "Emissions"@en, "Émissions"@fr, "Emissies"@nl, "Emissionen"@de .
 
 <http://data.europa.eu/bna/c_4dd389c5> a skos:Concept ;
-	skos:prefLabel "Mineral resources"@en .
+	skos:prefLabel "Mineral resources"@en, "Ressources minérales"@fr, 
+					"Minerale bronnen"@nl, "Mineralische Bodenschätze"@de .
 
 <http://data.europa.eu/bna/c_59c93ba5> a skos:Concept ;
-	skos:prefLabel "Production and industrial facilities"@en .
+	skos:prefLabel "Production and industrial facilities"@en, 
+					"Lieux de production et sites industriels"@fr,
+					"Faciliteiten voor productie en industrie"@nl, "Produktions- und Industrieanlagen"@de .
 
 <http://data.europa.eu/bna/c_59e64dd4> a skos:Concept ;
-	skos:prefLabel "Climate"@en .
+	skos:prefLabel "Climate"@en, "Climat"@fr, "Klimaat"@nl, "Klima"@de .
 
 <http://data.europa.eu/bna/c_60182062> a skos:Concept ;
-	skos:prefLabel "Buildings"@en .
+	skos:prefLabel "Buildings"@en, "Bâtiments"@fr, "Gebouwen"@nl, "Gebäude"@de .
 
 <http://data.europa.eu/bna/c_63b37dd4> a skos:Concept ;
-	skos:prefLabel "Air"@en .
+	skos:prefLabel "Air"@en, "Air"@fr, "Lucht"@nl, "Luft"@de .
 
 <http://data.europa.eu/bna/c_63be22bd> a skos:Concept ;
-	skos:prefLabel "Natural risk zones"@en .
+	skos:prefLabel "Natural risk zones"@en, "Zones à risque naturel"@fr, 
+					"Gebieden met natuurrisico’s"@nl, "Gebiete mit naturbedingten Risiken"@de .
 
 <http://data.europa.eu/bna/c_6c2bb82d> a skos:Concept ;
-	skos:prefLabel "Geographical names"@en .
+	skos:prefLabel "Geographical names"@en, "Dénominations géographiques"@fr, 
+					"Geografische namen"@nl, "Geografische Bezeichnungen"@de .
 
 <http://data.europa.eu/bna/c_7b8fbb64> a skos:Concept ;
-	skos:prefLabel "Environmental monitoring facilities"@en .
+	skos:prefLabel "Environmental monitoring facilities"@en, 
+					"Installations de suivi environnemental"@fr, 
+					"Milieubewakingsvoorzieningen"@nl, "Umweltüberwachungseinrichtungen"@de .
 
 <http://data.europa.eu/bna/c_83aa10a6> a skos:Concept ;
-	skos:prefLabel "Protected sites"@en .
+	skos:prefLabel "Protected sites"@en, "Sites protégés"@fr, "Beschermde gebieden"@nl, "Schutzgebiete"@de .
 
 <http://data.europa.eu/bna/c_91185a85> a skos:Concept ;
-	skos:prefLabel "Orthoimagery"@en .
+	skos:prefLabel "Orthoimagery"@en, "Ortho-imagerie"@fr, "Orthobeeldvorming"@nl, "Orthofotografie"@de .
 
 <http://data.europa.eu/bna/c_9427236f> a skos:Concept ;
-	skos:prefLabel "Administrative units"@en .
+	skos:prefLabel "Administrative units"@en, "Unités administratives"@fr, 
+				"Administratieve eenheden"@nl, "Verwaltungseinheiten"@de .
 
 <http://data.europa.eu/bna/c_ac64a52d> a skos:Concept ;
-	skos:prefLabel "Geospatial"@en .
+	skos:prefLabel "Geospatial"@en, "Géospatiales"@fr, "Geospatiale data"@nl, "Georaum"@de .
 
 <http://data.europa.eu/bna/c_ad9ae929> a skos:Concept ;
-	skos:prefLabel "Land use"@en .
+	skos:prefLabel "Land use"@en, "Usage des sols"@fr, "Landgebruik"@nl, "Bodennutzung"@de .
 
 <http://data.europa.eu/bna/c_af646f5b> a skos:Concept ;
-	skos:prefLabel "Area management / restriction / regulation zones & reporting units"@en .
+	skos:prefLabel "Area management / restriction / regulation zones & reporting units"@en, 
+				"Zones de gestion, de restriction ou de réglementation et unités de déclaration"@fr, 
+				"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden"@nl, 
+				"Bewirtschaftungsgebiete/Schutzgebiete/geregelte Gebiete und Berichterstattungseinheiten"@de .
 
 <http://data.europa.eu/bna/c_b21e1296> a skos:Concept ;
-	skos:prefLabel "Land cover"@en .
+	skos:prefLabel "Land cover"@en, "Occupation des terres"@fr, "Bodemgebruik"@nl, "Bodenbedeckung"@de .
 
 <http://data.europa.eu/bna/c_b40e6d46> a skos:Concept ;
-	skos:prefLabel "Oceanographic geographical features"@en .
+	skos:prefLabel "Oceanographic geographical features"@en, 
+				"Caractéristiques géographiques océanographiques"@fr, 
+				"Oceanografische geografische kenmerken"@nl, "Ozeanografisch-geografische Kennwerte"@de .
 
 <http://data.europa.eu/bna/c_b79e35eb> a skos:Concept ;
-	skos:prefLabel "Mobility"@en .
+	skos:prefLabel "Mobility"@en, "Mobilité"@fr, "Mobiliteit"@nl, "Mobilität"@de .
 
 <http://data.europa.eu/bna/c_b7de66cd> a skos:Concept ;
-	skos:prefLabel "Energy resources"@en .
+	skos:prefLabel "Energy resources"@en, "Sources d’énergie"@fr, "Energiebronnen"@nl, "Energiequellen"@de .
 
 <http://data.europa.eu/bna/c_b7f6a4f3> a skos:Concept ;
-	skos:prefLabel "Nature preservation and biodiversity"@en .
+	skos:prefLabel "Nature preservation and biodiversity"@en, "Protection de la nature et biodiversité"@fr, 
+					"Natuurbehoud en biodiversiteit"@nl, "Erhaltung der Natur und der biologischen Vielfalt"@de .
 
 <http://data.europa.eu/bna/c_c3919aec> a skos:Concept ;
-	skos:prefLabel "Habitats and biotopes"@en .
+	skos:prefLabel "Habitats and biotopes"@en, "Habitats et biotopes"@fr, "Habitats en biotopen"@nl, 
+					"Lebensräume und Biotope"@de .
 
 <http://data.europa.eu/bna/c_c3de25e4> a skos:Concept ;
-	skos:prefLabel "Addresses"@en .
+	skos:prefLabel "Addresses"@en, "Adresses"@fr, "Adressen"@nl, "Adressen"@de .
 
 <http://data.europa.eu/bna/c_c873f344> a skos:Concept ;
-	skos:prefLabel "Bio-geographical regions"@en .
+	skos:prefLabel "Bio-geographical regions"@en, "Régions biogéographiques"@fr, 
+					"Biogeografische gebieden"@nl, "Biogeografische Regionen"@de .
 
 <http://data.europa.eu/bna/c_dd313021> a skos:Concept ;
-	skos:prefLabel "Earth observation and environment"@en .
+	skos:prefLabel "Earth observation and environment"@en, "Observation de la terre et environnement"@fr, 
+					"Aardobservatie en milieu"@nl, "Erdbeobachtung und Umwelt"@de .
 
 <http://data.europa.eu/bna/c_e3f55603> a skos:Concept ;
-	skos:prefLabel "Geology"@en .
+	skos:prefLabel "Geology"@en, "Géologie"@fr, "Geologie"@nl, "Geologie"@de .
 
 <http://data.europa.eu/bna/c_e4358335> a skos:Concept ;
-	skos:prefLabel "Noise"@en .
+	skos:prefLabel "Noise"@en, "Bruit"@fr, "Geluid"@nl, "Lärm"@de .
 
 <http://data.europa.eu/bna/c_f399050e> a skos:Concept ;
-	skos:prefLabel "Sea regions"@en .
+	skos:prefLabel "Sea regions"@en, "Régions maritimes"@fr, "Zeegebieden"@nl, "Meeresregionen"@de .
 
 <http://data.europa.eu/bna/c_e1da4e07> a skos:Concept ;
-	skos:prefLabel "Statistics"@en .
+	skos:prefLabel "Statistics"@en, "Statistiques"@fr, "Statistiek"@nl, "Statistik"@de .
 
 <http://data.europa.eu/bna/c_793164b6> a skos:Concept ;
-	skos:prefLabel "Species distribution"@en .
+	skos:prefLabel "Species distribution"@en, "Répartition des espèces"@fr, "Spreiding van soorten"@nl, 
+					"Verteilung der Arten"@de .
