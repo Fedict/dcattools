@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, FPS BOSA DG DT
+ * Copyright (c) 2026, FPS BOSA
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.scrapers.all;
+package be.gov.data.scrapers.allgeo;
 
 import be.gov.data.helpers.Storage;
 import be.gov.data.scrapers.BaseScraper;
@@ -34,47 +34,33 @@ import java.io.FileInputStream;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
 /**
- * Combine data of all scraped sources into 1
+ * Split data for geo section of the EU Data Portal
  *
  * @see http://data.gov.be
  * @author Bart Hanssens
  */
-public class Combine extends BaseScraper {
+public class SplitGeo extends BaseScraper {
 
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws IOException {
 		Path root = Path.of(getDataDir()).getParent();
 
-		List<File> files;
-		try(Stream<Path> path = Files.walk(root)) {
-			files = path.map(Path::toFile)
-						.filter(File::isFile)
-						.filter(f -> f.toString().endsWith("-translated.nt"))
-						.filter(f -> !f.getParentFile().toString().startsWith("all"))
-						.peek(f -> LOG.info("Adding {}", f))
-						.collect(Collectors.toList());
-		}
-
-		for (File f: files) {
-			LOG.info("Reading {}", f);
-			// Load turtle file into store
-			try (InputStream in = new BufferedInputStream(new FileInputStream(f))) {
-				store.add(in, RDFFormat.NTRIPLES);
-			} catch (RDFParseException ex) {
-				throw new RepositoryException(ex);
-			}
+		File f = Path.of(root.toString(), "all", "datagovbe_edp.xml").toFile();
+		
+		LOG.info("Reading {}", f);
+		// Load XML file into store
+		try (InputStream in = new BufferedInputStream(new FileInputStream(f))) {
+			store.add(in, RDFFormat.RDFXML);
+		} catch (RDFParseException ex) {
+			throw new RepositoryException(ex);
 		}
 		generateCatalog(store);
 	}
@@ -90,9 +76,9 @@ public class Combine extends BaseScraper {
 	 * @param prop
 	 * @throws IOException
 	 */
-	public Combine(Properties prop) throws IOException {
+	public SplitGeo(Properties prop) throws IOException {
 		super(prop);
-		setName("all");
+		setName("allgeo");
 	}
 
 }

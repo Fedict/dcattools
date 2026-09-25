@@ -1,0 +1,17 @@
+# Add all datasets to data.gov.be catalog
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geodcat: <http://data.europa.eu/930/>
+
+DELETE {
+		?cat dcat:dataset ?s .
+		?s a dcat:Dataset .
+		?s ?p ?o .
+		?o ?x ?y }
+WHERE {
+		?cat dcat:dataset ?s .
+		?s a dcat:Dataset .
+		?s ?p ?o .
+		OPTIONAL { ?o ?x ?y }
+		FILTER NOT EXISTS { ?s geodcat:resourceType ?t } 
+	}
