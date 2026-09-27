@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.helpers;
+package be.gov.data.dcat.helpers;
 
 import java.io.IOException;
 import java.net.ProxySelector;

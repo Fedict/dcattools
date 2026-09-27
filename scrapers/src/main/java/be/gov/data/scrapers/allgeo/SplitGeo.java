@@ -25,7 +25,7 @@
  */
 package be.gov.data.scrapers.allgeo;
 
-import be.gov.data.helpers.Storage;
+import be.gov.data.dcat.helpers.Storage;
 import be.gov.data.scrapers.BaseScraper;
 import be.gov.data.scrapers.Cache;
 import java.io.BufferedInputStream;

@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.helpers;
+package be.gov.data.dcat.helpers;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
@@ -58,6 +58,7 @@ import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.repository.RepositoryResult;
 import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepositoryConnection;
 import org.eclipse.rdf4j.rio.ParserConfig;
 
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -67,6 +68,8 @@ import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
 import org.eclipse.rdf4j.rio.helpers.BasicParserSettings;
 import org.eclipse.rdf4j.rio.helpers.XMLParserSettings;
+import org.eclipse.rdf4j.sail.NotifyingSailConnection;
+import org.eclipse.rdf4j.sail.SailConnectionListener;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import org.slf4j.Logger;
@@ -78,14 +81,16 @@ import org.slf4j.LoggerFactory;
  * @author Bart Hanssens
  */
 public class Storage {
-    private final static Logger logger = LoggerFactory.getLogger(Storage.class);
+    private final static Logger LOG = LoggerFactory.getLogger(Storage.class);
     
 	public final static String DATAGOVBE = "http://data.gov.be";
 
     private Repository repo = null;
     private ValueFactory fac = null;
-    private RepositoryConnection conn = null;
-    
+    private SailRepositoryConnection conn = null;
+    private int totalAdded;
+	private int totalDeleted;
+	
     /**
      * Get triple store.
      * 
@@ -100,10 +105,10 @@ public class Storage {
      */
     public void deleteRepository() {
         if (repo != null) {
-            logger.info("Removing RDF backend file");
+            LOG.info("Removing RDF backend file");
     
             if(!repo.getDataDir().delete()) {
-                logger.warn("Could not remove RDF backend file");
+                LOG.warn("Could not remove RDF backend file");
             }
             repo = null;
         }
@@ -285,7 +290,7 @@ public class Storage {
 		if ((value != null) && !value.isEmpty()) {
 			conn.add(subj, pred, fac.createLiteral(value));
 		} else {
-			logger.warn("Skipping empty or null value for {} {}", subj, pred);
+			LOG.warn("Skipping empty or null value for {} {}", subj, pred);
 		}
     }
    
@@ -303,7 +308,7 @@ public class Storage {
 		if ((value != null) && !value.isEmpty()) {
 			conn.add(subj, pred, fac.createLiteral(value, lang));
 		} else {
-			logger.warn("Skipping empty or null value for {} {}", subj, pred);
+			LOG.warn("Skipping empty or null value for {} {}", subj, pred);
 		}
     }
 
@@ -321,7 +326,7 @@ public class Storage {
 		if ((value != null) && !value.isEmpty()) {
 			conn.add(subj, pred, fac.createLiteral(value, dtype));
 		} else {
-			logger.warn("Skipping empty or null value for {} {}", subj, pred);
+			LOG.warn("Skipping empty or null value for {} {}", subj, pred);
 		}
     }
 
@@ -351,7 +356,7 @@ public class Storage {
 										.replace("\\", "%5c")
 										.replace("[", "%5b")
 										.replace("]", "%5d");
-						logger.debug("Changing {} into {}", uri, esc);
+						LOG.debug("Changing {} into {}", uri, esc);
 						IRI obj = fac.createIRI(esc);
 						conn.add(stmt.getSubject(), stmt.getPredicate(), obj);
 						conn.remove(stmt);
@@ -360,7 +365,7 @@ public class Storage {
                 }
             }
         }
-        logger.info("Replaced characters in {} URIs", i);
+        LOG.info("Replaced characters in {} URIs", i);
     }
     
     /**
@@ -370,9 +375,15 @@ public class Storage {
      * @throws RepositoryException
      */
     public void queryUpdate(String sparql) throws RepositoryException {
+		int tmpDeleted = totalDeleted;
+		int tmpAdded = totalAdded;
+
         try {
             Update upd = conn.prepareUpdate(QueryLanguage.SPARQL, sparql);
             upd.execute();
+			int deleted = totalDeleted - tmpDeleted;
+			int added = totalAdded - tmpAdded;
+			LOG.info("Added {}, deleted {} statements", added, deleted);
         } catch (MalformedQueryException | UpdateExecutionException  ex) {
             throw new RepositoryException(ex);
         }
@@ -393,7 +404,7 @@ public class Storage {
                         conn.getStatements(null, RDF.TYPE, rdfClass, false)) {
  
             if (! stmts.hasNext()) {
-                logger.warn("No results for class {}", rdfClass.stringValue());
+                LOG.warn("No results for class {}", rdfClass.stringValue());
             }
 
             while(stmts.hasNext()) {
@@ -402,7 +413,7 @@ public class Storage {
                 i++;
             }
         }
-        logger.debug("Retrieved {} statements for {}", i, rdfClass.stringValue());
+        LOG.debug("Retrieved {} statements for {}", i, rdfClass.stringValue());
         return lst;
     }
     
@@ -419,7 +430,7 @@ public class Storage {
         
         try (RepositoryResult<Statement> stmts = conn.getStatements(uri, null, null, true)) {
             if (! stmts.hasNext()) {
-                logger.warn("No properties for {}", uri.stringValue());
+                LOG.warn("No properties for {}", uri.stringValue());
             }
             
             while(stmts.hasNext()) {
@@ -453,11 +464,24 @@ public class Storage {
      * @throws RepositoryException 
      */
     public void startup() throws RepositoryException {
-        logger.info("Opening RDF repository");
-        conn = repo.getConnection();
+        LOG.info("Opening RDF repository");
+        conn = (SailRepositoryConnection) repo.getConnection();
         fac = repo.getValueFactory();
-
 		conn.setParserConfig(getParserConfig());
+		
+		NotifyingSailConnection sailConn = (NotifyingSailConnection) conn.getSailConnection();
+		totalAdded = 0;
+		totalDeleted = 0;
+		sailConn.addConnectionListener(new SailConnectionListener() {
+			@Override
+			public void statementRemoved(Statement stmt) {
+				totalDeleted++;
+			}
+			@Override
+			public void statementAdded(Statement stmt) {
+				totalAdded++;
+			}
+		});
     }
     
     /**
@@ -466,7 +490,7 @@ public class Storage {
      * @throws RepositoryException 
      */
     public void shutdown() throws RepositoryException {
-        logger.info("Closing RDF repository");
+        LOG.info("Closing RDF repository");
         conn.commit();
         conn.close();
         repo.shutDown();
@@ -495,7 +519,7 @@ public class Storage {
      */
     public void read(Reader in, RDFFormat format) throws RepositoryException,
                                                 IOException, RDFParseException {
-        logger.info("Reading triples from input stream");
+        LOG.info("Reading triples from input stream");
 		conn.setParserConfig(getParserConfig());
         conn.add(in, DATAGOVBE, format);
     }
@@ -522,7 +546,7 @@ public class Storage {
         try {
             conn.export(writer);
         } catch (RDFHandlerException ex) {
-            logger.warn("Error writing RDF");
+            LOG.warn("Error writing RDF");
         }
     }
        
@@ -531,7 +555,7 @@ public class Storage {
      * 
      */
     public Storage() {
-        logger.info("Opening RDF store");
+        LOG.info("Opening RDF store");
         
         MemoryStore mem = new MemoryStore();
         repo = new SailRepository(mem);

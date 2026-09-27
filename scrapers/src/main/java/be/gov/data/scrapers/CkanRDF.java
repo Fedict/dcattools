@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, FPS BOSA DG DT
+ * Copyright (c) 2016, FPS BOSA
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,7 @@
  */
 package be.gov.data.scrapers;
 
-import be.gov.data.helpers.Storage;
+import be.gov.data.dcat.helpers.Storage;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

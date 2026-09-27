@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, FPS BOSA DG DT
+ * Copyright (c) 2017, FPS BOSA
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
 package be.gov.data.scrapers.statbel;
 
 import be.gov.data.scrapers.Page;
-import be.gov.data.helpers.Storage;
+import be.gov.data.dcat.helpers.Storage;
 import be.gov.data.scrapers.Cache;
 import be.gov.data.scrapers.Html;
 import be.gov.data.dcat.vocab.MDR_LANG;

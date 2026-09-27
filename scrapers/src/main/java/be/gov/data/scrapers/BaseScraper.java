@@ -25,8 +25,8 @@
  */
 package be.gov.data.scrapers;
 
-import be.gov.data.helpers.Storage;
-import be.gov.data.helpers.Fetcher;
+import be.gov.data.dcat.helpers.Storage;
+import be.gov.data.dcat.helpers.Fetcher;
 import be.gov.data.dcat.vocab.DATAGOVBE;
 import be.gov.data.dcat.vocab.MDR_LANG;
 
