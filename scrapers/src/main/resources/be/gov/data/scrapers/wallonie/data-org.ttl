@@ -92,6 +92,7 @@
 	dcterms:spatial <https://sws.geonames.org/2790472> ;
 	skos:prefLabel "Stad Namen"@nl, "City of Namur"@en, "Ville de Namur"@fr, "Stadt Namur"@de ;
 	skos:altLabel "Ville de Namur - Data Office GUN", "Ville de Namur - Annuaire - www.namur.be", 
+		"Ville de Namur - Cohésion sociale" ,
 		"Ville de Namur - Portail Statistiques", "Ville de Namur - Mobilité", "Ville de Namur - Finances", 
 		"Ville de Namur", "Ville de Namur"@fr, "Eco-Visio", "Eco-Compteur", "SIRS", "Ville de Namur - Géomatique" .
 
@@ -270,6 +271,21 @@
 	skos:prefLabel "Ville de Tournai"@fr, "Stad Doornik"@nl, "Stadt Tournai"@de, "City of Tournai"@en ;
 	skos:altLabel "Administration Communale de Tournai", 
 				"Administration communale de Tournai", "Ville de Tournai"  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207307311>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2785518/> ;
+	skos:prefLabel "Ville de Thuin"@fr, "Stad Thuin"@nl, "Stadt Thuin"@de, "City of Thuin"@en ;
+	skos:altLabel "Ville de Thuin"  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
+	a foaf:Organization ;
+	dcterms:type admsp:LocalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2791740/> ;
+	skos:prefLabel "Commune d'Ecaussinnes"@fr, "Gemeente Ecaussinnes"@nl, "Gemeinde Ecaussinnes"@de,
+					"Municipality of Ecaussinnes"@en ;
+	skos:altLabel "Commune d'Ecaussinnes" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
 	a foaf:Organization ;
@@ -482,6 +498,12 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
 	skos:altLabel "BEBAT", "bebat" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0881039716>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Cluster Eco-construction"@fr ;
+	skos:altLabel "Cluster Eco-construction" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0762549266>
 	a foaf:Organization ;
