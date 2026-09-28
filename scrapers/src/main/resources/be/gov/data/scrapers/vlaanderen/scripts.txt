@@ -112,4 +112,4 @@ sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-data-hvdcat.ttl
+data-shacl-hvdcat-support.ttl

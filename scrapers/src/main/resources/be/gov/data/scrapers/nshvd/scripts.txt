@@ -6,4 +6,4 @@ data-media.ttl
 sparql-clear-skos.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-data-hvdcat.ttl
+data-shacl-hvdcat-support.ttl
