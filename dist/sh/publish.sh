@@ -194,7 +194,7 @@ convert $source
 
 if [[ $? -eq 0 ]]; then
 	compress $source
-	if [ -z ${NOPUBLISH+x} ]; then
+	if [ -z "${NOPUBLISH}" ]; then
 		publish $source $target
 	fi
 fi
