@@ -116,3 +116,11 @@
 <https://sws.geonames.org/2796584/> a dcterms:Location ;
 	rdfs:label "Hannut"@en ;
 	dcat:bbox "POLYGON ((4.99 50.72, 5.16 50.72, 5.16 50.6, 4.99 50.6, 4.99 50.72))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2785518/> a dcterms:Location ;
+	rdfs:label "Ecaussinnes"@en ;
+	dcat:bbox "POLYGON ((4.12 50.6, 4.23 50.6, 4.23 50.52, 4.12 50.52, 4.12 50.6))"^^geo:wktLiteral .
+
+<https://sws.geonames.org/2785518/> a dcterms:Location ;
+	rdfs:label "Thuin"@en ;
+	dcat:bbox "POLYGON ((4.23 50.38, 4.39 50.38, 4.39 50.27, 4.23 50.27, 4.23 50.38))"^^geo:wktLiteral .

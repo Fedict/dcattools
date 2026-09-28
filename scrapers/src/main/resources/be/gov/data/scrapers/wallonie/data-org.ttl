@@ -497,7 +497,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Bebat"@fr, "Bebat"@nl, "Bebat"@en ;
-	skos:altLabel "BEBAT", "bebat" .
+	skos:altLabel "BEBAT", "bebat", "Bebat" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0881039716>
 	a foaf:Organization ;
