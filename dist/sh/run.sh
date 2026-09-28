@@ -50,8 +50,8 @@ clean() {
 mail() {
 	echo $2 | mailx -v -S smtp=$MAIL_SERVER \
   			-r $MAIL_FROM \
-    			-s $1 \
-    			$MAIL_TO
+    		-s $1 \
+    		$MAIL_TO
 }
 
 # Scrape metadata from an external source and save it as triples
@@ -71,7 +71,7 @@ scrape() {
 		--name=$1
 	res=$?
  
-	status $1 "scrape" $2 $res
+	status $1 "scrape" $res
 
 	if [[ $res -ne 0 ]]; then
  		mail "Scraping $1 failed" "Status $res"
@@ -101,7 +101,7 @@ validate() {
 		--countValues=dcterms:creator --countValues=dcterms:contributor \
 		--countValues=dcterms:rightsHolder
 
-	status $1 "validate" $2 $?
+	status $1 "validate" $?
 }
 
 # Convert to XML
@@ -119,7 +119,7 @@ convert() {
 		$DATA/$1/$1.xml
 
 	res=$?
- 	status $1 "convert" $2 $res
+ 	status $1 "convert" $res
 	return $res
 }
 
@@ -134,13 +134,13 @@ translate() {
 		-XX:+UseCompactObjectHeaders \
  		-jar translater.jar \
    		--file=$DATA/$1/$1.nt \
-     		--cache \
-       		--translated=$DATA/$1/$1-translated.nt \
-     		--language=nl  --language=fr --language=de --language=en \
-     		--user=$E_USER --pass=$E_PASS \
-       		--url=$E_URL
+     	--cache \
+       	--translated=$DATA/$1/$1-translated.nt \
+     	--language=nl  --language=fr --language=de --language=en \
+     	--user=$E_USER --pass=$E_PASS \
+       	--url=$E_URL
 
- 	status $1 "translate" $2 $?
+ 	status $1 "translate" $?
 }
 
 # Create High-value Dataset listing in CSV
@@ -158,7 +158,7 @@ hvdreport() {
 		$DATA/$1/$1-hvdreport.csv
 
 	res=$?
- 	status $1 "hvdreport" $2 $res
+ 	status $1 "hvdreport" $res
 	return $res
 }
 
@@ -179,11 +179,11 @@ update() {
 		-XX:+UseCompactObjectHeaders \
  		-jar uploaderd10.jar \
    		--user=$D_USER \
-     		--password=$D_PASS \
+     	--password=$D_PASS \
    		--url=https://5377.f2w.bosa.be \
-     		--file=$DATA/$1/$1-translated.nt
+     	--file=$DATA/$1/$1-translated.nt
 
- 	status $1 "update" $2 $?
+ 	status $1 "update" $?
  }
  
 # Main
