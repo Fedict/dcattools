@@ -1,1 +1,0 @@
-java -Dorg.slf4j.simpleLogger.defaultLogLevel=info -Dorg.slf4j.simpleLogger.logFile=linkcheck.log -cp tools-1.0-SNAPSHOT.jar be.gov.data.tools.LinkChecker B:/datagov/cfg/%1/linkchecker.properties
