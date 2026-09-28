@@ -59,7 +59,7 @@ public class SplitGeo extends BaseScraper {
 		try(Stream<Path> path = Files.walk(root)) {
 			file = path.map(Path::toFile)
 						.filter(File::isFile)
-						.filter(f -> f.toString().equals("all.nt"))
+						.filter(f -> f.getName().equals("all.nt"))
 						.filter(f -> !f.getParentFile().toString().equals("all"))
 						.findFirst();
 		}
