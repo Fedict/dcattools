@@ -4,10 +4,10 @@
 	<parent>
 		<groupId>be.gov.data</groupId>
 		<artifactId>dcattools</artifactId>
-		<version>4.2.0</version>
+		<version>4.2.1</version>
 	</parent>
 	<name>tools</name>
-	<version>4.2.0</version>
+	<version>4.2.1</version>
 	<description>Misc tools for enhancing DCAT metadata</description>
 	<artifactId>tools</artifactId>
 	<packaging>jar</packaging>
@@ -48,17 +48,17 @@
 		<dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model-vocabulary-eu</artifactId>
-            <version>6.0.0</version>
+            <version>6.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model-vocabulary-biblio</artifactId>
-            <version>6.0.0</version>
+            <version>6.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-model-vocabulary-annotation</artifactId>
-            <version>6.0.0</version>
+            <version>6.1.0</version>
         </dependency>
 		<dependency>
 			<groupId>org.eclipse.rdf4j</groupId>
