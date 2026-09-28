@@ -3,7 +3,6 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
 	a skos:Concept ;
 	a dcterms:Frequency ;
@@ -137,77 +136,83 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
 	skos:prefLabel "German"@en, "allemand"@fr, "Duits"@nl, "Deutsch"@de .
 
-http://publications.europa.eu/resource/authority/data-theme/AGRI>
+<http://publications.europa.eu/resource/authority/data-theme/AGRI>
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Landwirtschaft, Fischerei, Forstwirtschaft und Nahrungsmittel"@de,
-        "Agriculture, fisheries, forestry and food"@en,
-        "Agriculture, pêche, sylviculture et alimentation"@fr,
-        "Landbouw, visserij, bosbouw en voeding"@nl .
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Landwirtschaft, Fischerei, Forstwirtschaft und Nahrungsmittel"@de,
+			"Agriculture, fisheries, forestry and food"@en,
+			"Agriculture, pêche, sylviculture et alimentation"@fr,
+			"Landbouw, visserij, bosbouw en voeding"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Wirtschaft und Finanzen"@de,
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Wirtschaft und Finanzen"@de,
         "Economy and finance"@en, "Économie et finances"@fr, "Economie en financiën"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC> 
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Bildung, Kultur und Sport"@de,
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Bildung, Kultur und Sport"@de,
         "Education, culture and sport"@en, "Éducation, culture et sport"@fr, "Onderwijs, cultuur en sport"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Energie"@de, "Energy"@en, "Énergie"@fr, "Energie"@nl .
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Energie"@de, "Energy"@en, "Énergie"@fr, "Energie"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Umwelt"@de, "Environment"@en, "Environnement"@fr, "Milieu"@nl .
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Umwelt"@de, "Environment"@en, "Environnement"@fr, "Milieu"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Regierung und öffentlicher Sektor"@de, "Government and public sector"@en,
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Regierung und öffentlicher Sektor"@de, "Government and public sector"@en,
 		"Gouvernement et secteur public"@fr, "Overheid en publieke sector"@nl .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL>
 	a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Gesundheit"@de, "Health"@en, "Santé"@fr, "Gezondheid"@nl .
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Gesundheit"@de, "Health"@en, "Santé"@fr, "Gezondheid"@nl .
 
-<http://publications.europa.eu/resource/authority/data-theme/INTR> a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Internationale Themen"@de, "International issues"@en,
-        "Questions internationales"@fr, "Internationale vraagstukken"@nl .
+<http://publications.europa.eu/resource/authority/data-theme/INTR>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Internationale Themen"@de, "International issues"@en,
+			"Questions internationales"@fr, "Internationale vraagstukken"@nl .
 
-<http://publications.europa.eu/resource/authority/data-theme/JUST> a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Justiz, Rechtssystem und öffentliche Sicherheit"@de,
+<http://publications.europa.eu/resource/authority/data-theme/JUST>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Justiz, Rechtssystem und öffentliche Sicherheit"@de,
         "Justice, legal system and public safety"@en,
         "Justice, système juridique et sécurité publique"@fr,
         "Justitie, rechtsstelsel en openbare veiligheid"@nl .
 
-<http://publications.europa.eu/resource/authority/data-theme/REGI> a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Regionen und Städte"@de, "Regions and cities"@en,
+<http://publications.europa.eu/resource/authority/data-theme/REGI>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Regionen und Städte"@de, "Regions and cities"@en,
         "Régions et villes"@fr, "Regio's en steden"@nl .
 
-<http://publications.europa.eu/resource/authority/data-theme/SOCI> a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Bevölkerung und Gesellschaft"@de, "Population and society"@en,
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+	a skos:Concept ; 
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Bevölkerung und Gesellschaft"@de, "Population and society"@en,
 				"Population et société"@fr, "Bevolking en samenleving"@nl .
 
-<http://publications.europa.eu/resource/authority/data-theme/TECH> a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Wissenschaft und Technologie"@de, "Science and technology"@en,
-        "Science et technologie"@fr, "Wetenschap en technologie"@nl .
+<http://publications.europa.eu/resource/authority/data-theme/TECH>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Wissenschaft und Technologie"@de, "Science and technology"@en,
+		"Science et technologie"@fr, "Wetenschap en technologie"@nl .
 
-<http://publications.europa.eu/resource/authority/data-theme/TRAN> a skos:Concept ;
-    skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
-    skos:prefLabel "Verkehr"@de, "Transport"@en, "Transports"@fr, "Vervoer"@nl .
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+	skos:prefLabel "Verkehr"@de, "Transport"@en, "Transports"@fr, "Vervoer"@nl .
 
 
 <http://purl.org/adms/publishertype/NationalAuthority> 
