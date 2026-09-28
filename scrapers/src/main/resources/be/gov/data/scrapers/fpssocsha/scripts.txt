@@ -3,3 +3,5 @@ sparql-geo-belgium.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
 data-shacl-hvdcat-support.ttl
+sparql-dataset-stat.qry
+sparql-remove-orphans.qry

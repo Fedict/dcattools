@@ -107,10 +107,6 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/planned-availability> ;
 	skos:prefLabel "available"@en .
 
-<http://publications.europa.eu/resource/authority/dataset-type/HVD>
-	a skos:Concept ;
-	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
-	skos:prefLabel "High-value dataset"@en .
 
 <http://publications.europa.eu/resource/authority/language/ENG>
 	a dcterms:LinguisticSystem ;
@@ -298,3 +294,21 @@
 	a skos:Concept ;
 	skos:prefLabel "Non-Commercial Use Only" ;
 	skos:inScheme <http://purl.org/adms/licencetype/1.0> .
+
+<http://publications.europa.eu/resource/authority/dataset-type/HVD>
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
+	skos:prefLabel "Hoogwaardige dataset"@nl, "High-value dataset"@en, "Ensemble de données de forte valeur"@fr , 
+					"Hochwertiger Datensatz"@de .
+
+<http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL>
+	a skos:Concept;
+	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
+	skos:prefLabel "Geospatial data"@en, "Georuimtelijke gegevens"@nl, "Geodaten"@de,
+					"Données géospatiale"@fr .
+
+<http://publications.europa.eu/resource/authority/dataset-type/STATISTICAL>
+	a skos:Concept;
+	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
+	skos:prefLabel "Statistical data"@en, "Statistische gegevens"@nl, "Statistische Daten"@de, 
+					"Données statistiques"@fr .

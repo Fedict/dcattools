@@ -9,7 +9,9 @@ sparql-access-public.qry
 sparql-available.qry
 sparql-geotype-format.qry
 sparql-clear-skos.qry
+sparql-dataset-stat.qry
 data-shacl-hvdcat-support.ttl
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+sparql-remove-orphans.qry

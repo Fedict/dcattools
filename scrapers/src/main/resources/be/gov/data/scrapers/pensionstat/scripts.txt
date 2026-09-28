@@ -10,6 +10,8 @@ sparql-geo-belgium.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-clear-skos.qry
+sparql-dataset-stat.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+sparql-remove-orphans.qry

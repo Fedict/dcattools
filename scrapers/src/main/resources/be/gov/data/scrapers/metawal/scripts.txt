@@ -43,6 +43,7 @@ sparql-clear-skos.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+sparql-dataset-geo.qry
 data-shacl-inspire-support.ttl
 data-standards-support.ttl
 data-shacl-hvdcat-support.ttl

@@ -1,0 +1,9 @@
+# Set dataset type to geospatial
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{ 	?s dcterms:type <http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL> }
+WHERE
+	{	?s a dcat:Dataset }

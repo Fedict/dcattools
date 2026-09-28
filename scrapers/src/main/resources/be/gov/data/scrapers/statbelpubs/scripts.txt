@@ -13,6 +13,8 @@ sparql-map-media.qry
 sparql-clear-skos.qry
 statbelpubs/sparql-empty-keywords.qry
 statbelpubs/sparql-clean-dataset.qry
+sparql-dataset-stat.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+sparql-remove-orphans.qry

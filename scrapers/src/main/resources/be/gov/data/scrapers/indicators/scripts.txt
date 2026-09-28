@@ -14,5 +14,7 @@ indicators/sparql-dist-lang.qry
 sparql-map-lang.qry
 sparql-clear-skos.qry
 data-shacl-support.ttl
+sparql-dataset-stat.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
+sparql-remove-orphans.qry

@@ -73,6 +73,7 @@ data-standards-support.ttl
 data-shacl-inspire-support.ttl
 data-shacl-support.ttl
 sparql-shacl-classes.qry
-sparql-remove-orphans.qry
+sparql-dataset-geo.qry
 sparql-shacl-skos.qry
 data-shacl-hvdcat-support.ttl
+sparql-remove-orphans.qry
