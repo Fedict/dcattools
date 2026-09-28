@@ -76,8 +76,8 @@ scrape() {
 		-jar $BIN/scrapers.jar \
 		--dir=$DATA/$1 \
 		--name=$1
-	
-	status $1 "scrape" $2 $?
+
+	status $1 "scrape" $?
 }
 
 # Create SHACL validation reports
@@ -103,15 +103,13 @@ validate() {
 		--countValues=dcterms:creator --countValues=dcterms:contributor \
 		--countValues=dcterms:rightsHolder
 
-	status $1 "validate" $2 $?
+	status $1 "validate" $?
 }
 
 # Convert to XML
-# Parameter: project code
+# Parameters: project code
 convert() {
 	step $1 "convert"
-
-	mv $DATA/$1/$1.nt $DATA/$1/datagovbe.nt
 
 	java -Dorg.slf4j.simpleLogger.defaultLogLevel=info \
 		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
@@ -119,11 +117,11 @@ convert() {
     	-Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/convert.log \
 		-XX:+UseCompactObjectHeaders \
       	-cp $BIN/tools.jar be.gov.data.tools.EDP \
-		$DATA/$1/datagovbe.nt \
-		$DATA/$1/datagovbe_edp.xml
+		$DATA/$1/$1.nt \
+		$DATA/$1/$1.xml
 
 	res=$?
- 	status $1 "convert" $2 $res
+ 	status $1 "convert" $res
 	return $res
 }
 
@@ -132,18 +130,17 @@ convert() {
 compress() {
 	step $1 "compress"
 
-	gzip -9 $DATA/$1/datagovbe.nt
- 	gzip -9 $DATA/$1/datagovbe_edp.xml
+ 	gzip -9 $DATA/$1/$1.xml
   
-	status $1 "compress" $2 $?
+	status $1 "compress" $?
 } 
 
 # Publish to github
-# Parameter: project code
+# Parameters: project code, XML target file
 publish() {
 	step $1 "publish"
 
-	F_SIZE=$(stat --format=%s $DATA/$1/datagovbe_edp.xml.gz)
+	F_SIZE=$(stat --format=%s $DATA/$1/$1.xml.gz)
  	if [[ $F_SIZE > $EDP_MIN_SIZE ]]; then
   		rm -rf $LOCAL
   
@@ -156,8 +153,7 @@ publish() {
 			echo "Cloned github repository " > $DATA/$1/logs/publish.log
   		fi
     
-    	cp $DATA/$1/datagovbe.nt.gz $LOCAL/all/datagovbe.nt.gz
-      	cp $DATA/$1/datagovbe_edp.xml.gz $LOCAL/all/datagovbe_edp.xml.gz
+    	cp $DATA/$1/$1.xml.gz $LOCAL/$1/$2.xml.gz
 
       	cd $LOCAL
     	git commit -sam "Updated export"
@@ -177,14 +173,15 @@ publish() {
     			-s "Publication to EDP" \
     			$MAIL_TO
 
-	status $1 "publish" $2 $res
-} 
+	status $1 "publish" $res
+}
 
 # Main
 
 # Parameter: one project code
 
 source=$1
+target=$2
 
 if [[ ! -d $DATA/$source ]]; then
 	makedirs $source
@@ -197,5 +194,5 @@ convert $source
 
 if [[ $? -eq 0 ]]; then
 	compress $source
- 	publish $source
+ 	publish $source $target
 fi

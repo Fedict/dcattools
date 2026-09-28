@@ -94,5 +94,4 @@ public class Combine extends BaseScraper {
 		super(prop);
 		setName("all");
 	}
-
 }
