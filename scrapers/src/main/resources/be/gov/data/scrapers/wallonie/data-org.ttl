@@ -279,12 +279,12 @@
 	skos:prefLabel "Ville de Thuin"@fr, "Stad Thuin"@nl, "Stadt Thuin"@de, "City of Thuin"@en ;
 	skos:altLabel "Ville de Thuin"  .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207339973>
+<https://org.belgif.be/id/CbeRegisteredEntity/0216691961>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2791740/> ;
-	skos:prefLabel "Commune d'Ecaussinnes"@fr, "Gemeente Ecaussinnes"@nl, "Gemeinde Ecaussinnes"@de,
-					"Municipality of Ecaussinnes"@en ;
+	skos:prefLabel "Commune d`Écaussinnes"@fr, "Gemeente Écaussinnes"@nl, "Gemeinde Écaussinnes"@de,
+					"Municipality of Écaussinnes"@en ;
 	skos:altLabel "Commune d'Ecaussinnes" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207339973>

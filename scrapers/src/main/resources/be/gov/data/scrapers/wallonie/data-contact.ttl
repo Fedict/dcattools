@@ -29,6 +29,16 @@
 	vcard:fn "Chaudfontaine"@de, "Chaudfontaine"@nl, "Chaudfontaine"@fr ;
 	vcard:hasEmail <mailto:commune@chaudfontaine.be> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0216691961/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Écaussinnes"@de, "Écaussinnes"@nl, "Écaussinnes"@fr ;
+	vcard:hasEmail <mailto:commune@ecaussinnes.be> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207307311/data-contact>
+	a vcard:Organization ;
+	vcard:fn "Thuin"@de, "Thuin"@nl, "Thuin"@fr ;
+	vcard:hasEmail <mailto:secretariat@thuin.be> .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207300678/data-contact>
 	a vcard:Organization ;
 	vcard:fn "Chimay"@fr ;
