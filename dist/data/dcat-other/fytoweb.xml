@@ -171,7 +171,7 @@ To access the data, one must register. After registration, one will receive an e
 	<vcard:fn xml:lang="fr">Phytoweb</vcard:fn>
 	<vcard:fn xml:lang="de">Phytoweb</vcard:fn>
 	<vcard:fn xml:lang="en">Phytoweb</vcard:fn>
-	<vcard:hasEmail rdf:resource="phytoweb@health.fgov.be"/>
+	<vcard:hasEmail rdf:resource="mailto:phytoweb@health.fgov.be"/>
 </vcard:Kind>
 
 <foaf:Agent rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0367303762">
@@ -186,6 +186,11 @@ To access the data, one must register. After registration, one will receive an e
 <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/AGRI">
 	<skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
 	<skos:prefLabel xml:lang="en">Agriculture, fisheries, forestry and food</skos:prefLabel>
+</skos:Concept>
+
+<skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/GOVE">
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <skos:prefLabel xml:lang="en">Government and public sector</skos:prefLabel>
 </skos:Concept>
 
 <skos:Concept rdf:about="https://sws.geonames.org/2802361/">
