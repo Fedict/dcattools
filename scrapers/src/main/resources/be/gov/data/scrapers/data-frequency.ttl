@@ -39,6 +39,10 @@
 	skos:prefLabel "semiweekly"@en, "bihebdomadaire"@fr, "twee keer per week"@nl, "zweimal pro Woche"@de ;
 	skos:altLabel "R/P3.5D" .
 
+<http://publications.europa.eu/resource/authority/frequency/MONTHLY_2>
+	skos:prefLabel "twee keer per maand"@nl, "zweimal im Monat"@de, "bimensuel"@fr, "semimonthly"@en ;
+	skos:altLabel <http://purl.org/cld/freq/semimonthly> .
+
 <http://publications.europa.eu/resource/authority/frequency/MONTHLY>
 	skos:prefLabel "monthly"@en, "mensuel"@fr, "maandelijks"@nl, "monatlich"@de ;
 	skos:altLabel "monthly", "M", "R/P1M", <http://purl.org/cld/freq/monthly>,
