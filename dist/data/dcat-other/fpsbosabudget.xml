@@ -7,7 +7,7 @@
          xmlns:foaf="http://xmlns.com/foaf/0.1/"
          xmlns:skos="http://www.w3.org/2004/02/skos/core#"
          xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
-		 xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 
   <dcat:Catalog rdf:about="http://data.gov.be/catalog/fpsbosabudget">
     <dc:title xml:lang="en">Catalog of FPS BOSA DG Budget</dc:title>
@@ -15,13 +15,189 @@
     <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
 
     <dcat:dataset>
-      <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/bb/budget2025">
-		<dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
-		In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
-		In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
+      <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/bb/transfer">
+        <dc:description xml:lang="nl">De federale overheid voorziet in haar begroting financiële overdrachten om andere overheden, de sociale zekerheid, 
+          instellingen, bedrijven, organisaties en burgers te financieren.</dc:description>
+        <dc:description xml:lang="fr">Dans son budget, l'autorité fédérale prévoit des transferts financiers destinés à financer d'autres autorités, la sécurité sociale, 
+          des institutions, des entreprises, des organisations et les citoyens.</dc:description>
+        <dc:title xml:lang="nl">Federaal register van financiële overdrachten</dc:title>
+        <dc:title xml:lang="fr">Registre fédéral des transferts financiers</dc:title>
+
+        <dc:identifier>fpsbosa-bb-transfers</dc:identifier>
+
+        <dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0671516647"/>
+        <dcat:contactPoint rdf:resource="http://opendata.bosa.be/budget/contact"/>
+        <dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/ANNUAL"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+        
+        <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+        <dcat:keyword xml:lang="nl">begroting</dcat:keyword>
+        <dcat:keyword xml:lang="fr">budget</dcat:keyword>
+		<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
+
+        <dcat:landingPage rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/toelagen/federaal-register-van-financiele-overdrachten"/>
+        <dcat:landingPage rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/subsides/registre-federal-des-transferts-financiers"/>
+
+        <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+        <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+        <dc:temporal>
+          <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-01-01</dcat:startDate>
+          <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-12-31</dcat:endDate>
+        </dc:temporal>
+
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/transfer/2023">
+            <dc:identifier>fpsbosa-bb-transfer-2023-1-xlsx</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">Transfers 2023</dc:title>
+            <dc:title xml:lang="fr">Transfers 2023</dc:title>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://dataviz.static.bosa.fgov.be/js/subsides/datas/2023.csv"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/transfer/2024">
+            <dc:identifier>fpsbosa-bb-transfer-2024-1-xlsx</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">Transfers 2024</dc:title>
+            <dc:title xml:lang="fr">Transfers 2024</dc:title>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://dataviz.static.bosa.fgov.be/js/subsides/datas/2024.csv"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+		<dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/transfer/2025">
+            <dc:identifier>fpsbosa-bb-transfer-2025-1-xlsx</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">Transfers 2025</dc:title>
+            <dc:title xml:lang="fr">Transfers 2025</dc:title>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/text/csv"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://dataviz.static.bosa.fgov.be/js/subsides/datas/2025.csv"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+	<dcat:dataset>
+      <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/bb/budget2026">
+        <dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
+          In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
+          In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
         <dc:description xml:lang="fr">Consultez les chiffres et tableaux du budget fédéral initial actuel ou de budgets plus anciens.
-		Sous un gouvernement de plein exercice, le budget est annuel.
-		Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
+          Sous un gouvernement de plein exercice, le budget est annuel.
+          Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
+        <dc:title xml:lang="fr">Budget fédéral 2026</dc:title>
+        <dc:title xml:lang="nl">Federaal budget 2026</dc:title>
+        <dc:identifier>fpsbosa-bb-budget-2026</dc:identifier>
+
+        <dc:publisher rdf:resource="https://org.belgif.be/id/CbeRegisteredEntity/0671516647"/>
+        <dcat:contactPoint rdf:resource="http://opendata.bosa.be/budget/contact"/>
+
+        <dc:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/QUARTERLY"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+        <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+        
+        <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
+        <dcat:keyword xml:lang="nl">begroting</dcat:keyword>
+        <dcat:keyword xml:lang="fr">budget</dcat:keyword>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
+
+        <dcat:landingPage rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+        <dcat:landingPage rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+        
+        <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+
+        <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
+        <dc:temporal>
+          <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-01-01</dcat:startDate>
+          <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-06-30</dcat:endDate>
+        </dc:temporal>
+
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2026/cred-1">
+            <dc:identifier>fpsbosa-bb-budget-2026-1-xlsx</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">Voorlopige kredieten schijf 1, van januari tot maart 2026</dc:title>
+            <dc:title xml:lang="fr">Crédits provisoires tranche 1, de janvier à mars 2026</dc:title>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/01%202026%20Copie%20de%20All_P02_Expenses_DataSMB_20260106.xlsx"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2026/ini-gen">
+            <dc:identifier>fpsbosa-bb-budget-2026-ini-gen-xlsx</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">Algemene Uitgavenbegroting initieel 2026</dc:title>
+            <dc:title xml:lang="fr">Budget général des dépenses initial 2026</dc:title>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/04%202026%20Copie%20de%20All_P08_Expenses_DataSMB_20260402%20V2.xlsx"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+        <dcat:distribution>
+          <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2026/ini-means">
+            <dc:identifier>fpsbosa-bb-budget-2026-ini-means-xlsx</dc:identifier>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+            <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+            <dc:title xml:lang="nl">Middelenbegroting initieel 2026</dc:title>
+            <dc:title xml:lang="fr">Budget des voies et moyens initial 2026</dc:title>
+            <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+            <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/04%202026%20Copie%20de%20All_P08_Incomes_DataSMB_20260402%20V2.xlsx"/>
+            <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
+            <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
+      </dcat:Dataset>
+    </dcat:dataset>
+	<dcat:dataset>
+      <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/bb/budget2025">
+        <dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
+          In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
+          In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
+        <dc:description xml:lang="fr">Consultez les chiffres et tableaux du budget fédéral initial actuel ou de budgets plus anciens.
+          Sous un gouvernement de plein exercice, le budget est annuel.
+          Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
         <dc:title xml:lang="fr">Budget fédéral 2025</dc:title>
         <dc:title xml:lang="nl">Federaal budget 2025</dc:title>
         <dc:identifier>fpsbosa-bb-budget-2025</dc:identifier>
@@ -36,8 +212,8 @@
         <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
         <dcat:keyword xml:lang="nl">begroting</dcat:keyword>
         <dcat:keyword xml:lang="fr">budget</dcat:keyword>
-		<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
 
         <dcat:landingPage rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
         <dcat:landingPage rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
@@ -45,10 +221,10 @@
         <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
 
         <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
-		<dc:temporal>
-			<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-01</dcat:startDate>
-			<dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-30</dcat:endDate>
-		</dc:temporal>
+        <dc:temporal>
+          <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-01</dcat:startDate>
+          <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-30</dcat:endDate>
+        </dc:temporal>
 
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2025/cred-1">
@@ -59,15 +235,15 @@
             <dc:title xml:lang="fr">Crédits provisoires tranche 1, de janvier à mars 2025</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/09%2001%202025%20Copie%20de%20eBudget-Expenses_Cycle_6_2025.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/09%2001%202025%20Copie%20de%20eBudget-Expenses_Cycle_6_2025.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
-		<dcat:distribution>
+        <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2025/cred-2">
             <dc:identifier>fpsbosa-bb-budget-2025-2-xlsx</dc:identifier>
             <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
@@ -76,26 +252,24 @@
             <dc:title xml:lang="fr">Crédits provisoires tranche 2, d'avril à juin 2025</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/04%202025%20Copie%20de%20eBudget-Expenses_Cycle_7_2025.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/04%202025%20Copie%20de%20eBudget-Expenses_Cycle_7_2025.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
-
       </dcat:Dataset>
     </dcat:dataset>
-
     <dcat:dataset>
       <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/bb/budget2024">
-		<dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
-		In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
-		In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
+        <dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
+          In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
+		  In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
         <dc:description xml:lang="fr">Consultez les chiffres et tableaux du budget fédéral initial actuel ou de budgets plus anciens.
-		Sous un gouvernement de plein exercice, le budget est annuel.
-		Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
+          Sous un gouvernement de plein exercice, le budget est annuel.
+          Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
         <dc:title xml:lang="fr">Budget fédéral 2024</dc:title>
         <dc:title xml:lang="nl">Federaal budget 2024</dc:title>
         <dc:identifier>fpsbosa-bb-budget-2024</dc:identifier>
@@ -110,8 +284,8 @@
         <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
         <dcat:keyword xml:lang="nl">begroting</dcat:keyword>
         <dcat:keyword xml:lang="fr">budget</dcat:keyword>
-		<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
 
         <dcat:landingPage rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
         <dcat:landingPage rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
@@ -119,10 +293,10 @@
         <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
 
         <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
-		<dc:temporal>
-			<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-01-01</dcat:startDate>
-			<dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-31</dcat:endDate>
-		</dc:temporal>
+        <dc:temporal>
+            <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-01-01</dcat:startDate>
+            <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-12-31</dcat:endDate>
+        </dc:temporal>
 
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2024/ini-gen">
@@ -133,13 +307,13 @@
             <dc:title xml:lang="fr">Publication du budget général des dépenses initial 2024</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/01%202024%20Copie%20de%20eBudget-Expenses_Cycle_INI_2024.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/01%202024%20Copie%20de%20eBudget-Expenses_Cycle_INI_2024.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2024/adj-gen">
@@ -150,13 +324,13 @@
             <dc:title xml:lang="fr">Publication du budget général des dépenses ajusté 2024</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Expenses_Cycle_2_2024.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Expenses_Cycle_2_2024.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2024/ini-means">
@@ -167,14 +341,14 @@
             <dc:title xml:lang="fr">Publication du budget des voies et moyens initial 2024</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/01%202024%20Copie%20de%20eBudget-Incomes_Cycle_INI_2024.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/01%202024%20Copie%20de%20eBudget-Incomes_Cycle_INI_2024.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
-		</dcat:distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
+        </dcat:distribution>
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2024/adj-means">
             <dc:identifier>fpsbosa-bb-budget-2024-adj-means-xlsx</dc:identifier>
@@ -184,26 +358,25 @@
             <dc:title xml:lang="fr">Publication du budget des voies et moyens ajusté 2024</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Incomes_Cycle_2_2024.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Incomes_Cycle_2_2024.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
-
       </dcat:Dataset>
     </dcat:dataset>
 
-	<dcat:dataset>
+    <dcat:dataset>
       <dcat:Dataset rdf:about="http://data.gov.be/dataset/fpsbosa/bb/budget2023">
-		<dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
-		In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
-		In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
+        <dc:description xml:lang="nl">Ben je op zoek naar cijfers en tabellen van de huidige federale begroting of van eerdere begrotingen ?
+          In een regering met volle bevoegdheid is er een begroting voor een volledig jaar.
+          In een regering van lopende zaken bestaat de begroting dan weer uit voorlopige kredieten.</dc:description>
         <dc:description xml:lang="fr">Consultez les chiffres et tableaux du budget fédéral initial actuel ou de budgets plus anciens.
-		Sous un gouvernement de plein exercice, le budget est annuel.
-		Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
+          Sous un gouvernement de plein exercice, le budget est annuel.
+          Sous un gouvernement en affaires courantes, le budget est constitué de crédits provisoires.</dc:description>
         <dc:title xml:lang="fr">Budget fédéral 2023</dc:title>
         <dc:title xml:lang="nl">Federaal budget 2023</dc:title>
         <dc:identifier>fpsbosa-bb-budget-2023</dc:identifier>
@@ -218,8 +391,8 @@
         <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/GOVE"/>
         <dcat:keyword xml:lang="nl">begroting</dcat:keyword>
         <dcat:keyword xml:lang="fr">budget</dcat:keyword>
-		<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
+        <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+        <dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_4ac557e7"/>
 
         <dcat:landingPage rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
         <dcat:landingPage rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
@@ -227,10 +400,10 @@
         <dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
 
         <dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
-		<dc:temporal>
-			<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-01-01</dcat:startDate>
-			<dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-12-31</dcat:endDate>
-		</dc:temporal>
+        <dc:temporal>
+            <dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-01-01</dcat:startDate>
+            <dcat:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-12-31</dcat:endDate>
+        </dc:temporal>
 
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2023/ini-gen">
@@ -241,15 +414,15 @@
             <dc:title xml:lang="fr">Publication du budget général des dépenses initial 2023</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/06%2001%202023%20Copie%20de%20eBudget-Expenses_Cycle_INI_2023.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/06%2001%202023%20Copie%20de%20eBudget-Expenses_Cycle_INI_2023.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
-		<dcat:distribution>
+        <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2023/adj-gen">
             <dc:identifier>fpsbosa-bb-budget-2023-adj-gen-xlsx</dc:identifier>
             <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
@@ -258,13 +431,13 @@
             <dc:title xml:lang="fr">Publication du budget général des dépenses ajusté 2023</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Expenses_Cycle_CB_2023_voted.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Expenses_Cycle_CB_2023_voted.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
         <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2023/ini-means">
@@ -275,15 +448,15 @@
             <dc:title xml:lang="fr">Publication du budget des voies et moyens initial 2023</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/06%2001%202023%20Copie%20de%20eBudget-Incomes_Cycle_INI_2023.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/initiele-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-initial"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/06%2001%202023%20Copie%20de%20eBudget-Incomes_Cycle_INI_2023.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
-		<dcat:distribution>
+        <dcat:distribution>
           <dcat:Distribution rdf:about="http://data.gov.be/dist/fpsbosa/bb/budget2023/adj-means">
             <dc:identifier>fpsbosa-bb-budget-2023-adj-means-xlsx</dc:identifier>
             <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
@@ -292,13 +465,13 @@
             <dc:title xml:lang="fr">Publication du budget des voies et moyens ajusté 2023</dc:title>
             <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
             <dc:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XLSX"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
-			<dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
-			<dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Incomes_Cycle_CB_2023_voted.xlsx"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/federale-begroting/cijfers-en-analyse/aangepaste-begroting"/>
+            <dcat:accessURL rdf:resource="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/budget-federal/chiffres-et-analyse/budget-ajuste"/>
+            <dcat:downloadURL rdf:resource="https://bosa.belgium.be/sites/default/files/content/documents/Copie%20de%20eBudget-Incomes_Cycle_CB_2023_voted.xlsx"/>
             <dc:license rdf:resource="http://publications.europa.eu/resource/authority/licence/CC0"/>
             <dcatap:availability rdf:resource="http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE"/>
-			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
-		  </dcat:Distribution>
+            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
+          </dcat:Distribution>
         </dcat:distribution>
 
       </dcat:Dataset>
@@ -325,7 +498,7 @@
   </skos:Concept>
 
   <foaf:Agent rdf:about="https://org.belgif.be/id/CbeRegisteredEntity/0671516647">
-    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/foaf/Organization"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
     <dc:type rdf:resource="http://purl.org/adms/publishertype/NationalAuthority"/>
     <foaf:name xml:lang="en">FPS BOSA</foaf:name>
     <foaf:name xml:lang="nl">FOD BOSA</foaf:name>
@@ -335,6 +508,13 @@
 
   <foaf:Document rdf:about="https://digital.belgium.be/federated-api-marketplace/rest-api/s332-general-bestservices-info/details">
      <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+     <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+  </foaf:Document>
+
+  <foaf:Document rdf:about="https://bosa.belgium.be/nl/themas/begroting-en-boek-houding/toelagen/federaal-register-van-financiele-overdrachten">
+     <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+  </foaf:Document>
+  <foaf:Document rdf:about="https://bosa.belgium.be/fr/themes/budget-et-comptabilite/subsides/registre-federal-des-transferts-financiers">
      <dc:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
   </foaf:Document>
 
@@ -360,7 +540,7 @@
   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/file-type/XLSX">
     <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/file-type"/>
     <rdf:type rdf:resource="http://purl.org/dc/terms/MediaTypeOrExtent"/>
-    <skos:prefLabel>XLSX</skos:prefLabel>	
+    <skos:prefLabel>XLSX</skos:prefLabel>    
   </skos:Concept>
 
   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/frequency/ANNUAL">

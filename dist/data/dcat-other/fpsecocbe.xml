@@ -38,9 +38,17 @@
 
 			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
 			<dcat:keyword xml:lang="en">CBE</dcat:keyword>
-			<dcat:keyword xml:lang="en">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="en">company register</dcat:keyword>
+			<dcat:keyword xml:lang="en">business register</dcat:keyword>
+			<dcat:keyword xml:lang="de">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="de">Unternehmensregister</dcat:keyword>
+			<dcat:keyword xml:lang="de">Handelsregister</dcat:keyword></dcat:DataService>			
 			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
-			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>	
+			<dcat:keyword xml:lang="fr">registre des entreprises</dcat:keyword>
+			<dcat:keyword xml:lang="fr">registre des sociétés</dcat:keyword>
+			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>
+			<dcat:keyword xml:lang="nl">register bedrijven</dcat:keyword>
+			<dcat:keyword xml:lang="nl">handelsregister</dcat:keyword>
 
 			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
 			<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_56a1bf47"/>
@@ -103,11 +111,9 @@
 				</foaf:Document>
 			</foaf:page>
 						
-			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/RESTRICTED"/>
-
+			<dc:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
 			<dc:spatial rdf:resource="https://sws.geonames.org/2802361/"/>
-			
-			<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-23</dc:modified>
+			<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-09-29</dc:modified>
 			<dc:temporal>
 				<dc:PeriodOfTime>
 					<dcat:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1923-01-01</dcat:startDate>
