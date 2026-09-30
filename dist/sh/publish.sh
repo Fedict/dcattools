@@ -119,7 +119,7 @@ convert() {
 		-XX:+UseCompactObjectHeaders \
       	-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/$1.nt \
-		$DATA/$1/$1.xml
+		$DATA/$1/$1.xml \
 		$EDP_CATALOG
 
 	res=$?
