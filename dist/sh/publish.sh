@@ -155,10 +155,10 @@ publish() {
 			echo "Cloned github repository " > $DATA/$1/logs/publish.log
   		fi
     
-    	cp $DATA/$1/$1.xml.gz $LOCAL/$1/$2.xml.gz
+    	cp $DATA/$1/$1.xml.gz $LOCAL/all/$2.xml.gz
 
       	cd $LOCAL
-    	git commit -sam "Updated export"
+    	git commit -sam "Updated export $1"
       	git push
 
     	res=$?
