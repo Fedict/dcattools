@@ -143,7 +143,7 @@ publish() {
 	step $1 "publish"
 
 	F_SIZE=$(stat --format=%s $DATA/$1/$1.xml.gz)
- 	if [[ $F_SIZE > $EDP_MIN_SIZE ]]; then
+ 	if [[ $F_SIZE -gt $EDP_MIN_SIZE ]]; then
   		rm -rf $LOCAL
   
       	git config --global http.proxy $GITHUB_PROXY
@@ -166,13 +166,13 @@ publish() {
      	cd ..
       	rm -rf $LOCAL
 	else
-       	echo "ERROR $F_SIZE is too small" > $DATA/$1/logs/publish.log
+       	echo "ERROR $DATA/$1/$1.xml.gz is too small ($F_SIZE)" > $DATA/$1/logs/publish.log
        	res=-1
   	fi
 
  	echo $res | mailx -v -S smtp=$MAIL_SERVER \
 		  		-r $MAIL_FROM \
-    			-s "Publication to EDP" \
+    			-s "Publication $2.xml.gz for EDP" \
     			$MAIL_TO
 
 	status $1 "publish" $res
