@@ -1,0 +1,4 @@
+# extra queries to be executed and data to be loaded
+alldga/sparql-datasets.qry
+alldga/sparql-dataservices.qry
+sparql-remove-orphans.qry

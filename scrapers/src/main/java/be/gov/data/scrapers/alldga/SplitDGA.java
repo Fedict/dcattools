@@ -23,7 +23,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package be.gov.data.scrapers.allgeo;
+package be.gov.data.scrapers.alldga;
 
 import be.gov.data.dcat.helpers.Storage;
 import be.gov.data.scrapers.BaseScraper;
@@ -45,12 +45,12 @@ import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
 /**
- * Split the geo data from the full export fdr the EDP
+ * Split the "protected data" from the full export fdr the EDP
  *
  * @see http://data.gov.be
  * @author Bart Hanssens
  */
-public class SplitGeo extends BaseScraper {
+public class SplitDGA extends BaseScraper {
 	@Override
 	public void generateDcat(Cache cache, Storage store) throws IOException {
 		Path root = Path.of(getDataDir()).getParent();
@@ -87,7 +87,7 @@ public class SplitGeo extends BaseScraper {
 	 * @param prop
 	 * @throws IOException
 	 */
-	public SplitGeo(Properties prop) throws IOException {
+	public SplitDGA(Properties prop) throws IOException {
 		super(prop);
 		setName("allgeo");
 	}
