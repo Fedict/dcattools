@@ -1,7 +1,14 @@
 # Re-add pref labels to improve SHACL validation scores
 
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix gemet: <http://www.eionet.europa.eu/gemet/concept/> .
+
+<http://data.europa.eu/eli/dir/2007/2/oj> 
+	a eli:LegalResource ;
+	dcterms:title "Directive 2007/2/EC of the European Parliament and of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)" ;
+	dcterms:alternative "INSPIRE"@en .
 
 <http://www.eionet.europa.eu/gemet/concept/420>
 	a skos:Concept ;

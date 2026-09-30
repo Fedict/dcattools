@@ -4,6 +4,7 @@ sparql-remove-addresses.qry
 transportdata/data-org.ttl
 sparql-map-memberof.qry
 sparql-map-org.qry
+data-shacl-its-support.ttl
 transportdata/sparql-legislation-eli.qry
 transportdata/sparql-fix-license.qry
 transportdata/sparql-title-desc.qry

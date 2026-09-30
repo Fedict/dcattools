@@ -1,7 +1,18 @@
 # Re-add pref labels to improve SHACL validation scores
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://data.europa.eu/eli/dir/2019/1024/oj> 
+	a eli:LegalResource ;
+	dcterms:title "Directive (EU) 2019/1024 of the European Parliament and of the Council of 20 June 2019 on open data and the re-use of public sector information (recast)" ;
+	dcterms:alternative "INSPIRE"@en .
+
+<http://data.europa.eu/eli/reg/2022/868/oj>
+	a eli:LegalResource ;
+	dcterms:title "Regulation (EU) 2022/868 of the European Parliament and of the Council of 30 May 2022 on European data governance and amending Regulation (EU) 2018/1724 (Data Governance Act) (Text with EEA relevance)" ;
+	dcterms:alternative "Data Governance Act"@en .
 
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
 	a skos:Concept ;

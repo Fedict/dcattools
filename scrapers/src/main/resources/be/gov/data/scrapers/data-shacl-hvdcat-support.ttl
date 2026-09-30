@@ -1,11 +1,13 @@
 # Data for labels on HvD categories
 
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://data.europa.eu/eli/reg_impl/2023/138/oj> 
 	a eli:LegalResource ;
-	dcterms:title "Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use"@en .
+	dcterms:title "Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use"@en ;
+	dcterms:alternative "High Value Datasets"@en .
 
 <http://data.europa.eu/bna/c_f2b50efd> 
 	a skos:Concept ;

@@ -1,0 +1,24 @@
+# Re-add pref labels to improve SHACL validation scores
+
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.europa.eu/eli/reg_del/2017/1926/oj> 
+	a eli:LegalResource ;
+	dcterms:title "Commission Delegated Regulation (EU) 2017/1926 of 31 May 2017 supplementing Directive 2010/40/EU of the European Parliament and of the Council with regard to the provision of EU-wide multimodal travel information services (Text with EEA relevance)"@en ;
+	dcterms:alternative "MTIS"@en .
+
+<http://data.europa.eu/eli/reg_del/2022/670/oj>
+	a eli:LegalResource ;
+	dcterms:title "Commission Delegated Regulation (EU) 2022/670 of 2 February 2022 supplementing Directive 2010/40/EU of the European Parliament and of the Council with regard to the provision of EU-wide real-time traffic information services (Text with EEA relevance)"@en ;
+	dcterms:alternative "RTTI"@en .
+
+<http://data.europa.eu/eli/reg_del/2013/886/oj>
+	a eli:LegalResource ;
+	dcterms:title "Commission Delegated Regulation (EU) No 886/2013 of 15 May 2013 supplementing Directive 2010/40/EU of the European Parliament and of the Council with regard to data and procedures for the provision, where possible, of road safety-related minimum universal traffic information free of charge to users Text with EEA relevance"@en ;
+	dcterms:alternative "SRTI"@en .
+
+<http://data.europa.eu/eli/reg_del/2013/885/oj>
+	a eli:LegalResource ;
+	dcterms:title "Commission Delegated Regulation (EU) No 885/2013 of 15 May 2013 supplementing ITS Directive 2010/40/EU of the European Parliament and of the Council with regard to the provision of information services for safe and secure parking places for trucks and commercial vehicles Text with EEA relevance"@en ;
+	dcterms:alternative "SSTP"@en .
