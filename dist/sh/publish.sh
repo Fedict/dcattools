@@ -19,7 +19,8 @@
 
 # EDP
 #
-# EDP_MIN_SIZE
+# EDP_MIN_SIZE minimum (gzipped) file size
+# EDP_CATALOG uri of the catalog
 
 # Directories
 BIN=$HOME
@@ -119,6 +120,7 @@ convert() {
       	-cp $BIN/tools.jar be.gov.data.tools.EDP \
 		$DATA/$1/$1.nt \
 		$DATA/$1/$1.xml
+		$EDP_CATALOG
 
 	res=$?
  	status $1 "convert" $res
