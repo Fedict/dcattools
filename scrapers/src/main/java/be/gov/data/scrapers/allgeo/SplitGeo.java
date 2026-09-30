@@ -45,7 +45,7 @@ import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
 /**
- * Split the geo data from the full export fdr the EDP
+ * Split the geo data from the full export for the EDP
  *
  * @see http://data.gov.be
  * @author Bart Hanssens

@@ -1,4 +1,4 @@
-# Add all datasets to data.gov.be catalog
+# Remove non-geo datasets
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX geodcat: <http://data.europa.eu/930/>

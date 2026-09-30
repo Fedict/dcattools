@@ -1,7 +1,7 @@
 # Add all datasets to data.gov.be catalog
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX geodcat: <http://data.europa.eu/930/>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
 
 DELETE {
 		?cat dcat:dataset ?s .
@@ -13,5 +13,5 @@ WHERE {
 		?s a dcat:Dataset .
 		?s ?p ?o .
 		OPTIONAL { ?o ?x ?y }
-		FILTER NOT EXISTS { ?s geodcat:resourceType ?t } 
+		FILTER NOT EXISTS { ?s dcatap:applicableLegislation <http://data.europa.eu/eli/reg/2022/868/oj> } 
 	}

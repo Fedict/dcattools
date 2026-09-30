@@ -13,5 +13,5 @@ WHERE {
 		?s a dcat:DataService .
 		?s ?p ?o .
 		OPTIONAL { ?o ?x ?y }
-		FILTER NOT EXISTS { ?s dcatap:applicableLegislation } 
+		FILTER NOT EXISTS { ?s dcatap:applicableLegislation <http://data.europa.eu/eli/reg/2022/868/oj> } 
 	}
