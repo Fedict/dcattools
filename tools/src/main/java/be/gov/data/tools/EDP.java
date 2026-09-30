@@ -1022,19 +1022,18 @@ public class EDP {
 	 *
 	 * @param w XML writer
 	 * @param con RDF triple store connection
+	 * @param catalog uri of the catalog
 	 */
-	private static void writeCatalog(XMLStreamWriter w, RepositoryConnection con)
+	private static void writeCatalog(XMLStreamWriter w, RepositoryConnection con, String catalog)
 		throws XMLStreamException {
-		String cat = "http://data.gov.be/catalog";
 
 		w.writeStartElement("rdf:RDF");
 		writePrefixes(w);
 
 		w.writeStartElement("dcat:Catalog");
-		w.writeAttribute("dct:identifier", cat);
-		w.writeAttribute("rdf:about", cat);
+		w.writeAttribute("rdf:about", catalog);
 
-		IRI uri = con.getValueFactory().createIRI(cat);
+		IRI uri = con.getValueFactory().createIRI(catalog);
 		writeGeneric(w, con, uri);
 		writeReferences(w, con, uri, FOAF.HOMEPAGE, "foaf:homepage");
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
@@ -1181,6 +1180,11 @@ public class EDP {
 		Serializer s = getSerializer();
 		s.setOutputFile(new File(args[1]));
 
+		String catalog = "http://data.gov.be/catalog";
+		if (args.length > 2) {
+			catalog = args[2];
+		}
+
 		try (RepositoryConnection con = repo.getConnection()) {
 			ParserConfig cfg = new ParserConfig();
 			cfg.set(BasicParserSettings.VERIFY_URI_SYNTAX, true);
@@ -1197,7 +1201,7 @@ public class EDP {
 			XMLStreamWriter w = s.getXMLStreamWriter();
 
 			w.writeStartDocument();
-			writeCatalog(w, con);
+			writeCatalog(w, con, catalog);
 			w.writeEndDocument();
 
 			w.close();
