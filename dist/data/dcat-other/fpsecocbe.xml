@@ -42,7 +42,7 @@
 			<dcat:keyword xml:lang="en">business register</dcat:keyword>
 			<dcat:keyword xml:lang="de">ZDU</dcat:keyword>
 			<dcat:keyword xml:lang="de">Unternehmensregister</dcat:keyword>
-			<dcat:keyword xml:lang="de">Handelsregister</dcat:keyword></dcat:DataService>			
+			<dcat:keyword xml:lang="de">Handelsregister</dcat:keyword>		
 			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
 			<dcat:keyword xml:lang="fr">registre des entreprises</dcat:keyword>
 			<dcat:keyword xml:lang="fr">registre des sociétés</dcat:keyword>
@@ -165,9 +165,17 @@ These files remain available for 5 working days and are then stored.</dc:descrip
 
 			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
 			<dcat:keyword xml:lang="en">CBE</dcat:keyword>
-			<dcat:keyword xml:lang="en">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="en">company register</dcat:keyword>
+			<dcat:keyword xml:lang="en">business register</dcat:keyword>
+			<dcat:keyword xml:lang="de">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="de">Unternehmensregister</dcat:keyword>
+			<dcat:keyword xml:lang="de">Handelsregister</dcat:keyword>		
 			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
-			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>	
+			<dcat:keyword xml:lang="fr">registre des entreprises</dcat:keyword>
+			<dcat:keyword xml:lang="fr">registre des sociétés</dcat:keyword>
+			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>
+			<dcat:keyword xml:lang="nl">register bedrijven</dcat:keyword>
+			<dcat:keyword xml:lang="nl">handelsregister</dcat:keyword>
 
 			<dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg_impl/2023/138/oj"/>
 			<dcatap:hvdCategory rdf:resource="http://data.europa.eu/bna/c_56a1bf47"/>
@@ -369,9 +377,17 @@ New files are available every first Sunday of the month.</dc:description>
 
 			<dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/ECON"/>
 			<dcat:keyword xml:lang="en">CBE</dcat:keyword>
-			<dcat:keyword xml:lang="en">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="en">company register</dcat:keyword>
+			<dcat:keyword xml:lang="en">business register</dcat:keyword>
+			<dcat:keyword xml:lang="de">ZDU</dcat:keyword>
+			<dcat:keyword xml:lang="de">Unternehmensregister</dcat:keyword>
+			<dcat:keyword xml:lang="de">Handelsregister</dcat:keyword>		
 			<dcat:keyword xml:lang="fr">BCE</dcat:keyword>
-			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>	
+			<dcat:keyword xml:lang="fr">registre des entreprises</dcat:keyword>
+			<dcat:keyword xml:lang="fr">registre des sociétés</dcat:keyword>
+			<dcat:keyword xml:lang="nl">KBO</dcat:keyword>
+			<dcat:keyword xml:lang="nl">register bedrijven</dcat:keyword>
+			<dcat:keyword xml:lang="nl">handelsregister</dcat:keyword>
 
 			<dcat:landingPage>
 				<foaf:Document rdf:about="https://economie.fgov.be/nl/themas/ondernemingen/kruispuntbank-van/diensten-voor-iedereen/hergebruik-van-publieke/kruispuntbank-van-0">
