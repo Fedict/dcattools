@@ -57,7 +57,7 @@
 <http://publications.europa.eu/resource/authority/frequency/MONTHLY_2>
 	a skos:Concept ;
 	a dcterms:Frequency ;
-	skos:prefLabel "twee keer per maand"@nl, "zweimal im Monat"@de, "bimensuel"@fr, "semimonthly"@en ;
+	skos:prefLabel "twee keer per maand"@nl, "zweimal im Monat"@de, "bimensuel"@fr, "semimonthly"@en .
 
 <http://publications.europa.eu/resource/authority/frequency/QUARTERLY>
 	a skos:Concept ;
