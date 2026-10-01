@@ -60,6 +60,8 @@ public class Fetcher {
 						.setRoutePlanner(new SystemDefaultRoutePlanner(ProxySelector.getDefault()))
 						.build();
 
+	private String cookie;
+
     /**
      * Sleep (between HTTP requests)
      */
@@ -93,6 +95,14 @@ public class Fetcher {
 		}
     }
 
+	/**
+	 * Set the cookie to use in all request
+	 * 
+	 * @param cookie cookie as string
+	 */
+	public void setCookie(String cookie) {
+		this.cookie = cookie;
+	}
 
     /**
      * Make HTTP GET request, assuming UTF8 response
@@ -104,8 +114,8 @@ public class Fetcher {
 	public String makeRequest(URL url) throws IOException {
 		return makeRequest(url, StandardCharsets.UTF_8);
 	}
-    
-    /**
+
+	/**
      * Make HTTP GET request, assuming a specific charset used in the response
      *
      * @param url
@@ -117,15 +127,21 @@ public class Fetcher {
         logger.info("Get request for page {}", url);
 
 		RequestConfig reqConfig = RequestConfig.custom()
-			.setCookieSpec(CookieSpecs.IGNORE_COOKIES)
+			.setCookieSpec(cookie == null ? CookieSpecs.IGNORE_COOKIES: CookieSpecs.DEFAULT)
 			.setConnectTimeout(240 * 1000)
 			.setSocketTimeout(240 * 1000)
 			.build();
+
 		HttpGet httpGet = new HttpGet(url.toString());
 		httpGet.setConfig(reqConfig);
-		// some servers return 503 if no accept header is present
-		httpGet.addHeader(HttpHeaders.ACCEPT, "*/*");
 		
+		// some servers return 503 if no accept header is present, or User-Agent is not Mozilla
+		httpGet.addHeader(HttpHeaders.ACCEPT, "*/*");
+		httpGet.addHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0");
+		
+		if (cookie != null && !cookie.isBlank()) {
+			httpGet.addHeader("Cookie", cookie);
+		}
 		try(CloseableHttpResponse res = client.execute(httpGet)) {
 			// Return empty if the HTTP returns something faulty
 			int status = res.getStatusLine().getStatusCode();

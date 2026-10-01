@@ -26,7 +26,10 @@
 package be.gov.data.scrapers.biodiversity;
 
 import be.gov.data.dcat.helpers.Storage;
+import be.gov.data.scrapers.AnubisBypass;
+import be.gov.data.scrapers.Ckan;
 import be.gov.data.scrapers.CkanJson;
+import jakarta.json.JsonArray;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -35,6 +38,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jakarta.json.JsonObject;
+import jakarta.json.JsonString;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -81,6 +90,16 @@ public class CkanBioDiversity extends CkanJson {
 		return "";
 	}
 
+	private String getAnubisCookie() throws IOException {
+		URL getPackages = new URL(getBase(), Ckan.API_LIST);
+		Map<String, String> cookies = AnubisBypass.getCookie(getPackages);
+		String cookie = cookies.entrySet().stream()
+									.map(k -> k.getKey() + "=" + k.getValue())
+									.collect(Collectors.joining(";"));
+		LOG.info("Got cookie {}", cookie);
+		return cookie;
+	}
+
 	/**
 	 * Constructor
 	 *
@@ -90,5 +109,6 @@ public class CkanBioDiversity extends CkanJson {
 	public CkanBioDiversity(Properties prop) throws IOException {
 		super(prop);
 		setName("biodiversity");
+		setCookie(getAnubisCookie());
 	}
 }

@@ -47,9 +47,9 @@ import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import jakarta.json.JsonString;
 import jakarta.json.stream.JsonParsingException;
+import java.nio.charset.StandardCharsets;
 
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.util.Values;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
@@ -98,7 +98,7 @@ public abstract class CkanJson extends Ckan {
 	
 	public final static DateFormat DATEFMT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSS");
 
-/**
+	/**
      * Make HTTP GET request.
      * 
      * @param url
@@ -111,7 +111,7 @@ public abstract class CkanJson extends Ckan {
 
 		return reader.readObject();
 	}
-
+	
 	/**
 	 * Generate DCAT.
 	 *
