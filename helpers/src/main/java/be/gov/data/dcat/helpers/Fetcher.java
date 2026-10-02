@@ -27,9 +27,14 @@ package be.gov.data.dcat.helpers;
 
 import java.io.IOException;
 import java.net.ProxySelector;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpStatus;
@@ -38,6 +43,9 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.SystemDefaultRoutePlanner;
@@ -55,13 +63,45 @@ public class Fetcher {
     private final static Logger logger = LoggerFactory.getLogger(Fetcher.class);
     private int delay = 1000;
 	
-	private final static CloseableHttpClient client = 
+	private final BasicCookieStore cookieStore = new BasicCookieStore();
+	private final CloseableHttpClient client = 
 		HttpClientBuilder.create()
 						.setRoutePlanner(new SystemDefaultRoutePlanner(ProxySelector.getDefault()))
+						.setDefaultCookieStore(cookieStore)
 						.build();
 
-	private String cookie;
+	/**
+	 * Get request config
+	 * 
+	 * @param cookie use cookies or not ?
+	 * @return s
+	 */
+	private RequestConfig getRequestConfig() {
+		return RequestConfig.custom()
+						.setCookieSpec(CookieSpecs.STANDARD)
+						.setConnectTimeout(240 * 1000)
+						.setSocketTimeout(240 * 1000)
+						.build();
+	}
 
+	/**
+	 * Get basic HTTP get object
+	 * 
+	 * @param url
+	 * @param config
+	 * @return
+	 */
+	private HttpGet getBasicGet(URL url, RequestConfig config) {
+		HttpGet httpGet = new HttpGet(url.toString());
+		httpGet.setConfig(config);
+		
+		// some servers return 503 if no accept header is present, or User-Agent is not Mozilla
+		httpGet.addHeader(HttpHeaders.ACCEPT, "*/*");
+		httpGet.addHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0");
+		
+		return httpGet;
+	}
+		
     /**
      * Sleep (between HTTP requests)
      */
@@ -71,7 +111,6 @@ public class Fetcher {
         } catch (InterruptedException ex) {
         }
     }
-
     
     /**
      * Get delay between HTTP requests
@@ -81,6 +120,7 @@ public class Fetcher {
     public int getDelay() {
         return delay;
     }
+
     /**
      * Set delay between HTTP requests (500 ms or higher)
      * 
@@ -96,12 +136,12 @@ public class Fetcher {
     }
 
 	/**
-	 * Set the cookie to use in all request
+	 * Set the cookies to use in all request
 	 * 
-	 * @param cookie cookie as string
+	 * @param cookies cookies as list
 	 */
-	public void setCookie(String cookie) {
-		this.cookie = cookie;
+	public void setCookie(List<Cookie> cookies) {
+		cookieStore.addCookies(cookies.toArray(Cookie[]::new));
 	}
 
     /**
@@ -123,25 +163,12 @@ public class Fetcher {
      * @return String containing raw page or empty string
      * @throws IOException 
      */
-    public String makeRequest(URL url, Charset charset) throws IOException {
+	public String makeRequest(URL url, Charset charset) throws IOException {
         logger.info("Get request for page {}", url);
 
-		RequestConfig reqConfig = RequestConfig.custom()
-			.setCookieSpec(cookie == null ? CookieSpecs.IGNORE_COOKIES: CookieSpecs.DEFAULT)
-			.setConnectTimeout(240 * 1000)
-			.setSocketTimeout(240 * 1000)
-			.build();
+		RequestConfig config = getRequestConfig();
+		HttpGet httpGet = getBasicGet(url, config);
 
-		HttpGet httpGet = new HttpGet(url.toString());
-		httpGet.setConfig(reqConfig);
-		
-		// some servers return 503 if no accept header is present, or User-Agent is not Mozilla
-		httpGet.addHeader(HttpHeaders.ACCEPT, "*/*");
-		httpGet.addHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0");
-		
-		if (cookie != null && !cookie.isBlank()) {
-			httpGet.addHeader("Cookie", cookie);
-		}
 		try(CloseableHttpResponse res = client.execute(httpGet)) {
 			// Return empty if the HTTP returns something faulty
 			int status = res.getStatusLine().getStatusCode();
@@ -152,13 +179,44 @@ public class Fetcher {
 			return EntityUtils.toString(res.getEntity(), charset);
 		}
     }
-    
+
+	/**
+	 * 
+	 * @param url
+	 * @param params
+	 * @return list of cookies
+	 * @throws IOException 
+	 */
+	public List<Cookie> makeCookieRequest(URL url, Map<String,String> params) throws IOException {
+		RequestConfig config = getRequestConfig();
+		
+		URL paramUrl;
+		try {
+			URIBuilder builder = new URIBuilder(url.toURI());
+			params.entrySet().forEach(p -> builder.addParameter(p.getKey(), p.getValue()));
+			paramUrl = builder.build().toURL();
+		} catch (URISyntaxException ex) {
+			throw new IOException(ex);
+		}
+		logger.info("Get cookie for page {}", paramUrl);
+
+		HttpGet httpGet = getBasicGet(paramUrl, config);
+		try(CloseableHttpResponse res = client.execute(httpGet)) {
+			// Return empty if the HTTP returns something faulty
+			int status = res.getStatusLine().getStatusCode();
+			if (status != HttpStatus.SC_OK) {
+				logger.warn("HTTP code {} getting page {}", status, url);
+			}
+			return cookieStore.getCookies();
+		}
+    }
+
     /**
      * Make HTTP HEAD request
      * 
      * @param url
      * @return
-     * @throws IOException 
+     * @throws IOExce+ption 
      */
     public int makeHeadRequest(URL url) throws IOException {
         logger.info("Head request for {}", url);
@@ -167,4 +225,5 @@ public class Fetcher {
         return request.execute().returnResponse()
                                 .getStatusLine().getStatusCode();
     }
+
 }

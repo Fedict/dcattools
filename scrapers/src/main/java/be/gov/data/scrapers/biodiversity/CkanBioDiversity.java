@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.apache.http.cookie.Cookie;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
@@ -90,16 +91,6 @@ public class CkanBioDiversity extends CkanJson {
 		return "";
 	}
 
-	private String getAnubisCookie() throws IOException {
-		URL getPackages = new URL(getBase(), Ckan.API_LIST);
-		Map<String, String> cookies = AnubisBypass.getCookie(getPackages);
-		String cookie = cookies.entrySet().stream()
-									.map(k -> k.getKey() + "=" + k.getValue())
-									.collect(Collectors.joining(";"));
-		LOG.info("Got cookie {}", cookie);
-		return cookie;
-	}
-
 	/**
 	 * Constructor
 	 *
@@ -109,6 +100,10 @@ public class CkanBioDiversity extends CkanJson {
 	public CkanBioDiversity(Properties prop) throws IOException {
 		super(prop);
 		setName("biodiversity");
-		setCookie(getAnubisCookie());
+		
+		URL getPackages = new URL(getBase(), Ckan.API_LIST);
+		List<Cookie> cookies = AnubisBypass.getCookie(getPackages);
+		cookies.stream().forEach(c-> System.err.println(c.getName() + ":" + c.getValue()));
+		setCookie(cookies);
 	}
 }

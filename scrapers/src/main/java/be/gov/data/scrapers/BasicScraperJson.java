@@ -43,7 +43,6 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.util.Values;
 
-
 /**
  * Basic JSON scraper
  * 

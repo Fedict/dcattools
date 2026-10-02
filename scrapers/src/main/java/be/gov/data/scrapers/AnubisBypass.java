@@ -25,53 +25,119 @@
  */
 package be.gov.data.scrapers;
 
+import be.gov.data.dcat.helpers.Fetcher;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.HashMap;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HexFormat;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import org.apache.http.cookie.Cookie;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * Bypass Anubis blocker
+ * See also https://anubis.techaro.lol/docs/design/how-anubis-works/
  * 
  * @author Bart.Hanssens
  */
 public class AnubisBypass {
-	protected final static Logger LOG = LoggerFactory.getLogger(AnubisBypass.class);
+    private static final String CHALLENGE = "/.within.website/x/cmd/anubis/api/pass-challenge";	
+	private static final HexFormat HEX = HexFormat.of();
+	private static final ObjectMapper MAPPER = new ObjectMapper();
 	
-	public static Map<String,String> getCookie(URL url) throws IOException {
-		ChromeOptions options = new ChromeOptions();
-		// Run in headless mode
-		options.addArguments("--headless=new");
-		options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-		options.setExperimentalOption("useAutomationExtension", false);
-		options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.37 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.37");
-		options.addArguments("--disable-blink-features=AutomationControlled");
+	protected final static Logger LOG = LoggerFactory.getLogger(AnubisBypass.class);
+	protected static MessageDigest DIGESTER;
 
-		WebDriver driver = new ChromeDriver(options);
-
+	static {
 		try {
-			driver.get(url.toString());
-			Thread.sleep(5000);
-
-			Set<Cookie> cookies = driver.manage().getCookies();
-			Map<String, String> cookieMap = new HashMap<>();
-			for (Cookie cookie : cookies) {
-				cookieMap.put(cookie.getName(), cookie.getValue());
-			}
-			return cookieMap;
-		} catch (Exception e) {
-			LOG.error(e.getMessage());
-		} finally {
-			driver.quit();
+			DIGESTER = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException ex) {
+			// really shouldn't happen...
+			LOG.error("SHA-256 algorithm not found");
 		}
-		return Map.of();
+	}
+
+	private record Solved(long nonce, String hex) {};
+	
+	/**
+	 * Solve the challenge
+	 * 
+	 * @param rnd random string
+	 * @param difficulty number of leading '0's
+	 * @return answer
+	 */
+	private static Solved solve(String rnd, int difficulty) {
+		String prefix = "0".repeat(difficulty);
+		long nonce = -1;
+		String hex;
+
+		LOG.info("Solving anubis challenge {}, difficulty {}", rnd, difficulty);
+	 	do {
+			String data = rnd + ++nonce;
+			byte[] hash = DIGESTER.digest(data.getBytes(StandardCharsets.UTF_8));
+			hex = HEX.formatHex(hash);
+		} while (!hex.startsWith(prefix));
+
+		return new Solved(nonce, hex);
+    }
+
+	/**
+	 * Get cookies
+	 * 
+	 * @param url
+	 * @return
+	 * @throws IOException 
+	 */
+	public static List<Cookie> getCookie(URL url) throws IOException {
+		Fetcher f = new Fetcher();
+
+		String page = f.makeRequest(url);
+		Document doc = Jsoup.parse(page);
+		Element script  = doc.getElementById("anubis_challenge");
+		if (script == null) {
+			LOG.warn("No anubis script tag found");
+			return List.of();
+		}
+
+		JsonNode root = MAPPER.readTree(script.data());
+		JsonNode challenge = root.get("challenge");
+		if (challenge == null) {
+			throw new IOException("No anubis challenge in JSON tree found");
+		}
+		
+		String id = challenge.get("id").asString();
+		String rnd = challenge.get("randomData").asString();
+		int difficulty = challenge.get("difficulty").asInt();
+		
+		if (difficulty < 0 || difficulty > 5) {
+			throw new IOException("Invalid anubis difficulty " + difficulty);
+		}
+
+		long start = System.currentTimeMillis();
+		Solved solved = solve(rnd, difficulty);
+		long duration = System.currentTimeMillis() - start;
+				
+		try {
+			URL pass = url.toURI().resolve(CHALLENGE).toURL();
+			LOG.info("Sending solution to pass {} ", pass);
+
+			return f.makeCookieRequest(pass, Map.of("id", id, "response", solved.hex, 
+															"redir", url.toString(),
+															"nonce", Long.toString(solved.nonce()),
+															"elapsedTime", Long.toString(duration)));
+		} catch (URISyntaxException ex) {
+			throw new IOException(ex);
+		}
 	}
 }
