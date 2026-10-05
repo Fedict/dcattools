@@ -1,8 +1,0 @@
-# Remove INSPIRE conditions incorrectly set as license
-
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-DELETE 
-	{	?s dcterms:license <http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply> }
-WHERE
-	{	?s dcterms:license <http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply> }

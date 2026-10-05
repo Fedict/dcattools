@@ -20,10 +20,8 @@ sparql-access-restricted.qry
 sparql-access-public.qry
 sparql-available.qry
 sparql-rights-statement.qry
-sparql-contact-creator.qry
 ucl/sparql-default-publisher.qry
 ucl/data-contact.ttl
-ucl/sparql-default-contact.qry
 ucl/data-theme.ttl
 sparql-map-theme.qry
 ucl/sparql-default-theme.qry

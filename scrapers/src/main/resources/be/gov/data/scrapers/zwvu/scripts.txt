@@ -1,6 +1,0 @@
-# extra queries to be executed and data to be loaded
-data-frequency.ttl
-data-media.ttl
-sparql-clear-skos.qry
-sparql-shacl-classes.qry
-sparql-shacl-skos.qry

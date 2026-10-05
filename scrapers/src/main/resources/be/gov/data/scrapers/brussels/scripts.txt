@@ -3,7 +3,6 @@ sparql-strip-html.qry
 sparql-delete-label-empty.qry
 brussels/sparql-fix-translations.qry
 brussels/sparql-keyword-theme.qry
-brussels/sparql-theme-uri.qry
 brussels/data-theme.ttl
 sparql-map-theme.qry
 sparql-theme-subject.qry
@@ -12,15 +11,12 @@ sparql-vocab-theme.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-clear-skos.qry
-brussels/sparql-fix-wms.qry
 sparql-delete-label-format.qry
 brussels/sparql-bytesize.qry
 sparql-bytesize-type.qry
 brussels/sparql-fix-nolang.qry
 brussels/data-org.ttl
 brussels/sparql-map-org.qry
-brussels/sparql-fix-vcard.qry
-brussels/sparql-fix-mailto.qry
 brussels/sparql-geo-brussels.qry
 brussels/sparql-remove-orgs.qry
 sparql-remove-names.qry
@@ -28,7 +24,6 @@ brussels/data-geo.ttl
 sparql-geo-publisher.qry
 data-license.ttl
 brussels/sparql-license-contains.qry
-brussels/sparql-license-bxlcity.qry
 sparql-access-public.qry
 sparql-map-license.qry
 sparql-delete-label-license.qry
@@ -42,7 +37,6 @@ data-license.ttl
 sparql-map-license.qry
 sparql-clear-skos.qry
 brussels/sparql-accessurl.qry
-brussels/sparql-fix-downloadurl.qry
 sparql-title-to-desc.qry
 brussels/sparql-fix-translations2.qry
 sparql-map-hvd.qry

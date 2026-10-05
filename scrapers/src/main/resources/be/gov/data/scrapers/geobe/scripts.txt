@@ -49,13 +49,10 @@ geobe/sparql-std-uri.qry
 geobe/sparql-fix-crs.qry
 geobe/sparql-fix-crs2.qry
 sparql-theme-subject.qry
-sparql-vocab-theme.qry
 geobe/sparql-license-links.qry
 data-license.ttl
 sparql-map-license.qry
-geobe/sparql-fix-cc-license.qry
 sparql-clear-skos.qry
-geobe/sparql-fix-language.qry
 #geobe/sparql-vcard-org.qry
 #sparql-vcard-name.qry
 data-frequency.ttl

@@ -4,10 +4,8 @@ data-media.ttl
 sparql-geo-belgium.qry
 statbelwiki/sparql-license.qry
 statbelwiki/data-publ-contact.ttl
-statbelwiki/sparql-contact.qry
 statbelwiki/sparql-vcard-fn.qry
 statbelwiki/data-theme.ttl
-sparql-access-public.qry
 sparql-available.qry
 sparql-clear-skos.qry
 sparql-dataset-stat.qry

@@ -1,12 +1,10 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-ods-serves.qry
-fluvius/sparql-default-language.qry
 sparql-remove-roles.qry
 sparql-map-loc-lang.qry
 sparql-dist-lang.qry
 fluvius/sparql-language.qry
 sparql-dist-accessurl-ods.qry
-fluvius/sparql-fix-license.qry
 fluvius/sparql-license.qry
 sparql-access-public.qry
 sparql-available.qry
@@ -24,7 +22,6 @@ data-media.ttl
 sparql-map-media.qry
 sparql-expand-dctype.qry
 sparql-clear-skos.qry
-sparql-title-to-desc.qry
 sparql-strip-html.qry
 data-shacl-support.ttl
 sparql-shacl-classes.qry

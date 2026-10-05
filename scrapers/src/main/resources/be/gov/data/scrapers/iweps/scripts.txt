@@ -1,7 +1,5 @@
 # extra queries to be executed and data to be loaded
 iweps/sparql-clear-catalog.qry
-sparql-remove-ods-serves.qry
-sparql-dist-lang.qry
 iweps/sparql-downloadurl.qry
 iweps/sparql-landing-accessurl.qry
 sparql-remove-circular.qry
@@ -22,7 +20,6 @@ sparql-map-media.qry
 sparql-startenddate.qry
 sparql-date-type.qry
 sparql-tag-language.qry
-sparql-expand-dctype.qry
 sparql-clear-skos.qry
 sparql-delete-label-empty.qry
 sparql-title-to-desc.qry

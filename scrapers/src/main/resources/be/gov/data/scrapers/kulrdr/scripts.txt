@@ -3,7 +3,6 @@ sparql-strip-html.qry
 sparql-date-type.qry
 data-license.ttl
 sparql-map-license.qry
-kulrdr/sparql-dataset-license.qry
 sparql-access-public.qry
 sparql-available.qry
 sparql-access-restricted.qry
@@ -21,7 +20,6 @@ kulrdr/data-theme.ttl
 sparql-map-theme.qry
 kulrdr/sparql-default-theme.qry
 sparql-clear-skos.qry
-sparql-tag-language.qry
 sparql-doi-landingpage.qry
 kulrdr/data-contact.ttl
 kulrdr/sparql-default-contact.qry

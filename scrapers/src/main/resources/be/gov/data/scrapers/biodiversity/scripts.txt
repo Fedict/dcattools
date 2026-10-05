@@ -1,6 +1,4 @@
 # extra queries to be executed and data to be loaded 
-biodiversity/sparql-language.qry
-sparql-tag-language.qry
 biodiversity/sparql-theme.qry
 sparql-clear-skos.qry
 biodiversity/data-geo.ttl
