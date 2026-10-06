@@ -1722,11 +1722,15 @@
     </xsl:param>
 
     <xsl:param name="IndividualURI">
-      <xsl:value-of select="normalize-space(gmd:individualName/*/@xlink:href)"/>
+		<xsl:for-each select="gmd:individualName/*/@xlink:href">
+			<xsl:value-of select="normalize-space(.)"/>
+		</xsl:for-each>
     </xsl:param>
 
     <xsl:param name="IndividualName">
-      <xsl:value-of select="normalize-space(gmd:individualName/*)"/>
+		<xsl:for-each select="gmd:individualName/*">
+			<xsl:value-of select="normalize-space(.)"/>
+		</xsl:for-each>
     </xsl:param>
 
     <xsl:param name="IndividualName-FOAF">

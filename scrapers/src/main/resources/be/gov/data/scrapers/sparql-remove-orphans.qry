@@ -15,7 +15,7 @@ WHERE
 	{ 	?s a ?class .
 		?s ?p ?o .
 		VALUES ?class { dcterms:Standard dcterms:Location dcterms:LicenseDocument
-						foaf:Agent foaf:Organization 
+						foaf:Agent foaf:Organization foaf:Person 
 						prov:Agent prov:Attribution 
 						skos:Concept vcard:Organization }
 		FILTER NOT EXISTS { ?x ?rel ?s }

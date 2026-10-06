@@ -60,12 +60,26 @@
 	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
 	skos:altLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en .
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002949> ;
+	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
+	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen",
+		"agentschap Digitaal Vlaanderen"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804#helpdesk>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Helpdesk Digitaal Vlaanderen"@nl ;
+	skos:altLabel "Helpdesk Digitaal Vlaanderen"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0241347282>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Bruxelles-Propreté"@nl, "Net Brussel"@nl, "ARP-GAN"@en ;
+	skos:prefLabel "Bruxelles-Propreté"@fr, "Net Brussel"@nl, "ARP-GAN"@en ;
 	skos:altLabel "Gewestelijk agentschap voor netheid, Net Brussel"@en,
-		"Gewestelijk agentschap voor netheid"@nl,
+		"Gewestelijk agentschap voor netheid"@nl, "ARP-GAN"@en,
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@nl, 
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@fr, 
 			"Agence régionale pour la propreté"@fr,
@@ -96,7 +110,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "Paradigm"@de  ;
 	skos:altLabel "CIBG / CIRB"@en, "CIRB / CIBG"@en, "BRIC"@en, "CIBG"@nl, "CIRB"@fr, "IRISline"@en, 
-		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "IRISteam"@en .
+		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "IRISteam"@en, "Irisline"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0696977167> 
 	a foaf:Organization ;
@@ -173,6 +187,13 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
 	skos:altLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl  .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207365610>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2798579/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Etterbeek"@fr, "Etterbeek"@en, "Etterbeek"@nl ;
+	skos:altLabel "Etterbeek"@fr, "Secrétariat Communal d'Etterbeek"@fr  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207365709>
 	a foaf:Organization ;
@@ -268,7 +289,7 @@
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert"@en, "Sint-Lambrechts-Woluwe"@nl ;
 	skos:altLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
-				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl .
+				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl, "Woluwe-Saint-Lambert"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
 	a foaf:Organization ;
@@ -304,7 +325,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
 	skos:altLabel "Brussels energy regulator"@en, "Le régulateur bruxellois pour l'énergie"@fr, 
-			"De Brusselse regulator voor energie"@nl, "Brugel"@fr,
+			"De Brusselse regulator voor energie"@nl, "Brugel"@fr, "BRUGEL"@en, 
 			"Brugel, De Brusselse regulator voor energie"@nl, 
 			"Brugel, Le régulateur bruxellois pour l'énergie"@fr, "Brugel, Brussels energy regulator"@en .
 
@@ -317,7 +338,7 @@
 	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, 
 			"Brussel Gewestelijke Coördinatie"@nl, "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en,
 			"Gewestelijke Overheidsdienst Brussel (GOB)"@nl, "Service public régional de Bruxelles (SPRB)"@fr,
-			"SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
+			"SPRB"@fr, "SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
 			"Bruxelles économie et emploi"@en,
 			"Brussel Economie en Werkgelegenheid"@nl,
 			"Bruxelles Économie et Emploi"@fr, "Brussels Economy and Employment"@en,
@@ -328,7 +349,7 @@
 			"Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, 
 			"Brussels-Capital Urban Development"@en,
 			"Koninklijke Commissie voor Monumenten en Landschappen"@nl,
-			"Commission Royale des Monuments et Sites"@fr,
+			"Commission Royale des Monuments et Sites"@fr, 
 			"talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr ,
 			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en  .
 
@@ -381,13 +402,14 @@
 	skos:prefLabel "SLRB-BGHM"@en, "SLRB-BGHM"@fr, "SLRB-BGHM"@nl ; 
 	skos:altLabel "SLRB-BGHM"@en, "SLRB-BGHM"@nl, "SLRB-BGHM"@fr,
 			"Brusselse Gewestelijke Huisvestingsmaatschappij (BGHM)"@nl,
-			"Brussels-Capital Region Housing Company (SLRB)"@en .
+			"Brussels-Capital Region Housing Company (SLRB)"@en, "SLRB/BGHM"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0870532933>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Innoviris"@en, "Innoviris"@fr, "Innoviris"@nl ; 
-	skos:altLabel "innoviris"@en, "innoviris"@nl, "innoviris"@fr .
+	skos:altLabel "innoviris"@en, "innoviris"@nl, "innoviris"@fr, 
+					"Innoviris"@en, "Innoviris"@fr, "Innoviris"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0410107090>
 	a foaf:Organization ;
@@ -421,14 +443,21 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Safe Brussels"@en, "Safe Brussels"@nl, "Safe Brussels"@fr  ;
-	skos:altLabel "Brussels Prevention et Security (BPS)"@en, "Bruxelles Prévention et Sécurité (BPS)"@fr .
+	skos:altLabel "Brussels Prevention et Security (BPS)"@en, "Bruxelles Prévention et Sécurité (BPS)"@fr,
+				"safe.brussels"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0678485603>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Hub Brussels"@fr, "Hub Brussels"@nl, "Hub Brussels"@en ;
+	skos:altLabel "hub.brussels"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0240682833>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Gemeinsame Gemeinschaftskommission"@de, "Gemeenschappelijke Gemeenschapscommissie"@nl, 
 					"Commission communautaire commune"@fr  ;
-	skos:altLabel "COOCM"@fr, "Gemeenschappelijke Gemeenschapscommissie (GGC)"@nl .
+	skos:altLabel "COCOM"@fr, "COCOM-GGC"@fr, "Gemeenschappelijke Gemeenschapscommissie (GGC)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
@@ -442,3 +471,42 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
 	skos:altLabel "Institut géographique national"@fr, "Nationaal Geografisch Instituut"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002306> ;
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, 
+					"Vrije Universiteit Brussel"@en ;
+	skos:altLabel "Vrije Universiteit Brussel","Vrije Universiteit Brussel"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:altLabel "Universiteit Gent"@nl .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
+	skos:altLabel "bpost nv"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0463832719>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "IDEA Consult"@en, "IDEA Consult"@nl, "IDEA Consult"@fr;
+	skos:altLabel "IDEA Consult"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0659656022>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "CAWaB"@fr, "CAWaB"@nl, "CAWaB"@en ;
+	skos:altLabel "CAWaB"@en .
+	

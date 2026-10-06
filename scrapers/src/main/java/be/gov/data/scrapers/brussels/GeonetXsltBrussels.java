@@ -25,7 +25,7 @@
  */
 package be.gov.data.scrapers.brussels;
 
-import be.gov.data.scrapers.GeonetGmd;
+import be.gov.data.scrapers.GeonetXslt;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -35,14 +35,14 @@ import java.util.Properties;
  * @see http://datastore.brussels
  * @author Bart Hanssens
  */
-public class GeonetBrussels extends GeonetGmd {
+public class GeonetXsltBrussels extends GeonetXslt {
 	/**
 	 * Constructor
 	 * 
 	 * @param prop
 	 * @throws IOException
 	 */
-	public GeonetBrussels(Properties prop) throws IOException {
+	public GeonetXsltBrussels(Properties prop) throws IOException {
 		super(prop);
 		setName("brussels");
 	}

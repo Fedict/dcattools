@@ -11,12 +11,14 @@ DELETE
 	{	?s ?prop ?org .
 		?org ?p ?o }
 INSERT 
-	{ 	?s ?prop ?neworg }
+	{ 	?s ?prop ?neworg .
+		?neworg foaf:name ?name }
 WHERE
 	{	?s ?prop ?org.
 		?org ?rel ?label .
 		OPTIONAL { ?org ?p ?o }
 		?neworg skos:altLabel ?label .
+		?neworg skos:prefLabel ?name .
 		VALUES ?prop { org:memberOf prov:agent }
 		VALUES ?rel { foaf:name vcard:fn }
 		FILTER (! STRSTARTS(STR(?org), "https://org.belgif"))
