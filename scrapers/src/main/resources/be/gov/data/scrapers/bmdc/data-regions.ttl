@@ -12,7 +12,8 @@
 	dcat:bbox "POLYGON((-98.05 -0.94, 12.01 -0.94, 12.01 68.64, -98.05 68.64, -98.05 -0.94))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/22253>
-	rdfs:label "Southern North Sea"@en .
+	rdfs:label "Southern North Sea"@en ;
+	dcat:bbox "POLYGON ((-3.74 50.94, 9.83 50.94, 9.83 56.54, -3.74 56.54, -3.74 50.94))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/2350>
 	rdfs:label "North Sea"@en ;
