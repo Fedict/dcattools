@@ -36,13 +36,16 @@
 	dcat:bbox "POLYGON((-5.71 48.50, 1.93 48.50, 1.93 51.17, -5.71 51.17, -5.71 48.50))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/2399>
-	rdfs:label "Southern Bight"@en .
+	rdfs:label "Southern Bight"@en ;
+	dcat:bbox "POLYGON ((0.21 50.93, 5.18 50.93, 5.18 53.38, 0.21 53.38, 0.21 50.93))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/2419>
-	rdfs:label "Hinder Banks"@en .
+	rdfs:label "Hinder Banks"@en ;
+	dcat:bbox "POLYGON ((2.61 51.48, 2.7 51.48, 2.7 51.67, 2.61 51.67, 2.61 51.48))""^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/2421>
-	rdfs:label "Flemish Banks"@en .
+	rdfs:label "Flemish Banks"@en ;
+	dcat:bbox "POLYGON ((2.42 51.19, 2.61 51.19, 2.61 51.31, 2.42 51.31, 2.42 51.19))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/2438>
 	rdfs:label "Thornton Bank"@en ;
@@ -73,7 +76,8 @@
 	dcat:bbox "POLYGON((2.24 51.04, 4.40 51.04, 4.40 51.88, 2.24 51.88, 2.24 51.04))"^^geo:wktLiteral . 
 
 <http://marineregions.org/mrgid/4690>
-	rdfs:label "Western Coastal Banks"@en .
+	rdfs:label "Western Coastal Banks"@en ;
+	dcat:bbox "POLYGON ((2.76 51.22, 2.78 51.22, 2.78 51.23, 2.76 51.23, 2.76 51.22))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/4752>
 	rdfs:label "Westerschelde"@en ;
