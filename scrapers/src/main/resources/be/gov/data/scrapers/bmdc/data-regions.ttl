@@ -41,7 +41,7 @@
 
 <http://marineregions.org/mrgid/2419>
 	rdfs:label "Hinder Banks"@en ;
-	dcat:bbox "POLYGON ((2.61 51.48, 2.7 51.48, 2.7 51.67, 2.61 51.67, 2.61 51.48))""^^geo:wktLiteral .
+	dcat:bbox "POLYGON ((2.61 51.48, 2.7 51.48, 2.7 51.67, 2.61 51.67, 2.61 51.48))"^^geo:wktLiteral .
 
 <http://marineregions.org/mrgid/2421>
 	rdfs:label "Flemish Banks"@en ;

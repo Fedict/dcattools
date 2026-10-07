@@ -1,0 +1,16 @@
+# Map region ID based on bounding box
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcterms:spatial ?genid }
+INSERT
+	{	?s dcterms:spatial ?mrgid }
+WHERE
+	{	?s dcterms:spatial ?genid .
+		?genid dcat:bbox ?geo .
+		?mrgid dcat:bbox ?geo .
+		FILTER (SRSTARTS(STR(?genid), "http://data.gov.be") &&
+					SRSTARTS(STR(?mrgid), "http://marineregions.org"))
+	}

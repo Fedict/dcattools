@@ -29,6 +29,7 @@ sparql-consolidate-std.qry
 bmdc/sparql-theme-region.qry
 bmdc/sparql-map-regions.qry
 bmdc/data-regions.ttl
+bmdc/sparql-regions-map.qry
 bmdc/sparql-regions-within.qry
 bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
