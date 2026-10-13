@@ -310,8 +310,28 @@
 <http://www.eionet.europa.eu/gemet/concept/4612>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
-	skos:prefLabel "couverture spatiale (SIG)"@fr, "landbedekking"@nl, 
-			"Landbedeckung"@de, "land cover"@en .
+	skos:prefLabel "couverture spatiale (SIG)"@fr, "landbedekking"@nl, "Landbedeckung"@de, "land cover"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/4633>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "land occupation"@en , "landgebruik"@nl , "occupation du sol"@fr , "Flächennutzung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4635>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "land planning"@en , "landinrichting"@nl , "aménagement du territoire"@fr , "Landplanung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4636>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "land pollution"@en , "landvervuiling"@nl , "pollution du sol"@fr , "Bodenverunreinigung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4644>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "land register"@en , "legger van het kadaster"@nl , "cadastre"@fr , "Kataster"@de .
+
 
 <http://www.eionet.europa.eu/gemet/concept/4857>
 	a skos:Concept ;
