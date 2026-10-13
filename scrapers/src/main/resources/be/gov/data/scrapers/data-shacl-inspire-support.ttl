@@ -332,11 +332,36 @@
     skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
     skos:prefLabel "land register"@en , "legger van het kadaster"@nl , "cadastre"@fr , "Kataster"@de .
 
+<http://www.eionet.europa.eu/gemet/concept/4648>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "landscape"@en , "landschap"@nl , "paysage"@fr , "Landschaft"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4666>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "land setup"@en , "landinrichting"@nl , "aménagement du territoire"@fr , "Flächenstruktur"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4767>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "leisure activity"@en , "vrijetijdsbesteding"@nl , "loisirs"@fr , "Freizeitbereich"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/4857>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "litter"@en, "afdekstro"@nl, "ordures"@fr, "Unrat"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4879>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "local authority"@en , "gemeente"@nl , "municipalité"@fr , "Kommunalbehörde"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/4885>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "local government policy"@en , "beleid van de plaatselijke overheid"@nl , 
+					"politique des administrations locales"@fr , "Kommunalpolitik"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/5029>
 	a skos:Concept ;
