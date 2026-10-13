@@ -45,9 +45,9 @@ geobe/sparql-fix-bira.qry
 #sparql-remove-names.qry
 geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
-geobe/sparql-std-uri.qry
+#geobe/sparql-std-uri.qry
 geobe/sparql-fix-crs.qry
-geobe/sparql-fix-crs2.qry
+sparql-crs-uri.qry
 sparql-theme-subject.qry
 geobe/sparql-license-links.qry
 data-license.ttl

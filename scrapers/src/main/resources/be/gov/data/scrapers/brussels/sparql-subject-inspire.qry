@@ -1,0 +1,22 @@
+# Map a label with blank IRI to an INSPIRE theme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?s dcterms:subject ?genid .
+		?genid skos:prefLabel ?en .
+		?genid ?p ?o }
+INSERT
+	{ 	?s dcterms:subject ?uri  }
+WHERE
+	{ 	
+		?s dcterms:subject ?genid .
+		?genid skos:prefLabel ?en .
+		?uri skos:prefLabel ?en .
+		OPTIONAL { ?genid ?p ?o }
+		FILTER (LANG(?en) = "en")
+		FILTER (STRSTARTS(STR(?genid), "http://data.gov.be") && 
+				STRSTARTS(STR(?uri), "http://inspire.ec.europa.eu/theme"))
+	}

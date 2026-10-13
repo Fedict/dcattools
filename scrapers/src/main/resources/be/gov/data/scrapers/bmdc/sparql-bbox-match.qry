@@ -1,0 +1,19 @@
+# Map region ID based on bounding box
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX geos: <http://www.opengis.net/ont/geosparql#>
+
+DELETE
+	{	?s dcterms:spatial ?genid }
+INSERT
+	{	?s dcterms:spatial ?mrgid }
+WHERE
+	{	?s dcterms:spatial ?genid .
+		?genid dcat:bbox ?geo1 .
+		?mrgid dcat:bbox ?geo2 .
+		FILTER (geof:within(?geo1, geof:buffer(?geo2, 1.9)))
+		FILTER (STRSTARTS(STR(?genid), "http://data.gov.be") &&
+					STRSTARTS(STR(?mrgid), "http://marineregions.org/"))
+	}

@@ -12,14 +12,12 @@ INSERT
 WHERE
 	{ 	?s geodcatap:referenceSystem ?sys .
 		?sys dcterms:title ?val
-		BIND(
-			IRI(
-				CONCAT("http://www.opengis.net/def/crs/EPSG/0/", 
-					IF(CONTAINS(STR(?val), "EPSG:"), 
-							STRBEFORE(STRAFTER(STR(?val), "EPSG:"), ")") , 
-							STR(?val))
-				)
-			)
-		as ?uri)
+		OPTIONAL { ?sys ?p ?o }
+		BIND (IRI(
+				CONCAT("http://www.opengis.net/def/crs/EPSG/0/", ?code))
+			AS ?std)
+		BIND (REPLACE(
+				STRAFTER(?desc, "EPSG:"), "\\D", "") 
+			AS ?code)
 		FILTER (! STRSTARTS(STR(?sys), "http://www.opengis.net"))
 	}

@@ -61,6 +61,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:altLabel "Geopackage", "geopackage", "GPKG",  "GeoPacakge", "application/geopackage+sqlite3",
 		"sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)", "sqlite",
+		<http://inspire.ec.europa.eu/media-types/application/geopackage+sqlite3>,
 		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .
 
 <http://publications.europa.eu/resource/authority/file-type/GML>
