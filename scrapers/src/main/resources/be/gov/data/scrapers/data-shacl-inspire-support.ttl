@@ -131,8 +131,8 @@
 
 <http://www.eionet.europa.eu/gemet/concept/2340>
     a skos:Concept ;
-    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> .
-    skos:prefLabel "drinking water protection area"@en , "drinkwaterbeschermingsgebied"@nl , 
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "drinking water protection area"@en, "drinkwaterbeschermingsgebied"@nl , 
 					"zone de captage d'eau potable"@fr , "Trinkwasserschutzgebiet"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/2343>
