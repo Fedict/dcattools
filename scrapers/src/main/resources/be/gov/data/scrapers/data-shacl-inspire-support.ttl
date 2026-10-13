@@ -10,6 +10,17 @@
 	dcterms:title "Directive 2007/2/EC of the European Parliament and of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)" ;
 	dcterms:alternative "INSPIRE"@en .
 
+
+<http://www.eionet.europa.eu/gemet/concept/135>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "aerial photograph"@en , "luchtfoto"@nl , "photographie aérienne"@fr , "Luftbild"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/256>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "aircraft noise"@en , "geluid van vliegtuigen"@nl , "bruit d'aéronefs"@fr , "Fluglärm"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/420>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
@@ -55,6 +66,11 @@
 	skos:prefLabel "secteur de brasserie"@fr, "brouwerijnijverheid"@nl, 
 			"Brauerei"@de, "brewing industry"@en .
 
+<http://www.eionet.europa.eu/gemet/concept/1029>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "building"@en , "gebouw"@nl , "bâtiment"@fr , "Gebäude"@de .
+ .
 <http://www.eionet.europa.eu/gemet/concept/1391>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
@@ -102,6 +118,34 @@
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "dragage"@fr, "baggeren"@nl, "Baggerarbeit"@de, "dredging"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/2333>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "drilling"@en , "boren"@nl , "forage"@fr , "Bohrung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/2339>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "drinking water"@en , "drinkwater"@nl , "eau potable"@fr , "Trinkwasser"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/2340>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> .
+    skos:prefLabel "drinking water protection area"@en , "drinkwaterbeschermingsgebied"@nl , 
+					"zone de captage d'eau potable"@fr , "Trinkwasserschutzgebiet"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/2343>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "drinking water supply"@en , "drinkwatervoorziening"@nl , 
+				"approvisionnement en eau potable"@fr , "Trinkwasserversorgung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/2344>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "drinking water treatment"@en , "het behandelen van drinkwater"@nl , 
+				"traitement de l'eau potable"@fr , "Trinkwasserbehandlung"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/2352>
 	a skos:Concept ;
@@ -162,10 +206,30 @@
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "fishery policy"@en, "politique de la pêche"@fr,  "visserijbeleid"@nl, "Fischereipolitik"@de .
 
+<http://www.eionet.europa.eu/gemet/concept/3301>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "flooding"@en , "overstroming"@nl , "inondation"@fr , "Überschwemmung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/3305>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "flora (biology)"@en , "flora (gezamenlijke vegetatie)"@nl , "flore"@fr , "Flora"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/3316>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "flowing water"@en , "stromend water"@nl , "eau courante"@fr , "Fließgewässer"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/3465>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "fouling growth"@en, "salissure"@fr, "aangroei"@nl, "Fouling"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/3559>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "garden"@en , "tuin"@nl , "jardin"@fr , "Garten"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/3638>
 	a skos:Concept ;
@@ -176,6 +240,23 @@
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "extraction de gravier"@fr, "grindwinning"@nl, "Kiesabbau"@de, "gravel extraction"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/3780>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "groundwater"@en , "grondwater"@nl , "eaux souterraines"@fr , "Grundwasser"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/3784>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "groundwater pollution"@en , "grondwaterverontreiniging"@nl , 
+					"pollution des eaux souterraines"@fr , "Grundwasserverunreinigung"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/3785>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "groundwater protection"@en , "grondwaterbescherming"@nl , 
+					"protection des réserves d'eau souterraines"@fr , "Grundwasserschutz"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/3834>
 	a skos:Concept ;
@@ -470,6 +551,16 @@
 	skos:prefLabel "introduction of animal species"@en, "introduction d'espèces animales"@fr, 
 			"het invoeren van diersoorten"@nl, "Einführung von Tierarten"@de .
 
+<http://www.eionet.europa.eu/gemet/concept/10706>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "forest protection"@en , "bosbescherming"@nl , "protection de la forêt"@fr , "Waldschutz"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/10860>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "cycle path"@en , "fietspad"@nl , "piste cyclable"@fr , "Radweg"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/11146>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
@@ -486,6 +577,12 @@
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "justice"@fr, "gerechtigheid"@nl, "Recht"@de, "justice"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/11918>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "airborne noise"@en , "via lucht overgedragen geluid"@nl , "bruit aérien"@fr , 
+				"Luftschall"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/12390>
 	a skos:Concept ;
@@ -525,10 +622,22 @@
 	skos:prefLabel "sub-national boundary"@en, "frontière infranationale"@fr, 
 			"binnengrens"@nl, "Innerstaatliche Grenze"@de .
 
+<http://www.eionet.europa.eu/gemet/concept/15050>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "air quality directive"@en , "richtlijnen luchtkwaliteit"@nl , 
+				"directives sur la qualité de l'air"@fr , "Luftqualitätsrichtlinien"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/15051>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "albedo"@en, "albedo"@nl .
+
+<http://www.eionet.europa.eu/gemet/concept/15061>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "artificial land"@en , "artificiële oppervlakte"@nl , "sols artificialisés"@fr , 
+				"künstliche Flächen"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/15095>
 	a skos:Concept ;
@@ -547,6 +656,7 @@
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "nature-based solution"@en, "naturbasierte Lösung"@de, 
 			"solution fondée sur la nature"@fr,	"op de natuur gebaseerde oplossing"@nl .
+
 
 <http://inspire.ec.europa.eu/theme/ac>
 	a skos:Concept ;
