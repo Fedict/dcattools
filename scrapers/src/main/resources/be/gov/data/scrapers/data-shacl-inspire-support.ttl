@@ -869,7 +869,7 @@
 <http://inspire.ec.europa.eu/theme/mf>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Meteorologisch-geografische Kennwerte"@de; "Meteorological geographical features"@en,
+    skos:prefLabel "Meteorologisch-geografische Kennwerte"@de, "Meteorological geographical features"@en,
         "Caractéristiques géographiques météorologiques"@fr, "Meteorologische geografische kenmerken"@nl .
 
 <http://inspire.ec.europa.eu/theme/mr>
