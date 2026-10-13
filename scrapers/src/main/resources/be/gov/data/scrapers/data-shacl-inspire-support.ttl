@@ -513,7 +513,7 @@
     a skos:Concept ;
     skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
     skos:prefLabel "public transport"@en , "openbaar vervoer"@nl , "transport en commun"@fr , 
-					"Öffentlicher Verkehr"@de ;
+					"Öffentlicher Verkehr"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/6883>
 	a skos:Concept ;
