@@ -408,14 +408,12 @@
 <http://www.eionet.europa.eu/gemet/concept/5253>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
-	skos:prefLabel "zone militaire"@fr, "militair terrein"@nl, 
-			"Militärgebiet"@de, "military zone"@en .
+	skos:prefLabel "zone militaire"@fr, "militair terrein"@nl, "Militärgebiet"@de, "military zone"@en .
 
 <http://www.eionet.europa.eu/gemet/concept/5346>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
-	skos:prefLabel "surveillance"@fr, "meting"@nl, 
-			"Monitoring"@de, "monitoring"@en .
+	skos:prefLabel "surveillance"@fr, "meting"@nl,  "Monitoring"@de, "monitoring"@en .
 
 <http://www.eionet.europa.eu/gemet/concept/5349>
 	a skos:Concept ;
@@ -434,6 +432,26 @@
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "Museum"@de, "museum"@en, "museum"@nl, "musée"@fr .
 
+<http://www.eionet.europa.eu/gemet/concept/5507>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "natural heritage"@en , "natuurlijk erfgoed"@nl , "patrimoine naturel"@fr , "Naturerbe"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/5608>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "nitrogen dioxide"@en , "stikstofdioxide"@nl , "dioxyde d'azote"@fr , "Stickstoffdioxid"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/5624>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "noise"@en , "geluid"@nl , "bruit"@fr , "Lärm"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/5633>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "noise disturbance"@en , "geluidshinder"@nl , "nuisance sonore"@fr , "Lärmbelästigung"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/5648>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
@@ -449,6 +467,11 @@
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "nutriment"@fr, "nutriënt"@nl, "Nährstoff"@de, "nutrient"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/5991>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "ozone"@en , "ozon"@nl , "ozone"@fr , "Ozon"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/6270>
 	a skos:Concept ;
@@ -466,6 +489,11 @@
 	skos:prefLabel "surveillance de la pollution"@fr, 
 			"bemonstering milieuverontreiniging"@nl, "Umweltmonitoring"@de, "pollution monitoring"@en .
 
+<http://www.eionet.europa.eu/gemet/concept/6710>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "project"@en , "ontwerp"@nl , "projet"@fr , "Projekt"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/6790>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
@@ -476,10 +504,26 @@
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "public health"@en, "santé publique"@fr, "volksgezondheid"@nl, "Volksgesundheit"@de .
 
+<http://www.eionet.europa.eu/gemet/concept/6817>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "public service"@en , "nutsbedrijf"@nl , "service public"@fr , "Öffentliche Dienste"@de .
+
+<http://www.eionet.europa.eu/gemet/concept/6818>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "public transport"@en , "openbaar vervoer"@nl , "transport en commun"@fr , 
+					"Öffentlicher Verkehr"@de ;
+
 <http://www.eionet.europa.eu/gemet/concept/6883>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "radar"@fr, "radar"@nl, "Radar"@de, "radar"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/6947>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "rain"@en , "regen"@nl , "pluie"@fr , "Regen (Niederschlag)"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/7003>
 	a skos:Concept ;
@@ -512,6 +556,11 @@
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "scorie"@fr, "(metaal)slak(ken)"@nl, "Schlacke"@de, "slag"@en .
+
+<http://www.eionet.europa.eu/gemet/concept/7900>
+    a skos:Concept ;
+    skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+    skos:prefLabel "soil use"@en , "bodemgebruik"@nl , "utilisation du sol"@fr , "Bodennutzung"@de .
 
 <http://www.eionet.europa.eu/gemet/concept/8014>
 	a skos:Concept ;
@@ -820,10 +869,8 @@
 <http://inspire.ec.europa.eu/theme/mf>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Meteorologisch-geografische Kennwerte"@de,
-        "Meteorological geographical features"@en,
-        "Caractéristiques géographiques météorologiques"@fr,
-        "Meteorologische geografische kenmerken"@nl .
+    skos:prefLabel "Meteorologisch-geografische Kennwerte"@de; "Meteorological geographical features"@en,
+        "Caractéristiques géographiques météorologiques"@fr, "Meteorologische geografische kenmerken"@nl .
 
 <http://inspire.ec.europa.eu/theme/mr>
 	a skos:Concept ;
@@ -851,32 +898,24 @@
 <http://inspire.ec.europa.eu/theme/pd>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Verteilung der Bevölkerung — Demografie"@de,
-        "Population distribution — demography"@en,
-        "Répartition de la population — démographie"@fr,
-        "Spreiding van de bevolking — demografie"@nl .
+    skos:prefLabel "Verteilung der Bevölkerung — Demografie"@de, "Population distribution — demography"@en,
+        "Répartition de la population — démographie"@fr, "Spreiding van de bevolking — demografie"@nl .
 
 <http://inspire.ec.europa.eu/theme/pf>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Produktions- und Industrieanlagen"@de,
-        "Production and industrial facilities"@en,
-        "Lieux de production et sites industriels"@fr,
-        "Faciliteiten voor productie en industrie"@nl .
+    skos:prefLabel "Produktions- und Industrieanlagen"@de, "Production and industrial facilities"@en,
+        "Lieux de production et sites industriels"@fr, "Faciliteiten voor productie en industrie"@nl .
 
 <http://inspire.ec.europa.eu/theme/ps>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Schutzgebiete"@de,
-        "Protected sites"@en,
-        "Sites protégés"@fr,
-        "Beschermde gebieden"@nl .
+    skos:prefLabel "Schutzgebiete"@de, "Protected sites"@en, "Sites protégés"@fr, "Beschermde gebieden"@nl .
 
 <http://inspire.ec.europa.eu/theme/rs>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Koordinatenreferenzsysteme"@de,
-        "Coordinate reference systems"@en,
+    skos:prefLabel "Koordinatenreferenzsysteme"@de, "Coordinate reference systems"@en,
         "Référentiels de coordonnées"@fr,
         "Systemen voor verwijzing door middel van coördinaten"@nl .
 
@@ -894,37 +933,29 @@
 <http://inspire.ec.europa.eu/theme/sr>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Meeresregionen"@de, "Sea regions"@en,"Régions maritimes"@fr,  "Zeegebieden"@nl .
+    skos:prefLabel "Meeresregionen"@de, "Sea regions"@en,"Régions maritimes"@fr, "Zeegebieden"@nl .
 
 <http://inspire.ec.europa.eu/theme/su>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Statistische Einheiten"@de,
-        "Statistical units"@en,
-        "Unités statistiques"@fr,
-        "Statistische eenheden"@nl .
+    skos:prefLabel "Statistische Einheiten"@de, "Statistical units"@en, "Unités statistiques"@fr,
+				 "Statistische eenheden"@nl .
 
 <http://inspire.ec.europa.eu/theme/tn>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Verkehrsnetze"@de,
-        "Transport networks"@en,
-        "Réseaux de transport"@fr,
-        "Vervoersnetwerken"@nl .
+    skos:prefLabel "Verkehrsnetze"@de, "Transport networks"@en, "Réseaux de transport"@fr, "Vervoersnetwerken"@nl .
 
 <http://inspire.ec.europa.eu/theme/us>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
     skos:prefLabel "Versorgungswirtschaft und staatliche Dienste"@de,
         "Utility and governmental services"@en,
-        "Services d'utilité publique et services publics"@fr,
-        "Nutsdiensten en overheidsdiensten"@nl .
+        "Services d'utilité publique et services publics"@fr, "Nutsdiensten en overheidsdiensten"@nl .
 
 <http://inspire.ec.europa.eu/theme>
 	a skos:Concept ;
-    skos:prefLabel "INSPIRE Themen-Register"@de,
-        "INSPIRE theme register"@en,
-        "Registre de thème INSPIRE"@fr,
+    skos:prefLabel "INSPIRE Themen-Register"@de, "INSPIRE theme register"@en, "Registre de thème INSPIRE"@fr,
         "INSPIRE thema register"@nl .
 
 <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/biota> 
