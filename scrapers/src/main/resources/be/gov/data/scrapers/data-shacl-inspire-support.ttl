@@ -734,16 +734,12 @@
 <http://inspire.ec.europa.eu/theme/so>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Boden"@de,
-        "Soil"@en, "Sols"@fr, "Bodem"@nl .
+    skos:prefLabel "Boden"@de, "Soil"@en, "Sols"@fr, "Bodem"@nl .
 
 <http://inspire.ec.europa.eu/theme/sr>
 	a skos:Concept ;
     skos:inScheme <http://inspire.ec.europa.eu/theme> ;
-    skos:prefLabel "Meeresregionen"@de,
-        "Sea regions"@en,
-        "Régions maritimes"@fr,
-        "Zeegebieden"@nl .
+    skos:prefLabel "Meeresregionen"@de, "Sea regions"@en,"Régions maritimes"@fr,  "Zeegebieden"@nl .
 
 <http://inspire.ec.europa.eu/theme/su>
 	a skos:Concept ;

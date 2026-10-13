@@ -1,0 +1,19 @@
+# Move skolem IRI subjects to keyword
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?s dcterms:subject ?genid .
+		?genid skos:prefLabel ?lbl.
+		?genid skos:inScheme ?scheme }
+INSERT
+	{ 	?s dcat:keyword ?lbl  }
+WHERE
+	{ 	
+		?s dcterms:subject ?genid .
+		?genid skos:prefLabel ?lbl .
+		OPTIONAL {?genid skos:inScheme ?scheme }
+		FILTER (STRSTARTS(STR(?genid), "http://data.gov.be"))
+	}

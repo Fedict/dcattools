@@ -1,0 +1,126 @@
+# Data for labels on EuroVoc
+
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://eurovoc.europa.eu/141>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "landbouw"@nl, "agriculture"@fr, "Landwirtschaft"@de, "agriculture"@en .
+
+<http://eurovoc.europa.eu/476>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "veeteelt"@nl, "élevage"@fr, "Viehzucht"@de, "livestock farming"@en .
+
+<http://eurovoc.europa.eu/607>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "landbouwproduct"@nl, "produit agricole"@fr, "Landwirtschaftsprodukt"@de, "agricultural product"@en .
+
+<http://eurovoc.europa.eu/1148>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "geografie"@nl, "géographie"@fr, "Geografie"@de, "geography"@en .
+
+<http://eurovoc.europa.eu/1284> 
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "levensmiddelen"@nl, "alimentation humaine"@fr, "menschliche Ernährung"@de, "human nutrition"@en .
+
+<http://eurovoc.europa.eu/1741>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "wateranalyse"@nl, "analyse de l'eau"@fr, "Wasseranalyse"@de, "water analysis"@en .
+
+<http://eurovoc.europa.eu/2530>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "waterverontreiniging"@nl, "pollution de l'eau"@fr, "Wasserverschmutzung"@de, "water pollution"@en .
+
+<http://eurovoc.europa.eu/2836>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "bescherming van de consument"@nl, "protection du consommateur"@fr, "Verbraucherschutz"@de, "consumer protection"@en .
+
+<http://eurovoc.europa.eu/3039>
+	a skos:Concept ;
+	skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "Hoofdstedelijk Gewest Brussels"@nl, "Région de Bruxelles-Capitale"@fr, 
+				"Region Brüssel-Hauptstadt"@de, "Brussels region"@en .
+
+<http://eurovoc.europa.eu/3144>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "waterbeheer"@nl, "gestion de l'eau"@fr, "Wasserbewirtschaftung"@de, "water management"@en .
+
+<http://eurovoc.europa.eu/3885> 
+	a skos:Concept;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "volksgezondheid"@nl, "santé publique"@fr, "Volksgesundheit"@de, "public health"@en .
+
+<http://eurovoc.europa.eu/4426>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "teledetectie"@nl, "télédétection"@fr, "Fernerkundung"@de, "remote sensing"@en .
+
+<http://eurovoc.europa.eu/4877>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "cultuurgoed"@nl, "bien culturel"@fr, "Kulturgut"@de, "cultural object"@en .
+
+<http://eurovoc.europa.eu/5079>
+    a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "kadaster"@nl, "registre foncier"@fr, "Grundbuch"@de, "land register"@en .
+
+<http://eurovoc.europa.eu/5120>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "regionale overheid"@nl, "administration régionale"@fr, "Regionalverwaltung"@de,
+				 "regional government"@en .
+
+<http://eurovoc.europa.eu/5216> 
+	a skos:Concept ;
+	skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "ruimtevaart"@nl, "navigation spatiale"@fr, "Raumfahrt"@de, "space navigation"@en .
+
+<http://eurovoc.europa.eu/5233>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "kwaliteitsnorm"@nl, "norme de qualité"@fr, "Qualitätsnorm"@de, "quality standard"@en .
+
+<http://eurovoc.europa.eu/5429> 
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "parkeerterrein"@nl, "aire de stationnement"@fr, "Parkplatz"@de, "parking area"@en .
+
+<http://eurovoc.europa.eu/6398>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "bescherming van het water"@nl, "protection des eaux"@fr, "Gewässerschutz"@de, "water protection"@en .
+
+<http://eurovoc.europa.eu/6543> 
+	a skos:Concept ;
+	skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "demografische verwachtingen"@nl, "prévision démographique"@fr, 
+				"Bevölkerungsprognose"@de, "population forecast"@en .
+
+<http://eurovoc.europa.eu/7360>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "historische geografie"@nl, "géographie historique"@fr, "historische Geografie"@de, 
+					"historical geography"@en .
+
+<http://eurovoc.europa.eu/100149>
+    a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/domains> ;
+    skos:prefLabel "28 SOCIALE VRAAGSTUKKEN"@nl, "28 QUESTIONS SOCIALES"@fr,
+        "28 SOZIALE FRAGEN"@de,"28 SOCIAL QUESTIONS"@en .
+
+<http://eurovoc.europa.eu/c_2ad19da5>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+    skos:prefLabel "niet-gemotoriseerd vervoer"@nl, "transport non motorisé"@fr, 
+					"Nicht motorisierter Verkehr"@de, "non-motorised transport"@en .
