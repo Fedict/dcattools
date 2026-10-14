@@ -19,6 +19,7 @@ data-media.ttl
 sparql-map-media.qry
 sparql-map-media-skos.qry
 brussels/sparql-fix-format.qry
+sparql-remove-geotype.qry
 sparql-geotype-format.qry
 data-license.ttl
 sparql-map-license.qry
@@ -36,7 +37,6 @@ data-shacl-support.ttl
 brussels/sparql-subject-inspire.qry
 brussels/sparql-subject-keyword.qry
 sparql-shacl-classes.qry
-sparql-dataset-geo.qry
 sparql-shacl-skos.qry
 data-shacl-hvdcat-support.ttl
 sparql-remove-orphans.qry

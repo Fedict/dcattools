@@ -1,0 +1,7 @@
+# Remove geodcatap resourcetype
+
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE { ?s geodcatap:resourceType ?type }
+WHERE { ?s geodcatap:resourceType ?type }
+Inventories of public contracts and subsidies - IRISteam
