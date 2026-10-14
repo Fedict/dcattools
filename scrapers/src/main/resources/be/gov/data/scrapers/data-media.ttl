@@ -2,6 +2,13 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<http://publications.europa.eu/resource/authority/file-type/ATOM>
+	skos:prefLabel "Atom" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/atom+xml>; 
+	skos:altLabel "ATOM", "atom", "INSPIRE Atom",
+		<https://www.iana.org/assignments/media-types/application/atom+xml> .
+
+
 <http://publications.europa.eu/resource/authority/file-type/BIN>
 	skos:prefLabel "BIN" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/octet-stream> ;
@@ -19,15 +26,11 @@
 					"text/comma-separated-values", "application/csv",
 					<http://data.gov.be/.well-known/genid/fmt/csv> .
 
-<http://publications.europa.eu/resource/authority/file-type/TSV>
-	skos:prefLabel "TSV" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/text/tab-separated-values> ;
-	skos:altLabel "text/tab-separated-values", "text/tsv", "tab-file met X,Y en lambda-waarde" .
-
 <http://publications.europa.eu/resource/authority/file-type/DGN>
 	skos:prefLabel "DGN" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dgn> ;
-	skos:altLabel "DGN Microstation", "Bentley DGN", "DGN (Microstation)", "DGN Bentley", "Bentley DGN" .
+	skos:altLabel "DGN Microstation", "Bentley DGN", "DGN (Microstation)", "DGN Bentley", "Bentley DGN",
+				<https://docs.fileformat.com/cad/dgn/> .
 
 <http://publications.europa.eu/resource/authority/file-type/DBF>
 	skos:prefLabel "DBF" ;
@@ -50,11 +53,21 @@
 	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "DWC_ARCHIVE", "Darwin Core Archive (DwC-A)",
 			<https://www.iana.org/assignments/media-types/application/dwca> .
 
+<http://publications.europa.eu/resource/authority/file-type/DXF>
+	skos:prefLabel "DXF" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dxf> ;
+	skos:altLabel "dxf", "DXF" .
+
+<http://publications.europa.eu/resource/authority/file-type/ECW>
+	skos:prefLabel "ECW" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/x-ecw> ;
+	skos:altLabel "ECW" .
+
 <http://publications.europa.eu/resource/authority/file-type/GDB>
 	skos:prefLabel "GDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-filegdb> ;
 	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase",
-			"application/x-filegdb" .
+			 "application/x-filegdb" .
 
 <http://publications.europa.eu/resource/authority/file-type/GPKG>
 	skos:prefLabel "GPKG" ;
@@ -63,6 +76,18 @@
 		"sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)", "sqlite",
 		<http://inspire.ec.europa.eu/media-types/application/geopackage+sqlite3>,
 		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .
+
+<http://publications.europa.eu/resource/authority/file-type/GEOJSON>
+	skos:prefLabel "GeoJSON" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.geo+json> ;
+	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)", "GEOJSON", "application/geo+json" .
+
+<http://publications.europa.eu/resource/authority/file-type/GEOTIFF>
+	skos:prefLabel "GeoTIFF" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
+	skos:altLabel "geotiff", "geoTIFF", "GEOTIFF", "GeoTIFF", "GeoTiff", "GeoTIFFs",
+		"GeoTIFF, Surfer copyright binary grid.grd" , "geoTif",
+		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
 <http://publications.europa.eu/resource/authority/file-type/GML>
 	skos:prefLabel "GML" ;
@@ -91,6 +116,21 @@
 				"HTML Tabel", "text/html", "powerbi",
 				<http://data.gov.be/.well-known/genid/fmt/html> .
 
+<http://publications.europa.eu/resource/authority/file-type/JAR>
+	skos:prefLabel "JAR" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-type/application/java-archive> ;
+	skos:altLabel "java-archive" .
+
+<http://publications.europa.eu/resource/authority/file-type/JPEG>	
+	skos:prefLabel "JPG" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jpeg> ;
+	skos:altLabel "JPG", "jpg", "JPEG", "jpeg", "image/jpeg" .
+
+<http://publications.europa.eu/resource/authority/file-type/JPEG2000>
+	skos:prefLabel "JP2" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jp2> ;
+	skos:altLabel "JPEG2000", "jpeg2000", "jp2" .
+
 <http://publications.europa.eu/resource/authority/file-type/JSON>
 	skos:prefLabel "JSON" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/json> ;
@@ -103,15 +143,30 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/ld+json> ;
 	skos:altLabel "jsonld", "ld+json" .
 
-<http://publications.europa.eu/resource/authority/file-type/GEOJSON>
-	skos:prefLabel "GeoJSON" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.geo+json> ;
-	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)", "GEOJSON", "application/geo+json" .
-
 <http://publications.europa.eu/resource/authority/file-type/KML>	
 	skos:prefLabel "KML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml> ;
 	skos:altLabel "KML", "kml", "KML(zip)", "KML\u00A0(zip)" .
+
+<http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
+	skos:prefLabel "ArcGIS" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgis>; 
+	skos:altLabel "ArcGIS GeoService" .
+
+<http://publications.europa.eu/resource/authority/file-type/MAP_PRVW>
+	skos:prefLabel "ArcGIS Hub" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgishub>; 
+	skos:altLabel "ArcGIS Hub Dataset" .
+
+<http://publications.europa.eu/resource/authority/file-type/MARKDOWN>
+	skos:prefLabel "Markdown" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/text/markdown>; 
+	skos:altLabel "text/markdown" .
+
+<http://publications.europa.eu/resource/authority/file-type/MATLAB_MAT>
+	skos:prefLabel "MATLAB" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/matlab-mat>; 
+	skos:altLabel "application/matlab-mat" .
 
 <http://publications.europa.eu/resource/authority/file-type/MDB>
 	skos:prefLabel "MDB" ;
@@ -124,6 +179,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/video/mp4> ;
 	skos:altLabel "MPEG4", "video/mp4" .
 
+<http://publications.europa.eu/resource/authority/file-type/MOV>
+	skos:prefLabel "MOV" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/video/quicktime> ;
+	skos:altLabel "MOV", "Quicktime", "video/quicktime", "mov" .
+
 <http://publications.europa.eu/resource/authority/file-type/MP3>	
 	skos:prefLabel "MP3" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mpeg> ;
@@ -134,30 +194,25 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mp4> ;
 	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
 
-<http://publications.europa.eu/resource/authority/file-type/JAR>
-	skos:prefLabel "JAR" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-type/application/java-archive> ;
-	skos:altLabel "java-archive" .
-
-<http://publications.europa.eu/resource/authority/file-type/MOV>
-	skos:prefLabel "MOV" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/video/quicktime> ;
-	skos:altLabel "MOV", "Quicktime", "video/quicktime", "mov" .
-
-<http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES>	
-	skos:prefLabel "N-Triples" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/n-triples> ;
-	skos:altLabel "nt", "n-triples" .
-
 <http://publications.europa.eu/resource/authority/file-type/N3>
 	skos:prefLabel "N3" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/n3> ;
 	skos:altLabel "n3" .
 
+<http://publications.europa.eu/resource/authority/file-type/NETCDF>
+	skos:prefLabel "NetCDF" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-netcdf>; 
+	skos:altLabel "application/x-netcdf", "NetCDF" .
+
 <http://publications.europa.eu/resource/authority/file-type/ODS>	
 	skos:prefLabel "ODS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.spreadsheet> ;
 	skos:altLabel "ODS", "ods", "application/vnd.oasis.opendocument.spreadsheet" .
+
+<http://publications.europa.eu/resource/authority/file-type/PARQUET>
+	skos:prefLabel "Parquet" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/parquet>; 
+	skos:altLabel "parquet", "vnd.apache.parquet" .
 
 <http://publications.europa.eu/resource/authority/file-type/PDF>
 	skos:prefLabel "PDF" ;
@@ -173,6 +228,11 @@
 	skos:prefLabel "PPTX" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.presentationml.presentation> ;
 	skos:altLabel "application/vnd.openxmlformats-officedocument.presentationml.presentation", "pptx" .
+
+<http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES>	
+	skos:prefLabel "N-Triples" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/n-triples> ;
+	skos:altLabel "nt", "n-triples" .
 
 <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE>
 	skos:prefLabel "TTL" ;
@@ -200,20 +260,10 @@
 			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)", "application/vnd.shp",
 			<https://www.iana.org/assignments/media-types/application/vnd.shp> .
 
-<http://publications.europa.eu/resource/authority/file-type/DXF>
-	skos:prefLabel "DXF" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dxf> ;
-	skos:altLabel "dxf", "DXF" .
-
-<http://publications.europa.eu/resource/authority/file-type/JPEG>	
-	skos:prefLabel "JPG" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jpeg> ;
-	skos:altLabel "JPG", "jpg", "JPEG", "jpeg", "image/jpeg" .
-
-<http://publications.europa.eu/resource/authority/file-type/JPEG2000>
-	skos:prefLabel "JP2" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/image/jp2> ;
-	skos:altLabel "JPEG2000", "jpeg2000", "jp2" .
+<http://publications.europa.eu/resource/authority/file-type/SPSS_SAV>
+	skos:prefLabel "SPSS" ;
+	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/x-spss-sav> ;
+	skos:altLabel "application/x-spss-sav" .
 
 <http://publications.europa.eu/resource/authority/file-type/TIFF>
 	skos:prefLabel "TIFF" ;
@@ -221,12 +271,10 @@
 	skos:altLabel "TIFF", "tiff", "image/tiff",
 		<https://www.iana.org/assignments/media-types/image/tiff> .
 
-<http://publications.europa.eu/resource/authority/file-type/GEOTIFF>
-	skos:prefLabel "GeoTIFF" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/image/tiff> ;	
-	skos:altLabel "geotiff", "geoTIFF", "GEOTIFF", "GeoTIFF", "GeoTiff", "GeoTIFFs",
-		"GeoTIFF, Surfer copyright binary grid.grd" , "geoTif",
-		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
+<http://publications.europa.eu/resource/authority/file-type/TSV>
+	skos:prefLabel "TSV" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/text/tab-separated-values> ;
+	skos:altLabel "text/tab-separated-values", "text/tsv", "tab-file met X,Y en lambda-waarde" .
 
 <http://publications.europa.eu/resource/authority/file-type/TXT>
 	skos:prefLabel "TXT" ;
@@ -262,6 +310,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/xml> ;
 	skos:altLabel "WMTS" .
 
+<http://publications.europa.eu/resource/authority/file-type/WORLD>
+	skos:prefLabel "World file" ;
+	skos:closeMatch	<http://inspire.ec.europa.eu/media-types/application/x-worldfile> ;
+	skos:altLabel "application/x-worldfile" .
+
 <http://publications.europa.eu/resource/authority/file-type/XLS>
 	skos:prefLabel "XLS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.ms-excel> ;
@@ -288,54 +341,8 @@
 				"XML", "xml", "XML/XSD", "XMLXSD", "XMLXSD(zip)", "XMLXSD\u00A0(zip)", "gpx",
 				"iati-xml", "gpx", "DATEX2", "Datex II", "IATI-XML", "PBIX", "BIOCASE", "EML".
 
-<http://publications.europa.eu/resource/authority/file-type/NETCDF>
-	skos:prefLabel "NetCDF" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-netcdf>; 
-	skos:altLabel "application/x-netcdf", "NetCDF" .
-
-<http://publications.europa.eu/resource/authority/file-type/PARQUET>
-	skos:prefLabel "Parquet" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/parquet>; 
-	skos:altLabel "parquet", "vnd.apache.parquet" .
-
-<http://publications.europa.eu/resource/authority/file-type/ATOM>
-	skos:prefLabel "Atom" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/atom+xml>; 
-	skos:altLabel "ATOM", "atom", "INSPIRE Atom",
-		<https://www.iana.org/assignments/media-types/application/atom+xml> .
-
-<http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
-	skos:prefLabel "ArcGIS" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgis>; 
-	skos:altLabel "ArcGIS GeoService" .
-
-<http://publications.europa.eu/resource/authority/file-type/MAP_PRVW>
-	skos:prefLabel "ArcGIS Hub" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgishub>; 
-	skos:altLabel "ArcGIS Hub Dataset" .
-
-<http://publications.europa.eu/resource/authority/file-type/MATLAB_MAT>
-	skos:prefLabel "MATLAB" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/matlab-mat>; 
-	skos:altLabel "application/matlab-mat" .
-
-<http://publications.europa.eu/resource/authority/file-type/MARKDOWN>
-	skos:prefLabel "Markdown" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/text/markdown>; 
-	skos:altLabel "text/markdown" .
-
-<http://publications.europa.eu/resource/authority/file-type/WORLD>
-	skos:prefLabel "World file" ;
-	skos:closeMatch	<http://inspire.ec.europa.eu/media-types/application/x-worldfile> ;
-	skos:altLabel "application/x-worldfile" .
-
 <http://publications.europa.eu/resource/authority/file-type/ZIP>
 	skos:prefLabel "ZIP" ;
 	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/zip> ;
 	skos:altLabel "ZIP", "zip", "application/zip",
 					<https://www.iana.org/assignments/media-types/application/zip> .
-
-<http://publications.europa.eu/resource/authority/file-type/SPSS_SAV>
-	skos:prefLabel "SPSS" ;
-	skos:closeMatch	<https://www.iana.org/assignments/media-types/application/x-spss-sav> ;
-	skos:altLabel "application/x-spss-sav" .
