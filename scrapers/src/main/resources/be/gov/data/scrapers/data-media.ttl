@@ -150,6 +150,12 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml> ;
 	skos:altLabel "KML", "kml", "KML(zip)", "KML\u00A0(zip)" .
 
+<http://publications.europa.eu/resource/authority/file-type/LAS>
+	skos:prefLabel "LAS" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-las> ;
+	skos:altLabel "LAS", "Las",
+					<https://www.iana.org/assignments/media-types/application/vnd.las> .
+
 <http://publications.europa.eu/resource/authority/file-type/MAP_SRVC>
 	skos:prefLabel "ArcGIS" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-arcgis>; 
