@@ -196,6 +196,11 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/audio/mp4> ;
 	skos:altLabel "audio/mp4", "m4a", "audio/x-m4a" .
 
+<http://publications.europa.eu/resource/authority/file-type/MRSID>
+	skos:prefLabel "MrSID" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/x-mrsid> ;
+	skos:altLabel "MrSID" .
+
 <http://publications.europa.eu/resource/authority/file-type/N3>
 	skos:prefLabel "N3" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/text/n3> ;
