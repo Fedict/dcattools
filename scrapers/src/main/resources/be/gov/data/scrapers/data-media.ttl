@@ -74,6 +74,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:altLabel "Geopackage", "geopackage", "GPKG",  "GeoPacakge", "application/geopackage+sqlite3",
 		"sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)", "sqlite",
+		<https://www.eionet.europa.eu/reportnet/docs/noise/templates/df4_8/agglomerations-strategicnoisemaps.gpkg/@@download/file/agglomerations-strategicnoisemaps.gpkg>,
 		<http://inspire.ec.europa.eu/media-types/application/geopackage+sqlite3>,
 		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .
 
@@ -93,7 +94,7 @@
 	skos:prefLabel "GML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/gml+xml>;
 	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
-		"Environmental Monitoring Facilities GML application schema", "Gml",
+		"Environmental Monitoring Facilities GML application schema", "Gml", "GML application schema",
 		"Administrative units GML application schema", "OGC:GML", "gml+xml",
 		"application/gml+xml", "GML application schema", "application/x-gmz",
 		<https://www.iana.org/assignments/media-types/application/gml+xml>,
