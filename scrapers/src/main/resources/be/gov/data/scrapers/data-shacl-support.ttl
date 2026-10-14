@@ -94,6 +94,11 @@
 	a dcterms:Frequency ;
 	skos:prefLabel "unknown"@en, "inconnu"@fr, "onbekend"@nl, "unbekannt"@de .
 
+<http://publications.europa.eu/resource/authority/frequency/AS_NEEDED>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "as needed"@en, "en fonction des besoins"@fr, "voor zover nodig"@nl, "im Bedarfsfall"@de .
+
 <http://publications.europa.eu/resource/authority/frequency/OTHER>
 	a skos:Concept ;
 	a dcterms:Frequency ;
