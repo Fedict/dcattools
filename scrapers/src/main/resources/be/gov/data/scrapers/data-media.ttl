@@ -80,8 +80,9 @@
 
 <http://publications.europa.eu/resource/authority/file-type/GEOJSON>
 	skos:prefLabel "GeoJSON" ;
-	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.geo+json> ;
-	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)", "GEOJSON", "application/geo+json" .
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geo+json> ;
+	skos:altLabel "GeoJSON", "geojson", "geojson (ZIP)", "GEOJSON", "application/geo+json",
+				<https://www.iana.org/assignments/media-types/application/geo+json> .
 
 <http://publications.europa.eu/resource/authority/file-type/GEOTIFF>
 	skos:prefLabel "GeoTIFF" ;
