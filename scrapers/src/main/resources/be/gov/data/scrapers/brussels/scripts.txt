@@ -19,7 +19,7 @@ data-media.ttl
 sparql-map-media.qry
 sparql-map-media-skos.qry
 brussels/sparql-fix-format.qry
-#sparql-geotype-class.qry
+sparql-geotype-format.qry
 data-license.ttl
 sparql-map-license.qry
 sparql-consolidate-org.qry
