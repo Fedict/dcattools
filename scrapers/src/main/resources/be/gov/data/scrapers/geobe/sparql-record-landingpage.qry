@@ -1,4 +1,4 @@
-# Add landing page if not present
+# Add landing page based on catalogrecord ID
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -7,12 +7,16 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 INSERT
 	{ 	?s dcat:landingPage ?page }
 WHERE
-	{ 	?s a dcat:DataService .
+	{ 	?s a ?cl .
 		?s foaf:isPrimaryTopicOf ?rec .
 		?rec dcterms:identifier ?id .
+		VALUES (?cl ?page) {
+			(dcat:Dataset "https://www.geo.be/catalog/details/")
+			(dcat:DataService "https://www.geo.be/catalog/details/")
+		}
 		BIND(
 			IRI(
-				CONCAT("https://www.geo.be/catalog/details/",  ?id)
+				CONCAT(?page,  ?id)
 				)
 			AS ?page)
 		FILTER NOT EXISTS { ?s dcat:landingPage ?url }

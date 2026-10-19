@@ -1,0 +1,23 @@
+# Use downloadURL instead of accesURL for files
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcat:accessURL ?url }
+INSERT 
+	{	?dist dcat:downloadURL ?url }
+WHERE
+	{ 	
+		{
+			?dist dcat:accessURL ?url .
+			FILTER (STRSTARTS(STR(?url), "https://urbisdownload.datastore.brussels"))
+		}
+		UNION
+		{
+			?dist dcat:accessURL ?url .
+			VALUES ?ext { ".csv" ".shp" ".xls" ".xlsx" ".zip" }
+			FILTERS (STRENDS(STR(?url), ?ext))
+		}
+	}
+

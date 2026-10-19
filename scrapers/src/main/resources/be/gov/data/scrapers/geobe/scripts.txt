@@ -35,7 +35,7 @@ geobe/data-publ-contact.ttl
 geobe/sparql-default-contact.qry
 sparql-conforms-legislation.qry
 geobe/sparql-conforms-legislation.qry
-geobe/sparql-landingpage.qry
+geobe/sparql-record-landingpage.qry
 sparql-dist-accessurl.qry
 sparql-remove-accessservice.qry
 geobe/sparql-downloadurl-crs.qry
