@@ -19,5 +19,10 @@ WHERE
 			VALUES ?ext { ".csv" ".shp" ".xls" ".xlsx" ".zip" }
 			FILTER (STRENDS(STR(?url), ?ext))
 		}
+		UNION
+		{
+			?dist dcat:accessURL ?url .
+			FILTER (CONTAINS(STR(?url), "outputFormat="))
+		}
 	}
 
