@@ -1,0 +1,23 @@
+# Add landing page if not present
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+
+INSERT
+	{ 	?s dcat:landingPage ?page }
+WHERE
+	{ 	?s a dcat:Dataset .
+		?s foaf:isPrimaryTopicOf ?rec .
+		?rec dcterms:identifier ?id .
+		VALUES (?cl ?page) {
+			(dcat:Dataset "https://datastore.brussels/web/data/dataset/")
+			(dcat:DataService "https://datastore.brussels/web/data/service/")
+		}
+		BIND(
+			IRI(
+				CONCAT(?page,  ?id)
+				)
+			AS ?page)
+		FILTER NOT EXISTS { ?s dcat:landingPage ?url }
+	}

@@ -22,6 +22,9 @@ brussels/sparql-fix-format.qry
 sparql-remove-geotype.qry
 sparql-geotype-format.qry
 data-license.ttl
+brussels/sparql-landingpage.qry
+brussels/sparql-landingpage-service.qry
+sparql-remove-catalogrecord.qry
 sparql-map-license.qry
 sparql-consolidate-org.qry
 sparql-consolidate-persons.qry
