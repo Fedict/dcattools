@@ -297,7 +297,7 @@ public class EDP {
 	 * @param pred RDF predicate
 	 * @throws XMLStreamException
 	 */
-	private static void writeProvenances(XMLStreamWriter w, RepositoryConnection con,
+	private static void writeQualifiedAttribution(XMLStreamWriter w, RepositoryConnection con,
 		IRI uri, IRI pred) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
@@ -314,6 +314,53 @@ public class EDP {
 						w.writeEndElement();
 					}
 					writeReferences(w, con, attrib, DCAT.HAD_ROLE, "dcat:hadRole", "dcat:Role", false);
+				}
+				
+				w.writeEndElement();
+				w.writeEndElement();
+			}
+		}
+	}
+
+	/**
+	 * Write qualified roles of a dcat:Dataset
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @throws XMLStreamException
+	 */
+	private static void writeUsedBy(XMLStreamWriter w, RepositoryConnection con, IRI uri, IRI pred) 
+					throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
+			while (res.hasNext()) {
+				w.writeStartElement("prov:wasUsedBy");
+				w.writeStartElement("prov:Activity");
+				
+				Resource activity = (Resource) res.next().getObject();
+				try (RepositoryResult<Statement> res2 = con.getStatements(activity, PROV.QUALIFIED_ASSOCIATION, null)) {
+					while(res2.hasNext()) {
+						w.writeStartElement("prov:qualifiedAssociation");		
+						w.writeStartElement("prov:Association");
+
+						Resource assoc = (Resource) res2.next().getObject();
+						try (RepositoryResult<Statement> res3 = con.getStatements(assoc, PROV.HAD_PLAN, null)) {
+							while(res3.hasNext()) {
+								w.writeStartElement("prov:hadPlan");
+								Resource plan = (Resource) res3.next().getObject();
+								w.writeStartElement("prov:Plan");
+
+								writeReferences(w, con, plan, PROV.WAS_DERIVED_FROM, "prov:wasDerivedFrom");
+		
+								w.writeEndElement();
+								w.writeEndElement();
+							}
+						}
+
+						w.writeEndElement();
+						w.writeEndElement();
+					}
 				}
 				
 				w.writeEndElement();
@@ -728,7 +775,9 @@ public class EDP {
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
 		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance");
-		writeProvenances(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
+		writeQualifiedAttribution(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
+		writeUsedBy(w, con, uri, PROV.WAS_USED_BY);
+//		writeProvenancePlan(w, con, uri, PROV.HAD_PLAN);
 		
 		writeDates(w, con, uri);
 
