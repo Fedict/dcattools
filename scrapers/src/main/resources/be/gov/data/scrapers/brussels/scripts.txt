@@ -34,6 +34,7 @@ sparql-consolidate-prov.qry
 sparql-consolidate-bbox.qry
 sparql-crs-uri.qry
 sparql-strip-html.qry
+sparql-person-name.qry
 data-standards-support.ttl
 data-shacl-eurovoc-support.ttl
 data-shacl-inspire-support.ttl
