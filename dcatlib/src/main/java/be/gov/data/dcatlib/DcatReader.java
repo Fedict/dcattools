@@ -65,6 +65,7 @@ import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
 import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.SKOS;
 import org.eclipse.rdf4j.model.vocabulary.VCARD4;
 import org.eclipse.rdf4j.rio.RDFFormat;
@@ -380,7 +381,10 @@ public class DcatReader {
 			if (lang.isPresent()) {
 				code = lang.get().substring(0, 2).toLowerCase(Locale.US);
 			} else {
-				LOG.warn("No language tag for {} {} {}", subj, pred, v);
+				// It's OK for persons not to have multiple names
+				if (! (pred.equals(FOAF.NAME) && getIRIs(subj, RDF.TYPE).contains(FOAF.PERSON))) {
+					LOG.warn("No language tag for {} {} {}", subj, pred, v);
+				}
 			}
 			map.computeIfAbsent(code, h -> new HashSet<String>()).add(v.stringValue());
 		}
