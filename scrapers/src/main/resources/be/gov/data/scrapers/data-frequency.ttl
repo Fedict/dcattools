@@ -53,7 +53,7 @@
 	skos:prefLabel "quarterly"@en, "trimestriel"@fr, "driemaandelijks"@nl, "vierteljährlich"@de ;
 	skos:altLabel "5annually", "R/P4Y", "quarterly", <http://purl.org/cld/freq/quarterly>,
 		"http://publications.europa.eu/resource/authority/frequency/QUARTERLY", "trimestriel",
-		"Plusieurs%20fois%20par%20an",
+		"Plusieurs%20fois%20par%20an", "QUARTERLY",
 		<http://publications.europa.eu/resource/authority/frequency/QUARTERLY> .
 
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL_2>
@@ -67,7 +67,7 @@
 <http://publications.europa.eu/resource/authority/frequency/ANNUAL>
 	skos:prefLabel "annual"@en, "annuel"@fr, "jaarlijks"@nl, "jährlich"@de ;
 	skos:altLabel "annually", "Y", 	"R/P1Y", "jaarlijks", <http://data.gov.be/yearly>,
-		<http://data.gov.be/YEARLY>,
+		<http://data.gov.be/YEARLY>, "ANNUAL",
 		"http://publications.europa.eu/resource/authority/frequency/ANNUAL",
 		<http://publications.europa.eu/resource/authority/frequency/ANNUAL>,
 		<http://purl.org/cld/freq/annual>, "Annuel", "annuel", "Chaque%20année,%20fin%20octobre",
@@ -86,14 +86,14 @@
 	skos:prefLabel "irregular"@en, "irrégulier"@fr, "onregelmatig"@nl, "unregelmäßig"@de ;
 	skos:altLabel "asNeeded", "irregular", <http://purl.org/cld/freq/irregular>, "Irregular", "Ad-hoc",
 		"http://publications.europa.eu/resource/authority/frequency/IRREG", "Ad hoc", "discontinuous",
-		"Discontinuous",
+		"Discontinuous", "AS_NEEDED",
 		<http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#asNeeded>,
 		<http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded>,
 		<https://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode/asNeeded> .
 
 <http://publications.europa.eu/resource/authority/frequency/UNKNOWN>
 	skos:prefLabel "unknown"@en, "inconnu"@fr, "onbekend"@nl, "unbekannt"@de ;
-	skos:altLabel "unknown", 
+	skos:altLabel "unknown", "UNKNOWN",
 		"http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
 		<http://publications.europa.eu/resource/authority/frequency/UNKNOWN> .
 
