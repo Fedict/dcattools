@@ -351,12 +351,24 @@ public class EDP {
 								Resource plan = (Resource) res3.next().getObject();
 								w.writeStartElement("prov:Plan");
 
-								writeReferences(w, con, plan, PROV.WAS_DERIVED_FROM, "prov:wasDerivedFrom");
+								writeReferences(w, con, plan, PROV.WAS_DERIVED_FROM, "prov:wasDerivedFrom", false);
 		
 								w.writeEndElement();
 								w.writeEndElement();
 							}
 						}
+
+						w.writeEndElement();
+						w.writeEndElement();
+					}
+				}
+
+				try (RepositoryResult<Statement> res2 = con.getStatements(activity, PROV.GENERATED, null)) {
+					while(res2.hasNext()) {
+						w.writeStartElement("prov:generated");
+						w.writeStartElement("prov:Entity");
+
+						writeGenericInfo(w, con, (IRI) res2.next().getObject());
 
 						w.writeEndElement();
 						w.writeEndElement();
@@ -512,12 +524,17 @@ public class EDP {
 	 * @param w XML writer
 	 * @param el element name
 	 * @param uri ID
+	 * @param genid also write generated / skolem IRI
 	 * @throws XMLStreamException
 	 */
-	private static void writeReference(XMLStreamWriter w, String el, Value uri) throws XMLStreamException {
+	private static void writeReference(XMLStreamWriter w, String el, Value uri, boolean genid) throws XMLStreamException {
 		if (uri instanceof IRI iri) {
-			w.writeEmptyElement(el);
-			w.writeAttribute("rdf:resource", iri.stringValue());
+			if (genid || !uri.stringValue().contains(".genid")) {
+				w.writeEmptyElement(el);
+				w.writeAttribute("rdf:resource", iri.stringValue());
+			} else {
+				LOG.warn("Element {}: unexpected skolem URI {}, skipping", el, uri.stringValue());
+			}
 		} else {
 			LOG.error("Element {}: not a reference IRI {}, skipping", el, uri.stringValue());
 		}
@@ -531,15 +548,31 @@ public class EDP {
 	 * @param uri URI of the dataset
 	 * @param pred RDF predicate
 	 * @param el element name
+	 * @param genid also write generated / skolem IRI
 	 * @throws XMLStreamException
 	 */
 	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con, Resource uri, IRI pred, 
-			String el) throws XMLStreamException {
+			String el, boolean genid) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				writeReference(w, el, res.next().getObject());
+				writeReference(w, el, res.next().getObject(), genid);
 			}
 		}
+	}
+
+	/**
+	 * Write multiple references, including generated / skolem IRI
+	 *
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * @param pred RDF predicate
+	 * @param el element name
+	 * @throws XMLStreamException
+	 */
+	private static void writeReferences(XMLStreamWriter w, RepositoryConnection con, Resource uri, IRI pred,
+			String el) throws XMLStreamException {
+		writeReferences(w, con, uri, pred, el, true);
 	}
 
 	/**
@@ -560,8 +593,7 @@ public class EDP {
 				Value refUri = res.next().getObject();
 				w.writeStartElement(el);
 
-				if (refUri instanceof IRI) {
-					IRI iri = (IRI) refUri;
+				if (refUri instanceof IRI iri) {
 					String str = iri.stringValue();
 					if( !str.contains(WELL_KNOWN)) {
 						if(str.startsWith("http:") || str.startsWith("https:") || str.startsWith("ftp:") || 
@@ -760,9 +792,9 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, CiteDCATAP.isFundedBy, null)) {
 			while (res.hasNext()) {
 				Statement stmt = res.next();
-				if (stmt.getObject() instanceof Resource) {
+				if (stmt.getObject() instanceof Resource resource) {
 					w.writeStartElement("citedcat:isFundedBy");
-					writeFunding(w, con, "foaf:Project", (Resource) stmt.getObject());
+					writeFunding(w, con, "foaf:Project", resource);
 					w.writeEndElement();
 				} else {
 					LOG.error("Not a funding resource, removing {}", stmt);
