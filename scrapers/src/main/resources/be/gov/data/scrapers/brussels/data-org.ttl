@@ -514,7 +514,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
-	skos:altLabel "bpost nv"@nl .
+	skos:altLabel "bpost nv"@nl, "bPost" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0463832719>
 	a foaf:Organization ;
@@ -527,4 +527,17 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "CAWaB"@fr, "CAWaB"@nl, "CAWaB"@en ;
 	skos:altLabel "CAWaB"@en .
-	
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Royal Library of Belgium"@en, "Koninklijke Bibliotheek van België"@nl, 
+				"Königliche Bibliothek von Belgien"@de, "Bibliothèque royale de Belgique"@fr ;
+	skos:altLabel "KBR" ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO011488> .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000534> .

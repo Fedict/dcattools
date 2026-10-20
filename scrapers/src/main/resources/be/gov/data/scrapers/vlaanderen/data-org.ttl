@@ -781,7 +781,8 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:closeMatch <https://data.vlaanderen.be/doc/organisatie/OVO011488>,
 					<https://data.vlaanderen.be/id/organisatie/OVO011488> ;
-	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
+	skos:prefLabel "Royal Library of Belgium"@en, "Koninklijke Bibliotheek van België"@nl, 
+				"Königliche Bibliothek von Belgien"@de, "Bibliothèque royale de Belgique"@fr ;
 	skos:altLabel "KBR" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0445212083>
