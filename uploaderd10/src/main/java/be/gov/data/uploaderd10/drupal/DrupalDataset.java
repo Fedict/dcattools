@@ -387,7 +387,8 @@ public record DrupalDataset(
 												: null));
 		map.put("field_high_value_dataset", wrap("value", hvd));
 		map.put("field_legislation", wrapURI("uri", legislation));
-		map.put("field_cite", wrap("value", citation != null ? citation.substring(0, 500) : null,  "format", "plain_text"));
+		map.put("field_cite", wrap("value", (citation != null && citation.length() > 500) ? 
+													citation.substring(0, 500) : citation,  "format", "plain_text"));
 
 		return map;
 	}
