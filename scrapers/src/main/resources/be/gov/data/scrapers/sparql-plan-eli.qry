@@ -1,0 +1,23 @@
+# Use URI of legislation if used in provenance plan
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov:	<http://www.w3.org/ns/prov#>
+
+DELETE 
+	{	?plan prov:wasDerivedFrom ?genid .
+		?genid dcterms:title ?title .
+		?genid ?p ?o}
+INSERT 
+	{ 	?plan prov:wasDerivedFrom ?eli }
+WHERE 
+	{	?plan prov:wasDerivedFrom ?genid .
+		?genid ?p ?o .
+		?genid dcterms:title ?title
+		VALUES (?str ?eli)  {
+			(" 976/2009 "  <http://data.europa.eu/eli/reg/2009/976> )
+			(" 2023/138 " <http://data.europa.eu/eli/reg_impl/2023/138> )
+			(" 1089/2010 " <http://data.europa.eu/eli/reg/2010/1089> )
+			("2011/850/EU" <http://data.europa.eu/eli/dec_impl/2011/850> ) 
+		}
+		FILTER (CONTAINS(STR(?title), ?str))
+	}

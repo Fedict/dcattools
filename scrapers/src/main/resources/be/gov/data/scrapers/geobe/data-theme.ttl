@@ -53,7 +53,8 @@
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
 	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
 			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration",
-			"HÃ©bergement", "Hébergement" .
+			"HÃ©bergement", "Hébergement",
+			<http://vocab.belgif.be/auth/datatheme/REGI> .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
 	skos:closeMatch <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/transportation> .

@@ -63,6 +63,7 @@ sparql-remove-catalogrecord.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
 geobe/sparql-fix-date.qry
+sparql-plan-eli.qry
 sparql-clear-skos.qry
 sparql-delete-label-empty.qry
 sparql-geotype-class.qry
