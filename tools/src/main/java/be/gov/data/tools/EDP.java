@@ -363,6 +363,8 @@ public class EDP {
 					}
 				}
 
+				writeReferences(w, con, activity, PROV.USED, "prov:used", false);
+
 				try (RepositoryResult<Statement> res2 = con.getStatements(activity, PROV.GENERATED, null)) {
 					while(res2.hasNext()) {
 						w.writeStartElement("prov:generated");
