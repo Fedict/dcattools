@@ -1,4 +1,4 @@
-## Connect dataservices to the full dataset metadata, instead of the stub
+# Connect dataservices to the full dataset metadata, instead of the stub
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>

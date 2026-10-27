@@ -212,26 +212,12 @@
 	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl, "Gemeentebestuur van Evere"@nl,
 		"Administration communale d'Evere"@fr  .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207401044>
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2787415/> ;
+	dcterms:spatial <https://sws.geonames.org/2797845/> ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
-	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl, "Saint-Gilles/Sint-Gillis"@en  .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207366501>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2791019/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl ;
-	skos:altLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207372538> 
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2794192/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl ;
-	skos:altLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl .
+	skos:prefLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl ;
+	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207401341>
 	a foaf:Organization ;
@@ -240,20 +226,6 @@
 	skos:prefLabel "Ixelles"@fr, "Ixelles"@en, "Elsene"@nl ;
 	skos:altLabel "Ixelles"@fr, "Ixelles/Elsene"@en, "Elsene"@nl, "Gemeente Elsene"@nl, "Commune d'Ixelles"@fr .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207401044>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2797845/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl ;
-	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367687>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2787150/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
-	skos:altLabel "Schaerbeek"@nl, "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366895>
 	a foaf:Organization ;
 	dcterms:spatial <https://sws.geonames.org/2794915/> ;
@@ -261,12 +233,26 @@
 	skos:prefLabel "Jette"@nl, "Jette"@fr, "Jette"@en ;
 	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en, "Commune de Jette"@fr, "Gemeente Jette"@nl .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207372538> 
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2798142/> ;
+	dcterms:spatial <https://sws.geonames.org/2794192/> ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Vorst"@nl, "Forest"@fr, "Forest"@en ;
-	skos:altLabel "Vorst"@nl, "Forest"@fr, "Forest"@en .
+	skos:prefLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl ;
+	skos:altLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207366501>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2791019/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl ;
+	skos:altLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367687>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2787150/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
+	skos:altLabel "Schaerbeek"@nl, "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207541594>
 	a foaf:Organization ;
@@ -276,6 +262,13 @@
 	skos:altLabel "Sint-Agatha-Berchem"@nl, "Berchem Sainte-Agathe"@fr, 
 		"Berchem Sainte-Agathe/Sint-Agatha-Berchem"@en .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2787415/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
+	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl, "Saint-Gilles/Sint-Gillis"@en  .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207202193>
 	a foaf:Organization ;
 	dcterms:spatial <https://sws.geonames.org/2787388/> ;
@@ -284,13 +277,26 @@
 	skos:altLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, 
 			"Saint-Josse-ten-Noode/Sint-Joost-ten-Node"@en .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2783475/> ;
+	dcterms:spatial <https://sws.geonames.org/2785124/> ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
-	skos:altLabel "Woluwé-Saint-Pierre"@fr, "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, 
-				"Sint-Pieters-Woluwe"@nl .
+	skos:prefLabel "Uccle"@fr, "Uccle"@en, "Ukkel"@nl ;
+	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2798142/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Vorst"@nl, "Forest"@fr, "Forest"@en ;
+	skos:altLabel "Vorst"@nl, "Forest"@fr, "Forest"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207372637>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2783980/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en ;
+	skos:altLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207389859>
 	a foaf:Organization ;
@@ -300,19 +306,13 @@
 	skos:altLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
 				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl, "Woluwe-Saint-Lambert"@en .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2785124/> ;
+	dcterms:spatial <https://sws.geonames.org/2783475/> ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Uccle"@fr, "Uccle"@en, "Ukkel"@nl ;
-	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207372637>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2783980/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en ;
-	skos:altLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en .
+	skos:prefLabel "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, "Sint-Pieters-Woluwe"@nl ;
+	skos:altLabel "Woluwé-Saint-Pierre"@fr, "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, 
+				"Sint-Pieters-Woluwe"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0249268719>
 	a foaf:Organization ;

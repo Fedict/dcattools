@@ -1,0 +1,14 @@
+# Set publisher based on a prov role
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+INSERT { 
+		?s dcterms:publisher ?uri }
+WHERE { 
+		?s prov:qualifiedAttribution ?attr .
+		?attr prov:agent ?uri .
+		FILTER (CONTAINS(STR(?uri), "https://org.belgif.be"))
+		FILTER NOT EXISTS { ?s dcterms:publisher ?publ }
+	}
+

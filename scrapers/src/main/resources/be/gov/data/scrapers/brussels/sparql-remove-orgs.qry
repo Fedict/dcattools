@@ -1,0 +1,43 @@
+# Remove datasets and servicess to avoid duplicates from other sources
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE {
+	?cat ?rel ?s .
+	?s ?p ?o .
+	?s dcterms:publisher ?publ  .
+	?dist ?a ?b .
+	?qa ?c ?d .
+	?cat dcat:dataset ?d2 .
+	?d2 ?x ?y .
+	?point ?e ?f
+} WHERE {
+	?cat ?rel ?s .
+	?s ?p ?o .
+	?s dcterms:publisher ?publ  .
+	VALUES ?rel { dcat:dataset dcat:service }
+	VALUES ?publ { <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804> 
+					<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804#helpdesk>
+					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391> 
+					<https://org.belgif.be/id/CbeRegisteredEntity/0314595348> }
+	OPTIONAL {
+		?s dcat:distribution ?dist .
+		?dist ?a ?b 
+	}
+	OPTIONAL {
+		?cat dcat:dataset ?d2 .
+		?s dcat:servesDataset ?d2 .
+		?d2 ?x ?y 
+	}
+	OPTIONAL {
+		?s prov:qualifiedAttribution ?qa .
+		?qa ?c ?d
+	}
+	OPTIONAL { 
+		?s dcat:contactPoint ?point . 
+		?point ?e ?f
+	}
+}
