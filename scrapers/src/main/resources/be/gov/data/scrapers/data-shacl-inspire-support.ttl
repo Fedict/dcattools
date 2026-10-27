@@ -10,7 +10,7 @@
 	dcterms:title "Directive 2007/2/EC of the European Parliament and of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)" ;
 	dcterms:alternative "INSPIRE"@en .
 
->http://data.europa.eu/eli/reg/2010/1089/oj>
+<http://data.europa.eu/eli/reg/2010/1089/oj>
 	a eli:LegalResource ;
 	dcterms:title "Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services" .
 
