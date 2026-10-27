@@ -129,6 +129,12 @@
 	skos:prefLabel "available"@en .
 
 
+<http://publications.europa.eu/resource/authority/language/DEU> 
+	a dcterms:LinguisticSystem;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+	skos:prefLabel "German"@en, "allemand"@fr, "Duits"@nl, "Deutsch"@de .
+
 <http://publications.europa.eu/resource/authority/language/ENG>
 	a dcterms:LinguisticSystem ;
 	a skos:Concept ;
@@ -147,11 +153,6 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
 	skos:prefLabel "Dutch"@en, "néerlandais"@fr, "Nederlands"@nl, "Niederländisch"@de .
 
-<http://publications.europa.eu/resource/authority/language/DEU> 
-	a dcterms:LinguisticSystem;
-	a skos:Concept ;
-	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
-	skos:prefLabel "German"@en, "allemand"@fr, "Duits"@nl, "Deutsch"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
 	a skos:Concept ;
