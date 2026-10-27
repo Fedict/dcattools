@@ -683,7 +683,7 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
-		writeReferences(w, con, uri, DCATAPHVD.applicableLegislation, "dcatap:applicableLegislation", "eli:LegalResource", false);
+		writeReferences(w, con, uri, DCATAPHVD.applicableLegislation, "dcatap:applicableLegislation");
 		writeReferences(w, con, uri, DCATAPHVD.hvdCategory, "dcatap:hvdCategory");
 
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
@@ -805,7 +805,7 @@ public class EDP {
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance");
 		writeQualifiedAttribution(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 		writeUsedBy(w, con, uri, PROV.WAS_USED_BY);
@@ -1129,12 +1129,13 @@ public class EDP {
 
 		writeLocations(w, con);
 	
+		writeDocuments(w, con, FOAF.PAGE, "foaf:Document");
+		writeDocuments(w, con, DCATAPHVD.applicableLegislation, "eli:LegalResource");
 		writeDocuments(w, con, DCTERMS.PROVENANCE, "dct:ProvenanceStatement");
 		writeDocuments(w, con, DCTERMS.LICENSE, "dct:LicenseDocument");
-		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
 		writeDocuments(w, con, DCTERMS.CONFORMS_TO, "dct:Standard");
-		writeDocuments(w, con, FOAF.PAGE, "foaf:Document");
-
+		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
+		
 		writeConcepts(w, con, DCTERMS.ACCESS_RIGHTS, "dct:RightsStatement");
 		writeConcepts(w, con, DCTERMS.ACCRUAL_PERIODICITY, "dct:Frequency");
 		writeConcepts(w, con, DCTERMS.LANGUAGE, "dct:LinguisticSystem");
