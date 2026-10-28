@@ -1,9 +1,11 @@
 # Remove invalid/multiple addresses in mbox
 
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
-DELETE	{	?s foaf:mbox ?mail }
+DELETE	{	?s ?rel ?mail }
 WHERE	{
-			?s foaf:mbox ?mail .
-			FILTER (CONTAINS(STR(?mail), " ")) 
+			?s ?rel ?mail .
+			VALUES ?rel { foaf:mbox vcard:hasEmail }
+			FILTER (CONTAINS(STR(?mail), " ") || CONTAINS(STR(?mail), "%20"))
 		}
