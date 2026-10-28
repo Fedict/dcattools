@@ -29,6 +29,10 @@
 	rdfs:label "Saint-Gilles"@en ;
 	dcat:bbox "POLYGON ((4.33 50.84, 4.36 50.84, 4.36 50.82, 4.33 50.82, 4.33 50.84))"^^geo:wktLiteral .
 
+<https://sws.geonames.org/2798579/> a dcterms:Location ;
+	rdfs:label "Etterbeek"@en ;
+	dcat:bbox "POLYGON ((4.38 50.84, 4.41 50.84, 4.41 50.82, 4.38 50.82, 4.38 50.84)"^^geo:wktLiteral .
+
 <https://sws.geonames.org/2791019/> a dcterms:Location ;
 	rdfs:label "Sint-Jans-Molenbeek"@en ;
 	dcat:bbox "POLYGON ((4.28 50.87, 4.35 50.87, 4.35 50.84, 4.28 50.84, 4.28 50.87))"^^geo:wktLiteral .

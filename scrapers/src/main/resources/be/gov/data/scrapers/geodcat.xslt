@@ -1019,7 +1019,7 @@
                   </xsl:when>
                   <xsl:otherwise>
                     <prov:wasDerivedFrom rdf:parseType="Resource">
-                      <rdf:type rdf:resource="{$prov}Entity"/>
+                      <rdf:type rdf:resource="{$prov}EntityX"/>
                       <xsl:copy-of select="$specinfo"/>
                     </prov:wasDerivedFrom>
                   </xsl:otherwise>
@@ -1046,6 +1046,7 @@
           <xsl:otherwise>
 -->
             <prov:wasUsedBy>
+				<xsl:text><!-- --></xsl:text>
               <xsl:copy-of select="$Activity"/>
             </prov:wasUsedBy>
 <!--
@@ -1643,12 +1644,18 @@
         <rdf:Description rdf:about="{$ResourceUri}">
           <xsl:copy-of select="$Metadata"/>
           <xsl:copy-of select="$ResourceDescription"/>
+          <xsl:if test="$Conformity != ''">
+            <xsl:copy-of select="$Conformity"/>
+          </xsl:if>
         </rdf:Description>
       </xsl:when>
       <xsl:otherwise>
         <rdf:Description>
           <xsl:copy-of select="$Metadata"/>
           <xsl:copy-of select="$ResourceDescription"/>
+          <xsl:if test="$Conformity != ''">
+            <xsl:copy-of select="$Conformity"/>
+          </xsl:if>
         </rdf:Description>
       </xsl:otherwise>
     </xsl:choose>
@@ -2474,13 +2481,7 @@
 <!--
     <xsl:if test="$profile = $extended">
 -->
-<!--
-      <xsl:if test="$Conformity != '' and $ResourceUri = ''">
--->
-        <xsl:copy-of select="$Conformity"/>
-<!--
-      </xsl:if>
--->
+      <!-- prov:wasUsedBy emitted once at dataset level (see below) -->
 <!--
       <xsl:choose>
         <xsl:when test="../@xlink:href and ../@xlink:href != ''">

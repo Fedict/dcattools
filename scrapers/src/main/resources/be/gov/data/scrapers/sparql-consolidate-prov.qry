@@ -20,7 +20,7 @@ WHERE
 			)
 		AS ?prov)
 		BIND (LANG(?desc) as ?lang)
-		FILTER (CONTAINS(STR(?genprov), "well-known/genid") || !CONTAINS(STR(?genprov), "well-known/genid/prov/"))
+		FILTER (CONTAINS(STR(?genprov), "well-known/genid") && !CONTAINS(STR(?genprov), "well-known/genid/prov/"))
 		FILTER NOT EXISTS {
 			?genprov dcterms:description ?x .
 			FILTER (LANG(?x) < ?lang)

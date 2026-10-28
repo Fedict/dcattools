@@ -4,6 +4,7 @@ sparql-map-access-inspire.qry
 sparql-record-contact.qry
 sparql-available.qry
 brussels/data-org.ttl
+brussels/data-geo.ttl
 sparql-record-serves.qry
 sparql-record-service.qry
 brussels/sparql-cleanup-service.qry
@@ -11,7 +12,7 @@ sparql-map-org.qry
 sparql-map-memberof.qry
 sparql-consolidate-org.qry
 sparql-consolidate-persons.qry
-sparql-consolidate-prov.qry
+#sparql-consolidate-prov.qry
 brussels/sparql-prov-publisher.qry
 brussels/sparql-remove-orgs.qry
 brussels/sparql-fix-member.qry
