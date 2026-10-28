@@ -30,7 +30,7 @@ sparql-map-media.qry
 sparql-map-media-srvc.qry
 sparql-clear-skos.qry
 #geobe/sparql-delete-location.qry
-sparql-fix-serves.qry
+sparql-record-serves.qry
 geobe/data-publ-contact.ttl
 geobe/sparql-default-contact.qry
 sparql-conforms-legislation.qry

@@ -1,0 +1,18 @@
+# Remove stub services with no additional info
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?cat dcat:service ?s .
+		?dist dcat:accessService ?s  .
+		?s ?p ?o . }
+WHERE
+	{	
+		?dist dcat:accessURL ?url .
+		?dist dcat:accessService ?s  .
+		?s ?p ?o .
+		?s dcat:endpointDescription ?url
+		OPTIONAL { ?cat dcat:service ?s }
+		FILTER NOT EXISTS { ?s dcterms:description ?desc }
+	}

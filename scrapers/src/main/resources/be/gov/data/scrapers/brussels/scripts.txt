@@ -4,7 +4,9 @@ sparql-map-access-inspire.qry
 sparql-record-contact.qry
 sparql-available.qry
 brussels/data-org.ttl
-sparql-fix-serves.qry
+sparql-record-serves.qry
+sparql-record-service.qry
+brussels/sparql-cleanup-service.qry
 sparql-map-org.qry
 sparql-map-memberof.qry
 sparql-consolidate-org.qry

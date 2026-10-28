@@ -1409,6 +1409,16 @@
               <xsl:apply-templates select="../../../../gmd:distributorFormat/gmd:MD_Format/gmd:name/*"/>
             </xsl:if>
           </xsl:variable>
+		  <xsl:variable name="UIDREF">
+			  <xsl:choose>
+				  <xsl:when test="./@uuidref != ''">
+					  <xsl:value-of select="./@uuidref"/>
+				  </xsl:when>
+					<xsl:when test="../@uuidref != ''">
+					  <xsl:value-of select="../@uuidref"/>
+				  </xsl:when>  
+			  </xsl:choose>
+		  </xsl:variable>
           <xsl:variable name="Encoding">
             <xsl:choose>
               <xsl:when test="$DistributorFormat != ''">
@@ -1525,6 +1535,9 @@
                       <xsl:choose>
                         <xsl:when test="$points-to-service = 'yes'">
                           <dcat:accessService rdf:parseType="Resource">
+							  <xsl:if test="$UIDREF != ''">
+								<dct:identifier><xsl:value-of select="$UIDREF"/></dct:identifier>
+							  </xsl:if>
                             <rdf:type rdf:resource="{$dcat}DataService"/>
                             <dct:title xml:lang="{$MetadataLanguage}">
                               <xsl:value-of select="$TitleOrDescriptionOrPlaceholder"/>
@@ -2266,9 +2279,6 @@
         </xsl:when>
         <xsl:when test="*/gmd:citation/*/gmd:identifier/*/gmd:code/gco:CharacterString != ''">
           <xsl:value-of select="*/gmd:citation/*/gmd:identifier/*/gmd:code/gco:CharacterString"/>
-        </xsl:when>
-        <xsl:when test="@uuidref != ''">
-          <xsl:value-of select="@uuidref"/>
         </xsl:when>
       </xsl:choose>
     </xsl:param>
