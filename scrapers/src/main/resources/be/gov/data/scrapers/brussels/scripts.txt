@@ -3,6 +3,7 @@ sparql-remove-addresses.qry
 brussels/sparql-record-uri.qry
 brussels/sparql-fix-backend.qry
 sparql-format-extension.qry
+#sparql-downloadurl-srv.qry
 sparql-record-id.qry
 sparql-map-access-inspire.qry
 sparql-record-contact.qry
@@ -28,12 +29,15 @@ sparql-map-theme-inspire.qry
 sparql-map-theme-belgif.qry
 sparql-theme-subject.qry
 sparql-delete-label-empty.qry
+sparql-mediatype-label.qry
+sparql-split-dist.qry
 data-media.ttl
 sparql-map-media.qry
 sparql-map-media-skos.qry
 brussels/sparql-fix-format.qry
 sparql-remove-geotype.qry
 sparql-geotype-format.qry
+sparql-format-geotiff.qry
 data-license.ttl
 brussels/sparql-access-downloadurl.qry
 brussels/sparql-landingpage-page.qry
