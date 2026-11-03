@@ -1,5 +1,9 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-addresses.qry
+brussels/sparql-record-uri.qry
+brussels/sparql-fix-backend.qry
+sparql-format-extension.qry
+sparql-record-id.qry
 sparql-map-access-inspire.qry
 sparql-record-contact.qry
 sparql-available.qry
@@ -34,6 +38,7 @@ data-license.ttl
 brussels/sparql-access-downloadurl.qry
 brussels/sparql-landingpage-page.qry
 brussels/sparql-record-landingpage.qry
+sparql-dist-accessurl.qry
 sparql-remove-catalogrecord.qry
 sparql-map-license.qry
 sparql-consolidate-bbox.qry

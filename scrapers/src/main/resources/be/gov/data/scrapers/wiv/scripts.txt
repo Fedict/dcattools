@@ -7,7 +7,7 @@ sparql-access-public.qry
 sparql-available.qry
 wiv/sparql-keyword-theme.qry
 data-media.ttl
-wiv/sparql-format-extension.qry
+sparql-format-extension.qry
 sparql-map-media.qry
 sparql-clear-skos.qry
 data-shacl-support.ttl
