@@ -36,6 +36,13 @@ import java.util.Properties;
  * @author Bart Hanssens
  */
 public class GeonetXsltBrussels extends GeonetXslt {
+	
+	@Override
+	protected String preprocess(String xml) {
+		// remove incorrectly used URIs
+		return xml.replaceAll(" xmlns:xlink=\"http://www\\.w3\\.org/1999/xlink\" xlink:href=\"https://org\\.belgif\\.be/id/CbeRegisteredEntity/\\d+\"", "");
+	}
+
 	/**
 	 * Constructor
 	 * 

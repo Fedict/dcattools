@@ -6,7 +6,7 @@ sparql-format-extension.qry
 #sparql-downloadurl-srv.qry
 sparql-record-id.qry
 sparql-map-access-inspire.qry
-sparql-record-contact.qry
+#sparql-record-contact.qry
 sparql-available.qry
 brussels/data-org.ttl
 brussels/data-geo.ttl

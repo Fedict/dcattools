@@ -348,6 +348,7 @@
 	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
 					"Services du Gouvernement de la Région bruxelloise"@fr, 
 					"Regionaler öffentlicher Dienst Brüssel"@de ;
+	skos:closeMatch <https://org.belgif.be/id/CbeRegisteredEntity/316381039> ;
 	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, 
 			"Brussel Gewestelijke Coördinatie"@nl, "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en,
 			"Gewestelijke Overheidsdienst Brussel (GOB)"@nl, "Service public régional de Bruxelles (SPRB)"@fr,
@@ -364,7 +365,7 @@
 			"Koninklijke Commissie voor Monumenten en Landschappen"@nl,
 			"Commission Royale des Monuments et Sites"@fr, 
 			"talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr ,
-			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en  .
+			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0253777437> 
 	a foaf:Organization ;
