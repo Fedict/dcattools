@@ -12,7 +12,7 @@ brussels/data-org.ttl
 brussels/data-geo.ttl
 sparql-record-serves.qry
 sparql-record-service.qry
-brussels/sparql-cleanup-service.qry
+brussels/sparql-consolidate-service.qry
 sparql-map-org.qry
 sparql-map-memberof.qry
 sparql-consolidate-org.qry
@@ -32,6 +32,9 @@ sparql-delete-label-empty.qry
 sparql-mediatype-label.qry
 data-media.ttl
 brussels/sparql-fix-format.qry
+#brussels/sparql-fix-format2.qry
+brussels/sparql-access-downloadurl.qry
+brussels/sparql-downloadurl-fmt.qry
 sparql-map-format.qry
 sparql-split-dist.qry
 sparql-format-mediatype.qry

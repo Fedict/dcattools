@@ -1,0 +1,31 @@
+# Override format based on downloadURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?dist dcterms:format ?f .
+		?dist dcat:mediaType ?mt }
+INSERT 
+	{	?dist dcterms:format ?fmt }
+WHERE
+	{ 	?dist a dcat:Distribution .
+		?dist dcat:downloadURL ?url .
+		OPTIONAL { ?dist dcterms:format ?f }
+		OPTIONAL { ?dist dcat:mediaType ?mt }
+		VALUES (?str ?name) {
+			("_GPKG_" <http://publications.europa.eu/resource/authority/file-type/GPKG>  )
+			("=gpkg" <http://publications.europa.eu/resource/authority/file-type/GPKG>  )
+			("_SHP_" <http://publications.europa.eu/resource/authority/file-type/SHP>  )
+			("_GDB_" <http://publications.europa.eu/resource/authority/file-type/GDB>  )
+			("=SHAPE-ZIP" <http://publications.europa.eu/resource/authority/file-type/SHP>  )
+			("=shape-zip" <http://publications.europa.eu/resource/authority/file-type/SHP>  )
+			("=gml" <http://publications.europa.eu/resource/authority/file-type/GML>  )
+			("=csv" <http://publications.europa.eu/resource/authority/file-type/CSV>  )
+			("=application/json" <http://publications.europa.eu/resource/authority/file-type/JSON>  )
+			(".sld" <http://publications.europa.eu/resource/authority/file-type/XML> )
+		}
+		BIND (IF(
+					CONTAINS(STR(?url), ?str), ?name,  ?unbound) 
+			as ?fmt)
+	}

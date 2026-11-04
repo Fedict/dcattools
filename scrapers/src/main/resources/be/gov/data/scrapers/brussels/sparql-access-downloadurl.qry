@@ -16,7 +16,7 @@ WHERE
 		UNION
 		{
 			?dist dcat:accessURL ?url .
-			VALUES ?ext { ".csv" ".shp" ".xls" ".xlsx" ".zip" }
+			VALUES ?ext { ".csv" ".shp" ".xls" ".xlsx" ".zip" ".sld" }
 			FILTER (STRENDS(STR(?url), ?ext))
 		}
 		UNION

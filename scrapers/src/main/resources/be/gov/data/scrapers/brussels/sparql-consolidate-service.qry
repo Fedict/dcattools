@@ -1,0 +1,26 @@
+# Consolidate data services
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?x ?rel ?s .
+		?s a dcat:DataService .
+		?s dcat:endpointURL ?e .
+		?s ?p ?o }
+INSERT {
+		?x ?rel ?uri .
+		?uri a dcat:DataService .
+		?uri dcat:endpointURL ?e .
+		?uri ?p ?o }
+WHERE
+	{	
+		?s a dcat:DataService .
+		?s ?p ?o .
+		?s dcat:endpointURL ?e .
+		OPTIONAL { ?x ?rel ?s }
+		BIND (IRI
+				(CONCAT("http://data.gov.be/.well_known/genid/service/brussels/", SHA1(STR(?e)))
+			) as ?uri)
+		FILTER NOT EXISTS { ?s dcterms:description ?desc }
+	}

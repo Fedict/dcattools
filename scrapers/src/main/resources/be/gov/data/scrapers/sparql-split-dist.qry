@@ -4,12 +4,12 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-#DELETE
-#	{	?s ?rel ?dist .
-#		?dist a dcat:Distribution .
-#		?dist dcat:mediaType ?t1 .
-#		?dist dcat:mediaType ?t2 .
-#		?dist ?p ?o }
+DELETE
+	{	?s ?rel ?dist .
+		?dist a dcat:Distribution .
+		?dist dcterms:format ?t1 .
+		?dist dcterms:format?t2 .
+		?dist ?p ?o }
 INSERT 
 	{ 	?s ?rel ?dist1 .
 		?s ?rel ?dist2 .
