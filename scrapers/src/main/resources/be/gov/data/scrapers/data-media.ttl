@@ -30,6 +30,7 @@
 	skos:prefLabel "DGN" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dgn> ;
 	skos:altLabel "DGN Microstation", "Bentley DGN", "DGN (Microstation)", "DGN Bentley", "Bentley DGN",
+				"MicroStation",
 				<https://docs.fileformat.com/cad/dgn/> .
 
 <http://publications.europa.eu/resource/authority/file-type/DBF>
@@ -53,6 +54,11 @@
 	skos:altLabel "DwC-A", "DwC", "DWC", "DWCA", "DWC_ARCHIVE", "Darwin Core Archive (DwC-A)",
 			<https://www.iana.org/assignments/media-types/application/dwca> .
 
+<http://publications.europa.eu/resource/authority/file-type/DWG>
+	skos:prefLabel "DWG" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dwg> ;
+	skos:altLabel "DWG", "Autocad", "AutoCAD" .
+
 <http://publications.europa.eu/resource/authority/file-type/DXF>
 	skos:prefLabel "DXF" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/image/vnd.dxf> ;
@@ -67,13 +73,14 @@
 	skos:prefLabel "GDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-filegdb> ;
 	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase",
-			 "application/x-filegdb" .
+			 "application/x-filegdb", "Esri" .
 
 <http://publications.europa.eu/resource/authority/file-type/GPKG>
 	skos:prefLabel "GPKG" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> ;
 	skos:altLabel "Geopackage", "geopackage", "GPKG",  "GeoPacakge", "application/geopackage+sqlite3",
 		"sqilte (TGZ)", "sqlite (TGZ)", "sqlite (ZIP)", "SQLITE (ZIP)", "spatialite (ZIP)", "sqlite",
+		"GeoPackage",
 		<https://www.eionet.europa.eu/reportnet/docs/noise/templates/df4_8/agglomerations-strategicnoisemaps.gpkg/@@download/file/agglomerations-strategicnoisemaps.gpkg>,
 		<http://inspire.ec.europa.eu/media-types/application/geopackage+sqlite3>,
 		<https://www.iana.org/assignments/media-types/application/geopackage+sqlite3> .

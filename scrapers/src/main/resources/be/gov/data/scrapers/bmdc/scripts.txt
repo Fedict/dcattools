@@ -58,7 +58,7 @@ data-license.ttl
 sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry
 data-media.ttl
-sparql-map-media-skos.qry
+bmdc/sparql-map-media-skos.qry
 sparql-clear-skos.qry
 sparql-startenddate.qry
 bmdc/sparql-fix-date.qry

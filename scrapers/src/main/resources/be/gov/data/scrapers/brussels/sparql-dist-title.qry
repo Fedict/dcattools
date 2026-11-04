@@ -1,0 +1,32 @@
+# Add title on distribution based on format
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?dist dcterms:title ?title }
+INSERT
+	{ 	?dist dcterms:title ?nl .
+		?dist dcterms:title ?fr .
+		?dist dcterms:title ?de .
+		?dist dcterms:title ?en 
+	}
+WHERE
+	{ 	
+		?dist a dcat:Distribution .
+		?dist dcterms:format ?fmt .
+		?fmt skos:prefLabel ?lbl
+		{
+			FILTER NOT EXISTS { ?dist dcterms:title ?title }
+		}
+		UNION
+		{
+			?dist dcterms:title ?title 
+			FILTER STRSTARTS(?title, "http")
+		}
+		BIND (STRLANG(?lbl, "en") AS ?en)
+		BIND (STRLANG(?lbl, "fr") AS ?fr)
+		BIND (STRLANG(?lbl, "de") AS ?de)
+		BIND (STRLANG(?lbl, "nl") AS ?nl)
+	}

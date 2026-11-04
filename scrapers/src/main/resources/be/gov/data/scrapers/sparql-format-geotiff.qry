@@ -1,8 +1,0 @@
-# Delete format TIFF if the more specific GEOTIFF is present
-
-PREFIX dcterms: <http://purl.org/dc/terms/>
-
-DELETE { ?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/TIFF> }
-WHERE {
-		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/TIFF> .
-		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/GEOTIFF> }

@@ -1,0 +1,14 @@
+# Remove format with skolem IRI if there's already an EU IRI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE	{	?s dcterms:format ?genid .
+			 ?genid ?p ?o }
+WHERE	{
+			?s dcterms:format ?genid .
+			?s dcterms:format ?iri .
+			OPTIONAL { ?genid ?p ?o }
+			FILTER (STRSTARTS(STR(?genid), "http://data.gov.be") && 
+					STRSTARTS(STR(?iri), "http://publications.europa.eu/"))
+		}

@@ -1,14 +1,14 @@
-# Remove format with skolem IRI if there's already an EU IRI
+# Fix the format label repeated by XSLT for each language
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-DELETE	{	?s dcterms:format ?genid .
-			 ?genid ?p ?o }
+DELETE	{	?fmt rdfs:label ?lbl }
+INSERT	{	?fmt rdfs:label ?l }
 WHERE	{
-			?s dcterms:format ?genid .
-			?s dcterms:format ?iri .
-			OPTIONAL { ?genid ?p ?o }
-			FILTER (STRSTARTS(STR(?genid), "http://data.gov.be") && 
-					STRSTARTS(STR(?iri), "http://publications.europa.eu/"))
+			?s dcterms:format ?fmt .
+			?fmt rdfs:label ?lbl
+			BIND (STRBEFORE(?lbl, " ") 
+				as ?l )
+			FILTER (CONTAINS(?lbl, " "))
 		}
