@@ -19,7 +19,7 @@ brussels/sparql-mbox-spaces.qry
 sparql-consolidate-org.qry
 sparql-consolidate-persons.qry
 #sparql-consolidate-prov.qry
-brussels/sparql-prov-publisher.qry
+sparql-publisher-prov.qry
 brussels/sparql-remove-orgs.qry
 brussels/sparql-fix-member.qry
 sparql-record-contact.qry
