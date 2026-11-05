@@ -73,7 +73,7 @@
 	skos:prefLabel "GDB" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/x-filegdb> ;
 	skos:altLabel "ESRI file geodatabase", "File Geodatabase", "File geodatabase", "file geodatabase",
-			 "application/x-filegdb", "Esri" .
+			 "application/x-filegdb" .
 
 <http://publications.europa.eu/resource/authority/file-type/GPKG>
 	skos:prefLabel "GPKG" ;
@@ -277,7 +277,7 @@
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.shp> ;
 	skos:altLabel "SHP", "SHP shapefile", "shp", "Shp", "Shape", "shape", "shapefile", "shape file", 
 			"shape fies", "shapefiile", "application/zipped-shapefile",
-			"application/x-shapefile", "application/shp",
+			"application/x-shapefile", "application/shp", "Esri",
 			"Esri REST", "shapefile (ZIP)", "Shapefile (ZIP)",  "ESRI Shapefile", "Esri Shapefile", 
 			"ESRI shapefile", "Shapefile", "ShapeFile", "shp (ZIP)", "application/vnd.shp",
 			<https://www.iana.org/assignments/media-types/application/vnd.shp> .

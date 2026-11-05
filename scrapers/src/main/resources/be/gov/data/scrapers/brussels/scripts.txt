@@ -42,9 +42,9 @@ sparql-map-format.qry
 brussels/sparql-fix-gpkg.qry
 sparql-split-dist.qry
 sparql-format-mediatype.qry
+brussels/sparql-dist-title.qry
 sparql-clear-skos.qry
 sparql-subject-keyword.qry
-brussels/sparql-dist-title.qry
 sparql-remove-geotype.qry
 sparql-geotype-format.qry
 data-license.ttl

@@ -22,7 +22,7 @@ WHERE
 		}
 		UNION
 		{
-			?dist dcterms:title ?title 
+			OPTIONAL {?dist dcterms:title ?title }
 			FILTER STRSTARTS(?title, "http")
 		}
 		BIND (STRLANG(?lbl, "en") AS ?en)
