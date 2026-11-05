@@ -1019,7 +1019,7 @@
                   </xsl:when>
                   <xsl:otherwise>
                     <prov:wasDerivedFrom rdf:parseType="Resource">
-                      <rdf:type rdf:resource="{$prov}EntityX"/>
+                      <rdf:type rdf:resource="{$prov}Entity"/>
                       <xsl:copy-of select="$specinfo"/>
                     </prov:wasDerivedFrom>
                   </xsl:otherwise>
