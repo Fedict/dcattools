@@ -43,6 +43,7 @@ brussels/sparql-fix-gpkg.qry
 sparql-split-dist.qry
 sparql-format-mediatype.qry
 sparql-clear-skos.qry
+sparql-subject-keyword.qry
 brussels/sparql-dist-title.qry
 sparql-remove-geotype.qry
 sparql-geotype-format.qry
@@ -59,6 +60,7 @@ sparql-strip-html.qry
 sparql-geo-publisher.qry
 sparql-person-name.qry
 sparql-consolidate-std.qry
+sparql-service-serves.qry
 sparql-hvd-legislation.qry
 data-standards-support.ttl
 data-shacl-eurovoc-support.ttl

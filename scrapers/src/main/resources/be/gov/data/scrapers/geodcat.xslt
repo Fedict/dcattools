@@ -2279,7 +2279,8 @@
 
   <xsl:template name="CoupledResource" match="gmd:identificationInfo[1]/*/srv:operatesOn">
     <xsl:param name="href" select="@xlink:href"/>
-    <xsl:param name="code">
+    <xsl:param name="uuidref" select="@uuidref"/>
+	<xsl:param name="code">
       <xsl:choose>
         <xsl:when test="$CoupledResourceLookUp = 'enabled' and $href != '' and (starts-with($href, 'http://') or starts-with($href, 'https://'))">
           <xsl:value-of select="document($href)//gmd:identificationInfo/*/gmd:citation/*/gmd:identifier/*/gmd:code/gco:CharacterString"/>
@@ -2317,6 +2318,13 @@
           <dcat:Dataset rdf:about="{@uriref}"/>
         </dcat:servesDataset>
       </xsl:when>
+	  <xsl:when test="$uuidref != ''">
+		<dcat:servesDataset>
+			<dcat:Dataset>
+				<dct:identifier><xsl:value-of select="$uuidref"/></dct:identifier>
+			</dcat:Dataset>
+		</dcat:servesDataset>
+	  </xsl:when>
       <xsl:when test="$code != ''">
         <xsl:choose>
           <xsl:when test="starts-with($code, 'http://') or starts-with($code, 'https://')">
