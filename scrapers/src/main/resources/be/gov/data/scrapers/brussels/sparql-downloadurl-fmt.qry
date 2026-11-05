@@ -14,7 +14,7 @@ WHERE
 		OPTIONAL { ?dist dcterms:format ?f }
 		OPTIONAL { ?dist dcat:mediaType ?mt }
 		VALUES (?str ?name) {
-			("atomfeed", <http://publications.europa.eu/resource/authority/file-type/ATOM> )
+			("atomfeed" <http://publications.europa.eu/resource/authority/file-type/ATOM> )
 			("_GPKG_" <http://publications.europa.eu/resource/authority/file-type/GPKG>  )
 			("=gpkg" <http://publications.europa.eu/resource/authority/file-type/GPKG>  )
 			("_SHP_" <http://publications.europa.eu/resource/authority/file-type/SHP>  )
