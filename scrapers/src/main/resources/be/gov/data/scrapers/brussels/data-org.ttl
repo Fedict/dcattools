@@ -156,7 +156,7 @@
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "VisitBrussels"@fr, "VisitBrussels"@nl, "VisitBrussels"@en ;
-	skos:altLabel "visit.brussels"@fr, "visit.brussels"@nl, "visit.brussels"@en .
+	skos:altLabel "visit.brussels"@fr, "visit.brussels"@nl, "visit.brussels"@en, "Visit.brussels"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0241570679>
 	a foaf:Organization ;
@@ -170,6 +170,18 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en ;
 	skos:altLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0472880245>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Garance"@fr, "Garance"@nl, "Garance"@en ;
+	skos:altLabel "GARANCE"@en, "Garance"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0840543701>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "The New Drive"@fr, "The New Drive"@nl, "The New Drive"@en ;
+	skos:altLabel "THE NEW DRIVE"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0637731250>
 	a foaf:Organization ;
@@ -351,6 +363,7 @@
 	skos:closeMatch <https://org.belgif.be/id/CbeRegisteredEntity/316381039> ;
 	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, 
 			"Brussel Gewestelijke Coördinatie"@nl, "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en,
+			"easy.brussels"@en ,
 			"Gewestelijke Overheidsdienst Brussel (GOB)"@nl, "Service public régional de Bruxelles (SPRB)"@fr,
 			"SPRB"@fr, "SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
 			"Bruxelles économie et emploi"@en,
@@ -383,9 +396,18 @@
 	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr ; 
 	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr,
-		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr,
+		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr, "Perspective"@en,
 		"Brussels Instituut voor statistiek en analyse"@nl, "Institut bruxellois de statistiques et d'analyse"@fr,
 		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr, "IBSA / BISA", "IBSA / BISA"@en  .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2287406587>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
+	skos:altLabel "Belgian Interregional Environment Agency (IRCEL - CELINE)"@en,
+		"Belgische Interregionale Umweltagentur (IRCEL - CELINE)"@de,
+		"Cellule Interrégionale de l'Environnement (CELINE)"@fr,
+		"Intergewestelijke Cel voor het Leefmilieu (IRCEL)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555656283>
 	a foaf:Organization ;
@@ -407,6 +429,13 @@
 	skos:prefLabel "Hydria"@nl, "Hydria"@fr, "Hydria"@en ;
 	skos:altLabel "BMWB Brusselse Maatschappij voor Waterbeheer"@nl , 
 			"SBGE Société bruxelloise de Gestion de l'eau"@fr ,"Brussels Company for Water Management"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0847220467>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
+	skos:prefLabel "IRISnet"@en, "IRISnet"@fr, "IRISnet"@nl ;
+	skos:altLabel "IRISnet"@en, "IRISnet"@fr, "IRISnet"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0239843188>
 	a foaf:Organization ;
@@ -447,16 +476,25 @@
 	skos:prefLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en ;
 	skos:altLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0308356862>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
+	skos:prefLabel "FPS Interior"@en, "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, "FÖD Inneres"@de ;
+	skos:altLabel "SPF Intérieur"@fr, "FOD Binnenlandse Zaken"@nl, "FPS Home Affairs"@en, "FÖD Inneres"@de .
+
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr, "Statbel"@de ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
 	skos:altLabel "AD Statistiek - Statistics Belgium"@nl, "DG Statistique - Statistics Belgium"@fr,
 		"Statistics Belgium"@en, "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
+	dcterms:spatial <<https://sws.geonames.org/2802361/> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
 	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, 
 		"Middenstand en Energie"@nl, "Classes moyennes et Energie"@fr, "K.M.O."@nl .
@@ -523,6 +561,24 @@
 	skos:prefLabel "IDEA Consult"@en, "IDEA Consult"@nl, "IDEA Consult"@fr;
 	skos:altLabel "IDEA Consult"@nl .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0808532315>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Bureau Bas Smets"@en, "Bureau Bas Smets"@nl, "Bureau Bas Smets"@fr;
+	skos:altLabel "Bureau BAS SMET"@en, "Consortium ORG Squared et Bureau Bas Smets (T.V. ORG2 –BBS)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0476966024>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Transport & Mobility Leuven"@en, "Transport & Mobility Leuven"@nl, "Transport & Mobility Leuven"@fr;
+	skos:altLabel "Transport & Mobility Leuven"@en, "Transport &amp; Mobility Leuven"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0472582515>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Möbius Business Redesign"@en, "Möbius Business Redesign"@nl, "Möbius Business Redesign"@fr;
+	skos:altLabel "Möbius Business Redesign NV"@en .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0659656022>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
@@ -534,7 +590,7 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Royal Library of Belgium"@en, "Koninklijke Bibliotheek van België"@nl, 
 				"Königliche Bibliothek von Belgien"@de, "Bibliothèque royale de Belgique"@fr ;
-	skos:altLabel "KBR" ;
+	skos:altLabel "KBR"@en, "KBR - Royal Library of Belgium"@en ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO011488> .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>

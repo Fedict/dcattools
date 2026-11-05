@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!-- modified version for use with data.gov.be -->
 <!--
 
   Copyright 2015-2023 EUROPEAN UNION
@@ -1787,11 +1787,11 @@
     </xsl:param>
 
     <xsl:param name="OrganisationName">
-      <xsl:value-of select="string-join(gmd:organisationName/*[self::gco:CharacterString|gmx:Anchor], '')"/>
+      <xsl:value-of select="string-join(gmd:organisationName/[gco:CharacterString|gmx:Anchor], '')"/>
     </xsl:param>
     <xsl:param name="OrganisationName-FOAF">
       <xsl:for-each select="gmd:organisationName">
-        <foaf:name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></foaf:name>
+        <foaf:name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space([gco:CharacterString|gmx:Anchor])"/></foaf:name>
         <xsl:call-template name="LocalisedString">
           <xsl:with-param name="term">foaf:name</xsl:with-param>
         </xsl:call-template>
@@ -1800,7 +1800,7 @@
 
     <xsl:param name="OrganisationName-vCard">
       <xsl:for-each select="gmd:organisationName">
-        <vcard:organization-name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></vcard:organization-name>
+        <vcard:organization-name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space([gco:CharacterString|gmx:Anchor])"/></vcard:organization-name>
         <xsl:call-template name="LocalisedString">
           <xsl:with-param name="term">vcard:organization-name</xsl:with-param>
         </xsl:call-template>
@@ -1809,7 +1809,7 @@
 
     <xsl:param name="OrganisationNameAsIndividualName-vCard">
       <xsl:for-each select="gmd:organisationName">
-        <vcard:fn xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></vcard:fn>
+        <vcard:fn xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*/[self::gco:CharacterString|gmx:Anchor])"/></vcard:fn>
         <xsl:call-template name="LocalisedString">
           <xsl:with-param name="term">vcard:fn</xsl:with-param>
         </xsl:call-template>
