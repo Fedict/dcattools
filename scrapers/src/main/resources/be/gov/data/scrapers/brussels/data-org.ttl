@@ -494,7 +494,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	dcterms:spatial <<https://sws.geonames.org/2802361/> ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
 	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, 
 		"Middenstand en Energie"@nl, "Classes moyennes et Energie"@fr, "K.M.O."@nl .
@@ -598,3 +598,10 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000534> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0434366097>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	dcterms:spatial <https://sws.geonames.org/3337387/> ;
+	skos:prefLabel "Natagora"@fr ;
+	skos:altLabel "natagora"@en .
