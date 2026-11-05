@@ -70,3 +70,4 @@ sparql-shacl-classes.qry
 sparql-shacl-skos.qry
 data-shacl-hvdcat-support.ttl
 sparql-remove-orphans.qry
+sparql-remove-orphans.qry
