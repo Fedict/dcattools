@@ -28,14 +28,16 @@ data-themes-gemet.ttl
 sparql-map-theme-inspire.qry
 sparql-map-theme-belgif.qry
 sparql-theme-subject.qry
+brussels/data-theme.ttl
+sparql-map-keyword-theme.qry
 sparql-delete-label-empty.qry
 sparql-mediatype-label.qry
 data-media.ttl
 brussels/sparql-fix-format.qry
-brussels/sparql-fix-gpkg.qry
 brussels/sparql-access-downloadurl.qry
 brussels/sparql-downloadurl-fmt.qry
 sparql-map-format.qry
+brussels/sparql-fix-gpkg.qry
 sparql-split-dist.qry
 sparql-format-mediatype.qry
 brussels/sparql-dist-title.qry

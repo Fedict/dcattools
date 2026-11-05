@@ -3,83 +3,40 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
-	skos:altLabel "farming", "Agriculture, pêche, sylviculture et alimentation",
-		"Agriculture, fisheries, forestry and food", "Landbouw, visserij, bosbouw en voeding",
-		"Bien-être animal", "Bodem" .
+	skos:altLabel "farming" .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC#SPORT>
-	skos:altLabel "Patrimoine", "Culture", "Folklore", "Sport", "Loisirs", "Leisure",
-		"Education, culture and sport", "Éducation, culture et sport", 
-		"Onderwijs, cultuur en sport" .
+	skos:altLabel "Patrimoine" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ECON>
-	skos:altLabel "economy", "Finances publiques", "Tourisme", "Business", "Economie", "SME",
-		"Economie en financiën", "Économie et finances", "Economy and finance", "PME",
-		"Emploi", "Développement économique", "Toerism", "Economy", "Economic development",
-		"Economische groei", "tewerkstelling", "Duurzame ontkwikkeling",	
-		"DÃ©veloppement Ã©conomique",
-		"Marchés publics", "Employment", "Development durable", "Restauration" .
+	skos:altLabel "economy", "inventory public procurements"@en, "inventory grants"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/EDUC>
-	skos:altLabel "Education", "Recherche", "Formation", "Enseignement" .
+	skos:altLabel "Education"  .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI>
-	skos:altLabel "environment", "inlandWaters", "imageryBaseMapsEarthCover", "structure",
-		"Environnement", "Propreté", "PropretÃ©", "Milieu", "Afval en hulpbronnen", "Déchets et ressources",
-		"Water", "Hydrography", "Eau", "Hydrographie", "Environment", "Dieren", "Animaux", 
-		"Bruit", "Geluid", "Air", "Lucht", "Cleanliness", "eau", "Habitats and biotopes",
-		"Land cover", "Land use", "Land usage", "Usage des sols", "Bodemgebruik", "Sols", "Hydrografie",
-		"Habitats et biotopes", "Habitats en biotopen", "Occupation des terres", "Landgebruik"  .
+	skos:altLabel "environment" .
 
 <http://publications.europa.eu/resource/authority/data-theme/ENER>
-	skos:altLabel "Energie", "Energy", "Énergie" .
+	skos:altLabel "Energie" .
 
 <http://publications.europa.eu/resource/authority/data-theme/GOVE>
-	skos:altLabel "planningCadastre", "boundaries", "location", "Finances publiques",
-			"Administration", "Gouvernement", "Citoyenneté", "CitoyennetÃ©", "Marchés publics",
-			"Erkenningen en registraties", "Agréments et enregistrements",
-			"Government and public sector", "Overheid en publieke sector",
-			"Gouvernement et secteur public", "Overheidsopdrachten", "Nutsdiensten en overheidsdiensten", 
-			"Services d'utilité publique et services publics", "Unités statistiques", "Unités administratives",
-			"Addresses", "Administrative units", "Statistical units", "Administratieve eenheden", 
-			"Unités administratives", "Utility and governmental services", "Adresses", "Adressen",
-			"Area management/restriction/regulation zones and reporting units", "Statistische eenheden",
-			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
-			"Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden",
-			"Zones de gestion, de restriction ou de réglementation et unités de déclaration",
-			"Finances et budget", "Financiëen en begroting", "Subsides", "Subsidies",
-			"intelligenceMilitary", "AmÃ©nagement du territoire" .
+	skos:altLabel "planningCadastre", "inventory public procurements"@en, "inventory grants"@en .
 
 <http://publications.europa.eu/resource/authority/data-theme/HEAL> 
-	skos:altLabel "Santé", "Gezondheid", "Health", "Human health and safety", "SantÃ©",
-				"Santé et sécurité des personnes", "Menselijke gezondheid en veiligheid" .
+	skos:altLabel "Santé",  .
 
 <http://publications.europa.eu/resource/authority/data-theme/JUST>
-	skos:altLabel "Dierenwelzijn", "Justice, legal system and public safety", "Sécurité",
-				"Justice, système juridique et sécurité publique", "Crime", "Police", "Justice",
-				"Justitie, rechtsstelsel en openbare veiligheid", "SÃ©curitÃ©" .
+	skos:altLabel "Dierenwelzijn" .
 
 <http://publications.europa.eu/resource/authority/data-theme/SOCI>
-	skos:altLabel "society", "Social", "Services", "Equipements", "Urbanisme", "Logement", 
-				"BÃ¢timents", "HÃ©bergement",
-				"Bâtiments", "Bâtiment", "Gebouwen", "Aménagement du territoire", "WC",
-				"Bevolking en samenleving", "Population et société", "Population and society",
-				"Emploi", "tewerkstelling", "Buildings", "Employment", "Hébergement", "chien" .
+	skos:altLabel "society" .
 
 <http://publications.europa.eu/resource/authority/data-theme/REGI>
-	skos:altLabel "Urbanisme", "Tourisme", "Brussels Hoofdstedelijk Gewest", "Région de Bruxelles-Capitale",
-			"Regions and cities", "Régions et villes", "Regio's en steden", "Toerism", "Restauration",
-			"HÃ©bergement", "Hébergement" .
+	skos:altLabel "Urbanisme" .
 
 <http://publications.europa.eu/resource/authority/data-theme/TRAN>
-	skos:altLabel "transportation", "Verplaatsingen", "Vervoer", "Transport", "Transports", "Mobilité",
-			"MobilitÃ©",
-			"Transport networks", "Réseaux de transport", "Vervoersnetwerken".
+	skos:altLabel "transportation".
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
-	skos:altLabel "utilitiesCommunication", "geoscientificInformation", "biota", "elevation", 
-			"Internet", "TIC", "Installations industrielles", "Industriële installaties",
-			"Systemen voor verwijzing door middel van coördinaten", "Coordinate reference systems",
-			"Référentiels de coordonnées", "Geographical grid systems", "Systèmes de maillage géographique",
-			"Bodem", "Geologie", "Geology", "Géologie", "Sols", "Science and technology",
-			"Wetenschap en technologie", "Science et technologie" .
+	skos:altLabel "Science et technologie" .

@@ -15,6 +15,7 @@ WHERE
 	{ 	?s a ?class .
 		OPTIONAL { ?s ?p ?o } .
 		VALUES ?class { dcterms:Standard dcterms:Location dcterms:LicenseDocument
+						dcterms:MediaType dcterms:MediaTypeOrExtent
 						foaf:Agent foaf:Organization foaf:Person 
 						prov:Agent prov:Attribution 
 						skos:Concept vcard:Organization }

@@ -30,6 +30,8 @@
 
 <http://publications.europa.eu/resource/authority/data-theme/ENVI> 
 	skos:narrowMatch gemet:12687,   # flood protection
+                     gemet:3301,	# flooding
+                     gemet:6445,	# pollution
                      gemet:15051,   # albedo
                      gemet:15379,   # nature-based solution
                      gemet:2259,    # dissolved organic carbon
@@ -66,6 +68,7 @@
 					 gemet:6469,	# pollution monitoring
                      gemet:7423,    # sand extraction
                      gemet:775,     # benthos
+					 gemet:5593,	# nitrate
                      gemet:9062,    # waste disposal
 					 gemet:7232,	# rising sea level
 					 gemet:10176,	# relief (land)
@@ -124,6 +127,7 @@
                      gemet:3834,    # harbour
                      gemet:5052,    # maritime navigation
                      gemet:5055,    # maritime transport
+                     gemet:788,		# bicycle
                      gemet:755 .    # beaching
 
 <http://publications.europa.eu/resource/authority/data-theme/TECH>
