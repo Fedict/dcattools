@@ -6,7 +6,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 DELETE	{	?d dcterms:format ?fmt }
 INSERT	{	?d dcterms:format <http://publications.europa.eu/resource/authority/file-type/GPKG> }
 WHERE	{
-			?s dcterms:format ?fmt .
+			?d dcterms:format ?fmt .
 			VALUES ?fmt {
 				<https://www.eionet.europa.eu/reportnet/docs/noise/templates/df4_8/agglomerations-strategicnoisemaps.gpkg/@@download/file/agglomerations-strategicnoisemaps.gpkg>
 				<http://inspire.ec.europa.eu/media-types/application/geopackage+sqlite3>
