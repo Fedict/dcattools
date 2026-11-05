@@ -4745,3 +4745,18 @@
 	a skos:Concept ;
 	skos:inScheme  <http://inspire.ec.europa.eu/glossary> ;
 	skos:prefLabel "Spatial reference system"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity/notConformant>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity> ;
+	skos:prefLabel "Not Conformant"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity/conformant>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity> ;
+	skos:prefLabel "Conformant"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity/notEvaluated>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity> ;
+	skos:prefLabel "Not Evaluated"@en .
