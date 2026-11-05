@@ -22,6 +22,7 @@ DELETE {
 	VALUES ?publ { <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804> 
 					<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804#helpdesk>
 					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391> 
+					<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 					<https://org.belgif.be/id/CbeRegisteredEntity/0314595348> }
 	OPTIONAL {
 		?s dcat:distribution ?dist .
