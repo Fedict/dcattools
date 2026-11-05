@@ -4740,3 +4740,8 @@
     skos:prefLabel "Nutsvoorzieningen en communicatie"@nl, 
 				"Services publics et communication"@fr, "Versorgungswirtschaft und Kommunikation"@de,
 				 "Utilities/Communication"@en .
+
+<http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem>
+	a skos:Concept ;
+	skos:inScheme  <http://inspire.ec.europa.eu/glossary> ;
+	skos:prefLabel "Spatial reference system"@en .

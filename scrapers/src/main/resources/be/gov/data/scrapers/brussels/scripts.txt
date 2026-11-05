@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-addresses.qry
+brussels/sparql-fix-language.qry
 brussels/sparql-record-uri.qry
 brussels/sparql-fix-backend.qry
 sparql-format-extension.qry
@@ -40,6 +41,7 @@ sparql-map-format.qry
 brussels/sparql-fix-gpkg.qry
 sparql-split-dist.qry
 sparql-format-mediatype.qry
+sparql-clear-skos.qry
 brussels/sparql-dist-title.qry
 sparql-remove-geotype.qry
 sparql-geotype-format.qry

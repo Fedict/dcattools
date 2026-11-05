@@ -1,0 +1,14 @@
+# Fix incorrect language URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	{	?s dcterms:language ?lang }
+INSERT	{	?s dcterms:language ?uri }
+WHERE	{
+			?s dcterms:language ?lang
+			VALUES (?lang ?uri) {
+				( <http://publications.europa.eu/resource/authority/language/DUT> <http://publications.europa.eu/resource/authority/language/NLD> )
+				( <http://publications.europa.eu/resource/authority/language/GER> <http://publications.europa.eu/resource/authority/language/DEU> )
+				( <http://publications.europa.eu/resource/authority/language/FRE> <http://publications.europa.eu/resource/authority/language/FRA> )
+			}
+		}
