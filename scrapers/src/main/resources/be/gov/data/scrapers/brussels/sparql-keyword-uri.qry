@@ -1,0 +1,13 @@
+# Move keywords starting with http to theme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE	{	?s dcat:keyword ?lbl }
+INSERT	{	?s dcat:theme ?uri }
+WHERE	{
+			?s dcta:keyword ?lbl
+			BIND (IRI(?lbl) 
+				as ?uri)
+			FILTER (STRSTARTS(?lbl, "http"))
+		}

@@ -1,13 +1,12 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-addresses.qry
-brussels/sparql-fix-language.qry
+brussels/sparql-language-uri.qry
 brussels/sparql-record-uri.qry
-brussels/sparql-fix-backend.qry
+brussels/sparql-backend-downloadurl.qry
 sparql-format-extension.qry
 #sparql-downloadurl-srv.qry
 sparql-record-id.qry
 sparql-map-access-inspire.qry
-#sparql-record-contact.qry
 sparql-available.qry
 brussels/data-org.ttl
 brussels/data-geo.ttl
@@ -16,13 +15,14 @@ sparql-record-service.qry
 brussels/sparql-consolidate-service.qry
 sparql-map-org.qry
 sparql-map-memberof.qry
-brussels/sparql-fix-mbox.qry
+brussels/sparql-mbox-spaces.qry
 sparql-consolidate-org.qry
 sparql-consolidate-persons.qry
 #sparql-consolidate-prov.qry
 brussels/sparql-prov-publisher.qry
 brussels/sparql-remove-orgs.qry
 brussels/sparql-fix-member.qry
+sparql-record-contact.qry
 sparql-conforms-legislation.qry
 data-themes-inspire.ttl
 data-themes-gemet.ttl
@@ -30,11 +30,12 @@ sparql-map-theme-inspire.qry
 sparql-map-theme-belgif.qry
 sparql-theme-subject.qry
 brussels/data-theme.ttl
+brussels/sparql-keyword-uri.qry
 sparql-map-keyword-theme.qry
 sparql-delete-label-empty.qry
 sparql-mediatype-label.qry
 data-media.ttl
-brussels/sparql-fix-format.qry
+brussels/sparql-format-spaces.qry
 brussels/sparql-access-downloadurl.qry
 brussels/sparql-downloadurl-fmt.qry
 sparql-map-format.qry

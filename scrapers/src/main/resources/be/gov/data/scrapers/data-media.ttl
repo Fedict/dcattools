@@ -101,8 +101,10 @@
 <http://publications.europa.eu/resource/authority/file-type/GML>
 	skos:prefLabel "GML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/gml+xml>;
-	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema", "Cadastral Parcels GML application schema", 
+	skos:altLabel "GML", "GML (ZIP)", "gml", "gml (ZIP)", "Administrative Units GML application schema",
+		 "Cadastral Parcels GML application schema", 
 		"Environmental Monitoring Facilities GML application schema", "Gml", "GML application schema",
+		"Environmental", "Administrative",
 		"Administrative units GML application schema", "OGC:GML", "gml+xml",
 		"application/gml+xml", "GML application schema", "application/x-gmz",
 		<https://www.iana.org/assignments/media-types/application/gml+xml>,
