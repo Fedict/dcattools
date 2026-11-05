@@ -177,12 +177,6 @@
 	skos:prefLabel "Garance"@fr, "Garance"@nl, "Garance"@en ;
 	skos:altLabel "GARANCE"@en, "Garance"@en .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0840543701>
-	a foaf:Organization ;
-	dcterms:type admsp:Company ;
-	skos:prefLabel "The New Drive"@fr, "The New Drive"@nl, "The New Drive"@en ;
-	skos:altLabel "THE NEW DRIVE"@en .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0637731250>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -597,11 +591,47 @@
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
+	skos:altLabel "Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning"@nl ;
 	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000534> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0434366097>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
-	dcterms:spatial <https://sws.geonames.org/3337387/> ;
-	skos:prefLabel "Natagora"@fr ;
-	skos:altLabel "natagora"@en .
+	skos:prefLabel "Natagora"@fr, "Natagora"@en, "Natagora"@nl ;
+	skos:altLabel "Natagora"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0840543701>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "The New Drive"@fr, "The New Drive"@nl, "The New Drive"@en ;
+	skos:altLabel "THE NEW DRIVE"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0892272118>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Climact"@fr, "Climact"@en, "Climact"@nl ;
+	skos:altLabel "Climact"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0474774319>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Emelia"@nl, "Emelia"@fr, "Emelia"@en ;
+	skos:altLabel "Bova Enviro+"@en .
+
+<http://opencorporates.com/id/companies/fr/316465236>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Airparif"@nl, "Airparif"@fr, "Airparif"@en ;
+	skos:altLabel "Airparif"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0847128318>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "AQ Rate"@nl, "AQ Rate"@fr, "AQ Rate"@en ;
+	skos:altLabel "AQRate+"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0422462219>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "CERAA"@fr, "CERAA"@nl, "CERAA"@en ;
+	skos:altLabel "CERAA"@fr .
