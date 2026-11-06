@@ -8,6 +8,6 @@ INSERT
 	{ 	?s dcat:theme ?edp }
 WHERE
 	{ 	
-		?s geodcat:topicCategory ?theme .
+		?s geodcatap:topicCategory ?theme .
 		?edp skos:narrowMatch ?theme
 	}
