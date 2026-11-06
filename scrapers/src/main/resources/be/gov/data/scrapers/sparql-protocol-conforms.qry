@@ -1,0 +1,21 @@
+# Use conformsTo instead of GeoDCAT serviceProtocol and add INSPIRE UI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcatap:  <http://data.europa.eu/r5r/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s geodcatap:serviceProtocol ?proto }
+INSERT 
+	{ 	?s dcterms:conformsTo ?proto .
+		?s geodcatap:serviceProtocol ?uri }
+WHERE 
+	{	
+		?s geodcatap:serviceProtocol ?proto .
+		VALUES (?proto ?uri) {
+			( <http://www.opengeospatial.org/standards/wms> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wms> )
+			( <http://www.opengeospatial.org/standards/wmts> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wmts> )
+			( <http://www.opengeospatial.org/standards/wfs> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wfs> )
+			( <http://www.opengeospatial.org/standards/wcs> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wcs> )
+		}
+	}
