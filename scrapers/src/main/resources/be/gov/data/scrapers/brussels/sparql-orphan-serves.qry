@@ -4,10 +4,12 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE {
+	?cat dcat:dataset ?d .
 	?s dcat:servesDataset ?d .
 	?d a dcat:Dataset }  
 WHERE {
 	?s dcat:servesDataset ?d .
 	?d a dcat:Dataset
-	FILTER NOT EXISTS { ?d dcat:endpointURL ?o }
+	OPTIONAL { ?cat dcat:dataset ?d }
+	FILTER NOT EXISTS { ?d dcterms:title ?o }
 }
