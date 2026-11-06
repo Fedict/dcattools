@@ -47,7 +47,6 @@ sparql-split-dist.qry
 sparql-format-mediatype.qry
 brussels/sparql-dist-title.qry
 sparql-clear-skos.qry
-sparql-subject-keyword.qry
 sparql-remove-geotype.qry
 sparql-geotype-format.qry
 data-license.ttl
@@ -71,6 +70,7 @@ data-standards-support.ttl
 data-shacl-eurovoc-support.ttl
 data-shacl-inspire-support.ttl
 data-shacl-support.ttl
+sparql-subject-keyword.qry
 brussels/sparql-orphan-serves.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry

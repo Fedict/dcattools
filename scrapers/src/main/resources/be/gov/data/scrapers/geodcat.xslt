@@ -3253,7 +3253,7 @@
                 </xsl:when>
 
                 <!-- Regular dcat:theme -->
-		<xsl:otherwise>
+				<xsl:otherwise>
                     <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
                       <dcat:theme rdf:resource="{gmx:Anchor/@xlink:href}"/>
                     </xsl:if>
@@ -3265,10 +3265,10 @@
 <!-- Mapping added for compliance with DCAT-AP 2 -->
                 <xsl:if test="$profile = $extended">
 <!-- DEPRECATED: Mapping kept for backward compatibility with GeoDCAT-AP v1.* -->
-                  <xsl:if test="$include-deprecated = 'yes'">
+                <!--  <xsl:if test="$include-deprecated = 'yes'"> -->
 	                <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
                       <dct:subject rdf:resource="{gmx:Anchor/@xlink:href}"/>
-		            </xsl:if>
+		        <!--    </xsl:if> -->
                   </xsl:if>
                 </xsl:if>
               </xsl:if>
