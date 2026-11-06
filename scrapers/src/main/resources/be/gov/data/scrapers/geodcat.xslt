@@ -1384,7 +1384,9 @@
       <xsl:if test="$ResourceType = 'service'">
         <xsl:copy-of select="$ConstraintsRelatedToAccessAndUse"/>
       </xsl:if>
-
+      <xsl:if test="$ResourceType = 'dataset'">
+        <xsl:copy-of select="$ConstraintsRelatedToAccessAndUse"/>
+      </xsl:if>
 <!-- Conformity -->
       <xsl:apply-templates select="gmd:dataQualityInfo/*/gmd:report/*/gmd:result/*/gmd:specification/gmd:CI_Citation">
         <xsl:with-param name="ResourceUri" select="$ResourceUri"/>
@@ -1787,7 +1789,7 @@
     </xsl:param>
 
     <xsl:param name="OrganisationName">
-      <xsl:value-of select="string-join(gmd:organisationName/[gco:CharacterString|gmx:Anchor], '')"/>
+      <xsl:value-of select="string-join(gmd:organisationName[gco:CharacterString|gmx:Anchor], '')"/>
     </xsl:param>
     <xsl:param name="OrganisationName-FOAF">
       <xsl:for-each select="gmd:organisationName">
@@ -1809,7 +1811,7 @@
 
     <xsl:param name="OrganisationNameAsIndividualName-vCard">
       <xsl:for-each select="gmd:organisationName">
-        <vcard:fn xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*/[self::gco:CharacterString|gmx:Anchor])"/></vcard:fn>
+        <vcard:fn xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></vcard:fn>
         <xsl:call-template name="LocalisedString">
           <xsl:with-param name="term">vcard:fn</xsl:with-param>
         </xsl:call-template>
@@ -2886,7 +2888,7 @@
                  for being revised (e.g., mapped to a usage note) or dropped.
 -->
 
-    <xsl:if test="$include-deprecated = 'yes'">
+  <xsl:if test="$include-deprecated = 'yes'">
 
     <xsl:for-each select="gmd:useLimitation">
       <xsl:choose>
@@ -2957,6 +2959,15 @@
 
     </xsl:if>
 
+
+	<xsl:for-each select="gmd:otherConstraints[not(../gmd:accessConstraints|../gmd:useConstraints)]">
+
+<!-- In case the rights/licence URL IS NOT provided -->
+        <xsl:if test="normalize-space(gco:CharacterString) != ''">
+          <dct:license><xsl:value-of select="normalize-space(gco:CharacterString)"/></dct:license>
+        </xsl:if>
+	</xsl:for-each>
+		
 <!-- Mapping added for compliance with the 2017 edition of the INSPIRE Metadata Technical Guidelines -->
     <xsl:for-each select="gmd:otherConstraints[../gmd:useConstraints]">
       <xsl:choose>

@@ -28,10 +28,13 @@ data-themes-inspire.ttl
 data-themes-gemet.ttl
 sparql-map-theme-inspire.qry
 sparql-map-theme-belgif.qry
+sparql-map-theme-topic.qry
 sparql-theme-subject.qry
 brussels/data-theme.ttl
 brussels/sparql-keyword-uri.qry
 sparql-map-keyword-theme.qry
+brussels/sparql-subject-keyword.qry
+brussels/sparql-subject-inspire.qry
 sparql-delete-label-empty.qry
 sparql-mediatype-label.qry
 data-media.ttl
@@ -63,12 +66,11 @@ sparql-consolidate-std.qry
 sparql-service-serves.qry
 sparql-protocol-conforms.qry
 sparql-hvd-legislation.qry
+sparql-clear-skos.qry
 data-standards-support.ttl
 data-shacl-eurovoc-support.ttl
 data-shacl-inspire-support.ttl
 data-shacl-support.ttl
-brussels/sparql-subject-inspire.qry
-brussels/sparql-subject-keyword.qry
 brussels/sparql-orphan-serves.qry
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
