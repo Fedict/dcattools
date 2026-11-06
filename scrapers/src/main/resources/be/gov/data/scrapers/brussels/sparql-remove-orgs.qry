@@ -13,9 +13,6 @@ DELETE {
 	?dist ?a ?b .
 	?s prov:qualifiedAttribution ?qa .
 	?qa ?c ?d .
-	?cat dcat:dataset ?d2 .
-	?s dcat:servesDataset ?d2 .
-	?d2 ?x ?y .
 	?s dcat:contactPoint ?point . 
 	?point ?e ?f
 } WHERE {
@@ -33,11 +30,6 @@ DELETE {
 	OPTIONAL {
 		?s dcat:distribution ?dist .
 		?dist ?a ?b 
-	}
-	OPTIONAL {
-		?cat dcat:dataset ?d2 .
-		?s dcat:servesDataset ?d2 .
-		?d2 ?x ?y 
 	}
 	OPTIONAL {
 		?s prov:qualifiedAttribution ?qa .
