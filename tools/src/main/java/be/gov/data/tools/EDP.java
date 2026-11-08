@@ -1326,7 +1326,7 @@ public class EDP {
 			w.writeEndDocument();
 
 			w.close();
-		} catch (XMLStreamException | SaxonApiException ex) {
+		} catch (IOException | XMLStreamException | SaxonApiException ex) {
 			LOG.error("Error converting", ex);
 			System.exit(-1);
 		} finally {
