@@ -1,0 +1,15 @@
+# Remove servesDataset referencing orphan datasets
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+	?cat dcat:dataset ?d .
+	?s dcat:servesDataset ?d .
+	?d a dcat:Dataset }  
+WHERE {
+	?d a dcat:Dataset
+	OPTIONAL { 	?s dcat:servesDataset ?d }
+	OPTIONAL { ?cat dcat:dataset ?d }
+	FILTER NOT EXISTS { ?d dcterms:title ?o }
+}

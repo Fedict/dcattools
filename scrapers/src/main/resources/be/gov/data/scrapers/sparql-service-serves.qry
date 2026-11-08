@@ -1,0 +1,15 @@
+# Add serves dataset on dataset if distribution has access service
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT
+	{ 	?service dcat:servesDataset ?dataset .
+		?service dcat:theme ?theme }
+WHERE
+	{ 	?dataset a dcat:Dataset .
+		?dataset dcat:theme ?theme .
+		?dataset dcat:distribution ?dist .
+		?dist dcat:accessService ?service
+		FILTER NOT EXISTS { ?service dcat:servesDataset ?o }
+	}

@@ -510,6 +510,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 		store.add(catalog, DCTERMS.DESCRIPTION, "Converted by BOSA DG DT converter", "en");
 		store.add(catalog, DCTERMS.MODIFIED, new Date());
 		store.add(catalog, DCTERMS.LICENSE, DATAGOVBE.LICENSE_CC0);
+		store.add(catalog, DCAT.THEME_TAXONOMY, Values.iri("http://publications.europa.eu/resource/authority/data-theme"));
 		store.add(catalog, FOAF.HOMEPAGE, getBase());
 
 		String[] langs = getAllLangs();

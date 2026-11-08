@@ -1,0 +1,26 @@
+# Use ID of catalog record for dataset / dataservice
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?s dcterms:identifier ?id2 }
+INSERT 
+	{ 	?s dcterms:identifier ?id .
+		?s adms:identifier ?adms .
+		?adms skos:notation ?id2 }
+WHERE
+	{	?rec a dcat:CatalogRecord .
+		?rec dcterms:identifier ?id .
+		?s foaf:isPrimaryTopicOf ?rec .
+		OPTIONAL { 
+			?s dcterms:identifier ?id2
+			BIND (IRI
+				(CONCAT("http://data.gov.be/.well-known/genid/adms/", SHA1(STR(?id2))))
+				as ?adms)
+			FILTER(?id2 != ?id) 
+		}
+	}

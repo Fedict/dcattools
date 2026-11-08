@@ -31,13 +31,12 @@ sparql-map-media.qry
 sparql-map-media-srvc.qry
 sparql-clear-skos.qry
 #geobe/sparql-delete-location.qry
-sparql-fix-serves.qry
+sparql-record-serves.qry
 geobe/data-publ-contact.ttl
 geobe/sparql-default-contact.qry
 sparql-conforms-legislation.qry
 geobe/sparql-conforms-legislation.qry
-geobe/sparql-landingpage.qry
-geobe/sparql-landingpage-service.qry
+geobe/sparql-record-landingpage.qry
 sparql-dist-accessurl.qry
 sparql-remove-accessservice.qry
 geobe/sparql-downloadurl-crs.qry
@@ -46,9 +45,9 @@ geobe/sparql-fix-bira.qry
 #sparql-remove-names.qry
 geobe/data-theme.ttl
 sparql-map-keyword-theme.qry
-geobe/sparql-std-uri.qry
+#geobe/sparql-std-uri.qry
 geobe/sparql-fix-crs.qry
-geobe/sparql-fix-crs2.qry
+sparql-crs-uri.qry
 sparql-theme-subject.qry
 geobe/sparql-license-links.qry
 data-license.ttl

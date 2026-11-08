@@ -1,0 +1,13 @@
+# Copy subject label to keyword if missing
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT
+	{ 	?s dcat:keyword ?label }
+WHERE
+	{ 	?s dcterms:subject ?subj .
+		?subj skos:prefLabel ?label
+		FILTER NOT EXISTS { ?s dcat:keyword ?o }
+	}

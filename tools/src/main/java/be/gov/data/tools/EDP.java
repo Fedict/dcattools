@@ -644,6 +644,39 @@ public class EDP {
 	}
 
 	/**
+	 * Write reference to dataservice or blank node to stub service
+	 * 
+	 * @param w XML writer
+	 * @param con RDF triple store connection
+	 * @param uri URI of the dataset
+	 * 
+	 */
+	private static void writeAccessService(XMLStreamWriter w, RepositoryConnection con,  Resource uri) 
+			throws XMLStreamException {
+		try (RepositoryResult<Statement> res = con.getStatements(uri, DCAT.ACCESS_SERVICE, null)) {
+			while (res.hasNext()) {
+				IRI service = (IRI) res.next().getObject();
+				if (hasProperty(con, service, DCTERMS.IDENTIFIER)) {
+					writeReferences(w, con, uri, DCAT.ACCESS_SERVICE, "dcat:accessService");					
+				} else {
+					// stub
+					w.writeStartElement("dcat:accessService");
+					w.writeStartElement("dcat:DataService");
+
+					writeLiterals(w, con, service, DCTERMS.TITLE, "dct:title");
+					writeReferences(w, con, service, DCAT.ENDPOINT_URL, "dcat:endpointURL");
+					writeReferences(w, con, service, DCAT.ENDPOINT_DESCRIPTION, "dcat:endpointDescription");
+					writeReferences(w, con, service, DCTERMS.CONFORMS_TO, "dct:conformsTo");
+					writeReferences(w, con, service, GeoDCATAP.serviceProtocol, "geodcatap:serviceProtocol");
+
+					w.writeEndElement();
+					w.writeEndElement();
+				}
+			}
+		}
+	}
+	
+	/** 
 	 * Write generic metadata
 	 *
 	 * @param w XML writer
@@ -651,8 +684,8 @@ public class EDP {
 	 * @param uri URI of the dataset
 	 * @throws XMLStreamException
 	 */
-	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con,
-		IRI uri) throws XMLStreamException {
+	private static void writeGeneric(XMLStreamWriter w, RepositoryConnection con, IRI uri) 
+			throws XMLStreamException {
 		writeReferences(w, con, uri, DCTERMS.LANGUAGE, "dct:language");
 		writeLiterals(w, con, uri, DCTERMS.IDENTIFIER, "dct:identifier");
 
@@ -661,7 +694,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, uri, DCTERMS.ABSTRACT, "dct:abstract");
 		writeReferences(w, con, uri, DCTERMS.TYPE, "dct:type");
-
+		
 		writeLiterals(w, con, uri, DCTERMS.CREATED, "dct:created");
 		writeLiterals(w, con, uri, DCTERMS.ISSUED, "dct:issued");
 		writeLiterals(w, con, uri, DCTERMS.MODIFIED, "dct:modified");
@@ -672,10 +705,11 @@ public class EDP {
 
 		writeLiterals(w, con, uri, ADMS.versionNotes, "adms:versionNotes");		
 		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
+		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");
 		
+		writeReferences(w, con, uri, DCTERMS.RELATION, "dct:relation");
 		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
-		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");		
-		//writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
+		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
 		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
@@ -685,7 +719,7 @@ public class EDP {
 
 		writeReferences(w, con, uri, DCTERMS.CONFORMS_TO, "dct:conformsTo");
 		writeReferences(w, con, uri, DCTERMS.ACCESS_RIGHTS, "dct:accessRights");
-		writeReferences(w, con, uri, DCATAPHVD.applicableLegislation, "dcatap:applicableLegislation", "eli:LegalResource", false);
+		writeReferences(w, con, uri, DCATAPHVD.applicableLegislation, "dcatap:applicableLegislation");
 		writeReferences(w, con, uri, DCATAPHVD.hvdCategory, "dcatap:hvdCategory");
 
 		writeReferences(w, con, uri, DCTERMS.RIGHTS, "dct:rights");
@@ -719,11 +753,11 @@ public class EDP {
 		writeReferences(w, con, uri, DCAT.COMPRESS_FORMAT, "dcat:compressFormat");
 		writeReferences(w, con, uri, DCAT.PACKAGE_FORMAT, "dcat:packageFormat");
 
-		// write as anyURI string
 		writeReferences(w, con, uri, DCAT.ACCESS_URL, "dcat:accessURL", "foaf:Document", false);
-		writeReferences(w, con, uri, DCAT.ACCESS_SERVICE, "dcat:accessService");
 		writeReferences(w, con, uri, DCAT.DOWNLOAD_URL, "dcat:downloadURL", "foaf:Document", false);
 
+		writeAccessService(w, con, uri); 
+		
 		writeReferences(w, con, uri, DCTERMS.LICENSE, "dct:license");
 
 		writeReferences(w, con, uri, DCATAP.AVAILABILITY, "dcatap:availability");
@@ -768,8 +802,7 @@ public class EDP {
 		}
 
 		writeReferences(w, con, uri, DCAT.IN_SERIES, "dcat:inSeries");
-		// writeReferences(w, con, uri, FOAF.PRIMARY_TOPIC, "foaf:isPrimaryTopicOf", "dcat:CatalogRecord", false);
-
+		
 		// samples (geo-dcat-ap)
 		try (RepositoryResult<Statement> res = con.getStatements(uri, ADMS.sample, null)) {
 			while (res.hasNext()) {
@@ -807,12 +840,11 @@ public class EDP {
 		writeContacts(w, con, uri, DCAT.CONTACT_POINT);
 
 		writeReferences(w, con, uri, DCTERMS.SPATIAL, "dct:spatial");
-		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity", "dct:Frequency", true);
+		writeReferences(w, con, uri, DCTERMS.ACCRUAL_PERIODICITY, "dct:accrualPeriodicity");
 		writeReferences(w, con, uri, DCTERMS.PROVENANCE, "dct:provenance");
 		writeQualifiedAttribution(w, con, uri, PROV.QUALIFIED_ATTRIBUTION);
 		writeUsedBy(w, con, uri, PROV.WAS_USED_BY);
-//		writeProvenancePlan(w, con, uri, PROV.HAD_PLAN);
-		
+
 		writeDates(w, con, uri);
 
 		writeLiterals(w, con, uri, GeoDCATAP.purpose, "geodcatap:purpose");
@@ -855,14 +887,15 @@ public class EDP {
 	}
 
 	/**
-	 * Check if dataset or dataservice has a title
+	 * Check if dataset or dataservice has a property
 	 * 
-	 * @param con
+	 * @param con RDF triple store connection
 	 * @param iri
-	 * @return 
+	 * @pram prop
+	 * @return true or false
 	 */
-	private static boolean hasTitle(RepositoryConnection con, IRI iri) {
-		return con.hasStatement(iri, DCTERMS.TITLE, null, false);	
+	private static boolean hasProperty(RepositoryConnection con, IRI iri, IRI prop) {
+		return con.hasStatement(iri, prop, null, false);	
 	}
 
 	/**
@@ -908,11 +941,15 @@ public class EDP {
 		try (RepositoryResult<Statement> res = con.getStatements(null, RDF.TYPE, type)) {
 			while (res.hasNext()) {
 				IRI subj = (IRI) res.next().getSubject();
+				if (!hasProperty(con, subj, DCTERMS.IDENTIFIER)) {
+					incomplete++;
+					continue;
+				}
 				if (!isUnique(con, subj)) {
 					duplicates++;
 					continue;
 				}
-				if (!hasTitle(con,subj)) {
+				if (!hasProperty(con, subj, DCTERMS.TITLE)) {
 					incomplete++;
 					continue;
 				}
@@ -1131,12 +1168,13 @@ public class EDP {
 
 		writeLocations(w, con);
 	
+		writeDocuments(w, con, FOAF.PAGE, "foaf:Document");
+		writeDocuments(w, con, DCATAPHVD.applicableLegislation, "eli:LegalResource");
 		writeDocuments(w, con, DCTERMS.PROVENANCE, "dct:ProvenanceStatement");
 		writeDocuments(w, con, DCTERMS.LICENSE, "dct:LicenseDocument");
-		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
 		writeDocuments(w, con, DCTERMS.CONFORMS_TO, "dct:Standard");
-		writeDocuments(w, con, FOAF.PAGE, "foaf:Document");
-
+		writeDocuments(w, con, DCTERMS.RIGHTS, "dct:RightsStatement");
+		
 		writeConcepts(w, con, DCTERMS.ACCESS_RIGHTS, "dct:RightsStatement");
 		writeConcepts(w, con, DCTERMS.ACCRUAL_PERIODICITY, "dct:Frequency");
 		writeConcepts(w, con, DCTERMS.LANGUAGE, "dct:LinguisticSystem");
@@ -1288,7 +1326,7 @@ public class EDP {
 			w.writeEndDocument();
 
 			w.close();
-		} catch (IOException | XMLStreamException | SaxonApiException ex) {
+		} catch (XMLStreamException | SaxonApiException ex) {
 			LOG.error("Error converting", ex);
 			System.exit(-1);
 		} finally {

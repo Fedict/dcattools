@@ -25,7 +25,7 @@
  */
 package be.gov.data.scrapers.brussels;
 
-import be.gov.data.scrapers.GeonetGmd;
+import be.gov.data.scrapers.GeonetXslt;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -35,14 +35,21 @@ import java.util.Properties;
  * @see http://datastore.brussels
  * @author Bart Hanssens
  */
-public class GeonetBrussels extends GeonetGmd {
+public class GeonetXsltBrussels extends GeonetXslt {
+	
+	@Override
+	protected String preprocess(String xml) {
+		// remove incorrectly used URIs
+		return xml.replaceAll("(xmlns:xlink=\"http://www\\.w3\\.org/1999/xlink\")? xlink:href=\"https://org\\.belgif\\.be/id/CbeRegisteredEntity/\\d+\"", "");
+	}
+
 	/**
 	 * Constructor
 	 * 
 	 * @param prop
 	 * @throws IOException
 	 */
-	public GeonetBrussels(Properties prop) throws IOException {
+	public GeonetXsltBrussels(Properties prop) throws IOException {
 		super(prop);
 		setName("brussels");
 	}

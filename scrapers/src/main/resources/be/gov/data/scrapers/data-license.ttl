@@ -78,6 +78,7 @@
 		<http://inspire.ec.europa.eu/metadata-codelist/ ConditionsApplyingToAccessAndUse/noConditionsApply>,
 		<http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply>,
 		<http://purl.org/adms/licencetype/PublicDomain>,
+		<https://creativecommons.org/publicdomain/zero/1.0/deed.en>,
 		"https://creativecommons.org/share-your-work/public-domain/cc0/",
 		"https://creativecommons.org/publicdomain/zero/1.0/", 
 		<http://wiki.data.gouv.fr/wiki/Licence_Ouverte_/_Open_Licence>, 

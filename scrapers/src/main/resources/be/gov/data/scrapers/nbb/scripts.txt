@@ -4,7 +4,7 @@ sparql-available.qry
 nbb/data-publ-contact.ttl
 nbb/sparql-publ-contact.qry
 nbb/sparql-landingpage.qry
-nbb/sparql-hvd-legislation.qry
+sparql-hvd-legislation.qry
 data-frequency.ttl
 data-media.ttl
 sparql-clear-skos.qry

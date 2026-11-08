@@ -1,0 +1,13 @@
+# Map an GeoDCAT-AP INSPIRE topic to one or more DCAT-AP themes
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT
+	{ 	?s dcat:theme ?edp }
+WHERE
+	{ 	
+		?s geodcatap:topicCategory ?theme .
+		?edp skos:narrowMatch ?theme
+	}

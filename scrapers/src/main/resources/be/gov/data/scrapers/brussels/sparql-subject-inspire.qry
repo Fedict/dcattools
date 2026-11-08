@@ -1,0 +1,24 @@
+# Map a label with skolem IRI to an INSPIRE theme
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?s ?rel ?genid .
+		?genid skos:prefLabel ?en .
+		?genid ?p ?o }
+INSERT
+	{ 	?s dcterms:subject ?uri  }
+WHERE
+	{ 	
+		?s ?rel ?genid .
+		?genid skos:prefLabel ?en .
+		?uri skos:prefLabel ?en .
+		VALUES ?rel { dcterms:subject dcat:theme }
+		OPTIONAL { ?genid ?p ?o }
+		FILTER (LANG(?en) = "en")
+		FILTER (STRSTARTS(STR(?genid), "http://data.gov.be") && 
+					(STRSTARTS(STR(?uri), "http://inspire.ec.europa.eu/theme") ||
+					STRSTARTS(STR(?uri), "http://eurovoc.europa.eu")))
+	}

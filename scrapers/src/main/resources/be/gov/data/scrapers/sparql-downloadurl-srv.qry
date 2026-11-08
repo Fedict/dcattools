@@ -1,4 +1,4 @@
-# Override format based on downloadURL
+# Override format based on downloadURL that actually WMS/WFS services
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
@@ -15,7 +15,9 @@ WHERE
 		OPTIONAL { ?dist dcat:mediaType ?mt }
 		VALUES (?str ?name) {
 			("service=WMS" "wms")
+			("service=wms" "wms")
 			("service=WFS" "wfs")
+			("service=wfs" "wfs")
 			("SERVICE=WMS" "wms")
 			("SERVICE=WFS" "wfs")
 		}

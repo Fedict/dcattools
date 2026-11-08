@@ -60,12 +60,27 @@
 	skos:prefLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en ;
 	skos:altLabel "JC Decaux"@fr, "JC Decaux"@nl, "JC Decaux"@en .
 
+<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Agentschap Digitaal Vlaanderen"@nl ;
+	skos:altLabel "agentschap Digitaal Vlaanderen"@nl,  "agentschap Digitaal Vlaanderen",
+		"agentschap Digitaal Vlaanderen"@en .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804#helpdesk>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002949> ;
+	skos:prefLabel "Helpdesk Digitaal Vlaanderen"@nl ;
+	skos:altLabel "Helpdesk Digitaal Vlaanderen"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0241347282>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Bruxelles-Propreté"@nl, "Net Brussel"@nl, "ARP-GAN"@en ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
+	skos:prefLabel "Bruxelles-Propreté"@fr, "Net Brussel"@nl, "ARP-GAN"@en ;
 	skos:altLabel "Gewestelijk agentschap voor netheid, Net Brussel"@en,
-		"Gewestelijk agentschap voor netheid"@nl,
+		"Gewestelijk agentschap voor netheid"@nl, "ARP-GAN"@en,
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@nl, 
 		"Agence régionale pour la propreté, Bruxelles-Propreté"@fr, 
 			"Agence régionale pour la propreté"@fr,
@@ -74,6 +89,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2269796337>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Brussel Stedenbouw en Erfgoed"@nl, "Brussels Planning and Heritage"@en, 
 				"Bruxelles Urbanisme et Patrimoine"@fr ;
 	skos:altLabel "Bruxelles Urbanisme et Patrimoine / Brussel Stedenbouw en Erfgoed"@nl, "Brussel Stedenbouw en Erfgoed"@nl,
@@ -86,6 +102,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0247499953>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "STIB-MIVB"@en, "MIVB"@nl, "STIB"@fr ;
 	skos:altLabel "STIB-MIVB"@en,  "STIB-MIVB"@nl, "STIB / MIVB"@fr, "MIVB"@nl, "STIB"@fr,
 		"Maatschappij voor het Intercommunaal Vervoer te Brussel"@nl, 
@@ -94,19 +111,22 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0240678477> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "Paradigm"@de  ;
 	skos:altLabel "CIBG / CIRB"@en, "CIRB / CIBG"@en, "BRIC"@en, "CIBG"@nl, "CIRB"@fr, "IRISline"@en, 
-		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "IRISteam"@en .
+		"Paradigm"@nl, "Paradigm"@fr, "Paradigm"@en, "IRISteam"@en, "Irisline"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0696977167> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Iriscare"@nl, "Iriscare"@fr, "Iriscare"@de, "Iriscare"@en ;
 	skos:altLabel "Iriscare"@nl, "Iriscare"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0236916956>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement"@en, "Bruxelles Environnement"@fr ;
 	skos:altLabel "Leefmilieu Brussel"@nl, "Bruxelles Environnement / Leefmilieu Brussel"@nl,
 		"Brussels Environment"@en, "Bruxelles Environnement / Leefmilieu Brussel"@en, 
@@ -115,6 +135,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
 	skos:altLabel "parking.brussels"@en, "parking.brussels"@nl, "parking.brussels"@fr .
 
@@ -133,12 +154,14 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0600885207>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "VisitBrussels"@fr, "VisitBrussels"@nl, "VisitBrussels"@en ;
-	skos:altLabel "visit.brussels"@fr, "visit.brussels"@nl, "visit.brussels"@en .
+	skos:altLabel "visit.brussels"@fr, "visit.brussels"@nl, "visit.brussels"@en, "Visit.brussels"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0241570679>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "DBDMH"@nl, "SIAMU"@fr, "SIAMU"@en ;
 	skos:altLabel "DBDMH"@nl, "SIAMU"@fr, "SIAMU"@en .
 
@@ -147,6 +170,12 @@
 	dcterms:type admsp:NonProfitOrganisation ;
 	skos:prefLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en ;
 	skos:altLabel "Amazone"@fr, "Amazone"@nl, "Amazone"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0472880245>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Garance"@fr, "Garance"@nl, "Garance"@en ;
+	skos:altLabel "GARANCE"@en, "Garance"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0637731250>
 	a foaf:Organization ;
@@ -174,6 +203,13 @@
 	skos:prefLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl ;
 	skos:altLabel "Auderghem"@fr, "Auderghem"@en, "Oudergem"@nl  .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207365610>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2798579/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Etterbeek"@fr, "Etterbeek"@en, "Etterbeek"@nl ;
+	skos:altLabel "Etterbeek"@fr, "Secrétariat Communal d'Etterbeek"@fr  .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207365709>
 	a foaf:Organization ;
 	dcterms:spatial <https://sws.geonames.org/2798555/> ;
@@ -182,26 +218,12 @@
 	skos:altLabel "Evere"@fr, "Evere"@en, "Evere"@nl, "Gemeentebestuur van Evere"@nl,
 		"Administration communale d'Evere"@fr  .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207401044>
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2787415/> ;
+	dcterms:spatial <https://sws.geonames.org/2797845/> ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
-	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl, "Saint-Gilles/Sint-Gillis"@en  .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207366501>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2791019/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl ;
-	skos:altLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207372538> 
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2794192/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl ;
-	skos:altLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl .
+	skos:prefLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl ;
+	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207401341>
 	a foaf:Organization ;
@@ -210,20 +232,6 @@
 	skos:prefLabel "Ixelles"@fr, "Ixelles"@en, "Elsene"@nl ;
 	skos:altLabel "Ixelles"@fr, "Ixelles/Elsene"@en, "Elsene"@nl, "Gemeente Elsene"@nl, "Commune d'Ixelles"@fr .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207401044>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2797845/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl ;
-	skos:altLabel "Ganshoren"@fr, "Ganshoren"@en, "Ganshoren"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367687>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2787150/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
-	skos:altLabel "Schaerbeek"@nl, "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366895>
 	a foaf:Organization ;
 	dcterms:spatial <https://sws.geonames.org/2794915/> ;
@@ -231,12 +239,26 @@
 	skos:prefLabel "Jette"@nl, "Jette"@fr, "Jette"@en ;
 	skos:altLabel "Jette"@nl, "Jette"@fr, "Jette"@en, "Commune de Jette"@fr, "Gemeente Jette"@nl .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
+<https://org.belgif.be/id/CbeRegisteredEntity/0207372538> 
 	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2798142/> ;
+	dcterms:spatial <https://sws.geonames.org/2794192/> ;
 	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Vorst"@nl, "Forest"@fr, "Forest"@en ;
-	skos:altLabel "Vorst"@nl, "Forest"@fr, "Forest"@en .
+	skos:prefLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl ;
+	skos:altLabel "Koekelberg"@fr, "Koekelberg"@en, "Koekelberg"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207366501>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2791019/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl ;
+	skos:altLabel "Molenbeek-Saint-Jean"@fr, "Molenbeek-Saint-Jean"@en, "Sint-Jans-Molenbeek"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367687>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2787150/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en ;
+	skos:altLabel "Schaerbeek"@nl, "Schaarbeek"@nl, "Schaerbeek"@fr, "Schaerbeek"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207541594>
 	a foaf:Organization ;
@@ -246,6 +268,13 @@
 	skos:altLabel "Sint-Agatha-Berchem"@nl, "Berchem Sainte-Agathe"@fr, 
 		"Berchem Sainte-Agathe/Sint-Agatha-Berchem"@en .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367588>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2787415/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl ;
+	skos:altLabel "Saint-Gilles"@fr, "Saint-Gilles"@en, "Sint-Gillis"@nl, "Saint-Gilles/Sint-Gillis"@en  .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0207202193>
 	a foaf:Organization ;
 	dcterms:spatial <https://sws.geonames.org/2787388/> ;
@@ -253,6 +282,35 @@
 	skos:prefLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, "Saint-Josse-ten-Noode"@en ;
 	skos:altLabel "Sint-Joost-ten-Node"@nl, "Saint-Josse-ten-Noode"@fr, 
 			"Saint-Josse-ten-Noode/Sint-Joost-ten-Node"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2785124/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Uccle"@fr, "Uccle"@en, "Ukkel"@nl ;
+	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207367489>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2798142/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Vorst"@nl, "Forest"@fr, "Forest"@en ;
+	skos:altLabel "Vorst"@nl, "Forest"@fr, "Forest"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207372637>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2783980/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en ;
+	skos:altLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0207389859>
+	a foaf:Organization ;
+	dcterms:spatial <https://sws.geonames.org/2783477/> ;
+	dcterms:type admsp:LocalAuthority ;
+	skos:prefLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert"@en, "Sint-Lambrechts-Woluwe"@nl ;
+	skos:altLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
+				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl, "Woluwe-Saint-Lambert"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207366994>
 	a foaf:Organization ;
@@ -262,37 +320,17 @@
 	skos:altLabel "Woluwé-Saint-Pierre"@fr, "Woluwe-Saint-Pierre"@fr, "Sint-Pieters-Woluwe"@en, 
 				"Sint-Pieters-Woluwe"@nl .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0207389859>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2783477/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert"@en, "Sint-Lambrechts-Woluwe"@nl ;
-	skos:altLabel "Woluwé-Saint-Lambert"@fr, "Woluwe-Saint-Lambert/Sint-Lambrechts-Woluwe"@en, 
-				"Sint-Lamberts-Woluwe"@nl, "Sint-Lambrechts-Woluwe"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207368875>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2785124/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Uccle"@fr, "Uccle"@en, "Ukkel"@nl ;
-	skos:altLabel "Uccle"@fr, "Uccle / Ukkel"@en , "Ukkel"@nl .
-
-<https://org.belgif.be/id/CbeRegisteredEntity/0207372637>
-	a foaf:Organization ;
-	dcterms:spatial <https://sws.geonames.org/2783980/> ;
-	dcterms:type admsp:LocalAuthority ;
-	skos:prefLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en ;
-	skos:altLabel "Watermaal-Bosvoorde"@nl ,"Watermael-Boitsfort"@fr , "Watermael-Boitsfort"@en .
-
 <https://org.belgif.be/id/CbeRegisteredEntity/0249268719>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl ;
 	skos:altLabel "Port de Bruxelles"@fr, "Port of Brussels"@en, "Haven van Brussel"@nl  .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0417167603>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Centre de Documentation et de Coordination Sociales"@fr, 
 		"Center for social documentation and coordination"@en, 
 		"Centrum voor Maatschappelijke Documentatie en Coördinatie"@nl ;
@@ -302,22 +340,26 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0806001011>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Brugel"@en, "Brugel"@fr, "Brugel"@nl ;
 	skos:altLabel "Brussels energy regulator"@en, "Le régulateur bruxellois pour l'énergie"@fr, 
-			"De Brusselse regulator voor energie"@nl, "Brugel"@fr,
+			"De Brusselse regulator voor energie"@nl, "Brugel"@fr, "BRUGEL"@en, 
 			"Brugel, De Brusselse regulator voor energie"@nl, 
 			"Brugel, Le régulateur bruxellois pour l'énergie"@fr, "Brugel, Brussels energy regulator"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Diensten van de Regering van het Brussels Gewest"@nl, 
 					"Services du Gouvernement de la Région bruxelloise"@fr, 
 					"Regionaler öffentlicher Dienst Brüssel"@de ;
+	skos:closeMatch <https://org.belgif.be/id/CbeRegisteredEntity/316381039> ;
 	skos:altLabel "Bruxelles Coordination régionale"@fr, "Brussels regional coordination"@en, 
 			"Brussel Gewestelijke Coördinatie"@nl, "Easybrussels"@fr, "Easybrussels"@nl, "Easybrussels"@en,
+			"easy.brussels"@en ,
 			"Gewestelijke Overheidsdienst Brussel (GOB)"@nl, "Service public régional de Bruxelles (SPRB)"@fr,
-			"SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
+			"SPRB"@fr, "SPRB-GOB"@en, "Brussel economie en werkgelegenheid"@nl, "Bruxelles économie et emploi"@fr, 
 			"Bruxelles économie et emploi"@en,
 			"Brussel Economie en Werkgelegenheid"@nl,
 			"Bruxelles Économie et Emploi"@fr, "Brussels Economy and Employment"@en,
@@ -328,13 +370,14 @@
 			"Brussel Stedelijke Ontwikkeling"@nl, "Bruxelles Développement urbain"@fr, 
 			"Brussels-Capital Urban Development"@en,
 			"Koninklijke Commissie voor Monumenten en Landschappen"@nl,
-			"Commission Royale des Monuments et Sites"@fr,
+			"Commission Royale des Monuments et Sites"@fr, 
 			"talent.brussels"@en, "talent.brussels"@nl, "talent.brussels"@fr ,
-			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en  .
+			"Huisvesting Brussel"@nl , "Bruxelles Logement"@fr , "Brussels Housing"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0253777437> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Brupartners"@en, "Brupartners"@fr, "Brupartners"@nl ; 
 	skos:altLabel "Conseil économique et social de la Région de Bruxelles-Capitale"@en, 
 		"Conseil économique et social de la Région de Bruxelles-Capitale"@fr,
@@ -344,11 +387,21 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0664820875>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr ; 
 	skos:altLabel "perspective.brussels"@en, "perspective.brussels"@nl, "perspective.brussels"@fr,
-		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr,
+		"Perspective Brussels"@en, "Perspective Brussels"@nl, "Perspective Brussels"@fr, "Perspective"@en,
 		"Brussels Instituut voor statistiek en analyse"@nl, "Institut bruxellois de statistiques et d'analyse"@fr,
 		"IBSA-BISA"@en, "BISA"@nl, "BISA"@en, "IBSA"@fr, "IBSA / BISA", "IBSA / BISA"@en  .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2287406587>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "IRCEL"@nl, "CELINE"@fr, "IRCEL-CELINE"@en ;
+	skos:altLabel "Belgian Interregional Environment Agency (IRCEL - CELINE)"@en,
+		"Belgische Interregionale Umweltagentur (IRCEL - CELINE)"@de,
+		"Cellule Interrégionale de l'Environnement (CELINE)"@fr,
+		"Intergewestelijke Cel voor het Leefmilieu (IRCEL)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0555656283>
 	a foaf:Organization ;
@@ -359,35 +412,48 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0202962701>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl ;
 	skos:altLabel "VIVAQUA"@en, "VIVAQUA"@fr, "VIVAQUA"@nl, "Vivaqua"@en, "Vivaqua"@fr, "Vivaqua"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0884649502>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Hydria"@nl, "Hydria"@fr, "Hydria"@en ;
 	skos:altLabel "BMWB Brusselse Maatschappij voor Waterbeheer"@nl , 
 			"SBGE Société bruxelloise de Gestion de l'eau"@fr ,"Brussels Company for Water Management"@en .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0847220467>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
+	skos:prefLabel "IRISnet"@en, "IRISnet"@fr, "IRISnet"@nl ;
+	skos:altLabel "IRISnet"@en, "IRISnet"@fr, "IRISnet"@nl .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0239843188>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr ;
 	skos:altLabel "Actiris"@en, "Actiris"@nl, "Actiris"@fr .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0227581301> 
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "SLRB-BGHM"@en, "SLRB-BGHM"@fr, "SLRB-BGHM"@nl ; 
 	skos:altLabel "SLRB-BGHM"@en, "SLRB-BGHM"@nl, "SLRB-BGHM"@fr,
 			"Brusselse Gewestelijke Huisvestingsmaatschappij (BGHM)"@nl,
-			"Brussels-Capital Region Housing Company (SLRB)"@en .
+			"Brussels-Capital Region Housing Company (SLRB)"@en, "SLRB/BGHM"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0870532933>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Innoviris"@en, "Innoviris"@fr, "Innoviris"@nl ; 
-	skos:altLabel "innoviris"@en, "innoviris"@nl, "innoviris"@fr .
+	skos:altLabel "innoviris"@en, "innoviris"@nl, "innoviris"@fr, 
+					"Innoviris"@en, "Innoviris"@fr, "Innoviris"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0410107090>
 	a foaf:Organization ;
@@ -400,19 +466,29 @@
  <https://org.belgif.be/id/CbeRegisteredEntity/0252168920>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en ;
 	skos:altLabel "Bruxelles Formation"@nl, "Bruxelles Formation"@fr, "Bruxelles Formation"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0308356862>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
+	skos:prefLabel "FPS Interior"@en, "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, "FÖD Inneres"@de ;
+	skos:altLabel "SPF Intérieur"@fr, "FOD Binnenlandse Zaken"@nl, "FPS Home Affairs"@en, "FÖD Inneres"@de .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr ;
+	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr, "Statbel"@de ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
 	skos:altLabel "AD Statistiek - Statistics Belgium"@nl, "DG Statistique - Statistics Belgium"@fr,
-		"Statistics Belgium"@en .
+		"Statistics Belgium"@en, "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0314595348>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2802361/> ;
 	skos:prefLabel "FPS Economy"@en, "FOD Economie"@nl, "SPF Economie"@fr, "FÖD Wirtschaft"@en ;
 	skos:altLabel "FOD Economie"@nl, "SPF Economie"@fr, 
 		"Middenstand en Energie"@nl, "Classes moyennes et Energie"@fr, "K.M.O."@nl .
@@ -420,15 +496,25 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0664962516>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Safe Brussels"@en, "Safe Brussels"@nl, "Safe Brussels"@fr  ;
-	skos:altLabel "Brussels Prevention et Security (BPS)"@en, "Bruxelles Prévention et Sécurité (BPS)"@fr .
+	skos:altLabel "Brussels Prevention et Security (BPS)"@en, "Bruxelles Prévention et Sécurité (BPS)"@fr,
+				"safe.brussels"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0678485603>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
+	skos:prefLabel "Hub Brussels"@fr, "Hub Brussels"@nl, "Hub Brussels"@en ;
+	skos:altLabel "hub.brussels"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0240682833>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	dcterms:spatial <https://sws.geonames.org/2800867/> ;
 	skos:prefLabel "Gemeinsame Gemeinschaftskommission"@de, "Gemeenschappelijke Gemeenschapscommissie"@nl, 
 					"Commission communautaire commune"@fr  ;
-	skos:altLabel "COOCM"@fr, "Gemeenschappelijke Gemeenschapscommissie (GGC)"@nl .
+	skos:altLabel "COCOM"@fr, "COCOM-GGC"@fr, "Gemeenschappelijke Gemeenschapscommissie (GGC)"@nl .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
 	a foaf:Organization ;
@@ -442,3 +528,110 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "NGI"@en, "NGI"@nl, "IGN"@fr ;
 	skos:altLabel "Institut géographique national"@fr, "Nationaal Geografisch Instituut"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO002306> ;
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, 
+					"Vrije Universiteit Brussel"@en ;
+	skos:altLabel "Vrije Universiteit Brussel","Vrije Universiteit Brussel"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:altLabel "Universiteit Gent"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0214596464>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "bPost"@en, "bPost"@nl, "bPost"@de, "bPost"@fr ;
+	skos:altLabel "bpost nv"@nl, "bPost" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0463832719>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "IDEA Consult"@en, "IDEA Consult"@nl, "IDEA Consult"@fr;
+	skos:altLabel "IDEA Consult"@nl .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0808532315>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Bureau Bas Smets"@en, "Bureau Bas Smets"@nl, "Bureau Bas Smets"@fr;
+	skos:altLabel "Bureau BAS SMET"@en, "Consortium ORG Squared et Bureau Bas Smets (T.V. ORG2 –BBS)"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0476966024>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Transport & Mobility Leuven"@en, "Transport & Mobility Leuven"@nl, "Transport & Mobility Leuven"@fr;
+	skos:altLabel "Transport & Mobility Leuven"@en, "Transport &amp; Mobility Leuven"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0472582515>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Möbius Business Redesign"@en, "Möbius Business Redesign"@nl, "Möbius Business Redesign"@fr;
+	skos:altLabel "Möbius Business Redesign NV"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0659656022>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "CAWaB"@fr, "CAWaB"@nl, "CAWaB"@en ;
+	skos:altLabel "CAWaB"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Royal Library of Belgium"@en, "Koninklijke Bibliotheek van België"@nl, 
+				"Königliche Bibliothek von Belgien"@de, "Bibliothèque royale de Belgique"@fr ;
+	skos:altLabel "KBR"@en, "KBR - Royal Library of Belgium"@en ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO011488> .
+
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Departement Mobiliteit en Openbare Werken"@nl ;
+	skos:altLabel "Departement Mobiliteit en Openbare Werken, afdeling Algemene Technische Ondersteuning"@nl ;
+	skos:closeMatch <https://data.vlaanderen.be/id/organisatie/OVO000534> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0434366097>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Natagora"@fr, "Natagora"@en, "Natagora"@nl ;
+	skos:altLabel "Natagora"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0840543701>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "The New Drive"@fr, "The New Drive"@nl, "The New Drive"@en ;
+	skos:altLabel "THE NEW DRIVE"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0892272118>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Climact"@fr, "Climact"@en, "Climact"@nl ;
+	skos:altLabel "Climact"@fr .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0474774319>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Emelia"@nl, "Emelia"@fr, "Emelia"@en ;
+	skos:altLabel "Bova Enviro+"@en .
+
+<http://opencorporates.com/id/companies/fr/316465236>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Airparif"@nl, "Airparif"@fr, "Airparif"@en ;
+	skos:altLabel "Airparif"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0847128318>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "AQ Rate"@nl, "AQ Rate"@fr, "AQ Rate"@en ;
+	skos:altLabel "AQRate+"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0422462219>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "CERAA"@fr, "CERAA"@nl, "CERAA"@en ;
+	skos:altLabel "CERAA"@fr .

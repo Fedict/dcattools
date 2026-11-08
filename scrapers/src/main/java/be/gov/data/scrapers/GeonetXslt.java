@@ -97,6 +97,16 @@ public abstract class GeonetXslt extends Geonet {
 	}
 
 	/**
+	 * Hook to pre-process XML if needed
+	 * 
+	 * @param xml 
+	 * @return processed XML as string 
+	 */
+	protected String preprocess(String xml) {
+		return xml;
+	}
+
+	/**
 	 * Generate DCAT file
 	 *
 	 * @param cache
@@ -117,7 +127,8 @@ public abstract class GeonetXslt extends Geonet {
 				List<Node> nodes = doc.selectNodes(XP_DATASETS);
 
 				for (Node node: nodes) {
-					StreamSource source = new StreamSource(new StringReader(node.asXML()));
+					String xmlStr = preprocess(node.asXML());
+					StreamSource source = new StreamSource(new StringReader(xmlStr));
 					StringWriter sw = new StringWriter();
 					StreamResult result = new StreamResult(sw);
 

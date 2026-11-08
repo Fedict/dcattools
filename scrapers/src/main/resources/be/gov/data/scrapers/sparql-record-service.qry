@@ -1,0 +1,25 @@
+# Connect disitribution to the full service metadata, instead of the stub, using the catalog record
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+		?cat dcat:service ?s .
+		?dist dcat:accessService ?s .
+		?s dcterms:identifier ?id .
+		?s ?p ?o }
+INSERT 
+	{	?dist dcat:accessService ?service }
+WHERE
+	{	
+		?dist dcat:accessService ?s  .
+		?s dcterms:identifier ?id .
+		?s ?p ?o .
+		?rec a dcat:CatalogRecord .
+		?rec dcterms:identifier ?id .
+		?service foaf:isPrimaryTopicOf ?rec .
+		OPTIONAL { ?cat dcat:service ?s }
+		FILTER NOT EXISTS { ?s dcterms:description ?desc }
+		FILTER (isLiteral(?id))
+	}

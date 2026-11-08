@@ -50,7 +50,8 @@
  <https://org.belgif.be/id/CbeRegisteredEntity/0875395207>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "KBR"@en, "KBR"@nl, "KBR"@de, "KBR"@fr ;
+	skos:prefLabel "Royal Library of Belgium"@en, "Koninklijke Bibliotheek van België"@nl, 
+				"Königliche Bibliothek von Belgien"@de, "Bibliothèque royale de Belgique"@fr ;
 	skos:altLabel "KBR" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0257216482>

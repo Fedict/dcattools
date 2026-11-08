@@ -1,0 +1,21 @@
+# Move download foaf pages from backend data store to a distribution 
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+		?s dcat:landingPage ?page .
+		?page dcterms:title ?title }
+INSERT {
+		?s dcat:distribution ?dist .
+		?dist a dcat:Distribution .
+		?dist dcterms:title ?title .
+		?dist dcat:downloadURL ?page }
+WHERE {
+		?s dcat:landingPage ?page .
+		?page dcterms:title ?title .
+		BIND (IRI(
+					CONCAT("http://data.gov.be/.well-known/genid/dist/brussels/", SHA1(STR(?page)))
+			) AS ?dist)
+		FILTER (STRSTARTS(STR(?page), "https://backend.datastore.brussels"))
+	}

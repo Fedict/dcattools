@@ -1,4 +1,4 @@
-# Map file formats to an EU list of well known URIs and mimetypes, 
+# Map media type and file formats to an EU list of well known URIs and mimetypes, 
 # ignoring WCMS/WFS/WTMS (since they produce duplicates for application/xml)
 # Typically file formats are described as text instead of URIs, or use portal-specific URIs
 

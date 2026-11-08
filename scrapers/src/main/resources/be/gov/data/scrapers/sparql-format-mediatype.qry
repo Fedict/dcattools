@@ -1,0 +1,13 @@
+# Map file formats to mediatype
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT 
+	{ 	?dist dcat:mediaType ?mt }
+WHERE
+	{	?dist dcterms:format ?fmt .
+		?fmt skos:closeMatch ?mt
+	}

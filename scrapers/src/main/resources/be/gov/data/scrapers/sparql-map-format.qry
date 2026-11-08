@@ -1,0 +1,20 @@
+# Map file formats to an EU list of well known URIs and mimetypes, 
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE 
+	{	?dist dcterms:format ?fmt .
+		?fmt rdfs:label ?label .
+		?dist dcat:mediaType ?type }
+INSERT 
+	{ 	?dist dcterms:format ?auth
+	}
+WHERE
+	{	?dist dcterms:format ?fmt .
+		?fmt rdfs:label ?label .
+		OPTIONAL { ?dist dcat:mediaType ?type }
+		?auth skos:altLabel|skos:closeMatch ?label 
+	}

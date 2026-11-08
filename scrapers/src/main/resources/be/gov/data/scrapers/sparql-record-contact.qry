@@ -1,4 +1,4 @@
-# Copy contact point from catalog record to dataset
+# Copy contact point from catalog record to dataset or service
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -10,6 +10,12 @@ INSERT
 WHERE
 	{	?rec a dcat:CatalogRecord .
 		?rec dcat:contactPoint ?contact .
-		?rec foaf:primaryTopic ?s .
+		{
+			?rec foaf:primaryTopic ?s .
+		}
+		UNION
+		{
+			?s foaf:isPrimaryTopicOf ?rec .
+		}
 		FILTER NOT EXISTS { ?s dcat:contactPoint ?c }
 	}

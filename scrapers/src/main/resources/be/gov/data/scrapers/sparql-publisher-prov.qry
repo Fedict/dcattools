@@ -1,0 +1,25 @@
+# When publisher is missing, try to find an agent (or his/her organization if the agent is a person)
+
+PREFIX dcat:	<http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org:		<http://www.w3.org/ns/org#>
+PREFIX prov:	<http://www.w3.org/ns/prov#>
+
+INSERT 
+	{	?s dcterms:publisher ?org }
+WHERE 
+	{	?s a ?cl .
+		?s prov:qualifiedAttribution ?qa .
+		{
+			?qa prov:agent ?org .
+			FILTER (STRSTARTS(STR(?org), "https://org.belgif.be"))
+		}
+		UNION
+		{
+			?qa prov:agent ?p .
+			?p org:memberOf ?org
+			FILTER (!STRSTARTS(STR(?p), "https://org.belgif.be"))
+		}
+		VALUES ?cl { dcat:Dataset dcat:DataService }
+		FILTER NOT EXISTS { ?s dcterms:publisher ?c }
+	}

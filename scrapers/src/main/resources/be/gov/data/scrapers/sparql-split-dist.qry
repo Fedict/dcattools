@@ -1,0 +1,38 @@
+# Split distributions with multiple formats
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE
+	{	?s ?rel ?dist .
+		?dist a dcat:Distribution .
+		?dist dcterms:format ?t1 .
+		?dist dcterms:format?t2 .
+		?dist ?p ?o }
+INSERT 
+	{ 	?s ?rel ?dist1 .
+		?s ?rel ?dist2 .
+		?dist1 a dcat:Distribution .
+		?dist2 a dcat:Distribution .
+		?dist1 dcterms:format ?t1 .
+		?dist2 dcterms:format ?t2 .
+		?dist1 ?p ?o .
+		?dist2 ?p ?o }
+WHERE
+	{	?s ?rel ?dist .
+		?dist a dcat:Distribution .
+		?dist dcterms:format ?t1 .
+		?dist dcterms:format ?t2 .
+		?t1 skos:prefLabel ?l1 .
+		?t2 skos:prefLabel ?l2 .
+		?dist ?p ?o .
+		BIND (IRI(
+				CONCAT(STR(?dist), "/", ?l1))
+			as ?dist1)
+		BIND (IRI(
+				CONCAT(STR(?dist), "/", ?l2))
+			as ?dist2)
+		FILTER (?p != dcterms:format)
+		FILTER (?t1 != ?t2)
+	}

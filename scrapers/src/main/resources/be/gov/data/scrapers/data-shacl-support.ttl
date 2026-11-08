@@ -94,6 +94,11 @@
 	a dcterms:Frequency ;
 	skos:prefLabel "unknown"@en, "inconnu"@fr, "onbekend"@nl, "unbekannt"@de .
 
+<http://publications.europa.eu/resource/authority/frequency/AS_NEEDED>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "as needed"@en, "en fonction des besoins"@fr, "voor zover nodig"@nl, "im Bedarfsfall"@de .
+
 <http://publications.europa.eu/resource/authority/frequency/OTHER>
 	a skos:Concept ;
 	a dcterms:Frequency ;
@@ -104,6 +109,10 @@
 	a dcterms:Frequency ;
 	skos:prefLabel "never"@en, "jamais"@fr, "nooit"@nl, "niemals"@de .
 
+<http://publications.europa.eu/resource/authority/frequency/NOT_PLANNED>
+	a skos:Concept ;
+	a dcterms:Frequency ;
+	skos:prefLabel "not planned"@en, "non planifié"@fr, "niet gepland"@nl, "nicht geplant"@de .
 
 <http://publications.europa.eu/resource/authority/access-right/PUBLIC>
 	a skos:Concept ;
@@ -124,6 +133,12 @@
 	skos:prefLabel "available"@en .
 
 
+<http://publications.europa.eu/resource/authority/language/DEU> 
+	a dcterms:LinguisticSystem;
+	a skos:Concept ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+	skos:prefLabel "German"@en, "allemand"@fr, "Duits"@nl, "Deutsch"@de .
+
 <http://publications.europa.eu/resource/authority/language/ENG>
 	a dcterms:LinguisticSystem ;
 	a skos:Concept ;
@@ -142,11 +157,6 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
 	skos:prefLabel "Dutch"@en, "néerlandais"@fr, "Nederlands"@nl, "Niederländisch"@de .
 
-<http://publications.europa.eu/resource/authority/language/DEU> 
-	a dcterms:LinguisticSystem;
-	a skos:Concept ;
-	skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
-	skos:prefLabel "German"@en, "allemand"@fr, "Duits"@nl, "Deutsch"@de .
 
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
 	a skos:Concept ;

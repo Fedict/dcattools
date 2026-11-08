@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!-- modified version for use with data.gov.be -->
 <!--
 
   Copyright 2015-2023 EUROPEAN UNION
@@ -1046,6 +1046,7 @@
           <xsl:otherwise>
 -->
             <prov:wasUsedBy>
+				<xsl:text><!-- --></xsl:text>
               <xsl:copy-of select="$Activity"/>
             </prov:wasUsedBy>
 <!--
@@ -1383,7 +1384,9 @@
       <xsl:if test="$ResourceType = 'service'">
         <xsl:copy-of select="$ConstraintsRelatedToAccessAndUse"/>
       </xsl:if>
-
+      <xsl:if test="$ResourceType = 'dataset'">
+        <xsl:copy-of select="$ConstraintsRelatedToAccessAndUse"/>
+      </xsl:if>
 <!-- Conformity -->
       <xsl:apply-templates select="gmd:dataQualityInfo/*/gmd:report/*/gmd:result/*/gmd:specification/gmd:CI_Citation">
         <xsl:with-param name="ResourceUri" select="$ResourceUri"/>
@@ -1409,6 +1412,16 @@
               <xsl:apply-templates select="../../../../gmd:distributorFormat/gmd:MD_Format/gmd:name/*"/>
             </xsl:if>
           </xsl:variable>
+		  <xsl:variable name="UIDREF">
+			  <xsl:choose>
+				  <xsl:when test="./@uuidref != ''">
+					  <xsl:value-of select="./@uuidref"/>
+				  </xsl:when>
+					<xsl:when test="../@uuidref != ''">
+					  <xsl:value-of select="../@uuidref"/>
+				  </xsl:when>  
+			  </xsl:choose>
+		  </xsl:variable>
           <xsl:variable name="Encoding">
             <xsl:choose>
               <xsl:when test="$DistributorFormat != ''">
@@ -1525,6 +1538,9 @@
                       <xsl:choose>
                         <xsl:when test="$points-to-service = 'yes'">
                           <dcat:accessService rdf:parseType="Resource">
+							  <xsl:if test="$UIDREF != ''">
+								<dct:identifier><xsl:value-of select="$UIDREF"/></dct:identifier>
+							  </xsl:if>
                             <rdf:type rdf:resource="{$dcat}DataService"/>
                             <dct:title xml:lang="{$MetadataLanguage}">
                               <xsl:value-of select="$TitleOrDescriptionOrPlaceholder"/>
@@ -1630,12 +1646,18 @@
         <rdf:Description rdf:about="{$ResourceUri}">
           <xsl:copy-of select="$Metadata"/>
           <xsl:copy-of select="$ResourceDescription"/>
+          <xsl:if test="$Conformity != ''">
+            <xsl:copy-of select="$Conformity"/>
+          </xsl:if>
         </rdf:Description>
       </xsl:when>
       <xsl:otherwise>
         <rdf:Description>
           <xsl:copy-of select="$Metadata"/>
           <xsl:copy-of select="$ResourceDescription"/>
+          <xsl:if test="$Conformity != ''">
+            <xsl:copy-of select="$Conformity"/>
+          </xsl:if>
         </rdf:Description>
       </xsl:otherwise>
     </xsl:choose>
@@ -1722,11 +1744,15 @@
     </xsl:param>
 
     <xsl:param name="IndividualURI">
-      <xsl:value-of select="normalize-space(gmd:individualName/*/@xlink:href)"/>
+		<xsl:for-each select="gmd:individualName/*/@xlink:href">
+			<xsl:value-of select="normalize-space(.)"/>
+		</xsl:for-each>
     </xsl:param>
 
     <xsl:param name="IndividualName">
-      <xsl:value-of select="normalize-space(gmd:individualName/*)"/>
+		<xsl:for-each select="gmd:individualName/*">
+			<xsl:value-of select="normalize-space(.)"/>
+		</xsl:for-each>
     </xsl:param>
 
     <xsl:param name="IndividualName-FOAF">
@@ -1763,11 +1789,11 @@
     </xsl:param>
 
     <xsl:param name="OrganisationName">
-      <xsl:value-of select="string-join(gmd:organisationName/*[self::gco:CharacterString|gmx:Anchor], '')"/>
+      <xsl:value-of select="string-join(gmd:organisationName[gco:CharacterString|gmx:Anchor], '')"/>
     </xsl:param>
     <xsl:param name="OrganisationName-FOAF">
       <xsl:for-each select="gmd:organisationName">
-        <foaf:name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></foaf:name>
+        <foaf:name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space([gco:CharacterString|gmx:Anchor])"/></foaf:name>
         <xsl:call-template name="LocalisedString">
           <xsl:with-param name="term">foaf:name</xsl:with-param>
         </xsl:call-template>
@@ -1776,7 +1802,7 @@
 
     <xsl:param name="OrganisationName-vCard">
       <xsl:for-each select="gmd:organisationName">
-        <vcard:organization-name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></vcard:organization-name>
+        <vcard:organization-name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space([gco:CharacterString|gmx:Anchor])"/></vcard:organization-name>
         <xsl:call-template name="LocalisedString">
           <xsl:with-param name="term">vcard:organization-name</xsl:with-param>
         </xsl:call-template>
@@ -2255,16 +2281,14 @@
 
   <xsl:template name="CoupledResource" match="gmd:identificationInfo[1]/*/srv:operatesOn">
     <xsl:param name="href" select="@xlink:href"/>
-    <xsl:param name="code">
+    <xsl:param name="uuidref" select="@uuidref"/>
+	<xsl:param name="code">
       <xsl:choose>
         <xsl:when test="$CoupledResourceLookUp = 'enabled' and $href != '' and (starts-with($href, 'http://') or starts-with($href, 'https://'))">
           <xsl:value-of select="document($href)//gmd:identificationInfo/*/gmd:citation/*/gmd:identifier/*/gmd:code/gco:CharacterString"/>
         </xsl:when>
         <xsl:when test="*/gmd:citation/*/gmd:identifier/*/gmd:code/gco:CharacterString != ''">
           <xsl:value-of select="*/gmd:citation/*/gmd:identifier/*/gmd:code/gco:CharacterString"/>
-        </xsl:when>
-        <xsl:when test="@uuidref != ''">
-          <xsl:value-of select="@uuidref"/>
         </xsl:when>
       </xsl:choose>
     </xsl:param>
@@ -2296,6 +2320,13 @@
           <dcat:Dataset rdf:about="{@uriref}"/>
         </dcat:servesDataset>
       </xsl:when>
+	  <xsl:when test="$uuidref != ''">
+		<dcat:servesDataset>
+			<dcat:Dataset>
+				<dct:identifier><xsl:value-of select="$uuidref"/></dct:identifier>
+			</dcat:Dataset>
+		</dcat:servesDataset>
+	  </xsl:when>
       <xsl:when test="$code != ''">
         <xsl:choose>
           <xsl:when test="starts-with($code, 'http://') or starts-with($code, 'https://')">
@@ -2460,13 +2491,7 @@
 <!--
     <xsl:if test="$profile = $extended">
 -->
-<!--
-      <xsl:if test="$Conformity != '' and $ResourceUri = ''">
--->
-        <xsl:copy-of select="$Conformity"/>
-<!--
-      </xsl:if>
--->
+      <!-- prov:wasUsedBy emitted once at dataset level (see below) -->
 <!--
       <xsl:choose>
         <xsl:when test="../@xlink:href and ../@xlink:href != ''">
@@ -2863,7 +2888,7 @@
                  for being revised (e.g., mapped to a usage note) or dropped.
 -->
 
-    <xsl:if test="$include-deprecated = 'yes'">
+  <xsl:if test="$include-deprecated = 'yes'">
 
     <xsl:for-each select="gmd:useLimitation">
       <xsl:choose>
@@ -2934,6 +2959,15 @@
 
     </xsl:if>
 
+
+	<xsl:for-each select="gmd:otherConstraints[not(../gmd:accessConstraints|../gmd:useConstraints)]">
+
+<!-- In case the rights/licence URL IS NOT provided -->
+        <xsl:if test="normalize-space(gco:CharacterString) != ''">
+          <dct:license><xsl:value-of select="normalize-space(gco:CharacterString)"/></dct:license>
+        </xsl:if>
+	</xsl:for-each>
+		
 <!-- Mapping added for compliance with the 2017 edition of the INSPIRE Metadata Technical Guidelines -->
     <xsl:for-each select="gmd:otherConstraints[../gmd:useConstraints]">
       <xsl:choose>
@@ -3100,8 +3134,8 @@
       </xsl:choose>
     </xsl:param>
     <xsl:for-each select="gmd:keyword[normalize-space(gco:CharacterString) != '' or normalize-space(gmx:Anchor/@xlink:href) != '']">
-      <xsl:variable name="lckw" select="translate(*[self::gco:CharacterString|self::gmx:Anchor],$uppercase,$lowercase)"/>
-      <xsl:choose>
+      <xsl:variable name="lckw" select="translate(*[self::gco:CharacterString|self::gmx:Anchor],$uppercase,$lowercase)"/>    
+	  <xsl:choose>
         <xsl:when test="normalize-space($OriginatingControlledVocabulary) = '' and not( gmx:Anchor/@xlink:href and ( starts-with(gmx:Anchor/@xlink:href, 'http://') or starts-with(gmx:Anchor/@xlink:href, 'https://') ) )">
           <xsl:choose>
             <xsl:when test="$ResourceType = 'service'">
@@ -3219,7 +3253,7 @@
                 </xsl:when>
 
                 <!-- Regular dcat:theme -->
-		<xsl:otherwise>
+				<xsl:otherwise>
                     <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
                       <dcat:theme rdf:resource="{gmx:Anchor/@xlink:href}"/>
                     </xsl:if>
@@ -3231,10 +3265,10 @@
 <!-- Mapping added for compliance with DCAT-AP 2 -->
                 <xsl:if test="$profile = $extended">
 <!-- DEPRECATED: Mapping kept for backward compatibility with GeoDCAT-AP v1.* -->
-                  <xsl:if test="$include-deprecated = 'yes'">
+                <!--  <xsl:if test="$include-deprecated = 'yes'"> -->
 	                <xsl:if test="not(starts-with(gmx:Anchor/@xlink:href, $SpatialDataServiceCategoryCodelistUri))">
                       <dct:subject rdf:resource="{gmx:Anchor/@xlink:href}"/>
-		            </xsl:if>
+		        <!--    </xsl:if> -->
                   </xsl:if>
                 </xsl:if>
               </xsl:if>

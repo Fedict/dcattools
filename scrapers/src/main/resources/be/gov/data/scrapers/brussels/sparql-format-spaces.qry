@@ -1,0 +1,14 @@
+# Fix the format label repeated by XSLT for each language
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE	{	?fmt rdfs:label ?lbl }
+INSERT	{	?fmt rdfs:label ?l }
+WHERE	{
+			?s dcterms:format ?fmt .
+			?fmt rdfs:label ?lbl
+			BIND (STRBEFORE(?lbl, " ") 
+				as ?l )
+			FILTER (CONTAINS(?lbl, " "))
+		}

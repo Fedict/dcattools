@@ -1,35 +1,42 @@
-# Remove SPW, FOD FIN and other organizations that publish data elsewhere
+# Remove datasets and servicess to avoid duplicates from other sources
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
-	?cat ?rel ?dataset .
-	?dataset ?p ?o .
-	?dataset a ?cl .
-	?dataset dcterms:publisher ?publ .
-	?dataset dcat:distribution ?dist .
-	?dist ?x ?y .
-	?dataset dcat:contactPoint ?point . 
-	?point vcard:fn ?name .
-	?point vcard:hasEmail ?email
+	?cat ?rel ?s .
+	?s ?p ?o .
+	?s dcterms:publisher ?publ  .
+	?s dcat:distribution ?dist .
+	?dist ?a ?b .
+	?s prov:qualifiedAttribution ?qa .
+	?qa ?c ?d .
+	?s dcat:contactPoint ?point . 
+	?point ?e ?f
 } WHERE {
-	?cat ?rel ?dataset .
-	?dataset ?p ?o .
-	?dataset a ?cl.
-	?dataset dcterms:publisher ?publ.
-	?dataset dcat:distribution ?dist .
-	?dist ?x ?y .
-	VALUES ?cl { dcat:Dataset dcat:DataService }
+	?cat ?rel ?s .
+	?s ?p ?o .
+	?s dcterms:publisher ?publ  .
 	VALUES ?rel { dcat:dataset dcat:service }
-	VALUES ?publ { <https://org.belgif.be/id/CbeRegisteredEntity/0316381138> 
+	VALUES ?publ { <https://org.belgif.be/id/CbeEstablishmentUnit/2256180804> 
+					<https://org.belgif.be/id/CbeEstablishmentUnit/2256180804#helpdesk>
+					<https://org.belgif.be/id/CbeEstablishmentUnit/2199336230>
+					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391> 
 					<https://org.belgif.be/id/CbeRegisteredEntity/0308357159>
-					<https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 					<https://org.belgif.be/id/CbeRegisteredEntity/0216755012>
-					<https://org.belgif.be/id/CbeRegisteredEntity/0314595348>}
-	OPTIONAL { 
-		?dataset dcat:contactPoint ?point . 
-		?point vcard:fn ?name .
-		?point vcard:hasEmail ?email }
+					<https://org.belgif.be/id/CbeRegisteredEntity/0314595348> }
+	OPTIONAL {
+		?s dcat:distribution ?dist .
+		?dist ?a ?b 
 	}
+	OPTIONAL {
+		?s prov:qualifiedAttribution ?qa .
+		?qa ?c ?d
+	}
+	OPTIONAL { 
+		?s dcat:contactPoint ?point . 
+		?point ?e ?f
+	}
+}
