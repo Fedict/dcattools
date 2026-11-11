@@ -81,4 +81,5 @@ sparql-subject-keyword.qry
 sparql-shacl-classes.qry
 sparql-mediatype-label.qry
 sparql-shacl-skos.qry
+sparql-dataset-geo.qry
 sparql-remove-orphans.qry
