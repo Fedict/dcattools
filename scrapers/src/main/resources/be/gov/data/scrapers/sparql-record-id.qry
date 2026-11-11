@@ -22,5 +22,6 @@ WHERE
 				(CONCAT("http://data.gov.be/.well-known/genid/adms/", SHA1(STR(?id2))))
 				as ?adms)
 			FILTER(?id2 != ?id) 
+		FILTER (!STRSTARTS(STR(?id2), "doi"))
 		}
 	}

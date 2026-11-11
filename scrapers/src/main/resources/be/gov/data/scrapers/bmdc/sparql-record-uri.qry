@@ -1,0 +1,29 @@
+# Generate stable URI for dataset and services based on catalog record id
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+
+DELETE { 
+		?s ?p ?o .
+		?s a ?cl .
+		?x ?y ?s }
+INSERT { 
+		?uri ?p ?o .
+		?uri a ?cl .
+		?x ?y ?uri }
+WHERE { 
+		?rec a dcat:CatalogRecord .
+		?rec dcterms:identifier ?id .
+		?s foaf:isPrimaryTopicOf ?rec .
+		?s a ?cl .
+		?s ?p ?o .
+		OPTIONAL { ?x ?y ?s  }
+		VALUES (?cl ?dtype) { 
+				(dcat:Dataset "dataset")
+				(dcat:DataService "service")
+		}
+		BIND (
+			IRI(CONCAT("http://data.gov.be/.well-known/genid/", ?dtype, "/bmdc/", ?id))
+		AS ?uri)
+}

@@ -1,4 +1,4 @@
-# Use applicable legislation property instead of conforms to standard
+# Use applicable legislation property in addition to conforms to standard
 
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX dcatap:  <http://data.europa.eu/r5r/>
@@ -8,7 +8,8 @@ DELETE
 		?uri dcterms:title ?lbl .
 		?uri a dcterms:Standard }
 INSERT 
-	{ 	?s dcatap:applicableLegislation ?eli }
+	{ 	?s dcatap:applicableLegislation ?eli .
+		?s dcatap:conformsTo ?eli }
 WHERE 
 	{	?s dcterms:conformsTo ?uri .
 		?uri dcterms:title ?lbl

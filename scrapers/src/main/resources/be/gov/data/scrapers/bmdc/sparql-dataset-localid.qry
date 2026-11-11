@@ -8,8 +8,7 @@ DELETE {
 INSERT 
 	{	?s dcterms:identifier ?id }
 WHERE
-	{	?s a dcat:Dataset .
-		?s dcterms:identifier ?uri .
+	{	?s dcterms:identifier ?uri .
 		BIND (STRAFTER(
 				STR(?uri), "http://metadata.naturalsciences.be/"
 			) as ?id)

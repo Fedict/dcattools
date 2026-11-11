@@ -5,14 +5,32 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix gemet: <http://www.eionet.europa.eu/gemet/concept/> .
 
+
+<http://data.europa.eu/eli/dir/1992/43/oj>
+	a eli:LegalResource ;
+	dcterms:title "Council Directive 92/43/EEC of 21 May 1992 on the conservation of natural habitats and of wild fauna and flora"@en .
+
+<http://data.europa.eu/eli/dir/2000/60/oj>
+	a eli:LegalResource ;
+	dcterms:title "Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy"@en .
+
 <http://data.europa.eu/eli/dir/2007/2/oj> 
 	a eli:LegalResource ;
-	dcterms:title "Directive 2007/2/EC of the European Parliament and of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)" ;
+	dcterms:title "Directive 2007/2/EC of the European Parliament and of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)"@en ;
 	dcterms:alternative "INSPIRE"@en .
+
+<http://data.europa.eu/eli/dir/2008/56/oj> 
+	a eli:LegalResource ;
+	dcterms:title "Directive 2008/56/EC of the European Parliament and of the Council of 17 June 2008 establishing a framework for community action in the field of marine environmental policy (Marine Strategy Framework Directive)"@en ;
+	dcterms:alternative "Marine Strategy Framework Directive"@en .
+
+<http://data.europa.eu/eli/reg/2009/976/oj> 
+	a eli:LegalResource ;
+	dcterms:title "Commission Regulation (EC) No 976/2009 of 19 October 2009 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards the Network Services"@en .
 
 <http://data.europa.eu/eli/reg/2010/1089/oj>
 	a eli:LegalResource ;
-	dcterms:title "Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services" .
+	dcterms:title "Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services"@en .
 
 <http://www.eionet.europa.eu/gemet/concept/22>
 	a skos:Concept ;
