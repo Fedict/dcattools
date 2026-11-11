@@ -1,0 +1,15 @@
+# Remove non-geo datasetseries
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geodcat: <http://data.europa.eu/930/>
+
+DELETE {
+		?s a dcat:DatasetSeries .
+		?s ?p ?o .
+		?o ?x ?y }
+WHERE {
+		?s a dcat:DatasetSeries .
+		?s ?p ?o .
+		OPTIONAL { ?o ?x ?y }
+		FILTER NOT EXISTS { ?s geodcat:resourceType ?t } 
+	}
