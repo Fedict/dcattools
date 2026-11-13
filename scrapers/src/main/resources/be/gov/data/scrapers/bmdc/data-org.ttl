@@ -15,7 +15,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
-	skos:altLabel "Rijksuniversiteit Gent RUG"@en .
+	skos:altLabel "Rijksuniversiteit Gent RUG"@en, "Rijksuniversiteit Gent (RUG)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
 	a foaf:Organization ;
@@ -85,6 +85,7 @@
 			"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN)"@nl,
 			"Königliches Belgisches Institut für Naturwissenschaften (KBIN)"@de ;
 	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en, 
+				"Royal Belgian Institute for Natural Sciences"@en, 
 				"Royal Belgian Institute of Natural Sciences (RBINS)"@en,
 				"RBINS"@en, "Royal Belgian Institute for Natural Sciences (RBINS/KBIN/IRSNB)"@en .
 

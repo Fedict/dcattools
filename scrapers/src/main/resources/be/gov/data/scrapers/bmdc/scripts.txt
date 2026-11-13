@@ -59,6 +59,7 @@ sparql-theme-subject.qry
 sparql-clear-skos.qry
 bmdc/data-publ.ttl
 bmdc/sparql-org.qry
+bmdc/sparql-memberof.qry
 data-license.ttl
 sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry

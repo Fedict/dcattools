@@ -1,0 +1,37 @@
+# Add memberOf relation for RBINS subdivisions
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s ?prop ?org .
+		?org foaf:name ?name .
+		?org ?p ?o }
+INSERT 
+	{ 	?s ?prop ?neworg .
+		?neworg foaf:name ?name .
+		?neworg ?p ?o .
+		?neworg org:memberOf ?uri }
+WHERE
+	{	?s ?prop ?org .
+		?org foaf:name ?name .
+		?org ?p ?o .
+		VALUES (?str ?uri) {
+			("(ULB)" <https://org.belgif.be/id/CbeRegisteredEntity/0407626464> )
+			("(ULg)" <https://org.belgif.be/id/CbeRegisteredEntity/0807970507> )
+			("Ghent University" <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> )
+			("(Ugent)" <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> )
+			("(RUG)" <https://org.belgif.be/id/CbeRegisteredEntity/0248015142> )
+			("(VUB)" <https://org.belgif.be/id/CbeRegisteredEntity/0449012406> )
+			("(MUMM)" <https://org.belgif.be/id/CbeRegisteredEntity/0353070496> )
+			("Royal Belgian Institute for Natural Sciences" <https://org.belgif.be/id/CbeRegisteredEntity/0353070496> )
+			("Royal Belgian Institute of Natural Sciences" <https://org.belgif.be/id/CbeRegisteredEntity/0353070496> )
+		}
+		BIND (IRI
+				(CONCAT(
+					STR(?uri), "#", STRAFTER(STR(?org), "/org/"))
+			) AS ?neworg)
+		FILTER (CONTAINS(?name, ?str))
+		FILTER (STRSTARTS(STR(?org), "http://data.gov.be/.well-known/genid/org/"))
+	}
