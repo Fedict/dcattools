@@ -1,0 +1,109 @@
+# Data for NERC subjects
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://vocab.nerc.ac.uk/collection/C36/current/LEGL0020/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C36/current/> ;
+	skos:prefLabel "MARPOL Convention"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D1>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Biological diversity maintained"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D10>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Properties and quantities of marine litter do not cause harm"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D2>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Non-indigenous species do not adversely affect ecosystem"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D3>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Commercial fish and shellfish populations are healthy"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D6>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Sea-floor integrity supports ecosystem"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D7>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Hydrographical conditions are not altered"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D8>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Contaminants do not produce pollution effects"@en .
+
+<http://vocab.nerc.ac.uk/collection/C45/current/D9>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/C45/current/> ;
+	skos:prefLabel "Contaminants in seafood do not exceed established levels"@en .
+
+<http://vocab.nerc.ac.uk/collection/GS3/current/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/GS3/current/> ;
+	skos:prefLabel "Geo-Seas adjusted Folk sediment lithology classes" .
+
+<http://vocab.nerc.ac.uk/collection/L05/current/LAB27/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/L05/current/> ;
+	skos:prefLabel "bench particle sizers"@en .
+
+<http://vocab.nerc.ac.uk/collection/M17/current/SAMP_CORR/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/M17/current/> ;
+	skos:prefLabel "Core run"@en .
+
+<http://vocab.nerc.ac.uk/collection/P01/current/MDGSISXX/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P01/current/> ;
+	skos:prefLabel "Grain-size median of particles in suspended particulate material by in-situ particle sizer"@en .
+
+<http://vocab.nerc.ac.uk/collection/P01/current/OPTCPS01/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P01/current/> ;
+	skos:prefLabel "Transmittance (red light wavelength) per unit length of the water body"@en .
+
+<http://vocab.nerc.ac.uk/collection/P02/current/GOXP/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P02/current/> ;
+	skos:prefLabel "Oxygen production and respiration in the water column"@en .
+
+<http://vocab.nerc.ac.uk/collection/P02/current/R410/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P02/current/> ;
+	skos:prefLabel "Ocean colour and earth-leaving visible waveband spectral radiation"@en .
+
+<http://vocab.nerc.ac.uk/collection/P02/current/SPGS/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P02/current/> ;
+	skos:prefLabel "Suspended particulate material grain size parameters"@en .
+
+<http://vocab.nerc.ac.uk/collection/P02/current/TSED/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P02/current/> ;
+	skos:prefLabel "Concentration of suspended particulate material in the water column"@en .
+
+<http://vocab.nerc.ac.uk/collection/P14/current/GVAR0696/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/P14/current/> ;
+	skos:prefLabel "Respiration"@en .
+
+<http://vocab.nerc.ac.uk/collection/S04/current/S04204/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/S04/current/> ;
+	skos:prefLabel "chromatographie liquide haute performance (HPLC)"@fr ;
+	skos:prefLabel "high performance liquid chromatography (HPLC)"@en .
+
+<http://vocab.nerc.ac.uk/collection/S27/current/CS003562/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/S27/current/> ;
+	skos:prefLabel "amino acids"@en .
