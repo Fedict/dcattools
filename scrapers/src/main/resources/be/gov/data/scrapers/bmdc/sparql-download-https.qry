@@ -1,0 +1,15 @@
+# Use https for ipt downloadURL instead of http accessURL
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { ?s dcat:accessURL ?http }
+INSERT { ?s dcat:downloadURL ?https }
+WHERE {
+		?s dcat:accessURL ?http .
+		BIND (IRI(
+				CONCAT("https:",
+					STRAFTER(STR(?http), "http:")))
+			as ?https)
+		FILTER(STRSTARTS(STR(?http), "http://ipt"))
+	}
+

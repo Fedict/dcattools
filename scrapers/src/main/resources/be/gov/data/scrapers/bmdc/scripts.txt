@@ -35,6 +35,8 @@ bmdc/sparql-regions-within.qry
 bmdc/sparql-rights-to-license.qry
 sparql-consolidate-rights.qry
 sparql-access-to-download.qry
+bmdc/sparql-download-https.qry
+bmdc/sparql-gbif-https.qry
 bmdc/sparql-media-compress.qry
 sparql-dist-accessurl.qry
 sparql-conforms-legislation.qry
@@ -66,12 +68,9 @@ sparql-clear-skos.qry
 sparql-startenddate.qry
 bmdc/sparql-fix-date.qry
 sparql-vcard-fn.qry
-sparql-clear-skos.qry
 bmdc/sparql-fix-epsg.qry
 sparql-fix-datetype.qry
 sparql-date-type.qry
-sparql-hvd-legislation.qry
-sparql-clear-skos.qry
 bmdc/data-shacl-nerc-support.ttl
 data-standards-support.ttl
 data-shacl-eurovoc-support.ttl

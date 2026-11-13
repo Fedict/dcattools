@@ -14,6 +14,7 @@
 	dcterms:title "Regulation (EU) 2022/868 of the European Parliament and of the Council of 30 May 2022 on European data governance and amending Regulation (EU) 2018/1724 (Data Governance Act) (Text with EEA relevance)" ;
 	dcterms:alternative "Data Governance Act"@en .
 
+
 <http://publications.europa.eu/resource/authority/frequency/CONT> 
 	a skos:Concept ;
 	a dcterms:Frequency ;
@@ -113,6 +114,7 @@
 	a skos:Concept ;
 	a dcterms:Frequency ;
 	skos:prefLabel "not planned"@en, "non planifié"@fr, "niet gepland"@nl, "nicht geplant"@de .
+
 
 <http://publications.europa.eu/resource/authority/access-right/PUBLIC>
 	a skos:Concept ;
@@ -279,17 +281,17 @@
 <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ,
+				<http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
 	skos:prefLabel "Creative Commons Attribution–NonCommercial 4.0 International"@en .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNCND_4_0>
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
-	dcterms:type <http://purl.org/adms/licencetype/NoDerivativeWork> ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ,
+				<http://purl.org/adms/licencetype/NonCommercialUseOnly> ,
+				<http://purl.org/adms/licencetype/NoDerivativeWork> ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
 	skos:prefLabel "Creative Commons Attribution–NonCommercial–NoDerivs 4.0 International"@en .
 

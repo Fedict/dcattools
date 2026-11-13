@@ -1,0 +1,15 @@
+# Use https for GBIF accessURL instead of http
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE { ?s dcat:accessURL ?http }
+INSERT { ?s dcat:accessURL ?https }
+WHERE {
+		?s dcat:accessURL ?http .
+		BIND (IRI(
+				CONCAT("https:",
+					STRAFTER(STR(?http), "http:")))
+			as ?https)
+		FILTER(STRSTARTS(STR(?http), "http://www.gbif"))
+	}
+
