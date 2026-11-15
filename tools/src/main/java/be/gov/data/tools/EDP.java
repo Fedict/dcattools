@@ -105,7 +105,7 @@ public class EDP {
 	private final static Logger LOG = LoggerFactory.getLogger(EDP.class);
 
 	private final static String WELL_KNOWN = "/.well-known/genid";
-	private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
+	//private final static String ANYURI = "http://www.w3.org/2001/XMLSchema#anyURI";
 
 	private final static String BASE_URI = "http://base.data.gov.be";
 
@@ -155,6 +155,7 @@ public class EDP {
 			CONCEPTS.add(iri);
 		}
 	}
+
 	/**
 	 * Write literal (date, anyURI, string...) to XML file
 	 *
@@ -163,16 +164,16 @@ public class EDP {
 	 * @param val value
 	 * @throws XMLStreamException
 	 */
-	private static void writeLiteral(XMLStreamWriter w, String el, Value val)
+	private static void writeLiteralOrReference(XMLStreamWriter w, String el, Value val)
 		throws XMLStreamException {
-		if (val instanceof Literal) {
+		if (val instanceof Literal literal) {
 			w.writeStartElement(el);
 			// write language or datatype
-			String lang = ((Literal) val).getLanguage().orElse("");
+			String lang = literal.getLanguage().orElse("");
 			if (!lang.isEmpty()) {
 				w.writeAttribute("xml:lang", lang);
 			} else {
-				IRI dtype = ((Literal) val).getDatatype();
+				IRI dtype = literal.getDatatype();
 				if ((dtype != null) && !dtype.equals(XSD.STRING)) {
 					w.writeAttribute("rdf:datatype", dtype.toString());
 				}
@@ -184,12 +185,12 @@ public class EDP {
 				w.writeCharacters(str);
 			}
 			w.writeEndElement();
-		}
-		if (val instanceof IRI) {
-			w.writeStartElement(el);
-			w.writeAttribute("rdf:datatype", ANYURI);
-			w.writeCharacters(val.stringValue());
-			w.writeEndElement();
+		} else if (val instanceof IRI iri) {
+			LOG.info(el);
+			w.writeEmptyElement(el);
+			w.writeAttribute("rdf:resource", iri.stringValue());
+			//w.writeCharacters(val.stringValue());
+			//w.writeEndElement();
 		}
 	}
 
@@ -222,7 +223,7 @@ public class EDP {
 		Resource uri, IRI pred, String el) throws XMLStreamException {
 		try (RepositoryResult<Statement> res = con.getStatements(uri, pred, null)) {
 			while (res.hasNext()) {
-				writeLiteral(w, el, res.next().getObject());
+				writeLiteralOrReference(w, el, res.next().getObject());
 			}
 		}
 	}
@@ -707,10 +708,10 @@ public class EDP {
 		writeLiterals(w, con, uri, DCAT.VERSION, "dcat:version");
 		writeReferences(w, con, uri, DCTERMS.HAS_VERSION, "dct:hasVersion");
 		
-		writeReferences(w, con, uri, DCTERMS.RELATION, "dct:relation");
-		writeReferences(w, con, uri, DCTERMS.SOURCE, "dct:source");
-		writeReferences(w, con, uri, DCTERMS.REFERENCES, "dct:references");
-		writeReferences(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
+		writeLiterals(w, con, uri, DCTERMS.RELATION, "dct:relation");
+		writeLiterals(w, con, uri, DCTERMS.SOURCE, "dct:source");
+		writeLiterals(w, con, uri, DCTERMS.REFERENCES, "dct:references");
+		writeLiterals(w, con, uri, DCTERMS.IS_REFERENCED_BY, "dct:isReferencedBy");
 
 		writeReferences(w, con, uri, DCTERMS.PUBLISHER, "dct:publisher");
 		writeReferences(w, con, uri, DCTERMS.CREATOR, "dct:creator");
@@ -1070,7 +1071,7 @@ public class EDP {
 						w.writeStartElement("dct:Location");
 						w.writeAttribute("rdf:about", location.toString());
 						writeLiterals(w, con, location, RDFS.LABEL, "rdfs:label");
-						writeLiteral(w, "dcat:bbox", bbox);
+						writeLiteralOrReference(w, "dcat:bbox", bbox);
 						w.writeEndElement();
 					}
 				}
