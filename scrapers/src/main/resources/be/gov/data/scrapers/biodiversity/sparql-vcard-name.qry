@@ -1,0 +1,15 @@
+# Remove trailing " -" from the vcard name
+
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+
+DELETE 
+	{	?s vcard:fn ?name }
+INSERT 
+	{	?s vcard:fn ?newname } 
+WHERE 
+	{	?s vcard:fn ?name 
+		BIND (
+			SUBSTR(?name, 1, STRLEN(?name) - 2)
+			as ?newname)
+		FILTER (STRENDS(?name, ' -'))
+}
