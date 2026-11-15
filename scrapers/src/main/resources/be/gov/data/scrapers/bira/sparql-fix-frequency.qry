@@ -1,0 +1,14 @@
+# Remove <i> and literal amp; from citation
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:accrualPeriodicity ?lit }
+INSERT 
+	{	?s dcterms:accrualPeriodicity ?freq }
+WHERE
+	{	?s dcterms:accrualPeriodicity ?lit .
+		BIND(
+				IRI(REPLACE(STR(?lit), 'HTTP://PUBLICATIONS.EUROPA.EU/RESOURCE/AUTHORITY/FREQUENCY/', ''))
+			as ?freq)
+	}
