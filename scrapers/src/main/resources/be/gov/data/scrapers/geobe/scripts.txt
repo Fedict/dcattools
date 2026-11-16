@@ -40,7 +40,7 @@ geobe/sparql-record-landingpage.qry
 sparql-dist-accessurl.qry
 sparql-remove-accessservice.qry
 geobe/sparql-downloadurl-crs.qry
-geobe/sparql-fix-datatype.qry
+sparql-fix-datetype.qry
 geobe/sparql-fix-bira.qry
 #sparql-remove-names.qry
 geobe/data-theme.ttl
@@ -62,7 +62,7 @@ data-frequency.ttl
 sparql-remove-catalogrecord.qry
 sparql-map-hvd.qry
 sparql-map-hvd-service.qry
-geobe/sparql-fix-date.qry
+geobe/sparql-invalid-date.qry
 sparql-plan-eli.qry
 sparql-clear-skos.qry
 sparql-delete-label-empty.qry

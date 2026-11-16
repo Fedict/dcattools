@@ -3,6 +3,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294822> 
@@ -18,6 +19,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0349294822#climate> 
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0349294822> ;
 	skos:prefLabel "Belgian Climate Centre"@en , "Belgian Climate Centre"@nl,
 					"Belgian Climate Centre"@fr, "Belgian Climate Centre"@de ;
 	skos:altLabel "Belgian Climate Centre"@en, "Belgian Climate Centre"@nl,
@@ -55,6 +57,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2146814391>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0314595348> ;
 	skos:prefLabel "Statbel"@en, "Statbel"@nl, "Statbel"@fr, "Statbel"@de ;
 	skos:altLabel "FPS Economy, SMEs, Self-Employed and Energy, Statistics Belgium"@en,
 		"STATBEL"@en, "STATBEL"@fr, "STATBEL"@nl,
@@ -184,6 +187,7 @@
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	skos:prefLabel "INBO"@nl ;
 	skos:altLabel "Instituut voor Natuur- en Bosonderzoek / Research Institute for Nature and Forest (INBO)"@en .
 
@@ -202,15 +206,17 @@
 	skos:prefLabel "FPS Interior"@en, "FOD Binnenlandse Zaken"@nl, "SPF Intérieur"@fr, "FÖD Inneres"@de ;
 	skos:altLabel "SPF Intérieur"@fr, "FOD Binnenlandse Zaken"@nl, "FPS Home Affairs"@en, "FÖD Inneres"@de .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
+<https://org.belgif.be/id/CbeEstablishmentUnit/2199335141>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	skos:prefLabel "ILVO"@en, "ILVO"@nl, "ILVO"@fr, "ILVO"@de ;
 	skos:altLabel "Instituut voor Landbouw- en Visserijonderzoek - Visserij (ILVO)"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2143712965>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	skos:prefLabel "Departement Landbouw en Visserij"@nl ;
 	skos:altLabel "Rijksdienst voor Zeevisserij (RVZ)"@en .
 
@@ -225,6 +231,5 @@
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Conseil Régional Hauts de France"@fr ;
 	skos:altLabel "Conseil Régional Hauts de France"@fr, 
-					"Conseil régional Hauts-de-France"@fr,
-				"Région Hauts-de-France"@fr  .
+					"Conseil régional Hauts-de-France"@fr, "Région Hauts-de-France"@fr  .
 
