@@ -1,0 +1,15 @@
+# Geo data for improving SHACL validation
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+ <https://sws.geonames.org/2802361/> a dcterms:Location ;
+	skos:prefLabel "België"@nl, "Belgique"@fr, "Belgium"@en ;
+	dcat:centroid "POINT(4.67 50.64)"^^geo:wktLiteral ;
+	dcat:bbox "POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51)) "^^geo:wktLiteral .
+
+<https://sws.geonames.org/3337387/> a dcterms:Location ;
+	skos:prefLabel "Wallonia"@en ;
+	dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral .

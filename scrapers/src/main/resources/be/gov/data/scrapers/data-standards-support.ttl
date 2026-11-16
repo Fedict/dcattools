@@ -1,4 +1,4 @@
-# Re-add for improving SHACL validation scores
+# Standards data for improving SHACL validation
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .

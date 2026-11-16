@@ -1,4 +1,4 @@
-# Re-add pref labels to improve SHACL validation scores
+# INSPIRE / geo data for improving SHACL validation
 
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .

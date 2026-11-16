@@ -1,4 +1,4 @@
-# Re-add pref labels to improve SHACL validation scores
+# Generic data for improving SHACL validation
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .

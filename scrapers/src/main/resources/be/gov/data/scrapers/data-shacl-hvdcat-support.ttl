@@ -1,4 +1,4 @@
-# Data for labels on HvD categories
+# Data for labels on HvD categories for improving SHACL validation
 
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .

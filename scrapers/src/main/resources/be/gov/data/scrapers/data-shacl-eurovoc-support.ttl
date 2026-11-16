@@ -1,4 +1,4 @@
-# Data for labels on EuroVoc
+# EUROVOC labels for improving SHACL validation
 
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
