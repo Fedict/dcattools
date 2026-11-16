@@ -3,124 +3,124 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://sws.geonames.org/3337387/> a dcterms:Location ;
-	rdfs:label "Wallonia"@en ;
+	skos:prefLabel "Wallonia"@en ;
 	dcat:bbox "POLYGON((2.54 50.85,6.41 50.85,6.41 49.49,2.54 49.49,2.54 50.85))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2796741/> a dcterms:Location ;
-	rdfs:label "Province of Hainaut"@en ;
+	skos:prefLabel "Province of Hainaut"@en ;
 	dcat:bbox "POLYGON ((2.84 50.81, 4.62 50.81, 4.62 49.94, 2.84 49.94, 2.84 50.81))"^^geo:wktLiteral .
 
  <https://sws.geonames.org/3333251/> a dcterms:Location ;
-	rdfs:label "Province of Walloon Brabant"@en ;
+	skos:prefLabel "Province of Walloon Brabant"@en ;
 	dcat:bbox "POLYGON ((4.09 50.81, 5.02 50.81, 5.02 50.53, 4.09 50.53, 4.09 50.81))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2800480/> a dcterms:Location ;
-	rdfs:label "Arrondissement of Charleroi"@en ;
+	skos:prefLabel "Arrondissement of Charleroi"@en ;
 	dcat:bbox "POLYGON ((4.26 50.56, 4.62 50.56, 4.62 50.31, 4.26 50.31, 4.26 50.56))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2790472> a dcterms:Location ;
-	rdfs:label "Namur"@en ;
+	skos:prefLabel "Namur"@en ;
 	dcat:bbox "POLYGON ((4.72 50.53, 4.98 50.53, 4.98 50.39, 4.72 50.39, 4.72 50.53))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2790469/> a dcterms:Location ;
-	rdfs:label "Province of Namur"@en ;
+	skos:prefLabel "Province of Namur"@en ;
 	dcat:bbox "POLYGON ((4.29 50.65, 5.4 50.65, 5.4 49.79, 4.29 49.79, 4.29 50.65))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2791993/> a dcterms:Location ;
-	rdfs:label "Province of Luxembourg"@en ;
+	skos:prefLabel "Province of Luxembourg"@en ;
 	dcat:bbox "POLYGON ((4.97 50.43, 6.03 50.43, 6.03 49.5, 4.97 49.5, 4.97 50.43))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2803145/> a dcterms:Location ;
-	rdfs:label "Antoing"@en ;
+	skos:prefLabel "Antoing"@en ;
 	dcat:bbox "POLYGON ((3.41 50.59, 3.53 50.59, 3.53 50.53, 3.41 50.53, 3.41 50.59))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2784011/> a dcterms:Location ;
-	rdfs:label "Wasseiges"@en ;
+	skos:prefLabel "Wasseiges"@en ;
 	dcat:bbox "POLYGON ((4.98 50.65, 5.06 50.65, 5.06 50.59, 4.98 50.59, 4.98 50.65))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2785342/> a dcterms:Location ;
-	rdfs:label "Tournai"@en ;
+	skos:prefLabel "Tournai"@en ;
 	dcat:bbox "POLYGON ((3.24 50.69, 3.58 50.69, 3.58 50.55, 3.24 50.55, 3.24 50.69))"^^geo:wktLiteral . 
 
 <https://sws.geonames.org/2800439/> a dcterms:Location ;
-	rdfs:label "Chaudfontaine"@en ;
+	skos:prefLabel "Chaudfontaine"@en ;
 	dcat:bbox "POLYGON ((5.59 50.62, 5.68 50.62, 5.68 50.55, 5.59 50.55, 5.59 50.62))"^^geo:wktLiteral . 
 
 <https://sws.geonames.org/2800482/> a dcterms:Location ;
-	rdfs:label "Charleroi"@en ;
+	skos:prefLabel "Charleroi"@en ;
 	dcat:bbox "POLYGON ((4.35 50.49, 4.51 50.49, 4.51 50.35, 4.35 50.35, 4.35 50.49))"^^geo:wktLiteral . 
 
 <https://sws.geonames.org/2788742/> a dcterms:Location ;
-	rdfs:label "Fernelmont"@en ;
+	skos:prefLabel "Fernelmont"@en ;
 	dcat:bbox "POLYGON ((4.92 50.62, 5.05 50.62, 5.05 50.5, 4.92 50.5, 4.92 50.62))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2803074/> a dcterms:Location ;
-	rdfs:label "Arlon"@en ;
+	skos:prefLabel "Arlon"@en ;
 	dcat:bbox "POLYGON ((5.68 49.73, 5.91 49.73, 5.91 49.62, 5.68 49.62, 5.68 49.73))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2790871/> a dcterms:Location ;
-	rdfs:label "Mons"@en ;
+	skos:prefLabel "Mons"@en ;
 	dcat:bbox "POLYGON ((3.85 50.51, 4.09 50.51, 4.09 50.38, 3.85 50.38, 3.85 50.51))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2786853/> a dcterms:Location ;
-	rdfs:label "Seneffe"@en ;
+	skos:prefLabel "Seneffe"@en ;
 	dcat:bbox "POLYGON ((4.19 50.6, 4.34 50.6, 4.34 50.5, 4.19 50.5, 4.19 50.6))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2792349/> a dcterms:Location ;
-	rdfs:label "Verviers"@en ;
+	skos:prefLabel "Verviers"@en ;
 	dcat:bbox "POLYGON ((5.81 50.63, 5.93 50.63, 5.93 50.55, 5.81 50.55, 5.81 50.63))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2791745/> a dcterms:Location ;
-	rdfs:label "Marche-en-Famenne"@en ;
+	skos:prefLabel "Marche-en-Famenne"@en ;
 	dcat:bbox "POLYGON ((5.21 50.43, 5.75 50.43, 5.75 50.05, 5.21 50.05, 5.21 50.43))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2792414/> a dcterms:Location ;
-	rdfs:label "Liège"@en ;
+	skos:prefLabel "Liège"@en ;
 	dcat:bbox "POLYGON ((5.52 50.69, 5.68 50.69, 5.68 50.56, 5.52 50.56, 5.52 50.69))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2792411/> a dcterms:Location ;
-	rdfs:label "Province of Liège"@en ;
+	skos:prefLabel "Province of Liège"@en ;
 	dcat:bbox "POLYGON ((4.98 50.81, 6.41 50.81, 6.41 50.13, 4.98 50.13, 4.98 50.81))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2792412/> a dcterms:Location ;
-	rdfs:label "Arrondissement of Liège"@en ;
+	skos:prefLabel "Arrondissement of Liège"@en ;
 	dcat:bbox "POLYGON ((5.35 50.81, 5.82 50.81, 5.82 50.4, 5.35 50.4, 5.35 50.81))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2793509/> a dcterms:Location ;
-	rdfs:label "La Louvière"@en ;
+	skos:prefLabel "La Louvière"@en ;
 	dcat:bbox "POLYGON ((4.07 50.52, 4.23 50.52, 4.23 50.43, 4.07 50.43, 4.07 50.52))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2789163/> a dcterms:Location ;
-	rdfs:label "Péruwelz"@en ;
+	skos:prefLabel "Péruwelz"@en ;
 	dcat:bbox "POLYGON ((3.5 50.58, 3.63 50.58, 3.63 50.49, 3.5 50.49, 3.5 50.58))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2803205/> a dcterms:Location ;
-	rdfs:label "Andenne"@en ;
+	skos:prefLabel "Andenne"@en ;
 	dcat:bbox "POLYGON ((4.96 50.53, 5.16 50.53, 5.16 50.45, 4.96 50.45, 4.96 50.53))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2801155/> a dcterms:Location ;
-	rdfs:label "Braine-l'Alleud"@en ;
+	skos:prefLabel "Braine-l'Alleud"@en ;
 	dcat:bbox "POLYGON ((4.3 50.73, 4.41 50.73, 4.41 50.63, 4.3 50.63, 4.3 50.73))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2790102/> a dcterms:Location ;
-	rdfs:label "Nivelles"@en ;
+	skos:prefLabel "Nivelles"@en ;
 	dcat:bbox "POLYGON ((4.25 50.64, 4.41 50.64, 4.41 50.54, 4.25 50.54, 4.25 50.64))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2800326/> a dcterms:Location ;
-	rdfs:label "Chimay"@en ;
+	skos:prefLabel "Chimay"@en ;
 	dcat:bbox "POLYGON ((4.2 50.13, 4.45 50.13, 4.45 49.94, 4.2 49.94, 4.2 50.13))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2796584/> a dcterms:Location ;
-	rdfs:label "Hannut"@en ;
+	skos:prefLabel "Hannut"@en ;
 	dcat:bbox "POLYGON ((4.99 50.72, 5.16 50.72, 5.16 50.6, 4.99 50.6, 4.99 50.72))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2785518/> a dcterms:Location ;
-	rdfs:label "Ecaussinnes"@en ;
+	skos:prefLabel "Ecaussinnes"@en ;
 	dcat:bbox "POLYGON ((4.12 50.6, 4.23 50.6, 4.23 50.52, 4.12 50.52, 4.12 50.6))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2785518/> a dcterms:Location ;
-	rdfs:label "Thuin"@en ;
+	skos:prefLabel "Thuin"@en ;
 	dcat:bbox "POLYGON ((4.23 50.38, 4.39 50.38, 4.39 50.27, 4.23 50.27, 4.23 50.38))"^^geo:wktLiteral .

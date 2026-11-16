@@ -3,84 +3,85 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <https://sws.geonames.org/2800867/> a dcterms:Location ;
-	rdfs:label "Brussels-Capital Region"@en ;
+	skos:prefLabel "Brussels-Capital Region"@en ;
 	dcat:bbox "POLYGON((4.24 50.92,4.48 50.92,4.48 50.76,4.24 50.76,4.24 50.92))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/3337389/> a dcterms:Location ;
-	rdfs:label "Brussels"@en ;
+	skos:prefLabel "Brussels"@en ;
 	dcat:bbox "POLYGON ((4.31 50.91, 4.44 50.91, 4.44 50.8, 4.31 50.8, 4.31 50.91))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2803202/> a dcterms:Location ;
-	rdfs:label "Anderlecht"@en ;
+	skos:prefLabel "Anderlecht"@en ;
 	dcat:bbox "POLYGON ((4.24 50.85, 4.34 50.85, 4.34 50.81, 4.24 50.81, 4.24 50.85))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2802961/> a dcterms:Location ;
-	rdfs:label "Auderghem"@en ;
+	skos:prefLabel "Auderghem"@en ;
 	dcat:bbox "POLYGON ((4.39 50.83, 4.48 50.83, 4.48 50.79, 4.39 50.79, 4.39 50.83))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2798555/> a dcterms:Location ;
-	rdfs:label "Evere"@en ;
+	skos:prefLabel "Evere"@en ;
 	dcat:bbox "POLYGON ((4.39 50.89, 4.43 50.89, 4.43 50.85, 4.39 50.85, 4.39 50.89))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2787415/> a dcterms:Location ;
-	rdfs:label "Saint-Gilles"@en ;
+	skos:prefLabel "Saint-Gilles"@en ;
 	dcat:bbox "POLYGON ((4.33 50.84, 4.36 50.84, 4.36 50.82, 4.33 50.82, 4.33 50.84))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2798579/> a dcterms:Location ;
-	rdfs:label "Etterbeek"@en ;
+	skos:prefLabel "Etterbeek"@en ;
 	dcat:bbox "POLYGON ((4.38 50.84, 4.41 50.84, 4.41 50.82, 4.38 50.82, 4.38 50.84)"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2791019/> a dcterms:Location ;
-	rdfs:label "Sint-Jans-Molenbeek"@en ;
+	skos:prefLabel "Sint-Jans-Molenbeek"@en ;
 	dcat:bbox "POLYGON ((4.28 50.87, 4.35 50.87, 4.35 50.84, 4.28 50.84, 4.28 50.87))"^^geo:wktLiteral .
 
  <https://sws.geonames.org/2794192/> a dcterms:Location ;
-	rdfs:label "Koekelberg"@en ;
+	skos:prefLabel "Koekelberg"@en ;
 	dcat:bbox "POLYGON ((4.31 50.87, 4.34 50.87, 4.34 50.86, 4.31 50.86, 4.31 50.87))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2795012/> a dcterms:Location ;
-	rdfs:label "Ixelles"@en ;
+	skos:prefLabel "Ixelles"@en ;
 	dcat:bbox "POLYGON ((4.35 50.84, 4.4 50.84, 4.4 50.8, 4.35 50.8, 4.35 50.84))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2797845/> a dcterms:Location ;
-	rdfs:label "Ganshoren"@en ;
+	skos:prefLabel "Ganshoren"@en ;
 	dcat:bbox "POLYGON ((4.29 50.88, 4.33 50.88, 4.33 50.87, 4.29 50.87, 4.29 50.88))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2787150/> a dcterms:Location ;
-	rdfs:label "Schaarbeek"@en ;
+	skos:prefLabel "Schaarbeek"@en ;
 	dcat:bbox "POLYGON ((4.36 50.88, 4.41 50.88, 4.41 50.84, 4.36 50.84, 4.36 50.88))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2794915/> a dcterms:Location ;
-	rdfs:label "Jette"@en ;
+	skos:prefLabel "Jette"@en ;
 	dcat:bbox "POLYGON ((4.29 50.89, 4.34 50.89, 4.34 50.86, 4.29 50.86, 4.29 50.89))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2798142/> a dcterms:Location ;
-	rdfs:label "Forest"@en ;
+	skos:prefLabel "Forest"@en ;
 	dcat:bbox "POLYGON ((4.3 50.83, 4.35 50.83, 4.35 50.8, 4.3 50.8, 4.3 50.83))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2802248/> a dcterms:Location ;
-	rdfs:label "Sint-Agatha-Berchem"@en ;
+	skos:prefLabel "Sint-Agatha-Berchem"@en ;
 	dcat:bbox "POLYGON ((4.28 50.88, 4.31 50.88, 4.31 50.86, 4.28 50.86, 4.28 50.88))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2787388/> a dcterms:Location ;
-	rdfs:label "Saint-Josse-ten-Noode"@en ;
+	skos:prefLabel "Saint-Josse-ten-Noode"@en ;
 	dcat:bbox "POLYGON ((4.36 50.86, 4.38 50.86, 4.38 50.85, 4.36 50.85, 4.36 50.86))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2783475/> a dcterms:Location ;
-	rdfs:label "Sint-Pieters-Woluwe"@en ;
+	skos:prefLabel "Sint-Pieters-Woluwe"@en ;
 	dcat:bbox "POLYGON ((4.4 50.85, 4.48 50.85, 4.48 50.82, 4.4 50.82, 4.4 50.85))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2783477/> a dcterms:Location ;
-	rdfs:label "Woluwe-Saint-Lambert"@en ;
+	skos:prefLabel "Woluwe-Saint-Lambert"@en ;
 	dcat:bbox "POLYGON ((4.4 50.86, 4.46 50.86, 4.46 50.83, 4.4 50.83, 4.4 50.86))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2785124/> a dcterms:Location ;
-	rdfs:label "Uccle"@en ;
+	skos:prefLabel "Uccle"@en ;
 	dcat:bbox "POLYGON ((4.31 50.82, 4.41 50.82, 4.41 50.76, 4.31 50.76, 4.31 50.82))"^^geo:wktLiteral .
 
 <https://sws.geonames.org/2783980/> a dcterms:Location ;
-	rdfs:label "Watermael-Boitsfort"@en ;
+	skos:prefLabel "Watermael-Boitsfort"@en ;
 	dcat:bbox "POLYGON ((4.39 50.82, 4.47 50.82, 4.47 50.77, 4.39 50.77, 4.39 50.82))"^^geo:wktLiteral .
