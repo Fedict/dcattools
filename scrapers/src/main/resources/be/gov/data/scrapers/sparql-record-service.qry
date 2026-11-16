@@ -1,4 +1,4 @@
-# Connect disitribution to the full service metadata, instead of the stub, using the catalog record
+# Connect distribution to the full service metadata, instead of the stub, using the catalog record
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
