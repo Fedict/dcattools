@@ -3,6 +3,7 @@
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE
 	{ 	?dataset dcat:landingPage ?page }
@@ -10,6 +11,8 @@ INSERT
 	{ 	?dataset dcat:landingPage ?doi }
 WHERE
 	{ 	?dataset a dcat:Dataset .
-		?dataset adms:identifier ?doi .
+		?dataset adms:identifier ?skolem .
+		?skolem skos:notation ?str .
 		?dataset dcat:landingPage ?page .
+		BIND (IRI(?str) as ?doi)
 	}

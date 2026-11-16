@@ -186,7 +186,6 @@ public class EDP {
 			}
 			w.writeEndElement();
 		} else if (val instanceof IRI iri) {
-			LOG.info(el);
 			w.writeEmptyElement(el);
 			w.writeAttribute("rdf:resource", iri.stringValue());
 			//w.writeCharacters(val.stringValue());
@@ -207,6 +206,7 @@ public class EDP {
 		writeLiterals(w, con, iri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, iri, SKOS.PREF_LABEL, "skos:prefLabel");
 		writeLiterals(w, con, iri, SKOS.NOTATION, "skos:notation");
+		writeLiterals(w, con, iri, ADMS.schemaAgency, "adms:schemaAgency");
 	}
 	
 	/**

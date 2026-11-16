@@ -30,7 +30,7 @@ bira/sparql-fix-identifier.qry
 bira/sparql-extract-doi.qry
 bira/sparql-fix-conformsto.qry
 bira/sparql-remove-literal.qry
-bira/sparql-adms-notation.qry
+sparql-adms-notation.qry
 sparql-access-public.qry
 sparql-available.qry
 bira/sparql-doi-landingpage.qry

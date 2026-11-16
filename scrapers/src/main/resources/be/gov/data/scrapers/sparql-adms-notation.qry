@@ -1,0 +1,25 @@
+# Use skos notation instead of ADMS URI
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+		?s adms:identifier ?doi .
+		?doi a adms:Identifier }
+INSERT {
+		?s adms:identifier ?skolem.
+		?skolem a adms:Identifier .
+		?skolem skos:notation ?str .
+		?skolem adms:schemaAgency "DOI Foundation"@en }
+WHERE
+	{	?s adms:identifier ?doi .
+		OPTIONAL { ?doi a adms:Identifier }
+		BIND (STRDT(STR(?doi), xsd:anyURI) 
+			AS ?str)
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/adms/", SHA1(STR(?doi)))
+			) AS ?skolem) 
+		FILTER (CONTAINS(STR(?doi), "doi.org"))
+	}

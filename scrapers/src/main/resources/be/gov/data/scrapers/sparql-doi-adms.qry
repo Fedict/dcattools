@@ -9,20 +9,15 @@ INSERT {
 		?s adms:identifier ?uri .
 		?uri a adms:Identifier .
 		?uri skos:notation ?doi .
-		?uri skos:schemaAgency "DOI Foundation"@en .
+		?uri adms:schemaAgency "DOI Foundation"@en .
 	}
 WHERE
 	{	?s dcterms:identifier ?doi .
-		BIND(
-				STRDT(STR(?doi), "http://www.w3.org/2001/XMLSchema#anyURI") 
+		BIND (STRDT(STR(?doi), "http://www.w3.org/2001/XMLSchema#anyURI") 
 			AS ?any)
-		BIND (
-			CONCAT("doi:", 
-						STRAFTER(STR(?doi), "doi.org/")
-					)
+		BIND (CONCAT("doi:", STRAFTER(STR(?doi), "doi.org/")) 
 			AS ?str)
-		BIND (
-				IRI(STR(?doi)) 
+		BIND (IRI(STR(?doi)) 
 			AS ?uri) 
 		FILTER (CONTAINS(STR(?doi), "doi.org"))
 	}
