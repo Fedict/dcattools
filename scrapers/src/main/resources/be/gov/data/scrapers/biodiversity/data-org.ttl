@@ -3,46 +3,61 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "Belgian Biodiversity Platform"@en, 
-			"Plate-forme belge biodiversité"@fr, 
-			"Belgische Biodiversitätsplattform"@de,
-			"Belgisch Biodiversiteitsplatform"@nl ;
+	skos:prefLabel "BELSPO"@en, "BELSPO"@nl, "BELSPO"@fr, "BELSPO"@de .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Ministries of the Flemish Community"@en, "Ministeries van de Vlaamse Gemeenschap"@nl, 
+				"Ministères de la Communauté flamande"@fr, "Ministerien der Flämischen Gemeinschaft"@de .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0316381138>
+	a foaf:Organization ;
+	dcterms:type admsp:RegionalAuthority ;
+	skos:prefLabel "Public Service Wallonia"@en, "Waalse Overheidsdienst"@nl, 
+				"Service public de Wallonie"@fr, "Öffentlicher Dienst der Wallonie"@de .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0865537829#biodiv>
+	a foaf:Organization ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0865537829> ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Belgian Biodiversity Platform"@en, "Plate-forme belge biodiversité"@fr, 
+			"Belgische Biodiversitätsplattform"@de,"Belgisch Biodiversiteitsplatform"@nl ;
 	skos:altLabel "belgium-biodiversity-platform"@en, 
 		"belgian-biodiversity-platform"@en,
 		"bccm-belgian-coordinated-collections-of-micro-organisms"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335141>
 	a foaf:Organization ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Instituut voor Landbouw- en Visserijonderzoek"@nl ;
+	skos:prefLabel "ILVO"@en, "ILVO"@nl, "ILVO"@fr, "ILVO"@de ;
 	skos:altLabel "flanders-research-institute-for-agriculture-fisheries-and-food-ilvo"@en .
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335933>
 	a foaf:Organization ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Instituut voor Natuur- en Bosonderzoek"@nl ;
+	skos:prefLabel "INBO"@nl, "INBO"@de, "INBO"@fr, "INBO"@en ;
 	skos:altLabel "research-institute-for-nature-and-forest-inbo"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0306562560>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Koninklijk Museum voor Midden-Afrika"@nl, 
-				"Musée royal de l'Afrique centrale"@fr, 
-				"Royal Museum for Central Africa"@en, 
-				"Königliches Museum für Zentralafrika"@de ;
+	skos:prefLabel "Koninklijk Museum voor Midden-Afrika"@nl, "Musée royal de l'Afrique centrale"@fr, 
+				"Royal Museum for Central Africa"@en, "Königliches Museum für Zentralafrika"@de ;
 	skos:altLabel "royal-museum-for-central-africa-belgium"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0540708286>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Plantentuin Meise"@nl, 
-					"Jardin botanique Meise"@fr, 
-					"Bontanischer Garten"@de,
+	skos:prefLabel "Plantentuin Meise"@nl, "Jardin botanique Meise"@fr, "Bontanischer Garten"@de,
 					"Botanic garden Meise"@en ;
 	skos:altLabel "botanical-garden-meise"@en, "meise-botanic-garden"@en .
 
@@ -114,6 +129,7 @@
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2225118335>
 	a foaf:Organization ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316381138> ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "SPW DGO3 DEMNA"@fr ;
 	skos:altLabel "service-public-de-wallonie-departement-detude-du-milieu-naturel-et-agricole-spw-demna"@en .
@@ -122,16 +138,14 @@
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;
 	dcterms:spatial <https://sws.geonames.org/3337387/> ;
-	skos:prefLabel "Natagora"@fr ;
+	skos:prefLabel "Natagora"@fr, "Natagora"@nl, "Natagora"@de, "Natagora"@en ;
 	skos:altLabel "natagora"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0410057701>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Instituut voor Tropische Geneeskunde"@nl, 
-					"Institut de Médecine Tropicale"@fr,
-					"Institut für Tropenmedizin"@de,
-					"Institute of Tropical Medicine"@en ;
+	skos:prefLabel "Instituut voor Tropische Geneeskunde"@nl, "Institut de Médecine Tropicale"@fr,
+					"Institut für Tropenmedizin"@de, "Institute of Tropical Medicine"@en ;
 	skos:altLabel "institute-of-tropical-medicine-antwerp"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0207725795>
@@ -159,6 +173,7 @@
 
 <https://org.belgif.be/id/CbeEstablishmentUnit/2199335537>
 	a foaf:Organization ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0316380841> ;
 	dcterms:type admsp:RegionalAuthority ;
 	dcterms:spatial <https://sws.geonames.org/3337388/> ;
 	skos:prefLabel "Agentschap voor Natuur en Bos"@nl ;
