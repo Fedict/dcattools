@@ -205,7 +205,7 @@ public class EDP {
 		writeReferences(w, con, iri, DCTERMS.TYPE, "dct:type");
 		writeLiterals(w, con, iri, DCTERMS.TITLE, "dct:title");
 		writeLiterals(w, con, iri, DCTERMS.DESCRIPTION, "dct:description");
-		writeLiterals(w, con, iri, RDFS.LABEL, "rdfs:label");
+		writeLiterals(w, con, iri, SKOS.PREF_LABEL, "skos:prefLabel");
 		writeLiterals(w, con, iri, SKOS.NOTATION, "skos:notation");
 	}
 	
