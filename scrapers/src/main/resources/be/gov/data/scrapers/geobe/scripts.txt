@@ -1,5 +1,6 @@
 # extra queries to be executed and data to be loaded
 sparql-remove-addresses.qry
+geobe/sparql-record-uri.qry
 sparql-map-access-inspire.qry
 sparql-available.qry
 geobe/data-org.ttl
@@ -10,6 +11,9 @@ geobe/sparql-fix-provincies.qry
 geobe/sparql-custodian-publisher.qry
 geobe/sparql-remove-orgs.qry
 sparql-consolidate-persons.qry
+sparql-record-id.qry
+sparql-record-serves.qry
+sparql-record-service.qry
 sparql-clear-skos.qry
 data-themes-inspire.ttl
 data-themes-gemet.ttl
@@ -31,7 +35,6 @@ sparql-map-media.qry
 sparql-map-media-srvc.qry
 sparql-clear-skos.qry
 #geobe/sparql-delete-location.qry
-sparql-record-serves.qry
 geobe/data-publ-contact.ttl
 geobe/sparql-default-contact.qry
 sparql-conforms-legislation.qry
@@ -68,6 +71,7 @@ sparql-clear-skos.qry
 sparql-delete-label-empty.qry
 sparql-geotype-class.qry
 data-standards-support.ttl
+data-shacl-eurovoc-support.ttl
 data-shacl-inspire-support.ttl
 data-shacl-support.ttl
 sparql-shacl-classes.qry
