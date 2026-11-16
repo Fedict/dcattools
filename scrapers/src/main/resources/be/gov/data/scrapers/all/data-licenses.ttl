@@ -38,43 +38,6 @@
 	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
 	dcterms:title "Vlaamse Open Data Licentie" .
 
-<http://publications.europa.eu/resource/authority/licence/CC_BY> 
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:title "CC BY" .
-
-<http://publications.europa.eu/resource/authority/licence/CC_BY_2_0>
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:title "CC BY 2.0" .
-
-<http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:title "CC BY 4.0" .
-
-<http://publications.europa.eu/resource/authority/licence/CC_BYSA> 
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:type <http://purl.org/adms/licencetype/ViralEffect-ShareAlike> ;
-	dcterms:title "CC BY-SA" .
-
-<http://publications.europa.eu/resource/authority/licence/CC_BYSA_4_0>
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:type <http://purl.org/adms/licencetype/ViralEffect-ShareAlike> ;
-	dcterms:title "CC BY-SA 4.0" .
-
-<http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
-	dcterms:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> ;
-	dcterms:title "CC-BY-NC" .
-
-<http://publications.europa.eu/resource/authority/licence/CC0> 
-	a dcterms:LicenseDocument ;
-	dcterms:type <http://purl.org/adms/licencetype/PublicDomain> ;
-	dcterms:title "CC Zero" .
 
 <http://publications.europa.eu/resource/authority/licence/ODC_PDDL> 
 	a dcterms:LicenseDocument ;

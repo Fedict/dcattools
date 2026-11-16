@@ -1,6 +1,5 @@
 # extra queries to be executed and data to be loaded
 all/catalog.ttl
-all/data-licenses.ttl
 all/sparql-remove-catalog.qry
 all/sparql-dataset.qry
 all/sparql-dataservice.qry

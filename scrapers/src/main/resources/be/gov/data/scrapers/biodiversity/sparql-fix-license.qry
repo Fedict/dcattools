@@ -3,7 +3,7 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{ 	?s dcterms:rights ?r }
+	{ 	?s dcterms:rights ?lic }
 WHERE
 	{ 	?s dcterms:license ?lic .
-		?s dcterms:rights ?r }
+		?s dcterms:rights ?lic }

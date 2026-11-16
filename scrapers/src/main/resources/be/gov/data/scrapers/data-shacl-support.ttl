@@ -302,6 +302,19 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
 	skos:prefLabel "Creative Commons Attribution 4.0 International"@en .
 
+<http://publications.europa.eu/resource/authority/licence/CC_BYSA> 
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ,
+				<http://purl.org/adms/licencetype/ViralEffect-ShareAlike> ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution–ShareAlike International"@en .
+
+<http://publications.europa.eu/resource/authority/licence/CC_BYSA_4_0>
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ,
+				<http://purl.org/adms/licencetype/ViralEffect-ShareAlike> ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution–ShareAlike 4.0 International"@en .
 
 <http://purl.org/adms/licencetype/PublicDomain>
 	a skos:Concept ;
