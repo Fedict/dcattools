@@ -1070,8 +1070,10 @@ public class EDP {
 						nr++;
 						w.writeStartElement("dct:Location");
 						w.writeAttribute("rdf:about", location.toString());
-						writeLiterals(w, con, location, RDFS.LABEL, "rdfs:label");
+						writeLiterals(w, con, location, SKOS.PREF_LABEL, "skos:prefLabel");
 						writeLiteralOrReference(w, "dcat:bbox", bbox);
+						writeLiterals(w, con, location, DCAT.CENTROID, "dcat:centroid");
+						writeReferences(w, con, location, SKOS.IN_SCHEME, "skos:inScheme");
 						w.writeEndElement();
 					}
 				}
