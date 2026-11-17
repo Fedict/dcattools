@@ -9,18 +9,18 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
-	skos:prefLabel "BELSPO"@en, "BELSPO"@nl, "BELSPO"@fr, "BELSPO"@de .
+	foaf:name "BELSPO"@en, "BELSPO"@nl, "BELSPO"@fr, "BELSPO"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316380841>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Ministries of the Flemish Community"@en, "Ministeries van de Vlaamse Gemeenschap"@nl, 
+	foaf:name "Ministries of the Flemish Community"@en, "Ministeries van de Vlaamse Gemeenschap"@nl, 
 				"Ministères de la Communauté flamande"@fr, "Ministerien der Flämischen Gemeinschaft"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381138>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
-	skos:prefLabel "Public Service Wallonia"@en, "Waalse Overheidsdienst"@nl, 
+	foaf:name "Public Service Wallonia"@en, "Waalse Overheidsdienst"@nl, 
 				"Service public de Wallonie"@fr, "Öffentlicher Dienst der Wallonie"@de .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829#biodiv>
