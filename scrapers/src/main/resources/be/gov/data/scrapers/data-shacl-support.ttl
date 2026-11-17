@@ -3,6 +3,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0671516647>
+	a foaf:Organization ;
+	foaf:name "FOD BOSA DG"@nl, "SPF BOSA"@fr, "FPS BOSA"@en .
 
 <http://data.europa.eu/eli/dir/2019/1024/oj> 
 	a eli:LegalResource ;
