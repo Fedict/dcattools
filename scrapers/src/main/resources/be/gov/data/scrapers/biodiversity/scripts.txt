@@ -1,6 +1,6 @@
 # extra queries to be executed and data to be loaded 
 biodiversity/sparql-theme.qry
-sparql-clear-skos.qry
+biodiversity/sparql-adms-gbif.org
 data-shacl-geo-support.ttl
 biodiversity/data-geo.ttl
 biodiversity/data-org.ttl

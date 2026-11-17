@@ -1,0 +1,18 @@
+# Make AMDS identifier for GBIF
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE { ?s adms:identifier ?gbif }
+INSERT {
+		?s adms:identifier ?skolem .
+		?skolem a adms:Identifier .
+		?skolem skos:notation ?gbif .
+		?skolem adms:schemaAgency "GBIF"@en }
+WHERE
+	{	?s adms:identifier ?gbif .
+		BIND (IRI(
+				CONCAT("http://data.gov.be/.well-known/genid/adms/", SHA1(?gbif))
+		) AS ?skolem) 
+	}

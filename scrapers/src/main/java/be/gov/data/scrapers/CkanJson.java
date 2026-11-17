@@ -223,7 +223,7 @@ public abstract class CkanJson extends Ckan {
 	 * @param obj JsonObject
 	 * @param field CKAN field name
 	 * @param property RDF property
-	 * @param lang language
+	 * @param lang language code or null
 	 * @throws RepositoryException
 	 */
 	protected void parseString(Storage store, IRI uri, JsonObject obj,

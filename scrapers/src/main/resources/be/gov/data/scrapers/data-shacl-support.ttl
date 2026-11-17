@@ -160,6 +160,10 @@
 	skos:prefLabel "Dutch"@en, "néerlandais"@fr, "Nederlands"@nl, "Niederländisch"@de .
 
 
+<http://publications.europa.eu/resource/authority/data-theme>
+	a skos:ConceptScheme ;
+	dcterms:title "Data theme"@en .
+
 <http://publications.europa.eu/resource/authority/data-theme/AGRI>
 	a skos:Concept ;
 	skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;

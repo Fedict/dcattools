@@ -48,6 +48,7 @@ import org.apache.http.cookie.Cookie;
 
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.vocabulary.DCAT;
+import org.eclipse.rdf4j.model.vocabulary.eu.ADMS;
 import org.eclipse.rdf4j.repository.RepositoryException;
 
 /**
@@ -62,6 +63,7 @@ public class CkanBioDiversity extends CkanJson {
 	public final static String ADMIN_CONTACT = "administrative_contact";
 	public final static Pattern REGEX_MAIL = Pattern.compile("([\\w._%-]+@[\\w.-]+\\.[A-Za-z]{2,8})");
 	public final static String DWCA_URL = "dwca_url";
+	public final static String GBIF_UUID  = "gbif_uuid";
 
 	@Override
 	protected void ckanExtras(Storage store, IRI uri, JsonObject json, String lang)
@@ -73,6 +75,8 @@ public class CkanBioDiversity extends CkanJson {
 			parseContact(store, uri, contact, email);
 		}
 		parseURI(store, uri, json, DWCA_URL, DCAT.DOWNLOAD_URL);
+		parseString(store, uri, json, GBIF_UUID, ADMS.identifier, null);
+		
 	}
 	
 	/**
@@ -103,7 +107,6 @@ public class CkanBioDiversity extends CkanJson {
 		
 		URL getPackages = new URL(getBase(), Ckan.API_LIST);
 		List<Cookie> cookies = AnubisBypass.getCookie(getPackages);
-		cookies.stream().forEach(c-> System.err.println(c.getName() + ":" + c.getValue()));
 		setCookie(cookies);
 	}
 }
