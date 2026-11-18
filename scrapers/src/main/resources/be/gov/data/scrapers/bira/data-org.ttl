@@ -3,6 +3,7 @@
 @prefix admsp: <http://purl.org/adms/publishertype/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0349010750>
@@ -13,16 +14,68 @@
 					"Königliches Belgisches Institut für Weltraum-Aeronomie (BIWA)"@de, 
 					"Institut royal d'Aéronomie Spatiale de Belgique (IASB)"@fr, 
 					"Koninklijk Belgisch Instituut voor Ruimte-Aeronomie (BIRA)"@nl ;
-	skos:altLabel "BIRA-IASB" .
+	skos:altLabel "BIRA-IASB", "Royal Belgian Institute for Space Aeronomy (BIRA-IASB)", 
+				"Belgian Institute For Space Aeronomy" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "ULiège"@nl,"ULiège"@fr, "ULiège"@en, "ULiège"@de ;
+	skos:prefLabel "ULiège"@nl, "ULiège"@fr, "ULiège"@en, "ULiège"@de ;
 	skos:altLabel "University of Liège" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0633895790>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0807970507> ;
+	skos:prefLabel "Gembloux Agro-Bio Tech"@nl, "Gembloux Agro-Bio Tech"@fr, 
+					"Gembloux Agro-Bio Tech"@en, "Gembloux Agro-Bio Tech"@de ;
+	skos:altLabel "Gembloux Agro-Bio Tech, University of Liège" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "Université libre de Bruxelles"@fr ;
 	skos:altLabel "Université Libre de Bruxelles" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0649799832>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "ONERA"@fr ;
+	skos:altLabel "ONERA" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0649799832#DERTS>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0649799832#DERTS> ;
+	skos:prefLabel "Département d'Études et de Recherches en Technologie Spatiale"@fr ;
+	skos:altLabel "Département d'Études et de Recherches en Technologie Spatiale" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0349294822> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "RMI"@en, "KMI"@nl, "IRM"@fr, "KMI"@de ;
+	skos:altLabel "Royal Meteorological Institute of Belgium", "KMI" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:altLabel  "Ghent University" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0248015142> 
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Gent"@nl, "Université de Gand"@fr, "Ghent University"@en ;
+	skos:altLabel  "Ghent University" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0257216482>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universiteit Antwerpen"@nl, "Université d'Anvers"@fr, "University of Antwerp"@en ;
+	skos:altLabel "University of Antwerp", "University of Antwerp, Antwerp, Belgium" .
+
+<http://opencorporates.com/id/companies/fr/785423997>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "European Space Agency"@en , "Agence spatiale européenne"@fr ;
+	skos:altLabel "European Space Agency" .

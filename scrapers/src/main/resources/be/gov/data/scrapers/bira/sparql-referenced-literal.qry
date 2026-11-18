@@ -1,0 +1,19 @@
+# ReferencedBy is sometimes a literal instead of URI
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX citedcat: <https://w3id.org/citedcat-ap/>
+
+DELETE
+	{	?s ?cl ?ref }
+INSERT 
+	{ 	?s ?cl ?lit }
+WHERE
+	{	?s ?cl ?ref .
+		VALUES ?cl { dcterms:isReferencedBy dcterms:source citedcat:isCompiledBy }
+		BIND (
+				REPLACE(
+					REPLACE(STR(?ref), "http://data.gov.be/", ""), 
+				"%20", " ")
+			as ?lit)
+		FILTER (STRSTARTS(STR(?ref), "http://data.gov.be/") || CONTAINS(STR(?ref), "%20") || CONTAINS(STR(?ref), " "))
+	}

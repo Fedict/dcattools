@@ -1,0 +1,13 @@
+# Use geodcat spatial resolution text when resolution is not in meters
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s dcat:spatialResolutionInMeters ?val }
+INSERT
+	{	?s geodcatap:spatialResolutionAsText ?val }
+WHERE
+	{	?s dcat:spatialResolutionInMeters ?val .
+		FILTER (!ISNUMERIC(?val))
+	}

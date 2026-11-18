@@ -1,0 +1,23 @@
+# Extract version DOI URI from literal, and use dcterms
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE 
+	{	?s dcat:hasVersion ?literal }
+INSERT
+	{	?s dcterms:hasVersion ?doi }
+WHERE
+	{	?s dcat:hasVersion ?literal .
+		BIND (STRAFTER(STR(?literal), "https://") as ?tmp)
+		BIND (IRI(
+				CONCAT("https://", 
+					REPLACE(
+						IF(CONTAINS(?tmp, " "),
+							STRBEFORE(?tmp, " "),
+							?tmp),
+						"\r\n", "")
+				)
+			) as ?doi)
+		FILTER (CONTAINS(STR(?literal), "https://doi"))
+	}
