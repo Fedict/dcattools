@@ -126,7 +126,7 @@ validateGeoDCAT() {
 		--countValues=geodcatap:resourceProtocol --countValues=geodcatap:serviceType \
 		--countValues=geodcatap:referenceSystem 
 
-	status $1 "validate" $?
+	status $1 "validateGEO" $?
 }
 
 # Create SHACL validation reports for HVD
@@ -147,7 +147,7 @@ validateHVD() {
 		--countValues=dcatap:hvdCategory 
 
 
-	status $1 "validate" $?
+	status $1 "validateHVD" $?
 }
 
 # Convert to XML
