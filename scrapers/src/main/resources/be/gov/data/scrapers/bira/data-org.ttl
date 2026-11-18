@@ -46,7 +46,7 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0649799832#DERTS>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0649799832#DERTS> ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0649799832> ;
 	skos:prefLabel "Département d'Études et de Recherches en Technologie Spatiale"@fr ;
 	skos:altLabel "Département d'Études et de Recherches en Technologie Spatiale" .
 
