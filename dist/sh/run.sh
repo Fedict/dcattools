@@ -105,48 +105,6 @@ validate() {
 	status $1 "validate" $?
 }
 
-# Create SHACL validation reports for Geo
-# Parameter: project code
-validateGeoDCAT() {
-	step $1 "validate"
-	
-	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
-		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
-		-Djdk.xml.totalEntitySizeLimit=0 \
-		-XX:+UseCompactObjectHeaders \
-		-jar $BIN/shaclvalidator.jar \
-		--data=file:///$DATA/$1/$1.nt \
-		--shacl=file:///$SHACL/geodcatap/3.1.0/geodcat-ap-shacl.ttl \
-		--report=$DATA/$1/reports/report-dcatap3-hvd.html \
- 		--countClasses --countProperties \
-		--countValues=geodcatap:topicCategory --countValues=geodcatap:serviceCategory \
-		--countValues=geodcatap:resourceProtocol --countValues=geodcatap:serviceType \
-		--countValues=geodcatap:referenceSystem 
-
-	status $1 "validate" $?
-}
-
-# Create SHACL validation reports for HVD
-# Parameter: project code
-validateHVD() {
-	step $1 "validate"
-	
-	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
-		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
-		-Djdk.xml.totalEntitySizeLimit=0 \
-		-XX:+UseCompactObjectHeaders \
-		-jar $BIN/shaclvalidator.jar \
-		--data=file:///$DATA/$1/$1.nt \
-		--shacl=file:///$SHACL/dcatap/3.0.1/hvd-shacl-full.ttl \
-		--shacl=file:///$SHACL/dcatap/3.0.1/hvd-shacl.ttl \
-		--report=$DATA/$1/reports/report-dcatap3-hvd.html \
- 		--countClasses --countProperties \
-		--countValues=dcatap:hvdCategory 
-
-
-	status $1 "validate" $?
-}
-
 # Convert to XML
 # Parameter: project code
 convert() {
@@ -248,14 +206,6 @@ for source in ${sources[@]}; do
 
 	scrape $source
 	validate $source
-
-	if [ source = "allhvd" ]; then
-		validateHVD $source
-	fi
-	if [ source = "allgeo" ]; then
-		validateGeoDCAT $source
-	fi
-
  	convert $source
 
 	if [[ source != all* ]]; then
