@@ -92,10 +92,11 @@ validate() {
 		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
-		--shacl=file:///$SHACL/shapes.ttl \
-		--shacl=file:///$SHACL/shapes_recommended.ttl \
-		--shacl=file:///$SHACL/mdr-vocabularies.shape.ttl \
-		--shacl=file:///$SHACL/range.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/shapes.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/shapes_recommended.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/mdr-vocabularies.shape.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/deprecateduris.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/range.ttl \
 		--report=$DATA/$1/reports/report-dcatap3.html \
  		--countClasses --countProperties \
 		--countValues=dcat:theme --countValues=dcat:mediaType \
@@ -110,9 +111,9 @@ validate() {
 # Create SHACL validation reports for Geo
 # Parameter: project code
 validateGeoDCAT() {
-	step $1 "validate"
+	step $1 "validateGEO"
 	
-	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate-geo.log \
 		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
 		-Djdk.xml.totalEntitySizeLimit=0 \
 		-XX:+UseCompactObjectHeaders \
@@ -131,9 +132,9 @@ validateGeoDCAT() {
 # Create SHACL validation reports for HVD
 # Parameter: project code
 validateHVD() {
-	step $1 "validate"
+	step $1 "validateHVD"
 	
-	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate-hvd.log \
 		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
 		-Djdk.xml.totalEntitySizeLimit=0 \
 		-XX:+UseCompactObjectHeaders \
