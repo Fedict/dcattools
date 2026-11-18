@@ -236,10 +236,10 @@ clean $source
 scrape $source
 
 validate $source
-if [ source = "allhvd" ]; then
+if [ $source = "allhvd" ]; then
 	validateHVD $source
 fi
-if [ source = "allgeo" ]; then
+if [ $source = "allgeo" ]; then
 	validateGeoDCAT $source
 fi
 

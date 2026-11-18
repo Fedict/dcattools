@@ -208,9 +208,7 @@ for source in ${sources[@]}; do
 	validate $source
  	convert $source
 
-	if [[ source != all* ]]; then
-		translate $source
-		hvdreport $source
-		update $source
-	fi
+	translate $source
+	hvdreport $source
+	update $source
 done
