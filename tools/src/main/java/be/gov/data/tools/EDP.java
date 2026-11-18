@@ -728,6 +728,7 @@ public class EDP {
 		writeLiterals(w, con, uri, DCAT.TEMPORAL_RESOLUTION, "dcat:temporalResolution");
 		
 		writeLiterals(w, con, uri, DCAT.SPATIAL_RESOLUTION_IN_METERS, "dcat:spatialResolutionInMeters");
+		writeLiterals(w, con, uri, GeoDCATAP.spatialResolutionAsText, "geodcatap:spatialResolutionAsText");
 		writeReferences(w, con, uri, GeoDCATAP.referenceSystem, "geodcatap:referenceSystem");
 
 		writeMeasurements(w, con, uri, DQV.hasQualityMeasurement);
@@ -821,8 +822,8 @@ public class EDP {
 				w.writeEndElement();
 			}
 		}
-		writeReferences(w, con, uri, CiteDCATAP.isCompiledBy, "citedcat:isCompiledBy");
-		writeReferences(w, con, uri, CiteDCATAP.compiles, "citedcat:compiles");
+		writeLiterals(w, con, uri, CiteDCATAP.isCompiledBy, "citedcat:isCompiledBy");
+		writeLiterals(w, con, uri, CiteDCATAP.compiles, "citedcat:compiles");
 	
 		// funding
 		try (RepositoryResult<Statement> res = con.getStatements(uri, CiteDCATAP.isFundedBy, null)) {

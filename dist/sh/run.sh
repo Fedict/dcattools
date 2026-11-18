@@ -89,10 +89,11 @@ validate() {
 		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
-		--shacl=file:///$SHACL/shapes.ttl \
-		--shacl=file:///$SHACL/shapes_recommended.ttl \
-		--shacl=file:///$SHACL/mdr-vocabularies.shape.ttl \
-		--shacl=file:///$SHACL/range.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/shapes.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/shapes_recommended.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/mdr-vocabularies.shape.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/deprecateduris.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/range.ttl \
 		--report=$DATA/$1/reports/report-dcatap3.html \
  		--countClasses --countProperties \
 		--countValues=dcat:theme --countValues=dcat:mediaType \
@@ -100,6 +101,48 @@ validate() {
 		--countValues=dcterms:spatial --countValues=dcterms:publisher \
 		--countValues=dcterms:creator --countValues=dcterms:contributor \
 		--countValues=dcterms:rightsHolder
+
+	status $1 "validate" $?
+}
+
+# Create SHACL validation reports for Geo
+# Parameter: project code
+validateGeoDCAT() {
+	step $1 "validate"
+	
+	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-Djdk.xml.totalEntitySizeLimit=0 \
+		-XX:+UseCompactObjectHeaders \
+		-jar $BIN/shaclvalidator.jar \
+		--data=file:///$DATA/$1/$1.nt \
+		--shacl=file:///$SHACL/geodcatap/3.1.0/geodcat-ap-shacl.ttl \
+		--report=$DATA/$1/reports/report-dcatap3-hvd.html \
+ 		--countClasses --countProperties \
+		--countValues=geodcatap:topicCategory --countValues=geodcatap:serviceCategory \
+		--countValues=geodcatap:resourceProtocol --countValues=geodcatap:serviceType \
+		--countValues=geodcatap:referenceSystem 
+
+	status $1 "validate" $?
+}
+
+# Create SHACL validation reports for HVD
+# Parameter: project code
+validateHVD() {
+	step $1 "validate"
+	
+	java -Dorg.slf4j.simpleLogger.logFile=$DATA/$1/logs/validate.log \
+		-Djdk.xml.maxGeneralEntitySizeLimit=0 \
+		-Djdk.xml.totalEntitySizeLimit=0 \
+		-XX:+UseCompactObjectHeaders \
+		-jar $BIN/shaclvalidator.jar \
+		--data=file:///$DATA/$1/$1.nt \
+		--shacl=file:///$SHACL/dcatap/3.0.1/hvd-shacl-full.ttl \
+		--shacl=file:///$SHACL/dcatap/3.0.1/hvd-shacl.ttl \
+		--report=$DATA/$1/reports/report-dcatap3-hvd.html \
+ 		--countClasses --countProperties \
+		--countValues=dcatap:hvdCategory 
+
 
 	status $1 "validate" $?
 }
@@ -205,6 +248,14 @@ for source in ${sources[@]}; do
 
 	scrape $source
 	validate $source
+
+	if [ source = "allhvd" ]; then
+		validateHVD $source
+	fi
+	if [ source = "allgeo" ]; then
+		validateGeoDCAT $source
+	fi
+
  	convert $source
 	translate $source
 	hvdreport $source
