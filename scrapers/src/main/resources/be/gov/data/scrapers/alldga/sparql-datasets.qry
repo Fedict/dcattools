@@ -1,4 +1,4 @@
-# Add all datasets to data.gov.be catalog
+# Remove non-DGA datasets
 
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcatap: <http://data.europa.eu/r5r/>

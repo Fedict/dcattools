@@ -26,7 +26,6 @@
 package be.gov.data.scrapers.alldga;
 
 import be.gov.data.dcat.helpers.Storage;
-import be.gov.data.dcat.vocab.DATAGOVBE;
 import be.gov.data.scrapers.BaseScraper;
 import be.gov.data.scrapers.Cache;
 
@@ -35,8 +34,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
