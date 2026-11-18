@@ -1,4 +1,4 @@
 # extra queries to be executed and data to be loaded
-allhdvsparql-datasets.qry
+allhdv/sparql-datasets.qry
 allhdv/sparql-dataservices.qry
 sparql-remove-orphans.qry
