@@ -139,8 +139,8 @@ validateHVD() {
 		-XX:+UseCompactObjectHeaders \
 		-jar $BIN/shaclvalidator.jar \
 		--data=file:///$DATA/$1/$1.nt \
-		--shacl=file:///$SHACL/dcatap/3.0.1/hvd-shacl-full.ttl \
-		--shacl=file:///$SHACL/dcatap/3.0.1/hvd-shacl.ttl \
+		--shacl=file:///$SHACL/hvd/3.0.0/hvd-shacl-full.ttl \
+		--shacl=file:///$SHACL/hvd/3.0.0/hvd-shacl.ttl \
 		--report=$DATA/$1/reports/report-dcatap3-hvd.html \
  		--countClasses --countProperties \
 		--countValues=dcatap:hvdCategory 
