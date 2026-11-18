@@ -257,7 +257,10 @@ for source in ${sources[@]}; do
 	fi
 
  	convert $source
-	translate $source
-	hvdreport $source
- 	update $source
+
+	if [[ source != all* ]]; then
+		translate $source
+		hvdreport $source
+		update $source
+	fi
 done
