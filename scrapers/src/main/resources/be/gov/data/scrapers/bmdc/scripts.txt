@@ -53,7 +53,7 @@ sparql-map-theme-belgif.qry
 sparql-map-theme-inspire.qry
 bmdc/sparql-inspire-priority.qry
 sparql-clear-skos.qry
-sparql-theme-hvd.qry
+sparql-hvd-subject.qry
 sparql-theme-keyword.qry
 sparql-theme-subject.qry
 sparql-clear-skos.qry
