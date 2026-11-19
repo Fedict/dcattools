@@ -36,6 +36,7 @@ vlaanderen/sparql-landingpage.qry
 vlaanderen/sparql-format-extension.qry
 vlaanderen/sparql-format-darwin.qry
 vlaanderen/sparql-format-concept.qry
+vlaanderen/sparql-mediatype-xlsx.qry
 data-media.ttl
 sparql-map-media.qry
 vlaanderen/sparql-format-wms.qry

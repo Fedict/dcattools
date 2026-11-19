@@ -5,5 +5,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 DELETE 
 	{ ?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/DTD_XML> }
 WHERE 
-	{ ?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/DTD_XML> .
-	?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML>}
+	{	?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/DTD_XML> .
+		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XML>
+	}

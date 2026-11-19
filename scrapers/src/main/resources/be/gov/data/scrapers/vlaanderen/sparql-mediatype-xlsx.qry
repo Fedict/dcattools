@@ -1,0 +1,17 @@
+# Correct mediatype for xlsx
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE
+	{	?s dcat:mediaType <https://www.iana.org/assignments/media-types/application/vnd.ms-excel> .
+		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLS> }
+INSERT
+	{ 	?s dcat:mediaType <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> }
+WHERE
+	{	
+		?s dcat:mediaType <https://www.iana.org/assignments/media-types/application/vnd.ms-excel> .	
+		?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLSX>
+		OPTIONAL { ?s dcterms:format <http://publications.europa.eu/resource/authority/file-type/XLS> }
+	}
+	
