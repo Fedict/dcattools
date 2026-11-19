@@ -1,0 +1,7 @@
+# extra queries to be executed and data to be loaded
+sparql-access-public.qry
+sparql-geo-belgium.qry
+sparql-clear-skos.qry
+sparql-shacl-classes.qry
+sparql-shacl-skos.qry
+sparql-remove-orphans.qry
