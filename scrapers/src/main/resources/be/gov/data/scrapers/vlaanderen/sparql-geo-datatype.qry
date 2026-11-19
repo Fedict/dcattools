@@ -1,0 +1,17 @@
+# Add geodcatap resourcetype based on dcat-vl property
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+PREFIX mdcat: <https://data.vlaanderen.be/ns/metadata-dcat#>
+
+INSERT { ?s geodcatap:resourceType ?type }
+WHERE {
+		?s a ?cl .
+		?s mdcat:statuut <https://metadata.vlaanderen.be/id/GDI-Vlaanderen-Trefwoorden/GEODATA> 
+		VALUES (?cl ?type) {
+			( dcat:Dataset		<http://inspire.ec.europa.eu/metadata-codelist/ResourceType/dataset> )
+			( dcat:DataService  <http://inspire.ec.europa.eu/metadata-codelist/ResourceType/service> )
+		}
+		FILTER NOT EXISTS { ?s geodcatap:resourceType ?o }
+	}

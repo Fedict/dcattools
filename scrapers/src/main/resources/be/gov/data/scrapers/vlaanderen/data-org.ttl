@@ -709,26 +709,26 @@
 	skos:prefLabel "RATO"@nl ;
 	skos:altLabel "rato-vzw"@en, "rato-vzw"@nl .
 
-<https://opencorporates.com/id/companies/nl/27294677>
+<http://opencorporates.com/id/companies/nl/27294677>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Eco-Movement"@nl ;
 	skos:altLabel "Eco-Movement"@nl .
 
-<https://opencorporates.com/id/companies/nl/27264794>
+<http://opencorporates.com/id/companies/nl/27264794>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Geologische Dienst Nederland"@nl ;
 	skos:altLabel "Geologische Dienst Nederland"@nl, 
 				 "Toegepast-Natuurwetenschappelijk Onderzoek - Geologische Dienst Nederland"@nl .
 
-<https://opencorporates.com/id/companies/nl/17278718>
+<http://opencorporates.com/id/companies/nl/17278718>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Provincie Noord-Brabant (Nederland)"@nl ;
 	skos:altLabel "Provincie Noord-Brabant (Nederland)"@nl .
 
-<https://opencorporates.com/id/companies/nl/50052969>
+<http://opencorporates.com/id/companies/nl/50052969>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "Provincie Limburg (Nederland)"@nl ;

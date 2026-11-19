@@ -5,17 +5,18 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE 
-	{ 	?dataset dcterms:subject ?vocab .
-		?vocab a skos:Concept }
+	{ 	?s ?rel ?vocab .
+		?vocab ?p ?o }
 INSERT
-	{ 	?dataset dcat:theme ?po }
+	{ 	?s dcat:theme ?theme }
 WHERE
-	{ 	?dataset dcterms:subject ?vocab .
-		?vocab a skos:Concept 
+	{ 	?s ?rel ?vocab .
+		OPTIONAL { ?vocab ?p ?o }
+		VALUES ?rel { dcat:theme dcterms:subject }
 		BIND (IRI(
 				CONCAT("http://publications.europa.eu/resource/authority/data-theme/",
 					STRAFTER(STR(?vocab), "datatheme/")
 				)
-			)as ?po)
-		FILTER (CONTAINS(STR(?vocab), "belgif"))
+			)as ?theme)
+		FILTER (CONTAINS(STR(?vocab), "vocab.belgif.be"))
 	}

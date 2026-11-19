@@ -94,9 +94,13 @@ vlaanderen/sparql-remove-circular-vmm.qry
 vlaanderen/sparql-remove-dataset-orphans.qry
 vlaanderen/data-contact.ttl
 vlaanderen/sparql-default-email.qry
+sparql-hvd-subject.qry
+sparql-hvd-dist.qry
+sparql-dataset-hvd.qry
+vlaanderen/sparql-geo-datatype.qry
+sparql-vocab-theme.qry
 sparql-strip-html.qry
 sparql-version.qry
-sparql-geotype-format.qry
 sparql-clear-skos.qry
 data-standards-support.ttl
 data-shacl-eurovoc-support.ttl
