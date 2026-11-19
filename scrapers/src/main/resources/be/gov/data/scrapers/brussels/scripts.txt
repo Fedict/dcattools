@@ -55,6 +55,7 @@ brussels/sparql-landingpage-page.qry
 brussels/sparql-record-landingpage.qry
 sparql-dist-accessurl.qry
 sparql-remove-catalogrecord.qry
+sparql-remove-catalog.qry
 sparql-map-license.qry
 sparql-consolidate-bbox.qry
 sparql-crs-uri.qry

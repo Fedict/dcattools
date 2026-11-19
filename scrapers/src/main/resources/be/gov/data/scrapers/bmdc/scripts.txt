@@ -19,6 +19,7 @@ bmdc/sparql-doi-prefer.qry
 bmdc/sparql-landingpage.qry
 sparql-doi-landingpage.qry
 sparql-remove-catalogrecord.qry
+sparql-remove-catalog.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-map-memberof.qry
