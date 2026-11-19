@@ -4,7 +4,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix gemet: <http://www.eionet.europa.eu/gemet/concept/> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://data.europa.eu/930/spatialResolutionAsScale>
+	a dqv:Metric ;
+	skos:prefLabel "Spatial resolution as equivalent scale"@en ;
+	dqv:expectedDataType xsd:decimal ;
+	dqv:inDimension dqv:precision .
+
+<http://data.europa.eu/930/spatialResolutionAsDistance>
+	a dqv:Metric ;
+	skos:prefLabel "Spatial resolution as distance"@en ;
+	dqv:expectedDataType xsd:decimal ;
+	dqv:inDimension dqv:precision .
+
+<http://qudt.org/vocab/unit/M> a skos:Concept ;
+	skos:prefLabel "Metre"@en ;
+	skos:inScheme <http://qudt.org/vocab/unit> .
 
 <http://data.europa.eu/eli/dir/1992/43/oj>
 	a eli:LegalResource ;

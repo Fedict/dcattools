@@ -1,0 +1,23 @@
+# Use URI for EPSG spatial reference system
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?d dcterms:conformsTo ?s .
+		?s a dcterms:Standard .
+		?s dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> .
+		?s dcterms:title ?nr
+	}
+INSERT 
+	{ 	?d dcterms:conformsTo ?epsg }
+WHERE 
+	{	?d dcterms:conformsTo ?s .
+		?s a dcterms:Standard .
+		?s dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> .
+		?s dcterms:title ?nr
+		BIND (IRI(
+				CONCAT("http://www.opengis.net/def/crs/EPSG/0/", ?nr)
+			) as ?epsg)
+		FILTER (ISNUMERIC(?nr))
+		FILTER (STRSTARTS(STR(?s), "http://data.gov.be"))
+	}

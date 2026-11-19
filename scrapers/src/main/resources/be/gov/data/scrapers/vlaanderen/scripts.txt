@@ -15,7 +15,6 @@ vlaanderen/sparql-remove-empty-license.qry
 vlaanderen/sparql-remove-unknown-contact.qry
 vlaanderen/sparql-antwerp-mail.qry
 vlaanderen/sparql-detach-contacts.qry
-#vlaanderen/sparql-consolidate-address.qry
 vlaanderen/sparql-remove-unknown-address.qry
 sparql-remove-addresses.qry
 vlaanderen/sparql-remove-unknown-location.qry
@@ -24,8 +23,6 @@ sparql-available.qry
 sparql-conforms-dga.qry
 vlaanderen/sparql-consolidate-date.qry
 vlaanderen/sparql-consolidate-rights.qry
-#vlaanderen/sparql-consolidate-standards.qry
-vlaanderen/sparql-remove-source.qry
 vlaanderen/sparql-remove-agent.qry
 vlaanderen/sparql-remove-empty-serves.qry
 vlaanderen/sparql-remove-empty-access.qry
@@ -69,6 +66,7 @@ sparql-clear-skos.qry
 vlaanderen/data-theme.ttl
 sparql-map-keyword-theme.qry
 sparql-map-theme.qry
+vlaanderen/sparql-subject-inspire.qry
 sparql-clear-skos.qry
 # Departement Omgeving
 vlaanderen/sparql-deptomgeving-org.qry
@@ -100,6 +98,7 @@ sparql-hvd-subject.qry
 sparql-hvd-dist.qry
 sparql-dataset-hvd.qry
 vlaanderen/sparql-geo-datatype.qry
+vlaanderen/sparql-standard-srs.qry
 sparql-vocab-theme.qry
 sparql-strip-html.qry
 sparql-version.qry

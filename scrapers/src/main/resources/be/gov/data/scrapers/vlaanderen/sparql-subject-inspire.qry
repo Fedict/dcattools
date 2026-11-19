@@ -1,0 +1,17 @@
+# Add geodcatap resourcetype based on dcat-vl property
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+PREFIX mdcat: <https://data.vlaanderen.be/ns/metadata-dcat#>
+
+DELETE 
+	{	?s mdcat:ISO-categorie ?code .
+		?code ?p ?o }
+INSERT
+	{ ?s geodcatap:topicCategory ?code }
+WHERE	
+	{
+		?s mdcat:ISO-categorie ?code .
+		?code ?p ?o
+	}
