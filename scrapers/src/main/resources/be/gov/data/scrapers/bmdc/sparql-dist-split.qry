@@ -1,0 +1,40 @@
+# Split Distribution with multiple formats
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcat:distribution ?dist .
+		?dist dcterms:title "The csv file and the Darwin Core Archive as found on the GBIF portal."@en .
+		?dist dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> .
+        ?dist dcat:mediaType <https://www.iana.org/assignments/media-types/application/dwca> .
+        ?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> .
+        ?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/DWCA> .
+		?dist ?p ?o }
+INSERT 
+	{	?s dcat:distribution ?dist1 .
+		?dist1 dcterms:title "The CSV file as found on the GBIF portal"@en .
+		?dist1 dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> .
+        ?dist1 dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> .
+		?dist1 ?p ?o .
+		?s dcat:distribution ?dist2 .
+		?dist2 dcterms:title "The Darwin Core Archive file as found on the GBIF portal"@en .
+		?dist2 dcat:mediaType <https://www.iana.org/assignments/media-types/application/dwca> .
+        ?dist2 dcterms:format <http://publications.europa.eu/resource/authority/file-type/DWCA> .
+		?dist2 ?p ?o }
+WHERE
+	{	?s dcat:distribution ?dist .
+		?dist dcterms:title "The csv file and the Darwin Core Archive as found on the GBIF portal."@en .
+		?dist dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> .
+        ?dist dcat:mediaType <https://www.iana.org/assignments/media-types/application/dwca> .
+        ?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/CSV> .
+        ?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/DWCA> .
+		?dist ?p ?o
+		BIND (IRI(
+				CONCAT(STR(?dist), "/csv")
+			) as ?dist1)
+		BIND (IRI(
+				CONCAT(STR(?dist), "/dwca")
+			) as ?dist2)
+		FILTER (?p != dcat:mediaType && ?p != dcterms:format && ?p!= dcterms:title)
+	}

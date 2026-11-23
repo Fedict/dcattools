@@ -1,16 +1,16 @@
-# Prefer DOI as identifier instead of platform-specific ID
+# ADMS identifier for DOI
 
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcterms: <http://purl.org/dc/terms/> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 DELETE {
-		?s dcterms:identifier ?id }
+		?s dcterms:identifier ?doi }
 INSERT {
 		?s adms:identifier ?adms .
 		?adms a adms:Identifier .
-		?adms skos:notation ?id .
-		?adms adms:schemaAgencey "BMDC" }
+		?adms skos:notation ?doi .
+		?adms adms:schemaAgency "DOI Foundation" }
 WHERE
 	{	?s dcterms:identifier ?doi .
 		?s dcterms:identifier ?id .
@@ -21,5 +21,5 @@ WHERE
 					)
 				)
 			) as ?adms)
-		FILTER (STRSTARTS(?doi, "doi:") && (?doi != STR(?id)))
+		FILTER (STRSTARTS(STR(?doi), "https://doi.org") && (STR(?doi) != STR(?id)))
 	}

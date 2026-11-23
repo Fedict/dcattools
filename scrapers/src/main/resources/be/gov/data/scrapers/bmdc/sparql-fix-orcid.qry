@@ -5,20 +5,20 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE {
-		?s ?p  <http://orcid.org/http://orcid.org/0000-0003-2692-8651> .
-		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a vcard:Individual .
-		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a foaf:Person .
-		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> ?x ?y
-	}
+		?s ?p ?uri .
+		?uri ?x ?y }
 INSERT 
-	{	?s ?p  <https://orcid.org/0000-0003-2692-8651> .
-		<https://orcid.org/0000-0003-2692-8651> a vcard:Organization .
-		<https://orcid.org/0000-0003-2692-8651> a foaf:Organization .
-		<https://orcid.org/0000-0003-2692-8651> ?x ?y
+	{	?s ?p ?orcid .
+		?orcid ?x ?y
 	}
 WHERE
-	{	?s ?p  <http://orcid.org/http://orcid.org/0000-0003-2692-8651> .
-		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a vcard:Individual .
-		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> a foaf:Person .
-		<http://orcid.org/http://orcid.org/0000-0003-2692-8651> ?x ?y
+	{	?s ?p ?uri .
+		?uri ?x ?y
+		BIND ( 
+			IRI(
+				REPLACE(
+					REPLACE(STR(?uri), "http://orcid.org/http://orcid.org", "http://orcid.org/"),
+						"http:", "https:")
+			) AS ?orcid)
+		FILTER (STRSTARTS(STR(?uri), "http://orcid.org"))
 	}

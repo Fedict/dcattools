@@ -1,0 +1,19 @@
+# Use generic binary format for OpeNDAP / DODS format
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE
+	{	?dist dcterms:format ?fmt .
+		?fmt rdfs:label "OPeNDAP" }
+INSERT 
+	{	?dist dcat:mediaType <https://www.iana.org/assignments/media-types/application/octet-stream> .
+        ?dist dcterms:format <http://publications.europa.eu/resource/authority/file-type/BIN> }
+WHERE
+	{	?s dcat:distribution ?dist .
+		?dist dcterms:title "Data Subset Form"@en .
+		OPTIONAL { ?dist dcterms:format ?fmt .
+					?fmt rdfs:label "OPeNDAP" }
+		FILTER NOT EXISTS { ?dist dcat:mediaType ?o }
+	}

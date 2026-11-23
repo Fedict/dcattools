@@ -1,15 +1,18 @@
-# Use doi: prefix instead of URL
+# Use URL instead of just doi: prefix instead
 
 PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX xsd:	<http://www.w3.org/2001/XMLSchema#>
 
 DELETE 
 	{ ?s dcterms:identifier ?doi }
 INSERT 
-	{ ?s dcterms:identifier ?id }
+	{ ?s dcterms:identifier ?url }
 WHERE
 	{	?s dcterms:identifier ?doi .
-		BIND (CONCAT("doi:", 
-				STRAFTER(STR(?doi), "https://doi.org/")
-			) as ?id)
-		FILTER (STRSTARTS(STR(?doi), "https://doi.org/"))
+		BIND (
+				STRDT(
+					CONCAT("https://doi.org", STRAFTER("doi:", ?doi)), 
+				xsd:anyURI)
+			as ?url)
+		FILTER (STRSTARTS(STR(?doi), "doi:"))
 	}

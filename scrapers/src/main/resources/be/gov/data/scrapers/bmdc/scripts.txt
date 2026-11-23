@@ -9,13 +9,11 @@ bmdc/sparql-abstract-to-desc.qry
 sparql-title-to-desc.qry
 bmdc/sparql-dist-title.qry
 bmdc/sparql-fix-org.qry
-bmdc/sparql-doi-prefix.qry
 sparql-record-id.qry
 sparql-record-serves.qry
 sparql-record-service.qry
 bmdc/sparql-dataset-localid.qry
-sparql-doi-prefix.qry
-bmdc/sparql-doi-prefer.qry
+bmdc/sparql-doi-adms.qry
 bmdc/sparql-landingpage.qry
 sparql-doi-landingpage.qry
 sparql-remove-catalogrecord.qry
@@ -66,6 +64,8 @@ sparql-map-license.qry
 bmdc/sparql-fix-orcid.qry
 data-media.ttl
 bmdc/sparql-map-media-skos.qry
+bmdc/sparql-dist-split.qry
+bmdc/sparql-format-dods.qry
 sparql-clear-skos.qry
 sparql-startenddate.qry
 bmdc/sparql-fix-date.qry
