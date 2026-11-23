@@ -1,0 +1,21 @@
+# Use URL instead of just doi: prefix instead
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd:	<http://www.w3.org/2001/XMLSchema#>
+
+DELETE 
+	{	?adms skos:notation ?doi }
+INSERT 
+	{	?adms  skos:notation ?url .
+		?adms adms:schemaAgency "DOI Foundation"@en }
+WHERE
+	{	?s adms:identifier ?adms .
+		?adms skos:notation ?doi .
+		BIND (
+				STRDT(
+					CONCAT("https://doi.org/", ?doi), 
+				xsd:anyURI)
+			as ?url)
+		FILTER (STRSTARTS(STR(?doi), "10.24417"))
+	}

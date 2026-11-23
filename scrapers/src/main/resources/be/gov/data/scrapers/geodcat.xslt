@@ -1757,10 +1757,17 @@
 
     <xsl:param name="IndividualName-FOAF">
       <xsl:for-each select="gmd:individualName">
-        <foaf:name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></foaf:name>
-        <xsl:call-template name="LocalisedString">
-          <xsl:with-param name="term">foaf:name</xsl:with-param>
-        </xsl:call-template>
+		<xsl:choose>
+          <xsl:when test="normalize-space(*[self::gco:CharacterString|gmx:Anchor]) !=''">		  
+            <foaf:name xml:lang="{$MetadataLanguage}"><xsl:value-of select="normalize-space(*[self::gco:CharacterString|gmx:Anchor])"/></foaf:name>
+            <xsl:call-template name="LocalisedString">
+              <xsl:with-param name="term">foaf:name</xsl:with-param>
+            </xsl:call-template>
+		  </xsl:when>
+		  <xsl:otherwise>
+			  <foaf:name><xsl:value-of select="*/text()"/></foaf:name>
+		  </xsl:otherwise>
+		</xsl:choose>
       </xsl:for-each>
     </xsl:param>
 

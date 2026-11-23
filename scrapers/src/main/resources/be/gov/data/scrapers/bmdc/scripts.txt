@@ -16,6 +16,7 @@ bmdc/sparql-dataset-localid.qry
 bmdc/sparql-doi-adms.qry
 bmdc/sparql-landingpage.qry
 sparql-doi-landingpage.qry
+bmdc/sparql-doi-prefix.qry
 sparql-remove-catalogrecord.qry
 sparql-remove-catalog.qry
 bmdc/data-org.ttl
