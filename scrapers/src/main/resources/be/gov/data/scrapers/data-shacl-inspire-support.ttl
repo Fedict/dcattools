@@ -19,7 +19,8 @@
 	dqv:expectedDataType xsd:decimal ;
 	dqv:inDimension dqv:precision .
 
-<http://qudt.org/vocab/unit/M> a skos:Concept ;
+<http://qudt.org/vocab/unit/M>
+	 a skos:Concept ;
 	skos:prefLabel "Metre"@en ;
 	skos:inScheme <http://qudt.org/vocab/unit> .
 
@@ -4746,7 +4747,7 @@
 <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/intelligenceMilitary>
 	a skos:Concept ;
 	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
-	skos:prefLabel Inlichtingen/militaire gegevens@nl, "Renseignement/Secteur militaire"@fr, 
+	skos:prefLabel "Inlichtingen/militaire gegevens"@nl, "Renseignement/Secteur militaire"@fr, 
 				"Aufklärung/Militär"@de, "Intelligence / Military"@en .
 
 <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/location>

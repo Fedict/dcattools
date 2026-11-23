@@ -48,8 +48,7 @@
 	skos:prefLabel "Contaminants in seafood do not exceed established levels"@en .
 
 <http://vocab.nerc.ac.uk/collection/GS3/current/>
-	a skos:Concept ;
-	skos:inScheme <http://vocab.nerc.ac.uk/collection/GS3/current/> ;
+	a skos:Collection;
 	skos:prefLabel "Geo-Seas adjusted Folk sediment lithology classes" .
 
 <http://vocab.nerc.ac.uk/collection/L05/current/LAB27/>
@@ -100,8 +99,13 @@
 <http://vocab.nerc.ac.uk/collection/S04/current/S04204/>
 	a skos:Concept ;
 	skos:inScheme <http://vocab.nerc.ac.uk/collection/S04/current/> ;
-	skos:prefLabel "chromatographie liquide haute performance (HPLC)"@fr ;
-	skos:prefLabel "high performance liquid chromatography (HPLC)"@en .
+	skos:prefLabel "chromatographie liquide haute performance (HPLC)"@fr ,
+				"high performance liquid chromatography (HPLC)"@en .
+
+<http://vocab.nerc.ac.uk/collection/S04/current/S0458/>
+	a skos:Concept ;
+	skos:inScheme <http://vocab.nerc.ac.uk/collection/S04/current/> ;
+	skos:prefLabel "CTD"@en .
 
 <http://vocab.nerc.ac.uk/collection/S27/current/CS003562/>
 	a skos:Concept ;

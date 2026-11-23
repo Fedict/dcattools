@@ -20,19 +20,22 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Université libre de Bruxelles"@nl, "Université libre de Bruxelles"@fr, "Université libre de Bruxelles"@en ;
+	skos:prefLabel "Université libre de Bruxelles"@nl, "Université libre de Bruxelles"@fr, 
+				"Université libre de Bruxelles"@en ;
 	skos:altLabel "Université Libre de Bruxelles (ULB)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Université de Liège"@nl,"Université de Liège"@fr, "Université de Liège"@en, "Université de Liège"@de ;
+	skos:prefLabel "Université de Liège"@nl,"Université de Liège"@fr, "Université de Liège"@en,
+				 "Université de Liège"@de ;
 	skos:altLabel "Université de Liège (ULg)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0449012406>
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
-	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, "Vrije Universiteit Brussel"@en ;
+	skos:prefLabel "Vrije Universiteit Brussel"@nl, "Vrije Universiteit Brussel"@fr, 
+				"Vrije Universiteit Brussel"@en ;
 	skos:altLabel "Vlaamse Universiteit Brussel (VUB)"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0693876830>
@@ -95,4 +98,4 @@
 	skos:prefLabel "Flanders Marine Institute"@en, "Vlaams Instituut voor Zee"@nl, 
 				"Institut Flamand de la Mer"@fr ;
 	skos:altLabel "Instituut voor Landbouw- en Visserijonderzoek - Visserij (ILVO)"@en,
-	 "Vlaams Instituut voor de Zee / Flanders Marine Institute (VLIZ)"@en .
+					"Vlaams Instituut voor de Zee / Flanders Marine Institute (VLIZ)"@en .

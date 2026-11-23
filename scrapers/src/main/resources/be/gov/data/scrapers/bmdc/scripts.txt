@@ -21,7 +21,9 @@ sparql-remove-catalogrecord.qry
 sparql-remove-catalog.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
-sparql-map-memberof.qry
+sparql-clear-skos.qry
+bmdc/data-memberof.ttl
+bmdc/sparql-memberof.qry
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
@@ -72,6 +74,7 @@ sparql-startenddate.qry
 bmdc/sparql-fix-date.qry
 sparql-vcard-fn.qry
 bmdc/sparql-fix-epsg.qry
+bmdc/sparql-fix-fre.qry
 sparql-fix-datetype.qry
 sparql-date-type.qry
 bmdc/data-shacl-nerc-support.ttl
