@@ -1,0 +1,8 @@
+# Remove xhtml mediatype, distributions already have another mediatype
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+DELETE {
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/media-types.xhtml#text> }
+WHERE {
+	?s dcat:mediaType <https://www.iana.org/assignments/media-types/media-types.xhtml#text> }

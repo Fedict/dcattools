@@ -1,0 +1,11 @@
+# Location geometry should be a bounding box
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+DELETE 
+	{	?s locn:geometry ?bbox }
+INSERT
+	{	?s dcat:bbox ?bbox }
+WHERE
+	{ 	?s locn:geometry ?bbox }

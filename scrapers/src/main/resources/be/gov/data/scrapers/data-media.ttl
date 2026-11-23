@@ -98,6 +98,10 @@
 		"GeoTIFF, Surfer copyright binary grid.grd" , "geoTif",
 		<http://data.gov.be/.well-known/genid/fmt/geotiff> .
 
+<http://publications.europa.eu/resource/authority/file-type/GIF>
+	skos:prefLabel "GIF" ;
+	skos:altLabel "GIF" .
+
 <http://publications.europa.eu/resource/authority/file-type/GML>
 	skos:prefLabel "GML" ;
 	skos:closeMatch <https://www.iana.org/assignments/media-types/application/gml+xml>;
@@ -126,6 +130,11 @@
 	skos:altLabel "HTML", "html", "HTM", "htm", "jsp", "php", "aspx", "asp", "shtm", "xhtml", ".html", 
 				"HTML Tabel", "text/html", "powerbi",
 				<http://data.gov.be/.well-known/genid/fmt/html> .
+
+<http://publications.europa.eu/resource/authority/file-type/IPYNB>
+	skos:prefLabel "IPYNB" ;
+	skos:closeMatch <https://www.iana.org/assignments/media-types/application/vnd.jupyter> ;
+	skos:altlabel "Jupyter Notebook"@en .
 
 <http://publications.europa.eu/resource/authority/file-type/JAR>
 	skos:prefLabel "JAR" ;

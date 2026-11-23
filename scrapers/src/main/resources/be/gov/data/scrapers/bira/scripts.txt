@@ -3,12 +3,14 @@ sparql-remove-hydra.qry
 bira/sparql-fix-catalog.qry
 data-frequency.ttl
 sparql-map-frequency.qry
+bira/sparql-location-bbox.qry
 sparql-consolidate-bbox.qry
-sparql-consolidate-org.qry
 bira/data-org.ttl
 sparql-map-memberof.qry
+bira/sparql-consolidate-org.qry
 bira/sparql-publisher.qry
 bira/sparql-fix-netcdf.qry
+bira/sparql-fix-xhtml.qry
 bira/sparql-fix-temporal2.qry
 bira/sparql-fix-member.qry
 bira/sparql-spatial-res.qry
@@ -21,8 +23,7 @@ bira/sparql-foaf-orcid.qry
 bira/sparql-foaf-literal.qry
 bira/sparql-extract-version.qry
 bira/sparql-referenced-literal.qry
-sparql-delete-label-empty.qry
-sparql-map-org.qry
+sparql-remove-catalog.qry
 data-media-compress.ttl
 sparql-map-media-compress.qry
 data-media.ttl

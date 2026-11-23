@@ -41,7 +41,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "ONERA"@fr ;
-	skos:altLabel "ONERA" .
+	skos:altLabel "ONERA", "Office national d'études et de recherches aérospatiales" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0649799832#DERTS>
 	a foaf:Organization ;
@@ -79,3 +79,39 @@
 	dcterms:type admsp:Academia-ScientificOrganisation ;
 	skos:prefLabel "European Space Agency"@en , "Agence spatiale européenne"@fr ;
 	skos:altLabel "European Space Agency" .
+
+<http://opencorporates.com/id/companies/nl/30276595>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "KNMI"@nl, "KNMI"@fr, "KNMI"@en, "KNMI"@de ;
+	skos:altLabel "Royal Netherlands Meteorological Institute (KNMI)" .
+
+<http://opencorporates.com/id/companies/se/502082-9221>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Finnish Meteorological Institute"@en ;
+	skos:altLabel "Finnish Meteorological Institute" .
+
+<http://opencorporates.com/id/companies/ie/106071>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Space Technology Ireland"@en , "Space Technology Ireland"@fr ;
+	skos:altLabel "Space Technology Ireland" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0898085188>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Trinity College Dublin"@en ;
+	skos:altLabel "Trinity College Dublin" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0876880196>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Universität Bremen"@de, "University of Bremen"@en, "Universiteit Bremen"@nl ;
+	skos:altLabel "University of Bremen" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0685415262>
+	a foaf:Organization ;
+	dcterms:type admsp:Academia-ScientificOrganisation ;
+	skos:prefLabel "Karlsruhe Institut für Technologie"@de, "Karlsruhe Institute of Technology"@en ;
+	skos:altLabel "Karlsruhe Institute of Technology" .
