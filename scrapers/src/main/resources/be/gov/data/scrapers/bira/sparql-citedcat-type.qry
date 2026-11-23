@@ -1,0 +1,24 @@
+# Map citedcat resource types to preferred class
+
+PREFIX dcterms:	<http://purl.org/dc/terms/>
+PREFIX citedcat: <https://w3id.org/citedcat-ap/>
+PREFIX fabio: <http://purl.org/spar/fabio/>
+PREFIX bibo: <http://purl.org/ontology/bibo/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX ns1: <https://datacite-metadata-schema.readthedocs.io/en/4.5/appendices/appendix-1/resourceTypeGeneral/#>
+
+DELETE 
+	{	?s dcterms:type ?type }
+INSERT 
+	{	?s dcterms:type ?cl }
+WHERE
+	{	?s dcterms:type ?type .
+		VALUES (?type ?cl) {
+			( ns1:audiovisual dcmitype:MovingImage )
+			( ns1:datapaper citedcat:DataPaper )
+			( ns1:image dcmitype:StillImage )
+			( ns1:interactiveresource dcmitype:InteractiveResource )
+			( ns1:model fabio:Model)
+			( ns1:text dcmitype:Text)
+		}
+	}

@@ -39,6 +39,7 @@ sparql-available.qry
 bira/sparql-doi-landingpage.qry
 bira/sparql-fix-biblio.qry
 bira/sparql-fix-frequency.qry
+bira/sparql-citedcat-type.qry
 sparql-clear-skos.qry
 data-license.ttl
 sparql-map-license.qry

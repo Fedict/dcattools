@@ -287,6 +287,13 @@
 	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
 	skos:prefLabel "Creative Commons Attribution 2.0 Generic"@en .
 
+<http://publications.europa.eu/resource/authority/licence/CC_BY_4_0>
+	a skos:Concept ;
+	a dcterms:LicenseDocument ;
+	dcterms:type <http://purl.org/adms/licencetype/Attribution> ;
+	skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+	skos:prefLabel "Creative Commons Attribution 4.0 Generic"@en .
+
 <http://publications.europa.eu/resource/authority/licence/CC_BYNC_4_0>
 	a skos:Concept ;
 	a dcterms:LicenseDocument ;
