@@ -4743,10 +4743,21 @@
 	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
     skos:prefLabel "Binnenwateren"@nl, "Eaux intérieures"@fr, "Binnengewässer"@de, "Inland Waters"@en .
 
+<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/intelligenceMilitary>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
+	skos:prefLabel Inlichtingen/militaire gegevens@nl, "Renseignement/Secteur militaire"@fr, 
+				"Aufklärung/Militär"@de, "Intelligence / Military"@en .
+
 <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/location>
 	a skos:Concept ;
 	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
     skos:prefLabel "Locatie"@nl, "Localisation"@fr, "Ortsangaben"@de, "Location"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/oceans>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
+    skos:prefLabel "Oceanen"@nl, "Océans"@fr, "Meere"@de, "Oceans"@en .
 
 <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/planningCadastre>
 	a skos:Concept ;
