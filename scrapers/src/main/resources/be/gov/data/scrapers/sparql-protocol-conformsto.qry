@@ -1,0 +1,20 @@
+# Move OGC service protocol to conformsTo and use INSPIRE URIs
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcat: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s geodcat:serviceProtocol ?ogc }
+INSERT 
+	{	?s geodcat:serviceProtocol ?inspire .
+		?s dcterms:conformsTo ?ogc }
+WHERE
+	{	?s geodcat:serviceProtocol ?ogc .
+		VALUES ( ?ogc ?inspire) {
+			( <http://www.opengeospatial.org/standards/wcs> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wcs> )
+			( <http://www.opengeospatial.org/standards/wfs> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wfs> )
+			( <http://www.opengeospatial.org/standards/wms> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wms> )
+			( <http://www.opengeospatial.org/standards/wmts> <http://inspire.ec.europa.eu/metadata-codelist/ProtocolValue/wmts> )
+		}
+	}
+ 

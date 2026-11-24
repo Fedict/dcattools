@@ -1,0 +1,17 @@
+# Remove "undefined" dataset
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+		?x dcat:servesDataset ?s .
+		?s a dcat:Dataset .
+		?s dcterms:identifier ?und .
+		?s ?p ?o }
+WHERE
+	{	?x dcat:servesDataset ?s .
+		?s a dcat:Dataset .
+		?s dcterms:identifier ?und .
+		VALUES ?und { "eac2b691-bf3d-453f-868b-62a8ecb1b825" "undefined" }
+		?s ?p ?o
+	}

@@ -27,6 +27,7 @@ sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
 sparql-consolidate-prov.qry
 sparql-consolidate-std.qry
+bmdc/sparql-dataset-undefined.qry
 bmdc/sparql-theme-region.qry
 bmdc/sparql-map-regions.qry
 bmdc/data-regions.ttl
@@ -79,6 +80,7 @@ bmdc/sparql-fix-fre.qry
 sparql-fix-datetype.qry
 sparql-date-type.qry
 bmdc/data-shacl-nerc-support.ttl
+sparql-protocol-conformsto.qry
 data-standards-support.ttl
 data-shacl-eurovoc-support.ttl
 data-shacl-inspire-support.ttl
