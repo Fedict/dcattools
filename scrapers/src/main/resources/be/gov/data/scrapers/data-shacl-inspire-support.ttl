@@ -4807,3 +4807,8 @@
 	a skos:Concept ;
 	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/DegreeOfConformity> ;
 	skos:prefLabel "Not Evaluated"@en .
+
+<http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/glossary> ;
+	skos:prefLabel "INSPIRE data specification"@en .

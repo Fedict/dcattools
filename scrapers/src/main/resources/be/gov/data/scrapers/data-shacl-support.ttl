@@ -368,6 +368,12 @@
 	skos:prefLabel "Hoogwaardige dataset"@nl, "High-value dataset"@en, "Ensemble de données de forte valeur"@fr , 
 					"Hochwertiger Datensatz"@de .
 
+<http://publications.europa.eu/resource/authority/dataset-type/ENVIRONMENTAL>
+	a skos:Concept;
+	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
+	skos:prefLabel "Environmental data"@en, "Milieugegevens"@nl, "Umweltdaten"@de,
+					"Données environnementales"@fr .
+
 <http://publications.europa.eu/resource/authority/dataset-type/GEOSPATIAL>
 	a skos:Concept;
 	skos:inScheme <http://publications.europa.eu/resource/authority/dataset-type> ;
