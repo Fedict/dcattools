@@ -5,6 +5,25 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357555>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	foaf:name "Ministerie van Landsverdediging"@nl, "Ministère de la Défense"@fr,
+			"Ministerium der Landesverteidigung"@de, "Ministry of Defence"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0367303762>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	foaf:name "FOD Volksgezondheid"@nl, "SPF Santé"@fr, "FÖD Volksgesundheit"@de, "FPS Health"@en .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0267387230>
+	a foaf:Organization ;
+	dcterms:type admsp:NationalAuthority ;
+	foaf:name "Federal Agency for the Safety of the Food Chain"@en, 
+		"Federaal Agentschap voor de Veiligheid van de Voedselketen"@nl, 
+		"Agence Fédérale pour la Sécurité de la Chaîne Alimentaire"@fr, 
+		"Föderalagentur für die Sicherheit der Nahrungsmittelkette"@de .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0865537829>
 	a foaf:Organization ;
 	dcterms:type admsp:NationalAuthority ;
@@ -16,7 +35,8 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Belgian Biodiversity Platform"@en, "Plate-forme belge biodiversité"@fr, 
 			"Belgische Biodiversitätsplattform"@de,"Belgisch Biodiversiteitsplatform"@nl ;
-	skos:altLabel "Belgian Biodiversity Platform"@en .
+	skos:altLabel "Belgian Biodiversity Platform"@en,
+				"Belgian Biodiversity Platform - Belspo"@en .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0691702941>
 	a foaf:Organization ;
@@ -101,7 +121,7 @@
 			"Koninklijk Belgisch Instituut voor Natuurwetenschappen (KBIN)"@nl,
 			"Königliches Belgisches Institut für Naturwissenschaften (KBIN)"@de ;
 	skos:altLabel "Royal Belgian Institute of Natural Sciences"@en, 
-				"Royal Belgian Institute for Natural Sciences"@en, 
+				"Royal Belgian Institute for Natural Sciences"@en,  "RBINS",
 				"Royal Belgian Institute of Natural Sciences (RBINS)"@en,
 				"RBINS"@en, "Royal Belgian Institute for Natural Sciences (RBINS/KBIN/IRSNB)"@en .
 

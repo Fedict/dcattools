@@ -2,6 +2,18 @@
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0308357555>
+	skos:altLabel "Belgian Navy" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0367303762>
+	skos:altLabel "Federal Public Service Health" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0267387230>
+	skos:altLabel "Federal Agency for the Safety of the Food Chain" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
+	skos:altLabel "EL-ILVO" .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
 	skos:altLabel "(ULB)" .
 
@@ -10,7 +22,7 @@
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
 	skos:altLabel "Royal Belgian Institute for Natural Sciences", "Royal Belgian Institute of Natural Sciences",
-		"Marine Forecasting Centre" .
+		"Marine Forecasting Centre", "KBIN" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	skos:altLabel "(ULg)" .
