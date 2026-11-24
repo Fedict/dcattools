@@ -12,13 +12,13 @@
 	skos:altLabel "Federal Agency for the Safety of the Food Chain" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
-	skos:altLabel "EL-ILVO" .
+	skos:altLabel "-ILVO" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0407626464>
 	skos:altLabel "(ULB)" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
-	skos:altLabel "(Ugent)", "(RUG)", "Ghent University", " UGent" .
+	skos:altLabel "(Ugent)", "(RUG)", "Ghent University", "UGent" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
 	skos:altLabel "Royal Belgian Institute for Natural Sciences", "Royal Belgian Institute of Natural Sciences",

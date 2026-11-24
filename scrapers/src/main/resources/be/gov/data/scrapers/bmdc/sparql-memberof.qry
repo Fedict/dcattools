@@ -18,7 +18,7 @@ INSERT
 WHERE
 	{	?s ?prop ?org .
 		?org foaf:name ?name .
-		?org ?p ?o .
+		OPTIONAL { ?org ?p ?o }
 		OPTIONAL { ?org org:memberOf ?org2 }
 		?uri skos:altLabel ?str .
 		BIND (IRI
