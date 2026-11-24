@@ -35,8 +35,8 @@
 	dcterms:type admsp:NationalAuthority ;
 	skos:prefLabel "Belgian Biodiversity Platform"@en, "Plate-forme belge biodiversité"@fr, 
 			"Belgische Biodiversitätsplattform"@de,"Belgisch Biodiversiteitsplatform"@nl ;
-	skos:altLabel "Belgian Biodiversity Platform"@en,
-				"Belgian Biodiversity Platform - Belspo"@en .
+	skos:altLabel "Belgian Biodiversity Platform"@en, "Belgian Biodiversity Platform",
+				"Belgian Biodiversity Platform - Belspo"@en, "Belgian Biodiversity Platform - Belspo" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0691702941>
 	a foaf:Organization ;
