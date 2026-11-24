@@ -57,6 +57,7 @@ sparql-hvd-subject.qry
 sparql-theme-keyword.qry
 sparql-theme-subject.qry
 sparql-clear-skos.qry
+sparql-hvd-dist.qry
 bmdc/data-publ.ttl
 bmdc/sparql-default-publisher.qry
 bmdc/sparql-dataset-envi.qry
