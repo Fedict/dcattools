@@ -8,16 +8,16 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 DELETE 
-	{	?dataset ?prop ?org .
+	{	?s ?prop ?org .
 		?org ?p ?o .
 		?org ?rel ?label }
 INSERT 
-	{ 	?dataset ?prop ?neworg .
+	{ 	?s ?prop ?neworg .
 		?neworg a foaf:Organization .
 		?neworg ?p ?o .
 		?neworg foaf:name ?name }
 WHERE
-	{	?dataset ?prop ?org .
+	{	?s ?prop ?org .
 		?org ?rel ?label .
 		OPTIONAL { 
 			?org ?p ?o 

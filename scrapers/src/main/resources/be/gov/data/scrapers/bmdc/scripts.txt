@@ -22,8 +22,6 @@ sparql-remove-catalog.qry
 bmdc/data-org.ttl
 sparql-map-org.qry
 sparql-clear-skos.qry
-bmdc/data-memberof.ttl
-bmdc/sparql-memberof.qry
 sparql-consolidate-bbox.qry
 sparql-consolidate-org.qry
 sparql-consolidate-contact.qry
@@ -60,7 +58,9 @@ sparql-theme-keyword.qry
 sparql-theme-subject.qry
 sparql-clear-skos.qry
 bmdc/data-publ.ttl
-bmdc/sparql-org.qry
+bmdc/sparql-default-publisher.qry
+bmdc/sparql-dataset-envi.qry
+bmdc/data-memberof.ttl
 bmdc/sparql-memberof.qry
 data-license.ttl
 sparql-map-license.qry

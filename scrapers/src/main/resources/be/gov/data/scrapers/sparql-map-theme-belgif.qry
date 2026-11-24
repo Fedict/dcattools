@@ -4,12 +4,13 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 DELETE
-	{	?s dcat:theme ?belgif }
+	{	?s ?prop ?belgif }
 INSERT
 	{ 	?s dcat:theme ?theme }
 WHERE
 	{ 	
 		?s dcat:theme ?belgif .
+		VALUES ?prop { dcat:theme dcterms:subject }
 		BIND (IRI(
 				REPLACE(STR(?belgif), "http://vocab.belgif.be/auth/datatheme/", "http://publications.europa.eu/resource/authority/data-theme/")
 			) as ?theme)

@@ -1,0 +1,20 @@
+
+# Set dataset type to environment data for INSPIRE datasets
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT 
+	{ 	?s dcterms:type <http://publications.europa.eu/resource/authority/dataset-type/ENVIRONMENTAL> }
+WHERE
+	{	?s a dcat:Dataset 
+		{
+			?s dcatap:applicableLegislation ?eli
+			VALUES ?eli { <http://data.europa.eu/eli/reg/2010/1089/oj> <http://data.europa.eu/eli/reg/2010/1089> }
+		} 
+		UNION
+		{
+			?s dcat:keyword "Reporting INSPIRE"@en .
+		}
+	}

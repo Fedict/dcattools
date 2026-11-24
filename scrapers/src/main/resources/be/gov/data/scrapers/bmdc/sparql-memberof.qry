@@ -8,6 +8,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 DELETE 
 	{	?s ?prop ?org .
 		?org foaf:name ?name .
+		?org org:memberOf ?org2 .
 		?org ?p ?o }
 INSERT 
 	{ 	?s ?prop ?neworg .
@@ -18,11 +19,14 @@ WHERE
 	{	?s ?prop ?org .
 		?org foaf:name ?name .
 		?org ?p ?o .
+		OPTIONAL { ?org org:memberOf ?org2 }
 		?uri skos:altLabel ?str .
 		BIND (IRI
 				(CONCAT(
 					STR(?uri), "#", STRAFTER(STR(?org), "/org/"))
 			) AS ?neworg)
-		FILTER (CONTAINS(?name, ?str))
-		FILTER (STRSTARTS(STR(?org), "http://data.gov.be/.well-known/genid/org/"))
+		FILTER (CONTAINS(STR(?name), STR(?str)))
+		FILTER (?p != org:memberOf )
+		FILTER (STRSTARTS(STR(?uri), "https://org.belgif.be/") && 
+				STRSTARTS(STR(?org), "http://data.gov.be/.well-known/genid/org/"))
 	}

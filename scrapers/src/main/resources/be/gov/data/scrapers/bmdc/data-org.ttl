@@ -5,6 +5,14 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
+<https://org.belgif.be/id/CbeRegisteredEntity/0865537829#biodiv>
+	a foaf:Organization ;
+	org:memberOf <https://org.belgif.be/id/CbeRegisteredEntity/0865537829> ;
+	dcterms:type admsp:NationalAuthority ;
+	skos:prefLabel "Belgian Biodiversity Platform"@en, "Plate-forme belge biodiversité"@fr, 
+			"Belgische Biodiversitätsplattform"@de,"Belgisch Biodiversiteitsplatform"@nl ;
+	skos:altLabel "Belgian Biodiversity Platform"@en .
+
 <https://org.belgif.be/id/CbeRegisteredEntity/0691702941>
 	a foaf:Organization ;
 	dcterms:type admsp:NonProfitOrganisation ;

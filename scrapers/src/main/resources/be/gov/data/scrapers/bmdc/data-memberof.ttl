@@ -6,11 +6,11 @@
 	skos:altLabel "(ULB)" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0248015142>
-	skos:altLabel "(Ugent)", "(RUG)", "Ghent University" .
+	skos:altLabel "(Ugent)", "(RUG)", "Ghent University", " UGent" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0353070496>
-	skos:altLabel "Royal Belgian Institute for Natural Sciences", 
-		"Royal Belgian Institute of Natural Sciences" .
+	skos:altLabel "Royal Belgian Institute for Natural Sciences", "Royal Belgian Institute of Natural Sciences",
+		"Marine Forecasting Centre" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0807970507>
 	skos:altLabel "(ULg)" .
@@ -24,3 +24,4 @@
 <https://org.belgif.be/id/CbeRegisteredEntity/0466279196>
 	skos:altLabel "Rijksstation voor Zeevisserij (RVZ, CLO Gent)",
 		"Rijksdienst voor Zeevisserij (RVZ)" .
+
