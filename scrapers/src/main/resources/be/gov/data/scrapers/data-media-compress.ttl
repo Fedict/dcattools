@@ -3,7 +3,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <https://www.iana.org/assignments/media-types/application/zip>
-	skos:prefLabel "ZIP" ;
+	skos:prefLabel "application/zip" ;
 	skos:altLabel "ZIP", "zip", "CSV (zip)", "CSV(zip)", "CSV (ZIP)", "F TXT (ZIP)", 
 					"M TXT (ZIP)", "TXT(ZIP)", "TXT (ZIP)", "application/zip",
 					"application/x-gmz",
@@ -11,13 +11,13 @@
 					<https://www.iana.org/assignments/media-types/application/dwca> .
 
 <https://www.iana.org/assignments/media-types/application/gzip>
-	skos:prefLabel "GZIP" ;
+	skos:prefLabel "application/gzip" ;
 	skos:altLabel "application/gzip" .
 
 <https://www.iana.org/assignments/media-types/application/x-7z-compressed>
-	skos:prefLabel "7Z" ;
+	skos:prefLabel "application/x-7z-compressed" ;
 	skos:altLabel "7z", "application/x-compressed", "application/x-7z-compressed" .
 
 <https://www.iana.org/assignments/media-types/application/vnd.rar>
-	skos:prefLabel "RAR" ;
+	skos:prefLabel "application/vnd.rar" ;
 	skos:altLabel "application/vnd.rar", "application/x-rar-compressed" .
