@@ -6,4 +6,4 @@ all/sparql-dataservice.qry
 all/sparql-datestamp.qry
 all/sparql-theme-sport.qry
 all/clear-empty.txt
-sparql-clear-skos.qry
+sparql-remove-orphans.qry
