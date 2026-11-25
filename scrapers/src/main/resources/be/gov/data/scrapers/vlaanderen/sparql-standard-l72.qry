@@ -1,0 +1,13 @@
+# Replace Lambert 72 values with 31370
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE 
+	{	?s dcterms:title ?l72 }
+INSERT 
+	{ 	?s dcterms:title "31370" }
+WHERE 
+	{	?s dcterms:type <http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem> .
+		?s dcterms:title ?l72 .
+		FILTER (CONTAINS(?l72, "Lambert 72"))
+	}

@@ -13,4 +13,6 @@ WHERE
 	{ 	
 		?s dcat:theme ?theme .
 		?edp skos:narrowMatch ?theme
+		FILTER (STRSTARTS(STR(?edp), "http://www.eionet.europa.eu") || STRSTARTS(STR(?edp), "http://inspire.ec.europa.eu"))
+		FILTER (!STRSTARTS(STR(?theme), "http://www.eionet.europa.eu") && !STRSTARTS(STR(?theme), "http://inspire.ec.europa.eu"))
 	}

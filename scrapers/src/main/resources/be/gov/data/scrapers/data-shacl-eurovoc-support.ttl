@@ -607,6 +607,11 @@
     skos:inScheme <http://eurovoc.europa.eu/100187> ;
     skos:prefLabel "town and country planning"@en, "ruimtelijke ordening"@nl, "aménagement du territoire"@fr, "Raumplanung"@de .
 
+<http://eurovoc.europa.eu/5463>
+	a skos:Concept ;
+    skos:inScheme <http://eurovoc.europa.eu/100141> ;
+	skos:prefLabel "biodiversity"@en, "biodiversiteit"@nl, "biodiversité"@fr, "biologische Vielfalt"@de .
+ 
 <http://eurovoc.europa.eu/5502>
 	a skos:Concept ;
     skos:inScheme <http://eurovoc.europa.eu/100169> ;

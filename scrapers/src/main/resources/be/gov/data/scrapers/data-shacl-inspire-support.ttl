@@ -60,6 +60,11 @@
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
 	skos:prefLabel "accident"@en , "ongevallen"@nl , "accident"@fr , "Unfall"@de .
 
+<http://www.eionet.europa.eu/gemet/theme/29>
+	a skos:Concept ;
+	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
+	skos:prefLabel "accident"@en , "toerisme"@nl , "accident"@fr , "Unfall"@de .
+
 <http://www.eionet.europa.eu/gemet/concept/30>
 	a skos:Concept ;
 	skos:inScheme <http://www.eionet.europa.eu/gemet/gemetThesaurus> ;
@@ -4720,6 +4725,11 @@
 	a skos:Concept ;
 	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
     skos:prefLabel "Milieu"@nl, "Environnement"@fr, "Umwelt"@de, "Environment"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/farming>
+	a skos:Concept ;
+	skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory> ;
+    skos:prefLabel "Landbouw en veeteelt"@nl, "Agriculture"@fr, "Landwirtschaft"@de, "Farming"@en .
 
 <http://inspire.ec.europa.eu/metadata-codelist/TopicCategory/geoscientificInformation>
 	a skos:Concept ;

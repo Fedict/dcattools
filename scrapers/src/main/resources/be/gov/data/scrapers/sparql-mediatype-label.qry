@@ -3,16 +3,17 @@
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
+DELETE { ?mt skos:prefLabel ?title }
 INSERT {	
 		?mt a skos:Concept .
 		?mt skos:prefLabel ?lbl
 	}
 WHERE {
 		?mt a dcterms:MediaType .
+		OPTIONAL { ?mt skos:prefLabel ?title }
 		BIND ( 
 			STRAFTER(STR(?mt), "https://www.iana.org/assignments/media-types/")
 			as ?lbl)
 		FILTER (STRSTARTS(STR(?mt),  "https://www.iana.org/assignments/media-types/"))
-		FILTER NOT EXISTS { ?mt skos:prefLabel ?o }
 	}
 	

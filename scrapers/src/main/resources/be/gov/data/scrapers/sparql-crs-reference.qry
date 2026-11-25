@@ -1,0 +1,16 @@
+# Use specific GeoDCAT property reference systems and http URI instead of https
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geodcatap: <http://data.europa.eu/930/>
+
+DELETE 
+	{	?s dcterms:conformsTo ?sys }
+INSERT
+	{	?s geodcatap:referenceSystem ?uri }
+WHERE
+	{ 	?s dcterms:conformsTo ?sys .
+		BIND (IRI(
+				REPLACE(STR(?sys), "https", "http")
+			) as ?uri)
+		FILTER (CONTAINS(STR(?sys), "www.opengis.net/def/crs"))
+	}
