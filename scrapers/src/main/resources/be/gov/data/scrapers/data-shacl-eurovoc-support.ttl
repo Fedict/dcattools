@@ -706,24 +706,24 @@
     skos:prefLabel "72 GEOGRAPHY"@en, "72 GEOGRAFIE"@nl, "72 GÉOGRAPHIE"@fr, "72 GEOGRAFIE"@de .
 
 <http://eurovoc.europa.eu/100165>
-	a skos:Concept ;
-    skos:inScheme <http://eurovoc.europa.eu/100165> ;
-    skos:prefLabel "0416 electoral procedure and voting"@en, "0416 verkiezingsmethode en stemming"@nl, "0416 procédure électorale et vote"@fr, "0416 Wahlverfahren"@de .
+	a skos:ConceptScheme ;
+    skos:prefLabel "0416 electoral procedure and voting"@en, "0416 verkiezingsmethode en stemming"@nl, 
+			"0416 procédure électorale et vote"@fr, "0416 Wahlverfahren"@de .
 
 <http://eurovoc.europa.eu/100215>
-	a skos:Concept ;
-    skos:inScheme <http://eurovoc.europa.eu/100215> ;
+	a skos:ConceptScheme ;
     skos:prefLabel "2841 health"@en, "2841 gezondheid"@nl, "2841 santé"@fr, "2841 Gesundheit"@de .
 
 <http://eurovoc.europa.eu/100216>
-	a skos:Concept ;
-    skos:inScheme <http://eurovoc.europa.eu/100216> ;
-    skos:prefLabel "2846 construction and town planning"@en, "2846 stedenbouw"@nl, "2846 urbanisme et construction"@fr, "2846 Stadtplanung und Städtebau"@de .
+	a skos:ConceptScheme ;
+    skos:prefLabel "2846 construction and town planning"@en, "2846 stedenbouw"@nl, 
+				"2846 urbanisme et construction"@fr, "2846 Stadtplanung und Städtebau"@de .
 
 <http://eurovoc.europa.eu/100282>
-	a skos:Concept ;
+	a skos:ConceptScheme ;
     skos:inScheme <http://eurovoc.europa.eu/100282> ;
-    skos:prefLabel "7231 economic geography"@en, "7231 economische geografie"@nl, "7231 géographie économique"@fr, "7231 Wirtschaftsgeografie"@de .
+    skos:prefLabel "7231 economic geography"@en, "7231 economische geografie"@nl, 
+				"7231 géographie économique"@fr, "7231 Wirtschaftsgeografie"@de .
 
 <http://eurovoc.europa.eu/c_2ad19da5>
 	a skos:Concept ;
