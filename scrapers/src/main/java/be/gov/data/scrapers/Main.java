@@ -26,7 +26,6 @@
 package be.gov.data.scrapers;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;

@@ -554,7 +554,7 @@ public abstract class BaseScraper extends Fetcher implements Scraper, AutoClosea
 	 */
 	public void writeDcat() throws IOException {
 		// output file
-		String outfile = String.join(File.separator, dataDir, getName() + ".nt");
+		String outfile = String.join(File.separator, dataDir, getName() + (raw ? "-raw.nt" : ".nt"));
 		LOG.info("Writing end results to {}", outfile);
 		try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(outfile), StandardCharsets.UTF_8)) {
 			writeDcat(bw);

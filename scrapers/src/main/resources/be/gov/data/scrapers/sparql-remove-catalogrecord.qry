@@ -4,9 +4,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 DELETE 
 	{	?rec a dcat:CatalogRecord .
-		?rec ?p ?o 
-	}
+		?rec ?p ?o }
 WHERE
 	{ 	?rec a dcat:CatalogRecord .
-		?rec ?p ?o .
-	}
+		?rec ?p ?o }

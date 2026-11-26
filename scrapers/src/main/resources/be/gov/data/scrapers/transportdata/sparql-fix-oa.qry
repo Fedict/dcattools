@@ -1,0 +1,10 @@
+# Fix incorrect https OA namespace 
+
+PREFIX oa: <http://www.w3.org/ns/oa#>
+
+DELETE 
+	{	?s <https://www.w3.org/ns/oa#hasBody> ?o }
+INSERT 
+	{	?s oa:hasBody ?o }
+WHERE 
+	{	?s <https://www.w3.org/ns/oa#hasBody> ?o }

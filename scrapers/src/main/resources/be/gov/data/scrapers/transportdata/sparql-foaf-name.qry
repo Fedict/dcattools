@@ -1,0 +1,10 @@
+# Use familyName instead of deprecated surname property
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE 
+	{	?s foaf:surname ?o }
+INSERT 
+	{	?s foaf:familyName ?o }
+WHERE 
+	{	?s foaf:surname ?o }
