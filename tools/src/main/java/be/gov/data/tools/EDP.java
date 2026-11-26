@@ -206,6 +206,7 @@ public class EDP {
 		writeLiterals(w, con, iri, DCTERMS.DESCRIPTION, "dct:description");
 		writeLiterals(w, con, iri, SKOS.PREF_LABEL, "skos:prefLabel");
 		writeLiterals(w, con, iri, SKOS.NOTATION, "skos:notation");
+		writeReferences(w, con, iri, SKOS.EXACT_MATCH, "skos:exactMatch");
 		writeLiterals(w, con, iri, ADMS.schemaAgency, "adms:schemaAgency");
 	}
 	
@@ -428,7 +429,18 @@ public class EDP {
 				w.writeStartElement(wrapper);
 
 				Resource annotation = (Resource) res.next().getObject();
-				writeLiterals(w, con, annotation, OA.hasBody, "oa:hasBody");
+				try (RepositoryResult<Statement> res2 = con.getStatements(annotation, OA.hasBody, null)) {
+					while (res2.hasNext()) {
+						Resource body = (Resource) res2.next().getObject();
+						w.writeStartElement("oa:hasBody");
+						w.writeStartElement("oa:TextualBody");
+						writeLiterals(w, con, body, RDF.VALUE, "rdf:value");
+						writeReferences(w, con, body, DCTERMS.FORMAT, "dcterms:format");
+						w.writeEndElement();
+						w.writeEndElement();
+					}
+				}
+				
 				w.writeEndElement();
 				w.writeEndElement();
 			}
