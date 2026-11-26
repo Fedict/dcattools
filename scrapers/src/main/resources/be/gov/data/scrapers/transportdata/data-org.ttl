@@ -146,12 +146,6 @@
 	skos:prefLabel "felyx Belgium"@en, "felyx Belgium"@nl ;
 	skos:altLabel "FELYX BELGIUM" .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0421220916>
-	a foaf:Organization ;
-	dcterms:type admsp:NonProfitOrganisation ;
-	skos:prefLabel "Mpact vzw"@nl , "Mpact asbl"@fr ;
-	skos:altLabel "Mpact", "Mpact VZW" .
-
 <http://opencorporates.com/id/companies/fr/800348146>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
@@ -190,7 +184,7 @@
 	skos:prefLabel "Eco-Movement"@nl, "Eco-Movement"@fr, "Eco-Movement"@de, "Eco-Movement"@en ;
 	skos:altLabel "Eco-Movement" .
 
-<http://org.belgif.be/id/CbeRegisteredEntity/0833260781>
+<https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
@@ -298,7 +292,7 @@
 	skos:prefLabel "Haven van Antwerpen-Brugge"@nl, "Port of Antwerp-Bruges"@en ;
 	skos:altLabel "De Fietsbus" .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0840931701>
+<https://org.belgif.be/id/CbeRegisteredEntity/0697608162>
 	a foaf:Organization ;
 	dcterms:type admsp:LocalAuthority ;
 	skos:prefLabel "City of Deinze"@en, "Stad Deinze"@nl, "Ville de Deinze"@fr, "Stadt Deinze"@de ;
