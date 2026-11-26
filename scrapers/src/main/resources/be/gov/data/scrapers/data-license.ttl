@@ -66,6 +66,8 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC0>
 	skos:altLabel "cc-zero", "CC 0", "CC0", "CC-0", "CC 0 1.0", "other-pd" , "CC%200",
+		"Licence ouverte CC0 - Universel", "CC0 - Universal open license",
+		"Open licentie CC0 - Universeel",
 		<http://www.opendefinition.org/licenses/cc-zero>,
 		<http://creativecommons.org/licenses/zero/1.0/>,
 		<http://creativecommons.org/publicdomain/zero/1.0>,
@@ -86,7 +88,8 @@
 		"Open licentie CC0 - Universeel", "CC0 - Universal open license"  .
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYSA_4_0>
-	skos:altLabel "https://creativecommons.org/licenses/by-sa/4.0/",
+	skos:altLabel "CC BY-SA",
+				 "https://creativecommons.org/licenses/by-sa/4.0/",
 				<https://creativecommons.org/licenses/by-sa/4.0/>,
 				<http://creativecommons.org/licenses/by-sa/4.0/> .
 
@@ -105,7 +108,7 @@
 
 <http://publications.europa.eu/resource/authority/licence/CC_BYNCND_4_0> 
 	skos:prefLabel "CC-BY-NC-ND" ;
-	skos:altLabel "https://creativecommons.org/licenses/by-nc-nd/4.0/" ,
+	skos:altLabel "https://creativecommons.org/licenses/by-nc-nd/4.0/" , "CC-BY-NC-ND",
 		<https://creativecommons.org/licenses/by-nc-nd/4.0/>,
 		"http://creativecommons.org/licenses/by-nc-nd/4.0/" .
 

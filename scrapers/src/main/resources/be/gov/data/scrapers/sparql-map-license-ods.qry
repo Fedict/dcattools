@@ -1,0 +1,16 @@
+# Map licenses to an EU list of licenses
+
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE 
+	{	?dist dcterms:license ?lic .
+		?lic a dcterms:LicenseDocument .
+		?lic rdfs:label ?label }
+INSERT 
+	{ 	?dist dcterms:license ?license }
+WHERE
+	{	?dist dcterms:license ?lic .
+		?lic a dcterms:LicenseDocument .
+		?lic rdfs:label ?label 
+	}

@@ -1,0 +1,14 @@
+# Remove license from dataset, should be on distribution
+
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE { 
+		?s dcterms:license ?lic .
+		?lic a dcterms:LicenseDocument .
+		?lic ?p ?o }
+WHERE {	
+		?s a dcat:Dataset .
+		?s dcterms:license ?lic .
+		?lic a dcterms:LicenseDocument .
+		?lic ?p ?o  }
