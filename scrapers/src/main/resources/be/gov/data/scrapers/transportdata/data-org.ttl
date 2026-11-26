@@ -52,7 +52,7 @@
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "TEC"@fr ;
-	skos:altLabel "TEC" .
+	skos:altLabel "TEC", "LETEC" .
 
 <https://org.belgif.be/id/CbeRegisteredEntity/0316381039>
 	a foaf:Organization ;
@@ -152,7 +152,7 @@
 	skos:prefLabel "Mpact vzw"@nl , "Mpact asbl"@fr ;
 	skos:altLabel "Mpact", "Mpact VZW" .
 
-<https://opencorporates.com/id/companies/fr/800348146>
+<http://opencorporates.com/id/companies/fr/800348146>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "INDIGO Group"@en, "INDIGO Group"@fr ;
@@ -184,13 +184,13 @@
 	skos:altLabel "IRCEL", 
 			"Intergewestelijke cel voor leefmilieu | Cellule interrégionale de l'’environnement Intergewestelijke cel voor leefmilieu | Cellule interrégionale de l'’environnement"  .
 
-<https://opencorporates.com/id/companies/nl/27294677>
+<http://opencorporates.com/id/companies/nl/27294677>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Eco-Movement"@nl, "Eco-Movement"@fr, "Eco-Movement"@de, "Eco-Movement"@en ;
 	skos:altLabel "Eco-Movement" .
 
-<https://org.belgif.be/id/CbeRegisteredEntity/0833260781>
+<http://org.belgif.be/id/CbeRegisteredEntity/0833260781>
 	a foaf:Organization ;
 	dcterms:type admsp:RegionalAuthority ;
 	skos:prefLabel "Parking Brussels"@en, "Parking Brussels"@nl, "Parking Brussels"@fr ;
@@ -260,7 +260,7 @@
 				"Optimal Parking Control"@en ;
 	skos:altLabel "Optimal Parking Control" .
 
-<https://opencorporates.com/id/companies/fr/794519645>
+<http://opencorporates.com/id/companies/fr/794519645>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Gireve"@fr, "Gireve"@en, "Gireve"@nl, "Gireve"@de ;
@@ -279,7 +279,7 @@
 	skos:prefLabel "Remorquable"@de , "Remorquable"@fr , "Remorquable"@nl , "Remorquable"@en ;
 	skos:altLabel "Remorquable" .
 
-<https://opencorporates.com/id/companies/de/F1103R_HRA50462>
+<http://opencorporates.com/id/companies/de/F1103R_HRA50462>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "H2 Mobility"@en, "H2 Mobility"@nl, "H2 Mobility"@fr, "H2 Mobility"@de ;
@@ -389,7 +389,7 @@
 					"Aéroport d'Anvers"@fr, "Flughafen Antwerpen"@de;
 	skos:altLabel "LEM Antwerpen NV - Luchthaven Antwerpen" .
 
-<https://opencorporates.com/id/companies/dk/41668385>
+<http://opencorporates.com/id/companies/dk/41668385>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Monta"@fr, "Monta"@en, "Monta"@nl, "Monta"@de ;
@@ -407,8 +407,33 @@
 	skos:prefLabel "Coopstroom"@fr, "Coopstroom"@en, "Coopstroom"@nl, "Coopstroom"@de ;
 	skos:altLabel "Coopstroom" .
 
-<https://opencorporates.com/id/companies/fr/522816651>
+<http://opencorporates.com/id/companies/fr/522816651>
 	a foaf:Organization ;
 	dcterms:type admsp:Company ;
 	skos:prefLabel "Getaround"@fr, "Getaround"@en, "Getaround"@nl, "Getaround"@de ;
 	skos:altLabel "Getaround" .
+
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0471121080>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Q-Park Belgium"@en ;
+	skos:altLabel "Q-Park" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0563854664>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "EnergyVision"@en ;
+	skos:altLabel "EnergyVision" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0521902461>
+	a foaf:Organization ;
+	dcterms:type admsp:Company ;
+	skos:prefLabel "Tesla Belgium"@en ;
+	skos:altLabel "Tesla Belgium BV" .
+
+<https://org.belgif.be/id/CbeRegisteredEntity/0415131393>
+	a foaf:Organization ;
+	dcterms:type admsp:NonProfitOrganisation ;
+	skos:prefLabel "Mpact ASBL"@fr, "Mpact VZW"@nl ;
+	skos:altLabel "Mpact vzw" .

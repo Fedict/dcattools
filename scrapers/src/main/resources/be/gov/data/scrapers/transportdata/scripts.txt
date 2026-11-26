@@ -2,9 +2,10 @@
 sparql-delete-label-empty.qry
 sparql-remove-addresses.qry
 transportdata/data-org.ttl
-sparql-map-memberof.qry
 sparql-map-org.qry
+#sparql-map-memberof.qry
 data-shacl-its-support.ttl
+sparql-clear-skos.qry
 transportdata/sparql-legislation-eli.qry
 transportdata/sparql-fix-license.qry
 transportdata/sparql-fix-oa.qry
@@ -25,4 +26,4 @@ data-shacl-support.ttl
 data-shacl-geo-support.ttl
 sparql-shacl-classes.qry
 sparql-shacl-skos.qry
-#sparql-remove-orphans.qry
+sparql-remove-orphans.qry
